@@ -1,0 +1,219 @@
+.owl-heading{
+    font-size: 30px;
+font-weight: 700;
+margin-bottom: 5px;
+text-align: center;
+line-height: 30px;
+
+}
+
+.owl-stage {
+right: 0px;
+}
+
+.b-puff_banner_description {
+padding: 10px 4px;
+background-color: rgb(255, 255, 255);
+text-align: center;
+overflow: hidden;
+position: absolute;
+right: 20px;
+bottom: 9px;
+left: 20px;
+}
+h3 {
+font-style: normal;
+font-variant: normal;
+font-weight: normal;
+font-stretch: normal;
+font-size: 18px;
+line-height: 22px;
+font-family: Arial, sans-serif;
+}
+.l-clp .b-puff_banner_heading {
+margin-bottom: 5px;
+text-transform: uppercase;
+}
+.l-clp .b-puff_banner_heading {
+font-style: normal;
+font-variant: normal;
+font-weight: normal;
+font-stretch: normal;
+font-size: 16px;
+line-height: 1;
+font-family: elc_bold;
+color: #fb0000;
+}
+.l-clp .b-puff_banner span {
+color: rgb(153, 153, 153);
+}
+@media only screen and (max-width: 767px) {
+.l-clp .b-puff_banner_description {
+position: relative;
+right: 0px;
+bottom: 0px;
+left: 0px;
+width: 100%;
+padding: 15px;
+border: 1px solid rgb(231, 231, 231);
+font-size: 13px;
+vertical-align: middle;
+min-height: 140px;
+}
+}
+@media only screen and (max-width: 1199px) {
+h3 {
+font-size: 16px;
+}
+}
+@media only screen and (max-width: 767px) {
+.l-clp .b-puff_banner_heading {
+margin-bottom: 15px;
+font-size: 16px;
+}
+}
+
+
+
+
+
+
+.blck{
+  color:black;
+}
+.carousel-wrap {
+
+width: 100%;
+position: relative;
+/*margin-top: 30px;*/
+
+}
+
+/* fix blank or flashing items on carousel */
+.owl-carousel .item {
+position: relative;
+z-index: 100; 
+-webkit-backface-visibility: hidden; 
+  border: 0px solid #e6e5e5;
+}
+
+/* end fix */
+.owl-nav > div {
+/*margin-top: -26px;*/
+position: absolute;
+top: -13%;
+color: #cdcbcd;
+margin-right: 27px;
+}
+
+.owl-nav i {
+font-size: 30px;
+}
+
+html[lang="en"] .owl-nav .owl-prev {
+right: 0px;
+}
+html[dir="rtl"] .owl-nav .owl-prev {
+left: 32px;
+}
+html[lang="en"] .owl-nav .owl-next {
+right: -32px;
+}
+
+html[dir="rtl"] .owl-nav .owl-next {
+left: 0px;
+}
+
+.owl-nav.disabled {
+display: block !important;
+}
+
+.b-puff_banner_description span{
+width : 200px;
+overflow:hidden;
+display:inline-block;
+text-overflow: ellipsis;
+white-space: nowrap;
+}
+
+span.title {
+display: block;
+line-height: 20px;
+margin-bottom: 4px;
+padding: 0 6px;
+display: block;
+color: #3d464d;
+font-weight: normal;      
+overflow: hidden;
+white-space: nowrap;
+text-overflow: ellipsis;
+text-align:center;
+}
+
+
+span#products-price-current-10 {
+display: block;
+color: #000;
+padding: 0 6px;
+font-size: 14px;
+font-weight: bold;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.item .img-holder {
+background-color: #fafafa;
+margin: 0;
+overflow: hidden;
+position: relative;
+-webkit-transition: all 0.3s ease;
+-o-transition: all 0.3s ease;
+transition: all 0.3s ease;
+        margin: 0 -2px 8px;
+}
+
+.item .img-holder img {
+position: relative;
+vertical-align: top;
+width: 100%; }
+
+.badge {
+  display: inline-block;
+      background-color: rgba(0, 0, 0, 0.5);
+  color: rgb(255, 255, 255);
+  font-size: 10px;
+  padding: 0px 5px;
+  position: absolute;
+  text-transform: uppercase;
+  z-index: 9;
+}
+@media only screen and (max-width: 767px) {
+.carousel-wrap {
+
+margin-top: 0px; 
+}
+}
+
+
+@media only screen and (max-width: 1199px) and (min-width: 768px) {
+.carousel-wrap {
+
+margin-top: 0px; 
+}
+}
+.offer{
+      text-align: center;
+}
+
+p.offer strong {
+width: 155px;
+height: 24px;
+background: #f599ba;
+padding: 4px 13px;
+font-size: 12px;
+border-radius: 25px;
+font-weight: lighter;
+color: #fff;
+font-family: 'Noto Sans KR', Helvetica, Arial, sans-serif;
+}
+

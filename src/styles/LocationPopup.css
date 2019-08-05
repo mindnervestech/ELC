@@ -1,0 +1,30 @@
+.ui-dialog.ui-corner-all.ui-widget{
+		    position: fixed;
+		    height: 319.125px;
+		    width: 100%;
+		    top: 150px;
+		    max-width: 480px;
+}	
+.VIPRegister-dialog.ui-dialog {
+    z-index: 9999 !important;
+}
+@media only screen and (min-width: 1120px) 
+{
+	.ui-dialog.ui-corner-all.ui-widget{
+		     left: 32%; 
+	}	
+}
+
+@media only screen and (max-width: 1119px) 
+{
+	.ui-dialog.ui-corner-all.ui-widget{
+		     left: 21%; 
+	}	
+}
+@media only screen and (max-width: 640px) 
+{
+	.ui-dialog.ui-corner-all.ui-widget{
+		     left: 0; 
+	}	
+}
+
