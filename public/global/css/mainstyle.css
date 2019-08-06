@@ -1,5 +1,33 @@
 @import url(https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700.css);
 
+@font-face {
+    font-family: "VAG Rounded ELC Light";
+    src: url("font/VAGRoundedELC-Light.eot");
+    src: url("font/VAGRoundedELC-Light.eot") format("embedded-opentype"), url("font/VAGRoundedELC-Light.ttf") format("truetype"), url("font/VAGRoundedELC-Light.woff") format("woff"), url("font/VAGRoundedELC-Light.svg") format("svg");
+    font-weight: 300;
+    font-style: normal; }
+
+@font-face {
+    font-family: "VAG Rounded ELC Thin";
+    src: url("font/VAGRoundedELC-Thin.eot");
+    src: url("font/VAGRoundedELC-Thin.eot") format("embedded-opentype"), url("font/VAGRoundedELC-Thin.ttf") format("truetype"), url("font/VAGRoundedELC-Thin.woff") format("woff"), url("font/VAGRoundedELC-Thin.svg") format("svg");
+    font-weight: 100;
+    font-style: normal; }
+
+@font-face {
+    font-family: "VAG Rounded ELC Black";
+    src: url("font/VAGRoundedELC-Black.eot");
+    src: url("font/VAGRoundedELC-Black.eot") format("embedded-opentype"), url("font/VAGRoundedELC-Black.ttf") format("truetype"), url("font/VAGRoundedELC-Black.woff") format("woff"), url("font/VAGRoundedELC-Black.svg") format("svg");
+    font-weight: 900;
+    font-style: normal; }
+
+@font-face {
+    font-family: "VAG Rounded ELC Bold";
+    src: url("font/VAGRoundedELC-Bold.eot");
+    src: url("font/VAGRoundedELC-Bold.eot") format("embedded-opentype"), url("font/VAGRoundedELC-Bold.ttf") format("truetype"), url("font/VAGRoundedELC-Bold.woff") format("woff"), url("font/VAGRoundedELC-Bold.svg?") format("svg");
+    font-weight: 700;
+    font-style: normal; }
+
 /*! normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */
 
 html {
@@ -8,9 +36,21 @@ html {
 	font-size: 67.6%;
 }
 
+/* body {
+    margin: 0;
+    font-family: "VAG Rounded ELC Light"!important;
+} */
+
 body {
-    margin: 0
-}
+    font-family: "VAG Rounded ELC Light"!important;
+    font-size: 1.4rem!important;
+    line-height: 1.7!important;
+    font-weight: 300!important;
+    color: #4f4f4f;
+    background: #ffffff;
+    letter-spacing: 0.05rem;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden; }
 
 h1 {
     font-size: 2em;
@@ -196,19 +236,23 @@ template {
 }
 
 .footer-css li {
-    font-size: 12px;
+    font-size: 1.2rem;
     padding: 10px 0px;
+    color: #4f4f4f;
+}
+a {
+    color: #4f4f4f!important;
 }
 .footer-css .footer-title {
-    font-size: 14px;
-    color: #00b33c;
+    font-size: 1.5rem;
+    color: #0D943F;
     padding-bottom: 10px;
 }
 
 .footer-css .footer-line {
     border-top: solid 2px #f3f0f0;
     padding-top: 30px;
-    border-bottom: solid 2px #00b33c;
+    border-bottom: solid 2px #0D943F;
 }
 
 .footer-css .footer-bottom {
@@ -222,15 +266,15 @@ template {
 padding: 0px 15px;
 width: 80%;
 border: solid 1px;
-border-color: #00b33c;
+border-color: #0D943F;
 }
 
 .footer-css .submit-button {
-    background-color: #00b33c;
+    background-color: #0D943F;
     color: #fff;
     width: 20%;
     height: 45px;
-    border: solid 1px #00b33c
+    border: solid 1px #0D943F
 }
 
 .footer-css .icon {
@@ -238,29 +282,14 @@ border-color: #00b33c;
     margin-right: 15px;
     font-size: 20px;
     background-color: #fff;
-    color: #00b33c;
+    color: #0D943F;
     border-radius: 50%;
     border: solid 1px #f3f0f0;
 }
 
-.footer-css .bottom-imagePaypal {
-    height: 18px;
-    width: 75px;
-    margin-right: 20px;
-}
-.footer-css .bottom-imageSecure {
-    height: 29px;
-    width: 56px;
-    margin-right: 20px;
-}
-.footer-css .bottom-imageMasterCard {
-    height: 20px;
-    width: 115px;
-    margin-right: 20px;
-}
-.footer-css .bottom-imageVisa {
-    height: 15px;
-    width: 51px;
+.footer-css .bottom-image {
+    height: 40px;
+    width: auto;
     margin-right: 20px;
 }
 
@@ -725,7 +754,7 @@ html[dir="rtl"] .header .row-1 .cart span {
 }
 
 .header .row-2 {
-    background-color: #0D943F;
+    background-color: #faced7;
     height: 50px;
     padding-top: 10px;
     position: relative
@@ -854,7 +883,7 @@ html[dir="rtl"] .header .row-2 .cta {
 .header .row-2 .cta .cart span {
     position: absolute;
     color: #fff;
-    background-color: #0D943F;
+    background-color: #f599ba;
     left: 50%;
     bottom: 50%;
     font-size: .7em;
@@ -904,7 +933,7 @@ html[dir="rtl"] .header .row-2 .cta .cart span {
         height: 100%;
         width: 70%;
         float: right;
-        background-color: red;
+        background-color: #EE0E19;
         color: #fff;
         font-size: 14px;
         border: none;
@@ -1189,6 +1218,11 @@ html[dir="rtl"] .header .search i {
     font-size: 13px;
 	display: table;
     margin: 0 auto;
+}
+
+.footer-css a:hover {
+    color: #0D943F!important;
+    text-decoration: underline!important;
 }
 
 @media only screen and (min-width: 600px) {
@@ -2018,13 +2052,21 @@ html[dir="rtl"] .header .changecountry .country .list a:before {
     text-align: center;
     font-size: 30px;
     padding: 35px;
+    color: #4f4f4f;
+    letter-spacing: 0.05rem;
+    text-rendering: optimizeLegibility;
 
+}
+
+.text-color{
+    color: #4f4f4f;
+    font-size: 1.3rem;
 }
 
 .homePage .alsoLikeCard{
     background-color: #fff;
     width: 100%;
-    height: 150px;
+    height: 350px;
     text-align: center;
     padding: 15px 10px;
 }
@@ -2033,15 +2075,22 @@ html[dir="rtl"] .header .changecountry .country .list a:before {
     overflow: hidden;
     padding: 0px 150px;
 }
-
+.bottom-imagePaypal{
+    height: 30px;
+    width: 100%;
+}
 .homePage .alsoLikeCardButton{
-    background-color: red;
+    background-color: #EE0E19;
     color: #fff;
-    border: solid 1px red;
-    font-size: 14px;
+    border: solid 1px #EE0E19;
+    /* font-size: 14px; */
+    line-height: 3.5rem;
+    border-radius: .4rem;
+    font-size: 1.5rem;
     font-weight: bold;
-    padding: 9px 20px;
+    padding: 0px 30px;
     margin-top: 10px;
+    font-family: "VAG Rounded ELC Bold";
 }
 
 .carousel.carousel-slider {
@@ -2064,7 +2113,7 @@ html[dir="rtl"] .header .changecountry .country .list a:before {
 }
 
 .slick-next:before, .slick-prev:before {
-    color: #00b33c !important;
+    color: #0D943F !important;
 }
 
 .slick-next:before{
@@ -2089,6 +2138,10 @@ html[dir="rtl"] .header .changecountry .country .list a:before {
         right: -80px!important;
     }
 
+    .slick-prev {
+        left: -80px!important;
+    }
+
     .carousel.carousel-slider .control-arrow {
         top: 0;
         color: #fff;
@@ -2099,8 +2152,29 @@ html[dir="rtl"] .header .changecountry .country .list a:before {
         background: radial-gradient(black, transparent)!important;
     }
 
+    .slick-slider .slick-track, .slick-slider .slick-list{
+        box-sizing: content-box!important;
+        opacity: 1;
+        transform: translate3d(0px, 0px, 0px);
+    }
+
+    .carousel .control-dots .dot.selected, .carousel .control-dots .dot:hover{
+        opacity: 1;
+        background-color: #0D943F!important;
+        border-color: #0D943F!important;
+    }
+
+    .carousel .control-dots .dot{
+        border: solid 1px #0D943F!important;
+        opacity: 1!important;
+        height: 13px!important;
+        width: 13px!important;
+        box-shadow: 0px 0px 0px rgba(0,0,0,0)!important;
+    }
+
+
     /* .carousel .control-next.control-arrow:before {
-        border-left: 18px solid #00b33c!important;
+        border-left: 18px solid #0D943F!important;
     }
 
     .carousel .control-arrow:before, .carousel.carousel-slider .control-arrow:before {
@@ -2119,7 +2193,7 @@ html[dir="rtl"] .header .changecountry .country .list a:before {
     } */
         
         /* .control-next.control-arrow:before {
-            border-left: solid 15px #00b33c;
+            border-left: solid 15px #0D943F;
         }
         
         .carousel .control-arrow:before, .carousel.carousel-slider .control-arrow:before {
@@ -2128,7 +2202,7 @@ html[dir="rtl"] .header .changecountry .country .list a:before {
         }
         
         .carousel .control-prev.control-arrow:before {
-            border-right: 15px solid #00b33c;
+            border-right: 15px solid #0D943F;
         } */
 
 @media only screen and (min-width: 960px) {
@@ -2969,7 +3043,7 @@ html[dir="rtl"] .homePage .textBox .arrowLink:after {
 
 @media only screen and (min-width: 960px) {
     .footer .row-2 {
-        background-color: #0D943F;
+        background-color: #fde9ed;
         text-align: center
     }
 }
@@ -2987,7 +3061,7 @@ html[dir="rtl"] .homePage .textBox .arrowLink:after {
 }
 
 .footer .row-2 .f-link .accordion {
-    background-color: #0D943F;
+    background-color: #fde9ed;
     font-weight: 100;
     font-size: 1.3em;
     position: relative;

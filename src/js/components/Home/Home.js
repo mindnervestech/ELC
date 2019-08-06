@@ -75,7 +75,6 @@ class Home extends Component {
     let homePageData = null;
     let obj = this.props.home_page_data;
     console.log(obj)
-    console.log(this.props);
     // if (!((Object.entries(obj).length === 0) && (obj.constructor === Object))) {
       homePageData = <HomePageComponent home_page_data={this.props.home_page_data} />;
     // }

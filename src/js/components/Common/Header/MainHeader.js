@@ -21,7 +21,6 @@ import deliveryBy from '../../../../assets/images/header/Truck1.svg';
 import freeCollect from '../../../../assets/images/header/Mouse.svg';
 import logoGroup from '../../../../assets/images/social/Logo Group.svg';
 
-
 class MainHeader extends Component {
     constructor(props) {
         super(props);
@@ -211,10 +210,10 @@ class MainHeader extends Component {
                             <div className="containers-main">
                                 <ul className="leftLink">
                                     <li style={{height:40}}>
-                                        <Button className="firstButton">The Entertainer</Button>
+                                        <Button className="firstButton text-color">The Entertainer</Button>
                                     </li>
                                     <li style={{height:40}}>
-                                        <Button className="secondButton">Early Learning Center</Button>
+                                        <Button className="secondButton text-color">Early Learning Center</Button>
                                     </li>
                                     {/* <li><Link to={`/${store_locale}/amirah-club`}>
                                         <FormattedMessage id="header.clubName" defaultMessage="THE BODY SHOP" />
@@ -228,15 +227,15 @@ class MainHeader extends Component {
                                 <ul className="rightLink">
                                     <li>
                                     <i className="icon-marker"></i>
-                                        <label className="iconLeble">store finder</label>
+                                        <label className="iconLeble text-color">store finder</label>
                                     </li>
                                     <li>
                                         <i className="icon-heart"></i>
-                                        <label className="iconLeble">help</label>
+                                        <label className="iconLeble text-color">help</label>
                                     </li>
                                     <li>
                                         <i className="icon-user"></i>
-                                        <label className="iconLeble">sign in / register</label>
+                                        <label className="iconLeble text-color">sign in / register</label>
                                     </li>
                                     {/* {profileIcon}
 
@@ -263,12 +262,12 @@ class MainHeader extends Component {
                         <div className="containers-main">
                         {/* <Container style={{width: "100%"}}> */}
                             <Row>
-                                <Col xs="4" style={{paddingTop: '10px'}}>
-                                    <img style={{marginRight:10,marginLeft:10, height:'64px',width:'100%'}} src={logoGroup}/>
+                                <Col xs="4" style={{paddingLeft: 0, paddingRight: 0}}>
+                                    <img style={{height:64, width:"100%",marginRight:10,marginLeft:10}} src={logoGroup}/>
                                     {/* <label className="headerLable">early learning center</label> */}
                                 </Col>
-                                <Col xs="5" style={{padding:20}}><Search store_locale={store_locale} /></Col>
-                                <Col xs="3" style={{paddingTop:30, paddingLeft:5}}>
+                                <Col xs="5" style={{padding:6}}><Search store_locale={store_locale} /></Col>
+                                <Col xs="3" style={{paddingTop:15, paddingLeft:5, paddingRight:5}}>
                                 <ul className="cta">
                                     <li>
                                         <div className="changecountry">
@@ -378,14 +377,14 @@ class MainHeader extends Component {
                             <Col xs="3">
                                 <Row>
                                     <Col xs="3">
-                                        <img style={{height:40, width:"100%",marginRight:10,marginLeft:10}} src={deliveryBy}/>
+                                        <img style={{height:40, width:"100%",marginRight:10,marginLeft:10}} src={freeDelivery}/>
                                     </Col>
                                     <Col xs="9">
                                         <ul>
-                                            <li style={{fontSize: 13, color: "#00b33c"}}>
+                                            <li style={{fontSize: 13, color: "#0D943F"}}>
                                                 free UK delivery
                                             </li>
-                                            <li style={{fontSize: 11}}>
+                                            <li style={{fontSize: 11}} className="text-color">
                                                 when you spend $40
                                             </li>
                                         </ul>
@@ -396,14 +395,14 @@ class MainHeader extends Component {
                                 <Col xs="3">
                                 <Row>
                                     <Col xs="3">
-                                        <img style={{height:40, width:"100%",marginRight:10,marginLeft:10}} src={freeDelivery}/>
+                                        <img style={{height:40, width:"100%",marginRight:10,marginLeft:10}} src={deliveryBy}/>
                                     </Col>
                                     <Col xs="9">
                                         <ul>
-                                            <li style={{fontSize: 13, color: "#00b33c"}}>
+                                            <li style={{fontSize: 13, color: "#0D943F"}}>
                                                 order by 7pm
                                             </li>
-                                            <li style={{fontSize: 11}}>
+                                            <li style={{fontSize: 11}} className="text-color">
                                                 for next working day delivery
                                             </li>
                                         </ul>
@@ -418,10 +417,10 @@ class MainHeader extends Component {
                                     </Col>
                                     <Col xs="9">
                                         <ul>
-                                            <li style={{fontSize: 13, color: "#00b33c"}}>
+                                            <li style={{fontSize: 13, color: "#0D943F"}}>
                                                 free click & collect
                                             </li>
-                                            <li style={{fontSize: 11}}>
+                                            <li style={{fontSize: 11}} className="text-color">
                                                 in as little as 30 minutes
                                             </li>
                                         </ul>

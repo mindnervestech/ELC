@@ -7,6 +7,36 @@
     font-style: normal;
 }
 
+
+@font-face {
+    font-family: "VAG Rounded ELC Light";
+    src: url("font/VAGRoundedELC-Light.eot");
+    src: url("font/VAGRoundedELC-Light.eot") format("embedded-opentype"), url("font/VAGRoundedELC-Light.ttf") format("truetype"), url("font/VAGRoundedELC-Light.woff") format("woff"), url("font/VAGRoundedELC-Light.svg") format("svg");
+    font-weight: 300;
+    font-style: normal; }
+
+@font-face {
+    font-family: "VAG Rounded ELC Thin";
+    src: url("font/VAGRoundedELC-Thin.eot");
+    src: url("font/VAGRoundedELC-Thin.eot") format("embedded-opentype"), url("font/VAGRoundedELC-Thin.ttf") format("truetype"), url("font/VAGRoundedELC-Thin.woff") format("woff"), url("font/VAGRoundedELC-Thin.svg") format("svg");
+    font-weight: 100;
+    font-style: normal; }
+
+@font-face {
+    font-family: "VAG Rounded ELC Black";
+    src: url("font/VAGRoundedELC-Black.eot");
+    src: url("font/VAGRoundedELC-Black.eot") format("embedded-opentype"), url("font/VAGRoundedELC-Black.ttf") format("truetype"), url("font/VAGRoundedELC-Black.woff") format("woff"), url("font/VAGRoundedELC-Black.svg") format("svg");
+    font-weight: 900;
+    font-style: normal; }
+
+@font-face {
+    font-family: "VAG Rounded ELC Bold";
+    src: url("font/VAGRoundedELC-Bold.eot");
+    src: url("font/VAGRoundedELC-Bold.eot") format("embedded-opentype"), url("font/VAGRoundedELC-Bold.ttf") format("truetype"), url("font/VAGRoundedELC-Bold.woff") format("woff"), url("font/VAGRoundedELC-Bold.svg?") format("svg");
+    font-weight: 700;
+    font-style: normal; }
+  
+
 a:hover {
     text-decoration: none;
 }

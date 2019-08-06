@@ -11,7 +11,7 @@ import { live } from '../../../api/globals';
 import parse from 'html-react-parser';
 import ShowMore from 'react-show-more';
 import $ from 'jquery';
-import { Container, Row, Col, Button } from 'reactstrap';
+ import { Container, Row, Col, Button } from 'reactstrap';
 
 import payPalImg from '../../../../assets/images/social/paypal.svg';
 import masterCardImg from '../../../../assets/images/social/masterCard.svg';
@@ -75,15 +75,15 @@ class Footer extends Component {
                         <div className="footer-title">
                             <span>site information</span>
                         </div>
-                        <ul>
+                        <ul className="text-color">
                             <li>
-                                <span>sitemap</span>
+                                <a href="">sitemap</a>
                             </li>
                             <li>
-                                <span>help & faqs</span>
+                                <a href="">help & faqs</a>
                             </li>
                             <li>
-                                <span>big birthday club</span>
+                                <a href="">big birthday club</a>
                             </li>
                         </ul>
                     </div>
@@ -92,27 +92,27 @@ class Footer extends Component {
                         <div className="footer-title">
                             <span>customer service</span>
                         </div>
-                        <ul>
+                        <ul className="text-color">
                             <li>
-                                <span>store finder</span>
+                                <a href="">store finder</a>
                             </li>
                             <li>
-                                <span>contact us</span>
+                                <a href="">contact us</a>
                             </li>
                             <li>
-                                <span>delivery information</span>
+                                <a href="">delivery information</a>
                             </li>
                             <li>
-                                <span>returns and exchanges</span>
+                                <a href="">returns and exchanges</a>
                             </li>
                             <li>
-                                <span>eu online dispute resolution platfrom</span>
+                                <a href="">eu online dispute resolution platfrom</a>
                             </li>
                             <li>
-                                <span>terms & conditions</span>
+                                <a href="">terms & conditions</a>
                             </li>
                             <li>
-                                <span>promotion terms & conditions</span>
+                                <a href="">promotion terms & conditions</a>
                             </li>
                         </ul>
                     </div>
@@ -121,33 +121,33 @@ class Footer extends Component {
                         <div className="footer-title">
                             <span>about eic</span>
                         </div>
-                        <ul>
+                        <ul className="text-color">
                             <li>
-                                <span>about us</span>
+                                <a href="">about us</a>
                             </li>
                             <li>
-                                <span>careers</span>
+                                <a href="">careers</a>
                             </li>
                             <li>
-                                <span>affiliates</span>
+                                <a href="">affiliates</a>
                             </li>
                             <li>
-                                <span>elc franchising</span>
+                                <a href="">elc franchising</a>
                             </li>
                             <li>
-                                <span>elc for business</span>
+                                <a href="">elc for business</a>
                             </li>
                             <li>
-                                <span>corporate responsibility</span>
+                                <a href="">corporate responsibility</a>
                             </li>
                             <li>
-                                <span>terms of use</span>
+                                <a href="">terms of use</a>
                             </li>
                             <li>
-                                <span>privacy policy</span>
+                                <a href="">privacy policy</a>
                             </li>
                             <li>
-                                <span>cookie policy</span>
+                                <a href="">cookie policy</a>
                             </li>
                         </ul>
                     </div>
@@ -173,7 +173,7 @@ class Footer extends Component {
 
                 </div>
                 <div className="row footer-bottom">
-                    <div className="col-md-7">
+                    <div className="col-md-8">
                         <div>
                             @ copyright ELC UK Limited 2018 ELC UK Limited (a private limited company). Registered in England no. 2057757. VAT Reg no. GB 285 2009 09.
                         </div>
@@ -181,11 +181,21 @@ class Footer extends Component {
                             Registered Office: Boughton Bussiness Park Bell Lane, Little Chalfont, Bucks, HP6 6GL
                         </div>
                     </div>
-                    <div className="col-md-5" style={{textAlign: "end"}}>
-                    <img className="bottom-imagePaypal" src={payPalImg}/>
-                    <img className="bottom-imageSecure" src={verisignSecureImg}/>
-                    <img className="bottom-imageMasterCard" src={masterCardImg}/>
-                    <img className="bottom-imageVisa" src={VISAImg}/>
+                    <div className="col-md-4" style={{textAlign: "end"}}>
+                        <div className="row">
+                            <div className="col-md-3">
+                                 <img className="bottom-imagePaypal" src={payPalImg}/>
+                            </div>
+                            <div className="col-md-3">
+                                <img className="bottom-imagePaypal" src={verisignSecureImg}/>
+                            </div>
+                            <div className="col-md-3">
+                                <img className="bottom-imagePaypal" src={masterCardImg}/>
+                            </div>
+                            <div className="col-md-3">
+                                <img className="bottom-imagePaypal" src={VISAImg}/>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </footer>

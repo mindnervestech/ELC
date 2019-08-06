@@ -2,6 +2,34 @@
 
 /*! normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */
 
+@font-face {
+    font-family: "VAG Rounded ELC Light";
+    src: url("font/VAGRoundedELC-Light.eot");
+    src: url("font/VAGRoundedELC-Light.eot") format("embedded-opentype"), url("font/VAGRoundedELC-Light.ttf") format("truetype"), url("font/VAGRoundedELC-Light.woff") format("woff"), url("font/VAGRoundedELC-Light.svg") format("svg");
+    font-weight: 300;
+    font-style: normal; }
+
+@font-face {
+    font-family: "VAG Rounded ELC Thin";
+    src: url("font/VAGRoundedELC-Thin.eot");
+    src: url("font/VAGRoundedELC-Thin.eot") format("embedded-opentype"), url("font/VAGRoundedELC-Thin.ttf") format("truetype"), url("font/VAGRoundedELC-Thin.woff") format("woff"), url("font/VAGRoundedELC-Thin.svg") format("svg");
+    font-weight: 100;
+    font-style: normal; }
+
+@font-face {
+    font-family: "VAG Rounded ELC Black";
+    src: url("font/VAGRoundedELC-Black.eot");
+    src: url("font/VAGRoundedELC-Black.eot") format("embedded-opentype"), url("font/VAGRoundedELC-Black.ttf") format("truetype"), url("font/VAGRoundedELC-Black.woff") format("woff"), url("font/VAGRoundedELC-Black.svg") format("svg");
+    font-weight: 900;
+    font-style: normal; }
+
+@font-face {
+    font-family: "VAG Rounded ELC Bold";
+    src: url("font/VAGRoundedELC-Bold.eot");
+    src: url("font/VAGRoundedELC-Bold.eot") format("embedded-opentype"), url("font/VAGRoundedELC-Bold.ttf") format("truetype"), url("font/VAGRoundedELC-Bold.woff") format("woff"), url("font/VAGRoundedELC-Bold.svg?") format("svg");
+    font-weight: 700;
+    font-style: normal; }
+
 html {
     line-height: 1.15;
     -webkit-text-size-adjust: 100%;
@@ -9,8 +37,15 @@ html {
 }
 
 body {
-    margin: 0
-}
+    font-family: "VAG Rounded ELC Light";
+    font-size: 1.4rem;
+    line-height: 1.7;
+    font-weight: 300;
+    color: #4f4f4f;
+    background: #ffffff;
+    letter-spacing: 0.05rem;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden; }
 
 h1 {
     font-size: 2em;
@@ -497,10 +532,10 @@ li {
 }
 
 .header .row-1 .leftLink .secondButton{
-    color: #00b33c;
+    color: #0D943F;
     background-color:#f3f0f0;
     height: 100%;
-    border-bottom: solid 1px #00b33c;
+    border-bottom: solid 1px #0D943F;
     border: none;
 }
 
@@ -686,7 +721,7 @@ html[dir="rtl"] .header .row-1 .cart span {
 }
 
 .header .row-2 .lable-count {
-    color: #00b33c;
+    color: #0D943F;
     background-color: #fff;
     width: 20px;
     height: 20px;
@@ -736,7 +771,7 @@ html[dir="rtl"] .header .row-1 .cart span {
 @media only screen and (min-width: 1280px) {
     .header .row-2 {
         height: auto;
-        padding: 5px 0
+        padding: 20px 0
     }
 }
 
@@ -1113,12 +1148,12 @@ html[dir="rtl"] .header .search {
 }
 
 .header .search i {
-    /* position: absolute; */
-    left: 73%;
-    /* top: 50%; */
+    position: absolute;
+    left: 65%;
+    top: 45%;
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
-    color: #00b33c;
+    color: #0D943F;
     font-weight: bold;
 }
 
@@ -1128,18 +1163,15 @@ html[dir="rtl"] .header .search i {
 }
 
 .header .search .textInput {
+    border: none;
+    display: block;
     font-size: .8em;
+    width: 70%;
+    height: 80%;
     padding: 5px 20px;
     color: #575657;
     background-color: #fff;
-
-    height: 4rem;
-    width: 80%;
-    display: inline-block;
-    border: 1px solid #0D943F;
-    border-radius: .4rem;
-    float: left;
-    display: inline-block;
+    border-radius: 5px;
 }
 
 .header .search .textInput:focus {

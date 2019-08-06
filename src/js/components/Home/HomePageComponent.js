@@ -7,6 +7,11 @@ import { FormattedMessage } from 'react-intl';
 import { Parallax, Background } from 'react-parallax';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
+import logo1 from '../../../assets/images/you_may_also_like_1.png'
+import logo2 from '../../../assets/images/you_may_also_like_2.png'
+import logo3 from '../../../assets/images/you_may_also_like_3.png'
+import logo4 from '../../../assets/images/you_may_also_like_4.png'
+import home from '../../../assets/images/social/Hero.png'
 
 class HomePageComponent extends Component {
     constructor(props) {
@@ -56,9 +61,31 @@ class HomePageComponent extends Component {
         const settings3 = {
             dots: true,
             infinite: true,
-            speed: 500,
-            slidesToShow: 4,
+            slidesToShow: 3,
             slidesToScroll: 1,
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1,
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1,
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1,
+                    }
+                }
+            ]
         }
 
         return (
@@ -71,12 +98,21 @@ class HomePageComponent extends Component {
             <div className="t-Body-contentInner hideInMobile">
                 <div className="contener">
                     <div>
-                        {/* <Carousel showStatus={false}
-                        showThumbs={false}>{ this.props.home_page_data.instagram.image_data && this.props.home_page_data.instagram.image_data.map((item, index) => (
+                        <Carousel showStatus={false}
+                        showThumbs={false}
+                        infiniteLoop={true}
+                        autoPlay={true}
+                        interval={5000}>
                             <div>
-                                <img src={item.image} />
-                            </div>))}
-                        </Carousel> */}
+                                <img src={home} />
+                            </div>
+                            <div>
+                                <img src={home} />
+                            </div>
+                            <div>
+                                <img src={home} />
+                            </div>
+                        </Carousel>
                     </div>
 
                     {/* <div className="row">
@@ -255,64 +291,130 @@ class HomePageComponent extends Component {
                             </div>
                         </div>
                     </div> */}
-                    {/* <div className="row">
+                    <div className="row">
                         <div className="col col-12 apex-col-auto homeBlock">
                             <div id="R36275003485418909" className="homePage">
                                 <section className="trendingBlock">
                                     <div className="wrap">
                                         <div className="trendingList">
-                                            <Slider {...settings}>{ this.props.home_page_data.instagram.image_data && this.props.home_page_data.instagram.image_data.map((item, index) => (
+                                            <Slider {...settings}>
                                                 <div>
-                                                    <figure key={index}>
-                                                        <a href={item.a_link} target="_blank">
-                                                            <img src={item.image} />
+                                                    <figure>
+                                                        <a href={''} target="_blank">
+                                                            <img src={logo1} />
                                                         </a>
                                                         <div className="cardDetail">
                                                                 <span className="cardDetailText">500</span>
                                                         </div>
                                                     </figure>
-                                                </div>)) }</Slider>
+                                                </div>
+                                                <div>
+                                                    <figure>
+                                                        <a href={''} target="_blank">
+                                                            <img src={logo2} />
+                                                        </a>
+                                                        <div className="cardDetail">
+                                                                <span className="cardDetailText">500</span>
+                                                        </div>
+                                                    </figure>
+                                                </div>
+                                                <div>
+                                                    <figure>
+                                                        <a href={''} target="_blank">
+                                                            <img src={logo3} />
+                                                        </a>
+                                                        <div className="cardDetail">
+                                                                <span className="cardDetailText">500</span>
+                                                        </div>
+                                                    </figure>
+                                                </div>
+                                                <div>
+                                                    <figure>
+                                                        <a href={''} target="_blank">
+                                                            <img src={logo4} />
+                                                        </a>
+                                                        <div className="cardDetail">
+                                                                <span className="cardDetailText">500</span>
+                                                        </div>
+                                                    </figure>
+                                                </div></Slider>
                                         </div>
                                     </div>
                                 </section>
                                 </div>
                         </div>
-                    </div> */}
+                    </div>
 
                     <div className="likeText">
                         <label>you may also like</label>
                     </div>
-                    {/* <div className="row data">
+                    <div className="row data">
                         <div className="col col-12 apex-col-auto homeBlock">
                             <div id="R36275003485418909" className="homePage">
-                                <section className="trendingBlock2" style={{}}>
+                                <section className="trendingBlock2">
                                     <div className="wrap">
                                         <div className="trendingList">
-                                            <Slider {...settings3}>{ this.props.home_page_data.instagram.image_data && this.props.home_page_data.instagram.image_data.map((item, index) => (
-                                                <div>
-                                                    
-                                                        <a href={item.a_link} target="_blank">
-                                                            <img src={item.image} />
-                                                        </a>
+                                            <Slider {...settings3}>
+                                                
                                                         <div className="alsoLikeCard">
-                                                            <div>
-                                                                <label style={{fontSize:12}}>this is a very long product name which goes over two line</label>
+                                                        <img src={logo1} />
+                                                            <div style={{marginTop:10}}>
+                                                                <label className="text-color">Twist and Turn Activity House</label>
                                                             </div>
                                                             <div>
-                                                                <span style={{fontSize:14, color:"#00b33c", fontWeight: "bold"}}>$12.00</span><span style={{color:"gray",textDecorationLine: 'line-through', fontSize:14, marginLeft: 10}}>$14.50</span>
+                                                                <span style={{fontSize:14, color:"#0D943F", fontWeight: "bold"}}>$12.00</span><span style={{color:"gray",textDecorationLine: 'line-through', fontSize:14, marginLeft: 10}}>$14.50</span>
                                                             </div>
                                                             <div>
                                                                 <button className="alsoLikeCardButton">add to basket</button>
                                                             </div>
                                                         </div>
-                                                </div>)) }</Slider>
+
+                                                        <div className="alsoLikeCard">
+                                                        <img src={logo2} />
+                                                            <div style={{marginTop:10}}>
+                                                                <label className="text-color">Twist and Turn Activity House</label>
+                                                            </div>
+                                                            <div>
+                                                                <span style={{fontSize:14, color:"#0D943F", fontWeight: "bold"}}>$12.00</span><span style={{color:"gray",textDecorationLine: 'line-through', fontSize:14, marginLeft: 10}}>$14.50</span>
+                                                            </div>
+                                                            <div>
+                                                                <button className="alsoLikeCardButton">add to basket</button>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div className="alsoLikeCard">
+                                                        <img src={logo3} />
+                                                            <div style={{marginTop:10}}>
+                                                                <label className="text-color">Twist and Turn Activity House</label>
+                                                            </div>
+                                                            <div>
+                                                                <span style={{fontSize:14, color:"#0D943F", fontWeight: "bold"}}>$12.00</span><span style={{color:"gray",textDecorationLine: 'line-through', fontSize:14, marginLeft: 10}}>$14.50</span>
+                                                            </div>
+                                                            <div>
+                                                                <button className="alsoLikeCardButton">add to basket</button>
+                                                            </div>
+                                                        </div>
+
+                                                        <div className="alsoLikeCard">
+                                                        <img src={logo4} />
+                                                            <div style={{marginTop:10}}>
+                                                                <label className="text-color">Twist and Turn Activity House</label>
+                                                            </div>
+                                                            <div>
+                                                                <span style={{fontSize:14, color:"#0D943F", fontWeight: "bold"}}>$12.00</span><span style={{color:"gray",textDecorationLine: 'line-through', fontSize:14, marginLeft: 10}}>$14.50</span>
+                                                            </div>
+                                                            <div>
+                                                                <button className="alsoLikeCardButton">add to basket</button>
+                                                            </div>
+                                                        </div>
+                                                         </Slider>
                                         </div>
                                     </div>
                                 </section>
                                 </div>
                         </div>
                     </div>
- */}
+
 
                 </div>
             </div>
