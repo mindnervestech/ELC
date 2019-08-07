@@ -4,7 +4,7 @@ import cookie from 'react-cookies';
 import '../../../../styles/StaticPages.css';
 import { STATIC_PAGES_URL, API_TOKEN } from '../../../api/globals';
 
-class AboutUs extends Component {
+class CorporateInformation extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -15,14 +15,14 @@ class AboutUs extends Component {
 
 	static getDerivedStateFromProps = (props, state) => { };
 
-	getAbout = () => {
+	getCorporateInformation = () => {
 		if (this.state.storeId) {
 			const API = Axios.create({
 				baseURL: STATIC_PAGES_URL,
 				headers: { Authorization: `Bearer ${API_TOKEN}`, 'Content-Type': 'application/json' },
 			});
 
-			API.get('brand-overview/storeId/' + this.state.storeId).then(res => {
+			API.get('resposibility/storeId/' + this.state.storeId).then(res => {
 				this.setState({ data: res.data });
 			});
 		}
@@ -32,11 +32,11 @@ class AboutUs extends Component {
 		let changedLang = localStorage.getItem('tempstoreid');
 		if (changedLang) {
 			this.setState({ storeId: changedLang, data: [] }, () => {
-				this.getAbout();
+				this.getCorporateInformation();
 			});
 		} else {
 			this.setState({ storeId: cookie.load('storeid'), data: [] }, () => {
-				this.getAbout();
+				this.getCorporateInformation();
 			});
 		}
 	}
@@ -45,7 +45,7 @@ class AboutUs extends Component {
 		let changedLang = localStorage.getItem('tempstoreid');
 		if (this.state.storeId !== changedLang) {
 			this.setState({ storeId: changedLang, data: [] }, () => {
-				this.getAbout();
+				this.getCorporateInformation();
 			});
 		}
 	}
@@ -56,7 +56,7 @@ class AboutUs extends Component {
 				<div className="container">
 					<div className="row">
 						<div className="col col-12 apex-col-auto">
-						<h1>About Us</h1>
+						<h1>Delivery Information</h1>
 							<div className="t-Region g-wrapper-main_content  t-Region--removeHeader t-Region--noBorder t-Region--scrollBody margin-top-lg"
 								id="R231982418266982051">
 								<div className="t-Region-header">
@@ -121,4 +121,4 @@ class AboutUs extends Component {
 		);
 	}
 }
-export default AboutUs;
+export default CorporateInformation;

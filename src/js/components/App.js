@@ -8,19 +8,24 @@ import { connect } from 'react-redux';
 import * as actions from '../redux/actions/index'
 import { store } from '../redux/store/store'
 import '../../styles/App.css';
-import TermConditions from './StaticPages/TermsConditions/TermsConditions';
-import HelpCenter from './StaticPages/HelpCenter/HelpCenter';
-import PaymentMethods from './StaticPages/PaymentMethods/PaymentMethods';
+
+
+import AboutUs from './StaticPages/AboutUs/AboutUs';
+import Affiliate from './StaticPages/Affiliate/Affiliate';
+import Careers from './StaticPages/Careers/Careers';
+import ContactUs from './StaticPages/ContactUs/ContactUs';
+import CookiePolicy from './StaticPages/CookiePolicy/CookiePolicy';
+import DeliveryInformation from './StaticPages/DeliveryInformation/DeliveryInformation';
+import CorporateResponsibility from './StaticPages/CorporateResponsibility/CorporateResponsibility';
+import Franchising from './StaticPages/Franchising/Franchising';
+import HelpFAQ from './StaticPages/HelpFAQ/HelpFAQ';
 import PrivacyPolicy from './StaticPages/PrivacyPolicy/PrivacyPolicy';
 import ReturnPolicy from './StaticPages/ReturnPolicy/ReturnPolicy';
-import AboutUs from './StaticPages/AboutUs/AboutUs';
-import DeliveryPolicy from './StaticPages/DeliveryPolicy/DeliveryPolicy';
-import FAQ from './StaticPages/Faq/Faq';
-import ContactUs from './StaticPages/ContactUs/ContactUs';
-import ProfileAddress from './CustomerAddress/ProfileAddress';
+import Sitemap from './StaticPages/Sitemap/Sitemap';
+import TermOfUse from './StaticPages/TermOfUse/TermOfUse';
+import TermConditions from './StaticPages/TermsConditions/TermsConditions';
 
-import SearchQuery from './StaticPages/HelpCenter/SearchQuery';
-import HelpContact from './StaticPages/HelpCenter/HelpContact';
+import ProfileAddress from './CustomerAddress/ProfileAddress';
 
 import Login from './Login/Login';
 
@@ -329,17 +334,24 @@ class App extends Component {
                     <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/order-history" component={Order} />
                     <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/view-voucher" component={OredrDetails} />
                     <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/wish-list" component={WishList} />
-                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/brand-overview" component={AboutUs} />
+
+                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/about-us" component={AboutUs} />
+                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/affiliate" component={Affiliate} />
+                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/careers" component={Careers} />
                     <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/contact-us" component={ContactUs} />
+                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/cookie-policy" component={CookiePolicy} />
+                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/corporate-responsibility" component={CorporateResponsibility} />
+                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/delivery-information" component={DeliveryInformation} />
+                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/help-and-faq" component={HelpFAQ} />
+                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/franchising" component={Franchising} />
+                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/privacy-policy" component={PrivacyPolicy} />
+                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/returns-and-exchanges" component={ReturnPolicy} />
+                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/sitemap" component={Sitemap} />
+                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/term-of-use" component={TermOfUse} />
+                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/terms-and-conditions" component={TermConditions} />
+
                     <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/products/:category_path" component={Product} />
                     <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/products-details/:category" component={ProductDetails} />
-                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/help" component={HelpCenter} />
-                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/delivery" component={DeliveryPolicy} />
-                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/faq" component={FAQ} />
-                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/returns-and-exchanges" component={ReturnPolicy} />
-                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/privacy-policy" component={PrivacyPolicy} />
-                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/terms-and-conditions" component={TermConditions} />
-                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/payment-methods" component={PaymentMethods} />
 
                     <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/(store-locator-uae|store-locator-saudi|store-locator-kuwait|store-locator-bahrain|store-locator-qatar|store-locator-oman|store-locator-morocco|store-locator)/" component={StoreLocator} />
                     <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/cart" component={ShoppingBag} />
@@ -351,8 +363,6 @@ class App extends Component {
                     <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/order-summary" component={OrderSummary} />
 
                     <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/profile-address" component={ProfileAddress} />
-                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/search-help" component={SearchQuery} />
-                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/help-contact" component={HelpContact} />
                     <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/add-wishlist" component={Login} />
 
                     <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/password-rest" component={ResetPassword} />

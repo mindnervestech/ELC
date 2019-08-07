@@ -29,7 +29,7 @@ const style = {
     opacity: 0.5,
 
 }
-let store_locale="";
+let store_locale="en";
 let count = 0;
 let loader = true;
 class Footer extends Component {
@@ -82,10 +82,14 @@ class Footer extends Component {
                         </div>
                         <ul className="text-color">
                             <li>
-                                <a href="">sitemap</a>
+                                <Link to={`/${store_locale}/sitemap`} style={{ textDecoration: 'none' }}>
+                                    <FormattedMessage id="footer.sitemap" defaultMessage="sitemap" />
+                                </Link>
                             </li>
                             <li>
-                                <a href="">help & faqs</a>
+                                <Link to={`/${store_locale}/help-and-faq`} style={{ textDecoration: 'none' }}>
+                                    <FormattedMessage id="footer.helpFaqs" defaultMessage="help & faqs" />
+                                </Link>
                             </li>
                             <li>
                                 <a href="">big birthday club</a>
@@ -102,22 +106,32 @@ class Footer extends Component {
                                 <a href="">store finder</a>
                             </li>
                             <li>
-                                <a href="">contact us</a>
+                                <Link to={`/${store_locale}/contact-us`} style={{ textDecoration: 'none' }}>
+                                    <FormattedMessage id="footer.contactUs" defaultMessage="contact us" />
+                                </Link>
                             </li>
                             <li>
-                                <a href="">delivery information</a>
+                                <Link to={`/${store_locale}/delivery-information`} style={{ textDecoration: 'none' }}>
+                                    <FormattedMessage id="footer.delivery" defaultMessage="delivery information" />
+                                </Link>
                             </li>
                             <li>
-                                <a href="">returns and exchanges</a>
+                                <Link to={`/${store_locale}/returns-and-exchanges`} style={{ textDecoration: 'none' }}>
+                                    <FormattedMessage id="footer.returnAndExchanges" defaultMessage="returns and exchanges" />
+                                </Link>
                             </li>
                             <li>
                                 <a href="">eu online dispute resolution platfrom</a>
                             </li>
                             <li>
-                                <a href="">terms & conditions</a>
+                                <Link to={`/${store_locale}/terms-and-conditions`} style={{ textDecoration: 'none' }}>
+                                    <FormattedMessage id="footer.termsAndConditions" defaultMessage="terms & conditions" />
+                                </Link>
                             </li>
                             <li>
-                                <a href="">promotion terms & conditions</a>
+                                <Link to={`/${store_locale}/terms-and-conditions`} style={{ textDecoration: 'none' }}>
+                                    <FormattedMessage id="footer.promotionTermsAndConditions" defaultMessage="terms & conditions" />
+                                </Link>
                             </li>
                         </ul>
                     </div>
@@ -128,31 +142,47 @@ class Footer extends Component {
                         </div>
                         <ul className="text-color">
                             <li>
-                                <a href="">about us</a>
+                                <Link to={`/${store_locale}/about-us`} style={{ textDecoration: 'none' }}>
+                                    <FormattedMessage id="footer.aboutUS" defaultMessage="about us" />
+                                </Link>
                             </li>
                             <li>
-                                <a href="">careers</a>
+                                <Link to={`/${store_locale}/careers`} style={{ textDecoration: 'none' }}>
+                                    <FormattedMessage id="footer.careers" defaultMessage="careers" />
+                                </Link>
                             </li>
                             <li>
-                                <a href="">affiliates</a>
+                                <Link to={`/${store_locale}/affiliate`} style={{ textDecoration: 'none' }}>
+                                    <FormattedMessage id="footer.affiliates" defaultMessage="affiliates" />
+                                </Link>
                             </li>
                             <li>
-                                <a href="">elc franchising</a>
+                                <Link to={`/${store_locale}/franchising`} style={{ textDecoration: 'none' }}>
+                                    <FormattedMessage id="footer.franchising" defaultMessage="elc franchising" />
+                                </Link>
                             </li>
                             <li>
                                 <a href="">elc for business</a>
                             </li>
                             <li>
-                                <a href="">corporate responsibility</a>
+                                <Link to={`/${store_locale}/corporate-responsibility`} style={{ textDecoration: 'none' }}>
+                                    <FormattedMessage id="footer.corporateResponsibility" defaultMessage="corporate responsibility" />
+                                </Link>
                             </li>
                             <li>
-                                <a href="">terms of use</a>
+                                <Link to={`/${store_locale}/term-of-use`} style={{ textDecoration: 'none' }}>
+                                    <FormattedMessage id="footer.termOfUse" defaultMessage="terms of use" />
+                                </Link>
                             </li>
                             <li>
-                                <a href="">privacy policy</a>
+                                <Link to={`/${store_locale}/privacy-policy`} style={{ textDecoration: 'none' }}>
+                                    <FormattedMessage id="footer.privacyPolicy" defaultMessage="privacy policy" />
+                                </Link>
                             </li>
                             <li>
-                                <a href="">cookie policy</a>
+                                <Link to={`/${store_locale}/cookie-policy`} style={{ textDecoration: 'none' }}>
+                                    <FormattedMessage id="footer.cookiePolicy" defaultMessage="cookie policy" />
+                                </Link>
                             </li>
                         </ul>
                     </div>
