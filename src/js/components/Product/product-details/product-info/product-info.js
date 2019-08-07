@@ -58,12 +58,14 @@ class ProductInformation extends Component {
 
 	render() {
 		const { data } = this.props;
+		const { type } = this.props;
+		console.log(this.props);
 		const sizeComponent = this.state.isBandCup ? <><ProductBandSize productSize={data} />
 			<ProductCupSize productSize={data} /></> : <ProductSize productSize={data} />;
 
 		return (
-			<div className="col col-6 apex-col-auto">
-				<div
+			<div className="col col-12 apex-col-auto">
+				{/* <div
 					className="t-Region t-Region--removeHeader t-Region--noBorder t-Region--hiddenOverflow t-Form--stretchInputs"
 					id="R33790003785169837"
 				>
@@ -90,7 +92,6 @@ class ProductInformation extends Component {
 							<hr aria-hidden="true" />
 
 							<ProductColor productColor={data} />
-							{/* <ProductBandSize productSize={data} /> */}
 							{sizeComponent}
 							{(data.category_desc != "Beauty" &&  data.category_desc != "تشكيلة بيوتي") && (<section data-selector-wrapper>
 								<div className="ruler">
@@ -108,13 +109,10 @@ class ProductInformation extends Component {
 									<SizeGuide />
 								</Modal>
 							</div>)}
-							{/* <ProductSize productSize={data} /> */}
-							{/* <ProductCupSize /> */}
 
 							<ProductOffer productOffer={data} showBeginItems={2} />
 							{(data.category_desc == "Beauty" || data.category_desc == "تشكيلة بيوتي") && data.exclude_international == 'No' && ( <ProductQty productQtyAndStackStatus={data} /> )}
 							{(data.category_desc != "Beauty" && data.category_desc != "تشكيلة بيوتي") && ( <ProductQty productQtyAndStackStatus={data} /> )}
-							{/* <ProductOffer productOffer={data} showRemainingItems={2} /> */}
 						</div>
 						<div className="t-Region-buttons t-Region-buttons--bottom">
 							<div className="t-Region-buttons-left" />
@@ -153,6 +151,37 @@ class ProductInformation extends Component {
 						</div>
 					</div>
 				</div>
+			 */}
+			 	{type == 'Product Information' ? <div>
+				 	<p className="detail-info">{type}</p>
+					<p className="detail-info">Product code: 148138 </p>
+
+					<p className="detail-info">At a Glance </p>
+
+					<p className="detail-info">All aboard the elc bus for colour-matching, problem-solving fun! </p>
+
+					<p className="detail-info">Features and benefits for elc wooden shopping trolley </p>
+				 </div> : type == 'Delivery options' ?
+				 <div>
+					<p className="detail-info">{type}</p>
+					<p className="detail-info">Product code: 148138 </p>
+
+					<p className="detail-info">At a Glance </p>
+
+					<p className="detail-info">All aboard the elc bus for colour-matching, problem-solving fun! </p>
+
+					<p className="detail-info">Features and benefits for elc wooden shopping trolley </p>
+				</div> : type == 'Questions' ?
+				<div>
+					<p className="detail-info">{type}</p>
+					<p className="detail-info">Product code: 148138 </p>
+
+					<p className="detail-info">At a Glance </p>
+
+					<p className="detail-info">All aboard the elc bus for colour-matching, problem-solving fun! </p>
+
+					<p className="detail-info">Features and benefits for elc wooden shopping trolley </p>
+				</div> : ''}
 			</div>
 		);
 	}

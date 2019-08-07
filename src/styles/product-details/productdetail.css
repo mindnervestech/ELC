@@ -1044,3 +1044,260 @@ font-weight: 100;
 .slider-control-bottomcenter {
     display: none !important;
 }
+
+.product-price {
+    font-weight: 900; 
+    font-family: VAG Rounded ELC Black ;
+    color: #0D943F;
+    font-size: 2.6rem; 
+    margin-right: 1rem
+}
+
+.product-price-line {
+    opacity: 0.7;
+    text-decoration: line-through;
+    font-size: 2.6rem;
+}
+
+.available-by{
+    color: #ff8200;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.details-body{
+    font-family: "VAG Rounded ELC Light";
+    /* font-size: 1.4rem; */
+    line-height: 1.7;
+    /* font-weight: 300; */
+    color: #4f4f4f;
+    background: #ffffff;
+    letter-spacing: 0.05rem;
+}
+.product-des{
+    border-bottom-color: #ffffff;
+    color: #4f4f4f;
+    text-decoration: none !important;
+    display: inline-block;
+    font-size: 1.5rem;
+    width: 18.4rem;
+    text-align: center;
+    height: 5.1rem;
+    padding: 1.8rem 1.7rem;
+    border: 0.1rem solid #f8f8f8;
+    border-radius: 0.2rem 0.2rem 0 0;
+    background-color: #f8f8f8;
+}
+
+ul li.active-tab a{
+    border: 0.1rem solid #0D943F;
+    border-bottom-color: #ffffff !important;
+    color: #0D943F !important;
+}
+
+.product-tab{
+    border-bottom: 0.1rem solid #0D943F;
+    width: 100%;
+}
+
+.product-tab div{
+    width: 100%;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+.product-tab div ul li{
+    position: relative;
+    margin: 0 1.3rem 0 0; 
+    display:inline-block;
+}
+
+.product-info{
+    width: 100%; 
+    max-width: 650px; 
+    margin: 0 auto;
+}
+
+.detail-info{
+    line-height: 2.3rem;
+    font-size: 1.4rem ;
+    margin-bottom: 3rem;
+}
+
+.prod-price{
+    width:100%;
+    margin-bottom: 1.5rem;
+}
+
+.prod-color{
+    margin-bottom: .5rem;
+    width: 100%;
+}
+
+.prod-color div{
+    margin-bottom: 0.5rem;
+}
+
+.color-img{
+    margin-bottom: 2rem;
+    width: 100%;
+}
+
+.color-img div{
+    margin-bottom: '0.5rem'
+}
+
+.color-img div img{
+    height: 35px;
+    width: 35px;
+    margin-right: 1rem;
+    border: 2px solid #0D943F;
+}
+
+.choose-dil{
+    margin-bottom: 1rem;
+    width: 100%
+}
+
+.del-options {
+    margin-left:0px; 
+    margin-bottom: 2rem;
+}
+
+.home-deli {
+    color: #0D943F;
+    font-size: 1.5rem;
+    border: 2px solid #0D943F; 
+    width: 45%;
+    margin-left: 18px !important;
+}
+
+.home-deli img{
+    height:35;
+    width:45%;
+    margin-top:8px;
+    margin-bottom: 1rem
+}
+
+.home-deli span{
+    margin-top:8px;
+    margin-bottom: 1rem
+}
+
+.click-collect{
+    border: 1px solid #d6d6d6;
+    font-size: 1.5rem;
+    width: 45%;
+    margin-left: 30px !important;
+}
+
+.click-collect img{
+    height:35; 
+    width: 45%;
+    margin-top: 8px;
+    margin-bottom: 1rem;
+}
+
+.click-collect span{
+    margin-top:8px;
+    margin-bottom: 1rem;
+}
+
+.in-stock{
+    margin:10px;
+    width: 33%
+}
+
+.free-uk-dly{
+    margin-bottom: 2rem;
+    width: 100% ;
+    color: #009BCB;
+}
+
+.qty-dec-inc{
+    color: #0D943F; 
+    line-height: 2.5rem;
+    font-size: 2.5rem;
+}
+
+.input-qty{
+    width: 60%;
+    text-align: center;
+    color: #0D943F;
+    font-weight: bold;
+    font-size: 1.7rem;
+    border: none; 
+    margin-top: 5px;
+}
+
+.add-cart{
+    width: 100%; 
+    margin-left: 0;
+    margin-bottom: 2rem
+}
+
+.hover-on-favorite:hover{
+    color: #0D943F!important;
+    text-decoration: none;
+    
+}
+
+.hover-on-favorite img{
+    width: 25px; 
+    height:25px
+}
+
+.hover-on-favorite span{
+    padding:10px;
+}
+
+.share-wishlist{
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 2rem;
+    margin-right: 3.5rem;
+}
+
+.deliy-free{
+    width: 100%;
+    margin-left: 0; 
+    margin-bottom: 2rem; 
+    color: #00a6B5;
+}
+
+.learn-skill {
+    padding-top: 1.5rem; 
+    border-top: 1px solid #d6d6d6;
+    width: 100%;
+    margin-bottom: 2.2rem;
+}
+
+.learn-skill span{
+    font-size: 1.4rem; 
+    color: #4f4f4f;
+    font-weight: 300;
+}
+
+.learn-skill-img{
+    width: 100%;
+    margin-bottom: 2.2rem;
+}
+
+.learn-skill-img img{
+    width: 70px;
+    height:70px;
+    margin-right: 3rem;
+}
+
+.product-title{
+    font-family: VAG Rounded ELC Light;
+    font-size: 2.9rem;
+    line-height:1.7;
+    font-weight: 300;
+    color:#4f4f4f
+}
+
+.write-review{
+    color: #0D943F; 
+    font-size: 1.3rem;
+}

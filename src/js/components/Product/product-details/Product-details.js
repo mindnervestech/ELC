@@ -10,7 +10,8 @@ import ProductInfo from './Product-info';
 import ProductSlider from './Product-slider';
 import { connect } from 'react-redux';
 import * as actions from '../../../redux/actions/index';
-import Spinner from '../../Spinner/Spinner2'
+import Spinner from '../../Spinner/Spinner2';
+import ProductInformation from './product-info/product-info';
 
 import { trackF, initializeF } from '../../utility/facebookPixel';
 import { live } from '../../../api/globals';
@@ -21,6 +22,7 @@ class ProductDetails extends Component {
 		super(props);
 		this.state = {
 			productData: [],
+			productDetailTab: 'Product Information',
 		};
 	}
 
@@ -41,7 +43,7 @@ class ProductDetails extends Component {
 			store: this.props.globals.currentStore,
 			url_key: params.category,
 		};
-
+		
 		this.props.onGetProductDetails(data);
 		this.props.getSizeChart({
 			store_id: this.props.globals.currentStore,
@@ -80,9 +82,16 @@ class ProductDetails extends Component {
 		}
 	}
 
+	getProductInfoDetail(type){
+		console.log(type);
+		console.log(this.props);
+		this.setState({productDetailTab : type});
+		
+	}
+
 	render() {
 		//console.log('pdp details', this.props.productDetails);
-
+		const { data } = this.props;
 		let meta_tag = null;
 
 		if (('meta_title' in this.props.productDetails) && ('meta_keywords' in this.props.productDetails) && ('meta_description' in this.props.productDetails)) {
@@ -104,7 +113,7 @@ class ProductDetails extends Component {
 					<div className="t-Body-content" id="t_Body_content">
 						<div id="t_Body_content_offset" style={{ height: '85px' }} />
 						<div className="t-Body-contentInner">
-							{this.props.productDetailLoader ? <Spinner /> : (<div className="container">
+							{this.props.productDetailLoader ? <Spinner /> : (<div className="container" style={{maxWidth: '85%'}}>
 								<ProductInfo data={this.props.productDetails} currentStore={this.props.globals.currentStore} />
 
 								{this.props.productDetails.similar_products && (
@@ -113,6 +122,28 @@ class ProductDetails extends Component {
 
 							</div>)}
 						</div>
+						<div className="col col-12 product-tab">
+							<div>
+								<ul style={{marginBottom:0}}>
+									<li className={this.state.productDetailTab == "Product Information" ? "active-tab" : ''}>
+										<a onClick={() => this.getProductInfoDetail('Product Information')} className="product-des">Product Information</a>
+									</li>
+									<li className={this.state.productDetailTab == "Delivery options" ? "active-tab" : ''}>
+										<a onClick={() => this.getProductInfoDetail('Delivery options')} className="product-des">Delivery options</a>
+									</li>
+									<li className={this.state.productDetailTab == "Questions" ? "active-tab" : ''}>
+										<a onClick={() => this.getProductInfoDetail('Questions')} className="product-des">Questions</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						{this.state.productDetailTab !== '' ?
+						<div className="col col-12">
+							<div className="product-info">
+								<ProductInformation data={data} type={this.state.productDetailTab}  currentStore={this.props.currentStore}/>
+							</div>
+						</div>
+						: ''}
 					</div>
 				</div>
 			</div>

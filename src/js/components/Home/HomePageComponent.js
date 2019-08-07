@@ -11,7 +11,8 @@ import logo1 from '../../../assets/images/you_may_also_like_1.png'
 import logo2 from '../../../assets/images/you_may_also_like_2.png'
 import logo3 from '../../../assets/images/you_may_also_like_3.png'
 import logo4 from '../../../assets/images/you_may_also_like_4.png'
-import home from '../../../assets/images/social/Hero.png'
+import home from '../../../assets/images/social/Hero.png';
+import { Link, Redirect } from 'react-router-dom';
 
 class HomePageComponent extends Component {
     constructor(props) {
@@ -302,44 +303,53 @@ class HomePageComponent extends Component {
                                         <div className="trendingList">
                                             <Slider {...settings}>
                                                 <div>
-                                                    {/* <figure> */}
-                                                        <a href={''} target="_blank">
-                                                            <img src={logo1} />
-                                                        </a>
-                                                        <div className="cardDetail">
-                                                                <span className="cardDetailText">500</span>
-                                                        </div>
-                                                    {/* </figure> */}
+                                                
+                                                    <Link to={`/saudi-en/products-details/blue-bike`}>
+                                                        {/* <figure> */}
+                                                            <a href={''} target="_blank">
+                                                                <img src={logo1} />
+                                                            </a>
+                                                            <div className="cardDetail">
+                                                                    <span className="cardDetailText">500</span>
+                                                            </div>
+                                                        {/* </figure> */}
+                                                    </Link>
                                                 </div>
                                                 <div>
-                                                    {/* <figure> */}
-                                                        <a href={''} target="_blank">
-                                                            <img src={logo2} />
-                                                        </a>
-                                                        <div className="cardDetail">
-                                                                <span className="cardDetailText">500</span>
-                                                        </div>
-                                                    {/* </figure> */}
+                                                    <Link to={`/saudi-en/products-details/blue-bike`}>
+                                                        {/* <figure> */}
+                                                            <a href={''} target="_blank">
+                                                                <img src={logo2} />
+                                                            </a>
+                                                            <div className="cardDetail">
+                                                                    <span className="cardDetailText">500</span>
+                                                            </div>
+                                                        {/* </figure> */}
+                                                    </Link>
                                                 </div>
                                                 <div>
-                                                    {/* <figure> */}
-                                                        <a href={''} target="_blank">
-                                                            <img src={logo3} />
-                                                        </a>
-                                                        <div className="cardDetail">
-                                                                <span className="cardDetailText">500</span>
-                                                        </div>
-                                                    {/* </figure> */}
+                                                    <Link to={`/saudi-en/products-details/blue-bike`}>
+                                                        {/* <figure> */}
+                                                            <a href={''} target="_blank">
+                                                                <img src={logo3} />
+                                                            </a>
+                                                            <div className="cardDetail">
+                                                                    <span className="cardDetailText">500</span>
+                                                            </div>
+                                                        {/* </figure> */}
+                                                    </Link>
                                                 </div>
                                                 <div>
-                                                    {/* <figure> */}
-                                                        <a href={''} target="_blank">
-                                                            <img src={logo4} />
-                                                        </a>
-                                                        <div className="cardDetail">
-                                                                <span className="cardDetailText">500</span>
-                                                        </div>
-                                                    {/* </figure> */}
+                                                    <Link to={`/saudi-en/products-details/blue-bike`}>
+                                                        {/* <figure> */}
+                                                            <a href={''} target="_blank">
+                                                                <img src={logo4} />
+                                                            </a>
+                                                            <div className="cardDetail">
+                                                                    <span className="cardDetailText">500</span>
+                                                            </div>
+                                                        {/* </figure> */}
+                                                    </Link>
                                                 </div></Slider>
                                         </div>
                                     </div>
