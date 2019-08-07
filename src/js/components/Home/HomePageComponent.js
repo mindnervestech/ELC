@@ -15,7 +15,6 @@ import home from '../../../assets/images/social/Hero.png'
 
 class HomePageComponent extends Component {
     constructor(props) {
-        console.log("data>>>>>>>>>>>>>>>>>>>",props)
         super(props);
     }
 
@@ -59,10 +58,14 @@ class HomePageComponent extends Component {
         }
 
         const settings3 = {
+            autoplay: true,
+            autoplaySpeed: 5000,
             dots: true,
             infinite: true,
             slidesToShow: 3,
             slidesToScroll: 1,
+            speed: 500,
+            vertical: false,
             responsive: [
                 {
                     breakpoint: 1024,
@@ -107,7 +110,7 @@ class HomePageComponent extends Component {
                                 <img src={home} />
                             </div>
                             <div>
-                                <img src={home} />
+                                <img src={'https://s3.invisionapp-cdn.com/storage.invisionapp.com/screens/files/366754627.png?x-amz-meta-iv=5&response-cache-control=max-age%3D2419200&x-amz-meta-ck=9ab058c4fbddc2e4fa75442b99e6b787&AWSAccessKeyId=AKIAJFUMDU3L6GTLUDYA&Expires=1567296000&Signature=6EFT8zmUZn9Z3doPrsIWxPo0u5c%3D'} />
                             </div>
                             <div>
                                 <img src={home} />
@@ -299,44 +302,44 @@ class HomePageComponent extends Component {
                                         <div className="trendingList">
                                             <Slider {...settings}>
                                                 <div>
-                                                    <figure>
+                                                    {/* <figure> */}
                                                         <a href={''} target="_blank">
                                                             <img src={logo1} />
                                                         </a>
                                                         <div className="cardDetail">
                                                                 <span className="cardDetailText">500</span>
                                                         </div>
-                                                    </figure>
+                                                    {/* </figure> */}
                                                 </div>
                                                 <div>
-                                                    <figure>
+                                                    {/* <figure> */}
                                                         <a href={''} target="_blank">
                                                             <img src={logo2} />
                                                         </a>
                                                         <div className="cardDetail">
                                                                 <span className="cardDetailText">500</span>
                                                         </div>
-                                                    </figure>
+                                                    {/* </figure> */}
                                                 </div>
                                                 <div>
-                                                    <figure>
+                                                    {/* <figure> */}
                                                         <a href={''} target="_blank">
                                                             <img src={logo3} />
                                                         </a>
                                                         <div className="cardDetail">
                                                                 <span className="cardDetailText">500</span>
                                                         </div>
-                                                    </figure>
+                                                    {/* </figure> */}
                                                 </div>
                                                 <div>
-                                                    <figure>
+                                                    {/* <figure> */}
                                                         <a href={''} target="_blank">
                                                             <img src={logo4} />
                                                         </a>
                                                         <div className="cardDetail">
                                                                 <span className="cardDetailText">500</span>
                                                         </div>
-                                                    </figure>
+                                                    {/* </figure> */}
                                                 </div></Slider>
                                         </div>
                                     </div>
@@ -362,7 +365,7 @@ class HomePageComponent extends Component {
                                                                 <label className="text-color">Twist and Turn Activity House</label>
                                                             </div>
                                                             <div>
-                                                                <span style={{fontSize:14, color:"#0D943F", fontWeight: "bold"}}>$12.00</span><span style={{color:"gray",textDecorationLine: 'line-through', fontSize:14, marginLeft: 10}}>$14.50</span>
+                                                                <span style={{fontSize:14, color:"#0D943F", fontWeight: "bold"}}>£12.00</span><span style={{color:"gray",textDecorationLine: 'line-through', fontSize:14, marginLeft: 10}}>£14.50</span>
                                                             </div>
                                                             <div>
                                                                 <button className="alsoLikeCardButton">add to basket</button>
@@ -375,7 +378,7 @@ class HomePageComponent extends Component {
                                                                 <label className="text-color">Twist and Turn Activity House</label>
                                                             </div>
                                                             <div>
-                                                                <span style={{fontSize:14, color:"#0D943F", fontWeight: "bold"}}>$12.00</span><span style={{color:"gray",textDecorationLine: 'line-through', fontSize:14, marginLeft: 10}}>$14.50</span>
+                                                                <span style={{fontSize:14, color:"#0D943F", fontWeight: "bold"}}>£12.00</span><span style={{color:"gray",textDecorationLine: 'line-through', fontSize:14, marginLeft: 10}}>£14.50</span>
                                                             </div>
                                                             <div>
                                                                 <button className="alsoLikeCardButton">add to basket</button>
@@ -388,7 +391,7 @@ class HomePageComponent extends Component {
                                                                 <label className="text-color">Twist and Turn Activity House</label>
                                                             </div>
                                                             <div>
-                                                                <span style={{fontSize:14, color:"#0D943F", fontWeight: "bold"}}>$12.00</span><span style={{color:"gray",textDecorationLine: 'line-through', fontSize:14, marginLeft: 10}}>$14.50</span>
+                                                                <span style={{fontSize:14, color:"#0D943F", fontWeight: "bold"}}>£12.00</span><span style={{color:"gray",textDecorationLine: 'line-through', fontSize:14, marginLeft: 10}}>£14.50</span>
                                                             </div>
                                                             <div>
                                                                 <button className="alsoLikeCardButton">add to basket</button>
@@ -401,7 +404,7 @@ class HomePageComponent extends Component {
                                                                 <label className="text-color">Twist and Turn Activity House</label>
                                                             </div>
                                                             <div>
-                                                                <span style={{fontSize:14, color:"#0D943F", fontWeight: "bold"}}>$12.00</span><span style={{color:"gray",textDecorationLine: 'line-through', fontSize:14, marginLeft: 10}}>$14.50</span>
+                                                                <span style={{fontSize:14, color:"#0D943F", fontWeight: "bold"}}>£12.00</span><span style={{color:"gray",textDecorationLine: 'line-through', fontSize:14, marginLeft: 10}}>£14.50</span>
                                                             </div>
                                                             <div>
                                                                 <button className="alsoLikeCardButton">add to basket</button>
