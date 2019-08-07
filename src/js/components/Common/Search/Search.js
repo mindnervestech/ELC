@@ -32,12 +32,11 @@ class Search extends Component {
         return(
               <div className="search">
                 {this.renderRedirect()}
-                <i className="icon-search"></i>
                 <FormattedMessage id="SearchText" defaultMessage="Search">
                     {(message)=>  
                     <input type="text" id="searchnay" className="textInput" placeholder={message} onKeyDown={this.handleKeyPress} />}
                 </FormattedMessage>
-
+                <button className="searchButton"><i className="icon-search"></i></button>
               </div>
         )
     }

@@ -18,6 +18,11 @@ import masterCardImg from '../../../../assets/images/social/masterCard.svg';
 import VISAImg from '../../../../assets/images/social/visa.svg';
 import verisignSecureImg from '../../../../assets/images/social/verisign-secure.svg';
 
+import facebook from '../../../../assets/images/social/Facebook.svg';
+import instagram from '../../../../assets/images/social/instagram.svg';
+import youtube from '../../../../assets/images/social/youtube.svg';
+import twitter from '../../../../assets/images/social/twitter.svg';
+
 import ScrollToTop from 'react-scroll-up';
 const style = {
     visibility: 'visible',
@@ -71,7 +76,7 @@ class Footer extends Component {
             <>
             <footer className="footer-css">
                 <div className="row footer-line">
-                    <div className="col-md-3">
+                    <div className="col-md-3" style={{textAlign: 'start'}}>
                         <div className="footer-title">
                             <span>site information</span>
                         </div>
@@ -88,7 +93,7 @@ class Footer extends Component {
                         </ul>
                     </div>
 
-                    <div className="col-md-2" style={{padding: 0}}>
+                    <div className="col-md-2" style={{textAlign: 'start', padding: 0}}>
                         <div className="footer-title">
                             <span>customer service</span>
                         </div>
@@ -117,7 +122,7 @@ class Footer extends Component {
                         </ul>
                     </div>
 
-                    <div className="col-md-2">
+                    <div className="col-md-2" style={{textAlign: 'start'}}>
                         <div className="footer-title">
                             <span>about eic</span>
                         </div>
@@ -152,15 +157,15 @@ class Footer extends Component {
                         </ul>
                     </div>
                     <div className="col-md-1"></div>
-                    <div className="col-md-4">
-                        <div className="footer-title" style={{marginBottom:5}}>
+                    <div className="col-md-4" style={{textAlign: 'start'}}>
+                        <div className="footer-title" style={{marginBottom:5,}}>
                             <span>follow us on</span>
                         </div>
                         <div>
-                        <i className="fab fa-facebook-f icon"></i>
-                        <i className="fab fa-twitter icon" style={{padding: 10}}></i>
-                        <i className="fab fa-instagram icon1 icon"></i>
-                        <i className="fa fa-youtube icon" style={{padding: 10}}></i>
+                        <img src={facebook} className="icon"></img>
+                        <img src={twitter} className="icon"></img>
+                        <img src={instagram} className="icon"></img>
+                        <img src={youtube} className="icon"></img>
                         </div>
                         <div className="footer-title" style={{marginTop:70,marginBottom:5}}>
                             <span>sign up for our latest news and offers</span>
@@ -173,7 +178,7 @@ class Footer extends Component {
 
                 </div>
                 <div className="row footer-bottom">
-                    <div className="col-md-8">
+                    <div className="col-md-8" style={{textAlign: 'start'}}>
                         <div>
                             @ copyright ELC UK Limited 2018 ELC UK Limited (a private limited company). Registered in England no. 2057757. VAT Reg no. GB 285 2009 09.
                         </div>

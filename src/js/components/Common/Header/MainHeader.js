@@ -20,6 +20,7 @@ import freeDelivery from '../../../../assets/images/header/Truck.svg';
 import deliveryBy from '../../../../assets/images/header/Truck1.svg';
 import freeCollect from '../../../../assets/images/header/Mouse.svg';
 import logoGroup from '../../../../assets/images/social/Logo Group.svg';
+import bagLogo from '../../../../assets/images/header/Store Locator 3 Copy 2.svg';
 
 class MainHeader extends Component {
     constructor(props) {
@@ -209,9 +210,19 @@ class MainHeader extends Component {
                         <div className="row-1">
                             <div className="containers-main">
                                 <ul className="leftLink">
-                                    <li style={{height:40}}>
-                                        <Button className="firstButton text-color">The Entertainer</Button>
+                                    <li className="ll" style={{padding:0}}>
+                                        <div className="lang">
+                                            <a href="javascript:void(0);" onClick={(e) => this.translate('en', 'ltr')} className="active" >en</a></div>
                                     </li>
+
+                                    <li className="ll" style={{padding:0}}>
+                                        <div className="lang" style={{paddingLeft: 15}}>
+                                           <a href="javascript:void(0);" onClick={(e) => this.translate('ar', 'rtl')} >العربية</a></div>
+                                    </li>
+
+                                    {/* <li style={{height:40}}>
+                                        <Button className="firstButton text-color">The Entertainer</Button>
+                                    </li> */}
                                     <li style={{height:40}}>
                                         <Button className="secondButton text-color">Early Learning Center</Button>
                                     </li>
@@ -264,12 +275,12 @@ class MainHeader extends Component {
                             <Row>
                                 <Col xs="4" style={{paddingLeft: 0, paddingRight: 0}}>
                                     <img style={{height:64, width:"100%",marginRight:10,marginLeft:10}} src={logoGroup}/>
-                                    {/* <label className="headerLable">early learning center</label> */}
                                 </Col>
-                                <Col xs="5" style={{padding:6}}><Search store_locale={store_locale} /></Col>
-                                <Col xs="3" style={{paddingTop:15, paddingLeft:5, paddingRight:5}}>
+                                <Col xs="4" style={{padding:6}}><Search store_locale={store_locale} /></Col>
+                                <Col xs="2"></Col>
+                                <Col xs="2" style={{paddingTop:15, paddingLeft:5, paddingRight:5}}>
                                 <ul className="cta">
-                                    <li>
+                                    {/* <li>
                                         <div className="changecountry">
                                             <div className="country">
                                                 <div className={this.state.showCountries ? "activeCountry open" : "activeCountry"}>
@@ -291,15 +302,15 @@ class MainHeader extends Component {
                                     <li className="ll" style={{padding:0}}>
                                         <div className="lang">
                                             <a href="javascript:void(0);" onClick={(e) => this.translate('en', 'ltr')} className="active" >en</a> | <a href="javascript:void(0);" onClick={(e) => this.translate('ar', 'rtl')} >العربية</a></div>
-                                    </li>
+                                    </li> */}
                                     <li style={{paddingLeft:10}}>
-                                        <i className="icon-user headerIcon"></i>
+                                        <img src={bagLogo}/>
                                     </li>
                                     <li>
                                         <label className="lable-count">1</label>
                                     </li>
                                     <li>
-                                        <label className="headerLable2">my basket:  <span style={{fontWeight:"bold"}}>$30.00</span></label>
+                                        <label className="headerLable2">my basket:  <span style={{fontWeight:"bold"}}>£30.00</span></label>
                                     </li>
                                 </ul>
                                 </Col>
@@ -323,7 +334,7 @@ class MainHeader extends Component {
 
                     <div id="R33786937309169806" className="menuOverlay"> </div>
                     <div id="R33786847982169805" className="row-3">
-                        <Row>
+                        {/* <Row>
                             <Col xs="2"></Col>
                             <Col xs="8" style={{padding:0}}>
                                 <label className="manuTitle">body toys (0-12 months)</label>
@@ -336,14 +347,20 @@ class MainHeader extends Component {
                             <Col xs="2" style={{padding: 0}}>
                                 <Button className="buton">present finder</Button>
                             </Col>
-                        </Row>
-                        {/* <a to="JavaScript:;" id="closeNav" className="closeNav">X</a>
+                        </Row> */}
+                        <a to="JavaScript:;" id="closeNav" className="closeNav">X</a>
                         <div className="containers-main">
-                            
-                            <MenuNav />
+                        <Row>
+                            <Col xs="10">
+                                <MenuNav />
+                            </Col>
+                            <Col xs="2" style={{padding: 0}}>
+                                <button className="present-finder-buton">Present Finder</button>
+                            </Col>
+                        </Row>
 
 
-                            <div className="changecountry">
+                            {/* <div className="changecountry">
                                 <div className="country">
                                     <div className={this.state.showCountries ? "activeCountry open" : "activeCountry"}>
                                         <i className={`flag ${this.state.country_flag}`} onClick={this.showCountries}></i>
@@ -359,14 +376,14 @@ class MainHeader extends Component {
                                         <li><a href="javascript:void(0);" className="usd" id="cart" onClick={() => this.onChangeCountry('International')}><FormattedMessage id="header.usd" defaultMessage="International" /></a></li>
                                     </ul>
                                 </div>
-                            </div>
-                            <div className="mobileCTA">
+                            </div> */}
+                            {/* <div className="mobileCTA">
                                 <Link to={`/${store_locale}/store-locator`} ><i className="icon-marker" onClick={this.closeHBMenu}></i></Link>
                                 <Link to={`/${store_locale}/amirah-club`} className="amirah-club" onClick={this.closeHBMenu}><img src={amirahclub} /></Link>
                                 <Link to={`/${store_locale}/add-wishlist`} onClick={this.closeHBMenu}><i className="icon-heart"></i></Link>
                                 <a className="js-ga-tracking" data-ga-category="Contact Us" data-ga-action="click" data-ga-label="Telephone" href="tel:+971565069237"><i className="icon-whatsapp"></i></a>
-                            </div>
-                        </div> */}
+                            </div> */}
+                        </div>
                     </div>
                     <div>
                         <Row className="row-4">
@@ -376,16 +393,16 @@ class MainHeader extends Component {
                             <Col xs="1"></Col>
                             <Col xs="3">
                                 <Row>
-                                    <Col xs="3">
-                                        <img style={{height:40, width:"100%",marginRight:10,marginLeft:10}} src={freeDelivery}/>
+                                    <Col xs="4">
+                                        <img style={{width:"100%",marginRight:10,marginLeft:10}} src={deliveryBy}/>
                                     </Col>
-                                    <Col xs="9">
+                                    <Col xs="8" style={{textAlign: 'start'}}>
                                         <ul>
                                             <li style={{fontSize: 13, color: "#0D943F"}}>
                                                 free UK delivery
                                             </li>
                                             <li style={{fontSize: 11}} className="text-color">
-                                                when you spend $40
+                                                when you spend £10
                                             </li>
                                         </ul>
                                     </Col>
@@ -394,10 +411,10 @@ class MainHeader extends Component {
                                 <Col xs="1"></Col>
                                 <Col xs="3">
                                 <Row>
-                                    <Col xs="3">
-                                        <img style={{height:40, width:"100%",marginRight:10,marginLeft:10}} src={deliveryBy}/>
+                                    <Col xs="4">
+                                        <img style={{width:"100%",marginRight:10,marginLeft:10}} src={freeDelivery}/>
                                     </Col>
-                                    <Col xs="9">
+                                    <Col xs="8" style={{textAlign: 'start'}}>
                                         <ul>
                                             <li style={{fontSize: 13, color: "#0D943F"}}>
                                                 order by 7pm
@@ -412,10 +429,10 @@ class MainHeader extends Component {
                                 <Col xs="1"></Col>
                                 <Col xs="3">
                                 <Row>
-                                    <Col xs="3">
+                                    <Col xs="4">
                                         <img style={{height:40, width:"100%",marginRight:10,marginLeft:10}} src={freeCollect}/>
                                     </Col>
-                                    <Col xs="9">
+                                    <Col xs="8" style={{textAlign: 'start'}}>
                                         <ul>
                                             <li style={{fontSize: 13, color: "#0D943F"}}>
                                                 free click & collect

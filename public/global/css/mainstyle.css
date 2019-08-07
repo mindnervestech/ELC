@@ -278,13 +278,9 @@ border-color: #0D943F;
 }
 
 .footer-css .icon {
-    padding: 10px 16px;
     margin-right: 15px;
-    font-size: 20px;
-    background-color: #fff;
-    color: #0D943F;
-    border-radius: 50%;
-    border: solid 1px #f3f0f0;
+    height: 40px;
+    width: 40px;
 }
 
 .footer-css .bottom-image {
@@ -428,7 +424,7 @@ li {
 }
 
 .containers-main {
-    width: 95%;
+    width: 100%;
     margin: auto;
 	overflow: inherit;
 }
@@ -780,7 +776,7 @@ html[dir="rtl"] .header .row-1 .cart span {
 @media only screen and (min-width: 1280px) {
     .header .row-2 {
         height: auto;
-        padding: 20px 0
+        padding: 13px 0
     }
 }
 
@@ -927,6 +923,25 @@ html[dir="rtl"] .header .row-2 .cta .cart span {
 .header .row-4 {
     padding: 10px 0px;
     border-bottom: solid 1px #f3f0f0;
+}
+
+.header .row-3 .present-finder-buton {
+        height: 100%;
+        width: 60%;
+        float: right;
+        background-color: #EE0E19;
+        color: #fff;
+        font-size: 14px;
+        border: none;
+}
+
+html[dir="rtl"] .header .row-3 .present-finder-buton {
+    float: left;
+}
+
+
+.header .row-3 .present-finder-buton:hover {
+    background-color: #dF0C00;
 }
 @media only screen and (min-width: 1280px) {
     .header .row-3 .buton{
@@ -1186,9 +1201,6 @@ html[dir="rtl"] .header .search {
 }
 
 .header .search i {
-    position: absolute;
-    left: 0;
-    top: 50%;
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
     color: #575657
@@ -2106,6 +2118,14 @@ html[dir="rtl"] .header .changecountry .country .list a:before {
     vertical-align: top;
     border: 0;
     object-fit: cover!important;
+}
+
+html[dir="rtl"] .carousel .slider.animated{
+    /* transform: translate3d(0px, 0px, 0px)!important; */
+}
+
+html[dir="rtl"] .slick-next {
+    left: auto!important;
 }
 
 .t-Body .contener{

@@ -47,7 +47,7 @@ class menuNav extends Component {
     //console.log('In Menu globals store locale',store_locale);
 
     return (
-      <div className="navigation">
+      <div className="navigation" style={{height:60, paddingTop: 10, paddingBottom: 10}}>
         <div className="profile">
           <figure className=""><i className="icon-user"></i></figure>
           <div className="">

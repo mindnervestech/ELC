@@ -365,7 +365,7 @@ li {
 }
 
 .containers-main {
-    width: 95%;
+    width: 100%;
     margin: auto;
 	overflow: inherit;
 }
@@ -532,11 +532,17 @@ li {
 }
 
 .header .row-1 .leftLink .secondButton{
-    color: #0D943F;
-    background-color:#f3f0f0;
-    height: 100%;
-    border-bottom: solid 1px #0D943F;
+    color: #4f4f4f;
+    font-size: 1.3rem;
+    background-color:#fff;
+    height: 97%;
     border: none;
+    border-radius: 0px;
+}
+
+.header .row-1 .leftLink .secondButton:hover{
+    color: #0D943F;
+    border-bottom: solid 2px #0D943F;
 }
 
 .header .row-1 ul li {
@@ -561,10 +567,12 @@ li {
 .header .row-1 .leftLink {
     float: left;
     margin-bottom: 0px;
+    padding-left: 20px;
 }
 
 html[dir="rtl"] .header .row-1 .leftLink {
-    float: right
+    float: right;
+    padding-right: 20px;
 }
 
 .header .row-1 .leftLink li {
@@ -736,7 +744,7 @@ html[dir="rtl"] .header .row-1 .cart span {
 
 .header .row-2 .headerLable2 {
     color: #fff;
-    font-size: 12px;
+    font-size: 1.3rem;
 }
 
 .header .row-2 .headerIcon {
@@ -771,7 +779,7 @@ html[dir="rtl"] .header .row-1 .cart span {
 @media only screen and (min-width: 1280px) {
     .header .row-2 {
         height: auto;
-        padding: 20px 0
+        padding: 13px 0
     }
 }
 
@@ -1148,9 +1156,6 @@ html[dir="rtl"] .header .search {
 }
 
 .header .search i {
-    position: absolute;
-    left: 65%;
-    top: 45%;
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
     color: #0D943F;
@@ -1162,16 +1167,40 @@ html[dir="rtl"] .header .search i {
     right: 0
 }
 
+.header .search .searchButton {
+    height: 80%;
+    width: 10%;
+    border-radius: 5px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border: none;
+    padding: 10px 5px;
+}
+
+html[dir="rtl"] .header .search .searchButton {
+    border-radius: 5px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
 .header .search .textInput {
     border: none;
     display: block;
     font-size: .8em;
-    width: 70%;
+    width: 80%;
     height: 80%;
     padding: 5px 20px;
     color: #575657;
     background-color: #fff;
     border-radius: 5px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+html[dir="rtl"] .header .search .textInput{
+    border-radius: 5px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
 }
 
 .header .search .textInput:focus {
