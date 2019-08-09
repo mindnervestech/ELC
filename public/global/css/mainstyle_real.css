@@ -38,7 +38,7 @@ html {
 
 body {
     font-family: "VAG Rounded ELC Light";
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     line-height: 1.7;
     font-weight: 300;
     color: #4f4f4f;
@@ -2050,7 +2050,8 @@ html[dir="rtl"] .header .changecountry .country .list a:before {
 
 @media only screen and (min-width: 1280px) {
     .homePage>section {
-        font-size: 18px
+        color: #4f4f4f;
+        font-size: 1.3rem;
     }
 }
 

@@ -111,7 +111,7 @@ class HomePageComponent extends Component {
                                 <img src={home} />
                             </div>
                             <div>
-                                <img src={'https://s3.invisionapp-cdn.com/storage.invisionapp.com/screens/files/366754627.png?x-amz-meta-iv=5&response-cache-control=max-age%3D2419200&x-amz-meta-ck=9ab058c4fbddc2e4fa75442b99e6b787&AWSAccessKeyId=AKIAJFUMDU3L6GTLUDYA&Expires=1567296000&Signature=6EFT8zmUZn9Z3doPrsIWxPo0u5c%3D'} />
+                                <img src={home} />
                             </div>
                             <div>
                                 <img src={home} />
@@ -304,7 +304,7 @@ class HomePageComponent extends Component {
                                             <Slider {...settings}>
                                                 <div>
                                                 
-                                                    <Link to={`/saudi-en/products-details/blue-bike`}>
+                                                    <Link to={`/saudi-en/product-list`}>
                                                         {/* <figure> */}
                                                             <a href={''} target="_blank">
                                                                 <img src={logo1} />

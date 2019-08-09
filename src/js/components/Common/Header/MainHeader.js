@@ -22,6 +22,10 @@ import freeCollect from '../../../../assets/images/header/Mouse.svg';
 import logoGroup from '../../../../assets/images/social/Logo Group.svg';
 import bagLogo from '../../../../assets/images/header/Store Locator 3 Copy 2.svg';
 
+import location from '../../../../assets/images/header/location.svg';
+import help from '../../../../assets/images/header/help.svg';
+import profile from '../../../../assets/images/header/profile.png';
+
 class MainHeader extends Component {
     constructor(props) {
         super(props);
@@ -265,15 +269,17 @@ class MainHeader extends Component {
                                 </ul >
                                 <ul className="rightLink">
                                     <li>
-                                    <i className="icon-marker"></i>
+                                    {/* <i className="icon-marker"></i> */}
+                                    <img src={location} className="image-ion"></img>
                                         <label className="iconLeble text-color">store finder</label>
                                     </li>
                                     <li>
-                                        <i className="icon-heart"></i>
+                                        {/* <i className="icon-heart"></i> */}
+                                        <img src={help} className="image-ion"></img>
                                         <label className="iconLeble text-color">help</label>
                                     </li>
                                     <li>
-                                        <i className="icon-user"></i>
+                                    <img src={profile} className="image-ion"></img>
                                         <label className="iconLeble text-color">sign in / register</label>
                                     </li>
                                     {/* {profileIcon}
@@ -302,7 +308,10 @@ class MainHeader extends Component {
                         {/* <Container style={{width: "100%"}}> */}
                             <Row>
                                 <Col xs="4" style={{paddingLeft: 0, paddingRight: 0}}>
+                                <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
                                     <img style={{height:64, width:"100%",marginRight:10,marginLeft:10}} src={logoGroup}/>
+                                </Link>
+                                    
                                 </Col>
                                 <Col xs="4" style={{padding:6}}><Search store_locale={store_locale} /></Col>
                                 <Col xs="2"></Col>
