@@ -12,16 +12,23 @@ import freeDelivery from '../../../../assets/images/header/Truck1.svg';
 import freeCollect from '../../../../assets/images/header/Mouse.svg';
 import home from '../../../../assets/images/social/Hero.png';
 import favoriteImg from '../../../../assets/images/header/favorite.svg'
+import Modal from 'react-responsive-modal';
+import { Helmet } from 'react-helmet';
 
-import discovertheworld_icons from '../../../../assets/images/social/discovertheworld_icons.png'
-import socialskills_icon from '../../../../assets/images/social/socialskills_icon.png'
-import imagination_icon from '../../../../assets/images/social/imagination_icon.png'
+import discovertheworld_icons from '../../../../assets/images/social/discovertheworld_icons.png';
+import socialskills_icon from '../../../../assets/images/social/socialskills_icon.png';
+import imagination_icon from '../../../../assets/images/social/imagination_icon.png';
+
+import ShareUrl from '../product-details/product-info/product-size';
+
+const mediaVideo = 'https://storage.googleapis.com/nay/videos/product/au19/nay-au19-casual-nightwear-mainrange-nicoline-pajamaset-212884961.mp4';
 
 class ProductInfo extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			defaultQty: 1,
+			openShareModel: false,
 		};
 	}
 
@@ -36,16 +43,24 @@ class ProductInfo extends Component {
 		}
 	};
 
-
 	increment = totalQty => {
 			this.setState({ defaultQty: totalQty + 1 });
 	};
+
+	onCloseFirstModal = () => {
+		this.setState({ openShareModel: false })
+		
+	}
 
 	render() {
 		const { data } = this.props;
 
 		return (
 			<div className="row">
+			<Helmet>
+					<script src="/global/css/magiczoomplus/magiczoomplus.js"></script>
+					<script src="/global/css/magicscroll/magicscroll.js"></script>
+				</Helmet>
 				<div className="col col-12 apex-col-auto carpusel-dots" style={{paddingTop:'20px'}}>
 					<div className="col col-7">
 						<h2 className="product-title">
@@ -53,7 +68,7 @@ class ProductInfo extends Component {
 						</h2>
 						<div className="write-review">
 							<span>
-								<i class="fa fa-pencil"></i>
+								<i className="fa fa-pencil"></i>
 								&nbsp;Write a review &nbsp;
 							</span>
 								&nbsp;|&nbsp;
@@ -76,6 +91,11 @@ class ProductInfo extends Component {
                             <div>
                                 <img style={{height: '100%'}} src={home} />
                             </div>
+							{/* <div>
+								<video style={{height: '100%'}} controls autoplay="autoplay" loop muted preload style={{width: '100%',height: '100%'}}>
+									<source src={mediaVideo} type="video/mp4" />
+								</video>
+							</div> */}
                         </Carousel>
                     </div>
 					</div>
@@ -203,11 +223,17 @@ class ProductInfo extends Component {
 												<img src={favoriteImg} />
 												<span>add to wishlist</span>
 											</a>
-											<a href="" className="hover-on-favorite">
+											<a onClick={() => this.setState({ openShareModel: true })} className="hover-on-favorite">
 												<i className='fa fa-share-alt' style={{fontSize:25}}></i>
 												<span style={{padding:'10px'}}>Share</span>
 											</a>
-										</div> 
+										</div>
+										
+										{this.state.openShareModel ? <div>
+											<Modal open={this.state.openShareModel} onClose={this.onCloseFirstModal}>
+											<ShareUrl />
+											</Modal>
+										</div> : ''}
 										<div className="deliy-free">
 											<span>this product includes free UK delivery</span>
 										</div>

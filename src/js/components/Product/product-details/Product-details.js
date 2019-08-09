@@ -12,9 +12,11 @@ import { connect } from 'react-redux';
 import * as actions from '../../../redux/actions/index';
 import Spinner from '../../Spinner/Spinner2';
 import ProductInformation from './product-info/product-info';
+import ProductReview from '../product-details/product-info/product-sizeGuide';
 
 import { trackF, initializeF } from '../../utility/facebookPixel';
 import { live } from '../../../api/globals';
+import ProductRecentlyViewed from '../product-details/product-info/product-color';
 
 
 class ProductDetails extends Component {
@@ -144,6 +146,15 @@ class ProductDetails extends Component {
 							</div>
 						</div>
 						: ''}
+						{/* You may also like */}
+						<ProductSlider currency={this.props.productDetails.currency} store_name={this.props.globals.store_locale} similar_product={this.props.productDetails.similar_products} />
+					
+						{/* Product Review */}
+
+						<ProductReview />
+
+						{/* recentely Viewed */}
+						<ProductRecentlyViewed productColor={data} />
 					</div>
 				</div>
 			</div>

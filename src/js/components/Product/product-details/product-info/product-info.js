@@ -152,7 +152,7 @@ class ProductInformation extends Component {
 					</div>
 				</div>
 			 */}
-			 	{type == 'Product Information' ? <div>
+			 	{type == 'Product Information' ? <div style={{marginBottom: '5rem'}}>
 				 	<p className="detail-info">{type}</p>
 					<p className="detail-info">Product code: 148138 </p>
 
@@ -162,7 +162,7 @@ class ProductInformation extends Component {
 
 					<p className="detail-info">Features and benefits for elc wooden shopping trolley </p>
 				 </div> : type == 'Delivery options' ?
-				 <div>
+				 <div style={{marginBottom: '5rem'}}>
 					<p className="detail-info">{type}</p>
 					<p className="detail-info">Product code: 148138 </p>
 
@@ -172,7 +172,7 @@ class ProductInformation extends Component {
 
 					<p className="detail-info">Features and benefits for elc wooden shopping trolley </p>
 				</div> : type == 'Questions' ?
-				<div>
+				<div style={{marginBottom: '5rem'}}>
 					<p className="detail-info">{type}</p>
 					<p className="detail-info">Product code: 148138 </p>
 
