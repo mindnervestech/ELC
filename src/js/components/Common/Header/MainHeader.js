@@ -28,6 +28,7 @@ class MainHeader extends Component {
         this.state = {
             showCountries: false,
             country_flag: '',
+            country_name: 'UINTED KINGDOM',
             showCart: false,
             cartItemCount: 3
         }
@@ -54,7 +55,7 @@ class MainHeader extends Component {
 
 
         let country = (cookie.load('country') === null) ? 'KSA' : cookie.load('country');
-        this.setState({ country_flag: this.getFlagName(country) });
+        this.setState({ country_flag: this.getFlagName(country) , country_name: "UNITED KINGDOM"} );
         this.getStore();
         this.props.onGetStoreList({
             country_id: '',
@@ -118,9 +119,9 @@ class MainHeader extends Component {
         this.props.handleLanguageSelection(lang, dir);
     }
 
-    onChangeCountry = (country) => {
+    onChangeCountry = (country, countryName) => {
         this.props.handleCountrySelection(country);
-        this.setState({ country_flag: this.getFlagName(country) });
+        this.setState({ country_flag: this.getFlagName(country), country_name: countryName });
         // console.log('onChangeCountry', this.state.country_flag);
         this.showCountries();
         this.closeHBMenu();
@@ -226,6 +227,33 @@ class MainHeader extends Component {
                                     <li style={{height:40}}>
                                         <Button className="secondButton text-color">Early Learning Center</Button>
                                     </li>
+                                    { <li>
+                                        <div className="changecountry">
+                                            <div className="country">
+                                                <div className={this.state.showCountries ? "activeCountry open" : "activeCountry"}>
+                                                    <i className={`flag ${this.state.country_flag}`} onClick={this.showCountries}>  </i>
+                                                    <label className="text-color">&nbsp;{this.state.country_name} </label>
+                                                    <span className="selected">
+                                                        <FormattedMessage id="header.defaultCountry" defaultMessage="Select Your Country" />
+
+                                                    </span>
+                                                    <i className="icon-down" onClick={this.showCountries}></i>
+                                                </div>
+                                                <ul className="list">
+                                                    <li><a href="javascript:void(0);" className="ksa" id="cart" onClick={() => this.onChangeCountry('UAE','UNITED ARAB EMIRATES')}><FormattedMessage id="header.uaes" defaultMessage="UAE" /></a></li>
+                                                    <li><a href="javascript:void(0);" className="ksa" id="cart" onClick={() => this.onChangeCountry('UAE','HUNGARY')}><FormattedMessage id="header.hungary" defaultMessage="KSA" /></a></li>
+                                                    <li><a href="javascript:void(0);" className="ksa" id="cart" onClick={() => this.onChangeCountry('UAE','NETHERLANDS')}><FormattedMessage id="header.netherlands" defaultMessage="KSA" /></a></li>
+                                                    <li><a href="javascript:void(0);" className="ksa" id="cart" onClick={() => this.onChangeCountry('UAE','SLOVENIA')}><FormattedMessage id="header.slovenia" defaultMessage="KSA" /></a></li>
+                                                    <li><a href="javascript:void(0);" className="usd" id="cart" onClick={() => this.onChangeCountry('International','UNITED KINGDOM')}><FormattedMessage id="header.uk" defaultMessage="International" /></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    // <li className="ll" style={{padding:0}}>
+                                    //     <div className="lang">
+                                    //         <a href="javascript:void(0);" onClick={(e) => this.translate('en', 'ltr')} className="active" >en</a> | <a href="javascript:void(0);" onClick={(e) => this.translate('ar', 'rtl')} >العربية</a></div>
+                                    // </li> }
+                                    }
                                     {/* <li><Link to={`/${store_locale}/amirah-club`}>
                                         <FormattedMessage id="header.clubName" defaultMessage="THE BODY SHOP" />
                                     </Link></li> */}

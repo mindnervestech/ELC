@@ -1860,7 +1860,7 @@ html[dir="rtl"] .header .changecountry .country .list {
 
 .header .changecountry .country .list a {
     display: block;
-    border-bottom: 1px dotted #e3e3e3;
+   /* border-bottom: 1px dotted #e3e3e3; */
     color: #000;
     transition: color .5s;
     margin: 0px;

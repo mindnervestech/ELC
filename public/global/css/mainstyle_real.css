@@ -1843,7 +1843,7 @@ html[dir="rtl"] .header .changecountry .country .list {
 
 .header .changecountry .country .list a {
     display: block;
-    border-bottom: 1px dotted #e3e3e3;
+   /* border-bottom: 1px dotted #e3e3e3; */
     color: #000;
     transition: color .5s;
     margin: 0px;
@@ -1891,8 +1891,8 @@ html[dir="rtl"] .header .changecountry .country .list a:before {
 @media only screen and (min-width: 1280px) {
     .header .changecountry .country .list a:before {
         background-image: url(https://storage.googleapis.com/nay/icons/flag-desktop.f6e5cc51.png.png);
-        width: 35px;
-        height: 23px;
+        width: 18px;
+        height: 12px;
         background-position: 0% -23px
     }
 }
