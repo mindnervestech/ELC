@@ -39,7 +39,7 @@ class Breadcrumb extends Component {
 			>
 				<div className="t-BreadcrumbRegion-body">
 					<div className="t-BreadcrumbRegion-breadcrumb">
-						<ol itemScope="" itemType="http://schema.org/BreadcrumbList" className="t-Breadcrumb ">
+						<ol itemScope="" itemType="http://schema.org/BreadcrumbList" className="t-Breadcrumb olStyle">
 							<li
 								itemProp="itemListElement"
 								itemScope=""
@@ -51,11 +51,12 @@ class Breadcrumb extends Component {
 										itemProp="item"
 										className="t-Breadcrumb-label"
 									>
-										<span itemProp="name"><FormattedMessage id="Cart.OnlineShopping.Title" defaultMessage="Online Shopping" /></span>
+										<span itemProp="name"><FormattedMessage id="Cart.Home" defaultMessage="Home" /></span>
 									</a>
 								</Link>
 								<meta itemProp="position" content="1" />
 							</li>
+							
 
 							{subCat ? (
 								<li
@@ -65,7 +66,7 @@ class Breadcrumb extends Component {
 									className="t-Breadcrumb-item"
 								>
 									<Link to={`/${this.props.globals.store_locale}/products/` + this._capitalize(mainCat[0])}>
-										<a itemProp="item" className="t-Breadcrumb-label">
+										<a itemProp="item" className="t-Breadcrumb-label ">
 											<span itemProp="name">{this._capitalize(mainCat[0])}</span>
 										</a>
 									</Link>
@@ -73,13 +74,13 @@ class Breadcrumb extends Component {
 								</li>
 							) : null}
 
-							<li className="t-Breadcrumb-item is-active">
+							<li className="t-Breadcrumb-item is-active activeStyle">
 							{ !showAlt &&
 
-								<h1 className="t-Breadcrumb-label cbread">{subCat ? subCat : mainCat[0]}</h1>
+								<p className="t-Breadcrumb-label cbread " style={{fontSize: "small"}}>{subCat ? subCat : mainCat[0]}</p>
 							}{
 								showAlt &&
-								<h1 className="t-Breadcrumb-label cbread"><FormattedMessage id={translationDataId} defaultMessage={defaultMessage} /></h1>
+								<p className="t-Breadcrumb-label cbread" style={{fontSize: "small"}}><FormattedMessage id={translationDataId} defaultMessage={defaultMessage} /></p>
 							}
 							</li>
 						</ol>

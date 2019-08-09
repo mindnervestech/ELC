@@ -5765,3 +5765,12 @@ html[dir="rtl"] .t-Report-report tr .t-Report-cell:last-child, .t-Report-report 
     color: #000;
     font-size: 1.5rem;
 }
+
+.olStyle{
+  vertical-align: unset !important;
+}
+.activeStyle{
+  display: inline-block !important;
+  font-size: 0 !important;
+  line-height: 1 !important;
+}

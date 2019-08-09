@@ -43,7 +43,7 @@ html[dir="rtl"] .intl-tel-input.iti-container {
     z-index: 1060;
     padding: 1px;
     width: auto;
-    right:0;
+    right: 0;
 }
 
 html[dir="rtl"] .intl-tel-input .country-list {
@@ -129,8 +129,8 @@ html[dir="rtl"] .intl-tel-input .country-list {
 
 @media only screen and (max-width: 1199px) and (min-width: 768px) {
     .intl-tel-input {
-    width: auto !important;
-}
+        width: auto !important;
+    }
 }
 
 .intl-tel-input {
@@ -151,7 +151,9 @@ html[dir="rtl"] .intl-tel-input .country-list {
     visibility: hidden
 }
 
-.intl-tel-input input,.intl-tel-input input[type=text],.intl-tel-input input[type=tel] {
+.intl-tel-input input,
+.intl-tel-input input[type=text],
+.intl-tel-input input[type=tel] {
     position: relative;
     z-index: 0;
     margin-top: 0 !important;
@@ -207,7 +209,7 @@ html[dir="rtl"] .intl-tel-input .country-list {
     text-align: left;
     padding: 0;
     margin: 0 0 0 -1px;
-    box-shadow: 1px 1px 4px rgba(0,0,0,0.2);
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
     background-color: white;
     border: 1px solid #CCC;
     white-space: nowrap;
@@ -227,7 +229,7 @@ html[dir="rtl"] .intl-tel-input .country-list {
 
 @media (max-width: 500px) {
     .intl-tel-input .country-list {
-        white-space:normal
+        white-space: normal
     }
 }
 
@@ -246,18 +248,23 @@ html[dir="rtl"] .intl-tel-input .country-list {
 }
 
 .intl-tel-input .country-list .country.highlight {
-    background-color: rgba(0,0,0,0.05)
+    background-color: rgba(0, 0, 0, 0.05)
 }
 
-.intl-tel-input .country-list .flag-box,.intl-tel-input .country-list .country-name,.intl-tel-input .country-list .dial-code {
+.intl-tel-input .country-list .flag-box,
+.intl-tel-input .country-list .country-name,
+.intl-tel-input .country-list .dial-code {
     vertical-align: middle
 }
 
-.intl-tel-input .country-list .flag-box,.intl-tel-input .country-list .country-name {
+.intl-tel-input .country-list .flag-box,
+.intl-tel-input .country-list .country-name {
     margin-right: 6px
 }
 
-.intl-tel-input.allow-dropdown input,.intl-tel-input.allow-dropdown input[type=text],.intl-tel-input.allow-dropdown input[type=tel] {
+.intl-tel-input.allow-dropdown input,
+.intl-tel-input.allow-dropdown input[type=text],
+.intl-tel-input.allow-dropdown input[type=tel] {
     padding-right: 6px;
     padding-left: 52px;
     margin-left: 0
@@ -277,19 +284,21 @@ html[dir="rtl"] .intl-tel-input .country-list {
 }
 
 .intl-tel-input.allow-dropdown .flag-container:hover .selected-flag {
-    background-color: rgba(0,0,0,0.05)
+    background-color: rgba(0, 0, 0, 0.05)
 }
 
-.intl-tel-input.allow-dropdown input[disabled]+.flag-container:hover,.intl-tel-input.allow-dropdown input[readonly]+.flag-container:hover {
+.intl-tel-input.allow-dropdown input[disabled]+.flag-container:hover,
+.intl-tel-input.allow-dropdown input[readonly]+.flag-container:hover {
     cursor: default
 }
 
-.intl-tel-input.allow-dropdown input[disabled]+.flag-container:hover .selected-flag,.intl-tel-input.allow-dropdown input[readonly]+.flag-container:hover .selected-flag {
+.intl-tel-input.allow-dropdown input[disabled]+.flag-container:hover .selected-flag,
+.intl-tel-input.allow-dropdown input[readonly]+.flag-container:hover .selected-flag {
     background-color: transparent
 }
 
 .intl-tel-input.allow-dropdown.separate-dial-code .selected-flag {
-    background-color: rgba(0,0,0,0.05);
+    background-color: rgba(0, 0, 0, 0.05);
     display: table
 }
 
@@ -299,7 +308,9 @@ html[dir="rtl"] .intl-tel-input .country-list {
     padding-left: 28px
 }
 
-.intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-2 input,.intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-2 input[type=text],.intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-2 input[type=tel] {
+.intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-2 input,
+.intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-2 input[type=text],
+.intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-2 input[type=tel] {
     padding-left: 76px
 }
 
@@ -307,7 +318,9 @@ html[dir="rtl"] .intl-tel-input .country-list {
     width: 70px
 }
 
-.intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-3 input,.intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-3 input[type=text],.intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-3 input[type=tel] {
+.intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-3 input,
+.intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-3 input[type=text],
+.intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-3 input[type=tel] {
     padding-left: 84px
 }
 
@@ -315,7 +328,9 @@ html[dir="rtl"] .intl-tel-input .country-list {
     width: 78px
 }
 
-.intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-4 input,.intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-4 input[type=text],.intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-4 input[type=tel] {
+.intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-4 input,
+.intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-4 input[type=text],
+.intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-4 input[type=tel] {
     padding-left: 92px
 }
 
@@ -323,7 +338,9 @@ html[dir="rtl"] .intl-tel-input .country-list {
     width: 86px
 }
 
-.intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-5 input,.intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-5 input[type=text],.intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-5 input[type=tel] {
+.intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-5 input,
+.intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-5 input[type=text],
+.intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-5 input[type=tel] {
     padding-left: 100px
 }
 
@@ -389,9 +406,14 @@ html[dir="rtl"] .intl-tel-input .country-list {
     width: 15px
 }
 
-@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+@media only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (min--moz-device-pixel-ratio: 2),
+only screen and (-o-min-device-pixel-ratio: 2 / 1),
+only screen and (min-device-pixel-ratio: 2),
+only screen and (min-resolution: 192dpi),
+only screen and (min-resolution: 2dppx) {
     .iti-flag {
-        background-size:5652px 15px
+        background-size: 5652px 15px
     }
 }
 
@@ -1690,9 +1712,14 @@ html[dir="rtl"] .intl-tel-input .country-list {
     background-position: 20px 0
 }
 
-@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+@media only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (min--moz-device-pixel-ratio: 2),
+only screen and (-o-min-device-pixel-ratio: 2 / 1),
+only screen and (min-device-pixel-ratio: 2),
+only screen and (min-resolution: 192dpi),
+only screen and (min-resolution: 2dppx) {
     .iti-flag {
-        background-image:url("https://storage.googleapis.com/nay/icons/flags%402x.png")
+        background-image: url("https://storage.googleapis.com/nay/icons/flags%402x.png")
     }
 }
 
@@ -1710,4 +1737,500 @@ html[dir="rtl"] .intl-tel-input .country-list {
 
 .hide {
     display: none;
+}
+
+
+/* //my csss\\\ */
+
+.button1 {
+    max-height: 40px !important;
+    background: #0D943F;
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    width: fit-content;
+    border-radius: 0px;
+    margin: 0px;
+    padding: 10px 40px 10px 40px;
+    cursor: pointer;
+}
+
+.button1:hover {
+    background: #20b579;
+}
+
+.button1:active {
+    background: #1f784d;
+}
+
+
+
+/* //pending padding apply on last size */
+
+.button2 {
+    cursor: pointer;
+    max-height: 40px !important;
+    background: #ee0e19;
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    width: fit-content;
+    border-radius: 0px;
+    margin: 0px;
+    padding: 10px 40px 10px 40px;
+}
+
+.button2:hover {
+    background: #f55f56;
+}
+
+.button2:active {
+    background: #cd2d23;
+}
+
+/* button type 2 */
+.button3 {
+    cursor: pointer;
+    max-height: 40px !important;
+    background: #0d943f;
+    text-decoration: none;
+    color: white;
+    margin: 0 auto;
+    border: 0;
+    text-align: center;
+    width: 80%;
+    text-align: center;
+    border-radius: 0;
+    justify-content: center;
+    padding: 5px 30px 5px 30px;
+    border: 0 !important;
+}
+
+.faceBookButton {
+    cursor: pointer;
+    max-height: 30px !important;
+    background: #2d7bb2;
+    text-decoration: none;
+    color: white;
+    margin: 0 auto;
+    text-align: center;
+    width: 80%;
+    text-align: center;
+    border-radius: 5px;
+    justify-content: center;
+    padding: 5px 30px 5px 30px;
+}
+
+.googleButton {
+    cursor: pointer;
+    max-height: 30px !important;
+    background: #dd5152;
+    text-decoration: none;
+    color: white;
+    margin: 0 auto;
+    text-align: center;
+    width: 80%;
+    text-align: center;
+    border-radius: 5px;
+    justify-content: center;
+    padding: 5px 30px 5px 30px;
+}
+
+
+.button4 {
+    max-height: 40px !important;
+    background: #ffffff;
+    text-decoration: none;
+    color: #0d943f;
+    text-align: center;
+    width: 100%;
+    border-radius: 0px;
+    margin: 0px;
+    padding: 10px 30px 10px 30px;
+    cursor: pointer;
+    border: 1px solid;
+    -webkit-text-stroke-width: 1px;
+}
+
+
+/* strock query in button 4 */
+
+.button5 {
+    max-height: 40px !important;
+    background: #20b579;
+    text-decoration: none;
+    color: #ffffff;
+    text-align: center;
+    width: fit-content;
+    border-radius: 0px;
+    margin: 0px;
+    padding: 10px 30px 10px 30px;
+    cursor: pointer;
+}
+
+.button5:hover {
+    background: #22d68e;
+}
+
+.button-add-to-basket {
+    max-height: 40px !important;
+    background: #ee0e19;
+    text-decoration: none;
+    color: #ffffff;
+    text-align: center;
+    width: 154px;
+    border-radius: 0px;
+    margin: 0px;
+    padding: 10px 0px 10px 0px;
+    cursor: pointer;
+}
+
+.button-add-to-basket:active {
+    background: #cd2d23;
+}
+
+
+.button-pre-order {
+    max-height: 40px !important;
+    background: #20b579;
+    text-decoration: none;
+    color: #ffffff;
+    text-align: center;
+    width: 154px;
+    border-radius: 0px;
+    margin: 0px;
+    padding: 10px 0px 10px 0px;
+    cursor: pointer;
+}
+
+.button-pre-order:active {
+    background: #169662;
+}
+
+input[type=text] {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 15px 12px 15px;
+    margin: 0px;
+    color: #999999;
+    border: 1px solid #999999;
+}
+
+input:focus {
+    border: 1px solid #1f784d;
+}
+
+input[type=email] {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 15px 12px 15px;
+    margin: 0px;
+    color: #999999;
+    border: 1px solid #999999;
+}
+
+input[type=password] {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 15px 12px 15px;
+    margin: 0px;
+    color: #999999;
+    border: 1px solid #999999;
+}
+
+input:focus {
+    border: 1px solid #1f784d;
+}
+
+
+
+/* error message should be check */
+.error {
+    border: 1px solid #e20035;
+}
+
+
+/* SELECT bOX */
+.countSelect {
+    display: inline-block;
+    padding: 12px 22px 29px 14px;
+    border: 1px solid #999999;
+    max-height: 40px;
+    color: black;
+    max-width: 40px;
+}
+
+.incrementButton {
+    display: inline-block;
+    font-size: x-large;
+    padding: 0px 10px 0px 0px;
+}
+
+.incrementButton:hover {
+    color: #0d943f;
+    cursor: pointer;
+    cursor: hand
+}
+
+.decrementButton {
+    display: inline-block;
+    font-size: x-large;
+    padding: 0px 0px 0px 10px;
+}
+
+.decrementButton:hover {
+    color: #0d943f;
+    cursor: pointer;
+    cursor: hand
+}
+
+textarea {
+    width: 100%;
+    height: 150px;
+    box-sizing: border-box;
+    border: 1px solid #999999;
+    border-radius: 0;
+    background-color: #ffff;
+    font-size: 16px;
+    padding: 0px 15px 0px 15px;
+}
+
+textarea .error {
+    border: 1px solid #e20035;
+}
+
+.paddingBottom20 {
+    padding-bottom: 20px;
+}
+
+/* Check Box */
+
+/* The container */
+.checkBox {
+    display: block;
+    position: relative;
+    padding-left: 40px;
+    margin-bottom: 12px;
+    background: #fff;
+    cursor: pointer;
+    font-size: 13px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.checkBox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 21px;
+    width: 21px;
+    background-color: #fff;
+    border: 1px solid #333;
+}
+
+/* On mouse-over, add a grey background color 
+  .container:hover input ~ .checkmark {
+    background-color: #333
+  }
+  */
+.checkBox input:checked~.checkmark {
+    background-color: #fff;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    /* backgroud-color : #333; */
+}
+
+/* Show the checkmark when checked */
+.checkBox input:checked~.checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.checkBox .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid #34a55e;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.promoText {
+    font-size: 11px;
+
+    width: fit-content;
+
+    font-style: oblique;
+    border-radius: 17px;
+    font-weight: bold;
+    padding: 0px 9px 0px 9px;
+}
+
+.green {
+    color: #53a940;
+    border: 1px solid #53a940;
+}
+
+.pink {
+    border: 1px solid #e71294;
+    color: #e71294;
+}
+
+/* .promoTextPink{
+    font-size: 11px;
+    border: 1px solid #e71294;
+    width: fit-content;
+    color: #e71294;
+    font-style: oblique;
+    border-radius: 17px;
+    font-weight: bold;
+    padding: 0px 9px 0px 9px;
+  } */
+
+/* arrow */
+
+.arrows {
+    width: 33px;
+    height: 33px;
+    border-color: #0d943f;
+    color: #0d943f;
+    position: absolute;
+    top: 50%;
+    margin-top: -31px;
+}
+
+.arrows:hover {
+    border-color: #20b579;
+}
+
+.prev {
+    border-bottom: 6px solid;
+    border-left: 6px solid;
+    transform: rotate(45deg);
+    left: 10px;
+}
+
+.next {
+    border-bottom: 6px solid;
+    border-left: 6px solid;
+    transform: rotate(-135deg);
+    right: 10px;
+
+}
+
+.padding {
+    padding: 0px 0px 20px 0px !important;
+    background: #ffffff;
+}
+
+.rmPadding {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.rmTopPadding {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.sideBarHidden {
+    overflow: hidden !important;
+}
+
+.right {
+    float: right;
+}
+
+.pad30 {
+    padding-bottom: 30px;
+}
+
+.backWhite {
+    background: #ffffff;
+}
+
+/* custom select */
+
+/* .dropdown-menu{
+    border: 1px solid #999999;
+} */
+
+.contents {
+    display: contents !important;
+}
+
+.block {
+    display: block !important;
+}
+
+.dropdownBox {
+    border-radius: 0 !important;
+    max-height: 40px !important;
+    height: 40px !important;
+    font-size: 13px !important;
+}
+
+select:focus {
+    border: 1px solid #0D943F !important;
+}
+
+.bolt {
+    font-weight: bold;
+}
+
+.rmLeftPad {
+    padding-left: 0px !important;
+}
+
+.instructionCss {
+    background: #fff;
+
+    color: #999999;
+    font-size: small;
+}
+
+.pad {
+    padding-bottom: 3%;
+}
+
+.padBot {
+    padding-bottom: 2%;
+}
+
+.bot-bottom {
+    border-bottom: 1px solid #999999 !important;
+}
+
+.padTop20 {
+    padding-top: 6%;
+}
+
+.liFont {
+    font-size: 13px;
+}
+
+.overFlowVisible {
+    overflow: visible !important;
+}
+
+.green {
+    background: #23943f !important;
 }

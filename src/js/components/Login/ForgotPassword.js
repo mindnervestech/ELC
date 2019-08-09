@@ -165,13 +165,13 @@ class ForGotPassword extends Component {
         closeBox={this.closeErrorBox} />
     }
     const errorMessage = this.state.errors;
-    let emailInputField = <div className="t-Form-inputContainer"><div className="t-Form-itemWrapper">
+    let emailInputField = <div><div>
       <FormattedMessage id="ContactUs.Email" defaultMessage="Email Address">
         {(message) =>
-          <input type="email" id="P1003_EMAIL_ADDRESS" name="P1003_EMAIL_ADDRESS" placeholder={message} className="text_field apex-item-text apex-item-has-icon" size={30} onChange={this.handleChange.bind(this, "email")} value={this.state.fields["email"]} />
+          <input type="email" id="P1003_EMAIL_ADDRESS" name="P1003_EMAIL_ADDRESS" placeholder={message} size={30} onChange={this.handleChange.bind(this, "email")} value={this.state.fields["email"]} />
         }
       </FormattedMessage>
-      <span className="apex-item-icon fa fa-envelope" aria-hidden="true" /></div>
+    </div>
       <span id="P1003_EMAIL_ADDRESS_error_placeholder" className="a-Form-error" data-template-id="33610259035469734_ET" /></div>;
 
     let contactNumberInputField = null;
@@ -180,14 +180,14 @@ class ForGotPassword extends Component {
 
     if ('email' in errorMessage) {
 
-      emailInputField = <div className="t-Form-inputContainer"><div className="t-Form-itemWrapper">
+      emailInputField = <div ><div>
         <FormattedMessage id="ContactUs.Email" defaultMessage="Email Address">
           {(message) =>
-            <input type="email" id="P1001_EMAIL" name="P1001_EMAIL" placeholder={message} className="text_field apex-item-text apex-item-has-icon apex-page-item-error" onChange={this.handleChange.bind(this, "email")} value={this.state.fields["email"]} size="30" maxLength="100" aria-describedby="P1001_EMAIL_error" aria-invalid="true" />
+            <input type="email" id="P1001_EMAIL" name="P1001_EMAIL" placeholder={message} onChange={this.handleChange.bind(this, "email")} value={this.state.fields["email"]} size="30" maxLength="100" aria-describedby="P1001_EMAIL_error" aria-invalid="true" />
 
           }
         </FormattedMessage>
-        <span className="apex-item-icon fa fa-envelope" aria-hidden="true"></span></div><span id="P1003_EMAIL_ADDRESS_error_placeholder" className="a-Form-error  u-visible" data-template-id="33610259035469734_ET"><span class="t-Form-error"><div id="P1003_EMAIL_ADDRESS_error"><FormattedMessage id="Signup.validation.email.invalid" defaultMessage="First Name cannot be empty" /></div></span></span></div>;
+      </div><span id="P1003_EMAIL_ADDRESS_error_placeholder" className="a-Form-error  u-visible" data-template-id="33610259035469734_ET"><span class="t-Form-error"><div id="P1003_EMAIL_ADDRESS_error"><FormattedMessage id="Signup.validation.email.invalid" defaultMessage="First Name cannot be empty" /></div></span></span></div>;
 
     }
 
@@ -202,7 +202,7 @@ class ForGotPassword extends Component {
         <input type="hidden" name="p_flow_id" defaultValue={2019} id="pFlowId" /><input type="hidden" name="p_flow_step_id" defaultValue={1003} id="pFlowStepId" /><input type="hidden" name="p_instance" defaultValue={3946100354967} id="pInstance" /><input type="hidden" name="p_page_submission_id" defaultValue={239666045373963093780204993976312533120} id="pPageSubmissionId" /><input type="hidden" name="p_request" id="pRequest" /><input type="hidden" name="p_reload_on_submit" defaultValue="S" id="pReloadOnSubmit" /><input type="hidden" defaultValue={239666045373963093780204993976312533120} id="pSalt" /><div className="t-Dialog" role="dialog" aria-label="Password Reset">
           <div className="t-Dialog-header" />
           <div className="t-Dialog-bodyWrapperOut">
-            <div className="t-Dialog-bodyWrapperIn"><div className="t-Dialog-body">
+            <div className="t-Dialog-bodyWrapperIn"><div className="t-Dialog-body backWhite">
               <span id="APEX_SUCCESS_MESSAGE" data-template-id="33515671899469661_S" className="apex-page-success u-hidden" /><span id="APEX_ERROR_MESSAGE" data-template-id="33515671899469661_E" className="apex-page-error u-hidden" />
               <div className="container" >
                 <div className="row">
@@ -215,7 +215,7 @@ class ForGotPassword extends Component {
                         </div>
                         <div className="t-Region-headerItems t-Region-headerItems--buttons"><span className="js-maximizeButtonContainer" /></div>
                       </div>
-                      <div className="t-Region-bodyWrap">
+                      <div className="t-Region-bodyWrap backWhite">
                         <div className="t-Region-buttons t-Region-buttons--top">
                           <div className="t-Region-buttons-left" />
                           <div className="t-Region-buttons-right" />
@@ -224,39 +224,46 @@ class ForGotPassword extends Component {
                           <div className="container">
                             <div className="row">
                               <div className="col col-12 apex-col-auto">
-                                <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel is-required apex-item-wrapper apex-item-wrapper--text-field apex-item-wrapper--has-icon js-show-label" id="P1003_EMAIL_ADDRESS_CONTAINER"><div className="t-Form-labelContainer">
-                                  <label htmlFor="P1003_EMAIL_ADDRESS" id="P1003_EMAIL_ADDRESS_LABEL" className="t-Form-label"><FormattedMessage id="Form.Email" defaultMessage="Email" /><span className="u-VisuallyHidden">(Value Required)</span></label>
-                                </div>
-
-                                  {emailInputField}
-
+                                <div className="row block" id="P1003_EMAIL_ADDRESS_CONTAINER">
+                                  <div className="t-Form-labelContainer">
+                                    <label htmlFor="P1003_EMAIL_ADDRESS" id="P1003_EMAIL_ADDRESS_LABEL" className="t-Form-label">
+                                      <FormattedMessage id="Form.Email" defaultMessage="Email" />
+                                      <span className="u-VisuallyHidden">(Value Required)</span></label>
+                                  </div>
+                                  <div className="row contents">
+                                    {emailInputField}
+                                  </div>
                                 </div>
                               </div>
                             </div>
 
                             <div className="row">
                               <div className="col col-12 apex-col-auto">
-                                <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel margin-bottom-lg apex-item-wrapper" id="P1003_PHONE_CONTAINER">
+                                <div className="row block" id="P1003_PHONE_CONTAINER">
+                                  {/* <div >
+                                    <label htmlFor="P1003_PHONE" id="P1003_PHONE_LABEL" className="t-Form-label">
+                                      <FormattedMessage id="Form.Phone" defaultMessage="Phone Number" />
+                                      <span className="u-VisuallyHidden">(Value Required)</span></label>
 
-                                  <div className="t-Form-labelContainer">
-                                    <label htmlFor="P1003_PHONE" id="P1003_PHONE_LABEL" className="t-Form-label" />
+
+
+
+                                    <div className="row contents">
+                                      <PhoneNumber changed={this.contactNumber} />
+                                      {contactNumberInputField}
+                                    </div>
                                   </div>
-
-
-
-                                  <PhoneNumber changed={this.contactNumber} />
-                                  {contactNumberInputField}
-
-
+                                */}
                                 </div>
 
                               </div>
 
                             </div>
-                            <div className="row">
+
+                            <div className="row padTop20">
                               <div className="col col-12">
 
-                                <button onClick={this.signUpSubmit} className="t-Button t-Button--hot t-Button--stretch" type="button" id="B29665481101883473"><span className="t-Button-label"><FormattedMessage id="Form.Send" defaultMessage="Send" /></span></button>
+                                <button onClick={this.signUpSubmit} className="button3" type="button" id="B29665481101883473"><span className="t-Button-label"><FormattedMessage id="Form.Send" defaultMessage="Send" /></span></button>
 
                                 <input type="hidden" id="P1003_TIME_CHECK" name="P1003_TIME_CHECK" /><input type="hidden" data-for="P1003_TIME_CHECK" defaultValue="VV6vUFJ6aze616Fc52zoGghCgvqIcdqu8W4pO4K7v-IzcYs8bdYxniLX61inY2s3Uuj3p0GeS0Z9wGHKrMQodg" /><input type="hidden" id="P1003_TIME" name="P1003_TIME" />
                               </div>

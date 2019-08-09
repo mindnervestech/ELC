@@ -5,9 +5,12 @@ import { FormattedMessage } from 'react-intl';
 import PhoneNumber from './IntlTelePhone';
 
 import AlertBox from '../Common/AlertBox/AlertBox';
-
 import { connect } from 'react-redux';
 import * as actions from '.././../redux/actions/index';
+import { Dropdown } from "react-bootstrap";
+import { DropdownButton } from 'react-bootstrap';
+
+
 
 class SignUp extends Component {
 
@@ -22,7 +25,8 @@ class SignUp extends Component {
         contactNumber: '',
         carrierCode: '',
         password: '',
-        confirmPassword: ''
+        confirmPassword: '',
+        title: '',
       },
       errors: {},
       isPhoneValid: false,
@@ -33,6 +37,7 @@ class SignUp extends Component {
       }
 
     }
+
     //console.log('signup Mounted',this.state.token, props);
   }
 
@@ -73,6 +78,7 @@ class SignUp extends Component {
 
   handleValidation = () => {
     let fields = this.state.fields;
+    console.log("comehere");
     let errors = {};
     let formIsValid = true;
 
@@ -119,12 +125,12 @@ class SignUp extends Component {
       }
     }
 
-    if (!(this.state.isPhoneValid)) {
+    // if (!(this.state.isPhoneValid)) {
 
-      formIsValid = false;
-      errors["contactNumber"] = <FormattedMessage id="Signup.validation.contactNumber.empty" defaultMessage="Eneter Valid Contact Number" />;
+    //   formIsValid = false;
+    //   errors["contactNumber"] = <FormattedMessage id="Signup.validation.contactNumber.empty" defaultMessage="Eneter Valid Contact Number" />;
 
-    }
+    // }
 
     //Password
     if (typeof fields["password"] !== "undefined") {
@@ -153,32 +159,37 @@ class SignUp extends Component {
   }
 
   signUpSubmit = (e) => {
-    //console.log('::', this.state)
+    console.log('::', this.state);
+    console.log('::', e);
     e.preventDefault();
-    if (this.handleValidation()) {
+    this.registerUser();
+    if (!this.handleValidation()) {
       //console.log('::', this.state)
-      this.registerUser();
+
     }
   }
 
   handleChange = (field, e) => {
-    //console.log(field, e.target.value);
+    console.log(field, e.target.value);
     let fields = this.state.fields;
     fields[field] = e.target.value;
     this.setState({ fields });
-    //console.log(this.state);
+
+    console.log(this.state.fields);
   }
 
   registerUser = () => {
     const data = {
       firstname: this.state.fields.firstName,
       lastname: this.state.fields.lastName,
-      contact_number: this.state.fields.contactNumber,
+      contact_number: "1234567891",
       email: this.state.fields.email,
-      carrier_code: this.state.fields.carrierCode,
+      carrier_code: "non",
       password: this.state.fields.password,
       confirmpassword: this.state.fields.confirmPassword,
-      store_id: this.props.globals.currentStore
+      store_id: this.props.globals.currentStore,
+      title: this.state.fields.title,
+      quest_quote: "non",
     }
     this.props.onRegisterUserUser(data);
   }
@@ -223,83 +234,118 @@ class SignUp extends Component {
     const store_locale = this.props.store_locale;
     let phoneNumberClassName = null;
 
-    let firstNameInputField = <div className="t-Form-inputContainer"><div className="t-Form-itemWrapper">
+    let titleSelect = <div ><div className="custom-select">
+      {/* <div>  <FormattedMessage id="Form.FirstName" defaultMessage="First Name" /></div> */}
+      <FormattedMessage id="Form.FirstName" defaultMessage="First Name">
+        <select>
+          <option value="0">SelectBox</option>
+        </select>
+
+      </FormattedMessage>
+    </div><span id="P1001_FNAME_error_placeholder" className="a-Form-error" data-template-id="33610259035469734_ET"></span></div>;
+    let titleDropdown = <select value={this.state.value} onChange={this.handleChange.bind(this, "title")} className="dropdownBox form-control">
+      <option value="select">Please Select</option>
+      <option value="First">First</option>
+      <option value="Second">Second</option>
+      <option value="Third">Third</option>
+    </select>
+    let firstNameInputField = <div ><div >
+      {/* <div>  <FormattedMessage id="Form.FirstName" defaultMessage="First Name" /></div> */}
       <FormattedMessage id="Form.FirstName" defaultMessage="First Name">
         {(message) =>
-          <input type="text" placeholder={message} id="P1001_FNAME" name="P1001_FNAME" className="text_field apex-item-text apex-item-has-icon" onChange={this.handleChange.bind(this, "firstName")} value={this.state.fields["firstName"]} size={30} />}
+          <input type="text" required={true} placeholder={message} id="P1001_FNAME" name="P1001_FNAME" onChange={this.handleChange.bind(this, "firstName")} value={this.state.fields["firstName"]} size={30} />}
       </FormattedMessage>
-      <span className="apex-item-icon fa fa-user" aria-hidden="true">
-      </span>
     </div><span id="P1001_FNAME_error_placeholder" className="a-Form-error" data-template-id="33610259035469734_ET"></span></div>;
 
-    let LastNameInputField = <div className="t-Form-inputContainer"><div className="t-Form-itemWrapper">
+    let LastNameInputField = <div ><div >
       <FormattedMessage id="Form.LastName" defaultMessage="Last Name">
         {(message) =>
-          <input type="text" id="P1001_LNAME" name="P1001_LNAME" placeholder={message} className="text_field apex-item-text apex-item-has-icon" onChange={this.handleChange.bind(this, "lastName")} value={this.state.fields["lastName"]} size={30} />}
+          <input type="text" id="P1001_LNAME" name="P1001_LNAME" placeholder={message} onChange={this.handleChange.bind(this, "lastName")} value={this.state.fields["lastName"]} size={30} />}
       </FormattedMessage>
-      <span className="apex-item-icon fa fa-user" aria-hidden="true"></span></div><span id="P1001_LNAME_error_placeholder" className="a-Form-error" data-template-id="33609965712469734_ET"></span></div>;
+    </div></div>
 
-    let emailInputField = <div className="t-Form-inputContainer"><div className="t-Form-itemWrapper">
+    let emailInputField = <div><div>
       <FormattedMessage id="ContactUs.Email" defaultMessage="Email">
         {(message) =>
-          <input type="email" id="P1001_EMAIL" name="P1001_EMAIL" placeholder={message} className="text_field apex-item-text apex-item-has-icon" onChange={this.handleChange.bind(this, "email")} value={this.state.fields["email"]} size={30} />}
+          <input type="email" id="P1001_EMAIL" name="P1001_EMAIL" placeholder={message} onChange={this.handleChange.bind(this, "email")} value={this.state.fields["email"]} size={30} />}
       </FormattedMessage>
-      <span className="apex-item-icon fa fa-envelope" aria-hidden="true"></span></div><span id="P1001_EMAIL_error_placeholder" className="a-Form-error" data-template-id="33610259035469734_ET"></span></div>;
+    </div></div>
+
+
+    let confirmEmailInputField = <div><div>
+      <FormattedMessage id="ContactUs.ConfirmEmail" defaultMessage="Confirm Email">
+        {(message) =>
+          <input type="email" id="P1001_EMAIL" name="P1001_EMAIL" placeholder={message} onChange={this.handleChange.bind(this, "email")} value={this.state.fields["email"]} size={30} />}
+      </FormattedMessage>
+    </div></div>
+
 
     let contactNumberInputField = null;
 
-    let passwordInputField = <div className="t-Form-inputContainer"><div className="t-Form-itemWrapper">
+    let passwordInputField = <div><div>
       <FormattedMessage id="password" defaultMessage="Password">
         {(message) =>
-          <input type="password" name="P1001_PWD" size="30" onChange={this.handleChange.bind(this, "password")} value={this.state.fields["password"]} id="P1001_PWD" placeholder={message} className="password apex-item-text apex-item-has-icon" aria-autocomplete="list" />}
+          <input type="password" name="P1001_PWD" size="30" onChange={this.handleChange.bind(this, "password")} value={this.state.fields["password"]} id="P1001_PWD" placeholder={message} aria-autocomplete="list" />}
       </FormattedMessage>
-      <span className="apex-item-icon fa fa-key" aria-hidden="true"></span></div><span id="P1001_PWD_error_placeholder" className="a-Form-error" data-template-id="33610259035469734_ET"></span></div>;
-
-    let confirmPasswordInputField = <div className="t-Form-inputContainer"><div className="t-Form-itemWrapper">
+    </div></div>
+    let confirmPasswordInputField = <div ><div >
       <FormattedMessage id="profile.Confirm.Password" defaultMessage="Confirm Password">
         {(message) =>
-          <input type="password" name="P1001_RPWD" size="30" onChange={this.handleChange.bind(this, "confirmPassword")} value={this.state.fields["confirmPassword"]} id="P1001_RPWD" placeholder={message} className="password apex-item-text apex-item-has-icon" />}
+          <input type="password" name="P1001_RPWD" size="30" onChange={this.handleChange.bind(this, "confirmPassword")} value={this.state.fields["confirmPassword"]} id="P1001_RPWD" placeholder={message} />}
       </FormattedMessage>
-      <span className="apex-item-icon fa fa-lock-password" aria-hidden="true"></span></div><span id="P1001_RPWD_error_placeholder" className="a-Form-error" data-template-id="33610259035469734_ET"></span></div>;
+    </div><span id="P1001_RPWD_error_placeholder" className="a-Form-error" data-template-id="33610259035469734_ET"></span></div>;
+
 
     if ('firstName' in errorsObj) {
-      firstNameInputField = <div className="t-Form-inputContainer">
-        <div className="t-Form-itemWrapper"><input type="text" id="P1001_FNAME" name="P1001_FNAME" placeholder="First Name" className="text_field apex-item-text apex-item-has-icon apex-page-item-error" onChange={this.handleChange.bind(this, "firstName")} value={this.state.fields["firstName"]} size="30" maxLength="100" aria-describedby="P1001_FNAME_error" aria-invalid="true" />
-          <span className="apex-item-icon fa fa-user" aria-hidden="true"></span></div><span id="P1001_FNAME_error_placeholder" className="a-Form-error u-visible" data-template-id="33609965712469734_ET"><span className="t-Form-error"><div id="P1001_FNAME_error">{errorsObj["firstName"]}</div></span></span></div>
+      firstNameInputField = <div>
+        <div ><input type="text" id="P1001_FNAME" name="P1001_FNAME" placeholder="First Name" onChange={this.handleChange.bind(this, "firstName")} value={this.state.fields["firstName"]} size="30" maxLength="100" aria-describedby="P1001_FNAME_error" aria-invalid="true" />
+        </div><span id="P1001_FNAME_error_placeholder" className="a-Form-error u-visible" data-template-id="33609965712469734_ET"><span className="t-Form-error"><div id="P1001_FNAME_error">{errorsObj["firstName"]}</div></span></span></div>
     }
 
     if ('lastName' in errorsObj) {
-      LastNameInputField = <div className="t-Form-inputContainer"><div className="t-Form-itemWrapper">
-        <input type="text" id="P1001_LNAME" name="P1001_LNAME" placeholder="Last Name" className="text_field apex-item-text apex-item-has-icon apex-page-item-error" onChange={this.handleChange.bind(this, "lastName")} value={this.state.fields["lastName"]} size="30" maxLength="100" aria-describedby="P1001_LNAME_error" aria-invalid="true" /><span className="apex-item-icon fa fa-user" aria-hidden="true"></span></div>
+      LastNameInputField = <div ><div>
+        <input type="text" id="P1001_LNAME" name="P1001_LNAME" placeholder="Last Name" onChange={this.handleChange.bind(this, "lastName")} value={this.state.fields["lastName"]} size="30" maxLength="100" aria-describedby="P1001_LNAME_error" aria-invalid="true" /></div>
         <span id="P1001_FNAME_error_placeholder" className="a-Form-error u-visible" data-template-id="33609965712469734_ET"><span className="t-Form-error"><div id="P1001_FNAME_error">
           {errorsObj["lastName"]}</div></span></span></div>
     }
-
-    if ('contactNumber' in errorsObj) {
-      phoneNumberClassName = "t-Form-inputContainer";
-      contactNumberInputField = <span id="P1001_PHONE_error_placeholder" className="a-Form-error u-visible" data-template-id="33610259035469734_ET"><span className="t-Form-error">
-        <div id="P1001_PHONE_error">{errorsObj["contactNumber"]}</div></span></span>
-
+    if ('email' in errorsObj) {
+      emailInputField = <div><div>
+        <input type="text" id="P1001_EMAIL" name="P1001_EMAIL" placeholder="Email Address" onChange={this.handleChange.bind(this, "email")} value={this.state.fields["email"]} size="30" maxLength="100" aria-describedby="P1001_EMAIL_error" aria-invalid="true" /></div>
+        <span id="P1001_EMAIL_error_placeholder" className="a-Form-error u-visible" data-template-id="33609965712469734_ET"><span className="t-Form-error"><div id="P1001_EMAIL_error">
+          {errorsObj["email"]}</div></span></span></div>
     }
     if ('email' in errorsObj) {
-
-      emailInputField = <div className="t-Form-inputContainer"><div className="t-Form-itemWrapper">
-        <input type="email" id="P1001_EMAIL" name="P1001_EMAIL" placeholder="Email Address" className="text_field apex-item-text apex-item-has-icon apex-page-item-error" onChange={this.handleChange.bind(this, "email")} value={this.state.fields["email"]} size="30" maxLength="100" aria-describedby="P1001_EMAIL_error" aria-invalid="true" />
-        <span className="apex-item-icon fa fa-envelope" aria-hidden="true"></span></div><span id="P1001_EMAIL_error_placeholder" className="a-Form-error  u-visible" data-template-id="33610259035469734_ET"><span className="t-Form-error">
-          <div id="P1001_EMAIL_error">{errorsObj["email"]}</div></span></span></div>;
+      confirmEmailInputField = <div><div>
+        <input type="text" id="P1001_EMAIL" name="P1001_EMAIL" placeholder="Email Address" onChange={this.handleChange.bind(this, "email")} value={this.state.fields["email"]} size="30" maxLength="100" aria-describedby="P1001_EMAIL_error" aria-invalid="true" /></div>
+        <span id="P1001_EMAIL_error_placeholder" className="a-Form-error u-visible" data-template-id="33609965712469734_ET"><span className="t-Form-error"><div id="P1001_EMAIL_error">
+          {errorsObj["email"]}</div></span></span></div>
     }
 
+    // if ('contactNumber' in errorsObj) {
+    //   phoneNumberClassName = "t-Form-inputContainer";
+    //   contactNumberInputField = <span id="P1001_PHONE_error_placeholder" className="a-Form-error u-visible" data-template-id="33610259035469734_ET"><span className="t-Form-error">
+    //     <div id="P1001_PHONE_error">{errorsObj["contactNumber"]}</div></span></span>
+
+    // }
+    // if ('email' in errorsObj) {
+
+    //   emailInputField = <div className="t-Form-inputContainer"><div >
+    //     <input type="email" id="P1001_EMAIL" name="P1001_EMAIL" placeholder="Email Address"  onChange={this.handleChange.bind(this, "email")} value={this.state.fields["email"]} size="30" maxLength="100" aria-describedby="P1001_EMAIL_error" aria-invalid="true" />
+    //     </div><span id="P1001_EMAIL_error_placeholder" className="a-Form-error  u-visible" data-template-id="33610259035469734_ET"><span className="t-Form-error">
+    //       <div id="P1001_EMAIL_error">{errorsObj["email"]}</div></span></span></div>;
+    // }
+
     if ('password' in errorsObj) {
-      passwordInputField = <div className="t-Form-inputContainer"><div className="t-Form-itemWrapper">
-        <input type="password" name="P1001_PWD" size="30" onChange={this.handleChange.bind(this, "password")} value={this.state.fields["password"]} id="P1001_PWD" placeholder="Password" className="password apex-item-text apex-item-has-icon apex-page-item-error" aria-autocomplete="list" aria-describedby="P1001_PWD_error" aria-invalid="true" />
-        <span className="apex-item-icon fa fa-key" aria-hidden="true"></span></div>
+      passwordInputField = <div><div >
+        <input type="password" name="P1001_PWD" size="30" onChange={this.handleChange.bind(this, "password")} value={this.state.fields["password"]} id="P1001_PWD" placeholder="Password" aria-autocomplete="list" aria-describedby="P1001_PWD_error" aria-invalid="true" />
+      </div>
         <span id="P1001_PWD_error_placeholder" className="a-Form-error u-visible" data-template-id="33610259035469734_ET"><span className="t-Form-error"><div id="P1001_PWD_error">{errorsObj["password"]}</div></span></span></div>;
     }
 
     if ('confirmPassword' in errorsObj) {
-      confirmPasswordInputField = <div className="t-Form-inputContainer"><div className="t-Form-itemWrapper">
-        <input type="password" name="P1001_RPWD" size="30" onChange={this.handleChange.bind(this, "confirmPassword")} value={this.state.fields["confirmPassword"]} id="P1001_RPWD" placeholder="Repeat Password" className="password apex-item-text apex-item-has-icon apex-page-item-error" aria-describedby="P1001_RPWD_error" aria-invalid="true" />
-        <span className="apex-item-icon fa fa-lock-password" aria-hidden="true"></span></div>
+      confirmPasswordInputField = <div><div>
+        <input type="password" name="P1001_RPWD" size="30" onChange={this.handleChange.bind(this, "confirmPassword")} value={this.state.fields["confirmPassword"]} id="P1001_RPWD" placeholder="Repeat Password" aria-describedby="P1001_RPWD_error" aria-invalid="true" />
+      </div>
         <span id="P1001_RPWD_error_placeholder" className="a-Form-error u-visible" data-template-id="33610259035469734_ET">
           <span className="t-Form-error"><div id="P1001_RPWD_error">{errorsObj["confirmPassword"]}</div></span></span></div>;
     }
@@ -317,14 +363,14 @@ class SignUp extends Component {
           <input type="hidden" value="137581352146482158347459965137747212594" id="pSalt" />
 
 
-          <div className="t-Dialog" role="dialog" aria-label="Create an Account">
+          <div className="t-Dialog " role="dialog" aria-label="Create an Account">
             <div className="t-Dialog-header"></div>
             <div className="t-Dialog-bodyWrapperOut">
-              <div className="t-Dialog-bodyWrapperIn"><div className="t-Dialog-body">
+              <div className="t-Dialog-bodyWrapperIn overFlowVisible  backWhite"><div className="">
                 <span id="APEX_SUCCESS_MESSAGE" data-template-id="33515671899469661_S" className="apex-page-success u-hidden"></span><span id="APEX_ERROR_MESSAGE" data-template-id="33515671899469661_E" className="apex-page-error u-hidden"></span>
                 <div className="container">
                   <div className="row">
-                    <div className="col col-12 apex-col-auto">
+                    <div className="rmPadding col col-12 apex-col-auto">
                       <div className="t-Region t-Region--removeHeader t-Region--noBorder t-Region--hiddenOverflow" id="R228260076945887528">
                         <div className="t-Region-header">
                           <div className="t-Region-headerItems t-Region-headerItems--title">
@@ -338,32 +384,51 @@ class SignUp extends Component {
                             <div className="t-Region-buttons-left"></div>
                             <div className="t-Region-buttons-right"></div>
                           </div>
-                          <div className="t-Region-body">
-                            <div className="container">
-                              <div className="row">
-                                <div className="col col-12 apex-col-auto">
-                                  <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel is-required apex-item-wrapper apex-item-wrapper--text-field apex-item-wrapper--has-icon js-show-label" id="P1001_FNAME_CONTAINER"><div className="t-Form-labelContainer">
-                                    <label htmlFor="P1001_FNAME" id="P1001_FNAME_LABEL" className="t-Form-label"><FormattedMessage id="Form.FirstName" defaultMessage="First Name" /><span className="u-VisuallyHidden">(Value Required)</span></label>
-                                  </div>
-                                    {firstNameInputField}
-
+                          <div className="">
+                            <div className="">
+                              <div className=" padding row">
+                                <div className="col col-6 rmLeftPad">
+                                  <div className="rmPadding col col-12 apex-col-auto">
+                                    <div className="row block" id="P1001_FNAME_CONTAINER">
+                                      <div className="rmPadding t-Form-labelContainer">
+                                        <label htmlFor="P1001_FNAME" id="P1001_FNAME_LABEL" className="t-Form-label bolt">
+                                          <FormattedMessage id="Form.Title" defaultMessage="Title" />
+                                          <span className="u-VisuallyHidden">(Value Required)</span>
+                                        </label>
+                                      </div>
+                                      <div className="contents row">
+                                        {titleDropdown}
+                                      </div>
+                                    </div>
                                   </div>
                                 </div>
-                              </div><div className="row">
-                                <div className="col col-12 apex-col-auto">
-                                  <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel apex-item-wrapper apex-item-wrapper--text-field apex-item-wrapper--has-icon js-show-label" id="P1001_LNAME_CONTAINER"><div className="t-Form-labelContainer">
-                                    <label htmlFor="P1001_LNAME" id="P1001_LNAME_LABEL" className="t-Form-label"><FormattedMessage id="Form.LastName" defaultMessage="Last Name" /></label>
+                              </div>
+                              <div className=" padding row">
+                                <div className="rmPadding col col-12 apex-col-auto">
+                                  <div className="row block" id="P1001_FNAME_CONTAINER"><div className="rmPadding t-Form-labelContainer">
+                                    <label htmlFor="P1001_FNAME" id="P1001_FNAME_LABEL" className="t-Form-label bolt"><FormattedMessage id="Form.FirstName" defaultMessage="First Name" /><span className="u-VisuallyHidden">(Value Required)</span></label>
                                   </div>
-
-                                    {LastNameInputField}
-
+                                    <div className="contents row">
+                                      {firstNameInputField}
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="padding row">
+                                <div className="rmPadding col col-12 apex-col-auto">
+                                  <div className="row block" id="P1001_LNAME_CONTAINER"><div className="rmPadding rmTopPadding t-Form-labelContainer">
+                                    <label htmlFor="P1001_LNAME" id="P1001_LNAME_LABEL" className="t-Form-label bolt"><FormattedMessage id="Form.LastName" defaultMessage="Last Name" /></label>
+                                  </div>
+                                    <div className="contents row">
+                                      {LastNameInputField}
+                                    </div>
                                   </div>
                                 </div>
                               </div>
 
-                              <div className="row">
+                              {/* <div className="row">
                                 <div className="col col-12 apex-col-auto">
-                                  <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel is-required apex-item-wrapper plugin-intltelinput-www.jqueryscript.net js-show-label" id="P1001_PHONE_CONTAINER">
+                                  <div className="padding t-Form-fieldContainer t-Form-fieldContainer--floatingLabel is-required apex-item-wrapper plugin-intltelinput-www.jqueryscript.net js-show-label" id="P1001_PHONE_CONTAINER">
                                     <div className="t-Form-labelContainer">
                                     </div>
                                     <div id="PhoneNumber" className={phoneNumberClassName} >
@@ -373,59 +438,88 @@ class SignUp extends Component {
 
                                   </div>
                                 </div>
-                              </div>
+                              </div> */}
 
-                              <div className="row">
-                                <div className="col col-12 apex-col-auto">
-                                  <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel is-required apex-item-wrapper apex-item-wrapper--text-field apex-item-wrapper--has-icon js-show-label" id="P1001_EMAIL_CONTAINER"><div className="t-Form-labelContainer">
-                                    <label htmlFor="P1001_EMAIL" id="P1001_EMAIL_LABEL" className="t-Form-label">
+                              <div className="padding row">
+                                <div className="rmPadding col col-12 apex-col-auto">
+                                  <div className="rmPadding block row" id="P1001_EMAIL_CONTAINER"><div className="rmTopPadding rmPadding t-Form-labelContainer">
+                                    <label htmlFor="P1001_EMAIL" id="P1001_EMAIL_LABEL" className="bolt t-Form-label">
                                       <FormattedMessage id="Form.Email" defaultMessage="Email" />
                                       <span className="u-VisuallyHidden">(Value Required)</span></label>
                                   </div>
-
-                                    {emailInputField}
-
+                                    <div className="contents row">
+                                      {emailInputField}
+                                    </div>
                                   </div>
                                 </div>
                               </div>
 
-                              <div className="row">
-                                <div className="col col-12 apex-col-auto">
-                                  <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel is-required apex-item-wrapper apex-item-wrapper--password apex-item-wrapper--has-icon js-show-label" id="P1001_PWD_CONTAINER"><div className="t-Form-labelContainer">
-                                    <label htmlFor="P1001_PWD" id="P1001_PWD_LABEL" className="t-Form-label">
-                                      <FormattedMessage id="password" defaultMessage="password" />
+                              <div className="padding row">
+                                <div className="rmPadding col col-12 apex-col-auto">
+                                  <div className="rmPadding block row" id="P1001_EMAIL_CONTAINER"><div className="rmTopPadding rmPadding t-Form-labelContainer">
+                                    <label htmlFor="P1001_EMAIL" id="P1001_EMAIL_LABEL" className="bolt t-Form-label">
+                                      <FormattedMessage id="Form.ConfirmEmail" defaultMessage="Confirm Email" />
                                       <span className="u-VisuallyHidden">(Value Required)</span></label>
                                   </div>
-
-                                    {passwordInputField}
-
+                                    <div className="contents row">
+                                      {confirmEmailInputField}
+                                    </div>
                                   </div>
                                 </div>
                               </div>
 
-                              <div className="row">
-                                <div className="col col-12 apex-col-auto">
-                                  <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel is-required apex-item-wrapper apex-item-wrapper--password apex-item-wrapper--has-icon js-show-label" id="P1001_RPWD_CONTAINER"><div className="t-Form-labelContainer">
-                                    <label htmlFor="P1001_RPWD" id="P1001_RPWD_LABEL" className="t-Form-label">
-                                      <FormattedMessage id="profile.Confirm.Password" defaultMessage="Confirm Password" /><span className="u-VisuallyHidden">(Value Required)</span></label>
-                                  </div>
+                              <div className="row instructionCss pad">
+                                <span><FormattedMessage id="Form.PasswordConventions" defaultMessage="Password must be at least 8 characters long and contain an uppercase letter, a lowercase letter and a number."></FormattedMessage></span>
+                              </div>
 
-                                    {confirmPasswordInputField}
-
+                              <div className="padding row">
+                                <div className="rmPadding col col-12 apex-col-auto">
+                                  <div className="row block" id="P1001_PWD_CONTAINER"><div className="rmTopPadding rmPadding t-Form-labelContainer">
+                                    <label htmlFor="P1001_PWD" id="P1001_PWD_LABEL" className="bolt t-Form-label">
+                                      <FormattedMessage id="Form.Password" defaultMessage="password" />
+                                      <span className="u-VisuallyHidden">(Value Required)</span></label>
                                   </div>
-                                </div>
-                              </div><div className="row">
-                                <div className="col col-12 apex-col-auto">
-                                  <button className="t-Button t-Button--hot t-Button--stretch t-Button--gapTop" type="button" id="B35835076185290944" onClick={this.signUpSubmit}><span className="t-Button-label"><FormattedMessage id="login.SignUp.Title" defaultMessage="SignUp" /></span></button>
+                                    <div className="contents row">
+                                      {passwordInputField}
+                                    </div>
+                                  </div>
                                 </div>
                               </div>
-                              <p style={{
-                                fontSize: 11,
-                                lineHeight: '17px',
-                                letterSpacing: .04,
-                                textTransform: 'inherit',
-                                fontWeight: 'normal'
-                              }}>By clicking the 'Sign Up' button, you confirm that you accept our <Link id="loginslctntofuse" to={`/${store_locale}/terms-and-conditions`} style={{ textDecoration: 'underline' }}>Terms of use</Link> and <Link id="loginslctnprivacypol" to={`/${store_locale}/privacy-policy`} style={{ textDecoration: 'underline' }}>Privacy Policy</Link>.</p>
+                              <div className="row instructionCss">
+                                <span><FormattedMessage id="Form.PasswordLength" defaultMessage="Minimum length is 6"></FormattedMessage></span>
+                              </div>
+
+                              <div className="padding row bot-bottom">
+                                <div className="rmPadding col col-12 apex-col-auto">
+                                  <div className="row block" id="P1001_RPWD_CONTAINER"><div className="rmTopPadding rmPadding t-Form-labelContainer">
+                                    <label htmlFor="P1001_RPWD" id="P1001_RPWD_LABEL" className="bolt t-Form-label">
+                                      <FormattedMessage id="Form.ConfirmPassword" defaultMessage="Confirm Password" /><span className="u-VisuallyHidden">(Value Required)</span></label>
+                                  </div>
+                                    <div className="contents row ">
+                                      {confirmPasswordInputField}
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="row padTop20 backWhite">
+                                <label class="checkBox"><FormattedMessage id="Form.RecieveEmail" defaultMessage="I'd like to receive emails from ELC about Spacial Offers, new toys and voucher codes."></FormattedMessage>
+                                  <input type="checkbox"  ></input>
+                                  <span class="checkmark"></span>
+                                </label>
+                              </div>
+                              <div className="row backWhite ">
+                                <ul className="nay liFont">
+                                  <li ><FormattedMessage id="Form.EmailPolicy" defaultMessage="You can ask us to stop any time and will never sell your data to other companies for marketing purpose." /></li>
+                                  <li><FormattedMessage id="Form.EmailPolicys" defaultMessage="We always try to send emails that are relevant to you bassed on products you have shown an interest in." /></li>
+                                </ul>
+                              </div>
+
+                              <div className="row backWhite">
+                                <div className="rmPadding col col-12 apex-col-auto">
+                                  <div className="button-add-to-basket right" type="button" id="B35835076185290944" onClick={this.signUpSubmit}><span className="t-Button-label bolt"><FormattedMessage id="login.SignUp.Title" defaultMessage="Register" /></span></div>
+                                </div>
+                              </div>
+
                             </div>
                           </div>
                           <div className="t-Region-buttons t-Region-buttons--bottom">

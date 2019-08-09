@@ -236,28 +236,28 @@ class Login extends Component {
     // }
 
 
-    let emailField = <div className="t-Form-inputContainer">
-      <div className="t-Form-itemWrapper">
-        <input type="email" id="P1000_USERNAME" name="email" className="text_field apex-item-text" value={this.state.email} size="40" maxLength="100" onChange={this.onChangeCredintials} />
+    let emailField = <div>
+      <div>
+        <input type="email" id="P1000_USERNAME" name="email" value={this.state.email} size="40" maxLength="100" onChange={this.onChangeCredintials} />
       </div>
       <span id="P1000_USERNAME_error_placeholder" className="a-Form-error" data-template-id="33609965712469734_ET"></span>
     </div>;
 
-    let passwordField = <div className="t-Form-inputContainer">
-      <div className="t-Form-itemWrapper">
-        <input type="password" name="password" size="40" maxLength="100" value={this.state.password} id="P1000_PASSWORD" className="password apex-item-text" onChange={this.onChangeCredintials} /></div>
+    let passwordField = <div>
+      <div>
+        <input type="password" name="password" size="40" maxLength="100" value={this.state.password} id="P1000_PASSWORD" onChange={this.onChangeCredintials} /></div>
       <span id="P1000_PASSWORD_error_placeholder" className="a-Form-error" data-template-id="33609965712469734_ET"></span></div>;
 
     if ('email' in errorMessage) {
-      emailField = <div className="t-Form-inputContainer"><div className="t-Form-itemWrapper">
-        <input type="email" id="P1000_USERNAME" name="email" className="text_field apex-item-text apex-page-item-error" value={this.state.email} size="40" maxLength="100" onChange={this.onChangeCredintials} aria-describedby="P1000_USERNAME_error" aria-invalid="true" /></div>
+      emailField = <div><div>
+        <input type="email" id="P1000_USERNAME" name="email" value={this.state.email} size="40" maxLength="100" onChange={this.onChangeCredintials} aria-describedby="P1000_USERNAME_error" aria-invalid="true" /></div>
         <span id="P1000_USERNAME_error_placeholder" className="a-Form-error u-visible" data-template-id="33609965712469734_ET"><span className="t-Form-error"><div id="P1000_USERNAME_error">{errorMessage.email}</div></span></span></div>
     }
 
     if ('password' in errorMessage) {
-      passwordField = <div className="t-Form-inputContainer">
-        <div className="t-Form-itemWrapper">
-          <input type="password" name="password" size="40" maxLength="100" value={this.state.password} id="P1000_PASSWORD" className="password apex-item-text apex-page-item-error" onChange={this.onChangeCredintials} aria-describedby="P1000_PASSWORD_error" aria-invalid="true" /></div>
+      passwordField = <div>
+        <div >
+          <input type="password" name="password" size="40" maxLength="100" value={this.state.password} id="P1000_PASSWORD" onChange={this.onChangeCredintials} aria-describedby="P1000_PASSWORD_error" aria-invalid="true" /></div>
         <span id="P1000_PASSWORD_error_placeholder" className="a-Form-error" data-template-id="33609965712469734_ET">
           <span className="t-Form-error"><div id="P1000_PASSWORD_error">{errorMessage.password}</div></span>
         </span></div>;
@@ -286,13 +286,32 @@ class Login extends Component {
 
             <div className="container">
               <div className="row">
-                <div className="t-Body-title" id="t_Body_title" style={{ top: '294px' }}>
+                <div className="t-Body-title" id="t_Body_title" style={{ top: '294px', borderBottom: "0px" }}>
 
 
                   {breadCrumb}
 
                 </div>
-                <div className="col col-12 apex-col-auto">
+                <div className="col col-12 apex-col-auto backWhite">
+                  <div className="t-BreadcrumbRegion containers t-BreadcrumbRegion--showBreadcrumb t-BreadcrumbRegion--useBreadcrumbTitle secondHeaderTitle">New to ELC</div>
+                  <div className="row t-BreadcrumbRegion containers t-BreadcrumbRegion--showBreadcrumb t-BreadcrumbRegion--useBreadcrumbTitle">
+                    <div className="col col-12 apex-col-auto paddingBottom ">
+                      <div className="col col-6 colUp">
+                        <ul className="nay">
+                          <li><FormattedMessage id="newToElc.remember" defaultMessage="remember text" /></li>
+                          <li><FormattedMessage id="newToElc.join" defaultMessage="join" /></li>
+                        </ul>
+                      </div>
+                      <div className="col col-6 colUp">
+                        <ul className="nay">
+                          <li><FormattedMessage id="newToElc.checkout" defaultMessage="checkout" /></li>
+                          <li><FormattedMessage id="newToElc.store" defaultMessage="store" /></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="col col-12 apex-col-auto backWhite">
                   <div className="t-Region containers  t-Region--noPadding t-Region--removeHeader t-Region--noBorder t-Region--scrollBody margin-top-lg margin-bottom-lg" id="R37390987984147738">
                     <div className="t-Region-header">
                       <div className="t-Region-headerItems t-Region-headerItems--title">
@@ -309,132 +328,155 @@ class Login extends Component {
                       <div className="t-Region-body">
                         <input type="hidden" id="P1000_PAGE_TITLE" name="P1000_PAGE_TITLE" value="Sign in - Sign in to Your Nayomi Account" />
                         <input type="hidden" id="P1000_PAGE_DESC" name="P1000_PAGE_DESC" value="Sign in - Sign in to your account to shop with exciting offers" />
-                        <div className="container">
+                        <div className="container backWhite">
+                          <div className="row alignCenter"><FormattedMessage id="Register.SignInText" defaultMessage="sign in to register" /></div>
                           <div className="row">
-                            <div className="col col-2 ">
+                            <div className="col col-1  paddingNull" style={{ flex: "0 0 7.333333%", maxWidth: "7.333333%" }}>
                               <span className="apex-grid-nbsp">&nbsp;</span>
-                            </div><div className="col col-4 ">
-                              <div className="border-right t-Region t-Region--textContent t-Region--scrollBody" id="R37391169766147740"
-                                style={{ borderRight: 1 }}>
+                            </div>
+
+
+                            <div className="col col-5 borderBlock rightSpace leftSpace topSpace">
+                              {guest}
+                              <div className="t-Region t-Region--textContent t-Region--scrollBody" id="R38202006049236304">
                                 <div className="t-Region-header">
-                                  <div className="t-Region-headerItems t-Region-headerItems--title">
+                                  <div className="t-Region-headerItems t-Region-headerItems--title headerBottom">
                                     <span className="t-Region-headerIcon"><span className="t-Icon " aria-hidden="true"></span></span>
-                                    <h2 className="t-Region-title" id="R37391169766147740_heading"><FormattedMessage id="registered.user.title" defaultMessage="SignIn" /></h2>
+                                    <h2 className="block-title" id="R38202006049236304_heading"><FormattedMessage id="account.Creation" defaultMessage="Account Creation" /></h2>
                                   </div>
-                                  <div className="t-Region-headerItems t-Region-headerItems--buttons"><span className="js-maximizeButtonContainer"></span></div>
+
+                                  <div className="t-Region-headerItems t-Region-headerItems--buttons">
+
+                                    <span className="js-maximizeButtonContainer"></span></div>
                                 </div>
                                 <div className="t-Region-bodyWrap">
+                                  <div className="headerText"><FormattedMessage id="register.header.text" defaultMessage="Order Tracking" /></div>
+
                                   <div className="t-Region-buttons t-Region-buttons--top">
                                     <div className="t-Region-buttons-left"></div>
                                     <div className="t-Region-buttons-right"></div>
                                   </div>
                                   <div className="t-Region-body">
+
                                     <p style={{
                                       fontSize: 11,
                                       lineHeight: '17px',
                                       letterSpacing: .04,
                                       textTransform: 'inherit',
                                       fontWeight: 'normal',
-                                    }}><FormattedMessage id="registered.user.content" defaultMessage="registered user content" /></p><div className="container">
-                                      <div className="row">
-                                        <div className="col col-12 apex-col-auto">
+                                      marginBottom: 10
+                                    }}><FormattedMessage id="account.Creation.text" defaultMessage="Account Creation text" /></p>
 
-                                          <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel apex-item-wrapper apex-item-wrapper--text-field" id="P1000_USERNAME_CONTAINER" onFocus={(e) => this.divOnFocus(e)}
-                                            onBlur={(e) => this.divOnBlure(e)}><div className="t-Form-labelContainer">
-                                              <label htmlFor="P1000_USERNAME" id="P1000_USERNAME_LABEL" className="t-Form-label"><FormattedMessage id="username" defaultMessage="username" /></label>
+                                    <div>
+                                      <SignUp />
+
+                                    </div>
+
+
+                                  </div>
+                                  <div className="t-Region-buttons t-Region-buttons--bottom">
+                                    <div className="t-Region-buttons-left"></div>
+                                    <div className="t-Region-buttons-right"></div>
+                                  </div>
+                                </div>
+                              </div>
+
+                            </div>
+
+                            <div className="col col-5  borderBlock leftSpace rightSpace topSpace">
+                              <div className=" t-Region t-Region--textContent t-Region--scrollBody" id="R37391169766147740"
+                              >
+                                <div className="t-Region-header">
+                                  <div className="t-Region-headerItems bottomPadding t-Region-headerItems--title">
+                                    <span className="t-Region-headerIcon"><span className="t-Icon " aria-hidden="true"></span></span>
+                                    <h2 className="block-title" id="R37391169766147740_heading"><FormattedMessage id="registered.user.title" defaultMessage="SignIn" /></h2>
+                                  </div>
+                                  <div className="t-Region-headerItems t-Region-headerItems--buttons"><span className="js-maximizeButtonContainer"></span></div>
+                                </div>
+                                <div className="t-Region-bodyWrap">
+                                  <div className="headerText"><FormattedMessage id="newToElc.header.login.text" defaultMessage="Already have an account?Sign in to retreive your account settings." /></div>
+                                  <div className="t-Region-buttons  t-Region-buttons--top">
+                                    <div className="t-Region-buttons-left"></div>
+                                    <div className="t-Region-buttons-right"></div>
+                                  </div>
+                                  <div className="t-Region-body borderBottom">
+                                    <div className="container">
+                                      <div className="padding row">
+                                        <div className="rmPadding col col-12 apex-col-auto">
+                                          {/* on blur eon focus */}
+                                          <div className="row collapse-a" id="P1000_USERNAME_CONTAINER" ><div className="rmPadding rmTopPadding t-Form-labelContainer">
+                                            <label htmlFor="P1000_USERNAME" id="P1000_USERNAME_LABEL" className="t-Form-label bolt">
+                                              <FormattedMessage id="username" defaultMessage="username" />
+                                            </label>
+                                          </div>
+                                            <div className="row contents">
+                                              {emailField}
                                             </div>
-
-                                            {emailField}
-
                                           </div>
                                         </div>
                                       </div>
 
-                                      <div className="row">
-                                        <div className="col col-12 apex-col-auto">
-                                          <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel apex-item-wrapper apex-item-wrapper--password" onFocus={(e) => this.divOnFocus(e)}
-                                            onBlur={(e) => this.divOnBlure(e)} id="P1000_PASSWORD_CONTAINER"><div className="t-Form-labelContainer">
-                                              <label htmlFor="P1000_PASSWORD" id="P1000_PASSWORD_LABEL" className="t-Form-label"><FormattedMessage id="password" defaultMessage="password" /></label>
+                                      <div className="padding row">
+                                        <div className=" rmPadding col col-12 apex-col-auto">
+                                          {/* onFocus={(e) => this.divOnFocus(e)}
+                                            onBlur={(e) => this.divOnBlure(e)} */}
+                                          <div className="row collapse-a " id="P1000_PASSWORD_CONTAINER"><div className="rmTopPadding rmPadding t-Form-labelContainer">
+                                            <label htmlFor="P1000_PASSWORD" id="P1000_PASSWORD_LABEL" className="t-Form-label bolt">
+                                              <FormattedMessage id="password" defaultMessage="password" /></label>
+                                          </div>
+                                            <div className="row contents ">
+                                              {passwordField}
                                             </div>
-
-                                            {passwordField}
-
                                           </div>
 
                                           <input type="hidden" id="P1000_FPLABEL" name="P1000_FPLABEL" value="Forgot Password?" />
                                           <input type="hidden" data-for="P1000_FPLABEL" value="Hj77CC9jF38Atd39O1yFQWE1oJnNs97V3Xg_bixOY6VseEb4SV9-u6lDIfCSou2eEYgLVpnbjOR7lh6K1IPQlg" />
                                         </div>
 
-                                      </div><div className="row forgetPassword">
-                                        <div className="col col-4">
-                                          <div className="t-Form-fieldContainer t-Form-fieldContainer--hiddenLabel rel-col  apex-item-wrapper apex-item-wrapper--display-only " id="P1000_FP_CONTAINER"><div className="t-Form-labelContainer t-Form-labelContainer--hiddenLabel col col-0">
+                                      </div>
+                                      <div className="row forgetPassword">
+                                        <div className="col col-8">
+                                          <div className="" id="P1000_FP_CONTAINER"><div className="t-Form-labelContainer t-Form-labelContainer--hiddenLabel col col-0">
                                             <label htmlFor="P1000_FP" id="P1000_FP_LABEL" className="t-Form-label u-VisuallyHidden">Fp</label>
-                                          </div><div className="t-Form-inputContainer col col-4"><div className="t-Form-itemWrapper">
-
-                                            <input type="hidden" name="P1000_FP" id="P1000_FP" value="" />
-
-                                            <input type="hidden" data-for="P1000_FP" value="B4PIZUSCiBKtGl0iKwusAhyE0tJAjePICMkkynnM4hEqTYJ2Ahx6z5RwebZ-Yke_AK33IsSWG_oQxJD3o_5ylg" /><span id="P1000_FP_DISPLAY" className="display_only apex-item-display-only">
-
-                                              <a className="forget-password-link" onClick={this.onOpenSecondModal} style={{ fontSize: 12, fontWeight: 400 }}><FormattedMessage id="forget.password" defaultMessage="Forget Password" /></a></span></div><span id="P1000_FP_error_placeholder" className="a-Form-error" data-template-id="33609641515469732_ET"></span></div></div>
-                                        </div><div className="col col-8 apex-col-auto">
-                                          <div className="t-Form-fieldContainer rel-col  apex-item-wrapper apex-item-wrapper--checkbox " id="P1000_REMEMBER_CONTAINER"><div className="t-Form-labelContainer col col-1" style={newStyle}>
-                                            <label htmlFor="P1000_REMEMBER" id="P1000_REMEMBER_LABEL" className="t-Form-label"></label>
                                           </div>
-                                            <div className="t-Form-inputContainer col col-7"><div className="t-Form-itemWrapper"><div tabIndex="-1" id="P1000_REMEMBER" aria-labelledby="P1000_REMEMBER_LABEL" className="checkbox_group apex-item-group apex-item-group--rc apex-item-checkbox" role="group">
-                                              <div className="apex-item-option"><input type="checkbox" id="P1000_REMEMBER_0" name="P1000_REMEMBER" value="Y" /><label htmlFor="P1000_REMEMBER_0"><FormattedMessage id="remember.me" defaultMessage="Remember me" /></label></div>
-                                            </div>
-                                              <button className="t-Form-helpButton js-itemHelp" data-itemhelp="28811643523678869" aria-label="Help Text: " tabIndex="-1" type="button"><span className="a-Icon icon-help" aria-hidden="true"></span></button></div><span id="P1000_REMEMBER_error_placeholder" className="a-Form-error" data-template-id="33609747879469734_ET"></span></div></div>
+                                          </div>
+                                          <div className=" row"><div>
+
+                                          </div>
+                                          </div>
                                         </div>
-                                      </div><div className="row">
+                                        <div className="row">
+                                          <a className="forget-password-link link" onClick={this.onOpenSecondModal}><FormattedMessage id="forget.password" defaultMessage="Forget Password" /></a>
+
+                                          <span id="P1000_FP_error_placeholder" className="a-Form-error" data-template-id="33609641515469732_ET"></span>
+
+                                        </div>
+                                      </div>
+                                      {/* <div >
+                                          <div className="t-Form-fieldContainer rel-col  apex-item-wrapper apex-item-wrapper--checkbox " id="P1000_REMEMBER_CONTAINER">
+                                            <div className="t-Form-labelContainer col col-1" style={newStyle}>
+                                              <label htmlFor="P1000_REMEMBER" id="P1000_REMEMBER_LABEL" className="t-Form-label"></label>
+                                            </div>
+                                          </div>
+                                        </div> */}
+                                      <div className="row">
                                         <div className="col col-12 apex-col-auto">
-                                          <button onClick={this.login} className="t-Button t-Button--hot t-Button--stretch" type="button" id="B28810467415678867"><span className="t-Button-label"><FormattedMessage id="secure.signin" defaultMessage="Secure Sign In" /></span></button><input type="hidden" id="COND" name="COND" value="" /><input type="hidden" id="ITEM" name="ITEM" value="" />
+                                          <div onClick={this.login} className="button-add-to-basket right " type="button" id="B28810467415678867"><span className="t-Button-label"><FormattedMessage id="secure.signin" defaultMessage="Secure Sign In" /></span></div><input type="hidden" id="COND" name="COND" value="" /><input type="hidden" id="ITEM" name="ITEM" value="" />
                                         </div>
                                       </div>
                                     </div>
 
                                   </div>
-                                  <div className="t-Region-buttons t-Region-buttons--bottom">
-                                    <div className="t-Region-buttons-left"></div>
-                                    <div className="t-Region-buttons-right"></div>
-                                  </div>
-                                </div>
-                              </div>
-
-                            </div>
-
-                            <div className="col col-4 ">
-                              {guest}
-                              <div className="t-Region t-Region--textContent t-Region--scrollBody" id="R38202006049236304">
-                                <div className="t-Region-header">
-                                  <div className="t-Region-headerItems t-Region-headerItems--title">
-                                    <span className="t-Region-headerIcon"><span className="t-Icon " aria-hidden="true"></span></span>
-                                    <h2 className="t-Region-title" id="R38202006049236304_heading"><FormattedMessage id="account.Creation" defaultMessage="Account Creation" /></h2>
-                                  </div>
-                                  <div className="t-Region-headerItems t-Region-headerItems--buttons"><span className="js-maximizeButtonContainer"></span></div>
-                                </div>
-                                <div className="t-Region-bodyWrap">
-                                  <div className="t-Region-buttons t-Region-buttons--top">
-                                    <div className="t-Region-buttons-left"></div>
-                                    <div className="t-Region-buttons-right"></div>
-                                  </div>
                                   <div className="t-Region-body">
-                                    <p style={{
-                                      fontSize: 11,
-                                      lineHeight: '17px',
-                                      letterSpacing: .04,
-                                      textTransform: 'inherit',
-                                      fontWeight: 'normal',
-                                      marginBottom: 50
-                                    }}><FormattedMessage id="account.Creation.text" defaultMessage="Account Creation text" /></p>
-                                    <ul className="nay">
-                                      <li><FormattedMessage id="order.tracking" defaultMessage="Order Tracking" /></li>
-                                      <li><FormattedMessage id="wishlist" defaultMessage="Wishlist" /></li>
-                                      <li><FormattedMessage id="save.addresses" defaultMessage="Save Addresses" /></li>
-                                      <li><FormattedMessage id="account.preferences" defaultMessage="Account Preferences" /></li>
-                                    </ul><table summary="" cellSpacing="0" cellPadding="0" border="0" width="100%"><tbody><tr><td align="right">
-
-                                      <button className="t-Button t-Button--hot t-Button--stretch t-Button--gapTop" type="button" id="B28814183906678873" onClick={this.onOpenFirstModal} ><span className="t-Button-label"><FormattedMessage id="account.Creation" defaultMessage="Account Creation" /></span></button></td></tr></tbody></table>
-
+                                    <div className="row orBottom">
+                                      <p>Or</p>
+                                    </div>
+                                    <div className="row padBot">
+                                      <div className="faceBookButton"><FormattedMessage id="Form.Facebook" defaultMessage=" Login with Facebook"></FormattedMessage></div>
+                                    </div>
+                                    <div className="row">
+                                      <div className="googleButton"><FormattedMessage id="Form.google" defaultMessage="Login with Google"></FormattedMessage></div>
+                                    </div>
                                   </div>
                                   <div className="t-Region-buttons t-Region-buttons--bottom">
                                     <div className="t-Region-buttons-left"></div>
@@ -444,6 +486,10 @@ class Login extends Component {
                               </div>
 
                             </div>
+
+                          </div>
+                          <div className="col col-1  ">
+                            <span className="apex-grid-nbsp">&nbsp;</span>
                           </div>
                         </div>
                       </div>
@@ -461,7 +507,7 @@ class Login extends Component {
           </div>
 
         </div>
-      </Spinner>
+      </Spinner >
     );
   }
 }
