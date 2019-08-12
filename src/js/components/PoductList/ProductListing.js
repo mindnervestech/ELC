@@ -22,15 +22,12 @@ import Slider from "react-slick";
 import Gift from '../../../assets/images/product-details/gift.png';
 import Delevary from '../../../assets/images/product-details/delevary.png';
 import Return from '../../../assets/images/product-details/return.png';
-import percentage from '../../../assets/images/product-details/percentage.png';
-import save from '../../../assets/images/product-details/save.png';
+import Collapsible from 'react-collapsible';
 
-import logo1 from '../../../assets/images/you_may_also_like_1.png'
-
-import home from '../../../assets/images/social/Hero.png';
 import ProductListData from './ProductListData';
 var _ = require('lodash');
 
+const triggerSiblingExample = () => <div className="Collapsible__custom-sibling">This is a sibling to the trigger which wont cause the Collapsible to open!</div>;
 class ProductList extends Component {
 	constructor(props, context) {
 		super(props, context);
@@ -91,12 +88,55 @@ class ProductList extends Component {
 										<div className="row-2">
 											<span className="blackTitle">Narrow your Results</span>
 										</div>
-										<div style={{position: 'relative'}}>
-										<ul>
-										<li>
-											<span className="blackTitle">Type of Toy</span>
-										</li>
-										</ul>
+										<div className="bottomBorder">
+											<Collapsible trigger="Type of Toy" >
+												<div>Animal figures (72)</div>
+												<div>Baby dolls (52)</div>
+												<div>Fashion dolls and accessories (191)</div>
+												<div>Film & TV Dolls (49)</div>
+												<div>Pre-school Dolls (24)</div>
+												<div>Rag Dolls 16)</div>
+											</Collapsible>
+										</div>
+										<div className="bottomBorder">
+											<Collapsible trigger="Brands" >
+												<div>Animal figures (72)</div>
+												<div>Baby dolls (52)</div>
+												<div>Fashion dolls and accessories (191)</div>
+												<div>Film & TV Dolls (49)</div>
+												<div>Pre-school Dolls (24)</div>
+												<div>Rag Dolls 16)</div>
+											</Collapsible>
+										</div>
+										<div className="bottomBorder">
+											<Collapsible trigger="Age" >
+												<div>Animal figures (72)</div>
+												<div>Baby dolls (52)</div>
+												<div>Fashion dolls and accessories (191)</div>
+												<div>Film & TV Dolls (49)</div>
+												<div>Pre-school Dolls (24)</div>
+												<div>Rag Dolls 16)</div>
+											</Collapsible>
+										</div>
+										<div className="bottomBorder">
+											<Collapsible trigger="Other Options" >
+												<div>Animal figures (72)</div>
+												<div>Baby dolls (52)</div>
+												<div>Fashion dolls and accessories (191)</div>
+												<div>Film & TV Dolls (49)</div>
+												<div>Pre-school Dolls (24)</div>
+												<div>Rag Dolls 16)</div>
+											</Collapsible>
+										</div>
+										<div className="bottomBorder">
+											<Collapsible trigger="Price" >
+												<div>Animal figures (72)</div>
+												<div>Baby dolls (52)</div>
+												<div>Fashion dolls and accessories (191)</div>
+												<div>Film & TV Dolls (49)</div>
+												<div>Pre-school Dolls (24)</div>
+												<div>Rag Dolls 16)</div>
+											</Collapsible>
 										</div>
 									</Col>
 									<Col xs="9" style={{padding: 0}}>

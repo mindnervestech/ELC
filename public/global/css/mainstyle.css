@@ -36,6 +36,79 @@
 
 }
 
+.Collapsible {
+    background-color: base;
+  }
+  
+  .Collapsible__contentInner {
+    padding: 10px;
+    border-top: solid 1px #b1b1b1;
+  }
+
+  .bottomBorder{
+    border-bottom: solid 1px #b1b1b1;
+    margin-top: 2px;
+  }
+  
+  .Collapsible__trigger {
+    display: block;
+    text-decoration: none;
+    position: relative;
+    border: none;
+    padding: 10px;
+    background: #fff;
+    color: #4f4f4f;
+    font-size: 1.4rem;
+    font-family: "VAG Rounded ELC Bold";
+    
+  }
+
+  .Collapsible__trigger.is-disabled {
+    opacity: 0.5;
+    background-color: grey;
+  }
+
+  .Collapsible__trigger.is-open:after {
+    /* transform: rotateZ(180deg); */
+    content: '\2011'!important;
+  }
+
+  .Collapsible__trigger:after {
+    font-family: 'FontAwesome';
+    content: '\002B';
+    position: absolute;
+    right: 10px;
+    top: 0px;
+    font-size: 25px;
+    display: block;
+    transition: transform 300ms;
+  }
+  
+  .CustomTriggerCSS {
+    background-color: lightcoral;
+    transition: background-color 200ms ease;
+    
+    
+  }
+  
+  .CustomTriggerCSS--open {
+    background-color: darkslateblue;
+  }
+  
+  .Collapsible__custom-sibling {
+    padding: 5px;
+    font-size: 12px;
+    background-color: #CBB700;
+    color: black;
+  }
+
+
+
+
+
+
+
+
 .product-list .logoImages {
     height: 20px;
     width: 20px;
