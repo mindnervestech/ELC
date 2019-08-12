@@ -77,7 +77,8 @@ class ProductInfo extends Component {
 							</span>
 						</div>
 						<div>
-                        <Carousel showStatus={false}
+						<ProductZoom />
+                        {/* <Carousel showStatus={false}
                         showThumbs={true}
                         infiniteLoop={true}
 						emulateTouch={true}
@@ -91,12 +92,12 @@ class ProductInfo extends Component {
                             <div>
                                 <img style={{height: '100%'}} src={home} />
                             </div>
-							{/* <div>
+							<div>
 								<video style={{height: '100%'}} controls autoplay="autoplay" loop muted preload style={{width: '100%',height: '100%'}}>
 									<source src={mediaVideo} type="video/mp4" />
 								</video>
-							</div> */}
-                        </Carousel>
+							</div>
+                        </Carousel> */}
                     </div>
 					</div>
 					<div className="col col-5" style={{paddingLeft: '55px'}}>
