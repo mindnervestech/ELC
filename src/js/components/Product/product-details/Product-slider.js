@@ -97,10 +97,10 @@ class ProductSlider extends Component {
 
                                                     <div className="alsoLikeCard">
                                                         <img src={logo1} />
-                                                        <div style={{ marginTop: 10 }}>
-                                                            <label className="text-color">Twist and Turn Activity House</label>
+                                                        <div style={{ marginTop: 25 }}>
+                                                            <span className="text-color">Twist and Turn Activity House</span>
                                                         </div>
-                                                        <div>
+                                                        <div style={{ marginTop: 10 }}>
                                                             <span style={{ fontSize: 14, color: "#0D943F", fontWeight: "bold" }}>£12.00</span><span style={{ color: "gray", textDecorationLine: 'line-through', fontSize: 14, marginLeft: 10 }}>£14.50</span>
                                                         </div>
                                                         <div>
@@ -110,10 +110,10 @@ class ProductSlider extends Component {
 
                                                     <div className="alsoLikeCard">
                                                         <img src={logo2} />
-                                                        <div style={{ marginTop: 10 }}>
-                                                            <label className="text-color">Twist and Turn Activity House</label>
+                                                        <div style={{ marginTop: 25 }}>
+                                                            <span className="text-color">Twist and Turn Activity House</span>
                                                         </div>
-                                                        <div>
+                                                        <div style={{ marginTop: 10 }}>
                                                             <span style={{ fontSize: 14, color: "#0D943F", fontWeight: "bold" }}>£12.00</span><span style={{ color: "gray", textDecorationLine: 'line-through', fontSize: 14, marginLeft: 10 }}>£14.50</span>
                                                         </div>
                                                         <div>
@@ -123,10 +123,10 @@ class ProductSlider extends Component {
 
                                                     <div className="alsoLikeCard">
                                                         <img src={logo3} />
-                                                        <div style={{ marginTop: 10 }}>
-                                                            <label className="text-color">Twist and Turn Activity House</label>
+                                                        <div style={{ marginTop: 25 }}>
+                                                            <span className="text-color">Twist and Turn Activity House</span>
                                                         </div>
-                                                        <div>
+                                                        <div style={{ marginTop: 10 }}>
                                                             <span style={{ fontSize: 14, color: "#0D943F", fontWeight: "bold" }}>£12.00</span><span style={{ color: "gray", textDecorationLine: 'line-through', fontSize: 14, marginLeft: 10 }}>£14.50</span>
                                                         </div>
                                                         <div>
@@ -136,10 +136,10 @@ class ProductSlider extends Component {
 
                                                     <div className="alsoLikeCard">
                                                         <img src={logo4} />
-                                                        <div style={{ marginTop: 10 }}>
-                                                            <label className="text-color">Twist and Turn Activity House</label>
+                                                        <div style={{ marginTop: 25 }}>
+                                                            <span className="text-color">Twist and Turn Activity House</span>
                                                         </div>
-                                                        <div>
+                                                        <div style={{ marginTop: 10 }}>
                                                             <span style={{ fontSize: 14, color: "#0D943F", fontWeight: "bold" }}>£12.00</span><span style={{ color: "gray", textDecorationLine: 'line-through', fontSize: 14, marginLeft: 10 }}>£14.50</span>
                                                         </div>
                                                         <div>
@@ -149,10 +149,10 @@ class ProductSlider extends Component {
 
                                                     <div className="alsoLikeCard">
                                                         <img src={logo2} />
-                                                        <div style={{ marginTop: 10 }}>
-                                                            <label className="text-color">Twist and Turn Activity House</label>
+                                                        <div style={{ marginTop: 25 }}>
+                                                            <span className="text-color">Twist and Turn Activity House</span>
                                                         </div>
-                                                        <div>
+                                                        <div style={{ marginTop: 10 }}>
                                                             <span style={{ fontSize: 14, color: "#0D943F", fontWeight: "bold" }}>£12.00</span><span style={{ color: "gray", textDecorationLine: 'line-through', fontSize: 14, marginLeft: 10 }}>£14.50</span>
                                                         </div>
                                                         <div>

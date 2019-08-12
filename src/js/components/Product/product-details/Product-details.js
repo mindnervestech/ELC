@@ -127,13 +127,13 @@ class ProductDetails extends Component {
 						<div className="col col-12 product-tab">
 							<div>
 								<ul style={{marginBottom:0}}>
-									<li className={this.state.productDetailTab == "Product Information" ? "active-tab" : ''}>
+									<li style={{width:184, marginRight:25}} className={this.state.productDetailTab == "Product Information" ? "active-tab" : ''}>
 										<a onClick={() => this.getProductInfoDetail('Product Information')} className="product-des">Product Information</a>
 									</li>
-									<li className={this.state.productDetailTab == "Delivery options" ? "active-tab" : ''}>
+									<li style={{width:184, marginRight:25}} className={this.state.productDetailTab == "Delivery options" ? "active-tab" : ''}>
 										<a onClick={() => this.getProductInfoDetail('Delivery options')} className="product-des">Delivery options</a>
 									</li>
-									<li className={this.state.productDetailTab == "Questions" ? "active-tab" : ''}>
+									<li style={{width:184, marginRight:25}} className={this.state.productDetailTab == "Questions" ? "active-tab" : ''}>
 										<a onClick={() => this.getProductInfoDetail('Questions')} className="product-des">Questions</a>
 									</li>
 								</ul>

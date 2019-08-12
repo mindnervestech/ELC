@@ -63,17 +63,17 @@ class ProductInfo extends Component {
 				</Helmet>
 				<div className="col col-12 apex-col-auto carpusel-dots" style={{paddingTop:'20px'}}>
 					<div className="col col-7">
-						<h2 className="product-title">
+						<h2 className="product-title" style={{marginBottom: 20}}>
 							elc wooden london bus with a very long title over two lines
 						</h2>
-						<div className="write-review">
-							<span>
-								<i className="fa fa-pencil"></i>
-								&nbsp;Write a review &nbsp;
+						<div className="write-review" style={{marginBottom: 20}}>
+							<span style={{marginRight: 10}}>
+								<i className="fa fa-pencil" style={{marginRight: 10}}></i>
+								Write a review 
 							</span>
-								&nbsp;|&nbsp;
-							<span>
-								&nbsp;Age: 7 - 14 year
+								|
+							<span style={{marginLeft: 20}}>
+								Age: 7 - 14 year
 							</span>
 						</div>
 						<div>
@@ -150,7 +150,7 @@ class ProductInfo extends Component {
 												<img src='http://nayomidev.iksulalive.com/pub/media/attribute/swatch/w/h/white_1_.jpg'></img>
 											</div>
 										</div>
-										<div className="prod-color">
+										<div style={{width:'100%'}}>
 											<div className="choose-dil">
 												Choose your delivery option:
 											</div>
@@ -183,7 +183,7 @@ class ProductInfo extends Component {
 											</div>
 										</div>
 
-										<div className="t-Form-inputContainer col col-5 row" style={{marginBottom: '1.9rem'}}>
+										<div className="t-Form-inputContainer col col-5 row" style={{marginBottom: 20, marginLeft:0,padding:0}}>
 											<div className="t-Form-itemWrapper" style={{border: '0.1rem solid #EAEAEA',borderRadius: '0.2rem'}}>
 												<span className="t-Form-itemText t-Form-itemText--pre">
 													<i
@@ -215,18 +215,18 @@ class ProductInfo extends Component {
 										</div>
 										<div className="alsoLikeCard add-cart">
 											<div className="homePage">
-												<button className="alsoLikeCardButton">add to basket</button>
+												<button className="alsoLikeCardButton" style={{marginTop: 0}}>add to basket</button>
 											</div>
 										</div>
 
 										<div className="share-wishlist">
-											<a className="hover-on-favorite">
+											<a className="hover-on-favorite" style={{marginRight: 35}}>
 												<img src={favoriteImg} />
 												<span>add to wishlist</span>
 											</a>
 											<a onClick={() => this.setState({ openShareModel: true })} className="hover-on-favorite">
-												<i className='fa fa-share-alt' style={{fontSize:25}}></i>
-												<span style={{padding:'10px'}}>Share</span>
+												<i className='fa fa-share-alt' style={{fontSize:25, marginRight:13}}></i>
+												<span >Share</span>
 											</a>
 										</div>
 										

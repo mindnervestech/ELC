@@ -1062,7 +1062,7 @@ font-weight: 100;
 .available-by{
     color: #ff8200;
     width: 100%;
-    margin-bottom: 2rem;
+    margin-bottom: 20px;
 }
 
 .details-body{
@@ -1080,7 +1080,7 @@ font-weight: 100;
     text-decoration: none !important;
     display: inline-block;
     font-size: 1.5rem;
-    width: 18.4rem;
+    width: 184px;
     text-align: center;
     height: 5.1rem;
     padding: 1.8rem 1.7rem;
@@ -1098,6 +1098,7 @@ ul li.active-tab a{
 .product-tab{
     border-bottom: 0.1rem solid #0D943F;
     width: 100%;
+    margin-top: 25px;
 }
 
 .product-tab div{
@@ -1108,7 +1109,7 @@ ul li.active-tab a{
 
 .product-tab div ul li{
     position: relative;
-    margin: 0 1.3rem 0 0; 
+    /* margin: 0 1.3rem 0 0;  */
     display:inline-block;
 }
 
@@ -1126,17 +1127,17 @@ ul li.active-tab a{
 
 .prod-price{
     width:100%;
-    margin-bottom: 1.5rem;
+    margin-bottom: 30px;
 }
 
 .prod-color{
-    margin-bottom: .5rem;
+    margin-bottom: 10px;
     width: 100%;
 }
 
-.prod-color div{
+/* .prod-color div{
     margin-bottom: 0.5rem;
-}
+} */
 
 .color-img{
     margin-bottom: 2rem;
@@ -1150,19 +1151,19 @@ ul li.active-tab a{
 .color-img div img{
     height: 35px;
     width: 35px;
-    margin-right: 1rem;
+    margin-right: 10px;
     border: 2px solid #0D943F;
 }
 
 .choose-dil{
-    margin-bottom: 1rem;
+    margin-bottom: 10px;
     width: 100%
 }
 
 .del-options {
     margin-left:0px; 
     margin-right:0px !important;
-    margin-bottom: 2rem;
+    margin-bottom: 30px;
 }
 
 .home-deli {
@@ -1210,7 +1211,7 @@ ul li.active-tab a{
 }
 
 .free-uk-dly{
-    margin-bottom: 2rem;
+    margin-bottom: 30px;
     width: 100% ;
     color: #009BCB;
 }
@@ -1236,7 +1237,7 @@ ul li.active-tab a{
 .add-cart{
     width: 100%; 
     margin-left: 0;
-    margin-bottom: 2rem
+    margin-bottom: 25px
 }
 
 .hover-on-favorite:hover{
@@ -1246,12 +1247,13 @@ ul li.active-tab a{
 }
 
 .hover-on-favorite img{
-    width: 25px; 
-    height:25px
+    width: 21px; 
+    height:20px;
+    margin-right: 13px
 }
 
 .hover-on-favorite span{
-    padding:10px;
+    padding: 10px 0px 10px 0px;;
 }
 
 .share-wishlist{
@@ -1269,10 +1271,10 @@ ul li.active-tab a{
 }
 
 .learn-skill {
-    padding-top: 1.5rem; 
+    padding-top: 20px; 
     border-top: 1px solid #d6d6d6;
     width: 100%;
-    margin-bottom: 2.2rem;
+    margin-bottom: 20px;
 }
 
 .learn-skill span{
@@ -1289,7 +1291,7 @@ ul li.active-tab a{
 .learn-skill-img img{
     width: 70px;
     height:70px;
-    margin-right: 3rem;
+    margin-right: 25px;
 }
 
 .product-title{

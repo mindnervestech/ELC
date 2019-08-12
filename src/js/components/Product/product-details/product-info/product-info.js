@@ -152,7 +152,7 @@ class ProductInformation extends Component {
 					</div>
 				</div>
 			 */}
-			 	{type == 'Product Information' ? <div style={{marginBottom: '5rem'}}>
+			 	{type == 'Product Information' ? <div style={{marginBottom: '5rem', marginTop:40}}>
 				 	<p className="detail-info">{type}</p>
 					<p className="detail-info">Product code: 148138 </p>
 
