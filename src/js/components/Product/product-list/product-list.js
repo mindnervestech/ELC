@@ -3,6 +3,7 @@ import { Link, Redirect } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import * as actions from '../../../redux/actions/index';
+import ProductListData from '../../PoductList/ProductListData';
 
 class ProductData extends Component {
 	constructor(props, context) {
@@ -203,7 +204,7 @@ class ProductData extends Component {
 		//console.log('rendering', this.props.redirect);
 		return (
 			<div id="PROD" className="prdcontainers">
-				{Data.length > 0 && (
+				{Object.keys(Data).length > 0 && (
 					<ul
 						className="products  grid-4-column"
 						style={{
@@ -214,7 +215,8 @@ class ProductData extends Component {
 
 						}}
 					>
-						{Data.map(this._renderProducts)}
+						<ProductListData list={Data} />
+						{/* {Data.map(this._renderProducts)} */}
 					</ul>)}
 				{ Data.length === 0 && !loading1 && (<p style={{ fontSize: '22px', letterSpacing: '0.04em', fontWeight: 500, padding: '20px 16px 10px' }}><FormattedMessage id="NoData.Text" defaultMessage="No Data available." />{loading1}</p>)}
 			</div>

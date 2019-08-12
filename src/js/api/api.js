@@ -32,7 +32,7 @@ const ADD_TO_CART = { type: 'POST', url: CART_URL + 'items/' };
 const GUEST_ADD_TO_CART = { type: 'POST', url: GUEST_CART_URL + 'guest-carts/' };
 
 const GET_PRODUCT_LIST = { type: 'POST', url: BASE_URL + 'productlisting/' };
-const GET_PRODUCT_SEARCH_LIST = { type: 'POST', url: BASE_URL + 'searchresult/' };
+//const GET_PRODUCT_SEARCH_LIST = { type: 'POST', url: BASE_URL + 'searchresult/' };
 
 const ADD_TO_WISHLIST = { type: 'POST', url: BASE_URL + 'addtowishlist/' };
 const GET_ORDER_HISTORY = { type: 'POST', url: BASE_URL + 'orderhistory/' };
@@ -99,7 +99,11 @@ export const API = {
 	},
 
 	getProductList: (data, cb) => request(data, cb, GET_PRODUCT_LIST),
-	getProductSearchList: (data, cb) => request(data, cb, GET_PRODUCT_SEARCH_LIST),
+	getProductSearchList: (data, cb) => {
+        let GET_PRODUCT_LIST_BY_SEARCH = `${BASE_URL}searchresult/?q=${data.q}&storeid=6`;
+        request({}, cb, { type: 'GET', url: GET_PRODUCT_LIST_BY_SEARCH });
+    },
+	//getProductSearchList: (data, cb) => request(data, cb, GET_PRODUCT_SEARCH_LIST),
 	addToWishlist: (data, cb) => request(data, cb, ADD_TO_WISHLIST),
 	getGuestCartId: (data, cb) => request(data, cb, GET_GUEST_CART_ID),
 	//getGuestCart: (data, cb) => request(data, cb, GET_GUEST_CART),
