@@ -22,6 +22,7 @@ import facebook from '../../../../assets/images/social/Facebook.svg';
 import instagram from '../../../../assets/images/social/instagram.svg';
 import youtube from '../../../../assets/images/social/youtube.svg';
 import twitter from '../../../../assets/images/social/twitter.svg';
+import Collapsible from 'react-collapsible';
 
 import ScrollToTop from 'react-scroll-up';
 const style = {
@@ -42,7 +43,7 @@ class Footer extends Component {
             readMoreButtonText: 'Read More',
             readLessButtonText: 'Read less',
             customerService: '8001244443',
-            categoryFooter: false
+            categoryFooter: false,
         }
         count = 0;
         loader = true;
@@ -75,8 +76,8 @@ class Footer extends Component {
         return (
             <>
             <footer className="footer-css">
-                <div className="row footer-line">
-                    <div className="col-md-3" style={{textAlign: 'start'}}>
+                <div className="row footer-line footer-show-web">
+                    <div className="col col-3" style={{textAlign: 'start'}}>
                         <div className="footer-title">
                             <span>site information</span>
                         </div>
@@ -97,7 +98,7 @@ class Footer extends Component {
                         </ul>
                     </div>
 
-                    <div className="col-md-2" style={{textAlign: 'start', padding: 0}}>
+                    <div className="col col-2" style={{textAlign: 'start', padding: 0}}>
                         <div className="footer-title">
                             <span>customer service</span>
                         </div>
@@ -129,14 +130,14 @@ class Footer extends Component {
                                 </Link>
                             </li>
                             <li>
-                                <Link to={`/${store_locale}/promotion-terms-and-condition`} style={{ textDecoration: 'none' }}>
-                                    <FormattedMessage id="footer.promotionTermsAndConditions" defaultMessage="promotion terms & conditions" />
+                                <Link to={`/${store_locale}/terms-and-conditions`} style={{ textDecoration: 'none' }}>
+                                    <FormattedMessage id="footer.promotionTermsAndConditions" defaultMessage="terms & conditions" />
                                 </Link>
                             </li>
                         </ul>
                     </div>
 
-                    <div className="col-md-2" style={{textAlign: 'start'}}>
+                    <div className="col col-3" style={{textAlign: 'start'}}>
                         <div className="footer-title">
                             <span>about eic</span>
                         </div>
@@ -152,19 +153,17 @@ class Footer extends Component {
                                 </Link>
                             </li>
                             <li>
-                                <Link to={`/${store_locale}/affiliates`} style={{ textDecoration: 'none' }}>
+                                <Link to={`/${store_locale}/affiliate`} style={{ textDecoration: 'none' }}>
                                     <FormattedMessage id="footer.affiliates" defaultMessage="affiliates" />
                                 </Link>
                             </li>
                             <li>
-                                <Link to={`/${store_locale}/elc-franchising`} style={{ textDecoration: 'none' }}>
+                                <Link to={`/${store_locale}/franchising`} style={{ textDecoration: 'none' }}>
                                     <FormattedMessage id="footer.franchising" defaultMessage="elc franchising" />
                                 </Link>
                             </li>
                             <li>
-                                <Link to={`/${store_locale}/elc-for-business`} style={{ textDecoration: 'none' }}>
-                                    <FormattedMessage id="footer.business" defaultMessage="elc for business" />
-                                </Link>
+                                <a href="">elc for business</a>
                             </li>
                             <li>
                                 <Link to={`/${store_locale}/corporate-responsibility`} style={{ textDecoration: 'none' }}>
@@ -188,9 +187,9 @@ class Footer extends Component {
                             </li>
                         </ul>
                     </div>
-                    <div className="col-md-1"></div>
-                    <div className="col-md-4" style={{textAlign: 'start'}}>
-                        <div className="footer-title" style={{marginBottom:5,}}>
+                    {/* <div className="col col-1"></div> */}
+                    <div className="col col-4" style={{textAlign: 'start'}}>
+                        <div className="footer-title" style={{marginBottom:7}}>
                             <span>follow us on</span>
                         </div>
                         <div>
@@ -199,7 +198,7 @@ class Footer extends Component {
                         <img src={instagram} className="icon"></img>
                         <img src={youtube} className="icon"></img>
                         </div>
-                        <div className="footer-title" style={{marginTop:70,marginBottom:5}}>
+                        <div className="footer-title" style={{marginTop:60,marginBottom:7}}>
                             <span>sign up for our latest news and offers</span>
                         </div>
                         <div>
@@ -209,8 +208,8 @@ class Footer extends Component {
                     </div>
 
                 </div>
-                <div className="row footer-bottom">
-                    <div className="col-md-8" style={{textAlign: 'start'}}>
+                <div className="row footer-bottom footer-show-web">
+                    <div className="col col-8" style={{textAlign: 'start'}}>
                         <div>
                             @ copyright ELC UK Limited 2018 ELC UK Limited (a private limited company). Registered in England no. 2057757. VAT Reg no. GB 285 2009 09.
                         </div>
@@ -218,21 +217,160 @@ class Footer extends Component {
                             Registered Office: Boughton Bussiness Park Bell Lane, Little Chalfont, Bucks, HP6 6GL
                         </div>
                     </div>
-                    <div className="col-md-4" style={{textAlign: "end"}}>
+                    <div className="col col-4" style={{textAlign: "end"}}>
                         <div className="row">
-                            <div className="col-md-3">
+                            <div className="col col-3">
                                  <img className="bottom-imagePaypal" src={payPalImg}/>
                             </div>
-                            <div className="col-md-3">
+                            <div className="col col-3">
                                 <img className="bottom-imagePaypal" src={verisignSecureImg}/>
                             </div>
-                            <div className="col-md-3">
+                            <div className="col col-3">
                                 <img className="bottom-imagePaypal" src={masterCardImg}/>
                             </div>
-                            <div className="col-md-3">
+                            <div className="col col-3">
                                 <img className="bottom-imagePaypal" src={VISAImg}/>
                             </div>
                         </div>
+                    </div>
+                </div>
+
+                <div className="footer-line footer-show-mobile">
+                    <div className="footer-title" style={{textAlign: 'center',marginBottom:7}}>
+                        <span>sign up for our latest news and offers</span>
+                    </div>
+                    <div>
+                        <input type="text" placeholder="enter your e-mail address" className="email-field"></input>
+                        <input type="submit" value="submit" className="submit-button"></input>
+                    </div>
+                    <div className="mobile-manu">
+                        <Collapsible trigger="site information">
+                            <div>
+                                <ul className="text-color">
+                                    <li>
+                                        <Link to={`/${store_locale}/sitemap`} style={{ textDecoration: 'none' }}>
+                                            <FormattedMessage id="footer.sitemap" defaultMessage="sitemap" />
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link to={`/${store_locale}/help-and-faq`} style={{ textDecoration: 'none' }}>
+                                            <FormattedMessage id="footer.helpFaqs" defaultMessage="help & faqs" />
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <a href="">big birthday club</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </Collapsible>
+                        <Collapsible trigger="customer service">
+                            <div>
+                                <ul className="text-color">
+                                    <li>
+                                        <a href="">store finder</a>
+                                    </li>
+                                    <li>
+                                        <Link to={`/${store_locale}/contact-us`} style={{ textDecoration: 'none' }}>
+                                            <FormattedMessage id="footer.contactUs" defaultMessage="contact us" />
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link to={`/${store_locale}/delivery-information`} style={{ textDecoration: 'none' }}>
+                                            <FormattedMessage id="footer.delivery" defaultMessage="delivery information" />
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link to={`/${store_locale}/returns-and-exchanges`} style={{ textDecoration: 'none' }}>
+                                            <FormattedMessage id="footer.returnAndExchanges" defaultMessage="returns and exchanges" />
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <a href="">eu online dispute resolution platfrom</a>
+                                    </li>
+                                    <li>
+                                        <Link to={`/${store_locale}/terms-and-conditions`} style={{ textDecoration: 'none' }}>
+                                            <FormattedMessage id="footer.termsAndConditions" defaultMessage="terms & conditions" />
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link to={`/${store_locale}/terms-and-conditions`} style={{ textDecoration: 'none' }}>
+                                            <FormattedMessage id="footer.promotionTermsAndConditions" defaultMessage="terms & conditions" />
+                                        </Link>
+                                    </li>
+                                </ul>
+                            </div>
+                        </Collapsible>
+                        <Collapsible trigger="about eic">
+                            <div>
+                                <ul className="text-color">
+                                    <li>
+                                        <Link to={`/${store_locale}/about-us`} style={{ textDecoration: 'none' }}>
+                                            <FormattedMessage id="footer.aboutUS" defaultMessage="about us" />
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link to={`/${store_locale}/careers`} style={{ textDecoration: 'none' }}>
+                                            <FormattedMessage id="footer.careers" defaultMessage="careers" />
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link to={`/${store_locale}/affiliate`} style={{ textDecoration: 'none' }}>
+                                            <FormattedMessage id="footer.affiliates" defaultMessage="affiliates" />
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link to={`/${store_locale}/franchising`} style={{ textDecoration: 'none' }}>
+                                            <FormattedMessage id="footer.franchising" defaultMessage="elc franchising" />
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <a href="">elc for business</a>
+                                    </li>
+                                    <li>
+                                        <Link to={`/${store_locale}/corporate-responsibility`} style={{ textDecoration: 'none' }}>
+                                            <FormattedMessage id="footer.corporateResponsibility" defaultMessage="corporate responsibility" />
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link to={`/${store_locale}/term-of-use`} style={{ textDecoration: 'none' }}>
+                                            <FormattedMessage id="footer.termOfUse" defaultMessage="terms of use" />
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link to={`/${store_locale}/privacy-policy`} style={{ textDecoration: 'none' }}>
+                                            <FormattedMessage id="footer.privacyPolicy" defaultMessage="privacy policy" />
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link to={`/${store_locale}/cookie-policy`} style={{ textDecoration: 'none' }}>
+                                            <FormattedMessage id="footer.cookiePolicy" defaultMessage="cookie policy" />
+                                        </Link>
+                                    </li>
+                                </ul>
+                            </div>
+                        </Collapsible>
+                    </div>
+                    <div style={{paddingTop:30, textAlign: 'center'}}>
+                        <div className="footer-title" style={{marginBottom:7}}>
+                            <span>follow us on</span>
+                        </div>
+                        <div>
+                            <img src={facebook} className="icon"></img>
+                            <img src={twitter} className="icon"></img>
+                            <img src={instagram} className="icon"></img>
+                            <img src={youtube} className="icon"></img>
+                        </div>
+                    </div>
+                </div>
+                <div className="footer-bottom footer-show-mobile" style={{textAlign: 'center'}}>
+                    <div>
+                        @ copyright ELC UK Limited 2018 ELC UK Limited (a private limited company). Registered in England no. 2057757. VAT Reg no. GB 285 2009 09. Registered Office: Boughton Bussiness Park Bell Lane, Little Chalfont, Bucks, HP6 6GL
+                    </div>
+                    <div style={{paddingTop: 20, paddingBottom: 30}}>
+                    <img className="bottom-imagePaypal-mobile" src={payPalImg}/>
+                    <img className="bottom-imagePaypal-mobile" src={verisignSecureImg}/>
+                    <img className="bottom-imagePaypal-mobile" src={masterCardImg}/>
+                    <img className="bottom-imagePaypal-mobile" src={VISAImg}/>
                     </div>
                 </div>
             </footer>

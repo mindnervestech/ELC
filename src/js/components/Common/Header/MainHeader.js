@@ -25,6 +25,7 @@ import bagLogo from '../../../../assets/images/header/Store Locator 3 Copy 2.svg
 import location from '../../../../assets/images/header/location.svg';
 import help from '../../../../assets/images/header/help.svg';
 import profile from '../../../../assets/images/header/profile.png';
+import Slider from "react-slick";
 
 class MainHeader extends Component {
     constructor(props) {
@@ -167,8 +168,36 @@ class MainHeader extends Component {
     }
 
     render() {
-        //console.log('props from header ', this.props);
-        //console.log('state from header ',this.state);
+
+        const settings = {
+            dots: false,
+            infinite: true,
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1,
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                    }
+                }
+            ]
+        }
 
         const store_locale = this.props.globals.store_locale;
 
@@ -197,8 +226,7 @@ class MainHeader extends Component {
             </li>
 
         }
-        //console.log(this.props.guest_user);
-        // console.log('render', this.state.country_flag);
+
         return (
             <>
                 <Helmet>
@@ -268,19 +296,21 @@ class MainHeader extends Component {
                                     <li><a href="https://api.whatsapp.com/send?phone=971565069237" target="_blank" className="whatsapp"><i className="icon-whatsapp" /><span style={{ whiteSpace: 'nowrap' }}><FormattedMessage id="header.ContactUs" defaultMessage="Contact Us" /></span></a></li> */}
                                 </ul >
                                 <ul className="rightLink">
-                                    <li>
+                                    <li className="titleHover">
                                     {/* <i className="icon-marker"></i> */}
                                     <img src={location} className="image-ion"></img>
-                                        <label className="iconLeble text-color">store finder</label>
+                                        <label className="iconLeble text-color changeLinkText">store finder</label>
                                     </li>
-                                    <li>
+                                    <li className="titleHover">
                                         {/* <i className="icon-heart"></i> */}
                                         <img src={help} className="image-ion"></img>
-                                        <label className="iconLeble text-color">help</label>
+                                        <label className="iconLeble text-color changeLinkText">help</label>
                                     </li>
-                                    <li>
+                                    <li className="titleHover">
+                                    <Link to={`/${store_locale}/Login`} style={{ textDecoration: 'none' }}>
                                     <img src={profile} className="image-ion"></img>
-                                        <label className="iconLeble text-color">sign in / register</label>
+                                        <label className="iconLeble text-color changeLinkText">sign in / register</label>
+                                        </Link>
                                     </li>
                                     {/* {profileIcon}
 
@@ -306,16 +336,17 @@ class MainHeader extends Component {
                         {/* <input type="hidden" id="P0_HSEARCH" name="P0_HSEARCH" value="" /> */}
                         <div className="containers-main">
                         {/* <Container style={{width: "100%"}}> */}
-                            <Row>
+                            <Row style={{paddingRight: 30, paddingLeft: 30}}>
                                 <Col xs="4" style={{paddingLeft: 0, paddingRight: 0}}>
                                 <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
-                                    <img style={{height:64, width:"100%",marginRight:10,marginLeft:10}} src={logoGroup}/>
+                                    <img style={{height:64, width:"75%",paddingLeft: 5}} src={logoGroup}/>
                                 </Link>
                                     
                                 </Col>
                                 <Col xs="4" style={{padding:6}}><Search store_locale={store_locale} /></Col>
                                 <Col xs="2"></Col>
                                 <Col xs="2" style={{paddingTop:15, paddingLeft:5, paddingRight:5}}>
+                                <Link to={`/${store_locale}/cart`} style={{ textDecoration: 'none' }}>
                                 <ul className="cta">
                                     {/* <li>
                                         <div className="changecountry">
@@ -347,9 +378,10 @@ class MainHeader extends Component {
                                         <label className="lable-count">1</label>
                                     </li>
                                     <li>
-                                        <label className="headerLable2">my basket:  <span style={{fontWeight:"bold"}}>£30.00</span></label>
+                                        <label className="headerLable2">my basket:<span style={{fontFamily:"VAG Rounded ELC Bold", marginLeft: 10}}>£30.00</span></label>
                                     </li>
                                 </ul>
+                                </Link>
                                 </Col>
                             </Row>
                         {/* </Container> */}
@@ -422,8 +454,71 @@ class MainHeader extends Component {
                             </div> */}
                         </div>
                     </div>
-                    <div>
-                        <Row className="row-4">
+                    <div className="header-slider">
+                        <Row>
+                            <Col xs="1"></Col>
+                            <Col xs="10" style={{padding: 0}}>
+                                <Slider {...settings}>
+                                    <div>
+                                        <Row>
+                                            <Col xs="2"></Col>
+                                            <Col xs="3">
+                                            <img src={deliveryBy} className="imageHight40"/>
+                                            </Col>
+                                            <Col xs="7">
+                                                <ul style={{textAlign: 'start'}}>
+                                                    <li style={{fontSize: 13, color: "#0D943F"}}>
+                                                        free UK delivery
+                                                    </li>
+                                                    <li style={{fontSize: 11}} className="text-color">
+                                                        when you spend £10
+                                                    </li>
+                                                </ul>
+                                            </Col>
+                                        </Row>
+                                    </div>
+                                    <div>
+                                        <Row>
+                                            <Col xs="2"></Col>
+                                            <Col xs="3">
+                                            <img src={freeDelivery} className="imageHight40"/>
+                                            </Col>
+                                            <Col xs="7">
+                                                <ul style={{textAlign: 'start'}}>
+                                                    <li style={{fontSize: 13, color: "#0D943F"}}>
+                                                        order by 7pm
+                                                    </li>
+                                                    <li style={{fontSize: 11}} className="text-color">
+                                                        for next working day delivery
+                                                    </li>
+                                                </ul>
+                                            </Col>
+                                        </Row>
+                                    </div>
+                                    <div>
+                                        <Row>
+                                            <Col xs="2"></Col>
+                                            <Col xs="3">
+                                                <img src={freeCollect} className="imageHight40"/>
+                                            </Col>
+                                            <Col xs="7">
+                                                <ul style={{textAlign: 'start'}}>
+                                                    <li style={{fontSize: 13, color: "#0D943F"}}>
+                                                        free click & collect
+                                                    </li>
+                                                    <li style={{fontSize: 11}} className="text-color">
+                                                        in as little as 30 minutes
+                                                    </li>
+                                                </ul>
+                                            </Col>
+                                        </Row>
+                                    </div>
+                                </Slider>
+                            </Col>
+                            <Col xs="1"></Col>
+                        </Row>
+                    
+                        {/* <Row className="row-4">
                             <Col xs="1"></Col>
                             <Col xs="10">
                             <Row>
@@ -484,7 +579,7 @@ class MainHeader extends Component {
                             </Row>
                             </Col>
                             <Col xs="1"></Col>
-                        </Row>
+                        </Row> */}
                     </div>
                     <div id="R39731766560788077" className="offerStripe">
                         <OfferStripe OfferMessage={this.props.OfferMessage} />

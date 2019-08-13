@@ -123,7 +123,7 @@ class ProductColor extends Component {
 			const settings3 = {
 				autoplay: true,
 				autoplaySpeed: 6000,
-				dots: true,
+				dots: false,
 				infinite: true,
 				slidesToShow: 4,
 				slidesToScroll: 1,

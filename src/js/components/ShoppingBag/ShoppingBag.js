@@ -230,9 +230,8 @@ class ShoppingBag extends Component {
       outOfStock = <OutOfStock product={checkOutOfStock} quote_id={quote_id} />;
       outOfStockAlert = <Alert closedScroll={this.closedAlertScroll} />
     }
-
-    if (itemList.length > 0) {
-
+    var demo = true
+    if (itemList.length > 0 || demo) {
       shoppingItem = itemList.map((item, index) => {
         if (item.is_in_stock.status) {
           return <ShoppingBagItem
@@ -248,6 +247,7 @@ class ShoppingBag extends Component {
         }
 
       })
+      return <ShoppingBagItem/>;
 
     } else if (itemList.length === 0) {
       if (this.props.cartLoader) {
@@ -283,7 +283,6 @@ class ShoppingBag extends Component {
           <div className="Cart t-Body-contentInner">
             <Popup />
             <div className="container">
-
               {this.props.updateLoader && <Spinner />}
               {!this.props.updateLoader && (
                 <>

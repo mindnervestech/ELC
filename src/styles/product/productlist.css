@@ -25,9 +25,10 @@ html[lang="ar"] .filters ul{
       .products li {
         vertical-align: top;
         position: relative;
-        width: 43.4% !important;
+        width: 42.4% !important;
     }  
 }
+
 @media (max-width: 640px) {
     .prdcontainers {
         width: 100%;
@@ -95,11 +96,36 @@ html[lang="ar"] .filters ul{
     }
 }
 
+/* .product-list{
+  margin: 20px 0;
+} */
+
+@media only screen and (max-width: 450px) {
+  .products li {
+    vertical-align: top;
+    position: relative;
+    width: 100%;
+  }
+
+  .product-list li {
+    vertical-align: top;
+    position: relative;
+    width: 44%;
+  }
+}
+
 @media only screen and (min-width: 960px) {
+
+  /* .product-list li {
+    vertical-align: top;
+    position: relative;
+    width: 23.4%;
+} */
+
     .products li {
         vertical-align: top;
         position: relative;
-        width: 23%;
+        width: 22%;
     }
 }
 

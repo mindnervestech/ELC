@@ -12,8 +12,8 @@ import logo2 from '../../../assets/images/you_may_also_like_2.png'
 import logo3 from '../../../assets/images/you_may_also_like_3.png'
 import logo4 from '../../../assets/images/you_may_also_like_4.png'
 import home from '../../../assets/images/social/Hero.png';
+import ProductSlider from '../Product/product-details/Product-slider'
 import { Link, Redirect } from 'react-router-dom';
-
 class HomePageComponent extends Component {
     constructor(props) {
         super(props);
@@ -300,10 +300,9 @@ class HomePageComponent extends Component {
                             <div id="R36275003485418909" className="homePage">
                                 <section className="trendingBlock">
                                     <div className="wrap">
-                                        <div className="trendingList">
-                                            <Slider {...settings}>
-                                                <div>
-                                                
+                                    <ul className="product-list">
+                                        <li>
+                                            <div>
                                                     <Link to={`/saudi-en/product-list`}>
                                                         {/* <figure> */}
                                                             <a href={''} target="_blank">
@@ -314,9 +313,11 @@ class HomePageComponent extends Component {
                                                             </div>
                                                         {/* </figure> */}
                                                     </Link>
-                                                </div>
-                                                <div>
-                                                    <Link to={`/saudi-en/products-details/blue-bike`}>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                    <Link to={`/saudi-en/product-list`}>
                                                         {/* <figure> */}
                                                             <a href={''} target="_blank">
                                                                 <img src={logo2} />
@@ -327,8 +328,10 @@ class HomePageComponent extends Component {
                                                         {/* </figure> */}
                                                     </Link>
                                                 </div>
-                                                <div>
-                                                    <Link to={`/saudi-en/products-details/blue-bike`}>
+                                        </li>
+                                        <li>
+                                        <div>
+                                                    <Link to={`/saudi-en/product-list`}>
                                                         {/* <figure> */}
                                                             <a href={''} target="_blank">
                                                                 <img src={logo3} />
@@ -339,8 +342,10 @@ class HomePageComponent extends Component {
                                                         {/* </figure> */}
                                                     </Link>
                                                 </div>
-                                                <div>
-                                                    <Link to={`/saudi-en/products-details/blue-bike`}>
+                                        </li>
+                                        <li>
+                                        <div>
+                                                    <Link to={`/saudi-en/product-list`}>
                                                         {/* <figure> */}
                                                             <a href={''} target="_blank">
                                                                 <img src={logo4} />
@@ -350,85 +355,15 @@ class HomePageComponent extends Component {
                                                             </div>
                                                         {/* </figure> */}
                                                     </Link>
-                                                </div></Slider>
-                                        </div>
+                                                </div>
+                                        </li>
+                                    </ul>
                                     </div>
                                 </section>
                                 </div>
                         </div>
                     </div>
-
-                    <div className="likeText">
-                        <label>you may also like</label>
-                    </div>
-                    <div className="row data">
-                        <div className="col col-12 apex-col-auto homeBlock">
-                            <div id="R36275003485418909" className="homePage">
-                                <section className="trendingBlock2">
-                                    <div className="wrap">
-                                        <div className="trendingList">
-                                            <Slider {...settings3}>
-                                                
-                                                        <div className="alsoLikeCard">
-                                                        <img src={logo1} />
-                                                            <div style={{marginTop:10}}>
-                                                                <label className="text-color">Twist and Turn Activity House</label>
-                                                            </div>
-                                                            <div>
-                                                                <span style={{fontSize:14, color:"#0D943F", fontWeight: "bold"}}>£12.00</span><span style={{color:"gray",textDecorationLine: 'line-through', fontSize:14, marginLeft: 10}}>£14.50</span>
-                                                            </div>
-                                                            <div>
-                                                                <button className="alsoLikeCardButton">add to basket</button>
-                                                            </div>
-                                                        </div>
-
-                                                        <div className="alsoLikeCard">
-                                                        <img src={logo2} />
-                                                            <div style={{marginTop:10}}>
-                                                                <label className="text-color">Twist and Turn Activity House</label>
-                                                            </div>
-                                                            <div>
-                                                                <span style={{fontSize:14, color:"#0D943F", fontWeight: "bold"}}>£12.00</span><span style={{color:"gray",textDecorationLine: 'line-through', fontSize:14, marginLeft: 10}}>£14.50</span>
-                                                            </div>
-                                                            <div>
-                                                                <button className="alsoLikeCardButton">add to basket</button>
-                                                            </div>
-                                                        </div>
-                                                        
-                                                        <div className="alsoLikeCard">
-                                                        <img src={logo3} />
-                                                            <div style={{marginTop:10}}>
-                                                                <label className="text-color">Twist and Turn Activity House</label>
-                                                            </div>
-                                                            <div>
-                                                                <span style={{fontSize:14, color:"#0D943F", fontWeight: "bold"}}>£12.00</span><span style={{color:"gray",textDecorationLine: 'line-through', fontSize:14, marginLeft: 10}}>£14.50</span>
-                                                            </div>
-                                                            <div>
-                                                                <button className="alsoLikeCardButton">add to basket</button>
-                                                            </div>
-                                                        </div>
-
-                                                        <div className="alsoLikeCard">
-                                                        <img src={logo4} />
-                                                            <div style={{marginTop:10}}>
-                                                                <label className="text-color">Twist and Turn Activity House</label>
-                                                            </div>
-                                                            <div>
-                                                                <span style={{fontSize:14, color:"#0D943F", fontWeight: "bold"}}>£12.00</span><span style={{color:"gray",textDecorationLine: 'line-through', fontSize:14, marginLeft: 10}}>£14.50</span>
-                                                            </div>
-                                                            <div>
-                                                                <button className="alsoLikeCardButton">add to basket</button>
-                                                            </div>
-                                                        </div>
-                                                         </Slider>
-                                        </div>
-                                    </div>
-                                </section>
-                                </div>
-                        </div>
-                    </div>
-
-
+                    <ProductSlider></ProductSlider>
                 </div>
             </div>
             {/* <div className="t-Body-contentInner hideInDesktop">

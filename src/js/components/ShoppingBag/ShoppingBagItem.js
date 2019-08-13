@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
+import freeDelivery from '../../../assets/images/header/Truck1.svg';
+import freeCollect from '../../../assets/images/header/Mouse.svg';
+import { Row, Col, Button } from 'reactstrap';
+import logo1 from '../../../assets/images/you_may_also_like_1.png'
 
 class ShoppingBagItem extends Component {
 
@@ -11,34 +15,129 @@ class ShoppingBagItem extends Component {
       const store_locale = this.props.store_locale;
 
       let cartProductPrice;
-
-      if (product.special_price !== null) {
-         cartProductPrice = (
-            <td className="price"><span className="p-price">
-               <span className="p-desc"><FormattedMessage id="Now.Text" defaultMessage="Now" /></span>
-               <span className="p-currency">{product.currency}</span> {Math.round(parseFloat(product.special_price * product.qty))}</span>
-               <br />
-               <del className="p-desc"><FormattedMessage id="Was.Text" defaultMessage="Was" /><strong><span className="p-currency">{product.currency}</span> {parseFloat(product.price *  product.qty)}</strong></del><br />
-               <span className="p-price-saving"><span className="p-desc"><FormattedMessage id="Savings.title" defaultMessage="Savings"/></span>
-                  <span className="p-currency">{Math.round(( (product.price - product.special_price) / product.price) * 100)} %</span></span>
-            </td>
-         )
-      } else if(parseInt(product.price) == 0 ){
-         cartProductPrice = (
-            <td className="price">
-               <FormattedMessage id="Free.text" defaultMessage="Free" /><br />
-            </td>
-         )
-      } else {
-            cartProductPrice = (
-                  <td className="price">
-                     <span className="p-currency">{product.currency}</span> {parseInt(product.price *  product.qty)}<br />
-                  </td>
-               )
-      }
+      
+      // if (product.special_price !== null) {
+      //    cartProductPrice = (
+      //       <td className="price"><span className="p-price">
+      //          <span className="p-desc"><FormattedMessage id="Now.Text" defaultMessage="Now" /></span>
+      //          <span className="p-currency">{product.currency}</span> {Math.round(parseFloat(product.special_price * product.qty))}</span>
+      //          <br />
+      //          <del className="p-desc"><FormattedMessage id="Was.Text" defaultMessage="Was" /><strong><span className="p-currency">{product.currency}</span> {parseFloat(product.price *  product.qty)}</strong></del><br />
+      //          <span className="p-price-saving"><span className="p-desc"><FormattedMessage id="Savings.title" defaultMessage="Savings"/></span>
+      //             <span className="p-currency">{Math.round(( (product.price - product.special_price) / product.price) * 100)} %</span></span>
+      //       </td>
+      //    )
+      // } else if(parseInt(product.price) == 0 ){
+      //    cartProductPrice = (
+      //       <td className="price">
+      //          <FormattedMessage id="Free.text" defaultMessage="Free" /><br />
+      //       </td>
+      //    )
+      // } else {
+      //       cartProductPrice = (
+      //             <td className="price">
+      //                <span className="p-currency">{product.currency}</span> {parseInt(product.price *  product.qty)}<br />
+      //             </td>
+      //          )
+      // }
 
       return (<>
-         <tr>
+      <div className="homePage cardPage">
+         <Row className="row-5">
+            <Col xs="6">
+            <div className="blackTitle" style={{fontSize:22}}>
+               Select Delivery
+            </div>
+            <div className="prod-color">
+               <div className="row del-options">
+                  <div className="row home-deli">
+                     <img src={freeDelivery}/>
+                     <span>Home delivery</span>
+                     <span style={{margin:'10px', color: '#ee0E19'}}>
+                        Out of stock
+                     </span>
+                  </div>
+                  <div className="row click-collect">
+                        <img src={freeCollect}/>
+                           <span>Click & Collect</span>
+                           <span className="in-stock">In stock</span>
+                           <span style={{margin:'10px'}}>
+                              <a href=''>Change store</a>
+                           </span>
+                  </div>
+               </div>
+				</div>
+            </Col>
+            <Col xs="3"></Col>
+            <Col xs="3" style={{textAlign: 'end'}}>
+            <div>
+               <div className="blackTitle" style={{fontSize:22}}>
+                  <span>1 item | £99.99</span>
+               </div>
+               <div>
+                  <button className="alsoLikeCardButton">Check out</button>
+               </div>
+            </div>
+            </Col>
+         </Row>
+         <Row className="row-1">
+            <Col xs="3">
+               
+            </Col>
+            <Col xs="4">
+               <span className="blackTitle" style={{fontSize:14}}>Item</span>
+            </Col>
+            <Col xs="1">
+               <span className="blackTitle" style={{fontSize:14}}>Price</span>
+            </Col>
+            <Col xs="1">
+               <span className="blackTitle" style={{fontSize:14}}>Qty</span>
+            </Col>
+            <Col xs="1">
+               <span className="blackTitle" style={{fontSize:14}}>Total</span>
+            </Col>
+            <Col xs="2">
+               
+            </Col>
+         </Row>
+         <Row className="row-2">
+            <Col xs="3">
+               <img src={logo1} className="cardImage"></img>
+            </Col>
+            <Col xs="4">
+               <span className="blackTitle" style={{fontSize:16}}>L.O.L SURPRISE 2-IN-1 GLAMPER PLAYSET</span>
+            </Col>
+            <Col xs="1" className="row-3 blackTitle" style={{fontSize:16}}>
+               <span>£99.99</span>
+            </Col>
+            <Col xs="1" className="row-3 blackTitle" style={{fontSize:16}}>
+               <span className="qut">1</span>
+            </Col>
+            <Col xs="1" className="row-3 blackTitle" style={{fontSize:22}}>
+               <span>£99.99</span>
+            </Col>
+            <Col xs="2" className="row-3 blackTitle" style={{textAlign: 'end'}}>
+            <span className="remove" style={{fontSize:14}}>Remove</span>
+            </Col>
+         </Row>
+         <Row style={{paddingRight: 25}}>
+            <Col xs="6"></Col>
+            <Col xs="6">
+               <Row className="row-4">
+               <Col xs="4">Order Total</Col>
+               <Col xs="4"></Col>
+               <Col xs="4">£99.99</Col>
+               </Row>
+            </Col>
+         </Row>
+         <Row style={{padding: 20}}>
+            <Col xs="9"></Col>
+            <Col xs="3" style={{textAlign: 'end'}}>
+               <button className="alsoLikeCardButton">Check out</button>
+            </Col>
+         </Row>
+      </div>
+         {/* <tr>
             <td className="t-Report-cell" headers="PRODUCT_DESC">
                <table>
                   <tbody>
@@ -90,7 +189,7 @@ class ShoppingBagItem extends Component {
                   </tbody>
                </table>
             </td>
-         </tr>
+         </tr> */}
 
       </>)
    }
