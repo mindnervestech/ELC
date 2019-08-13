@@ -12,7 +12,7 @@ class PrivacyPolicy extends Component {
 			data: [],
 		};
 	}
-
+	static getDerivedStateFromProps = (props, state) => { };
 	getStoreInfo = () => {
 		console.log('store_id in function', this.state.storeId);
 		if (this.state.storeId) {

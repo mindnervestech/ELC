@@ -1,53 +1,20 @@
 import React, { Component } from 'react';
-import Axios from 'axios';
-import cookie from 'react-cookies';
 import '../../../../styles/StaticPages.css';
-import { STATIC_PAGES_URL, API_TOKEN } from '../../../api/globals';
+import { connect } from 'react-redux';
+import * as actions from '../../../redux/actions/index';
 
 class Affiliate extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			storeId: '',
-			data: [],
 		};
 	}
 
 	static getDerivedStateFromProps = (props, state) => { };
 
-	getAffiliate = () => {
-		if (this.state.storeId) {
-			const API = Axios.create({
-				baseURL: STATIC_PAGES_URL,
-				headers: { Authorization: `Bearer ${API_TOKEN}`, 'Content-Type': 'application/json' },
-			});
-
-			API.get('brand-overview/storeId/' + this.state.storeId).then(res => {
-				this.setState({ data: res.data });
-			});
-		}
-	}
-
-	componentDidMount(prevProps, prevState) {
-		let changedLang = localStorage.getItem('tempstoreid');
-		if (changedLang) {
-			this.setState({ storeId: changedLang, data: [] }, () => {
-				this.getAffiliate();
-			});
-		} else {
-			this.setState({ storeId: cookie.load('storeid'), data: [] }, () => {
-				this.getAffiliate();
-			});
-		}
-	}
-
-	componentDidUpdate(prevProps, prevState) {
-		let changedLang = localStorage.getItem('tempstoreid');
-		if (this.state.storeId !== changedLang) {
-			this.setState({ storeId: changedLang, data: [] }, () => {
-				this.getAffiliate();
-			});
-		}
+	componentDidMount() {
+		this.props.onGetAffilatesData({ storeId: 1 });
 	}
 
 	render() {
@@ -56,7 +23,6 @@ class Affiliate extends Component {
 				<div className="container">
 					<div className="row">
 						<div className="col col-12 apex-col-auto">
-						<h1>Affiliate</h1>
 							<div className="t-Region g-wrapper-main_content  t-Region--removeHeader t-Region--noBorder t-Region--scrollBody margin-top-lg"
 								id="R231982418266982051">
 								<div className="t-Region-header">
@@ -78,6 +44,10 @@ class Affiliate extends Component {
 										<div className="t-Region-buttons-right" />
 									</div>
 									<div className="t-Region-body">
+										<center> <br />
+											<h1 className="t-page-titles">{this.props.affiliate.title}</h1>
+											{/* <h1 className="t-page-titles"> <FormattedMessage id="ContactUs.Title" defaultMessage="ContactUs" /></h1> */}
+										</center>
 										<input type="hidden" id="P15_SEARCHSTRING" name="P15_SEARCHSTRING" value="" />
 										<input
 											type="hidden"
@@ -103,7 +73,7 @@ class Affiliate extends Component {
 
 											<div
 												style={{ fontSize: '14px' }}
-												dangerouslySetInnerHTML={{ __html: this.state.data.content }}
+												dangerouslySetInnerHTML={{ __html: this.props.affiliate.content }}
 											/>
 											<div>&nbsp;</div>
 										</div>
@@ -121,4 +91,17 @@ class Affiliate extends Component {
 		);
 	}
 }
-export default Affiliate;
+
+const mapStateToProps = state => {
+	return {
+		affiliate : state.static.affiliate,
+ 	}
+}
+
+const mapDispatchToProps = dispatch => {
+	return {
+		onGetAffilatesData: (payload) => dispatch(actions.getAffiliatePageData(payload)),
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Affiliate);

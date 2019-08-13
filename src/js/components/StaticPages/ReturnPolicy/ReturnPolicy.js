@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import '../../../../styles/StaticPages.css';
-import Axios from 'axios';
-import cookie from 'react-cookies';
-import { STATIC_PAGES_URL, API_TOKEN } from '../../../api/globals';
+import { connect } from 'react-redux';
+import * as actions from '../../../redux/actions/index';
+
 class ReturnPolicy extends Component {
 	constructor(props) {
 		super(props);
@@ -12,41 +12,10 @@ class ReturnPolicy extends Component {
 		};
 	}
 
-	getStoreInfo = () => {
-		console.log('store_id in function', this.state.storeId);
-		if (this.state.storeId) {
-			const API = Axios.create({
-				baseURL: STATIC_PAGES_URL,
-				headers: { Authorization: `Bearer ${API_TOKEN}`, 'Content-Type': 'application/json' },
-			});
+	static getDerivedStateFromProps = (props, state) => { };
 
-			API.get('returns-and-exchanges/storeId/' + this.state.storeId).then(res => {
-				this.setState({ data: res.data });
-			});
-		}
-	}
-
-	componentDidMount(prevProps, prevState) {
-		let changedLang = localStorage.getItem('tempstoreid');
-		if (changedLang) {
-			this.setState({ storeId: changedLang, data: [] }, () => {
-				this.getStoreInfo();
-			});
-		} else {
-			this.setState({ storeId: cookie.load('storeid'), data: [] }, () => {
-				this.getStoreInfo();
-			});
-		}
-	}
-
-	componentDidUpdate(prevProps, prevState) {
-		console.log('componentDidUpdateCalled!!');
-		let changedLang = localStorage.getItem('tempstoreid');
-		if (this.state.storeId !== changedLang) {
-			this.setState({ storeId: changedLang, data: [] }, () => {
-				this.getStoreInfo();
-			});
-		}
+	componentDidMount() {
+		this.props.onGetReturnPolicyData({ storeId: 1 });
 	}
 
 	render() {
@@ -55,7 +24,6 @@ class ReturnPolicy extends Component {
 				<div className="container">
 					<div className="row">
 						<div className="col col-12 apex-col-auto">
-						<h1>Return & Exchanges</h1>
 							<div
 								className="t-Region g-wrapper-main_content  t-Region--removeHeader t-Region--noBorder t-Region--scrollBody margin-top-lg"
 								id="R231982418266982051"
@@ -79,6 +47,10 @@ class ReturnPolicy extends Component {
 										<div className="t-Region-buttons-right" />
 									</div>
 									<div className="t-Region-body">
+										<center> <br />
+											<h1 className="t-page-titles">{this.props.returnPolicy.title}</h1>
+											{/* <h1 className="t-page-titles"> <FormattedMessage id="ContactUs.Title" defaultMessage="ContactUs" /></h1> */}
+										</center>
 										<input type="hidden" id="P15_SEARCHSTRING" name="P15_SEARCHSTRING" value="" />
 										<input
 											type="hidden"
@@ -101,16 +73,16 @@ class ReturnPolicy extends Component {
 										/>
 
 										<div id="MiscContent">
-											<p style={{ textAlign: 'center' }}>
+											{/* <p style={{ textAlign: 'center' }}>
 												<strong>
 													<span style={{ fontSize: 28 }}>{this.state.data.title}</span>
 												</strong>
-											</p>
+											</p> */}
 
 											<p style={{ textAlign: 'center' }}>&nbsp;</p>
 											<div
 												style={{ fontSize: '14px' }}
-												dangerouslySetInnerHTML={{ __html: this.state.data.content }}
+												dangerouslySetInnerHTML={{ __html: this.props.returnPolicy.content }}
 											/>
 
 											<p>&nbsp;</p>
@@ -130,4 +102,15 @@ class ReturnPolicy extends Component {
 	}
 }
 
-export default ReturnPolicy;
+const mapStateToProps = state => {
+	return {
+		returnPolicy : state.static.returnPolicy,
+ 	}
+}
+
+const mapDispatchToProps = dispatch => {
+	return {
+		onGetReturnPolicyData: (payload) => dispatch(actions.getReturnPolicyPageData(payload)),
+	}
+}
+export default connect(mapStateToProps, mapDispatchToProps)(ReturnPolicy);

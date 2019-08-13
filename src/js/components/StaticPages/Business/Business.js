@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import '../../../../styles/StaticPages.css';
 import { connect } from 'react-redux';
 import * as actions from '../../../redux/actions/index';
-import { FormattedMessage } from 'react-intl';
-class Careers extends Component {
+
+class Business extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -14,7 +14,7 @@ class Careers extends Component {
 	static getDerivedStateFromProps = (props, state) => { };
 
 	componentDidMount() {
-		this.props.onGetCareersData({ storeId: 1 });
+		this.props.onGetBusinessData({ storeId: 1 });
 	}
 
 	render() {
@@ -45,7 +45,7 @@ class Careers extends Component {
 									</div>
 									<div className="t-Region-body">
 										<center> <br />
-											<h1 className="t-page-titles">{this.props.careers.title}</h1>
+											<h1 className="t-page-titles">{this.props.business.title}</h1>
 											{/* <h1 className="t-page-titles"> <FormattedMessage id="ContactUs.Title" defaultMessage="ContactUs" /></h1> */}
 										</center>
 										<input type="hidden" id="P15_SEARCHSTRING" name="P15_SEARCHSTRING" value="" />
@@ -73,7 +73,7 @@ class Careers extends Component {
 
 											<div
 												style={{ fontSize: '14px' }}
-												dangerouslySetInnerHTML={{ __html: this.props.careers.content }}
+												dangerouslySetInnerHTML={{ __html: this.props.business.content }}
 											/>
 											<div>&nbsp;</div>
 										</div>
@@ -93,14 +93,15 @@ class Careers extends Component {
 }
 const mapStateToProps = state => {
 	return {
-		careers : state.static.careers,
+		business : state.static.business,
  	}
 }
 
 const mapDispatchToProps = dispatch => {
 	return {
-		onGetCareersData: (payload) => dispatch(actions.getCareersPageData(payload)),
+		onGetBusinessData: (payload) => dispatch(actions.getBusinessPageData(payload)),
 	}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Careers);
+export default connect(mapStateToProps, mapDispatchToProps)(Business);
+

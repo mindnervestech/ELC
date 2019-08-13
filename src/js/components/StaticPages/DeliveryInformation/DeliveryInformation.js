@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import Axios from 'axios';
-import cookie from 'react-cookies';
 import '../../../../styles/StaticPages.css';
-import { STATIC_PAGES_URL, API_TOKEN } from '../../../api/globals';
+import { connect } from 'react-redux';
+import * as actions from '../../../redux/actions/index';
 
 class CorporateInformation extends Component {
 	constructor(props) {
@@ -15,39 +14,8 @@ class CorporateInformation extends Component {
 
 	static getDerivedStateFromProps = (props, state) => { };
 
-	getCorporateInformation = () => {
-		if (this.state.storeId) {
-			const API = Axios.create({
-				baseURL: STATIC_PAGES_URL,
-				headers: { Authorization: `Bearer ${API_TOKEN}`, 'Content-Type': 'application/json' },
-			});
-
-			API.get('resposibility/storeId/' + this.state.storeId).then(res => {
-				this.setState({ data: res.data });
-			});
-		}
-	}
-
-	componentDidMount(prevProps, prevState) {
-		let changedLang = localStorage.getItem('tempstoreid');
-		if (changedLang) {
-			this.setState({ storeId: changedLang, data: [] }, () => {
-				this.getCorporateInformation();
-			});
-		} else {
-			this.setState({ storeId: cookie.load('storeid'), data: [] }, () => {
-				this.getCorporateInformation();
-			});
-		}
-	}
-
-	componentDidUpdate(prevProps, prevState) {
-		let changedLang = localStorage.getItem('tempstoreid');
-		if (this.state.storeId !== changedLang) {
-			this.setState({ storeId: changedLang, data: [] }, () => {
-				this.getCorporateInformation();
-			});
-		}
+	componentDidMount() {
+		this.props.onGetCorporateInformationData({ storeId: 1 });
 	}
 
 	render() {
@@ -56,7 +24,6 @@ class CorporateInformation extends Component {
 				<div className="container">
 					<div className="row">
 						<div className="col col-12 apex-col-auto">
-						<h1>Delivery Information</h1>
 							<div className="t-Region g-wrapper-main_content  t-Region--removeHeader t-Region--noBorder t-Region--scrollBody margin-top-lg"
 								id="R231982418266982051">
 								<div className="t-Region-header">
@@ -78,6 +45,10 @@ class CorporateInformation extends Component {
 										<div className="t-Region-buttons-right" />
 									</div>
 									<div className="t-Region-body">
+										<center> <br />
+											<h1 className="t-page-titles">{this.props.corporateInformation.title}</h1>
+											{/* <h1 className="t-page-titles"> <FormattedMessage id="ContactUs.Title" defaultMessage="ContactUs" /></h1> */}
+										</center>
 										<input type="hidden" id="P15_SEARCHSTRING" name="P15_SEARCHSTRING" value="" />
 										<input
 											type="hidden"
@@ -103,7 +74,7 @@ class CorporateInformation extends Component {
 
 											<div
 												style={{ fontSize: '14px' }}
-												dangerouslySetInnerHTML={{ __html: this.state.data.content }}
+												dangerouslySetInnerHTML={{ __html: this.props.corporateInformation.content }}
 											/>
 											<div>&nbsp;</div>
 										</div>
@@ -121,4 +92,15 @@ class CorporateInformation extends Component {
 		);
 	}
 }
-export default CorporateInformation;
+const mapStateToProps = state => {
+	return {
+		corporateInformation : state.static.corporateInformation,
+ 	}
+}
+
+const mapDispatchToProps = dispatch => {
+	return {
+		onGetCorporateInformationData: (payload) => dispatch(actions.getCorporateInformationPageData(payload)),
+	}
+}
+export default connect(mapStateToProps, mapDispatchToProps)(CorporateInformation);

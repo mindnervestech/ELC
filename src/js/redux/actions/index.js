@@ -52,7 +52,22 @@ export {
 
 export { getGuestCartId, getGuestCart, startGuestCheckout } from './guestUser';
 
-export { getFaqPageData, getHelpPageData } from './getStaticPagesData';
+export {
+		getFaqPageData,
+		getHelpFAQPageData,
+		getCareersPageData,
+		getAffiliatePageData,
+		getAboutUsPageData,
+		getFranchisingPageData,
+		getBusinessPageData,
+		getCorporateResponsibilityPageData,
+		getTermOfUsePageData,
+		getCookiePolicyPageData,
+		getCorporateInformationPageData,
+		getTermConditionsPageData,
+		getReturnPolicyPageData,
+		getPromotionTermsAndCondtionPageData
+} from './getStaticPagesData';
 
 export { vipRegisterUser } from './vipRegister';
 

@@ -44,7 +44,7 @@ const GET_GUEST_CART_ID = { type: 'POST', url: GUEST_CART_URL + 'guest-carts/' }
 const GET_HOME_PAGE_DATA = { type: 'POST', url: BASE_URL + 'home/' };
 
 const GET_FAQ_DATA = { type: 'GET', url: STATIC_PAGES_URL + 'faq/storeId', dynamic: true };
-const GET_HELP_DATA = { type: 'GET', url: STATIC_PAGES_URL + 'help/storeId', dynamic: true };
+
 const GET_PLACE_ORDER = { type: 'POST', url: BASE_URL + 'placeorder/' }
 const GET_SUMMARY_DATA = { type: 'POST', url: BASE_URL + 'OrderSummary/' }
 const VIP_REGISTER_U = { type: 'POST', url: BASE_URL + 'amirahclub/' }
@@ -61,7 +61,19 @@ const SAVE_CONTACT_US_DATA = { type: 'POST', url: BASE_URL + 'setContactUsData' 
 const GET_SIZE_CHART = { type: 'POST', url: BASE_URL + 'sizechart' }
 
 const RESET_PASSWORD ={ type: 'POST', url: BASE_URL + 'resetpassword'}
-
+const GET_CAREERS_PAGE = { type: 'GET', url: STATIC_PAGES_URL }
+const GET_AFFILIATE_DATA = { type: 'GET', url: STATIC_PAGES_URL + 'affiliates/storeId', dynamic: true };
+const GET_ABOUTUS_DATA = { type: 'GET', url: STATIC_PAGES_URL + 'about-us/storeId', dynamic: true };
+const GET_FRANCHISING_DATA = { type: 'GET', url: STATIC_PAGES_URL + 'elc-franchising/storeId', dynamic: true };
+const GET_BUSINESS_DATA = { type: 'GET', url: STATIC_PAGES_URL + 'elc-for-business/storeId', dynamic: true };
+const GET_CORPORATE_RESPONSIBILITY_DATA = { type: 'GET', url: STATIC_PAGES_URL + 'corporate-responsibility/storeId', dynamic: true };
+const GET_TERMS_OF_USE_DATA = { type: 'GET', url: STATIC_PAGES_URL + 'terms-of-use/storeId', dynamic: true };
+const GET_COOKIE_POLICY__DATA = { type: 'GET', url: STATIC_PAGES_URL + 'cookie-policy/storeId', dynamic: true };
+const GET_CORPORATE_INFORMATION_DATA = { type: 'GET', url: STATIC_PAGES_URL + 'delivery-information/storeId', dynamic: true };
+const GET_TERMS_AND_CONDITIONS_DATA = { type: 'GET', url: STATIC_PAGES_URL + 'terms-and-condition/storeId', dynamic: true };
+const GET_HELP_DATA = { type: 'GET', url: STATIC_PAGES_URL + 'help-and-faqs/storeId', dynamic: true };
+const GET_RETURN_AND_EXCHANGES_DATA = { type: 'GET', url: STATIC_PAGES_URL + 'return-and-exchanges/storeId', dynamic: true };
+const GET_PROMOTION_TERMS_AND_CONDITION_DATA = { type: 'GET', url: STATIC_PAGES_URL + 'promotion-terms-and-condition/storeId', dynamic: true };
 
 export const API = {
 	getToken: (data, cb) => request(data, cb, GET_TOKEN),
@@ -110,7 +122,7 @@ export const API = {
 	getHomePageData: (data, cb) => request(data, cb, GET_HOME_PAGE_DATA),
 
 	getFaqPageData: (data, cb) => request(data, cb, GET_FAQ_DATA),
-	getHelpPageData: (data, cb) => request(data, cb, GET_HELP_DATA),
+	getHelpFAQPageData: (data, cb) => request(data, cb, GET_HELP_DATA),
 	vipRegisterUser: (data, cb) => request(data, cb, VIP_REGISTER_U),
 	getPlaceOrder: (data, cb) => request(data, cb, GET_PLACE_ORDER),
 	getOrderSummary: (data, cb) => request(data, cb, GET_SUMMARY_DATA),
@@ -121,6 +133,21 @@ export const API = {
 		// request(data, cb, GUEST_ADD_TO_CART_LINK);
 		request(data, cb, { type: 'GET', url: GET_DISCOVER_CMS_PAGE_LINK });
 	},
+	getCareersPageData: (data, cb, identifier, store_id) => {
+		let GET_CAREERS_PAGE_LINK = `${GET_CAREERS_PAGE.url}careers/storeId/1`
+		request(data, cb, { type: 'GET', url: GET_CAREERS_PAGE_LINK });
+	},
+	getAffiliatePageData: (data, cb) => request(data, cb, GET_AFFILIATE_DATA),
+	getAboutUsPageData: (data, cb) => request(data, cb, GET_ABOUTUS_DATA),
+	getFranchisingPageData: (data, cb) => request(data, cb, GET_FRANCHISING_DATA),
+	getBusinessPageData: (data, cb) => request(data, cb, GET_BUSINESS_DATA),
+	getCorporateResponsibilityPageData: (data, cb) => request(data, cb, GET_CORPORATE_RESPONSIBILITY_DATA),
+	getTermOfUsePageData: (data, cb) => request(data, cb, GET_TERMS_OF_USE_DATA),
+	getCookiePolicyPageData: (data, cb) => request(data, cb, GET_COOKIE_POLICY__DATA),
+	getCorporateInformationPageData: (data, cb) => request(data, cb, GET_CORPORATE_INFORMATION_DATA),
+	getTermConditionsPageData: (data, cb) => request(data, cb, GET_TERMS_AND_CONDITIONS_DATA),
+	getReturnPolicyPageData: (data, cb) => request(data, cb, GET_RETURN_AND_EXCHANGES_DATA),
+	getPromotionTermsAndCondtionPageData: (data, cb) => request(data, cb, GET_PROMOTION_TERMS_AND_CONDITION_DATA),
 	setOrderJson: (data, cb) => request(data, cb, SET_ORDER_JSON),
 	getContactUsData: (data, cb) => request(data, cb, GET_CONTACT_US_DATA),
 	saveContactUsData: (data, cb) => request(data, cb, SAVE_CONTACT_US_DATA),

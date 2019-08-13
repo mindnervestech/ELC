@@ -1,53 +1,19 @@
 import React, { Component } from 'react';
 import '../../../../styles/StaticPages.css';
-import Axios from 'axios';
-import cookie from 'react-cookies';
-import { STATIC_PAGES_URL, API_TOKEN } from '../../../api/globals';
+import { connect } from 'react-redux';
+import * as actions from '../../../redux/actions/index';
 
 class TermConditions extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			storeId: '',
-			data: [],
 		};
 	}
+	static getDerivedStateFromProps = (props, state) => { };
 
-	getStoreInfo = () => {
-		console.log('store_id in function', this.state.storeId);
-		if (this.state.storeId) {
-			const API = Axios.create({
-				baseURL: STATIC_PAGES_URL,
-				headers: { Authorization: `Bearer ${API_TOKEN}`, 'Content-Type': 'application/json' },
-			});
-
-			API.get('terms-and-conditions/storeId/' + this.state.storeId).then(res => {
-				this.setState({ data: res.data });
-			});
-		}
-	}
-
-	componentDidMount(prevProps, prevState) {
-		let changedLang = localStorage.getItem('tempstoreid');
-		if (changedLang) {
-			this.setState({ storeId: changedLang, data: [] }, () => {
-				this.getStoreInfo();
-			});
-		} else {
-			this.setState({ storeId: cookie.load('storeid'), data: [] }, () => {
-				this.getStoreInfo();
-			});
-		}
-	}
-
-	componentDidUpdate(prevProps, prevState) {
-		console.log('componentDidUpdateCalled!!');
-		let changedLang = localStorage.getItem('tempstoreid');
-		if (this.state.storeId !== changedLang) {
-			this.setState({ storeId: changedLang, data: [] }, () => {
-				this.getStoreInfo();
-			});
-		}
+	componentDidMount() {
+		this.props.onGetTermConditionsData({ storeId: 1 });
 	}
 
 	render() {
@@ -56,7 +22,6 @@ class TermConditions extends Component {
 				<div className="container">
 					<div className="row">
 						<div className="col col-12 apex-col-auto">
-						<h1>Terms and Conditions</h1>
 							<div
 								className="t-Region g-wrapper-main_content  t-Region--removeHeader t-Region--noBorder t-Region--scrollBody margin-top-lg"
 								id="R231982418266982051"
@@ -80,6 +45,10 @@ class TermConditions extends Component {
 										<div className="t-Region-buttons-right" />
 									</div>
 									<div className="t-Region-body">
+										<center> <br />
+											<h1 className="t-page-titles">{this.props.termConditions.title}</h1>
+											{/* <h1 className="t-page-titles"> <FormattedMessage id="ContactUs.Title" defaultMessage="ContactUs" /></h1> */}
+										</center>
 										<input type="hidden" id="P15_SEARCHSTRING" name="P15_SEARCHSTRING" value="" />
 										<input
 											type="hidden"
@@ -102,14 +71,14 @@ class TermConditions extends Component {
 										/>
 
 										<div id="MiscContent">
-											<p style={{ textAlign: 'center' }}>
+											{/* <p style={{ textAlign: 'center' }}>
 												<strong>
 													<span style={{ fontSize: 28 }}>{this.state.data.title}</span>
 												</strong>
-											</p>
+											</p> */}
 											<div
 												style={{ fontSize: '14px' }}
-												dangerouslySetInnerHTML={{ __html: this.state.data.content }}
+												dangerouslySetInnerHTML={{ __html: this.props.termConditions.content }}
 											/>
 										</div>
 									</div>
@@ -127,4 +96,15 @@ class TermConditions extends Component {
 	}
 }
 
-export default TermConditions;
+const mapStateToProps = state => {
+	return {
+		termConditions : state.static.termConditions,
+ 	}
+}
+
+const mapDispatchToProps = dispatch => {
+	return {
+		onGetTermConditionsData: (payload) => dispatch(actions.getTermConditionsPageData(payload)),
+	}
+}
+export default connect(mapStateToProps, mapDispatchToProps)(TermConditions);

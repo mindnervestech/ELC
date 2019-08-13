@@ -129,8 +129,8 @@ class Footer extends Component {
                                 </Link>
                             </li>
                             <li>
-                                <Link to={`/${store_locale}/terms-and-conditions`} style={{ textDecoration: 'none' }}>
-                                    <FormattedMessage id="footer.promotionTermsAndConditions" defaultMessage="terms & conditions" />
+                                <Link to={`/${store_locale}/promotion-terms-and-condition`} style={{ textDecoration: 'none' }}>
+                                    <FormattedMessage id="footer.promotionTermsAndConditions" defaultMessage="promotion terms & conditions" />
                                 </Link>
                             </li>
                         </ul>
@@ -152,17 +152,19 @@ class Footer extends Component {
                                 </Link>
                             </li>
                             <li>
-                                <Link to={`/${store_locale}/affiliate`} style={{ textDecoration: 'none' }}>
+                                <Link to={`/${store_locale}/affiliates`} style={{ textDecoration: 'none' }}>
                                     <FormattedMessage id="footer.affiliates" defaultMessage="affiliates" />
                                 </Link>
                             </li>
                             <li>
-                                <Link to={`/${store_locale}/franchising`} style={{ textDecoration: 'none' }}>
+                                <Link to={`/${store_locale}/elc-franchising`} style={{ textDecoration: 'none' }}>
                                     <FormattedMessage id="footer.franchising" defaultMessage="elc franchising" />
                                 </Link>
                             </li>
                             <li>
-                                <a href="">elc for business</a>
+                                <Link to={`/${store_locale}/elc-for-business`} style={{ textDecoration: 'none' }}>
+                                    <FormattedMessage id="footer.business" defaultMessage="elc for business" />
+                                </Link>
                             </li>
                             <li>
                                 <Link to={`/${store_locale}/corporate-responsibility`} style={{ textDecoration: 'none' }}>

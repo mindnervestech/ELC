@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import Axios from 'axios';
-import cookie from 'react-cookies';
 import '../../../../styles/StaticPages.css';
-import { STATIC_PAGES_URL, API_TOKEN } from '../../../api/globals';
+import { connect } from 'react-redux';
+import * as actions from '../../../redux/actions/index';
 
 class HelpFAQ extends Component {
 	constructor(props) {
@@ -15,39 +14,8 @@ class HelpFAQ extends Component {
 
 	static getDerivedStateFromProps = (props, state) => { };
 
-	getHelpAndFAQ = () => {
-		if (this.state.storeId) {
-			const API = Axios.create({
-				baseURL: STATIC_PAGES_URL,
-				headers: { Authorization: `Bearer ${API_TOKEN}`, 'Content-Type': 'application/json' },
-			});
-
-			API.get('brand-overview/storeId/' + this.state.storeId).then(res => {
-				this.setState({ data: res.data });
-			});
-		}
-	}
-
-	componentDidMount(prevProps, prevState) {
-		let changedLang = localStorage.getItem('tempstoreid');
-		if (changedLang) {
-			this.setState({ storeId: changedLang, data: [] }, () => {
-				this.getHelpAndFAQ();
-			});
-		} else {
-			this.setState({ storeId: cookie.load('storeid'), data: [] }, () => {
-				this.getHelpAndFAQ();
-			});
-		}
-	}
-
-	componentDidUpdate(prevProps, prevState) {
-		let changedLang = localStorage.getItem('tempstoreid');
-		if (this.state.storeId !== changedLang) {
-			this.setState({ storeId: changedLang, data: [] }, () => {
-				this.getHelpAndFAQ();
-			});
-		}
+	componentDidMount() {
+		this.props.onGetHelpFAQData({ storeId: 1 });
 	}
 
 	render() {
@@ -56,7 +24,6 @@ class HelpFAQ extends Component {
 				<div className="container">
 					<div className="row">
 						<div className="col col-12 apex-col-auto">
-						<h1>Help & FAQ</h1>
 							<div className="t-Region g-wrapper-main_content  t-Region--removeHeader t-Region--noBorder t-Region--scrollBody margin-top-lg"
 								id="R231982418266982051">
 								<div className="t-Region-header">
@@ -78,6 +45,10 @@ class HelpFAQ extends Component {
 										<div className="t-Region-buttons-right" />
 									</div>
 									<div className="t-Region-body">
+										<center> <br />
+											<h1 className="t-page-titles">{this.props.help.title}</h1>
+											{/* <h1 className="t-page-titles"> <FormattedMessage id="ContactUs.Title" defaultMessage="ContactUs" /></h1> */}
+										</center>
 										<input type="hidden" id="P15_SEARCHSTRING" name="P15_SEARCHSTRING" value="" />
 										<input
 											type="hidden"
@@ -103,7 +74,7 @@ class HelpFAQ extends Component {
 
 											<div
 												style={{ fontSize: '14px' }}
-												dangerouslySetInnerHTML={{ __html: this.state.data.content }}
+												dangerouslySetInnerHTML={{ __html: this.props.help.content }}
 											/>
 											<div>&nbsp;</div>
 										</div>
@@ -121,4 +92,15 @@ class HelpFAQ extends Component {
 		);
 	}
 }
-export default HelpFAQ;
+const mapStateToProps = state => {
+	return {
+		help : state.static.help,
+ 	}
+}
+
+const mapDispatchToProps = dispatch => {
+	return {
+		onGetHelpFAQData: (payload) => dispatch(actions.getHelpFAQPageData(payload)),
+	}
+}
+export default connect(mapStateToProps, mapDispatchToProps)(HelpFAQ);
