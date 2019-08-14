@@ -4,6 +4,18 @@ import { updateObject } from '../utility/utility';
 const initialState = {
     faq: {},
     help: {},
+    careers:{},
+    aboutUs :{},
+    affiliate: {},
+    franchising: {},
+    business: {},
+    corporateResponsibility: {},
+    termOfUse: {},
+    cookiePolicy: {},
+    corporateInformation: {},
+    termConditions: {},
+    returnPolicy: {},
+    promotionTermsCondition: {},
 }
 
 const reducer = (state = initialState, action) => {

@@ -63,6 +63,8 @@ import VipRegPopup from './Home/VipRegPopup';
 import { setChangeStore } from '../redux/actions/globals';
 import localeData from '../../config/libs/i18n/data.json'
 import ProductList from '../components/PoductList/ProductListing'
+import NewCheckOut from '../components/NewCheckOut/CheckOut'
+
 addLocaleData([...en, ...ar]);
 
 
@@ -372,6 +374,7 @@ class App extends Component {
 
                     <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/password-rest" component={ResetPassword} />
                     <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/product-list" component={ProductList} />
+                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/new-check-out" component={NewCheckOut} />
                   </Switch>
                   <Footer />
 

@@ -778,7 +778,7 @@ html[dir="rtl"] .header .row-1 .cart span {
 
 @media only screen and (min-width: 1280px) {
     .header .row-2 {
-        height: auto;
+        height: 88px;
         padding: 13px 0
     }
 }

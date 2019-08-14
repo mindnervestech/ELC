@@ -256,7 +256,7 @@ a {
 }
 
 .t-Header-branding {
-  height: 52px;
+  height: 44px;
 }
 .t-Header-logo-oracle {
   line-height: 52px;
@@ -5617,7 +5617,7 @@ body .ui-dialog .ui-dialog-buttonpane {
 }
 
 .t-Header-branding {
-      height: auto; 
+      height: 44px; 
 }
 
 .t-Footer {

@@ -8,7 +8,9 @@ import logo1 from '../../../assets/images/you_may_also_like_1.png'
 
 class ShoppingBagItem extends Component {
 
-
+   constructor(props) {
+      super(props);
+   }
 
    render() {
       const product = this.props.product;
@@ -75,7 +77,9 @@ class ShoppingBagItem extends Component {
                   <span>1 item | £99.99</span>
                </div>
                <div>
-                  <button className="alsoLikeCardButton">Check out</button>
+                  <Link to={`/saudi-en/new-check-out`}>
+                     <button className="alsoLikeCardButton">Check out</button>
+                  </Link>
                </div>
             </div>
             </Col>
@@ -133,7 +137,9 @@ class ShoppingBagItem extends Component {
          <Row style={{padding: 20}}>
             <Col xs="9"></Col>
             <Col xs="3" style={{textAlign: 'end'}}>
-               <button className="alsoLikeCardButton">Check out</button>
+               <Link to={`/saudi-en/new-check-out`}>
+                  <button className="alsoLikeCardButton">Check out</button>
+               </Link>
             </Col>
          </Row>
       </div>

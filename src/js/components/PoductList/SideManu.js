@@ -1,30 +1,10 @@
 import React, { Component } from 'react';
 import '../../../styles/product/productlist.css';
 import '../../../styles/product/productlist-filters.css';
-import Breadcrumb from '../Breadcrumb/Breadcrumb';
-import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
 import * as actions from '../../redux/actions/index';
-import queryString from 'query-string';
-import Spinner from '../Spinner/Spinner2';
-import * as utility from '../utility/utility';
-import {
-	BrowserView,
-	MobileView,
-	isBrowser,
-	isMobile
-} from "react-device-detect";
-import { FormattedMessage } from 'react-intl';
-import { Container, Row, Col, Button } from 'reactstrap';
-import { Link } from 'react-router-dom';
-import Slider from "react-slick";
-
-import Gift from '../../../assets/images/product-details/gift.png';
-import Delevary from '../../../assets/images/product-details/delevary.png';
-import Return from '../../../assets/images/product-details/return.png';
 import Collapsible from 'react-collapsible';
 
-import ProductListData from './ProductListData';
 var _ = require('lodash');
 
 class SideManu extends Component {
