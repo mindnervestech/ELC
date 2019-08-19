@@ -21,7 +21,7 @@ class HomePageComponent extends Component {
 
     render() {
         //console.log('this.props',this.props);
-        // const instagramFeed = (this.props.home_page_data.instagram.length <= 0) ? <ZeroItem /> : <InstagramItems instagramItems={this.props.home_page_data.instagram.image_data} />
+         const homeData = this.props.home_page_data.data;
         let InstaTitle1 = '', InstaTitle2 = ''
         // if (this.props.home_page_data.instagram.title) {
         //     InstaTitle1 = this.props.home_page_data.instagram.title.split('@')[0] + '@'
@@ -108,13 +108,16 @@ class HomePageComponent extends Component {
                         autoPlay={true}
                         interval={5000}>
                             <div>
-                                <img src={home} />
+                                <img src={homeData.banners[0].BLOCK_BANNER} />
                             </div>
                             <div>
-                                <img src={home} />
+                                <img src={homeData.banners[1].BLOCK_BANNER} />
                             </div>
                             <div>
-                                <img src={home} />
+                                <img src={homeData.banners[2].BLOCK_BANNER} />
+                            </div>
+                            <div>
+                                <img src={homeData.banners[3].BLOCK_BANNER} />
                             </div>
                         </Carousel>
                     </div>
@@ -306,10 +309,10 @@ class HomePageComponent extends Component {
                                                     <Link to={`/saudi-en/product-list`}>
                                                         {/* <figure> */}
                                                             <a href={''} target="_blank">
-                                                                <img src={logo1} />
+                                                                <img src={homeData.blocks[0].BLOCK_BANNER!=null?homeData.blocks[0].BLOCK_BANNER:logo1} />
                                                             </a>
                                                             <div className="cardDetail">
-                                                                    <span className="cardDetailText">500</span>
+                                                                    <span className="cardDetailText">{homeData.blocks[0].TITLE}</span>
                                                             </div>
                                                         {/* </figure> */}
                                                     </Link>
@@ -320,10 +323,10 @@ class HomePageComponent extends Component {
                                                     <Link to={`/saudi-en/product-list`}>
                                                         {/* <figure> */}
                                                             <a href={''} target="_blank">
-                                                                <img src={logo2} />
+                                                                <img src={homeData.blocks[1].BLOCK_BANNER!=null?homeData.blocks[1].BLOCK_BANNER:logo2} />
                                                             </a>
                                                             <div className="cardDetail">
-                                                                    <span className="cardDetailText">500</span>
+                                                                    <span className="cardDetailText">{homeData.blocks[1].TITLE}</span>
                                                             </div>
                                                         {/* </figure> */}
                                                     </Link>
@@ -334,10 +337,10 @@ class HomePageComponent extends Component {
                                                     <Link to={`/saudi-en/product-list`}>
                                                         {/* <figure> */}
                                                             <a href={''} target="_blank">
-                                                                <img src={logo3} />
+                                                                <img src={homeData.blocks[2].BLOCK_BANNER!=null?homeData.blocks[2].BLOCK_BANNER:logo3} />
                                                             </a>
                                                             <div className="cardDetail">
-                                                                    <span className="cardDetailText">500</span>
+                                                                    <span className="cardDetailText">{homeData.blocks[2].TITLE}</span>
                                                             </div>
                                                         {/* </figure> */}
                                                     </Link>
@@ -348,10 +351,10 @@ class HomePageComponent extends Component {
                                                     <Link to={`/saudi-en/product-list`}>
                                                         {/* <figure> */}
                                                             <a href={''} target="_blank">
-                                                                <img src={logo4} />
+                                                                <img src={homeData.blocks[3].BLOCK_BANNER!=null?homeData.blocks[3].BLOCK_BANNER:logo4} />
                                                             </a>
                                                             <div className="cardDetail">
-                                                                    <span className="cardDetailText">500</span>
+                                                                    <span className="cardDetailText">{homeData.blocks[3].TITLE}</span>
                                                             </div>
                                                         {/* </figure> */}
                                                     </Link>

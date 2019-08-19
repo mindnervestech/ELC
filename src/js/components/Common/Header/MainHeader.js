@@ -420,10 +420,10 @@ class MainHeader extends Component {
                         <a to="JavaScript:;" id="closeNav" className="closeNav">X</a>
                         <div className="containers-main">
                         <Row>
-                            <Col xs="10">
+                            <Col xs="11">
                                 <MenuNav />
                             </Col>
-                            <Col xs="2" style={{padding: 0}}>
+                            <Col xs="1" style={{padding: 0}}>
                                 <button className="present-finder-buton">Present Finder</button>
                             </Col>
                         </Row>

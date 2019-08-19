@@ -1280,10 +1280,10 @@ html[dir="rtl"] .header .search .textInput{
 
 @media only screen and (min-width: 1280px) {
     .header .link>li {
-        margin-right: 33px
+        margin-right: 25px
     }
     html[dir="rtl"] .header .link>li {
-        margin-left: 33px
+        margin-left: 25px
     }
 }
 
@@ -1365,7 +1365,7 @@ html[dir="rtl"] .header .link>li .subMenuTrigger {
 
 .header .link>li>a {
     display: block;
-    text-transform: uppercase;
+    text-transform: lowercase;
     color: #000;
     transition: color .5s;
     text-align: left;
@@ -1429,10 +1429,10 @@ html[dir="rtl"] .header .link .submenu {
     .header .link .submenu {
         display: none;
         left: 0;
-        width: 107%;
+        width: 103%;
         max-height: 100% important;
         position: absolute;
-        top: 100%;
+        /* top: 100%; */
         z-index: 9;
         background-color: #fff;
         padding: 14px 45px 20px 72px
@@ -1585,8 +1585,10 @@ html[dir="rtl"] .header .link .submenu .menufigure {
 }
 
 .header .link .subLink li a {
-    color: #333;
-    transition: color .5s
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+    font-weight: 700;
+    color: #0D943F !important;
 }
 
 .header .link .subLink li a.active,

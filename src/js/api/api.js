@@ -26,7 +26,7 @@ const DELETE_ADDRESS = { type: 'POST', url: BASE_URL + 'deleteaddress/' };
 const GET_COUNTRY_LIST = { type: 'GET', url: COUNTRY_URL + 'countries/' };
 const GET_STORE_ID = { type: 'POST', url: BASE_URL + 'storeinfo/' };
 const GET_STORE_LIST = { type: 'POST', url: BASE_URL + 'storelocator/' };
-const GET_MENU_NAVIGATION = { type: 'POST', url: BASE_URL + 'menu/' };
+const GET_MENU_NAVIGATION = { type: 'GET', url: BASE_URL + 'menu' };
 const GET_PRODUCT_DETAILS = { type: 'POST', url: BASE_URL + 'productbyid/' };
 const ADD_TO_CART = { type: 'POST', url: CART_URL + 'items/' };
 const GUEST_ADD_TO_CART = { type: 'POST', url: GUEST_CART_URL + 'guest-carts/' };
@@ -41,7 +41,7 @@ const GET_WISHLIST_ITEM = { type: 'POST', url: BASE_URL + 'wishlistitems/' };
 const REMOVE_FROM_WISHLIST = { type: 'POST', url: BASE_URL + 'removewishlistitem/' };
 const GET_GUEST_CART_ID = { type: 'POST', url: GUEST_CART_URL + 'guest-carts/' };
 //const GET_GUEST_CART = { dynamic: true, type: 'POST', url: GUEST_CART_URL + 'guest-carts/', urlData: '/items' };
-const GET_HOME_PAGE_DATA = { type: 'POST', url: BASE_URL + 'home/' };
+const GET_HOME_PAGE_DATA = { type: 'GET', url: BASE_URL + 'home' };
 
 const GET_FAQ_DATA = { type: 'GET', url: STATIC_PAGES_URL + 'faq/storeId', dynamic: true };
 

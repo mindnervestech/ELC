@@ -51,7 +51,8 @@ class menuList extends Component {
 
 			<>
 				<ul className="subLink">
-					<li>
+				{data.map(this._renderSubMenuItem)}
+					{/* <li>
 						<span className="PinkText"><FormattedMessage id="Menu.Style" defaultMessage="Style" /></span> 
 					</li>
 					{styleCat.map(this._renderSubMenuItem)}
@@ -60,7 +61,7 @@ class menuList extends Component {
 					<li>
 					    <span className="PinkText"><FormattedMessage id="Menu.Collection" defaultMessage="Collection" /></span>
 					</li>
-					{collectionCat.map(this._renderSubMenuItem)}
+					{collectionCat.map(this._renderSubMenuItem)} */}
 				</ul>
 			</>
 		);
@@ -72,14 +73,14 @@ class menuList extends Component {
 
 			// Use item.url_key instead of item.name (contains Arabic Text if locale is Arabic)			
 			// let menu_item = 'menu.' + item.name.toUpperCase() + '.SHOW_ALL_' + item.name.toUpperCase();
-			let menu_item = 'menu.' + item.url_key.toUpperCase() + '.SHOW_ALL_' + item.url_key.toUpperCase();
-			let default_message = 'SHOW ALL ' + item.url_key.toUpperCase();
+			let menu_item = 'menu.' + item.url_key.toLowerCase() + '.SHOW_ALL_' + item.url_key.toLowerCase();
+			let default_message = 'SHOW ALL ' + item.url_key.toLowerCase();
 
 			return (
 				<div className="submenu">
 					<div className="all">
 						<Link to={'/' + this.state.store_locale + '/products/' + item.url_key} onClick={() => document.getElementById("closeNav").click()}>
-							<FormattedMessage id={menu_item} defaultMessage={default_message} />
+							{/* <FormattedMessage id={menu_item} defaultMessage={default_message} /> */}
 							{/* <FormattedMessage id="menu.BRAS.SHOW_ALL_BRAS" defaultMessage="SHOW ALL Bras" /> */}
 						</Link>
 					</div>
@@ -88,7 +89,7 @@ class menuList extends Component {
 							(x) => this._renderSubMenuList(x, item.name, item.url_key)
 						)
 					}
-					<div className="menufigure">
+					{/* <div className="menufigure">
 						<div className="wrap">
 							<div className="swiper-container sub-menu-slider">
 								<div className="swiper-wrapper">
@@ -101,7 +102,7 @@ class menuList extends Component {
 								<span className="swiper-notification" aria-live="assertive" aria-atomic="false" />
 							</div>
 						</div>
-					</div>
+					</div> */}
 				</div>
 			);
 		} else {
@@ -110,13 +111,13 @@ class menuList extends Component {
 
 	_renderMenuList = (item, index) => {
 		//console.log('sub item', item);
-		let menu_item = 'menu.' + item.name.toUpperCase();
+		let menu_item = 'menu.' + item.name.toLowerCase();
 
 		return (
 			<>
 				<li key={index}>
 					<Link to={'/' + this.state.store_locale + '/products/' + item.url_key} style={{ textDecoration: 'none' }} onClick={() => document.getElementById("closeNav").click()}>
-						{item.name}
+						{item.name.toLowerCase()}
 					</Link>
 					<i className="subMenuTrigger" />
 					{this._checkSubMenu(item)}
@@ -142,14 +143,14 @@ class menuList extends Component {
 		//console.log("navData", navData);
 
 		return <ul className="link">
-			<li>
+			{/* <li>
 				<Link to={`/${this.state.store_locale}/offers`} onClick={this.closeHBMenu}>
 					<span>
 						<strong><FormattedMessage id="header.Offers" defaultMessage="Offers" /></strong>
 					</span>
 				</Link>
 				<i className=""></i>
-			</li>
+			</li> */}
 			{Object.keys(navData).map(this._renderMenuNavigation)}
 		</ul>;
 	}
