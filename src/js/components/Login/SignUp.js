@@ -24,9 +24,9 @@ class SignUp extends Component {
         email: '',
         contactNumber: '',
         carrierCode: '',
+        confirmEmail:'',
         password: '',
         confirmPassword: '',
-        title: '',
       },
       errors: {},
       isPhoneValid: false,
@@ -124,6 +124,21 @@ class SignUp extends Component {
         }
       }
     }
+    if (typeof fields["confirmEmail"] !== "undefined") {
+
+      if (fields["confirmEmail"].length === 0) {
+        formIsValid = false;
+        errors["confirmEmail"] = <FormattedMessage id="Signup.validation.confirmEmail.empty" defaultMessage="Email done't Match" />;
+      }
+      console.log("form is valid 56", formIsValid);
+      if (fields["confirmEmail"] != fields["email"]) {
+        console.log("confirm email" , fields["confirmEmail"]);
+          formIsValid = false;
+          errors["confirmEmail"] = <FormattedMessage id="Signup.validation.confirmEmail.invalid" defaultMessage="Email does't match" />;
+      
+        console.log("form is valid 66", formIsValid);
+      }
+    }
 
     // if (!(this.state.isPhoneValid)) {
 
@@ -134,11 +149,11 @@ class SignUp extends Component {
 
     //Password
     if (typeof fields["password"] !== "undefined") {
-      // if (fields["password"].length === 0) {
-      //   formIsValid = false;
-      //   errors["password"] = <FormattedMessage id="Signup.validation.empty.password" defaultMessage="First Name cannot be empty" />;
-      // }
-
+      if (fields["password"].length === 0) {
+        formIsValid = false;
+        errors["password"] = <FormattedMessage id="Signup.validation.empty.password" defaultMessage="First Name cannot be empty" />;
+      }
+      console.log("form is valid 7", formIsValid);
       if (fields["password"].length < 1) {
         formIsValid = false;
         errors["password"] = <FormattedMessage id="Signup.validation.password.length" defaultMessage="First Name cannot be empty" />;
@@ -162,8 +177,9 @@ class SignUp extends Component {
     console.log('::', this.state);
     console.log('::', e);
     e.preventDefault();
-    this.registerUser();
-    if (!this.handleValidation()) {
+
+    if (this.handleValidation()) {
+      this.registerUser();
       //console.log('::', this.state)
 
     }
@@ -184,11 +200,11 @@ class SignUp extends Component {
       lastname: this.state.fields.lastName,
       contact_number: "1234567891",
       email: this.state.fields.email,
-      carrier_code: "non",
+      // carrier_code: "non",
       password: this.state.fields.password,
       confirmpassword: this.state.fields.confirmPassword,
-      store_id: this.props.globals.currentStore,
-      title: this.state.fields.title,
+      store_id: 1,//this.props.globals.currentStore,
+      // title: this.state.fields.title,
       quest_quote: "non",
     }
     this.props.onRegisterUserUser(data);
@@ -275,7 +291,7 @@ class SignUp extends Component {
     let confirmEmailInputField = <div><div>
       <FormattedMessage id="ContactUs.ConfirmEmail" defaultMessage="Confirm Email">
         {(message) =>
-          <input type="email" id="P1001_EMAIL" name="P1001_EMAIL" placeholder={message} onChange={this.handleChange.bind(this, "email")} value={this.state.fields["email"]} size={30} />}
+          <input type="email" id="P1001_Confirm_EMAIL" name="P1001_Confirm_EMAIL" placeholder={message} onChange={this.handleChange.bind(this, "confirmEmail")} value={this.state.fields["confirmEmail"]} size={30} />}
       </FormattedMessage>
     </div></div>
 
@@ -314,11 +330,11 @@ class SignUp extends Component {
         <span id="P1001_EMAIL_error_placeholder" className="a-Form-error u-visible" data-template-id="33609965712469734_ET"><span className="t-Form-error"><div id="P1001_EMAIL_error">
           {errorsObj["email"]}</div></span></span></div>
     }
-    if ('email' in errorsObj) {
+    if ('ConfirmEmail' in errorsObj) {
       confirmEmailInputField = <div><div>
-        <input type="text" id="P1001_EMAIL" name="P1001_EMAIL" placeholder="Email Address" onChange={this.handleChange.bind(this, "email")} value={this.state.fields["email"]} size="30" maxLength="100" aria-describedby="P1001_EMAIL_error" aria-invalid="true" /></div>
-        <span id="P1001_EMAIL_error_placeholder" className="a-Form-error u-visible" data-template-id="33609965712469734_ET"><span className="t-Form-error"><div id="P1001_EMAIL_error">
-          {errorsObj["email"]}</div></span></span></div>
+        <input type="text" id="P1001_ConfirmEMAIL" name="P1001_ConfirmEMAIL" placeholder="Confirm Email Address" onChange={this.handleChange.bind(this, "confirmEmail")} value={this.state.fields["confirmEmail"]} size="30" maxLength="100" aria-describedby="P1001_ConfirmEMAIL_error" aria-invalid="true" /></div>
+        <span id="P1001_ConfirmEMAIL_error_placeholder" className="a-Form-error u-visible" data-template-id="33609965712469734_ET"><span className="t-Form-error"><div id="P1001_ConfirmEMAIL_error">
+          {errorsObj["confirmEmail"]}</div></span></span></div>
     }
 
     // if ('contactNumber' in errorsObj) {
@@ -386,7 +402,7 @@ class SignUp extends Component {
                           </div>
                           <div className="">
                             <div className="">
-                              <div className=" padding row">
+                              {/* <div className=" padding row">
                                 <div className="col col-6 rmLeftPad">
                                   <div className="rmPadding col col-12 apex-col-auto">
                                     <div className="row block" id="P1001_FNAME_CONTAINER">
@@ -402,7 +418,7 @@ class SignUp extends Component {
                                     </div>
                                   </div>
                                 </div>
-                              </div>
+                              </div> */}
                               <div className=" padding row">
                                 <div className="rmPadding col col-12 apex-col-auto">
                                   <div className="row block" id="P1001_FNAME_CONTAINER"><div className="rmPadding t-Form-labelContainer">
