@@ -6,6 +6,12 @@ import { connect } from 'react-redux';
 import * as actions from '../../redux/actions/index';
 import Spinner from '../Spinner/Spinner2';
 import { FormattedMessage } from 'react-intl';
+import { Container, Row, Col, Button } from 'reactstrap';
+
+import percentage from '../../../assets/images/product-details/percentage.png';
+import save from '../../../assets/images/product-details/save.png';
+import logo1 from '../../../assets/images/you_may_also_like_1.png'
+import StarRatings from 'react-star-ratings';
 
 class WishList extends Component {
 
@@ -56,17 +62,17 @@ class WishList extends Component {
 
     const store_locale = this.props.globals.store_locale;
 
-    if (this.state.goToProduct) {
-      return <Redirect to={{
-        pathname: `/${store_locale}/products-details/${this.state.url_key}`,
-      }} />
-    }
+    // if (this.state.goToProduct) {
+    //   return <Redirect to={{
+    //     pathname: `/${store_locale}/products-details/${this.state.url_key}`,
+    //   }} />
+    // }
 
-    if (!(this.props.isUserLoggedIn)) {
-      return <Redirect to={{
-        pathname: `/${store_locale}/login`,
-      }} />;
-    }
+    // if (!(this.props.isUserLoggedIn)) {
+    //   return <Redirect to={{
+    //     pathname: `/${store_locale}/login`,
+    //   }} />;
+    // }
 
     const productList = this.props.products.map((item, index) => {
       return (<Product
@@ -78,8 +84,58 @@ class WishList extends Component {
     })
 
     return (
-      <div className="t-Body-contentInner">
-        <div className="container">
+      <div className="t-Body-contentInner homePage">
+        <div className="wishlist">
+          <div>
+            <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
+              <span className="titleHover">Home</span>
+            </Link>
+            <span>  > Wishlist</span>
+          </div>
+          <div className="wishlist-title">
+            <label>
+              My WishList
+            </label>
+          </div>
+          <ul className="products wishlist-products">
+            <li>
+              <div className="alsoLikeCard">
+                <span className="percentage-text">30</span>
+                <span className="save-text" style={{ display: 'none' }}>5</span>
+                <img src={save} className="save" style={{ display: 'none' }}/>
+                <img src={logo1} className="cardImage" style={{ height: 'auto' }} />
+                <img src={percentage} className="percentage"/>
+                <div style={{ marginTop: 10 }}>
+                  <label className="text-color">Twist and Turn Activity House</label>
+                </div>
+                <div>
+                  <span style={{ fontSize: 14, color: "#0D943F", fontWeight: "bold" }}>AED 12.00</span><span style={{ color: "gray", textDecorationLine: 'line-through', fontSize: 14, marginLeft: 10 }}>AED 14.50</span>
+                </div>
+                <div style={{ paddingTop: 10 }}>
+                  <StarRatings
+                    rating={3}
+                    starRatedColor='#FAD961'
+                    changeRating={this.changeRating}
+                    numberOfStars={5}
+                    name='rating'
+                    starHoverColor='#0D943F'
+                    starDimension='15px'
+                    starSpacing='0px'
+                  />
+                  <span style={{ marginLeft: 5 }}>3 - 10 years</span>
+                </div>
+                <div>
+                  <button className="alsoLikeCardButton">Add to Basket</button>
+                </div>
+                <div style={{ paddingTop: 10 }}>
+                  <i className="icon-heart"></i>
+                  <span style={{ paddingLeft: 7 }}>Remove from Wishlist</span>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        {/* <div className="container">
           <div className="row">
             <div className="col col-12 apex-col-auto">
               <div className="t-ButtonRegion t-Form--floatLeft containers t-ButtonRegion--noPadding t-ButtonRegion--noUI apex-tabs-region js-apex-region" id="R28512406002220865">
@@ -138,7 +194,7 @@ class WishList extends Component {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     );
   }

@@ -2,21 +2,28 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../redux/actions/index';
 import Collapsible from 'react-collapsible';
-import { Container, Row, Col, Button } from 'reactstrap';
+import { Container, Row, Col, Button, Input } from 'reactstrap';
 import logo1 from '../../../assets/images/you_may_also_like_1.png'
 import payPalImg from '../../../assets/images/social/paypal.svg';
 import masterCardImg from '../../../assets/images/social/masterCard.svg';
+import CardPayment from './CardPayment'
+import CardGift from './CardGift'
+import DeliverySpeed from './DeliverySpeed'
+import DeliveryLocation from './DeliveryLocation'
 
 var _ = require('lodash');
 
 class CheckOut extends Component {
 	constructor(props) {
-		super(props);	
+        super(props);
+        this.state = {
+
+        };
 	}
 
 	componentDidMount() {
 		
-	}
+    }
 
 	render() {
 		return (
@@ -26,45 +33,36 @@ class CheckOut extends Component {
 					<li>
                         <div>
                             <Collapsible trigger="1. Delivery Location" >
-                                <div>Animal figures (72)</div>
-                                <div>Baby dolls (52)</div>
-                                <div>Fashion dolls and accessories (191)</div>
-                                <div>Film & TV Dolls (49)</div>
-                                <div>Pre-school Dolls (24)</div>
-                                <div>Rag Dolls 16)</div>
+                                <DeliveryLocation></DeliveryLocation>
                             </Collapsible>
                         </div>
                         <div style={{marginTop: 10}}>
                             <Collapsible trigger="2. Delivery Speed" >
-                                <div>Animal figures (72)</div>
-                                <div>Baby dolls (52)</div>
-                                <div>Fashion dolls and accessories (191)</div>
-                                <div>Film & TV Dolls (49)</div>
-                                <div>Pre-school Dolls (24)</div>
-                                <div>Rag Dolls 16)</div>
+                                <DeliverySpeed></DeliverySpeed>
                             </Collapsible>
                         </div>
-                        <div style={{marginTop: 10}}>
-                            <Collapsible trigger="Card Payment" >
-                                <Collapsible trigger="3. Payment" >
-                                <div>
-                                    <img src={payPalImg} className="paymentImage"></img>
-                                    <span>Pay with a Paypal account</span>
+                        <div style={{marginTop: 10}} className="payment">
+                            <Collapsible trigger="3. Payment" >
+                                <div className="cardPayment">
+                                    <Collapsible trigger="Card Payment" >
+                                        <CardPayment/>
+                                    </Collapsible>
                                 </div>
                                 <div>
-                                    <img src={masterCardImg} className="paymentImage"></img>
-                                    <span>Pay with a Amazon Pay account</span>
+                                    <div style={{padding: '15px 15px', borderBottom: 'solid 1px #b1b1b1'}}>
+                                        <img src={payPalImg} className="paymentImage"></img>
+                                        <span style={{marginLeft: '10%'}}>Pay with a Paypal account</span>
+                                    </div>
+                                    <div style={{padding: '15px 15px',borderBottom: 'solid 1px #b1b1b1'}}>
+                                        <img src={masterCardImg} className="paymentImage"></img>
+                                        <span style={{marginLeft: '10%'}}>Pay with a Amazon Pay account</span>
+                                    </div>
                                 </div>
-                                </Collapsible>
-
-                                <Collapsible trigger="Gift Card" >
-                                <div>Animal figures (72)</div>
-                                <div>Baby dolls (52)</div>
-                                <div>Fashion dolls and accessories (191)</div>
-                                <div>Film & TV Dolls (49)</div>
-                                <div>Pre-school Dolls (24)</div>
-                                <div>Rag Dolls 16)</div>
-                                </Collapsible>
+                                <div className="cardPayment">
+                                    <Collapsible trigger="Gift Card" >
+                                        <CardGift></CardGift>
+                                    </Collapsible>
+                                </div>
                             </Collapsible>
                         </div>
                     </li>

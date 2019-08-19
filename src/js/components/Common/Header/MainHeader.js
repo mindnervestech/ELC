@@ -312,6 +312,11 @@ class MainHeader extends Component {
                                         <label className="iconLeble text-color changeLinkText">sign in / register</label>
                                         </Link>
                                     </li>
+                                    <li>
+                                        <Link to={`/${store_locale}/wish-list`} style={{ textDecoration: 'none' }}>
+                                            wishlist
+                                        </Link>
+                                    </li>
                                     {/* {profileIcon}
 
                                     <li><Link to={`/${store_locale}/Login`} className="whatsapp">

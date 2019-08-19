@@ -17,7 +17,7 @@ class ShoppingBagItem extends Component {
       const store_locale = this.props.store_locale;
 
       let cartProductPrice;
-      
+
       // if (product.special_price !== null) {
       //    cartProductPrice = (
       //       <td className="price"><span className="p-price">
@@ -44,37 +44,185 @@ class ShoppingBagItem extends Component {
       // }
 
       return (<>
-      <div className="homePage cardPage">
-         <Row className="row-5">
-            <Col xs="6">
-            <div className="blackTitle" style={{fontSize:22}}>
-               Select Delivery
+         <div className="homePage cardPage padding30" style={{ color: '#407ec9' }}>
+            <div>
+               <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
+                  <span className="titleHover">Home</span>
+               </Link>
+               <span>  > Basket</span>
             </div>
-            <div className="prod-color">
-               <div className="row del-options">
-                  <div className="row home-deli">
-                     <img src={freeDelivery}/>
-                     <span>Home delivery</span>
-                     <span style={{margin:'10px', color: '#ee0E19'}}>
-                        Out of stock
-                     </span>
-                  </div>
-                  <div className="row click-collect">
-                        <img src={freeCollect}/>
+            <div className="wishlist-title">
+               <label>
+                  Basket
+               </label>
+            </div>
+            <div className="displayDivOnWeb">
+               <Row className="row-5 changeRow">
+                  <Col xs="6">
+                     <div className="blackTitle" style={{ fontSize: 22 }}>
+                        Select Delivery
+                     </div>
+                     <div className="prod-color">
+                        <div className="row del-options">
+                           <div className="row home-deli">
+                              <img src={freeDelivery} />
+                              <span>Home delivery</span>
+                              <span style={{ margin: '10px', color: '#ee0E19' }}>
+                                 Out of stock
+                              </span>
+                           </div>
+                           <div className="row click-collect">
+                              <img src={freeCollect} />
+                              <span>Click & Collect</span>
+                              <span className="in-stock">In stock</span>
+                              <span style={{ margin: '10px' }}>
+                                 <a href=''>Change store</a>
+                              </span>
+                           </div>
+                        </div>
+                     </div>
+                  </Col>
+                  <Col xs="3"></Col>
+                  <Col xs="3" style={{ textAlign: 'end' }}>
+                     <div>
+                        <div className="blackTitle" style={{ fontSize: 22 }}>
+                           <span>1 item | £99.99</span>
+                        </div>
+                        <div>
+                           <Link to={`/saudi-en/new-check-out`}>
+                              <button className="alsoLikeCardButton">Check out</button>
+                           </Link>
+                        </div>
+                     </div>
+                  </Col>
+               </Row>
+               <Row className="row-1 changeRow">
+                  <Col xs="3">
+
+                  </Col>
+                  <Col xs="4">
+                     <span className="blackTitle" style={{ fontSize: 14 }}>Item</span>
+                  </Col>
+                  <Col xs="1">
+                     <span className="blackTitle" style={{ fontSize: 14 }}>Price</span>
+                  </Col>
+                  <Col xs="1">
+                     <span className="blackTitle" style={{ fontSize: 14 }}>Qty</span>
+                  </Col>
+                  <Col xs="1">
+                     <span className="blackTitle" style={{ fontSize: 14 }}>Total</span>
+                  </Col>
+                  <Col xs="2">
+
+                  </Col>
+               </Row>
+               <Row className="row-2 changeRow">
+                  <Col xs="3">
+                     <img src={logo1} className="cardImage"></img>
+                  </Col>
+                  <Col xs="4">
+                     <span className="blackTitle" style={{ fontSize: 16 }}>L.O.L SURPRISE 2-IN-1 GLAMPER PLAYSET</span>
+                  </Col>
+                  <Col xs="1" className="row-3 blackTitle" style={{ fontSize: 16 }}>
+                     <span>£99.99</span>
+                  </Col>
+                  <Col xs="1" className="row-3 blackTitle" style={{ fontSize: 16 }}>
+                     <span className="qut">1</span>
+                  </Col>
+                  <Col xs="1" className="row-3 blackTitle" style={{ fontSize: 22 }}>
+                     <span>£99.99</span>
+                  </Col>
+                  <Col xs="2" className="row-3 blackTitle" style={{ textAlign: 'end' }}>
+                     <span className="remove" style={{ fontSize: 14 }}>Remove</span>
+                  </Col>
+               </Row>
+               <Row className="changeRow">
+                  <Col xs="6">
+                     <div style={{ paddingTop: 30 }}>
+                        <input type="text" placeholder="Enter promo code" className="email-field"></input>
+                        <input type="submit" value="submit" className="submit-button"></input>
+                     </div>
+                  </Col>
+                  <Col xs="6">
+                     <div className="row-4">
+                        <div style={{ padding: '15px 25px', fontFamily: 'VAG Rounded ELC Light' }}>
+                           <span>Subtotal:</span><span className="floatRight">£99.99</span>
+                        </div>
+                        <div style={{ backgroundColor: '#e9f7ff', padding: '15px 25px' }}>
+                           <span>Order Total</span><span className="floatRight">£99.99</span>
+                        </div>
+                     </div>
+                  </Col>
+               </Row>
+               <Row className="changeRow">
+                  <Col xs="9"></Col>
+                  <Col xs="3" style={{ textAlign: 'end' }}>
+                     <Link to={`/saudi-en/new-check-out`}>
+                        <button className="alsoLikeCardButton">Check out</button>
+                     </Link>
+                  </Col>
+               </Row>
+            </div>
+            <div className="hideDivOnMobile">
+               <div className="blackTitle" style={{ fontSize: 20, paddingTop: 10 }}>
+                  <span>Select Delivery</span><span className="floatRight">1 item | £99.99</span>
+               </div>
+               <div className="prod-color">
+                  <div className="row del-options" style={{textAlign: 'center'}}>
+                     <div className="row home-deli" style={{display: 'block'}}>
+                        <img src={freeDelivery} />
+                        <div style={{padding: "30px 0px"}}>
+                           <span>Home delivery</span>
+                        </div>
+                        <div style={{padding: "20px 0px"}}>
+                        <span style={{color: '#ee0E19' }}>Out of stock</span>
+                        </div>
+                     </div>
+                     <div className="row click-collect" style={{display: 'block'}}>
+                        <img src={freeCollect} />
+                        <div style={{padding: "30px 0px"}}>
                            <span>Click & Collect</span>
-                           <span className="in-stock">In stock</span>
-                           <span style={{margin:'10px'}}>
-                              <a href=''>Change store</a>
-                           </span>
+                        </div>
+                        <div style={{padding: "20px 0px"}}>
+                           <a href=''>Change store</a>
+                        </div>
+                     </div>
                   </div>
                </div>
-				</div>
-            </Col>
-            <Col xs="3"></Col>
-            <Col xs="3" style={{textAlign: 'end'}}>
-            <div>
-               <div className="blackTitle" style={{fontSize:22}}>
-                  <span>1 item | £99.99</span>
+               <div>
+                  <Link to={`/saudi-en/new-check-out`}>
+                     <button className="alsoLikeCardButton">Check out</button>
+                  </Link>
+               </div>
+               <div style={{ marginTop: 10 }}>
+                  <span className="remove blackTitle floatRight" style={{ fontSize: 14, lineHeight: 1 }}>Remove</span>
+               </div>
+               <div style={{ padding: '20px 0px', borderBottom: 'solid 1px #b1b1b1' }}>
+                  <div>
+                     <img src={logo1} className="cardImage"></img>
+                  </div>
+                  <div style={{ marginTop: 20 }}>
+                     <span className="blackTitle" style={{ fontSize: 16 }}>L.O.L SURPRISE 2-IN-1 GLAMPER PLAYSET</span>
+                  </div>
+                  <div className="row-3 blackTitle" style={{ fontSize: 16 }}>
+                     <span>£99.99</span>
+                  </div>
+                  <div className="row-3 blackTitle" style={{ fontSize: 16 }}>
+                     <span>Qty: </span><span className="qut">1</span>
+                     <span className="floatRight" style={{ fontSize: 22 }}>£99.99</span>
+                  </div>
+               </div>
+               <div style={{ paddingTop: 30 }}>
+                  <input type="text" placeholder="Enter promo code" className="email-field"></input>
+                  <input type="submit" value="submit" className="submit-button"></input>
+               </div>
+               <div className="row-4">
+                  <div style={{ padding: '10px 10px', fontFamily: 'VAG Rounded ELC Light', fontSize: 20 }}>
+                     <span>Subtotal:</span><span className="floatRight">£99.99</span>
+                  </div>
+                  <div style={{ backgroundColor: '#e9f7ff', padding: '10px 10px', fontSize: 25}}>
+                     <span>Order Total</span><span className="floatRight">£99.99</span>
+                  </div>
                </div>
                <div>
                   <Link to={`/saudi-en/new-check-out`}>
@@ -82,67 +230,7 @@ class ShoppingBagItem extends Component {
                   </Link>
                </div>
             </div>
-            </Col>
-         </Row>
-         <Row className="row-1">
-            <Col xs="3">
-               
-            </Col>
-            <Col xs="4">
-               <span className="blackTitle" style={{fontSize:14}}>Item</span>
-            </Col>
-            <Col xs="1">
-               <span className="blackTitle" style={{fontSize:14}}>Price</span>
-            </Col>
-            <Col xs="1">
-               <span className="blackTitle" style={{fontSize:14}}>Qty</span>
-            </Col>
-            <Col xs="1">
-               <span className="blackTitle" style={{fontSize:14}}>Total</span>
-            </Col>
-            <Col xs="2">
-               
-            </Col>
-         </Row>
-         <Row className="row-2">
-            <Col xs="3">
-               <img src={logo1} className="cardImage"></img>
-            </Col>
-            <Col xs="4">
-               <span className="blackTitle" style={{fontSize:16}}>L.O.L SURPRISE 2-IN-1 GLAMPER PLAYSET</span>
-            </Col>
-            <Col xs="1" className="row-3 blackTitle" style={{fontSize:16}}>
-               <span>£99.99</span>
-            </Col>
-            <Col xs="1" className="row-3 blackTitle" style={{fontSize:16}}>
-               <span className="qut">1</span>
-            </Col>
-            <Col xs="1" className="row-3 blackTitle" style={{fontSize:22}}>
-               <span>£99.99</span>
-            </Col>
-            <Col xs="2" className="row-3 blackTitle" style={{textAlign: 'end'}}>
-            <span className="remove" style={{fontSize:14}}>Remove</span>
-            </Col>
-         </Row>
-         <Row style={{paddingRight: 25}}>
-            <Col xs="6"></Col>
-            <Col xs="6">
-               <Row className="row-4">
-               <Col xs="4">Order Total</Col>
-               <Col xs="4"></Col>
-               <Col xs="4">£99.99</Col>
-               </Row>
-            </Col>
-         </Row>
-         <Row style={{padding: 20}}>
-            <Col xs="9"></Col>
-            <Col xs="3" style={{textAlign: 'end'}}>
-               <Link to={`/saudi-en/new-check-out`}>
-                  <button className="alsoLikeCardButton">Check out</button>
-               </Link>
-            </Col>
-         </Row>
-      </div>
+         </div>
          {/* <tr>
             <td className="t-Report-cell" headers="PRODUCT_DESC">
                <table>

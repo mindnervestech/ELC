@@ -1172,10 +1172,11 @@ ul li.active-tab a{
     border: 2px solid #0D943F; 
     width: 45%;
     margin-left: 18px !important;
+    border-radius: 5px;
 }
 
 .home-deli img{
-    height:35;
+    height:35px;
     width:45%;
     margin-top:8px;
     margin-bottom: 1rem
@@ -1191,11 +1192,12 @@ ul li.active-tab a{
     font-size: 1.5rem;
     width: 45%;
     margin-left: 25px !important;
+    border-radius: 5px;
 }
 
 .click-collect img{
-    height:35; 
     width: 45%;
+    height: 35px;
     margin-top: 8px;
     margin-bottom: 1rem;
 }

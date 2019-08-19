@@ -94,40 +94,33 @@ class HomePageComponent extends Component {
 
         return (
             <>
-<div className="t-Body">
-    <div className="t-Body-main" style={{ marginTop: '0px !important' }}>
-        <div className="t-Body-title" id="t_Body_title" style={{ 'top': '294px' }}></div>
-        <div className="t-Body-content" id="t_Body_content">
-            {/* <div id="t_Body_content_offset" style={{ 'height': '1px' }}></div> <span id="APEX_SUCCESS_MESSAGE" data-template-id="33770911730796245_S" className="apex-page-success u-hidden"></span><span id="APEX_ERROR_MESSAGE" data-template-id="33770911730796245_E" className="apex-page-error u-hidden"></span> */}
-            <div className="t-Body-contentInner hideInMobile">
-                <div className="contener">
-                    <div>
-                        <Carousel showStatus={false}
-                        showThumbs={false}
-                        infiniteLoop={true}
-                        autoPlay={true}
-                        interval={5000}>
-                            <div>
-                                <img src={homeData.banners[0].BLOCK_BANNER} />
-                            </div>
-                            <div>
-                                <img src={homeData.banners[1].BLOCK_BANNER} />
-                            </div>
-                            <div>
-                                <img src={homeData.banners[2].BLOCK_BANNER} />
-                            </div>
-                            <div>
-                                <img src={homeData.banners[3].BLOCK_BANNER} />
-                            </div>
-                        </Carousel>
-                    </div>
+                <div className="t-Body">
+                    <div className="t-Body-main" style={{ marginTop: '0px !important' }}>
+                        <div className="t-Body-title" id="t_Body_title" style={{ 'top': '294px' }}></div>
+                        <div className="t-Body-content" id="t_Body_content">
+                            {/* <div id="t_Body_content_offset" style={{ 'height': '1px' }}></div> <span id="APEX_SUCCESS_MESSAGE" data-template-id="33770911730796245_S" className="apex-page-success u-hidden"></span><span id="APEX_ERROR_MESSAGE" data-template-id="33770911730796245_E" className="apex-page-error u-hidden"></span> */}
+                            <div className="t-Body-contentInner hideInMobile">
+                                <div className="contener">
+                                    <div>
+                                        <Carousel showStatus={false}
+                                            showThumbs={false}
+                                            infiniteLoop={true}
+                                            autoPlay={true}
+                                            interval={5000}>
+                                            {homeData.banners.map((item, index) => (
+                                                <div>
+                                                <img src={item.BLOCK_BANNER} />
+                                            </div>
+                                            ))}
+                                        </Carousel>
+                                    </div>
 
-                    {/* <div className="row">
+                                    {/* <div className="row">
                         <div className="col col-12 apex-col-auto">
                             <div id="pref_popup_parent"></div>
                         </div>
                     </div> */}
-                    {/* <div className="row">
+                                    {/* <div className="row">
                         <div className="col col-12 apex-col-auto homeBlock">
                             <div id="R33787481922169811" className="homePage">
                                 <input type="hidden" id="P1_PAGE_TITLE" name="P1_PAGE_TITLE" value="Online Shopping in Saudi for Lingerie, Bras, Panties &amp; Nightwear at Nayomi" />
@@ -150,7 +143,7 @@ class HomePageComponent extends Component {
                             </div>
                         </div>
                     </div> */}
-                    {/* <div className="row">
+                                    {/* <div className="row">
                         <div className="col col-12 apex-col-auto homeBlock">
                             <div id="R33787503821169812" className="homePage">
                                 <section className="romanceGift">
@@ -214,7 +207,7 @@ class HomePageComponent extends Component {
                             </div>
                         </div>
                     </div> */}
-                    {/* <div className="row">
+                                    {/* <div className="row">
                         <div className="col col-12 apex-col-auto homeBlock">
                             <div id="R33787634367169813" className="homePage">
                                 <section className="braPanty">
@@ -261,7 +254,7 @@ class HomePageComponent extends Component {
                             </div>
                         </div>
                     </div> */}
-                    {/* <div className="row">
+                                    {/* <div className="row">
                         <div className="col col-12 apex-col-auto homeBlock">
                             <div id="R33787769572169814" className="homePage">
                                 <section className="adore">
@@ -298,78 +291,36 @@ class HomePageComponent extends Component {
                             </div>
                         </div>
                     </div> */}
-                    <div className="row">
-                        <div className="col col-12 apex-col-auto homeBlock">
-                            <div id="R36275003485418909" className="homePage">
-                                <section className="trendingBlock">
-                                    <div className="wrap">
-                                    <ul className="product-list">
-                                        <li>
-                                            <div>
-                                                    <Link to={`/saudi-en/product-list`}>
-                                                        {/* <figure> */}
-                                                            <a href={''} target="_blank">
-                                                                <img src={homeData.blocks[0].BLOCK_BANNER!=null?homeData.blocks[0].BLOCK_BANNER:logo1} />
-                                                            </a>
-                                                            <div className="cardDetail">
-                                                                    <span className="cardDetailText">{homeData.blocks[0].TITLE}</span>
-                                                            </div>
-                                                        {/* </figure> */}
-                                                    </Link>
+                                    <div className="row">
+                                        <div className="col col-12 apex-col-auto homeBlock">
+                                            <div id="R36275003485418909" className="homePage">
+                                                <section className="trendingBlock">
+                                                    <div className="wrap">
+                                                        <ul className="product-list">
+                                                            {homeData.blocks.map((item, index) => (
+                                                                <li>
+                                                                    <div>
+                                                                        <Link to={`/saudi-en/product-list`}>
+                                                                            <a href={''} target="_blank">
+                                                                                <img src={item.BLOCK_BANNER != null ? item.BLOCK_BANNER : logo2} />
+                                                                            </a>
+                                                                            <div className="cardDetail">
+                                                                                <span className="cardDetailText">{item.TITLE}</span>
+                                                                            </div>
+                                                                        </Link>
+                                                                    </div>
+                                                                </li>
+                                                            ))}
+                                                        </ul>
+                                                    </div>
+                                                </section>
                                             </div>
-                                        </li>
-                                        <li>
-                                            <div>
-                                                    <Link to={`/saudi-en/product-list`}>
-                                                        {/* <figure> */}
-                                                            <a href={''} target="_blank">
-                                                                <img src={homeData.blocks[1].BLOCK_BANNER!=null?homeData.blocks[1].BLOCK_BANNER:logo2} />
-                                                            </a>
-                                                            <div className="cardDetail">
-                                                                    <span className="cardDetailText">{homeData.blocks[1].TITLE}</span>
-                                                            </div>
-                                                        {/* </figure> */}
-                                                    </Link>
-                                                </div>
-                                        </li>
-                                        <li>
-                                        <div>
-                                                    <Link to={`/saudi-en/product-list`}>
-                                                        {/* <figure> */}
-                                                            <a href={''} target="_blank">
-                                                                <img src={homeData.blocks[2].BLOCK_BANNER!=null?homeData.blocks[2].BLOCK_BANNER:logo3} />
-                                                            </a>
-                                                            <div className="cardDetail">
-                                                                    <span className="cardDetailText">{homeData.blocks[2].TITLE}</span>
-                                                            </div>
-                                                        {/* </figure> */}
-                                                    </Link>
-                                                </div>
-                                        </li>
-                                        <li>
-                                        <div>
-                                                    <Link to={`/saudi-en/product-list`}>
-                                                        {/* <figure> */}
-                                                            <a href={''} target="_blank">
-                                                                <img src={homeData.blocks[3].BLOCK_BANNER!=null?homeData.blocks[3].BLOCK_BANNER:logo4} />
-                                                            </a>
-                                                            <div className="cardDetail">
-                                                                    <span className="cardDetailText">{homeData.blocks[3].TITLE}</span>
-                                                            </div>
-                                                        {/* </figure> */}
-                                                    </Link>
-                                                </div>
-                                        </li>
-                                    </ul>
+                                        </div>
                                     </div>
-                                </section>
+                                    <ProductSlider></ProductSlider>
                                 </div>
-                        </div>
-                    </div>
-                    <ProductSlider></ProductSlider>
-                </div>
-            </div>
-            {/* <div className="t-Body-contentInner hideInDesktop">
+                            </div>
+                            {/* <div className="t-Body-contentInner hideInDesktop">
                 <div className="container">
                     <div className="row">
                         <div className="col col-12 apex-col-auto">
@@ -525,9 +476,9 @@ class HomePageComponent extends Component {
                     </div>
                 </div>
             </div> */}
-        </div>
-    </div>
-</div>
+                        </div>
+                    </div>
+                </div>
             </>
         );
     }

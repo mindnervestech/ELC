@@ -36,8 +36,37 @@
 
 }
 
+.displayDivOnWeb {
+    display: block;
+}
+
+.hideDivOnMobile {
+    display: none;
+}
+
+.padding30 {
+    padding: 30px
+}
+
 .cardPage{
     padding: 20xp;
+}
+.cardPage .email-field{
+    height: 45px;
+    padding: 0px 15px;
+    width: 50%;
+    border: solid 1px;
+    border-color: #0D943F;
+    border-radius: 5px 0px 0px 5px;
+}
+
+.cardPage .submit-button{
+    background-color: #0D943F;
+    color: #fff;
+    width: 15%;
+    height: 45px;
+    border: solid 1px #0D943F;
+    border-radius: 0px 5px 5px 0px;
 }
 
 .cardPage .row-1{
@@ -47,7 +76,7 @@
 }
 
 .cardPage .row-2{
-    padding: 20px 20px;
+    padding: 20px 0px;
     border-bottom: solid 1px #b1b1b1;
 }
 
@@ -56,7 +85,7 @@
 }
 
 .cardPage .row-5{
-    padding: 25px;
+    padding: 25px 0px;
 }
 
 .imageHight40{
@@ -65,13 +94,11 @@
 }
 
 .cardPage .row-4{
-    padding: 15px 0px;
     margin-top: 15px;
     font-size: 30px;
     font-family: "VAG Rounded ELC Bold";
-    text-align: center;
-    background-color: #e9f7ff;
-    border: solid 1px #e9f7ff;
+    background-color: #fff;
+    border: solid 3px #e9f7ff;
     border-radius: 10px;
 }
 
@@ -472,7 +499,6 @@ a {
     padding: 20px 0px;
 }
 
-
 .footer-css .email-field {
     height: 45px;
 padding: 0px 15px;
@@ -485,7 +511,7 @@ border-color: #0D943F;
     background-color: #0D943F;
     color: #fff;
     width: 20%;
-    height: 45px;
+    height: 46px;
     border: solid 1px #0D943F;
     line-height: 1.15;
 }
@@ -2276,11 +2302,11 @@ html[dir="rtl"] .header .changecountry .country .list a:before {
     width: 100%;
     height: 70px;
     text-align: center;
-    padding-top: 20px;
+    padding: 20px 10px 0px;
 }
 
 .homePage .cardDetailText{
-    font-size: 24px;
+    font-size: 22px;
     color: rgb(255, 255, 255);
 }
 
@@ -2407,21 +2433,49 @@ html[dir="rtl"] .header .changecountry .country .list a:before {
     position: absolute;
     top: -2%;
     left: -3%;
-    height: 15%;
-    width: 30%;
+    height: 60px;
+    width: 60px;
 }
 .homePage .save{
     position: absolute;
     top: -2%;
     left: -1%;
-    height: 15%;
-    width: 29%;
+    height: 60px;
+    width: 58px;
+}
+
+.homePage .wishlist{
+    padding: 20px 110px;
+}
+
+.homePage .wishlist-title{
+    padding-top: 30px;
+    border-bottom: solid 1px #b1b1b1;
+    font-size: 30px;
+    color: #4f4f4f;
+    font-family: "VAG Rounded ELC Light";
+    font-size: 2.7rem;
+    font-weight: 300;
+}
+
+.wishlist-products {
+    margin: 20px 0;
+}
+
+.wishlist-products li{
+    vertical-align: top;
+    position: relative;
+    width: 19%!important;
+}
+
+.wishlist-products li{
+    margin: 20px 28px 20px!important;
 }
 
 .homePage .save-text{
     position: absolute;
     top: 4%;
-    left: 10%;
+    left: 18px;
     z-index: 9;
     color: #fff;
     font-size: 25px;
@@ -2431,7 +2485,7 @@ html[dir="rtl"] .header .changecountry .country .list a:before {
 .homePage .percentage-text{
     position: absolute;
     top: 3%;
-    left: 1%;
+    left: 4px;
     z-index: 9;
     color: #fff;
     font-size: 25px;
@@ -2531,6 +2585,108 @@ html[dir="rtl"] .slick-next {
         margin: 20px 0;
     }
 
+    .check-out .payment{
+
+    }
+
+    .check-out .payment .Collapsible__contentInner{
+        padding: 0px;
+        border: solid 1px #b1b1b1;
+        border-top: 0px;
+    }
+
+    .check-out .payment .cardPayment{
+
+    }
+
+    .check-out .payment .cardPayment .Collapsible__contentInner{
+        padding: 15px;
+        border: solid 0px #b1b1b1;
+        border-bottom: solid 1px #b1b1b1;
+    }
+
+    .check-out .payment .cardPayment .Collapsible__trigger:after{
+        font-family: 'FontAwesome';
+        content: '\02EF';
+        position: absolute;
+        right: 10px;
+        top: 0px;
+        font-size: 40px;
+        display: block;
+        transition: transform 300ms;
+    }
+
+    .check-out .payment .cardPayment .Collapsible__trigger.is-open:after{
+        transform: rotateZ(0deg);
+        content: '\02F0'!important;
+    }
+
+    .check-out .payment .Collapsible__trigger:after{
+        font-family: 'FontAwesome';
+        content: '';
+        position: absolute;
+        right: 10px;
+        top: 0px;
+        font-size: 40px;
+        display: block;
+        transition: transform 300ms;
+    }
+
+    .check-out .payment .Collapsible__trigger.is-open:after{
+        transform: rotateZ(0deg);
+        content: ''!important;
+    }
+
+    .check-out .input-field{
+        height: 40px;
+        width: 100%;
+        margin-top: 5px;
+        color: #4f4f4f;
+        border: solid 1px #b1b1b1;
+        padding: 0px 10px;
+    }
+
+    .check-out .select-field{
+        width: 49%;
+        height: 40px;
+        background-color: #fff;
+        border-radius: 0px;
+    }
+
+    .check-out .button{
+        color: #fff;
+        background-color:#EE0E19;
+        border: solid 1px #EE0E19;
+        padding: 10px 20px;
+        margin-top: 20px;
+        float: right;
+        font-family: "VAG Rounded ELC Bold";
+        font-size: 1.4rem;
+    }
+
+    .check-out .button:hover{
+        background-color: #dF0C00;
+        border: solid 1px #dF0C00;
+    }
+
+    .error{
+        color: red!important;
+        border-color: red!important;
+    }
+
+    .check-out .payment .cardPayment .Collapsible__trigger{
+        display: block;
+        text-decoration: none;
+        position: relative;
+        border: 0px;
+        border-bottom: solid 1px #b1b1b1;
+        padding: 17px 10px;
+        background: #fff;
+        color: black;
+        font-size: 1.4rem;
+        font-family: "VAG Rounded ELC Bold";
+    }
+
     .check-out li {
         vertical-align: top;
         position: relative;
@@ -2558,6 +2714,22 @@ html[dir="rtl"] .slick-next {
         color: #0D943F;
         font-size: 1.4rem;
         font-family: "VAG Rounded ELC Bold";
+    }
+
+    .check-out .Collapsible__trigger:after{
+        font-family: 'FontAwesome';
+        content: '\270E';
+        position: absolute;
+        right: 10px;
+        top: 17px;
+        font-size: 20px;
+        display: block;
+        transition: transform 300ms;
+    }
+
+    .check-out .Collapsible__trigger.is-open:after{
+        transform: rotateZ(0deg);
+        content: '\270E'!important;
     }
 
     .check-out .Collapsible__contentInner{
@@ -2606,6 +2778,7 @@ html[dir="rtl"] .slick-next {
         border-top: 0px;
         padding: 10px; 
         height: 40px;
+        background-color: #d6d6d6;
     }
 
     .check-out .block5 {
@@ -2635,6 +2808,11 @@ html[dir="rtl"] .slick-next {
         font-size: 1.3rem;
     }
 
+    .changeRow{
+        margin-left: 0px!important;
+        margin-right: 0px!important;
+    }
+
     @media (max-width: 320px){
         .product-list li{
             vertical-align: top;
@@ -2655,6 +2833,18 @@ html[dir="rtl"] .slick-next {
         .data .slick-prev {
             left: 0px!important;
             z-index: 1;
+        }
+
+        .padding30 {
+            padding: 10px
+        }
+
+        .displayDivOnWeb {
+            display: none;
+        }
+        
+        .hideDivOnMobile {
+            display: block;
         }
 
         .product-list li{
@@ -2723,6 +2913,68 @@ html[dir="rtl"] .slick-next {
         }
         .check-out li, .feature li, .group-row li{
             margin: 20px 7px 20px;
+        }
+
+        .homePage .wishlist{
+            padding: 20px 20px;
+        }
+        
+        .wishlist-products li{
+            vertical-align: top;
+            position: relative;
+            width: 43%!important;
+        }
+        
+        .wishlist-products li{
+            margin: 20px 10px 20px!important;
+        }
+
+        .homePage .save-text{
+            position: absolute;
+            top: 3%;
+            left: 17px;
+            z-index: 9;
+            color: #fff;
+            font-size: 25px;
+            font-family: "VAG Rounded ELC Bold";
+        }
+
+        .homePage .save{
+            position: absolute;
+            top: -2%;
+            left: -1%;
+            height: 50px;
+            width: 48px;
+        }
+
+        .homePage .percentage-text{
+            position: absolute;
+            top: 2%;
+            left: 3px;
+            z-index: 9;
+            color: #fff;
+            font-size: 23px;
+            font-family: "VAG Rounded ELC Bold";
+        }
+
+        .homePage .percentage{
+            position: absolute;
+            top: -2%;
+            left: -3%;
+            height: 50px;
+            width: 50px;
+        }
+
+        .cardPage .submit-button {
+            width: 20%;
+            line-height: 1;
+        }
+        .cardPage .email-field{
+            width: 80%;
+        }
+
+        .footer-css{
+            padding: 0px 10px;
         }
     }
 
