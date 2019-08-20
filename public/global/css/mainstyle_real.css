@@ -1065,11 +1065,13 @@ html[dir="rtl"] .header .profile figure {
 }
 
 .header .navTrigger {
-    position: relative;
+    position: absolute;
     float: left;
     width: 30px;
     padding: 8px 0px;
-    cursor: pointer
+    cursor: pointer;
+    top: 10px;
+    left: 10px;
 }
 
 html[dir="rtl"] .header .navTrigger {
@@ -1085,9 +1087,9 @@ html[dir="rtl"] .header .navTrigger {
 
 .header .navTrigger i {
     display: block;
-    background-color: #000;
+    background-color: #fff;
     height: 2px;
-    margin-bottom: 4px
+    margin-bottom: 7px
 }
 
 @media only screen and (min-width: 600px) {

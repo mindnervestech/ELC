@@ -341,12 +341,11 @@ class MainHeader extends Component {
                         {/* <input type="hidden" id="P0_HSEARCH" name="P0_HSEARCH" value="" /> */}
                         <div className="containers-main">
                         {/* <Container style={{width: "100%"}}> */}
-                            <Row style={{paddingRight: 30, paddingLeft: 30}}>
+                            <Row style={{paddingRight: 30, paddingLeft: 30}} className="divShowOnWeb">
                                 <Col xs="4" style={{paddingLeft: 0, paddingRight: 0}}>
                                 <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
                                     <img style={{height:64, width:"75%",paddingLeft: 5}} src={logoGroup}/>
                                 </Link>
-                                    
                                 </Col>
                                 <Col xs="4" style={{padding:6}}><Search store_locale={store_locale} /></Col>
                                 <Col xs="2"></Col>
@@ -389,9 +388,19 @@ class MainHeader extends Component {
                                 </Link>
                                 </Col>
                             </Row>
+                            <div className="divShowOnMobile">
+                                <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
+                                    <img style={{height:'auto', width:"60%", marginLeft: "13%"}} src={logoGroup}/>
+                                </Link>
+                                <img src={location} style={{height: 20, width: 20, marginLeft: "5%"}}></img>
+                                <img src={bagLogo} style={{height: 20, width: 20, marginLeft: "5%"}}/>
+                            </div>
+                            <div className="divShowOnMobile" style={{padding: "0px 10px", marginTop: 10}}>
+                            <Search store_locale={store_locale} />
+                            </div>
                         {/* </Container> */}
-                            {/* <div id="navTrigger" className="navTrigger"><i></i><i></i><i></i></div>
-                            <ul className="cta">
+                            <div id="navTrigger" className="navTrigger"><i></i><i></i><i></i></div>
+                            {/* <ul className="cta">
                                 <li className="ll">
                                     <div className="lang">
                                         <a href="javascript:void(0);" onClick={(e) => this.translate('en', 'ltr')} className="active" >en</a> | <a href="javascript:void(0);" onClick={(e) => this.translate('ar', 'rtl')} >العربية</a></div>
@@ -432,8 +441,6 @@ class MainHeader extends Component {
                                 <button className="present-finder-buton">Present Finder</button>
                             </Col>
                         </Row>
-
-
                             {/* <div className="changecountry">
                                 <div className="country">
                                     <div className={this.state.showCountries ? "activeCountry open" : "activeCountry"}>

@@ -36,6 +36,14 @@
 
 }
 
+.divShowOnWeb {
+    /* display: block!important; */
+}
+
+.divShowOnMobile{
+    display: none!important;
+}
+
 .displayDivOnWeb {
     display: block;
 }
@@ -57,7 +65,6 @@
     width: 50%;
     border: solid 1px;
     border-color: #0D943F;
-    border-radius: 5px 0px 0px 5px;
 }
 
 .cardPage .submit-button{
@@ -66,7 +73,6 @@
     width: 15%;
     height: 45px;
     border: solid 1px #0D943F;
-    border-radius: 0px 5px 5px 0px;
 }
 
 .cardPage .row-1{
@@ -1354,11 +1360,13 @@ html[dir="rtl"] .header .profile figure {
 }
 
 .header .navTrigger {
-    position: relative;
+    position: absolute;
     float: left;
     width: 30px;
     padding: 8px 0px;
-    cursor: pointer
+    cursor: pointer;
+    top: 10px;
+    left: 10px;
 }
 
 html[dir="rtl"] .header .navTrigger {
@@ -1374,9 +1382,9 @@ html[dir="rtl"] .header .navTrigger {
 
 .header .navTrigger i {
     display: block;
-    background-color: #000;
+    background-color: #fff;
     height: 2px;
-    margin-bottom: 4px
+    margin-bottom: 7px
 }
 
 @media only screen and (min-width: 600px) {
@@ -2829,10 +2837,18 @@ html[dir="rtl"] .slick-next {
       }  
       }
 
-    @media only screen and (max-width: 450px) {
+    @media only screen and (max-width: 767px) {
         .data .slick-prev {
             left: 0px!important;
             z-index: 1;
+        }
+
+        .divShowOnWeb {
+            display: none!important;
+        }
+
+        .divShowOnMobile{
+            display: block!important;
         }
 
         .padding30 {
@@ -2975,6 +2991,28 @@ html[dir="rtl"] .slick-next {
 
         .footer-css{
             padding: 0px 10px;
+        }
+
+        .header .row-2{
+            height: 115px!important;
+        }
+
+        .header .row-2 .search{
+            display: block!important;
+        }
+
+        .header .search .textInput{
+            display: inline!important;
+            height: 40px!important;
+        }
+
+        .header .search .searchButton{
+            padding: 0px!important;
+            height: 41px!important;
+        }
+
+        .header-slider{
+            padding-top: 15px;
         }
     }
 

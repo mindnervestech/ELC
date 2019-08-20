@@ -105,7 +105,7 @@ class ShoppingBagItem extends Component {
                      </div>
                   </Col>
                </Row>
-               <Row className="row-1 changeRow">
+               <Row className="row-1 changeRow" style={{textAlign: 'start'}}>
                   <Col xs="3">
 
                   </Col>
@@ -125,7 +125,7 @@ class ShoppingBagItem extends Component {
 
                   </Col>
                </Row>
-               <Row className="row-2 changeRow">
+               <Row className="row-2 changeRow" style={{textAlign: 'start'}}>
                   <Col xs="3">
                      <img src={logo1} className="cardImage"></img>
                   </Col>
@@ -147,7 +147,7 @@ class ShoppingBagItem extends Component {
                </Row>
                <Row className="changeRow">
                   <Col xs="6">
-                     <div style={{ paddingTop: 30 }}>
+                     <div style={{ paddingTop: 30, textAlign: 'start'}}>
                         <input type="text" placeholder="Enter promo code" className="email-field"></input>
                         <input type="submit" value="submit" className="submit-button"></input>
                      </div>

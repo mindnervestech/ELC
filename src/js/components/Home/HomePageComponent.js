@@ -99,7 +99,7 @@ class HomePageComponent extends Component {
                         <div className="t-Body-title" id="t_Body_title" style={{ 'top': '294px' }}></div>
                         <div className="t-Body-content" id="t_Body_content">
                             {/* <div id="t_Body_content_offset" style={{ 'height': '1px' }}></div> <span id="APEX_SUCCESS_MESSAGE" data-template-id="33770911730796245_S" className="apex-page-success u-hidden"></span><span id="APEX_ERROR_MESSAGE" data-template-id="33770911730796245_E" className="apex-page-error u-hidden"></span> */}
-                            <div className="t-Body-contentInner hideInMobile">
+                            <div className="t-Body-contentInner">
                                 <div className="contener">
                                     <div>
                                         <Carousel showStatus={false}
