@@ -8,9 +8,7 @@ import { Container, Row, Col, Button } from 'reactstrap';
 import percentage from '../../../assets/images/product-details/percentage.png';
 import save from '../../../assets/images/product-details/save.png';
 import logo1 from '../../../assets/images/you_may_also_like_1.png'
-
-import home from '../../../assets/images/social/Hero.png';
-import { th } from 'date-fns/esm/locale';
+import StarRatings from 'react-star-ratings';
 
 class ProductListData extends Component {
 	constructor(props) {
@@ -26,7 +24,6 @@ class ProductListData extends Component {
 	}
 
 	render() {
-		const {list} = this.props;
 		return (
 			<div className="homePage">
 				<div className="start3">
@@ -77,23 +74,55 @@ class ProductListData extends Component {
 					</div>
 				</div>
 				<div className="start">
-					<ul className="products data">
-					{Object.keys(list).map((keyName) =>
+					<ul className="products">
 						<li>
 							<div className="alsoLikeCard">
 								<span className="percentage-text" style={{display: 'none'}}>30</span>
-								<span className="save-text">{keyName}%</span>
+								<span className="save-text">5</span>
 								<img src={save} className="save"/>
-								<img src={list[keyName].json.imageUrl.primaryimage[0]} className="cardImage"/>
+								<img src={logo1} className="cardImage"/>
 								<img src={percentage} className="percentage" style={{display: 'none'}}/>
 								<div style={{marginTop:10}}>
-									<label className="text-color">{list[keyName].json.name}</label>
+									<label className="text-color">Twist and Turn Activity House</label>
 								</div>
 								<div>
-									<span style={{fontSize:14, color:"#0D943F", fontWeight: "bold"}}>AED {list[keyName].price}.00</span><span style={{color:"gray",textDecorationLine: 'line-through', fontSize:14, marginLeft: 10}}>AED 14.50</span>
+									<span style={{fontSize:14, color:"#0D943F", fontWeight: "bold"}}>AED 12.00</span><span style={{color:"gray",textDecorationLine: 'line-through', fontSize:14, marginLeft: 10}}>AED 14.50</span>
 								</div>
 								<div style={{paddingTop:10}}>
-									<span> {list[keyName].json.collection_desc} </span>
+								<StarRatings
+                                    rating={3}
+                                    starRatedColor='#FAD961'
+                                    changeRating={this.changeRating}
+                                    numberOfStars={5}
+                                    name='rating'
+                                    starHoverColor='#0D943F'
+                                    starDimension='15px'
+                                    starSpacing='0px'
+                                />
+									<span style={{marginLeft: 5}}>3 - 10 years</span>
+								</div>
+								<div>
+									<button className="alsoLikeCardButton CardButton">Add to Basket</button>
+								</div>
+								<div style={{paddingTop: 10}}>
+									<i className="icon-heart"></i>
+									<span style={{paddingLeft: 7}}>Add to Wishlist</span>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div className="alsoLikeCard">
+								<span className="percentage-text">30</span>
+								<img src={logo1} className="cardImage"/>
+								<img src={percentage} className="percentage"/>
+								<div style={{marginTop:10}}>
+									<label className="text-color">Twist and Turn Activity House</label>
+								</div>
+								<div>
+									<span style={{fontSize:14, color:"#0D943F", fontWeight: "bold"}}>AED 12.00</span><span style={{color:"gray",textDecorationLine: 'line-through', fontSize:14, marginLeft: 10}}>AED 14.50</span>
+								</div>
+								<div style={{paddingTop:10}}>
+									<span>3 - 10 years</span>
 								</div>
 								<div>
 									<button className="alsoLikeCardButton CardButton">Add to Basket</button>
@@ -104,7 +133,98 @@ class ProductListData extends Component {
 								</div>
 							</div>
 						</li>
-						) }		
+						<li>
+							<div className="alsoLikeCard">
+								<span className="percentage-text">30</span>
+								<img src={logo1} className="cardImage"/>
+								<img src={percentage} className="percentage"/>
+								<div style={{marginTop:10}}>
+									<label className="text-color">Twist and Turn Activity House</label>
+								</div>
+								<div>
+									<span style={{fontSize:14, color:"#0D943F", fontWeight: "bold"}}>AED 12.00</span><span style={{color:"gray",textDecorationLine: 'line-through', fontSize:14, marginLeft: 10}}>AED 14.50</span>
+								</div>
+								<div style={{paddingTop:10}}>
+									<span>3 - 10 years</span>
+								</div>
+								<div>
+									<button className="alsoLikeCardButton CardButton">Add to Basket</button>
+								</div>
+								<div style={{paddingTop: 10}}>
+									<i className="icon-heart"></i>
+									<span>Add to Wishlist</span>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div className="alsoLikeCard">
+								<span className="percentage-text">30</span>
+								<img src={logo1} className="cardImage"/>
+								<img src={percentage} className="percentage"/>
+								<div style={{marginTop:10}}>
+									<label className="text-color">Twist and Turn Activity House</label>
+								</div>
+								<div>
+									<span style={{fontSize:14, color:"#0D943F", fontWeight: "bold"}}>AED 12.00</span><span style={{color:"gray",textDecorationLine: 'line-through', fontSize:14, marginLeft: 10}}>AED 14.50</span>
+								</div>
+								<div style={{paddingTop:10}}>
+									<span>3 - 10 years</span>
+								</div>
+								<div>
+									<button className="alsoLikeCardButton CardButton">Add to Basket</button>
+								</div>
+								<div style={{paddingTop: 10}}>
+									<i className="icon-heart"></i>
+									<span>Add to Wishlist</span>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div className="alsoLikeCard">
+								<span className="percentage-text">30</span>
+								<img src={logo1} className="cardImage"/>
+								<img src={percentage} className="percentage"/>
+								<div style={{marginTop:10}}>
+									<label className="text-color">Twist and Turn Activity House</label>
+								</div>
+								<div>
+									<span style={{fontSize:14, color:"#0D943F", fontWeight: "bold"}}>AED 12.00</span><span style={{color:"gray",textDecorationLine: 'line-through', fontSize:14, marginLeft: 10}}>AED 14.50</span>
+								</div>
+								<div style={{paddingTop:10}}>
+									<span>3 - 10 years</span>
+								</div>
+								<div>
+									<button className="alsoLikeCardButton CardButton">Add to Basket</button>
+								</div>
+								<div style={{paddingTop: 10}}>
+									<i className="icon-heart"></i>
+									<span>Add to Wishlist</span>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div className="alsoLikeCard">
+								<span className="percentage-text">30</span>
+								<img src={logo1} className="cardImage"/>
+								<img src={percentage} className="percentage"/>
+								<div style={{marginTop:10}}>
+									<label className="text-color">Twist and Turn Activity House</label>
+								</div>
+								<div>
+									<span style={{fontSize:14, color:"#0D943F", fontWeight: "bold"}}>AED 12.00</span><span style={{color:"gray",textDecorationLine: 'line-through', fontSize:14, marginLeft: 10}}>AED 14.50</span>
+								</div>
+								<div style={{paddingTop:10}}>
+									<span>3 - 10 years</span>
+								</div>
+								<div>
+									<button className="alsoLikeCardButton CardButton">Add to Basket</button>
+								</div>
+								<div style={{paddingTop: 10}}>
+									<i className="icon-heart"></i>
+									<span>Add to Wishlist</span>
+								</div>
+							</div>
+						</li>
 					</ul>
 				</div>
 				<div className="start2">

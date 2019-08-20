@@ -65,19 +65,28 @@ class ShoppingBagItem extends Component {
                      <div className="prod-color">
                         <div className="row del-options">
                            <div className="row home-deli">
-                              <img src={freeDelivery} />
-                              <span>Home delivery</span>
+                           <div style={{width: "100%", textAlign: 'center'}}>
+                           <img src={freeDelivery} />
+                           </div>
+                              <div style={{width: "100%", textAlign: 'center', padding: '10px 10px'}}>
+                                 <span>Home delivery</span>
+                              </div>
+                              <div style={{width: "100%", textAlign: 'center', padding: '10px 10px'}}>
                               <span style={{ margin: '10px', color: '#ee0E19' }}>
                                  Out of stock
                               </span>
+                              </div>
                            </div>
                            <div className="row click-collect">
-                              <img src={freeCollect} />
-                              <span>Click & Collect</span>
-                              <span className="in-stock">In stock</span>
-                              <span style={{ margin: '10px' }}>
-                                 <a href=''>Change store</a>
-                              </span>
+                           <div style={{width: "100%", textAlign: 'center'}}>
+                           <img src={freeCollect}/>
+                           </div>
+                              <div style={{width: "100%", textAlign: 'center', padding: '10px 10px'}}>
+                                 <span>Click & Collect</span>
+                              </div>
+                              <div style={{width: "100%", textAlign: 'center', padding: '10px 10px'}}>
+                               <span className="in-stock">In stock</span>
+                              </div>
                            </div>
                         </div>
                      </div>
