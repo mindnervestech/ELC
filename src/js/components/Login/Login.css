@@ -319,6 +319,44 @@ html[dir="rtl"] .link {
     }
 }
 
+
+@media only screen and (max-width: 991px) and (min-width: 768px) {
+    .link {
+        margin-left: 70px !important;
+    }
+}
+
+@media only screen and (max-width:1199px) and (min-width: 992px) {
+    .link {
+        padding-left: 155px !important;
+    }
+
+    .forgotPass {
+        margin-left: 0px !important;
+    }
+}
+
+@media only screen and (max-width:498px) and (min-width: 408px) {
+    .link {
+        padding-left: 130px !important;
+    }
+
+    .forgotPass {
+        margin-left: 0px !important;
+    }
+}
+
+@media only screen and (max-width:407px) and (min-width: 350px) {
+    .link {
+        padding-left: 120px !important;
+    }
+
+    .forgotPass {
+        margin-left: 0px !important;
+    }
+}
+
+
 @media only screen and (max-width: 767px) {
     .b-footer_middle {
         padding: 0;
@@ -1095,6 +1133,10 @@ html[dir="rtl"] .nay {
     cursor: pointer;
     border: 1px solid;
     -webkit-text-stroke-width: 1px;
+}
+
+.forgotPass {
+    float: right !important;
 }
 
 

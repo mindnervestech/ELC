@@ -24,7 +24,7 @@ class Login extends Component {
     let startGuestCheckout = this.props.startGuestCheckout ? true : false;
 
     //console.log(this.props)
-
+    
     this.state = {
       email: '',
       password: '',
@@ -445,7 +445,7 @@ class Login extends Component {
                                           </div>
                                           </div>
                                         </div>
-                                        <div className="row">
+                                        <div className="row forgotPass" >
                                           <a className="forget-password-link link" onClick={this.onOpenSecondModal}><FormattedMessage id="forget.password" defaultMessage="Forget Password" /></a>
 
                                           <span id="P1000_FP_error_placeholder" className="a-Form-error" data-template-id="33609641515469732_ET"></span>
