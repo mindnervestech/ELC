@@ -87,26 +87,26 @@ class SignUp extends Component {
       formIsValid = false;
       errors["firstName"] = <FormattedMessage id="Signup.validation.firstName.empty" defaultMessage="First Name cannot be empty" />;
     }
-    console.log("form is valid 1", formIsValid);
+
     if (!fields["lastName"]) {
       formIsValid = false;
       errors["lastName"] = <FormattedMessage id="Signup.validation.lastName.empty" defaultMessage="First Name cannot be empty" />;
     }
-    console.log("form is valid 2", formIsValid);
+
     if (typeof fields["firstName"] !== "undefined") {
       if (!fields["firstName"].match(/^[a-zA-Z]+$/) && fields["firstName"].length > 0) {
         formIsValid = false;
         errors["firstName"] = <FormattedMessage id="Signup.validation.firstName.onlyletters" defaultMessage="First Name cannot be empty" />;
       }
     }
-    console.log("form is valid 3", formIsValid);
+
     if (typeof fields["lastName"] !== "undefined") {
       if (!fields["lastName"].match(/^[a-zA-Z]+$/) && fields["lastName"].length > 0) {
         formIsValid = false;
         errors["lastName"] = <FormattedMessage id="Signup.validation.lastName.onlyletters" defaultMessage="First Name cannot be empty" />;
       }
     }
-    console.log("form is valid 4", formIsValid);
+
     //Email
     if (typeof fields["email"] !== "undefined") {
 
@@ -114,7 +114,7 @@ class SignUp extends Component {
         formIsValid = false;
         errors["email"] = <FormattedMessage id="Signup.validation.email.empty" defaultMessage="First Name cannot be empty" />;
       }
-      console.log("form is valid 5", formIsValid);
+
       if (fields["email"].length > 0) {
         let lastAtPos = fields["email"].lastIndexOf('@');
         let lastDotPos = fields["email"].lastIndexOf('.');
@@ -122,7 +122,6 @@ class SignUp extends Component {
           formIsValid = false;
           errors["email"] = <FormattedMessage id="Signup.validation.email.invalid" defaultMessage="First Name cannot be empty" />;
         }
-        console.log("form is valid 6", formIsValid);
       }
     }
     if (typeof fields["confirmEmail"] !== "undefined") {
@@ -159,20 +158,17 @@ class SignUp extends Component {
         formIsValid = false;
         errors["password"] = <FormattedMessage id="Signup.validation.password.length" defaultMessage="First Name cannot be empty" />;
       }
-      console.log("form is valid 8", formIsValid);
     }
 
     if (!fields["confirmPassword"]) {
       formIsValid = false;
       errors["confirmPassword"] = <FormattedMessage id="Signup.validation.confirmPassword.empty" defaultMessage="First Name cannot be empty" />;
     }
-    console.log("form is valid 9", formIsValid);
 
     if (!(fields["confirmPassword"] === fields["password"])) {
       formIsValid = false;
       errors["confirmPassword"] = <FormattedMessage id="Signup.validation.password.same" defaultMessage="First Name cannot be empty" />;
     }
-    console.log("form is valid 10", formIsValid);
     this.setState({ errors: errors });
     return formIsValid;
   }

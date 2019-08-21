@@ -300,7 +300,7 @@ class HomePageComponent extends Component {
                                                             {homeData.blocks.map((item, index) => (
                                                                 <li>
                                                                     <div>
-                                                                        <Link to={`/saudi-en/product-list`}>
+                                                                        <Link to={`/saudi-en/products/ ` + item.TITLE + ``}>
                                                                             <a href={''} target="_blank">
                                                                                 <img src={item.BLOCK_BANNER != null ? item.BLOCK_BANNER : logo2} />
                                                                             </a>

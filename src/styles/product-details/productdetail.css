@@ -1328,6 +1328,20 @@ ul li.active-tab a{
     font-weight: 300;
 }
 
+@media only screen and (max-width: 767px) {
+    .you-may-like-title label{
+        padding-left: 0px;
+        padding-right: 0px;
+        width: 70%;
+        text-align: center;
+        font-size: 2.0rem;
+    }
+    .you-may-like-title h2{
+        width: 15%;
+        border-bottom: 1px solid #d6d6d6;
+    }
+}
+
 .alsoLikeCard1{
     background-color: #EEF8F2 !important;
     width: 100%;

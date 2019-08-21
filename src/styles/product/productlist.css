@@ -225,7 +225,7 @@ html[dir="rtl"] .products li a aside h4 {
         margin: 20px 10px 20px;
     }
     .prdcontainers {
-        width: 90%;
+        width: 100%;
         max-width: 1200px;
         margin: auto;
         overflow: inherit;

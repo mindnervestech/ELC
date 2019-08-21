@@ -370,7 +370,7 @@ class Product extends Component {
 						<Breadcrumb name={searchQuery ? searchQuery : this.props.category_name ? this.props.category_name : this.props.match.params.category_path} />
 
 						{/* Product filter goes here */}
-
+ 
 						<ProductFilter
 							productFilters={this.props.productDetails.filters}
 							getFilteredData={this.getFilteredData}
@@ -380,8 +380,9 @@ class Product extends Component {
 							clearFilter={this.clearFilter}
 							filterKey={filterKey}
 							
-						/>
+						/> 
 
+						{Object.keys(this.props.productDetails.products).length > 0 && (
 						<div
 							id="R29005156978427060"
 							className="t-BreadcrumbRegion h-hidden-desktop t-BreadcrumbRegion--showBreadcrumb t-BreadcrumbRegion--useBreadcrumbTitle"
@@ -449,6 +450,7 @@ class Product extends Component {
 							</div>
 							<div className="t-BreadcrumbRegion-buttons" />
 						</div>
+						)}
 					</div>
 
 					<div className="t-Body-content" id="t_Body_content">
@@ -465,9 +467,9 @@ class Product extends Component {
 						/>
 
 						<div className="t-Body-contentInner">
-							<div className="container">
-								<div className="row">
-									<div className="col col-12 apex-col-auto">
+							<div>
+								<div >
+									<div >
 										{/* Product List Component gose here*/}
 										{this.props.spinnerProduct ? <Spinner /> : <ProductData Data={this.props.productDetails.products} loading1={this.props.spinnerProduct} />}
 									</div>
