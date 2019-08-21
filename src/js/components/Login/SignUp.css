@@ -2139,6 +2139,8 @@ textarea .error {
 .padding {
     padding: 0px 0px 20px 0px !important;
     background: #ffffff;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
 }
 
 .rmPadding {

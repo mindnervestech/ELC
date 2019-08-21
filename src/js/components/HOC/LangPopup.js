@@ -178,7 +178,7 @@ const LangPopup = (data) => WrappedComponent => {
                             <div id="pref_popup" className="t-DialogRegion js-modal js-draggable js-resizable js-dialog-autoheight js-dialog-size480x320 js-regionDialog ui-dialog-content ui-widget-content"
                                 style={{ backgroundColor: 'rgb(253, 233, 237)', width: 'auto', minHeight: '0px', maxHeight: 'none', height: 'auto' }}>
 
-                                <div className="t-DialogRegion-wrap">
+                                <div className="t-DialogRegion-wrap backWhite">
                                     <div className="t-DialogRegion-bodyWrapperOut">
                                         <div className="t-DialogRegion-bodyWrapperIn"><div className="t-DialogRegion-body">
                                             <div className="container">
@@ -197,7 +197,7 @@ const LangPopup = (data) => WrappedComponent => {
                                                                     <div className="t-Region-buttons-left" />
                                                                     <div className="t-Region-buttons-right" />
                                                                 </div>
-                                                                <div className="t-Region-body">
+                                                                <div className="t-Region-body backWhite">
                                                                     <h4 style={{ textAlign: 'center', fontWeight: 600 }}>Select your country/اختيار الدولة هنا</h4>
                                                                     <ul className="pflags">
                                                                         <li className={this.state.selectedCountry == 'KSA' ? 'ppopup-textholder active' : 'ppopup-textholder'} id="dislrcsa" data-id='KSA' onClick={this.onItemClick}>
