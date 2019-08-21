@@ -108,6 +108,16 @@ class ProductListData extends Component {
 										<span style={{ fontSize: 14, color: "#0D943F", fontWeight: "bold" }}>AED {list[keyName].price}.00</span><span style={{ color: "gray", textDecorationLine: 'line-through', fontSize: 14, marginLeft: 10 }}>AED 14.50</span>
 									</div>
 									<div style={{ paddingTop: 10 }}>
+									<StarRatings
+										rating={3}
+										starRatedColor='#FAD961'
+										changeRating={this.changeRating}
+										numberOfStars={5}
+										name='rating'
+										starHoverColor='#0D943F'
+										starDimension='15px'
+										starSpacing='0px'
+									/>
 										<span> {list[keyName].json.collection_desc} </span>
 									</div>
 									<div>

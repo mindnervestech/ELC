@@ -44,7 +44,8 @@ class Home extends Component {
     //     this.props.onGetHomePageData({ store: this.props.store_id });
     //   }
     // }
-    this.props.onGetHomePageData({ store: this.props.store_id });
+    //this.props.onGetHomePageData({ store: this.props.store_id });
+    this.props.onGetHomePageData({ store: "2" });
 
   }
 

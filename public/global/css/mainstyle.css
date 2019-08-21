@@ -52,14 +52,33 @@
 }
 
 .language {
-    padding-left: 10%;
-    width: 45%; 
+    padding-left: 15%;
+    width: 30%;
     display: inline-block;
 }
 
 .language .Button{
     color: #0D943F;
+    border: none;
     border-bottom: solid 1px #0D943F;
+    padding-bottom: 7px;
+    background-color: #fff;
+    position: relative;
+}
+
+.language .Button:after {
+    font-family: 'FontAwesome';
+    content: '\25BE';
+    position: absolute;
+    top: -2px;
+    right: -7px;
+    font-size: 16px;
+    display: block;
+    transition: transform 300ms;
+}
+
+.language .is-open:after{
+    transform: rotateZ(180deg);
 }
 
 .divShowOnWeb {

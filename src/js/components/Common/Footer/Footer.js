@@ -139,7 +139,7 @@ class Footer extends Component {
 
                     <div className="col col-3" style={{textAlign: 'start'}}>
                         <div className="footer-title">
-                            <span>about eic</span>
+                            <span>about elc</span>
                         </div>
                         <ul className="text-color">
                             <li>
@@ -300,7 +300,7 @@ class Footer extends Component {
                                 </ul>
                             </div>
                         </Collapsible>
-                        <Collapsible trigger="about eic">
+                        <Collapsible trigger="about elc">
                             <div>
                                 <ul className="text-color">
                                     <li>

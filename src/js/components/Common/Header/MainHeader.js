@@ -252,7 +252,7 @@ class MainHeader extends Component {
                         <div className="row-1">
                             <div className="containers-main">
                                 <ul className="leftLink">
-                                    <li className="ll" style={{ padding: 0 }}>
+                                    {/* <li className="ll" style={{ padding: 0 }}>
                                         <div className="lang">
                                             <a href="javascript:void(0);" onClick={(e) => this.translate('en', 'ltr')} className="active" >en</a></div>
                                     </li>
@@ -260,12 +260,35 @@ class MainHeader extends Component {
                                     <li className="ll" style={{ padding: 0 }}>
                                         <div className="lang" style={{ paddingLeft: 15 }}>
                                             <a href="javascript:void(0);" onClick={(e) => this.translate('ar', 'rtl')} >العربية</a></div>
+                                    </li> */}
+                                    <li>
+                                    <div className="language">
+                                    <button className={this.state.showMenu ? 'Button is-open' : 'Button'} onClick={this.showMenu}>EN</button>
+                                    {
+                                        this.state.showMenu
+                                            ? (
+                                                <div className="menu">
+                                                <ul>
+                                                    <li className="currency__item">
+                                                        <a href="javascript:void(0);" onClick={(e) => this.translate('en', 'ltr')} className="active" > EN | English</a>
+                                                    </li>
+                                                    <li className="currency__item">
+                                                        <a href="javascript:void(0);" onClick={(e) => this.translate('ar', 'rtl')}> SU | Saudi</a>
+                                                    </li>
+                                                </ul>
+                                                </div>
+                                            )
+                                            : (
+                                                null
+                                            )
+                                    }
+                                </div>
                                     </li>
 
                                     {/* <li style={{height:40}}>
                                         <Button className="firstButton text-color">The Entertainer</Button>
                                     </li> */}
-                                    <li style={{ height: 40 }}>
+                                    <li style={{ height: 40, marginLeft: 20}}>
                                         <Button className="secondButton text-color">Early Learning Center</Button>
                                     </li>
                                     {<li>
@@ -397,9 +420,9 @@ class MainHeader extends Component {
                                     </Link>
                                 </Col>
                             </Row>
-                            <div className="divShowOnMobile" style={{ backgroundColor: "#fff", height: 44 }}>
+                            <div className="divShowOnMobile" style={{ backgroundColor: "#fff", height: '4.2rem', paddingTop: 10 }}>
                                 <div className="language">
-                                    <button className="Button" onClick={this.showMenu}>EN</button>
+                                    <button className={this.state.showMenu ? 'Button is-open' : 'Button'} onClick={this.showMenu}>EN</button>
                                     {
                                         this.state.showMenu
                                             ? (
@@ -419,7 +442,7 @@ class MainHeader extends Component {
                                             )
                                     }
                                 </div>
-                                <div style={{ width: '45%', display: 'inline-block', float: 'right' }}>
+                                <div style={{ width: '45%', display: 'inline-block' }}>
                                     <span style={{ height: 40 }}>
                                         <button className="mobileHomePageButtonSecond text-color">Early Learning Center</button>
                                     </span>
@@ -433,7 +456,7 @@ class MainHeader extends Component {
                                            <a href="javascript:void(0);" onClick={(e) => this.translate('ar', 'rtl')} >العربية</a>
                                     </span> */}
                             </div>
-                            <div className="divShowOnMobile">
+                            <div className="divShowOnMobile" style={{paddingTop: 10}}>
                                 <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
                                     <img className="mobileHomeLogo" src={logoGroup} />
                                 </Link>

@@ -12,6 +12,7 @@ import queryString from 'query-string';
 import ProductMobFilter from './product-filter/product-mobfilter';
 import Spinner from '../Spinner/Spinner2';
 import * as utility from '../utility/utility';
+import SideManu from '../PoductList/SideManu';
 import {
 	BrowserView,
 	MobileView,
@@ -507,11 +508,13 @@ class Product extends Component {
 													<div className="t-Region-buttons-right" />
 												</div>
 
-												<ProductMobFilter
+												{/* <ProductMobFilter
 													productFilters={this.props.productDetails.filters}
 													getFilteredDataForMobile={this.getFilteredDataForMobile}
 													filters={this.state.filters}
-												/>
+												/> */}
+
+													<SideManu></SideManu>
 
 												<div className="t-Region-buttons t-Region-buttons--bottom">
 													<div className="t-Region-buttons-left" />

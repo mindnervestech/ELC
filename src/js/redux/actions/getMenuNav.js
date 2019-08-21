@@ -11,7 +11,7 @@ const callActionGetMenuNav = (payload) => {
 export const getMenuNav = (payload) => {
     return dispatch => {
         const data = {
-            store : payload.currentStore
+            store : "2"//payload.currentStore
         }
 
         let cb = {
