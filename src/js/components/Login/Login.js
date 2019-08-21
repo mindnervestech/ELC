@@ -445,8 +445,8 @@ class Login extends Component {
                                           </div>
                                           </div>
                                         </div>
-                                        <div className="row forgotPass" >
-                                          <a className="forget-password-link link" onClick={this.onOpenSecondModal}><FormattedMessage id="forget.password" defaultMessage="Forget Password" /></a>
+                                        <div className="forgotPass" style={{width: "96%", textAlign: 'right'}} >
+                                          <a className="forget-password-link link" style={{width: "100%"}} onClick={this.onOpenSecondModal}><FormattedMessage id="forget.password" defaultMessage="Forget Password" /></a>
 
                                           <span id="P1000_FP_error_placeholder" className="a-Form-error" data-template-id="33609641515469732_ET"></span>
 
@@ -461,7 +461,8 @@ class Login extends Component {
                                         </div> */}
                                       <div className="row">
                                         <div className="col col-12 apex-col-auto">
-                                          <div onClick={this.login} className="button-add-to-basket right " type="button" id="B28810467415678867"><span className="t-Button-label"><FormattedMessage id="secure.signin" defaultMessage="Secure Sign In" /></span></div><input type="hidden" id="COND" name="COND" value="" /><input type="hidden" id="ITEM" name="ITEM" value="" />
+                                          <button onClick={this.login} className="button-add-to-basket right "><FormattedMessage id="secure.signin" defaultMessage="Secure Sign In" /></button>
+                                          {/* <div onClick={this.login} className="button-add-to-basket right " type="button" id="B28810467415678867"><span className="t-Button-label"><FormattedMessage id="secure.signin" defaultMessage="Secure Sign In" /></span></div><input type="hidden" id="COND" name="COND" value="" /><input type="hidden" id="ITEM" name="ITEM" value="" /> */}
                                         </div>
                                       </div>
                                     </div>
