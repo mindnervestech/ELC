@@ -3268,24 +3268,24 @@ html[dir="rtl"] .slick-next {
         content: '';
     } */
 
-    /* .carousel.carousel-slider .control-arrow {
+    /* .carousel.carousel-slider .control-arrow?{
         top: 50%!important;
         font-size: 0px!important;
         padding: 5px 15px!important;
         border-radius: 50%!important;
     } */
         
-        /* .control-next.control-arrow:beforeÃ‚Â {
+        /* .control-next.control-arrow:beforeÃ‚Â?{
             border-left: solid 15px #0D943F;
         }
         
-        .carousel .control-arrow:before, .carousel.carousel-slider .control-arrow:beforeÃ‚Â {
-            border-top: 18px solid transparent;
-            border-bottom:18px solid transparent;
+        .carousel .control-arrow:before, .carousel.carousel-slider .control-arrow:beforeÃ‚Â?{
+            border-top:?18px solid transparent;
+            border-bottom:18px solid?transparent;
         }
         
-        .carousel .control-prev.control-arrow:before {
-            border-right: 15px solid #0D943F;
+        .carousel .control-prev.control-arrow:before?{
+            border-right:?15px solid?#0D943F;
         } */
 
 @media only screen and (min-width: 960px) {
@@ -5168,4 +5168,8 @@ button.swiper-pagination-bullet {
  }
   .pop input:checked + .modal label:hover {
     background: #333;
+ }
+
+ .t-Header-branding{
+     overflow: inherit !important;
  }

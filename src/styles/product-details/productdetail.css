@@ -1245,7 +1245,7 @@ ul li.active-tab a{
 .hover-on-favorite:hover{
     color: #0D943F!important;
     text-decoration: none;
-    
+    cursor: pointer;
 }
 
 .hover-on-favorite img{
