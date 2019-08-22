@@ -103,7 +103,7 @@ class Payment extends Component {
     const shipping_type = this.props.cart_details.shipping_details.shipping_code;
     const selected_country = this.props.global.country;
 
-    if ((paytype == 'COD') && (shipping_type == 'freeshipping_freeshipping')) {
+    if ((paytype === 'COD') && (shipping_type === 'freeshipping_freeshipping')) {
       this.setState({
         ...this.state,
         alertBoxDetails: {
@@ -113,7 +113,7 @@ class Payment extends Component {
       })
       //alert(this.myIntl.formatMessage({ id: 'Checkout.CodNotForCC' }));
       return;
-    } else if ((paytype === 'COD') && (selected_country == 'International')) {
+    } else if ((paytype === 'COD') && (selected_country === 'International')) {
       this.setState({
         ...this.state,
         alertBoxDetails: {
@@ -124,7 +124,7 @@ class Payment extends Component {
       //alert(this.myIntl.formatMessage({ id: 'Checkout.CodNotForOtherThanGCC' }));
       return;
     } else {
-      if (paytype == 'CC') {
+      if (paytype === 'CC') {
         Ptype = paytype;
         cardPay.classList.add('selected');
         cod.classList.remove('selected')
@@ -132,7 +132,7 @@ class Payment extends Component {
           isActive: 'CC',
           payment_code: 'payfort_fort_cc',
         })
-      } else if (paytype == 'COD') {
+      } else if (paytype === 'COD') {
         Ptype = paytype;
         cod.classList.add('selected');
         cardPay.classList.remove('selected')
@@ -230,12 +230,12 @@ class Payment extends Component {
         return <Redirect to={`/${this.props.global.store_locale}/order-confirm?payment_type=${Ptype}`} />
       }
 
-      if ((Ptype === 'COD') && (shipping_type != 'freeshipping_freeshipping') && (selected_country != 'International')) {
+      if ((Ptype === 'COD') && (shipping_type !== 'freeshipping_freeshipping') && (selected_country !== 'International')) {
         payment_type = <CashOnDelivery
           cashondelivery={obj.cashondelivery}
           continueShopping={this.redirectToShopping}
           redirectToCheckout={this.redirectToConfirm} />
-      } else if ((Ptype === 'CC') || (selected_country != 'International')) {
+      } else if ((Ptype === 'CC') || (selected_country !== 'International')) {
 
         payment_type = <PayByCard
           payfort_fort_cc={obj.payfort_fort_cc}

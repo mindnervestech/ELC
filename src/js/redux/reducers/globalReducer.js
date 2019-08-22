@@ -3,7 +3,7 @@ import { updateObject } from '../utility/utility';
 
 const initialState = {
     allStores: {},
-    currentStore: 1,
+    currentStore: 2,
     loading: false,
     language: 'ar',
     country: 'KSA',

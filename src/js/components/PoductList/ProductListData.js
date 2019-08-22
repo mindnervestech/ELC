@@ -28,7 +28,6 @@ class ProductListData extends Component {
 
 	render() {
 		const { list } = this.props;
-		console.log(list)
 		return (
 			<div className="homePage">
 				<div className="start3">

@@ -37,15 +37,16 @@ class Home extends Component {
 
   }
 
-  componentDidMount() {
+  componentWillMount = () => {
 
     //   let obj = this.props.home_page_data;
     //   if ((Object.entries(obj).length === 0) && (obj.constructor === Object)) {
     //     this.props.onGetHomePageData({ store: this.props.store_id });
     //   }
     // }
-    //this.props.onGetHomePageData({ store: this.props.store_id });
-    this.props.onGetHomePageData({ store: "2" });
+    console.log("here..............", this.props)
+    this.props.onGetHomePageData({ store: this.props.store_id });
+    // this.props.onGetHomePageData({ store: 2 });
 
   }
 
@@ -77,7 +78,7 @@ class Home extends Component {
     let obj = this.props.home_page_data;
     console.log(obj)
     // if (!((Object.entries(obj).length === 0) && (obj.constructor === Object))) {
-      homePageData = <HomePageComponent home_page_data={this.props.home_page_data} />;
+    homePageData = <HomePageComponent home_page_data={this.props.home_page_data} store_locale={this.props.store_locale} />;
     // }
 
     //After redirect to URL with locale and display VIP registration first time

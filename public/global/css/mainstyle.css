@@ -2473,7 +2473,6 @@ html[dir="rtl"] .header .changecountry .country .list a:before {
 .homePage .CardButton:hover{
     background-color: #0C8539!important;
     border-color: #0C8539!important;
-    oC8539
 }
 
 .homePage .cardImage{
@@ -5065,4 +5064,8 @@ button.swiper-pagination-bullet {
  }
   .pop input:checked + .modal label:hover {
     background: #333;
+ }
+
+ .t-Header-branding{
+     overflow: inherit !important;
  }

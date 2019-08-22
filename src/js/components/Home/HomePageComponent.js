@@ -22,6 +22,7 @@ class HomePageComponent extends Component {
     render() {
         //console.log('this.props',this.props);
          const homeData = this.props.home_page_data.data;
+         const store_locale = this.props.store_locale;
         let InstaTitle1 = '', InstaTitle2 = ''
         // if (this.props.home_page_data.instagram.title) {
         //     InstaTitle1 = this.props.home_page_data.instagram.title.split('@')[0] + '@'
@@ -300,7 +301,7 @@ class HomePageComponent extends Component {
                                                             {homeData.blocks.map((item, index) => (
                                                                 <li>
                                                                     <div>
-                                                                        <Link to={`/saudi-en/products/ ` + item.TITLE + ``}>
+                                                                        <Link to={`/`+store_locale+`/products/ ` + item.TITLE + ``}>
                                                                             <a href={''} target="_blank">
                                                                                 <img src={item.BLOCK_BANNER != null ? item.BLOCK_BANNER : logo2} />
                                                                             </a>

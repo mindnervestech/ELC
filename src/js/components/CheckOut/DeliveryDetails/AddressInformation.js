@@ -113,12 +113,12 @@ class Address extends Component {
       errors["location"] = <FormattedMessage id="SelectCountry.Validate" defaultMessage="Select Country" />;
     }
 
-    if (fields["location"] == 'NA') {
+    if (fields["location"] === 'NA') {
       formIsValid = false;
       errors["location"] = <FormattedMessage id="SelectCountry.Validate" defaultMessage="Select Country" />;
     }
 
-    if (fields["city"] == 'NA') {
+    if (fields["city"] === 'NA') {
       formIsValid = false;
       errors["city"] = <FormattedMessage id="SelectCity.Validate" defaultMessage="Select City" />;
     }
@@ -198,7 +198,7 @@ class Address extends Component {
         country_details: result[0],
         cities: result[0].available_regions
       })
-    } else if (location == 'NA') {
+    } else if (location === 'NA') {
       this.setState({
         cities: [],
         AddressFields: {
@@ -249,7 +249,7 @@ class Address extends Component {
 
   divOnBlure = (e) => {
 
-    if ((e.target.value == null) || (e.target.value == '')) {
+    if ((e.target.value === null) || (e.target.value === '')) {
       e.currentTarget.className = 't-Form-fieldContainer t-Form-fieldContainer--floatingLabel apex-item-wrapper apex-item-wrapper--text-field';
 
     } else {
@@ -275,7 +275,7 @@ class Address extends Component {
 
 
         country_select_list = country_list.filter((item) => {
-          if (item.id == 'SA' || item.id == 'AE') {
+          if (item.id === 'SA' || item.id === 'AE') {
             return false;
           } else {
             return true
@@ -291,14 +291,14 @@ class Address extends Component {
 
       } else if (selected_country === 'KSA') {
         //this.defineCities('SA');
-        country_select_list = country_list.filter(item => item.id == 'SA').map((item) => {
+        country_select_list = country_list.filter(item => item.id === 'SA').map((item) => {
           return (
             <option key={item.id} value={item.id} selected={true}>{item.full_name_english}</option>
           );
         })
       } else if (selected_country === 'UAE') {
         //this.defineCities('AE');
-        country_select_list = country_list.filter(item => item.id == 'AE').map((item) => {
+        country_select_list = country_list.filter(item => item.id === 'AE').map((item) => {
           return (
             <option key={item.id} value={item.id} selected={true}>{item.full_name_english}</option>
           );

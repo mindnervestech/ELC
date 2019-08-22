@@ -35,7 +35,7 @@ class ProductData extends Component {
 	handleProductClick = item => {
 		const data = {
 			customerid: 2,
-			store: 1,
+			store: 2,
 			url_key: item.url_key,
 		};
 		this.props.onGetProductDetails(data);

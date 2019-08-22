@@ -68,8 +68,8 @@ const LangPopup = (data) => WrappedComponent => {
             const reqdata = {
                 store_data: store_data
             };
-
-            API.post('/storeinfo', reqdata).then(res => {
+            
+            API.get('/storeinfo?store_data='+reqdata.store_data, reqdata).then(res => {
                 // console.log("current props", this.props);
                 //console.log("storeinfo response data", res.data.store_id);
 

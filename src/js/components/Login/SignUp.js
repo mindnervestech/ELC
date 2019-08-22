@@ -203,7 +203,7 @@ class SignUp extends Component {
       // carrier_code: "non",
       password: this.state.fields.password,
       confirmpassword: this.state.fields.confirmPassword,
-      store_id: 1,//this.props.globals.currentStore,
+      store_id: this.props.globals.currentStore,
       // title: this.state.fields.title,
       quest_quote: "non",
     }

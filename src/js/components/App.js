@@ -149,7 +149,7 @@ class App extends Component {
       store_data: store_data
     };
 
-    API.post('/storeinfo', reqdata).then(res => {
+    API.get('/storeinfo?store_data='+reqdata.store_data, reqdata).then(res => {
       console.log('STOREINFO res', res);
       localStorage.setItem('tempstoreid', res.data.store_id);
       localStorage.setItem('templang', lang);
@@ -193,7 +193,6 @@ class App extends Component {
     if (new_path.length > 0) {
       new_path[1] = newLocale;
       new_pathname = new_path.join('/');
-      console.log('window.location.pathname', new_pathname);
       window.location.pathname = new_pathname;
     }
   }
