@@ -204,7 +204,6 @@ class ProductData extends Component {
 
 	render() {
 		const { Data, loading1 } = this.props;
-		//console.log('rendering', this.props.redirect);
 		return (
 			<div id="PROD" className="prdcontainers">
 				{Object.keys(Data).length > 0 && (
@@ -232,19 +231,6 @@ class ProductData extends Component {
 							<ProductListData list={Data} />
 						</div>
 					</ul>)}
-				{/* <Row className="divShowOnWeb">
-					<Col xs="3">
-						<SideManu></SideManu>
-					</Col>
-					<Col xs="9" style={{ padding: 0 }}>
-						<div>
-							<ProductListData list={Data} />
-						</div>
-					</Col>
-				</Row>
-				<div className="divShowOnMobile">
-				<ProductListData list={Data} />
-				</div> */}
 				{ Data.length === 0 && !loading1 && (<p style={{ fontSize: '22px', letterSpacing: '0.04em', fontWeight: 500, padding: '20px 16px 10px' }}><FormattedMessage id="NoData.Text" defaultMessage="No Data available." />{loading1}</p>)}
 			</div>
 		);

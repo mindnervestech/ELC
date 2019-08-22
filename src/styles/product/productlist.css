@@ -25,7 +25,7 @@ html[lang="ar"] .filters ul{
       .products li {
         vertical-align: top;
         position: relative;
-        width: 42.4% !important;
+        width: 46.5% !important;
     }  
 }
 
@@ -39,7 +39,7 @@ html[lang="ar"] .filters ul{
     .products li {
         vertical-align: top;
         position: relative;
-        width: 44%;
+        width: 47%;
     }
     .overlay .promo {
         top: 10%;
@@ -104,7 +104,10 @@ html[lang="ar"] .filters ul{
   .products li {
     vertical-align: top;
     position: relative;
-    width: 100%;
+    width: 47%;
+  }
+  .products li, .feature li{
+    margin: 0px 5px 1px!important;
   }
 
   .product-list li {

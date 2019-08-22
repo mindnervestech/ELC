@@ -24,10 +24,10 @@ class SideManu extends Component {
 	render() {
 		return (
 			<div>
-				<div className="row-2">
+				<div className="row-2" style={{padding: '22px 0px'}}>
 				    <span className="blackTitle">Narrow your Results</span>
 				</div>
-				<div className="bottomBorder">
+				<div className="bottomBorder" style={{paddingTop: 16}}>
 					<Collapsible trigger="Type of Toy" >
 					<div>Animal figures (72)</div>
 					<div>Baby dolls (52)</div>

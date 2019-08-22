@@ -407,14 +407,16 @@ class MainHeader extends Component {
                                         <div className="lang">
                                             <a href="javascript:void(0);" onClick={(e) => this.translate('en', 'ltr')} className="active" >en</a> | <a href="javascript:void(0);" onClick={(e) => this.translate('ar', 'rtl')} >العربية</a></div>
                                     </li> */}
+                                             <li>
+                                                <label className="headerLable2">my basket
+                                                {/* <span style={{ fontFamily: "VAG Rounded ELC Bold", marginLeft: 10 }}>£30.00</span> */}
+                                                </label>
+                                            </li>
                                             <li style={{ paddingLeft: 10 }}>
                                                 <img src={bagLogo} />
                                             </li>
                                             <li>
                                                 <label className="lable-count">1</label>
-                                            </li>
-                                            <li>
-                                                <label className="headerLable2">my basket:<span style={{ fontFamily: "VAG Rounded ELC Bold", marginLeft: 10 }}>£30.00</span></label>
                                             </li>
                                         </ul>
                                     </Link>
@@ -461,7 +463,9 @@ class MainHeader extends Component {
                                     <img className="mobileHomeLogo" src={logoGroup} />
                                 </Link>
                                 <img src={location} className="mobileHomePageIcon"></img>
+                                <Link to={`/${store_locale}/cart`} style={{ textDecoration: 'none' }}>
                                 <img src={bagLogo} className="mobileHomePageIcon" />
+                                </Link>
                             </div>
                             <div className="divShowOnMobile" style={{ padding: "0px 10px", marginTop: 10 }}>
                                 <Search store_locale={store_locale} />
@@ -501,14 +505,15 @@ class MainHeader extends Component {
                         </Row> */}
                         <a to="JavaScript:;" id="closeNav" className="closeNav">X</a>
                         <div className="containers-main">
-                            <Row>
-                                <Col xs="11">
+                            <div style={{padding: "0px 10px"}}>
+                                {/* <Col xs="12">
                                     <MenuNav />
-                                </Col>
-                                <Col xs="1" style={{ padding: 0 }}>
+                                </Col> */}
+                                {/* <Col xs="1" style={{ padding: 0 }}>
                                     <button className="present-finder-buton">Present Finder</button>
-                                </Col>
-                            </Row>
+                                </Col> */}
+                                <MenuNav />
+                            </div>
                             {/* <div className="changecountry">
                                 <div className="country">
                                     <div className={this.state.showCountries ? "activeCountry open" : "activeCountry"}>

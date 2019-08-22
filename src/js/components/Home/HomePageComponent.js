@@ -12,6 +12,8 @@ import logo2 from '../../../assets/images/you_may_also_like_2.png'
 import logo3 from '../../../assets/images/you_may_also_like_3.png'
 import logo4 from '../../../assets/images/you_may_also_like_4.png'
 import home from '../../../assets/images/social/Hero.png';
+import placeholder from '../../../assets/images/placeholder.png'
+
 import ProductSlider from '../Product/product-details/Product-slider'
 import { Link, Redirect } from 'react-router-dom';
 class HomePageComponent extends Component {
@@ -64,7 +66,7 @@ class HomePageComponent extends Component {
             autoplaySpeed: 5000,
             dots: true,
             infinite: true,
-            slidesToShow: 3,
+            slidesToShow: 1,
             slidesToScroll: 1,
             speed: 500,
             vertical: false,
@@ -72,21 +74,21 @@ class HomePageComponent extends Component {
                 {
                     breakpoint: 1024,
                     settings: {
-                        slidesToShow: 3,
+                        slidesToShow: 1,
                         slidesToScroll: 1,
                     }
                 },
                 {
                     breakpoint: 600,
                     settings: {
-                        slidesToShow: 3,
+                        slidesToShow: 1,
                         slidesToScroll: 1,
                     }
                 },
                 {
                     breakpoint: 480,
                     settings: {
-                        slidesToShow: 2,
+                        slidesToShow: 1,
                         slidesToScroll: 1,
                     }
                 }
@@ -101,8 +103,17 @@ class HomePageComponent extends Component {
                         <div className="t-Body-content" id="t_Body_content">
                             {/* <div id="t_Body_content_offset" style={{ 'height': '1px' }}></div> <span id="APEX_SUCCESS_MESSAGE" data-template-id="33770911730796245_S" className="apex-page-success u-hidden"></span><span id="APEX_ERROR_MESSAGE" data-template-id="33770911730796245_E" className="apex-page-error u-hidden"></span> */}
                             <div className="t-Body-contentInner">
+                                <div style={{padding: "0px 0px"}}>
+                                    <Slider {...settings3}>
+                                    {homeData.banners.map((item, index) => (
+                                                <div>
+                                                <img src={item.BLOCK_BANNER} />
+                                            </div>
+                                            ))}
+                                    </Slider>
+                                </div>
                                 <div className="contener">
-                                    <div>
+                                    {/* <div>
                                         <Carousel showStatus={false}
                                             showThumbs={false}
                                             infiniteLoop={true}
@@ -114,7 +125,8 @@ class HomePageComponent extends Component {
                                             </div>
                                             ))}
                                         </Carousel>
-                                    </div>
+                                    </div> */}
+                                    
 
                                     {/* <div className="row">
                         <div className="col col-12 apex-col-auto">
@@ -303,7 +315,7 @@ class HomePageComponent extends Component {
                                                                     <div>
                                                                         <Link to={`/`+store_locale+`/products/ ` + item.TITLE + ``}>
                                                                             <a href={''} target="_blank">
-                                                                                <img src={item.BLOCK_BANNER != null ? item.BLOCK_BANNER : logo2} />
+                                                                                <img src={item.BLOCK_BANNER != null ? item.BLOCK_BANNER : placeholder} />
                                                                             </a>
                                                                             <div className="cardDetail">
                                                                                 <span className="cardDetailText">{item.TITLE}</span>
