@@ -15,25 +15,24 @@ import {
 	isMobile
 } from "react-device-detect";
 import { FormattedMessage } from 'react-intl';
-import { Container, Row, Col, Button } from 'reactstrap';
+import { Row, Col, Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import Slider from "react-slick";
 
 import Gift from '../../../assets/images/product-details/gift.png';
 import Delevary from '../../../assets/images/product-details/delevary.png';
 import Return from '../../../assets/images/product-details/return.png';
-import Collapsible from 'react-collapsible';
 
 import ProductListData from './ProductListData';
 import SideManu from './SideManu';
 
 var _ = require('lodash');
 
-const triggerSiblingExample = () => <div className="Collapsible__custom-sibling">This is a sibling to the trigger which wont cause the Collapsible to open!</div>;
 class ProductList extends Component {
 	constructor(props, context) {
 		super(props, context);
-		
+		this.state = {
+			selectedProduct: ''
+		};
 	}
 
 	componentDidUpdate(prevProps, prevState) {
@@ -44,18 +43,15 @@ class ProductList extends Component {
 		
 	}
 
-	render() {
-
-		const settings = {
-            className: "center",
-      centerMode: true,
-      infinite: true,
-      centerPadding: "60px",
-      slidesToShow: 3,
-      speed: 500,
-      rows: 2,
-      slidesPerRow: 2,
+	componentWillMount() {
+		if (this.props.productDetails) {
+			this.props.onClearProductDetails(this.props.productDetails);
 		}
+	}
+
+	render() {
+		const store_locale = this.props.globals.store_locale;
+		const { Data, loading1 } = this.props;
 		
 		return (
 			<div className="t-Body product-list">
@@ -99,7 +95,7 @@ class ProductList extends Component {
 									</Col>
 									<Col xs="9" style={{padding: 0}}>
 									<div>
-										<ProductListData/>
+										<ProductListData list={Data}/>
 									</div>
 									</Col>
 								</Row>
@@ -114,19 +110,20 @@ class ProductList extends Component {
 }
 
 const mapStateToProps = state => {
+	// console.log('pdpstate', state);
+
 	return {
 		globals: state.global,
-		productDetails: state.productDetails,
-		spinnerProduct: state.spinner.loadingProduct,
-		customer_details: state.login.customer_details,
-		category_name: state.productDetails.category_name
+		menu: state.menu.menuNavData,
+		productDetails: state.productDetails.productData,
+		redirect: state.productDetails.redirect,
 	};
 };
 
 const mapDispatchToProps = dispatch => {
 	return {
-		onGetProductList: payload => dispatch(actions.getProductList(payload)),
-		onGetProductSearchList: payload => dispatch(actions.getProductSearchList(payload)),
+		onClearProductDetails: payload => dispatch(actions.clearProductDetails(payload)),
+		onGetProductDetails: payload => dispatch(actions.getProductDetails(payload))
 	};
 };
 

@@ -24,7 +24,7 @@ class Login extends Component {
     let startGuestCheckout = this.props.startGuestCheckout ? true : false;
 
     //console.log(this.props)
-
+    
     this.state = {
       email: '',
       password: '',
@@ -286,7 +286,7 @@ class Login extends Component {
 
             <div className="container">
               <div className="row">
-                <div className="t-Body-title" id="t_Body_title" style={{ top: '294px', borderBottom: "0px" }}>
+                <div className="t-Body-title" id="t_Body_title" style={{ top: '294px',zIndex:"0", borderBottom: "0px" }}>
 
 
                   {breadCrumb}
@@ -298,14 +298,14 @@ class Login extends Component {
                     <div className="col col-12 apex-col-auto paddingBottom ">
                       <div className="col col-6 colUp">
                         <ul className="nay">
-                          <li><FormattedMessage id="newToElc.remember" defaultMessage="remember text" /></li>
-                          <li><FormattedMessage id="newToElc.join" defaultMessage="join" /></li>
+                          <li><FormattedMessage id="newToElc.remember" defaultMessage="Wi'll remember your details for next time" /></li>
+                          <li><FormattedMessage id="newToElc.join" defaultMessage="You can join jack's Birthday Club to receive spacial birthday offers" /></li>
                         </ul>
                       </div>
                       <div className="col col-6 colUp">
                         <ul className="nay">
-                          <li><FormattedMessage id="newToElc.checkout" defaultMessage="checkout" /></li>
-                          <li><FormattedMessage id="newToElc.store" defaultMessage="store" /></li>
+                          <li><FormattedMessage id="newToElc.checkout" defaultMessage="Save details for your favourite store" /></li>
+                          <li><FormattedMessage id="newToElc.store" defaultMessage="You can get throw  the checkout faster" /></li>
                         </ul>
                       </div>
                     </div>
@@ -329,7 +329,7 @@ class Login extends Component {
                         <input type="hidden" id="P1000_PAGE_TITLE" name="P1000_PAGE_TITLE" value="Sign in - Sign in to Your Nayomi Account" />
                         <input type="hidden" id="P1000_PAGE_DESC" name="P1000_PAGE_DESC" value="Sign in - Sign in to your account to shop with exciting offers" />
                         <div className="container backWhite">
-                          <div className="row alignCenter"><FormattedMessage id="Register.SignInText" defaultMessage="sign in to register" /></div>
+                          <div className="row alignCenter" style={{paddingTop:"6px"}}><FormattedMessage id="Register.SignInText" defaultMessage="sign in or register" /></div>
                           <div className="row">
                             <div className="col col-1  paddingNull" style={{ flex: "0 0 7.333333%", maxWidth: "7.333333%" }}>
                               <span className="apex-grid-nbsp">&nbsp;</span>
@@ -399,7 +399,8 @@ class Login extends Component {
                                     <div className="t-Region-buttons-left"></div>
                                     <div className="t-Region-buttons-right"></div>
                                   </div>
-                                  <div className="t-Region-body borderBottom">
+                                  <div className="t-Region-body">
+                                  {/* borderBottom */}
                                     <div className="container">
                                       <div className="padding row">
                                         <div className="rmPadding col col-12 apex-col-auto">
@@ -445,8 +446,8 @@ class Login extends Component {
                                           </div>
                                           </div>
                                         </div>
-                                        <div className="row">
-                                          <a className="forget-password-link link" onClick={this.onOpenSecondModal}><FormattedMessage id="forget.password" defaultMessage="Forget Password" /></a>
+                                        <div className="forgotPass" style={{width: "96%", textAlign: 'right'}} >
+                                          <a className="forget-password-link link" style={{width: "100%"}} onClick={this.onOpenSecondModal}><FormattedMessage id="forget.password" defaultMessage="Forget Password" /></a>
 
                                           <span id="P1000_FP_error_placeholder" className="a-Form-error" data-template-id="33609641515469732_ET"></span>
 
@@ -461,13 +462,14 @@ class Login extends Component {
                                         </div> */}
                                       <div className="row">
                                         <div className="col col-12 apex-col-auto">
-                                          <div onClick={this.login} className="button-add-to-basket right " type="button" id="B28810467415678867"><span className="t-Button-label"><FormattedMessage id="secure.signin" defaultMessage="Secure Sign In" /></span></div><input type="hidden" id="COND" name="COND" value="" /><input type="hidden" id="ITEM" name="ITEM" value="" />
+                                          <button onClick={this.login} className="button-add-to-basket right "><FormattedMessage id="secure.signin" defaultMessage="Secure Sign In" /></button>
+                                          {/* <div onClick={this.login} className="button-add-to-basket right " type="button" id="B28810467415678867"><span className="t-Button-label"><FormattedMessage id="secure.signin" defaultMessage="Secure Sign In" /></span></div><input type="hidden" id="COND" name="COND" value="" /><input type="hidden" id="ITEM" name="ITEM" value="" /> */}
                                         </div>
                                       </div>
                                     </div>
 
                                   </div>
-                                  <div className="t-Region-body">
+                                  {/* <div className="t-Region-body">
                                     <div className="row orBottom">
                                       <p>Or</p>
                                     </div>
@@ -477,7 +479,7 @@ class Login extends Component {
                                     <div className="row">
                                       <div className="googleButton"><FormattedMessage id="Form.google" defaultMessage="Login with Google"></FormattedMessage></div>
                                     </div>
-                                  </div>
+                                  </div> */}
                                   <div className="t-Region-buttons t-Region-buttons--bottom">
                                     <div className="t-Region-buttons-left"></div>
                                     <div className="t-Region-buttons-right"></div>

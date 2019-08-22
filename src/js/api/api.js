@@ -195,7 +195,7 @@ async function request(requestData, cb, featureURL, secureRequest = buildHeader(
 	try {
 		let response;
 
-		if (featureURL.type == 'GET') {
+		if (featureURL.type === 'GET') {
 			response = await axios.get(url, {
 				headers: secureRequest,
 				params: requestData,

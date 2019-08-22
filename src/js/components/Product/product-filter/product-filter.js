@@ -10,7 +10,7 @@ class ProductFilter extends Component {
   render() { 
      const {productFilters} = this.props;
     return (
-    <div id="R33789247439169829" style={{padding: '16px 0'}} className="t-BreadcrumbRegion containers h-hidden-mobile t-BreadcrumbRegion--showBreadcrumb t-BreadcrumbRegion--useBreadcrumbTitle">
+    <div id="R33789247439169829" style={{padding: '16px 0', display: 'none'}} className="t-BreadcrumbRegion containers h-hidden-mobile t-BreadcrumbRegion--showBreadcrumb t-BreadcrumbRegion--useBreadcrumbTitle">
         <div className="t-BreadcrumbRegion-body">
           <div className="t-BreadcrumbRegion-breadcrumb">
             <div className="filters" id="PROD-MENU">

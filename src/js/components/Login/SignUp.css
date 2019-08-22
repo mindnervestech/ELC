@@ -1883,6 +1883,7 @@ only screen and (min-resolution: 2dppx) {
     margin: 0px;
     padding: 10px 0px 10px 0px;
     cursor: pointer;
+    border: solid 1px #ee0e19;
 }
 
 .button-add-to-basket:active {
@@ -2139,6 +2140,8 @@ textarea .error {
 .padding {
     padding: 0px 0px 20px 0px !important;
     background: #ffffff;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
 }
 
 .rmPadding {
@@ -2233,4 +2236,8 @@ select:focus {
 
 .green {
     background: #23943f !important;
+}
+
+.pad40L {
+    /* padding-left: 4%; */
 }

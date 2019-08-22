@@ -16,7 +16,7 @@ class ProductBasic extends Component {
         const currentStore = this.props.currentStore;
         let readMoreText = "Read More";
         let readLessText = "Read Less";
-        if(currentStore == 1 || currentStore == 3 || currentStore == 5){
+        if(currentStore === 1 || currentStore === 3 || currentStore === 5){
             readMoreText = "قراءة المزيد";
             readLessText = "أقرأ أقل";
         }

@@ -826,11 +826,11 @@ html[dir="rtl"] .header .row-2 .cta {
 
 @media only screen and (min-width: 1280px) {
     .header .row-2 .cta {
-        float: left;
+        float: right;
         padding: 0px;
     }
     html[dir="rtl"] .header .row-2 .cta {
-        float: right;
+        float: left;
         margin-left: 0;
     }
 }
@@ -959,7 +959,7 @@ html[dir="rtl"] .header .row-2 .cta .cart span {
 
 @media only screen and (min-width: 1280px) {
     .header .row-3 {
-        width: 99%;
+        width: 100%;
         background-color: #f3f0f0;
     }
     .header .row-3>.container {
@@ -987,7 +987,7 @@ html[dir="rtl"] .header .row-2 .cta .cart span {
 }
 
 .header .profile {
-    color: #f599ba;
+    color: #0D943F;
     margin-bottom: 10px
 }
 
@@ -995,7 +995,7 @@ html[dir="rtl"] .header .row-2 .cta .cart span {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    border: 1px solid #f599ba;
+    border: 1px solid #0D943F;
     display: inline-block;
     vertical-align: middle;
     position: relative;
@@ -1065,11 +1065,13 @@ html[dir="rtl"] .header .profile figure {
 }
 
 .header .navTrigger {
-    position: relative;
+    position: absolute;
     float: left;
     width: 30px;
     padding: 8px 0px;
-    cursor: pointer
+    cursor: pointer;
+    top: 50px;
+    left: 10px;
 }
 
 html[dir="rtl"] .header .navTrigger {
@@ -1085,9 +1087,9 @@ html[dir="rtl"] .header .navTrigger {
 
 .header .navTrigger i {
     display: block;
-    background-color: #000;
+    background-color: #fff;
     height: 2px;
-    margin-bottom: 4px
+    margin-bottom: 7px
 }
 
 @media only screen and (min-width: 600px) {
@@ -1110,7 +1112,7 @@ html[dir="rtl"] .header .navTrigger {
 .header .closeNav {
     position: absolute;
     left: 100%;
-    color: #fff;
+    color: #fff!important;
     font-size: 23px;
     font-weight: 100;
     padding: 8px 11px;

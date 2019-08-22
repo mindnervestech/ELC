@@ -24,7 +24,9 @@ const LangPopup = (data) => WrappedComponent => {
         }
 
         componentDidMount() {
-
+            cookie.save('displayFlag', 'false', { path: '/' })
+            cookie.save('language', 'en', { path: '/' });
+            cookie.save('country', 'UAE', { path: '/' });
             // let isDisplay = (cookie.load('displayFlag') === undefined) ? false : cookie.load('displayFlag');
 
             let isDisplay = cookie.load('displayFlag') === undefined;
@@ -68,8 +70,8 @@ const LangPopup = (data) => WrappedComponent => {
             const reqdata = {
                 store_data: store_data
             };
-
-            API.post('/storeinfo', reqdata).then(res => {
+            
+            API.get('/storeinfo?store_data='+reqdata.store_data, reqdata).then(res => {
                 // console.log("current props", this.props);
                 //console.log("storeinfo response data", res.data.store_id);
 
@@ -167,7 +169,7 @@ const LangPopup = (data) => WrappedComponent => {
 
 
                 <div>
-                    <div style={{ display: this.state.isDisplay ? 'block' : 'none' }}>
+                    <div style={{ display: this.state.isDisplay ? 'none' : 'none' }}>
                         <div tabIndex={-1} role="dialog" className="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-dialog--inline ui-draggable ui-resizable" aria-describedby="pref_popup" aria-labelledby="ui-id-1" >
                             <div className="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle" style={{}}>
                                 <span id="ui-id-1" className="ui-dialog-title">&nbsp;</span>
@@ -178,7 +180,7 @@ const LangPopup = (data) => WrappedComponent => {
                             <div id="pref_popup" className="t-DialogRegion js-modal js-draggable js-resizable js-dialog-autoheight js-dialog-size480x320 js-regionDialog ui-dialog-content ui-widget-content"
                                 style={{ backgroundColor: 'rgb(253, 233, 237)', width: 'auto', minHeight: '0px', maxHeight: 'none', height: 'auto' }}>
 
-                                <div className="t-DialogRegion-wrap">
+                                <div className="t-DialogRegion-wrap backWhite">
                                     <div className="t-DialogRegion-bodyWrapperOut">
                                         <div className="t-DialogRegion-bodyWrapperIn"><div className="t-DialogRegion-body">
                                             <div className="container">
@@ -197,7 +199,7 @@ const LangPopup = (data) => WrappedComponent => {
                                                                     <div className="t-Region-buttons-left" />
                                                                     <div className="t-Region-buttons-right" />
                                                                 </div>
-                                                                <div className="t-Region-body">
+                                                                <div className="t-Region-body backWhite">
                                                                     <h4 style={{ textAlign: 'center', fontWeight: 600 }}>Select your country/اختيار الدولة هنا</h4>
                                                                     <ul className="pflags">
                                                                         <li className={this.state.selectedCountry == 'KSA' ? 'ppopup-textholder active' : 'ppopup-textholder'} id="dislrcsa" data-id='KSA' onClick={this.onItemClick}>

@@ -177,7 +177,7 @@ class StoreLocator extends Component {
     document.getElementById(newId).scrollIntoView({ behavior: "smooth" });
     document.getElementById(newId).style.background = "#ebebeb";
     selectedMarker = item;
-    if (overId != item.id) {
+    if (overId !== item.id) {
       overId = item.id;
       this.setState({
         selectedPlace: props,

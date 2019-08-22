@@ -65,19 +65,28 @@ class ShoppingBagItem extends Component {
                      <div className="prod-color">
                         <div className="row del-options">
                            <div className="row home-deli">
-                              <img src={freeDelivery} />
-                              <span>Home delivery</span>
+                           <div style={{width: "100%", textAlign: 'center'}}>
+                           <img src={freeDelivery} />
+                           </div>
+                              <div style={{width: "100%", textAlign: 'center', padding: '10px 10px'}}>
+                                 <span>Home delivery</span>
+                              </div>
+                              <div style={{width: "100%", textAlign: 'center', padding: '10px 10px'}}>
                               <span style={{ margin: '10px', color: '#ee0E19' }}>
                                  Out of stock
                               </span>
+                              </div>
                            </div>
                            <div className="row click-collect">
-                              <img src={freeCollect} />
-                              <span>Click & Collect</span>
-                              <span className="in-stock">In stock</span>
-                              <span style={{ margin: '10px' }}>
-                                 <a href=''>Change store</a>
-                              </span>
+                           <div style={{width: "100%", textAlign: 'center'}}>
+                           <img src={freeCollect}/>
+                           </div>
+                              <div style={{width: "100%", textAlign: 'center', padding: '10px 10px'}}>
+                                 <span>Click & Collect</span>
+                              </div>
+                              <div style={{width: "100%", textAlign: 'center', padding: '10px 10px'}}>
+                               <span className="in-stock">In stock</span>
+                              </div>
                            </div>
                         </div>
                      </div>
@@ -96,7 +105,7 @@ class ShoppingBagItem extends Component {
                      </div>
                   </Col>
                </Row>
-               <Row className="row-1 changeRow">
+               <Row className="row-1 changeRow" style={{textAlign: 'start'}}>
                   <Col xs="3">
 
                   </Col>
@@ -116,7 +125,7 @@ class ShoppingBagItem extends Component {
 
                   </Col>
                </Row>
-               <Row className="row-2 changeRow">
+               <Row className="row-2 changeRow" style={{textAlign: 'start'}}>
                   <Col xs="3">
                      <img src={logo1} className="cardImage"></img>
                   </Col>
@@ -138,7 +147,7 @@ class ShoppingBagItem extends Component {
                </Row>
                <Row className="changeRow">
                   <Col xs="6">
-                     <div style={{ paddingTop: 30 }}>
+                     <div style={{ paddingTop: 30, textAlign: 'start'}}>
                         <input type="text" placeholder="Enter promo code" className="email-field"></input>
                         <input type="submit" value="submit" className="submit-button"></input>
                      </div>

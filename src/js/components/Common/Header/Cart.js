@@ -40,7 +40,7 @@ class Cart extends Component {
                         </div>
                         <div className="flyout-buttons">
                             <Link to={`/${store_locale}/`} className="fab-btn--secondary" onClick={this.props.toggleCart}><FormattedMessage id="Cart.ContinueShopping.Title" defaultMessage="Continue Shopping" /></Link>
-                            <Link to={`/${store_locale}/cart`} onClick={this.props.toggleCart}><FormattedMessage id="Cart.CheckOut.Title" defaultMessage="CheckOut" /></Link>
+                            <Link to={`/${store_locale}/cart`} className="backGreen" onClick={this.props.toggleCart}><FormattedMessage id="Cart.CheckOut.Title" defaultMessage="CheckOut" /></Link>
                         </div>
                     </ul>
 

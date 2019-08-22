@@ -111,9 +111,13 @@ li.ppopup-textholder {
     padding: 5px 0;
 }
 
+.backWhite {
+    background: #ffffff !important;
+}
+
 li.active {
     list-style-position: inside;
-    border: 3px solid #f599bb;
+    border: 3px solid #0b7e36;
 }
 
 li.ppopup-textholder.active {

@@ -8,7 +8,7 @@ class ProductMobFilter extends Component {
 
 	openAndClose(id) {
 		if(document.getElementById(id).getAttribute('style')) {
-			if(document.getElementById(id).getAttribute('style') == "display:none")
+			if(document.getElementById(id).getAttribute('style') === "display:none")
 				document.getElementById(id).setAttribute('style','display:block');
 			else
 				document.getElementById(id).setAttribute('style','display:none');
@@ -51,7 +51,7 @@ class ProductMobFilter extends Component {
 
 																	return (
 																		<div>
-																			{this.props.filters[item.code]? this.props.filters[item.code].indexOf(item.value)!=-1 ? 
+																			{this.props.filters[item.code]? this.props.filters[item.code].indexOf(item.value) !== -1 ? 
 																				<input
 																				type="checkbox"
 																				id={id}
