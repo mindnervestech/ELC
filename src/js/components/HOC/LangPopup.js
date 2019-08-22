@@ -24,7 +24,9 @@ const LangPopup = (data) => WrappedComponent => {
         }
 
         componentDidMount() {
-
+            cookie.save('displayFlag', 'false', { path: '/' })
+            cookie.save('language', 'en', { path: '/' });
+            cookie.save('country', 'UAE', { path: '/' });
             // let isDisplay = (cookie.load('displayFlag') === undefined) ? false : cookie.load('displayFlag');
 
             let isDisplay = cookie.load('displayFlag') === undefined;
@@ -167,7 +169,7 @@ const LangPopup = (data) => WrappedComponent => {
 
 
                 <div>
-                    <div style={{ display: this.state.isDisplay ? 'block' : 'none' }}>
+                    <div style={{ display: this.state.isDisplay ? 'none' : 'none' }}>
                         <div tabIndex={-1} role="dialog" className="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-dialog--inline ui-draggable ui-resizable" aria-describedby="pref_popup" aria-labelledby="ui-id-1" >
                             <div className="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle" style={{}}>
                                 <span id="ui-id-1" className="ui-dialog-title">&nbsp;</span>

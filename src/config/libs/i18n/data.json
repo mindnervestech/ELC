@@ -12,7 +12,7 @@
     "Form.PasswordLength": "Minimum length is 6 characters",
     "Form.Facebook": "Login with Facebook",
     "Form.google": "Login with Google",
-
+    "Register.SignInText": "Sign in or Register",
     "header.clubName": "Amirah Club",
     "header.VIPRegister": "Register Now",
     "header.VIPClubTitle": "To Our VIP Club",
@@ -961,7 +961,7 @@
     "ResetPassword.notMatch.error": "كلمة مرور جديدة وتأكيد قيم كلمة المرور الجديدة غير متطابقة.",
     "OrderHistory.OrderStatus.Ordered": "أمر",
     "BuyMore.ProductList.Message": "اشتري اكثر! احفظ أكثر!",
-    "BuyMore.Slider.Message" : "اشتر أكثر, ووفر أكثر",
+    "BuyMore.Slider.Message": "اشتر أكثر, ووفر أكثر",
     "OutOfStock.Product": "المنتج",
     "OutOfStock.Description": "وصف",
     "OutOfStock.Quantity": "كمية",
