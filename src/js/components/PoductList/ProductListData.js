@@ -27,12 +27,12 @@ class ProductListData extends Component {
 	}
 
 	render() {
-		const { list } = this.props;
+		const list  = this.props.list.product_data;
 		return (
 			<div className="homePage">
 				<div className="start3">
 					<div>
-						<span className="blackTitle">Dolls</span>
+						<span className="blackTitle">{this.props.list.category_name}</span>
 					</div>
 					<div>
 						<span>Let your imagination run free with dolls and the endless role playing options they provide </span>
@@ -96,15 +96,15 @@ class ProductListData extends Component {
 							<li>
 								<div className="alsoLikeCard">
 									<span className="percentage-text" style={{ display: 'none' }}>30</span>
-									<span className="save-text">{keyName}%</span>
+									<span className="save-text">5</span>
 									<img src={save} className="save" />
-									<img src={list[keyName].json.imageUrl.primaryimage[0]} className="cardImage" />
+									<img src={logo1} className="cardImage" />
 									<img src={percentage} className="percentage" style={{ display: 'none' }} />
 									<div style={{ marginTop: 10 }}>
 										<label className="text-color">{list[keyName].json.name}</label>
 									</div>
 									<div>
-										<span style={{ fontSize: 14, color: "#0D943F", fontWeight: "bold" }}>AED {list[keyName].price}.00</span><span style={{ color: "gray", textDecorationLine: 'line-through', fontSize: 14, marginLeft: 10 }}>AED 14.50</span>
+										<span style={{ fontSize: 14, color: "#0D943F", fontWeight: "bold" }}>{list[keyName].currency } {list[keyName].price}.00</span><span style={{ color: "gray", textDecorationLine: 'line-through', fontSize: 14, marginLeft: 10 }}>AED 14.50</span>
 									</div>
 									<div style={{ paddingTop: 10 }}>
 										<StarRatings
@@ -117,7 +117,7 @@ class ProductListData extends Component {
 											starDimension='15px'
 											starSpacing='0px'
 										/>
-										<span> {list[keyName].json.collection_desc} </span>
+										<span> 3 - 10 year </span>
 									</div>
 									<div>
 										<button className="alsoLikeCardButton CardButton">Add to Basket</button>

@@ -119,7 +119,7 @@ export const getProductList = payload => {
 	return dispatch => {
 		const data = {
 			customerid: payload.customerid,
-			url_key: payload.url_key,
+			url_key: payload.url_key,//"dressing-up-role-play",
 			sortby: payload.sortby,
 			storeid: payload.storeid,
 			filters: payload.filters,
@@ -153,7 +153,7 @@ export const getProductList = payload => {
 					} else {
 						dispatch(
 							callActionGetProductSearchList({
-								products: res.data.product_data,
+								products: res.data,
 								filters: newState.filters,
 								category_name: res.data.category_name,
 								category_description: res.data.category_description,
@@ -181,7 +181,6 @@ export const getProductList = payload => {
 				);
 			},
 		};
-
 		API.getProductList(data, cb);
 	};
 };

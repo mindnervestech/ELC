@@ -67,14 +67,14 @@
     "footer.corporateResponsibility": "corporate responsibility",
     "footer.needAssistance": "NEED ASSISTANCE ?",
     "footer.helpCenter": "Help Center",
-    "footer.contactUs": "contact us",
+    "footer.contactUs": "Contact Us",
     "footer.delivery": "delivery information",
-    "footer.helpFaqs": "help & faqs",
+    "footer.helpFaqs": "FAQ",
     "footer.returnAndExchanges": "returns and exchanges",
     "footer.privacyPolicy": "privacy policy",
     "footer.sitemap": "sitemap",
     "footer.termOfUse": "terms of use",
-    "footer.termsAndConditions": "terms & conditions",
+    "footer.termsAndConditions": "Terms & Conditions",
     "footer.promotionTermsAndConditions": "promotion terms & conditions",
     "footer.paymentMethods": "Payment Methods",
     "footer.storeLocator": "STORE LOCATOR",
@@ -505,7 +505,18 @@
     "OutOfStock.Description": "Description",
     "OutOfStock.Quantity": "Quantity",
     "OutOfStock.Status": "Status",
-    "OutOfStock.Heading": "Out Of Stock Items"
+    "OutOfStock.Heading": "Out Of Stock Items",
+    "Header.StoreFinder": "store finder",
+    "Header.Help": "help",
+    "Header.SignInOrRegister": "Sign in / register",
+    "footer.BirthdayClub": "Birthday Club",
+    "footer.Newsletter": "Newsletter",
+    "footer.Charity": "Charity",
+    "footer.PrivacyPolicy": "Privacy Policy",
+    "footer.ConsumerRights": "Consumer Rights",
+    "footer.Legal": "Legal",
+    "footer.AboutELC": "About ELC",
+    "footer.text": "© Website is operated by Kamal Osman Jamjoom LLC, trading as Early Learning Centre"
   },
   "ar": {
     "header.clubName": "نادي الأميرة ",
@@ -969,8 +980,22 @@
     "OutOfStock.Quantity": "كمية",
     "OutOfStock.Status": "الحالة",
     "OutOfStock.Heading": "من المخزون البنود",
-
-
+    "Header.StoreFinder": "البحث عن متجر",
+    "Header.Help": "المساعدة",
+    "Header.SignInOrRegister": "تسجيل الدخول / التسجيل",
+    
+    "footer.helpFaqs": "الأسئلة الأكثر شيوعاً",
+    "footer.contactUs": "تواصل معنا",
+    "footer.aboutElc": "نبذة على ألعاب التعليم المبكر",
+    "footer.BirthdayClub": "برثداي كلب",
+    "footer.Newsletter": " النشرة الإخبارية",
+    "footer.PrivacyPolicy": "سياسة الخصوصية",
+    "footer.ConsumerRights": "حقوق المستهلك",
+    "footer.termsAndConditions": "الأحكام والشروط ",
+    "footer.Legal": "قانوني",
+    "footer.Charity": "Charity",
+    "footer.AboutELC": "About ELC",
+    "footer.text": "© تتم إدارة الموقع من قبل شركة كمال عصمان جمجوم ذات المسؤولية المحدودة، باسم مركز التعليم المبكر",
 
     "newToElc.header.login.text": "لديك حساب بالفعل؟ سجّل الدخول لاستعادة إعدادات حسابك",
     "register.header.text": "الحقول المعلمة * مطلوبة",
@@ -990,9 +1015,5 @@
     "newToElc.join": "يمكنك الانضمام إلى Jack Birthday Birthday Club لتلقي عروض عيد الميلاد المكانية",
     "newToElc.remember": "سوف نتذكر التفاصيل الخاصة بك للمرة القادمة",
     "ContactUs.ConfirmEmail": "تأكيد عنوان البريد الإلكتروني"
-
-
-
-
   }
 }

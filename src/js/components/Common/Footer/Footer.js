@@ -77,117 +77,58 @@ class Footer extends Component {
             <>
             <footer className="footer-css">
                 <div className="row footer-line footer-show-web">
-                    <div className="col col-3" style={{textAlign: 'start'}}>
+                    <div className="col col-4" style={{textAlign: 'start', paddingLeft: '15%'}}>
                         <div className="footer-title">
-                            <span>site information</span>
-                        </div>
-                        <ul className="text-color">
-                            <li>
-                                <Link to={`/${store_locale}/sitemap`} style={{ textDecoration: 'none' }}>
-                                    <FormattedMessage id="footer.sitemap" defaultMessage="sitemap" />
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to={`/${store_locale}/help-and-faq`} style={{ textDecoration: 'none' }}>
-                                    <FormattedMessage id="footer.helpFaqs" defaultMessage="help & faqs" />
-                                </Link>
-                            </li>
-                            <li>
-                                <a href="">big birthday club</a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div className="col col-2" style={{textAlign: 'start', padding: 0}}>
-                        <div className="footer-title">
-                            <span>customer service</span>
-                        </div>
-                        <ul className="text-color">
-                            <li>
-                                <a href="">store finder</a>
-                            </li>
-                            <li>
-                                <Link to={`/${store_locale}/contact-us`} style={{ textDecoration: 'none' }}>
-                                    <FormattedMessage id="footer.contactUs" defaultMessage="contact us" />
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to={`/${store_locale}/delivery-information`} style={{ textDecoration: 'none' }}>
-                                    <FormattedMessage id="footer.delivery" defaultMessage="delivery information" />
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to={`/${store_locale}/returns-and-exchanges`} style={{ textDecoration: 'none' }}>
-                                    <FormattedMessage id="footer.returnAndExchanges" defaultMessage="returns and exchanges" />
-                                </Link>
-                            </li>
-                            <li>
-                                <a href="">eu online dispute resolution platfrom</a>
-                            </li>
-                            <li>
-                                <Link to={`/${store_locale}/terms-and-conditions`} style={{ textDecoration: 'none' }}>
-                                    <FormattedMessage id="footer.termsAndConditions" defaultMessage="terms & conditions" />
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to={`/${store_locale}/terms-and-conditions`} style={{ textDecoration: 'none' }}>
-                                    <FormattedMessage id="footer.promotionTermsAndConditions" defaultMessage="terms & conditions" />
-                                </Link>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div className="col col-3" style={{textAlign: 'start'}}>
-                        <div className="footer-title">
-                            <span>about elc</span>
+                            <span><FormattedMessage id="footer.AboutELC" defaultMessage="About ELC" /></span>
                         </div>
                         <ul className="text-color">
                             <li>
                                 <Link to={`/${store_locale}/about-us`} style={{ textDecoration: 'none' }}>
-                                    <FormattedMessage id="footer.aboutUS" defaultMessage="about us" />
+                                    <FormattedMessage id="footer.aboutElc" defaultMessage="About ELC Toys" />
                                 </Link>
                             </li>
                             <li>
-                                <Link to={`/${store_locale}/careers`} style={{ textDecoration: 'none' }}>
-                                    <FormattedMessage id="footer.careers" defaultMessage="careers" />
+                                <Link to={`/${store_locale}/help-and-faq`} style={{ textDecoration: 'none' }}>
+                                    <FormattedMessage id="footer.helpFaqs" defaultMessage="FAQ" />
                                 </Link>
                             </li>
                             <li>
-                                <Link to={`/${store_locale}/affiliate`} style={{ textDecoration: 'none' }}>
-                                    <FormattedMessage id="footer.affiliates" defaultMessage="affiliates" />
+                                <Link to={`/${store_locale}/contact-us`} style={{ textDecoration: 'none' }}>
+                                    <FormattedMessage id="footer.contactUs" defaultMessage="Contact Us" />
                                 </Link>
                             </li>
                             <li>
-                                <Link to={`/${store_locale}/franchising`} style={{ textDecoration: 'none' }}>
-                                    <FormattedMessage id="footer.franchising" defaultMessage="elc franchising" />
-                                </Link>
+                                <a href=""><FormattedMessage id="footer.BirthdayClub" defaultMessage="Birthday Club" /></a>
                             </li>
                             <li>
-                                <a href="">elc for business</a>
+                                <a href=""><FormattedMessage id="footer.Newsletter" defaultMessage="Newsletter" /></a>
                             </li>
                             <li>
-                                <Link to={`/${store_locale}/corporate-responsibility`} style={{ textDecoration: 'none' }}>
-                                    <FormattedMessage id="footer.corporateResponsibility" defaultMessage="corporate responsibility" />
-                                </Link>
+                                <a href=""><FormattedMessage id="footer.Charity" defaultMessage="Charity" /></a>
                             </li>
+                        </ul>
+                    </div>
+
+                    <div className="col col-4" style={{textAlign: 'start', padding: 0}}>
+                        <div className="footer-title">
+                            <span><FormattedMessage id="footer.Legal" defaultMessage="Legal" /></span>
+                        </div>
+                        <ul className="text-color">
                             <li>
-                                <Link to={`/${store_locale}/term-of-use`} style={{ textDecoration: 'none' }}>
-                                    <FormattedMessage id="footer.termOfUse" defaultMessage="terms of use" />
+                                <Link to={`/${store_locale}/terms-and-conditions`} style={{ textDecoration: 'none' }}>
+                                    <FormattedMessage id="footer.termsAndConditions" defaultMessage="Terms & Conditions" />
                                 </Link>
                             </li>
                             <li>
                                 <Link to={`/${store_locale}/privacy-policy`} style={{ textDecoration: 'none' }}>
-                                    <FormattedMessage id="footer.privacyPolicy" defaultMessage="privacy policy" />
+                                    <FormattedMessage id="footer.PrivacyPolicy" defaultMessage="Privacy Policy" />
                                 </Link>
                             </li>
                             <li>
-                                <Link to={`/${store_locale}/cookie-policy`} style={{ textDecoration: 'none' }}>
-                                    <FormattedMessage id="footer.cookiePolicy" defaultMessage="cookie policy" />
-                                </Link>
+                                <a href=""><FormattedMessage id="footer.ConsumerRights" defaultMessage="Consumer Rights" /></a>
                             </li>
                         </ul>
                     </div>
-                    {/* <div className="col col-1"></div> */}
                     <div className="col col-4" style={{textAlign: 'start'}}>
                         <div className="footer-title" style={{marginBottom:7}}>
                             <span>follow us on</span>
@@ -211,10 +152,7 @@ class Footer extends Component {
                 <div className="row footer-bottom footer-show-web">
                     <div className="col col-8" style={{textAlign: 'start'}}>
                         <div>
-                            @ copyright ELC UK Limited 2018 ELC UK Limited (a private limited company). Registered in England no. 2057757. VAT Reg no. GB 285 2009 09.
-                        </div>
-                        <div style={{marginTop:5}}>
-                            Registered Office: Boughton Bussiness Park Bell Lane, Little Chalfont, Bucks, HP6 6GL
+                            <FormattedMessage id="footer.text" defaultMessage="© Website is operated by Kamal Osman Jamjoom LLC, trading as Early Learning Centre" />
                         </div>
                     </div>
                     <div className="col col-4" style={{textAlign: "end"}}>
@@ -244,63 +182,56 @@ class Footer extends Component {
                         <input type="submit" value="submit" className="submit-button"></input>
                     </div>
                     <div className="mobile-manu">
-                        <Collapsible trigger="site information">
+                        <Collapsible trigger={<FormattedMessage id="footer.AboutELC" defaultMessage="About ELC" />}>
                             <div>
-                                <ul className="text-color">
-                                    <li>
-                                        <Link to={`/${store_locale}/sitemap`} style={{ textDecoration: 'none' }}>
-                                            <FormattedMessage id="footer.sitemap" defaultMessage="sitemap" />
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link to={`/${store_locale}/help-and-faq`} style={{ textDecoration: 'none' }}>
-                                            <FormattedMessage id="footer.helpFaqs" defaultMessage="help & faqs" />
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <a href="">big birthday club</a>
-                                    </li>
-                                </ul>
+                            <ul className="text-color">
+                            <li>
+                                <Link to={`/${store_locale}/about-us`} style={{ textDecoration: 'none' }}>
+                                    <FormattedMessage id="footer.aboutElc" defaultMessage="About ELC Toys" />
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to={`/${store_locale}/help-and-faq`} style={{ textDecoration: 'none' }}>
+                                    <FormattedMessage id="footer.helpFaqs" defaultMessage="FAQ" />
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to={`/${store_locale}/contact-us`} style={{ textDecoration: 'none' }}>
+                                    <FormattedMessage id="footer.contactUs" defaultMessage="Contact Us" />
+                                </Link>
+                            </li>
+                            <li>
+                                <a href=""><FormattedMessage id="footer.BirthdayClub" defaultMessage="Birthday Club" /></a>
+                            </li>
+                            <li>
+                                <a href=""><FormattedMessage id="footer.Newsletter" defaultMessage="Newsletter" /></a>
+                            </li>
+                            <li>
+                                <a href=""><FormattedMessage id="footer.Charity" defaultMessage="Charity" /></a>
+                            </li>
+                        </ul>
                             </div>
                         </Collapsible>
-                        <Collapsible trigger="customer service">
+                        <Collapsible trigger={<FormattedMessage id="footer.Legal" defaultMessage="Legal" />}>
                             <div>
-                                <ul className="text-color">
-                                    <li>
-                                        <a href="">store finder</a>
-                                    </li>
-                                    <li>
-                                        <Link to={`/${store_locale}/contact-us`} style={{ textDecoration: 'none' }}>
-                                            <FormattedMessage id="footer.contactUs" defaultMessage="contact us" />
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link to={`/${store_locale}/delivery-information`} style={{ textDecoration: 'none' }}>
-                                            <FormattedMessage id="footer.delivery" defaultMessage="delivery information" />
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link to={`/${store_locale}/returns-and-exchanges`} style={{ textDecoration: 'none' }}>
-                                            <FormattedMessage id="footer.returnAndExchanges" defaultMessage="returns and exchanges" />
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <a href="">eu online dispute resolution platfrom</a>
-                                    </li>
-                                    <li>
-                                        <Link to={`/${store_locale}/terms-and-conditions`} style={{ textDecoration: 'none' }}>
-                                            <FormattedMessage id="footer.termsAndConditions" defaultMessage="terms & conditions" />
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link to={`/${store_locale}/terms-and-conditions`} style={{ textDecoration: 'none' }}>
-                                            <FormattedMessage id="footer.promotionTermsAndConditions" defaultMessage="terms & conditions" />
-                                        </Link>
-                                    </li>
-                                </ul>
+                            <ul className="text-color">
+                            <li>
+                                <Link to={`/${store_locale}/terms-and-conditions`} style={{ textDecoration: 'none' }}>
+                                    <FormattedMessage id="footer.termsAndConditions" defaultMessage="Terms & Conditions" />
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to={`/${store_locale}/privacy-policy`} style={{ textDecoration: 'none' }}>
+                                    <FormattedMessage id="footer.PrivacyPolicy" defaultMessage="Privacy Policy" />
+                                </Link>
+                            </li>
+                            <li>
+                                <a href=""><FormattedMessage id="footer.ConsumerRights" defaultMessage="Consumer Rights" /></a>
+                            </li>
+                        </ul>
                             </div>
                         </Collapsible>
-                        <Collapsible trigger="about elc">
+                        {/* <Collapsible trigger="about elc">
                             <div>
                                 <ul className="text-color">
                                     <li>
@@ -348,7 +279,7 @@ class Footer extends Component {
                                     </li>
                                 </ul>
                             </div>
-                        </Collapsible>
+                        </Collapsible> */}
                     </div>
                     <div style={{paddingTop:30, textAlign: 'center'}}>
                         <div className="footer-title" style={{marginBottom:7}}>
@@ -364,7 +295,7 @@ class Footer extends Component {
                 </div>
                 <div className="footer-bottom footer-show-mobile" style={{textAlign: 'center'}}>
                     <div>
-                        @ copyright ELC UK Limited 2018 ELC UK Limited (a private limited company). Registered in England no. 2057757. VAT Reg no. GB 285 2009 09. Registered Office: Boughton Bussiness Park Bell Lane, Little Chalfont, Bucks, HP6 6GL
+                        <FormattedMessage id="footer.text" defaultMessage="© Website is operated by Kamal Osman Jamjoom LLC, trading as Early Learning Centre" />
                     </div>
                     <div style={{paddingTop: 20, paddingBottom: 30}}>
                     <img className="bottom-imagePaypal-mobile" src={payPalImg}/>
