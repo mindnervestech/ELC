@@ -2032,7 +2032,7 @@ textarea .error {
 
 .checkmark {
     position: absolute;
-    top: 0;
+    top: 4 !important;
     left: 0;
     height: 21px;
     width: 21px;
@@ -2063,14 +2063,13 @@ textarea .error {
 
 /* Style the checkmark/indicator */
 .checkBox .checkmark:after {
-    left: 9px;
-    top: 5px;
-    width: 5px;
-    height: 10px;
+    left: 5px;
+    top: 1px;
+    width: 8px;
+    height: 13px;
     border: solid #34a55e;
-    border-width: 0 3px 3px 0;
+    border-width: 0 4px 4px 0;
     -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
     transform: rotate(45deg);
 }
 
@@ -2240,4 +2239,9 @@ select:focus {
 
 .pad40L {
     /* padding-left: 4%; */
+}
+
+html[dir="rtl"] .t-Form-labelContainer {
+    text-align: right !important;
+    width: 100% !important;
 }
