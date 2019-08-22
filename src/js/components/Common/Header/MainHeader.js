@@ -289,7 +289,7 @@ class MainHeader extends Component {
                                         <Button className="firstButton text-color">The Entertainer</Button>
                                     </li> */}
                                     <li style={{ height: 40, marginLeft: 20}}>
-                                        <Button className="secondButton text-color">Early Learning Center</Button>
+                                        <Button className="secondButton text-color">The Birthday Club</Button>
                                     </li>
                                     {<li>
                                         <div className="changecountry">
@@ -328,11 +328,11 @@ class MainHeader extends Component {
                                     <li><a href="https://api.whatsapp.com/send?phone=971565069237" target="_blank" className="whatsapp"><i className="icon-whatsapp" /><span style={{ whiteSpace: 'nowrap' }}><FormattedMessage id="header.ContactUs" defaultMessage="Contact Us" /></span></a></li> */}
                                 </ul >
                                 <ul className="rightLink">
-                                    <li className="titleHover">
-                                        {/* <i className="icon-marker"></i> */}
+                                    {/* <li className="titleHover">
+                                     
                                         <img src={location} className="image-ion"></img>
                                         <label className="iconLeble text-color changeLinkText">store finder</label>
-                                    </li>
+                                    </li> */}
                                     <li className="titleHover">
                                         {/* <i className="icon-heart"></i> */}
                                         <img src={help} className="image-ion"></img>

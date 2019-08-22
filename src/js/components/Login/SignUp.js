@@ -203,7 +203,7 @@ class SignUp extends Component {
       // carrier_code: "non",
       password: this.state.fields.password,
       confirmpassword: this.state.fields.confirmPassword,
-      store_id: this.props.globals.currentStore,
+      store_id: 1,//this.props.globals.currentStore,
       // title: this.state.fields.title,
       quest_quote: "non",
     }
@@ -484,7 +484,7 @@ class SignUp extends Component {
                                 </div>
                               </div>
 
-                              <div className="row instructionCss pad">
+                              <div className="row pad40L instructionCss pad">
                                 <span><FormattedMessage id="Form.PasswordConventions" defaultMessage="Password must be at least 8 characters long and contain an uppercase letter, a lowercase letter and a number."></FormattedMessage></span>
                               </div>
 
@@ -501,7 +501,7 @@ class SignUp extends Component {
                                   </div>
                                 </div>
                               </div>
-                              <div className="row instructionCss">
+                              <div className="row pad40L instructionCss">
                                 <span><FormattedMessage id="Form.PasswordLength" defaultMessage="Minimum length is 6"></FormattedMessage></span>
                               </div>
 
@@ -517,13 +517,13 @@ class SignUp extends Component {
                                   </div>
                                 </div>
                               </div>
-                              <div className="row padTop20 backWhite">
+                              <div className="row pad40L padTop20 backWhite">
                                 <label class="checkBox"><FormattedMessage id="Form.RecieveEmail" defaultMessage="I'd like to receive emails from ELC about Spacial Offers, new toys and voucher codes."></FormattedMessage>
                                   <input type="checkbox"  ></input>
                                   <span class="checkmark"></span>
                                 </label>
                               </div>
-                              <div className="row backWhite ">
+                              <div className="row pad40L backWhite ">
                                 <ul className="nay liFont">
                                   <li ><FormattedMessage id="Form.EmailPolicy" defaultMessage="You can ask us to stop any time and will never sell your data to other companies for marketing purpose." /></li>
                                   <li><FormattedMessage id="Form.EmailPolicys" defaultMessage="We always try to send emails that are relevant to you bassed on products you have shown an interest in." /></li>
