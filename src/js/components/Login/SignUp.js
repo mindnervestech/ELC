@@ -124,20 +124,29 @@ class SignUp extends Component {
         }
       }
     }
-    if (typeof fields["confirmEmail"] !== "undefined") {
+    // if (typeof fields["confirmEmail"] !== "undefined") {
 
-      if (fields["confirmEmail"].length === 0) {
-        formIsValid = false;
-        errors["confirmEmail"] = <FormattedMessage id="Signup.validation.confirmEmail.empty" defaultMessage="Email done't Match" />;
-      }
-      console.log("form is valid 56", formIsValid);
-      if (fields["confirmEmail"] != fields["email"]) {
-        console.log("confirm email" , fields["confirmEmail"]);
-          formIsValid = false;
-          errors["confirmEmail"] = <FormattedMessage id="Signup.validation.confirmEmail.invalid" defaultMessage="Email does't match" />;
+    //   if (fields["confirmEmail"].length === 0) {
+    //     formIsValid = false;
+    //     errors["confirmEmail"] = <FormattedMessage id="Signup.validation.confirmEmail.empty" defaultMessage="Email address are not matched" />;
+    //   }
+    //   console.log("form is valid 56", formIsValid);
+    //   if (fields["confirmEmail"] != fields["email"]) {
+    //     console.log("confirm email" , fields["confirmEmail"]);
+    //       formIsValid = false;
+    //       errors["confirmEmail"] = <FormattedMessage id="Signup.validation.confirmEmail.invalid" defaultMessage="Email address are not matched" />;
       
-        console.log("form is valid 66", formIsValid);
-      }
+    //     console.log("form is valid 66", formIsValid);
+    //   }
+    // }
+    if (!fields["confirmEmail"]) {
+      formIsValid = false;
+      errors["confirmEmail"] = <FormattedMessage id="Signup.validation.confirmEmail.empty" defaultMessage="Email address are not matched" />;
+    }
+
+    if (!(fields["confirmEmail"] === fields["email"])) {
+      formIsValid = false;
+      errors["confirmEmail"] = <FormattedMessage id="Signup.validation.confirmEmail.invalid" defaultMessage="Email address are not matched" />;
     }
 
     // if (!(this.state.isPhoneValid)) {
@@ -291,9 +300,10 @@ class SignUp extends Component {
     let confirmEmailInputField = <div><div>
       <FormattedMessage id="ContactUs.ConfirmEmail" defaultMessage="Confirm Email">
         {(message) =>
-          <input type="email" id="P1001_Confirm_EMAIL" name="P1001_Confirm_EMAIL" placeholder={message} onChange={this.handleChange.bind(this, "confirmEmail")} value={this.state.fields["confirmEmail"]} size={30} />}
+          <input type="email" id="P1001_ConfirmEMAIL" name="P1001_ConfirmEMAIL" placeholder={message} onChange={this.handleChange.bind(this, "confirmEmail")} value={this.state.fields["confirmEmail"]} size={30} />}
       </FormattedMessage>
-    </div></div>
+      
+    </div><span id="P1001_ConfirmEMAIL_error_placeholder" className="a-Form-error" data-template-id="33610259035469734_ET"></span></div>
 
 
     let contactNumberInputField = null;
@@ -330,7 +340,9 @@ class SignUp extends Component {
         <span id="P1001_EMAIL_error_placeholder" className="a-Form-error u-visible" data-template-id="33609965712469734_ET"><span className="t-Form-error"><div id="P1001_EMAIL_error">
           {errorsObj["email"]}</div></span></span></div>
     }
-    if ('ConfirmEmail' in errorsObj) {
+    
+    if ('confirmEmail' in errorsObj) {
+      console.log("Error email");
       confirmEmailInputField = <div><div>
         <input type="text" id="P1001_ConfirmEMAIL" name="P1001_ConfirmEMAIL" placeholder="Confirm Email Address" onChange={this.handleChange.bind(this, "confirmEmail")} value={this.state.fields["confirmEmail"]} size="30" maxLength="100" aria-describedby="P1001_ConfirmEMAIL_error" aria-invalid="true" /></div>
         <span id="P1001_ConfirmEMAIL_error_placeholder" className="a-Form-error u-visible" data-template-id="33609965712469734_ET"><span className="t-Form-error"><div id="P1001_ConfirmEMAIL_error">
@@ -473,7 +485,7 @@ class SignUp extends Component {
                               <div className="padding row">
                                 <div className="rmPadding col col-12 apex-col-auto">
                                   <div className="rmPadding block row" id="P1001_EMAIL_CONTAINER"><div className="rmTopPadding rmPadding t-Form-labelContainer">
-                                    <label htmlFor="P1001_EMAIL" id="P1001_EMAIL_LABEL" className="bolt t-Form-label">
+                                    <label htmlFor="P1001_ConfirmEMAIL" id="P1001_ConfirmEMAIL_LABEL" className="bolt t-Form-label">
                                       <FormattedMessage id="Form.ConfirmEmail" defaultMessage="Confirm Email" />
                                       <span className="u-VisuallyHidden">(Value Required)</span></label>
                                   </div>
