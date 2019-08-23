@@ -107,7 +107,7 @@ class HomePageComponent extends Component {
                                     <Slider {...settings3}>
                                     {homeData.banners.map((item, index) => (
                                                 <div>
-                                                <img src={item.BLOCK_BANNER} />
+                                                <img src={item.BLOCK_BANNER} style={{height: 550}}/>
                                             </div>
                                             ))}
                                     </Slider>
