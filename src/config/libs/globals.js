@@ -1,0 +1,1 @@
+export const BASE_URL = 'http://nayomidev.iksulalive.com/index.php/rest/V1/';

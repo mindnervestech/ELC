@@ -1,0 +1,9 @@
+1. After Checkout cartBox not closing on Header.
+2. Owl Carausal in Shpopping Bag.
+3. Currancy on price all places.
+4. infoWindow on delovery confirmation  map.
+5. search Address on Map.
+6. Error Message after API fail or invalid data.
+7. Click and Collect (Pending From API and also Payment Getway).
+8. International Phone Number not localise.
+

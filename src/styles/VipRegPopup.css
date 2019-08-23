@@ -1,0 +1,112 @@
+button.close {
+position: absolute;
+top: 12px;
+right: 20px;
+padding: 0;
+cursor: pointer;
+background: 0 0;
+border: 0;
+-webkit-appearance: none;
+float: right;
+font-size: 21px !important;
+font-weight: 700;
+line-height: 1;
+color: #000;
+text-shadow: 0 1px 0 #fff;
+opacity: 0.5;
+}
+.homePagep .contentBoxp h6 {
+font-family: 'swirl', cursive;
+font-size: 2.5em;
+font-weight: normal;
+line-height: .8;
+margin: 0 0 .1em;
+position: relative;
+text-align: center;
+}
+.homePagep {
+background-color: #fff4f8;
+overflow: hidden;
+display: flex;
+justify-content: center;
+}
+.homePagep .contentBoxp {
+color: #000000;
+position: absolute;
+}
+.homePagep .contentBoxp h2 span:last-child {
+padding-left: 0;
+}
+.amirah-logo {
+background-image: url(https://storage.googleapis.com/nay/icons/Amirah_Logo.png);
+background-position: 0% -23px;
+display: inline-block;
+width: 200px;
+height: 105px;
+background-repeat: no-repeat;
+vertical-align: middle;
+background-position: 52% 16%;
+background-size: 60%;
+}
+ul.amirah-list {
+margin: 0 25px;
+display: flex;
+text-align: center;
+justify-content: center;
+}
+ul.amirah-list li.first {
+border-left: none;
+padding-left: 0;
+}
+ul.amirah-list li {
+font-size: 12px;
+margin: 0 5px;
+border-left: 1px solid #e1e1e1;
+padding-left: 10px;
+}
+.homePage .contentBoxp {
+color: #000000;
+position: absolute;
+}
+.homePage .contentBoxp h2 span:last-child {
+padding-left: 0;
+}
+#subpop{
+background-image: url(https://storage.googleapis.com/nay/icons/Amirah_BG.JPG);
+background-size: 100% 400px;
+}
+/*Registration Popup*/
+
+@media only screen and (min-width: 960px) 
+{
+  .VIPRegister-dialog{
+       max-width: 100% !important;
+       width: auto !important;
+       height: 400px !important;
+       padding: 0;
+	}
+  .VIPPopup{
+        width: 600px;
+           
+    }  
+    .VIPPopup .VIPRegisterTitle span{
+      font-family: 'Conv_frenchvanillaswirlitalic-webfont',cursive;
+    }
+}
+
+@media only screen and (max-width: 960px) 
+{
+	 .VIPRegister-dialog{
+       max-width: 100% !important;
+       width: auto !important;
+       height: 400px !important;
+	}
+	  .VIPPopup{
+	            width: 340px;
+	            height: 400px;
+	            padding: 0;
+	    }  
+    .VIPPopup .VIPRegisterTitle span{
+      font-family: 'Conv_frenchvanillaswirlitalic-webfont',cursive;
+    }
+}
