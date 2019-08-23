@@ -322,13 +322,13 @@ html[dir="rtl"] .link {
 
 @media only screen and (max-width: 991px) and (min-width: 768px) {
     .link {
-        margin-left: 70px !important;
+        /* margin-left: 70px !important; */
     }
 }
 
 @media only screen and (max-width:1199px) and (min-width: 992px) {
     .link {
-        padding-left: 155px !important;
+        /* padding-left: 155px !important; */
     }
 
     .forgotPass {
@@ -338,7 +338,7 @@ html[dir="rtl"] .link {
 
 @media only screen and (max-width:498px) and (min-width: 408px) {
     .link {
-        padding-left: 130px !important;
+        /* padding-left: 130px !important; */
     }
 
     .forgotPass {
@@ -348,7 +348,7 @@ html[dir="rtl"] .link {
 
 @media only screen and (max-width:407px) and (min-width: 350px) {
     .link {
-        padding-left: 120px !important;
+        /* padding-left: 120px !important; */
     }
 
     .forgotPass {

@@ -92,25 +92,26 @@ class Product extends Component {
 		if (params.category_path === "search") {
 			return;
 		}
-		const mainCat = params.category_path.split('-');
+		//const mainCat = params.category_path.split('-');
+		//console.log(">>>>>>>>>>>",mainCat)
 
-		const data1 = Object.keys(mainCat)
-			.filter(function (item) {
-				return item > 0;
-			})
-			.map(function (item, index) {
-				return mainCat[item];
-			});
-		const cat = data1.join('-').toString();
+		// const data1 = Object.keys(mainCat)
+		// 	.filter(function (item) {
+		// 		return item > 0;
+		// 	})
+		// 	.map(function (item, index) {
+		// 		return mainCat[item];
+		// 	});
+		// const cat = data1.join('-').toString();
 
-		let newCat = cat;
-		if ((cat === 'style') || (cat === 'collection')) {
-			newCat = mainCat[0];
-		}
+		// let newCat = cat;
+		// if ((cat === 'style') || (cat === 'collection')) {
+		// 	newCat = mainCat[0];
+		// }
 
 		const data = {
 			customerid: typeof this.props.customer_details.customer_id !== 'undefined' ? parseInt(this.props.customer_details.customer_id) : " ",
-			url_key: newCat ? newCat : mainCat[0],
+			url_key: params.category_path,//newCat ? newCat : mainCat[0],
 			sortby: sortbyv,
 			storeid: this.props.globals.currentStore,
 			filters: filters,

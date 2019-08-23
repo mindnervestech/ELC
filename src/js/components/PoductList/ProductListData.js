@@ -8,18 +8,45 @@ import { Container, Row, Col, Button } from 'reactstrap';
 import percentage from '../../../assets/images/product-details/percentage.png';
 import save from '../../../assets/images/product-details/save.png';
 import logo1 from '../../../assets/images/you_may_also_like_1.png'
+import placeholder from '../../../assets/images/placeholder.png'
 
 import home from '../../../assets/images/social/Hero.png';
 import { th } from 'date-fns/esm/locale';
 import StarRatings from 'react-star-ratings';
 
+let productList = {} 
+let list1 = {}
+
 class ProductListData extends Component {
 	constructor(props) {
 		super(props);
-
+		productList = this.props.list.product_data
+		let totalPages = 1
+		let count = 0
+		let pageNumber = 1
+		let start = 1 * pageNumber
+		let end = 8 * pageNumber
+		for(var element in productList){
+			if(element >= start && element <= end ){
+				list1[element] = productList[element]
+			}
+			count = count + 1
+		}
+		if(count % 8 == 0){
+			totalPages = count / 8
+		}else{
+			totalPages = (count / 8) + 1
+		}
+		
+		console.log(list1)
+		this.state = {
+			totalPages : totalPages,
+			pageNumber : 1,
+		};
 	}
 
 	componentWillMount() {
+		
 	}
 
 	filter = (value) => {
@@ -27,7 +54,9 @@ class ProductListData extends Component {
 	}
 
 	render() {
-		const list  = this.props.list.product_data;
+		//const list  = this.props.list.product_data;
+		const list  = list1
+		
 		return (
 			<div className="homePage">
 				<div className="start3">
@@ -46,9 +75,9 @@ class ProductListData extends Component {
 									</Col>
 									<Col xs="6" style={{ padding: 0 }}>
 										<select placeholder={'Filter'} onChange={this.filter}>
-											<option value="best seller">best seller</option>
-											<option value="best seller">best seller</option>
-											<option value="best seller">best seller</option>
+											<option value="best seller">Relevance</option>
+											<option value="best seller">Price (High to Low)</option>
+											<option value="best seller">Price (Low to High)</option>
 										</select>
 									</Col>
 									<Col xs="3">
@@ -62,13 +91,13 @@ class ProductListData extends Component {
 									<Col xs="10">
 										<Row>
 											<Col xs="4">
-												<button className="prevButton" style={{ width: "80%" }}>Prev</button>
+												<button className={this.state.pageNumber == 1 ? "prevButton" : "nextButton"} style={{ width: "80%" }}>Prev</button>
 											</Col>
 											<Col xs="4">
-												<span>Page 1 of 1</span>
+												<span>Page {this.state.pageNumber} of {this.state.totalPages}</span>
 											</Col>
 											<Col xs="4">
-												<button className="nextButton" style={{ width: "80%" }}>Next</button>
+												<button className={this.state.totalPages == this.state.pageNumber ? "prevButton" : "nextButton"} style={{ width: "80%" }}>Next</button>
 											</Col>
 										</Row>
 									</Col>
@@ -81,7 +110,7 @@ class ProductListData extends Component {
 									<button className="prevButton" style={{ width: "80%" }}>Prev</button>
 								</Col>
 								<Col xs="4">
-									<span>Page 1 of 1</span>
+									<span>Page {this.state.pageNumber} of {this.state.totalPages}</span>
 								</Col>
 								<Col xs="4">
 									<button className="nextButton" style={{ width: "80%" }}>Next</button>
@@ -92,13 +121,13 @@ class ProductListData extends Component {
 				</div>
 				<div className="start">
 					<ul className="products">
-						{Object.keys(list).map((keyName) =>
-							<li>
+						{Object.keys(list).map((keyName,index) =>
+							<li key={index}>
 								<div className="alsoLikeCard">
 									<span className="percentage-text" style={{ display: 'none' }}>30</span>
 									<span className="save-text">5</span>
 									<img src={save} className="save" />
-									<img src={logo1} className="cardImage" />
+									<img src={list[keyName].json.imageUrl.primaryimage[0] != "" ? list[keyName].json.imageUrl.primaryimage[0] : placeholder} className="cardImage" />
 									<img src={percentage} className="percentage" style={{ display: 'none' }} />
 									<div style={{ marginTop: 10 }}>
 										<label className="text-color">{list[keyName].json.name}</label>
@@ -140,7 +169,7 @@ class ProductListData extends Component {
 									<button className="prevButton">Prev</button>
 								</Col>
 								<Col xs="4">
-									<span>Page 1 of 1</span>
+									<span>Page {this.state.pageNumber} of {this.state.totalPages}</span>
 								</Col>
 								<Col xs="4">
 									<button className="nextButton">Next</button>
@@ -156,7 +185,7 @@ class ProductListData extends Component {
 							<button className="prevButton" style={{ width: "80%" }}>Prev</button>
 						</Col>
 						<Col xs="4">
-							<span>Page 1 of 1</span>
+							<span>Page {this.state.pageNumber} of {this.state.totalPages}</span>
 						</Col>
 						<Col xs="4">
 							<button className="nextButton" style={{ width: "80%" }}>Next</button>

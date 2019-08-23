@@ -311,7 +311,7 @@ class MainHeader extends Component {
                                                     <i className="icon-down" ></i>
                                                 </div>
                                                 <div className="list">
-                                                    <div style={{paddingLeft:10}}> 
+                                                    <div style={{paddingLeft:10, paddingBottom: 7}}> 
                                                         <img style={{height: '20px',width: '30px'}} src={UAEImage}></img>
                                                         <a href="javascript:void(0);" className="uae" id="cart" onClick={() => this.onChangeCountry('UAE')}><FormattedMessage id="header.uaes" defaultMessage="UAE" /></a>
                                                     </div>
