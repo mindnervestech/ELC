@@ -114,9 +114,9 @@ class ProductDetails extends Component {
 							{this.props.productDetailLoader ? <Spinner /> : (<div className="container" style={{maxWidth: '85%'}}>
 								<ProductInfo data={this.props.productDetails} currentStore={this.props.globals.currentStore} />
 
-								{this.props.productDetails.similar_products && (
+								{/* {this.props.productDetails.similar_products && (
 									<ProductSlider currency={this.props.productDetails.currency} store_name={this.props.globals.store_locale} similar_product={this.props.productDetails.similar_products} />
-								)}
+								)} */}
 
 							</div>)}
 						</div>
