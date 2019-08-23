@@ -293,7 +293,7 @@ class Login extends Component {
 
                 </div>
                 <div className="col col-12 apex-col-auto backWhite">
-                  <div className="t-BreadcrumbRegion containers t-BreadcrumbRegion--showBreadcrumb t-BreadcrumbRegion--useBreadcrumbTitle secondHeaderTitle">New to ELC</div>
+                  <div className="t-BreadcrumbRegion containers t-BreadcrumbRegion--showBreadcrumb t-BreadcrumbRegion--useBreadcrumbTitle secondHeaderTitle"><FormattedMessage id="newToElc.newToElc" defaultMessage="New to ELC" /></div>
                   <div className="row t-BreadcrumbRegion containers t-BreadcrumbRegion--showBreadcrumb t-BreadcrumbRegion--useBreadcrumbTitle">
                     <div className="col col-12 apex-col-auto paddingBottom ">
                       <div className="col col-6 colUp">

@@ -6,335 +6,6 @@ import { Redirect } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import $ from 'jquery';
 
-
-let productZoomDetails = 
-			  {
-				"category_id": "32,42",
-				"category_names": "Nightwear-Casual Nightwear",
-				"id": "243",
-				"sku": "212709505",
-				"name": "3-piece Pajama Set",
-				"imageUrl": {
-				  "primaryimage": [
-					"http://d2jycf5zd5b1ta.cloudfront.net/pub/media/catalog/product/n/a/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505-1511.jpg"
-				  ],
-				  "thumbnail": [
-					"http://d2jycf5zd5b1ta.cloudfront.net/pub/media/catalog/product/n/a/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505-1511.jpg",
-					"http://d2jycf5zd5b1ta.cloudfront.net/pub/media/catalog/product/n/a/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505-1528.jpg",
-					"http://d2jycf5zd5b1ta.cloudfront.net/pub/media/catalog/product/n/a/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505-1498.jpg",
-					"http://d2jycf5zd5b1ta.cloudfront.net/pub/media/catalog/product/n/a/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505-1506.jpg"
-				  ],
-				  "zoomimage": [
-					"http://d2jycf5zd5b1ta.cloudfront.net/pub/media/catalog/product/n/a/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505-1511.jpg",
-					"http://d2jycf5zd5b1ta.cloudfront.net/pub/media/catalog/product/n/a/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505-1528.jpg",
-					"http://d2jycf5zd5b1ta.cloudfront.net/pub/media/catalog/product/n/a/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505-1498.jpg",
-					"http://d2jycf5zd5b1ta.cloudfront.net/pub/media/catalog/product/n/a/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505-1506.jpg"
-				  ]
-				},
-				"mediaVideoUrl": [
-				  "https://storage.googleapis.com/nay/videos/product/au19/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505.mp4"
-				],
-				"you_save": "",
-				"you_save_value": "",
-				"percentage": "",
-				"simplestatus": 0,
-				"simpleqty": 0,
-				"simplesize": "",
-				"simplecolor": "",
-				"type": "configurable",
-				"created_at": "2019-08-02 12:48:08",
-				"updated_at": "2019-08-05 16:14:16",
-				"description": "Treat yourself with our latest casual nightwear collections. This pretty 3-piece pajama set features beautiful embroidery and dramatic lace details on the back of the featured short robe.",
-				"short_description": "3-piece Pajama Set",
-				"short_description_en": "3-piece Pajama Set",
-				"category_desc": "Nightwear",
-				"collection_desc": "Lorna",
-				"style_desc": "Pajama Set",
-				"exclude_international": "No",
-				"currency": "AED",
-				"price": 309,
-				"special_price": "",
-				"meta_title": "Buy  3-piece Pajama Set Online at Nayomi UAE",
-				"meta_keywords": "",
-				"meta_description": "Shop For  Treat yourself with our latest casual nightwear collections. This pretty 3-piece pajama set features beautiful embroidery and dramatic lace details on the back of the featured short robe. Online at best price at Nayomi UAE",
-				"is_in_wishlist": false,
-				"wishlist_itemid": "",
-				"simpleproducts": [
-				  {
-					"sku": "212709513",
-					"store_level_stock": {
-					  "status": 1,
-					  "stock": "2",
-					  "message": "Product quantity available"
-					},
-					"qty": "2",
-					"simple_image": {
-					  "primaryimage": [
-						"http://d2jycf5zd5b1ta.cloudfront.net/pub/media/catalog/product/n/a/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505-1511.jpg"
-					  ],
-					  "thumbnail": [
-						"http://d2jycf5zd5b1ta.cloudfront.net/pub/media/catalog/product/n/a/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505-1511.jpg",
-						"http://d2jycf5zd5b1ta.cloudfront.net/pub/media/catalog/product/n/a/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505-1528.jpg",
-						"http://d2jycf5zd5b1ta.cloudfront.net/pub/media/catalog/product/n/a/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505-1498.jpg",
-						"http://d2jycf5zd5b1ta.cloudfront.net/pub/media/catalog/product/n/a/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505-1506.jpg"
-					  ],
-					  "zoomimage": [
-						"http://d2jycf5zd5b1ta.cloudfront.net/pub/media/catalog/product/n/a/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505-1511.jpg",
-						"http://d2jycf5zd5b1ta.cloudfront.net/pub/media/catalog/product/n/a/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505-1528.jpg",
-						"http://d2jycf5zd5b1ta.cloudfront.net/pub/media/catalog/product/n/a/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505-1498.jpg",
-						"http://d2jycf5zd5b1ta.cloudfront.net/pub/media/catalog/product/n/a/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505-1506.jpg"
-					  ]
-					},
-					"simple_video": [
-					  "https://storage.googleapis.com/nay/videos/product/au19/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505.mp4"
-					],
-					"color": {
-					  "text": "Pink",
-					  "originalName": "Pink",
-					  "option_id": "93",
-					  "option_value": "670",
-					  "url": "http://d2jycf5zd5b1ta.cloudfront.net/pub/media/attribute/swatch/p/i/pink_1_.jpg"
-					},
-					"size": {
-					  "text": "S",
-					  "option_id": "145",
-					  "option_value": "509"
-					},
-					"stockstatus": 1
-				  },
-				  {
-					"sku": "212709521",
-					"store_level_stock": {
-					  "status": 1,
-					  "stock": "4",
-					  "message": "Product quantity available"
-					},
-					"qty": "4",
-					"simple_image": {
-					  "primaryimage": [
-						"http://d2jycf5zd5b1ta.cloudfront.net/pub/media/catalog/product/n/a/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505-1511.jpg"
-					  ],
-					  "thumbnail": [
-						"http://d2jycf5zd5b1ta.cloudfront.net/pub/media/catalog/product/n/a/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505-1511.jpg",
-						"http://d2jycf5zd5b1ta.cloudfront.net/pub/media/catalog/product/n/a/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505-1528.jpg",
-						"http://d2jycf5zd5b1ta.cloudfront.net/pub/media/catalog/product/n/a/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505-1498.jpg",
-						"http://d2jycf5zd5b1ta.cloudfront.net/pub/media/catalog/product/n/a/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505-1506.jpg"
-					  ],
-					  "zoomimage": [
-						"http://d2jycf5zd5b1ta.cloudfront.net/pub/media/catalog/product/n/a/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505-1511.jpg",
-						"http://d2jycf5zd5b1ta.cloudfront.net/pub/media/catalog/product/n/a/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505-1528.jpg",
-						"http://d2jycf5zd5b1ta.cloudfront.net/pub/media/catalog/product/n/a/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505-1498.jpg",
-						"http://d2jycf5zd5b1ta.cloudfront.net/pub/media/catalog/product/n/a/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505-1506.jpg"
-					  ]
-					},
-					"simple_video": [
-					  "https://storage.googleapis.com/nay/videos/product/au19/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505.mp4"
-					],
-					"color": {
-					  "text": "Pink",
-					  "originalName": "Pink",
-					  "option_id": "93",
-					  "option_value": "670",
-					  "url": "http://d2jycf5zd5b1ta.cloudfront.net/pub/media/attribute/swatch/p/i/pink_1_.jpg"
-					},
-					"size": {
-					  "text": "M",
-					  "option_id": "145",
-					  "option_value": "507"
-					},
-					"stockstatus": 1
-				  },
-				  {
-					"sku": "212709530",
-					"store_level_stock": {
-					  "status": 1,
-					  "stock": "4",
-					  "message": "Product quantity available"
-					},
-					"qty": "4",
-					"simple_image": {
-					  "primaryimage": [
-						"http://d2jycf5zd5b1ta.cloudfront.net/pub/media/catalog/product/n/a/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505-1511.jpg"
-					  ],
-					  "thumbnail": [
-						"http://d2jycf5zd5b1ta.cloudfront.net/pub/media/catalog/product/n/a/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505-1511.jpg",
-						"http://d2jycf5zd5b1ta.cloudfront.net/pub/media/catalog/product/n/a/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505-1528.jpg",
-						"http://d2jycf5zd5b1ta.cloudfront.net/pub/media/catalog/product/n/a/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505-1498.jpg",
-						"http://d2jycf5zd5b1ta.cloudfront.net/pub/media/catalog/product/n/a/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505-1506.jpg"
-					  ],
-					  "zoomimage": [
-						"http://d2jycf5zd5b1ta.cloudfront.net/pub/media/catalog/product/n/a/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505-1511.jpg",
-						"http://d2jycf5zd5b1ta.cloudfront.net/pub/media/catalog/product/n/a/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505-1528.jpg",
-						"http://d2jycf5zd5b1ta.cloudfront.net/pub/media/catalog/product/n/a/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505-1498.jpg",
-						"http://d2jycf5zd5b1ta.cloudfront.net/pub/media/catalog/product/n/a/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505-1506.jpg"
-					  ]
-					},
-					"simple_video": [
-					  "https://storage.googleapis.com/nay/videos/product/au19/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505.mp4"
-					],
-					"color": {
-					  "text": "Pink",
-					  "originalName": "Pink",
-					  "option_id": "93",
-					  "option_value": "670",
-					  "url": "http://d2jycf5zd5b1ta.cloudfront.net/pub/media/attribute/swatch/p/i/pink_1_.jpg"
-					},
-					"size": {
-					  "text": "L",
-					  "option_id": "145",
-					  "option_value": "505"
-					},
-					"stockstatus": 1
-				  },
-				  {
-					"sku": "212709548",
-					"store_level_stock": {
-					  "status": 1,
-					  "stock": "2",
-					  "message": "Product quantity available"
-					},
-					"qty": "2",
-					"simple_image": {
-					  "primaryimage": [
-						"http://d2jycf5zd5b1ta.cloudfront.net/pub/media/catalog/product/n/a/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505-1511.jpg"
-					  ],
-					  "thumbnail": [
-						"http://d2jycf5zd5b1ta.cloudfront.net/pub/media/catalog/product/n/a/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505-1511.jpg",
-						"http://d2jycf5zd5b1ta.cloudfront.net/pub/media/catalog/product/n/a/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505-1528.jpg",
-						"http://d2jycf5zd5b1ta.cloudfront.net/pub/media/catalog/product/n/a/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505-1498.jpg",
-						"http://d2jycf5zd5b1ta.cloudfront.net/pub/media/catalog/product/n/a/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505-1506.jpg"
-					  ],
-					  "zoomimage": [
-						"http://d2jycf5zd5b1ta.cloudfront.net/pub/media/catalog/product/n/a/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505-1511.jpg",
-						"http://d2jycf5zd5b1ta.cloudfront.net/pub/media/catalog/product/n/a/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505-1528.jpg",
-						"http://d2jycf5zd5b1ta.cloudfront.net/pub/media/catalog/product/n/a/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505-1498.jpg",
-						"http://d2jycf5zd5b1ta.cloudfront.net/pub/media/catalog/product/n/a/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505-1506.jpg"
-					  ]
-					},
-					"simple_video": [
-					  "https://storage.googleapis.com/nay/videos/product/au19/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505.mp4"
-					],
-					"color": {
-					  "text": "Pink",
-					  "originalName": "Pink",
-					  "option_id": "93",
-					  "option_value": "670",
-					  "url": "http://d2jycf5zd5b1ta.cloudfront.net/pub/media/attribute/swatch/p/i/pink_1_.jpg"
-					},
-					"size": {
-					  "text": "XL",
-					  "option_id": "145",
-					  "option_value": "511"
-					},
-					"stockstatus": 1
-				  },
-				  {
-					"sku": "212709556",
-					"store_level_stock": {
-					  "status": 1,
-					  "stock": "2",
-					  "message": "Product quantity available"
-					},
-					"qty": "2",
-					"simple_image": {
-					  "primaryimage": [
-						"http://d2jycf5zd5b1ta.cloudfront.net/pub/media/catalog/product/n/a/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505-1511.jpg"
-					  ],
-					  "thumbnail": [
-						"http://d2jycf5zd5b1ta.cloudfront.net/pub/media/catalog/product/n/a/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505-1511.jpg",
-						"http://d2jycf5zd5b1ta.cloudfront.net/pub/media/catalog/product/n/a/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505-1528.jpg",
-						"http://d2jycf5zd5b1ta.cloudfront.net/pub/media/catalog/product/n/a/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505-1498.jpg",
-						"http://d2jycf5zd5b1ta.cloudfront.net/pub/media/catalog/product/n/a/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505-1506.jpg"
-					  ],
-					  "zoomimage": [
-						"http://d2jycf5zd5b1ta.cloudfront.net/pub/media/catalog/product/n/a/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505-1511.jpg",
-						"http://d2jycf5zd5b1ta.cloudfront.net/pub/media/catalog/product/n/a/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505-1528.jpg",
-						"http://d2jycf5zd5b1ta.cloudfront.net/pub/media/catalog/product/n/a/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505-1498.jpg",
-						"http://d2jycf5zd5b1ta.cloudfront.net/pub/media/catalog/product/n/a/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505-1506.jpg"
-					  ]
-					},
-					"simple_video": [
-					  "https://storage.googleapis.com/nay/videos/product/au19/nay-au19-casual-nightwear-mainrange-lorna-3pcpajama-212709505.mp4"
-					],
-					"color": {
-					  "text": "Pink",
-					  "originalName": "Pink",
-					  "option_id": "93",
-					  "option_value": "670",
-					  "url": "http://d2jycf5zd5b1ta.cloudfront.net/pub/media/attribute/swatch/p/i/pink_1_.jpg"
-					},
-					"size": {
-					  "text": "XXL",
-					  "option_id": "145",
-					  "option_value": "513"
-					},
-					"stockstatus": 1
-				  }
-				],
-				"similar_products": [
-				  {
-					"name": "Long Dress",
-					"description": "Lorna",
-					"currency": "AED",
-					"price": 209,
-					"productImageUrl": [
-					  "http://d2jycf5zd5b1ta.cloudfront.net/pub/media/catalog/product/n/a/nay-au19-casual-nightwear-mainrange-lorna-longdress-212709425-1442.jpg"
-					],
-					"buymore_savemore": {
-					  "status": 0,
-					  "message": "No Data found"
-					},
-					"url_key": "pink-long dress-212709425"
-				  },
-				  {
-					"name": "Pajama Set",
-					"description": "Bridgette",
-					"currency": "AED",
-					"price": 209,
-					"productImageUrl": [
-					  "http://d2jycf5zd5b1ta.cloudfront.net/pub/media/catalog/product/n/a/nay-au19-bridgetpajamaset-212951238-3847.jpg"
-					],
-					"buymore_savemore": {
-					  "status": 0,
-					  "message": "No Data found"
-					},
-					"url_key": "pink-pajama set-212951238"
-				  },
-				  {
-					"name": "Long Dress",
-					"description": "Bridgette",
-					"currency": "AED",
-					"price": 209,
-					"productImageUrl": [
-					  "http://d2jycf5zd5b1ta.cloudfront.net/pub/media/catalog/product/n/a/nay-au19-casual-nightwear-mainrange-brigette-longdress-212951289-1354.jpg"
-					],
-					"buymore_savemore": {
-					  "status": 0,
-					  "message": "No Data found"
-					},
-					"url_key": "pink-long dress-212951289"
-				  },
-				  {
-					"name": "3-piece Pajama Set",
-					"description": "Bridgette",
-					"currency": "AED",
-					"price": 309,
-					"productImageUrl": [
-					  "http://d2jycf5zd5b1ta.cloudfront.net/pub/media/catalog/product/n/a/nay-au19-casual-nightwear-mainrange-brigette-3pcpajama-212951334-3401.jpg"
-					],
-					"buymore_savemore": {
-					  "status": 0,
-					  "message": "No Data found"
-					},
-					"url_key": "pink-3-piece pajama set-212951334"
-				  }
-				],
-				"offers": {
-				  "status": 0,
-				  "message": "No Data found"
-				}
-			  }
-
 class ProductZoom extends Component {
 	constructor(props) {
 		super(props);
@@ -406,14 +77,14 @@ class ProductZoom extends Component {
 
 			let thumbnails, zoomimages;
 
-			if (data.thumbnail) {
-				thumbnails = data.thumbnail;
+			if (data) {
+				thumbnails = data;
 			}
-			if (data.zoomimage) {
-				zoomimages = data.zoomimage;
+			if (data) {
+				zoomimages = data;
 			}
 
-			if (data.thumbnail.length > 1) {
+			if (data.length > 1) {
 				return (
 					<a href={zoomimages[0]} className="MagicZoom" id="zoom-v">
 						<img src={thumbnails[0]} alt="" />
@@ -440,23 +111,23 @@ class ProductZoom extends Component {
 
 			let thumbnails, zoomimages;
 
-			if (data.thumbnail) {
-				thumbnails = data.thumbnail;
+			if (data) {
+				thumbnails = data;
 			}
-			if (data.zoomimage) {
-				zoomimages = data.zoomimage;
+			if (data) {
+				zoomimages = data;
 			}
 
-			if (data.thumbnail.length > 1) {
+			if (data.length > 1) {
 				return (
 					<a href={zoomimages[0]} className="MagicZoom" id="zoom-v">
-						<img src={thumbnails[0]} alt="" />
+						<img style={{height:590, width: 590}} src={thumbnails[0]} alt="" />
 					</a>
 				);
 			} else {
 				return (
 					<a href={zoomimages[0]} className="MagicZoom" id="zoom-v">
-						<img src={zoomimages[0]} alt="" />
+						<img style={{height:590, width: 590}} src={zoomimages[0]} alt="" />
 					</a>
 				);
 			}
@@ -486,10 +157,10 @@ class ProductZoom extends Component {
 
 	_checkSingleImage = (imageUrl, color, index) => {
 		// console.log(imageUrl);	
-		if ( (imageUrl) && (imageUrl.thumbnail) ) {
+		if ( (imageUrl) ) {
 			// console.log('imageUrl',imageUrl);
 
-			if (imageUrl.thumbnail.length >= 1) {
+			if (imageUrl) {
 				return (
 					this._checkDataExist(imageUrl, color, index)
 				);
@@ -499,12 +170,16 @@ class ProductZoom extends Component {
 	}	
 
 	_checkDataExist = (data, color, index) => {
-		// console.log('data', data);
 		if (data) {
-			if ((data.thumbnail) && (data.thumbnail.length >= 1)) {
-				const asdf = data.thumbnail.map((item, index) => this._renderData(item, index,color));
-				return asdf;
-			}
+			// if (data) {
+			// 	const asdf = data.map((item, index) => this._renderData(item, index,color));
+			// 	return asdf;
+			// }
+			return (
+				<a data-slide-id="zoom" data-zoom-id="zoom-v" href={data} data-image={data} color-id={`${color}_${index}`} name="zoom-images-lg" onClick={(e)=> this._handleThumbImgClick(e,'img')}>
+					<img srcSet={data} src={data} alt="" />
+				</a>
+			);
 		}
 	};
 
@@ -531,8 +206,8 @@ class ProductZoom extends Component {
 
 		let thumbnails;
 
-		if (productZoomDetails.imageUrl.thumbnail) {
-			thumbnails = productZoomDetails.imageUrl.thumbnail;
+		if (this.props.productDataDetail.products_images) {
+			thumbnails = this.props.productDataDetail.products_images;
 		}
 
 		return (
@@ -563,7 +238,7 @@ class ProductZoom extends Component {
 			document.getElementById('Capa_1').setAttribute('class', 'naylove-icon active');
 			const data = {
 				customer_id: this.props.customerDetails.customer_id,
-				product_id: productZoomDetails.id,
+				product_id: this.props.productDataDetail.id,
 			};
 			this.props.onAddToWishList(data);
 
@@ -597,39 +272,37 @@ class ProductZoom extends Component {
 
 
 	render() {
-		const { isActive, globals } = this.props;
+		const { isActive, globals, productDataDetail } = this.props;
 		// console.log('In render productZoomDetails', productZoomDetails);
-		console.log(this.props);
-		
-		  console.log(productZoomDetails);
+
 
 		if (this.state.guestUser) {
-			return <Redirect to={`/${globals.store_locale}/add-wishlist?item=${productZoomDetails.id}`} />
+			return <Redirect to={`/${globals.store_locale}/add-wishlist?item=${productDataDetail.id}`} />
 		}
 
 		let newImageArray = [];
 
-		if (productZoomDetails.simpleproducts) {
-			let arr = [];
-			let imageArray = [];
-			Object.keys(productZoomDetails.simpleproducts).map((item, index) => {
-				let img = {
-					text: productZoomDetails.simpleproducts[item].color.text,
-					image: productZoomDetails.simpleproducts[item].simple_image,
-					video:productZoomDetails.simpleproducts[item].simple_video
-				}
-				imageArray.push(img);
-			});
+		// if (productZoomDetails.simpleproducts) {
+		// 	let arr = [];
+		// 	let imageArray = [];
+		// 	Object.keys(productZoomDetails.simpleproducts).map((item, index) => {
+		// 		let img = {
+		// 			text: productZoomDetails.simpleproducts[item].color.text,
+		// 			image: productZoomDetails.simpleproducts[item].simple_image,
+		// 			video:productZoomDetails.simpleproducts[item].simple_video
+		// 		}
+		// 		imageArray.push(img);
+		// 	});
 
-			newImageArray = this._getUnique(imageArray, 'text');
-		}
+		// 	newImageArray = this._getUnique(imageArray, 'text');
+		// }
 
 		let image_array = {
 		};
 
 		if(newImageArray.length == 0){
-			if(productZoomDetails.imageUrl)
-				image_array['default'] = productZoomDetails.imageUrl;
+			if(productDataDetail.imageUrl)
+				image_array['default'] = productDataDetail.imageUrl;
 		}
 
 		for(let i=0;i<newImageArray.length; i++){
@@ -670,7 +343,7 @@ class ProductZoom extends Component {
 							</td> */}
 
 							{/* this.checkSingleImage(this.props.productZoomDetails.imageUrl) */}
-							{productZoomDetails.imageUrl && productZoomDetails.imageUrl.thumbnail.length > 1  && 
+							{productDataDetail.imageUrl && productDataDetail.imageUrl && 
 								( <td className="zoom-gallery-thumbnails">
 									<div
 										className="MagicScroll MagicScroll-arrows-inside MagicScroll-vertical"
@@ -686,12 +359,12 @@ class ProductZoom extends Component {
 										}}
 									>
 										{
-											image_array && Object.keys(image_array).map((color, index) => {
-												return (this._checkSingleImage(image_array[color], color, index));
+											productDataDetail.products_images && Object.keys(productDataDetail.products_images).map((color, index) => {
+												return (this._checkSingleImage(productDataDetail.products_images[color], color, index));
 											})
 										}
 
-										{this._checkVideoDataExist(productZoomDetails.mediaVideoUrl)}
+										{this._checkVideoDataExist(productDataDetail.mediaVideoUrl)}
 
 									</div>	
 								</td>)
@@ -699,7 +372,7 @@ class ProductZoom extends Component {
 							
 							<td style={{ width: '80%' }}>
 								<div data-slide-id="zoom" className="zoom-gallery-slide active">
-									<a>
+									{/* <a>
 										<button id="wishListId" type="button" className="naylove">
 											<svg
 												xmlns="http://www.w3.org/2000/svg"
@@ -724,7 +397,7 @@ class ProductZoom extends Component {
 												</g>{' '}
 											</svg>
 										</button>
-									</a>
+									</a> */}
 
 									{	image_array && Object.keys(image_array).map((color, index) => {
 
@@ -737,16 +410,16 @@ class ProductZoom extends Component {
 
 										})
 									}
-
-									{this._getImageData(productZoomDetails.imageUrl)}
+									
+									{this._getImageData(productDataDetail.products_images)}
 
 								</div>
                 
                 				{
-									(productZoomDetails.mediaVideoUrl && productZoomDetails.mediaVideoUrl.length > 0) ?
+									(productDataDetail.mediaVideoUrl && productDataDetail.mediaVideoUrl.length > 0) ?
 
 									<div data-slide-id="video-1" class="zoom-gallery-slide video-slide">
-											{this._getVideoData(productZoomDetails.mediaVideoUrl)}
+											{this._getVideoData(productDataDetail.mediaVideoUrl)}
 									</div>
 									: ''
 								}

@@ -20,6 +20,9 @@ import socialskills_icon from '../../../../assets/images/social/socialskills_ico
 import imagination_icon from '../../../../assets/images/social/imagination_icon.png';
 
 import ShareUrl from '../product-details/product-info/product-size';
+import Popup from 'react-popup';
+import { connect } from 'react-redux';
+import * as actions from '../../../redux/actions/index';
 
 const mediaVideo = 'https://storage.googleapis.com/nay/videos/product/au19/nay-au19-casual-nightwear-mainrange-nicoline-pajamaset-212884961.mp4';
 
@@ -44,16 +47,72 @@ class ProductInfo extends Component {
 	};
 
 	increment = totalQty => {
-			this.setState({ defaultQty: totalQty + 1 });
+		// this.setState({ defaultQty: totalQty + 1 });
+		let currQty = this.state.defaultQty;
+		//console.log('increment', totalQty);
+		if (currQty >= totalQty) {
+			let popupMessage = null;
+			console.log("this.props", this.props)
+			let currentStore = this.props.currentStore;
+			
+			if(currentStore == 1 || currentStore == 3 || currentStore == 5){
+				console.log("currentStore", currentStore)
+				popupMessage = Popup.register({
+					title: 'محزر',
+					content: `الحد الأقصى لكمية الطلب من هذا المنتج هي ${parseInt(totalQty)} يرجى تغيير الكمية المحددة لتكون ضمن هذا العدد. لطلب كمية أكثر من ${parseInt(totalQty)} يرجى اللاتصال بنا.`,
+					buttons: {
+						right: [{
+						text: 'حسنا',
+							action: function(){
+								Popup.close();
+							}
+						}]
+					}
+				});
+				Popup.queue(popupMessage);
+			} else {
+				console.log("currentStore", currentStore)
+				popupMessage = Popup.register({
+					title: 'Alert',
+					content: `This product has a maximum orderable quantity of ${parseInt(totalQty)} Please update your selected quantity to be within this limit.To order quantity more than ${parseInt(totalQty)} please contact us.`,
+					buttons: {
+						right: [{
+							text: 'OK',
+							action: function(){
+								Popup.close();
+							}
+						}]
+					}
+				});
+				Popup.queue(popupMessage);
+			}
+		} else {
+			this.setState({ defaultQty: currQty + 1 });
+		}
 	};
 
 	onCloseFirstModal = () => {
 		this.setState({ openShareModel: false })
-		
+	}
+
+	addToWishlist = (productId) => {
+		console.log(productId);
+		const data = {
+			customer_id: 13, // this.props.customerDetails.customer_id,
+			product_id: productId,
+		};
+		this.props.onAddToWishList(data);
+	}
+
+	removeToWishlist = (wishlistId) => {
+		this.props.onRemoveWishList({
+			wishlist_id: wishlistId
+		})
 	}
 
 	render() {
-		const { data } = this.props;
+		const { data, productDataDetail } = this.props;
+		console.log(productDataDetail);
 
 		return (
 			<div className="row">
@@ -64,7 +123,7 @@ class ProductInfo extends Component {
 				<div className="col col-12 apex-col-auto carpusel-dots" style={{paddingTop:'20px'}}>
 					<div className="col col-7">
 						<h2 className="product-title" style={{marginBottom: 20}}>
-							elc wooden london bus with a very long title over two lines
+							{productDataDetail.name}
 						</h2>
 						<div className="write-review" style={{marginBottom: 20}}>
 							<span style={{marginRight: 10}}>
@@ -77,7 +136,7 @@ class ProductInfo extends Component {
 							</span>
 						</div>
 						<div>
-						<ProductZoom />
+						<ProductZoom productDataDetail={productDataDetail}/>
                         {/* <Carousel showStatus={false}
                         showThumbs={true}
                         infiniteLoop={true}
@@ -132,8 +191,12 @@ class ProductInfo extends Component {
 										</div>
 
 										<div className="prod-price">
-											<span className="product-price">£20.00</span>
-											<span className="product-price-line">£25.00</span>
+											{productDataDetail.special_price ?
+											<div> 
+												<span className="product-price">£35.00</span>
+												<span className="product-price-line">£{Number(productDataDetail.price).toFixed(2)}</span> 
+											</div>:
+											<span className="product-price">£{Number(productDataDetail.price).toFixed(2)}</span>}
 										</div>
 										<div className="prod-color">
 											<div>
@@ -206,13 +269,23 @@ class ProductInfo extends Component {
 												<span className="t-Form-itemText t-Form-itemText--post">
 													<i
 														className="icon max qty-dec-inc"
-														onClick={e => this.increment(this.state.defaultQty)}
+														onClick={e => this.increment(productDataDetail.quantity_and_stock_status.qty)}
 													>
 														+
 													</i>
 												</span>
 											</div>
 										</div>
+										<div style={{width:'100%', marginBottom:20}}>
+											{!productDataDetail.quantity_and_stock_status.is_in_stock ?
+											<span style={{margin:'10px', color: '#ee0E19'}}>
+												Out of stock
+											</span> :
+											<span className="in-stock" style={{color:'#0D943F'}}>
+												In stock
+											</span> }
+										</div>
+										<Popup />
 										<div className="alsoLikeCard add-cart">
 											<div className="homePage">
 												<button className="alsoLikeCardButton" style={{marginTop: 0}}>add to basket</button>
@@ -220,10 +293,15 @@ class ProductInfo extends Component {
 										</div>
 
 										<div className="share-wishlist">
-											<a className="hover-on-favorite" style={{marginRight: 35}}>
-												<img src={favoriteImg} />
-												<span>add to wishlist</span>
-											</a>
+											{!productDataDetail.is_in_wishlist ?
+												<a onClick={() => this.addToWishlist(productDataDetail.id)} className="hover-on-favorite" style={{marginRight: 35}}>
+													<img src={favoriteImg} />
+													<span>add to wishlist</span>
+												</a> :
+												<a onClick={this.removeToWishlist(productDataDetail.wishlist_itemid)} className="hover-on-favorite" style={{marginRight: 35}}>
+													<img src={favoriteImg} />
+													<span>remove to wishlist</span>
+												</a> }
 											<a onClick={() => this.setState({ openShareModel: true })} className="hover-on-favorite">
 												<i className='fa fa-share-alt' style={{fontSize:25, marginRight:13}}></i>
 												<span >Share</span>
@@ -303,4 +381,23 @@ class ProductInfo extends Component {
 	}
 }
 
-export default ProductInfo;
+const mapStateToProps = state => {
+	return {
+		globals: state.global,
+		productZoomDetails: state.productDetails.productData,
+		customerDetails: state.login.customer_details,
+		productWishDetail: state.productDetails.productWishDetail,
+		productDetails: state.productDetails.productColor
+	};
+};
+
+const mapDispatchToProps = dispatch => {
+	return {
+		onAddToWishList: payload => dispatch(actions.addToWishlist(payload)),
+		onRemoveWishList: (payload) => dispatch(actions.removeWishList(payload))
+	};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductInfo);
+
+// export default ProductInfo;

@@ -110,7 +110,13 @@ export const API = {
 		request(data, cb, { type: 'POST', url: GUEST_ADD_TO_CART_LINK });
 	},
 
-	getProductList: (data, cb) => request(data, cb, GET_PRODUCT_LIST),
+	getProductList: (data, cb) => {
+		//https://elcm2.iksulalive.com/index.php/rest/V1/app/productlisting?url_key=dressing-up-role-play&storeid=2
+		
+		//request(data, cb, GET_PRODUCT_LIST)
+		let GET_PRODUCT_LIST_BY_CATEGARY = `${BASE_URL}productlisting/?url_key=${data.url_key}&storeid=${data.storeid}`;
+		request({}, cb, { type: 'GET', url: GET_PRODUCT_LIST_BY_CATEGARY });
+	},
 	getProductSearchList: (data, cb) => {
         let GET_PRODUCT_LIST_BY_SEARCH = `${BASE_URL}searchresult/?q=${data.q}&storeid=6`;
         request({}, cb, { type: 'GET', url: GET_PRODUCT_LIST_BY_SEARCH });

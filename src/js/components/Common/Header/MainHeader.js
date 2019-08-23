@@ -16,9 +16,9 @@ import { Helmet } from 'react-helmet';
 import { WEB_URL } from '../../../api/globals';
 import { Container, Row, Col, Button } from 'reactstrap';
 
-import freeDelivery from '../../../../assets/images/header/Truck.svg';
 import deliveryBy from '../../../../assets/images/header/Truck1.svg';
-import freeCollect from '../../../../assets/images/header/Mouse.svg';
+import freeDelivery from '../../../../assets/images/elc_icon_03.png';
+import freeCollect from '../../../../assets/images/elc_icon_05.png';
 import logoGroup from '../../../../assets/images/social/Logo Group.svg';
 import bagLogo from '../../../../assets/images/header/Store Locator 3 Copy 2.svg';
 
@@ -69,12 +69,14 @@ class MainHeader extends Component {
 
 
         let country = (cookie.load('country') === null) ? 'KSA' : cookie.load('country');
-        this.setState({ country_flag: this.getFlagName(country), country_name: "UNITED KINGDOM" });
+        this.setState({ country_flag: "UAE", country_name: "UNITED ARAB EMIRATES" });
         this.getStore();
         this.props.onGetStoreList({
             country_id: '',
             city: ''
         });
+
+        // this.onChangeCountry('UAE', 'UNITED ARAB EMIRATES');
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -336,12 +338,12 @@ class MainHeader extends Component {
                                     <li className="titleHover">
                                         {/* <i className="icon-heart"></i> */}
                                         <img src={help} className="image-ion"></img>
-                                        <label className="iconLeble text-color changeLinkText">help</label>
+                                        <label className="iconLeble text-color changeLinkText"><FormattedMessage id="Header.Help" defaultMessage="help" /></label>
                                     </li>
                                     <li className="titleHover">
                                         <Link to={`/${store_locale}/Login`} style={{ textDecoration: 'none' }}>
                                             <img src={profile} className="image-ion"></img>
-                                            <label className="iconLeble text-color changeLinkText">sign in / register</label>
+                                            <label className="iconLeble text-color changeLinkText"><FormattedMessage id="Header.SignInOrRegister" defaultMessage="sign in / register" /></label>
                                         </Link>
                                     </li>
                                     {/* <li>
@@ -553,11 +555,11 @@ class MainHeader extends Component {
                                             <Col xs="7">
                                                 <ul style={{ textAlign: 'start' }}>
                                                     <li style={{ fontSize: 13, color: "#0D943F" }}>
-                                                        free UK delivery
+                                                        Free Std Delivery
                                                     </li>
-                                                    <li style={{ fontSize: 11 }} className="text-color">
+                                                    {/* <li style={{ fontSize: 11 }} className="text-color">
                                                         when you spend £10
-                                                    </li>
+                                                    </li> */}
                                                 </ul>
                                             </Col>
                                         </Row>
@@ -571,11 +573,11 @@ class MainHeader extends Component {
                                             <Col xs="7">
                                                 <ul style={{ textAlign: 'start' }}>
                                                     <li style={{ fontSize: 13, color: "#0D943F" }}>
-                                                        order by 7pm
+                                                        Free Gift wrapping
                                                     </li>
-                                                    <li style={{ fontSize: 11 }} className="text-color">
+                                                    {/* <li style={{ fontSize: 11 }} className="text-color">
                                                         for next working day delivery
-                                                    </li>
+                                                    </li> */}
                                                 </ul>
                                             </Col>
                                         </Row>
@@ -589,11 +591,11 @@ class MainHeader extends Component {
                                             <Col xs="7">
                                                 <ul style={{ textAlign: 'start' }}>
                                                     <li style={{ fontSize: 13, color: "#0D943F" }}>
-                                                        free click & collect
+                                                        Free Returns
                                                     </li>
-                                                    <li style={{ fontSize: 11 }} className="text-color">
+                                                    {/* <li style={{ fontSize: 11 }} className="text-color">
                                                         in as little as 30 minutes
-                                                    </li>
+                                                    </li> */}
                                                 </ul>
                                             </Col>
                                         </Row>
