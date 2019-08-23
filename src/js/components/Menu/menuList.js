@@ -26,7 +26,7 @@ class menuList extends Component {
 
 		return (
 			<li key={index}>
-				<Link to={'/' + this.state.store_locale + '/products/' + category[0] + '-' + item.url_key} onClick={() => document.getElementById("closeNav").click()}>
+				<Link to={'/' + this.state.store_locale + '/products/' + item.url_key} onClick={() => document.getElementById("closeNav").click()}>
 					{item.name}
 					{/* <FormattedMessage id={menu_item} defaultMessage={item.name} /> */}
 				</Link>
@@ -69,7 +69,6 @@ class menuList extends Component {
 
 	_checkSubMenu = item => {
 		if (item.hasOwnProperty('children')) {
-			if(item.children[0].length > 0){
 
 			// Use item.url_key instead of item.name (contains Arabic Text if locale is Arabic)			
 			// let menu_item = 'menu.' + item.name.toUpperCase() + '.SHOW_ALL_' + item.name.toUpperCase();
@@ -79,14 +78,14 @@ class menuList extends Component {
 			return (
 				<div className="submenu">
 					<div className="all">
-						<Link to={'/' + this.state.store_locale + '/products/' + item.url_key} onClick={() => document.getElementById("closeNav").click()}>
+						<Link to={'/' + this.state.store_locale + '/products/' + item.url_path} onClick={() => document.getElementById("closeNav").click()}>
 							{/* <FormattedMessage id={menu_item} defaultMessage={default_message} /> */}
 							{/* <FormattedMessage id="menu.BRAS.SHOW_ALL_BRAS" defaultMessage="SHOW ALL Bras" /> */}
 						</Link>
 					</div>
 					{
 						item.children.map(
-							(x) => this._renderSubMenuList(x, item.name, item.url_key)
+							(x) => this._renderSubMenuList(x, item.name, item.url_path)
 						)
 					}
 					{/* <div className="menufigure">
@@ -105,7 +104,6 @@ class menuList extends Component {
 					</div> */}
 				</div>
 			);
-			}
 		} else {
 		}
 	};
@@ -117,7 +115,7 @@ class menuList extends Component {
 		return (
 			<>
 				<li key={index}>
-					<Link to={'/' + this.state.store_locale + '/products/' + item.url_key} style={{ textDecoration: 'none' }} onClick={() => document.getElementById("closeNav").click()}>
+					<Link to={'/' + this.state.store_locale + '/products/' + item.url_path} style={{ textDecoration: 'none' }} onClick={() => document.getElementById("closeNav").click()}>
 						{item.name.toLowerCase()}
 					</Link>
 					<i className="subMenuTrigger" />
