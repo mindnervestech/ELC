@@ -23,6 +23,7 @@ import ShareUrl from '../product-details/product-info/product-size';
 import Popup from 'react-popup';
 import { connect } from 'react-redux';
 import * as actions from '../../../redux/actions/index';
+import { Container, Row, Col, Button, Form, FormGroup } from 'reactstrap';
 
 const mediaVideo = 'https://storage.googleapis.com/nay/videos/product/au19/nay-au19-casual-nightwear-mainrange-nicoline-pajamaset-212884961.mp4';
 
@@ -120,8 +121,8 @@ class ProductInfo extends Component {
 					<script src="/global/css/magiczoomplus/magiczoomplus.js"></script>
 					<script src="/global/css/magicscroll/magicscroll.js"></script>
 				</Helmet>
-				<div className="col col-12 apex-col-auto carpusel-dots" style={{paddingTop:'20px'}}>
-					<div className="col col-7">
+				<Row className="apex-col-auto carpusel-dots" style={{paddingTop:'20px'}}>
+					<Col xs="12" md="7" lg="7">
 						<h2 className="product-title" style={{marginBottom: 20}}>
 							{productDataDetail.name}
 						</h2>
@@ -158,8 +159,8 @@ class ProductInfo extends Component {
 							</div>
                         </Carousel> */}
                     </div>
-					</div>
-					<div className="col col-5" style={{paddingLeft: '55px'}}>
+					</Col>
+					<Col xs="12" md="5" lg="5" className="padding-mob">
 					
 						<div
 							className="t-Region--removeHeader t-Region--noBorder t-Region--scrollBody margin-top-md"
@@ -374,8 +375,8 @@ class ProductInfo extends Component {
 							</div>
 						</div>
 					</div>
-					</div>
-				</div>
+					</Col>
+				</Row>
 			</div>
 		);
 	}

@@ -155,7 +155,7 @@ class ProductColor extends Component {
 			}
 
 			return (
-				<section id="color" data-name="color" data-selector-wrapper style={{padding: '8rem 35px', background: '#EEF8F2'}}>
+				<section id="color" data-name="color" data-selector-wrapper className="recently-view-section" style={{background: '#EEF8F2'}}>
 					{/* <div data-selector-title-color>
 						<em><FormattedMessage id="product.color" defaultMessage="Color" /></em>
 						<span id="p3colordesc">
@@ -176,7 +176,7 @@ class ProductColor extends Component {
 						<div className="row data">
 							<div className="col col-12 apex-col-auto homeBlock">
 								<div id="R36275003485418909" className="homePage">
-									<section className="trendingBlock2" style={{ padding: '0px 90px', background: '#EEF8F2' }}>
+									<section className="trendingBlock2 recently-view" style={{background: '#EEF8F2' }}>
 										<div className="wrap">
 											<div className="trendingList">
 												<Slider {...settings3}>

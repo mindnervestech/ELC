@@ -2021,6 +2021,15 @@ textarea .error {
     user-select: none;
 }
 
+html[dir=rtl] .checkmark {
+    right: 0 !important;
+}
+
+html[dir=rtl] .checkBox {
+    padding-left: 0 !important;
+    padding-right: 40px !important;
+}
+
 /* Hide the browser's default checkbox */
 .checkBox input {
     position: absolute;
@@ -2145,7 +2154,12 @@ textarea .error {
 
 .rmPadding {
     padding-left: 0;
-    padding-right: 0;
+    padding-right: 4px;
+}
+
+html[dir=rtl] .rmPadding {
+    padding-left: 4px !important;
+    padding-right: 0px !important;
 }
 
 .rmTopPadding {
@@ -2181,6 +2195,7 @@ textarea .error {
 
 .block {
     display: block !important;
+    padding-left: 15px !important;
 }
 
 .dropdownBox {
@@ -2238,7 +2253,7 @@ select:focus {
 }
 
 .pad40L {
-    /* padding-left: 4%; */
+    padding-left: 4% !important;
 }
 
 html[dir="rtl"] .t-Form-labelContainer {

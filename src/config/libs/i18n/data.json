@@ -27,7 +27,7 @@
     "header.defaultCountry": "Select Your Country",
     "header.ksa": "KSA",
     "header.uae": "UAE",
-    "header.uaes": "UNITED ARAB EMIRATES",
+    "header.uaes": "UAE",
     "header.hungary": "HUNGARY",
     "header.netherlands": "NETHERLANDS",
     "header.slovenia": "SLOVENIA",
@@ -983,7 +983,7 @@
     "Header.StoreFinder": "البحث عن متجر",
     "Header.Help": "المساعدة",
     "Header.SignInOrRegister": "تسجيل الدخول / التسجيل",
-    
+
     "footer.helpFaqs": "الأسئلة الأكثر شيوعاً",
     "footer.contactUs": "تواصل معنا",
     "footer.aboutElc": "نبذة على ألعاب التعليم المبكر",
@@ -1014,6 +1014,8 @@
     "newToElc.store": "حفظ التفاصيل لمتجرك المفضل",
     "newToElc.join": "يمكنك الانضمام إلى Jack Birthday Birthday Club لتلقي عروض عيد الميلاد المكانية",
     "newToElc.remember": "سوف نتذكر التفاصيل الخاصة بك للمرة القادمة",
-    "ContactUs.ConfirmEmail": "تأكيد عنوان البريد الإلكتروني"
+    "ContactUs.ConfirmEmail": "تأكيد عنوان البريد الإلكتروني",
+    "Signup.validation.confirmEmail.empty": "عنوان البريد الإلكتروني غير متطابق"
+
   }
 }

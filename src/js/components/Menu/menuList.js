@@ -69,7 +69,7 @@ class menuList extends Component {
 
 	_checkSubMenu = item => {
 		if (item.hasOwnProperty('children')) {
-			//console.log('In _checkSubMenu ', item);
+			if(item.children[0].length > 0){
 
 			// Use item.url_key instead of item.name (contains Arabic Text if locale is Arabic)			
 			// let menu_item = 'menu.' + item.name.toUpperCase() + '.SHOW_ALL_' + item.name.toUpperCase();
@@ -105,6 +105,7 @@ class menuList extends Component {
 					</div> */}
 				</div>
 			);
+			}
 		} else {
 		}
 	};

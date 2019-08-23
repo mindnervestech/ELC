@@ -114,12 +114,12 @@ class SizeGuide extends Component {
 
 
                     <div className="col col-12 apex-col-auto">
-						<div className="row you-may-like-title" style={{paddingLeft: '110px'}}>
-							<h2 style={{width:'40%'}} />
-							<label>
+						<div className="row you-may-like-title remove-padding">
+							<h2 className="review-text" style={{width:'40%'}} />
+							<label className="review-text">
                                 Reviews
                             </label>
-							<h2 style={{width:'40%'}}/>
+							<h2 className="review-text" style={{width:'40%'}}/>
 						</div>
                         <div className="product-review">
                             <div className="row detail-info">
@@ -133,7 +133,7 @@ class SizeGuide extends Component {
                                     starDimension='40px'
                                     starSpacing='2px'
                                 />
-                                <div style={{marginTop:'14px'}}>
+                                <div className="remove-rating" style={{marginTop:'14px'}}>
                                 <span style={{color: '#0D943F',marginBottom: '2.5rem',width: '100%',fontWeight: '700',margin: '50px'}}>
                                     {this.state.rating}&nbsp;/&nbsp;5 &nbsp; Votes</span>
                                 </div>
@@ -141,7 +141,7 @@ class SizeGuide extends Component {
                                     <button className="wite_a_review">Write a Review</button>
                                 </div>
                             </div>
-                            <div style={{width: '42%'}}>
+                            <div className="review-star">
                                 <span>5 Star </span><MDBProgress style={{width: '50%'}} value={70} className="my-2" color="success" height="5px"/>
                                 <span>4 Star </span><MDBProgress value={55} className="my-2" color="success" height="5px"/>
                                 <span>3 Star </span><MDBProgress value={78} className="my-2" color="warning" height="5px"/>
@@ -155,21 +155,22 @@ class SizeGuide extends Component {
                             </div>
 
                             <div className="row detail-info" style={{marginBottom:'0px'}}>
-                                <StarRatings
-                                    rating={5}
-                                    starRatedColor='#FAD961'
-                                    numberOfStars={5}
-                                    name='rating'
-                                    starDimension='40px'
-                                    starSpacing='2px'
-                                />
-                                
-                                <div style={{marginTop:'14px'}}>
-                                    <span style={{marginBottom: '2.5rem',margin: '50px', fontSize: '1.3rem', lineHeight: '2.4rem'}}>
-                                        30 July 2019</span>
+                                <div className="row rating-review">
+                                    <StarRatings
+                                        rating={5}
+                                        starRatedColor='#FAD961'
+                                        numberOfStars={5}
+                                        name='rating'
+                                        starDimension='40px'
+                                        starSpacing='2px'
+                                    />
+                                    
+                                    <div style={{marginTop:'14px'}}>
+                                        <span style={{marginBottom: '2.5rem',margin: '45px', fontSize: '1.3rem', lineHeight: '2.4rem'}}>
+                                            30 July 2019</span>
+                                    </div>
                                 </div>
-                                
-                                <div style={{marginLeft:'auto', fontSize: '1.2rem', lineHeight: '2.4rem'}}>
+                                <div className="review-username" style={{fontSize: '1.2rem', lineHeight: '2.4rem'}}>
                                     <p style={{marginBottom:'0px'}}>Username</p>
                                     <p style={{color: '#0D943F', marginBottom:'0px'}}>Top 1000 Contributor</p>
                                     <p style={{marginBottom:'0px'}}>Age of child: 8 and over</p>
@@ -178,7 +179,7 @@ class SizeGuide extends Component {
                             <div className="review_title">
                                 <span>Lorem Ipsum Dolor</span>
                             </div>
-                            <div style={{fontSize: '1.2rem', lineHeight: '2.4rem', width:'75%', marginBottom: '1.5rem'}}>
+                            <div className="reviw-text" style={{fontSize: '1.2rem', lineHeight: '2.4rem', marginBottom: '1.5rem'}}>
                                 <p>
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
                                 </p>
