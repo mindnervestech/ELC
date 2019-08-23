@@ -344,6 +344,7 @@ class SignUp extends Component {
     if ('confirmEmail' in errorsObj) {
       console.log("Error email");
       confirmEmailInputField = <div><div>
+        
         <input type="text" id="P1001_ConfirmEMAIL" name="P1001_ConfirmEMAIL" placeholder="Confirm Email Address" onChange={this.handleChange.bind(this, "confirmEmail")} value={this.state.fields["confirmEmail"]} size="30" maxLength="100" aria-describedby="P1001_ConfirmEMAIL_error" aria-invalid="true" /></div>
         <span id="P1001_ConfirmEMAIL_error_placeholder" className="a-Form-error u-visible" data-template-id="33609965712469734_ET"><span className="t-Form-error"><div id="P1001_ConfirmEMAIL_error">
           {errorsObj["confirmEmail"]}</div></span></span></div>
