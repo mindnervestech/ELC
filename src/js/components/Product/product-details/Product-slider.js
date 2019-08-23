@@ -19,6 +19,7 @@ class ProductSlider extends Component {
     }
 
     render() {
+        const {store_name, currency, similar_product} = this.props
         const settings3 = {
             autoplay: true,
             autoplaySpeed: 5000,
@@ -95,7 +96,27 @@ class ProductSlider extends Component {
                                         <div className="wrap">
                                             <div className="trendingList">
                                                 <Slider {...settings3}>
-                                                <Link to={`/saudi-en/products-details/blue-bike`}>
+                                                {similar_product && similar_product.map((item, index) => (
+                                                <Link to={`/${store_name}/products-details/${item.url_key}`}>
+                                                    <div className="alsoLikeCard">
+                                                        <img src={item.productImageUrl[0]} />
+                                                        <div className="marginTop25">
+                                                            <label className="text-color">{item.name}</label>
+                                                        </div>
+                                                        <div>
+                                                            <span style={{ fontSize: 14, color: "#0D943F", fontWeight: "bold" }}>{currency} &nbsp;{item.price}</span>
+                                                            {/* <span style={{ color: "gray", textDecorationLine: 'line-through', fontSize: 14, marginLeft: 10 }}>{currency} &nbsp;{item.price}</span> */}
+                                                        </div>
+                                                        <div>
+                                                            <button className="alsoLikeCardButton">add to basket</button>
+                                                        </div>
+                                                    </div>
+                                                    </Link>
+                                                ))}
+                                                </Slider>
+                                                {!similar_product ? 
+                                                <Slider {...settings3}>
+                                                    <Link to={`/saudi-en/products-details/blue-bike`}>
                                                     <div className="alsoLikeCard">
                                                         <img src={logo1} />
                                                         <div className="marginTop25">
@@ -164,8 +185,8 @@ class ProductSlider extends Component {
                                                             <button className="alsoLikeCardButton">add to basket</button>
                                                         </div>
                                                     </div>
-                                                    </Link>
-                                                </Slider>
+                                                    </Link></Slider>: <div />}
+                                                
                                             </div>
                                         </div>
                                     </section>

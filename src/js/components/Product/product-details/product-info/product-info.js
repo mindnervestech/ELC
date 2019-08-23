@@ -14,6 +14,8 @@ import { FormattedMessage } from 'react-intl';
 import Modal from 'react-responsive-modal';
 import * as utility from '../../../utility/utility';
 import parse from 'html-react-parser';
+import Collapsible from 'react-collapsible';
+import { Link, withRouter } from 'react-router-dom';
 
 class ProductInformation extends Component {
 	constructor(props) {
@@ -58,13 +60,10 @@ class ProductInformation extends Component {
 	}
 
 	render() {
-		const { data, type, productDataDetail } = this.props;
-		console.log(this.props);
-		let producDetail = productDataDetail.product_details;
-		console.log(producDetail);
+		const { data, type } = this.props;
 		const sizeComponent = this.state.isBandCup ? <><ProductBandSize productSize={data} />
 			<ProductCupSize productSize={data} /></> : <ProductSize productSize={data} />;
-
+		console.log(this.props);
 		return (
 			<div className="col col-12 apex-col-auto">
 				{/* <div
@@ -154,9 +153,10 @@ class ProductInformation extends Component {
 					</div>
 				</div>
 			 */}
+			 <div className="show-web">
 			 	{type == 'Product Information' ? <div style={{marginBottom: '5rem', marginTop:40}}>
-				 	{/* <p className="detail-info">{type}</p> */}
-					<p className="detail-info">{producDetail.sku.label}: {producDetail.sku.value} </p>
+					 {/* <p className="detail-info">{type}</p> */}
+					{/* <p className="detail-info">{producDetail.sku.label}: {producDetail.sku.value} </p>
 
 					<p className="detail-info">{producDetail.weight.label}: {producDetail.weight.value}</p>
 
@@ -164,9 +164,9 @@ class ProductInformation extends Component {
 
 					<p className="detail-info">{producDetail.material.label}: {producDetail.material.value}</p>
 
-					<p className="detail-info">{producDetail.climate.label}: {producDetail.climate.value}</p>
+					<p className="detail-info">{producDetail.climate.label}: {producDetail.climate.value}</p> */}
 
-					<p className="detail-info">Description: {parse(productDataDetail.description)}</p>
+					<p className="detail-info">{data.description}</p>
 				 </div> : type == 'Delivery options' ?
 				 <div style={{marginBottom: '5rem', marginTop:40}}>
 					<p className="detail-info">{type}</p>
@@ -188,6 +188,53 @@ class ProductInformation extends Component {
 
 					<p className="detail-info">Features and benefits for elc wooden shopping trolley </p>
 				</div> : ''}
+				</div>
+				<div className="footer-css  footer-line show-mobile">
+                    
+                    <div className="mobile-manu">
+                        <Collapsible trigger={<FormattedMessage id="Product.Details.ProductInfo" defaultMessage="Product Information" />}>
+						<div style={{marginBottom: '5rem', textAlign:'left'}}>
+							{/* <p className="detail-info">{producDetail.sku.label}: {producDetail.sku.value} </p>
+
+							<p className="detail-info">{producDetail.weight.label}: {producDetail.weight.value}</p>
+
+							<p className="detail-info">{producDetail.pattern.label}: {producDetail.pattern.value}</p>
+
+							<p className="detail-info">{producDetail.material.label}: {producDetail.material.value}</p>
+
+							<p className="detail-info">{producDetail.climate.label}: {producDetail.climate.value}</p> */}
+
+							<p className="detail-info">{data.description}</p>
+						</div>
+                        </Collapsible>
+                        <Collapsible trigger={<FormattedMessage id="Product.Details.DeliveryOption" defaultMessage="Delivery Options" />}>
+						<div style={{marginBottom: '5rem', textAlign:'left'}}>
+							<p className="detail-info">Delivery Options</p>
+							<p className="detail-info">Product code: 148138 </p>
+
+							<p className="detail-info">At a Glance </p>
+
+							<p className="detail-info">All aboard the elc bus for colour-matching, problem-solving fun! </p>
+
+							<p className="detail-info">Features and benefits for elc wooden shopping trolley </p>
+						</div>
+                        </Collapsible>
+						<Collapsible trigger={<FormattedMessage id="Product.Details.Question" defaultMessage="Question" />}>
+						<div style={{marginBottom: '5rem', textAlign:'left'}}>
+							<p className="detail-info">Question</p>
+							<p className="detail-info">Product code: 148138 </p>
+
+							<p className="detail-info">At a Glance </p>
+
+							<p className="detail-info">All aboard the elc bus for colour-matching, problem-solving fun! </p>
+
+							<p className="detail-info">Features and benefits for elc wooden shopping trolley </p>
+						</div>
+                        </Collapsible>
+                        
+                    </div>
+                    
+                </div>
 			</div>
 		);
 	}
