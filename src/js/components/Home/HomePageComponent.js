@@ -311,7 +311,7 @@ class HomePageComponent extends Component {
                                                     <div className="wrap">
                                                         <ul className="product-list">
                                                             {homeData.blocks.map((item, index) => (
-                                                                <li>
+                                                                <li key={index}>
                                                                     <div>
                                                                         <Link to={`/`+store_locale+`/products/ ` + item.TITLE + ``}>
                                                                             <a href={''} target="_blank">

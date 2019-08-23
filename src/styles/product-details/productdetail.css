@@ -1412,3 +1412,105 @@ ul li.active-tab a{
 .styles_modal__gNwvD{
     height: 66% !important;
 }
+
+.padding-mob{
+    padding-left: 55px;
+}
+
+.reviw-text{
+    width: 75%;
+}
+.review-star{
+    width: 42%;
+}
+.remove-padding{
+    padding-left: 110px;
+}
+.rating-review{
+    margin-left: 0px !important;
+}
+.review-username{
+    margin-left: auto;
+}
+
+.recently-view{
+    padding: 0px 90px
+}
+.recently-view-section{
+    padding: 8rem 35px
+}
+
+@media (max-width:767px){   
+    .padding-mob{
+        padding-left: 0px;
+    }
+
+    .padding-mob{
+        padding-left: 55px;
+    }
+    .home-deli span{
+        margin: 0 auto !important;
+    }
+    .home-deli img {
+        margin: 0 auto !important;
+    }
+    .click-collect span{
+        margin: 0 auto !important;
+        text-align: center;
+    }
+    .click-collect img{
+        margin: 0 auto !important;
+    }
+    .in-stock{
+        width: 100% !important;
+    }
+    .click-collect ,.home-deli{    
+        padding: 10px 0px;
+    }
+    .share-wishlist {
+        width: 100%;
+        margin-left: unset;       
+        margin-right: unset;
+        text-align: center;
+    }
+    .reviw-text{
+        width: 100%;
+    }
+
+    .review-star{
+        width: 95%;
+    }
+
+    .review-text{
+        width: 33% !important;
+    }
+    .remove-padding{
+        padding-left: 0px !important;
+    }
+
+    .remove-rating{
+        display: none;
+    }
+    .review-username{
+        margin: 18px !important;
+    }
+    .recently-view{
+        padding: 0px 0px;
+    }
+
+    .recently-view-section{
+        padding: 0px 0px;
+    }
+
+    .homePage .trendingBlock2{
+        padding: 0px 0px !important;
+    }
+    .you-may-like-title h2{
+        width: 25% !important;
+    }
+    .you-may-like-title label{
+        width: 48% !important;
+    }
+
+
+}
