@@ -25,7 +25,7 @@ class menuList extends Component {
 		// let menu_item = 'menu.' + item.name.toUpperCase();
 
 		return (
-			<li key={index}>
+			<li key={category}>
 				<Link to={'/' + this.state.store_locale + '/products/' + category[0] + '-' + item.url_key} onClick={() => document.getElementById("closeNav").click()}>
 					{item.name}
 					{/* <FormattedMessage id={menu_item} defaultMessage={item.name} /> */}
@@ -49,8 +49,8 @@ class menuList extends Component {
 
 		return (
 
-			<>
-				<ul className="subLink">
+			// <>
+				<ul key={item_name} className="subLink">
 				{data.map(this._renderSubMenuItem)}
 					{/* <li>
 						<span className="PinkText"><FormattedMessage id="Menu.Style" defaultMessage="Style" /></span> 
@@ -63,7 +63,7 @@ class menuList extends Component {
 					</li>
 					{collectionCat.map(this._renderSubMenuItem)} */}
 				</ul>
-			</>
+			// </>
 		);
 	};
 
@@ -114,15 +114,15 @@ class menuList extends Component {
 		let menu_item = 'menu.' + item.name.toLowerCase();
 
 		return (
-			<>
-				<li key={index}>
+			// <>
+				<li key={menu_item}>
 					<Link to={'/' + this.state.store_locale + '/products/' + item.url_key} style={{ textDecoration: 'none' }} onClick={() => document.getElementById("closeNav").click()}>
 						{item.name.toLowerCase()}
 					</Link>
 					<i className="subMenuTrigger" />
 					{this._checkSubMenu(item)}
 				</li>
-			</>
+			// </>
 		);
 	};
 	_renderMenuNavigation = (item, index) => {
