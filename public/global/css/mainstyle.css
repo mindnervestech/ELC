@@ -2206,7 +2206,7 @@ html[dir="rtl"] .header .changecountry .country .activeCountry .selected {
 @media only screen and (min-width: 1280px) {
     .header .changecountry .country .list {
         border: 1px solid #e3e3e3;
-        min-width: 220px;
+        min-width: 145px;
         position: absolute;
         width: 100%;
         left: 0;
@@ -2257,7 +2257,8 @@ html[dir="rtl"] .header .changecountry .country .list {
 @media only screen and (min-width: 1280px) {
     .header .changecountry .country .list a {
         margin: 0px 5px;
-        padding: 7px 5px
+        padding: 7px 5px;
+        display: inline-block;
     }
 }
 
@@ -2269,7 +2270,7 @@ html[dir="rtl"] .header .changecountry .country .list {
     color: #f599ba
 }
 
-.header .changecountry .country .list a:before {
+/* .header .changecountry .country .list a:before {
     content: "";
     display: inline-block;
     width: 26px;
@@ -2284,9 +2285,9 @@ html[dir="rtl"] .header .changecountry .country .list {
 html[dir="rtl"] .header .changecountry .country .list a:before {
     margin-right: 0px;
     margin-left: 10px
-}
+} */
 
-@media only screen and (max-width: 1279px) {
+/* @media only screen and (max-width: 1279px) {
     .header .changecountry .country .list a:before {
         background-image: url(https://storage.googleapis.com/nay/icons/flag-mobile.1012f217.png)
     }
@@ -2299,16 +2300,16 @@ html[dir="rtl"] .header .changecountry .country .list a:before {
         height: 23px;
         background-position: 0% -23px
     }
-}
+} */
 
 .header .changecountry .country .list a.uae:before {
     background-position: 0% 100%
 }
 
 @media only screen and (min-width: 1280px) {
-    .header .changecountry .country .list a.uae:before {
+    /* .header .changecountry .country .list a.uae:before {
         background-position: 0px -47px
-    }
+    } */
 }
 
 
@@ -3332,7 +3333,7 @@ li {
         border-radius: 50%!important;
     } */
 
-/* .control-next.control-arrow:before {
+/* .control-next.control-arrow:before?{
             border-left: solid 15px #0D943F;
         }
         

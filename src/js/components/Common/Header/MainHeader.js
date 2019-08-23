@@ -27,13 +27,16 @@ import help from '../../../../assets/images/header/help.svg';
 import profile from '../../../../assets/images/header/profile.png';
 import Slider from "react-slick";
 
+import UAEImage from '../../../../assets/images/header/ae.svg';
+import KSAImage from '../../../../assets/images/header/sa.svg';
+
 class MainHeader extends Component {
     constructor(props) {
         super(props);
         this.state = {
             showCountries: false,
             country_flag: '',
-            country_name: 'UINTED KINGDOM',
+            country_name: '',
             showCart: false,
             cartItemCount: 3,
             showMenu: false,
@@ -69,7 +72,7 @@ class MainHeader extends Component {
 
 
         let country = (cookie.load('country') === null) ? 'KSA' : cookie.load('country');
-        this.setState({ country_flag: "UAE", country_name: "UNITED ARAB EMIRATES" });
+        this.setState({ country_flag: this.props.globals.country, country_name: this.props.globals.country });
         this.getStore();
         this.props.onGetStoreList({
             country_id: '',
@@ -102,7 +105,7 @@ class MainHeader extends Component {
         }
 
         if (prevProps.globals.country !== this.props.globals.country) {
-            this.setState({ country_flag: this.getFlagName(this.props.globals.country) });
+            this.setState({ country_flag: this.getFlagName(this.props.globals.country), country_name: this.props.globals.country });
         }
     }
 
@@ -135,9 +138,9 @@ class MainHeader extends Component {
         this.props.handleLanguageSelection(lang, dir);
     }
 
-    onChangeCountry = (country, countryName) => {
+    onChangeCountry = (country) => {
         this.props.handleCountrySelection(country);
-        this.setState({ country_flag: this.getFlagName(country), country_name: countryName });
+        this.setState({ country_flag: this.getFlagName(country), country_name: country });
         // console.log('onChangeCountry', this.state.country_flag);
         this.showCountries();
         this.closeHBMenu();
@@ -296,22 +299,32 @@ class MainHeader extends Component {
                                     {<li>
                                         <div className="changecountry">
                                             <div className="country">
-                                                <div className={this.state.showCountries ? "activeCountry open" : "activeCountry"}>
-                                                    <i className={`flag ${this.state.country_flag}`} onClick={this.showCountries}>  </i>
+                                                <div onClick={this.showCountries} className={this.state.showCountries ? "activeCountry open" : "activeCountry"}>
+                                                    {/* <i className={`flag ${this.state.country_flag}`} onClick={this.showCountries}>  </i> */}
+                                                    {this.state.country_name == 'UAE' ?
+                                                        <img style={{height: '20px',width: '30px'}} src={UAEImage}></img>
+                                                        : <img style={{height: '20px',width: '30px'}} src={KSAImage}></img>
+                                                    }
                                                     <label className="text-color">&nbsp;{this.state.country_name} </label>
                                                     <span className="selected">
                                                         <FormattedMessage id="header.defaultCountry" defaultMessage="Select Your Country" />
 
                                                     </span>
-                                                    <i className="icon-down" onClick={this.showCountries}></i>
+                                                    <i className="icon-down" ></i>
                                                 </div>
-                                                <ul className="list">
-                                                    <li><a href="javascript:void(0);" className="ksa" id="cart" onClick={() => this.onChangeCountry('UAE', 'UNITED ARAB EMIRATES')}><FormattedMessage id="header.uaes" defaultMessage="UAE" /></a></li>
-                                                    <li><a href="javascript:void(0);" className="ksa" id="cart" onClick={() => this.onChangeCountry('UAE', 'HUNGARY')}><FormattedMessage id="header.hungary" defaultMessage="KSA" /></a></li>
-                                                    <li><a href="javascript:void(0);" className="ksa" id="cart" onClick={() => this.onChangeCountry('UAE', 'NETHERLANDS')}><FormattedMessage id="header.netherlands" defaultMessage="KSA" /></a></li>
+                                                <div className="list">
+                                                    <div style={{paddingLeft:10}}> 
+                                                        <img style={{height: '20px',width: '30px'}} src={UAEImage}></img>
+                                                        <a href="javascript:void(0);" className="uae" id="cart" onClick={() => this.onChangeCountry('UAE')}><FormattedMessage id="header.uaes" defaultMessage="UAE" /></a>
+                                                    </div>
+                                                    <div style={{paddingLeft:10}}>
+                                                        <img style={{height: '20px',width: '30px'}} src={KSAImage}></img>
+                                                        <a href="javascript:void(0);" className="ksa" id="cart" onClick={() => this.onChangeCountry('KSA')}><FormattedMessage id="header.ksa" defaultMessage="KSA" /></a>
+                                                    </div>
+                                                    {/* <li><a href="javascript:void(0);" className="ksa" id="cart" onClick={() => this.onChangeCountry('UAE', 'NETHERLANDS')}><FormattedMessage id="header.netherlands" defaultMessage="KSA" /></a></li>
                                                     <li><a href="javascript:void(0);" className="ksa" id="cart" onClick={() => this.onChangeCountry('UAE', 'SLOVENIA')}><FormattedMessage id="header.slovenia" defaultMessage="KSA" /></a></li>
-                                                    <li><a href="javascript:void(0);" className="usd" id="cart" onClick={() => this.onChangeCountry('International', 'UNITED KINGDOM')}><FormattedMessage id="header.uk" defaultMessage="International" /></a></li>
-                                                </ul>
+                                                    <li><a href="javascript:void(0);" className="usd" id="cart" onClick={() => this.onChangeCountry('International', 'UNITED KINGDOM')}><FormattedMessage id="header.uk" defaultMessage="International" /></a></li> */}
+                                                </div>
                                             </div>
                                         </div>
                                     </li>

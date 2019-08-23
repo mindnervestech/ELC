@@ -1848,7 +1848,7 @@ html[dir="rtl"] .header .changecountry .country .activeCountry .selected {
 @media only screen and (min-width: 1280px) {
     .header .changecountry .country .list {
         border: 1px solid #e3e3e3;
-        min-width: 220px;
+        min-width: 145px;
         position: absolute;
         width: 100%;
         left: 0;
@@ -1899,7 +1899,8 @@ html[dir="rtl"] .header .changecountry .country .list {
 @media only screen and (min-width: 1280px) {
     .header .changecountry .country .list a {
         margin: 0px 5px;
-        padding: 7px 5px
+        padding: 7px 5px;
+        display: inline-block;
     }
 }
 
@@ -1911,7 +1912,7 @@ html[dir="rtl"] .header .changecountry .country .list {
     color: #f599ba
 }
 
-.header .changecountry .country .list a:before {
+/* .header .changecountry .country .list a:before {
     content: "";
     display: inline-block;
     width: 26px;
@@ -1921,26 +1922,26 @@ html[dir="rtl"] .header .changecountry .country .list {
     vertical-align: middle;
     background-position: 0% 50%;
     margin-right: 10px
-}
+} */
 
-html[dir="rtl"] .header .changecountry .country .list a:before {
+/* html[dir="rtl"] .header .changecountry .country .list a:before {
     margin-right: 0px;
     margin-left: 10px
-}
+} */
 
 @media only screen and (max-width: 1279px) {
-    .header .changecountry .country .list a:before {
+    /* .header .changecountry .country .list a:before {
         background-image: url(https://storage.googleapis.com/nay/icons/flag-mobile.1012f217.png)
-    }
+    } */
 }
 
 @media only screen and (min-width: 1280px) {
-    .header .changecountry .country .list a:before {
+    /* .header .changecountry .country .list a:before {
         background-image: url(https://storage.googleapis.com/nay/icons/flag-desktop.f6e5cc51.png.png);
         width: 18px;
         height: 12px;
         background-position: 0% -23px
-    }
+    } */
 }
 
 .header .changecountry .country .list a.uae:before {
@@ -1948,9 +1949,9 @@ html[dir="rtl"] .header .changecountry .country .list a:before {
 }
 
 @media only screen and (min-width: 1280px) {
-    .header .changecountry .country .list a.uae:before {
+    /* .header .changecountry .country .list a.uae:before {
         background-position: 0px -47px
-    }
+    } */
 }
 
 
