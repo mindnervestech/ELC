@@ -2195,6 +2195,7 @@ html[dir=rtl] .rmPadding {
 
 .block {
     display: block !important;
+    padding-left: 15px !important;
 }
 
 .dropdownBox {
@@ -2252,7 +2253,7 @@ select:focus {
 }
 
 .pad40L {
-    /* padding-left: 4%; */
+    padding-left: 4% !important;
 }
 
 html[dir="rtl"] .t-Form-labelContainer {
