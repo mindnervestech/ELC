@@ -240,6 +240,12 @@
     "Product.Details.Panty": "Panty",
     "Product.Details.Bras": "Bras",
     "Product.Details.SizeFit": "Size & Fit",
+
+    "Product.Details.ProductInfo": "Product Information",
+    "Product.Details.DeliveryOption": "Delivery Options",
+    "Product.Details.Question": "Question",
+
+
     "Product.Listing.Filter": "Filters",
     "Product.Listing.Sort": "Sort",
     "Product.Listing.Relevance": "Relevance",
@@ -708,6 +714,11 @@
     "Product.Details.Panty": "سروال",
     "Product.Details.Bras": "صدريات",
     "Product.Details.SizeFit": "حجم وتلائم",
+
+    "Product.Details.ProductInfo": "Product Information",
+    "Product.Details.DeliveryOption": "Delivery Options",
+    "Product.Details.Question": "Question",
+    
     "Product.Listing.Filter": "تصنيف",
     "Product.Listing.Sort": " ترتيب  ",
     "Product.Listing.Relevance": "الأكثر تطابقاً",

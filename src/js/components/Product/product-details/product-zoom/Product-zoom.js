@@ -36,13 +36,13 @@ class ProductZoom extends Component {
 			// console.log('selectedColor',this.props.productDetails.selectedColor);
 			this.changeColor(this.props.productDetails.selectedColor);
 		}
-
+		console.log("Api response of product list",this.props)
 		if (prevProps.productWishDetail.wishlist_itemid != this.props.productWishDetail.wishlist_itemid) {
-			if (this.props.productWishDetail.is_in_wishlist) {
-				document.getElementById('Capa_1').setAttribute('class', 'naylove-icon active');
-			} else {
-				document.getElementById('Capa_1').setAttribute('class', 'naylove-icon');
-			}
+			// if (this.props.productWishDetail.is_in_wishlist) {
+			// 	document.getElementById('Capa_1').setAttribute('class', 'naylove-icon active');
+			// } else {
+			// 	document.getElementById('Capa_1').setAttribute('class', 'naylove-icon');
+			// }
 		}
 	}
 
@@ -77,14 +77,14 @@ class ProductZoom extends Component {
 
 			let thumbnails, zoomimages;
 
-			if (data) {
-				thumbnails = data;
+			if (data.thumbnail) {
+				thumbnails = data.thumbnail;
 			}
-			if (data) {
-				zoomimages = data;
+			if (data.zoomimage) {
+				zoomimages = data.zoomimage;
 			}
 
-			if (data.length > 1) {
+			if (data.thumbnail.length > 1) {
 				return (
 					<a href={zoomimages[0]} className="MagicZoom" id="zoom-v">
 						<img src={thumbnails[0]} alt="" />
@@ -111,23 +111,23 @@ class ProductZoom extends Component {
 
 			let thumbnails, zoomimages;
 
-			if (data) {
-				thumbnails = data;
+			if (data.thumbnail) {
+				thumbnails = data.thumbnail;
 			}
-			if (data) {
-				zoomimages = data;
+			if (data.zoomimage) {
+				zoomimages = data.zoomimage;
 			}
 
-			if (data.length > 1) {
+			if (data.thumbnail.length > 1) {
 				return (
 					<a href={zoomimages[0]} className="MagicZoom" id="zoom-v">
-						<img style={{height:590, width: 590}} src={thumbnails[0]} alt="" />
+						<img src={thumbnails[0]} alt="" />
 					</a>
 				);
 			} else {
 				return (
 					<a href={zoomimages[0]} className="MagicZoom" id="zoom-v">
-						<img style={{height:590, width: 590}} src={zoomimages[0]} alt="" />
+						<img src={zoomimages[0]} alt="" />
 					</a>
 				);
 			}
@@ -157,10 +157,10 @@ class ProductZoom extends Component {
 
 	_checkSingleImage = (imageUrl, color, index) => {
 		// console.log(imageUrl);	
-		if ( (imageUrl) ) {
+		if ( (imageUrl) && (imageUrl.thumbnail) ) {
 			// console.log('imageUrl',imageUrl);
 
-			if (imageUrl) {
+			if (imageUrl.thumbnail.length >= 1) {
 				return (
 					this._checkDataExist(imageUrl, color, index)
 				);
@@ -171,15 +171,15 @@ class ProductZoom extends Component {
 
 	_checkDataExist = (data, color, index) => {
 		if (data) {
-			// if (data) {
-			// 	const asdf = data.map((item, index) => this._renderData(item, index,color));
-			// 	return asdf;
-			// }
-			return (
-				<a data-slide-id="zoom" data-zoom-id="zoom-v" href={data} data-image={data} color-id={`${color}_${index}`} name="zoom-images-lg" onClick={(e)=> this._handleThumbImgClick(e,'img')}>
-					<img srcSet={data} src={data} alt="" />
-				</a>
-			);
+			if ((data.thumbnail) && (data.thumbnail.length >= 1)) {				// if (data) {
+				const asdf = data.thumbnail.map((item, index) => this._renderData(item, index,color));				// 	const asdf = data.map((item, index) => this._renderData(item, index,color));
+				return asdf;				// 	return asdf;
+			}
+			// return (
+			// 	<a data-slide-id="zoom" data-zoom-id="zoom-v" href={data} data-image={data} color-id={`${color}_${index}`} name="zoom-images-lg" onClick={(e)=> this._handleThumbImgClick(e,'img')}>
+			// 		<img srcSet={data} src={data} alt="" />
+			// 	</a>
+			// );
 		}
 	};
 
@@ -206,8 +206,8 @@ class ProductZoom extends Component {
 
 		let thumbnails;
 
-		if (this.props.productDataDetail.products_images) {
-			thumbnails = this.props.productDataDetail.products_images;
+		if (this.props.productZoomDetails.imageUrl.thumbnail) {
+			thumbnails = this.props.productZoomDetails.imageUrl.thumbnail;
 		}
 
 		return (
@@ -231,14 +231,14 @@ class ProductZoom extends Component {
 			if (this.props.productWishDetail.wishlist_itemid) {
 				this.props.onRemoveWishList({
 					index: null,
-					wishlist_id: this.props.productWishDetail.wishlist_itemid
+					wishlist_id: this.props.productZoomDetails.wishlist_itemid
 				})
 			}
 		} else {
 			document.getElementById('Capa_1').setAttribute('class', 'naylove-icon active');
 			const data = {
 				customer_id: this.props.customerDetails.customer_id,
-				product_id: this.props.productDataDetail.id,
+				product_id: this.props.productZoomDetails.id,
 			};
 			this.props.onAddToWishList(data);
 
@@ -272,37 +272,36 @@ class ProductZoom extends Component {
 
 
 	render() {
-		const { isActive, globals, productDataDetail } = this.props;
-		// console.log('In render productZoomDetails', productZoomDetails);
-
+		const { isActive, globals, productZoomDetails } = this.props;
+		console.log('In render productZoomDetails', this.props);
 
 		if (this.state.guestUser) {
-			return <Redirect to={`/${globals.store_locale}/add-wishlist?item=${productDataDetail.id}`} />
+			return <Redirect to={`/${globals.store_locale}/add-wishlist?item=${productZoomDetails.id}`} />
 		}
 
 		let newImageArray = [];
 
-		// if (productZoomDetails.simpleproducts) {
-		// 	let arr = [];
-		// 	let imageArray = [];
-		// 	Object.keys(productZoomDetails.simpleproducts).map((item, index) => {
-		// 		let img = {
-		// 			text: productZoomDetails.simpleproducts[item].color.text,
-		// 			image: productZoomDetails.simpleproducts[item].simple_image,
-		// 			video:productZoomDetails.simpleproducts[item].simple_video
-		// 		}
-		// 		imageArray.push(img);
-		// 	});
+		if (productZoomDetails.simpleproducts) {
+			let arr = [];
+			let imageArray = [];
+			Object.keys(productZoomDetails.simpleproducts).map((item, index) => {
+				let img = {
+					text: productZoomDetails.simpleproducts[item].color.text,
+					image: productZoomDetails.simpleproducts[item].simple_image,
+					video:productZoomDetails.simpleproducts[item].simple_video
+				}
+				imageArray.push(img);
+			});
 
-		// 	newImageArray = this._getUnique(imageArray, 'text');
-		// }
+			newImageArray = this._getUnique(imageArray, 'text');
+		}
 
 		let image_array = {
 		};
 
 		if(newImageArray.length == 0){
-			if(productDataDetail.imageUrl)
-				image_array['default'] = productDataDetail.imageUrl;
+			if(this.props.productZoomDetails.imageUrl)
+				image_array['default'] = this.props.productZoomDetails.imageUrl;
 		}
 
 		for(let i=0;i<newImageArray.length; i++){
@@ -343,7 +342,7 @@ class ProductZoom extends Component {
 							</td> */}
 
 							{/* this.checkSingleImage(this.props.productZoomDetails.imageUrl) */}
-							{productDataDetail.imageUrl && productDataDetail.imageUrl && 
+							{productZoomDetails.imageUrl && productZoomDetails.imageUrl.thumbnail.length > 1 && 
 								( <td className="zoom-gallery-thumbnails">
 									<div
 										className="MagicScroll MagicScroll-arrows-inside MagicScroll-vertical"
@@ -359,12 +358,12 @@ class ProductZoom extends Component {
 										}}
 									>
 										{
-											productDataDetail.products_images && Object.keys(productDataDetail.products_images).map((color, index) => {
-												return (this._checkSingleImage(productDataDetail.products_images[color], color, index));
+											image_array && Object.keys(image_array).map((color, index) => {
+												return (this._checkSingleImage(image_array[color], color, index));
 											})
 										}
 
-										{this._checkVideoDataExist(productDataDetail.mediaVideoUrl)}
+										{this._checkVideoDataExist(productZoomDetails.mediaVideoUrl)}
 
 									</div>	
 								</td>)
@@ -411,15 +410,15 @@ class ProductZoom extends Component {
 										})
 									}
 									
-									{this._getImageData(productDataDetail.products_images)}
+									{this._getImageData(productZoomDetails.imageUrl)}
 
 								</div>
                 
                 				{
-									(productDataDetail.mediaVideoUrl && productDataDetail.mediaVideoUrl.length > 0) ?
+									(productZoomDetails.mediaVideoUrl && productZoomDetails.mediaVideoUrl.length > 0) ?
 
 									<div data-slide-id="video-1" class="zoom-gallery-slide video-slide">
-											{this._getVideoData(productDataDetail.mediaVideoUrl)}
+											{this._getVideoData(productZoomDetails.mediaVideoUrl)}
 									</div>
 									: ''
 								}

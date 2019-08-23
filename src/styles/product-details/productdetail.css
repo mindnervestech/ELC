@@ -1440,6 +1440,19 @@ ul li.active-tab a{
     padding: 8rem 35px
 }
 
+.show-mobile {
+    display: none;
+}
+.show-web {
+    display: block;
+}
+
+.footer-line {
+    border-top: solid 2px #f3f0f0;
+    padding: 40px 0px;
+    border-bottom: solid 2px #0D943F;
+}
+
 @media (max-width:767px){   
     .padding-mob{
         padding-left: 0px;
@@ -1512,5 +1525,23 @@ ul li.active-tab a{
         width: 48% !important;
     }
 
+    .mobile-manu {
+        padding: 30px 0px;
+        border-bottom: solid 1px #b1b1b1;
+    }
+
+    .show-mobile {
+        display: block;
+    }
+    .show-web {
+        display: none;
+    }
+
+    .footer-css .Collapsible__trigger.is-open:after {
+        transform: rotateZ(0deg);
+        content: '\25B4' !important;
+        font-size: 25px !important;
+        top: 0px !important;
+    }
 
 }

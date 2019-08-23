@@ -276,7 +276,7 @@ class MainHeader extends Component {
                                                         <a href="javascript:void(0);" onClick={(e) => this.translate('en', 'ltr')} className="active" > EN | English</a>
                                                     </div>
                                                     <div className="currency__item">
-                                                        <a href="javascript:void(0);" onClick={(e) => this.translate('ar', 'rtl')}> SU | Saudi</a>
+                                                        <a href="javascript:void(0);" onClick={(e) => this.translate('ar', 'rtl')}> AR | Arabic</a>
                                                     </div>
                                                 </div>
                                                 </div>

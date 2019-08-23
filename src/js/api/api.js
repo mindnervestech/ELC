@@ -98,7 +98,12 @@ export const API = {
 	getStoreId: (data, cb) => request(data, cb, GET_STORE_ID),
 	getStoreList: (data, cb) => request(data, cb, GET_STORE_LIST),
 	getMenuNav: (data, cb) => request(data, cb, GET_MENU_NAVIGATION),
-	getProductDetails: (data, cb) => request(data, cb, GET_PRODUCT_DETAILS),
+	getProductDetails: (data, cb) =>{
+		let GET_PRODUCT_DETAILS = `${BASE_URL}productbyid/?store_id=${data.store}&url_key=${data.url_key}`;
+		request({}, cb, { type: 'GET', url: GET_PRODUCT_DETAILS });
+		// productbyid/?store_id=2&url_key=elc17-1
+		// request(data, cb, GET_PRODUCT_DETAILS)
+	} ,
 	getOrderHistory: (data, cb) => request(data, cb, GET_ORDER_HISTORY),
 	getOrderDetailsInProfile: (data, cb) => request(data, cb, GET_ORDER_DETAILS_IN_PROFILE),
 	getWishList: (data, cb) => request(data, cb, GET_WISHLIST_ITEM),

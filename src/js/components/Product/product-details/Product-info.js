@@ -50,14 +50,11 @@ class ProductInfo extends Component {
 	increment = totalQty => {
 		// this.setState({ defaultQty: totalQty + 1 });
 		let currQty = this.state.defaultQty;
-		//console.log('increment', totalQty);
 		if (currQty >= totalQty) {
 			let popupMessage = null;
-			console.log("this.props", this.props)
 			let currentStore = this.props.currentStore;
 			
 			if(currentStore == 1 || currentStore == 3 || currentStore == 5){
-				console.log("currentStore", currentStore)
 				popupMessage = Popup.register({
 					title: 'محزر',
 					content: `الحد الأقصى لكمية الطلب من هذا المنتج هي ${parseInt(totalQty)} يرجى تغيير الكمية المحددة لتكون ضمن هذا العدد. لطلب كمية أكثر من ${parseInt(totalQty)} يرجى اللاتصال بنا.`,
@@ -72,7 +69,6 @@ class ProductInfo extends Component {
 				});
 				Popup.queue(popupMessage);
 			} else {
-				console.log("currentStore", currentStore)
 				popupMessage = Popup.register({
 					title: 'Alert',
 					content: `This product has a maximum orderable quantity of ${parseInt(totalQty)} Please update your selected quantity to be within this limit.To order quantity more than ${parseInt(totalQty)} please contact us.`,
@@ -97,7 +93,6 @@ class ProductInfo extends Component {
 	}
 
 	addToWishlist = (productId) => {
-		console.log(productId);
 		const data = {
 			customer_id: 13, // this.props.customerDetails.customer_id,
 			product_id: productId,
@@ -111,9 +106,50 @@ class ProductInfo extends Component {
 		})
 	}
 
+	_getUnique = (arr, comp) => {
+		const unique = arr
+			.map(e => e[comp])
+			// store the keys of the unique objects
+			.map((e, i, final) => final.indexOf(e) === i && i)
+			// eliminate the dead keys & store unique objects
+			.filter(e => arr[e])
+			.map(e => arr[e]);
+		return unique;
+	};
+
 	render() {
-		const { data, productDataDetail } = this.props;
-		console.log(productDataDetail);
+		const { data } = this.props;
+
+		let newImageArray = [];
+
+		if (data.simpleproducts) {
+			let arr = [];
+			let imageArray = [];
+			Object.keys(data.simpleproducts).map((item, index) => {
+				let img = {
+					text: data.simpleproducts[item].color.text,
+					image: data.simpleproducts[item].simple_image,
+					video:data.simpleproducts[item].simple_video,
+					qty:data.simpleproducts[item].qty,
+					stock:data.simpleproducts[item].stockstatus
+				}
+				imageArray.push(img);
+			});
+
+			newImageArray = this._getUnique(imageArray, 'text');
+		}
+
+		let image_array = {
+		};
+
+		if(newImageArray.length == 0){
+			if(this.props.data.imageUrl)
+				image_array['default'] = this.props.data.imageUrl;
+		}
+
+		for(let i=0;i<newImageArray.length; i++){
+			image_array[newImageArray[i].text] = newImageArray[i].image;
+		}
 
 		return (
 			<div className="row">
@@ -124,7 +160,7 @@ class ProductInfo extends Component {
 				<Row className="apex-col-auto carpusel-dots" style={{paddingTop:'20px'}}>
 					<Col xs="12" md="7" lg="7">
 						<h2 className="product-title" style={{marginBottom: 20}}>
-							{productDataDetail.name}
+							{data.name}
 						</h2>
 						<div className="write-review" style={{marginBottom: 20}}>
 							<span style={{marginRight: 10}}>
@@ -133,11 +169,11 @@ class ProductInfo extends Component {
 							</span>
 								|
 							<span style={{marginLeft: 20}}>
-								Age: 7 - 14 year
+								Age: {data.age}
 							</span>
 						</div>
 						<div>
-						<ProductZoom productDataDetail={productDataDetail}/>
+						<ProductZoom />
                         {/* <Carousel showStatus={false}
                         showThumbs={true}
                         infiniteLoop={true}
@@ -192,17 +228,17 @@ class ProductInfo extends Component {
 										</div>
 
 										<div className="prod-price">
-											{productDataDetail.special_price ?
+											{data.special_price ?
 											<div> 
-												<span className="product-price">£35.00</span>
-												<span className="product-price-line">£{Number(productDataDetail.price).toFixed(2)}</span> 
+												<span className="product-price">{data.currency}&nbsp;{data.special_price}</span>
+												<span className="product-price-line">{data.currency}&nbsp;{Number(data.price).toFixed(2)}</span> 
 											</div>:
-											<span className="product-price">£{Number(productDataDetail.price).toFixed(2)}</span>}
+											<span className="product-price">{data.currency}&nbsp;{Number(data.price).toFixed(2)}</span>}
 										</div>
 										<div className="prod-color">
 											<div>
 												Color : 
-												<span>Black</span>
+												{newImageArray[0] ? <span>{newImageArray[0].text}</span> : <div />}
 											</div>
 										</div>
 
@@ -210,11 +246,11 @@ class ProductInfo extends Component {
 											<div>
 												<img src='http://nayomidev.iksulalive.com/pub/media/attribute/swatch/n/u/nude_1_.jpg'></img>
 												<img src='http://nayomidev.iksulalive.com/pub/media/attribute/swatch/b/l/black_1_.jpg'></img>
-												<img src='http://nayomidev.iksulalive.com/pub/media/attribute/swatch/m/o/mocha_1_.jpg'></img>
-												<img src='http://nayomidev.iksulalive.com/pub/media/attribute/swatch/w/h/white_1_.jpg'></img>
+												{/* <img src='http://nayomidev.iksulalive.com/pub/media/attribute/swatch/m/o/mocha_1_.jpg'></img>
+												<img src='http://nayomidev.iksulalive.com/pub/media/attribute/swatch/w/h/white_1_.jpg'></img> */}
 											</div>
 										</div>
-										<div style={{width:'100%'}}>
+										{/* <div style={{width:'100%'}}>
 											<div className="choose-dil">
 												Choose your delivery option:
 											</div>
@@ -245,7 +281,7 @@ class ProductInfo extends Component {
 											<div className="free-uk-dly">
 												This product includes free UK delivery
 											</div>
-										</div>
+										</div> */}
 
 										<div className="t-Form-inputContainer col col-5 row" style={{marginBottom: 20, marginLeft:0,padding:0}}>
 											<div className="t-Form-itemWrapper" style={{border: '0.1rem solid #EAEAEA',borderRadius: '0.2rem'}}>
@@ -270,7 +306,7 @@ class ProductInfo extends Component {
 												<span className="t-Form-itemText t-Form-itemText--post">
 													<i
 														className="icon max qty-dec-inc"
-														onClick={e => this.increment(productDataDetail.quantity_and_stock_status.qty)}
+														onClick={e => this.increment(newImageArray[0].qty)}
 													>
 														+
 													</i>
@@ -278,7 +314,7 @@ class ProductInfo extends Component {
 											</div>
 										</div>
 										<div style={{width:'100%', marginBottom:20}}>
-											{!productDataDetail.quantity_and_stock_status.is_in_stock ?
+											{newImageArray[0] && newImageArray[0].stock == 0 ?
 											<span style={{margin:'10px', color: '#ee0E19'}}>
 												Out of stock
 											</span> :
@@ -294,12 +330,12 @@ class ProductInfo extends Component {
 										</div>
 
 										<div className="share-wishlist">
-											{!productDataDetail.is_in_wishlist ?
-												<a onClick={() => this.addToWishlist(productDataDetail.id)} className="hover-on-favorite" style={{marginRight: 35}}>
+											{!data.is_in_wishlist ?
+												<a onClick={() => this.addToWishlist(data.id)} className="hover-on-favorite" style={{marginRight: 35}}>
 													<img src={favoriteImg} />
 													<span>add to wishlist</span>
 												</a> :
-												<a onClick={this.removeToWishlist(productDataDetail.wishlist_itemid)} className="hover-on-favorite" style={{marginRight: 35}}>
+												<a onClick={this.removeToWishlist(data.wishlist_itemid)} className="hover-on-favorite" style={{marginRight: 35}}>
 													<img src={favoriteImg} />
 													<span>remove to wishlist</span>
 												</a> }
