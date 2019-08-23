@@ -78,8 +78,6 @@ class MainHeader extends Component {
             country_id: '',
             city: ''
         });
-
-        // this.onChangeCountry('UAE', 'UNITED ARAB EMIRATES');
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -273,14 +271,14 @@ class MainHeader extends Component {
                                         this.state.showMenu
                                             ? (
                                                 <div className="menu">
-                                                <ul>
-                                                    <li className="currency__item">
+                                                <div>
+                                                    <div className="currency__item">
                                                         <a href="javascript:void(0);" onClick={(e) => this.translate('en', 'ltr')} className="active" > EN | English</a>
-                                                    </li>
-                                                    <li className="currency__item">
+                                                    </div>
+                                                    <div className="currency__item">
                                                         <a href="javascript:void(0);" onClick={(e) => this.translate('ar', 'rtl')}> SU | Saudi</a>
-                                                    </li>
-                                                </ul>
+                                                    </div>
+                                                </div>
                                                 </div>
                                             )
                                             : (
@@ -353,10 +351,10 @@ class MainHeader extends Component {
                                         <img src={help} className="image-ion"></img>
                                         <label className="iconLeble text-color changeLinkText"><FormattedMessage id="Header.Help" defaultMessage="help" /></label>
                                     </li>
-                                    <li className="titleHover">
+                                    <li className="titleHover" style={{marginBottom: 5}}>
                                         <Link to={`/${store_locale}/Login`} style={{ textDecoration: 'none' }}>
-                                            <img src={profile} className="image-ion"></img>
-                                            <label className="iconLeble text-color changeLinkText"><FormattedMessage id="Header.SignInOrRegister" defaultMessage="sign in / register" /></label>
+                                            <img src={profile} className="image-ion" style={{marginTop: 9}}></img>
+                                                <label className="iconLeble text-color changeLinkText"><FormattedMessage id="Header.SignInOrRegister" defaultMessage="sign in / register"/></label>
                                         </Link>
                                     </li>
                                     {/* <li>
@@ -422,7 +420,7 @@ class MainHeader extends Component {
                                         <div className="lang">
                                             <a href="javascript:void(0);" onClick={(e) => this.translate('en', 'ltr')} className="active" >en</a> | <a href="javascript:void(0);" onClick={(e) => this.translate('ar', 'rtl')} >العربية</a></div>
                                     </li> */}
-                                             <li>
+                                             <li style={{paddingTop: 8}}>
                                                 <label className="headerLable2">my basket
                                                 {/* <span style={{ fontFamily: "VAG Rounded ELC Bold", marginLeft: 10 }}>£30.00</span> */}
                                                 </label>
@@ -430,7 +428,7 @@ class MainHeader extends Component {
                                             <li style={{ paddingLeft: 10 }}>
                                                 <img src={bagLogo} />
                                             </li>
-                                            <li>
+                                            <li style={{paddingTop: 8}}>
                                                 <label className="lable-count">1</label>
                                             </li>
                                         </ul>
@@ -555,18 +553,15 @@ class MainHeader extends Component {
                         </div>
                     </div>
                     <div className="header-slider">
-                        <Row>
-                            <Col xs="1"></Col>
-                            <Col xs="10" style={{ padding: 0 }}>
                                 <Slider {...settings}>
                                     <div>
                                         <Row>
-                                            <Col xs="2"></Col>
-                                            <Col xs="3">
+                                            <Col xs="3"></Col>
+                                            <Col xs="2" style={{paddingLeft: 0}}>
                                                 <img src={deliveryBy} className="imageHight40" />
                                             </Col>
                                             <Col xs="7">
-                                                <ul style={{ textAlign: 'start' }}>
+                                                <ul style={{ textAlign: 'start', paddingTop: 10 }}>
                                                     <li style={{ fontSize: 13, color: "#0D943F" }}>
                                                         Free Std Delivery
                                                     </li>
@@ -579,12 +574,12 @@ class MainHeader extends Component {
                                     </div>
                                     <div>
                                         <Row>
-                                            <Col xs="2"></Col>
-                                            <Col xs="3">
+                                            <Col xs="3"></Col>
+                                            <Col xs="2">
                                                 <img src={freeDelivery} className="imageHight40" />
                                             </Col>
                                             <Col xs="7">
-                                                <ul style={{ textAlign: 'start' }}>
+                                                <ul style={{ textAlign: 'start', paddingTop: 10 }}>
                                                     <li style={{ fontSize: 13, color: "#0D943F" }}>
                                                         Free Gift wrapping
                                                     </li>
@@ -597,12 +592,12 @@ class MainHeader extends Component {
                                     </div>
                                     <div>
                                         <Row>
-                                            <Col xs="2"></Col>
-                                            <Col xs="3">
+                                            <Col xs="3"></Col>
+                                            <Col xs="2">
                                                 <img src={freeCollect} className="imageHight40" />
                                             </Col>
                                             <Col xs="7">
-                                                <ul style={{ textAlign: 'start' }}>
+                                                <ul style={{ textAlign: 'start', paddingTop: 10 }}>
                                                     <li style={{ fontSize: 13, color: "#0D943F" }}>
                                                         Free Returns
                                                     </li>
@@ -614,9 +609,6 @@ class MainHeader extends Component {
                                         </Row>
                                     </div>
                                 </Slider>
-                            </Col>
-                            <Col xs="1"></Col>
-                        </Row>
 
                         {/* <Row className="row-4">
                             <Col xs="1"></Col>

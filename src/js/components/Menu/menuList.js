@@ -25,7 +25,7 @@ class menuList extends Component {
 		// let menu_item = 'menu.' + item.name.toUpperCase();
 
 		return (
-			<li key={category}>
+			<li key={index}>
 				<Link to={'/' + this.state.store_locale + '/products/' + category[0] + '-' + item.url_key} onClick={() => document.getElementById("closeNav").click()}>
 					{item.name}
 					{/* <FormattedMessage id={menu_item} defaultMessage={item.name} /> */}
@@ -49,8 +49,8 @@ class menuList extends Component {
 
 		return (
 
-			// <>
-				<ul key={item_name} className="subLink">
+			<>
+				<ul className="subLink">
 				{data.map(this._renderSubMenuItem)}
 					{/* <li>
 						<span className="PinkText"><FormattedMessage id="Menu.Style" defaultMessage="Style" /></span> 
@@ -63,13 +63,13 @@ class menuList extends Component {
 					</li>
 					{collectionCat.map(this._renderSubMenuItem)} */}
 				</ul>
-			// </>
+			</>
 		);
 	};
 
 	_checkSubMenu = item => {
 		if (item.hasOwnProperty('children')) {
-			//console.log('In _checkSubMenu ', item);
+			if(item.children[0].length > 0){
 
 			// Use item.url_key instead of item.name (contains Arabic Text if locale is Arabic)			
 			// let menu_item = 'menu.' + item.name.toUpperCase() + '.SHOW_ALL_' + item.name.toUpperCase();
@@ -105,6 +105,7 @@ class menuList extends Component {
 					</div> */}
 				</div>
 			);
+			}
 		} else {
 		}
 	};
@@ -114,15 +115,15 @@ class menuList extends Component {
 		let menu_item = 'menu.' + item.name.toLowerCase();
 
 		return (
-			// <>
-				<li key={menu_item}>
+			<>
+				<li key={index}>
 					<Link to={'/' + this.state.store_locale + '/products/' + item.url_key} style={{ textDecoration: 'none' }} onClick={() => document.getElementById("closeNav").click()}>
 						{item.name.toLowerCase()}
 					</Link>
 					<i className="subMenuTrigger" />
 					{this._checkSubMenu(item)}
 				</li>
-			// </>
+			</>
 		);
 	};
 	_renderMenuNavigation = (item, index) => {

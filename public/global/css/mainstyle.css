@@ -191,7 +191,7 @@
 }
 
 .imageHight40{
-    width: 85%;
+    width: 100%;
     height: 40px;
 }
 
@@ -2709,7 +2709,9 @@ html[dir="rtl"] .data .slick-next {
     margin-top: 25px;
 }
 
-.header-slider {}
+    .header-slider{
+        padding-bottom: 8px;
+    }
 
 .product-list {
     margin: 20px 0;
@@ -5283,4 +5285,13 @@ button.swiper-pagination-bullet {
 
  .t-Header-branding{
      overflow: inherit !important;
+     background-color: #fff;
+ }
+
+ a:hover{
+    text-decoration: none!important;
+ }
+
+ .homePage .cardDetail:hover{
+    background-color: #0C8539;
  }
