@@ -1,0 +1,133 @@
+.margin-40 {
+  margin: 40%;
+}
+
+.padding10 {
+  padding: 10%;
+}
+
+.img-src-width {
+  width: 100%;
+  height: auto;
+  margin: 10px;
+}
+.text-block {
+}
+
+.paddingLeft20 {
+  padding-left: 20%;
+}
+
+.header-birth-club {
+  color: green;
+  letter-spacing: 1.04px;
+  text-align: left;
+  text-decoration: none solid green;
+  text-size-adjust: 100%;
+  margin: 20px 0px 10px;
+  outline: green none 0px;
+  padding: 0px 0px 19px;
+  text-transform: none;
+}
+
+.border-block {
+  border: 1px solid #000;
+}
+
+.width {
+  margin: 40px !important;
+  max-width: 50% !important;
+}
+
+.input-box {
+  height: 40px;
+  width: 100%;
+  margin-top: 5px;
+  color: #4f4f4f;
+  border: solid 1px #b1b1b1;
+  padding: 0px 10px;
+}
+
+.select-field-box {
+  width: 100% !important;
+  height: 40px;
+  background-color: #fff;
+  border-radius: 0px;
+}
+
+.button-div {
+  justify-content: center;
+  text-align: center;
+  margin-top: 40px !important;
+  display: inline-flex;
+}
+
+.button-cancel {
+  max-height: 40px !important;
+  background: #0d943f;
+  text-decoration: none;
+  color: #ffffff;
+  text-align: center;
+  width: 154px;
+  border-radius: 0px;
+  margin: 0px;
+  padding: 10px 0px 10px 0px;
+  cursor: pointer;
+  border: solid 1px #0d943f;
+}
+
+.m-40 {
+  margin: 40px !important;
+}
+
+@media only screen and (max-width: 767px) {
+  .button-div {
+    justify-content: center;
+    text-align: center;
+    margin-top: 40px !important;
+    display: block;
+  }
+
+  .bclub-button {
+    width: 100% !important;
+  }
+
+  .m-40 {
+    margin: 15px !important;
+  }
+
+  .width {
+    margin: 0px auto !important;
+    max-width: 90% !important;
+    width: 90% !important;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .m-40 {
+    margin: 8px !important;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .button-div {
+    justify-content: center;
+    text-align: center;
+    margin-top: 40px !important;
+    display: block;
+  }
+
+  .bclub-button {
+    width: 100% !important;
+  }
+
+  .m-40 {
+    margin: 15px !important;
+  }
+
+  .width {
+    margin: 0px auto !important;
+    max-width: 90% !important;
+    width: 90% !important;
+  }
+}

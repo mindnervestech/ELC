@@ -1,0 +1,36 @@
+.margin-40
+{
+    margin:40%;
+}
+
+.padding10
+{
+    padding:10%;
+}
+
+.img-src-width{
+width:100%;
+height:auto;
+margin:0px;
+
+}
+
+
+.paddingLeft20
+{
+    padding-left:20%;
+}
+
+.header-birth-club
+{
+   
+    color: green;
+    letter-spacing: 1.04px;
+    text-align:left;
+    text-decoration: none solid green;
+    text-size-adjust: 100%;
+    margin: 20px 0px 10px;
+    outline: green none 0px;
+    padding: 0px 0px 19px;
+    text-transform:none;
+}

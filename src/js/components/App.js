@@ -29,6 +29,8 @@ import TermConditions from './StaticPages/TermsConditions/TermsConditions';
 
 import ProfileAddress from './CustomerAddress/ProfileAddress';
 
+import BirthDayClub from './BirthDayClub/BirthDayClub'
+import AddNewBirthDayClubChild from './BirthDayClub/AddNewChild';
 import Login from './Login/Login';
 
 import MyProfile from './MyProfile/MyProfile';
@@ -338,7 +340,8 @@ class App extends Component {
                     <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/order-history" component={Order} />
                     <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/view-voucher" component={OredrDetails} />
                     <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/wish-list" component={WishList} />
-
+                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/birth-day-club" component={BirthDayClub}/>
+                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/add-new-birth-day-club-child" component={AddNewBirthDayClubChild}/>
                     <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/about-us" component={AboutUs} />
                     <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/affiliates" component={Affiliate} />
                     <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/careers" component={Careers} />
