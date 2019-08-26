@@ -266,7 +266,7 @@
     "Product.Details.DeliveryOption": "Delivery Options",
     "Product.Details.Question": "Question",
     "Product.Detail.addToBasket": "Add to basket",
-
+    "Product.Detail.youMayAlsoLike": "You may also like ",
     "Product.Listing.Filter": "Filters",
     "Product.Listing.Sort": "Sort",
     "Product.Listing.Relevance": "Relevance",
@@ -751,7 +751,7 @@
     "Product.Details.DeliveryOption": "Delivery Options",
     "Product.Details.Question": "Question",
     "Product.Detail.addToBasket": "أضف إلى السلة",
-    
+    "Product.Detail.youMayAlsoLike": "قد يعجبك أيضاً",
     "Product.Listing.Filter": "تصنيف",
     "Product.Listing.Sort": " ترتيب  ",
     "Product.Listing.Relevance": "الأكثر تطابقاً",

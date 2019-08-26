@@ -90,7 +90,8 @@ class ProductSlider extends Component {
                         <div className="row you-may-like-title">
                             <h2 />
                             <label>
-                                You may also like
+                                <FormattedMessage id="Product.Detail.youMayAlsoLike" defaultMessage="You may also like" />
+                                
                             </label>
                             <h2/>
                         </div>

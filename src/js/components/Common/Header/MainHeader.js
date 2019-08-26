@@ -40,6 +40,7 @@ class MainHeader extends Component {
             showCart: false,
             cartItemCount: 3,
             showMenu: false,
+            selectedLang: '',
         }
     }
 
@@ -134,6 +135,8 @@ class MainHeader extends Component {
 
     translate = (lang, dir) => {
         this.props.handleLanguageSelection(lang, dir);
+        // this.closeHBMenu();
+        this.setState({showMenu: false});
     }
 
     onChangeCountry = (country) => {
@@ -212,7 +215,7 @@ class MainHeader extends Component {
         }
 
         const store_locale = this.props.globals.store_locale;
-
+        const {globals} = this.props;
         const cartDetails = <Cart showCart={this.state.showCart}
             cartDetails={this.props.cart_details}
             toggleCart={this.showCart}
@@ -266,7 +269,7 @@ class MainHeader extends Component {
                                     </li> */}
                                     <li>
                                     <div className="language">
-                                    <button className={this.state.showMenu ? 'Button is-open' : 'Button'} onClick={this.showMenu}>EN</button>
+                                    <button className={this.state.showMenu ? 'Button is-open' : 'Button'} onClick={this.showMenu}>{globals.language.toUpperCase()}</button>
                                     {
                                         this.state.showMenu
                                             ? (
