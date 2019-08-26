@@ -3,6 +3,8 @@ import flower from '../../../assets/images/Home/homepage-flower.png';
 import ZeroItem from './Instagram';
 import InstagramItems from './Instagram';
 import Slider from "react-slick";
+import { connect } from 'react-redux';
+import * as actions from '../../redux/actions/index';
 import { FormattedMessage } from 'react-intl';
 import { Parallax, Background } from 'react-parallax';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -19,6 +21,10 @@ import { Link, Redirect } from 'react-router-dom';
 class HomePageComponent extends Component {
     constructor(props) {
         super(props);
+    }
+
+    componentWillMount(){
+        this.props.getYouMayAlsoLikeData()
     }
 
     render() {
@@ -330,7 +336,7 @@ class HomePageComponent extends Component {
                                             </div>
                                         </div>
                                     </div>
-                                    <ProductSlider></ProductSlider>
+                                    <ProductSlider similar_product={this.props.YouMayAlsoLike}></ProductSlider>
                                 </div>
                             </div>
                             {/* <div className="t-Body-contentInner hideInDesktop">
@@ -496,4 +502,24 @@ class HomePageComponent extends Component {
         );
     }
 }
-export default HomePageComponent;
+
+const mapStateToProps = state => {
+    return {
+      isUserLoggedIn: state.login.isUserLoggedIn,
+      user_details: state.login.customer_details,
+      products: state.wishList.products,
+      orderHistory: state.orders.orders_history,
+      globals: state.global,
+      wishLoader: state.wishList.wishLoader,
+      YouMayAlsoLike: state.productDetails.YouMayAlsoLike
+    }
+  }
+  
+  const mapDispatchToProps = dispatch => {
+    return {
+      getYouMayAlsoLikeData: () => dispatch(actions.getYouMayAlsoLikeData()),
+    }
+  
+  }
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomePageComponent);

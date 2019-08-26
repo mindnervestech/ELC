@@ -298,48 +298,33 @@ class Product extends Component {
 	
 	
 
-	getSortBy = (value) => {
-		
+	// getSortBy = (value) => {
+	// 	console.log(this.props.productDetails.metainfo.product_data)
 
-		if(this.props.productDetails)
-		{
-			let data= this.props.productDetails.products;
-			console.log("data", this.props.productDetails)
-			let sorted = Object.assign({}, data);  // Copy the data object
-			console.log("Data Before sort",sorted);
+	// 	if(this.props.productDetails)
+	// 	{
+	// 		let data= this.props.productDetails.metainfo.product_data;
+	// 		console.log("data", this.props.productDetails)
+	// 		let sorted = Object.assign({}, data); 
+	// 		console.log("Data Before sort",sorted);
 
-			let sortedByPriceAsc=[];
-			sortedByPriceAsc= _.sortBy(Object.keys(sorted).map(k => ({id:k, ...sorted[k]})), (d)=> d.price.price);
-			let sortedByPriceDesc=[];
+	// 		let sortedByPriceAsc=[];
+	// 		sortedByPriceAsc= _.sortBy(Object.keys(sorted).map(k => ({id:k, ...sorted[k]})), (d)=> d.price.price);
+	// 		let sortedByPriceDesc=[];
 
-			sortedByPriceDesc=_.sortBy(Object.keys(sorted).map(k => ({id:k, ...sorted[k]})), (d)=> d.price.price).reverse();
-			if(value==='price_asc')
-			{
-				this.setState({filters:sortedByPriceAsc});
-				//this.props.productDetails.filters=sortedByPriceAsc;
-				console.log("Sorted Asc Data",sortedByPriceAsc);
-			}else
-			{
-				//this.props.productDetails.filters=sortedByPriceDesc;
-				console.log("Sorted Desc  Data",sortedByPriceDesc);
-				this.setState({filters:sortedByPriceDesc})
-			}
+	// 		sortedByPriceDesc=_.sortBy(Object.keys(sorted).map(k => ({id:k, ...sorted[k]})), (d)=> d.price.price).reverse();
+	// 		if(value==='price_asc')
+	// 		{
+	// 			this.setState({filters:sortedByPriceAsc});
+	// 			console.log("Sorted Asc Data",sortedByPriceAsc);
+	// 		}else
+	// 		{
+	// 			console.log("Sorted Desc  Data",sortedByPriceDesc);
+	// 			this.setState({filters:sortedByPriceDesc})
+	// 		}
 
-		}
-		// <filter item = {this.state.sortedByPriceDesc}/>
-	    // this.props
-
-	//this.props.productDetails.products=newWSortedData;
-	//console.log("Price Data",this.data);
-	//this.props.productDetails.filters=this.productDetails.products;
-		// sortbyv = value;
-		// const values = queryString.parse(this.props.location.search);
-		// let searchQuery = values.query;
-		// if (searchQuery)
-		// 	this._fetchSearchedProducts(searchQuery, filters)
-		// else
-		// 	this._fetchProducts(filters)
-	}
+	// 	}
+	// }
 
 
 
@@ -391,11 +376,11 @@ class Product extends Component {
 						>
 							<div className="t-BreadcrumbRegion-body">
 								<div className="t-BreadcrumbRegion-breadcrumb">
-									<ul className="mobile-filter">
+									<ul className="mobile-filter" style={{width: '48%'}}>
 										<li id="cd-cart-trigger" onClick={this._callFilters}>
 											<FormattedMessage id="Product.Listing.FilterBy" defaultMessage="Filter by" />
 										</li>
-										<li>
+										{/* <li>
 											<div><FormattedMessage id="Product.Listing.SortBy" defaultMessage="Sort by" /></div>
 											<div className="dropdown-content" id="mobile-sort-by-content-div">
 												<div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel apex-item-wrapper apex-item-wrapper--checkbox ">
@@ -446,13 +431,13 @@ class Product extends Component {
 													</div>
 												</div>
 											</div>
-										</li>
+										</li> */}
 									</ul>
 								</div>
 							</div>
 							<div className="t-BreadcrumbRegion-buttons" />
 						</div>
-						)}
+						 )}
 					</div>
 
 					<div className="t-Body-content" id="t_Body_content">

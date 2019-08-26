@@ -16,6 +16,7 @@ import StarRatings from 'react-star-ratings';
 
 var _ = require('lodash');
 
+let productListData = {}
 let productList = {} 
 let pagenationCount = 8
 
@@ -23,6 +24,7 @@ let pagenationCount = 8
 class ProductListData extends Component {
 	constructor(props) {
 		super(props);
+		productListData = this.props.list.product_data
 		productList = this.props.list.product_data
 		let totalPages = 1
 		let count = 0
@@ -55,44 +57,6 @@ class ProductListData extends Component {
 		
 	}
 
-	getSortBy = (value) => {
-		// sortbyv = value;
-		// if (data == null) {
-		// 	if (value == "price_desc") {
-		// 		const sortData = _.values(this.props.filterProductList).sort((a, b) => b.price - a.price);
-		// 		//consoleconsole.log("sortData",sortData)
-		// 		this.props.saveFilterData(sortData);
-		// 	} else if (value == 'price_asc') {
-		// 		const sortData = _.values(this.props.filterProductList).sort((a, b) => a.price - b.price);
-		// 		this.props.saveFilterData(sortData);
-		// 	} else {
-		// 		const data = this.multiPropsFilter(newFilter);
-		// 		this.props.saveFilterData(data);
-		// 	}
-		// } else {
-		// 	if (value == "price_desc") {
-		// 		const sortData = _.values(productList).sort((a, b) => b.price - a.price);
-		// 		this.setState({list1: sortData});
-		// 	} else if (value == 'price_asc') {
-		// 		const sortData = _.values(productList).sort((a, b) => a.price - b.price);
-		// 		this.setState({list1: sortData});
-		// 	} else {
-		// 		//const data = this.multiPropsFilter(newFilter);
-		// 		this.props.saveFilterData(productList);
-		// 	}
-		// }
-
-		if (value == "price_desc") {
-			const sortData = _.values(productList).sort((a, b) => b.price - a.price);
-			this.setState({list1: sortData});
-		} else if (value == 'price_asc') {
-			const sortData = _.values(productList).sort((a, b) => a.price - b.price);
-			this.setState({list1: sortData});
-		} else {
-			//this.props.saveFilterData(productList);
-		}
-	}
-
 	pagenation = (start , end) => {
 		this.state.list1 = {}
 		for(var element in productList){
@@ -107,7 +71,6 @@ class ProductListData extends Component {
 		if(this.state.pageNumber != 1){
 			this.setState({pageNumber: this.state.pageNumber - 1})
 			setTimeout(() => {
-				console.log(this.state.pageNumber)
 				let value = pagenationCount * (this.state.pageNumber - 1) + 1
 				this.pagenation(value , value + pagenationCount - 1)
 			}, 500);
@@ -123,7 +86,18 @@ class ProductListData extends Component {
 	}
 
 	filter = (value) => {
-		
+		if (value.target.value == "price_desc") {
+			const sortData = _.values(productList).sort((a, b) => b.price - a.price);
+			productList = sortData
+			this.pagenation(1, pagenationCount)
+		} else if (value.target.value == 'price_asc') {
+			const sortData = _.values(productList).sort((a, b) => a.price - b.price);
+			productList = sortData
+			this.pagenation(1, pagenationCount)
+		} else {
+			productList = productListData
+			this.pagenation(1, pagenationCount)
+		}
 	}
 
 	render() {
@@ -131,6 +105,30 @@ class ProductListData extends Component {
 		
 		return (
 			<div className="homePage">
+				<div className="divShowOnMobile" style={{width: '50%', height: 50, position: 'absolute', top: 28, right: 0}}>
+				<div
+							id="R29005156978427060"
+							className="t-BreadcrumbRegion h-hidden-desktop t-BreadcrumbRegion--showBreadcrumb t-BreadcrumbRegion--useBreadcrumbTitle"
+						>
+							<div className="t-BreadcrumbRegion-body">
+								<div className="t-BreadcrumbRegion-breadcrumb">
+									<ul className="mobile-filter">
+										<li style={{border: 'none'}}>
+											<div><FormattedMessage id="Product.Listing.SortBy" defaultMessage="Sort by" /></div>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div className="t-BreadcrumbRegion-buttons" />
+						</div>
+				</div>
+				<div className="divShowOnMobile" style={{width: '50%', height: 50, position: 'absolute', top: 28, right: 0}}>
+				<select placeholder={'Filter'} onChange={this.filter} style={{height: 50, color: 'transparent', backgroundColor: 'transparent', border: 'none'}}>
+					<option value="relevance">Relevance</option>
+					<option value="price_desc">Price (High to Low)</option>
+					<option value="price_asc">Price (Low to High)</option>
+				</select>
+				</div>
 				<div className="start3">
 					<div>
 						<span className="blackTitle">{this.props.list.category_name}</span>
@@ -147,13 +145,9 @@ class ProductListData extends Component {
 									</Col>
 									<Col xs="6" style={{ padding: 0 }}>
 										<select placeholder={'Filter'} onChange={this.filter}>
-											{/* <option value="best seller" onClick={(e) => this.getSortBy('relevance')}>Relevance</option>
-											<option value="best seller" onClick={(e) => this.getSortBy('price_desc')}>Price (High to Low)</option>
-											<option value="best seller" onClick={(e) => this.getSortBy('price_asc')}>Price (Low to High)</option> */}
-
-											<option value="best seller">Relevance</option>
-											<option value="best seller">Price (High to Low)</option>
-											<option value="best seller">Price (Low to High)</option>
+											<option value="relevance">Relevance</option>
+											<option value="price_desc">Price (High to Low)</option>
+											<option value="price_asc">Price (Low to High)</option>
 										</select>
 									</Col>
 									<Col xs="3">
@@ -209,7 +203,8 @@ class ProductListData extends Component {
 										<label className="text-color">{list[keyName].json.name}</label>
 									</div>
 									<div>
-										<span style={{ fontSize: 14, color: "#0D943F", fontWeight: "bold" }}>{list[keyName].currency } {list[keyName].price}.00</span><span style={{ color: "gray", textDecorationLine: 'line-through', fontSize: 14, marginLeft: 10 }}>AED 14.50</span>
+										<span style={{ fontSize: 14, color: "#0D943F", fontWeight: "bold" }}>{list[keyName].currency } {list[keyName].price}.00</span>
+										{/* <span style={{ color: "gray", textDecorationLine: 'line-through', fontSize: 14, marginLeft: 10 }}>AED 14.50</span> */}
 									</div>
 									{/* <div style={{ paddingTop: 10 }}>
 										<StarRatings

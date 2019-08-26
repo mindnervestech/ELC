@@ -47,7 +47,8 @@ export {
 	getProductSearchList,
 	addToWishlist,
 	getPlaceOrder,
-	getSizeChart
+	getSizeChart,
+	getYouMayAlsoLikeData,
 } from './getProductDetails';
 
 export { getGuestCartId, getGuestCart, startGuestCheckout } from './guestUser';

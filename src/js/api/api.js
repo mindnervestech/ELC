@@ -121,6 +121,10 @@ export const API = {
 		let GET_PRODUCT_LIST_BY_CATEGARY = `${BASE_URL}productlisting/?url_key=${data.url_key}&storeid=${data.storeid}`;
 		request({}, cb, { type: 'GET', url: GET_PRODUCT_LIST_BY_CATEGARY });
 	},
+	getYouMayAlsoLikeData: (data, cb) => {
+		let URL = 'https://elcm2.iksulalive.com/index.php/rest/V1/app/productsbycategory?category_id=28&store_id=2&count=6';
+		request({}, cb, { type: 'GET', url: URL });
+	},
 	getProductSearchList: (data, cb) => {
         let GET_PRODUCT_LIST_BY_SEARCH = `${BASE_URL}searchresult/?q=${data.q}&storeid=6`;
         request({}, cb, { type: 'GET', url: GET_PRODUCT_LIST_BY_SEARCH });

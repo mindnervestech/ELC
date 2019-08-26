@@ -3,6 +3,7 @@ import RenderSlider from '../slider';
 import { FormattedMessage } from 'react-intl'
 import Slider from "react-slick";
 import { Link, Redirect } from 'react-router-dom';
+import Spinner from '../../Spinner/Spinner2';
 
 import logo1 from '../../../../assets/images/you_may_also_like_1.png'
 import logo2 from '../../../../assets/images/you_may_also_like_2.png'
@@ -14,7 +15,7 @@ class ProductSlider extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            spnner: true
         }
     }
 
@@ -53,8 +54,12 @@ class ProductSlider extends Component {
                 }
             ]
         }
+        if(similar_product != undefined){
+            this.state.spnner = false
+        }
         return (
             <div className="row">
+                {this.state.spnner ? <Spinner /> : 
                 <div className="col col-12 apex-col-auto rowPadding">
                     <div style={{paddingTop: 15, backgroundColor: '#fff'}} className="t-Region containers  t-Region--noBorder t-Region--hiddenOverflow margin-bottom-lg" id="R35743384497996348" aria-live="polite">
                         {/* <div className="t-Region-header">
@@ -107,86 +112,13 @@ class ProductSlider extends Component {
                                                             <span style={{ fontSize: 14, color: "#0D943F", fontWeight: "bold" }}>{currency} &nbsp;{item.price}</span>
                                                             {/* <span style={{ color: "gray", textDecorationLine: 'line-through', fontSize: 14, marginLeft: 10 }}>{currency} &nbsp;{item.price}</span> */}
                                                         </div>
-                                                        <div>
+                                                        {/* <div>
                                                             <button className="alsoLikeCardButton">add to basket</button>
-                                                        </div>
+                                                        </div> */}
                                                     </div>
                                                     </Link>
                                                 ))}
                                                 </Slider>
-                                                {!similar_product ? 
-                                                <Slider {...settings3}>
-                                                    <Link to={`/saudi-en/products-details/blue-bike`}>
-                                                    <div className="alsoLikeCard">
-                                                        <img src={logo1} />
-                                                        <div className="marginTop25">
-                                                            <label className="text-color">Twist and Turn Activity House</label>
-                                                        </div>
-                                                        <div>
-                                                            <span style={{ fontSize: 14, color: "#0D943F", fontWeight: "bold" }}>£12.00</span><span style={{ color: "gray", textDecorationLine: 'line-through', fontSize: 14, marginLeft: 10 }}>£14.50</span>
-                                                        </div>
-                                                        <div>
-                                                            <button className="alsoLikeCardButton">add to basket</button>
-                                                        </div>
-                                                    </div>
-                                                    </Link>
-                                                    <Link to={`/saudi-en/products-details/blue-bike`}>
-                                                    <div className="alsoLikeCard">
-                                                        <img src={logo2} />
-                                                        <div className="marginTop25">
-                                                            <label className="text-color">Twist and Turn Activity House</label>
-                                                        </div>
-                                                        <div>
-                                                            <span style={{ fontSize: 14, color: "#0D943F", fontWeight: "bold" }}>£12.00</span><span style={{ color: "gray", textDecorationLine: 'line-through', fontSize: 14, marginLeft: 10 }}>£14.50</span>
-                                                        </div>
-                                                        <div>
-                                                            <button className="alsoLikeCardButton">add to basket</button>
-                                                        </div>
-                                                    </div>
-                                                    </Link>
-                                                    <Link to={`/saudi-en/products-details/blue-bike`}>
-                                                    <div className="alsoLikeCard">
-                                                        <img src={logo3} />
-                                                        <div className="marginTop25">
-                                                            <label className="text-color">Twist and Turn Activity House</label>
-                                                        </div>
-                                                        <div>
-                                                            <span style={{ fontSize: 14, color: "#0D943F", fontWeight: "bold" }}>£12.00</span><span style={{ color: "gray", textDecorationLine: 'line-through', fontSize: 14, marginLeft: 10 }}>£14.50</span>
-                                                        </div>
-                                                        <div>
-                                                            <button className="alsoLikeCardButton">add to basket</button>
-                                                        </div>
-                                                    </div>
-                                                    </Link>
-                                                    <Link to={`/saudi-en/products-details/blue-bike`}>
-                                                    <div className="alsoLikeCard">
-                                                        <img src={logo4} />
-                                                        <div className="marginTop25">
-                                                            <label className="text-color">Twist and Turn Activity House</label>
-                                                        </div>
-                                                        <div>
-                                                            <span style={{ fontSize: 14, color: "#0D943F", fontWeight: "bold" }}>£12.00</span><span style={{ color: "gray", textDecorationLine: 'line-through', fontSize: 14, marginLeft: 10 }}>£14.50</span>
-                                                        </div>
-                                                        <div>
-                                                            <button className="alsoLikeCardButton">add to basket</button>
-                                                        </div>
-                                                    </div>
-                                                    </Link>
-                                                    <Link to={`/saudi-en/products-details/blue-bike`}>
-                                                    <div className="alsoLikeCard">
-                                                        <img src={logo2} />
-                                                        <div className="marginTop25">
-                                                            <label className="text-color">Twist and Turn Activity House</label>
-                                                        </div>
-                                                        <div>
-                                                            <span style={{ fontSize: 14, color: "#0D943F", fontWeight: "bold" }}>£12.00</span><span style={{ color: "gray", textDecorationLine: 'line-through', fontSize: 14, marginLeft: 10 }}>£14.50</span>
-                                                        </div>
-                                                        <div>
-                                                            <button className="alsoLikeCardButton">add to basket</button>
-                                                        </div>
-                                                    </div>
-                                                    </Link></Slider>: <div />}
-                                                
                                             </div>
                                         </div>
                                     </section>
@@ -195,6 +127,7 @@ class ProductSlider extends Component {
                         </div>
                     </div>
                 </div>
+                  } 
             </div>
         );
     }

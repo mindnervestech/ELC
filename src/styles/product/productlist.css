@@ -385,7 +385,7 @@ html[dir="rtl"] .products li a aside h4 {
   }
 
   ul.mobile-filter li:last-child {
-    border-left: 1px solid #e1e1e1;
+    border-right: 1px solid #e1e1e1;
   }
 
   ul.mobile-filter li:last-child .dropdown-content {

@@ -8,6 +8,8 @@ import { Link, Redirect, withRouter } from 'react-router-dom';
 
 var _ = require('lodash');
 
+let productList = {}
+
 class SideManu extends Component {
 	constructor(props) {
 		super(props);
@@ -22,12 +24,22 @@ class SideManu extends Component {
 		
 	}
 
+	applyFilter = (value) =>{
+		console.log(value)
+		let splitData = value.split('/')
+		console.log(splitData)
+		if(splitData[0] == "price"){
+			
+		}else if(splitData[0] == "color"){
+
+		}
+	}
+
 	assignFilterdata(data){
-		console.log(data)
 		return (
 			<div>
 			{Object.keys(data).map((keyName) =>
-					<div>{data[keyName].name}</div>
+					<div onClick={() => this.applyFilter(data[keyName].code + "/" + data[keyName].name)}>{data[keyName].name}</div>
 			)}
 			</div>	
 		);
@@ -35,7 +47,7 @@ class SideManu extends Component {
 
 	render() {
 		const list  = this.props.productDetails.filters;
-
+		productList = this.props.productDetails.products.product_data
 		return (
 			<div>
 				<div className="row-2" style={{padding: '22px 0px'}}>

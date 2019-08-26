@@ -114,6 +114,36 @@ export const callActionGetProductList = payload => {
 	};
 };
 
+export const getYouMayAlsoLikeData = () => {
+	return dispatch => {
+	const data = {
+		
+	};
+	dispatch(callProductDetailLoader({ productDetailLoader: true }))
+	let cb = {
+		success: res => {
+			if (res.status && res.code === 200) {
+				dispatch(callProductDetailLoader({ productDetailLoader: false }))
+				dispatch(callActionYouMayAlsoLikeDetails({ YouMayAlsoLike: res.product }));
+			}else{
+				dispatch(callProductDetailLoader({ productDetailLoader: false }))
+			}
+		},
+		error: err => {
+			dispatch(callProductDetailLoader({ productDetailLoader: false }))
+		},
+	};
+	API.getYouMayAlsoLikeData(data, cb);
+	};
+}
+
+const callActionYouMayAlsoLikeDetails = payload => {
+	return {
+		type: actionTypes.CREAR_PRODUCT_DETAILS,
+		payload: payload,
+	};
+};
+
 export const getProductList = payload => {
 
 	return dispatch => {
