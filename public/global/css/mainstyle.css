@@ -1778,7 +1778,11 @@ html[dir="rtl"] .header .link>li .subMenuTrigger {
 }
 
 html.no-touch .header .link>li>a:hover {
-    color: #f599ba
+    background: #fff;
+}
+
+html.no-touch .header .link>li>a:focus {
+    background: #fff !important;
 }
 
 @media only screen and (min-width: 1280px) {

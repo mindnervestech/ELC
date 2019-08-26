@@ -134,17 +134,18 @@ class Footer extends Component {
                         <FormattedMessage id="footer.followUsOn" defaultMessage="follow us on" />
                         </div>
                         <div>
-                        <img src={facebook} className="icon"></img>
-                        <img src={twitter} className="icon"></img>
-                        <img src={instagram} className="icon"></img>
-                        <img src={youtube} className="icon"></img>
+                        <a href="https://www.facebook.com/elctoys"><img src={facebook} className="icon"></img></a>
+                        <a href="https://www.twitter.com/elctoysme"><img src={twitter} className="icon"></img></a> 
+                        <a href="https://www.instagram.com/elctoys"> <img src={instagram} className="icon"></img></a>
+                        <a href="https://www.youtube.com/elctoysme"><img src={youtube} className="icon"></img></a>
                         </div>
                         <div className="footer-title" style={{marginTop:60,marginBottom:7}}>
-                         
+
                             <FormattedMessage id="footer.signUpAd" defaultMessage="sign up for our latest news and offers" />
+                            
                         </div>
                         <div>
-                            <input type="text" placeholder="footer.signUpAd" className="email-field"></input>
+                            <input type="text" placeholder="enter your e-mail address" className="email-field"></input>
                             <input type="submit" value="submit" className="submit-button"></input>
                         </div>
                     </div>
@@ -176,10 +177,10 @@ class Footer extends Component {
 
                 <div className="footer-line footer-show-mobile">
                     <div className="footer-title" style={{textAlign: 'center',marginBottom:7}}>
-                        <FormattedMessage id="footer.signUpAd" defaultMessage="sign up for our latest news and offers" />
+                    <FormattedMessage id="footer.signUpAd" defaultMessage="sign up for our latest news and offers" />
                     </div>
                     <div>
-                        <input type="text" placeholder="footer.signUpAd" className="email-field"></input>
+                        <input type="text" placeholder="enter your e-mail address" className="email-field"></input>
                         <input type="submit" value="submit" className="submit-button"></input>
                     </div>
                     <div className="mobile-manu">
