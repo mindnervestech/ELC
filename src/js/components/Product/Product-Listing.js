@@ -108,17 +108,17 @@ class Product extends Component {
 		// if ((cat === 'style') || (cat === 'collection')) {
 		// 	newCat = mainCat[0];
 		// }
-
+		let category_path = this.props.location.pathname.split('/')
+		
 		const data = {
 			customerid: typeof this.props.customer_details.customer_id !== 'undefined' ? parseInt(this.props.customer_details.customer_id) : " ",
-			url_key: params.category_path,//newCat ? newCat : mainCat[0],
+			url_key: category_path[category_path.length - 1].trim(),//newCat ? newCat : mainCat[0],
 			sortby: sortbyv,
 			storeid: this.props.globals.currentStore,
 			filters: filters,
 		};
 		this.setState({ loading: true });
 
-		
 		await this.props.onGetProductList(data);
 
 		setTimeout(() => {

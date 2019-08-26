@@ -50,6 +50,7 @@ class ProductListData extends Component {
 			list1 : list1,
 			start: 1,
 			end: pagenationCount,
+			check: true,
 		};
 	}
 
@@ -71,8 +72,13 @@ class ProductListData extends Component {
 		if(this.state.pageNumber != 1){
 			this.setState({pageNumber: this.state.pageNumber - 1})
 			setTimeout(() => {
+				if(this.state.check){
 				let value = pagenationCount * (this.state.pageNumber - 1) + 1
 				this.pagenation(value , value + pagenationCount - 1)
+				}else{
+					let value = pagenationCount * (this.state.pageNumber - 1)
+					this.pagenation(value , value + pagenationCount -1)
+				}
 			}, 500);
 		}
 	}
@@ -80,8 +86,13 @@ class ProductListData extends Component {
 	nextButton = () => {
 		if(this.state.pageNumber != this.state.totalPages){
 			this.setState({pageNumber: this.state.pageNumber + 1})
-			let value = pagenationCount * this.state.pageNumber + 1
-			this.pagenation(value , value + pagenationCount -1)
+			if(this.state.check){
+				let value = pagenationCount * this.state.pageNumber + 1
+				this.pagenation(value , value + pagenationCount -1)
+			}else{
+				let value = pagenationCount * this.state.pageNumber
+				this.pagenation(value , value + pagenationCount -1)
+			}
 		}
 	}
 
@@ -89,24 +100,20 @@ class ProductListData extends Component {
 		if (value.target.value == "price_desc") {
 			const sortData = _.values(productList).sort((a, b) => b.price - a.price);
 			productList = sortData
-			this.pagenation(1, pagenationCount)
+			this.state.pageNumber = 1
+			this.state.check = false
+			this.pagenation(0, pagenationCount - 1)
 		} else if (value.target.value == 'price_asc') {
 			const sortData = _.values(productList).sort((a, b) => a.price - b.price);
 			productList = sortData
-			this.pagenation(1, pagenationCount)
+			this.state.pageNumber = 1
+			this.state.check = false
+			this.pagenation(0, pagenationCount - 1)
 		} else {
 			productList = productListData
+			this.state.check = true
 			this.pagenation(1, pagenationCount)
 		}
-		let totalPages = 0
-		let count = productList.length
-		if(count % pagenationCount == 0){
-			totalPages = count / pagenationCount
-		}else{
-			totalPages = (count / pagenationCount) + 1
-		}
-		this.state.totalPages = totalPages
-		this.state.pageNumber = 1
 	}
 
 	render() {

@@ -109,13 +109,15 @@ class HomePageComponent extends Component {
                         <div className="t-Body-content" id="t_Body_content">
                             {/* <div id="t_Body_content_offset" style={{ 'height': '1px' }}></div> <span id="APEX_SUCCESS_MESSAGE" data-template-id="33770911730796245_S" className="apex-page-success u-hidden"></span><span id="APEX_ERROR_MESSAGE" data-template-id="33770911730796245_E" className="apex-page-error u-hidden"></span> */}
                             <div className="t-Body-contentInner">
-                                <div style={{padding: "0px 0px"}}>
+                                <div style={{ padding: "0px 0px" }}>
                                     <Slider {...settings3}>
-                                    {homeData.banners.map((item, index) => (
+                                        {homeData.banners.map((item, index) => (
+                                            <Link to={`/` + store_locale + `/products` + item.BLOCK_URL + ``}>
                                                 <div>
-                                                <img src={item.BLOCK_BANNER} style={{height: 550}}/>
-                                            </div>
-                                            ))}
+                                                    <img src={item.BLOCK_BANNER} style={{ height: 550 }} />
+                                                </div>
+                                            </Link>
+                                        ))}
                                     </Slider>
                                 </div>
                                 <div className="contener">
@@ -319,7 +321,7 @@ class HomePageComponent extends Component {
                                                             {homeData.blocks.map((item, index) => (
                                                                 <li key={index}>
                                                                     <div>
-                                                                        <Link to={`/`+store_locale+`/products/ ` + item.TITLE + ``}>
+                                                                        <Link to={`/` + store_locale + `/products/ ` + item.BLOCK_URL + ``}>
                                                                             <a href={''} target="_blank">
                                                                                 <img src={item.BLOCK_BANNER != null ? item.BLOCK_BANNER : placeholder} />
                                                                             </a>
@@ -505,21 +507,21 @@ class HomePageComponent extends Component {
 
 const mapStateToProps = state => {
     return {
-      isUserLoggedIn: state.login.isUserLoggedIn,
-      user_details: state.login.customer_details,
-      products: state.wishList.products,
-      orderHistory: state.orders.orders_history,
-      globals: state.global,
-      wishLoader: state.wishList.wishLoader,
-      YouMayAlsoLike: state.productDetails.YouMayAlsoLike
+        isUserLoggedIn: state.login.isUserLoggedIn,
+        user_details: state.login.customer_details,
+        products: state.wishList.products,
+        orderHistory: state.orders.orders_history,
+        globals: state.global,
+        wishLoader: state.wishList.wishLoader,
+        YouMayAlsoLike: state.productDetails.YouMayAlsoLike
     }
-  }
-  
-  const mapDispatchToProps = dispatch => {
+}
+
+const mapDispatchToProps = dispatch => {
     return {
-      getYouMayAlsoLikeData: () => dispatch(actions.getYouMayAlsoLikeData()),
+        getYouMayAlsoLikeData: () => dispatch(actions.getYouMayAlsoLikeData()),
     }
-  
-  }
+
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePageComponent);

@@ -34,6 +34,8 @@ class SideManu extends Component {
 
 		}else if(splitData[0] == "age"){
 
+		}else if(splitData[0] == "brand"){
+
 		}
 	}
 
