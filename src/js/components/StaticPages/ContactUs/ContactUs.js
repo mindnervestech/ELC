@@ -1,37 +1,32 @@
-import React, { Component } from 'react';
-import MapContainer from './Map';
-import { FormattedMessage } from 'react-intl';
-import { connect } from 'react-redux';
-import * as actions from '../../../redux/actions/index';
-import * as util from '../../utility/utility';
-
-import '../../../../styles/contactus/contactus.css';
-import PhoneNumber from '../../Login/IntlTelePhone';
-
-
+import React, { Component } from "react";
+import MapContainer from "./Map";
+import { FormattedMessage } from "react-intl";
+import { connect } from "react-redux";
+import * as actions from "../../../redux/actions/index";
+import * as util from "../../utility/utility";
+import "./ContactUs.css";
+import { Container, Row, Col, Button, Form, FormGroup } from "reactstrap";
+//import '../../../../styles/contactus/contactus.css';
+import PhoneNumber from "../../Login/IntlTelePhone";
 
 class ContactUs extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
       contact_fields: {
-        name: '',
-        email: '',
-        phone: '',
-        purpose: '',
-        carrierCode: '',
-        comment: '',
+        subject: "",
+        question: "",
+        title: "",
+        fullname: "",
+        email: "",
+        confirmEmail: "",
+        phoneNumber: ""
       },
-      customerService: '8001244443',
-      isPhoneValid: false,
-      invalidPhone: '',
-      comment_count: 0,
+
       errors: {},
       search: this.props.search ? true : false,
-      showErrorBox: this.props.search ? true : false,
-    }
-
+      showErrorBox: this.props.search ? true : false
+    };
   }
 
   handleValidation = () => {
@@ -39,98 +34,191 @@ class ContactUs extends Component {
     let errors = {};
     let formIsValid = true;
 
-    //Name
-    if (!fields["name"]) {
+    if (!fields["subject"]) {
       formIsValid = false;
-      errors["name"] = <FormattedMessage id="Signup.validation.firstName.empty" defaultMessage=" Name cannot be empty" />;
+      errors["subject"] = (
+        <FormattedMessage
+          id="contactus.validation.subject.empty"
+          defaultMessage=" Please Select Subject"
+        />
+      );
     }
 
+    if (!fields["question"]) {
+      formIsValid = false;
+      errors["question"] = (
+        <FormattedMessage
+          id="contactus.validation.question.empty"
+          defaultMessage=" Question is required"
+        />
+      );
+    }
+
+    if (!fields["title"]) {
+      formIsValid = false;
+      errors["title"] = (
+        <FormattedMessage
+          id="contactus.validation.title.empty"
+          defaultMessage=" Please Select Title"
+        />
+      );
+    }
+
+    //Name
+    if (!fields["fullname"]) {
+      formIsValid = false;
+      errors["fullname"] = (
+        <FormattedMessage
+          id="Signup.validation.fullname.empty"
+          defaultMessage=" Name cannot be empty"
+        />
+      );
+    }
 
     //Email
     if (typeof fields["email"] !== "undefined") {
-
       if (fields["email"].length === 0) {
         formIsValid = false;
-        errors["email"] = <FormattedMessage id="Signup.validation.email.empty" defaultMessage="First Name cannot be empty" />;
+        errors["email"] = (
+          <FormattedMessage
+            id="Signup.validation.email.empty"
+            defaultMessage="First Name cannot be empty"
+          />
+        );
       }
 
       if (fields["email"].length > 0) {
-        let lastAtPos = fields["email"].lastIndexOf('@');
-        let lastDotPos = fields["email"].lastIndexOf('.');
-        if (!(lastAtPos < lastDotPos && lastAtPos > 0 && fields["email"].indexOf('@@') == -1 && lastDotPos > 2 && (fields["email"].length - lastDotPos) > 2)) {
+        let lastAtPos = fields["email"].lastIndexOf("@");
+        let lastDotPos = fields["email"].lastIndexOf(".");
+        if (
+          !(
+            lastAtPos < lastDotPos &&
+            lastAtPos > 0 &&
+            fields["email"].indexOf("@@") == -1 &&
+            lastDotPos > 2 &&
+            fields["email"].length - lastDotPos > 2
+          )
+        ) {
           formIsValid = false;
-          errors["email"] = <FormattedMessage id="Signup.validation.email.invalid" defaultMessage="First Name cannot be empty" />;
+          errors["email"] = (
+            <FormattedMessage
+              id="Signup.validation.email.invalid"
+              defaultMessage="First Name cannot be empty"
+            />
+          );
         }
       }
     }
 
-    if (!(this.state.isPhoneValid)) {
-      if (fields["phone"].length === 0) {
+    if (typeof fields["confirmEmail"] !== "undefined") {
+      if (fields["confirmEmail"].length === 0) {
         formIsValid = false;
-        errors["phone"] = <FormattedMessage id="Signup.validation.contactNumber.empty" defaultMessage="Enter Valid phone number" />;
+        errors["confirmEmail"] = (
+          <FormattedMessage
+            id="Signup.validation.confirmEmail.empty"
+            defaultMessage="Email done't Match"
+          />
+        );
+      }
+
+      if (fields["confirmEmail"] !== fields["email"]) {
+        formIsValid = false;
+        errors["confirmEmail"] = (
+          <FormattedMessage
+            id="Signup.validation.confirmEmail.invalid"
+            defaultMessage="Email does't match"
+          />
+        );
       }
     }
 
+    if (!fields["phoneNumber"]) {
+      formIsValid = false;
+      errors["phoneNumber"] = (
+        <FormattedMessage
+          id="Signup.validation.phoneNumber.empty"
+          defaultMessage=" PhoneNumber cannot be empty"
+        />
+      );
+    }
+    if (typeof fields["phoneNumber"] !== "undefined") {
+      if (
+        fields["phoneNumber"].match(/^[a-zA-Z]+$/) &&
+        fields["phoneNumber"].length > 0
+      ) {
+        formIsValid = false;
+        errors["phoneNumber"] = (
+          <FormattedMessage
+            id="Signup.validation.lastName.onlydigits"
+            defaultMessage="Only Digits Are Alloweded"
+          />
+        );
+      }
+    }
 
     this.setState({ errors: errors });
     return formIsValid;
-  }
+  };
 
   handleChange = (field, e) => {
     let fields = this.state.contact_fields;
     fields[field] = e.target.value;
     this.setState({ fields });
-  }
+  };
 
   changeCustomerServiceNumber = () => {
     const currentStore = this.props.store_id;
     if (currentStore === 1) {
       this.setState({
-        customerService: '8001244443',
-      })
+        customerService: "8001244443"
+      });
     } else if (currentStore === 2) {
       this.setState({
-        customerService: '8001244443',
-      })
+        customerService: "8001244443"
+      });
     } else if (currentStore === 3) {
       this.setState({
-        customerService: '97143974173',
-      })
+        customerService: "97143974173"
+      });
     } else if (currentStore === 4) {
       this.setState({
-        customerService: '97143974173',
-      })
+        customerService: "97143974173"
+      });
     } else if (currentStore === 5) {
       this.setState({
-        customerService: '97143974173',
-      })
+        customerService: "97143974173"
+      });
     } else if (currentStore === 6) {
       this.setState({
-        customerService: '97143974173',
-      })
+        customerService: "97143974173"
+      });
     }
-  }
+  };
 
   closeErrorBox = () => {
     this.setState({
       showErrorBox: false
-    })
-  }
+    });
+  };
   clearContactState = () => {
-    this.setState({
-      ...this.state,
-      contact_fields: {
-        name: '',
-        email: '',
-        phone: '',
-        purpose: '',
-        carrierCode: '',
-        comment: '',
+    this.setState(
+      {
+        ...this.state,
+        contact_fields: {
+          subject: "",
+          question: "",
+          title: "",
+          fullname: "",
+          email: "",
+          confirmEmail: "",
+          phoneNumber: ""
+        }
       },
-    }, () => {
-      this.props.onClearContactUsResponse();
-    })
-  }
+      () => {
+        this.props.onClearContactUsResponse();
+      }
+    );
+  };
 
   componentDidMount() {
     this.props.onGetContactUsData({ storeId: this.props.store_id });
@@ -144,405 +232,521 @@ class ContactUs extends Component {
     }
   }
 
-  contactNumber = (status, value, countryData, number, id) => {
-
-    if (status) {
-      let fields = this.state.contact_fields;
-      fields['phone'] = value;
-      fields['carrierCode'] = countryData.dialCode;
-      this.setState({ fields, isPhoneValid: true });
-    } else {
-      this.setState({ isPhoneValid: false })
-    }
-  }
-
-  handleFormSubmit = () => {
-
+  handleFormSubmit = e => {
+    e.preventDefault();
     if (this.handleValidation()) {
       let data = {
-        name: this.state.contact_fields['name'],
-        email: this.state.contact_fields['email'],
-        phoneNumber: this.state.contact_fields['phone'],
-        carrier_code: this.state.contact_fields['carrierCode'],
-        purpose: this.state.contact_fields['purpose'],
-        comment: this.state.contact_fields['comment'],
-        storeId: this.props.store_id,
-      }
+        subject: this.state.contact_fields.subject,
+        question: this.state.contact_fields.question,
+        title: this.state.contact_fields.title,
+        fullname: this.state.contact_fields.fullname,
+        email: this.state.contact_fields.email,
+        confirmEmail: this.state.contact_fields.confirmEmail,
+        phoneNumber: this.state.contact_fields.phoneNumber,
+        storeId: 2
+      };
 
       this.props.onSaveContactUsData({ ...data });
     }
-  }
+  };
 
-  divOnFocus = (e) => {
-    e.currentTarget.className = 't-Form-fieldContainer t-Form-fieldContainer--floatingLabel apex-item-wrapper apex-item-wrapper--text-field is-active';
-  }
+  // divOnFocus = e => {
+  //   e.currentTarget.className =
+  //     "t-Form-fieldContainer t-Form-fieldContainer--floatingLabel apex-item-wrapper apex-item-wrapper--text-field is-active";
+  // };
 
-  divOnBlure = (e) => {
-
-    if ((e.target.value == null) || (e.target.value == '')) {
-      e.currentTarget.className = 't-Form-fieldContainer t-Form-fieldContainer--floatingLabel apex-item-wrapper apex-item-wrapper--text-field';
-
-    } else {
-
-      e.currentTarget.className = 't-Form-fieldContainer t-Form-fieldContainer--floatingLabel apex-item-wrapper apex-item-wrapper--text-field is-active';
-    }
-
-  }
+  // divOnBlure = e => {
+  //   if (e.target.value == null || e.target.value == "") {
+  //     e.currentTarget.className =
+  //       "t-Form-fieldContainer t-Form-fieldContainer--floatingLabel apex-item-wrapper apex-item-wrapper--text-field";
+  //   } else {
+  //     e.currentTarget.className =
+  //       "t-Form-fieldContainer t-Form-fieldContainer--floatingLabel apex-item-wrapper apex-item-wrapper--text-field is-active";
+  //   }
+  // };
 
   render() {
     const errorsObj = this.state.errors;
     let errorBox = null;
+
+    let errorSubjectField = null;
+    let errorQuestionField = null;
+    let errorTitleField = null;
+    let errorfullnameField = null;
+    let erroremailField = null;
+    let errorconfirmEmailField = null;
+    let errorphoneNumberField = null;
+    if ("subject" in errorsObj) {
+      errorSubjectField = (
+        <div>
+          <span>{errorsObj["subject"]}</span>
+        </div>
+      );
+    }
+    if ("question" in errorsObj) {
+      errorQuestionField = (
+        <div>
+          <span>{errorsObj["question"]}</span>
+        </div>
+      );
+    }
+    if ("title" in errorsObj) {
+      errorTitleField = (
+        <div>
+          <span>{errorsObj["title"]}</span>
+        </div>
+      );
+    }
+    if ("fullname" in errorsObj) {
+      errorfullnameField = (
+        <div>
+          <span>{errorsObj["fullname"]}</span>
+        </div>
+      );
+    }
+    if ("email" in errorsObj) {
+      erroremailField = (
+        <div>
+          <span>{errorsObj["email"]}</span>
+        </div>
+      );
+    }
+    if ("confirmEmail" in errorsObj) {
+      errorconfirmEmailField = (
+        <div>
+          <span>{errorsObj["confirmEmail"]}</span>
+        </div>
+      );
+    }
+    if ("phoneNumber" in errorsObj) {
+      errorphoneNumberField = (
+        <div>
+          <span>{errorsObj["phoneNumber"]}</span>
+        </div>
+      );
+    }
+
     if (this.state.search && this.state.showErrorBox) {
       let searchWord = this.props.searchWord;
-      errorBox = <div className="alertify"><div className="dialog"><div>
-        <p className="msg"><FormattedMessage id="help.searchtext1" defaultMessage="Sorry couldn't search" />;  {searchWord} .
-      <FormattedMessage id="help.searchtext2" defaultMessage="Submit your search!!" />.!!</p><nav><button className="ok" tabIndex={1} onClick={this.closeErrorBox}><FormattedMessage id="Ok.text" defaultMessage="Ok" /></button></nav></div></div></div>
-
+      errorBox = (
+        <div className="alertify">
+          <div className="dialog">
+            <div>
+              <p className="msg">
+                <FormattedMessage
+                  id="help.searchtext1"
+                  defaultMessage="Sorry couldn't search"
+                />
+                ; {searchWord} .
+                <FormattedMessage
+                  id="help.searchtext2"
+                  defaultMessage="Submit your search!!"
+                />
+                .!!
+              </p>
+              <nav>
+                <button
+                  className="ok"
+                  tabIndex={1}
+                  onClick={this.closeErrorBox}
+                >
+                  <FormattedMessage id="Ok.text" defaultMessage="Ok" />
+                </button>
+              </nav>
+            </div>
+          </div>
+        </div>
+      );
     }
 
     let contact_number = this.props.contact_data.page_data.contactnumber_ksa;
-    if (this.props.country === 'KSA') {
+    if (this.props.country === "KSA") {
       contact_number = this.props.contact_data.page_data.contactnumber_ksa;
-    } else if (this.props.country === 'UAE') {
+    } else if (this.props.country === "UAE") {
       contact_number = this.props.contact_data.page_data.contactnumber_uae;
-    } else if (this.props.country === 'International') {
+    } else if (this.props.country === "International") {
       contact_number = this.props.contact_data.page_data.contactnumber_int;
     }
     let respo_message = null;
     let success_check = this.props.contact_data.save_responce;
     if (!util.emptyObj(success_check)) {
       if (this.props.contact_data.save_responce.status) {
-        respo_message = <span id="APEX_SUCCESS_MESSAGE" data-template-id="126769709897686936_S" className="apex-page-success u-visible"><div className="t-Body-alert">
-          <div className="t-Alert t-Alert--defaultIcons t-Alert--success t-Alert--horizontal t-Alert--page t-Alert--colorBG" id="t_Alert_Success" role="alert">
-            <div className="t-Alert-wrap">
-              <div className="t-Alert-icon">
-                <span className="t-Icon" />
-              </div>
-              <div className="t-Alert-content">
-                <div className="t-Alert-header">
-                  <h2 className="t-Alert-title"><FormattedMessage id="ContactUs.Content" defaultMessage="Thank you!" /></h2>
+        respo_message = (
+          <span
+            id="APEX_SUCCESS_MESSAGE"
+            data-template-id="126769709897686936_S"
+            className="apex-page-success u-visible"
+          >
+            <div className="t-Body-alert">
+              <div
+                className="t-Alert t-Alert--defaultIcons t-Alert--success t-Alert--horizontal t-Alert--page t-Alert--colorBG"
+                id="t_Alert_Success"
+                role="alert"
+              >
+                <div className="t-Alert-wrap">
+                  <div className="t-Alert-icon">
+                    <span className="t-Icon" />
+                  </div>
+                  <div className="t-Alert-content">
+                    <div className="t-Alert-header">
+                      <h2 className="t-Alert-title">
+                        <FormattedMessage
+                          id="ContactUs.Content"
+                          defaultMessage="Thank you!"
+                        />
+                      </h2>
+                    </div>
+                  </div>
+                  <div className="t-Alert-buttons">
+                    <button
+                      className="t-Button t-Button--noUI t-Button--icon t-Button--closeAlert"
+                      type="button"
+                      title="Close Notification"
+                      onClick={this.clearContactState}
+                    >
+                      <span className="t-Icon icon-close" />
+                    </button>
+                  </div>
                 </div>
               </div>
-              <div className="t-Alert-buttons">
-                <button className="t-Button t-Button--noUI t-Button--icon t-Button--closeAlert" type="button" title="Close Notification" onClick={this.clearContactState}><span className="t-Icon icon-close" /></button>
-              </div>
             </div>
-          </div>
-        </div></span>;
+          </span>
+        );
       }
     }
 
-
-
-
     return (
-
       <>
         {errorBox}
         <div className="t-Body">
-          <div className="t-Body-main" style={{ marginTop: '0px !important' }}>
-            <div className="t-Body-title" id="t_Body_title" style={{ top: '294px' }}>
-            </div>
+          <div className="t-Body-main" style={{ marginTop: "0px !important" }}>
+            <div
+              className="t-Body-title"
+              id="t_Body_title"
+              style={{ top: "294px" }}
+            />
             <div className="t-Body-content" id="t_Body_content">
-              <div id="t_Body_content_offset" style={{ height: '1px' }} />
-
-              {respo_message}
-
+              <div id="t_Body_content_offset" style={{ height: "1px" }} />
 
               <div className="t-Body-contentInner">
-                <div className="container">
-                  <div className="row">
-
-                    <div className="col col-12 apex-col-auto">
-                      <div className="t-Region g-wrapper-main_content  t-Region--noPadding t-Region--removeHeader t-Region--noBorder t-Region--hiddenOverflow" id="R715188865100792743">
-                        <div className="t-Region-header">
-                          <div className="t-Region-headerItems t-Region-headerItems--title">
-                            <span className="t-Region-headerIcon"><span className="t-Icon " aria-hidden="true" /></span>
-                            <h2 className="t-Region-title" id="R715188865100792743_heading"><FormattedMessage id="ContactUs.Title" defaultMessage="Contact Us" /></h2>
-                          </div>
-                          <div className="t-Region-headerItems t-Region-headerItems--buttons"><span className="js-maximizeButtonContainer" /></div>
+              
+                  <center>
+                  <div id="DIV_1">
+                    <h1 id="H1_2">Contact Us</h1>
+                    <h2 id="H2_3">Chat to Us</h2>
+                    <p id="P_4">
+                      Use our Live Chat service to talk to one of our Customer
+                      Service Team straight away.
+                    </p>
+                    <div id="DIV_5">
+                      <div id="DIV_6">
+                        <div id="DIV_7">
+                          <h2 id="H2_8">
+                            Click here to chat to our Customer Service Team
+                          </h2>
                         </div>
-                        <div className="t-Region-bodyWrap">
-                          <div className="t-Region-buttons t-Region-buttons--top">
-                            <div className="t-Region-buttons-left" />
-                            <div className="t-Region-buttons-right" />
-                          </div>
-                          <div className="t-Region-body">
-                            <input type="hidden" id="MIS" name="MIS" defaultValue />
-                            <center> <br />
-                              <h1 className="t-page-titles"> <FormattedMessage id="ContactUs.Title" defaultMessage="ContactUs" /></h1>
-                            </center>
-                            <br />
-                            <br />
-                            <div className="container">
-                              <div className="row">
-                                <div className="col col-6 apex-col-auto">
-                                  <div className="t-Region t-Region--removeHeader t-Region--accent14 t-Region--noBorder t-Region--scrollBody margin-left-lg margin-right-lg" id="R715189021347792744" style={{ backgroundColor: 'WhiteSmoke' }}>
-                                    <div className="t-Region-header">
-                                      <div className="t-Region-headerItems t-Region-headerItems--title">
-                                        <span className="t-Region-headerIcon"><span className="t-Icon " aria-hidden="true" /></span>
-                                        <h2 className="t-Region-title" id="R715189021347792744_heading"><FormattedMessage id="Wite.Text" defaultMessage="Wite to us" /></h2>
-                                      </div>
-                                      <div className="t-Region-headerItems t-Region-headerItems--buttons"><span className="js-maximizeButtonContainer" /></div>
-                                    </div>
-                                    <div className="t-Region-bodyWrap">
-                                      <div className="t-Region-buttons t-Region-buttons--top">
-                                        <div className="t-Region-buttons-left" />
-                                        <div className="t-Region-buttons-right" />
-                                      </div>
-                                      <div className="t-Region-body">
-                                        <div className="container">
-                                          <div className="row">
-                                            <div className="col col-12 apex-col-auto">
-                                              <div id="R715189986681792754" >
-                                                <div style={{ backgroundColor: 'WhiteSmoke' }}> <br />
-                                                  <h2 className="t-Region-title"> <FormattedMessage id="Wite.Text" defaultMessage="Wite to us" /></h2>
-                                                </div>
-                                                <br />
-                                              </div>
-                                            </div>
-                                          </div>
-                                          <div className="row">
-                                            <div className="col col-12 apex-col-auto">
-                                              <div className="t-Region t-Region--noPadding t-Region--removeHeader t-Region--stacked t-Region--hiddenOverflow t-Form--slimPadding t-Form--large t-Form--stretchInputs t-Form--labelsAbove" id="R1009415282768434614" style={{ backgroundColor: 'WhiteSmoke' }}>
-                                                <div className="t-Region-header">
-                                                  <div className="t-Region-headerItems t-Region-headerItems--title">
-                                                    <span className="t-Region-headerIcon"><span className="t-Icon " aria-hidden="true" /></span>
-                                                    <h2 className="t-Region-title" id="R1009415282768434614_heading"><FormattedMessage id="Wite.Text" defaultMessage="Wite to us" /></h2>
-                                                  </div>
-                                                  <div className="t-Region-headerItems t-Region-headerItems--buttons"><span className="js-maximizeButtonContainer" /></div>
-                                                </div>
-                                                <div className="t-Region-bodyWrap">
-                                                  <div className="t-Region-buttons t-Region-buttons--top">
-                                                    <div className="t-Region-buttons-left" />
-                                                    <div className="t-Region-buttons-right" />
-                                                  </div>
-                                                  <div className="t-Region-body">
-                                                    <div className="container">
-                                                      <div className="row">
-                                                        <div className="col col-12 apex-col-auto">
-                                                          <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel is-required apex-item-wrapper apex-item-wrapper--text-field"
-                                                            id="P14_NAME_CONTAINER" onFocus={(e) => this.divOnFocus(e)} onBlur={(e) => this.divOnBlure(e)}>
-                                                            <div className="t-Form-labelContainer">
-                                                              <label htmlFor="P14_NAME" id="P14_NAME_LABEL" className="t-Form-label"><FormattedMessage id="ContactUs.Name" defaultMessage="Name" /><span className="u-VisuallyHidden">(Value Required)</span></label>
-                                                            </div>
-                                                            <div className="t-Form-inputContainer">
-                                                              <div className="t-Form-itemWrapper">
-                                                                <input type="text" id="P14_NAME" name="P14_NAME" className="text_field apex-item-text" size={30} onChange={this.handleChange.bind(this, "name")} value={this.state.contact_fields["name"]} />
-                                                              </div>
-                                                              <span id="P14_NAME_error_placeholder" className="a-Form-error" data-template-id="33610259035469734_ET" style={{ color: 'red' }}>
-                                                                {errorsObj["name"]}
-                                                              </span>
-                                                            </div>
-                                                          </div>
-                                                        </div>
-                                                      </div>
-                                                      <div className="row">
-                                                        <div className="col col-12 apex-col-auto">
-                                                          <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel is-required apex-item-wrapper apex-item-wrapper--text-field"
-                                                            id="P14_EMAIL_CONTAINER" onFocus={(e) => this.divOnFocus(e)} onBlur={(e) => this.divOnBlure(e)}>
-                                                            <div className="t-Form-labelContainer">
-                                                              <label htmlFor="P14_EMAIL" id="P14_EMAIL_LABEL" className="t-Form-label"><FormattedMessage id="ContactUs.Email" defaultMessage="ContactUs.Email" /> <span className="u-VisuallyHidden">(Value Required)</span></label>
-                                                            </div>
-                                                            <div className="t-Form-inputContainer">
-                                                              <div className="t-Form-itemWrapper">
-                                                                <input type="email" id="P14_EMAIL" name="P14_EMAIL" className="text_field apex-item-text" size={30} onChange={this.handleChange.bind(this, "email")} value={this.state.contact_fields["email"]} />
-                                                              </div>
-                                                              <span id="P14_EMAIL_error_placeholder" className="a-Form-error" data-template-id="33610259035469734_ET" style={{ color: 'red' }}>
-                                                                {errorsObj["email"]}
-                                                              </span>
-                                                            </div>
-                                                          </div><input type="hidden" id="P14_RESPONSE" name="P14_RESPONSE" defaultValue />
-                                                        </div>
-                                                      </div>
-                                                      <div className="row">
-                                                        <div className="col col-6 apex-col-auto">
-                                                          <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel is-required apex-item-wrapper js-show-label" id="PHONE_CONTAINER">
-                                                            <div className="t-Form-labelContainer">
-
-                                                              <label htmlFor="PHONE" id="PHONE_LABEL" className="t-Form-label">
-                                                                <span className="u-VisuallyHidden">(Value
-                                                          Required)</span></label>
-                                                            </div>
-                                                            <div className="t-Form-inputContainer">
-                                                              <PhoneNumber changed={this.contactNumber} />
-                                                              <span id="PHONE_error_placeholder" className="a-Form-error" data-template-id="33610259035469734_ET" style={{ color: 'red' }}>
-                                                                {errorsObj["phone"]}
-                                                              </span>
-                                                            </div>
-                                                          </div>
-                                                        </div>
-                                                        <div className="col col-6 apex-col-auto">
-                                                          <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel apex-item-wrapper apex-item-wrapper--select-list js-show-label" id="P14_PURPOSE_CONTAINER">
-                                                            <div className="t-Form-labelContainer">
-                                                              <label htmlFor="P14_PURPOSE" id="P14_PURPOSE_LABEL" className="t-Form-label"><FormattedMessage id="ContactUs.Purpose" defaultMessage="Purpose" /></label>
-                                                            </div>
-                                                            <div className="t-Form-inputContainer">
-                                                              <div className="t-Form-itemWrapper">
-                                                                <select
-                                                                  id="P14_PURPOSE"
-                                                                  name="P14_PURPOSE"
-                                                                  className="selectlist apex-item-select"
-                                                                  size={1}
-                                                                  onChange={this.handleChange.bind(this, "purpose")}
-                                                                  value={this.state.contact_fields["purpose"]}>
-                                                                  <FormattedMessage id="ContactUs.BulkOrder">{(translatedText) => <option value="bulk_order">{translatedText}</option>}</FormattedMessage>
-                                                                  <FormattedMessage id="ContactUs.Complaint">{(translatedText) => <option value="complaint">{translatedText}</option>}</FormattedMessage>
-                                                                  <FormattedMessage id="ContactUs.GeneralInquiry">{(translatedText) => <option value="genral_enq">{translatedText}</option>}</FormattedMessage>
-                                                                  <FormattedMessage id="ContactUs.IssueText">{(translatedText) => <option value="issue_on_website">{translatedText}</option>}</FormattedMessage>
-                                                                  <FormattedMessage id="ContactUs.Suggestion">{(translatedText) => <option value="suggestion">{translatedText}</option>}</FormattedMessage>
-                                                                </select></div><span id="P14_PURPOSE_error_placeholder" className="a-Form-error" data-template-id="33609965712469734_ET" />
-                                                            </div>
-                                                          </div>
-                                                        </div>
-                                                      </div>
-                                                      <div className="row">
-                                                        <div className="col col-12 apex-col-auto">
-                                                          <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel apex-item-wrapper apex-item-wrapper--textarea js-show-label" id="P14_COMMENT_CONTAINER">
-                                                            <div className="t-Form-labelContainer">
-                                                              <label htmlFor="P14_COMMENT" id="P14_COMMENT_LABEL" className="t-Form-label"><FormattedMessage id="ContactUs.comment" defaultMessage="Comment" /></label>
-                                                            </div>
-                                                            <div className="t-Form-inputContainer">
-                                                              <div className="t-Form-itemWrapper">
-                                                                <div className="apex-item-group apex-item-group--textarea" role="group" aria-labelledby="P14_COMMENT_LABEL" tabIndex={-1}>
-                                                                  <FormattedMessage id="ContactUs.comment">{(message) => <textarea name="P14_COMMENT" rows={5} cols={2000} maxLength={2000} wrap="virtual" id="P14_COMMENT" placeholder={message} className="textarea apex-item-textarea" style={{ resize: 'both', color: 'rgb(0, 0, 0)' }} onChange={this.handleChange.bind(this, "comment")} value={this.state.contact_fields["comment"]} />}</FormattedMessage>
-
-                                                                  <div id="P14_COMMENT_CHAR_COUNT" style={{ color: 'rgb(0, 0, 0)', display: 'none' }} className="apex-item-textarea-counter"><span id="P14_COMMENT_CHAR_COUNTER" className="apex-item-textarea-counter--length">{this.state.comment_count}</span> of
-                                                            <span className="apex-item-textarea-counter--size">2000</span>
-                                                                  </div>
-
-                                                                </div>
-                                                              </div><span id="P14_COMMENT_error_placeholder" className="a-Form-error" data-template-id="33609965712469734_ET" />
-                                                            </div>
-                                                          </div>
-                                                        </div>
-                                                      </div>
-                                                      <div className="row">
-                                                        <div className="col col-12 apex-col-auto">
-                                                          <button onClick={this.handleFormSubmit} className="t-Button t-Button--hot t-Button--stretch" type="button" id="B28610916249643373">
-                                                            <span className="t-Button-label"><FormattedMessage id="Submit.Text" defaultMessage="Submit" /></span>
-                                                          </button>
-                                                        </div>
-                                                      </div>
-                                                    </div>
-                                                  </div>
-                                                  <div className="t-Region-buttons t-Region-buttons--bottom">
-                                                    <div className="t-Region-buttons-left" />
-                                                    <div className="t-Region-buttons-right" />
-                                                  </div>
-                                                </div>
-                                              </div>
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                      <div className="t-Region-buttons t-Region-buttons--bottom">
-                                        <div className="t-Region-buttons-left" />
-                                        <div className="t-Region-buttons-right" />
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div className="col col-6 apex-col-auto">
-                                  <div id="R715189055843792745" className="margin-left-lg">
-                                    <div className="container">
-                                      <div className="row">
-                                        <div className="col col-12 apex-col-auto">
-                                          <div className="t-Region t-Region--noBorder t-Region--scrollBody" id="R715189275227792747">
-                                            <div className="t-Region-header">
-                                              <div className="t-Region-headerItems t-Region-headerItems--title">
-                                                <span className="t-Region-headerIcon"><span className="t-Icon " aria-hidden="true" /></span>
-                                                <h2 className="t-Region-title" id="R715189275227792747_heading"><FormattedMessage id="ContactUs.DirectText" defaultMessage="Direct Contact" />
-                                                </h2>
-                                              </div>
-                                              <div className="t-Region-headerItems t-Region-headerItems--buttons"><span className="js-maximizeButtonContainer" /></div>
-                                            </div>
-                                            <div className="t-Region-bodyWrap">
-                                              <div className="t-Region-buttons t-Region-buttons--top">
-                                                <div className="t-Region-buttons-left" />
-                                                <div className="t-Region-buttons-right" />
-                                              </div>
-                                              <div className="t-Region-body">
-                                                <div className="chat">
-                                                  <i className="fa fa-phone" /><a className="js-ga-tracking" data-ga-category="Contact Us" data-ga-action="click" data-ga-label="Telephone" href={`tel:${this.state.customerService}`}>{this.state.customerService}</a>
-                                                  <br />
-                                                  <br />
-                                                  <i className="far fa-envelope" /> <a className="js-ga-tracking" data-ga-category="Contact Us" data-ga-action="click" data-ga-label="Email" href="mailto:help@nayomi.com">help@nayomi.com</a>
-                                                  <br />
-                                                  <br />
-                                                  <i className="fab fa-whatsapp" /> <a className="js-ga-tracking" data-ga-category="WhatsApp" data-ga-action="click" data-ga-label="WhatsApp Chat" href={`${this.props.contact_data.page_data.whatsapp}&text=I%20Initiate%20This%20Chat%20From%20Nayomi%20Website`} target="_blank"><FormattedMessage id="ContactUs.WhatsApp" defaultMessage="WhatsApp" /></a>
-                                                </div>
-                                              </div>
-                                              <div className="t-Region-buttons t-Region-buttons--bottom">
-                                                <div className="t-Region-buttons-left" />
-                                                <div className="t-Region-buttons-right" />
-                                              </div>
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                      <div className="row">
-                                        <div className="col col-12 apex-col-auto">
-                                          <div className="t-Region t-Region--noBorder t-Region--scrollBody" id="R715189380040792748">
-                                            <div className="t-Region-header">
-                                              <div className="t-Region-headerItems t-Region-headerItems--title">
-                                                <span className="t-Region-headerIcon"><span className="t-Icon " aria-hidden="true" /></span>
-                                                <h2 className="t-Region-title" id="R715189380040792748_heading"><FormattedMessage id="ContactUs.SocialMedia" defaultMessage="SocialMedia" />
-                                                </h2>
-                                              </div>
-                                              <div className="t-Region-headerItems t-Region-headerItems--buttons"><span className="js-maximizeButtonContainer" /></div>
-                                            </div>
-                                            <div className="t-Region-bodyWrap">
-                                              <div className="t-Region-buttons t-Region-buttons--top">
-                                                <div className="t-Region-buttons-left" />
-                                                <div className="t-Region-buttons-right" />
-                                              </div>
-                                              <div className="t-Region-body">
-                                                <div className="media">
-                                                  <a href={this.props.contact_data.page_data.instagram}><i className="icon-instagram" /></a>
-                                                  <a href={this.props.contact_data.page_data.facebook}><i className="icon-facebook" /></a>
-                                                  <a href={this.props.contact_data.page_data.youtube}><i className="icon-youtube" /></a>
-                                                  <a href="https://api.whatsapp.com/send?phone=971565069237"><i className="icon-whatsapp" /></a>
-                                                </div>
-                                              </div>
-                                              <div className="t-Region-buttons t-Region-buttons--bottom">
-                                                <div className="t-Region-buttons-left" />
-                                                <div className="t-Region-buttons-right" />
-                                              </div>
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
+                      </div>
+                      <div id="DIV_9">
+                        <div id="DIV_10">
+                          <h2 id="H2_11">
+                            Sorry our team are not available to chat right now.
+                          </h2>
+                        </div>
+                      </div>
+                    </div>
+                    <h2 id="H2_12">Email Us</h2>
+                    <div id="P_13">
+                      <span id="SPAN_14">
+                        Please complete the form below with your query or
+                        feedback and our Customer Service Team will be in touch
+                      </span>
+                      <span id="SPAN_15">
+                        Please fill in our
+                        <a
+                          href="https://ask.thetoyshop.com/help/iframe/contact"
+                          id="A_16"
+                        >
+                          Contact Us form
+                        </a>{" "}
+                        with your query or feedback and our Customer Service
+                        Team will be in touch.
+                      </span>
+                      <div className="container">
+                        <Form onSubmit={this.handleFormSubmit}>
+                          <FormGroup>
+                            <div
+                              className="form-group"
+                              style={{ marginTop: 15 }}
+                            >
+                              <label htmlFor="exampleInputEmail1">
+                                Subject
+                              </label>
+                              <select
+                                className="form-control form-control-lg"
+                                value={this.state.contact_fields["subject"]}
+                                onChange={this.handleChange.bind(
+                                  this,
+                                  "subject"
+                                )}
+                              >
+                                <option>Please Select</option>
+                                <option>Customer Service</option>
+                                <option>Delivery </option>
+                                <option>Genderal </option>
+                                <option>order</option>
+                                <option>Payment</option>
+                                <option>Returns</option>
+                                <option>Stores</option>
+                              </select>
+                              <div className="span-error">
+                                {errorSubjectField}
                               </div>
                             </div>
+
+                            <div className="form-group">
+                              <label htmlFor="exampleFormControlTextarea1">
+                                Question
+                              </label>
+                              <textarea
+                                className="form-control form-control-lg"
+                                id="exampleFormControlTextarea1"
+                                rows="3"
+                                value={this.state.contact_fields["question"]}
+                                onChange={this.handleChange.bind(
+                                  this,
+                                  "question"
+                                )}
+                              />
+                              <div className="span-error">
+                                {errorQuestionField}
+                              </div>
+                            </div>
+                            <div className="form-group">
+                              <label htmlFor="exampleInputEmail1">Title</label>
+                              <select
+                                className="form-control form-control-lg"
+                                value={this.state.contact_fields["title"]}
+                                onChange={this.handleChange.bind(this, "title")}
+                              >
+                                <option>Please Select</option>
+                                <option>Mr</option>
+                                <option>Miss </option>
+                                <option>Dr</option>
+                                <option>Ms </option>
+                              </select>
+                              <div className="span-error">
+                                {errorTitleField}
+                              </div>
+                            </div>
+                            <div className="form-group">
+                              <label htmlFor="exampleFormControlInput1">
+                                Full Name
+                              </label>
+                              <input
+                                type="text"
+                                className="form-control form-control-lg"
+                                id="exampleFormControlInput1"
+                                value={this.state.contact_fields["fullname"]}
+                                onChange={this.handleChange.bind(
+                                  this,
+                                  "fullname"
+                                )}
+                              />
+                              <div className="span-error">
+                                {errorfullnameField}
+                              </div>
+                            </div>
+
+                            <div className="form-group">
+                              <label htmlFor="exampleFormControlInput1">
+                                Email
+                              </label>
+                              <input
+                                type="email"
+                                className="form-control form-control-lg"
+                                id="exampleFormControlInput1"
+                                value={this.state.contact_fields["email"]}
+                                onChange={this.handleChange.bind(this, "email")}
+                              />
+                              <div className="span-error">
+                                {erroremailField}
+                              </div>
+                            </div>
+
+                            <div className="form-group">
+                              <label htmlFor="exampleFormControlInput1">
+                                Confirm Email
+                              </label>
+                              <input
+                                type="email"
+                                className="form-control form-control-lg"
+                                id="exampleFormControlInput1"
+                                value={
+                                  this.state.contact_fields["confirmEmail"]
+                                }
+                                onChange={this.handleChange.bind(
+                                  this,
+                                  "confirmEmail"
+                                )}
+                              />
+                              <div className="span-error">
+                                {errorconfirmEmailField}
+                              </div>
+                            </div>
+
+                            <div className="form-group">
+                              <label htmlFor="exampleFormControlInput1">
+                                Telphone
+                              </label>
+                              <input
+                                type="tel"
+                                className="form-control form-control-lg"
+                                id="exampleFormControlInput1"
+                                value={this.state.contact_fields["phoneNumber"]}
+                                onChange={this.handleChange.bind(
+                                  this,
+                                  "phoneNumber"
+                                )}
+                              />
+                              <div className="span-error">
+                                {errorphoneNumberField}
+                              </div>
+                            </div>
+                          </FormGroup>
+                          <div>
+                            <button
+                              className="button-add-to-basket"
+                              style={{ textAlign: "center" }}
+                            >
+                              Submit
+                            </button>
                           </div>
-                          <div className="t-Region-buttons t-Region-buttons--bottom">
-                            <div className="t-Region-buttons-left" />
-                            <div className="t-Region-buttons-right" />
-                          </div>
-                        </div>
+                        </Form>
                       </div>
                     </div>
                   </div>
-                  <div className="row">
-                    <div className="col col-12 apex-col-auto">
-                      <div id="R715189881759792753" className="margin-bottom-none">
-                        <div id="map" style={{ position: 'relative', overflow: 'hidden' }}>
-                          <MapContainer />
+                 
+                  
+
+                  
+                    <div>
+                    <h2 id="H2_20">Facebook Message Us</h2>
+                    <p id="P_21">
+                      Send us a message on Facebook Messenger. Our response time
+                      are between 8am - 7pm Monday - Friday and 8am - 5pm on
+                      Saturdays
+                    </p>
+                    <div id="DIV_22">
+                      <div id="DIV_23">
+                        <div id="DIV_24">
+                          <h2 id="H2_25">
+                            <a
+                              href="http://m.me/TheEntertainerToyShop"
+                              id="A_26"
+                            >
+                              <span id="SPAN_27">
+                                Click here to send us a Facebook Message
+                              </span>
+                            </a>
+                          </h2>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+                    <h2 id="H2_28">Call Us</h2>
+                    <p id="P_29">
+                      Call our team on{" "}
+                      <span id="SPAN_30">
+                        <a href="tel:0333 320 5100" id="A_31">
+                          0333 320 5100
+                        </a>
+                      </span>
+                      <span id="SPAN_32">0333 320 5100</span>. Calls will be
+                      charged at the standard rate and the number is included in
+                      most mobile deals.
+                    </p>
+                    <p id="P_33" style={{ marginTop: "15px" }}>
+                      Our Customer Service phone lines are open 8am - 7pm Monday
+                      - Friday and 8am - 5pm on Saturdays. Our lines are closed
+                      on Sunday
+                    </p>
+                    <h2 id="H2_34">Like or Follow Us</h2>
+                    <p id="P_35">
+                      Click the social media icons below and you can follow,
+                      tweet or pin us.
+                    </p>
+                    <div id="DIV_36">
+                      <div id="DIV_37">
+                        <a
+                          href="https://www.facebook.com/TheEntertainerToyShop"
+                          id="A_38"
+                        >
+                          <img
+                            id="IMG_39"
+                            src="https://www.thetoyshop.com/medias/Facebook.png?context=bWFzdGVyfHJvb3R8MTk1MXxpbWFnZS9wbmd8aDk3L2hlNy85MDIxNDEyNDQyMTQyLnBuZ3wyYWNkYzQ3N2YzZGZkNWU1YjZkZDJmOTUxZGIwYWZmY2ZjZTliYTY4MDI5M2Q0OGY1OWM5MWE5ZDBiZWU3ZDdl"
+                            alt=""
+                          />
+                        </a>{" "}
+                        <a href="https://twitter.com/ENTertainertoys" id="A_40">
+                          <img
+                            id="IMG_41"
+                            src="https://www.thetoyshop.com/medias/Twitter.png?context=bWFzdGVyfHJvb3R8MjY3NXxpbWFnZS9wbmd8aGRhL2g5Mi85MDIxNDEyOTY2NDMwLnBuZ3w5MzE3MDMyMGViYTMwZjAxOTBjZGI2ZjZiNzU1ODFhYmVmM2YwMjY4Y2I4YmEwNmM5MDYyOTVkNDc2ZjA1NjFj"
+                            alt=""
+                          />
+                        </a>{" "}
+                        <a
+                          href="https://uk.pinterest.com/EntertainerToys/"
+                          id="A_42"
+                        >
+                          <img
+                            id="IMG_43"
+                            src="https://www.thetoyshop.com/medias/Pinterest.png?context=bWFzdGVyfHJvb3R8MjkxMHxpbWFnZS9wbmd8aGY0L2hjNS85MDIxNDEzMjYxMzQyLnBuZ3xlNWQyZDVmNzRjMDVkNTBkMjFlNTQ0MTNkZTVhYzRmZTIzODIyZjk4MWNkNGJlNzM2YWYwM2M1ZThmMzMwOWEw"
+                            alt=""
+                          />
+                        </a>{" "}
+                        <a
+                          href="https://www.instagram.com/entertainer_toys/"
+                          id="A_44"
+                        >
+                          <img
+                            id="IMG_45"
+                            src="https://www.thetoyshop.com/medias/Instagram.png?context=bWFzdGVyfHJvb3R8MjQ2N3xpbWFnZS9wbmd8aDZmL2g4NS85MDQxNDE0MjU4NzE4LnBuZ3wxMDljMjFiZjY2NWY3ZDQxMzk3NmE3OTMzNzIwYjM4YzZiMGM5MTVhOWM2MDIzMTI4NDExMjQyZjU4MzRmYjcz"
+                            alt=""
+                          />
+                        </a>
+                      </div>
+                    </div>
+                    <h2 id="H2_46">Write to Us</h2>
+                    <p id="P_47">To send us a letter, please write to:</p>
+                    <p id="P_48">
+                      The Entertainer
+                      <br id="BR_49" />
+                      Customer Services
+                      <br id="BR_50" />
+                      Boughton Business Park
+                      <br id="BR_51" />
+                      Bell Lane
+                      <br id="BR_52" />
+                      Little Chalfont
+                      <br id="BR_53" />
+                      Amersham
+                      <br id="BR_54" />
+                      Buckinghamshire
+                      <br id="BR_55" />
+                      HP6 6GL
+                    </p>             
+                    </div>
+                   
+                    
+                    </center>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                   
+                
+       
       </>
-    )
+    );
   }
 }
 
@@ -552,14 +756,18 @@ const mapStateToProps = state => {
     store_id: state.global.currentStore,
     country: state.global.country
   };
-}
+};
 
 const mapDispatchToProps = dispatch => {
   return {
-    onGetContactUsData: (payload) => dispatch(actions.getContactUsData(payload)),
-    onSaveContactUsData: (payload) => dispatch(actions.saveContactUsData(payload)),
-    onClearContactUsResponse: () => dispatch(actions.clearContactUsResponse()),
-  }
-}
+    onGetContactUsData: payload => dispatch(actions.getContactUsData(payload)),
+    onSaveContactUsData: payload =>
+      dispatch(actions.saveContactUsData(payload)),
+    onClearContactUsResponse: () => dispatch(actions.clearContactUsResponse())
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(ContactUs);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ContactUs);

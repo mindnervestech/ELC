@@ -74,6 +74,14 @@ const GET_HELP_DATA = { type: 'GET', url: STATIC_PAGES_URL + 'help-and-faqs/stor
 const GET_RETURN_AND_EXCHANGES_DATA = { type: 'GET', url: STATIC_PAGES_URL + 'return-and-exchanges/storeId', dynamic: true };
 const GET_PROMOTION_TERMS_AND_CONDITION_DATA = { type: 'GET', url: STATIC_PAGES_URL + 'promotion-terms-and-condition/storeId', dynamic: true };
 
+
+
+//Birthday club
+
+
+const SAVE_BIRTHDAYCLUB_DATA={type:'POST' ,url:BASE_URL +'',dynamic: true};
+
+
 export const API = {
 	getToken: (data, cb) => request(data, cb, GET_TOKEN),
 	getMyCartApi: (data, cb) => request(data, cb, GET_MY_CART_API),
@@ -103,6 +111,12 @@ export const API = {
 		// productbyid/?store_id=2&url_key=elc17-1
 		// request(data, cb, GET_PRODUCT_DETAILS)
 	} ,
+
+
+
+	
+	setBirthdayClubData:(data,cb)=>request(data, cb,SAVE_BIRTHDAYCLUB_DATA),
+
 	getOrderHistory: (data, cb) => request(data, cb, GET_ORDER_HISTORY),
 	getOrderDetailsInProfile: (data, cb) => request(data, cb, GET_ORDER_DETAILS_IN_PROFILE),
 	getWishList: (data, cb) => request(data, cb, GET_WISHLIST_ITEM),

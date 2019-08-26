@@ -1,115 +1,115 @@
 .head-1 {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     height: 55px;
     letter-spacing: 1.04px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
     width: 950px;
-    column-rule-color: rgb(64, 126, 201);
+    column-rule-color: green;
     perspective-origin: 475px 27.5px;
     transform-origin: 475px 27.5px;
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 49px / 36px "VAG Rounded Std Bold", "Tahoma Bold", sans-serif;
     margin: 20px 0px 10px;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
     padding: 0px 0px 19px;
 }/*#H1_1*/
 #P_1 {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     height: 18px;
     letter-spacing: 1.04px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    width: 950px;
-    column-rule-color: rgb(64, 126, 201);
+  
+    column-rule-color: green;
     perspective-origin: 475px 9px;
     transform-origin: 475px 9px;
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 15.4px / 18.48px "VAG Rounded Std Regular", Tahoma, sans-serif;
     margin: 0px 0px 10px;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#P_1*/
 
 #P_1:after {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     letter-spacing: 1.04px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    column-rule-color: green;
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 15.4px / 18.48px "VAG Rounded Std Regular", Tahoma, sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#P_1:after*/
 
 #P_1:before {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     letter-spacing: 1.04px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    column-rule-color: green;
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 15.4px / 18.48px "VAG Rounded Std Regular", Tahoma, sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#P_1:before*/
 
 
 #H2_1 {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     height: 29px;
     letter-spacing: 1.04px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
     width: 950px;
-    column-rule-color: rgb(64, 126, 201);
+    column-rule-color: green;
     perspective-origin: 475px 14.5px;
     transform-origin: 475px 14.5px;
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 500 normal 29.3333px / 29.3333px "Billy Bold", "Tahoma Bold", sans-serif;
     margin: 20px 0px 10px;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#H2_1*/
 
 #H2_1:after {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     letter-spacing: 1.04px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    column-rule-color: green;
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 500 normal 29.3333px / 29.3333px "Billy Bold", "Tahoma Bold", sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#H2_1:after*/
 
 #H2_1:before {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     letter-spacing: 1.04px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    column-rule-color: green;
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 500 normal 29.3333px / 29.3333px "Billy Bold", "Tahoma Bold", sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#H2_1:before*/
 
 
@@ -119,289 +119,290 @@
 
 #DIV_1 {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
-    height: 1624.63px;
+    color: green;
+    height: 1000px;
     letter-spacing: 1.04px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    width: 950px;
-    column-rule-color: rgb(64, 126, 201);
+    column-rule-color: green;
     perspective-origin: 475px 812.313px;
     transform-origin: 475px 812.313px;
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 14px / 22px "VAG Rounded Std Regular", Tahoma, sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#DIV_1*/
 
 #DIV_1:after {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    height: auto;
+    color: green;
     letter-spacing: 1.04px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    column-rule-color: green;
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 14px / 22px "VAG Rounded Std Regular", Tahoma, sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#DIV_1:after*/
 
 #DIV_1:before {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     letter-spacing: 1.04px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+
+    column-rule-color: green;
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 14px / 22px "VAG Rounded Std Regular", Tahoma, sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#DIV_1:before*/
 
 #H1_2 {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     height: 55px;
     letter-spacing: 1.04px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
     width: 950px;
-    column-rule-color: rgb(64, 126, 201);
+    column-rule-color: green;
     perspective-origin: 475px 27.5px;
     transform-origin: 475px 27.5px;
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 49px / 36px "VAG Rounded Std Bold", "Tahoma Bold", sans-serif;
     margin: 20px 0px 10px;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
     padding: 0px 0px 19px;
 }/*#H1_2*/
 
 #H1_2:after {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     letter-spacing: 1.04px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    column-rule-color: green;
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 49px / 36px "VAG Rounded Std Bold", "Tahoma Bold", sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#H1_2:after*/
 
 #H1_2:before {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     letter-spacing: 1.04px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    column-rule-color: green;
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 49px / 36px "VAG Rounded Std Bold", "Tahoma Bold", sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#H1_2:before*/
 
 #H2_3, #H2_12, #H2_20, #H2_28, #H2_34, #H2_46 {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     height: 29px;
     letter-spacing: 1.04px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
     width: 950px;
-    column-rule-color: rgb(64, 126, 201);
+    column-rule-color: green;
     perspective-origin: 475px 14.5px;
     transform-origin: 475px 14.5px;
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 500 normal 29.3333px / 29.3333px "Billy Bold", "Tahoma Bold", sans-serif;
     margin: 20px 0px 10px;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#H2_3, #H2_12, #H2_20, #H2_28, #H2_34, #H2_46*/
 
 #H2_3:after, #H2_12:after, #H2_20:after, #H2_28:after, #H2_34:after, #H2_46:after {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     letter-spacing: 1.04px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    column-rule-color: green;
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 500 normal 29.3333px / 29.3333px "Billy Bold", "Tahoma Bold", sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#H2_3:after, #H2_12:after, #H2_20:after, #H2_28:after, #H2_34:after, #H2_46:after*/
 
 #H2_3:before, #H2_12:before, #H2_20:before, #H2_28:before, #H2_34:before, #H2_46:before {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     letter-spacing: 1.04px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    column-rule-color: green;
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 500 normal 29.3333px / 29.3333px "Billy Bold", "Tahoma Bold", sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#H2_3:before, #H2_12:before, #H2_20:before, #H2_28:before, #H2_34:before, #H2_46:before*/
 
 #P_4, #P_13, #P_29, #P_35, #P_47 {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     height: 18px;
     letter-spacing: 1.04px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
     width: 950px;
-    column-rule-color: rgb(64, 126, 201);
+    column-rule-color: green;
     perspective-origin: 475px 9px;
     transform-origin: 475px 9px;
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 15.4px / 18.48px "VAG Rounded Std Regular", Tahoma, sans-serif;
     margin: 0px 0px 10px;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#P_4, #P_13, #P_29, #P_35, #P_47*/
 
 #P_4:after, #P_13:after, #P_29:after, #P_35:after, #P_47:after {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     letter-spacing: 1.04px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    column-rule-color: green;
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 15.4px / 18.48px "VAG Rounded Std Regular", Tahoma, sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#P_4:after, #P_13:after, #P_29:after, #P_35:after, #P_47:after*/
 
 #P_4:before, #P_13:before, #P_29:before, #P_35:before, #P_47:before {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     letter-spacing: 1.04px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    column-rule-color: green;
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 15.4px / 18.48px "VAG Rounded Std Regular", Tahoma, sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#P_4:before, #P_13:before, #P_29:before, #P_35:before, #P_47:before*/
 
 #DIV_5, #DIV_22 {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     height: 104.219px;
     letter-spacing: 1.04px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
     width: 950px;
-    column-rule-color: rgb(64, 126, 201);
+    column-rule-color: green;
     perspective-origin: 475px 52.1094px;
     transform-origin: 475px 52.1094px;
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 14px / 22px "VAG Rounded Std Regular", Tahoma, sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
     padding: 0px 0px 19px;
 }/*#DIV_5, #DIV_22*/
 
 #DIV_5:after, #DIV_22:after {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     letter-spacing: 1.04px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    column-rule-color: green;
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 14px / 22px "VAG Rounded Std Regular", Tahoma, sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#DIV_5:after, #DIV_22:after*/
 
 #DIV_5:before, #DIV_22:before {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     letter-spacing: 1.04px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    column-rule-color: green;
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 14px / 22px "VAG Rounded Std Regular", Tahoma, sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#DIV_5:before, #DIV_22:before*/
 
 #DIV_6 {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     cursor: pointer;
     height: 85.2188px;
     letter-spacing: 1.04px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
     width: 950px;
-    column-rule-color: rgb(64, 126, 201);
+    column-rule-color: green;
     perspective-origin: 475px 42.6094px;
     transform-origin: 475px 42.6094px;
-    caret-color: rgb(64, 126, 201);
+    caret-color: green;
     background: rgb(113, 168, 73) none repeat scroll 0% 0% / auto padding-box border-box;
-    border: 0px none rgb(64, 126, 201);
+    border: 0px none green;
     border-radius: 20px 20px 20px 20px;
     font: normal normal 400 normal 14px / 22px "VAG Rounded Std Regular", Tahoma, sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
     padding: 9.5px;
 }/*#DIV_6*/
 
 #DIV_6:after {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     cursor: pointer;
     letter-spacing: 1.04px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    column-rule-color: green;
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 14px / 22px "VAG Rounded Std Regular", Tahoma, sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#DIV_6:after*/
 
 #DIV_6:before {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     cursor: pointer;
     letter-spacing: 1.04px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    column-rule-color: green;
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 14px / 22px "VAG Rounded Std Regular", Tahoma, sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#DIV_6:before*/
 
 #DIV_7 {
@@ -459,6 +460,7 @@
     box-sizing: border-box;
     color: rgb(255, 255, 255);
     cursor: pointer;
+    background-color: green;
     height: 66.2188px;
     letter-spacing: 1.04px;
     text-align: center;
@@ -508,50 +510,50 @@
 
 #DIV_9 {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     display: none;
     letter-spacing: 1.04px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
     width: 100%;
-    column-rule-color: rgb(64, 126, 201);
-    caret-color: rgb(64, 126, 201);
+    column-rule-color: green;
+    caret-color: green;
     background: rgb(193, 27, 23) none repeat scroll 0% 0% / auto padding-box border-box;
-    border: 0px none rgb(64, 126, 201);
+    border: 0px none green;
     border-radius: 20px 20px 20px 20px;
     font: normal normal 400 normal 14px / 22px "VAG Rounded Std Regular", Tahoma, sans-serif;
     margin: auto;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
     padding: 1%;
 }/*#DIV_9*/
 
 #DIV_9:after {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     letter-spacing: 1.04px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    column-rule-color: green;
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 14px / 22px "VAG Rounded Std Regular", Tahoma, sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#DIV_9:after*/
 
 #DIV_9:before {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     letter-spacing: 1.04px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    column-rule-color: green;
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 14px / 22px "VAG Rounded Std Regular", Tahoma, sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#DIV_9:before*/
 
 #DIV_10 {
@@ -645,377 +647,377 @@
 
 #SPAN_14, #SPAN_32, #BR_49, #BR_51, #BR_53, #BR_55 {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     letter-spacing: 1.04px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
+    column-rule-color: green;
     perspective-origin: 0px 0px;
     transform-origin: 0px 0px;
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 15.4px / 18.48px "VAG Rounded Std Regular", Tahoma, sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#SPAN_14, #SPAN_32, #BR_49, #BR_51, #BR_53, #BR_55*/
 
 #SPAN_14:after, #SPAN_32:after, #BR_49:after, #BR_51:after, #BR_53:after, #BR_55:after {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     letter-spacing: 1.04px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    column-rule-color: green;
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 15.4px / 18.48px "VAG Rounded Std Regular", Tahoma, sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#SPAN_14:after, #SPAN_32:after, #BR_49:after, #BR_51:after, #BR_53:after, #BR_55:after*/
 
 #SPAN_14:before, #SPAN_32:before, #BR_49:before, #BR_51:before, #BR_53:before, #BR_55:before {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     letter-spacing: 1.04px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    column-rule-color: green;
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 15.4px / 18.48px "VAG Rounded Std Regular", Tahoma, sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#SPAN_14:before, #SPAN_32:before, #BR_49:before, #BR_51:before, #BR_53:before, #BR_55:before*/
 
 #SPAN_15, #SPAN_30 {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     display: none;
     letter-spacing: 1.04px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    column-rule-color: green;
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 15.4px / 18.48px "VAG Rounded Std Regular", Tahoma, sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#SPAN_15, #SPAN_30*/
 
 #SPAN_15:after, #SPAN_30:after {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     letter-spacing: 1.04px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    column-rule-color: green;
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 15.4px / 18.48px "VAG Rounded Std Regular", Tahoma, sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#SPAN_15:after, #SPAN_30:after*/
 
 #SPAN_15:before, #SPAN_30:before {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     letter-spacing: 1.04px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    column-rule-color: green;
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 15.4px / 18.48px "VAG Rounded Std Regular", Tahoma, sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#SPAN_15:before, #SPAN_30:before*/
 
 #A_16, #A_31 {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     letter-spacing: 1.04px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    column-rule-color: green;
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 15.4px / 18.48px "VAG Rounded Std Regular", Tahoma, sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#A_16, #A_31*/
 
 #A_16:after, #A_31:after {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     letter-spacing: 1.04px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    column-rule-color: green;
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 15.4px / 18.48px "VAG Rounded Std Regular", Tahoma, sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#A_16:after, #A_31:after*/
 
 #A_16:before, #A_31:before {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     letter-spacing: 1.04px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    column-rule-color: green;
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 15.4px / 18.48px "VAG Rounded Std Regular", Tahoma, sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#A_16:before, #A_31:before*/
 
 #U_17 {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     cursor: pointer;
     letter-spacing: 1.04px;
     text-align: left;
-    text-decoration: underline solid rgb(64, 126, 201);
+    text-decoration: underline solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    column-rule-color: green;
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 15.4px / 18.48px "VAG Rounded Std Regular", Tahoma, sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#U_17*/
 
 #U_17:after {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     cursor: pointer;
     letter-spacing: 1.04px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    column-rule-color: green;
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 15.4px / 18.48px "VAG Rounded Std Regular", Tahoma, sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#U_17:after*/
 
 #U_17:before {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     cursor: pointer;
     letter-spacing: 1.04px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    column-rule-color: green;
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 15.4px / 18.48px "VAG Rounded Std Regular", Tahoma, sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#U_17:before*/
 
 #DIV_18 {
     bottom: 0px;
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     height: 550px;
     left: 0px;
     letter-spacing: 1.04px;
     position: relative;
     right: 0px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
     top: 0px;
     width: 931px;
-    column-rule-color: rgb(64, 126, 201);
+    column-rule-color: green;
     perspective-origin: 465.5px 275px;
     transform-origin: 465.5px 275px;
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 14px / 22px "VAG Rounded Std Regular", Tahoma, sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
     overflow: hidden;
 }/*#DIV_18*/
 
 #DIV_18:after {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     letter-spacing: 1.04px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    column-rule-color: green;
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 14px / 22px "VAG Rounded Std Regular", Tahoma, sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#DIV_18:after*/
 
 #DIV_18:before {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     letter-spacing: 1.04px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    column-rule-color: green;
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 14px / 22px "VAG Rounded Std Regular", Tahoma, sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#DIV_18:before*/
 
 #IFRAME_19 {
     bottom: 110px;
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     height: 665px;
     left: -4px;
     letter-spacing: 1.04px;
     position: relative;
     right: 4px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
     top: -110px;
     width: 931px;
-    column-rule-color: rgb(64, 126, 201);
+    column-rule-color: green;
     perspective-origin: 465.5px 332.5px;
     transform-origin: 465.5px 332.5px;
-    caret-color: rgb(64, 126, 201);
-    border: 2px inset rgb(64, 126, 201);
+    caret-color: green;
+    border: 2px inset green;
     font: normal normal 400 normal 14px / 22px "VAG Rounded Std Regular", Tahoma, sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#IFRAME_19*/
 
 #IFRAME_19:after {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     letter-spacing: 1.04px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    column-rule-color: green;
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 14px / 22px "VAG Rounded Std Regular", Tahoma, sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#IFRAME_19:after*/
 
 #IFRAME_19:before {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     letter-spacing: 1.04px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    column-rule-color: green;
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 14px / 22px "VAG Rounded Std Regular", Tahoma, sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#IFRAME_19:before*/
 
 #P_21, #P_33 {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     height: 36px;
     letter-spacing: 1.04px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
     width: 950px;
-    column-rule-color: rgb(64, 126, 201);
+    column-rule-color: green;
     perspective-origin: 475px 18px;
     transform-origin: 475px 18px;
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 15.4px / 18.48px "VAG Rounded Std Regular", Tahoma, sans-serif;
     margin: 0px 0px 10px;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#P_21, #P_33*/
 
 #P_21:after, #P_33:after {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     letter-spacing: 1.04px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    column-rule-color: green;
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 15.4px / 18.48px "VAG Rounded Std Regular", Tahoma, sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#P_21:after, #P_33:after*/
 
 #P_21:before, #P_33:before {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     letter-spacing: 1.04px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    column-rule-color: green;
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 15.4px / 18.48px "VAG Rounded Std Regular", Tahoma, sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#P_21:before, #P_33:before*/
 
 #DIV_23 {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     cursor: pointer;
     height: 85.2188px;
     letter-spacing: 1.04px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
     width: 950px;
-    column-rule-color: rgb(64, 126, 201);
+    column-rule-color: green;
     perspective-origin: 475px 42.6094px;
     transform-origin: 475px 42.6094px;
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    caret-color: green;
+    border: 0px none green;
     border-radius: 20px 20px 20px 20px;
     font: normal normal 400 normal 14px / 22px "VAG Rounded Std Regular", Tahoma, sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
     padding: 9.5px;
 }/*#DIV_23*/
 
 #DIV_23:after {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     cursor: pointer;
     letter-spacing: 1.04px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    column-rule-color: green;
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 14px / 22px "VAG Rounded Std Regular", Tahoma, sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#DIV_23:after*/
 
 #DIV_23:before {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     cursor: pointer;
     letter-spacing: 1.04px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    column-rule-color: green;
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 14px / 22px "VAG Rounded Std Regular", Tahoma, sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#DIV_23:before*/
 
 #DIV_24 {
@@ -1071,46 +1073,46 @@
 
 #A_26 {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     letter-spacing: 1.04px;
     text-align: center;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
+    column-rule-color: green;
     perspective-origin: 0px 0px;
     transform-origin: 0px 0px;
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 500 normal 29.3333px / 29.3333px "Billy Bold", "Tahoma Bold", sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#A_26*/
 
 #A_26:after {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     letter-spacing: 1.04px;
     text-align: center;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    column-rule-color: green;
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 500 normal 29.3333px / 29.3333px "Billy Bold", "Tahoma Bold", sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#A_26:after*/
 
 #A_26:before {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     letter-spacing: 1.04px;
     text-align: center;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    column-rule-color: green;
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 500 normal 29.3333px / 29.3333px "Billy Bold", "Tahoma Bold", sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#A_26:before*/
 
 #SPAN_27 {
@@ -1163,7 +1165,7 @@
 #DIV_36 {
     bottom: 0px;
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     display: inline-block;
     height: 72.1875px;
     left: 0px;
@@ -1171,52 +1173,52 @@
     position: relative;
     right: 0px;
     text-align: center;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
     top: 0px;
     width: 950px;
-    column-rule-color: rgb(64, 126, 201);
+    column-rule-color: green;
     perspective-origin: 475px 36.0938px;
     transform-origin: 475px 36.0938px;
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 14px / 22px "VAG Rounded Std Regular", Tahoma, sans-serif;
     margin: 0px 0px 19px;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#DIV_36*/
 
 #DIV_36:after {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     letter-spacing: 1.04px;
     text-align: center;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    column-rule-color: green;
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 14px / 22px "VAG Rounded Std Regular", Tahoma, sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#DIV_36:after*/
 
 #DIV_36:before {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     letter-spacing: 1.04px;
     text-align: center;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    column-rule-color: green;
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 14px / 22px "VAG Rounded Std Regular", Tahoma, sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#DIV_36:before*/
 
 #DIV_37 {
     bottom: 0px;
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     display: inline-block;
     height: 53.1875px;
     left: 0px;
@@ -1224,325 +1226,325 @@
     position: relative;
     right: 0px;
     text-align: center;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
     top: 0px;
     width: 380px;
-    column-rule-color: rgb(64, 126, 201);
+    column-rule-color: green;
     perspective-origin: 190px 26.5938px;
     transform-origin: 190px 26.5938px;
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 14px / 22px "VAG Rounded Std Regular", Tahoma, sans-serif;
     margin: 0px 0px 19px;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#DIV_37*/
 
 #DIV_37:after {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     letter-spacing: 1.04px;
     text-align: center;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    column-rule-color: green;
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 14px / 22px "VAG Rounded Std Regular", Tahoma, sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#DIV_37:after*/
 
 #DIV_37:before {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     letter-spacing: 1.04px;
     text-align: center;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    column-rule-color: green;
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 14px / 22px "VAG Rounded Std Regular", Tahoma, sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#DIV_37:before*/
 
 #A_38, #A_40, #A_42, #A_44 {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     letter-spacing: 1.04px;
     text-align: center;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
+    column-rule-color: green;
     perspective-origin: 0px 0px;
     transform-origin: 0px 0px;
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 14px / 22px "VAG Rounded Std Regular", Tahoma, sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#A_38, #A_40, #A_42, #A_44*/
 
 #A_38:after, #A_40:after, #A_42:after, #A_44:after {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     letter-spacing: 1.04px;
     text-align: center;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    column-rule-color: green;
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 14px / 22px "VAG Rounded Std Regular", Tahoma, sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#A_38:after, #A_40:after, #A_42:after, #A_44:after*/
 
 #A_38:before, #A_40:before, #A_42:before, #A_44:before {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     letter-spacing: 1.04px;
     text-align: center;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    column-rule-color: green;
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 14px / 22px "VAG Rounded Std Regular", Tahoma, sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#A_38:before, #A_40:before, #A_42:before, #A_44:before*/
 
 #IMG_39, #IMG_41, #IMG_45 {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     cursor: pointer;
     height: 53.1875px;
     letter-spacing: 1.04px;
     text-align: center;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
     vertical-align: middle;
     width: 53.1875px;
-    column-rule-color: rgb(64, 126, 201);
+    column-rule-color: green;
     perspective-origin: 26.5938px 26.5938px;
     transform-origin: 26.5938px 26.5938px;
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 14px / 22px "VAG Rounded Std Regular", Tahoma, sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#IMG_39, #IMG_41, #IMG_45*/
 
 #IMG_39:after, #IMG_41:after, #IMG_45:after {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     cursor: pointer;
     letter-spacing: 1.04px;
     text-align: center;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    column-rule-color: green;
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 14px / 22px "VAG Rounded Std Regular", Tahoma, sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#IMG_39:after, #IMG_41:after, #IMG_45:after*/
 
 #IMG_39:before, #IMG_41:before, #IMG_45:before {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     cursor: pointer;
     letter-spacing: 1.04px;
     text-align: center;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    column-rule-color: green;
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 14px / 22px "VAG Rounded Std Regular", Tahoma, sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#IMG_39:before, #IMG_41:before, #IMG_45:before*/
 
 #IMG_43 {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     cursor: pointer;
     height: 53.1875px;
     letter-spacing: 1.04px;
     text-align: center;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
     vertical-align: middle;
     width: 53.1875px;
-    column-rule-color: rgb(64, 126, 201);
+    column-rule-color: green;
     perspective-origin: 26.5938px 26.5938px;
     transform-origin: 26.5938px 26.5938px;
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 14px / 22px "VAG Rounded Std Regular", Tahoma, sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#IMG_43*/
 
 #IMG_43:after {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     cursor: pointer;
     letter-spacing: 1.04px;
     text-align: center;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    column-rule-color: green;
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 14px / 22px "VAG Rounded Std Regular", Tahoma, sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#IMG_43:after*/
 
 #IMG_43:before {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     cursor: pointer;
     letter-spacing: 1.04px;
     text-align: center;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    column-rule-color: green;
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 14px / 22px "VAG Rounded Std Regular", Tahoma, sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#IMG_43:before*/
 
 #P_48 {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     height: 144px;
     letter-spacing: 1.04px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
     width: 950px;
-    column-rule-color: rgb(64, 126, 201);
+    column-rule-color: green;
     perspective-origin: 475px 72px;
     transform-origin: 475px 72px;
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 15.4px / 18.48px "VAG Rounded Std Regular", Tahoma, sans-serif;
     margin: 0px 0px 10px;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#P_48*/
 
 #P_48:after {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     letter-spacing: 1.04px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    column-rule-color: green;
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 15.4px / 18.48px "VAG Rounded Std Regular", Tahoma, sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#P_48:after*/
 
 #P_48:before {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     letter-spacing: 1.04px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    column-rule-color: green;
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 15.4px / 18.48px "VAG Rounded Std Regular", Tahoma, sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#P_48:before*/
 
 #BR_50, #BR_52 {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     letter-spacing: 1.04px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
+    column-rule-color: green;
     perspective-origin: 0px 0px;
     transform-origin: 0px 0px;
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 15.4px / 18.48px "VAG Rounded Std Regular", Tahoma, sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#BR_50, #BR_52*/
 
 #BR_50:after, #BR_52:after {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     letter-spacing: 1.04px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    column-rule-color: green;
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 15.4px / 18.48px "VAG Rounded Std Regular", Tahoma, sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#BR_50:after, #BR_52:after*/
 
 #BR_50:before, #BR_52:before {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     letter-spacing: 1.04px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    column-rule-color: green;
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 15.4px / 18.48px "VAG Rounded Std Regular", Tahoma, sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#BR_50:before, #BR_52:before*/
 
 #BR_54 {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     letter-spacing: 1.04px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
+    column-rule-color: green;
     perspective-origin: 0px 0px;
     transform-origin: 0px 0px;
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 15.4px / 18.48px "VAG Rounded Std Regular", Tahoma, sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#BR_54*/
 
 #BR_54:after {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     letter-spacing: 1.04px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    column-rule-color: green;
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 15.4px / 18.48px "VAG Rounded Std Regular", Tahoma, sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#BR_54:after*/
 
 #BR_54:before {
     box-sizing: border-box;
-    color: rgb(64, 126, 201);
+    color: green;
     letter-spacing: 1.04px;
     text-align: left;
-    text-decoration: none solid rgb(64, 126, 201);
+    text-decoration: none solid green;
     text-size-adjust: 100%;
-    column-rule-color: rgb(64, 126, 201);
-    caret-color: rgb(64, 126, 201);
-    border: 0px none rgb(64, 126, 201);
+    column-rule-color: green;
+    caret-color: green;
+    border: 0px none green;
     font: normal normal 400 normal 15.4px / 18.48px "VAG Rounded Std Regular", Tahoma, sans-serif;
-    outline: rgb(64, 126, 201) none 0px;
+    outline: green none 0px;
 }/*#BR_54:before*/
 
 
@@ -1552,4 +1554,16 @@
     letter-spacing: 1.04px;
     text-align: left;
     color:red;
+}
+
+
+.btn-lg-styles
+{
+
+    border-radius:0.6rem;
+    padding:auto!important;
+    margin:2px!important;
+
+
+
 }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../../../../styles/StaticPages.css';
 import { connect } from 'react-redux';
 import * as actions from '../../../redux/actions/index';
+import Spinner from '../../Spinner/Spinner.js'
 
 class HelpFAQ extends Component {
 	constructor(props) {
@@ -20,6 +21,7 @@ class HelpFAQ extends Component {
 
 	render() {
 		return (
+			<Spinner  loading={this.props.spinnerProduct}>
 			<div className="t-Body-contentInner">
 				<div className="container">
 					<div className="row">
@@ -89,12 +91,14 @@ class HelpFAQ extends Component {
 					</div>
 				</div>
 			</div>
+			</Spinner>
 		);
 	}
 }
 const mapStateToProps = state => {
 	return {
 		help : state.static.help,
+		spinnerProduct: state.spinner.loadingProduct
  	}
 }
 

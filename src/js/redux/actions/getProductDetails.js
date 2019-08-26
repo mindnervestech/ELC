@@ -24,17 +24,19 @@ export const addToWishlist = payload => {
 			customer_id: payload.customer_id,
 			product_id: payload.product_id,
 		};
-
+		dispatch(loadingSpinnerForProduct({ loadingProduct: true }))
 		let cb = {
 			success: res => {
-				//console.log('response', res);
+				dispatch(loadingSpinnerForProduct({ loadingProduct: false }))
 
 				if (res.status && res.code === 200) {
 					dispatch(callProductWishDetail({ productWishDetail: { is_in_wishlist: res.is_in_wishlist, wishlist_itemid: res.wishlist_itemid } }))
 				} else {
 				}
 			},
-			error: err => { },
+			error: err => {
+				dispatch(loadingSpinnerForProduct({ loadingProduct: false }))
+			 },
 		};
 		API.addToWishlist(data, cb);
 	};

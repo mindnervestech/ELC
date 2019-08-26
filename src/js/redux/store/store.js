@@ -21,6 +21,7 @@ import GuestUserReducer from '../reducers/guestUserReducer';
 import StaticPagesReducer from '../reducers/staticPagesReducers';
 import vipRegReducer from '../reducers/vipRegReducer';
 import contactUsReducer from '../reducers/contactReducer';
+import birthdayclubReducer from '../reducers/birthdayclubReducer';
 
 import thunk from 'redux-thunk';
 
@@ -39,6 +40,7 @@ const AppRootReducer = combineReducers({
     static: StaticPagesReducer,
     vipReg: vipRegReducer,
     contact: contactUsReducer,
+    birthdayclubData:birthdayclubReducer
 })
 
 const rootReducer = (state, action) => {

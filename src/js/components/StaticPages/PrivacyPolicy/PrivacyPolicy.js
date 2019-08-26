@@ -3,7 +3,7 @@ import '../../../../styles/StaticPages.css';
 import Axios from 'axios';
 import cookie from 'react-cookies';
 import { STATIC_PAGES_URL, API_TOKEN } from '../../../api/globals';
-
+import Spinner from '../../Spinner/Spinner.js'
 class PrivacyPolicy extends Component {
 	constructor(props) {
 		super(props);

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../../../../styles/StaticPages.css';
 import { connect } from 'react-redux';
 import * as actions from '../../../redux/actions/index';
+import Spinner from '../../Spinner/Spinner.js'
 
 class TermConditions extends Component {
 	constructor(props) {
@@ -18,6 +19,7 @@ class TermConditions extends Component {
 
 	render() {
 		return (
+			<Spinner  loading={this.props.spinnerProduct}>
 			<div className="t-Body-contentInner">
 				<div className="container">
 					<div className="row">
@@ -92,6 +94,9 @@ class TermConditions extends Component {
 					</div>
 				</div>
 			</div>
+			</Spinner>
+			
+
 		);
 	}
 }
@@ -99,6 +104,7 @@ class TermConditions extends Component {
 const mapStateToProps = state => {
 	return {
 		termConditions : state.static.termConditions,
+		spinnerProduct: state.spinner.loadingProduct
  	}
 }
 
