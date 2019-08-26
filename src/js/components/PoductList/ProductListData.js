@@ -14,6 +14,8 @@ import home from '../../../assets/images/social/Hero.png';
 import { th } from 'date-fns/esm/locale';
 import StarRatings from 'react-star-ratings';
 
+var _ = require('lodash');
+
 let productList = {} 
 let pagenationCount = 8
 
@@ -51,6 +53,44 @@ class ProductListData extends Component {
 
 	componentWillMount() {
 		
+	}
+
+	getSortBy = (value) => {
+		// sortbyv = value;
+		// if (data == null) {
+		// 	if (value == "price_desc") {
+		// 		const sortData = _.values(this.props.filterProductList).sort((a, b) => b.price - a.price);
+		// 		//consoleconsole.log("sortData",sortData)
+		// 		this.props.saveFilterData(sortData);
+		// 	} else if (value == 'price_asc') {
+		// 		const sortData = _.values(this.props.filterProductList).sort((a, b) => a.price - b.price);
+		// 		this.props.saveFilterData(sortData);
+		// 	} else {
+		// 		const data = this.multiPropsFilter(newFilter);
+		// 		this.props.saveFilterData(data);
+		// 	}
+		// } else {
+		// 	if (value == "price_desc") {
+		// 		const sortData = _.values(productList).sort((a, b) => b.price - a.price);
+		// 		this.setState({list1: sortData});
+		// 	} else if (value == 'price_asc') {
+		// 		const sortData = _.values(productList).sort((a, b) => a.price - b.price);
+		// 		this.setState({list1: sortData});
+		// 	} else {
+		// 		//const data = this.multiPropsFilter(newFilter);
+		// 		this.props.saveFilterData(productList);
+		// 	}
+		// }
+
+		if (value == "price_desc") {
+			const sortData = _.values(productList).sort((a, b) => b.price - a.price);
+			this.setState({list1: sortData});
+		} else if (value == 'price_asc') {
+			const sortData = _.values(productList).sort((a, b) => a.price - b.price);
+			this.setState({list1: sortData});
+		} else {
+			//this.props.saveFilterData(productList);
+		}
 	}
 
 	pagenation = (start , end) => {
@@ -107,6 +147,10 @@ class ProductListData extends Component {
 									</Col>
 									<Col xs="6" style={{ padding: 0 }}>
 										<select placeholder={'Filter'} onChange={this.filter}>
+											{/* <option value="best seller" onClick={(e) => this.getSortBy('relevance')}>Relevance</option>
+											<option value="best seller" onClick={(e) => this.getSortBy('price_desc')}>Price (High to Low)</option>
+											<option value="best seller" onClick={(e) => this.getSortBy('price_asc')}>Price (Low to High)</option> */}
+
 											<option value="best seller">Relevance</option>
 											<option value="best seller">Price (High to Low)</option>
 											<option value="best seller">Price (Low to High)</option>
@@ -156,18 +200,18 @@ class ProductListData extends Component {
 						{Object.keys(list).map((keyName,index) =>
 							<li key={index}>
 								<div className="alsoLikeCard">
-									<span className="percentage-text" style={{ display: 'none' }}>30</span>
+									{/* <span className="percentage-text" style={{ display: 'none' }}>30</span>
 									<span className="save-text">5</span>
-									<img src={save} className="save" />
+									<img src={save} className="save" /> */}
 									<img src={list[keyName].json.imageUrl.primaryimage != "" ? list[keyName].json.imageUrl.primaryimage : placeholder} className="cardImage" />
-									<img src={percentage} className="percentage" style={{ display: 'none' }} />
+									{/* <img src={percentage} className="percentage" style={{ display: 'none' }} /> */}
 									<div style={{ marginTop: 10 }}>
 										<label className="text-color">{list[keyName].json.name}</label>
 									</div>
 									<div>
 										<span style={{ fontSize: 14, color: "#0D943F", fontWeight: "bold" }}>{list[keyName].currency } {list[keyName].price}.00</span><span style={{ color: "gray", textDecorationLine: 'line-through', fontSize: 14, marginLeft: 10 }}>AED 14.50</span>
 									</div>
-									<div style={{ paddingTop: 10 }}>
+									{/* <div style={{ paddingTop: 10 }}>
 										<StarRatings
 											rating={3}
 											starRatedColor='#FAD961'
@@ -179,14 +223,14 @@ class ProductListData extends Component {
 											starSpacing='0px'
 										/>
 										<span> 3 - 10 year </span>
-									</div>
-									<div>
+									</div> */}
+									{/* <div>
 										<button className="alsoLikeCardButton CardButton">Add to Basket</button>
 									</div>
 									<div style={{ paddingTop: 10 }}>
 										<i className="icon-heart"></i>
 										<span>Add to Wishlist</span>
-									</div>
+									</div> */}
 								</div>
 							</li>
 						)}
