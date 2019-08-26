@@ -15,7 +15,8 @@ import { th } from 'date-fns/esm/locale';
 import StarRatings from 'react-star-ratings';
 
 let productList = {} 
-let list1 = {}
+let pagenationCount = 8
+
 
 class ProductListData extends Component {
 	constructor(props) {
@@ -25,23 +26,26 @@ class ProductListData extends Component {
 		let count = 0
 		let pageNumber = 1
 		let start = 1 * pageNumber
-		let end = 8 * pageNumber
+		let end = pagenationCount * pageNumber
+		let list1 = {}
 		for(var element in productList){
 			if(element >= start && element <= end ){
 				list1[element] = productList[element]
 			}
 			count = count + 1
 		}
-		if(count % 8 == 0){
-			totalPages = count / 8
+		if(count % pagenationCount == 0){
+			totalPages = count / pagenationCount
 		}else{
-			totalPages = (count / 8) + 1
+			totalPages = (count / pagenationCount) + 1
 		}
 		
-		console.log(list1)
 		this.state = {
 			totalPages : totalPages,
 			pageNumber : 1,
+			list1 : list1,
+			start: 1,
+			end: pagenationCount,
 		};
 	}
 
@@ -49,13 +53,41 @@ class ProductListData extends Component {
 		
 	}
 
+	pagenation = (start , end) => {
+		this.state.list1 = {}
+		for(var element in productList){
+			if(element >= start && element <= end ){
+				this.state.list1[element] = productList[element]
+			}
+		}
+		this.setState({list1: this.state.list1})
+	}
+
+	prevButton = () => {
+		if(this.state.pageNumber != 1){
+			this.setState({pageNumber: this.state.pageNumber - 1})
+			setTimeout(() => {
+				console.log(this.state.pageNumber)
+				let value = pagenationCount * (this.state.pageNumber - 1) + 1
+				this.pagenation(value , value + pagenationCount - 1)
+			}, 500);
+		}
+	}
+
+	nextButton = () => {
+		if(this.state.pageNumber != this.state.totalPages){
+			this.setState({pageNumber: this.state.pageNumber + 1})
+			let value = pagenationCount * this.state.pageNumber + 1
+			this.pagenation(value , value + pagenationCount -1)
+		}
+	}
+
 	filter = (value) => {
-		console.log(value)
+		
 	}
 
 	render() {
-		//const list  = this.props.list.product_data;
-		const list  = list1
+		const list  = this.state.list1
 		
 		return (
 			<div className="homePage">
@@ -91,13 +123,13 @@ class ProductListData extends Component {
 									<Col xs="10">
 										<Row>
 											<Col xs="4">
-												<button className={this.state.pageNumber == 1 ? "prevButton" : "nextButton"} style={{ width: "80%" }}>Prev</button>
+												<button onClick={this.prevButton} className={this.state.pageNumber == 1 ? "prevButton" : "nextButton"} style={{ width: "80%" }}>Prev</button>
 											</Col>
 											<Col xs="4">
 												<span>Page {this.state.pageNumber} of {this.state.totalPages}</span>
 											</Col>
 											<Col xs="4">
-												<button className={this.state.totalPages == this.state.pageNumber ? "prevButton" : "nextButton"} style={{ width: "80%" }}>Next</button>
+												<button onClick={this.nextButton} className={this.state.totalPages == this.state.pageNumber ? "prevButton" : "nextButton"} style={{ width: "80%" }}>Next</button>
 											</Col>
 										</Row>
 									</Col>
@@ -107,13 +139,13 @@ class ProductListData extends Component {
 						<div className="divShowOnMobile">
 							<Row>
 								<Col xs="4">
-									<button className="prevButton" style={{ width: "80%" }}>Prev</button>
+									<button onClick={this.prevButton} className={this.state.pageNumber == 1 ? "prevButton" : "nextButton"} style={{ width: "80%" }}>Prev</button>
 								</Col>
 								<Col xs="4">
 									<span>Page {this.state.pageNumber} of {this.state.totalPages}</span>
 								</Col>
 								<Col xs="4">
-									<button className="nextButton" style={{ width: "80%" }}>Next</button>
+									<button onClick={this.nextButton} className={this.state.totalPages == this.state.pageNumber ? "prevButton" : "nextButton"} style={{ width: "80%" }}>Next</button>
 								</Col>
 							</Row>
 						</div>
@@ -127,7 +159,7 @@ class ProductListData extends Component {
 									<span className="percentage-text" style={{ display: 'none' }}>30</span>
 									<span className="save-text">5</span>
 									<img src={save} className="save" />
-									<img src={list[keyName].json.imageUrl.primaryimage[0] != "" ? list[keyName].json.imageUrl.primaryimage[0] : placeholder} className="cardImage" />
+									<img src={list[keyName].json.imageUrl.primaryimage != "" ? list[keyName].json.imageUrl.primaryimage : placeholder} className="cardImage" />
 									<img src={percentage} className="percentage" style={{ display: 'none' }} />
 									<div style={{ marginTop: 10 }}>
 										<label className="text-color">{list[keyName].json.name}</label>
@@ -166,13 +198,13 @@ class ProductListData extends Component {
 						<Col xs="8">
 							<Row>
 								<Col xs="4">
-									<button className="prevButton">Prev</button>
+									<button onClick={this.prevButton} className={this.state.pageNumber == 1 ? "prevButton" : "nextButton"}>Prev</button>
 								</Col>
 								<Col xs="4">
 									<span>Page {this.state.pageNumber} of {this.state.totalPages}</span>
 								</Col>
 								<Col xs="4">
-									<button className="nextButton">Next</button>
+									<button onClick={this.nextButton} className={this.state.totalPages == this.state.pageNumber ? "prevButton" : "nextButton"}>Next</button>
 								</Col>
 							</Row>
 						</Col>
@@ -182,13 +214,13 @@ class ProductListData extends Component {
 				<div className="divShowOnMobile" style={{ padding: '18px 10px', textAlign: 'center'}}>
 					<Row>
 						<Col xs="4">
-							<button className="prevButton" style={{ width: "80%" }}>Prev</button>
+							<button onClick={this.prevButton} className={this.state.pageNumber == 1 ? "prevButton" : "nextButton"} style={{ width: "80%" }}>Prev</button>
 						</Col>
 						<Col xs="4">
 							<span>Page {this.state.pageNumber} of {this.state.totalPages}</span>
 						</Col>
 						<Col xs="4">
-							<button className="nextButton" style={{ width: "80%" }}>Next</button>
+							<button onClick={this.nextButton} className={this.state.totalPages == this.state.pageNumber ? "prevButton" : "nextButton"} style={{ width: "80%" }}>Next</button>
 						</Col>
 					</Row>
 				</div>
