@@ -122,7 +122,7 @@ class SizeGuide extends Component {
 							<h2 className="review-text" style={{width:'40%'}}/>
 						</div>
                         <div className="product-review">
-                            <div className="row detail-info">
+                            <div className="row detail-info review-row-margin">
                                 <StarRatings
                                     rating={this.state.rating}
                                     starRatedColor='#FAD961'

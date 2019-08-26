@@ -1452,7 +1452,13 @@ ul li.active-tab a{
     padding: 40px 0px;
     border-bottom: solid 2px #0D943F;
 }
-
+#recently-view .slick-initialized .slick-slide {
+    display: block;
+    padding: 15px !important;
+}
+.padd-left-remove{
+    padding-left: 80px;
+}
 @media (max-width:767px){   
     .padding-mob{
         padding-left: 0px;
@@ -1542,6 +1548,14 @@ ul li.active-tab a{
         content: '\25B4' !important;
         font-size: 25px !important;
         top: 0px !important;
+    }
+    
+    .padd-left-remove{
+        padding: 0px 15px;
+    }
+    .review-row-margin{
+        margin-left: 0px;
+        margin-right: 0px;
     }
 
 }
