@@ -41,7 +41,7 @@ class ProductListData extends Component {
 		if(count % pagenationCount == 0){
 			totalPages = count / pagenationCount
 		}else{
-			totalPages = (count / pagenationCount) + 1
+			totalPages = Math.floor(count/pagenationCount) + 1
 		}
 		
 		this.state = {
