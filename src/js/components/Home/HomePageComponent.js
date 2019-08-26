@@ -114,7 +114,7 @@ class HomePageComponent extends Component {
                                         {homeData.banners.map((item, index) => (
                                             <Link to={`/` + store_locale + `/products` + item.BLOCK_URL + ``}>
                                                 <div>
-                                                    <img src={item.BLOCK_BANNER} style={{ height: 550 }} />
+                                                    <img src={item.BLOCK_BANNER} className="banner-image-hight"/>
                                                 </div>
                                             </Link>
                                         ))}

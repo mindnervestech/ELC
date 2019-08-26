@@ -76,6 +76,9 @@
     z-index: 9;
 }
 
+.banner-image-hight {
+    height: 550px;
+}
 
 .slick-dots li.slick-active button:before {
     opacity: .75;
@@ -3023,6 +3026,10 @@ li {
     .data .slick-prev {
         left: 11px !important;
         z-index: 1;
+    }
+
+    .banner-image-hight {
+        height: 383px;
     }
 
     html[dir="rtl"] .data .slick-prev {
