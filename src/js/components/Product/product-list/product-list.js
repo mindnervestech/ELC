@@ -193,8 +193,6 @@ class ProductData extends Component {
 										</strong>
 									</p>
 								)}
-
-
 						</aside>
 					</a>
 				</div>

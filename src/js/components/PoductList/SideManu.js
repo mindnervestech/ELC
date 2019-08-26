@@ -29,8 +29,10 @@ class SideManu extends Component {
 		let splitData = value.split('/')
 		console.log(splitData)
 		if(splitData[0] == "price"){
-			
+
 		}else if(splitData[0] == "color"){
+
+		}else if(splitData[0] == "age"){
 
 		}
 	}

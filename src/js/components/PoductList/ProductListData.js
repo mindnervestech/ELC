@@ -98,11 +98,20 @@ class ProductListData extends Component {
 			productList = productListData
 			this.pagenation(1, pagenationCount)
 		}
+		let totalPages = 0
+		let count = productList.length
+		if(count % pagenationCount == 0){
+			totalPages = count / pagenationCount
+		}else{
+			totalPages = (count / pagenationCount) + 1
+		}
+		this.state.totalPages = totalPages
+		this.state.pageNumber = 1
 	}
 
 	render() {
 		const list  = this.state.list1
-		
+		const store_locale = this.props.globals.store_locale
 		return (
 			<div className="homePage">
 				<div className="divShowOnMobile" style={{width: '50%', height: 50, position: 'absolute', top: 28, right: 0}}>
@@ -192,6 +201,7 @@ class ProductListData extends Component {
 				<div className="start">
 					<ul className="products">
 						{Object.keys(list).map((keyName,index) =>
+						<Link to={`/${store_locale}/products-details/${list[keyName].json.url_key}`}>
 							<li key={index}>
 								<div className="alsoLikeCard">
 									{/* <span className="percentage-text" style={{ display: 'none' }}>30</span>
@@ -228,6 +238,7 @@ class ProductListData extends Component {
 									</div> */}
 								</div>
 							</li>
+							</Link>
 						)}
 					</ul>
 				</div>
