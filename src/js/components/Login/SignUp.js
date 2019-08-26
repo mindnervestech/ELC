@@ -18,13 +18,14 @@ class SignUp extends Component {
     super(props);
 
     this.state = {
+      subscribe_to_newsletter: 0,
       fields: {
         firstName: '',
         lastName: '',
         email: '',
         contactNumber: '',
         carrierCode: '',
-        confirmEmail:'',
+        confirmEmail: '',
         password: '',
         confirmPassword: '',
       },
@@ -37,7 +38,7 @@ class SignUp extends Component {
       }
 
     }
-
+    this.subscribe_to_newsletter = this.subscribe_to_newsletter.bind(this);
     //console.log('signup Mounted',this.state.token, props);
   }
 
@@ -135,7 +136,7 @@ class SignUp extends Component {
     //     console.log("confirm email" , fields["confirmEmail"]);
     //       formIsValid = false;
     //       errors["confirmEmail"] = <FormattedMessage id="Signup.validation.confirmEmail.invalid" defaultMessage="Email address are not matched" />;
-      
+
     //     console.log("form is valid 66", formIsValid);
     //   }
     // }
@@ -215,11 +216,20 @@ class SignUp extends Component {
       store_id: this.props.globals.currentStore,
       // title: this.state.fields.title,
       quest_quote: "non",
+      subscribe_to_newsletter: this.state.subscribe_to_newsletter,
     }
     this.props.onRegisterUserUser(data);
   }
 
-
+  subscribe_to_newsletter() {
+    if (this.state.subscribe_to_newsletter == 0) {
+      this.state.subscribe_to_newsletter = 1;
+    }
+    else {
+      this.state.subscribe_to_newsletter = 0;
+    }
+    console.log("ee", this.state.subscribe_to_newsletter);
+  }
 
   contactNumber = (status, value, countryData, number, id) => {
     // console.log('from parent', status, value, countryData, number, id)
@@ -302,7 +312,7 @@ class SignUp extends Component {
         {(message) =>
           <input type="email" id="P1001_ConfirmEMAIL" name="P1001_ConfirmEMAIL" placeholder={message} onChange={this.handleChange.bind(this, "confirmEmail")} value={this.state.fields["confirmEmail"]} size={30} />}
       </FormattedMessage>
-      
+
     </div><span id="P1001_ConfirmEMAIL_error_placeholder" className="a-Form-error" data-template-id="33610259035469734_ET"></span></div>
 
 
@@ -340,11 +350,11 @@ class SignUp extends Component {
         <span id="P1001_EMAIL_error_placeholder" className="a-Form-error u-visible" data-template-id="33609965712469734_ET"><span className="t-Form-error"><div id="P1001_EMAIL_error">
           {errorsObj["email"]}</div></span></span></div>
     }
-    
+
     if ('confirmEmail' in errorsObj) {
       console.log("Error email");
       confirmEmailInputField = <div><div>
-        
+
         <input type="text" id="P1001_ConfirmEMAIL" name="P1001_ConfirmEMAIL" placeholder="Confirm Email Address" onChange={this.handleChange.bind(this, "confirmEmail")} value={this.state.fields["confirmEmail"]} size="30" maxLength="100" aria-describedby="P1001_ConfirmEMAIL_error" aria-invalid="true" /></div>
         <span id="P1001_ConfirmEMAIL_error_placeholder" className="a-Form-error u-visible" data-template-id="33609965712469734_ET"><span className="t-Form-error"><div id="P1001_ConfirmEMAIL_error">
           {errorsObj["confirmEmail"]}</div></span></span></div>
@@ -378,6 +388,8 @@ class SignUp extends Component {
         <span id="P1001_RPWD_error_placeholder" className="a-Form-error u-visible" data-template-id="33610259035469734_ET">
           <span className="t-Form-error"><div id="P1001_RPWD_error">{errorsObj["confirmPassword"]}</div></span></span></div>;
     }
+
+
 
     return (
       <>
@@ -530,9 +542,9 @@ class SignUp extends Component {
                                   </div>
                                 </div>
                               </div>
-                              <div className="row pad40L padTop20 backWhite" style={{textAline:"start"}}>
+                              <div className="row pad40L padTop20 backWhite" style={{ textAline: "start" }}>
                                 <label class="checkBox"><FormattedMessage id="Form.RecieveEmail" defaultMessage="I'd like to receive emails from ELC about Spacial Offers, new toys and voucher codes."></FormattedMessage>
-                                  <input type="checkbox"  ></input>
+                                  <input onClick={this.subscribe_to_newsletter} type="checkbox"  ></input>
                                   <span class="checkmark"></span>
                                 </label>
                               </div>

@@ -420,16 +420,17 @@ class MainHeader extends Component {
                                         <div className="lang">
                                             <a href="javascript:void(0);" onClick={(e) => this.translate('en', 'ltr')} className="active" >en</a> | <a href="javascript:void(0);" onClick={(e) => this.translate('ar', 'rtl')} >العربية</a></div>
                                     </li> */}
+                                      <li style={{ paddingLeft: 10 }}>
+                                                <img src={bagLogo} />
+                                            </li>
                                              <li style={{paddingTop: 8}}>
                                                 <label className="headerLable2">my basket
                                                 {/* <span style={{ fontFamily: "VAG Rounded ELC Bold", marginLeft: 10 }}>£30.00</span> */}
                                                 </label>
                                             </li>
-                                            <li style={{ paddingLeft: 10 }}>
-                                                <img src={bagLogo} />
-                                            </li>
+                                          
                                             <li style={{paddingTop: 8}}>
-                                                <label className="lable-count">1</label>
+                                                <label className="lable-count">0</label>
                                             </li>
                                         </ul>
                                     </Link>

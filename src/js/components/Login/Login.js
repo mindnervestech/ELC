@@ -305,7 +305,7 @@ class Login extends Component {
                       <div className="col col-6 colUp">
                         <ul className="nay">
                           <li><FormattedMessage id="newToElc.checkout" defaultMessage="Save details for your favourite store" /></li>
-                          <li><FormattedMessage id="newToElc.store" defaultMessage="You can get throw  the checkout faster" /></li>
+                          <li><FormattedMessage id="newToElc.store" defaultMessage="You can get throw the checkout faster" /></li>
                         </ul>
                       </div>
                     </div>

@@ -1,23 +1,24 @@
 {
   "en": {
 
-    "birthdayclub.header":"Jack's Birthday Club",
-    "birthdayclub.text1":" You can add upto 10 childrens Birthday Club. We will pop the date in our diary and send on you mail",
-    "birthdayclub.text2":"ahead of the big day with a special birthday offer",
-    "birthdayclub.addnewchildbutton":"Add new child",
-    "please.select":"Please Select",
-    "select.mm":"MM",
-    "select.dd":"DD",
-    "select.yyyy":"YYYY",
+    "birthdayclub.header": "Jack's Birthday Club",
+    "birthdayclub.text1": " You can add upto 10 childrens Birthday Club. We will pop the date in our diary and send on you mail",
+    "birthdayclub.text2": "ahead of the big day with a special birthday offer",
+    "birthdayclub.addnewchildbutton": "Add new child",
+    "please.select": "Please Select",
+    "select.mm": "MM",
+    "select.dd": "DD",
+    "select.yyyy": "YYYY",
 
-    "addnewchild.firstname":"First Name",
-    "addnewchild.dateofbirth":"Date Of Birth",
-    "addnewchild.boyorgirl":"Boy or Girl",
-    "addnewchild.realationship":"Realationship",
-    "cancelButton":"Cancel",
+    "addnewchild.firstname": "First Name",
+    "addnewchild.dateofbirth": "Date Of Birth",
+    "addnewchild.boyorgirl": "Boy or Girl",
+    "addnewchild.realationship": "Realationship",
+    "cancelButton": "Cancel",
 
-    
-    
+
+    "footer.followUsOn": "follow us on",
+    "footer.signUpAd": "sign up for our latest news and offers",
 
 
     "Form.RecieveEmail": "I'd like to receive emails from ELC about Spacial Offers, new toys and voucher codes.",
@@ -544,18 +545,18 @@
     "footer.text": "© Website is operated by Kamal Osman Jamjoom LLC, trading as Early Learning Centre"
   },
   "ar": {
-    "birthdayclub.header":"جاك عيد ميلاد النادي" ,
-    "birthdayclub.text1":"يمكنك إضافة حتى 10 أعياد ميلاد للنادي. سنصدر التاريخ في مذكراتنا ونرسل لك بريدًا",
-    "birthdayclub.text2":"قبل يوم كبير مع عرض عيد ميلاد خاص",
-    "birthdayclub.addnewchildbutton":"إضافة طفل جديد",
-    "please.select":"الرجاء اختيار",
-    "addnewchild.firstname":"الاسم الاول",
-    "addnewchild.dateofbirth":"تاريخ الولادة",
-    "addnewchild.boyorgirl":"صبي أو فتاة",
-    "addnewchild.realationship":"صلة",
-    "cancelButton":"إلغاء",
+    "birthdayclub.header": "جاك عيد ميلاد النادي",
+    "birthdayclub.text1": "يمكنك إضافة حتى 10 أعياد ميلاد للنادي. سنصدر التاريخ في مذكراتنا ونرسل لك بريدًا",
+    "birthdayclub.text2": "قبل يوم كبير مع عرض عيد ميلاد خاص",
+    "birthdayclub.addnewchildbutton": "إضافة طفل جديد",
+    "please.select": "الرجاء اختيار",
+    "addnewchild.firstname": "الاسم الاول",
+    "addnewchild.dateofbirth": "تاريخ الولادة",
+    "addnewchild.boyorgirl": "صبي أو فتاة",
+    "addnewchild.realationship": "صلة",
+    "cancelButton": "إلغاء",
 
-    
+
     "header.clubName": "نادي الأميرة ",
     "header.VIPRegister": "سجل الآن ",
     "header.VIPClubTitle": "في نادي كبار الشخصيات ",
@@ -749,7 +750,7 @@
     "Product.Details.ProductInfo": "Product Information",
     "Product.Details.DeliveryOption": "Delivery Options",
     "Product.Details.Question": "Question",
-    
+
     "Product.Listing.Filter": "تصنيف",
     "Product.Listing.Sort": " ترتيب  ",
     "Product.Listing.Relevance": "الأكثر تطابقاً",
@@ -1035,29 +1036,33 @@
     "footer.ConsumerRights": "حقوق المستهلك",
     "footer.termsAndConditions": "الأحكام والشروط ",
     "footer.Legal": "قانوني",
-    "footer.Charity": "Charity",
-    "footer.AboutELC": "About ELC",
+
     "footer.text": "© تتم إدارة الموقع من قبل شركة كمال عصمان جمجوم ذات المسؤولية المحدودة، باسم مركز التعليم المبكر",
 
-    "newToElc.header.login.text": "لديك حساب بالفعل؟ سجّل الدخول لاستعادة إعدادات حسابك",
+    "newToElc.header.login.text": "لديك حساب مسبقاً؟ قم بتسجيل الدخول لإسترداد معلومات حسابك ",
     "register.header.text": "الحقول المعلمة * مطلوبة",
     "account.Creation.text": "يرجى ملء النموذج لإنشاء حساب",
-    "Form.PasswordConventions": "يجب أن يكون طول كلمة المرور 8 أحرف على الأقل وأن يحتوي على أحرف كبيرة وحرف صغير ورقم.",
+    "Form.PasswordConventions": "يجب أن تحتوي كلمة المرور على 8 أحرف على الأقل مكونة من حرف كبير، وحرف صغير، ورقم. ",
     "Form.PasswordLength": "الحد الأدنى للطول هو 6 أحرف",
-    "Form.EmailPolicy": "يمكنك أن تطلب منا التوقف في أي وقت ولن تبيع بياناتك أبدًا لشركات أخرى لأغراض التسويق.",
-    "Form.EmailPolicys": "نحن نحاول دائمًا إرسال رسائل بريد إلكتروني ذات صلة بك على المنتجات التي أبدت اهتمامًا بها.",
-    "Form.RecieveEmail": "أرغب في تلقي رسائل بريد إلكتروني من ELC حول عروض Spacial ولعب الأطفال الجديدة ورموز القسيمة.",
+    "Form.EmailPolicy": "يمكنك أن تطلب منا التوقف في أي وقت، ولن نقوم ببيع بياناتك لشركات أخرى لهدف التسويق.",
+    "Form.EmailPolicys": "نحاول دائماً إرسال رسائل البريد الإلكتروني ذات الصلة وذلك بناء على المنتجات التي أبديت اهتماماً بها. ",
+    "Form.RecieveEmail": "أرغب في تلقي رسائل البريد الإلكتروني من مركز التعليم المبكر عن العروض الخاصة، والألعاب الجديدة، ورموز القسائم. ",
     "Form.Password": "كلمة المرور",
-    "Form.ConfirmEmail": "تأكيد عنوان البريد الإلكتروني",
+    "Form.ConfirmEmail": "تأكيد البريد الإلكتروني",
     "Form.ConfirmPassword": "تأكيد كلمة المرور",
     "Register.SignInText": "تسجيل الدخول أو التسجيل",
-    "newToElc.newToElc": "جديد على ELC",
-    "newToElc.checkout": "حفظ التفاصيل لمتجرك المفضل",
-    "newToElc.store": "حفظ التفاصيل لمتجرك المفضل",
-    "newToElc.join": "يمكنك الانضمام إلى Jack Birthday Birthday Club لتلقي عروض عيد الميلاد المكانية",
-    "newToElc.remember": "سوف نتذكر التفاصيل الخاصة بك للمرة القادمة",
-    "ContactUs.ConfirmEmail": "تأكيد عنوان البريد الإلكتروني",
-    "Signup.validation.confirmEmail.empty": "عنوان البريد الإلكتروني غير متطابق"
+    "newToElc.newToElc": "زائر جديد ",
+    "newToElc.checkout": "يمكنك التوجه الى صفحة الدفع بشكل اسرع",
+    "newToElc.store": "احفظ بيانات متجرك المفضل",
+    "newToElc.join": "يمكنك الإنضمام إلى نادي عيد الميلاد لتلقي عروض عيد الميلاد الخاصة",
+    "newToElc.remember": "سنتذكر معلوماتك للمرة القادمة",
+    "ContactUs.ConfirmEmail": "تأكيد البريد الإلكتروني",
+    "Signup.validation.confirmEmail.empty": "عنوان البريد الإلكتروني غير متطابق",
 
+
+    "footer.Charity": "الاعمال الخيرية",
+    "footer.AboutELC": "About ELC",
+    "footer.followUsOn": "اتبعنا",
+    "footer.signUpAd": "الاشتراك للحصول على أحدث الأخبار والعروض"
   }
 }

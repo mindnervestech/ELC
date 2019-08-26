@@ -51,7 +51,7 @@ class menuList extends Component {
 
 			<>
 				<ul className="subLink">
-				{data.map(this._renderSubMenuItem)}
+					{data.map(this._renderSubMenuItem)}
 					{/* <li>
 						<span className="PinkText"><FormattedMessage id="Menu.Style" defaultMessage="Style" /></span> 
 					</li>
@@ -117,9 +117,11 @@ class menuList extends Component {
 				<li key={index}>
 					<Link to={'/' + this.state.store_locale + '/products/' + item.url_path} style={{ textDecoration: 'none' }} onClick={() => document.getElementById("closeNav").click()}>
 						{item.name.toLowerCase()}
+						<i class="fa fa-caret-down downMenu" aria-hidden="true"></i>
 					</Link>
 					<i className="subMenuTrigger" />
 					{this._checkSubMenu(item)}
+
 				</li>
 			</>
 		);
@@ -151,6 +153,7 @@ class menuList extends Component {
 				<i className=""></i>
 			</li> */}
 			{Object.keys(navData).map(this._renderMenuNavigation)}
+
 		</ul>;
 	}
 }

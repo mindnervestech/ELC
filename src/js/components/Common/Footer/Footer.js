@@ -131,7 +131,7 @@ class Footer extends Component {
                     </div>
                     <div className="col col-4" style={{textAlign: 'start'}}>
                         <div className="footer-title" style={{marginBottom:7}}>
-                            <span>follow us on</span>
+                        <FormattedMessage id="footer.followUsOn" defaultMessage="follow us on" />
                         </div>
                         <div>
                         <img src={facebook} className="icon"></img>
@@ -140,10 +140,11 @@ class Footer extends Component {
                         <img src={youtube} className="icon"></img>
                         </div>
                         <div className="footer-title" style={{marginTop:60,marginBottom:7}}>
-                            <span>sign up for our latest news and offers</span>
+                         
+                            <FormattedMessage id="footer.signUpAd" defaultMessage="sign up for our latest news and offers" />
                         </div>
                         <div>
-                            <input type="text" placeholder="enter your e-mail address" className="email-field"></input>
+                            <input type="text" placeholder="footer.signUpAd" className="email-field"></input>
                             <input type="submit" value="submit" className="submit-button"></input>
                         </div>
                     </div>
@@ -152,17 +153,17 @@ class Footer extends Component {
                 <div className="row footer-bottom footer-show-web">
                     <div className="col col-8" style={{textAlign: 'start'}}>
                         <div>
-                            <FormattedMessage id="footer.text" defaultMessage="© Website is operated by Kamal Osman Jamjoom LLC, trading as Early Learning Centre" />
+                            <FormattedMessage id="footer.text" defaultMessage="ï¿½ Website is operated by Kamal Osman Jamjoom LLC, trading as Early Learning Centre" />
                         </div>
                     </div>
                     <div className="col col-4" style={{textAlign: "end"}}>
                         <div className="row">
-                            <div className="col col-3">
+                            {/* <div className="col col-3">
                                  <img className="bottom-imagePaypal" src={payPalImg}/>
                             </div>
                             <div className="col col-3">
                                 <img className="bottom-imagePaypal" src={verisignSecureImg}/>
-                            </div>
+                            </div> */}
                             <div className="col col-3">
                                 <img className="bottom-imagePaypal" src={masterCardImg}/>
                             </div>
@@ -175,10 +176,10 @@ class Footer extends Component {
 
                 <div className="footer-line footer-show-mobile">
                     <div className="footer-title" style={{textAlign: 'center',marginBottom:7}}>
-                        <span>sign up for our latest news and offers</span>
+                        <FormattedMessage id="footer.signUpAd" defaultMessage="sign up for our latest news and offers" />
                     </div>
                     <div>
-                        <input type="text" placeholder="enter your e-mail address" className="email-field"></input>
+                        <input type="text" placeholder="footer.signUpAd" className="email-field"></input>
                         <input type="submit" value="submit" className="submit-button"></input>
                     </div>
                     <div className="mobile-manu">
@@ -283,7 +284,7 @@ class Footer extends Component {
                     </div>
                     <div style={{paddingTop:30, textAlign: 'center'}}>
                         <div className="footer-title" style={{marginBottom:7}}>
-                            <span>follow us on</span>
+                        <FormattedMessage id="footer.followUsOn" defaultMessage="follow us on" />
                         </div>
                         <div>
                             <img src={facebook} className="icon"></img>
@@ -295,7 +296,7 @@ class Footer extends Component {
                 </div>
                 <div className="footer-bottom footer-show-mobile" style={{textAlign: 'center'}}>
                     <div>
-                        <FormattedMessage id="footer.text" defaultMessage="© Website is operated by Kamal Osman Jamjoom LLC, trading as Early Learning Centre" />
+                        <FormattedMessage id="footer.text" defaultMessage="Â© Website is operated by Kamal Osman Jamjoom LLC, trading as Early Learning Centre" />
                     </div>
                     <div style={{paddingTop: 20, paddingBottom: 30}}>
                     <img className="bottom-imagePaypal-mobile" src={payPalImg}/>

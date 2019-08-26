@@ -567,9 +567,9 @@ li {
     position: relative
 }
 
-.header .row-1 ul li a span{
-	font-size: 12px;
-	vertical-align: text-top;
+.header .row-1 ul li a span {
+    font-size: 12px;
+    vertical-align: text-top;
 }
 
 .header .row-1 ul li a i {
@@ -803,7 +803,7 @@ html[dir="rtl"] .header .row-1 .cart span {
 
 @media only screen and (min-width: 1600px) {
     .header .row-2 {
-        padding: 47px 0
+        /* padding: 47px 0 */
     }
 }
 
@@ -1337,7 +1337,8 @@ html[dir="rtl"] .header .search .textInput {
 }
 
 html.no-touch .header .link>li:hover .submenu {
-    display: block
+    display: block;
+    margin-top: 15px;
 }
 
 .header .link>li .subMenuTrigger {
