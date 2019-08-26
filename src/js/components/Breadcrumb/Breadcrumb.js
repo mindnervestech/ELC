@@ -38,7 +38,7 @@ class Breadcrumb extends Component {
 				className="t-BreadcrumbRegion containers t-BreadcrumbRegion--showBreadcrumb t-BreadcrumbRegion--useBreadcrumbTitle"
 			>
 				<div className="t-BreadcrumbRegion-body">
-					<div className="t-BreadcrumbRegion-breadcrumb">
+					<div className="t-BreadcrumbRegion-breadcrumb breadcrumb-rtl">
 						<ol itemScope="" itemType="http://schema.org/BreadcrumbList" className="t-Breadcrumb olStyle">
 							<li
 								itemProp="itemListElement"

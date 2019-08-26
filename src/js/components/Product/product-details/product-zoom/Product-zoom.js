@@ -110,33 +110,33 @@ class ProductZoom extends Component {
 			// console.log('In Zoom Image',data);
 			console.log(data);
 
-			return (
-				<a href={data.zoomimage} className="MagicZoom" id="zoom-v">
-					<img src={data.zoomimage} alt="" />
-				</a>
-			);
-			// let thumbnails, zoomimages;
+			// return (
+			// 	<a href={data.zoomimage} className="MagicZoom" id="zoom-v">
+			// 		<img src={data.zoomimage} alt="" />
+			// 	</a>
+			// );
+			let thumbnails, zoomimages;
 
-			// if (data.thumbnail) {
-			// 	thumbnails = data.thumbnail;
-			// }
-			// if (data.zoomimage) {
-			// 	zoomimages = data.zoomimage;
-			// }
+			if (data.thumbnail) {
+				thumbnails = data.thumbnail;
+			}
+			if (data.zoomimage) {
+				zoomimages = data.zoomimage;
+			}
 
-			// if (data.thumbnail.length > 1) {
-			// 	return (
-			// 		<a href={zoomimages[0]} className="MagicZoom" id="zoom-v">
-			// 			<img src={thumbnails[0]} alt="" />
-			// 		</a>
-			// 	);
-			// } else {
-			// 	return (
-			// 		<a href={zoomimages[0]} className="MagicZoom" id="zoom-v">
-			// 			<img src={zoomimages[0]} alt="" />
-			// 		</a>
-			// 	);
-			// }
+			if (data.thumbnail.length > 1) {
+				return (
+					<a href={zoomimages[0]} className="MagicZoom" id="zoom-v">
+						<img src={thumbnails[0]} alt="" />
+					</a>
+				);
+			} else {
+				return (
+					<a href={zoomimages[0]} className="MagicZoom" id="zoom-v">
+						<img src={zoomimages[0]} alt="" />
+					</a>
+				);
+			}
 
 			// <a href={data[1]} className="MagicZoom" id="Zoom-1">
 			// 	<img src={data[0]} alt="" />
@@ -182,15 +182,15 @@ class ProductZoom extends Component {
 
 	_checkDataExist = (data, color, index) => {
 		if (data) {
-			// if ((data.thumbnail) && (data.thumbnail.length >= 1)) {				// if (data) {
-			// 	const asdf = data.thumbnail.map((item, index) => this._renderData(item, index,color));				// 	const asdf = data.map((item, index) => this._renderData(item, index,color));
-			// 	return asdf;				// 	return asdf;
-			// }
-			return (
-				<a data-slide-id="zoom" data-zoom-id="zoom-v" href={data} data-image={data} color-id={`${color}_${index}`} name="zoom-images-lg" onClick={(e)=> this._handleThumbImgClick(e,'img')}>
-					<img srcSet={data} src={data} alt="" />
-				</a>
-			);
+			if ((data.thumbnail) && (data.thumbnail.length >= 1)) {				// if (data) {
+				const asdf = data.thumbnail.map((item, index) => this._renderData(item, index,color));				// 	const asdf = data.map((item, index) => this._renderData(item, index,color));
+				return asdf;				// 	return asdf;
+			}
+			// return (
+			// 	<a data-slide-id="zoom" data-zoom-id="zoom-v" href={data} data-image={data} color-id={`${color}_${index}`} name="zoom-images-lg" onClick={(e)=> this._handleThumbImgClick(e,'img')}>
+			// 		<img srcSet={data} src={data} alt="" />
+			// 	</a>
+			// );
 		}
 	};
 
@@ -333,7 +333,7 @@ class ProductZoom extends Component {
 				<table style={{ margin: '0 auto' }}>
 					<tbody>
 						<tr>
-							{/* <td className="zoom-gallery-thumbnails">
+							<td className="zoom-gallery-thumbnails">
 								<div
 									className="MagicScroll MagicScroll-arrows-inside MagicScroll-vertical"
 									data-options="items: 4; orientation: vertical; loop: off; arrows: inside; draggable: true;"
@@ -350,7 +350,7 @@ class ProductZoom extends Component {
 									{this._checkDataExist(this.props.productZoomDetails.imageUrl)}
 									{this._checkDataExist(this.props.productZoomDetails.mediaVideoUrl)}
 								</div>
-							</td> */}
+							</td>
 
 							{/* this.checkSingleImage(this.props.productZoomDetails.imageUrl) */}
 							{productZoomDetails.imageUrl && productZoomDetails.imageUrl.thumbnail.length > 1 && 

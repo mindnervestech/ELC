@@ -265,7 +265,7 @@
     "Product.Details.ProductInfo": "Product Information",
     "Product.Details.DeliveryOption": "Delivery Options",
     "Product.Details.Question": "Question",
-
+    "Product.Detail.addToBasket": "Add to basket",
 
     "Product.Listing.Filter": "Filters",
     "Product.Listing.Sort": "Sort",
@@ -750,7 +750,8 @@
     "Product.Details.ProductInfo": "Product Information",
     "Product.Details.DeliveryOption": "Delivery Options",
     "Product.Details.Question": "Question",
-
+    "Product.Detail.addToBasket": "أضف إلى السلة",
+    
     "Product.Listing.Filter": "تصنيف",
     "Product.Listing.Sort": " ترتيب  ",
     "Product.Listing.Relevance": "الأكثر تطابقاً",

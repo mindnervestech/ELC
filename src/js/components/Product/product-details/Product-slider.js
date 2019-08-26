@@ -61,7 +61,7 @@ class ProductSlider extends Component {
             <div className="row">
                 {this.state.spnner ? <Spinner /> : 
                 <div className="col col-12 apex-col-auto rowPadding">
-                    <div style={{paddingTop: 15, backgroundColor: '#fff'}} className="t-Region containers  t-Region--noBorder t-Region--hiddenOverflow margin-bottom-lg" id="R35743384497996348" aria-live="polite">
+                    <div style={{paddingTop: 15, backgroundColor: '#fff'}} className="t-Region containers  t-Region--noBorder t-Region--hiddenOverflow margin-bottom-lg reduse-width" id="R35743384497996348" aria-live="polite">
                         {/* <div className="t-Region-header">
                             <div className="t-Region-headerItems t-Region-headerItems--title">
                                 <span className="t-Region-headerIcon"><span className="t-Icon " aria-hidden="true" /></span>

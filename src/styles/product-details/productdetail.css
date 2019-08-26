@@ -1304,6 +1304,40 @@ ul li.active-tab a{
     color:#4f4f4f
 }
 
+html[dir="rtl"] .product-title, html[dir="rtl"] .write-review{
+    text-align: right !important;
+}
+
+html[dir="rtl"] .write-review span{
+    display: inline-table !important;
+    flex-direction: row-reverse !important;
+}
+
+.write-review .age-sec{
+    margin-left: 20px;
+}
+html[dir="rtl"] .write-review .age-sec{
+    margin-right: 20px;
+}
+
+.write-review .write-a-re{
+    margin-right: 10px;
+}
+
+html[dir="rtl"] .write-review .write-a-re{
+    margin-left: 10px;
+    margin-right: 0px !important;
+}
+
+.write-review .write-a-re i{
+    margin-right: 10px;
+}
+
+html[dir="rtl"] .write-review .write-a-re i{
+    margin-left: 10px;
+    margin-right: 0px !important;
+}
+
 .write-review{
     color: #0D943F; 
     font-size: 1.3rem;
@@ -1401,6 +1435,9 @@ ul li.active-tab a{
     color: #4f4f4f;
     font-weight: 700;
 }
+html[dir="rtl"] .review_title{
+    text-align: right;
+}
 
 .share-icon{
     text-align: -webkit-center;
@@ -1433,6 +1470,13 @@ ul li.active-tab a{
     margin-left: auto;
 }
 
+html[dir="rtl"] .review-username{
+    width: 100%;
+}
+html[dir="rtl"] .recent-button{
+    text-align: right;
+}
+
 .recently-view{
     padding: 0px 90px
 }
@@ -1459,7 +1503,95 @@ ul li.active-tab a{
 .padd-left-remove{
     padding-left: 80px;
 }
-@media (max-width:767px){   
+
+.like-icon{
+    margin: auto;
+    margin-right: 0px;
+}
+
+html[dir="rtl"] .like-icon{
+    margin: auto;
+    margin-left: 0px !important;
+}
+
+.thumb-up{
+    height: 25px;
+    width: 25px;
+    margin-left:25px;
+}
+.thumb-down{
+    height: 25px;
+    width: 25px;
+    margin-left:25px; 
+    opacity: 0.5;
+}
+
+html[dir="rtl"] .thumb-up, html[dir="rtl"] .thumb-down{
+    margin-right: 25px;
+    margin-left: 0px !important;
+}
+
+.share-icon-twitter{
+    height: 25px;
+    width: 25px;
+    margin-left:25px;
+}
+
+html[dir="rtl"] .share-icon-twitter{
+    margin-right: 25px;
+}
+
+.share-icon-fb{
+    height: 25px;
+    width: 25px;
+}
+
+.recommend{
+    font-size: 1.2rem; 
+    line-height: 2.4rem; 
+    width:75%; 
+    margin-bottom: 1.5rem;
+}
+
+html[dir="rtl"] .recommend{
+    text-align: right;
+}
+
+html[dir="rtl"] .breadcrumb-rtl{
+    text-align: right;
+}
+
+.rating-date{
+    margin-bottom: 2.5rem;
+    margin: 45px;
+    font-size: 1.3rem;
+    line-height: 2.4rem;
+}
+
+html[dir="rtl"] .quantity-mob{
+    margin-right: 0px !important;
+}
+
+@media (max-width:767px){ 
+    html[dir="rtl"] .row.rating-review {
+        /* margin: 0; */
+        margin-right: 0px;
+    }
+    html[dir="rtl"] .share-icon-twitter{
+        margin-right: 18px !important;
+    }
+
+    html[dir="rtl"] .share-icon-twitter{
+        margin-left: 5px !important;
+    }
+
+    html[dir="rtl"] .detail-info{
+        margin-right: 0px;
+    }
+
+    html[dir="rtl"] .rating-date{
+        margin: 30px ;
+    }
     .padding-mob{
         padding-left: 0px;
     }
@@ -1554,8 +1686,27 @@ ul li.active-tab a{
         padding: 0px 15px;
     }
     .review-row-margin{
-        margin-left: 0px;
-        margin-right: 0px;
+        margin-left: 0px !important;
+        margin-right: 0px !important;
     }
+
+    .footer-line {
+        border-bottom: none !important;
+    }
+    .reduse-width{
+        width: 94% !important;
+    }
+
+    .like-icon{
+        margin: unset;
+    }
+    html[dir="rtl"] .quantity-mob{
+        margin-right: 0px !important;
+    }
+
+    html[dir="rtl"] .share-wishlist{
+        display: flex !important;
+    }
+    
 
 }

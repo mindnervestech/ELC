@@ -122,7 +122,7 @@ class SizeGuide extends Component {
 							<h2 className="review-text" style={{width:'40%'}}/>
 						</div>
                         <div className="product-review">
-                            <div className="row detail-info">
+                            <div className="row detail-info review-row-margin">
                                 <StarRatings
                                     rating={this.state.rating}
                                     starRatedColor='#FAD961'
@@ -150,7 +150,7 @@ class SizeGuide extends Component {
                             </div>
                         </div>
                         <div className="product-review" style={{paddingTop: '3rem'}}>
-                            <div style={{marginBottom: '3rem'}}>
+                            <div className="recent-button" style={{marginBottom: '3rem'}}>
                                 <button className="most_recent">most recent</button>
                             </div>
 
@@ -166,7 +166,7 @@ class SizeGuide extends Component {
                                     />
                                     
                                     <div style={{marginTop:'14px'}}>
-                                        <span style={{marginBottom: '2.5rem',margin: '45px', fontSize: '1.3rem', lineHeight: '2.4rem'}}>
+                                        <span className="rating-date">
                                             30 July 2019</span>
                                     </div>
                                 </div>
@@ -184,7 +184,7 @@ class SizeGuide extends Component {
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
                                 </p>
                             </div>
-                            <div style={{fontSize: '1.2rem', lineHeight: '2.4rem', width:'75%', marginBottom: '1.5rem'}}>
+                            <div className="recommend">
                                 <img style={{height: '13px',width: '13px'}} src={checked} />
                                 <span style={{fontFamily: "VAG Rounded ELC Bold",color: '#0D943F',fontWeight: '700'}}>&nbsp;Yes, I recommend this product.</span>
                             </div>
@@ -194,19 +194,19 @@ class SizeGuide extends Component {
                                     url={'http://nayomijsuat.iksulalive.com/en'}
                                     quote={'ELC'}
                                     className="Demo__some-network__share-button">
-                                    <img style={{height: '25px',width: '25px'}} src={facebook} />
+                                    <img className="share-icon-fb" style={{height: '25px',width: '25px'}} src={facebook} />
                                 </FacebookShareButton>
                                 <TwitterShareButton
                                     url={'http://nayomijsuat.iksulalive.com/en'}
                                     title={'ELC'}
                                     className="Demo__some-network__share-button">
-                                    <img style={{height: '25px',width: '25px',marginLeft:'25px'}} src={twitter} />
+                                    <img className="share-icon-twitter" src={twitter} />
                                 </TwitterShareButton>
                                 
                                 
-                                <div style={{marginLeft:'auto', fontSize: '1.2rem', lineHeight: '2.4rem'}}>
-                                    <img style={{height: '25px',width: '25px'}} src={thumbUp} />&nbsp; 0
-                                    <img style={{height: '25px',width: '25px',marginLeft:'40px', opacity: '0.5'}} src={thumbDown} />
+                                <div className="like-icon" style={{fontSize: '1.2rem', lineHeight: '2.4rem'}}>
+                                    <img className="thumb-up" src={thumbUp} />&nbsp; 0
+                                    <img className="thumb-down" src={thumbDown} />
                                     &nbsp; 0
                                 </div>
                             </div>

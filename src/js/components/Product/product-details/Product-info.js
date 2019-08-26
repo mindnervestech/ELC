@@ -24,6 +24,7 @@ import Popup from 'react-popup';
 import { connect } from 'react-redux';
 import * as actions from '../../../redux/actions/index';
 import { Container, Row, Col, Button, Form, FormGroup } from 'reactstrap';
+import { FormattedMessage } from 'react-intl';
 
 const mediaVideo = 'https://storage.googleapis.com/nay/videos/product/au19/nay-au19-casual-nightwear-mainrange-nicoline-pajamaset-212884961.mp4';
 
@@ -163,12 +164,12 @@ class ProductInfo extends Component {
 							{data.name}
 						</h2>
 						<div className="write-review" style={{marginBottom: 20}}>
-							<span style={{marginRight: 10}}>
-								<i className="fa fa-pencil" style={{marginRight: 10}}></i>
+							<span className="write-a-re">
+								<i className="fa fa-pencil"></i>
 								Write a review 
 							</span>
-								|
-							<span style={{marginLeft: 20}}>
+								<span> | </span>
+							<span className="age-sec">
 								Age: {data.age}
 							</span>
 						</div>
@@ -283,7 +284,7 @@ class ProductInfo extends Component {
 											</div>
 										</div> */}
 
-										<div className="t-Form-inputContainer col col-5 row" style={{marginBottom: 20, marginLeft:0,padding:0}}>
+										<div className="t-Form-inputContainer col col-5 row quantity-mob" style={{marginBottom: 20, marginLeft:0,padding:0}}>
 											<div className="t-Form-itemWrapper" style={{border: '0.1rem solid #EAEAEA',borderRadius: '0.2rem'}}>
 												<span className="t-Form-itemText t-Form-itemText--pre">
 													<i
@@ -325,7 +326,8 @@ class ProductInfo extends Component {
 										<Popup />
 										<div className="alsoLikeCard add-cart">
 											<div className="homePage">
-												<button className="alsoLikeCardButton" style={{marginTop: 0}}>add to basket</button>
+												<button className="alsoLikeCardButton" style={{marginTop: 0}}>
+												<FormattedMessage id="Product.Detail.addToBasket" defaultMessage="Add to basket" /></button>
 											</div>
 										</div>
 

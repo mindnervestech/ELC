@@ -166,14 +166,14 @@ class ProductColor extends Component {
 						{newArr.map(this.__renderProductColors)}
 					</div> */}
 					<div className="col col-12 apex-col-auto">
-						<div className="row you-may-like-title" style={{background: '#EEF8F2', paddingLeft: '80px'}}>
-							<h2 />
-							<label>
+						<div className="row you-may-like-title padd-left-remove" style={{background: '#EEF8F2'}}>
+							<h2 style={{borderBottom: '2px solid #0D943F'}}/>
+							<label style={{color: '#0D943F'}}>
 								Recently viewed
                             </label>
-							<h2 />
+							<h2 style={{borderBottom: '2px solid #0D943F'}}/>
 						</div>
-						<div className="row data">
+						<div className="row data" id="recently-view">
 							<div className="col col-12 apex-col-auto homeBlock">
 								<div id="R36275003485418909" className="homePage">
 									<section className="trendingBlock2 recently-view" style={{background: '#EEF8F2' }}>

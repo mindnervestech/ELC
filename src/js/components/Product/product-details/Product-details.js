@@ -42,8 +42,8 @@ class ProductDetails extends Component {
 		const data = {
 			customerid: typeof this.props.customer_details.customer_id !== 'undefined' ? parseInt(this.props.customer_details.customer_id) : " ",
 			store: this.props.globals.currentStore,
-			// url_key: params.category,
-			url_key:'elc17-1'
+			 url_key: params.category,
+			// url_key:'elc18-1'
 		};
 		this.props.onGetProductDetails(data);
 		this.props.getSizeChart({

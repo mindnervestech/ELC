@@ -125,7 +125,7 @@ class WishList extends Component {
                   <span style={{ marginLeft: 5 }}>3 - 10 years</span>
                 </div>
                 <div>
-                  <button className="alsoLikeCardButton">Add to Basket</button>
+                  <button className="alsoLikeCardButton"><FormattedMessage id="Product.Detail.addToBasket" defaultMessage="Add to basket" /></button>
                 </div>
                 <div style={{ paddingTop: 10 }}>
                   <i className="icon-heart"></i>
