@@ -60,7 +60,7 @@ dispatch(loadingSpinner({ loading: true }));
 let cb = {
   success: res => {
    
-    if (res.status && res.code === 200) {
+    if ((res.status && res.code === 200)|| res.content) {
       dispatch(CallActionForhelpData({ help: { ...res } }));
       dispatch(loadingSpinner({ loading: false }));
       
@@ -138,12 +138,10 @@ export const getAboutUsPageData = () => {
     const data = {
       storeId: getState().global.currentStore
     };
-    console.log("here-==-=-==-=-=-");
     dispatch(loadingSpinner({ loading: true }));
     let cb = {
       success: res => {
-       
-        if (res.status && res.code === 200) {
+        if ((res.status && res.code === 200)|| res.content) {
           dispatch(CallActionForAboutUsData({ aboutUs: { ...res } }));
           dispatch(loadingSpinner({ loading: false }));
           
@@ -335,9 +333,8 @@ export const getTermConditionsPageData = () => {
     dispatch(loadingSpinner({ loading: true }));
     let cb = {
       success: res => {
-       
-        if (res.status && res.code === 200) {
-          CallActionForTermConditionsData({ termConditions: { ...res } })
+        if ((res.status && res.code === 200) || res.content) {
+          dispatch(CallActionForTermConditionsData({ termConditions: { ...res } }))
           dispatch(loadingSpinner({ loading: false }));
           
         } else {
