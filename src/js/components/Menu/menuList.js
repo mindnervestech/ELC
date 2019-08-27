@@ -8,7 +8,8 @@ class menuList extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			store_locale: props.store_locale
+			store_locale: props.store_locale,
+			countList: 0
 		};
 		//console.log('In MenuList', this.state);
 	}
@@ -28,10 +29,8 @@ class menuList extends Component {
 			<li key={index}>
 				<Link to={'/' + this.state.store_locale + '/products/' + item.url_key} onClick={() => document.getElementById("closeNav").click()}>
 					{item.name}
-					{/* <FormattedMessage id={menu_item} defaultMessage={item.name} /> */}
 				</Link>
-			</li>
-		);
+			</li>)
 	};
 
 	_renderSubMenuList = (data, item_name, item_url_keys) => {
@@ -46,26 +45,66 @@ class menuList extends Component {
 
 		//console.log('this.item_name', item_name);
 		item_name = item_name.toLowerCase();
+		this.state.countList = 0;
+		var id = 1;
+		var data1 = [];
+		var data2 = [];
+		var data3 = [];
+		var data4 = [];
+		var data5 = [];
+		var data6 = [];
+		var i = 0;
+		data.map((item) => {
+			console.log(item);
+			if (i < 5)
+				data1.push(item);
+			if (i > 4 && i < 10)
+				data2.push(item);
+			if (i > 9 && i < 15)
+				data3.push(item);
+			if (i > 15 && i < 20)
+				data4.push(item);
+			if (i > 19 && i < 25)
+				data5.push(item);
+			if (i > 24 && i < 30)
+				data6.push(item);
+			i++;
+
+		})
 
 		return (
 
 			<>
 				<ul className="subLink">
-					{data.map(this._renderSubMenuItem)}
-					{/* <li>
-						<span className="PinkText"><FormattedMessage id="Menu.Style" defaultMessage="Style" /></span> 
-					</li>
-					{styleCat.map(this._renderSubMenuItem)}
+					{console.log(this.state.countList)}
+					{data1.map(this._renderSubMenuItem)}
 				</ul>
 				<ul className="subLink">
-					<li>
-					    <span className="PinkText"><FormattedMessage id="Menu.Collection" defaultMessage="Collection" /></span>
-					</li>
-					{collectionCat.map(this._renderSubMenuItem)} */}
+					{data2.map(this._renderSubMenuItem)}
 				</ul>
+				<ul className="subLink">
+					{data3.map(this._renderSubMenuItem)}
+				</ul>
+				<ul className="subLink">
+					{data4.map(this._renderSubMenuItem)}
+				</ul>
+				<ul className="subLink">
+					{data5.map(this._renderSubMenuItem)}
+				</ul>
+				<ul className="subLink">
+					{data6.map(this._renderSubMenuItem)}
+				</ul>
+
 			</>
 		);
 	};
+	count(e) {
+		console.log("clicked", e);
+
+		this.state.countList++;
+
+
+	}
 
 	_checkSubMenu = item => {
 		if (item.hasOwnProperty('children')) {
@@ -81,6 +120,7 @@ class menuList extends Component {
 						<Link to={'/' + this.state.store_locale + '/products/' + item.url_path} onClick={() => document.getElementById("closeNav").click()}>
 							{/* <FormattedMessage id={menu_item} defaultMessage={default_message} /> */}
 							{/* <FormattedMessage id="menu.BRAS.SHOW_ALL_BRAS" defaultMessage="SHOW ALL Bras" /> */}
+
 						</Link>
 					</div>
 					{

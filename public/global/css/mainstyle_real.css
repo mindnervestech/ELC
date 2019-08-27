@@ -1345,7 +1345,7 @@ html[dir="rtl"] .header .search .textInput {
 
 html.no-touch .header .link>li:hover .submenu {
     display: block;
-    margin-top: 15px;
+
 }
 
 .header .link>li .subMenuTrigger {
