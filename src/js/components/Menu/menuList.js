@@ -113,7 +113,7 @@ class menuList extends Component {
 			let default_message = 'SHOW ALL ' + item.url_key.toLowerCase();
 
 			return (
-				<div className="submenu">
+				<div className="submenu" style={item.children[0].length > 0 ? {backgroundColor: '#fff'} : {backgroundColor: 'transparent', height:10}}>
 					<div className="all">
 						<Link to={'/' + this.state.store_locale + '/products/' + item.url_path} onClick={() => document.getElementById("closeNav").click()}>
 							{/* <FormattedMessage id={menu_item} defaultMessage={default_message} /> */}
@@ -161,7 +161,6 @@ class menuList extends Component {
 					</Link>
 					<i className="subMenuTrigger" />
 					{this._checkSubMenu(item)}
-
 				</li>
 			</>
 		);

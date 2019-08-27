@@ -42,7 +42,6 @@ class menuNav extends Component {
   }
 
   render() {
-    console.log(this.props.menu)
     const store_locale = this.props.globals.store_locale;
     //console.log('In Menu globals store locale',store_locale);
 
