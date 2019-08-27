@@ -334,7 +334,6 @@ class Product extends Component {
 		let filterKey = {}
 		Object.keys(this.props.productDetails.filters).map((item, index)=> {
 			filterKey[item] = this.props.productDetails.filters[item][0].code;
-			console.log(this.props.productDetails.filters)
 		});
 
 		

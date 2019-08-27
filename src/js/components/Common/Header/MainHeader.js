@@ -33,6 +33,15 @@ import KSAImage from '../../../../assets/images/header/sa.svg';
 class MainHeader extends Component {
     constructor(props) {
         super(props);
+
+        console.log("user_details",this.props.user_details)
+        console.log("isUserLoggedIn",this.props.user_details.isUserLoggedIn)
+        let login = false
+        if(this.props.user_details.isUserLoggedIn == true){
+            login = true
+        }else if(this.props.user_details.isUserLoggedIn == false){
+            login = false
+        }
         this.state = {
             showCountries: false,
             country_flag: '',
@@ -41,6 +50,7 @@ class MainHeader extends Component {
             cartItemCount: 3,
             showMenu: false,
             selectedLang: '',
+            userLogin: login,
         }
     }
 
@@ -351,14 +361,24 @@ class MainHeader extends Component {
                                     </li> */}
                                     <li className="titleHover">
                                         {/* <i className="icon-heart"></i> */}
-                                        <img src={help} className="image-ion"></img>
+                                        <img src={help} className="image-ion" style={{marginTop: 3}}></img>
                                         <label className="iconLeble text-color changeLinkText"><FormattedMessage id="Header.Help" defaultMessage="help" /></label>
                                     </li>
-                                    <li className="titleHover" style={{marginBottom: 5}}>
+                                    <li className="titleHover" style={this.state.userLogin ? {display: 'none'} : {display: 'inline-block', marginBottom: 5}}>
                                         <Link to={`/${store_locale}/Login`} style={{ textDecoration: 'none' }}>
                                             <img src={profile} className="image-ion" style={{marginTop: 9}}></img>
                                                 <label className="iconLeble text-color changeLinkText"><FormattedMessage id="Header.SignInOrRegister" defaultMessage="sign in / register"/></label>
                                         </Link>
+                                    </li>
+                                    <li style={this.state.userLogin ? {display: 'inline-block'} : {display: 'none'}}>
+                                    <img src={profile} className="image-ion"></img>
+                                        <label className="iconLeble text-color changeLinkText">Hello {this.props.user_details.customer_details.firstname} {this.props.user_details.customer_details.lastname}</label>
+                                    </li>
+                                    <li style={this.state.userLogin ? {display: 'inline-block'} : {display: 'none'}}>
+                                        <label className="iconLeble text-color changeLinkText">My Account</label>
+                                    </li>
+                                    <li style={this.state.userLogin ? {display: 'inline-block'} : {display: 'none'}}>
+                                        <label className="iconLeble text-color changeLinkText">Sign Out</label>
                                     </li>
                                     {/* <li>
                                         <Link to={`/${store_locale}/wish-list`} style={{ textDecoration: 'none' }}>

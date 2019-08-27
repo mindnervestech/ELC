@@ -2205,9 +2205,9 @@ html[dir=rtl] .rmPadding {
     font-size: 13px !important;
 }
 
-select:focus {
+/* select:focus {
     border: 1px solid #0D943F !important;
-}
+} */
 
 .bolt {
     font-weight: bold;

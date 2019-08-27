@@ -9,11 +9,12 @@ import { Link, Redirect, withRouter } from 'react-router-dom';
 var _ = require('lodash');
 
 let productList = {}
+let list = {}
 
 class SideManu extends Component {
 	constructor(props) {
 		super(props);
-		
+		productList = this.props.productDetails.products.product_data
 	}
 
 	componentDidUpdate(prevProps, prevState) {
@@ -24,18 +25,49 @@ class SideManu extends Component {
 		
 	}
 
+	getFilterData(filterValue, code){
+		let count = 1
+		for(let value in productList){
+			if(productList[value].json.filtersdata){
+				for(let item in productList[value].json.filtersdata[code]){
+					if(productList[value].json.filtersdata[code][item] == filterValue){
+						list[count] = productList[value]
+						count++
+					}
+				}
+			}
+		}
+		console.log(list)
+	}
+
 	applyFilter = (value) =>{
-		console.log(value)
+		//console.log(value)
 		let splitData = value.split('/')
-		console.log(splitData)
+		//console.log(splitData)
 		if(splitData[0] == "price"){
 
 		}else if(splitData[0] == "color"){
-
+			let filterValue = splitData[1]
+			let count = 1
+			list = {}
+			for(let value in productList){
+				if(productList[value].json.color_english){
+					if(productList[value].json.color_english == filterValue){
+						list[count] = productList[value]
+						count++
+					}
+				}
+			}
+			console.log(list)
 		}else if(splitData[0] == "age"){
+			let filterValue = splitData[1]
+			list = {}
+			this.getFilterData(filterValue, splitData[0])
 
 		}else if(splitData[0] == "brand"){
-
+			let filterValue = splitData[1]
+			list = {}
+			this.getFilterData(filterValue, splitData[0])
 		}
 	}
 
@@ -45,7 +77,7 @@ class SideManu extends Component {
 			{Object.keys(data).map((keyName) =>
 					<div onClick={() => this.applyFilter(data[keyName].code + "/" + data[keyName].name)}>{data[keyName].name}</div>
 			)}
-			</div>	
+			</div>
 		);
 	}
 

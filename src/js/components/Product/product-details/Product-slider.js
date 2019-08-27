@@ -110,7 +110,7 @@ class ProductSlider extends Component {
                                                             <label className="text-color">{item.name}</label>
                                                         </div>
                                                         <div>
-                                                            <span style={{ fontSize: 14, color: "#0D943F", fontWeight: "bold" }}>{currency} &nbsp;{item.price}</span>
+                                                            <span style={{ fontSize: 14, color: "#0D943F", fontWeight: "bold" }}>{item.currency} &nbsp;{item.price}</span>
                                                             {/* <span style={{ color: "gray", textDecorationLine: 'line-through', fontSize: 14, marginLeft: 10 }}>{currency} &nbsp;{item.price}</span> */}
                                                         </div>
                                                         {/* <div>

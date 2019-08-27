@@ -214,7 +214,7 @@ class ProductListData extends Component {
 									{/* <span className="percentage-text" style={{ display: 'none' }}>30</span>
 									<span className="save-text">5</span>
 									<img src={save} className="save" /> */}
-									<img src={list[keyName].json.imageUrl.primaryimage != "" ? list[keyName].json.imageUrl.primaryimage : placeholder} className="cardImage" />
+									<img src={(list[keyName].json.imageUrl)  ? list[keyName].json.imageUrl.primaryimage : placeholder} className="cardImage" />
 									{/* <img src={percentage} className="percentage" style={{ display: 'none' }} /> */}
 									<div style={{ marginTop: 10 }}>
 										<label className="text-color">{list[keyName].json.name}</label>
