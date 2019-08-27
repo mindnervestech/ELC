@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { FormattedMessage } from 'react-intl';
 import freeDelivery from '../../../assets/images/header/Truck1.svg';
 import freeCollect from '../../../assets/images/header/Mouse.svg';
 import { Row, Col, Button } from 'reactstrap';
+import { connect } from 'react-redux';
+import * as actions from '../../redux/actions/index';
+import { Redirect, withRouter } from 'react-router-dom';
+import { FormattedMessage, injectIntl } from 'react-intl';
+
 import logo1 from '../../../assets/images/you_may_also_like_1.png'
 
 class ShoppingBagItem extends Component {
@@ -12,8 +16,13 @@ class ShoppingBagItem extends Component {
       super(props);
    }
 
+   remove = (index) => {
+      this.props.OnremoveProduct({ index: index })
+    }
+
    render() {
-      const product = this.props.product;
+      const product = this.props.cart_details.products;
+      console.log(this.props);
       const store_locale = this.props.store_locale;
 
       let cartProductPrice;
@@ -125,26 +134,28 @@ class ShoppingBagItem extends Component {
 
                   </Col>
                </Row>
+               {product && product.map((item, index) => (
                <Row className="row-2 changeRow" style={{textAlign: 'start'}}>
                   <Col xs="3">
-                     <img src={logo1} className="cardImage"></img>
+                     <img src={item.image[0]} className="cardImage"></img>
                   </Col>
                   <Col xs="4">
-                     <span className="blackTitle" style={{ fontSize: 16 }}>L.O.L SURPRISE 2-IN-1 GLAMPER PLAYSET</span>
+                     <span className="blackTitle" style={{ fontSize: 16 }}>{item.name}</span>
                   </Col>
                   <Col xs="1" className="row-3 blackTitle" style={{ fontSize: 16 }}>
-                     <span>£99.99</span>
+                     <span>{item.currency}&nbsp;{item.price}</span>
                   </Col>
                   <Col xs="1" className="row-3 blackTitle" style={{ fontSize: 16 }}>
-                     <span className="qut">1</span>
+                     <span className="qut">{item.qty}</span>
                   </Col>
-                  <Col xs="1" className="row-3 blackTitle" style={{ fontSize: 22 }}>
-                     <span>£99.99</span>
+                  <Col xs="1" className="row-3 blackTitle" style={{ fontSize: 22, marginTop:'4.7%' }}>
+                     <span>{item.currency}&nbsp;{item.price* item.qty}</span>
                   </Col>
-                  <Col xs="2" className="row-3 blackTitle" style={{ textAlign: 'end' }}>
+                  <Col xs="2" className="row-3 blackTitle" onClick={() => this.remove(index)} style={{ textAlign: 'end', cursor:'pointer' }}>
                      <span className="remove" style={{ fontSize: 14 }}>Remove</span>
                   </Col>
                </Row>
+                  ))}
                <Row className="changeRow">
                   <Col xs="6">
                      <div style={{ paddingTop: 30, textAlign: 'start'}}>
@@ -155,10 +166,10 @@ class ShoppingBagItem extends Component {
                   <Col xs="6">
                      <div className="row-4">
                         <div style={{ padding: '15px 25px', fontFamily: 'VAG Rounded ELC Light' }}>
-                           <span>Subtotal:</span><span className="floatRight">£99.99</span>
+                           <span>Subtotal:</span><span className="floatRight">{this.props.cart_details.currency}&nbsp;{this.props.cart_details.subtotal}</span>
                         </div>
                         <div style={{ backgroundColor: '#e9f7ff', padding: '15px 25px' }}>
-                           <span>Order Total</span><span className="floatRight">£99.99</span>
+                           <span>Order Total</span><span className="floatRight">{this.props.cart_details.currency}&nbsp;{this.props.cart_details.grand_total}</span>
                         </div>
                      </div>
                   </Col>
@@ -203,34 +214,38 @@ class ShoppingBagItem extends Component {
                      <button className="alsoLikeCardButton">Check out</button>
                   </Link>
                </div>
-               <div style={{ marginTop: 10 }}>
-                  <span className="remove blackTitle floatRight" style={{ fontSize: 14, lineHeight: 1 }}>Remove</span>
-               </div>
+               
+               {product && product.map((item, index) => (
+                  
                <div style={{ padding: '20px 0px', borderBottom: 'solid 1px #b1b1b1' }}>
+                  <div style={{ marginTop: 10 }} onClick={() => this.remove(index)}>
+                     <span className="remove blackTitle floatRight" style={{ fontSize: 14, lineHeight: 1 }}>Remove</span>
+                  </div>
                   <div>
-                     <img src={logo1} className="cardImage"></img>
+                     <img src={item.image[0]} className="cardImage"></img>
                   </div>
                   <div style={{ marginTop: 20 }}>
-                     <span className="blackTitle" style={{ fontSize: 16 }}>L.O.L SURPRISE 2-IN-1 GLAMPER PLAYSET</span>
+                     <span className="blackTitle" style={{ fontSize: 16 }}>{item.name}</span>
                   </div>
                   <div className="row-3 blackTitle" style={{ fontSize: 16 }}>
-                     <span>£99.99</span>
+                     <span>{item.currency}&nbsp;{item.price}</span>
                   </div>
                   <div className="row-3 blackTitle" style={{ fontSize: 16 }}>
-                     <span>Qty: </span><span className="qut">1</span>
-                     <span className="floatRight" style={{ fontSize: 22 }}>£99.99</span>
+                     <span>Qty: </span><span className="qut">{item.qty}</span>
+                     <span className="floatRight" style={{ fontSize: 22 }}>{item.currency}&nbsp;{item.price * item.qty}</span>
                   </div>
                </div>
+               ))}
                <div style={{ paddingTop: 30 }}>
                   <input type="text" placeholder="Enter promo code" className="email-field"></input>
                   <input type="submit" value="submit" className="submit-button"></input>
                </div>
                <div className="row-4">
                   <div style={{ padding: '10px 10px', fontFamily: 'VAG Rounded ELC Light', fontSize: 20 }}>
-                     <span>Subtotal:</span><span className="floatRight">£99.99</span>
+                     <span>Subtotal:</span><span className="floatRight">{this.props.cart_details.currency}&nbsp;{this.props.cart_details.subtotal}</span>
                   </div>
                   <div style={{ backgroundColor: '#e9f7ff', padding: '10px 10px', fontSize: 25}}>
-                     <span>Order Total</span><span className="floatRight">£99.99</span>
+                     <span>Order Total</span><span className="floatRight">{this.props.cart_details.currency}&nbsp;{this.props.cart_details.grand_total}</span>
                   </div>
                </div>
                <div>
@@ -298,4 +313,35 @@ class ShoppingBagItem extends Component {
    }
 }
 
-export default ShoppingBagItem;
+const mapStateToProps = state => {
+   return {
+     cart_details: state.myCart,
+     user_details: state.login,
+     guest_user: state.guest_user,
+     change_pass: state.login.changePasswordDetails,
+     addressBook: state.address.addressBook,
+     countryList: state.address.countryList,
+     addressResp: state.address.addressResp,
+     isAddBookRec: state.address.isAddBookRec,
+     globals: state.global,
+     cartLoader: state.myCart.loader,
+     updateLoader: state.myCart.update_loader
+   }
+ }
+ 
+ const mapDispatchToProps = dispatch => {
+   return {
+     onStartGuestCheckout: () => dispatch(actions.startGuestCheckout()),
+     OngetMyCart: (quoteId) => dispatch(actions.getMyCart(quoteId)),
+     OnChangeQty: (quoteId) => dispatch(actions.changeQty(quoteId)),
+     onGetProductDetails: payload => dispatch(actions.getProductDetails(payload)),
+     getSizeChart: payload => dispatch(actions.getSizeChart(payload)),
+     OnremoveProduct: (quoteId) => dispatch(actions.removeProduct(quoteId)),
+     onGetStoreIds: () => dispatch(actions.getStoreIds()),
+   }
+ 
+ }
+ 
+ export default withRouter(connect(mapStateToProps, mapDispatchToProps)(injectIntl(ShoppingBagItem)));
+
+// export default ShoppingBagItem;

@@ -233,23 +233,25 @@ class ShoppingBag extends Component {
     var demo = true
     if (itemList.length > 0 || demo) {
       shoppingItem = itemList.map((item, index) => {
-        if (item.is_in_stock.status) {
-          return <ShoppingBagItem
-            key={index}
-            product={item}
-            inc={() => this.increase(index, item.qty, item)}
-            dec={() => this.decrease(index, item.qty)}
-            remove={() => this.remove(index)}
-            gotoProductDetail={() => this.gotoProductDetail(item)}
-            store_locale={this.props.globals.store_locale} />
-        } else {
-          return null;
-        }
+        // if (item.is_in_stock.status) {
+        //   return <ShoppingBagItem
+        //     key={index}
+        //     product={item}
+        //     inc={() => this.increase(index, item.qty, item)}
+        //     dec={() => this.decrease(index, item.qty)}
+        //     remove={() => this.remove(index)}
+        //     gotoProductDetail={() => this.gotoProductDetail(item)}
+        //     store_locale={this.props.globals.store_locale} />
+        // } else {
+        //   return null;
+        // }
 
       })
-      return <ShoppingBagItem/>;
+      console.log(itemList);
+      return <ShoppingBagItem cart_details={this.props.cart_details}
+      />;
 
-    } else if (itemList.length === 0) {
+    } else if (itemList.length == 0) {
       if (this.props.cartLoader) {
         return <Spinner />
       } else {
@@ -260,7 +262,7 @@ class ShoppingBag extends Component {
     let similar_products = null;
     const similar_products_list = this.props.cart_details.similar_products;
 
-    if (similar_products_list.length > 0) {
+    if (similar_products_list && similar_products_list.length > 0) {
       similar_products = <OwlItem product={similar_products_list} />;
 
     }

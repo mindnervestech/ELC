@@ -51,19 +51,19 @@ class ProductInfo extends Component {
 
 	addToCart(e) {
 		console.log("working", this.props);
-
+		const {data, customerDetails} = this.props;
 		const prodData = {
 
-			"quote_id": 7,
-			"product_type": this.props.data.type,
-			"sku": this.props.data.sku,
+			"quote_id": customerDetails.quote_id,
+			"product_type": data.type,
+			"sku": data.sku,
 			"qty": this.state.defaultQty,
 			"product_option": {
 				"extension_attributes": {
 					"configurable_item_options": [
 						{
-							"option_id": this.props.data.simpleproducts[0].color.option_id,
-							"option_value": this.props.data.simpleproducts[0].color.option_value
+							"option_id": data.simpleproducts[0].color.option_id,
+							"option_value": data.simpleproducts[0].color.option_value
 						}
 					]
 				}

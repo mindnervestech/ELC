@@ -10,7 +10,7 @@ class Header extends Component {
     super(props);
     this.state = {
       isCart: false,
-      pageTitle: 'Nayomi'
+      pageTitle: 'ELC'
     }
   }
 
