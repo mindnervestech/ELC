@@ -200,11 +200,11 @@ class ProductInfo extends Component {
 							{data.name}
 						</h2>
 						<div className="write-review" style={{ marginBottom: 20 }}>
-							<span className="write-a-re">
+							{/* <span className="write-a-re">
 								<i className="fa fa-pencil"></i>
 								Write a review
 							</span>
-							<span> | </span>
+							<span> | </span> */}
 							<span className="age-sec">
 								Age: {data.age}
 							</span>
@@ -281,8 +281,8 @@ class ProductInfo extends Component {
 
 											<div className="color-img">
 												<div>
-													<img src='http://nayomidev.iksulalive.com/pub/media/attribute/swatch/n/u/nude_1_.jpg'></img>
-													<img src='http://nayomidev.iksulalive.com/pub/media/attribute/swatch/b/l/black_1_.jpg'></img>
+													{/* <img src='http://nayomidev.iksulalive.com/pub/media/attribute/swatch/n/u/nude_1_.jpg'></img>
+													<img src='http://nayomidev.iksulalive.com/pub/media/attribute/swatch/b/l/black_1_.jpg'></img> */}
 													{/* <img src='http://nayomidev.iksulalive.com/pub/media/attribute/swatch/m/o/mocha_1_.jpg'></img>
 												<img src='http://nayomidev.iksulalive.com/pub/media/attribute/swatch/w/h/white_1_.jpg'></img> */}
 												</div>
@@ -396,9 +396,11 @@ class ProductInfo extends Component {
 
 											</div>
 											<div className="learn-skill-img">
-												<img src={imagination_icon} />
-												<img src={discovertheworld_icons} />
-												<img src={socialskills_icon} />
+												{data.learning_skills === 'Imagination' || data.learning_skills_2 === 'Imagination' || data.learning_skills_3 === 'Imagination' ?
+													<img src={imagination_icon} /> : null }
+												{data.learning_skills === 'Social Skills' || data.learning_skills_2 === 'Social Skills' || data.learning_skills_3 === 'Social Skills' ?
+													<img src={socialskills_icon} /> : null }
+												{/* <img src={discovertheworld_icons} /> */}
 											</div>
 											{/* <div className="col col-6 apex-col-auto">
 											<div

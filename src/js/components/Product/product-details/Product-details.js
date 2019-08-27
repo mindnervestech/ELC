@@ -126,12 +126,12 @@ class ProductDetails extends Component {
 									<li style={{width:184, marginRight:25}} className={this.state.productDetailTab == "Product Information" ? "active-tab" : ''}>
 										<a onClick={() => this.getProductInfoDetail('Product Information')} className="product-des">Product Information</a>
 									</li>
-									<li style={{width:184, marginRight:25}} className={this.state.productDetailTab == "Delivery options" ? "active-tab" : ''}>
+									{/* <li style={{width:184, marginRight:25}} className={this.state.productDetailTab == "Delivery options" ? "active-tab" : ''}>
 										<a onClick={() => this.getProductInfoDetail('Delivery options')} className="product-des">Delivery options</a>
 									</li>
 									<li style={{width:184, marginRight:25}} className={this.state.productDetailTab == "Questions" ? "active-tab" : ''}>
 										<a onClick={() => this.getProductInfoDetail('Questions')} className="product-des">Questions</a>
-									</li>
+									</li> */}
 								</ul>
 							</div>
 						</div>
@@ -147,7 +147,7 @@ class ProductDetails extends Component {
 					
 						{/* Product Review */}
 
-						<ProductReview />
+						{/* <ProductReview /> */}
 
 						{/* recentely Viewed */}
 						<ProductRecentlyViewed productColor={data} />

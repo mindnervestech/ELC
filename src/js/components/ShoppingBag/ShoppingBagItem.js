@@ -23,7 +23,7 @@ class ShoppingBagItem extends Component {
    render() {
       const product = this.props.cart_details.products;
       console.log(this.props);
-      const store_locale = this.props.store_locale;
+      const store_locale = this.props.globals.store_locale;
 
       let cartProductPrice;
 
@@ -137,10 +137,14 @@ class ShoppingBagItem extends Component {
                {product && product.map((item, index) => (
                <Row className="row-2 changeRow" style={{textAlign: 'start'}}>
                   <Col xs="3">
-                     <img src={item.image[0]} className="cardImage"></img>
+                     <Link to={`/${store_locale}/products-details/${item.url_key}`}>
+                        <img src={item.image[0]} className="cardImage"></img>
+                     </Link>
                   </Col>
                   <Col xs="4">
-                     <span className="blackTitle" style={{ fontSize: 16 }}>{item.name}</span>
+                     <Link to={`/${store_locale}/products-details/${item.url_key}`}>
+                        <span className="blackTitle" style={{ fontSize: 16, color:'#407ec9' }}>{item.name}</span>
+                     </Link>
                   </Col>
                   <Col xs="1" className="row-3 blackTitle" style={{ fontSize: 16 }}>
                      <span>{item.currency}&nbsp;{item.price}</span>
@@ -222,10 +226,14 @@ class ShoppingBagItem extends Component {
                      <span className="remove blackTitle floatRight" style={{ fontSize: 14, lineHeight: 1 }}>Remove</span>
                   </div>
                   <div>
-                     <img src={item.image[0]} className="cardImage"></img>
+                     <Link to={`/${store_locale}/products-details/${item.url_key}`}>
+                        <img src={item.image[0]} className="cardImage"></img>
+                     </Link>
                   </div>
                   <div style={{ marginTop: 20 }}>
-                     <span className="blackTitle" style={{ fontSize: 16 }}>{item.name}</span>
+                     <Link to={`/${store_locale}/products-details/${item.url_key}`}>
+                        <span className="blackTitle" style={{ fontSize: 16 }}>{item.name}</span>
+                     </Link>
                   </div>
                   <div className="row-3 blackTitle" style={{ fontSize: 16 }}>
                      <span>{item.currency}&nbsp;{item.price}</span>

@@ -207,7 +207,7 @@ class ProductInformation extends Component {
 							<p className="detail-info">{data.description}</p>
 						</div>
                         </Collapsible>
-                        <Collapsible trigger={<FormattedMessage id="Product.Details.DeliveryOption" defaultMessage="Delivery Options" />}>
+                        {/* <Collapsible trigger={<FormattedMessage id="Product.Details.DeliveryOption" defaultMessage="Delivery Options" />}>
 						<div style={{marginBottom: '5rem', textAlign:'left'}}>
 							<p className="detail-info">Delivery Options</p>
 							<p className="detail-info">Product code: 148138 </p>
@@ -230,7 +230,7 @@ class ProductInformation extends Component {
 
 							<p className="detail-info">Features and benefits for elc wooden shopping trolley </p>
 						</div>
-                        </Collapsible>
+                        </Collapsible> */}
                         
                     </div>
                     
