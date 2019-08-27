@@ -99,7 +99,7 @@ class menuList extends Component {
 		);
 	};
 	count(e) {
-		console.log("clicked", e);
+		//console.log("clicked", e);
 
 		this.state.countList++;
 
@@ -157,7 +157,9 @@ class menuList extends Component {
 				<li key={index}>
 					<Link to={'/' + this.state.store_locale + '/products/' + item.url_path} style={{ textDecoration: 'none' }} onClick={() => document.getElementById("closeNav").click()}>
 						{item.name.toLowerCase()}
+						{item.children[0].length > 0 ?
 						<i class="fa fa-caret-down downMenu divShowOnWeb" aria-hidden="true"></i>
+						: ""}
 					</Link>
 					<i className="subMenuTrigger" />
 					{this._checkSubMenu(item)}
