@@ -338,7 +338,7 @@ class HomePageComponent extends Component {
                                             </div>
                                         </div>
                                     </div>
-                                    <ProductSlider similar_product={this.props.YouMayAlsoLike}></ProductSlider>
+                                    <ProductSlider similar_product={this.props.YouMayAlsoLike} store_locale={this.props.store_locale}></ProductSlider>
                                 </div>
                             </div>
                             {/* <div className="t-Body-contentInner hideInDesktop">

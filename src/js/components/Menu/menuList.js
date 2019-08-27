@@ -55,7 +55,6 @@ class menuList extends Component {
 		var data6 = [];
 		var i = 0;
 		data.map((item) => {
-			console.log(item);
 			if (i < 5)
 				data1.push(item);
 			if (i > 4 && i < 10)
@@ -76,7 +75,6 @@ class menuList extends Component {
 
 			<>
 				<ul className="subLink">
-					{console.log(this.state.countList)}
 					{data1.map(this._renderSubMenuItem)}
 				</ul>
 				<ul className="subLink">

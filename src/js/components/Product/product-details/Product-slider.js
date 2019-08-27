@@ -20,7 +20,7 @@ class ProductSlider extends Component {
     }
 
     render() {
-        const {store_name, currency, similar_product} = this.props
+        const {store_locale, currency, similar_product} = this.props;
         const settings3 = {
             autoplay: true,
             autoplaySpeed: 5000,
@@ -103,7 +103,7 @@ class ProductSlider extends Component {
                                             <div className="trendingList">
                                                 <Slider {...settings3}>
                                                 {similar_product && similar_product.map((item, index) => (
-                                                <Link to={`/${store_name}/products-details/${item.url_key}`}>
+                                                <Link to={`/${store_locale}/products-details/${item.url_key}`}>
                                                     <div className="alsoLikeCard">
                                                         <img src={item.productImageUrl[0]} />
                                                         <div className="marginTop25">
