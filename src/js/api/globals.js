@@ -2,15 +2,18 @@ export const live = true;
 
 //server ['uat','dev','live']
 export const active_server = 'dev';
+if(window.location.href.includes('elcjsuat')){
+    active_server = 'live';
+}
 
 export const ROOT_URL = {
     dev: 'https://elcm2.iksulalive.com/', // 'http://nayomidev.iksulalive.com/',
-    live: 'https://nayomim2live.iksulalive.com/'
+    live: 'https://elcm2uat.iksulalive.com/'
 };
 
 export const WEB_URL_ALL = {
-    dev: `http://nayomijsuat.iksulalive.com/`,
-    live: `https://nayomireact.iksulalive.com/`,
+    dev: `http://elcm2.iksulalive.com/`,
+    live: `https://elcm2uat.iksulalive.com/`,
 }
 
 export const WEB_URL = WEB_URL_ALL[active_server];
