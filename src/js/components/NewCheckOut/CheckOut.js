@@ -11,6 +11,9 @@ import CardGift from './CardGift'
 import DeliverySpeed from './DeliverySpeed'
 import DeliveryLocation from './DeliveryLocation'
 
+import { Redirect, withRouter } from 'react-router-dom';
+import { FormattedMessage, injectIntl } from 'react-intl';
+
 var _ = require('lodash');
 
 class CheckOut extends Component {
@@ -26,6 +29,11 @@ class CheckOut extends Component {
     }
 
 	render() {
+        console.log(this.props);
+        let {cart_details, user_details } = this.props;
+        console.log(cart_details, user_details);
+        const {customer_details} = user_details;
+        const {products} = cart_details;
 		return (
 			<div>
                 <ul className="check-out">
@@ -73,44 +81,46 @@ class CheckOut extends Component {
                                     <span className="header-text">Order Summary</span>
                                 </div>
                                 <div className="blackTitle1" style={{paddingTop: 10}}>
-                                    <span>Ship to: Miss XYZ</span>
+                                    <span>Ship to: {customer_details.firstname}&nbsp; {customer_details.lastname}</span>
                                 </div>
                             </div>
                             <div className="block2">
                                 <div className="blackTitle1">
                                     <span>Delivery 1.</span>
                                 </div>
-                                <div className="block5">
-                                    <Row>
-                                        <Col xs="3">
-                                            <img src={logo1} className="image"></img>
-                                        </Col>
-                                        <Col xs="6" style={{padding: 0}}>
-                                            <div>
-                                                <span style={{fontFamily: "VAG Rounded ELC Bold", color:'#0D943F'}}>PJ Masks Super Moon Adventure - Luna Fortress Playset</span>
-                                            </div>
-                                            <div>
-                                                <span style={{fontFamily: "VAG Rounded ELC Bold"}}>Item price: </span><span> AES 29.99</span>
-                                            </div>
-                                            <div>
-                                                <span style={{fontFamily: "VAG Rounded ELC Bold"}}>Qty: </span><span> 1</span>
-                                            </div>
-                                            <div>
-                                                <span style={{fontFamily: "VAG Rounded ELC Bold"}}>Poduct #: </span><span> 535353</span>
-                                            </div>
-                                        </Col>
-                                        <Col xs="3">
-                                            <span style={{fontFamily: "VAG Rounded ELC Bold", color:'#0D943F'}}>AES 29.99</span>
-                                        </Col>
-                                    </Row>
-                                </div>
+                                {products && products.map((item, index) => (
+                                    <div className="block5">
+                                        <Row>
+                                            <Col xs="3">
+                                                <img src={item.image[0]} className="image"></img>
+                                            </Col>
+                                            <Col xs="6" style={{padding: 0}}>
+                                                <div>
+                                                    <span style={{fontFamily: "VAG Rounded ELC Bold", color:'#0D943F'}}>{item.name}</span>
+                                                </div>
+                                                <div>
+                                                    <span style={{fontFamily: "VAG Rounded ELC Bold"}}>Item price: </span><span> {item.currency} &nbsp;{item.price}</span>
+                                                </div>
+                                                <div>
+                                                    <span style={{fontFamily: "VAG Rounded ELC Bold"}}>Qty: </span><span> {item.qty}</span>
+                                                </div>
+                                                <div>
+                                                    <span style={{fontFamily: "VAG Rounded ELC Bold"}}>Poduct #: </span><span> {item.sku}</span>
+                                                </div>
+                                            </Col>
+                                            <Col xs="3">
+                                                <span style={{fontFamily: "VAG Rounded ELC Bold", color:'#0D943F'}}>{item.currency} &nbsp;{item.price * item.qty}</span>
+                                            </Col>
+                                        </Row>
+                                    </div>
+                                ))}
                                 <div className="block3">
                                     <span className="floatLift blackTitle1">Subtotal:</span>
-                                    <span className="floatRight">AES 29.99</span>
+                                    <span className="floatRight">{cart_details.currency} &nbsp;{cart_details.subtotal}</span>
                                 </div>
                                 <div className="block4">
                                     <span className="floatLift header-text">Order Total</span>
-                                    <span className="floatRight header-text">AES 29.99</span>
+                                    <span className="floatRight header-text">{cart_details.currency} &nbsp;{cart_details.grand_total}</span>
                                 </div>
                             </div>
                         </div>
@@ -175,4 +185,30 @@ class CheckOut extends Component {
 	}
 }
 
-export default CheckOut;
+const mapStateToProps = state => {
+    return {
+      cart_details: state.myCart,
+      user_details: state.login,
+      guest_user: state.guest_user,
+    //   change_pass: state.login.changePasswordDetails,
+      addressBook: state.address.addressBook,
+    //   countryList: state.address.countryList,
+      addressResp: state.address.addressResp,
+      isAddBookRec: state.address.isAddBookRec,
+      globals: state.global,
+      cartLoader: state.myCart.loader,
+    //   updateLoader: state.myCart.update_loader
+    }
+  }
+  
+  const mapDispatchToProps = dispatch => {
+    return {
+      
+    }
+  
+  }
+  
+  export default withRouter(connect(mapStateToProps, mapDispatchToProps)(injectIntl(CheckOut)));
+ 
+
+// export default CheckOut;

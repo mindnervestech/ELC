@@ -107,7 +107,7 @@ class ShoppingBagItem extends Component {
                            <span>1 item | £99.99</span>
                         </div>
                         <div>
-                           <Link to={`/saudi-en/new-check-out`}>
+                           <Link to={`/${store_locale}/new-check-out`}>
                               <button className="alsoLikeCardButton">Check out</button>
                            </Link>
                         </div>
@@ -181,7 +181,7 @@ class ShoppingBagItem extends Component {
                <Row className="changeRow">
                   <Col xs="9"></Col>
                   <Col xs="3" style={{ textAlign: 'end' }}>
-                     <Link to={`/saudi-en/new-check-out`}>
+                     <Link to={`/${store_locale}/new-check-out`}>
                         <button className="alsoLikeCardButton">Check out</button>
                      </Link>
                   </Col>
@@ -214,7 +214,7 @@ class ShoppingBagItem extends Component {
                   </div>
                </div>
                <div>
-                  <Link to={`/saudi-en/new-check-out`}>
+                  <Link to={`/${store_locale}/new-check-out`}>
                      <button className="alsoLikeCardButton">Check out</button>
                   </Link>
                </div>
@@ -257,7 +257,7 @@ class ShoppingBagItem extends Component {
                   </div>
                </div>
                <div>
-                  <Link to={`/saudi-en/new-check-out`}>
+                  <Link to={`/${store_locale}/new-check-out`}>
                      <button className="alsoLikeCardButton">Check out</button>
                   </Link>
                </div>
