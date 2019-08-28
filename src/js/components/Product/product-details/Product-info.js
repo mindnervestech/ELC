@@ -287,12 +287,12 @@ class ProductInfo extends Component {
 								<div className="t-Region-body">
 									<div className="container" style={{ overflow: 'hidden' }}>
 										<div className="row details-body">
-											<div className="available-by">
+											{/* <div className="available-by">
 												<span>available friday 26th july</span>
 											</div>
 											<div className="available-by" style={{ color: '#009BCB' }}>
 												<span>Buy One Get On free</span>
-											</div>
+											</div> */}
 
 											<div className="prod-price">
 												{data.special_price ?
@@ -434,9 +434,9 @@ class ProductInfo extends Component {
 													<ShareUrl />
 												</Modal>
 											</div> : ''}
-											<div className="deliy-free">
+											{/* <div className="deliy-free">
 												<span>this product includes free UK delivery</span>
-											</div>
+											</div> */}
 											<div className="learn-skill">
 												<span> Learning Skills:</span>
 

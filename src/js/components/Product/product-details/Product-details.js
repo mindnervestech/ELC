@@ -150,7 +150,7 @@ class ProductDetails extends Component {
 						{/* <ProductReview /> */}
 
 						{/* recentely Viewed */}
-						<ProductRecentlyViewed productColor={data} />
+						{/* <ProductRecentlyViewed productColor={data} /> */}
 					</div>
 				</div>
 			</div>

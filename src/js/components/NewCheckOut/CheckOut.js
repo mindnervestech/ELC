@@ -29,9 +29,7 @@ class CheckOut extends Component {
     }
 
 	render() {
-        console.log(this.props);
         let {cart_details, user_details } = this.props;
-        console.log(cart_details, user_details);
         const {customer_details} = user_details;
         const {products} = cart_details;
 		return (
