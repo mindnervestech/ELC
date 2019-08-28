@@ -268,7 +268,7 @@ class Login extends Component {
     return (
       <Spinner>
         <div>
-          <div style={{ width: '525.9584px' }}>
+          <div style={{ width: '500' }}>
             <Modal modalId="CreateAccount" open={openFirstModal} onClose={this.onCloseFirstModal} center style={{ width: '425.9584px' }}>
 
               <h3><FormattedMessage id="account.Creation" defaultMessage="Account Creation" /></h3>
@@ -407,7 +407,7 @@ class Login extends Component {
                                           {/* on blur eon focus */}
                                           <div className="row collapse-a" id="P1000_USERNAME_CONTAINER" ><div className="rmPadding rmTopPadding t-Form-labelContainer">
                                             <label htmlFor="P1000_USERNAME" id="P1000_USERNAME_LABEL" className="t-Form-label bolt">
-                                              <FormattedMessage id="username" defaultMessage="username" />
+                                              <FormattedMessage id="emailaddress" defaultMessage="username" />
                                             </label>
                                           </div>
                                             <div className="row contents">

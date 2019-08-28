@@ -43,7 +43,7 @@ export default class BirthDayClub extends Component {
             <div className="paddingLeft">
               <h3 className="header-birth-club"><FormattedMessage id="birthdayclub.header" defaultMessage="" /></h3>
               <div className="img-src-width">
-                <img src={BirthDayClubImage}/>
+                <Image src={BirthDayClubImage} alt="BirthDayClub" />
               </div>
               <div style={{ textAlign: "center" }} >
                 <p>

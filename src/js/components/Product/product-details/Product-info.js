@@ -131,6 +131,8 @@ class ProductInfo extends Component {
 
 
 	_handleClick = async () => {
+
+		console.log("ID",this.props.productDetails.id)
 		// if (this.props.customerDetails.customer_id === undefined) {
 		// 	this.setState({ guestUser: true });
 		// 	return;
@@ -159,19 +161,6 @@ class ProductInfo extends Component {
 		}
 	};
 
-	addToWishlist = (productId) => {
-		const data = {
-			customer_id: 13, // this.props.customerDetails.customer_id,
-			product_id: productId,
-		};
-		this.props.onAddToWishList(data);
-	}
-
-	removeToWishlist = (wishlistId) => {
-		this.props.onRemoveWishList({
-			wishlist_id: wishlistId
-		})
-	}
 
 	_getUnique = (arr, comp) => {
 		const unique = arr

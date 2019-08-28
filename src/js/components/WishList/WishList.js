@@ -24,7 +24,7 @@ class WishList extends Component {
   }
 
   componentDidMount() {
-    this.props.onGetWishListItem({ customerid: this.props.user_details.customer_id })
+    this.props.onGetWishListItem({ customerid: this.props.user_details.customer_id, store_id:1})
   }
 
   wishlistToggle = (index, wishlist_id) => {
@@ -86,7 +86,7 @@ class WishList extends Component {
     return (
       <div className="t-Body-contentInner homePage">
         <div className="wishlist">
-          <div>
+          {/* <div>
             <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
               <span className="titleHover">Home</span>
             </Link>
@@ -96,6 +96,43 @@ class WishList extends Component {
             <label>
               My WishList
             </label>
+          </div> */}
+          <div className="row">
+            <div className="col col-12 apex-col-auto">
+              <div className="t-ButtonRegion t-Form--floatLeft containers t-ButtonRegion--noPadding t-ButtonRegion--noUI apex-tabs-region js-apex-region" id="R28512406002220865">
+                <div className="t-ButtonRegion-wrap">
+                  <div className="t-ButtonRegion-col t-ButtonRegion-col--left"><div className="t-ButtonRegion-buttons" /></div>
+                  <div className="t-ButtonRegion-col t-ButtonRegion-col--content">
+                    <h2 className="t-ButtonRegion-title" id="R28512406002220865_heading">Region Display Selector</h2>
+                    <div className="apex-rds-container"><div className="apex-rds-slider"><div className="apex-rds-hover left" style={{ display: 'none' }}><a> <span className="a-Icon icon-left-chevron" /> </a></div><div className="apex-rds-hover right" style={{ display: 'none' }}><a> <span className="a-Icon icon-right-chevron" /> </a></div></div><ul id="28512406002220865_RDS" className="apex-rds a-Tabs" role="tablist" style={{ whiteSpace: 'nowrap', overflowX: 'hidden' }}><li className="apex-rds-item apex-rds-first apex-rds-before" role="presentation" id="R28333887549179555_tab">
+
+                      <Link
+                        to={{
+                          pathname: `/${store_locale}/profile`,
+                          state: { ...this.state }
+                        }} role="tab" aria-controls="R28333887549179555" aria-selected="false" tabIndex={-1}><span><FormattedMessage id="profile.Account.Title" defaultMessage="Account" /></span></Link>
+
+                    </li><li className="" role="presentation" id="R28337577127179591_tab">
+
+
+                        <Link to={{
+                          pathname: `/${store_locale}/order-history`,
+                        }} role="tab" aria-controls="R28337577127179591" aria-selected="true">
+                        <span className="FormattedMessage"><FormattedMessage id="profile.OrderHistory.Title" defaultMessage="Order History" /></span>
+                        </Link></li>
+
+                      <li className="apex-rds-item apex-rds-last apex-rds-selected" role="presentation" id="USERWISHLIST_tab">
+
+                        <Link to={{
+                          pathname: `/${store_locale}/wish-list`,
+                        }} role="tab" aria-controls="USERWISHLIST" aria-selected="false" tabIndex={-1}>
+                        <span className="FormattedMessage"><FormattedMessage id="profile.Wishlist.Title" defaultMessage="Wishlist" /></span></Link></li></ul></div>
+                    <div className="t-ButtonRegion-buttons" />
+                  </div>
+                  <div className="t-ButtonRegion-col t-ButtonRegion-col--right"><div className="t-ButtonRegion-buttons"><button onClick={this.logOut} className="t-Button t-Button--hot t-Button--gapTop" type="button" id="B28512592134220867"><span className="t-Button-label"><FormattedMessage id="header.logoutName" defaultMessage="Logout" /></span></button></div></div>
+                </div>
+              </div>
+            </div>
           </div>
           <ul className="products wishlist-products">
             <li>
@@ -135,44 +172,10 @@ class WishList extends Component {
             </li>
           </ul>
         </div>
-        {/* <div className="container">
+        <div className="container">
+         
+          
           <div className="row">
-            <div className="col col-12 apex-col-auto">
-              <div className="t-ButtonRegion t-Form--floatLeft containers t-ButtonRegion--noPadding t-ButtonRegion--noUI apex-tabs-region js-apex-region" id="R28512406002220865">
-                <div className="t-ButtonRegion-wrap">
-                  <div className="t-ButtonRegion-col t-ButtonRegion-col--left"><div className="t-ButtonRegion-buttons" /></div>
-                  <div className="t-ButtonRegion-col t-ButtonRegion-col--content">
-                    <h2 className="t-ButtonRegion-title" id="R28512406002220865_heading">Region Display Selector</h2>
-                    <div className="apex-rds-container"><div className="apex-rds-slider"><div className="apex-rds-hover left" style={{ display: 'none' }}><a> <span className="a-Icon icon-left-chevron" /> </a></div><div className="apex-rds-hover right" style={{ display: 'none' }}><a> <span className="a-Icon icon-right-chevron" /> </a></div></div><ul id="28512406002220865_RDS" className="apex-rds a-Tabs" role="tablist" style={{ whiteSpace: 'nowrap', overflowX: 'hidden' }}><li className="apex-rds-item apex-rds-first apex-rds-before" role="presentation" id="R28333887549179555_tab">
-
-                      <Link
-                        to={{
-                          pathname: `/${store_locale}/profile`,
-                          state: { ...this.state }
-                        }} role="tab" aria-controls="R28333887549179555" aria-selected="false" tabIndex={-1}><span><FormattedMessage id="profile.Account.Title" defaultMessage="Account" /></span></Link>
-
-                    </li><li className="" role="presentation" id="R28337577127179591_tab">
-
-
-                        <Link to={{
-                          pathname: `/${store_locale}/order-history`,
-                        }} role="tab" aria-controls="R28337577127179591" aria-selected="true">
-                        <span className="FormattedMessage"><FormattedMessage id="profile.OrderHistory.Title" defaultMessage="Order History" /></span>
-                        </Link></li>
-
-                      <li className="apex-rds-item apex-rds-last apex-rds-selected" role="presentation" id="USERWISHLIST_tab">
-
-                        <Link to={{
-                          pathname: `/${store_locale}/wish-list`,
-                        }} role="tab" aria-controls="USERWISHLIST" aria-selected="false" tabIndex={-1}>
-                        <span className="FormattedMessage"><FormattedMessage id="profile.Wishlist.Title" defaultMessage="Wishlist" /></span></Link></li></ul></div>
-                    <div className="t-ButtonRegion-buttons" />
-                  </div>
-                  <div className="t-ButtonRegion-col t-ButtonRegion-col--right"><div className="t-ButtonRegion-buttons"><button onClick={this.logOut} className="t-Button t-Button--hot t-Button--gapTop" type="button" id="B28512592134220867"><span className="t-Button-label"><FormattedMessage id="header.logoutName" defaultMessage="Logout" /></span></button></div></div>
-                </div>
-              </div>
-            </div>
-          </div><div className="row">
 
           </div>
 
@@ -194,7 +197,7 @@ class WishList extends Component {
               </div>
             </div>
           </div>
-        </div> */}
+        </div>
       </div>
     );
   }

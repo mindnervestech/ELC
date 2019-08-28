@@ -168,6 +168,7 @@
     "registered.user.title": "Existing Customers",
     "registered.user.content": "If you have already registered with Nayomi, then sign in here. ",
     "username": "Username *",
+    "emailaddress":"Email Address *",
     "password": "Password *",
     "account.Creation": "Create an Account",
     "account.Creation.text": "Please complete the form to create an account:",
@@ -652,6 +653,7 @@
     "registered.user.content": "اذا كان لديك حساب مسجل في نعومي، يمكنك تسجيل الدخول من هنا ",
     "username": "اسم المستخدم ",
     "password": "كلمة المرور ",
+    "emailaddress":"عنوان بريد الكتروني",
     "account.Creation": "انشئ حساب ",
 
     "order.tracking": "تتبعي الطلب ",

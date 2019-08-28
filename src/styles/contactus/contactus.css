@@ -324,7 +324,7 @@
   
       .media a {
         display: inline-block;
-        color: #f599ba;
+        color:green!important;
         font-size: 1.7em;
         margin: 0 .4em;
         vertical-align: middle;
@@ -333,7 +333,7 @@
   
   
       .chat i {
-        color: #f599ba;
+        color: green;
         font-size: 1.7em;
         margin: 0 .4em;
         vertical-align: middle;
