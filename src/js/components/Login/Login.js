@@ -340,9 +340,9 @@ class Login extends Component {
                               {guest}
                               <div className="t-Region t-Region--textContent t-Region--scrollBody" id="R38202006049236304">
                                 <div className="t-Region-header">
-                                  <div className="t-Region-headerItems t-Region-headerItems--title headerBottom">
+                                  <div className="t-Region-headerItems t-Region-headerItems--title headerBottom" style={{textAlign: 'center'}}>
                                     <span className="t-Region-headerIcon"><span className="t-Icon " aria-hidden="true"></span></span>
-                                    <h2 className="block-title" id="R38202006049236304_heading"><FormattedMessage id="account.Creation" defaultMessage="Account Creation" /></h2>
+                                    <h2 className="block-title" style={{width: '100%'}} id="R38202006049236304_heading"><FormattedMessage id="account.Creation" defaultMessage="Account Creation" /></h2>
                                   </div>
 
                                   <div className="t-Region-headerItems t-Region-headerItems--buttons">
@@ -387,9 +387,9 @@ class Login extends Component {
                               <div className=" t-Region t-Region--textContent t-Region--scrollBody" id="R37391169766147740"
                               >
                                 <div className="t-Region-header">
-                                  <div className="t-Region-headerItems bottomPadding t-Region-headerItems--title">
+                                  <div className="t-Region-headerItems bottomPadding t-Region-headerItems--title" style={{textAlign: 'center'}}>
                                     <span className="t-Region-headerIcon"><span className="t-Icon " aria-hidden="true"></span></span>
-                                    <h2 className="block-title" id="R37391169766147740_heading"><FormattedMessage id="registered.user.title" defaultMessage="SignIn" /></h2>
+                                    <h2 className="block-title" style={{width: '100%'}} id="R37391169766147740_heading"><FormattedMessage id="registered.user.title" defaultMessage="SignIn" /></h2>
                                   </div>
                                   <div className="t-Region-headerItems t-Region-headerItems--buttons"><span className="js-maximizeButtonContainer"></span></div>
                                 </div>
@@ -460,7 +460,7 @@ class Login extends Component {
                                             </div>
                                           </div>
                                         </div> */}
-                                      <div className="row">
+                                      <div className="row" style={{marginTop: 10}}>
                                         <div className="col col-12 apex-col-auto">
                                           <button onClick={this.login} className="button-add-to-basket right "><FormattedMessage id="secure.signin" defaultMessage="Secure Sign In" /></button>
                                           {/* <div onClick={this.login} className="button-add-to-basket right " type="button" id="B28810467415678867"><span className="t-Button-label"><FormattedMessage id="secure.signin" defaultMessage="Secure Sign In" /></span></div><input type="hidden" id="COND" name="COND" value="" /><input type="hidden" id="ITEM" name="ITEM" value="" /> */}

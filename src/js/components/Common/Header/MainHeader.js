@@ -33,9 +33,6 @@ import KSAImage from '../../../../assets/images/header/sa.svg';
 class MainHeader extends Component {
     constructor(props) {
         super(props);
-
-        console.log("user_details",this.props.user_details)
-        console.log("isUserLoggedIn",this.props.user_details.isUserLoggedIn)
         let login = false
         if(this.props.user_details.isUserLoggedIn == true){
             login = true
@@ -92,9 +89,14 @@ class MainHeader extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-
+        if(this.props.user_details.isUserLoggedIn !== this.state.userLogin){
+            if(this.props.user_details.isUserLoggedIn == true){
+                this.setState({userLogin: true});
+            }else if(this.props.user_details.isUserLoggedIn == false){
+                this.setState({userLogin: false});
+            }
+        }
         if (this.props.location.pathname !== prevProps.location.pathname) {
-            // console.log('Route change!');
             this.setState({ showCountries: false })
             if (this.state.showCart) {
                 console.log(this.state.showCart)
@@ -267,7 +269,7 @@ class MainHeader extends Component {
                     <div className="t-Header-branding">
                         <div className="row-1">
                             <div className="containers-main">
-                                <ul className="leftLink">
+                                <ul className="leftLink" style={{paddingTop: 7}}>
                                     {/* <li className="ll" style={{ padding: 0 }}>
                                         <div className="lang">
                                             <a href="javascript:void(0);" onClick={(e) => this.translate('en', 'ltr')} className="active" >en</a></div>
@@ -323,7 +325,7 @@ class MainHeader extends Component {
                                                     </span>
                                                     <i className="icon-down" ></i>
                                                 </div>
-                                                <div className="list">
+                                                <div className="list" style={{textAlign: 'start'}}>
                                                     <div style={{paddingLeft:10, paddingBottom: 7}}> 
                                                         <img style={{height: '20px',width: '30px'}} src={UAEImage}></img>
                                                         <a href="javascript:void(0);" className="uae" id="cart" onClick={() => this.onChangeCountry('UAE')}><FormattedMessage id="header.uaes" defaultMessage="UAE" /></a>
@@ -379,13 +381,8 @@ class MainHeader extends Component {
                                             <label className="iconLeble text-color changeLinkText">My Account</label>
                                         </Link>
                                     </li>
-                                    <li style={this.state.userLogin ? {display: 'inline-block'} : {display: 'none'}}>
+                                    {/* <li style={this.state.userLogin ? {display: 'inline-block'} : {display: 'none'}}>
                                         <label className="iconLeble text-color changeLinkText">Sign Out</label>
-                                    </li>
-                                    {/* <li>
-                                        <Link to={`/${store_locale}/wish-list`} style={{ textDecoration: 'none' }}>
-                                            wishlist
-                                        </Link>
                                     </li> */}
                                     {/* {profileIcon}
 

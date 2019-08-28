@@ -1036,7 +1036,8 @@ h3.h3p {
 }
 
 .headerText {
-    padding: 0.979px 12.979px 4.979px 12.979px;
+    /* padding: 0.979px 12.979px 4.979px 12.979px; */
+    padding: 0.979px 15.979px 4.979px;
     font-size: 11px;
 }
 
