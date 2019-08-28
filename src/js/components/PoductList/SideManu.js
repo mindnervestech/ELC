@@ -38,12 +38,12 @@ class SideManu extends Component {
 			}
 		}
 		console.log(list)
+		this.props.action(list)
+		//this.props.classObj.setState({data: list});
 	}
 
 	applyFilter = (value) =>{
-		//console.log(value)
 		let splitData = value.split('/')
-		//console.log(splitData)
 		if(splitData[0] == "price"){
 
 		}else if(splitData[0] == "color"){

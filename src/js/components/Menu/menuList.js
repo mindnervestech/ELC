@@ -11,7 +11,6 @@ class menuList extends Component {
 			store_locale: props.store_locale,
 			countList: 0
 		};
-		//console.log('In MenuList', this.state);
 	}
 
 	static getDerivedStateFromProps(nextProps, prevState) {
@@ -34,7 +33,6 @@ class menuList extends Component {
 	};
 
 	_renderSubMenuList = (data, item_name, item_url_keys) => {
-		//console.log('In _renderSubMenuList ', data, item_name, item_box);
 		var styleCat = data.filter(function (hero) {
 			return hero.custom_category_attribute === 'style';
 		});
@@ -43,7 +41,6 @@ class menuList extends Component {
 			return hero.custom_category_attribute === 'collection';
 		});
 
-		//console.log('this.item_name', item_name);
 		item_name = item_name.toLowerCase();
 		this.state.countList = 0;
 		var id = 1;
@@ -97,11 +94,7 @@ class menuList extends Component {
 		);
 	};
 	count(e) {
-		//console.log("clicked", e);
-
 		this.state.countList++;
-
-
 	}
 
 	_checkSubMenu = item => {
@@ -147,7 +140,6 @@ class menuList extends Component {
 	};
 
 	_renderMenuList = (item, index) => {
-		//console.log('sub item', item);
 		let menu_item = 'menu.' + item.name.toLowerCase();
 
 		return (
@@ -166,10 +158,7 @@ class menuList extends Component {
 		);
 	};
 	_renderMenuNavigation = (item, index) => {
-		//console.log('menu item', item);
-
 		const { navData } = this.props;
-		//console.log('navData item', navData[item]);
 		return navData[item].map(this._renderMenuList);
 	};
 
@@ -179,8 +168,6 @@ class menuList extends Component {
 
 	render() {
 		const { navData } = this.props;
-		//console.log("In Menulist Render", this.props);
-		//console.log("navData", navData);
 
 		return <ul className="link">
 			{/* <li>

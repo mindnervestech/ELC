@@ -368,7 +368,7 @@ class Product extends Component {
 							
 						/> 
 
-						{Object.keys(this.props.productDetails.products).length > 0 && (
+						{/* {Object.keys(this.props.productDetails.products).length > 0 && (
 						<div
 							id="R29005156978427060"
 							className="t-BreadcrumbRegion h-hidden-desktop t-BreadcrumbRegion--showBreadcrumb t-BreadcrumbRegion--useBreadcrumbTitle"
@@ -379,7 +379,7 @@ class Product extends Component {
 										<li id="cd-cart-trigger" onClick={this._callFilters}>
 											<FormattedMessage id="Product.Listing.FilterBy" defaultMessage="Filter by" />
 										</li>
-										{/* <li>
+										<li>
 											<div><FormattedMessage id="Product.Listing.SortBy" defaultMessage="Sort by" /></div>
 											<div className="dropdown-content" id="mobile-sort-by-content-div">
 												<div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel apex-item-wrapper apex-item-wrapper--checkbox ">
@@ -430,13 +430,13 @@ class Product extends Component {
 													</div>
 												</div>
 											</div>
-										</li> */}
+										</li>
 									</ul>
 								</div>
 							</div>
 							<div className="t-BreadcrumbRegion-buttons" />
 						</div>
-						 )}
+						 )} */}
 					</div>
 
 					<div className="t-Body-content" id="t_Body_content">
