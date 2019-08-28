@@ -98,13 +98,20 @@ class Footer extends Component {
                                 </Link>
                             </li>
                             <li>
-                                <a href=""><FormattedMessage id="footer.BirthdayClub" defaultMessage="Birthday Club" /></a>
+                            <Link to={`/${store_locale}/birth-day-club`} style={{ textDecoration: 'none' }}>
+                                <FormattedMessage id="footer.BirthdayClub" defaultMessage="Birthday Club" />
+                            </Link>
                             </li>
                             <li>
-                                <a href=""><FormattedMessage id="footer.Newsletter" defaultMessage="Newsletter" /></a>
+                            <Link to={`/${store_locale}/newsletter`} style={{ textDecoration: 'none' }}>
+                            <FormattedMessage id="footer.Newsletter" defaultMessage="Newsletter" />
+                            </Link>
+                                
                             </li>
                             <li>
-                                <a href=""><FormattedMessage id="footer.Charity" defaultMessage="Charity" /></a>
+                            <Link to={`/${store_locale}/charity`} style={{ textDecoration: 'none' }}>
+                            <FormattedMessage id="footer.Charity" defaultMessage="Charity" />
+                            </Link>
                             </li>
                         </ul>
                     </div>

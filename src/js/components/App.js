@@ -12,6 +12,8 @@ import '../../styles/App.css';
 
 import AboutUs from './StaticPages/AboutUs/AboutUs';
 import Affiliate from './StaticPages/Affiliate/Affiliate';
+import NewsLetter from './StaticPages/Newsletter/Newsletter'
+import Charity from './StaticPages/Charity/Charity'
 import Business from './StaticPages/Business/Business';
 import Careers from './StaticPages/Careers/Careers';
 import ContactUs from './StaticPages/ContactUs/ContactUs';
@@ -29,8 +31,8 @@ import TermConditions from './StaticPages/TermsConditions/TermsConditions';
 
 import ProfileAddress from './CustomerAddress/ProfileAddress';
 
-import BirthDayClub from './BirthDayClub/BirthDayClub'
-import AddNewBirthDayClubChild from './BirthDayClub/AddNewChild';
+import BirthDayClub from './StaticPages/BirthDayClub/BirthDayClub'
+import AddNewBirthDayClubChild from './StaticPages/BirthDayClub/AddNewChild';
 import Login from './Login/Login';
 
 import MyProfile from './MyProfile/MyProfile';
@@ -347,6 +349,8 @@ class App extends Component {
                     <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/careers" component={Careers} />
                     <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/contact-us" component={ContactUs} />
                     <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/cookie-policy" component={CookiePolicy} />
+                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/newsletter" component={NewsLetter} />
+                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/charity" component={CookiePolicy} />
                     <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/corporate-responsibility" component={CorporateResponsibility} />
                     <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/delivery-information" component={DeliveryInformation} />
                     <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/help-and-faq" component={HelpFAQ} />

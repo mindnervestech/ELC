@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 import { Row, Col, Image, Form, FormGroup } from "react-bootstrap";
 import "./AddNewChild.css";
-import BirthDayClubImage from "../../../assets/images/BirthDayClub/birthday-club.jpeg";
+//import BirthDayClubImage from '../../../../assets/images/BirthDayClub/birthday-club.png'
+//import BirthDayClubImage from '../../../assets/images/BirthDayClub/birthday-club.png'
 import { FormattedMessage } from 'react-intl';
-import AlertBox from '../Common/AlertBox/AlertBox';
+import AlertBox from '../../Common/AlertBox/AlertBox';
 import { connect } from 'react-redux';
-import * as actions from '.././../redux/actions/index';
+import * as actions from '../../../redux/actions/index';
+
+let BirthDayClubImage="/../../assets/images/BirthDayClub/birthday-club.png"
 
 export default class AddNewChild extends Component {
   constructor(props) {

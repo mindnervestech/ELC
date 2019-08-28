@@ -1,10 +1,40 @@
 import React, { Component } from "react";
 import "./BirthDayClub.css";
 import { FormattedMessage } from 'react-intl';
-import BirthDayClubImage from "../../../assets/images/BirthDayClub/birthday-club.jpeg";
 import { Row, Col, Image } from "react-bootstrap";
+import { Link, Redirect } from 'react-router-dom';
+
+
+let BirthDayClubImage="/../../assets/images/BirthDayClub/birthday-club.png"
 export default class BirthDayClub extends Component {
+  constructor(props)
+  {
+    super(props);
+    this.state=
+    {
+      redirectToAddNewChild:false
+    }
+
+
+  }
+
+
+
+  redirectToAddChild=()=>
+  {
+    this.setState({redirectToAddNewChild:true})
+  }
   render() {
+
+    let store_locale="en";
+
+    if (this.state.redirectToAddNewChild) {
+      return <Redirect to={{
+        pathname: `/${store_locale}/add-new-birth-day-club-child`,
+      }} />;
+    }
+
+
     return (
       <div>
         <Row style={{ marginTop: "40px" }}>
@@ -28,6 +58,7 @@ export default class BirthDayClub extends Component {
                   <button
                     className="button-add-to-basket"
                     style={{ textAlign: "center" }}
+                    onClick={this.redirectToAddChild}
                   >
                     {" "}
                     <FormattedMessage id="birthdayclub.addnewchildbutton" defaultMessage="" />

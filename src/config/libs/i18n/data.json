@@ -1,20 +1,20 @@
 {
   "en": {
 
-    "birthdayclub.header": "Jack's Birthday Club",
-    "birthdayclub.text1": " You can add upto 10 childrens Birthday Club. We will pop the date in our diary and send on you mail",
-    "birthdayclub.text2": "ahead of the big day with a special birthday offer",
-    "birthdayclub.addnewchildbutton": "Add new child",
-    "please.select": "Please Select",
-    "select.mm": "MM",
-    "select.dd": "DD",
-    "select.yyyy": "YYYY",
+    "birthdayclub.header":"Jack's Birthday Club",
+    "birthdayclub.text1":" You can add upto 10 childrens Birthday Club. We will pop the date in our diary and send on you mail",
+    "birthdayclub.text2":"ahead of the big day with a special birthday offer",
+    "birthdayclub.addnewchildbutton":"Add new child",
+    "please.select":"Please Select",
+    "select.mm":"MM",
+    "select.dd":"DD",
+    "select.yyyy":"YYYY",
 
-    "addnewchild.firstname": "First Name",
-    "addnewchild.dateofbirth": "Date Of Birth",
-    "addnewchild.boyorgirl": "Boy or Girl",
-    "addnewchild.realationship": "Realationship",
-    "cancelButton": "Cancel",
+    "addnewchild.firstname":"First Name",
+    "addnewchild.dateofbirth":"Date Of Birth",
+    "addnewchild.boyorgirl":"Boy or Girl",
+    "addnewchild.realationship":"Realationship",
+    "cancelButton":"Cancel",
 
 
     "footer.followUsOn": "follow us on",
@@ -545,16 +545,16 @@
     "footer.text": "© Website is operated by Kamal Osman Jamjoom LLC, trading as Early Learning Centre"
   },
   "ar": {
-    "birthdayclub.header": "جاك عيد ميلاد النادي",
-    "birthdayclub.text1": "يمكنك إضافة حتى 10 أعياد ميلاد للنادي. سنصدر التاريخ في مذكراتنا ونرسل لك بريدًا",
-    "birthdayclub.text2": "قبل يوم كبير مع عرض عيد ميلاد خاص",
-    "birthdayclub.addnewchildbutton": "إضافة طفل جديد",
-    "please.select": "الرجاء اختيار",
-    "addnewchild.firstname": "الاسم الاول",
-    "addnewchild.dateofbirth": "تاريخ الولادة",
-    "addnewchild.boyorgirl": "صبي أو فتاة",
-    "addnewchild.realationship": "صلة",
-    "cancelButton": "إلغاء",
+    "birthdayclub.header":"جاك عيد ميلاد النادي" ,
+    "birthdayclub.text1":"يمكنك إضافة حتى 10 أعياد ميلاد للنادي. سنصدر التاريخ في مذكراتنا ونرسل لك بريدًا",
+    "birthdayclub.text2":"قبل يوم كبير مع عرض عيد ميلاد خاص",
+    "birthdayclub.addnewchildbutton":"إضافة طفل جديد",
+    "please.select":"الرجاء اختيار",
+    "addnewchild.firstname":"الاسم الاول",
+    "addnewchild.dateofbirth":"تاريخ الولادة",
+    "addnewchild.boyorgirl":"صبي أو فتاة",
+    "addnewchild.realationship":"صلة",
+    "cancelButton":"إلغاء",
 
 
     "header.clubName": "نادي الأميرة ",
