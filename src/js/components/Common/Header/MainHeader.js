@@ -375,7 +375,9 @@ class MainHeader extends Component {
                                         <label className="iconLeble text-color changeLinkText">Hello {this.props.user_details.customer_details.firstname} {this.props.user_details.customer_details.lastname}</label>
                                     </li>
                                     <li style={this.state.userLogin ? {display: 'inline-block'} : {display: 'none'}}>
-                                        <label className="iconLeble text-color changeLinkText">My Account</label>
+                                        <Link to={`/${store_locale}/Login`} style={{ textDecoration: 'none' }}>
+                                            <label className="iconLeble text-color changeLinkText">My Account</label>
+                                        </Link>
                                     </li>
                                     <li style={this.state.userLogin ? {display: 'inline-block'} : {display: 'none'}}>
                                         <label className="iconLeble text-color changeLinkText">Sign Out</label>

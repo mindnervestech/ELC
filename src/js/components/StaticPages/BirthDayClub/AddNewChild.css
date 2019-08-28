@@ -55,6 +55,13 @@
   border-radius: 0px;
 }
 
+.select-field-box2 {
+  width: 32.2% !important;
+  height: 40px;
+  background-color: #fff;
+  border-radius: 0px;
+}
+
 .button-div {
   justify-content: center;
   text-align: center;

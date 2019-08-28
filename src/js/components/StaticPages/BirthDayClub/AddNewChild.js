@@ -8,7 +8,7 @@ import AlertBox from '../../Common/AlertBox/AlertBox';
 import { connect } from 'react-redux';
 import * as actions from '../../../redux/actions/index';
 
-let BirthDayClubImage="/../../assets/images/BirthDayClub/birthday-club.png"
+import BirthDayClubImage from '../../../../assets/images/BirthDayClub/birthday-club.png';
 
 export default class AddNewChild extends Component {
   constructor(props) {
@@ -62,8 +62,8 @@ export default class AddNewChild extends Component {
         </Row>
 
         <Row>
-          
-          <Col className="width"  style={{marginBottom:30}}>
+          <Col xs="0" lg="3"></Col>
+          <Col xs="12" lg="6" style={{marginBottom:30}}>
             <div className="border-block" >
               <div>
                 <Form>
@@ -79,22 +79,23 @@ export default class AddNewChild extends Component {
                         </div>
                         <div>
                           <div style={{ paddingRight: 10 ,display:"inline"}}>
-                            <select name="title"  style={{ width: "30%", marginRight: 0, padding:10 }}>
-                                <option selected disabled><FormattedMessage id="select.dd" defaultMessage="" /></option>
+                            <select name="title" className="select-field-box2" style={{marginRight: 0, padding:10 }}>
+                                <option selected disabled>DD</option>
                                 <option value="2011">value1</option>
                                 <option value="2012">value2</option>
                                 <option value="2013">value3</option>
                             </select>
                             </div>
-                          <div style={{ paddingRight: 10 ,display:"inline"}}><select name="title"  style={{ width: "30%", marginRight: 0,padding:10 }}>
-                                <option selected disabled><FormattedMessage id="select.mm" defaultMessage="" /></option>
+                          <div style={{ paddingRight: 10 ,display:"inline"}}>
+                          <select name="title"  className="select-field-box2" style={{marginRight: 0,padding:10 }}>
+                                <option selected disabled>MM</option>
                                 <option value="2011">value1</option>
                                 <option value="2012">value2</option>
                                 <option value="2013">value3</option>
                             </select></div>
-                          <div style={{ paddingRight: 10 ,display:"inline"}}>
-                            <select name="title" style={{ width: "30%", marginRight: 0,padding:10 }}>
-                                <option selected disabled><FormattedMessage id="select.yyyy" defaultMessage="" /></option>
+                          <div style={{ display:"inline"}}>
+                            <select name="title"  className="select-field-box2" style={{marginRight: 0,padding:10 }}>
+                                <option selected disabled>YYYY</option>
                                 <option value="2011">value1</option>
                                 <option value="2012">value2</option>
                                 <option value="2013">value3</option>
@@ -105,9 +106,9 @@ export default class AddNewChild extends Component {
                   <div style={{ marginTop: 40 }}>
                             <span className="blackTitle1"><FormattedMessage id="addnewchild.boyorgirl" defaultMessage="" /></span>
                         </div>
-                        <div>please.select
+                        <div>
                             <select name="title" className="select-field-box" style={{ width: "50%", marginRight: 0 }}>
-                                <option selected disabled><FormattedMessage id="please.select" defaultMessage="" /></option>
+                            <option selected disabled>Please Select</option>
                                 <option value="2011">value1</option>
                                 <option value="2012">value2</option>
                                 <option value="2013">value3</option>
@@ -118,7 +119,7 @@ export default class AddNewChild extends Component {
                         </div>
                         <div>
                             <select name="title" className="select-field-box" style={{ width: "50%", marginRight: 0 }}>
-                                <option selected disabled><FormattedMessage id="please.select" defaultMessage="" /></option>
+                                <option selected disabled>Please Select</option>
                                 <option value="2011">value1</option>
                                 <option value="2012">value2</option>
                                 <option value="2013">value3</option>
@@ -146,7 +147,7 @@ export default class AddNewChild extends Component {
               </div>
             </div>
           </Col>
-         
+          <Col xs="0" lg="3"></Col>
         </Row>
       </div>
     );

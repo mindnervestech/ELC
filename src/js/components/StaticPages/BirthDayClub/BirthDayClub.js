@@ -4,8 +4,8 @@ import { FormattedMessage } from 'react-intl';
 import { Row, Col, Image } from "react-bootstrap";
 import { Link, Redirect } from 'react-router-dom';
 
+import BirthDayClubImage from '../../../../assets/images/BirthDayClub/birthday-club.png';
 
-let BirthDayClubImage="/../../assets/images/BirthDayClub/birthday-club.png"
 export default class BirthDayClub extends Component {
   constructor(props)
   {
@@ -43,7 +43,7 @@ export default class BirthDayClub extends Component {
             <div className="paddingLeft">
               <h3 className="header-birth-club"><FormattedMessage id="birthdayclub.header" defaultMessage="" /></h3>
               <div className="img-src-width">
-                <Image src={BirthDayClubImage} alt="BirthDayClub" />
+                <img src={BirthDayClubImage}/>
               </div>
               <div style={{ textAlign: "center" }} >
                 <p>
