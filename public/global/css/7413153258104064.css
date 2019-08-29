@@ -1836,14 +1836,13 @@ body .ui-widget-content.fc-today.ui-state-highlight {
 .apex-item-text,
 .apex-item-select {
   color: #343434;
-  background-color: #f4f4f4;
-  border-color: #dadada;
+ 
 }
 
 .apex-item-textarea.apex-page-item-error,
 .apex-item-text.apex-page-item-error,
 .apex-item-select.apex-page-item-error {
-  border-color: #f77066;
+ 
 }
 
 .apex-item-textarea.apex-page-item-error:required:valid,
