@@ -78,7 +78,7 @@ class Footer extends Component {
                         </ul>
                     </div>
 
-                    <div className="col col-4" style={{textAlign: 'start', padding: 0}}>
+                    <div className="col col-3" style={{textAlign: 'start', padding: 0}}>
                         <div className="footer-title">
                             <span><FormattedMessage id="footer.Legal" defaultMessage="Legal" /></span>
                         </div>

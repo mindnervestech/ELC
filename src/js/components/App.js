@@ -82,8 +82,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      language: 'ar',
-      dir: 'rtl',
+      language: 'en',
+      dir: 'ltr',
       changeData: false,
       store_id: '',
       toHome: false,
@@ -210,7 +210,7 @@ class App extends Component {
     //country = (cookie.load('country') === null) ? 'KSA' : cookie.load('country');
 
     if ((cookie.load('country') === null) || (cookie.load('country') === "undefined")) {
-      country = 'KSA';
+      country = 'UAE';
     } else {
       country = cookie.load('country');
     }
@@ -224,7 +224,7 @@ class App extends Component {
     let language;
     // language = (cookie.load('language') === null) ? 'ar' : cookie.load('language');
     if ((cookie.load('language') === null) || (cookie.load('language') === "undefined")) {
-      language = 'ar';
+      language = 'en';
     } else {
       language = cookie.load('language');
     }

@@ -1836,13 +1836,14 @@ body .ui-widget-content.fc-today.ui-state-highlight {
 .apex-item-text,
 .apex-item-select {
   color: #343434;
- 
+  background-color: #f4f4f4;
+  border-color: #dadada;
 }
 
 .apex-item-textarea.apex-page-item-error,
 .apex-item-text.apex-page-item-error,
 .apex-item-select.apex-page-item-error {
- 
+  border-color: #f77066;
 }
 
 .apex-item-textarea.apex-page-item-error:required:valid,
@@ -1901,7 +1902,7 @@ body .ui-widget-content.fc-today.ui-state-highlight {
 .apex-item-text:focus,
 .apex-item-select:focus {
   background-color: #ffffff !important;
-  
+  border-color: #0b7e36 !important;
 }
 
 .apex-item-textarea:hover,
@@ -1996,20 +1997,20 @@ body .ui-widget-content.fc-today.ui-state-highlight {
 
 .checkbox_group input:focus+label:before,
 .radio_group input:focus+label:before {
-  border-color: #f693b9;
+  border-color: #0b7e36;
 }
 
 .checkbox_group input:focus:checked+label:before,
 .radio_group input:focus:checked+label:before {
-  border-color: #f693b9;
-  background-color: #f693b9;
+  border-color: #0b7e36;
+  background-color: #0b7e36;
   box-shadow: 0 0 0 1px #f4f4f4 inset;
 }
 
 .checkbox_group input:checked+label:before,
 .radio_group input:checked+label:before {
-  border-color: #f693b9;
-  background-color: #f693b9;
+  border-color: #0b7e36;
+  background-color: #0b7e36;
 }
 
 .radio_group input+label:after {
@@ -6809,10 +6810,11 @@ body .ui-dialog .ui-dialog-buttonpane {
 .apex-item-textarea,
 .apex-item-text,
 .apex-item-select {
- 
-  
-  border: 0px ;
-  border-bottom: 1px;
+  color: #343434;
+  background-color: #fafafa;
+  border-color: #0b7e36;
+  border: 0px solid #0b7e36;
+  border-bottom: 1px solid #0b7e36;
 }
 
 .t-WizardSteps-step.is-active .t-WizardSteps-marker {

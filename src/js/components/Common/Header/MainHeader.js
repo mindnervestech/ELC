@@ -147,7 +147,6 @@ class MainHeader extends Component {
 
     translate = (lang, dir) => {
         this.props.handleLanguageSelection(lang, dir);
-        // this.closeHBMenu();
         this.setState({showMenu: false});
     }
 
