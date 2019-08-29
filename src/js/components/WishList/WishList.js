@@ -68,11 +68,11 @@ class WishList extends Component {
     //   }} />
     // }
 
-    // if (!(this.props.isUserLoggedIn)) {
-    //   return <Redirect to={{
-    //     pathname: `/${store_locale}/login`,
-    //   }} />;
-    // }
+    if (!(this.props.isUserLoggedIn)) {
+      return <Redirect to={{
+        pathname: `/${store_locale}/login`,
+      }} />;
+    }
 
     const productList = this.props.products.map((item, index) => {
       return (<Product

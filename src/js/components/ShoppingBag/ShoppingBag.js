@@ -247,7 +247,6 @@ class ShoppingBag extends Component {
         // }
 
       })
-      console.log(itemList);
       return <ShoppingBagItem cart_details={this.props.cart_details}
       />;
 

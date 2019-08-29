@@ -22,7 +22,6 @@ class ShoppingBagItem extends Component {
 
    render() {
       const product = this.props.cart_details.products;
-      console.log(this.props);
       const store_locale = this.props.globals.store_locale;
 
       let cartProductPrice;

@@ -182,7 +182,8 @@ export const removeProduct = (payload) => {
         let newPorduct = prodArray[payload.index];
 
         let data = {
-            product_id: newPorduct.id,
+            // product_id: newPorduct.id,
+            sku:newPorduct.sku,
             quote_id: getState().myCart.quote_id,
         }
         dispatch(loadingSpinner({ loading: true }))

@@ -60,7 +60,7 @@ dispatch(loadingSpinner({ loading: true }));
 let cb = {
   success: res => {
    
-    if (res.status && res.code === 200) {
+    if ((res.status && res.code === 200)|| res.content) {
       dispatch(CallActionForhelpData({ help: { ...res } }));
       dispatch(loadingSpinner({ loading: false }));
       

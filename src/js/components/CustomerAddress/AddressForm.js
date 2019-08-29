@@ -24,6 +24,7 @@ class AddressForm extends Component {
                 addressThree: '',
                 addressType: 'Home',
                 primaryAddress: 0,
+                postcode: '',
             },
             addressId: "",
             cities: [],
@@ -164,7 +165,8 @@ class AddressForm extends Component {
             UserCountry: this.state.AddressFields.location,
             DefaultBilling: this.state.AddressFields.primaryAddress,
             DefaultShipping: this.state.AddressFields.primaryAddress,
-            AddressType: this.state.AddressFields.addressType
+            AddressType: this.state.AddressFields.addressType,
+            postcode: this.state.AddressFields.postcode,
         };
         console.log(payload)
         if (this.state.addressId !== '') {
@@ -493,7 +495,7 @@ class AddressForm extends Component {
                                                                 </div>
                                                             </div>
                                                         </div><div className="row">
-                                                            <div className="col col-6 apex-col-auto">
+                                                            <div className="col col-12 apex-col-auto">
                                                                 <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel apex-item-wrapper apex-item-wrapper--text-field" onFocus={(e) => this.divOnFocus(e)}
                                                                     onBlur={(e) => this.divOnBlure(e)} id="P25_RADD3_CONTAINER"><div className="t-Form-labelContainer">
                                                                         <label htmlFor="P25_RADD3" id="P25_RADD3_LABEL" className="t-Form-label"><FormattedMessage id="Address3.Text" defaultMessage="Address 3" /></label>
@@ -506,7 +508,8 @@ class AddressForm extends Component {
 
 
                                                                 </div>
-                                                            </div><div className="col col-6 apex-col-auto">
+                                                            </div>
+                                                                {/* <div className="col col-6 apex-col-auto">
 
 
                                                                 <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel apex-item-wrapper plugin-intltelinput-www.jqueryscript.net js-show-label">
@@ -519,8 +522,36 @@ class AddressForm extends Component {
 
                                                                     </div>
                                                                 </div>
+                                                            </div> */}
+                                                        </div>
+                                                        <div className="row">
+                                                            <div className="col col- apex-col-auto">
+                                                                <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel apex-item-wrapper apex-item-wrapper--text-field" onFocus={(e) => this.divOnFocus(e)}
+                                                                    onBlur={(e) => this.divOnBlure(e)} id="P25_RADD3_CONTAINER"><div className="t-Form-labelContainer">
+                                                                        <label htmlFor="P25_RADD3" id="P25_RADD3_LABEL" className="t-Form-label"><FormattedMessage id="Postcode.Text" defaultMessage="Post Code" /></label>
+                                                                    </div>
+                                                                    <div className="t-Form-inputContainer">
+                                                                        <div className="t-Form-itemWrapper">
+                                                                            <input type="text" id="P25_RADD3" name="P25_RADD3" className="text_field apex-item-text" size={30} maxLength={100} onChange={this.handleChange.bind(this, "postcode")} value={this.state.AddressFields["postcode"]} size={30} maxLength />
+                                                                        </div>
+                                                                        <span id="P25_RADD3_error_placeholder" className="a-Form-error" data-template-id="33609965712469734_ET" />
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                        </div><div className="row">
+                                                            <div className="col col-6 apex-col-auto">
+                                                                <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel apex-item-wrapper plugin-intltelinput-www.jqueryscript.net js-show-label">
+                                                                    <div className="t-Form-inputContainer PhoneNumber">
+                                                                        <PhoneNumber
+                                                                            changed={this.contactNumber}
+                                                                            isdefaultPhone={this.state.isdefaultPhone}
+                                                                            defaultPhone={{ ...defaultPhoneNumber }} />
+                                                                        {contactNumberInputField}
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div className="row">
                                                             <div className="col col-6 apex-col-auto">
                                                                 <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel  apex-item-wrapper apex-item-wrapper--radiogroup " id="P25_ADDR_TYPE_CONTAINER"><div className="t-Form-labelContainer">
                                                                     <label htmlFor="P25_ADDR_TYPE" id="P25_ADDR_TYPE_LABEL" className="t-Form-label"><FormattedMessage id="Checkout.AddressType" defaultMessage="Address Type" /></label>
