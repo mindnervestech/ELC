@@ -20,7 +20,7 @@ import deliveryBy from '../../../../assets/images/header/Truck1.svg';
 import freeDelivery from '../../../../assets/images/elc_icon_03.png';
 import freeCollect from '../../../../assets/images/elc_icon_05.png';
 import logoGroup from '../../../../assets/images/social/Logo Group.svg';
-import bagLogo from '../../../../assets/images/header/Store Locator 3 Copy 2.svg';
+import bagLogo from '../../../../assets/images/header/basket.svg';
 
 import location from '../../../../assets/images/header/location.svg';
 import help from '../../../../assets/images/header/help.svg';
@@ -362,26 +362,26 @@ class MainHeader extends Component {
                                     </li> */}
                                     <li className="titleHover">
                                         {/* <i className="icon-heart"></i> */}
-                                        <img src={help} className="image-ion" style={{marginTop: 3}}></img>
-                                        <label className="iconLeble text-color changeLinkText"><Link to={`/${store_locale}/help-and-faq`} style={{ textDecoration: 'none' }}><FormattedMessage id="Header.Help" defaultMessage="help" /></Link></label>
+                                        <img src={help} className="image-ion"></img>
+                                        <label style={{lineHeight: '0.5rem'}} className="iconLeble text-color changeLinkText"><Link to={`/${store_locale}/help-and-faq`} style={{ textDecoration: 'none' }}><FormattedMessage id="Header.Help" defaultMessage="help" /></Link></label>
                                     </li>
                                     <li className="titleHover" style={this.state.userLogin ? {display: 'none'} : {display: 'inline-block', marginBottom: 5}}>
                                         <Link to={`/${store_locale}/Login`} style={{ textDecoration: 'none' }}>
-                                            <img src={profile} className="image-ion" style={{marginTop: 9}}></img>
+                                            <img src={profile} className="image-ion" style={{marginTop: 8}}></img>
                                                 <label className="iconLeble text-color changeLinkText"><FormattedMessage id="Header.SignInOrRegister" defaultMessage="sign in / register"/></label>
                                         </Link>
                                     </li>
                                     <li style={this.state.userLogin ? {display: 'inline-block'} : {display: 'none'}}>
                                     <img src={profile} className="image-ion"></img>
-                                        <label className="iconLeble text-color changeLinkText"><FormattedMessage id="Header.Hello" defaultMessage="Hello" /> {this.props.user_details.customer_details.firstname} {this.props.user_details.customer_details.lastname}</label>
+                                        <label className="iconLeble text-color changeLinkText"><FormattedMessage id="header.Hello" defaultMessage="Hello" /> {this.props.user_details.customer_details.firstname} {this.props.user_details.customer_details.lastname}</label>
                                     </li>
                                     <li style={this.state.userLogin ? {display: 'inline-block'} : {display: 'none'}}>
                                         <Link to={`/${store_locale}/Login`} style={{ textDecoration: 'none' }}>
-                                            <label className="iconLeble text-color changeLinkText"><FormattedMessage id="Header.SignOut" defaultMessage="My Account" /></label>
+                                            <label className="iconLeble text-color changeLinkText"><FormattedMessage id="header.MyAccount" defaultMessage="My Account" /></label>
                                         </Link>
                                     </li>
                                     {/* <li style={this.state.userLogin ? {display: 'inline-block'} : {display: 'none'}}>
-                                        <label className="iconLeble text-color changeLinkText"><FormattedMessage id="Header.MyAccount" defaultMessage="Sign Out" /></label>
+                                        <label className="iconLeble text-color changeLinkText"><FormattedMessage id="header.SignOut" defaultMessage="Sign Out" /></label>
                                     </li> */}
                                     {/* {profileIcon}
 
@@ -442,7 +442,7 @@ class MainHeader extends Component {
                                             <a href="javascript:void(0);" onClick={(e) => this.translate('en', 'ltr')} className="active" >en</a> | <a href="javascript:void(0);" onClick={(e) => this.translate('ar', 'rtl')} >العربية</a></div>
                                     </li> */}
                                       <li style={{ paddingLeft: 10 }}>
-                                                <img src={bagLogo} />
+                                                <img src={bagLogo} style={{height: 25, width: 25}}/>
                                             </li>
                                              <li style={{paddingTop: 8}}>
                                                 <label className="headerLable2"><FormattedMessage id="header.mybasket" defaultMessage="my basket" />
@@ -499,7 +499,7 @@ class MainHeader extends Component {
                                 </Link>
                                 <img src={location} className="mobileHomePageIcon"></img>
                                 <Link to={`/${store_locale}/cart`} style={{ textDecoration: 'none' }}>
-                                <img src={bagLogo} className="mobileHomePageIcon" />
+                                <img src={bagLogo} className="mobileHomePageIcon" style={{height: 25, width: 25}}/>
                                 </Link>
                             </div>
                             <div className="divShowOnMobile" style={{ padding: "0px 10px", marginTop: 10 }}>

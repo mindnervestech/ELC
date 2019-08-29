@@ -215,16 +215,9 @@ class ProductData extends Component {
 
 						}}
 					>
-						{/* <Row className="divShowOnWeb">
-							<Col xs="3">
-								<SideManu action={this.handler}></SideManu>
-							</Col>
-							<Col xs="9" style={{ padding: 0 }}> */}
-								<div className="divShowOnWeb">
-									<ProductListData list={Data} />
-								</div>
-							{/* </Col>
-						</Row> */}
+						<div className="divShowOnWeb">
+							<ProductListData list={Data} />
+						</div>
 						<div className="divShowOnMobile">
 							<ProductListData list={Data} />
 						</div>

@@ -1096,6 +1096,7 @@
     "header.EN|English": "إنجليزي| اللغة الإنجليزية",
     "header.AR|Arabic": "عربي| اللغة العربية",
     "header.English": "اللغة الإنجليزية",
-    "header.Arabic": "اللغة العربي"
+    "header.Arabic": "اللغة العربي",
+    "Signup.validation.confirmEmail.invalid": "Email and Confirm Email must be same"
   }
 }

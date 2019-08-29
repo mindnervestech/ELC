@@ -141,7 +141,8 @@ export const API = {
 		request({}, cb, { type: 'GET', url: URL });
 	},
 	getProductSearchList: (data, cb) => {
-        let GET_PRODUCT_LIST_BY_SEARCH = `${BASE_URL}searchresult/?q=${data.q}&storeid=6`;
+		let categary = data.q.replace(" ", "-")
+		let GET_PRODUCT_LIST_BY_SEARCH = `${BASE_URL}searchresult/?q=${categary}&storeid=${data.storeId}`;
         request({}, cb, { type: 'GET', url: GET_PRODUCT_LIST_BY_SEARCH });
     },
 	//getProductSearchList: (data, cb) => request(data, cb, GET_PRODUCT_SEARCH_LIST),

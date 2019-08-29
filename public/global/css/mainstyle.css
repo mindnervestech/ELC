@@ -3032,6 +3032,14 @@ li {
         z-index: 1;
     }
 
+    .footer-css .email-field {
+        height: 45px;
+        padding: 0px 15px;
+        width: 80%;
+        border: solid 1px;
+        border-color: #0D943F;
+    }
+
     .banner-image-hight {
         height: 383px;
     }

@@ -195,16 +195,28 @@ class ProductListData extends Component {
 						</div>
 						<div style={{ width: '50%', height: 50, position: 'absolute', top: 1, right: 0 }}>
 							<select placeholder={'Filter'} onChange={this.filter} style={{ height: 50, width: '100%', color: 'transparent', backgroundColor: 'transparent', border: 'none' }}>
-								<option value="relevance">Relevance</option>
-								<option value="price_desc">Price (High to Low)</option>
-								<option value="price_asc">Price (Low to High)</option>
+								<FormattedMessage id="Product.Listing.Relevance" defaultMessage="Relevance">
+									{(message) =>
+										<option value="relevance">{message}</option>
+									}
+								</FormattedMessage>
+								<FormattedMessage id="Product.Listing.PriceHTL" defaultMessage="Price (High to Low)">
+									{(message) =>
+										<option value="price_desc">{message}</option>
+									}
+								</FormattedMessage>
+								<FormattedMessage id="Product.Listing.PriceLTH" defaultMessage="Price (Low to High)">
+									{(message) =>
+										<option value="price_asc">{message}</option>
+									}
+								</FormattedMessage>
 							</select>
 						</div>
 
 						<div className="row">
 							<div className="col col-12 apex-col-auto">
 								<div className="t-Region h-hidden-desktop  t-Region--noPadding t-Region--scrollBody"
-									id="cd-cart" style={this.state.showFilterOnMobile ? {right: 0} : {right: '-100%'}}>
+									id="cd-cart" style={this.state.showFilterOnMobile ? { right: 0 } : { right: '-100%' }}>
 									<div className="t-Region-header">
 										<div className="t-Region-headerItems t-Region-headerItems--title">
 											<span className="t-Region-headerIcon">
@@ -254,17 +266,29 @@ class ProductListData extends Component {
 									<Col xs="5">
 										<Row>
 											<Col xs="3">
-												<span className="blackTitle">Sort by</span>
+												<span className="blackTitle"><FormattedMessage id="Product.Listing.SortBy" defaultMessage="Sort by" /></span>
 											</Col>
 											<Col xs="6" style={{ padding: 0 }}>
 												<select placeholder={'Filter'} onChange={this.filter}>
-													<option value="relevance">Relevance</option>
-													<option value="price_desc">Price (High to Low)</option>
-													<option value="price_asc">Price (Low to High)</option>
+													<FormattedMessage id="Product.Listing.Relevance" defaultMessage="Relevance">
+														{(message) =>
+															<option value="relevance">{message}</option>
+														}
+													</FormattedMessage>
+													<FormattedMessage id="Product.Listing.PriceHTL" defaultMessage="Price (High to Low)">
+														{(message) =>
+															<option value="price_desc">{message}</option>
+														}
+													</FormattedMessage>
+													<FormattedMessage id="Product.Listing.PriceLTH" defaultMessage="Price (Low to High)">
+														{(message) =>
+															<option value="price_asc">{message}</option>
+														}
+													</FormattedMessage>
 												</select>
 											</Col>
 											<Col xs="3">
-												<span className="viewAll" onClick={() => this.viewAll()}>View all</span>
+												<span className="viewAll" onClick={() => this.viewAll()}><FormattedMessage id="profile.ViewAll.Title" defaultMessage="View all" /></span>
 											</Col>
 										</Row>
 									</Col>
