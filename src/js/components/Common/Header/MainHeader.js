@@ -459,7 +459,8 @@ class MainHeader extends Component {
                             </Row>
                             <div className="divShowOnMobile" style={{ backgroundColor: "#fff", height: '4.2rem', paddingTop: 10 }}>
                                 <div className="language">
-                                    <button className={this.state.showMenu ? 'Button is-open' : 'Button'} onClick={this.showMenu}>EN</button>
+                                    {/* <button className={this.state.showMenu ? 'Button is-open' : 'Button'} onClick={this.showMenu}>EN</button> */}
+                                    <button className={this.state.showMenu ? 'Button is-open' : 'Button'} onClick={this.showMenu}>{globals.language.toUpperCase()}</button>
                                     {
                                         this.state.showMenu
                                             ? (
@@ -479,7 +480,7 @@ class MainHeader extends Component {
                                             )
                                     }
                                 </div>
-                                <div style={{ width: '45%', display: 'inline-block' }}>
+                                <div style={{ width: '45%', display: 'inline-block', textAlign: 'start'}}>
                                     <span style={{ height: 40 }}>
                                         <button className="mobileHomePageButtonSecond text-color"><FormattedMessage id="header.TheBirthdayclub" defaultMessage="The Birthday Club" /></button>
                                     </span>

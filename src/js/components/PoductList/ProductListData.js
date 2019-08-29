@@ -193,7 +193,7 @@ class ProductListData extends Component {
 							</div>
 							<div className="t-BreadcrumbRegion-buttons" />
 						</div>
-						<div style={{ width: '50%', height: 50, position: 'absolute', top: 1, right: 0 }}>
+						<div className="sortDroupDownOnMobile">
 							<select placeholder={'Filter'} onChange={this.filter} style={{ height: 50, width: '100%', color: 'transparent', backgroundColor: 'transparent', border: 'none' }}>
 								<FormattedMessage id="Product.Listing.Relevance" defaultMessage="Relevance">
 									{(message) =>
@@ -223,8 +223,8 @@ class ProductListData extends Component {
 												<span className="t-Icon " aria-hidden="true" />
 											</span>
 											<h5 className="t-Region-title" id="cd-cart_heading">
-												Filters
-													</h5>
+												<FormattedMessage id="Product.Listing.Filter" defaultMessage="Filters" />
+											</h5>
 										</div>
 										<div className="t-Region-headerItems t-Region-headerItems--buttons">
 											<button

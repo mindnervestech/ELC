@@ -152,7 +152,7 @@ class Footer extends Component {
                     </div>
                     <div>
                         <input type="text" placeholder="enter your e-mail address" className="email-field"></input>
-                        <input type="submit" value="submit" className="submit-button"></input>
+                        <button className="submit-button"><FormattedMessage id="Submit.Text" defaultMessage="Submit" /></button>
                     </div>
                     <div className="mobile-manu">
                         <Collapsible trigger={<FormattedMessage id="footer.AboutELC" defaultMessage="About ELC" />}>
