@@ -58,7 +58,7 @@ class DeliveryPolicy extends Component {
 				<div className="container">
 					<div className="row">
 						<div className="col col-12 apex-col-auto">
-						<h1>Delivery Policy</h1>
+						
 
 						
 							<div

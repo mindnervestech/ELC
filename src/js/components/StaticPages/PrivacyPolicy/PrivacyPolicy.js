@@ -57,7 +57,7 @@ class PrivacyPolicy extends Component {
 				<div className="container">
 					<div className="row">
 						<div className="col col-12 apex-col-auto">
-						<h1>Privacy Policy</h1>
+						
 							<div
 								className="t-Region g-wrapper-main_content  t-Region--removeHeader t-Region--noBorder t-Region--scrollBody margin-top-lg"
 								id="R231982418266982051"

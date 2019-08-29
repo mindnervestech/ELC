@@ -101,7 +101,8 @@ class AboutUs extends Component {
 const mapStateToProps = state => {
 	return {
 		aboutUs : state.static.aboutUs,
-		spinnerProduct: state.spinner.loadingProduct
+		spinnerProduct: state.spinner.loadingProduct,
+		globals:state.global
  	}
 }
 
