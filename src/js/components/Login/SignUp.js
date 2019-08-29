@@ -119,7 +119,7 @@ class SignUp extends Component {
       if (fields["email"].length > 0) {
         let lastAtPos = fields["email"].lastIndexOf('@');
         let lastDotPos = fields["email"].lastIndexOf('.');
-        if (!(lastAtPos < lastDotPos && lastAtPos > 0 && fields["email"].indexOf('@@') == -1 && lastDotPos > 2 && (fields["email"].length - lastDotPos) > 2)) {
+        if (!(lastAtPos < lastDotPos && lastAtPos > 0 && fields["email"].indexOf('@@') == -1 && lastDotPos > 2 && (fields["email"].length - lastDotPos) > 2 && !fields["email"].includes(' '))) {
           formIsValid = false;
           errors["email"] = <FormattedMessage id="Signup.validation.email.invalid" defaultMessage="First Name cannot be empty" />;
         }
@@ -159,14 +159,16 @@ class SignUp extends Component {
 
     //Password
     if (typeof fields["password"] !== "undefined") {
+      let pattern = '^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d^a-zA-Z0-9].{7,50}$'
       if (fields["password"].length === 0) {
         formIsValid = false;
-        errors["password"] = <FormattedMessage id="Signup.validation.empty.password" defaultMessage="First Name cannot be empty" />;
-      }
-      console.log("form is valid 7", formIsValid);
-      if (fields["password"].length < 1) {
+        errors["password"] = <FormattedMessage id="Signup.validation.password.empty" defaultMessage="First Name cannot be empty" />;
+      }else if (fields["password"].length < 8) {
         formIsValid = false;
-        errors["password"] = <FormattedMessage id="Signup.validation.password.length" defaultMessage="First Name cannot be empty" />;
+        errors["password"] = <FormattedMessage id="Form.PasswordLength" defaultMessage="First Name cannot be empty" />;
+      }else if (!fields["password"].match(pattern)){
+        formIsValid = false;
+        errors["password"] = <FormattedMessage id="Form.PasswordConventions" defaultMessage="First Name cannot be empty" />;
       }
     }
 
@@ -485,7 +487,7 @@ class SignUp extends Component {
                                 <div className="rmPadding col col-12 apex-col-auto">
                                   <div className="block row" id="P1001_EMAIL_CONTAINER"><div className="rmTopPadding rmPadding t-Form-labelContainer">
                                     <label htmlFor="P1001_EMAIL" id="P1001_EMAIL_LABEL" className="bolt t-Form-label">
-                                      <FormattedMessage id="Form.Email" defaultMessage="Email" />
+                                      <FormattedMessage id="ContactUs.Email" defaultMessage="Email" /> *
                                       <span className="u-VisuallyHidden">(Value Required)</span></label>
                                   </div>
                                     <div className="contents row">
@@ -557,7 +559,7 @@ class SignUp extends Component {
 
                               <div className="row backWhite">
                                 <div className="rmPadding col col-12 apex-col-auto">
-                                  <div className="button-add-to-basket right" type="button" id="B35835076185290944" onClick={this.signUpSubmit}><span className="t-Button-label bolt"><FormattedMessage id="login.SignUp.Title" defaultMessage="Register" /></span></div>
+                                  <div className="button-add-to-basket right" type="button" id="B35835076185290944" onClick={this.signUpSubmit}><span className="t-Button-label bolt" style={{color: '#fff'}}><FormattedMessage id="login.SignUp.Title" defaultMessage="Register" /></span></div>
                                 </div>
                               </div>
 

@@ -307,7 +307,7 @@ class MainHeader extends Component {
                                         <Button className="firstButton text-color">The Entertainer</Button>
                                     </li> */}
                                     <li style={{ height: 40, marginLeft: 20}}>
-                                        <Button className="secondButton text-color">The Birthday Club</Button>
+                                        <Button className="secondButton text-color"><FormattedMessage id="header.TheBirthdayclub" defaultMessage="The Birthday Club" /></Button>
                                     </li>
                                     {<li>
                                         <div className="changecountry">
@@ -328,7 +328,7 @@ class MainHeader extends Component {
                                                 <div className="list" style={{textAlign: 'start'}}>
                                                     <div style={{paddingLeft:10, paddingBottom: 7}}> 
                                                         <img style={{height: '20px',width: '30px'}} src={UAEImage}></img>
-                                                        <a href="javascript:void(0);" className="uae" id="cart" onClick={() => this.onChangeCountry('UAE')}><FormattedMessage id="header.uaes" defaultMessage="UAE" /></a>
+                                                        <a href="javascript:void(0);" className="uae" id="cart" onClick={() => this.onChangeCountry('UAE')}>UAE</a>
                                                     </div>
                                                     <div style={{paddingLeft:10}}>
                                                         <img style={{height: '20px',width: '30px'}} src={KSAImage}></img>
@@ -374,15 +374,15 @@ class MainHeader extends Component {
                                     </li>
                                     <li style={this.state.userLogin ? {display: 'inline-block'} : {display: 'none'}}>
                                     <img src={profile} className="image-ion"></img>
-                                        <label className="iconLeble text-color changeLinkText">Hello {this.props.user_details.customer_details.firstname} {this.props.user_details.customer_details.lastname}</label>
+                                        <label className="iconLeble text-color changeLinkText"><FormattedMessage id="Header.Hello" defaultMessage="Hello" /> {this.props.user_details.customer_details.firstname} {this.props.user_details.customer_details.lastname}</label>
                                     </li>
                                     <li style={this.state.userLogin ? {display: 'inline-block'} : {display: 'none'}}>
                                         <Link to={`/${store_locale}/Login`} style={{ textDecoration: 'none' }}>
-                                            <label className="iconLeble text-color changeLinkText">My Account</label>
+                                            <label className="iconLeble text-color changeLinkText"><FormattedMessage id="Header.SignOut" defaultMessage="My Account" /></label>
                                         </Link>
                                     </li>
                                     {/* <li style={this.state.userLogin ? {display: 'inline-block'} : {display: 'none'}}>
-                                        <label className="iconLeble text-color changeLinkText">Sign Out</label>
+                                        <label className="iconLeble text-color changeLinkText"><FormattedMessage id="Header.MyAccount" defaultMessage="Sign Out" /></label>
                                     </li> */}
                                     {/* {profileIcon}
 
@@ -409,7 +409,7 @@ class MainHeader extends Component {
                         <div className="containers-main">
                             {/* <Container style={{width: "100%"}}> */}
                             <Row style={{ paddingRight: 30, paddingLeft: 30 }} className="divShowOnWeb">
-                                <Col xs="4" style={{ paddingLeft: 0, paddingRight: 0 }}>
+                                <Col xs="4" style={{ paddingLeft: 0, paddingRight: 0, textAlign: 'start' }}>
                                     <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
                                         <img style={{ height: 64, width: "75%", paddingLeft: 5 }} src={logoGroup} />
                                     </Link>
@@ -446,7 +446,7 @@ class MainHeader extends Component {
                                                 <img src={bagLogo} />
                                             </li>
                                              <li style={{paddingTop: 8}}>
-                                                <label className="headerLable2">my basket
+                                                <label className="headerLable2"><FormattedMessage id="header.mybasket" defaultMessage="my basket" />
                                                 {/* <span style={{ fontFamily: "VAG Rounded ELC Bold", marginLeft: 10 }}>£30.00</span> */}
                                                 </label>
                                             </li>
@@ -467,10 +467,10 @@ class MainHeader extends Component {
                                                 <div className="menu">
                                                 <ul>
                                                     <li className="currency__item">
-                                                        <a href="javascript:void(0);" onClick={(e) => this.translate('en', 'ltr')} className="active" > EN | English</a>
+                                                        <a href="javascript:void(0);" onClick={(e) => this.translate('en', 'ltr')} className="active" >EN | English</a>
                                                     </li>
                                                     <li className="currency__item">
-                                                        <a href="javascript:void(0);" onClick={(e) => this.translate('ar', 'rtl')}> SU | Saudi</a>
+                                                        <a href="javascript:void(0);" onClick={(e) => this.translate('ar', 'rtl')}> AR | Arabic</a>
                                                     </li>
                                                 </ul>
                                                 </div>
@@ -482,7 +482,7 @@ class MainHeader extends Component {
                                 </div>
                                 <div style={{ width: '45%', display: 'inline-block' }}>
                                     <span style={{ height: 40 }}>
-                                        <button className="mobileHomePageButtonSecond text-color">Early Learning Center</button>
+                                        <button className="mobileHomePageButtonSecond text-color"><FormattedMessage id="header.TheBirthdayclub" defaultMessage="The Birthday Club" /></button>
                                     </span>
                                 </div>
 
@@ -585,14 +585,13 @@ class MainHeader extends Component {
                                                 <img src={deliveryBy} className="imageHight40" />
                                             </Col>
                                             <Col xs="7">
-                                                 <ul style={{ textAlign: 'start', paddingTop: 10 }}>
-                                   
-
+                                                <ul style={{ textAlign: 'start', paddingTop: 10 }}>
                                                     <li style={{ fontSize: 13, color: "#0D943F" }}>
-                                                        Free Std Delivery
+                                                    <FormattedMessage id="header.FreeStdDelivery" defaultMessage="Free Std Delivery" />
                                                     </li>
-                                                    
-                                                    
+                                                    {/* <li style={{ fontSize: 11 }} className="text-color">
+                                                        when you spend £10
+                                                    </li> */}
                                                 </ul>
                                             </Col>
                                         </Row>
@@ -604,10 +603,9 @@ class MainHeader extends Component {
                                                 <img src={freeDelivery} className="imageHight40" />
                                             </Col>
                                             <Col xs="7">
-                                           
                                                 <ul style={{ textAlign: 'start', paddingTop: 10 }}>
                                                     <li style={{ fontSize: 13, color: "#0D943F" }}>
-                                                        Free Gift wrapping
+                                                    <FormattedMessage id="header.FreeGiftwrapping" defaultMessage="Free Gift wrapping" />
                                                     </li>
                                                     {/* <li style={{ fontSize: 11 }} className="text-color">
                                                         for next working day delivery
@@ -623,10 +621,9 @@ class MainHeader extends Component {
                                                 <img src={freeCollect} className="imageHight40" />
                                             </Col>
                                             <Col xs="7">
-                                            
                                                 <ul style={{ textAlign: 'start', paddingTop: 10 }}>
                                                     <li style={{ fontSize: 13, color: "#0D943F" }}>
-                                                        Free Returns
+                                                    <FormattedMessage id="header.FreeReturns" defaultMessage="Free Returns" />
                                                     </li>
                                                     {/* <li style={{ fontSize: 11 }} className="text-color">
                                                         in as little as 30 minutes

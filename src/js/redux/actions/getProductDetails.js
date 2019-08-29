@@ -116,10 +116,10 @@ export const callActionGetProductList = payload => {
 	};
 };
 
-export const getYouMayAlsoLikeData = () => {
+export const getYouMayAlsoLikeData = (payload) => {
 	return dispatch => {
 	const data = {
-		
+		currentStore: payload.currentStore,
 	};
 	dispatch(callProductDetailLoader({ productDetailLoader: true }))
 	let cb = {

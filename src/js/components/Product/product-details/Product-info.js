@@ -131,8 +131,6 @@ class ProductInfo extends Component {
 
 
 	_handleClick = async () => {
-
-		console.log("ID",this.props.productDetails.id)
 		// if (this.props.customerDetails.customer_id === undefined) {
 		// 	this.setState({ guestUser: true });
 		// 	return;

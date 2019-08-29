@@ -136,7 +136,7 @@ export const API = {
 		request({}, cb, { type: 'GET', url: GET_PRODUCT_LIST_BY_CATEGARY });
 	},
 	getYouMayAlsoLikeData: (data, cb) => {
-		let URL = 'https://elcm2.iksulalive.com/index.php/rest/V1/app/productsbycategory?category_id=28&store_id=2&count=6';
+		let URL = `${BASE_URL}productsbycategory?category_id=28&store_id=${data.currentStore}&count=6`;
 		request({}, cb, { type: 'GET', url: URL });
 	},
 	getProductSearchList: (data, cb) => {

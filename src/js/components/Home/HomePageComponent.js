@@ -24,7 +24,10 @@ class HomePageComponent extends Component {
     }
 
     componentWillMount(){
-        this.props.getYouMayAlsoLikeData()
+        let payload = {
+            currentStore : this.props.globals.currentStore
+        }
+        this.props.getYouMayAlsoLikeData(payload)
     }
 
     render() {
@@ -519,7 +522,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        getYouMayAlsoLikeData: () => dispatch(actions.getYouMayAlsoLikeData()),
+        getYouMayAlsoLikeData: (payload) => dispatch(actions.getYouMayAlsoLikeData(payload)),
     }
 
 }

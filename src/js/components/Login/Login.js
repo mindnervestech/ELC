@@ -268,7 +268,7 @@ class Login extends Component {
     return (
       <Spinner>
         <div>
-          <div style={{ width: '500' }}>
+          <div style={{ width: '525.9584px' }}>
             <Modal modalId="CreateAccount" open={openFirstModal} onClose={this.onCloseFirstModal} center style={{ width: '425.9584px' }}>
 
               <h3><FormattedMessage id="account.Creation" defaultMessage="Account Creation" /></h3>
@@ -407,7 +407,7 @@ class Login extends Component {
                                           {/* on blur eon focus */}
                                           <div className="row collapse-a" id="P1000_USERNAME_CONTAINER" ><div className="rmPadding rmTopPadding t-Form-labelContainer">
                                             <label htmlFor="P1000_USERNAME" id="P1000_USERNAME_LABEL" className="t-Form-label bolt">
-                                              <FormattedMessage id="emailaddress" defaultMessage="username" />
+                                              <FormattedMessage id="ContactUs.Email" defaultMessage="Email Address" /> *
                                             </label>
                                           </div>
                                             <div className="row contents">
@@ -446,7 +446,7 @@ class Login extends Component {
                                           </div>
                                           </div>
                                         </div>
-                                        <div className="forgotPass" style={{width: "96%", textAlign: 'right'}} >
+                                        <div className="forgotPass" style={{width: "99%", textAlign: 'right'}} >
                                           <a className="forget-password-link link" style={{width: "100%"}} onClick={this.onOpenSecondModal}><FormattedMessage id="forget.password" defaultMessage="Forget Password" /></a>
 
                                           <span id="P1000_FP_error_placeholder" className="a-Form-error" data-template-id="33609641515469732_ET"></span>
@@ -461,8 +461,8 @@ class Login extends Component {
                                           </div>
                                         </div> */}
                                       <div className="row" style={{marginTop: 10}}>
-                                        <div className="col col-12 apex-col-auto">
-                                          <button onClick={this.login} className="button-add-to-basket right "><FormattedMessage id="secure.signin" defaultMessage="Secure Sign In" /></button>
+                                        <div className="col col-12 apex-col-auto loginButtonOnLoginPage">
+                                          <button onClick={this.login} className="button-add-to-basket right " style={{fontWeight: 'bold'}}><FormattedMessage id="secure.signin" defaultMessage="Secure Sign In" /></button>
                                           {/* <div onClick={this.login} className="button-add-to-basket right " type="button" id="B28810467415678867"><span className="t-Button-label"><FormattedMessage id="secure.signin" defaultMessage="Secure Sign In" /></span></div><input type="hidden" id="COND" name="COND" value="" /><input type="hidden" id="ITEM" name="ITEM" value="" /> */}
                                         </div>
                                       </div>

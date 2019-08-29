@@ -128,12 +128,12 @@ class Footer extends Component {
                     </div>
                     <div className="col col-4" style={{textAlign: "end"}}>
                         <div className="row">
-                            {/* <div className="col col-3">
-                                 <img className="bottom-imagePaypal" src={payPalImg}/>
+                            <div className="col col-3">
+                                 {/* <img className="bottom-imagePaypal" src={payPalImg}/> */}
                             </div>
                             <div className="col col-3">
-                                <img className="bottom-imagePaypal" src={verisignSecureImg}/>
-                            </div> */}
+                                {/* <img className="bottom-imagePaypal" src={verisignSecureImg}/> */}
+                            </div>
                             <div className="col col-3">
                                 <img className="bottom-imagePaypal" src={masterCardImg}/>
                             </div>
