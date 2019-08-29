@@ -55,8 +55,9 @@ const REMOVE_OUT_OF_STOCK = { type: 'POST', url: BASE_URL + 'removemultiple/' }
 const GET_DISCOVER_CMS_PAGE = { type: 'GET', url: STATIC_PAGES_URL }
 
 const SET_ORDER_JSON = { type: 'POST', url: BASE_URL + 'OrderJson' }
-const GET_CONTACT_US_DATA = { type: 'POST', url: STATIC_PAGES_URL + 'contact-us/storeId',dynamic:true }
-const SAVE_CONTACT_US_DATA = { type: 'POST',url: STATIC_PAGES_URL + 'contact-us/storeId',dynamic:true}
+const GET_CONTACT_US_DATA = { type: 'GET', url: BASE_URL + 'contactus' }
+const SAVE_CONTACT_US_DATA = { type: 'POST', url: BASE_URL + 'setContactUsData' }
+
 const GET_SIZE_CHART = { type: 'POST', url: BASE_URL + 'sizechart' }
 
 const RESET_PASSWORD ={ type: 'POST', url: BASE_URL + 'resetpassword'}

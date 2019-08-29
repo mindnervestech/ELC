@@ -263,7 +263,7 @@ class ForGotPassword extends Component {
                             <div className="row padTop20">
                               <div className="col col-12">
 
-                                <button onClick={this.signUpSubmit} className="button3" type="button" id="B29665481101883473"><span className="t-Button-label"><FormattedMessage id="Form.Send" defaultMessage="Send" /></span></button>
+                                <button onClick={this.signUpSubmit} className="button3" style={{width:"100%"}} type="button" id="B29665481101883473"><span className="t-Button-label"><FormattedMessage id="Form.Send" defaultMessage="Send" /></span></button>
 
                                 <input type="hidden" id="P1003_TIME_CHECK" name="P1003_TIME_CHECK" /><input type="hidden" data-for="P1003_TIME_CHECK" defaultValue="VV6vUFJ6aze616Fc52zoGghCgvqIcdqu8W4pO4K7v-IzcYs8bdYxniLX61inY2s3Uuj3p0GeS0Z9wGHKrMQodg" /><input type="hidden" id="P1003_TIME" name="P1003_TIME" />
                               </div>
