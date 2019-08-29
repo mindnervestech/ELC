@@ -94,7 +94,9 @@ class Footer extends Component {
                                 </Link>
                             </li>
                             <li>
-                                <a><FormattedMessage id="footer.ConsumerRights" defaultMessage="Consumer Rights" /></a>
+                                <Link to={`/${store_locale}/consumer-rights`} style={{ textDecoration: 'none' }}>
+                                <FormattedMessage id="footer.ConsumerRights" defaultMessage="Consumer Rights" />
+                                </Link>
                             </li>
                         </ul>
                     </div>
