@@ -24,7 +24,7 @@ class WishList extends Component {
   }
 
   componentDidMount() {
-    this.props.onGetWishListItem({ customerid: this.props.user_details.customer_id, store_id:1})
+    this.props.onGetWishListItem({ customerid: this.props.user_details.customer_id, store_id:2})
   }
 
   wishlistToggle = (index, wishlist_id) => {

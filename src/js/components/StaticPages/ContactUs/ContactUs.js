@@ -281,7 +281,7 @@ class ContactUs extends Component {
                                     <div className="t-Region-header">
                                       <div className="t-Region-headerItems t-Region-headerItems--title">
                                         <span className="t-Region-headerIcon"><span className="t-Icon " aria-hidden="true" /></span>
-                                        <h2 className="t-Region-title" id="R715189021347792744_heading"><FormattedMessage id="Wite.Text" defaultMessage="Wite to us" /></h2>
+                                        <h2 className="t-Region-title" id="R715189021347792744_heading"><span  className="paddingStyle"><FormattedMessage id="Wite.Text" defaultMessage="Wite to us" /></span></h2>
                                       </div>
                                       <div className="t-Region-headerItems t-Region-headerItems--buttons"><span className="js-maximizeButtonContainer" /></div>
                                     </div>
@@ -467,7 +467,7 @@ class ContactUs extends Component {
                                                   <i className="fa fa-phone" /><a className="js-ga-tracking" data-ga-category="Contact Us" data-ga-action="click" data-ga-label="Telephone" href={`tel:${this.state.customerService}`}>{this.state.customerService}</a>
                                                   <br />
                                                   <br />
-                                                  <i className="far fa-envelope" /> <a className="js-ga-tracking" data-ga-category="Contact Us" data-ga-action="click" data-ga-label="Email" href="mailto:help@nayomi.com">help@nayomi.com</a>
+                                                  <i className="far fa-envelope" /> <a className="js-ga-tracking" data-ga-category="Contact Us" data-ga-action="click" data-ga-label="Email" href="mailto:help@elc.com">help@elc.com</a>
                                                   <br />
                                                   <br />
                                                   <i className="fab fa-whatsapp" /> <a className="js-ga-tracking" data-ga-category="WhatsApp" data-ga-action="click" data-ga-label="WhatsApp Chat" href={`${this.props.contact_data.page_data.whatsapp}&text=I%20Initiate%20This%20Chat%20From%20Nayomi%20Website`} target="_blank"><FormattedMessage id="ContactUs.WhatsApp" defaultMessage="WhatsApp" /></a>

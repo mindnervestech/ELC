@@ -18,6 +18,8 @@ import Business from './StaticPages/Business/Business';
 import Careers from './StaticPages/Careers/Careers';
 import ContactUs from './StaticPages/ContactUs/ContactUs';
 import CookiePolicy from './StaticPages/CookiePolicy/CookiePolicy';
+import DeliveryPolicy from "./StaticPages/DeliveryPolicy/DeliveryPolicy";
+import ConsumerRights from './StaticPages/ConsumerRights/ConsumerRights'
 import DeliveryInformation from './StaticPages/DeliveryInformation/DeliveryInformation';
 import CorporateResponsibility from './StaticPages/CorporateResponsibility/CorporateResponsibility';
 import Franchising from './StaticPages/Franchising/Franchising';
@@ -351,10 +353,13 @@ class App extends Component {
                     <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/cookie-policy" component={CookiePolicy} />
                     <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/newsletter" component={NewsLetter} />
                     <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/charity" component={CookiePolicy} />
+                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/delivery-policy" component={DeliveryPolicy} />
+                  
                     <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/corporate-responsibility" component={CorporateResponsibility} />
                     <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/delivery-information" component={DeliveryInformation} />
                     <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/help-and-faq" component={HelpFAQ} />
                     <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/elc-franchising" component={Franchising} />
+                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/consumer-rights" component={ ConsumerRights} />
                     <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/elc-for-business" component={Business} />
                     <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/privacy-policy" component={PrivacyPolicy} />
                     <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/promotion-terms-and-condition" component={PromotionTermsCondition} />

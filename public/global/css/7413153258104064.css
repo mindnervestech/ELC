@@ -1836,20 +1836,19 @@ body .ui-widget-content.fc-today.ui-state-highlight {
 .apex-item-text,
 .apex-item-select {
   color: #343434;
-  background-color: #f4f4f4;
-  border-color: #dadada;
+ 
 }
 
 .apex-item-textarea.apex-page-item-error,
 .apex-item-text.apex-page-item-error,
 .apex-item-select.apex-page-item-error {
-  border-color: #f77066;
+ 
 }
 
 .apex-item-textarea.apex-page-item-error:required:valid,
 .apex-item-text.apex-page-item-error:required:valid,
 .apex-item-select.apex-page-item-error:required:valid {
-  border-color: #dadada;
+ 
 }
 
 .t-Form-fieldContainer--floatingLabel .t-Form-inputContainer .apex-item-display-only {
@@ -1902,7 +1901,7 @@ body .ui-widget-content.fc-today.ui-state-highlight {
 .apex-item-text:focus,
 .apex-item-select:focus {
   background-color: #ffffff !important;
-  border-color: #f693b9 !important;
+  
 }
 
 .apex-item-textarea:hover,
@@ -6810,11 +6809,10 @@ body .ui-dialog .ui-dialog-buttonpane {
 .apex-item-textarea,
 .apex-item-text,
 .apex-item-select {
-  color: #343434;
-  background-color: #fafafa;
-  border-color: #f599bb;
-  border: 0px solid #f599bb;
-  border-bottom: 1px solid#f599bb;
+ 
+  
+  border: 0px ;
+  border-bottom: 1px;
 }
 
 .t-WizardSteps-step.is-active .t-WizardSteps-marker {

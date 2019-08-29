@@ -364,7 +364,7 @@ class MainHeader extends Component {
                                     <li className="titleHover">
                                         {/* <i className="icon-heart"></i> */}
                                         <img src={help} className="image-ion" style={{marginTop: 3}}></img>
-                                        <label className="iconLeble text-color changeLinkText"><FormattedMessage id="Header.Help" defaultMessage="help" /></label>
+                                        <label className="iconLeble text-color changeLinkText"><Link to={`/${store_locale}/help-and-faq`} style={{ textDecoration: 'none' }}><FormattedMessage id="Header.Help" defaultMessage="help" /></Link></label>
                                     </li>
                                     <li className="titleHover" style={this.state.userLogin ? {display: 'none'} : {display: 'inline-block', marginBottom: 5}}>
                                         <Link to={`/${store_locale}/Login`} style={{ textDecoration: 'none' }}>
@@ -576,6 +576,7 @@ class MainHeader extends Component {
                         </div>
                     </div>
                     <div className="header-slider">
+                    <Link to={`/${store_locale}/delivery-policy`} style={{ textDecoration: 'none' }}>
                                 <Slider {...settings}>
                                     <div>
                                         <Row>
@@ -584,13 +585,14 @@ class MainHeader extends Component {
                                                 <img src={deliveryBy} className="imageHight40" />
                                             </Col>
                                             <Col xs="7">
-                                                <ul style={{ textAlign: 'start', paddingTop: 10 }}>
+                                                 <ul style={{ textAlign: 'start', paddingTop: 10 }}>
+                                   
+
                                                     <li style={{ fontSize: 13, color: "#0D943F" }}>
                                                         Free Std Delivery
                                                     </li>
-                                                    {/* <li style={{ fontSize: 11 }} className="text-color">
-                                                        when you spend £10
-                                                    </li> */}
+                                                    
+                                                    
                                                 </ul>
                                             </Col>
                                         </Row>
@@ -602,6 +604,7 @@ class MainHeader extends Component {
                                                 <img src={freeDelivery} className="imageHight40" />
                                             </Col>
                                             <Col xs="7">
+                                           
                                                 <ul style={{ textAlign: 'start', paddingTop: 10 }}>
                                                     <li style={{ fontSize: 13, color: "#0D943F" }}>
                                                         Free Gift wrapping
@@ -620,6 +623,7 @@ class MainHeader extends Component {
                                                 <img src={freeCollect} className="imageHight40" />
                                             </Col>
                                             <Col xs="7">
+                                            
                                                 <ul style={{ textAlign: 'start', paddingTop: 10 }}>
                                                     <li style={{ fontSize: 13, color: "#0D943F" }}>
                                                         Free Returns
@@ -632,6 +636,7 @@ class MainHeader extends Component {
                                         </Row>
                                     </div>
                                 </Slider>
+                                </Link>
 
                         {/* <Row className="row-4">
                             <Col xs="1"></Col>
