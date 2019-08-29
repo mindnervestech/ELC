@@ -1,7 +1,7 @@
 export const live = true;
 
 //server ['uat','dev','live']
-export const active_server = 'dev';
+export let active_server = 'dev';
 if(window.location.href.includes('elcjsuat')){
     active_server = 'live';
 }

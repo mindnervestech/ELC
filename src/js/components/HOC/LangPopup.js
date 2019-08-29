@@ -25,8 +25,8 @@ const LangPopup = (data) => WrappedComponent => {
 
         componentDidMount() {
             cookie.save('displayFlag', 'false', { path: '/' })
-            cookie.save('language', 'en', { path: '/' });
-            cookie.save('country', 'UAE', { path: '/' });
+            // cookie.save('language', 'en', { path: '/' });
+            // cookie.save('country', 'UAE', { path: '/' });
             // let isDisplay = (cookie.load('displayFlag') === undefined) ? false : cookie.load('displayFlag');
 
             let isDisplay = cookie.load('displayFlag') === undefined;

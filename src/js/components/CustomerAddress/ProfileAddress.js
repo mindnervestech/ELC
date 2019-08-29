@@ -167,12 +167,11 @@ class ProfileAddress extends Component {
 
         const { openFirstModal } = this.state;
         const store_locale = this.props.globals.store_locale;
-
-        if (!(this.props.isUserLoggedIn)) {
+        if (!(this.props.user_details.isUserLoggedIn)) {
             return <Redirect to={{
               pathname: `/${store_locale}/login`,
             }} />;
-          }
+        }
 
 
         const add = <AddressForm closeModal={this.onCloseFirstModal} Actype={this.state.modalType} addressForEdit={this.state.addressForEdit} />
