@@ -127,15 +127,17 @@ class ProductInfo extends Component {
 
 	_handleClick = async () => {
 		
-		//  if (this.props.customerDetails) {
-		// 	 if(this.props.customerDetails.customer_id === undefined)
-		// 	 {
-				 
-		// 		return <Redirect to={{
-		// 			pathname: `/${this.props.globals.store_locale}/login`,
-		// 		}} />;
-		// 	 }
-		//  }
+		 if (this.props.customerDetails) {
+			 if(this.props.customerDetails.customer_id === undefined)
+			 {
+
+				//this.props.history.push(`Login`);
+				 console.log("sucess");
+				return <Redirect to={{
+					pathname: `/${this.props.globals.store_locale}/Login`,
+				}} />;
+			 }
+		 }
 		 if (document.getElementById('Capa_1').getAttribute('class').includes('active')) {
 			document.getElementById('Capa_1').setAttribute('class', 'naylove-icon');
 			if (this.props.productWishDetail.wishlist_itemid) {
@@ -392,7 +394,7 @@ class ProductInfo extends Component {
 											</div>
 
 											<div className="share-wishlist">
-											<span onClick={this._handleClick} style={{display:"inline-flex"}}> 
+											<span onClick={this._handleClick} style={{display:"inline-flex", marginRight: '10px'}}> 
 											<svg
 												xmlns="http://www.w3.org/2000/svg"
 												xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -401,7 +403,7 @@ class ProductInfo extends Component {
 												x="0px"
 												y="0px"
 												viewBox="0 0 50 50"
-												style={{ enableBackground: 'new 0 0 50 50' }}
+												style={{ enableBackground: 'new 0 0 50 50' ,marginRight:10}}
 												xmlSpace="preserve"
 												width="20px"
 												height="20px"
@@ -418,11 +420,12 @@ class ProductInfo extends Component {
 												 {!data.is_in_wishlist ?<span style={{margingRight:"35px"}}><FormattedMessage id="PageTitle.add-wishlist" defaultMessage="Add to wishlist" /></span>: <span style={{margingRight:"35px"}}><FormattedMessage id="PageTitle.remove-wishlist" defaultMessage="Remove to wishlist" /></span>}
 											</span>
 											
-													
+												<span style={{display:"inline-flex", marginRight: '10px'}}>	
 												<a onClick={() => this.setState({ openShareModel: true })} className="hover-on-favorite">
 													<i className='fa fa-share-alt' style={{ fontSize: 25, marginRight: 13 }}></i>
 													<span ><FormattedMessage id="Share" defaultMessage="Share" /></span>
 												</a>
+												</span>
 											</div>
 
 											{this.state.openShareModel ? <div>
