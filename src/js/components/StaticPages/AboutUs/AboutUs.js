@@ -6,7 +6,6 @@ import Spinner from '../../Spinner/Spinner.js'
 class AboutUs extends Component {
 	constructor(props) {
 		super(props);
-		console.log(this.props);
 		this.state = {
 			storeId: '',
 		};

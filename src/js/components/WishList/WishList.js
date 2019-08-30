@@ -13,12 +13,10 @@ import save from '../../../assets/images/product-details/save.png';
 import logo1 from '../../../assets/images/you_may_also_like_1.png'
 import StarRatings from 'react-star-ratings';
 
-
 class WishList extends Component {
 
   constructor(props) {
     super(props);
-    console.log("Wishlsit Data",this.props)
     this.state = {
       goToProduct: false,
       url_key: null
