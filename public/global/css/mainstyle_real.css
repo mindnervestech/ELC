@@ -758,6 +758,7 @@ html[dir="rtl"] .header .row-1 .cart span {
     font-weight: bold;
     margin-left: 10px;
     margin-right: 10px;
+    padding: 0px 0px 0px 0px;
 }
 
 .header .row-2 .headerLable2 {
@@ -776,7 +777,10 @@ html[dir="rtl"] .header .row-1 .cart span {
     margin-right: 5px;
 }
 
-
+.submenu{
+        border: 1px solid #dedcdc;
+            border-top: 0;
+}
 @media only screen and (max-width: 767px) {
     .header .row-2 {
         position: fixed;
@@ -4502,4 +4506,7 @@ html[dir="rtl"] .header .navTrigger {
     top: 26px !important;
     right: 20px;
 }
+}
+.t-Body-title {
+    border-bottom: 0px solid rgba(0,0,0,.075) !important;
 }

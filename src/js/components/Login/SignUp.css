@@ -2263,5 +2263,6 @@ html[dir="rtl"] .t-Form-labelContainer {
 }
 
 .mar-letf{
-    margin-left: 15px;
+    border-bottom: 1px solid grey;
+    margin-right: -10px;
 }

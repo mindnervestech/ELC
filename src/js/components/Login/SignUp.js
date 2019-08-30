@@ -544,7 +544,9 @@ class SignUp extends Component {
                                   </div>
                                 </div>
                               </div>
+                               <div className="row">
                               <div className="bot-bottom mar-letf"></div>
+                              </div>
                               <div className="row pad40L padTop20 backWhite" style={{ textAline: "start" }}>
                                 <label class="checkBox"><FormattedMessage id="Form.RecieveEmail" defaultMessage="I'd like to receive emails from ELC about Spacial Offers, new toys and voucher codes."></FormattedMessage>
                                   <input onClick={this.subscribe_to_newsletter} type="checkbox"  ></input>

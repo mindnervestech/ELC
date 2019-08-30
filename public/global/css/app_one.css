@@ -787,7 +787,7 @@ html.mobile :focus {
 @media only screen and (min-width: 768px) {
     .cd-top {
         right: 20px;
-        bottom: 20px;
+        bottom: 88px;
         z-index: 100;
     }
 }
@@ -797,7 +797,7 @@ html.mobile :focus {
         height: 60px;
         width: 60px;
         right: 30px;
-        bottom: 30px;
+        bottom: 77px;
         z-index: 100;
     }
 }
