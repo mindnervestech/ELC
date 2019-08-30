@@ -4510,3 +4510,9 @@ html[dir="rtl"] .header .navTrigger {
 .t-Body-title {
     border-bottom: 0px solid rgba(0,0,0,.075) !important;
 }
+@media (max-width: 767px){
+    
+.header .changecountry .country .activeCountry .selected {
+    display: none;
+}
+}

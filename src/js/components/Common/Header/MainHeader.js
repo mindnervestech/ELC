@@ -521,9 +521,10 @@ class MainHeader extends Component {
                                 <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
                                     <img className="mobileHomeLogo" src={logoGroup} />
                                 </Link>
-                                <img src={location} className="mobileHomePageIcon"></img>
-                                <Link to={`/${store_locale}/cart`} style={{ textDecoration: 'none' }}>
-                                    <img src={bagLogo} className="mobileHomePageIcon" style={{ height: 25, width: 25 }} />
+                                <img src={location} className="mobileHomePageIcon hide-mob"></img>
+                                <Link className="basket-icon" to={`/${store_locale}/cart`} style={{ textDecoration: 'none' }}>
+                                <img src={bagLogo} className="mobileHomePageIcon" style={{height: 25, width: 25}}/>
+                               <label className="lable-count">{this.props.cart_details.products ? this.props.cart_details.products.length : 0}</label>
                                 </Link>
                             </div>
                             <div className="divShowOnMobile" style={{ padding: "0px 10px", marginTop: 10 }}>

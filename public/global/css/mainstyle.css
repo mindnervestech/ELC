@@ -5353,3 +5353,69 @@ a:hover {
         margin-left: 5%;
     }
 }
+@media (max-width:767px){
+    .hide-mob{
+         visibility: hidden;
+    }
+    .header .row-2 .lable-count{
+    position: absolute !important;
+    right: -11px !important;
+    width: 15px !important;
+    height: 15px !important;
+    font-size: 11px !important;  
+    bottom: 0 !important;
+    }
+    .basket-icon{
+        position: relative;
+    }
+    .language {
+    padding-left: 3%;
+    width: 20%;
+    display: inline-block;
+}
+.header .changecountry .country .activeCountry i {
+    display: inline-block !important;
+    vertical-align: middle;
+}
+.header .changecountry {
+      border: none !important;
+      width: 30% !important;
+      display: inline-block !important;
+
+}
+.header .changecountry .country .list a {
+    margin: 0px 5px !important;
+    padding: 0px 5px !important;
+    display: inline-block !important;
+}
+.header .changecountry .country .list {
+    display: none;
+    background-color: #fff;
+    border-top: 1px dotted #e3e3e3;
+    margin-top: -3px;
+    min-width: 100px !important;
+    z-index: 9999999;
+    position: absolute;
+    padding: 7px 0px;
+}
+.header .changecountry .country {
+    position: relative;
+    font-size: 13px;
+    padding: 0px 5px !important;
+}
+html[dir="rtl"] .header .changecountry .country .list {
+      right: -10px !important;
+    padding-right: 4px;
+}
+html[dir="rtl"] .header .changecountry {
+    border: none !important;
+    width: 30% !important;
+    display: inline-block !important;
+    position: relative !important;
+    left: 15px !important;
+}
+html[dir="rtl"] .divShowOnMobile {
+    margin-top: 0px !important;
+}
+}
+
