@@ -131,12 +131,16 @@ class ProductInfo extends Component {
 
 
 	_handleClick = async () => {
-		if (this.props.customerDetails.customer_id === undefined) {
-		 	return <Redirect to={{
-				pathname: `/${this.props.globals.store_locale}/login`,
-			}} />;
-		}
-
+		
+		 if (this.props.customerDetails) {
+			 if(this.props.customerDetails.customer_id === undefined)
+			 {
+				 
+				return <Redirect to={{
+					pathname: `/${this.props.globals.store_locale}/login`,
+				}} />;
+			 }
+		 }
 		else if (document.getElementById('Capa_1').getAttribute('class').includes('active')) {
 			document.getElementById('Capa_1').setAttribute('class', 'naylove-icon');
 			if (this.props.productWishDetail.wishlist_itemid) {

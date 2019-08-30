@@ -134,7 +134,9 @@ class WishList extends Component {
               </div>
             </div>
           </div>
+          { this.props.products.length > 0 ? 
           <ul className="products wishlist-products">
+            
           {this.props.products.map((index,item)=> 
             (
               <li key={index}>
@@ -169,19 +171,13 @@ class WishList extends Component {
                 </div>
                 <div style={{ paddingTop: 10 }}>
                   <i className="icon-heart"></i>
-                  <span style={{ paddingLeft: 7 }}>Remove from Wishlist</span>
+                  <span style={{ paddingLeft: 7 }} onClick={()=>this.wishlistToggle(index,this.props.products[item].wishlist_id)}>Remove from Wishlist</span>
                 </div>
               </div>
             </li>
-            
-
-            
-          ))}
-                  
-
-                
-           
+          ))} 
           </ul>
+          :<div><span style={{fontSize:"24px"}}>wishlist is empty</span></div>}
         </div>
         <div className="container">
          
@@ -232,6 +228,7 @@ const mapDispatchToProps = dispatch => {
     onGetWishListItem: (payload) => dispatch(actions.getWishlist(payload)),
     onGetProductDetails: payload => dispatch(actions.getProductDetails(payload)),
     getSizeChart: payload => dispatch(actions.getSizeChart(payload)),
+    
     onRemoveProductFromWishList: (payload) => dispatch(actions.removeWishList(payload)),
   }
 

@@ -20,6 +20,7 @@
 
 .header-birth-club {
   color: green;
+  padding-left: 5px;
   letter-spacing: 1.04px;
   text-align: left;
   text-decoration: none solid green;
@@ -32,6 +33,7 @@
 
 .border-block {
   border: 1px solid #000;
+  margin:8px!important;
 }
 
 .width {
@@ -94,6 +96,12 @@
     margin-top: 40px !important;
     display: block;
   }
+  .select-field-box2 {
+    width: 31.2% !important;
+    height: 40px;
+    background-color: #fff;
+    border-radius: 0px;
+  }
 
   .bclub-button {
     width: 100% !important;
@@ -102,6 +110,11 @@
   .m-40 {
     margin: 15px !important;
   }
+  .border-block {
+    border: 1px solid #000;
+    margin:8px!important;
+  }
+  
 
   .width {
     margin: 0px auto !important;
@@ -114,6 +127,17 @@
   .m-40 {
     margin: 8px !important;
   }
+  .border-block {
+    border: 1px solid #000;
+    margin:8px!important;
+  }
+  .select-field-box2 {
+    width: 30.2% !important;
+    height: 40px;
+    background-color: #fff;
+    border-radius: 0px;
+  }
+  
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
@@ -137,4 +161,15 @@
     max-width: 90% !important;
     width: 90% !important;
   }
+  .border-block {
+    border: 1px solid #000;
+    margin:8px!important;
+  }
+  .select-field-box2 {
+    width: 31.2% !important;
+    height: 40px;
+    background-color: #fff;
+    border-radius: 0px;
+  }
+  
 }
