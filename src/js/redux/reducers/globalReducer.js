@@ -1,14 +1,15 @@
 import * as actionType from '../actions/actionTypes';
 import { updateObject } from '../utility/utility';
+import cookie from 'react-cookies';
 
 const initialState = {
     allStores: {},
-    currentStore: 2,
+    currentStore: cookie.load('storeid')? cookie.load('storeid'): 2,
     loading: false,
-    language: 'en',
-    country: 'UAE',
-    region: 'uae-en',
-    store_locale: 'uae-en',
+    language: cookie.load('language')? cookie.load('language'): 'en',
+    country: cookie.load('country')? cookie.load('country'): 'UAE',
+    region: cookie.load('store_locale')? cookie.load('store_locale'): 'uae-en',
+    store_locale: cookie.load('store_locale')? cookie.load('store_locale'): 'uae-en',
     home_page_data: {},
     ipInfo: {
         city: null,

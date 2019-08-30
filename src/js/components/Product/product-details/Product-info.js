@@ -50,7 +50,6 @@ class ProductInfo extends Component {
 	};
 
 	addToCart(e) {
-		console.log("working", this.props);
 		const {data, customerDetails} = this.props;
 		const prodData = {
 
@@ -70,16 +69,9 @@ class ProductInfo extends Component {
 			}
 
 		}
-		console.log("cart", prodData);
-
 		// const data = {
 		// 	customer_id: 13, // this.props.customerDetails.customer_id,
 		// 	product_id: productId,
-
-
-
-
-
 		// };
 		this.props.onAddToCart(prodData);
 	}

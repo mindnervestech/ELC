@@ -52,7 +52,6 @@ class ProductDetails extends Component {
 	}
 
 	componentDidUpdate(prevProps, prevState) {
-
 		if (prevProps.productDetails.id !== this.props.productDetails.id) {
 			if (live) {
 				initializeF();
@@ -78,9 +77,25 @@ class ProductDetails extends Component {
 				store: this.props.globals.currentStore,
 				url_key: params.category,
 			};
-
 			this.props.onGetProductDetails(data);
 		}
+
+		if(prevProps.addToCardLoader !== this.props.addToCardLoader){
+			if (this.props.user_details.isUserLoggedIn) {
+				this.props.OngetMyCart({
+				quote_id: this.props.user_details.customer_details.quote_id,
+				store_id: this.props.globals.currentStore
+				})
+			} else {
+				this.props.OngetMyCart({
+				quote_id: this.props.guest_user.new_quote_id,
+				store_id: this.props.globals.currentStore
+				})
+		
+			}
+		}
+		
+		
 	}
 
 	getProductInfoDetail(type){
@@ -89,7 +104,6 @@ class ProductDetails extends Component {
 	}
 
 	render() {
-		//console.log('pdp details', this.props.productDetails);
 		const { data } = this.props;
 		let meta_tag = null;
 		if (('meta_title' in this.props.productDetails) && ('meta_keywords' in this.props.productDetails) && ('meta_description' in this.props.productDetails)) {
@@ -169,6 +183,8 @@ const mapStateToProps = state => {
 		customer_details: state.login.customer_details,
 		addToCardLoader: state.productDetails.addToCardLoader,
 		cart_details: state.myCart,
+		user_details: state.login,
+    	guest_user: state.guest_user,
 	};
 };
 
@@ -176,7 +192,8 @@ const mapDispatchToProps = dispatch => {
 	return {
 		onClearProductDetails: payload => dispatch(actions.clearProductDetails(payload)),
 		onGetProductDetails: payload => dispatch(actions.getProductDetails(payload)),
-		getSizeChart: payload => dispatch(actions.getSizeChart(payload))
+		getSizeChart: payload => dispatch(actions.getSizeChart(payload)),
+		OngetMyCart: (quoteId) => dispatch(actions.getMyCart(quoteId)),
 	};
 };
 
