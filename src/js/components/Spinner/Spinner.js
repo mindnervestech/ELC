@@ -8,7 +8,7 @@ class Spinner extends Component {
 
         if (this.props.loading) {
             // console.log('main spinner is on')
-            component = <div className="loader">Loading...</div>;
+            component = <div className="loader"></div>;
         } else {
             // console.log('main spinner is off')
             component = this.props.children;

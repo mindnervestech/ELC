@@ -9,7 +9,7 @@ class ShippingSpinner extends Component {
 
         if (this.props.loading || this.props.shippingLoader) {
             //console.log('shippingLoader on : ', this.props.loading, this.props.shippingLoader)
-            component = <div className="loader">Loading...</div>;
+            component = <div className="loader"></div>;
         } else {
             //console.log('shippingLoader off : ', this.props.loading, this.props.shippingLoader)
             component = this.props.children;

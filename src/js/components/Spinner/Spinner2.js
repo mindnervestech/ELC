@@ -9,7 +9,7 @@ class Spinner2 extends Component{
        //console.log('Spinner 2 : ',this.props)
         return(<>
         
-        <div className="loader">Loading...</div>
+        <div className="loader"></div>
         </>);
     }
 }
