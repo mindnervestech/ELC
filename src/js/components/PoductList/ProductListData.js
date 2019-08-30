@@ -71,8 +71,8 @@ class ProductListData extends Component {
 			totalPages = Math.floor(count / pagenationCount) + 1
 		}
 		this.setState({ totalPages: totalPages, pageNumber: 1 })
-		this.state.check = true
-		this.pagenation(1, pagenationCount)
+		this.state.check = false
+		this.pagenation(0, pagenationCount)
 	}
 
 	componentWillMount() {
@@ -253,6 +253,7 @@ class ProductListData extends Component {
 							</div>
 						</div>
 					</div>
+					{Object.keys(list).length > 0 ?
 					<div className="homePage">
 						<div className="start3">
 							<div>
@@ -287,7 +288,7 @@ class ProductListData extends Component {
 													</FormattedMessage>
 												</select>
 											</Col>
-											<Col xs="3">
+											<Col xs="3" style={{cursor: 'pointer'}}>
 												<span className="viewAll" onClick={() => this.viewAll()}><FormattedMessage id="profile.ViewAll.Title" defaultMessage="View all" /></span>
 											</Col>
 										</Row>
@@ -403,6 +404,7 @@ class ProductListData extends Component {
 							</Row>
 						</div>
 					</div>
+					: <div><p style={{ fontSize: '22px', letterSpacing: '0.04em', fontWeight: 500, padding: '70px 25px 10px' }}><FormattedMessage id="NoData.Text" defaultMessage="No Data available." /></p></div>}
 				</Col>
 			</Row>
 		);

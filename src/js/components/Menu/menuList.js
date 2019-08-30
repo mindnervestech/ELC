@@ -26,7 +26,7 @@ class menuList extends Component {
 
 		return (
 			<li key={index}>
-				<Link to={'/' + this.state.store_locale + '/products/' + item.url_key} onClick={() => document.getElementById("closeNav").click()}>
+				<Link to={'/' + this.state.store_locale + '/products/' + item.url_path} onClick={() => document.getElementById("closeNav").click()}>
 					{item.name}
 				</Link>
 			</li>)
@@ -99,7 +99,6 @@ class menuList extends Component {
 
 	_checkSubMenu = item => {
 		if (item.hasOwnProperty('children')) {
-
 			// Use item.url_key instead of item.name (contains Arabic Text if locale is Arabic)			
 			// let menu_item = 'menu.' + item.name.toUpperCase() + '.SHOW_ALL_' + item.name.toUpperCase();
 			let menu_item = 'menu.' + item.url_key.toLowerCase() + '.SHOW_ALL_' + item.url_key.toLowerCase();

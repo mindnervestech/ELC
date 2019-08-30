@@ -1564,10 +1564,10 @@ html[dir="rtl"] .header .closeNav {
     margin-bottom: 15px;
 }
 
-html[dir="rtl"] .header .search {
+/* html[dir="rtl"] .header .search {
     padding: 8px 1.5em 8px 0;
     padding-left: 0
-}
+} */
 
 @media only screen and (min-width: 600px) {
     .header .search {
@@ -1575,9 +1575,9 @@ html[dir="rtl"] .header .search {
         font-size: 18px;
     }
 
-    html[dir="rtl"] .header .search {
+    /* html[dir="rtl"] .header .search {
         padding: 9px 1.5em 9px 0
-    }
+    } */
 }
 
 .header .search i {
@@ -3233,13 +3233,22 @@ html[dir="rtl"] .sortDroupDownOnMobile{
     .header .search .textInput {
         display: inline !important;
         height: 40px !important;
-        width: 81% !important;
+        width: 84% !important;
+    }
+
+    .footer-css .submit-button{
+        background-color: #0D943F;
+        color: #fff;
+        width: 20%;
+        height: 45px;
+        border: solid 1px #0D943F;
+        line-height: 0;
     }
 
     .header .search .searchButton {
         padding: 0px !important;
         height: 40px !important;
-        width: 14% !important;
+        width: 16% !important;
         position: absolute;
     }
 

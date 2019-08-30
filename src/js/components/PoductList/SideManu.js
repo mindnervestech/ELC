@@ -8,13 +8,16 @@ import { Link, Redirect, withRouter } from 'react-router-dom';
 
 var _ = require('lodash');
 
+let productListingData = {}
 let productList = {}
 let list = {}
-
+let filterData = []
+let filterOptionArray = []
 class SideManu extends Component {
 	constructor(props) {
 		super(props);
-		productList = this.props.productDetails.products.product_data
+		productListingData = this.props.productDetails.products.product_data;
+		productList = this.props.productDetails.products.product_data;
 	}
 
 	componentDidUpdate(prevProps, prevState) {
@@ -22,125 +25,102 @@ class SideManu extends Component {
 	}
 
 	componentDidMount() {
-		
+
 	}
 
-	getFilterData(filterValue, code){
+	getFilterData(filterValue, code) {
 		let count = 1
-		for(let value in productList){
-			if(productList[value].json.filtersdata){
-				for(let item in productList[value].json.filtersdata[code]){
-					if(productList[value].json.filtersdata[code][item] == filterValue){
-						list[count] = productList[value]
+		for (let value in productList) {
+			if (productList[value].json.filtersdata) {
+				for (let item in productList[value].json.filtersdata[code]) {
+					if (productList[value].json.filtersdata[code][item] == filterValue) {
+						filterData.push(productList[value])
 						count++
 					}
 				}
 			}
 		}
-		console.log(list)
-		this.props.action(list)
-		//this.props.classObj.setState({data: list});
 	}
 
-	applyFilter = (value) =>{
-		let splitData = value.split('/')
-		if(splitData[0] == "price"){
-
-		}else if(splitData[0] == "color"){
-			let filterValue = splitData[1]
-			let count = 1
-			list = {}
-			for(let value in productList){
-				if(productList[value].json.color_english){
-					if(productList[value].json.color_english == filterValue){
-						list[count] = productList[value]
-						count++
+	applyFilter = (value, check) => {
+		let find = true
+		let remove = -1
+		for(let data in filterOptionArray){
+			if(filterOptionArray[data] == value){
+				find = false
+				remove = data
+			}
+		}
+		if(find){
+			filterOptionArray.push(value)
+		}
+		if(remove != -1){
+			filterOptionArray.splice(remove, 1); 
+			remove = -1
+		}
+		if(filterOptionArray.length == 0){
+			productList = productListingData;
+			filterData = [];
+			this.props.action(productListingData);
+		}else{
+			for(let categrayData in filterOptionArray){
+				let splitData = filterOptionArray[categrayData].split('/')
+				if (splitData[0] == "price") {
+	
+				} else if (splitData[0] == "color") {
+					let filterValue = splitData[1]
+					for (let value in productList) {
+						if (productList[value].json.color_english) {
+							if (productList[value].json.color_english == filterValue) {
+								filterData.push(productList[value])
+							}
+						}
 					}
+				} else if (splitData[0] == "age") {
+					let filterValue = splitData[1]
+					this.getFilterData(filterValue, splitData[0])
+	
+				} else if (splitData[0] == "brand") {
+					let filterValue = splitData[1]
+					this.getFilterData(filterValue, splitData[0])
 				}
 			}
-			console.log(list)
-		}else if(splitData[0] == "age"){
-			let filterValue = splitData[1]
-			list = {}
-			this.getFilterData(filterValue, splitData[0])
-
-		}else if(splitData[0] == "brand"){
-			let filterValue = splitData[1]
-			list = {}
-			this.getFilterData(filterValue, splitData[0])
+			const uniqueNames = Array.from(new Set(filterData));
+			filterData = uniqueNames
+			this.props.action(filterData)
+			filterData = []
 		}
 	}
 
-	assignFilterdata(data){
+	assignFilterdata(data) {
 		return (
 			<div>
-			{Object.keys(data).map((keyName) =>
-					<div onClick={() => this.applyFilter(data[keyName].code + "/" + data[keyName].name)}>{data[keyName].name}</div>
-			)}
+				{Object.keys(data).map((keyName) =>
+					<div>
+						<input type="checkbox" onClick={() => this.applyFilter(data[keyName].code + "/" + data[keyName].name, this.value)} value={data[keyName].name}/> {data[keyName].name}
+					</div>
+				)}
 			</div>
 		);
 	}
 
 	render() {
-		const list  = this.props.productDetails.filters;
+		const list = this.props.productDetails.filters;
 		productList = this.props.productDetails.products.product_data
 		return (
 			<div>
-				<div className="row-2" style={{margin: '21px 0px', borderBottom: 'solid 1px #b1b1b1'}}>
-				    <span className="blackTitle">Narrow your Results</span>
+				<div className="row-2" style={{ margin: '21px 0px', borderBottom: 'solid 1px #b1b1b1' }}>
+					<span className="blackTitle">Narrow your Results</span>
 				</div>
-				{Object.keys(list).map((keyName) =>
-				<div className="bottomBorder" style={{paddingTop: 10}}>
-					<Collapsible trigger={keyName} >
-					<div>{this.assignFilterdata(list[keyName])}</div>
-					{/* <div>Baby dolls (52)</div>
-					<div>Fashion dolls and accessories (191)</div>
-					<div>Film & TV Dolls (49)</div>
-					<div>Pre-school Dolls (24)</div>
-					<div>Rag Dolls 16)</div> */}
-					</Collapsible>
+				<div style={{ paddingTop: 19 }}>
+					{Object.keys(list).map((keyName) =>
+						<div className="bottomBorder" style={{ paddingTop: 10 }}>
+							<Collapsible trigger={keyName} >
+								<div>{this.assignFilterdata(list[keyName])}</div>
+							</Collapsible>
+						</div>
+					)}
 				</div>
-				)}
-                {/* <div className="bottomBorder">
-					<Collapsible trigger="Brands" >
-					<div>Animal figures (72)</div>
-					<div>Baby dolls (52)</div>
-					<div>Fashion dolls and accessories (191)</div>
-					<div>Film & TV Dolls (49)</div>
-					<div>Pre-school Dolls (24)</div>
-					<div>Rag Dolls 16)</div>
-					</Collapsible>
-				</div>
-                <div className="bottomBorder">
-					<Collapsible trigger="Age" >
-					<div>Animal figures (72)</div>
-					<div>Baby dolls (52)</div>
-					<div>Fashion dolls and accessories (191)</div>
-					<div>Film & TV Dolls (49)</div>
-					<div>Pre-school Dolls (24)</div>
-					<div>Rag Dolls 16)</div>
-					</Collapsible>
-				</div>
-                <div className="bottomBorder">
-					<Collapsible trigger="Other Options" >
-					<div>Animal figures (72)</div>
-					<div>Baby dolls (52)</div>
-					<div>Fashion dolls and accessories (191)</div>
-					<div>Film & TV Dolls (49)</div>
-					<div>Pre-school Dolls (24)</div>
-					<div>Rag Dolls 16)</div>
-					</Collapsible>
-				</div>
-                <div className="bottomBorder">
-					<Collapsible trigger="Price" >
-					<div>Animal figures (72)</div>
-					<div>Baby dolls (52)</div>
-					<div>Fashion dolls and accessories (191)</div>
-					<div>Film & TV Dolls (49)</div>
-					<div>Pre-school Dolls (24)</div>
-					<div>Rag Dolls 16)</div>
-					</Collapsible>
-				</div> */}
 			</div>
 		);
 	}
