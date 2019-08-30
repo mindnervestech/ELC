@@ -12,6 +12,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../redux/actions/index';
 import HomePageComponent from './HomePageComponent';
 import VipRegPopup from './VipRegPopup';
+import { set } from 'react-ga';
 
 class Home extends Component {
   constructor(props) {
@@ -44,6 +45,7 @@ class Home extends Component {
     //     this.props.onGetHomePageData({ store: this.props.store_id });
     //   }
     // }
+    
     this.props.onGetHomePageData({ store: this.props.store_id });
     // this.props.onGetHomePageData({ store: 2 });
 
@@ -54,7 +56,6 @@ class Home extends Component {
     const toHome = localStorage.getItem('toHome');
     const store_locale = localStorage.getItem('store_locale');
     const displayVipReg = localStorage.getItem('displayVipReg');
-
     if ((toHome === "true") && (store_locale !== null)) {
 
       let new_store_id = localStorage.getItem('storeid');
@@ -82,13 +83,8 @@ class Home extends Component {
 
     //After redirect to URL with locale and display VIP registration first time
     if ((toHome === "false") && (store_locale !== null) && (displayVipReg === "true")) {
-
       return (
         <>
-          {/* <Modal open={this.state.openVipModal} onClose={this.onCloseVipModal} center> */}
-          {/* <VipRegPopup store_locale={store_locale} /> */}
-          {/* </Modal> */}
-
           {homePageData}
         </>
       );
