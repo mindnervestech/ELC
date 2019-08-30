@@ -402,7 +402,7 @@ class ProductInfo extends Component {
 												xmlSpace="preserve"
 												width="20px"
 												height="20px"
-												className={"naylove-icon " + (data.is_in_wishlist ? 'active' : '')}
+												className={"naylove-icon " + (!data.is_in_wishlist ? 'active' : '')}
 												
 											>
 												<g transform="matrix(0.94148 0 0 0.94148 1.46299 1.46299)">
@@ -412,7 +412,7 @@ class ProductInfo extends Component {
 													/>
 												</g>{' '}
 											</svg>
-												 <span style={{margingRight:"35px"}}><FormattedMessage id="PageTitle.add-wishlist" defaultMessage="Add to wishlist" /></span>: <span style={{margingRight:"35px"}}><FormattedMessage id="PageTitle.remove-wishlist" defaultMessage="Remove to wishlist" /></span>
+												 {!data.is_in_wishlist ?<span style={{margingRight:"35px"}}><FormattedMessage id="PageTitle.add-wishlist" defaultMessage="Add to wishlist" /></span>: <span style={{margingRight:"35px"}}><FormattedMessage id="PageTitle.remove-wishlist" defaultMessage="Remove to wishlist" /></span>}
 											</span>
 											
 													
