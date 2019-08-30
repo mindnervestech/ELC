@@ -51,24 +51,36 @@ class ProductInfo extends Component {
 
 	addToCart(e) {
 		const {data, customerDetails} = this.props;
-		const prodData = {
-
-			"quote_id": customerDetails.quote_id,
-			"product_type": data.type,
-			"sku": data.sku,
-			"qty": this.state.defaultQty,
-			"product_option": {
-				"extension_attributes": {
-					"configurable_item_options": [
-						{
-							"option_id": data.simpleproducts[0].color.option_id,
-							"option_value": data.simpleproducts[0].color.option_value
-						}
-					]
+		let prodData = {};
+		if(data.type == 'simple'){
+			prodData = {
+				"quote_id": customerDetails.quote_id,
+				"product_type": data.type,
+				"sku": data.sku,
+				"qty": this.state.defaultQty,
+				"product_option": {
+					"extension_attributes": {}
 				}
 			}
-
+		}else{
+			prodData = {
+				"quote_id": customerDetails.quote_id,
+				"product_type": data.type,
+				"sku": data.sku,
+				"qty": this.state.defaultQty,
+				"product_option": {
+					"extension_attributes": {
+						"configurable_item_options": [
+							{
+								"option_id": data.simpleproducts[0].color.option_id,
+								"option_value": data.simpleproducts[0].color.option_value
+							}
+						]
+					}
+				}
+			}
 		}
+		
 		// const data = {
 		// 	customer_id: 13, // this.props.customerDetails.customer_id,
 		// 	product_id: productId,
@@ -113,10 +125,7 @@ class ProductInfo extends Component {
 				Popup.queue(popupMessage);
 			}
 		} else {
-			if(this.props.data.simpleproducts.length > 0 ){
-				this.setState({ defaultQty: currQty + 1 });
-			}
-			
+			this.setState({ defaultQty: currQty + 1 });
 		}
 	};
 
@@ -130,15 +139,13 @@ class ProductInfo extends Component {
 		 if (this.props.customerDetails) {
 			 if(this.props.customerDetails.customer_id === undefined)
 			 {
-
-				//this.props.history.push(`Login`);
-				 console.log("sucess");
+				 
 				return <Redirect to={{
 					pathname: `/${this.props.globals.store_locale}/Login`,
 				}} />;
 			 }
 		 }
-		 if (document.getElementById('Capa_1').getAttribute('class').includes('active')) {
+		else if (document.getElementById('Capa_1').getAttribute('class').includes('active')) {
 			document.getElementById('Capa_1').setAttribute('class', 'naylove-icon');
 			if (this.props.productWishDetail.wishlist_itemid) {
 				this.props.onRemoveWishList({
@@ -230,9 +237,9 @@ class ProductInfo extends Component {
 								Write a review
 							</span>
 							<span> | </span> */}
-							<span className="age-sec">
+							{data.age ?<span className="age-sec">
 								Age: {data.age}
-							</span>
+							</span> : <span />}
 						</div>
 						<div>
 							<ProductZoom />
@@ -297,11 +304,11 @@ class ProductInfo extends Component {
 													</div> :
 													<span className="product-price">{data.currency}&nbsp;{Number(data.price).toFixed(2)}</span>}
 											</div>
-											{newImageArray[0] && newImageArray[0].text !== false ?
+											{data.simplecolor !== "" ?
 											<div className="prod-color">
 												<div>
 													<FormattedMessage id="Cart.Color.Title" defaultMessage="Color" /> :
-												{newImageArray[0] ? <span>{newImageArray[0].text}</span> : <div />}
+													<span>{data.simplecolor}</span>
 												</div>
 											</div> : <div /> }
 
@@ -369,7 +376,7 @@ class ProductInfo extends Component {
 													<span className="t-Form-itemText t-Form-itemText--post">
 														<i
 															className="icon max qty-dec-inc"
-															onClick={e => this.increment(newImageArray[0] ? newImageArray[0].qty : 0)}
+															onClick={e => this.increment(data.type == 'simple'? parseInt(data.simpleqty) : newImageArray[0].qty)}
 														>
 															+
 													</i>
@@ -377,7 +384,7 @@ class ProductInfo extends Component {
 												</div>
 											</div>
 											<div style={{ width: '100%', marginBottom: 20 }}>
-												{newImageArray[0] && newImageArray[0].stock == 1 ?
+												{data.simplestatus == 1 || (newImageArray[0] && newImageArray[0].stock == 1) ?
 													<span className="in-stock" style={{ color: '#0D943F' }}>
 													<FormattedMessage id="PDP.InStock" defaultMessage="In Stock" />
 												</span> :
@@ -388,7 +395,7 @@ class ProductInfo extends Component {
 											<Popup />
 											<div className="alsoLikeCard add-cart">
 												<div className="homePage">
-													<button disabled={newImageArray.length === 0} onClick={this.addToCart} className="alsoLikeCardButton" style={{ marginTop: 0 }}>
+													<button disabled={(data.simplestatus === 0 && newImageArray[0] && newImageArray[0].stock == 0) || this.state.defaultQty == 0} onClick={this.addToCart} className="alsoLikeCardButton" style={{ marginTop: 0 }}>
 														<FormattedMessage id="Product.Detail.addToBasket" defaultMessage="Add to basket" /></button>
 												</div>
 											</div>
@@ -436,10 +443,9 @@ class ProductInfo extends Component {
 											{/* <div className="deliy-free">
 												<span>this product includes free UK delivery</span>
 											</div> */}
-											<div className="learn-skill">
+											{data.learning_skills !== "" || data.learning_skills_2 !== "" || data.learning_skills_3 !== "" ? <div className="learn-skill">
 												<span><FormattedMessage id="LearningSkills" defaultMessage="Learning skills" />:</span>
-
-											</div>
+											</div> : <div />}
 											<div className="learn-skill-img">
 												{data.learning_skills === 'Imagination' || data.learning_skills_2 === 'Imagination' || data.learning_skills_3 === 'Imagination' ?
 													<img src={imagination_icon} /> : null }

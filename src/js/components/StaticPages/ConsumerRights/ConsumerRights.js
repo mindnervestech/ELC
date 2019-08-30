@@ -10,7 +10,6 @@ class ConsumerRights extends Component {
 		this.state = {
 			storeId: '',
 			data: [],
-			spinner:true
 		};
 	}
 	static getDerivedStateFromProps = (props, state) => { };
@@ -23,7 +22,7 @@ class ConsumerRights extends Component {
 			});
             
 			API.get('consumer-rights/storeId/' + this.state.storeId).then(res => {
-				this.setState({ data: res.data ,spinner:!this.state.spinner});
+				this.setState({ data: res.data });
 			});
 		}
 
@@ -55,7 +54,6 @@ class ConsumerRights extends Component {
 	render() {
 		return (
 			<div className="t-Body-contentInner">
-				{ this.state.spinner? <Spinner /> :
 				<div className="container">
 					<div className="row">
 						<div className="col col-12 apex-col-auto">
@@ -127,7 +125,6 @@ class ConsumerRights extends Component {
 						</div>
 					</div>
 				</div>
-				}
 			</div>
 		);
 	}

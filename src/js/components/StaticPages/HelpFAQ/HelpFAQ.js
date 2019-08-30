@@ -10,7 +10,6 @@ class HelpFAQ extends Component {
 		this.state = {
 			storeId: '',
 			data: [],
-			
 		};
 	}
 
