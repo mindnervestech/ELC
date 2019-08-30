@@ -10,6 +10,7 @@ class PrivacyPolicy extends Component {
 		this.state = {
 			storeId: '',
 			data: [],
+			spinner:true
 		};
 	}
 	static getDerivedStateFromProps = (props, state) => { };
@@ -22,7 +23,7 @@ class PrivacyPolicy extends Component {
 			});
 
 			API.get('privacy-policy/storeId/' + this.state.storeId).then(res => {
-				this.setState({ data: res.data });
+				this.setState({ data: res.data ,spinner:!this.state.spinner});
 			});
 		}
 
@@ -54,6 +55,7 @@ class PrivacyPolicy extends Component {
 	render() {
 		return (
 			<div className="t-Body-contentInner">
+				{this.state.spinner ? <Spinner/> :
 				<div className="container">
 					<div className="row">
 						<div className="col col-12 apex-col-auto">
@@ -125,6 +127,7 @@ class PrivacyPolicy extends Component {
 						</div>
 					</div>
 				</div>
+				}
 			</div>
 		);
 	}

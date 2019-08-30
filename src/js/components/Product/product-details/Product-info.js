@@ -127,16 +127,16 @@ class ProductInfo extends Component {
 
 	_handleClick = async () => {
 		
-		 if (this.props.customerDetails) {
-			 if(this.props.customerDetails.customer_id === undefined)
-			 {
+		//  if (this.props.customerDetails) {
+		// 	 if(this.props.customerDetails.customer_id === undefined)
+		// 	 {
 				 
-				return <Redirect to={{
-					pathname: `/${this.props.globals.store_locale}/login`,
-				}} />;
-			 }
-		 }
-		else if (document.getElementById('Capa_1').getAttribute('class').includes('active')) {
+		// 		return <Redirect to={{
+		// 			pathname: `/${this.props.globals.store_locale}/login`,
+		// 		}} />;
+		// 	 }
+		//  }
+		 if (document.getElementById('Capa_1').getAttribute('class').includes('active')) {
 			document.getElementById('Capa_1').setAttribute('class', 'naylove-icon');
 			if (this.props.productWishDetail.wishlist_itemid) {
 				this.props.onRemoveWishList({
@@ -175,6 +175,13 @@ class ProductInfo extends Component {
 
 		let newImageArray = [];
 
+	  if(this.state.islogged)
+	  {
+		return <Redirect to={{
+			pathname: `/${this.props.globals.store_locale}/login`,
+		}} />;
+	  }
+		
 		if (data.simpleproducts) {
 			let arr = [];
 			let imageArray = [];
@@ -398,7 +405,7 @@ class ProductInfo extends Component {
 												xmlSpace="preserve"
 												width="20px"
 												height="20px"
-												className={"naylove-icon " + (!data.is_in_wishlist ? 'active' : '')}
+												className={"naylove-icon " + (data.is_in_wishlist ? 'active' : '')}
 												
 											>
 												<g transform="matrix(0.94148 0 0 0.94148 1.46299 1.46299)">
