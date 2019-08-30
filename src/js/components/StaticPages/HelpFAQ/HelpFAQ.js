@@ -16,7 +16,15 @@ class HelpFAQ extends Component {
 	static getDerivedStateFromProps = (props, state) => { };
 
 	componentDidMount() {
-		this.props.onGetHelpFAQData({ storeId: 1 });
+		if(this.props.globals.currentStore===undefined || this.props.globals.currentStore==='false')
+		{
+			this.props.onGetHelpFAQData({ storeId: 1 });
+		}
+		else
+		{
+			this.props.onGetHelpFAQData({ storeId: this.props.globals.currentStore});
+		}
+		
 	}
 
 	render() {
@@ -98,7 +106,8 @@ class HelpFAQ extends Component {
 const mapStateToProps = state => {
 	return {
 		help : state.static.help,
-		spinnerProduct: state.spinner.loadingProduct
+		spinnerProduct: state.spinner.loadingProduct,
+		globals:state.global
  	}
 }
 

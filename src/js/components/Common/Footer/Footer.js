@@ -73,7 +73,8 @@ class Footer extends Component {
                             <a><FormattedMessage id="footer.Newsletter" defaultMessage="Newsletter" /></a>
                             </li>
                             <li>
-                                <a><FormattedMessage id="footer.Charity" defaultMessage="Charity" /></a>
+                            <Link to={`/${store_locale}/charity`} style={{ textDecoration: 'none' }}>
+                                <FormattedMessage id="footer.Charity" defaultMessage="Charity" /></Link>
                             </li>
                         </ul>
                     </div>

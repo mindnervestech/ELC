@@ -13,10 +13,12 @@ import save from '../../../assets/images/product-details/save.png';
 import logo1 from '../../../assets/images/you_may_also_like_1.png'
 import StarRatings from 'react-star-ratings';
 
+
 class WishList extends Component {
 
   constructor(props) {
     super(props);
+    console.log("Wishlsit Data",this.props)
     this.state = {
       goToProduct: false,
       url_key: null
@@ -74,14 +76,14 @@ class WishList extends Component {
       }} />;
     }
 
-    const productList = this.props.products.map((item, index) => {
-      return (<Product
-        value={item}
-        key={index}
-        store_locale={store_locale}
-        productDetail={() => this.gotoProductDetail(item)}
-        clicked={() => this.wishlistToggle(index, item.wishlist_id)} />)
-    })
+    // const productList = this.props.products.map((item, index) => {
+    //   return (<Product
+    //     value={item}
+    //     key={index}
+    //     store_locale={store_locale}
+    //     productDetail={() => this.gotoProductDetail(item)}
+    //     clicked={() => this.wishlistToggle(index, item.wishlist_id)} />)
+    // })
 
     return (
       <div className="t-Body-contentInner homePage">
@@ -135,21 +137,24 @@ class WishList extends Component {
             </div>
           </div>
           <ul className="products wishlist-products">
-            <li>
+          {this.props.products.map((index,item)=> 
+            (
+              <li key={index}>
               <div className="alsoLikeCard">
-                <span className="percentage-text">30</span>
+                {/* <span className="percentage-text">30</span>
                 <span className="save-text" style={{ display: 'none' }}>5</span>
-                <img src={save} className="save" style={{ display: 'none' }}/>
-                <img src={logo1} className="cardImage" style={{ height: 'auto' }} />
-                <img src={percentage} className="percentage"/>
+                <img src={save} className="save" style={{ display: 'none' }}/> */}
+                <img src={this.props.products[item].image[0]} className="cardImage" style={{ height: 'auto' }} />
+                {/* <img src={percentage} className="percentage"/> */}
                 <div style={{ marginTop: 10 }}>
-                  <label className="text-color">Twist and Turn Activity House</label>
+                  <label className="text-color">{this.props.products[item].name}</label>
                 </div>
                 <div>
-                  <span style={{ fontSize: 14, color: "#0D943F", fontWeight: "bold" }}>AED 12.00</span><span style={{ color: "gray", textDecorationLine: 'line-through', fontSize: 14, marginLeft: 10 }}>AED 14.50</span>
+                  <span style={{ fontSize: 14, color: "#0D943F", fontWeight: "bold" }}>AED {this.props.products[item].price}</span>
+                  {/* <span style={{ color: "gray", textDecorationLine: 'line-through', fontSize: 14, marginLeft: 10 }}>AED 14.50</span> */}
                 </div>
-                <div style={{ paddingTop: 10 }}>
-                  <StarRatings
+                {/* <div style={{ paddingTop: 10 }}>
+                   <StarRatings
                     rating={3}
                     starRatedColor='#FAD961'
                     changeRating={this.changeRating}
@@ -158,9 +163,9 @@ class WishList extends Component {
                     starHoverColor='#0D943F'
                     starDimension='15px'
                     starSpacing='0px'
-                  />
+                  /> 
                   <span style={{ marginLeft: 5 }}>3 - 10 years</span>
-                </div>
+                </div> */}
                 <div>
                   <button className="alsoLikeCardButton"><FormattedMessage id="Product.Detail.addToBasket" defaultMessage="Add to basket" /></button>
                 </div>
@@ -170,6 +175,14 @@ class WishList extends Component {
                 </div>
               </div>
             </li>
+            
+
+            
+          ))}
+                  
+
+                
+           
           </ul>
         </div>
         <div className="container">
@@ -181,7 +194,8 @@ class WishList extends Component {
 
           <div className="row">
 
-          </div><div className="row">
+          </div>
+          {/* <div className="row">
             <div className="col col-12 apex-col-auto">
               <div className="t-ContentBlock containers t-ContentBlock--h3 margin-top-lg a-Tabs-panel apex-rds-after apex-rds-element-selected" id="USERWISHLIST" role="tabpanel" aria-labelledby="USERWISHLIST_tab" aria-live="polite" aria-hidden="false" style={{}}>
                 <div className="t-ContentBlock-header"><h1 className="t-ContentBlock-title"><FormattedMessage id="profile.Wishlist.Title" defaultMessage="Wishlist" /></h1></div>
@@ -196,7 +210,7 @@ class WishList extends Component {
                 <div className="t-ContentBlock-buttons" />
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     );

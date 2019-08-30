@@ -14,7 +14,7 @@ import home from '../../../../assets/images/social/Hero.png';
 import favoriteImg from '../../../../assets/images/header/favorite.svg'
 import Modal from 'react-responsive-modal';
 import { Helmet } from 'react-helmet';
-
+import { Link, Redirect } from 'react-router-dom';
 import discovertheworld_icons from '../../../../assets/images/social/discovertheworld_icons.png';
 import socialskills_icon from '../../../../assets/images/social/socialskills_icon.png';
 import imagination_icon from '../../../../assets/images/social/imagination_icon.png';
@@ -27,7 +27,7 @@ import { Container, Row, Col, Button, Form, FormGroup } from 'reactstrap';
 import { FormattedMessage } from 'react-intl';
 
 const mediaVideo = 'https://storage.googleapis.com/nay/videos/product/au19/nay-au19-casual-nightwear-mainrange-nicoline-pajamaset-212884961.mp4';
-
+let store_locale="en";
 class ProductInfo extends Component {
 	constructor(props) {
 		super(props);
@@ -131,14 +131,15 @@ class ProductInfo extends Component {
 
 
 	_handleClick = async () => {
-		// if (this.props.customerDetails.customer_id === undefined) {
-		// 	this.setState({ guestUser: true });
-		// 	return;
-		// } else {
-		// 	this.setState({ guestUser: false });
-		// }
+		 if (this.props.customerDetails.customer_id === undefined) {
+		 return <Redirect to={{
+				pathname: `/${store_locale}/login`,
+			}} />;}
 
-		if (document.getElementById('Capa_1').getAttribute('class').includes('active')) {
+
+	
+
+		else if (document.getElementById('Capa_1').getAttribute('class').includes('active')) {
 			document.getElementById('Capa_1').setAttribute('class', 'naylove-icon');
 			if (this.props.productWishDetail.wishlist_itemid) {
 				this.props.onRemoveWishList({
@@ -149,8 +150,8 @@ class ProductInfo extends Component {
 		} else {
 			document.getElementById('Capa_1').setAttribute('class', 'naylove-icon active');
 			const data = {
-				customer_id: 13, // this.props.customerDetails.customer_id,
-				product_id:this.props.productDetails.id
+				customer_id:this.props.customerDetails.customer_id,
+				product_id:this.props.productZoomDetails.id
 			};
 			this.props.onAddToWishList(data);
 	
@@ -173,6 +174,7 @@ class ProductInfo extends Component {
 
 	render() {
 		const { data } = this.props;
+	 const store_locale = this.props.globals.store_locale;
 
 		let newImageArray = [];
 
@@ -385,7 +387,7 @@ class ProductInfo extends Component {
 											</div>
 
 											<div className="share-wishlist">
-
+											<span onClick={this._handleClick} style={{display:"inline-flex"}}> 
 											<svg
 												xmlns="http://www.w3.org/2000/svg"
 												xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -399,7 +401,7 @@ class ProductInfo extends Component {
 												width="20px"
 												height="20px"
 												className={"naylove-icon " + (data.is_in_wishlist ? 'active' : '')}
-												onClick={this._handleClick}
+												
 											>
 												<g transform="matrix(0.94148 0 0 0.94148 1.46299 1.46299)">
 													<path
@@ -408,8 +410,10 @@ class ProductInfo extends Component {
 													/>
 												</g>{' '}
 											</svg>
-												{!data.is_in_wishlist ? <span style={{margingRight:35}}>add to wishlist</span>: <span style={{margingRight:35}}>remove to wishlist</span>
-													}
+												 <span style={{margingRight:"35px"}}>add to wishlist</span>: <span style={{margingRight:"35px"}}>remove to wishlist</span>
+											</span>
+											
+													
 												<a onClick={() => this.setState({ openShareModel: true })} className="hover-on-favorite">
 													<i className='fa fa-share-alt' style={{ fontSize: 25, marginRight: 13 }}></i>
 													<span >Share</span>
@@ -493,6 +497,7 @@ class ProductInfo extends Component {
 
 const mapStateToProps = state => {
 	return {
+		isUserLoggedIn: state.login.isUserLoggedIn,
 		globals: state.global,
 		productZoomDetails: state.productDetails.productData,
 		customerDetails: state.login.customer_details,
@@ -500,6 +505,8 @@ const mapStateToProps = state => {
 		productDetails: state.productDetails.productColor
 	};
 };
+
+
 
 const mapDispatchToProps = dispatch => {
 	return {

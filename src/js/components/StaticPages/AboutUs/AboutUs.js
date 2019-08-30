@@ -6,6 +6,7 @@ import Spinner from '../../Spinner/Spinner.js'
 class AboutUs extends Component {
 	constructor(props) {
 		super(props);
+		console.log(this.props);
 		this.state = {
 			storeId: '',
 		};
@@ -14,7 +15,14 @@ class AboutUs extends Component {
 	static getDerivedStateFromProps = (props, state) => { };
 
 	componentDidMount() {
-		this.props.onGetAboutUsData({ storeId: 1 });
+		if(this.props.globals.currentStore===undefined || this.props.globals.currentStore==='false')
+		{
+			this.props.onGetAboutUsData({ storeId:1});
+		}
+		else
+		{
+			this.props.onGetAboutUsData({ storeId: this.props.globals.currentStore});
+		}
 	}
 
 	render() {
