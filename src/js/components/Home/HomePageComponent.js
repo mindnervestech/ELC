@@ -112,10 +112,21 @@ class HomePageComponent extends Component {
                         <div className="t-Body-content" id="t_Body_content">
                             {/* <div id="t_Body_content_offset" style={{ 'height': '1px' }}></div> <span id="APEX_SUCCESS_MESSAGE" data-template-id="33770911730796245_S" className="apex-page-success u-hidden"></span><span id="APEX_ERROR_MESSAGE" data-template-id="33770911730796245_E" className="apex-page-error u-hidden"></span> */}
                             <div className="t-Body-contentInner">
-                                <div style={{ padding: "0px 0px" }}>
+                                <div style={{ padding: "0px 0px" }} className="divShowOnWeb">
                                     <Slider {...settings3}>
                                         {homeData.banners.map((item, index) => (
                                             <Link to={`/` + store_locale + `/products` + item.BLOCK_URL + ``}>
+                                                <div>
+                                                    <img src={item.BLOCK_BANNER} className="banner-image-hight"/>
+                                                </div>
+                                            </Link>
+                                        ))}
+                                    </Slider>
+                                </div>
+                                <div style={{ padding: "0px 0px" }} className="divShowOnMobile">
+                                    <Slider {...settings3}>
+                                        {homeData.banners.map((item, index) => (
+                                            <Link to={`/` + store_locale + `/products` + item.BLOCK_MOBILE_BANNER + ``}>
                                                 <div>
                                                     <img src={item.BLOCK_BANNER} className="banner-image-hight"/>
                                                 </div>
