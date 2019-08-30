@@ -354,7 +354,7 @@ class ProductZoom extends Component {
 
 							{/* this.checkSingleImage(this.props.productZoomDetails.imageUrl) */}
 							{productZoomDetails.imageUrl && productZoomDetails.imageUrl.thumbnail.length > 1 && 
-								( <td className="zoom-gallery-thumbnails">
+								( <td className="zoom-gallery-thumbnails hide-td">
 									<div
 										className="MagicScroll MagicScroll-arrows-inside MagicScroll-vertical"
 										data-options="items: 4; orientation: vertical; loop: off; arrows: inside; draggable: true;"

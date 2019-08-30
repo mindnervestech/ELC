@@ -5433,5 +5433,15 @@ html[dir="rtl"] .header .changecountry {
 html[dir="rtl"] .divShowOnMobile {
     margin-top: 0px !important;
 }
+
+.share-icon {
+    text-align: -webkit-center;
+    text-align: -center;
+    padding: 12px;
+    width: 60px !important;
+}
+.share-icon span{
+    font-size: 12px !important;
+}
 }
 

@@ -1711,6 +1711,9 @@ html[dir="rtl"] .quantity-mob{
     html[dir="rtl"] .share-wishlist{
         display: flex !important;
     }
-    
+    .styles_modal__gNwvD {
+       height: 130px !important;
+}
+   
 
 }
