@@ -532,7 +532,7 @@ class SignUp extends Component {
                                 <span><FormattedMessage id="Form.PasswordLength" defaultMessage="Minimum length is 6"></FormattedMessage></span>
                               </div>
 
-                              <div className="padding row bot-bottom">
+                              <div className="padding row">
                                 <div className="rmPadding col col-12 apex-col-auto">
                                   <div className="row block" id="P1001_RPWD_CONTAINER"><div className="rmTopPadding rmPadding t-Form-labelContainer">
                                     <label htmlFor="P1001_RPWD" id="P1001_RPWD_LABEL" className="bolt t-Form-label">
@@ -544,6 +544,7 @@ class SignUp extends Component {
                                   </div>
                                 </div>
                               </div>
+                              <div className="bot-bottom mar-letf"></div>
                               <div className="row pad40L padTop20 backWhite" style={{ textAline: "start" }}>
                                 <label class="checkBox"><FormattedMessage id="Form.RecieveEmail" defaultMessage="I'd like to receive emails from ELC about Spacial Offers, new toys and voucher codes."></FormattedMessage>
                                   <input onClick={this.subscribe_to_newsletter} type="checkbox"  ></input>

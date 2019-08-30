@@ -500,10 +500,10 @@ li {
     padding-bottom: 55%;
 }
 
-.header .row-1 {
+/*.header .row-1 {
     display: none
 }
-
+*/
 @media only screen and (min-width: 1280px) {
     .header .row-1 {
         display: block;
@@ -777,7 +777,7 @@ html[dir="rtl"] .header .row-1 .cart span {
 }
 
 
-@media only screen and (max-width: 1279px) {
+@media only screen and (max-width: 767px) {
     .header .row-2 {
         position: fixed;
         width: 100%;
@@ -786,6 +786,7 @@ html[dir="rtl"] .header .row-1 .cart span {
         left: 0
     }
 }
+
 
 @media only screen and (min-width: 600px) {
     .header .row-2 {
@@ -4394,4 +4395,111 @@ html[dir="rtl"] .hide-screen-sm .t-Form-fieldContainer--floatingLabel.is-require
 
         }
     }
+}
+
+@media only screen and (max-width: 1279px) and (min-width: 767px)  {
+ .header .row-2 {
+        position: relative;
+       /* width: 100%;
+        z-index: 999;
+        top: 0;
+        left: 0*/
+    }
+    .header {
+    padding-top: 0px;
+}
+.header .changecountry .country .activeCountry .selected {
+    display: none;
+}
+.t-Header-branding .row-1{
+    width: 100%;
+}
+.header .changecountry {
+    border: none;
+    margin-bottom: 0px;
+}
+.header .changecountry .country .list {
+    border: 1px solid #e3e3e3;
+    min-width: 145px;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 100%;
+    z-index: 10;
+    padding: 5px 0;
+    margin-top: 0px;
+}
+.header .changecountry .country .list {
+    margin-top: 10px;
+}
+.header .changecountry .country .list a {
+    margin: 0px 5px;
+    padding: 0px 5px;
+    display: inline-block;
+}
+.header .changecountry .country .activeCountry i {
+    display: inline-block;
+    vertical-align: middle;
+}
+.header .row-1 .rightLink {
+    float: right;
+    margin-bottom: 0px;
+    padding-top: 16px;
+}
+.header .row-2 .search {
+    display: block;
+    margin-bottom: 0;
+    width: 91%;
+    display: inline-flex;
+   
+    float: right;
+}
+.header .row-2 {
+    height: 88px;
+    padding: 13px 0;
+}
+.header .search .textInput {   
+    height: 50px; 
+}
+.header .search .searchButton {
+    height: 80%;
+    width: 50px;
+    border-radius: 5px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border: none;
+    padding: 10px 5px;
+}
+.col-remove{
+    display: none;
+}
+.width-custom{
+    flex: 0 0 33.333333% !important;
+    max-width: 33.333333% !important;
+        padding-top: 0px !important;
+}
+.divShowOnWeb{
+    padding-left: 15px  !important;
+}
+.header .navTrigger {   
+    width: 30px !important;
+    top: 26px !important;  
+}
+.logo-ipad{
+    height: 64px !important;  
+    width: 74% !important;  
+    position: relative !important;  
+    left: 57px !important;  
+}
+html[dir="rtl"] .logo-ipad {
+    height: 64px !important;
+    width: 74% !important;
+    position: relative !important;
+    left: -50px !important;
+}
+html[dir="rtl"] .header .navTrigger {
+    width: 30px !important;
+    top: 26px !important;
+    right: 20px;
+}
 }

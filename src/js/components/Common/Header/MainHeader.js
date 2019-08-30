@@ -408,14 +408,14 @@ class MainHeader extends Component {
                         <div className="containers-main">
                             {/* <Container style={{width: "100%"}}> */}
                             <Row style={{ paddingRight: 30, paddingLeft: 30 }} className="divShowOnWeb">
-                                <Col xs="4" style={{ paddingLeft: 0, paddingRight: 0, textAlign: 'start' }}>
+                                <Col xs="4" className="logo-ipad" style={{ paddingLeft: 0, paddingRight: 0, textAlign: 'start' }}>
                                     <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
                                         <img style={{ height: 64, width: "75%", paddingLeft: 5 }} src={logoGroup} />
                                     </Link>
                                 </Col>
                                 <Col xs="4" style={{ padding: 6 }}><Search store_locale={store_locale} /></Col>
-                                <Col xs="2"></Col>
-                                <Col xs="2" style={{ paddingTop: 15, paddingLeft: 5, paddingRight: 5 }}>
+                                <Col xs="2" className="col-remove"></Col>
+                                <Col xs="2"  className="width-custom" style={{ paddingTop: 15, paddingLeft: 5, paddingRight: 5 }}>
                                     <Link to={`/${store_locale}/cart`} style={{ textDecoration: 'none' }}>
                                         <ul className="cta">
                                             {/* <li>

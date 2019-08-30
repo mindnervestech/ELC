@@ -921,10 +921,10 @@ li {
     display: block;
 }
 
-.header .row-1 {
+/*.header .row-1 {
     display: none
 }
-
+*/
 @media only screen and (min-width: 1280px) {
     .header .row-1 {
         display: block;
