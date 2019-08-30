@@ -243,26 +243,7 @@ class ProductInfo extends Component {
 						</div>
 						<div>
 							<ProductZoom />
-							{/* <Carousel showStatus={false}
-                        showThumbs={true}
-                        infiniteLoop={true}
-						emulateTouch={true}
-						>
-                            <div>
-                                <img style={{height: '100%'}} src={home} />
-                            </div>
-                            <div>
-                                <img style={{height: '100%'}} src={home} />
-                            </div>
-                            <div>
-                                <img style={{height: '100%'}} src={home} />
-                            </div>
-							<div>
-								<video style={{height: '100%'}} controls autoplay="autoplay" loop muted preload style={{width: '100%',height: '100%'}}>
-									<source src={mediaVideo} type="video/mp4" />
-								</video>
-							</div>
-                        </Carousel> */}
+							
 						</div>
 					</Col>
 					<Col xs="12" md="5" lg="5" className="padding-mob">
