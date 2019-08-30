@@ -10,7 +10,6 @@ var _ = require('lodash');
 
 let productListingData = {}
 let productList = {}
-let list = {}
 let filterData = []
 let filterOptionArray = []
 class SideManu extends Component {

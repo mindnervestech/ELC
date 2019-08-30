@@ -34,9 +34,9 @@ class MainHeader extends Component {
     constructor(props) {
         super(props);
         let login = false
-        if(this.props.user_details.isUserLoggedIn == true){
+        if (this.props.user_details.isUserLoggedIn == true) {
             login = true
-        }else if(this.props.user_details.isUserLoggedIn == false){
+        } else if (this.props.user_details.isUserLoggedIn == false) {
             login = false
         }
         this.state = {
@@ -51,11 +51,11 @@ class MainHeader extends Component {
         }
     }
 
-    showMenu= () => {
-        if(this.state.showMenu){
-            this.setState({showMenu: false});
-        }else{
-            this.setState({showMenu: true});
+    showMenu = () => {
+        if (this.state.showMenu) {
+            this.setState({ showMenu: false });
+        } else {
+            this.setState({ showMenu: true });
         }
     }
 
@@ -89,11 +89,11 @@ class MainHeader extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if(this.props.user_details.isUserLoggedIn !== this.state.userLogin){
-            if(this.props.user_details.isUserLoggedIn == true){
-                this.setState({userLogin: true});
-            }else if(this.props.user_details.isUserLoggedIn == false){
-                this.setState({userLogin: false});
+        if (this.props.user_details.isUserLoggedIn !== this.state.userLogin) {
+            if (this.props.user_details.isUserLoggedIn == true) {
+                this.setState({ userLogin: true });
+            } else if (this.props.user_details.isUserLoggedIn == false) {
+                this.setState({ userLogin: false });
             }
         }
         if (this.props.location.pathname !== prevProps.location.pathname) {
@@ -147,7 +147,7 @@ class MainHeader extends Component {
 
     translate = (lang, dir) => {
         this.props.handleLanguageSelection(lang, dir);
-        this.setState({showMenu: false});
+        this.setState({ showMenu: false });
     }
 
     onChangeCountry = (country) => {
@@ -226,7 +226,7 @@ class MainHeader extends Component {
         }
 
         const store_locale = this.props.globals.store_locale;
-        const {globals} = this.props;
+        const { globals } = this.props;
         const cartDetails = <Cart showCart={this.state.showCart}
             cartDetails={this.props.cart_details}
             toggleCart={this.showCart}
@@ -268,7 +268,7 @@ class MainHeader extends Component {
                     <div className="t-Header-branding">
                         <div className="row-1">
                             <div className="containers-main">
-                                <ul className="leftLink" style={{paddingTop: 7}}>
+                                <ul className="leftLink" style={{ paddingTop: 7 }}>
                                     {/* <li className="ll" style={{ padding: 0 }}>
                                         <div className="lang">
                                             <a href="javascript:void(0);" onClick={(e) => this.translate('en', 'ltr')} className="active" >en</a></div>
@@ -279,33 +279,33 @@ class MainHeader extends Component {
                                             <a href="javascript:void(0);" onClick={(e) => this.translate('ar', 'rtl')} >العربية</a></div>
                                     </li> */}
                                     <li>
-                                    <div className="language">
-                                    <button className={this.state.showMenu ? 'Button is-open' : 'Button'} onClick={this.showMenu}>{globals.language.toUpperCase()}</button>
-                                    {
-                                        this.state.showMenu
-                                            ? (
-                                                <div className="menu">
-                                                <div>
-                                                    <div className="currency__item">
-                                                        <a href="javascript:void(0);" onClick={(e) => this.translate('en', 'ltr')} className="active" > EN | English</a>
-                                                    </div>
-                                                    <div className="currency__item">
-                                                        <a href="javascript:void(0);" onClick={(e) => this.translate('ar', 'rtl')}> AR | Arabic</a>
-                                                    </div>
-                                                </div>
-                                                </div>
-                                            )
-                                            : (
-                                                null
-                                            )
-                                    }
-                                </div>
+                                        <div className="language">
+                                            <button className={this.state.showMenu ? 'Button is-open' : 'Button'} onClick={this.showMenu}>{globals.language.toUpperCase()}</button>
+                                            {
+                                                this.state.showMenu
+                                                    ? (
+                                                        <div className="menu">
+                                                            <div>
+                                                                <div className="currency__item">
+                                                                    <a href="javascript:void(0);" onClick={(e) => this.translate('en', 'ltr')} className="active" > EN | English</a>
+                                                                </div>
+                                                                <div className="currency__item">
+                                                                    <a href="javascript:void(0);" onClick={(e) => this.translate('ar', 'rtl')}> AR | Arabic</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    )
+                                                    : (
+                                                        null
+                                                    )
+                                            }
+                                        </div>
                                     </li>
 
                                     {/* <li style={{height:40}}>
                                         <Button className="firstButton text-color">The Entertainer</Button>
                                     </li> */}
-                                    <li style={{ height: 40, marginLeft: 20}}>
+                                    <li style={{ height: 40, marginLeft: 20 }}>
                                         <Button className="secondButton text-color"><FormattedMessage id="header.TheBirthdayclub" defaultMessage="The Birthday Club" /></Button>
                                     </li>
                                     {<li>
@@ -314,8 +314,8 @@ class MainHeader extends Component {
                                                 <div onClick={this.showCountries} className={this.state.showCountries ? "activeCountry open" : "activeCountry"}>
                                                     {/* <i className={`flag ${this.state.country_flag}`} onClick={this.showCountries}>  </i> */}
                                                     {this.state.country_name == 'UAE' ?
-                                                        <img style={{height: '20px',width: '30px'}} src={UAEImage}></img>
-                                                        : <img style={{height: '20px',width: '30px'}} src={KSAImage}></img>
+                                                        <img style={{ height: '20px', width: '30px' }} src={UAEImage}></img>
+                                                        : <img style={{ height: '20px', width: '30px' }} src={KSAImage}></img>
                                                     }
                                                     <label className="text-color">&nbsp;{this.state.country_name} </label>
                                                     <span className="selected">
@@ -324,13 +324,13 @@ class MainHeader extends Component {
                                                     </span>
                                                     <i className="icon-down" ></i>
                                                 </div>
-                                                <div className="list" style={{textAlign: 'start'}}>
-                                                    <div style={{paddingLeft:10, paddingBottom: 7}}> 
-                                                        <img style={{height: '20px',width: '30px'}} src={UAEImage}></img>
+                                                <div className="list" style={{ textAlign: 'start' }}>
+                                                    <div style={{ paddingLeft: 10, paddingBottom: 7 }}>
+                                                        <img style={{ height: '20px', width: '30px' }} src={UAEImage}></img>
                                                         <a href="javascript:void(0);" className="uae" id="cart" onClick={() => this.onChangeCountry('UAE')}>UAE</a>
                                                     </div>
-                                                    <div style={{paddingLeft:10}}>
-                                                        <img style={{height: '20px',width: '30px'}} src={KSAImage}></img>
+                                                    <div style={{ paddingLeft: 10 }}>
+                                                        <img style={{ height: '20px', width: '30px' }} src={KSAImage}></img>
                                                         <a href="javascript:void(0);" className="ksa" id="cart" onClick={() => this.onChangeCountry('KSA')}><FormattedMessage id="header.ksa" defaultMessage="KSA" /></a>
                                                     </div>
                                                     {/* <li><a href="javascript:void(0);" className="ksa" id="cart" onClick={() => this.onChangeCountry('UAE', 'NETHERLANDS')}><FormattedMessage id="header.netherlands" defaultMessage="KSA" /></a></li>
@@ -363,19 +363,19 @@ class MainHeader extends Component {
                                     <li className="titleHover">
                                         {/* <i className="icon-heart"></i> */}
                                         <img src={help} className="image-ion"></img>
-                                        <label style={{lineHeight: '0.5rem'}} className="iconLeble text-color changeLinkText"><Link to={`/${store_locale}/help-and-faq`} style={{ textDecoration: 'none' }}><FormattedMessage id="Header.Help" defaultMessage="help" /></Link></label>
+                                        <label style={{ lineHeight: '0.5rem' }} className="iconLeble text-color changeLinkText"><Link to={`/${store_locale}/help-and-faq`} style={{ textDecoration: 'none' }}><FormattedMessage id="Header.Help" defaultMessage="help" /></Link></label>
                                     </li>
-                                    <li className="titleHover" style={this.state.userLogin ? {display: 'none'} : {display: 'inline-block', marginBottom: 5}}>
+                                    <li className="titleHover" style={this.state.userLogin ? { display: 'none' } : { display: 'inline-block', marginBottom: 5 }}>
                                         <Link to={`/${store_locale}/Login`} style={{ textDecoration: 'none' }}>
-                                            <img src={profile} className="image-ion" style={{marginTop: 8}}></img>
-                                                <label className="iconLeble text-color changeLinkText"><FormattedMessage id="Header.SignInOrRegister" defaultMessage="sign in / register"/></label>
+                                            <img src={profile} className="image-ion" style={{ marginTop: 8 }}></img>
+                                            <label className="iconLeble text-color changeLinkText"><FormattedMessage id="Header.SignInOrRegister" defaultMessage="sign in / register" /></label>
                                         </Link>
                                     </li>
-                                    <li style={this.state.userLogin ? {display: 'inline-block'} : {display: 'none'}}>
-                                    <img src={profile} className="image-ion"></img>
+                                    <li style={this.state.userLogin ? { display: 'inline-block' } : { display: 'none' }}>
+                                        <img src={profile} className="image-ion"></img>
                                         <label className="iconLeble text-color changeLinkText"><FormattedMessage id="header.Hello" defaultMessage="Hello" /> {this.props.user_details.customer_details.firstname} {this.props.user_details.customer_details.lastname}</label>
                                     </li>
-                                    <li style={this.state.userLogin ? {display: 'inline-block'} : {display: 'none'}}>
+                                    <li style={this.state.userLogin ? { display: 'inline-block' } : { display: 'none' }}>
                                         <Link to={`/${store_locale}/Login`} style={{ textDecoration: 'none' }}>
                                             <label className="iconLeble text-color changeLinkText"><FormattedMessage id="header.MyAccount" defaultMessage="My Account" /></label>
                                         </Link>
@@ -415,7 +415,7 @@ class MainHeader extends Component {
                                 </Col>
                                 <Col xs="4" style={{ padding: 6 }}><Search store_locale={store_locale} /></Col>
                                 <Col xs="2" className="col-remove"></Col>
-                                <Col xs="2"  className="width-custom" style={{ paddingTop: 15, paddingLeft: 5, paddingRight: 5 }}>
+                                <Col xs="2" className="width-custom" style={{ paddingTop: 15, paddingLeft: 5, paddingRight: 5 }}>
                                     <Link to={`/${store_locale}/cart`} style={{ textDecoration: 'none' }}>
                                         <ul className="cta">
                                             {/* <li>
@@ -441,16 +441,16 @@ class MainHeader extends Component {
                                         <div className="lang">
                                             <a href="javascript:void(0);" onClick={(e) => this.translate('en', 'ltr')} className="active" >en</a> | <a href="javascript:void(0);" onClick={(e) => this.translate('ar', 'rtl')} >العربية</a></div>
                                     </li> */}
-                                      <li style={{ paddingLeft: 10 }}>
-                                                <img src={bagLogo} style={{height: 25, width: 25}}/>
+                                            <li style={{ paddingLeft: 10 }}>
+                                                <img src={bagLogo} style={{ height: 25, width: 25 }} />
                                             </li>
-                                             <li style={{paddingTop: 8}}>
+                                            <li style={{ paddingTop: 8 }}>
                                                 <label className="headerLable2"><FormattedMessage id="header.mybasket" defaultMessage="my basket" />
-                                                {/* <span style={{ fontFamily: "VAG Rounded ELC Bold", marginLeft: 10 }}>£30.00</span> */}
+                                                    {/* <span style={{ fontFamily: "VAG Rounded ELC Bold", marginLeft: 10 }}>£30.00</span> */}
                                                 </label>
                                             </li>
-                                          
-                                            <li style={{paddingTop: 8}}>
+
+                                            <li style={{ paddingTop: 8 }}>
                                                 <label className="lable-count">{this.props.cart_details.products ? this.props.cart_details.products.length : 0}</label>
                                             </li>
                                         </ul>
@@ -465,14 +465,14 @@ class MainHeader extends Component {
                                         this.state.showMenu
                                             ? (
                                                 <div className="menu">
-                                                <ul>
-                                                    <li className="currency__item">
-                                                        <a href="javascript:void(0);" onClick={(e) => this.translate('en', 'ltr')} className="active" >EN | English</a>
-                                                    </li>
-                                                    <li className="currency__item">
-                                                        <a href="javascript:void(0);" onClick={(e) => this.translate('ar', 'rtl')}> AR | Arabic</a>
-                                                    </li>
-                                                </ul>
+                                                    <ul>
+                                                        <li className="currency__item">
+                                                            <a href="javascript:void(0);" onClick={(e) => this.translate('en', 'ltr')} className="active" >EN | English</a>
+                                                        </li>
+                                                        <li className="currency__item">
+                                                            <a href="javascript:void(0);" onClick={(e) => this.translate('ar', 'rtl')}> AR | Arabic</a>
+                                                        </li>
+                                                    </ul>
                                                 </div>
                                             )
                                             : (
@@ -480,27 +480,50 @@ class MainHeader extends Component {
                                             )
                                     }
                                 </div>
-                                <div style={{ width: '45%', display: 'inline-block', textAlign: 'start'}}>
+                                <div style={{ width: '45%', display: 'inline-block', textAlign: 'start' }}>
                                     <span style={{ height: 40 }}>
                                         <button className="mobileHomePageButtonSecond text-color"><FormattedMessage id="header.TheBirthdayclub" defaultMessage="The Birthday Club" /></button>
                                     </span>
                                 </div>
 
-                                {/* <span className="ll" style={{padding:0}}>
-                                            <a href="javascript:void(0);" onClick={(e) => this.translate('en', 'ltr')} className="active" >en</a>
-                                    </span>
+                                <div className="changecountry">
+                                    <div className="country">
+                                        <div onClick={this.showCountries} className={this.state.showCountries ? "activeCountry open" : "activeCountry"}>
+                                            {/* <i className={`flag ${this.state.country_flag}`} onClick={this.showCountries}>  </i> */}
+                                            {this.state.country_name == 'UAE' ?
+                                                <img style={{ height: '20px', width: '30px' }} src={UAEImage}></img>
+                                                : <img style={{ height: '20px', width: '30px' }} src={KSAImage}></img>
+                                            }
+                                            <label className="text-color">&nbsp;{this.state.country_name} </label>
+                                            <span className="selected">
+                                                <FormattedMessage id="header.defaultCountry" defaultMessage="Select Your Country" />
 
-                                    <span className="ll" style={{padding:0}}>
-                                           <a href="javascript:void(0);" onClick={(e) => this.translate('ar', 'rtl')} >العربية</a>
-                                    </span> */}
+                                            </span>
+                                            <i className="icon-down" ></i>
+                                        </div>
+                                        <div className="list" style={{ textAlign: 'start' }}>
+                                            <div style={{ paddingLeft: 10, paddingBottom: 7 }}>
+                                                <img style={{ height: '20px', width: '30px' }} src={UAEImage}></img>
+                                                <a href="javascript:void(0);" className="uae" id="cart" onClick={() => this.onChangeCountry('UAE')}>UAE</a>
+                                            </div>
+                                            <div style={{ paddingLeft: 10 }}>
+                                                <img style={{ height: '20px', width: '30px' }} src={KSAImage}></img>
+                                                <a href="javascript:void(0);" className="ksa" id="cart" onClick={() => this.onChangeCountry('KSA')}><FormattedMessage id="header.ksa" defaultMessage="KSA" /></a>
+                                            </div>
+                                            {/* <li><a href="javascript:void(0);" className="ksa" id="cart" onClick={() => this.onChangeCountry('UAE', 'NETHERLANDS')}><FormattedMessage id="header.netherlands" defaultMessage="KSA" /></a></li>
+                                                    <li><a href="javascript:void(0);" className="ksa" id="cart" onClick={() => this.onChangeCountry('UAE', 'SLOVENIA')}><FormattedMessage id="header.slovenia" defaultMessage="KSA" /></a></li>
+                                                    <li><a href="javascript:void(0);" className="usd" id="cart" onClick={() => this.onChangeCountry('International', 'UNITED KINGDOM')}><FormattedMessage id="header.uk" defaultMessage="International" /></a></li> */}
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div className="divShowOnMobile" style={{paddingTop: 10}}>
+                            <div className="divShowOnMobile" style={{ paddingTop: 10 }}>
                                 <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
                                     <img className="mobileHomeLogo" src={logoGroup} />
                                 </Link>
                                 <img src={location} className="mobileHomePageIcon"></img>
                                 <Link to={`/${store_locale}/cart`} style={{ textDecoration: 'none' }}>
-                                <img src={bagLogo} className="mobileHomePageIcon" style={{height: 25, width: 25}}/>
+                                    <img src={bagLogo} className="mobileHomePageIcon" style={{ height: 25, width: 25 }} />
                                 </Link>
                             </div>
                             <div className="divShowOnMobile" style={{ padding: "0px 10px", marginTop: 10 }}>
@@ -541,7 +564,7 @@ class MainHeader extends Component {
                         </Row> */}
                         <a to="JavaScript:;" id="closeNav" className="closeNav">X</a>
                         <div className="containers-main">
-                            <div style={{padding: "0px 10px"}}>
+                            <div style={{ padding: "0px 10px" }}>
                                 {/* <Col xs="12">
                                     <MenuNav />
                                 </Col> */}
@@ -576,64 +599,64 @@ class MainHeader extends Component {
                         </div>
                     </div>
                     <div className="header-slider">
-                    <Link to={`/${store_locale}/delivery-policy`} style={{ textDecoration: 'none' }}>
-                                <Slider {...settings}>
-                                    <div>
-                                        <Row>
-                                            <Col xs="3"></Col>
-                                            <Col xs="2" style={{paddingLeft: 0}}>
-                                                <img src={deliveryBy} className="imageHight40" />
-                                            </Col>
-                                            <Col xs="7">
-                                                <ul style={{ textAlign: 'start', paddingTop: 10 }}>
-                                                    <li style={{ fontSize: 13, color: "#0D943F" }}>
+                        <Link to={`/${store_locale}/delivery-policy`} style={{ textDecoration: 'none' }}>
+                            <Slider {...settings}>
+                                <div>
+                                    <Row>
+                                        <Col xs="3"></Col>
+                                        <Col xs="2" style={{ paddingLeft: 0 }}>
+                                            <img src={deliveryBy} className="imageHight40" />
+                                        </Col>
+                                        <Col xs="7">
+                                            <ul style={{ textAlign: 'start', paddingTop: 10 }}>
+                                                <li style={{ fontSize: 13, color: "#0D943F" }}>
                                                     <FormattedMessage id="header.FreeStdDelivery" defaultMessage="Free Std Delivery" />
-                                                    </li>
-                                                    {/* <li style={{ fontSize: 11 }} className="text-color">
+                                                </li>
+                                                {/* <li style={{ fontSize: 11 }} className="text-color">
                                                         when you spend £10
                                                     </li> */}
-                                                </ul>
-                                            </Col>
-                                        </Row>
-                                    </div>
-                                    <div>
-                                        <Row>
-                                            <Col xs="3"></Col>
-                                            <Col xs="2">
-                                                <img src={freeDelivery} className="imageHight40" />
-                                            </Col>
-                                            <Col xs="7">
-                                                <ul style={{ textAlign: 'start', paddingTop: 10 }}>
-                                                    <li style={{ fontSize: 13, color: "#0D943F" }}>
+                                            </ul>
+                                        </Col>
+                                    </Row>
+                                </div>
+                                <div>
+                                    <Row>
+                                        <Col xs="3"></Col>
+                                        <Col xs="2">
+                                            <img src={freeDelivery} className="imageHight40" />
+                                        </Col>
+                                        <Col xs="7">
+                                            <ul style={{ textAlign: 'start', paddingTop: 10 }}>
+                                                <li style={{ fontSize: 13, color: "#0D943F" }}>
                                                     <FormattedMessage id="header.FreeGiftwrapping" defaultMessage="Free Gift wrapping" />
-                                                    </li>
-                                                    {/* <li style={{ fontSize: 11 }} className="text-color">
+                                                </li>
+                                                {/* <li style={{ fontSize: 11 }} className="text-color">
                                                         for next working day delivery
                                                     </li> */}
-                                                </ul>
-                                            </Col>
-                                        </Row>
-                                    </div>
-                                    <div>
-                                        <Row>
-                                            <Col xs="3"></Col>
-                                            <Col xs="2">
-                                                <img src={freeCollect} className="imageHight40" />
-                                            </Col>
-                                            <Col xs="7">
-                                                <ul style={{ textAlign: 'start', paddingTop: 10 }}>
-                                                    <li style={{ fontSize: 13, color: "#0D943F" }}>
+                                            </ul>
+                                        </Col>
+                                    </Row>
+                                </div>
+                                <div>
+                                    <Row>
+                                        <Col xs="3"></Col>
+                                        <Col xs="2">
+                                            <img src={freeCollect} className="imageHight40" />
+                                        </Col>
+                                        <Col xs="7">
+                                            <ul style={{ textAlign: 'start', paddingTop: 10 }}>
+                                                <li style={{ fontSize: 13, color: "#0D943F" }}>
                                                     <FormattedMessage id="header.FreeReturns" defaultMessage="Free Returns" />
-                                                    </li>
-                                                    {/* <li style={{ fontSize: 11 }} className="text-color">
+                                                </li>
+                                                {/* <li style={{ fontSize: 11 }} className="text-color">
                                                         in as little as 30 minutes
                                                     </li> */}
-                                                </ul>
-                                            </Col>
-                                        </Row>
-                                    </div>
-                                </Slider>
-                                </Link>
+                                            </ul>
+                                        </Col>
+                                    </Row>
+                                </div>
+                            </Slider>
+                        </Link>
 
                         {/* <Row className="row-4">
                             <Col xs="1"></Col>
