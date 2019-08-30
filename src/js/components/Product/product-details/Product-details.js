@@ -46,9 +46,9 @@ class ProductDetails extends Component {
 			// url_key:'elc18-1'
 		};
 		this.props.onGetProductDetails(data);
-		this.props.getSizeChart({
-			store_id: this.props.globals.currentStore,
-		});
+		// this.props.getSizeChart({
+		// 	store_id: this.props.globals.currentStore,
+		// });
 	}
 
 	componentDidUpdate(prevProps, prevState) {
@@ -192,7 +192,7 @@ const mapDispatchToProps = dispatch => {
 	return {
 		onClearProductDetails: payload => dispatch(actions.clearProductDetails(payload)),
 		onGetProductDetails: payload => dispatch(actions.getProductDetails(payload)),
-		getSizeChart: payload => dispatch(actions.getSizeChart(payload)),
+		// getSizeChart: payload => dispatch(actions.getSizeChart(payload)),
 		OngetMyCart: (quoteId) => dispatch(actions.getMyCart(quoteId)),
 	};
 };

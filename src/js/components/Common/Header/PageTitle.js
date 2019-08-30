@@ -20,9 +20,11 @@ class PageTitle extends Component {
 
     componentDidUpdate(prevProps) {
         if ((this.props.pageTitle !== prevProps.pageTitle) || (this.props.globals.language !== prevProps.globals.language)) {
-            this.setState({
-                title: this.getTital(this.props.pageTitle)
-            })
+            if(this.props.pageTitle != 'NA'){
+                this.setState({
+                    title: this.getTital(this.props.pageTitle)
+                })
+            }
         }
     }
 

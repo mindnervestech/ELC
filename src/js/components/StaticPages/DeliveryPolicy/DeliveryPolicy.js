@@ -10,7 +10,6 @@ class DeliveryPolicy extends Component {
 		this.state = {
 			storeId: '',
 			data: [],
-			spinner:true
 		};
 	}
 	
@@ -24,7 +23,7 @@ class DeliveryPolicy extends Component {
 			});
             
 			API.get('delivery-policy/storeId/' + this.state.storeId).then(res => {
-				this.setState({ data: res.data ,spinner:!this.state.spinner});
+				this.setState({ data: res.data });
 			});
 		}
 
@@ -56,7 +55,6 @@ class DeliveryPolicy extends Component {
 	render() {
 		return (
 			<div className="t-Body-contentInner">
-				{this.state.spinner ? <Spinner/> :
 				<div className="container">
 					<div className="row">
 						<div className="col col-12 apex-col-auto">
@@ -130,7 +128,6 @@ class DeliveryPolicy extends Component {
 						</div>
 					</div>
 				</div>
-				}
 			</div>
 		);
 	}

@@ -1572,6 +1572,10 @@ html[dir="rtl"] .quantity-mob{
     margin-right: 0px !important;
 }
 
+.styles_modal__gNwvD{
+    height: 160px !important;
+}
+
 @media (max-width:767px){ 
     html[dir="rtl"] .row.rating-review {
         /* margin: 0; */
