@@ -32,7 +32,7 @@ class ProductInfo extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			defaultQty: 1,
+			defaultQty: 0,
 			openShareModel: false,
 		};
 		this.addToCart = this.addToCart.bind(this);
@@ -113,7 +113,10 @@ class ProductInfo extends Component {
 				Popup.queue(popupMessage);
 			}
 		} else {
-			this.setState({ defaultQty: currQty + 1 });
+			if(this.props.data.simpleproducts.length > 0 ){
+				this.setState({ defaultQty: currQty + 1 });
+			}
+			
 		}
 	};
 
@@ -285,12 +288,13 @@ class ProductInfo extends Component {
 													</div> :
 													<span className="product-price">{data.currency}&nbsp;{Number(data.price).toFixed(2)}</span>}
 											</div>
+											{newImageArray[0] && newImageArray[0].text !== false ?
 											<div className="prod-color">
 												<div>
 													<FormattedMessage id="Cart.Color.Title" defaultMessage="Color" /> :
 												{newImageArray[0] ? <span>{newImageArray[0].text}</span> : <div />}
 												</div>
-											</div>
+											</div> : <div /> }
 
 											<div className="color-img">
 												<div>
@@ -356,7 +360,7 @@ class ProductInfo extends Component {
 													<span className="t-Form-itemText t-Form-itemText--post">
 														<i
 															className="icon max qty-dec-inc"
-															onClick={e => this.increment(newImageArray[0].qty)}
+															onClick={e => this.increment(newImageArray[0] ? newImageArray[0].qty : 0)}
 														>
 															+
 													</i>
@@ -364,18 +368,18 @@ class ProductInfo extends Component {
 												</div>
 											</div>
 											<div style={{ width: '100%', marginBottom: 20 }}>
-												{newImageArray[0] && newImageArray[0].stock == 0 ?
-													<span style={{ margin: '10px', color: '#ee0E19' }}>
-														<FormattedMessage id="PDP.OutOfStock" defaultMessage="Out of Stock" />
-											</span> :
+												{newImageArray[0] && newImageArray[0].stock == 1 ?
 													<span className="in-stock" style={{ color: '#0D943F' }}>
-														<FormattedMessage id="PDP.InStock" defaultMessage="In Stock" />
-											</span>}
+													<FormattedMessage id="PDP.InStock" defaultMessage="In Stock" />
+												</span> :
+													<span style={{ margin: '10px', color: '#ee0E19' }}>
+													<FormattedMessage id="PDP.OutOfStock" defaultMessage="Out of Stock" />
+												</span>}
 											</div>
 											<Popup />
 											<div className="alsoLikeCard add-cart">
 												<div className="homePage">
-													<button onClick={this.addToCart} className="alsoLikeCardButton" style={{ marginTop: 0 }}>
+													<button disabled={newImageArray.length === 0} onClick={this.addToCart} className="alsoLikeCardButton" style={{ marginTop: 0 }}>
 														<FormattedMessage id="Product.Detail.addToBasket" defaultMessage="Add to basket" /></button>
 												</div>
 											</div>
