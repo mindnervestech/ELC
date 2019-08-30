@@ -50,7 +50,8 @@ class menuNav extends Component {
         <div className="profile">
           <figure className=""><i className="icon-user"></i></figure>
           <div className="">
-            <Link to={`/${store_locale}/login`} onClick={this.closeHBMenu}><FormattedMessage id="header.loginName" defaultMessage="Login" /></Link>
+            <Link to={`/${store_locale}/login`} onClick={this.closeHBMenu}>
+    {this.props.user_details.isUserLoggedIn ?  this.props.user_details.customer_details.firstname +' '+this.props.user_details.customer_details.lastname :<FormattedMessage id="Header.SignInOrRegister" defaultMessage="Sign in / Register" />}</Link>
             <Link to={`/${store_locale}/login`} className="hide"><FormattedMessage id="header.logoutName" defaultMessage="logout" /></Link>
           </div>
         </div>
@@ -71,7 +72,8 @@ class menuNav extends Component {
 const mapStateToProps = state => {
   return {
     globals: state.global,
-    menu: state.menu.menuNavData
+    menu: state.menu.menuNavData,
+    user_details: state.login,
   };
 }
 

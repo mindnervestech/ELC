@@ -58,8 +58,7 @@ class ProductListData extends Component {
 	}
 
 	handler(id) {
-		productList = id
-		this._closeSlider()
+		productList = id;
 		let count = 0
 		for (var element in productList) {
 			count++

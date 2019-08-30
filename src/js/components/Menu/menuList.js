@@ -147,10 +147,10 @@ class menuList extends Component {
 					<Link to={'/' + this.state.store_locale + '/products/' + item.url_path} style={{ textDecoration: 'none' }} onClick={() => document.getElementById("closeNav").click()}>
 						{item.name.toLowerCase()}
 						{item.children[0].length > 0 ?
-						<i class="fa fa-caret-down downMenu divShowOnWeb" aria-hidden="true"></i>
-						: ""}
+							<i class="fa fa-caret-down downMenu divShowOnWeb" aria-hidden="true"></i>
+						: <span  />}
 					</Link>
-					<i className="subMenuTrigger" />
+					{item.children[0].length > 0 ?<i className="subMenuTrigger" /> : <span />}
 					{this._checkSubMenu(item)}
 				</li>
 			</>
