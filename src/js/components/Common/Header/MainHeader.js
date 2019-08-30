@@ -311,7 +311,7 @@ class MainHeader extends Component {
                                     {<li>
                                         <div className="changecountry">
                                             <div className="country">
-                                                <div onClick={this.showCountries} className={this.state.showCountries ? "activeCountry open" : "activeCountry"}>
+                                                <div onClick={this.showCountries} className={this.state.showCountries ? "activeCountry open divShowOnWeb" : "activeCountry divShowOnWeb"}>
                                                     {/* <i className={`flag ${this.state.country_flag}`} onClick={this.showCountries}>  </i> */}
                                                     {this.state.country_name == 'UAE' ?
                                                         <img style={{ height: '20px', width: '30px' }} src={UAEImage}></img>
@@ -488,7 +488,7 @@ class MainHeader extends Component {
 
                                 <div className="changecountry">
                                     <div className="country">
-                                        <div onClick={this.showCountries} className={this.state.showCountries ? "activeCountry open" : "activeCountry"}>
+                                        <div onClick={this.showCountries} className={this.state.showCountries ? "activeCountry open divShowOnMobile" : "activeCountry divShowOnMobile"}>
                                             {this.state.country_name == 'UAE' ?
                                                 <img style={{ height: '20px', width: '30px' }} src={UAEImage}></img>
                                                 : <img style={{ height: '20px', width: '30px' }} src={KSAImage}></img>
@@ -496,7 +496,6 @@ class MainHeader extends Component {
                                             <label className="text-color">&nbsp;{this.state.country_name} </label>
                                             <span className="selected">
                                                 <FormattedMessage id="header.defaultCountry" defaultMessage="Select Your Country" />
-
                                             </span>
                                             <i className="icon-down" ></i>
                                         </div>
