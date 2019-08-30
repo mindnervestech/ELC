@@ -86,7 +86,7 @@ class SideManu extends Component {
 		productList = this.props.productDetails.products.product_data
 		return (
 			<div>
-				<div className="row-2" style={{padding: '22px 0px'}}>
+				<div className="row-2" style={{margin: '21px 0px', borderBottom: 'solid 1px #b1b1b1'}}>
 				    <span className="blackTitle">Narrow your Results</span>
 				</div>
 				{Object.keys(list).map((keyName) =>

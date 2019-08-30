@@ -344,8 +344,8 @@ class ProductListData extends Component {
 													<span style={{ fontSize: 14, color: "#0D943F", fontWeight: "bold" }}>{list[keyName].currency} {list[keyName].price}.00</span>
 													{/* <span style={{ color: "gray", textDecorationLine: 'line-through', fontSize: 14, marginLeft: 10 }}>AED 14.50</span> */}
 												</div>
-												{/* <div style={{ paddingTop: 10 }}>
-										<StarRatings
+												<div style={{ paddingTop: 10 }}>
+										{/* <StarRatings
 											rating={3}
 											starRatedColor='#FAD961'
 											changeRating={this.changeRating}
@@ -354,9 +354,9 @@ class ProductListData extends Component {
 											starHoverColor='#0D943F'
 											starDimension='15px'
 											starSpacing='0px'
-										/>
-										<span> 3 - 10 year </span>
-									</div> */}
+										/> */}
+										<span> {list[keyName].json.filtersdata.age[7]}</span>
+									</div>
 												{/* <div>
 										<button className="alsoLikeCardButton CardButton">Add to Basket</button>
 									</div>
