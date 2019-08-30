@@ -489,7 +489,6 @@ class MainHeader extends Component {
                                 <div className="changecountry">
                                     <div className="country">
                                         <div onClick={this.showCountries} className={this.state.showCountries ? "activeCountry open" : "activeCountry"}>
-                                            {/* <i className={`flag ${this.state.country_flag}`} onClick={this.showCountries}>  </i> */}
                                             {this.state.country_name == 'UAE' ?
                                                 <img style={{ height: '20px', width: '30px' }} src={UAEImage}></img>
                                                 : <img style={{ height: '20px', width: '30px' }} src={KSAImage}></img>

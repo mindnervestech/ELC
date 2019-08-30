@@ -140,22 +140,22 @@ class ProductListData extends Component {
 		}
 	}
 
-	viewAll = () => {
-		productList = productListData
-		let count = 0
-		for (var element in productList) {
-			count++
-		}
-		let totalPages = 1
-		if (count % pagenationCount == 0) {
-			totalPages = count / pagenationCount
-		} else {
-			totalPages = Math.floor(count / pagenationCount) + 1
-		}
-		this.setState({ totalPages: totalPages, pageNumber: 1 })
-		this.state.check = true
-		this.pagenation(1, pagenationCount)
-	}
+	// viewAll = () => {
+	// 	productList = productListData
+	// 	let count = 0
+	// 	for (var element in productList) {
+	// 		count++
+	// 	}
+	// 	let totalPages = 1
+	// 	if (count % pagenationCount == 0) {
+	// 		totalPages = count / pagenationCount
+	// 	} else {
+	// 		totalPages = Math.floor(count / pagenationCount) + 1
+	// 	}
+	// 	this.setState({ totalPages: totalPages, pageNumber: 1 })
+	// 	this.state.check = true
+	// 	this.pagenation(1, pagenationCount)
+	// }
 
 	_callFilters = () => {
 		this.setState({ showFilterOnMobile: true })
@@ -164,6 +164,12 @@ class ProductListData extends Component {
 	_closeSlider = () => {
 		this.setState({ showFilterOnMobile: false })
 	};
+
+	getAge = (age) => {
+		for(let data in age){
+			return age[data]
+		}
+	}
 
 	render() {
 		const list = this.state.list1
@@ -289,7 +295,7 @@ class ProductListData extends Component {
 												</select>
 											</Col>
 											<Col xs="3" style={{cursor: 'pointer'}}>
-												<span className="viewAll" onClick={() => this.viewAll()}><FormattedMessage id="profile.ViewAll.Title" defaultMessage="View all" /></span>
+												{/* <span className="viewAll" onClick={() => this.viewAll()}><FormattedMessage id="profile.ViewAll.Title" defaultMessage="View all" /></span> */}
 											</Col>
 										</Row>
 									</Col>
@@ -356,7 +362,7 @@ class ProductListData extends Component {
 											starDimension='15px'
 											starSpacing='0px'
 										/> */}
-										<span> {list[keyName].json.filtersdata.age[7]}</span>
+										<span> {this.getAge(list[keyName].json.filtersdata.age)}</span>
 									</div>
 												{/* <div>
 										<button className="alsoLikeCardButton CardButton">Add to Basket</button>

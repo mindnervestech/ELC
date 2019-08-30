@@ -12,6 +12,10 @@ let productListingData = {}
 let productList = {}
 let filterData = []
 let filterOptionArray = []
+let filterOptionArrayForCheck = []
+let filterOptionArrayForCheckValidate = []
+let filterOptionArraySubCategary = []
+let filterOptionCheck = true
 class SideManu extends Component {
 	constructor(props) {
 		super(props);
@@ -24,7 +28,42 @@ class SideManu extends Component {
 	}
 
 	componentDidMount() {
+		// if(Object.keys(this.props.productDetails.products).length > 0){
+		// 	if(filterOptionCheck){
+		// 		filterOptionCheck = false;
+		// 		const filterOptionList = this.props.productDetails.filters;
+		// 		for(let Categary in filterOptionList){
+		// 			for(let subCategary in filterOptionList[Categary]){
+		// 				filterOptionArrayForCheck.push(filterOptionList[Categary][subCategary].code + "/" + filterOptionList[Categary][subCategary].name);
+		// 				filterOptionArrayForCheckValidate.push(filterOptionList[Categary][subCategary].code + "/" + filterOptionList[Categary][subCategary].name);
+		// 				filterOptionArraySubCategary.push(filterOptionList[Categary][subCategary].name)
+		// 			}
+		// 		}
+		// 		console.log(">>>>>>>",filterOptionArrayForCheck)
+		// 		for(let value in filterOptionArrayForCheck){
+		// 			let splitValue = filterOptionArrayForCheck[value].split("/");
+		// 			let checkSubmanu = 0
+		// 			let remove = value
+		// 			for(let item in productListingData){
+		// 				if(splitValue[0] == "color"){
+		// 					if(splitValue[1] == productListingData[item].json.color_english){
+		// 						checkSubmanu++
+		// 					}
+		// 				}else if(splitValue[0] == "brand"){
 
+		// 				}else if(splitValue[0] == "age"){
+
+		// 				}
+		// 			}
+		// 			if(checkSubmanu == 0){
+		// 				console.log(remove)
+		// 				filterOptionArrayForCheckValidate.splice(remove, 1); 
+		// 				checkSubmanu = 0
+		// 			}
+		// 		}
+		// 		console.log(">>>>>>>>>>>>>",filterOptionArrayForCheckValidate)
+		// 	}
+		// }
 	}
 
 	getFilterData(filterValue, code) {
