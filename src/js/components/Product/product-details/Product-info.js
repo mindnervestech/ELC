@@ -27,7 +27,7 @@ import { Container, Row, Col, Button, Form, FormGroup } from 'reactstrap';
 import { FormattedMessage } from 'react-intl';
 
 const mediaVideo = 'https://storage.googleapis.com/nay/videos/product/au19/nay-au19-casual-nightwear-mainrange-nicoline-pajamaset-212884961.mp4';
-let store_locale="en";
+
 class ProductInfo extends Component {
 	constructor(props) {
 		super(props);
@@ -293,7 +293,7 @@ class ProductInfo extends Component {
 											</div>
 											<div className="prod-color">
 												<div>
-													Color :
+													<FormattedMessage id="Cart.Color.Title" defaultMessage="Color" /> :
 												{newImageArray[0] ? <span>{newImageArray[0].text}</span> : <div />}
 												</div>
 											</div>
@@ -372,10 +372,10 @@ class ProductInfo extends Component {
 											<div style={{ width: '100%', marginBottom: 20 }}>
 												{newImageArray[0] && newImageArray[0].stock == 0 ?
 													<span style={{ margin: '10px', color: '#ee0E19' }}>
-														Out of stock
+														<FormattedMessage id="PDP.OutOfStock" defaultMessage="Out of Stock" />
 											</span> :
 													<span className="in-stock" style={{ color: '#0D943F' }}>
-														In stock
+														<FormattedMessage id="PDP.InStock" defaultMessage="In Stock" />
 											</span>}
 											</div>
 											<Popup />
@@ -410,13 +410,13 @@ class ProductInfo extends Component {
 													/>
 												</g>{' '}
 											</svg>
-												 <span style={{margingRight:"35px"}}>add to wishlist</span>: <span style={{margingRight:"35px"}}>remove to wishlist</span>
+												 <span style={{margingRight:"35px"}}><FormattedMessage id="PageTitle.add-wishlist" defaultMessage="Add to wishlist" /></span>: <span style={{margingRight:"35px"}}><FormattedMessage id="PageTitle.remove-wishlist" defaultMessage="Remove to wishlist" /></span>
 											</span>
 											
 													
 												<a onClick={() => this.setState({ openShareModel: true })} className="hover-on-favorite">
 													<i className='fa fa-share-alt' style={{ fontSize: 25, marginRight: 13 }}></i>
-													<span >Share</span>
+													<span ><FormattedMessage id="Share" defaultMessage="Share" /></span>
 												</a>
 											</div>
 
@@ -429,7 +429,7 @@ class ProductInfo extends Component {
 												<span>this product includes free UK delivery</span>
 											</div> */}
 											<div className="learn-skill">
-												<span> Learning Skills:</span>
+												<span><FormattedMessage id="LearningSkills" defaultMessage="Learning skills" />:</span>
 
 											</div>
 											<div className="learn-skill-img">
@@ -502,7 +502,10 @@ const mapStateToProps = state => {
 		productZoomDetails: state.productDetails.productData,
 		customerDetails: state.login.customer_details,
 		productWishDetail: state.productDetails.productWishDetail,
-		productDetails: state.productDetails.productColor
+		productDetails: state.productDetails.productColor,
+		productDetailLoader: state.productDetails.productDetailLoader,
+		addToCardLoader: state.productDetails.addToCardLoader,
+		cart_details: state.myCart,
 	};
 };
 

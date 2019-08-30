@@ -451,7 +451,7 @@ class MainHeader extends Component {
                                             </li>
                                           
                                             <li style={{paddingTop: 8}}>
-                                                <label className="lable-count">0</label>
+                                                <label className="lable-count">{this.props.cart_details.products ? this.props.cart_details.products.length : 0}</label>
                                             </li>
                                         </ul>
                                     </Link>

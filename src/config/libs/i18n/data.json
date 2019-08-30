@@ -506,11 +506,12 @@
     "PageTitle.help-contact": "Contact Us",
     "PageTitle.offers": "Offers",
     "PageTitle.add-wishlist": "Add to Wishlist",
-
+    "PageTitle.remove-wishlist": "Remove to Wishlist",
     "PageTitle.nayomi.UAE": "ELC UAE",
     "PageTitle.nayomi.KSA": "ELC KSA",
     "PageTitle.nayomi.International": "ELC",
-
+    "Share": "Share",
+    "LearningSkills": "Learning skills",
     "ResetPassword.Title.Text": "Password Reset",
     "ResetPassword.NewPassword.Text": "New Password",
     "ResetPassword.EnterPassword.Text": "Enter Password",
@@ -1016,10 +1017,12 @@
     "PageTitle.help-contact": "اتصل بنا - نعومي",
     "PageTitle.offers": "عروض",
     "PageTitle.add-wishlist": "أضف إلى قائمة الامنيات",
-
+    "PageTitle.remove-wishlist": "إزالة إلى قائمة الامنيات",
     "PageTitle.nayomi.UAE": "نعومي الإمارات",
     "PageTitle.nayomi.KSA": "نعومي السعودية",
     "PageTitle.nayomi.International": "نعومي",
+    "Share": "مشاركة",
+    "LearningSkills": "المهارات التعليمية",
     "ResetPassword.Title.Text": "إعادة تعيين كلمة المرور",
     "ResetPassword.NewPassword.Text": "كلمة السر الجديدة",
     "ResetPassword.EnterPassword.Text": "أدخل كلمة المرور",

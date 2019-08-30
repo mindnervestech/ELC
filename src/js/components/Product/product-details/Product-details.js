@@ -111,7 +111,7 @@ class ProductDetails extends Component {
 					<div className="t-Body-content" id="t_Body_content">
 						<div id="t_Body_content_offset" style={{ height: '85px' }} />
 						<div className="t-Body-contentInner">
-							{this.props.productDetailLoader ? <Spinner /> : (<div className="container" style={{maxWidth: '85%'}}>
+							{this.props.productDetailLoader || this.props.addToCardLoader ? <Spinner /> : (<div className="container" style={{maxWidth: '85%'}}>
 								<ProductInfo data={this.props.productDetails} currentStore={this.props.globals.currentStore} />
 
 								{/* {this.props.productDetails.similar_products && (
@@ -166,7 +166,9 @@ const mapStateToProps = state => {
 		menu: state.menu.menuNavData,
 		productDetails: state.productDetails.productData,
 		productDetailLoader: state.productDetails.productDetailLoader,
-		customer_details: state.login.customer_details
+		customer_details: state.login.customer_details,
+		addToCardLoader: state.productDetails.addToCardLoader,
+		cart_details: state.myCart,
 	};
 };
 
