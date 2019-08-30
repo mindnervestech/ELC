@@ -14,7 +14,15 @@ class TermConditions extends Component {
 	static getDerivedStateFromProps = (props, state) => { };
 
 	componentDidMount() {
-		this.props.onGetTermConditionsData({ storeId: 1 });
+		if(this.props.globals.currentStore===undefined || this.props.globals.currentStore==='false')
+		{
+			this.props.onGetTermConditionsData({ storeId:1});
+		}
+		else
+		{
+			this.props.onGetTermConditionsData({ storeId: this.props.globals.currentStore});
+		}
+		//this.props.onGetTermConditionsData({ storeId: 1 });
 	}
 
 	render() {
@@ -104,7 +112,8 @@ class TermConditions extends Component {
 const mapStateToProps = state => {
 	return {
 		termConditions : state.static.termConditions,
-		spinnerProduct: state.spinner.loadingProduct
+		spinnerProduct: state.spinner.loadingProduct,
+		globals:state.global
  	}
 }
 
