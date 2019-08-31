@@ -79,32 +79,32 @@ class SignUp extends Component {
 
   handleValidation = () => {
     let fields = this.state.fields;
-    console.log("comehere");
+    
     let errors = {};
     let formIsValid = true;
 
     //Name
     if (!fields["firstName"]) {
       formIsValid = false;
-      errors["firstName"] = <FormattedMessage id="Signup.validation.firstName.empty" defaultMessage="First Name cannot be empty" />;
+      errors["firstName"] = <FormattedMessage id="Signup.validation.firstName.empty" defaultMessage="First name cannot be empty" />;
     }
 
     if (!fields["lastName"]) {
       formIsValid = false;
-      errors["lastName"] = <FormattedMessage id="Signup.validation.lastName.empty" defaultMessage="First Name cannot be empty" />;
+      errors["lastName"] = <FormattedMessage id="Signup.validation.lastName.empty" defaultMessage="Last name cannot be empty" />;
     }
 
     if (typeof fields["firstName"] !== "undefined") {
       if (!fields["firstName"].match(/^[a-zA-Z]+$/) && fields["firstName"].length > 0) {
         formIsValid = false;
-        errors["firstName"] = <FormattedMessage id="Signup.validation.firstName.onlyletters" defaultMessage="First Name cannot be empty" />;
+        errors["firstName"] = <FormattedMessage id="Signup.validation.firstName.onlyletters" defaultMessage="Please enter only letters" />;
       }
     }
 
     if (typeof fields["lastName"] !== "undefined") {
       if (!fields["lastName"].match(/^[a-zA-Z]+$/) && fields["lastName"].length > 0) {
         formIsValid = false;
-        errors["lastName"] = <FormattedMessage id="Signup.validation.lastName.onlyletters" defaultMessage="First Name cannot be empty" />;
+        errors["lastName"] = <FormattedMessage id="Signup.validation.lastName.onlyletters" defaultMessage="Please enter only letters" />;
       }
     }
 
@@ -113,7 +113,7 @@ class SignUp extends Component {
 
       if (fields["email"].length === 0) {
         formIsValid = false;
-        errors["email"] = <FormattedMessage id="Signup.validation.email.empty" defaultMessage="First Name cannot be empty" />;
+        errors["email"] = <FormattedMessage id="Signup.validation.email.empty" defaultMessage="Please enter email" />;
       }
 
       if (fields["email"].length > 0) {
@@ -121,7 +121,7 @@ class SignUp extends Component {
         let lastDotPos = fields["email"].lastIndexOf('.');
         if (!(lastAtPos < lastDotPos && lastAtPos > 0 && fields["email"].indexOf('@@') == -1 && lastDotPos > 2 && (fields["email"].length - lastDotPos) > 2 && !fields["email"].includes(' '))) {
           formIsValid = false;
-          errors["email"] = <FormattedMessage id="Signup.validation.email.invalid" defaultMessage="First Name cannot be empty" />;
+          errors["email"] = <FormattedMessage id="Signup.validation.email.invalid" defaultMessage="Please enter email in valid format" />;
         }
       }
     }
@@ -142,12 +142,12 @@ class SignUp extends Component {
     // }
     if (!fields["confirmEmail"]) {
       formIsValid = false;
-      errors["confirmEmail"] = <FormattedMessage id="Signup.validation.confirmEmail.empty" defaultMessage="Email address are not matched" />;
+      errors["confirmEmail"] = <FormattedMessage id="Signup.validation.confirmEmail.empty" defaultMessage="Please enter confirmemail again" />;
     }
 
     if (!(fields["confirmEmail"] === fields["email"])) {
       formIsValid = false;
-      errors["confirmEmail"] = <FormattedMessage id="Signup.validation.confirmEmail.invalid" defaultMessage="Email and Confirm Email must be same" />;
+      errors["confirmEmail"] = <FormattedMessage id="Signup.validation.confirmEmail.invalid" defaultMessage="email and confirm email must be same" />;
     }
 
     // if (!(this.state.isPhoneValid)) {
@@ -162,24 +162,24 @@ class SignUp extends Component {
       let pattern = '^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d^a-zA-Z0-9].{7,50}$'
       if (fields["password"].length === 0) {
         formIsValid = false;
-        errors["password"] = <FormattedMessage id="Signup.validation.password.empty" defaultMessage="First Name cannot be empty" />;
+        errors["password"] = <FormattedMessage id="Signup.validation.password.empty" defaultMessage="Please enter password" />;
       }else if (fields["password"].length < 8) {
         formIsValid = false;
-        errors["password"] = <FormattedMessage id="Form.PasswordLength" defaultMessage="First Name cannot be empty" />;
+        errors["password"] = <FormattedMessage id="Form.PasswordLength" defaultMessage="Minimum length is 8 characters" />;
       }else if (!fields["password"].match(pattern)){
         formIsValid = false;
-        errors["password"] = <FormattedMessage id="Form.PasswordConventions" defaultMessage="First Name cannot be empty" />;
+        errors["password"] = <FormattedMessage id="Form.PasswordConventions" defaultMessage="First Name cannot be emptyPassword must be at least 8 characters long and contain an uppercase letter, a lowercase letter and a number." />;
       }
     }
 
     if (!fields["confirmPassword"]) {
       formIsValid = false;
-      errors["confirmPassword"] = <FormattedMessage id="Signup.validation.confirmPassword.empty" defaultMessage="First Name cannot be empty" />;
+      errors["confirmPassword"] = <FormattedMessage id="Signup.validation.confirmPassword.empty" defaultMessage="Please enter password again" />;
     }
 
     if (!(fields["confirmPassword"] === fields["password"])) {
       formIsValid = false;
-      errors["confirmPassword"] = <FormattedMessage id="Signup.validation.password.same" defaultMessage="First Name cannot be empty" />;
+      errors["confirmPassword"] = <FormattedMessage id="Signup.validation.password.same" defaultMessage="Password and Confirm password must be same" />;
     }
     this.setState({ errors: errors });
     return formIsValid;

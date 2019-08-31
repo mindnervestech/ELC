@@ -70,7 +70,7 @@ html[dir="rtl"] #CreateAccount .intl-tel-input .country-list {
 }
 
 #ForgetPassword {
-    max-height: 260px;
+    max-height: 260px!important;
 }
 
 #ForgetPassword .t-Dialog-bodyWrapperIn {
@@ -88,6 +88,7 @@ html[dir="rtl"] #CreateAccount .intl-tel-input .country-list {
 
 .styles_modal__gNwvD h3 {
     padding: 1.2rem;
+    padding-left:56px!important;
     margin-bottom: 0;
     font-size: 1.6rem;
     text-transform: capitalize;

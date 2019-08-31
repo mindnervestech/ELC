@@ -462,7 +462,7 @@ class Login extends Component {
                                         </div> */}
                                       <div className="row" style={{marginTop: 10}}>
                                         <div className="col col-12 apex-col-auto loginButtonOnLoginPage">
-                                          <button onClick={this.login} className="button-add-to-basket right " style={{fontWeight: 'bold'}}><FormattedMessage id="secure.signintext" defaultMessage="Secure Sign In" /></button>
+                                          <button onClick={this.login} className="button-add-to-basket right " style={{fontWeight: 'bold'}}><FormattedMessage id="secure.signintext" defaultMessage="Sign In" /></button>
                                           {/* <div onClick={this.login} className="button-add-to-basket right " type="button" id="B28810467415678867"><span className="t-Button-label"><FormattedMessage id="secure.signin" defaultMessage="Secure Sign In" /></span></div><input type="hidden" id="COND" name="COND" value="" /><input type="hidden" id="ITEM" name="ITEM" value="" /> */}
                                         </div>
                                       </div>
