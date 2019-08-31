@@ -18,10 +18,11 @@ import { Link, Redirect } from 'react-router-dom';
 import discovertheworld_icons from '../../../../assets/images/social/discovertheworld_icons.png';
 import socialskills_icon from '../../../../assets/images/social/socialskills_icon.png';
 import imagination_icon from '../../../../assets/images/social/imagination_icon.png';
-
+import { withRouter } from 'react-router-dom';
 import ShareUrl from '../product-details/product-info/product-size';
 import Popup from 'react-popup';
-import { connect } from 'react-redux';
+import { connect}  from 'react-redux';
+import  {compose} from 'redux';
 import * as actions from '../../../redux/actions/index';
 import { Container, Row, Col, Button, Form, FormGroup } from 'reactstrap';
 import { FormattedMessage } from 'react-intl';
@@ -136,16 +137,15 @@ class ProductInfo extends Component {
 
 	_handleClick = async () => {
 		
-		 if (this.props.customerDetails) {
-			 if(this.props.customerDetails.customer_id === undefined)
-			 {
-				 
-				return <Redirect to={{
-					pathname: `/${this.props.globals.store_locale}/Login`,
-				}} />;
-			 }
-		 }
-		else if (document.getElementById('Capa_1').getAttribute('class').includes('active')) {
+		//  if (this.props.customerDetails) {
+		// 	 if(this.props.customerDetails.customer_id === undefined)
+		// 	 {
+		// 		// this.props.history.push("");
+		// 		 this.context.router.push('/');
+		   
+		// 	 }
+		//  }
+		 if (document.getElementById('Capa_1').getAttribute('class').includes('active')) {
 			document.getElementById('Capa_1').setAttribute('class', 'naylove-icon');
 			if (this.props.productWishDetail.wishlist_itemid) {
 				this.props.onRemoveWishList({
@@ -177,6 +177,63 @@ class ProductInfo extends Component {
 			.map(e => arr[e]);
 		return unique;
 	};
+
+	addToWishList = (data) => {
+		console.log()
+		if ((this.props.customerDetails && this.props.customerDetails.customer_id === undefined) || !this.props.customerDetails) {
+			return (<Link to={`/${this.props.globals.store_locale}/Login`}><span style={{display:"inline-flex", marginRight: '10px'}}>
+				<svg
+												xmlns="http://www.w3.org/2000/svg"
+												xmlnsXlink="http://www.w3.org/1999/xlink"
+												version="1.1"
+												id="Capa_1"
+												x="0px"
+												y="0px"
+												viewBox="0 0 50 50"
+												style={{ enableBackground: 'new 0 0 50 50' ,marginRight:10}}
+												xmlSpace="preserve"
+												width="20px"
+												height="20px"
+												className={"naylove-icon " + (data.is_in_wishlist ? 'active' : '')}
+												
+											>
+												<g transform="matrix(0.94148 0 0 0.94148 1.46299 1.46299)">
+													<path
+														d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543  c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503  c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"
+														className="naylove"
+													/>
+												</g>{' '}
+											</svg>
+												 {!data.is_in_wishlist ?<span style={{margingRight:"35px"}}><FormattedMessage id="PageTitle.add-wishlist" defaultMessage="Add to wishlist" /></span>: <span style={{margingRight:"35px"}}><FormattedMessage id="PageTitle.remove-wishlist" defaultMessage="Remove to wishlist" /></span>}
+											</span>
+			</Link>);
+		} else {
+			return (<span onClick={this._handleClick} style={{display:"inline-flex", marginRight: '10px'}}><svg
+			xmlns="http://www.w3.org/2000/svg"
+			xmlnsXlink="http://www.w3.org/1999/xlink"
+			version="1.1"
+			id="Capa_1"
+			x="0px"
+			y="0px"
+			viewBox="0 0 50 50"
+			style={{ enableBackground: 'new 0 0 50 50' ,marginRight:10}}
+			xmlSpace="preserve"
+			width="20px"
+			height="20px"
+			className={"naylove-icon " + (data.is_in_wishlist ? 'active' : '')}
+			
+		>
+			<g transform="matrix(0.94148 0 0 0.94148 1.46299 1.46299)">
+				<path
+					d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543  c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503  c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"
+					className="naylove"
+				/>
+			</g>{' '}
+		</svg>
+			 {!data.is_in_wishlist ?<span style={{margingRight:"35px"}}><FormattedMessage id="PageTitle.add-wishlist" defaultMessage="Add to wishlist" /></span>: <span style={{margingRight:"35px"}}><FormattedMessage id="PageTitle.remove-wishlist" defaultMessage="Remove to wishlist" /></span>}
+		</span>);
+		}
+	}
 
 	render() {
 		const { data } = this.props;
@@ -382,8 +439,8 @@ class ProductInfo extends Component {
 											</div>
 
 											<div className="share-wishlist">
-											<span onClick={this._handleClick} style={{display:"inline-flex", marginRight: '10px'}}> 
-											<svg
+											{this.addToWishList(data)} 
+											{/* <svg
 												xmlns="http://www.w3.org/2000/svg"
 												xmlnsXlink="http://www.w3.org/1999/xlink"
 												version="1.1"
@@ -406,7 +463,7 @@ class ProductInfo extends Component {
 												</g>{' '}
 											</svg>
 												 {!data.is_in_wishlist ?<span style={{margingRight:"35px"}}><FormattedMessage id="PageTitle.add-wishlist" defaultMessage="Add to wishlist" /></span>: <span style={{margingRight:"35px"}}><FormattedMessage id="PageTitle.remove-wishlist" defaultMessage="Remove to wishlist" /></span>}
-											</span>
+											</span> */}
 											
 												<span style={{display:"inline-flex", marginRight: '10px'}}>	
 												<a onClick={() => this.setState({ openShareModel: true })} className="hover-on-favorite">
