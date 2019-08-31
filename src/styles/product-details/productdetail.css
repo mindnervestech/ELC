@@ -1004,7 +1004,7 @@ font-weight: 100;
 }
 
 .styles_modal__gNwvD {
-    width: 603px !important;
+   width: 417px !important;
 }
 
 .short-text {
@@ -1573,7 +1573,13 @@ html[dir="rtl"] .quantity-mob{
 }
 
 .styles_modal__gNwvD{
-    height: 160px;
+    height: 129px !important;
+}
+.styles_modal__gNwvD div{
+        padding: 16px 17px !important;
+}
+html[dir="rtl"] .styles_modal__gNwvD div{
+        padding: 16px 17px !important;
 }
 
 @media (max-width:767px){ 
