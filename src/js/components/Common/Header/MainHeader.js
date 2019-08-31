@@ -480,7 +480,7 @@ class MainHeader extends Component {
                                             )
                                     }
                                 </div>
-                                <div style={{ width: '45%', display: 'inline-block', textAlign: 'start' }}>
+                                <div style={{ display: 'inline-block', textAlign: 'start'}}>
                                     <span style={{ height: 40 }}>
                                         <button className="mobileHomePageButtonSecond text-color"><FormattedMessage id="header.TheBirthdayclub" defaultMessage="The Birthday Club" /></button>
                                     </span>
@@ -512,15 +512,16 @@ class MainHeader extends Component {
                                                     <li><a href="javascript:void(0);" className="ksa" id="cart" onClick={() => this.onChangeCountry('UAE', 'SLOVENIA')}><FormattedMessage id="header.slovenia" defaultMessage="KSA" /></a></li>
                                                     <li><a href="javascript:void(0);" className="usd" id="cart" onClick={() => this.onChangeCountry('International', 'UNITED KINGDOM')}><FormattedMessage id="header.uk" defaultMessage="International" /></a></li> */}
                                         </div>
-                                        <div style={{height:'18px',width:'18px', position:'absolute'}}>
+                                      
+                                    </div>
+                                </div>
+                                  <div className="help-icon">
                                             <Link to={`/${store_locale}/help-and-faq`} style={{ textDecoration: 'none' }}>
                                                 <li className="titleHover">
                                                     <img src={help} className="image-ion"></img>
                                                 </li>
                                             </Link>
                                         </div>
-                                    </div>
-                                </div>
                             </div>
                             <div className="divShowOnMobile" style={{ paddingTop: 10 }}>
                                 <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
@@ -605,64 +606,64 @@ class MainHeader extends Component {
                         </div>
                     </div>
                     <div className="header-slider">
-                        <Link to={`/${store_locale}/delivery-policy`} style={{ textDecoration: 'none' }}>
-                            <Slider {...settings}>
-                                <div>
-                                    <Row>
-                                        <Col xs="3"></Col>
-                                        <Col xs="2" style={{ paddingLeft: 0 }}>
-                                            <img src={deliveryBy} className="imageHight40" />
-                                        </Col>
-                                        <Col xs="7">
-                                            <ul style={{ textAlign: 'start', paddingTop: 10 }}>
-                                                <li style={{ fontSize: 13, color: "#0D943F" }}>
+                    <Link to={`/${store_locale}/delivery-policy`} style={{ textDecoration: 'none' }}>
+                                <Slider {...settings}>
+                                    <div>
+                                        <Row>
+                                            <Col xs="3"></Col>
+                                            <Col xs="2" style={{paddingLeft: 0}} className="padd-icon-zero">
+                                                <img src={deliveryBy} className="imageHight40" />
+                                            </Col>
+                                            <Col xs="7">
+                                                <ul style={{ textAlign: 'start', paddingTop: 10 }}>
+                                                    <li style={{ fontSize: 13, color: "#0D943F" }}>
                                                     <FormattedMessage id="header.FreeStdDelivery" defaultMessage="Free Std Delivery" />
-                                                </li>
-                                                {/* <li style={{ fontSize: 11 }} className="text-color">
+                                                    </li>
+                                                    {/* <li style={{ fontSize: 11 }} className="text-color">
                                                         when you spend £10
                                                     </li> */}
-                                            </ul>
-                                        </Col>
-                                    </Row>
-                                </div>
-                                <div>
-                                    <Row>
-                                        <Col xs="3"></Col>
-                                        <Col xs="2">
-                                            <img src={freeDelivery} className="imageHight40" />
-                                        </Col>
-                                        <Col xs="7">
-                                            <ul style={{ textAlign: 'start', paddingTop: 10 }}>
-                                                <li style={{ fontSize: 13, color: "#0D943F" }}>
+                                                </ul>
+                                            </Col>
+                                        </Row>
+                                    </div>
+                                    <div>
+                                        <Row>
+                                            <Col xs="3"></Col>
+                                            <Col xs="2" className="padd-icon-zero">
+                                                <img src={freeDelivery} className="imageHight40" />
+                                            </Col>
+                                            <Col xs="7">
+                                                <ul style={{ textAlign: 'start', paddingTop: 10 }}>
+                                                    <li style={{ fontSize: 13, color: "#0D943F" }}>
                                                     <FormattedMessage id="header.FreeGiftwrapping" defaultMessage="Free Gift wrapping" />
-                                                </li>
-                                                {/* <li style={{ fontSize: 11 }} className="text-color">
+                                                    </li>
+                                                    {/* <li style={{ fontSize: 11 }} className="text-color">
                                                         for next working day delivery
                                                     </li> */}
-                                            </ul>
-                                        </Col>
-                                    </Row>
-                                </div>
-                                <div>
-                                    <Row>
-                                        <Col xs="3"></Col>
-                                        <Col xs="2">
-                                            <img src={freeCollect} className="imageHight40" />
-                                        </Col>
-                                        <Col xs="7">
-                                            <ul style={{ textAlign: 'start', paddingTop: 10 }}>
-                                                <li style={{ fontSize: 13, color: "#0D943F" }}>
+                                                </ul>
+                                            </Col>
+                                        </Row>
+                                    </div>
+                                    <div>
+                                        <Row>
+                                            <Col xs="3"></Col>
+                                            <Col xs="2" className="padd-icon-zero">
+                                                <img src={freeCollect} className="imageHight40" />
+                                            </Col>
+                                            <Col xs="7">
+                                                <ul style={{ textAlign: 'start', paddingTop: 10 }}>
+                                                    <li style={{ fontSize: 13, color: "#0D943F" }}>
                                                     <FormattedMessage id="header.FreeReturns" defaultMessage="Free Returns" />
-                                                </li>
-                                                {/* <li style={{ fontSize: 11 }} className="text-color">
+                                                    </li>
+                                                    {/* <li style={{ fontSize: 11 }} className="text-color">
                                                         in as little as 30 minutes
                                                     </li> */}
-                                            </ul>
-                                        </Col>
-                                    </Row>
-                                </div>
-                            </Slider>
-                        </Link>
+                                                </ul>
+                                            </Col>
+                                        </Row>
+                                    </div>
+                                </Slider>
+                                </Link>
 
                         {/* <Row className="row-4">
                             <Col xs="1"></Col>

@@ -778,7 +778,7 @@ html[dir="rtl"] .header .row-1 .cart span {
 }
 
 .submenu{
-        border: 1px solid #dedcdc;
+ 
             border-top: 0;
 }
 @media only screen and (max-width: 767px) {
@@ -4511,8 +4511,11 @@ html[dir="rtl"] .header .navTrigger {
     border-bottom: 0px solid rgba(0,0,0,.075) !important;
 }
 @media (max-width: 767px){
-    
+
 .header .changecountry .country .activeCountry .selected {
     display: none;
+}
+.hide-td{
+    display: none !important;
 }
 }

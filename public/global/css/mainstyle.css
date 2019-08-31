@@ -5253,12 +5253,16 @@ button.swiper-pagination-bullet {
     .homePage .adore figure .imgAsset {
         display: none;
     }
+       .padd-icon-zero{
+        padding: 0 !important;
+}
 }
 
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
     .homePage .contentBox {
         right: 33%;
     }
+
 }
 
 /*Help Center*/
@@ -5366,7 +5370,8 @@ a:hover {
 }
 @media (max-width:600px){
     html[dir="rtl"] .mobileHomeLogo {
-        margin-left: 5%;
+           margin-left: -1%;
+    margin-right: 51px;
     }
 }
 @media (max-width:767px){
@@ -5386,8 +5391,14 @@ a:hover {
     }
     .language {
     padding-left: 3%;
-    width: 20%;
+    width: 52px;
     display: inline-block;
+}
+html[dir="rtl"] .language {
+    padding-left: 3%;
+    width: 52px;
+    display: inline-block;
+    margin-right: 20px;
 }
 .header .changecountry .country .activeCountry i {
     display: inline-block !important;
@@ -5428,10 +5439,11 @@ html[dir="rtl"] .header .changecountry {
     width: 30% !important;
     display: inline-block !important;
     position: relative !important;
-    left: 15px !important;
+    left: 5px !important;
 }
 html[dir="rtl"] .divShowOnMobile {
     margin-top: 0px !important;
+        text-align: right;
 }
 
 .share-icon {
@@ -5442,6 +5454,24 @@ html[dir="rtl"] .divShowOnMobile {
 }
 .share-icon span{
     font-size: 12px !important;
+}
+.padd-icon-zero{
+        padding: 0 !important;
+}
+.help-icon{
+    height: 18px;
+    width: 18px;
+    position: absolute;
+    display: inline-block;
+    right: 30px;
+}
+html[dir="rtl"] .help-icon {
+    height: 18px;
+    width: 18px;
+    position: absolute;
+    display: inline-block;
+    left: 30px;
+    right: unset !important;
 }
 }
 
