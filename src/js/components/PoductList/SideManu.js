@@ -43,7 +43,6 @@ class SideManu extends Component {
 						filterOptionArraySubCategary.push(filterOptionList[Categary][subCategary].name)
 					}
 				}
-				console.log(">>>>>>>",filterOptionArrayForCheck)
 				for(let value in filterOptionArrayForCheck){
 					let splitValue = filterOptionArrayForCheck[value].split("/");
 					let checkSubmanu = 0
@@ -82,7 +81,6 @@ class SideManu extends Component {
 					}
 					
 				}
-				console.log(">>>>>>>>>>>>>",filterOptionArrayForCheckValidate)
 				
 				this.setState({ list: filterList })
 			}
@@ -157,7 +155,6 @@ class SideManu extends Component {
 		for(let item in filterOptionArrayForCheckValidate){
 			let splitData = filterOptionArrayForCheckValidate[item].split('/')
 			if(splitData[1] == value){
-				console.log(splitData[1], ":", value)
 			//  render(){
 				return (
 					<div>
@@ -181,6 +178,26 @@ class SideManu extends Component {
 		);
 	}
 
+	checkMainFilterName(value){
+		let checkManu = 0
+		for(let item in filterOptionArrayForCheckValidate){
+			let splitData = filterOptionArrayForCheckValidate[item].split('/')
+			if(splitData[0] == value.toLowerCase()){
+				if(checkManu == 0){
+					checkManu = 1
+					return (
+						<div className="bottomBorder" style={{ paddingTop: 10 }}>
+							<Collapsible trigger={value} >
+								<div style={{textAlign: 'start'}}>{this.assignFilterdata(this.state.list[value])}</div>
+							</Collapsible>
+						</div>
+						
+					);
+				}	
+			}
+		}
+	}
+
 	render() {
 		//const list = this.props.productDetails.filters;
 		//productList = this.props.productDetails.products.product_data
@@ -191,11 +208,10 @@ class SideManu extends Component {
 				</div>
 				<div style={{ paddingTop: 19 }}>
 					{Object.keys(this.state.list).map((keyName) =>
-						<div className="bottomBorder" style={{ paddingTop: 10 }}>
-							<Collapsible trigger={keyName} >
-								<div style={{textAlign: 'start'}}>{this.assignFilterdata(this.state.list[keyName])}</div>
-							</Collapsible>
-						</div>
+						// <div className="bottomBorder" style={{ paddingTop: 10 }}>
+							
+							this.checkMainFilterName(keyName)
+						// {/* </div> */}
 					)}
 				</div>
 			</div>
