@@ -5583,6 +5583,12 @@ html[dir="rtl"] .header .navTrigger {
 }
 
 @media (max-width: 767px) {
+    .mobile-adjust{
+           margin: 16px 21px 0px 20px !important;
+    }
+    .mar{
+            margin: 0px 20px;
+    }
     @supports (-webkit-overflow-scrolling: touch) { 
     .product-list li {
         vertical-align: top;

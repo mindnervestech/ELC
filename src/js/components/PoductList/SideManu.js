@@ -189,8 +189,8 @@ class SideManu extends Component {
 				if (checkManu == 0) {
 					checkManu = 1
 					return (
-						<div className="bottomBorder" style={{ paddingTop: 10 }}>
-							<Collapsible trigger={value} >
+						<div id="pr" className="bottomBorder" style={{ paddingTop: 10 }}>
+							<Collapsible trigger={value}>
 								<div style={{ textAlign: 'start' }}>{this.assignFilterdata(this.state.list[value])}</div>
 							</Collapsible>
 						</div>
@@ -208,10 +208,10 @@ class SideManu extends Component {
 			<div>
 				{this.state.spnner ? <Spinner /> :
 					<div>
-						<div className="row-2" style={{ margin: '21px 0px', borderBottom: 'solid 1px #b1b1b1' }}>
+						<div className="row-2 mobile-adjust" style={{ margin: '21px 0px', borderBottom: 'solid 1px #b1b1b1' }}>
 							<span className="blackTitle">Narrow your Results</span>
 						</div>
-						<div style={{ paddingTop: 19 }}>
+						<div style={{ paddingTop: 19 }} className="mar">
 							{Object.keys(this.state.list).map((keyName) =>
 								// <div className="bottomBorder" style={{ paddingTop: 10 }}>
 

@@ -4521,4 +4521,15 @@ html[dir="rtl"] .header .navTrigger {
 .hide-td{
     display: none !important;
 }
+   .mar .Collapsible__trigger:after {   
+    top: -6px;
+    
+}
+ .mar .Collapsible__trigger {
+    display: block;
+    text-decoration: none;
+    position: relative;
+    border: none;
+       padding: 0px 0px 8px 0px;
+    }
 }

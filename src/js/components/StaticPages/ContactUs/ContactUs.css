@@ -20,6 +20,20 @@ padding:10px!important;
 }
 @media only screen and (max-width:767px)
 {
+    html[dir="rtl"] .intl-tel-input.iti-container {
+    position: absolute;
+    z-index: 1060;
+    padding: 1px;
+    width: 72% !important;
+    margin: 0 auto !important;
+}
+   .intl-tel-input.iti-container {
+    position: absolute;
+    z-index: 1060;
+    padding: 1px;
+    width: 72% !important;
+    margin: 0 auto !important;
+}
     .mob-width ..intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-3 input, .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-3 input[type=text], .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-3 input[type=tel]{
            padding-top: 12px !important;
     }
@@ -31,9 +45,8 @@ padding:10px!important;
     z-index: 9 !important;
     transform: translateY(30%);
 }
-    html[dir="rtl"] .iti-mobile .intl-tel-input.iti-container {
+ html[dir="rtl"] .iti-mobile .intl-tel-input.iti-container {
     top: 36em !important;
-    bottom: 30px;
     position: absolute!important;
     height: 300px !important;
     z-index: 9 !important;
