@@ -36,7 +36,7 @@ class Search extends Component {
                     {(message)=>  
                     <input type="text" id="searchnay" className="textInput" placeholder={message} onKeyDown={this.handleKeyPress} />}
                 </FormattedMessage>
-                <button className="searchButton"><i className="icon-search"></i></button>
+                <button className="searchButton" style={{backgroundColor: '#ddd'}}><i className="icon-search"></i></button>
               </div>
         )
     }

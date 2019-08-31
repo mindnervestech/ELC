@@ -165,7 +165,7 @@ class ProductListData extends Component {
 	};
 
 	getAge = (age) => {
-		for(let data in age){
+		for (let data in age) {
 			return age[data]
 		}
 	}
@@ -173,7 +173,7 @@ class ProductListData extends Component {
 	render() {
 		let list = this.state.list1
 		const store_locale = this.props.globals.store_locale
-		if(Object.keys(list).length == 0){
+		if (Object.keys(list).length == 0) {
 			list = this.props.list;
 		}
 		return (
@@ -262,99 +262,99 @@ class ProductListData extends Component {
 						</div>
 					</div>
 					{Object.keys(list).length > 0 ?
-					<div className="homePage">
-						<div className="start3">
-							<div>
-								<span className="blackTitle">{this.props.list.category_name}</span>
-							</div>
-							<div style={{ height: 22 }}>
-								<span>{this.props.list.category_description}</span>
-							</div>
-							<div style={{ paddingTop: 25 }}>
-								<Row className="divShowOnWeb">
-									<Col xs="5">
-										<Row>
-											<Col xs="3">
-												<span className="blackTitle"><FormattedMessage id="Product.Listing.SortBy" defaultMessage="Sort by" /></span>
-											</Col>
-											<Col xs="6" style={{ padding: 0 }}>
-												<select placeholder={'Filter'} onChange={this.filter}>
-													<FormattedMessage id="Product.Listing.Relevance" defaultMessage="Relevance">
-														{(message) =>
-															<option value="relevance">{message}</option>
-														}
-													</FormattedMessage>
-													<FormattedMessage id="Product.Listing.PriceHTL" defaultMessage="Price (High to Low)">
-														{(message) =>
-															<option value="price_desc">{message}</option>
-														}
-													</FormattedMessage>
-													<FormattedMessage id="Product.Listing.PriceLTH" defaultMessage="Price (Low to High)">
-														{(message) =>
-															<option value="price_asc">{message}</option>
-														}
-													</FormattedMessage>
-												</select>
-											</Col>
-											<Col xs="3" style={{cursor: 'pointer'}}>
-												{/* <span className="viewAll" onClick={() => this.viewAll()}><FormattedMessage id="profile.ViewAll.Title" defaultMessage="View all" /></span> */}
-											</Col>
-										</Row>
-									</Col>
-									<Col xs="7">
-										<Row>
-											<Col xs="2"></Col>
-											<Col xs="10">
-												<Row>
-													<Col xs="4">
-														<button onClick={this.prevButton} className={this.state.pageNumber == 1 ? "prevButton" : "nextButton"} style={{ width: "80%" }}>Prev</button>
-													</Col>
-													<Col xs="4">
-														<span>Page {this.state.pageNumber} of {this.state.totalPages}</span>
-													</Col>
-													<Col xs="4">
-														<button onClick={this.nextButton} className={this.state.totalPages == this.state.pageNumber ? "prevButton" : "nextButton"} style={{ width: "80%" }}>Next</button>
-													</Col>
-												</Row>
-											</Col>
-										</Row>
-									</Col>
-								</Row>
-								<div className="divShowOnMobile">
-									<Row>
-										<Col xs="4">
-											<button onClick={this.prevButton} className={this.state.pageNumber == 1 ? "prevButton" : "nextButton"} style={{ width: "80%" }}>Prev</button>
+						<div className="homePage">
+							<div className="start3">
+								<div>
+									<span className="blackTitle">{this.props.list.category_name}</span>
+								</div>
+								<div style={{ height: 22 }}>
+									<span>{this.props.list.category_description}</span>
+								</div>
+								<div style={{ paddingTop: 25 }}>
+									<Row className="divShowOnWeb">
+										<Col xs="5">
+											<Row>
+												<Col xs="3">
+													<span className="blackTitle"><FormattedMessage id="Product.Listing.SortBy" defaultMessage="Sort by" /></span>
+												</Col>
+												<Col xs="6" style={{ padding: 0 }}>
+													<select placeholder={'Filter'} onChange={this.filter}>
+														<FormattedMessage id="Product.Listing.Relevance" defaultMessage="Relevance">
+															{(message) =>
+																<option value="relevance">{message}</option>
+															}
+														</FormattedMessage>
+														<FormattedMessage id="Product.Listing.PriceHTL" defaultMessage="Price (High to Low)">
+															{(message) =>
+																<option value="price_desc">{message}</option>
+															}
+														</FormattedMessage>
+														<FormattedMessage id="Product.Listing.PriceLTH" defaultMessage="Price (Low to High)">
+															{(message) =>
+																<option value="price_asc">{message}</option>
+															}
+														</FormattedMessage>
+													</select>
+												</Col>
+												<Col xs="3" style={{ cursor: 'pointer' }}>
+													{/* <span className="viewAll" onClick={() => this.viewAll()}><FormattedMessage id="profile.ViewAll.Title" defaultMessage="View all" /></span> */}
+												</Col>
+											</Row>
 										</Col>
-										<Col xs="4">
-											<span>Page {this.state.pageNumber} of {this.state.totalPages}</span>
-										</Col>
-										<Col xs="4">
-											<button onClick={this.nextButton} className={this.state.totalPages == this.state.pageNumber ? "prevButton" : "nextButton"} style={{ width: "80%" }}>Next</button>
+										<Col xs="7">
+											<Row>
+												<Col xs="2"></Col>
+												<Col xs="10">
+													<Row>
+														<Col xs="4">
+															<button onClick={this.prevButton} className={this.state.pageNumber == 1 ? "prevButton" : "nextButton"} style={{ width: "80%" }}>Prev</button>
+														</Col>
+														<Col xs="4">
+															<span>Page {this.state.pageNumber} of {this.state.totalPages}</span>
+														</Col>
+														<Col xs="4">
+															<button onClick={this.nextButton} className={this.state.totalPages == this.state.pageNumber ? "prevButton" : "nextButton"} style={{ width: "80%" }}>Next</button>
+														</Col>
+													</Row>
+												</Col>
+											</Row>
 										</Col>
 									</Row>
+									<div className="divShowOnMobile pagenation">
+										<ul>
+											<li className="liTag" style={{ textAlign: 'start' }}>
+												<button onClick={this.prevButton} className={this.state.pageNumber == 1 ? "prevButton" : "nextButton"}>Prev</button>
+											</li>
+											<li className="liTag" style={{ textAlign: 'center', paddingTop: 7 }}>
+												<span>Page {this.state.pageNumber} of {this.state.totalPages}</span>
+											</li>
+											<li className="liTag" style={{ textAlign: 'end' }}>
+												<button onClick={this.nextButton} className={this.state.totalPages == this.state.pageNumber ? "prevButton" : "nextButton"}>Next</button>
+											</li>
+										</ul>
+									</div>
 								</div>
 							</div>
-						</div>
-						<div className="start">
-							<ul className="products">
-								{Object.keys(list).map((keyName, index) =>
-									<Link to={`/${store_locale}/products-details/${list[keyName].json.url_key}`}>
-										<li key={index}>
-											<div className="alsoLikeCard">
-												{/* <span className="percentage-text" style={{ display: 'none' }}>30</span>
+							<div className="start">
+								<ul className="products">
+									{Object.keys(list).map((keyName, index) =>
+										<Link to={`/${store_locale}/products-details/${list[keyName].json.url_key}`}>
+											<li key={index}>
+												<div className="alsoLikeCard">
+													{/* <span className="percentage-text" style={{ display: 'none' }}>30</span>
 									<span className="save-text">5</span>
 									<img src={save} className="save" /> */}
-												<img src={(list[keyName].json.imageUrl) ? list[keyName].json.imageUrl.primaryimage : placeholder} className="cardImage" />
-												{/* <img src={percentage} className="percentage" style={{ display: 'none' }} /> */}
-												<div style={{ marginTop: 10 }}>
-													<label className="text-color">{list[keyName].json.name}</label>
-												</div>
-												<div>
-													<span style={{ fontSize: 14, color: "#0D943F", fontWeight: "bold" }}>{list[keyName].currency} {list[keyName].price}.00</span>
-													{/* <span style={{ color: "gray", textDecorationLine: 'line-through', fontSize: 14, marginLeft: 10 }}>AED 14.50</span> */}
-												</div>
-												<div style={{ paddingTop: 10 }}>
-										{/* <StarRatings
+													<img src={(list[keyName].json.imageUrl) ? list[keyName].json.imageUrl.primaryimage : placeholder} className="cardImage" />
+													{/* <img src={percentage} className="percentage" style={{ display: 'none' }} /> */}
+													<div style={{ marginTop: 10 }}>
+														<label className="text-color">{list[keyName].json.name}</label>
+													</div>
+													<div>
+														<span style={{ fontSize: 14, color: "#0D943F", fontWeight: "bold" }}>{list[keyName].currency} {list[keyName].price}.00</span>
+														{/* <span style={{ color: "gray", textDecorationLine: 'line-through', fontSize: 14, marginLeft: 10 }}>AED 14.50</span> */}
+													</div>
+													<div style={{ paddingTop: 10 }}>
+														{/* <StarRatings
 											rating={3}
 											starRatedColor='#FAD961'
 											changeRating={this.changeRating}
@@ -364,55 +364,55 @@ class ProductListData extends Component {
 											starDimension='15px'
 											starSpacing='0px'
 										/> */}
-										<span> {this.getAge(list[keyName].json.filtersdata.age)}</span>
-									</div>
-												{/* <div>
+														<span> {this.getAge(list[keyName].json.filtersdata.age)}</span>
+													</div>
+													{/* <div>
 										<button className="alsoLikeCardButton CardButton">Add to Basket</button>
 									</div>
 									<div style={{ paddingTop: 10 }}>
 										<i className="icon-heart"></i>
 										<span>Add to Wishlist</span>
 									</div> */}
-											</div>
-										</li>
-									</Link>
-								)}
-							</ul>
+												</div>
+											</li>
+										</Link>
+									)}
+								</ul>
+							</div>
+							<div className="start2 divShowOnWeb">
+								<Row>
+									<Col xs="2"></Col>
+									<Col xs="8">
+										<Row>
+											<Col xs="4">
+												<button onClick={this.prevButton} className={this.state.pageNumber == 1 ? "prevButton" : "nextButton"}>Prev</button>
+											</Col>
+											<Col xs="4">
+												<span>Page {this.state.pageNumber} of {this.state.totalPages}</span>
+											</Col>
+											<Col xs="4">
+												<button onClick={this.nextButton} className={this.state.totalPages == this.state.pageNumber ? "prevButton" : "nextButton"}>Next</button>
+											</Col>
+										</Row>
+									</Col>
+									<Col xs="2"></Col>
+								</Row>
+							</div>
+							<div className="divShowOnMobile pagenation" style={{padding: '10px 20px'}}>
+								<ul>
+									<li className="liTag" style={{ textAlign: 'start' }}>
+										<button onClick={this.prevButton} className={this.state.pageNumber == 1 ? "prevButton" : "nextButton"}>Prev</button>
+									</li>
+									<li className="liTag" style={{ textAlign: 'center', paddingTop: 7 }}>
+										<span>Page {this.state.pageNumber} of {this.state.totalPages}</span>
+									</li>
+									<li className="liTag" style={{ textAlign: 'end' }}>
+										<button onClick={this.nextButton} className={this.state.totalPages == this.state.pageNumber ? "prevButton" : "nextButton"}>Next</button>
+									</li>
+								</ul>
+							</div>
 						</div>
-						<div className="start2 divShowOnWeb">
-							<Row>
-								<Col xs="2"></Col>
-								<Col xs="8">
-									<Row>
-										<Col xs="4">
-											<button onClick={this.prevButton} className={this.state.pageNumber == 1 ? "prevButton" : "nextButton"}>Prev</button>
-										</Col>
-										<Col xs="4">
-											<span>Page {this.state.pageNumber} of {this.state.totalPages}</span>
-										</Col>
-										<Col xs="4">
-											<button onClick={this.nextButton} className={this.state.totalPages == this.state.pageNumber ? "prevButton" : "nextButton"}>Next</button>
-										</Col>
-									</Row>
-								</Col>
-								<Col xs="2"></Col>
-							</Row>
-						</div>
-						<div className="divShowOnMobile" style={{ padding: '18px 10px', textAlign: 'center' }}>
-							<Row>
-								<Col xs="4">
-									<button onClick={this.prevButton} className={this.state.pageNumber == 1 ? "prevButton" : "nextButton"} style={{ width: "80%" }}>Prev</button>
-								</Col>
-								<Col xs="4">
-									<span>Page {this.state.pageNumber} of {this.state.totalPages}</span>
-								</Col>
-								<Col xs="4">
-									<button onClick={this.nextButton} className={this.state.totalPages == this.state.pageNumber ? "prevButton" : "nextButton"} style={{ width: "80%" }}>Next</button>
-								</Col>
-							</Row>
-						</div>
-					</div>
-					: <div><p style={{ fontSize: '22px', letterSpacing: '0.04em', fontWeight: 500, padding: '70px 25px 10px' }}><FormattedMessage id="NoData.Text" defaultMessage="No Data available." /></p></div>}
+						: <div><p style={{ fontSize: '22px', letterSpacing: '0.04em', fontWeight: 500, padding: '70px 25px 10px' }}><FormattedMessage id="NoData.Text" defaultMessage="No Data available." /></p></div>}
 				</Col>
 			</Row>
 		);

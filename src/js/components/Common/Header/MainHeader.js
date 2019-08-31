@@ -610,11 +610,11 @@ class MainHeader extends Component {
                                 <Slider {...settings}>
                                     <div>
                                         <Row>
-                                            <Col xs="3" className="col-width"></Col>
-                                            <Col xs="2" style={{paddingLeft: 0}} className="padd-icon-zero first-imag">
+                                            <Col xs="3" lg="3" md="3" className="col-width"></Col>
+                                            <Col xs="2" lg="2" md="2" style={{paddingLeft: 0}} className="padd-icon-zero first-imag">
                                                 <img src={deliveryBy} className="imageHight40" />
                                             </Col>
-                                            <Col xs="7">
+                                            <Col xs="6" lg="7" md="7">
                                                 <ul style={{ textAlign: 'start', paddingTop: 10 }}>
                                                     <li style={{ fontSize: 13, color: "#0D943F" }}>
                                                     <FormattedMessage id="header.FreeStdDelivery" defaultMessage="Free Std Delivery" />
@@ -628,11 +628,11 @@ class MainHeader extends Component {
                                     </div>
                                     <div>
                                         <Row>
-                                            <Col xs="3"></Col>
-                                            <Col xs="2" className="padd-icon-zero">
+                                            <Col xs="3" lg="3" md="3"></Col>
+                                            <Col xs="2" lg="2" md="2" className="padd-icon-zero">
                                                 <img src={freeDelivery} className="imageHight40" />
                                             </Col>
-                                            <Col xs="7">
+                                            <Col xs="6" lg="7" md="7">
                                                 <ul style={{ textAlign: 'start', paddingTop: 10 }}>
                                                     <li style={{ fontSize: 13, color: "#0D943F" }}>
                                                     <FormattedMessage id="header.FreeGiftwrapping" defaultMessage="Free Gift wrapping" />
@@ -646,11 +646,11 @@ class MainHeader extends Component {
                                     </div>
                                     <div>
                                         <Row>
-                                            <Col xs="3"></Col>
-                                            <Col xs="2" className="padd-icon-zero">
+                                            <Col xs="3" lg="3" md="3"></Col>
+                                            <Col xs="2" lg="2" md="2" className="padd-icon-zero">
                                                 <img src={freeCollect} className="imageHight40" />
                                             </Col>
-                                            <Col xs="7">
+                                            <Col xs="6" lg="7" md="7">
                                                 <ul style={{ textAlign: 'start', paddingTop: 10 }}>
                                                     <li style={{ fontSize: 13, color: "#0D943F" }}>
                                                     <FormattedMessage id="header.FreeReturns" defaultMessage="Free Returns" />

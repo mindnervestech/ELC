@@ -2985,8 +2985,8 @@ li {
 
 .mobileHomeLogo {
     height: 35px;
-    width: 60%;
-    margin-left: 11%;
+    width: 56%;
+    margin-left: 15%;
 }
 
 .mobileHomePageIcon {
@@ -3004,27 +3004,7 @@ li {
     border-radius: 0px;
 }
 
-@media (max-width: 320px) {
-    .product-list li {
-        vertical-align: top;
-        position: relative;
-        width: 42.4% !important;
-    }
 
-    .mobileHomeLogo {
-        height: 35px;
-        width: 55%;
-        margin-left: 15%;
-    }
-
-    .you-may-like-title label{
-        width: 60% !important;
-    }
-
-    .you-may-like-title h2{
-        width: 20% !important;
-    }
-}
 
 .sortDroupDownOnMobile{
     width: 50%;
@@ -3068,18 +3048,38 @@ html[dir="rtl"] .Collapsible__trigger:after{
 }
 
 @media (max-width: 360px) {
-    .product-list li {
-        vertical-align: top;
-        position: relative;
-        width: 43% !important;
+    @supports (-webkit-overflow-scrolling: touch) { 
+        .product-list li {
+            vertical-align: top;
+            position: relative;
+            width: 43% !important;
+        }
+    
+        .you-may-like-title label{
+            width: 60% !important;
+        }
+    
+        .you-may-like-title h2{
+            width: 20% !important;
+        }
     }
+}
 
-    .you-may-like-title label{
-        width: 60% !important;
-    }
-
-    .you-may-like-title h2{
-        width: 20% !important;
+@media (max-width: 767px) {
+    @supports (-webkit-overflow-scrolling: touch) { 
+        .product-list li {
+            vertical-align: top;
+            position: relative;
+            width: 43% !important;
+        }
+    
+        .you-may-like-title label{
+            width: 60% !important;
+        }
+    
+        .you-may-like-title h2{
+            width: 20% !important;
+        }
     }
 }
 
@@ -3087,6 +3087,30 @@ html[dir="rtl"] .Collapsible__trigger:after{
     .data .slick-prev {
         left: 11px !important;
         z-index: 1;
+    }
+
+    .homePage .prevButton{
+        color: #fff;
+        background-color: #b1b1b1;
+        width: 80%;
+        padding: 5px 0px;
+        border: solid 1px #b1b1b1;
+        font-family: "VAG Rounded ELC Bold";
+    }
+
+    .homePage .nextButton{
+        color: #fff;
+        background-color: #0D943F;
+        width: 80%;
+        padding: 5px 0px;
+        border: solid 1px #0D943F;
+        font-family: "VAG Rounded ELC Bold";
+    }
+
+    .pagenation .liTag {
+        width: 33.3%!important;
+        display: inline-block!important;
+        margin: 0px!important;
     }
 
     .homePage .cardDetailText{
@@ -5554,3 +5578,74 @@ html[dir="rtl"] .header .navTrigger {
 }
 }
 
+@media (max-width: 767px) {
+    @supports (-webkit-overflow-scrolling: touch) { 
+    .product-list li {
+        vertical-align: top;
+        position: relative;
+        width: 42.4% !important;
+    }
+
+    .mobileHomeLogo {
+        height: 35px;
+        width: 55%;
+        margin-left: 15%;
+    }
+
+    .you-may-like-title label{
+        width: 60% !important;
+    }
+
+    .you-may-like-title h2{
+        width: 20% !important;
+    }
+
+    .slick-next{
+        right: 10px!important;
+    }
+
+    .data .slick-next{
+        right: 37px !important;
+        z-index: 1;
+    }
+
+    html[dir="rtl"] .data .slick-next{
+        right: 20px !important;
+        z-index: 1;
+    }
+
+    html[dir="rtl"] .slick-next:before{
+        content: '\203A' !important;
+        font-size: 80px !important;
+        line-height: 0 !important;
+        position: relative;
+        right: 20px;
+    }
+
+    html[dir="rtl"] .footer-css .submit-button{
+        background-color: #0D943F;
+        color: #fff;
+        width: 20%;
+        height: 46px;
+        border: solid 1px #0D943F;
+        line-height: 2.5;
+    }
+
+    .slick-next:before{
+        content: '\203A' !important;
+        font-size: 80px !important;
+        line-height: 0 !important;
+        position: relative;
+        right: 17px;
+    }
+
+    .footer-css .submit-button{
+        background-color: #0D943F;
+        color: #fff;
+        width: 20%;
+        height: 46px;
+        border: solid 1px #0D943F;
+        line-height: 0;
+    }
+    }
+}

@@ -152,7 +152,7 @@ class Footer extends Component {
                     <FormattedMessage id="footer.signUpAd" defaultMessage="sign up for our latest news and offers" />
                     </div>
                     <div>
-                        <input type="text" placeholder="enter your e-mail address" className="email-field"></input>
+                        <input type="text" placeholder="enter your e-mail address" className="email-field" style={{borderRadius: 0}}></input>
                         <button className="submit-button"><FormattedMessage id="Submit.Text" defaultMessage="Submit" /></button>
                     </div>
                     <div className="mobile-manu">
