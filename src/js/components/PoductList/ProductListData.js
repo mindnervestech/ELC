@@ -171,8 +171,11 @@ class ProductListData extends Component {
 	}
 
 	render() {
-		const list = this.state.list1
+		let list = this.state.list1
 		const store_locale = this.props.globals.store_locale
+		if(Object.keys(list).length == 0){
+			list = this.props.list;
+		}
 		return (
 			<Row>
 				<Col xs="3" lg="3" md="3" className="divShowOnWeb">
@@ -419,7 +422,8 @@ class ProductListData extends Component {
 const mapStateToProps = state => {
 	return {
 		globals: state.global,
-		menu: state.menu.menuNavData
+		menu: state.menu.menuNavData,
+		productDetails: state.productDetails.productData,
 	};
 }
 
