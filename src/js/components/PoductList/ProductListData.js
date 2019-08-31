@@ -44,7 +44,6 @@ class ProductListData extends Component {
 		} else {
 			totalPages = Math.floor(count / pagenationCount) + 1
 		}
-
 		this.handler = this.handler.bind(this);
 		this.state = {
 			totalPages: totalPages,
@@ -71,7 +70,7 @@ class ProductListData extends Component {
 		}
 		this.setState({ totalPages: totalPages, pageNumber: 1 })
 		this.state.check = false
-		this.pagenation(0, pagenationCount)
+		this.pagenation(0, pagenationCount - 1)
 	}
 
 	componentWillMount() {
@@ -173,9 +172,9 @@ class ProductListData extends Component {
 	render() {
 		let list = this.state.list1
 		const store_locale = this.props.globals.store_locale
-		if (Object.keys(list).length == 0) {
-			list = this.props.list;
-		}
+		// if (Object.keys(list).length == 0) {
+		// 	list = this.props.list;
+		// }
 		return (
 			<Row>
 				<Col xs="3" lg="3" md="3" className="divShowOnWeb">

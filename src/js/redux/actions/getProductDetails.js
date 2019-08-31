@@ -168,21 +168,20 @@ export const getProductList = payload => {
 				dispatch(loadingSpinnerForProduct({ loadingProduct: false }))
 				if (res.status && res.code === 200) {
 					let newState = { ...res.data };
-
-					if (Object.keys(payload.filters).length !== 0 && payload.filters.constructor === Object) {
-						Object.keys(res.data.product_data).map(key => {
-							product_data.push(res.data.product_data[key]);
-						});
-						dispatch(
-							callActionGetProductSearchList({
-								products: product_data,
-								filters: newState.filters,
-								category_name: res.data.category_name,
-								category_description: res.data.category_description,
-								metainfo: { ...res.data }
-							})
-						);
-					} else {
+					// if (Object.keys(payload.filters).length !== 0 && payload.filters.constructor === Object) {
+					// 	Object.keys(res.data.product_data).map(key => {
+					// 		product_data.push(res.data.product_data[key]);
+					// 	});
+					// 	dispatch(
+					// 		callActionGetProductSearchList({
+					// 			products: product_data,
+					// 			filters: newState.filters,
+					// 			category_name: res.data.category_name,
+					// 			category_description: res.data.category_description,
+					// 			metainfo: { ...res.data }
+					// 		})
+					// 	);
+					// } else {
 						dispatch(
 							callActionGetProductSearchList({
 								products: res.data,
@@ -192,7 +191,7 @@ export const getProductList = payload => {
 								metainfo: { ...res.data }
 							})
 						);
-					}
+					// }
 
 				} else {
 
