@@ -317,7 +317,7 @@ class ContactUs extends Component {
                                                     <div className="t-Region-buttons-left" />
                                                     <div className="t-Region-buttons-right" />
                                                   </div>
-                                                  <div className="t-Region-body">
+                                                  <div className="t-Region-body" id="with">
                                                     <div className="container">
                                                       <div className="row">
                                                         <div className="col col-12 apex-col-auto ">
@@ -356,7 +356,7 @@ class ContactUs extends Component {
                                                         </div>
                                                       </div>
                                                       <div className="row">
-                                                        <div className="mob-width col col-6 apex-col-auto width-full padd-right-div">
+                                                        <div className="mob-width col col-6 apex-col-auto width-full padd-right-div width-full-desk">
                                                           <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel is-required apex-item-wrapper js-show-label" id="PHONE_CONTAINER">
                                                             <div className="t-Form-labelContainer">
 
@@ -372,7 +372,7 @@ class ContactUs extends Component {
                                                             </div>
                                                           </div>
                                                         </div>
-                                                        <div className="col col-6 apex-col-auto order-bg mob-width">
+                                                        <div className="col col-6 apex-col-auto order-bg mob-width width-full-desk">
                                                           <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel apex-item-wrapper apex-item-wrapper--select-list js-show-label" id="P14_PURPOSE_CONTAINER">
                                                             <div className="t-Form-labelContainer">
                                                               <label htmlFor="P14_PURPOSE" id="P14_PURPOSE_LABEL" className="t-Form-label"><FormattedMessage id="ContactUs.Purpose" defaultMessage="Purpose" /></label>

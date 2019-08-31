@@ -518,7 +518,7 @@ class MainHeader extends Component {
                                   <div className="help-icon">
                                             <Link to={`/${store_locale}/help-and-faq`} style={{ textDecoration: 'none' }}>
                                                 <li className="titleHover">
-                                                    <img src={help} className="image-ion"></img>
+                                                    <img src={help} className="image-ion" style={{height:30,width:30}}></img>
                                                 </li>
                                             </Link>
                                         </div>

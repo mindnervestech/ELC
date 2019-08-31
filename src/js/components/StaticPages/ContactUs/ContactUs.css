@@ -20,6 +20,31 @@ padding:10px!important;
 }
 @media only screen and (max-width:767px)
 {
+    .mob-width ..intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-3 input, .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-3 input[type=text], .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-3 input[type=tel]{
+           padding-top: 12px !important;
+    }
+    .iti-mobile .intl-tel-input.iti-container {
+    top: 36em !important;
+    bottom: 30px;
+    position: absolute!important;
+    height: 300px !important;
+    z-index: 9 !important;
+    transform: translateY(30%);
+}
+    html[dir="rtl"] .iti-mobile .intl-tel-input.iti-container {
+    top: 36em !important;
+    bottom: 30px;
+    position: absolute!important;
+    height: 300px !important;
+    z-index: 9 !important;
+    transform: translateY(30%);
+}
+    .t-Region-body {
+    font-size: 1.4rem;
+    line-height: 2rem;
+    overflow: unset;
+    position: relative;
+}
     .t-Region--noBorder>.t-Region-bodyWrap>.t-Region-body {
     padding: 0px !important;
 }
@@ -55,6 +80,10 @@ margin: 0px !important
 .padd-zero-mob{
     padding: 0px !important;
 }
+html[dir="rtl"] #with .t-Form-labelContainer {
+   
+    width: auto  !important;
+}
 }
 
 
@@ -69,6 +98,24 @@ max-width: 100% !important;
 
 .marginClass
 {
-margin: 0px !important
+margin: 0px !important;
 } 
+}
+
+@media only screen and (min-width:768px)
+{
+    .width-full-desk{
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    }
+    .order-bg{
+    margin-top: 50px !important;
+}
+.width-full .t-Form-inputContainer {   
+    width: 100%;
+}
+html[dir="rtl"] #with .t-Form-labelContainer {
+    text-align: right !important;
+    width: auto  !important;
+}
 }
