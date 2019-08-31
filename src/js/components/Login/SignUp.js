@@ -142,7 +142,7 @@ class SignUp extends Component {
     // }
     if (!fields["confirmEmail"]) {
       formIsValid = false;
-      errors["confirmEmail"] = <FormattedMessage id="Signup.validation.confirmEmail.empty" defaultMessage="Please enter confirmemail again" />;
+      errors["confirmEmail"] = <FormattedMessage id="Signup.validation.confirmEmail.empty" defaultMessage="Please enter confirm email again" />;
     }
 
     if (!(fields["confirmEmail"] === fields["email"])) {

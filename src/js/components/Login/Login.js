@@ -389,7 +389,7 @@ class Login extends Component {
                                 <div className="t-Region-header">
                                   <div className="t-Region-headerItems bottomPadding t-Region-headerItems--title" style={{textAlign: 'center'}}>
                                     <span className="t-Region-headerIcon"><span className="t-Icon " aria-hidden="true"></span></span>
-                                    <h2 className="block-title" style={{width: '100%'}} id="R37391169766147740_heading"><FormattedMessage id="registered.user.title" defaultMessage="SignIn" /></h2>
+                                    <h2 className="block-title" style={{width: '100%'}} id="R37391169766147740_heading"><FormattedMessage id="registered.user.title" defaultMessage="Existing Customers" /></h2>
                                   </div>
                                   <div className="t-Region-headerItems t-Region-headerItems--buttons"><span className="js-maximizeButtonContainer"></span></div>
                                 </div>
