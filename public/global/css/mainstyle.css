@@ -5536,10 +5536,10 @@ html[dir="rtl"] .divShowOnMobile {
 }
 
 .share-icon {
-    text-align: -webkit-center;
-    text-align: -center;
-    padding: 12px;
-    width: 60px !important;
+    text-align: -webkit-center !important;
+    text-align: center !important;
+    padding: 10px !important;
+    width: 70px !important;
 }
 .share-icon span{
     font-size: 12px !important;

@@ -352,30 +352,26 @@ class ProductSize extends Component {
 
 					<div className="Demo__some-network share-icon">
                         <a href="https://www.facebook.com/elctoys" target="_blank">
-							<FacebookIcon
-								size={38}
-								round />
+							<img style={{height:42, width:42}} src={facebook} className="icon" />
 							<span>Facebook</span>
 						</a>
                     </div>
 					<div className="Demo__some-network share-icon">
                         <a href="https://www.twitter.com/elctoysme" target="_blank">
-							<TwitterIcon
-								size={38}
-								round />
+							<img style={{height:42, width:42}} src={twitter} className="icon" />
 							<span>Twitter</span>
 						</a> 
                     </div>
 					<div className="Demo__some-network share-icon">
                         <a href="https://www.instagram.com/elctoys" target="_blank"> 
-							<img style={{height:38, width:38}} src={instagram} className="icon" />
+							<img style={{height:42, width:42}} src={instagram} className="icon" />
 							<span>Insragram</span>
 						</a>
 						
                     </div>
 					<div className="Demo__some-network share-icon">
                        	<a href="https://www.youtube.com/elctoysme" target="_blank">
-							<img style={{height:38, width:38}} src={youtube} className="icon" />
+							<img style={{height:42, width:42}} src={youtube} className="icon" />
 							<span>You tube</span>
 						</a>
 						
