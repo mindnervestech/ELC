@@ -733,6 +733,14 @@ html.mobile :focus {
         transform: translateY(-50%);
         font-size: 18px;
     }
+       html[dir=rtl] .cd-top {
+       height: 60px;
+    width: 60px;
+    right: unset;
+    bottom: 20px;
+    z-index: 100;
+    left: 20px;
+}
 }
 
 
@@ -800,6 +808,14 @@ html.mobile :focus {
         bottom: 77px;
         z-index: 100;
     }
+    html[dir=rtl] .cd-top {
+    height: 60px;
+    width: 60px;
+    right: unset;
+    bottom: 77px;
+    z-index: 100;
+    left: 30px;
+}
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {

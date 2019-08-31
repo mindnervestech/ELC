@@ -120,6 +120,21 @@ max-width: 100% !important;
 {
 margin: 0px !important;
 } 
+ .iti-mobile .intl-tel-input.iti-container {
+    top: 36em !important;
+    bottom: 30px;
+    position: absolute!important;
+    height: 300px !important;
+    z-index: 9 !important;
+    transform: translateY(30%);
+}
+ html[dir="rtl"] .iti-mobile .intl-tel-input.iti-container {
+    top: 36em !important;
+    position: absolute!important;
+    height: 300px !important;
+    z-index: 9 !important;
+    transform: translateY(30%);
+}
 }
 
 @media only screen and (min-width:768px)
