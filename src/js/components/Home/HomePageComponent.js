@@ -114,7 +114,7 @@ class HomePageComponent extends Component {
                             <div className="t-Body-contentInner">
                                 <div style={{ padding: "0px 0px" }} className="divShowOnWeb">
                                     <Slider {...settings3}>
-                                        {homeData.banners != undefined && homeData.banners.map((item, index) => (
+                                        {homeData && homeData.banners.map((item, index) => (
                                             <Link to={`/` + store_locale + `/products` + item.BLOCK_URL + ``}>
                                                 <div>
                                                     <img src={item.BLOCK_BANNER} className="banner-image-hight"/>
@@ -125,7 +125,7 @@ class HomePageComponent extends Component {
                                 </div>
                                 <div style={{ padding: "0px 0px" }} className="divShowOnMobile">
                                     <Slider {...settings3}>
-                                        { homeData.banners != undefined && homeData.banners.map((item, index) => (
+                                        { homeData && homeData.banners.map((item, index) => (
                                             <Link to={`/` + store_locale + `/products` + item.BLOCK_MOBILE_BANNER + ``}>
                                                 <div>
                                                     <img src={item.BLOCK_BANNER} className="banner-image-hight"/>
@@ -332,7 +332,7 @@ class HomePageComponent extends Component {
                                                 <section className="trendingBlock">
                                                     <div className="wrap">
                                                         <ul className="product-list">
-                                                            { homeData.blocks != undefined && homeData.blocks.map((item, index) => (
+                                                            { homeData && homeData.blocks.map((item, index) => (
                                                                 <li key={index}>
                                                                     <div>
                                                                         <Link to={`/` + store_locale + `/products/ ` + item.BLOCK_URL + ``}>

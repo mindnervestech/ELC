@@ -512,6 +512,13 @@ class MainHeader extends Component {
                                                     <li><a href="javascript:void(0);" className="ksa" id="cart" onClick={() => this.onChangeCountry('UAE', 'SLOVENIA')}><FormattedMessage id="header.slovenia" defaultMessage="KSA" /></a></li>
                                                     <li><a href="javascript:void(0);" className="usd" id="cart" onClick={() => this.onChangeCountry('International', 'UNITED KINGDOM')}><FormattedMessage id="header.uk" defaultMessage="International" /></a></li> */}
                                         </div>
+                                        <div style={{height:'18px',width:'18px', position:'absolute'}}>
+                                            <Link to={`/${store_locale}/help-and-faq`} style={{ textDecoration: 'none' }}>
+                                                <li className="titleHover">
+                                                    <img src={help} className="image-ion"></img>
+                                                </li>
+                                            </Link>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
