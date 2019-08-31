@@ -115,12 +115,14 @@ class ProductDetails extends Component {
 				<meta name="description" content={this.props.productDetails.meta_description} />
 			</Helmet></>;
 		}
+
 		return (
 			<div className="t-Body">
 				{meta_tag}
 				<div className="t-Body-main" style={{ marginTop: '0px !important' }}>
 					<div className="t-Body-title" id="t_Body_title" style={{ top: '294px' }}>
-						{this.props.productDetails.name && (<Breadcrumb name={`${this.props.productDetails.category_desc}-${this.props.productDetails.short_description}`} />)}
+						{this.props.productDetails.name && (<Breadcrumb name={`${this.props.productDetails.category_names && this.props.productDetails.category_names.length > 0
+						 ? this.props.productDetails.category_names : localStorage.getItem('current-categogy-name')}--${this.props.productDetails.short_description}`} />)}
 					</div>
 					<div className="t-Body-content" id="t_Body_content">
 						<div id="t_Body_content_offset" style={{ height: '85px' }} />

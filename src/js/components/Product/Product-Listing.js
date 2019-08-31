@@ -175,7 +175,6 @@ class Product extends Component {
 	}
 
 	getFilteredData = (el, item = null) => {
-		debugger;
 		this.setState({ price: el.target.value });
 		if (item && !isMobile) {
 			this.createFilterObject(item.code, item.value);
@@ -208,7 +207,6 @@ class Product extends Component {
 	};
 
 	createFilterObject = (name, value) => {
-    debugger;
 		let array = [];
 
 		if (filters[name]) {
@@ -285,7 +283,6 @@ class Product extends Component {
 	
     
 	 sortByPrice=(arr)=> {
-      debugger;
 		for(let  x = 0; x < arr.length; x++){
 			arr[x] = arr[x].price.sort(function(a,b){
 				return parseFloat(a.price) - parseFloat(b.price);
@@ -326,7 +323,22 @@ class Product extends Component {
 	// 	}
 	// }
 
-
+	getCatagoryName = (category_path, category_name) => {
+		let catName = category_name.split(' ');
+		let catPath = category_path.split('-');
+		if (catName && catPath) {
+			if (catName[0].toUpperCase() == catPath[0].toUpperCase()) {
+				localStorage.setItem('current-categogy-name', category_name);
+				return category_name;
+			} else {
+				localStorage.setItem('current-categogy-name', category_path + '\'' + category_name);
+				return category_path + '--' + category_name;
+			}
+		} else {
+			localStorage.setItem('current-categogy-name', category_name);
+			return category_name;
+		}
+	}
 
 	render() {
 		const values = queryString.parse(this.props.location.search);
@@ -348,12 +360,13 @@ class Product extends Component {
 				<meta name="description" content={this.props.productDetails.metainfo.meta_description} />
 			</Helmet></>;
 		}
+
 		return (
 			<div className="t-Body">
 				{meta_tag}
 				<div className="t-Body-main" style={{ marginTop: '0px !important' }}>
 					<div className="t-Body-title" id="t_Body_title" style={{ top: '294px' }}>
-						<Breadcrumb name={searchQuery ? searchQuery : this.props.category_name ? this.props.category_name : this.props.match.params.category_path} />
+						<Breadcrumb name={searchQuery ? searchQuery : this.props.category_name ? this.getCatagoryName(this.props.match.params.category_path,  this.props.category_name) : this.props.match.params.category_path} />
 
 						{/* Product filter goes here */}
  

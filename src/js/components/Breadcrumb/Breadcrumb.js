@@ -17,7 +17,7 @@ class Breadcrumb extends Component {
 
 	render() {
 		const { name } = this.props;
-		const mainCat = name.split('-');
+		const mainCat = name.split('--');
 		const data = Object.keys(mainCat)
 			.filter(function (item) {
 				return item > 0;
