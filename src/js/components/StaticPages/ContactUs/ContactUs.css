@@ -20,6 +20,13 @@ padding:10px!important;
 }
 @media only screen and (max-width:767px)
 {
+    .t-Form-inputContainer{
+      width: 99% !important;  
+    }
+     html[dir="rtl"] .t-Form-inputContainer{
+      width: 99% !important;  
+    }
+
     html[dir="rtl"] .intl-tel-input.iti-container {
     position: absolute;
     z-index: 1060;
