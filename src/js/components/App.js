@@ -163,23 +163,32 @@ class App extends Component {
 
     API.get('/storeinfo?store_data='+reqdata.store_data, reqdata).then(res => {
       console.log('STOREINFO res', res);
-      localStorage.setItem('tempstoreid', res.data.store_id);
+      let storeId = res.data.store_id;
+      if(!storeId){
+        if(lang === 'en'){
+          storeId = 4;
+        }else if(lang === 'ar'){
+          storeId = 3;
+        }
+      }
+      localStorage.setItem('tempstoreid', storeId);
       localStorage.setItem('templang', lang);
+      
 
       const country_name = this.getCountryName(country);
       const store_locale = ((country_name === '') || (country_name === null) || (country_name === undefined)) ? lang : country_name + "-" + lang;
-
-      cookie.save('storeid', res.data.store_id, { path: '/' });
+      
+      cookie.save('storeid', storeId, { path: '/' });
       cookie.save('language', lang, { path: '/' });
       cookie.save('country', country, { path: '/' });
       cookie.save('country_name', country_name, { path: '/' });
       cookie.save('store_locale', store_locale, { path: '/' });
 
-      localStorage.setItem('storeid', res.data.store_id);
+      localStorage.setItem('storeid', storeId);
       localStorage.setItem('store_locale', store_locale);
 
-      this.setState({ selectedStore: store_data, store_id: res.data.store_id, language: lang, changeData: true });
-      store.dispatch(setChangeStore({ store_id: res.data.store_id, language: lang }));
+      this.setState({ selectedStore: store_data, store_id: storeId, language: lang, changeData: true });
+      store.dispatch(setChangeStore({ store_id: storeId, language: lang }));
 
       let { guest_user, login } = store.getState();
       let quote_id;
@@ -192,7 +201,7 @@ class App extends Component {
 
       // quote_id = (guest_user.new_quote_id) ? guest_user.new_quote_id : guest_user.temp_quote_id;
 
-      this._changeStoreId(res.data.store_id, quote_id, store_locale);
+      this._changeStoreId(storeId, quote_id, store_locale);
 
     })
   }

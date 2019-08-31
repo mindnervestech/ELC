@@ -173,7 +173,7 @@ export const setChangeStore = (payload = {}) => {
     //console.log("PAYLOAD:", payload);
     var lang, cntry, str_lc;
     if(id !== 1 && id !== 2 && id !== 3 && id !== 4){
-        id = 3;
+        id = 4;
     }
 
     switch (parseInt(id)) {
