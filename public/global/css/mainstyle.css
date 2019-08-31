@@ -5661,5 +5661,20 @@ html[dir="rtl"] .header .navTrigger {
         padding: 0px;
         text-align: center;
     }
+
+    .button-add-to-basket{
+        max-height: 40px!important;
+        background: #ee0e19;
+        text-decoration: none;
+        color: #fff;
+        text-align: center;
+        width: 154px;
+        margin: 0;
+        padding: 10px 0;
+        cursor: pointer;
+        border: 1px solid #ee0e19;
+        border-radius: 0px;
+        -webkit-appearance: none!important;
+    }
     }
 }
