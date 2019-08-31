@@ -16,11 +16,16 @@ let filterOptionArrayForCheck = []
 let filterOptionArrayForCheckValidate = []
 let filterOptionArraySubCategary = []
 let filterOptionCheck = true
+let filterList = {}
 class SideManu extends Component {
 	constructor(props) {
 		super(props);
 		productListingData = this.props.productDetails.products.product_data;
 		productList = this.props.productDetails.products.product_data;
+		filterList = this.props.productDetails.filters;
+		this.state = {
+			list: {},
+		};
 	}
 
 	componentDidUpdate(prevProps, prevState) {
@@ -28,42 +33,60 @@ class SideManu extends Component {
 	}
 
 	componentDidMount() {
-		// if(Object.keys(this.props.productDetails.products).length > 0){
-		// 	if(filterOptionCheck){
-		// 		filterOptionCheck = false;
-		// 		const filterOptionList = this.props.productDetails.filters;
-		// 		for(let Categary in filterOptionList){
-		// 			for(let subCategary in filterOptionList[Categary]){
-		// 				filterOptionArrayForCheck.push(filterOptionList[Categary][subCategary].code + "/" + filterOptionList[Categary][subCategary].name);
-		// 				filterOptionArrayForCheckValidate.push(filterOptionList[Categary][subCategary].code + "/" + filterOptionList[Categary][subCategary].name);
-		// 				filterOptionArraySubCategary.push(filterOptionList[Categary][subCategary].name)
-		// 			}
-		// 		}
-		// 		console.log(">>>>>>>",filterOptionArrayForCheck)
-		// 		for(let value in filterOptionArrayForCheck){
-		// 			let splitValue = filterOptionArrayForCheck[value].split("/");
-		// 			let checkSubmanu = 0
-		// 			let remove = value
-		// 			for(let item in productListingData){
-		// 				if(splitValue[0] == "color"){
-		// 					if(splitValue[1] == productListingData[item].json.color_english){
-		// 						checkSubmanu++
-		// 					}
-		// 				}else if(splitValue[0] == "brand"){
-
-		// 				}else if(splitValue[0] == "age"){
-
-		// 				}
-		// 			}
-		// 			if(checkSubmanu == 0){
-		// 				console.log(remove)
-		// 				filterOptionArrayForCheckValidate.splice(remove, 1); 
-		// 				checkSubmanu = 0
-		// 			}
-		// 		}
-		// 		console.log(">>>>>>>>>>>>>",filterOptionArrayForCheckValidate)
-		// 	}
-		// }
+		if(Object.keys(this.props.productDetails.products).length > 0){
+			if(filterOptionCheck){
+				filterOptionCheck = false;
+				const filterOptionList = this.props.productDetails.filters;
+				for(let Categary in filterOptionList){
+					for(let subCategary in filterOptionList[Categary]){
+						filterOptionArrayForCheck.push(filterOptionList[Categary][subCategary].code + "/" + filterOptionList[Categary][subCategary].name);
+						filterOptionArraySubCategary.push(filterOptionList[Categary][subCategary].name)
+					}
+				}
+				console.log(">>>>>>>",filterOptionArrayForCheck)
+				for(let value in filterOptionArrayForCheck){
+					let splitValue = filterOptionArrayForCheck[value].split("/");
+					let checkSubmanu = 0
+					let remove = value
+					for(let item in productListingData){
+						if(splitValue[0] == "color"){
+							if(splitValue[1] == productListingData[item].json.color_english){
+								if(checkSubmanu == 0){
+									checkSubmanu = 1
+									filterOptionArrayForCheckValidate.push(filterOptionArrayForCheck[value])
+								}
+							}
+						}else if(splitValue[0] == "brand"){
+							for (let filter in productListingData[item].json.filtersdata) {
+								for (let age in productListingData[item].json.filtersdata[filter]) {
+									if(checkSubmanu == 0){
+										if(splitValue[1] == productListingData[item].json.filtersdata[filter][age]){
+											filterOptionArrayForCheckValidate.push(filterOptionArrayForCheck[value])
+											checkSubmanu = 1
+										}
+									}
+								}
+							}
+						}else if(splitValue[0] == "age"){
+							for (let filter in productListingData[item].json.filtersdata) {
+								for (let age in productListingData[item].json.filtersdata[filter]) {
+									if(checkSubmanu == 0){
+										if(splitValue[1] == productListingData[item].json.filtersdata[filter][age]){
+											filterOptionArrayForCheckValidate.push(filterOptionArrayForCheck[value])
+											checkSubmanu = 1
+										}
+									}
+								}
+							}
+						}
+					}
+					
+				}
+				console.log(">>>>>>>>>>>>>",filterOptionArrayForCheckValidate)
+				
+				this.setState({ list: filterList })
+			}
+		}
 	}
 
 	getFilterData(filterValue, code) {
@@ -130,31 +153,47 @@ class SideManu extends Component {
 		}
 	}
 
+	checkFilterIsAvailable = (value, code) => {
+		for(let item in filterOptionArrayForCheckValidate){
+			let splitData = filterOptionArrayForCheckValidate[item].split('/')
+			if(splitData[1] == value){
+				console.log(splitData[1], ":", value)
+			//  render(){
+				return (
+					<div>
+						<input type="checkbox" onClick={() => this.applyFilter(code + "/" + value, "")} value={value}/> {value}
+					</div>
+				)
+				}
+			// }
+		}
+	}
+
 	assignFilterdata(data) {
 		return (
 			<div>
 				{Object.keys(data).map((keyName) =>
-					<div>
-						<input type="checkbox" onClick={() => this.applyFilter(data[keyName].code + "/" + data[keyName].name, this.value)} value={data[keyName].name}/> {data[keyName].name}
-					</div>
+					// <div>
+						this.checkFilterIsAvailable(data[keyName].name, data[keyName].code)
+					// {/* </div> */}
 				)}
 			</div>
 		);
 	}
 
 	render() {
-		const list = this.props.productDetails.filters;
-		productList = this.props.productDetails.products.product_data
+		//const list = this.props.productDetails.filters;
+		//productList = this.props.productDetails.products.product_data
 		return (
 			<div>
 				<div className="row-2" style={{ margin: '21px 0px', borderBottom: 'solid 1px #b1b1b1' }}>
 					<span className="blackTitle">Narrow your Results</span>
 				</div>
 				<div style={{ paddingTop: 19 }}>
-					{Object.keys(list).map((keyName) =>
+					{Object.keys(this.state.list).map((keyName) =>
 						<div className="bottomBorder" style={{ paddingTop: 10 }}>
 							<Collapsible trigger={keyName} >
-								<div>{this.assignFilterdata(list[keyName])}</div>
+								<div style={{textAlign: 'start'}}>{this.assignFilterdata(this.state.list[keyName])}</div>
 							</Collapsible>
 						</div>
 					)}
