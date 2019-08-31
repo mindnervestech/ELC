@@ -7,7 +7,7 @@ import * as util from '../../utility/utility';
 
 import '../../../../styles/contactus/contactus.css';
 import PhoneNumber from '../../Login/IntlTelePhone';
-
+import './ContactUs.css';
 
 
 class ContactUs extends Component {
@@ -276,7 +276,7 @@ class ContactUs extends Component {
                             <br />
                             <div className="container">
                               <div className="row">
-                                <div className="col col-6 apex-col-auto">
+                                <div className="col col-6 apex-col-auto colclass padd-zero-mob">
                                   <div className="t-Region t-Region--removeHeader t-Region--accent14 t-Region--noBorder t-Region--scrollBody margin-left-lg margin-right-lg" id="R715189021347792744" style={{ backgroundColor: 'WhiteSmoke' }}>
                                     <div className="t-Region-header">
                                       <div className="t-Region-headerItems t-Region-headerItems--title">
@@ -291,7 +291,7 @@ class ContactUs extends Component {
                                         <div className="t-Region-buttons-right" />
                                       </div>
                                       <div className="t-Region-body">
-                                        <div className="container">
+                                        <div className="container padd-zero-mo">
                                           <div className="row">
                                             <div className="col col-12 apex-col-auto">
                                               <div id="R715189986681792754" >
@@ -320,7 +320,7 @@ class ContactUs extends Component {
                                                   <div className="t-Region-body">
                                                     <div className="container">
                                                       <div className="row">
-                                                        <div className="col col-12 apex-col-auto">
+                                                        <div className="col col-12 apex-col-auto ">
                                                           <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel is-required apex-item-wrapper apex-item-wrapper--text-field"
                                                             id="P14_NAME_CONTAINER" onFocus={(e) => this.divOnFocus(e)} onBlur={(e) => this.divOnBlure(e)}>
                                                             <div className="t-Form-labelContainer">
@@ -356,7 +356,7 @@ class ContactUs extends Component {
                                                         </div>
                                                       </div>
                                                       <div className="row">
-                                                        <div className="col col-6 apex-col-auto">
+                                                        <div className="mob-width col col-6 apex-col-auto width-full padd-right-div">
                                                           <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel is-required apex-item-wrapper js-show-label" id="PHONE_CONTAINER">
                                                             <div className="t-Form-labelContainer">
 
@@ -372,7 +372,7 @@ class ContactUs extends Component {
                                                             </div>
                                                           </div>
                                                         </div>
-                                                        <div className="col col-6 apex-col-auto">
+                                                        <div className="col col-6 apex-col-auto order-bg mob-width">
                                                           <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel apex-item-wrapper apex-item-wrapper--select-list js-show-label" id="P14_PURPOSE_CONTAINER">
                                                             <div className="t-Form-labelContainer">
                                                               <label htmlFor="P14_PURPOSE" id="P14_PURPOSE_LABEL" className="t-Form-label"><FormattedMessage id="ContactUs.Purpose" defaultMessage="Purpose" /></label>
@@ -443,7 +443,7 @@ class ContactUs extends Component {
                                     </div>
                                   </div>
                                 </div>
-                                <div className="col col-6 apex-col-auto">
+                                <div className="col col-6 apex-col-auto colclass padd-zero-mob">
                                   <div id="R715189055843792745" className="margin-left-lg">
                                     <div className="container">
                                       <div className="row">

@@ -4511,6 +4511,9 @@ html[dir="rtl"] .header .navTrigger {
     border-bottom: 0px solid rgba(0,0,0,.075) !important;
 }
 @media (max-width: 767px){
+    .products li{
+    margin: 0px 10px 0px !important;
+    }
 
 .header .changecountry .country .activeCountry .selected {
     display: none;
