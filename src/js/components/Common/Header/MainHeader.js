@@ -610,8 +610,8 @@ class MainHeader extends Component {
                                 <Slider {...settings}>
                                     <div>
                                         <Row>
-                                            <Col xs="3"></Col>
-                                            <Col xs="2" style={{paddingLeft: 0}} className="padd-icon-zero">
+                                            <Col xs="3" className="col-width"></Col>
+                                            <Col xs="2" style={{paddingLeft: 0}} className="padd-icon-zero first-imag">
                                                 <img src={deliveryBy} className="imageHight40" />
                                             </Col>
                                             <Col xs="7">

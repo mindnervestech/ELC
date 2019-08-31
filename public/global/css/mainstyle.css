@@ -5534,5 +5534,23 @@ html[dir="rtl"] .help-icon {
     left: 30px;
     right: unset !important;
 }
+html[dir="rtl"] .header .navTrigger {
+    position: absolute;
+    float: left;
+    width: 30px;
+    padding: 8px 0px;
+    cursor: pointer;
+    top: 50px;
+    left: 10px;
+    right: 16px;
+}
+.first-imag{
+    flex: 0 0 25.666667% !important;
+    max-width: 25.666667% !important;
+}
+.col-width{
+     flex: 0 0 11% !important;
+    max-width: 11% !important;
+}
 }
 
