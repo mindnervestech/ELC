@@ -3,6 +3,10 @@ import * as actions from '../../../../redux/actions/index';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import imagination_icon from '../../../../../assets/images/social/imagination_icon.png';
+import facebook from '../../../../../assets/images/social/Facebook.svg';
+import instagram from '../../../../../assets/images/social/instagram.svg';
+import youtube from '../../../../../assets/images/social/youtube.svg';
+import twitter from '../../../../../assets/images/social/twitter.svg';
 
 import {
   
@@ -299,7 +303,7 @@ class ProductSize extends Component {
 			// 			{newArr.map(this.__renderProductSizes)}
 			// 		</div>
 				<div className="row" style={{padding: 40}}>
-					<div className="Demo__some-network share-icon">
+					{/* <div className="Demo__some-network share-icon">
 						<FacebookShareButton
 							url={shareUrl}
 							quote={title}
@@ -344,7 +348,38 @@ class ProductSize extends Component {
 							<WhatsappIcon size={32} round />
 						</WhatsappShareButton>
 						<span>Whatsapp</span>
-					</div>
+					</div> */}
+
+					<div className="Demo__some-network share-icon">
+                        <a href="https://www.facebook.com/elctoys" target="_blank">
+							<FacebookIcon
+								size={38}
+								round />
+							<span>Facebook</span>
+						</a>
+                    </div>
+					<div className="Demo__some-network share-icon">
+                        <a href="https://www.twitter.com/elctoysme" target="_blank">
+							<TwitterIcon
+								size={38}
+								round />
+							<span>Twitter</span>
+						</a> 
+                    </div>
+					<div className="Demo__some-network share-icon">
+                        <a href="https://www.instagram.com/elctoys" target="_blank"> 
+							<img style={{height:38, width:38}} src={instagram} className="icon" />
+							<span>Insragram</span>
+						</a>
+						
+                    </div>
+					<div className="Demo__some-network share-icon">
+                       	<a href="https://www.youtube.com/elctoysme" target="_blank">
+							<img style={{height:38, width:38}} src={youtube} className="icon" />
+							<span>You tube</span>
+						</a>
+						
+                    </div>
 
 				</div>
 			// </section>

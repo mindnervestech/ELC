@@ -169,11 +169,14 @@ const callActionForChangeStore = (payload) => {
 }
 
 export const setChangeStore = (payload = {}) => {
-
+    let id = payload.store_id;
     //console.log("PAYLOAD:", payload);
     var lang, cntry, str_lc;
+    if(id !== 1 && id !== 2 && id !== 3 && id !== 4){
+        id = 3;
+    }
 
-    switch (parseInt(payload.store_id)) {
+    switch (parseInt(id)) {
         case 1:
             lang = 'ar';
             cntry = 'KSA';
@@ -194,26 +197,26 @@ export const setChangeStore = (payload = {}) => {
             cntry = 'UAE';
             str_lc = 'uae-en';
             break;
-        case 5:
-            lang = 'ar';
-            cntry = 'International';
-            str_lc = 'ar';
-            break;
-        case 6:
-            lang = 'en';
-            cntry = 'International';
-            str_lc = 'en';
-            break;
+        // case 5:
+        //     lang = 'ar';
+        //     cntry = 'International';
+        //     str_lc = 'ar';
+        //     break;
+        // case 6:
+        //     lang = 'en';
+        //     cntry = 'International';
+        //     str_lc = 'en';
+        //     break;
         default:
-            lang = 'ar';
-            cntry = 'KSA';
-            str_lc = 'saudi-ar';
+            lang = 'en';
+            cntry = 'UAE';
+            str_lc = 'uae-en';
     }
 
     return (dispatch) => {
 
         let newStoreState = {
-            currentStore: payload.store_id,
+            currentStore: id,
             language: lang,
             country: cntry,
             store_locale: str_lc,

@@ -143,6 +143,12 @@ class App extends Component {
     //console.log('STORE state' ,store.getState());
     //let store_data = country + "_" + lang;
 
+    if(country == undefined){
+      country = 'uae'
+    }
+    if(lang == undefined){
+      lang = 'en';
+    }
     let store_data = country + "_" + lang;
     // let store_data = cookie.load('country') + "_" + lang;
 
