@@ -627,6 +627,8 @@ a {
     height: 45px;
     border: solid 1px #0D943F;
     line-height: 2.5;
+    padding: 0px;
+    text-align: center;
 }
 
 .footer-css .icon {
@@ -3344,6 +3346,8 @@ html[dir="rtl"] .Collapsible__trigger:after{
         height: 45px;
         border: solid 1px #0D943F;
         line-height: 0;
+        padding: 0px;
+        text-align: center;
     }
 
     .header .search .searchButton {
@@ -5629,6 +5633,8 @@ html[dir="rtl"] .header .navTrigger {
         height: 46px;
         border: solid 1px #0D943F;
         line-height: 2.5;
+        padding: 0px;
+        text-align: center;
     }
 
     .slick-next:before{
@@ -5646,6 +5652,8 @@ html[dir="rtl"] .header .navTrigger {
         height: 46px;
         border: solid 1px #0D943F;
         line-height: 0;
+        padding: 0px;
+        text-align: center;
     }
     }
 }
