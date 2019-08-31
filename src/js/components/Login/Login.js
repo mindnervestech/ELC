@@ -276,7 +276,7 @@ class Login extends Component {
 
             </Modal>
 
-            <Modal modalId="ForgetPassword" open={openSecondModal} onClose={this.onCloseSecondModal} center>
+            <Modal  className="modalStyleClass" open={openSecondModal} onClose={this.onCloseSecondModal} center>
               <h3><FormattedMessage id="PassReset.Text" defaultMessage="Password reset" /></h3>
               {forgetPassword}
             </Modal>

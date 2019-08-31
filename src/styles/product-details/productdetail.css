@@ -1573,7 +1573,7 @@ html[dir="rtl"] .quantity-mob{
 }
 
 .styles_modal__gNwvD{
-    height: 160px !important;
+    height: 160px;
 }
 
 @media (max-width:767px){ 

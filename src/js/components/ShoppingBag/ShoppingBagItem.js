@@ -265,7 +265,7 @@ class ShoppingBagItem extends Component {
                </div>
             </div> :
             <div style={{fontSize: 24, marginLeft: '5%', color: "#4f4f4f"}}>
-               Your bag is empty.
+               <FormattedMessage id="Cart.YBE"  defaultMessage="Your bag is emapty."/>
             </div>}
          </div>
 
