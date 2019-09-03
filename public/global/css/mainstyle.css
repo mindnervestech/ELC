@@ -36,6 +36,25 @@
 
 /* product list css */
 
+::placeholder {
+    color: #4f4f4f;
+    opacity: 1;
+  }
+
+  :-ms-input-placeholder {
+    color: #4f4f4f;
+   }
+   
+   ::-ms-input-placeholder { 
+    color: #4f4f4f;
+   }
+
+   .removeWhite{}
+
+   .removeWhite:hover{
+       background-color: transparent!important;
+   }
+
 .product-list {}
 
 .slick-dots {
@@ -158,8 +177,21 @@
     padding: 30px
 }
 
+.clearAll {
+    padding-right: 10px;
+    cursor: pointer;
+    color: #0D943F;
+    font-weight: bold;
+}
+
+html[dir="rtl"] .clearAll {
+    padding-left: 10px;
+}
+
+
+
 .cardPage {
-    padding: 20xp;
+    padding: 20px;
 }
 
 .cardPage .email-field {
@@ -235,7 +267,7 @@
     text-decoration: none;
     position: relative;
     border: none;
-    padding: 11px;
+    padding: 11px 11px 11px 0px;
     background: #fff;
     color: #4f4f4f;
     font-size: 1.4rem;
@@ -281,7 +313,9 @@
     color: black;
 }
 
-.titleHover {}
+.titleHover {
+    border-bottom: solid 1px #fff;
+}
 
 .titleHover:hover {
     color: #0D943F;
@@ -2976,6 +3010,14 @@ html[dir="rtl"] .data .slick-next {
     float: right;
 }
 
+html[dir="rtl"] .floatRight {
+    float: left;
+}
+
+html[dir="rtl"] .floatLift {
+    float: right;
+}
+
 li {
     font-size: 1.3rem;
 }
@@ -3089,6 +3131,18 @@ html[dir="rtl"] .Collapsible__trigger:after{
     .data .slick-prev {
         left: 11px !important;
         z-index: 1;
+    }
+
+    .Collapsible__trigger {
+        display: block;
+        text-decoration: none;
+        position: relative;
+        border: none;
+        padding: 7px 11px 7px 0px;
+        background: #fff;
+        color: #4f4f4f;
+        font-size: 1.4rem;
+        font-family: "VAG Rounded ELC Bold";
     }
 
     .homePage .prevButton{

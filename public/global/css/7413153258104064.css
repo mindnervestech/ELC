@@ -3298,7 +3298,7 @@ a.t-MediaList-itemWrap:focus {
 
 .t-Region,
 .t-ContentBlock--lightBG .t-ContentBlock-body {
-  background-color: #fafafa;
+  background-color: #fff;
 }
 
 .t-Body .fielddata b {

@@ -99,7 +99,6 @@ class MainHeader extends Component {
         if (this.props.location.pathname !== prevProps.location.pathname) {
             this.setState({ showCountries: false })
             if (this.state.showCart) {
-                console.log(this.state.showCart)
                 this.setState({
                     showCart: false
                 })
@@ -107,7 +106,6 @@ class MainHeader extends Component {
         }
 
         if (prevProps.globals.currentStore !== this.props.globals.currentStore) {
-            console.log('Calling from  update :: ', prevProps.globals.currentStore, this.props.globals.currentStore)
             this.props.onGetMenuNav(this.props.globals);
         }
 
@@ -153,7 +151,6 @@ class MainHeader extends Component {
     onChangeCountry = (country) => {
         this.props.handleCountrySelection(country);
         this.setState({ country_flag: this.getFlagName(country), country_name: country });
-        // console.log('onChangeCountry', this.state.country_flag);
         this.showCountries();
         this.closeHBMenu();
     }
@@ -273,16 +270,48 @@ class MainHeader extends Component {
                         <div className="row-1">
                             <div className="containers-main">
                                 <ul className="leftLink" style={{ paddingTop: 7 }}>
-                                    {/* <li className="ll" style={{ padding: 0 }}>
-                                        <div className="lang">
-                                            <a href="javascript:void(0);" onClick={(e) => this.translate('en', 'ltr')} className="active" >en</a></div>
-                                    </li>
+                                <li style={{paddingTop: 7}}>
+                                        <div className="changecountry">
+                                            <div className="country">
+                                                <div onClick={this.showCountries} className={this.state.showCountries ? "activeCountry open divShowOnWeb" : "activeCountry divShowOnWeb"}>
+                                                    {/* <i className={`flag ${this.state.country_flag}`} onClick={this.showCountries}>  </i> */}
+                                                    {this.state.country_name == 'UAE' ?
+                                                        <img style={{ height: '20px', width: '30px' }} src={UAEImage}></img>
+                                                        : <img style={{ height: '20px', width: '30px' }} src={KSAImage}></img>
+                                                    }
+                                                    <label className="text-color" style={{fontSize: '1.2rem'}}>&nbsp;{this.state.country_name} </label>
+                                                    <span className="selected">
+                                                        <FormattedMessage id="header.defaultCountry" defaultMessage="Select Your Country" />
 
+                                                    </span>
+                                                    <i className="icon-down" ></i>
+                                                </div>
+                                                <div className="list" style={{ textAlign: 'start' }}>
+                                                    <div style={{ paddingLeft: 10, paddingBottom: 7, fontSize: '1.2rem' }}>
+                                                        <img style={{ height: '20px', width: '30px' }} src={UAEImage}></img>
+                                                        <a href="javascript:void(0);" className="uae" id="cart" onClick={() => this.onChangeCountry('UAE')}>UAE</a>
+                                                    </div>
+                                                    <div style={{ paddingLeft: 10, fontSize: '1.2rem' }}>
+                                                        <img style={{ height: '20px', width: '30px' }} src={KSAImage}></img>
+                                                        <a href="javascript:void(0);" className="ksa" id="cart" onClick={() => this.onChangeCountry('KSA')}><FormattedMessage id="header.ksa" defaultMessage="KSA" /></a>
+                                                    </div>
+                                                    {/* <li><a href="javascript:void(0);" className="ksa" id="cart" onClick={() => this.onChangeCountry('UAE', 'NETHERLANDS')}><FormattedMessage id="header.netherlands" defaultMessage="KSA" /></a></li>
+                                                    <li><a href="javascript:void(0);" className="ksa" id="cart" onClick={() => this.onChangeCountry('UAE', 'SLOVENIA')}><FormattedMessage id="header.slovenia" defaultMessage="KSA" /></a></li>
+                                                    <li><a href="javascript:void(0);" className="usd" id="cart" onClick={() => this.onChangeCountry('International', 'UNITED KINGDOM')}><FormattedMessage id="header.uk" defaultMessage="International" /></a></li> */}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li className="ll" style={{ padding: 0, paddingLeft: 5 }}>
+                                        <div className="lang" style={{fontSize: '1.2rem'}}>
+                                            <a href="javascript:void(0);" onClick={(e) => this.translate('en', 'ltr')} className="active" >English</a></div>
+                                    </li>
+                                    <li style={{paddingLeft: 8}}> - </li>
                                     <li className="ll" style={{ padding: 0 }}>
-                                        <div className="lang" style={{ paddingLeft: 15 }}>
+                                        <div className="lang" style={{ paddingLeft: 8, fontSize: '1.2rem' }}>
                                             <a href="javascript:void(0);" onClick={(e) => this.translate('ar', 'rtl')} >العربية</a></div>
-                                    </li> */}
-                                    <li>
+                                    </li>
+                                    {/* <li>
                                         <div className="language">
                                             <button className={this.state.showMenu ? 'Button is-open' : 'Button'} onClick={this.showMenu}>{globals.language.toUpperCase()}</button>
                                             {
@@ -304,51 +333,20 @@ class MainHeader extends Component {
                                                     )
                                             }
                                         </div>
-                                    </li>
+                                    </li> */}
 
                                     {/* <li style={{height:40}}>
                                         <Button className="firstButton text-color">The Entertainer</Button>
                                     </li> */}
                                     <li style={{ height: 40, marginLeft: 20 }}>
-                                        <Button className="secondButton text-color"><FormattedMessage id="header.TheBirthdayclub" defaultMessage="The Birthday Club" /></Button>
+                                        <Button className="secondButton text-color"><FormattedMessage id="header.TheBirthdayclub" defaultMessage="Birthday Club" /></Button>
                                     </li>
-                                    {<li>
-                                        <div className="changecountry">
-                                            <div className="country">
-                                                <div onClick={this.showCountries} className={this.state.showCountries ? "activeCountry open divShowOnWeb" : "activeCountry divShowOnWeb"}>
-                                                    {/* <i className={`flag ${this.state.country_flag}`} onClick={this.showCountries}>  </i> */}
-                                                    {this.state.country_name == 'UAE' ?
-                                                        <img style={{ height: '20px', width: '30px' }} src={UAEImage}></img>
-                                                        : <img style={{ height: '20px', width: '30px' }} src={KSAImage}></img>
-                                                    }
-                                                    <label className="text-color">&nbsp;{this.state.country_name} </label>
-                                                    <span className="selected">
-                                                        <FormattedMessage id="header.defaultCountry" defaultMessage="Select Your Country" />
-
-                                                    </span>
-                                                    <i className="icon-down" ></i>
-                                                </div>
-                                                <div className="list" style={{ textAlign: 'start' }}>
-                                                    <div style={{ paddingLeft: 10, paddingBottom: 7 }}>
-                                                        <img style={{ height: '20px', width: '30px' }} src={UAEImage}></img>
-                                                        <a href="javascript:void(0);" className="uae" id="cart" onClick={() => this.onChangeCountry('UAE')}>UAE</a>
-                                                    </div>
-                                                    <div style={{ paddingLeft: 10 }}>
-                                                        <img style={{ height: '20px', width: '30px' }} src={KSAImage}></img>
-                                                        <a href="javascript:void(0);" className="ksa" id="cart" onClick={() => this.onChangeCountry('KSA')}><FormattedMessage id="header.ksa" defaultMessage="KSA" /></a>
-                                                    </div>
-                                                    {/* <li><a href="javascript:void(0);" className="ksa" id="cart" onClick={() => this.onChangeCountry('UAE', 'NETHERLANDS')}><FormattedMessage id="header.netherlands" defaultMessage="KSA" /></a></li>
-                                                    <li><a href="javascript:void(0);" className="ksa" id="cart" onClick={() => this.onChangeCountry('UAE', 'SLOVENIA')}><FormattedMessage id="header.slovenia" defaultMessage="KSA" /></a></li>
-                                                    <li><a href="javascript:void(0);" className="usd" id="cart" onClick={() => this.onChangeCountry('International', 'UNITED KINGDOM')}><FormattedMessage id="header.uk" defaultMessage="International" /></a></li> */}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                        // <li className="ll" style={{padding:0}}>
-                                        //     <div className="lang">
-                                        //         <a href="javascript:void(0);" onClick={(e) => this.translate('en', 'ltr')} className="active" >en</a> | <a href="javascript:void(0);" onClick={(e) => this.translate('ar', 'rtl')} >العربية</a></div>
-                                        // </li> }
-                                    }
+                                    
+                                        {/* <li className="ll" style={{padding:0}}>
+                                           <div className="lang">
+                                                 <a href="javascript:void(0);" onClick={(e) => this.translate('en', 'ltr')} className="active" >en</a> | <a href="javascript:void(0);" onClick={(e) => this.translate('ar', 'rtl')} >العربية</a></div>
+                                         </li> */}
+                                
                                     {/* <li><Link to={`/${store_locale}/amirah-club`}>
                                         <FormattedMessage id="header.clubName" defaultMessage="THE BODY SHOP" />
                                     </Link></li> */}
@@ -365,9 +363,12 @@ class MainHeader extends Component {
                                         <label className="iconLeble text-color changeLinkText">store finder</label>
                                     </li> */}
                                     <li className="titleHover">
-                                        {/* <i className="icon-heart"></i> */}
-                                        <img src={help} className="image-ion"></img>
-                                        <label style={{ lineHeight: '0.5rem' }} className="iconLeble text-color changeLinkText"><Link to={`/${store_locale}/help-and-faq`} style={{ textDecoration: 'none' }}><FormattedMessage id="Header.Help" defaultMessage="help" /></Link></label>
+                                        {/* <img src={help} className="image-ion"></img>
+                                        <label style={{ lineHeight: '0.5rem' }} className="iconLeble text-color changeLinkText"></label> */}
+                                        <Link to={`/${store_locale}/help-and-faq`} style={{ textDecoration: 'none' }}>
+                                            <img src={help} className="image-ion"></img>
+                                            <label className="iconLeble text-color changeLinkText"><FormattedMessage id="Header.Help" defaultMessage="help" /></label>
+                                        </Link>
                                     </li>
                                     <li className="titleHover" style={this.state.userLogin ? { display: 'none' } : { display: 'inline-block', marginBottom: 5 }}>
                                         <Link to={`/${store_locale}/Login`} style={{ textDecoration: 'none' }}>
@@ -417,8 +418,8 @@ class MainHeader extends Component {
                                         <img style={{ height: 64, width: "75%", paddingLeft: 5 }} src={logoGroup} />
                                     </Link>
                                 </Col>
-                                <Col xs="4" style={{ padding: 6 }}><Search store_locale={store_locale} /></Col>
-                                <Col xs="2" className="col-remove"></Col>
+                                <Col xs="5" style={{ padding: 6 }}><Search store_locale={store_locale} /></Col>
+                                <Col xs="1" className="col-remove"></Col>
                                 <Col xs="2" className="width-custom" style={{ paddingTop: 15, paddingLeft: 5, paddingRight: 5 }}>
                                     <Link to={`/${store_locale}/cart`} style={{ textDecoration: 'none' }}>
                                         <ul className="cta">
@@ -449,7 +450,7 @@ class MainHeader extends Component {
                                                 <img src={bagLogo} style={{ height: 25, width: 25 }} />
                                             </li>
                                             <li style={{ paddingTop: 8 }}>
-                                                <label className="headerLable2"><FormattedMessage id="header.mybasket" defaultMessage="my basket" />
+                                                <label className="headerLable2"><FormattedMessage id="header.mybasket" defaultMessage="My Basket" />
                                                     {/* <span style={{ fontFamily: "VAG Rounded ELC Bold", marginLeft: 10 }}>£30.00</span> */}
                                                 </label>
                                             </li>
@@ -559,29 +560,9 @@ class MainHeader extends Component {
 
                     <div id="R33786937309169806" className="menuOverlay"> </div>
                     <div id="R33786847982169805" className="row-3">
-                        {/* <Row>
-                            <Col xs="2"></Col>
-                            <Col xs="8" style={{padding:0}}>
-                                <label className="manuTitle">body toys (0-12 months)</label>
-                                <label className="manuTitle">elc toys</label>
-                                <label className="manuTitle">outdoor toys</label>
-                                <label className="manuTitle">shop by age</label>
-                                <label className="manuTitle">shop by brand</label>
-                                <label className="manuTitle">shop by learning skill</label>
-                            </Col>
-                            <Col xs="2" style={{padding: 0}}>
-                                <Button className="buton">present finder</Button>
-                            </Col>
-                        </Row> */}
                         <a to="JavaScript:;" id="closeNav" className="closeNav">X</a>
                         <div className="containers-main">
                             <div style={{ padding: "0px 10px" }}>
-                                {/* <Col xs="12">
-                                    <MenuNav />
-                                </Col> */}
-                                {/* <Col xs="1" style={{ padding: 0 }}>
-                                    <button className="present-finder-buton">Present Finder</button>
-                                </Col> */}
                                 <MenuNav />
                             </div>
                             {/* <div className="changecountry">

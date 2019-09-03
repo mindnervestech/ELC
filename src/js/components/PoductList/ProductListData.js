@@ -131,29 +131,24 @@ class ProductListData extends Component {
 			this.state.pageNumber = 1
 			this.state.check = false
 			this.pagenation(0, pagenationCount - 1)
-		} else {
+		} else if (value.target.value == 'relevance') {
 			productList = productListData
 			this.state.check = true
 			this.pagenation(1, pagenationCount)
+		} else if (value.target.value == 'a-z') {
+			const myData = _.values(productList).sort((a, b) => a.json.name.localeCompare(b.json.name));
+			productList = myData
+			this.state.check = false
+			this.state.pageNumber = 1
+			this.pagenation(0, pagenationCount - 1)
+		} else if (value.target.value == 'z-a') {
+			const myData = _.values(productList).sort((a, b) => b.json.name.localeCompare(a.json.name));
+			productList = myData
+			this.state.check = false
+			this.state.pageNumber = 1
+			this.pagenation(0, pagenationCount - 1)
 		}
 	}
-
-	// viewAll = () => {
-	// 	productList = productListData
-	// 	let count = 0
-	// 	for (var element in productList) {
-	// 		count++
-	// 	}
-	// 	let totalPages = 1
-	// 	if (count % pagenationCount == 0) {
-	// 		totalPages = count / pagenationCount
-	// 	} else {
-	// 		totalPages = Math.floor(count / pagenationCount) + 1
-	// 	}
-	// 	this.setState({ totalPages: totalPages, pageNumber: 1 })
-	// 	this.state.check = true
-	// 	this.pagenation(1, pagenationCount)
-	// }
 
 	_callFilters = () => {
 		this.setState({ showFilterOnMobile: true })
@@ -172,9 +167,7 @@ class ProductListData extends Component {
 	render() {
 		let list = this.state.list1
 		const store_locale = this.props.globals.store_locale
-		// if (Object.keys(list).length == 0) {
-		// 	list = this.props.list;
-		// }
+		
 		return (
 			<Row>
 				<Col xs="3" lg="3" md="3" className="divShowOnWeb">
@@ -207,16 +200,10 @@ class ProductListData extends Component {
 										<option value="relevance">{message}</option>
 									}
 								</FormattedMessage>
-								<FormattedMessage id="Product.Listing.PriceHTL" defaultMessage="Price (High to Low)">
-									{(message) =>
-										<option value="price_desc">{message}</option>
-									}
-								</FormattedMessage>
-								<FormattedMessage id="Product.Listing.PriceLTH" defaultMessage="Price (Low to High)">
-									{(message) =>
-										<option value="price_asc">{message}</option>
-									}
-								</FormattedMessage>
+								<option value="a-z">Name (A-Z)</option>
+								<option value="z-a">Name (Z-A)</option>
+								<option value="price_asc">Price (lowest first)</option>
+								<option value="price_desc">Price (highest first)</option>
 							</select>
 						</div>
 
@@ -250,7 +237,9 @@ class ProductListData extends Component {
 											<div className="t-Region-buttons-left" />
 											<div className="t-Region-buttons-right" />
 										</div>
-										<SideManu action={this.handler}></SideManu>
+										<div style={{padding: "0px 15px"}}>
+											<SideManu action={this.handler}></SideManu>
+										</div>
 										<div className="t-Region-buttons t-Region-buttons--bottom">
 											<div className="t-Region-buttons-left" />
 											<div className="t-Region-buttons-right" />
@@ -266,44 +255,35 @@ class ProductListData extends Component {
 								<div>
 									<span className="blackTitle">{this.props.list.category_name}</span>
 								</div>
-								<div style={{ height: 22 }}>
+								<div style={{ height: 32 }}>
 									<span>{this.props.list.category_description}</span>
 								</div>
-								<div style={{ paddingTop: 25 }}>
+								<div style={{ paddingTop: 29 }}>
 									<Row className="divShowOnWeb">
-										<Col xs="5">
+										<Col xs="4">
 											<Row>
-												<Col xs="3">
+												<Col xs="4">
 													<span className="blackTitle"><FormattedMessage id="Product.Listing.SortBy" defaultMessage="Sort by" /></span>
 												</Col>
-												<Col xs="6" style={{ padding: 0 }}>
+												<Col xs="8" style={{ padding: 0 }}>
 													<select placeholder={'Filter'} onChange={this.filter}>
 														<FormattedMessage id="Product.Listing.Relevance" defaultMessage="Relevance">
 															{(message) =>
 																<option value="relevance">{message}</option>
 															}
 														</FormattedMessage>
-														<FormattedMessage id="Product.Listing.PriceHTL" defaultMessage="Price (High to Low)">
-															{(message) =>
-																<option value="price_desc">{message}</option>
-															}
-														</FormattedMessage>
-														<FormattedMessage id="Product.Listing.PriceLTH" defaultMessage="Price (Low to High)">
-															{(message) =>
-																<option value="price_asc">{message}</option>
-															}
-														</FormattedMessage>
+														<option value="a-z">Name (A-Z)</option>
+														<option value="z-a">Name (Z-A)</option>
+														<option value="price_asc">Price (lowest first)</option>
+														<option value="price_desc">Price (highest first)</option>
 													</select>
-												</Col>
-												<Col xs="3" style={{ cursor: 'pointer' }}>
-													{/* <span className="viewAll" onClick={() => this.viewAll()}><FormattedMessage id="profile.ViewAll.Title" defaultMessage="View all" /></span> */}
 												</Col>
 											</Row>
 										</Col>
-										<Col xs="7">
+										<Col xs="8">
 											<Row>
-												<Col xs="2"></Col>
-												<Col xs="10">
+												<Col xs="1"></Col>
+												<Col xs="11">
 													<Row>
 														<Col xs="4">
 															<button onClick={this.prevButton} className={this.state.pageNumber == 1 ? "prevButton" : "nextButton"} style={{ width: "80%" }}>Prev</button>
@@ -397,7 +377,7 @@ class ProductListData extends Component {
 									<Col xs="2"></Col>
 								</Row>
 							</div>
-							<div className="divShowOnMobile pagenation" style={{padding: '10px 20px'}}>
+							<div className="divShowOnMobile pagenation" style={{ padding: '10px 20px' }}>
 								<ul>
 									<li className="liTag" style={{ textAlign: 'start' }}>
 										<button onClick={this.prevButton} className={this.state.pageNumber == 1 ? "prevButton" : "nextButton"}>Prev</button>

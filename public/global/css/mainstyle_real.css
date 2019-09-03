@@ -296,7 +296,9 @@ template {
 }
 
 .icon-search:before {
-    content: "\E904"
+    content: "\E904";
+    font-size: 22px;
+    font-weight: 500;
 }
 
 .icon-user:before {
@@ -544,11 +546,12 @@ li {
 
 .header .row-1 .leftLink .secondButton {
     color: #4f4f4f;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     background-color: #fff;
     height: 97%;
     border: none;
     border-radius: 0px;
+    border-bottom: solid 2px #FFF;
 }
 
 .header .row-1 .leftLink .secondButton:hover {
@@ -568,7 +571,7 @@ li {
 }
 
 .header .row-1 ul li a span{
-	font-size: 12px;
+    font-size: 1.2rem;
 	vertical-align: text-top;
 }
 
@@ -1209,8 +1212,8 @@ html[dir="rtl"] .header .search i {
 }
 
 .header .search .searchButton {
-    height: 80%;
-    width: 10%;
+    height: 83%;
+    width: 7%;
     border-radius: 5px;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
@@ -1227,11 +1230,11 @@ html[dir="rtl"] .header .search .searchButton {
 .header .search .textInput {
     border: none;
     display: block;
-    font-size: .8em;
-    width: 80%;
-    height: 80%;
+    font-size: 14px;
+    width: 85%;
+    height: 83%;
     padding: 5px 20px;
-    color: #575657;
+    color: #4f4f4f;
     background-color: #fff;
     border-radius: 5px;
     border-top-right-radius: 0;
@@ -1252,6 +1255,8 @@ html[dir="rtl"] .header .search .textInput {
     font-size: 13px;
     display: table;
     margin: 0 auto;
+    width: 92%;
+    text-align: center;
 }
 
 @media only screen and (min-width: 600px) {
@@ -1350,7 +1355,11 @@ html[dir="rtl"] .header .search .textInput {
 
 html.no-touch .header .link>li:hover .submenu {
     display: block;
-
+    text-align: initial;
+    background-color: rgb(255, 255, 255);
+    -webkit-box-shadow: 0 2000vh 0 2000vh rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 2000vh 0 2000vh rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2000vh 0 2000vh rgba(0, 0, 0, 0.3);
 }
 
 .header .link>li .subMenuTrigger {
@@ -1612,7 +1621,7 @@ html[dir="rtl"] .header .link .submenu .menufigure {
         display: inline-block;
         vertical-align: top;
         width: 170px;
-        margin-right: 15px;
+        margin-right: 40px;
         font-size: .9em
     }
 
@@ -1639,7 +1648,7 @@ html[dir="rtl"] .header .link .submenu .menufigure {
 }
 
 .header .link .subLink li a {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     line-height: 1.8rem;
     font-weight: 700;
     color: #0D943F !important;

@@ -105,7 +105,7 @@ class menuList extends Component {
 			let default_message = 'SHOW ALL ' + item.url_key.toLowerCase();
 
 			return (
-				<div className="submenu" style={item.children[0].length > 0 ? {backgroundColor: '#fff'} : {backgroundColor: 'transparent', height:10}}>
+				<div className="submenu" style={item.children[0].length > 0 ? {backgroundColor: '#fff'} : {display: 'none'}}>
 					<div className="all">
 						<Link to={'/' + this.state.store_locale + '/products/' + item.url_path} onClick={() => document.getElementById("closeNav").click()}>
 							{/* <FormattedMessage id={menu_item} defaultMessage={default_message} /> */}
@@ -144,7 +144,7 @@ class menuList extends Component {
 		return (
 			<>
 				<li key={index}>
-					<Link to={'/' + this.state.store_locale + '/products/' + item.url_path} style={{ textDecoration: 'none' }} onClick={() => document.getElementById("closeNav").click()}>
+					<Link to={'/' + this.state.store_locale + '/products/' + item.url_path} style={{ textDecoration: 'none' }} onClick={() => document.getElementById("closeNav").click()} className={item.children[0].length > 0 ? '' : "removeWhite"}>
 						{item.name.toLowerCase()}
 						{item.children[0].length > 0 ?
 							<i class="fa fa-caret-down downMenu divShowOnWeb" aria-hidden="true"></i>

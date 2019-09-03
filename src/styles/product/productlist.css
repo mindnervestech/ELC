@@ -530,8 +530,8 @@ html[dir="rtl"] div#mobile-sort-by-content-div{
     display: inline-block;
     height: 32px;
     font-size: 12px;
-    font-weight: 500;
-    color: rgba(0, 0, 0, .6);
+    font-weight: 600;
+    color: #0D943F;
     line-height: 32px;
     padding: 0;
     background-color: #ffffff;

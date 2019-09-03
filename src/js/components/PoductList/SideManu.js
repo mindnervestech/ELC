@@ -22,10 +22,12 @@ class SideManu extends Component {
 		productListingData = this.props.productDetails.products.product_data;
 		productList = this.props.productDetails.products.product_data;
 		filterList = this.props.productDetails.filters;
-		// this.state = {
-		// 	list: {},
-		// 	filterOptionCheck: true,
-		// };
+		this.state = {
+			list: {},
+			filterOptionCheck: true,
+			narrowResult: [],
+			clearAllOption: false,
+		};
 	}
 
 	componentDidUpdate(prevProps, prevState) {
@@ -115,11 +117,14 @@ class SideManu extends Component {
 			filterOptionArray.splice(remove, 1);
 			remove = -1
 		}
+		this.setState({ narrowResult: filterOptionArray })
 		if (filterOptionArray.length == 0) {
+			this.setState({clearAllOption: false });
 			productList = productListingData;
 			filterData = [];
 			this.props.action(productListingData);
 		} else {
+			this.setState({clearAllOption: true });
 			for (let categrayData in filterOptionArray) {
 				let splitData = filterOptionArray[categrayData].split('/')
 				if (splitData[0] == "price") {
@@ -133,14 +138,7 @@ class SideManu extends Component {
 							}
 						}
 					}
-				} else if (splitData[0] == "age") {
-					let filterValue = splitData[1]
-					this.getFilterData(filterValue, splitData[0])
-
-				} else if (splitData[0] == "brand") {
-					let filterValue = splitData[1]
-					this.getFilterData(filterValue, splitData[0])
-				} else if (splitData[0] == "gender") {
+				} else{
 					let filterValue = splitData[1]
 					this.getFilterData(filterValue, splitData[0])
 				}
@@ -150,6 +148,14 @@ class SideManu extends Component {
 			this.props.action(filterData)
 			filterData = []
 		}
+	}
+
+	clearFilter = () =>{
+		this.props.action(productListingData)
+		this.setState({ narrowResult: [], clearAllOption: false })
+		filterOptionArray = []
+		filterData = []
+		productList = productListingData;
 	}
 
 	// checkFilterIsAvailable = (value, code) => {
@@ -168,15 +174,29 @@ class SideManu extends Component {
 	// }
 
 	assignFilterdata(data) {
-		return (
-			<div>
-				{Object.keys(data).map((keyName) =>
+		let Checked = 0
+			return (Object.keys(data).map((keyName, index) => {
+			
+			for(let item in this.state.narrowResult){
+				if(this.state.narrowResult[item] == data[keyName].code + "/" + data[keyName].name){
+					Checked++;
+				}
+			}
+			if(Checked == 0){
+				return (
 					<div>
-						<input type="checkbox" onClick={() => this.applyFilter(data[keyName].code + "/" + data[keyName].name, "")} value={data[keyName].name} /> {data[keyName].name}
+						<input type="checkbox" checked={false} onClick={() => this.applyFilter(data[keyName].code + "/" + data[keyName].name, "")} value={data[keyName].name} /> {data[keyName].name}
 					</div>
-				)}
-			</div>
-		);
+					);
+			}else{
+				Checked = 0;
+				return (
+					<div>
+						<input type="checkbox" checked={true} onClick={() => this.applyFilter(data[keyName].code + "/" + data[keyName].name, "")} value={data[keyName].name} /> {data[keyName].name}
+					</div>
+					);		
+			}
+		}))
 	}
 
 	// checkMainFilterName(value) {
@@ -205,14 +225,27 @@ class SideManu extends Component {
 		return (
 			<div>
 				<div>
-					<div className="row-2" style={{ margin: '21px 0px', borderBottom: 'solid 1px #b1b1b1' }}>
+					<div className="row-2" style={{ paddingTop: 21, borderBottom: 'solid 1px #b1b1b1', textAlign: 'start' }}>
 						<span className="blackTitle">Narrow your Results</span>
+						<span className="clearAll floatRight" style={this.state.clearAllOption ? {display: 'block'} : {display: 'none'}} onClick={() => this.clearFilter()}>Clear All</span>
 					</div>
-					<div style={{ paddingTop: 19 }}>
+					<div style={{height: 55, overflow: 'auto'}}>
+                    <ul className="filter" id="PRDSEL-CAT">                
+                        {this.state.narrowResult.map((keyName) =>
+                         <li style={{width: 'auto', margin: '0px 10px 0px 0px'}}>
+                            <div className="chip">
+                                    {keyName}
+                                    <i className="close fa fa-times" aria-hidden="true" onClick={() => this.applyFilter(keyName, "")}/>
+                            </div>
+                          </li>
+                        )}
+                    </ul>
+					</div>
+					<div>
 						{Object.keys(list).map((keyName) =>
 							<div className="bottomBorder" style={{ paddingTop: 10 }}>
 								<Collapsible trigger={keyName} >
-									<div style={{ textAlign: 'start' }}>{this.assignFilterdata(list[keyName])}</div>
+									<div style={{ textAlign: 'start' }}> {this.assignFilterdata(list[keyName])} </div>
 								</Collapsible>
 							</div>
 						)}
