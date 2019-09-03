@@ -444,7 +444,7 @@ class SignUp extends Component {
                           </div>
                           <div className="t-Region-headerItems t-Region-headerItems--buttons"><span className="js-maximizeButtonContainer"></span></div>
                         </div>
-                        <div className="t-Region-bodyWrap">
+                        <div className="t-Region-bodyWrap input-color">
                           <div className="t-Region-buttons t-Region-buttons--top">
                             <div className="t-Region-buttons-left"></div>
                             <div className="t-Region-buttons-right"></div>
@@ -570,7 +570,7 @@ class SignUp extends Component {
                               <div className="bot-bottom mar-letf"></div>
                               </div>
                               <div className="row pad40L padTop20 backWhite" style={{ textAline: "start" }}>
-                                <label class="checkBox"><FormattedMessage id="Form.RecieveEmail" defaultMessage="I'd like to receive emails from ELC about Spacial Offers, new toys and voucher codes."></FormattedMessage>
+                                <label class="checkBox"><FormattedMessage id="Form.RecieveEmail" defaultMessage="I'd like to receive emails from ELC about Special Offers, new toys and voucher codes."></FormattedMessage>
                                   <input onClick={this.subscribe_to_newsletter} type="checkbox"  ></input>
                                   <span class="checkmark"></span>
                                 </label>

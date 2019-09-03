@@ -1723,3 +1723,10 @@ html[dir="rtl"] .styles_modal__gNwvD div{
    
 
 }
+@media only screen and (min-width:340px) and (max-width:767px)
+{ 
+
+.styles_modal__gNwvD div {
+    padding: 16px 14px !important;
+}
+}

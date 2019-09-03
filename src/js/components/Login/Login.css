@@ -1530,3 +1530,9 @@ textarea .error {
     justify-content: center;
     padding-bottom: 3%;
 }
+@media (max-width: 767px){
+   .button-add-to-basket {   
+    margin-top: 10px !important;
+}
+    }
+

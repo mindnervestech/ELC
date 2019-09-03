@@ -215,7 +215,7 @@ class Footer extends Component {
                         <div className="footer-title" style={{marginBottom:7}}>
                         <FormattedMessage id="footer.followUsOn" defaultMessage="follow us on" />
                         </div>
-                        <div>
+                        <div id="remove-line">
                             <a href="https://www.facebook.com/elctoys" target="_blank"><img src={facebook} className="icon"></img></a>
                             <a href="https://www.twitter.com/elctoysme" target="_blank"><img src={twitter} className="icon"></img></a> 
                             <a href="https://www.instagram.com/elctoys" target="_blank"> <img src={instagram} className="icon"></img></a>

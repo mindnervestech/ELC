@@ -299,7 +299,7 @@ class Login extends Component {
                       <div className="col col-6 colUp">
                         <ul className="nay">
                           <li><FormattedMessage id="newToElc.remember" defaultMessage="Wi'll remember your details for next time" /></li>
-                          <li><FormattedMessage id="newToElc.join" defaultMessage="You can join jack's Birthday Club to receive spacial birthday offers" /></li>
+                          <li><FormattedMessage id="newToElc.join" defaultMessage="You can join jack's Birthday Club to receive Special birthday offers" /></li>
                         </ul>
                       </div>
                       <div className="col col-6 colUp">

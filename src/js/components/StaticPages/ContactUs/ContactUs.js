@@ -9,7 +9,10 @@ import '../../../../styles/contactus/contactus.css';
 import PhoneNumber from '../../Login/IntlTelePhone';
 import './ContactUs.css';
 
-
+import facebook from '../../../../assets/images/social/Facebook.svg';
+import instagram from '../../../../assets/images/social/instagram.svg';
+import youtube from '../../../../assets/images/social/youtube.svg';
+import twitter from '../../../../assets/images/social/twitter.svg';
 class ContactUs extends Component {
 
   constructor(props) {
@@ -277,7 +280,7 @@ class ContactUs extends Component {
                             <div className="container">
                               <div className="row">
                                 <div className="col col-6 apex-col-auto colclass padd-zero-mob">
-                                  <div className="t-Region t-Region--removeHeader t-Region--accent14 t-Region--noBorder t-Region--scrollBody margin-left-lg margin-right-lg" id="R715189021347792744" style={{ backgroundColor: 'WhiteSmoke' }}>
+                                  <div className="t-Region t-Region--removeHeader t-Region--accent14 t-Region--noBorder t-Region--scrollBody margin-left-lg margin-right-lg" id="R715189021347792744">
                                     <div className="t-Region-header">
                                       <div className="t-Region-headerItems t-Region-headerItems--title">
                                         <span className="t-Region-headerIcon"><span className="t-Icon " aria-hidden="true" /></span>
@@ -295,7 +298,7 @@ class ContactUs extends Component {
                                           <div className="row">
                                             <div className="col col-12 apex-col-auto">
                                               <div id="R715189986681792754" >
-                                                <div style={{ backgroundColor: 'WhiteSmoke' }}> <br />
+                                                <div> <br />
                                                   <h2 className="t-Region-title"> <FormattedMessage id="Wite.Text" defaultMessage="Wite to us" /></h2>
                                                 </div>
                                                 <br />
@@ -304,7 +307,7 @@ class ContactUs extends Component {
                                           </div>
                                           <div className="row">
                                             <div className="col col-12 apex-col-auto">
-                                              <div className="t-Region t-Region--noPadding t-Region--removeHeader t-Region--stacked t-Region--hiddenOverflow t-Form--slimPadding t-Form--large t-Form--stretchInputs t-Form--labelsAbove" id="R1009415282768434614" style={{ backgroundColor: 'WhiteSmoke' }}>
+                                              <div className="t-Region t-Region--noPadding t-Region--removeHeader t-Region--stacked t-Region--hiddenOverflow t-Form--slimPadding t-Form--large t-Form--stretchInputs t-Form--labelsAbove" id="R1009415282768434614">
                                                 <div className="t-Region-header">
                                                   <div className="t-Region-headerItems t-Region-headerItems--title">
                                                     <span className="t-Region-headerIcon"><span className="t-Icon " aria-hidden="true" /></span>
@@ -498,12 +501,13 @@ class ContactUs extends Component {
                                                 <div className="t-Region-buttons-right" />
                                               </div>
                                               <div className="t-Region-body">
-                                                <div className="media">
-                                                  <a href={this.props.contact_data.page_data.instagram}><i className="icon-instagram" /></a>
-                                                  <a href={this.props.contact_data.page_data.facebook}><i className="icon-facebook" /></a>
-                                                  <a href={this.props.contact_data.page_data.youtube}><i className="icon-youtube" /></a>
-                                                  <a href="https://api.whatsapp.com/send?phone=971565069237"><i className="icon-whatsapp" /></a>
-                                                </div>
+                                             
+                                              <div id="remove-line">
+                                                  <a href="https://www.facebook.com/elctoys" target="_blank"><img src={facebook} className="icon ft-icon"></img></a>
+                                                  <a href="https://www.twitter.com/elctoysme" target="_blank"><img src={twitter} className="icon ft-icon"></img></a> 
+                                                  <a href="https://www.instagram.com/elctoys" target="_blank"> <img src={instagram} className="icon ft-icon"></img></a>
+                                                  <a href="https://www.youtube.com/elctoysme" target="_blank"><img src={youtube} className="icon ft-icon"></img></a>
+                                              </div>
                                               </div>
                                               <div className="t-Region-buttons t-Region-buttons--bottom">
                                                 <div className="t-Region-buttons-left" />

@@ -154,3 +154,8 @@ html[dir="rtl"] #with .t-Form-labelContainer {
     width: auto  !important;
 }
 }
+.ft-icon{
+    margin-right: 15px;
+    height: 40px !important;
+    width: 40px !important;
+}

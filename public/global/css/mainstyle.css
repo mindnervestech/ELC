@@ -2711,7 +2711,7 @@ html[dir="rtl"] .slick-next {
 }
 
 html[dir="rtl"] .data .slick-next {
-    right: -80px !important;
+    right: -75px !important;
 }
 
 .data .slick-prev {
@@ -5594,12 +5594,20 @@ html[dir="rtl"] .header .navTrigger {
     .mar{
             margin: 0px 20px;
     }
+    .slick-prev, .slick-next {
+   
+    display: none !important;
+}
     @supports (-webkit-overflow-scrolling: touch) { 
     .product-list li {
         vertical-align: top;
         position: relative;
         width: 42.4% !important;
     }
+    .slick-prev, .slick-next {
+ 
+    display: none !important;
+}
 
     .mobileHomeLogo {
         height: 35px;
@@ -5691,3 +5699,29 @@ html[dir="rtl"] .header .navTrigger {
         padding: 0px !important;
     }
 }
+
+#remove-line a:hover {
+    color: #0D943F !important;
+    text-decoration: none !important;
+}
+@media (max-width: 340px) {
+
+.share-icon {
+    text-align: -webkit-center !important;
+    text-align: center !important;
+    padding: 10px !important;
+    width: 70px !important;
+}
+}
+
+@media only screen and (min-width:340px) and (max-width:767px)
+{ 
+.share-icon {
+    text-align: -webkit-center !important;
+    text-align: center !important;
+    padding: 10px !important;
+    width: 80px !important;
+}
+
+}
+

@@ -196,10 +196,14 @@ class MainHeader extends Component {
     render() {
 
         const settings = {
+            autoplay: true,
+            autoplaySpeed: 3000,
             dots: false,
             infinite: true,
             slidesToShow: 3,
             slidesToScroll: 1,
+            speed: 500,
+            vertical: false,
             responsive: [
                 {
                     breakpoint: 1024,
