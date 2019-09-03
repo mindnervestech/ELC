@@ -6989,4 +6989,7 @@ html[dir="rtl"] .t-Report-report tr .t-Report-cell:last-child,
     font-size: 1.5rem;
     line-height: 2.2rem;
 }
+ .padd-zer{
+        padding: 0px !important;
+    }
 }

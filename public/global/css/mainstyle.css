@@ -5581,7 +5581,12 @@ html[dir="rtl"] .header .navTrigger {
     max-width: 11% !important;
 }
 }
+@media (max-width: 600px) {
 
+ html[dir="rtl"] .direction-r{
+        direction: rtl !important;
+    }
+}
 @media (max-width: 767px) {
     .mobile-adjust{
            margin: 16px 21px 0px 20px !important;
@@ -5676,5 +5681,13 @@ html[dir="rtl"] .header .navTrigger {
         border-radius: 0px;
         -webkit-appearance: none!important;
     }
+    }
+}
+
+
+@media only screen and (min-width:500px) and (max-width:767px)
+{ 
+ .padd-zer{
+        padding: 0px !important;
     }
 }

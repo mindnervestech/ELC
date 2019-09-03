@@ -609,7 +609,7 @@ class MainHeader extends Component {
                     <Link to={`/${store_locale}/delivery-policy`} style={{ textDecoration: 'none' }}>
                                 <Slider {...settings}>
                                     <div>
-                                        <Row>
+                                        <Row className="direction-r">
                                             <Col xs="3" lg="3" md="3" className="col-width"></Col>
                                             <Col xs="2" lg="2" md="2" style={{paddingLeft: 0}} className="padd-icon-zero first-imag">
                                                 <img src={deliveryBy} className="imageHight40" />
@@ -627,12 +627,12 @@ class MainHeader extends Component {
                                         </Row>
                                     </div>
                                     <div>
-                                        <Row>
+                                        <Row className="direction-r">
                                             <Col xs="3" lg="3" md="3"></Col>
                                             <Col xs="2" lg="2" md="2" className="padd-icon-zero">
                                                 <img src={freeDelivery} className="imageHight40" />
                                             </Col>
-                                            <Col xs="6" lg="7" md="7">
+                                            <Col xs="6" lg="7" md="7" className="padd-zer">
                                                 <ul style={{ textAlign: 'start', paddingTop: 10 }}>
                                                     <li style={{ fontSize: 13, color: "#0D943F" }}>
                                                     <FormattedMessage id="header.FreeGiftwrapping" defaultMessage="Free Gift wrapping" />
@@ -645,7 +645,7 @@ class MainHeader extends Component {
                                         </Row>
                                     </div>
                                     <div>
-                                        <Row>
+                                        <Row className="direction-r">
                                             <Col xs="3" lg="3" md="3"></Col>
                                             <Col xs="2" lg="2" md="2" className="padd-icon-zero">
                                                 <img src={freeCollect} className="imageHight40" />
