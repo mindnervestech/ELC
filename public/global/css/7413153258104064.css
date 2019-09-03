@@ -6948,3 +6948,45 @@ html[dir="rtl"] .t-Report-report tr .t-Report-cell:last-child,
   font-size: 0 !important;
   line-height: 1 !important;
 }
+
+
+@media only screen and (max-width: 500px) {
+.t-Alert--page.t-Alert--success {  
+    margin-top: 15em !important;
+  
+  }
+  .t-Alert--page .t-Alert-title {
+    display: block;
+    font-weight: 400;
+    font-size: 1.2rem;
+    line-height: 2rem;
+}
+.t-Alert--horizontal .t-Alert-icon {
+    flex-shrink: 0;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+}
+}
+
+@media only screen and (min-width:500px) and (max-width:767px)
+{
+ .t-Alert--page.t-Alert--success {
+    /* margin-top: 11em; */
+    width: 500px;
+    /* margin: 0 auto; */
+    margin-left: auto;
+    margin-right: auto;
+    right: unset;
+    left: 50%;
+    position: fixed;
+    top: 55%;
+    transform: translate(-50%,-50%);
+}
+.t-Alert--page .t-Alert-title {
+    display: block;
+    font-weight: 400;
+    font-size: 1.5rem;
+    line-height: 2.2rem;
+}
+}
