@@ -299,7 +299,7 @@ class Login extends Component {
                       <div className="col col-6 colUp">
                         <ul className="nay">
                           <li><FormattedMessage id="newToElc.remember" defaultMessage="Wi'll remember your details for next time" /></li>
-                          <li><FormattedMessage id="newToElc.join" defaultMessage="You can join jack's Birthday Club to receive Special birthday offers" /></li>
+                          <li><FormattedMessage id="newToElc.join" defaultMessage="You can join jack's Birthday Club to receive spacial birthday offers" /></li>
                         </ul>
                       </div>
                       <div className="col col-6 colUp">
@@ -446,12 +446,12 @@ class Login extends Component {
                                           </div>
                                           </div>
                                         </div>
-                                        <div className="forgotPass" style={{width: "99%", textAlign: 'right'}} >
+                                        {/* <div className="forgotPass" style={{width: "99%", textAlign: 'right'}} >
                                           <a className="forget-password-link link" style={{width: "100%"}} onClick={this.onOpenSecondModal}><FormattedMessage id="forget.password" defaultMessage="Forget Password" /></a>
 
                                           <span id="P1000_FP_error_placeholder" className="a-Form-error" data-template-id="33609641515469732_ET"></span>
 
-                                        </div>
+                                        </div> */}
                                       </div>
                                       {/* <div >
                                           <div className="t-Form-fieldContainer rel-col  apex-item-wrapper apex-item-wrapper--checkbox " id="P1000_REMEMBER_CONTAINER">

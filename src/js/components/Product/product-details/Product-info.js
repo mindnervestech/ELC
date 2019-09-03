@@ -358,7 +358,7 @@ class ProductInfo extends Component {
 												<img src='http://nayomidev.iksulalive.com/pub/media/attribute/swatch/w/h/white_1_.jpg'></img> */}
 												</div>
 											</div>
-											{/* <div style={{width:'100%'}}>
+											<div style={{width:'100%'}}>
 											<div className="choose-dil">
 												Choose your delivery option:
 											</div>
@@ -369,7 +369,13 @@ class ProductInfo extends Component {
 														Home delivery
 													</span>
 													<span style={{margin:'10px', color: '#ee0E19'}}>
-														Out of stock
+													{data.simplestatus == 1 || (newImageArray[0] && newImageArray[0].stock == 1) ?
+													<span className="in-stock" style={{ color: '#0D943F' }}>
+													<FormattedMessage id="PDP.InStock" defaultMessage="In Stock" />
+												</span> :
+													<span style={{ margin: '10px', color: '#ee0E19' }}>
+													<FormattedMessage id="PDP.OutOfStock" defaultMessage="Out of Stock" />
+												</span>}
 													</span>
 												</div>
 												<div className="row click-collect">
@@ -378,18 +384,18 @@ class ProductInfo extends Component {
 														Click & Collect
 													</span>
 
-													<span className="in-stock">
+													{/* <span className="in-stock">
 														In stock
-													</span>
+													</span> */}
 													<span style={{margin:'10px'}}>
-														<a href=''>Change store</a>
+														<a href=''>Coming Soon</a>
 													</span>
 												</div>
 											</div>
-											<div className="free-uk-dly">
+											{/* <div className="free-uk-dly">
 												This product includes free UK delivery
-											</div>
-										</div> */}
+											</div> */}
+										</div>
 
 											<div className="t-Form-inputContainer col col-5 row quantity-mob" style={{ marginBottom: 20, marginLeft: 0, padding: 0 }}>
 												<div className="t-Form-itemWrapper" style={{ border: '0.1rem solid #EAEAEA', borderRadius: '0.2rem' }}>

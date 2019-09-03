@@ -1582,6 +1582,30 @@ html[dir="rtl"] .styles_modal__gNwvD div{
         padding: 16px 17px !important;
 }
 
+.specification-title{
+    color: #0d943f;
+    font-family: VAG Rounded ELC Light; 
+    text-transform:none;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 23px;
+}
+
+.specification-item-content{
+    padding: 3px;
+    padding-left: 0px;
+    margin-left: 0px !important
+}
+
+.specification-item-key{
+    margin-right: 10px
+}
+
+.specification-item-value{
+    font-size: 14px;
+    font-weight: bold;
+}
+
 @media (max-width:767px){ 
     html[dir="rtl"] .row.rating-review {
         /* margin: 0; */

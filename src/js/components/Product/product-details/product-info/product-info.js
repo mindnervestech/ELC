@@ -167,6 +167,29 @@ class ProductInformation extends Component {
 					<p className="detail-info">{producDetail.climate.label}: {producDetail.climate.value}</p> */}
 
 					<p className="detail-info">{data.description}</p>
+					{data.brand || data.age || data.assembly_req || data.battery_inc || data.battery_req? 
+						<h3 className="specification-title">
+							Specifications</h3> : <div/>}
+					{data.age ?<div className="row specification-item-content">
+						<span class="specification-item-key">Age :</span> 
+						<span className="specification-item-value">{data.age}</span>
+					</div> : <div/>}
+					{data.assembly_req ?<div className="row specification-item-content">
+						<span class="specification-item-key">Assembly Req :</span>
+						<span className="specification-item-value">{data.assembly_req}</span>
+					</div> : <div/>}
+					{data.battery_inc ?<div className="row specification-item-content">
+						<span class="specification-item-key">Battery Inc :</span> 
+						<span className="specification-item-value">{data.battery_inc}</span>
+					</div> : <div/>}
+					{data.battery_req ?<div className="row specification-item-content">
+						<span class="specification-item-key">Battery Req :</span> 
+						<span className="specification-item-value">{data.battery_req}</span>
+					</div> : <div/>}
+					{data.brand ?<div className="row specification-item-content">
+						<span class="specification-item-key">Brand :</span> 
+						<span className="specification-item-value">{data.brand}</span>
+					</div> : <div/>}
 				 </div> : type == 'Delivery options' ?
 				 <div style={{marginBottom: '5rem', marginTop:40}}>
 					<p className="detail-info">{type}</p>
