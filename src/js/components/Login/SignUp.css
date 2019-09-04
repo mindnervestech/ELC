@@ -1873,14 +1873,14 @@ only screen and (min-resolution: 2dppx) {
 }
 
 .button-add-to-basket {
-    max-height: 40px !important;
+      max-height: 40px !important;
     background: #ee0e19;
     text-decoration: none;
     color: #ffffff;
     text-align: center;
-    width: 154px;
+    width: 100%;
     border-radius: 0px;
-    margin: 0px;
+    margin: 8px 0px;
     padding: 10px 0px 10px 0px;
     cursor: pointer;
     border: solid 1px #ee0e19;
@@ -2266,3 +2266,10 @@ html[dir="rtl"] .t-Form-labelContainer {
     border-bottom: 1px solid grey;
     margin-right: -10px;
 }
+.input-color input[type=text], .input-color input[type=email], .input-color input[type=password]  {
+    color: #000 !important;  
+}
+.contents input[type=email] , .contents input[type=password]{
+    color: #000 !important; 
+}
+
