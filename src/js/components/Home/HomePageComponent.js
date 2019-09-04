@@ -65,8 +65,8 @@ class HomePageComponent extends Component {
                         <div className="t-Body-title" id="t_Body_title" style={{ 'top': '294px' }}></div>
                         <div className="t-Body-content" id="t_Body_content">
                             <div className="t-Body-contentInner">
-                                <div style={{ padding: "0px 0px" }} className="divShowOnWeb">
-                                    <Slider {...settings3}>
+                                <div style={{ padding: "0px 0px" }} className="divShowOnWeb webBanner">
+                                    <Slider {...settings3} id="webBanner">
                                         {homeData && homeData.banners.map((item, index) => (
                                             <Link to={`/` + store_locale + `/products` + item.BLOCK_URL + ``}>
                                                 <div>

@@ -5817,3 +5817,40 @@ html[dir="rtl"] .header .navTrigger {
 
 }
 
+.webBanner{
+
+}
+
+.webBanner .slick-next {
+    width: 32px;
+    height: 32px;
+    background-image: url(https://www.elc.co.uk/_ui/responsive/theme-elc/images/chevron_right.svg);
+    background-size: cover;
+}
+.webBanner .slick-prev {
+    width: 32px;
+    height: 32px;
+    background-image: url(https://www.elc.co.uk/_ui/responsive/theme-elc/images/chevron_left.svg);
+    background-size: cover;
+}
+
+.webBanner .slick-next:hover {
+    width: 32px;
+    height: 32px;
+    background-image: url(https://www.elc.co.uk/_ui/responsive/theme-elc/images/chevron_right.svg)!important;
+    background-size: cover;
+}
+.webBanner .slick-prev:hover {
+    width: 32px;
+    height: 32px;
+    background-image: url(https://www.elc.co.uk/_ui/responsive/theme-elc/images/chevron_left.svg)!important;
+    background-size: cover;
+}
+
+.webBanner .slick-next:before{
+    display: none!important;
+}
+
+.webBanner .slick-prev:before{
+    display: none!important;
+}
