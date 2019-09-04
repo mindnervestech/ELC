@@ -14,14 +14,10 @@ class TermConditions extends Component {
 	static getDerivedStateFromProps = (props, state) => { };
 
 	componentDidMount() {
-		if(this.props.globals.currentStore===undefined || this.props.globals.currentStore==='false')
-		{
-			this.props.onGetTermConditionsData({ storeId:1});
-		}
-		else
-		{
+		
+		
 			this.props.onGetTermConditionsData({ storeId: this.props.globals.currentStore});
-		}
+		
 		//this.props.onGetTermConditionsData({ storeId: 1 });
 	}
 
@@ -56,7 +52,7 @@ class TermConditions extends Component {
 									</div>
 									<div className="t-Region-body">
 										<center> <br />
-											<h1 className="t-page-titles">{this.props.termConditions.title}</h1>
+											<h1 className="t-page-titles static-page-style">{this.props.termConditions.title}</h1>
 											{/* <h1 className="t-page-titles"> <FormattedMessage id="ContactUs.Title" defaultMessage="ContactUs" /></h1> */}
 										</center>
 										<input type="hidden" id="P15_SEARCHSTRING" name="P15_SEARCHSTRING" value="" />

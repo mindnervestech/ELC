@@ -15,7 +15,7 @@ class PrivacyPolicy extends Component {
 	}
 	static getDerivedStateFromProps = (props, state) => { };
 	getStoreInfo = () => {
-		console.log('store_id in function', this.state.storeId);
+		
 		if (this.state.storeId) {
 			const API = Axios.create({
 				baseURL: STATIC_PAGES_URL,
@@ -43,7 +43,7 @@ class PrivacyPolicy extends Component {
 	}
 
 	componentDidUpdate(prevProps, prevState) {
-		console.log('componentDidUpdateCalled!!');
+		
 		let changedLang = localStorage.getItem('tempstoreid');
 		if (this.state.storeId !== changedLang) {
 			this.setState({ storeId: changedLang, data: [] }, () => {
@@ -55,7 +55,7 @@ class PrivacyPolicy extends Component {
 	render() {
 		return (
 			<div className="t-Body-contentInner">
-				{this.state.spinner ? <Spinner/> :
+				{this.state.spinner ? <Spinner loading={this.state.spinner}/> :
 				<div className="container">
 					<div className="row">
 						<div className="col col-12 apex-col-auto">
@@ -106,9 +106,8 @@ class PrivacyPolicy extends Component {
 
 										<div id="MiscContent">
 											<p style={{ textAlign: 'center' }}>
-												<strong>
-													<span style={{ fontSize: 36 }}>{this.state.data.title}</span>
-												</strong>
+											<h1 className="t-page-titles static-page-style">{this.state.data.title}</h1>
+											
 											</p>
 
 											<div

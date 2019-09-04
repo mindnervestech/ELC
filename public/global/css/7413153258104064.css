@@ -6809,11 +6809,10 @@ body .ui-dialog .ui-dialog-buttonpane {
 .apex-item-textarea,
 .apex-item-text,
 .apex-item-select {
-  color: #343434;
-  background-color: #fafafa;
-  border-color: #0b7e36;
-  border: 0px solid #0b7e36;
-  border-bottom: 1px solid #0b7e36;
+ 
+  
+  border: 0px ;
+  border-bottom: 1px;
 }
 
 .t-WizardSteps-step.is-active .t-WizardSteps-marker {

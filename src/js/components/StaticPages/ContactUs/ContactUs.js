@@ -389,11 +389,13 @@ class ContactUs extends Component {
                                                                   size={1}
                                                                   onChange={this.handleChange.bind(this, "purpose")}
                                                                   value={this.state.contact_fields["purpose"]}>
-                                                                  <FormattedMessage id="ContactUs.BulkOrder">{(translatedText) => <option value="bulk_order">{translatedText}</option>}</FormattedMessage>
-                                                                  <FormattedMessage id="ContactUs.Complaint">{(translatedText) => <option value="complaint">{translatedText}</option>}</FormattedMessage>
-                                                                  <FormattedMessage id="ContactUs.GeneralInquiry">{(translatedText) => <option value="genral_enq">{translatedText}</option>}</FormattedMessage>
-                                                                  <FormattedMessage id="ContactUs.IssueText">{(translatedText) => <option value="issue_on_website">{translatedText}</option>}</FormattedMessage>
-                                                                  <FormattedMessage id="ContactUs.Suggestion">{(translatedText) => <option value="suggestion">{translatedText}</option>}</FormattedMessage>
+                                                                  <FormattedMessage id="ContactUs.customerSerivces">{(translatedText) => <option value="customer_services">{translatedText}</option>}</FormattedMessage>
+                                                                  <FormattedMessage id="ContactUs.Deliveries">{(translatedText) => <option value="deliveries">{translatedText}</option>}</FormattedMessage>
+                                                                  <FormattedMessage id="ContactUs.General">{(translatedText) => <option value="genral_enq">{translatedText}</option>}</FormattedMessage>
+                                                                  <FormattedMessage id="ContactUs.order">{(translatedText) => <option value="order">{translatedText}</option>}</FormattedMessage>
+                                                                  <FormattedMessage id="ContactUs.payment">{(translatedText) => <option value="payment">{translatedText}</option>}</FormattedMessage>
+                                                                  <FormattedMessage id="ContactUs.returns">{(translatedText) => <option value="returns">{translatedText}</option>}</FormattedMessage>
+                                                                  <FormattedMessage id="ContactUs.stores">{(translatedText) => <option value="stores">{translatedText}</option>}</FormattedMessage>
                                                                 </select></div><span id="P14_PURPOSE_error_placeholder" className="a-Form-error" data-template-id="33609965712469734_ET" />
                                                             </div>
                                                           </div>

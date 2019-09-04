@@ -17,14 +17,8 @@ class HelpFAQ extends Component {
 	static getDerivedStateFromProps = (props, state) => { };
 
 	componentDidMount() {
-		if(this.props.globals.currentStore===undefined || this.props.globals.currentStore==='false')
-		{
-			this.props.onGetHelpFAQData({ storeId: 1 });
-		}
-		else
-		{
 			this.props.onGetHelpFAQData({ storeId: this.props.globals.currentStore});
-		}
+		
 		
 	}
 
@@ -57,7 +51,8 @@ class HelpFAQ extends Component {
 									</div>
 									<div className="t-Region-body">
 										<center> <br />
-											<h1 className="t-page-titles">{this.props.help.title}</h1>
+										
+											<h1 className="t-page-titles static-page-style">{this.props.help.title}</h1>
 											{/* <h1 className="t-page-titles"> <FormattedMessage id="ContactUs.Title" defaultMessage="ContactUs" /></h1> */}
 										</center>
 										<input type="hidden" id="P15_SEARCHSTRING" name="P15_SEARCHSTRING" value="" />
