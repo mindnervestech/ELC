@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import '../../../../styles/StaticPages.css';
 import Axios from 'axios';
+import { Link, Redirect } from 'react-router-dom';
+import { FormattedMessage } from 'react-intl';
 import cookie from 'react-cookies';
+import { connect } from 'react-redux';
 import { STATIC_PAGES_URL, API_TOKEN } from '../../../api/globals';
 import Spinner from '../../Spinner/Spinner.js'
 class DeliveryPolicy extends Component {
@@ -54,11 +57,18 @@ class DeliveryPolicy extends Component {
 	}
 
 	render() {
+		let store_locale=this.props.globals.store_locale
 		return (
 			<div className="t-Body-contentInner">
 				{this.state.spinner ? <Spinner loading={this.state.spinner}/> :
 				<div className="container">
 					<div className="row">
+					<div>
+            <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
+              <span className="titleHover" style={{fontSize:12}}><FormattedMessage id="Checkout.Home" defaultMessage/></span><span>&nbsp;\&nbsp;&nbsp;</span>
+            </Link>
+            <span  style={{fontSize:12}}>{this.state.data.title}</span>
+          </div>
 						<div className="col col-12 apex-col-auto">
 						
 
@@ -135,4 +145,11 @@ class DeliveryPolicy extends Component {
 	}
 }
 
-export default DeliveryPolicy;
+const mapStateToProps = state => {
+	return {
+	  globals: state.global,
+	};
+  }
+
+export default connect(mapStateToProps)(DeliveryPolicy);
+

@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import "./BirthDayClub.css";
+import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import { Row, Col, Image } from "react-bootstrap";
 import { Link, Redirect } from 'react-router-dom';
-
+import * as actions from '../../../redux/actions/index';
 import BirthDayClubImage from '../../../../assets/images/BirthDayClub/birthday-club.png';
 
-export default class BirthDayClub extends Component {
+ class BirthDayClub extends Component {
   constructor(props)
   {
     super(props);
@@ -26,7 +27,7 @@ export default class BirthDayClub extends Component {
   }
   render() {
 
-    let store_locale="en";
+    let store_locale=this.props.globals.store_locale
 
     if (this.state.redirectToAddNewChild) {
       return <Redirect to={{
@@ -38,6 +39,13 @@ export default class BirthDayClub extends Component {
     return (
       <div>
         <Row style={{ marginTop: "40px" }}>
+                  
+						  <div style={{textAlign:'center'}}>
+            <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
+              <span className="titleHover" style={{fontSize:12}}><FormattedMessage id="Checkout.Home" defaultMessage/></span><span>&nbsp;\&nbsp;&nbsp;</span>
+            </Link>
+            <span  style={{fontSize:12}}><FormattedMessage id="birthdayclub.header" defaultMessage="Contact Us"/></span>
+          </div>
           <Col xs={1} lg={1} md={1} />
           <Col style={{ marginBottom: "40px" }}>
             <div className="paddingLeft">
@@ -74,3 +82,14 @@ export default class BirthDayClub extends Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+	return {
+		aboutUs : state.static.aboutUs,
+		spinnerProduct: state.spinner.loadingProduct,
+		globals:state.global
+ 	}
+}
+
+
+export default connect(mapStateToProps)(BirthDayClub);

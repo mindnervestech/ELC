@@ -1,6 +1,19 @@
 {
   "en": {
 
+    "ContactUs.customerSerivces":"Customer Service",
+    "ContactUs.Deliveries":"Deliveries",
+    "ContactUs.General":"General",
+    "ContactUs.order":"Orders",
+    "ContactUs.payment":"Payment",
+    "ContactUs.returns":"Returns",
+    "ContactUs.stores":"Stores" ,                                                      
+                                    
+    
+
+                                                                 
+
+
     "birthdayclub.header":"Birthday Club",
     "birthdayclub.text1":" You can add upto 10 childrens Birthday Club. We will pop the date in our diary and send on you mail",
     "birthdayclub.text2":"ahead of the big day with a special birthday offer",
@@ -565,6 +578,18 @@
     "header.Arabic": "Arabic"
   },
   "ar": {
+
+
+    
+    "ContactUs.customerSerivces":"خدمة العملاء",
+    "ContactUs.Deliveries":"التسليم",
+    "ContactUs.General":"جنرال لواء",
+    "ContactUs.order":"أوامر",
+    "ContactUs.payment":"تسديد الديون",
+    "ContactUs.returns":"عائدات",
+    "ContactUs.stores":"محل تجاري" , 
+
+
     "birthdayclub.header":"جاك عيد ميلاد النادي" ,
     "birthdayclub.text1":"يمكنك إضافة حتى 10 أعياد ميلاد للنادي. سنصدر التاريخ في مذكراتنا ونرسل لك بريدًا",
     "birthdayclub.text2":"قبل يوم كبير مع عرض عيد ميلاد خاص",

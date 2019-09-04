@@ -85,7 +85,7 @@ class WishList extends Component {
 
     return (
       <div className="t-Body-contentInner homePage">
-        <div className="wishlist">
+        <div className="container">
           {/* <div>
             <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
               <span className="titleHover">Home</span>
@@ -170,8 +170,9 @@ class WishList extends Component {
                   <button className="alsoLikeCardButton"><FormattedMessage id="Product.Detail.addToBasket" defaultMessage="Add to basket" /></button>
                 </div>
                 <div style={{ paddingTop: 10 }}>
+                  <span>
                   <i className="icon-heart"></i>
-                  <span style={{ paddingLeft: 7 }} onClick={()=>this.wishlistToggle(index,this.props.products[item].wishlist_id)}>Remove from Wishlist</span>
+                  <span style={{ paddingLeft: 7 }} onClick={()=>this.wishlistToggle(index,this.props.products[item].wishlist_id)}>Remove from Wishlist</span></span>
                 </div>
               </div>
             </li>

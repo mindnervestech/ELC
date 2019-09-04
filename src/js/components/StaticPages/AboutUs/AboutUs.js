@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import '../../../../styles/StaticPages.css';
 import { connect } from 'react-redux';
+import { Link, Redirect } from 'react-router-dom';
+import { FormattedMessage } from 'react-intl';
 import * as actions from '../../../redux/actions/index';
 import Spinner from '../../Spinner/Spinner.js'
 class AboutUs extends Component {
@@ -20,6 +22,7 @@ class AboutUs extends Component {
 	}
 
 	render() {
+		let store_locale=this.props.globals.store_locale
 		return (
 
 		
@@ -27,6 +30,12 @@ class AboutUs extends Component {
 			<div className="t-Body-contentInner">
 				<div className="container">
 					<div className="row">
+			<div>
+            <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
+              <span className="titleHover" style={{fontSize:12}}><FormattedMessage id="Checkout.Home" defaultMessage/></span><span>&nbsp;\&nbsp;&nbsp;</span>
+            </Link>
+            <span  style={{fontSize:12}}>{this.props.aboutUs.title}</span>
+          </div>
 						<div className="col col-12 apex-col-auto">
 							<div className="t-Region g-wrapper-main_content  t-Region--removeHeader t-Region--noBorder t-Region--scrollBody margin-top-lg"
 								id="R231982418266982051">

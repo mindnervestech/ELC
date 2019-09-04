@@ -4,7 +4,7 @@ import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import * as actions from '../../../redux/actions/index';
 import * as util from '../../utility/utility';
-
+import { Link, Redirect } from 'react-router-dom';
 import '../../../../styles/contactus/contactus.css';
 import PhoneNumber from '../../Login/IntlTelePhone';
 import './ContactUs.css';
@@ -193,6 +193,7 @@ class ContactUs extends Component {
   }
 
   render() {
+    let store_locale=this.props.globals.store_locale
     const errorsObj = this.state.errors;
     let errorBox = null;
     if (this.state.search && this.state.showErrorBox) {
@@ -255,6 +256,13 @@ class ContactUs extends Component {
               <div className="t-Body-contentInner">
                 <div className="container">
                   <div className="row">
+                    
+						  <div>
+            <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
+              <span className="titleHover" style={{fontSize:12}}><FormattedMessage id="Checkout.Home" defaultMessage/></span><span>&nbsp;\&nbsp;&nbsp;</span>
+            </Link>
+            <span  style={{fontSize:12}}><FormattedMessage id="ContactUs.Title" defaultMessage="Contact Us"/></span>
+          </div>
 
                     <div className="col col-12 apex-col-auto">
                       <div className="t-Region g-wrapper-main_content  t-Region--noPadding t-Region--removeHeader t-Region--noBorder t-Region--hiddenOverflow" id="R715188865100792743">
@@ -387,6 +395,8 @@ class ContactUs extends Component {
                                                                   name="P14_PURPOSE"
                                                                   className="selectlist apex-item-select"
                                                                   size={1}
+                                                                  
+
                                                                   onChange={this.handleChange.bind(this, "purpose")}
                                                                   value={this.state.contact_fields["purpose"]}>
                                                                   <FormattedMessage id="ContactUs.customerSerivces">{(translatedText) => <option value="customer_services">{translatedText}</option>}</FormattedMessage>
@@ -556,7 +566,8 @@ const mapStateToProps = state => {
   return {
     contact_data: state.contact,
     store_id: state.global.currentStore,
-    country: state.global.country
+    country: state.global.country,
+    globals:state.global
   };
 }
 

@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import '../../../../styles/StaticPages.css';
 import Axios from 'axios';
 import cookie from 'react-cookies';
+import { connect } from 'react-redux';
+import { Link, Redirect } from 'react-router-dom';
+import { FormattedMessage } from 'react-intl';
 import { STATIC_PAGES_URL, API_TOKEN } from '../../../api/globals';
 import Spinner from '../../Spinner/Spinner.js'
 class Charity extends Component {
@@ -15,7 +18,7 @@ class Charity extends Component {
 	}
 	static getDerivedStateFromProps = (props, state) => { };
 	getCharityData = () => {
-		console.log('store_id in function', this.state.storeId);
+		
 		if (this.state.storeId) {
 			const API = Axios.create({
 				baseURL: STATIC_PAGES_URL,
@@ -54,11 +57,19 @@ class Charity extends Component {
 	}
 
 	render() {
+		let store_locale=this.props.globals.store_locale
 		return (
 			<div className="t-Body-contentInner">
 			 { this.state.spinner ? <Spinner loading={this.state.spinner}/> :
 				<div className="container">
 					<div className="row">
+			
+						  <div>
+            <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
+              <span className="titleHover" style={{fontSize:12}}><FormattedMessage id="Checkout.Home" defaultMessage/></span><span>&nbsp;\&nbsp;&nbsp;</span>
+            </Link>
+            <span  style={{fontSize:12}}>{this.state.data.title}</span>
+          </div>
 						<div className="col col-12 apex-col-auto">
 						
 							<div
@@ -133,4 +144,13 @@ class Charity extends Component {
 	}
 }
 
-export default Charity;
+const mapStateToProps = state => {
+	return {
+	
+	 
+	  globals: state.global,
+	};
+  }
+
+export default connect(mapStateToProps)(Charity);
+

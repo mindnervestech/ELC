@@ -29,7 +29,6 @@ const style = {
     visibility: 'visible',
     opacity: 0.5,
 }
-let store_locale="en";
 class Footer extends Component {
 
     constructor(props) {
@@ -40,6 +39,8 @@ class Footer extends Component {
     }
 
     render() {
+        
+let store_locale=this.props.globals.store_locale
         return (
             <>
             <footer className="footer-css">
