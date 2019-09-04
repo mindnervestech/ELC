@@ -328,7 +328,7 @@ class Login extends Component {
                       <div className="t-Region-body">
                         <input type="hidden" id="P1000_PAGE_TITLE" name="P1000_PAGE_TITLE" value="Sign in - Sign in to Your Nayomi Account" />
                         <input type="hidden" id="P1000_PAGE_DESC" name="P1000_PAGE_DESC" value="Sign in - Sign in to your account to shop with exciting offers" />
-                        <div className="container backWhite">
+                        <div className="container backWhite" style={{height: 'auto', overflow: 'hidden'}}>
                           <div className="row alignCenter" style={{paddingTop:"6px"}}><FormattedMessage id="Register.SignInText" defaultMessage="sign in or register" /></div>
                           <div className="row">
                             <div className="col col-1  paddingNull" style={{ flex: "0 0 7.333333%", maxWidth: "7.333333%" }}>
@@ -342,7 +342,7 @@ class Login extends Component {
                                 <div className="t-Region-header">
                                   <div className="t-Region-headerItems t-Region-headerItems--title headerBottom" style={{textAlign: 'center'}}>
                                     <span className="t-Region-headerIcon"><span className="t-Icon " aria-hidden="true"></span></span>
-                                    <h2 className="block-title" style={{width: '100%'}} id="R38202006049236304_heading"><FormattedMessage id="account.Creation" defaultMessage="Account Creation" /></h2>
+                                    <h2 className="block-title" style={{width: '100%', fontSize: 16}} id="R38202006049236304_heading"><FormattedMessage id="account.Creation" defaultMessage="Account Creation" /></h2>
                                   </div>
 
                                   <div className="t-Region-headerItems t-Region-headerItems--buttons">
@@ -356,9 +356,9 @@ class Login extends Component {
                                     <div className="t-Region-buttons-left"></div>
                                     <div className="t-Region-buttons-right"></div>
                                   </div>
-                                  <div className="t-Region-body">
+                                  <div className="loginFormHight headerText">
 
-                                    <p style={{
+                                    <p className="" style={{
                                       fontSize: 11,
                                       lineHeight: '17px',
                                       letterSpacing: .04,
@@ -389,7 +389,7 @@ class Login extends Component {
                                 <div className="t-Region-header">
                                   <div className="t-Region-headerItems bottomPadding t-Region-headerItems--title" style={{textAlign: 'center'}}>
                                     <span className="t-Region-headerIcon"><span className="t-Icon " aria-hidden="true"></span></span>
-                                    <h2 className="block-title" style={{width: '100%'}} id="R37391169766147740_heading"><FormattedMessage id="registered.user.title" defaultMessage="Existing Customers" /></h2>
+                                    <h2 className="block-title" style={{width: '100%', fontSize: 16}} id="R37391169766147740_heading"><FormattedMessage id="registered.user.title" defaultMessage="Existing Customers" /></h2>
                                   </div>
                                   <div className="t-Region-headerItems t-Region-headerItems--buttons"><span className="js-maximizeButtonContainer"></span></div>
                                 </div>

@@ -1026,7 +1026,8 @@ h3.h3p {
 }
 
 .borderBlock {
-    border: 1px solid #b3b3b3;
+    /* border: 1px solid #b3b3b3; */
+    height: auto;
 }
 
 .rightSpace {
@@ -1035,6 +1036,18 @@ h3.h3p {
 
 .leftSpace {
     margin-left: 15px;
+}
+
+.loginFormHight{
+    height: 930px;
+    overflow: hidden!important;
+}
+
+@media only screen and (max-width: 767px) {
+    .loginFormHight{
+        height: 999px!important;
+        overflow: hidden!important;
+    }
 }
 
 .topSpace {}

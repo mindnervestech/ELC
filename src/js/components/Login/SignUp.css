@@ -1879,11 +1879,12 @@ only screen and (min-resolution: 2dppx) {
     color: #ffffff;
     text-align: center;
     width: 100%;
-    border-radius: 0px;
     margin: 8px 0px;
     padding: 10px 0px 10px 0px;
     cursor: pointer;
     border: solid 1px #ee0e19;
+    border-radius: 4px;
+    -webkit-appearance: inherit!important;
 }
 
 .button-add-to-basket:active {
@@ -1915,6 +1916,7 @@ input[type=text] {
     margin: 0px;
     color: #999999;
     border: 1px solid #999999;
+    border-radius: 4px;
 }
 
 input:focus {
@@ -2148,7 +2150,7 @@ html[dir=rtl] .checkBox {
 .padding {
     padding: 0px 0px 20px 0px !important;
     background: #ffffff;
-    margin-left: 0px !important;
+    margin-left: -4px !important;
     margin-right: 0px !important;
 }
 
@@ -2195,7 +2197,7 @@ html[dir=rtl] .rmPadding {
 
 .block {
     display: block !important;
-    padding-left: 15px !important;
+    /* padding-left: 15px !important; */
 }
 
 .dropdownBox {
@@ -2268,8 +2270,10 @@ html[dir="rtl"] .t-Form-labelContainer {
 }
 .input-color input[type=text], .input-color input[type=email], .input-color input[type=password]  {
     color: #000 !important;  
+    border-radius: 4px; 
 }
 .contents input[type=email] , .contents input[type=password]{
     color: #000 !important; 
+    border-radius: 4px;
 }
 

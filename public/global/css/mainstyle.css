@@ -2497,7 +2497,6 @@ html[dir="rtl"] .header .changecountry .country .list a:before {
     /* height: 70px; */
     /* text-align: center; */
     padding: 20px 10px 0px;
-
     width: 100%;
     display: inline-table;
     margin-top: -2%;
@@ -2506,6 +2505,7 @@ html[dir="rtl"] .header .changecountry .country .list a:before {
     position: relative;
     height: 120px;
     background: #1da44c;
+    font-weight: bold;
 }
 
 .homePage .cardDetailText {
