@@ -51,7 +51,7 @@ class Breadcrumb extends Component {
 										itemProp="item"
 										className="t-Breadcrumb-label"
 									>
-										<span itemProp="name"><FormattedMessage id="Cart.Home" defaultMessage="Home" /></span>
+										<span itemProp="name"><FormattedMessage id="Checkout.Home" defaultMessage="Home" /></span>
 									</a>
 								</Link>
 								<meta itemProp="position" content="1" />

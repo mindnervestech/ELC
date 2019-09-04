@@ -170,9 +170,9 @@ class WishList extends Component {
                   <button className="alsoLikeCardButton"><FormattedMessage id="Product.Detail.addToBasket" defaultMessage="Add to basket" /></button>
                 </div>
                 <div style={{ paddingTop: 10 }}>
-                  <span>
+                  <span onClick={()=>this.wishlistToggle(index,this.props.products[item].wishlist_id)}>
                   <i className="icon-heart"></i>
-                  <span style={{ paddingLeft: 7 }} onClick={()=>this.wishlistToggle(index,this.props.products[item].wishlist_id)}>Remove from Wishlist</span></span>
+                  <span style={{ paddingLeft: 7 }} >Remove from Wishlist</span></span>
                 </div>
               </div>
             </li>

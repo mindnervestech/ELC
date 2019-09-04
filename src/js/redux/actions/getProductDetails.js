@@ -30,7 +30,7 @@ export const addToWishlist = payload => {
 				dispatch(loadingSpinnerForProduct({ loadingProduct: false }))
 
 				if (res.status && res.code === 200) {
-					dispatch(callProductWishDetail({ productWishDetail: { is_in_wishlist: res.is_in_wishlist, wishlist_itemid: res.wishlist_itemid } }))
+					dispatch(callProductWishDetail({ productWishDetail: { is_in_wishlist: res.is_in_wishlist, wishlist_itemid: res.wishlist_itemid ,wishlist_success:res.message} }))
 				} else {
 				}
 			},
