@@ -60,7 +60,7 @@ class ContactUs extends Component {
       if (fields["email"].length > 0) {
         let lastAtPos = fields["email"].lastIndexOf('@');
         let lastDotPos = fields["email"].lastIndexOf('.');
-        if (!(lastAtPos < lastDotPos && lastAtPos > 0 && fields["email"].indexOf('@@') == -1 && lastDotPos > 2 && (fields["email"].length - lastDotPos) > 2) &&(!fields["email"].includes(' '))) {
+        if (!(lastAtPos < lastDotPos && lastAtPos > 0 && fields["email"].indexOf('@@') == -1 && lastDotPos > 2 && (fields["email"].length - lastDotPos) > 2) || (fields["email"].includes(' '))) {
           formIsValid = false;
           errors["email"] = <FormattedMessage id="Signup.validation.email.invalid" defaultMessage="First Name cannot be empty" />;
         }
@@ -302,7 +302,7 @@ class ContactUs extends Component {
                                         <div className="t-Region-buttons-right" />
                                       </div>
                                       <div className="t-Region-body">
-                                        <div className="container padd-zero-mo">
+                                        <div className="container padd-zero-mo" style={{overflow: 'hidden'}}>
                                           <div className="row">
                                             <div className="col col-12 apex-col-auto">
                                               <div id="R715189986681792754" >

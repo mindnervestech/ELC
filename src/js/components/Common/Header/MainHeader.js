@@ -366,7 +366,7 @@ class MainHeader extends Component {
                                         {/* <img src={help} className="image-ion"></img>
                                         <label style={{ lineHeight: '0.5rem' }} className="iconLeble text-color changeLinkText"></label> */}
                                         <Link to={`/${store_locale}/help-and-faq`} style={{ textDecoration: 'none' }}>
-                                            <img src={help} className="image-ion"></img>
+                                            <img src={help} className="image-ion" style={{marginTop: 6}}></img>
                                             <label className="iconLeble text-color changeLinkText"><FormattedMessage id="Header.Help" defaultMessage="help" /></label>
                                         </Link>
                                     </li>
