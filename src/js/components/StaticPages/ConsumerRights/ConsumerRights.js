@@ -55,7 +55,7 @@ class ConsumerRights extends Component {
 	render() {
 		return (
 			<div className="t-Body-contentInner">
-				{ this.state.spinner? <Spinner lpading={this.state.spinner}/> :
+				{ this.state.spinner? <Spinner loading={this.state.spinner}/> :
 				<div className="container">
 					<div className="row">
 						<div className="col col-12 apex-col-auto">
