@@ -350,15 +350,9 @@ class Login extends Component {
                                     <span className="js-maximizeButtonContainer"></span></div>
                                 </div>
                                 <div className="t-Region-bodyWrap">
-                                  <div className="headerText"><FormattedMessage id="register.header.text" defaultMessage="Order Tracking" /></div>
-
-                                  <div className="t-Region-buttons t-Region-buttons--top">
-                                    <div className="t-Region-buttons-left"></div>
-                                    <div className="t-Region-buttons-right"></div>
-                                  </div>
-                                  <div className="loginFormHight headerText">
-
-                                    <p className="" style={{
+                                  <div style={{fontSize: 11}}><FormattedMessage id="register.header.text" defaultMessage="Order Tracking" /></div>
+                                  <div>
+                                  <p className="" style={{
                                       fontSize: 11,
                                       lineHeight: '17px',
                                       letterSpacing: .04,
@@ -366,13 +360,15 @@ class Login extends Component {
                                       fontWeight: 'normal',
                                       marginBottom: 10
                                     }}><FormattedMessage id="account.Creation.text" defaultMessage="Account Creation text" /></p>
-
+                                  </div>
+                                  {/* <div className="t-Region-buttons t-Region-buttons--top">
+                                    <div className="t-Region-buttons-left"></div>
+                                    <div className="t-Region-buttons-right"></div>
+                                  </div> */}
+                                  <div className="loginFormHight headerText">
                                     <div>
                                       <SignUp />
-
                                     </div>
-
-
                                   </div>
                                   <div className="t-Region-buttons t-Region-buttons--bottom">
                                     <div className="t-Region-buttons-left"></div>

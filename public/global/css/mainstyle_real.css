@@ -4458,6 +4458,7 @@ html[dir="rtl"] .hide-screen-sm .t-Form-fieldContainer--floatingLabel.is-require
     float: right;
     margin-bottom: 0px;
     padding-top: 16px;
+    margin-right: 1.5%;
 }
 .header .row-2 .search {
     display: block;

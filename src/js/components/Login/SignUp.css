@@ -2150,7 +2150,7 @@ html[dir=rtl] .checkBox {
 .padding {
     padding: 0px 0px 20px 0px !important;
     background: #ffffff;
-    margin-left: -4px !important;
+    margin-left: 0px !important;
     margin-right: 0px !important;
 }
 
@@ -2256,7 +2256,7 @@ html[dir=rtl] .rmPadding {
 }
 
 .pad40L {
-    padding-left: 4% !important;
+    padding-left: 0px !important;
 }
 
 html[dir="rtl"] .t-Form-labelContainer {
