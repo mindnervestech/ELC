@@ -2742,6 +2742,14 @@ html[dir="rtl"] .slick-next {
     left: auto !important;
 }
 
+html[dir='rtl'] .cart-breadcrumb{
+    text-align: right;
+}
+
+html[dir='rtl'] .t-Form-fieldContainer--floatingLabel.t-Form-fieldContainer{
+    display: block !important;
+}
+
 .t-Body .contener {
     padding: 0px 35px;
 }

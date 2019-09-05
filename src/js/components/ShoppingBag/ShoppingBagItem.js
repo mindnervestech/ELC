@@ -63,15 +63,17 @@ class ShoppingBagItem extends Component {
          <div className="homePage cardPage padding30" style={{ color: '#407ec9' }}>
             {this.props.cart_details.products.length != 0 ?
             <div>
-               <div>
+               <div className="cart-breadcrumb">
                   <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
-                     <span className="titleHover">Home</span>
+                     <span className="titleHover">
+                        <FormattedMessage id="Checkout.Home" defaultMessage="Home" />
+                     </span>
                   </Link>
-                  <span>  > Basket</span>
+                  <span>  > <FormattedMessage id="header.mybasket" defaultMessage="My Basket" /></span>
                </div>
-               <div className="wishlist-title">
+               <div className="wishlist-title cart-breadcrumb">
                   <label>
-                     Basket
+                  <FormattedMessage id="header.mybasket" defaultMessage="My Basket" />
                </label>
                </div>
                <div className="displayDivOnWeb">
@@ -128,16 +130,24 @@ class ShoppingBagItem extends Component {
 
                      </Col>
                      <Col xs="4">
-                        <span className="blackTitle" style={{ fontSize: 14 }}>Item</span>
+                        <span className="blackTitle" style={{ fontSize: 14 }}>
+                           <FormattedMessage id="Item" defaultMessage="Item" />
+                        </span>
                      </Col>
                      <Col xs="1">
-                        <span className="blackTitle" style={{ fontSize: 14 }}>Price</span>
+                        <span className="blackTitle" style={{ fontSize: 14 }}>
+                           <FormattedMessage id="cart.Price" defaultMessage="Price" />
+                        </span>
                      </Col>
                      <Col xs="1">
-                        <span className="blackTitle" style={{ fontSize: 14 }}>Qty</span>
+                        <span className="blackTitle" style={{ fontSize: 14 }}>
+                           <FormattedMessage id="Item.Qty" defaultMessage="Qty" />
+                        </span>
                      </Col>
                      <Col xs="1">
-                        <span className="blackTitle" style={{ fontSize: 14 }}>Total</span>
+                        <span className="blackTitle" style={{ fontSize: 14 }}>
+                           <FormattedMessage id="delivery-details.Total.Title" defaultMessage="Total" />
+                        </span>
                      </Col>
                      <Col xs="2">
 
@@ -165,7 +175,9 @@ class ShoppingBagItem extends Component {
                            <span>{item.currency}&nbsp;{item.price * item.qty}</span>
                         </Col>
                         <Col xs="2" className="row-3 blackTitle" onClick={() => this.remove(index)} style={{ textAlign: 'end', cursor: 'pointer' }}>
-                           <span className="remove" style={{ fontSize: 14 }}>Remove</span>
+                           <span className="remove" style={{ fontSize: 14 }}>
+                              <FormattedMessage id="Cart.Remove.Title" defaultMessage="Remove" />
+                           </span>
                         </Col>
                      </Row>
                   ))}
@@ -179,10 +191,12 @@ class ShoppingBagItem extends Component {
                      <Col xs="6">
                         <div className="row-4">
                            <div style={{ padding: '15px 25px', fontFamily: 'VAG Rounded ELC Light' }}>
-                              <span>Subtotal:</span><span className="floatRight">{this.props.cart_details.currency}&nbsp;{this.props.cart_details.subtotal}</span>
+                              <span><FormattedMessage id="delivery-details.Subtotal.Title" defaultMessage="Subtotal" />:</span>
+                              <span className="floatRight">{this.props.cart_details.currency}&nbsp;{this.props.cart_details.subtotal}</span>
                            </div>
                            <div style={{ backgroundColor: '#e9f7ff', padding: '15px 25px' }}>
-                              <span>Order Total</span><span className="floatRight">{this.props.cart_details.currency}&nbsp;{this.props.cart_details.grand_total}</span>
+                              <span><FormattedMessage id="profile.OrderTotal.Title" defaultMessage="Order Total" /></span>
+                              <span className="floatRight">{this.props.cart_details.currency}&nbsp;{this.props.cart_details.grand_total}</span>
                            </div>
                         </div>
                      </Col>
@@ -192,7 +206,7 @@ class ShoppingBagItem extends Component {
                      <Col xs="3" style={{ textAlign: 'end' }}>
                         {/* <Link to={`/${store_locale}/new-check-out`}> */}
                         <div onClick={() => this.checkOut()}>
-                           <button className="alsoLikeCardButton">Check out</button>
+                           <button className="alsoLikeCardButton"><FormattedMessage id="Cart.CheckOut.Title" defaultMessage="Check out" /></button>
                            </div>
                         {/* </Link> */}
                      </Col>
@@ -234,7 +248,9 @@ class ShoppingBagItem extends Component {
 
                      <div style={{ padding: '20px 0px', borderBottom: 'solid 1px #b1b1b1' }}>
                         <div style={{ marginTop: 10 }} onClick={() => this.remove(index)}>
-                           <span className="remove blackTitle floatRight" style={{ fontSize: 14, lineHeight: 1 }}>Remove</span>
+                           <span className="remove blackTitle floatRight" style={{ fontSize: 14, lineHeight: 1 }}>
+                              <FormattedMessage id="Cart.Remove.Title" defaultMessage="Remove" />
+                           </span>
                         </div>
                         <div>
                            <Link to={`/${store_locale}/products-details/${item.url_key}`}>
@@ -250,7 +266,8 @@ class ShoppingBagItem extends Component {
                            <span>{item.currency}&nbsp;{item.price}</span>
                         </div>
                         <div className="row-3 blackTitle" style={{ fontSize: 16 }}>
-                           <span>Qty: </span><span className="qut">{item.qty}</span>
+                           <span><FormattedMessage id="Item.Qty" defaultMessage="Qty" />: </span>
+                           <span className="qut">{item.qty}</span>
                            <span className="floatRight" style={{ fontSize: 22 }}>{item.currency}&nbsp;{item.price * item.qty}</span>
                         </div>
                      </div>
@@ -261,15 +278,17 @@ class ShoppingBagItem extends Component {
                   </div>
                   <div className="row-4">
                      <div style={{ padding: '10px 10px', fontFamily: 'VAG Rounded ELC Light', fontSize: 20 }}>
-                        <span>Subtotal:</span><span className="floatRight">{this.props.cart_details.currency}&nbsp;{this.props.cart_details.subtotal}</span>
+                        <span><FormattedMessage id="delivery-details.Subtotal.Title" defaultMessage="Subtotal" />:</span>
+                        <span className="floatRight">{this.props.cart_details.currency}&nbsp;{this.props.cart_details.subtotal}</span>
                      </div>
                      <div style={{ backgroundColor: '#e9f7ff', padding: '10px 10px', fontSize: 25 }}>
-                        <span>Order Total</span><span className="floatRight">{this.props.cart_details.currency}&nbsp;{this.props.cart_details.grand_total}</span>
+                        <span><FormattedMessage id="profile.OrderTotal.Title" defaultMessage="Order Total" /></span>
+                        <span className="floatRight">{this.props.cart_details.currency}&nbsp;{this.props.cart_details.grand_total}</span>
                      </div>
                   </div>
                   <div onClick={() => this.checkOut()}>
                      {/* <Link to={`/${store_locale}/new-check-out`}> */}
-                        <button className="alsoLikeCardButton">Check out</button>
+                        <button className="alsoLikeCardButton"><FormattedMessage id="Cart.CheckOut.Title" defaultMessage="Check out" /></button>
                      {/* </Link> */}
                   </div>
                </div>
