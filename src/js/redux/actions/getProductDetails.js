@@ -91,7 +91,7 @@ export const getProductSearchList = payload => {
 					} else {
 						dispatch(
 							callActionGetProductSearchList({
-								products: res.data.product_data,
+								products: res.data,
 								filters: res.data.filters,
 								metainfo: { ...res.data }
 							})

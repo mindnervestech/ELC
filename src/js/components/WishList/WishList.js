@@ -172,13 +172,13 @@ class WishList extends Component {
                 <div style={{ paddingTop: 10 }}>
                   <span onClick={()=>this.wishlistToggle(index,this.props.products[item].wishlist_id)}>
                   <i className="icon-heart"></i>
-                  <span style={{ paddingLeft: 7 }} >Remove from Wishlist</span></span>
+                  <span style={{ paddingLeft: 7 }} ><FormattedMessage id="PageTitle.remove-wishlist" defaultMessage="Remove from Wishlist"/></span></span>
                 </div>
               </div>
             </li>
           ))} 
           </ul>
-          :<div><span style={{fontSize:"24px"}}>wishlist is empty</span></div>}
+          :<div><span style={{fontSize:"24px"}}><FormattedMessage id="PageTitle.Wishlist.Empty" defaultMessage="wishlist is empty"/></span></div>}
         </div>
         <div className="container">
          

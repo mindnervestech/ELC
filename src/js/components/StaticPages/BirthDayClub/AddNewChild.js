@@ -128,7 +128,7 @@ export default class AddNewChild extends Component {
 
                 <div className="button-div">
                   <button
-                    className="button-add-to-basket bclub-button"
+                    className="add-child-buttton bclub-button"
                     style={{ textAlign: "center" }}
                   >
                     <FormattedMessage id="birthdayclub.addnewchildbutton" defaultMessage="" />

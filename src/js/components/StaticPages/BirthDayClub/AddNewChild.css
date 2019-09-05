@@ -31,6 +31,25 @@
   text-transform: none;
 }
 
+
+
+.add-child-buttton
+{
+
+    max-height: 40px !important;
+    background: #ee0e19;
+    text-decoration: none;
+    color: #ffffff;
+    text-align: center;
+    width: 100%!important;
+    padding: 10px 0px 10px 0px;
+    cursor: pointer;
+    border: solid 1px #ee0e19;
+    border-radius: 4px;
+    -webkit-appearance: inherit!important;
+
+}
+
 .border-block {
   border: 1px solid #000;
   margin:8px!important;
@@ -77,8 +96,8 @@
   text-decoration: none;
   color: #ffffff;
   text-align: center;
-  width: 154px;
-  border-radius: 0px;
+  width: 154px!important;
+  border-radius: 4px;
   margin: 0px;
   padding: 10px 0px 10px 0px;
   cursor: pointer;

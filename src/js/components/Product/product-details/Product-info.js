@@ -7,7 +7,8 @@ import ProductZoom from './product-zoom/Product-zoom';
 import ProductInformation from './product-info/product-info';
 import ProductSocial from './product-social/product-social';
 import { Carousel } from 'react-responsive-carousel';
-
+import Alert from 'react-s-alert';
+import 'react-s-alert/dist/s-alert-default.css';
 import freeDelivery from '../../../../assets/images/header/Truck1.svg';
 import freeCollect from '../../../../assets/images/header/Mouse.svg';
 import home from '../../../../assets/images/social/Hero.png';
@@ -35,9 +36,12 @@ class ProductInfo extends Component {
 		this.state = {
 			defaultQty: 1,
 			openShareModel: false,
+			is_in_wishlist_item:false
 		};
 		this.addToCart = this.addToCart.bind(this);
 	}
+
+
 
 	decrement = totalQty => {
 		let currQty = this.state.defaultQty;
@@ -178,20 +182,38 @@ class ProductInfo extends Component {
 		//  }
 		 if (document.getElementById('Capa_1').getAttribute('class').includes('active')) {
 			document.getElementById('Capa_1').setAttribute('class', 'naylove-icon');
+			
 			if (this.props.productWishDetail.wishlist_itemid) {
+				
+				this.setState({is_in_wishlist_item:false})
 				this.props.onRemoveWishList({
 					index: null,
 					wishlist_id: this.props.productWishDetail.wishlist_itemid
 				})
+			
+				console.log("state",false)
 			}
 		} else {
+			
 			document.getElementById('Capa_1').setAttribute('class', 'naylove-icon active');
+			this.setState({is_in_wishlist_item:true})
+			
 			const data = {
 				customer_id:this.props.customerDetails.customer_id,
 				product_id:this.props.productZoomDetails.id
 			};
 			this.props.onAddToWishList(data);
-	
+			if(this.props.productWishDetail.wishlist_success!==undefined)
+		{
+			Alert.info(this.props.productWishDetail.wishlist_success, {
+				position: 'bottom-left',
+				effect: 'bouncyflip',
+				timeout: 'none'
+			});
+		}
+			
+		
+	     
 		
 
 		}
@@ -224,7 +246,7 @@ class ProductInfo extends Component {
 												xmlSpace="preserve"
 												width="20px"
 												height="20px"
-												className={"naylove-icon " + (data.is_in_wishlist ? 'active' : '')}
+												className={"naylove-icon " + (this.state.is_in_wishlist_item ? 'active' : '')}
 												
 											>
 												<g transform="matrix(0.94148 0 0 0.94148 1.46299 1.46299)">
@@ -234,7 +256,7 @@ class ProductInfo extends Component {
 													/>
 												</g>{' '}
 											</svg>
-												 {!data.is_in_wishlist ?<span style={{margingRight:"35px"}}><FormattedMessage id="PageTitle.add-wishlist" defaultMessage="Add to wishlist" /></span>: <span style={{margingRight:"35px"}}><FormattedMessage id="PageTitle.remove-wishlist" defaultMessage="Remove to wishlist" /></span>}
+												 {!this.state.is_in_wishlist_item ? <span style={{margingRight:"35px"}}><FormattedMessage id="PageTitle.add-wishlist" defaultMessage="Add to wishlist" /></span> : <span style={{margingRight:"35px"}}><FormattedMessage id="PageTitle.remove-wishlist" defaultMessage="Remove to wishlist" /></span>}
 											</span>
 			</Link>);
 		} else {
@@ -250,7 +272,7 @@ class ProductInfo extends Component {
 			xmlSpace="preserve"
 			width="20px"
 			height="20px"
-			className={"naylove-icon " + (data.is_in_wishlist ? 'active' : '')}
+			className={"naylove-icon " + (this.state.is_in_wishlist_item ? 'active' : '')}
 			
 		>
 			<g transform="matrix(0.94148 0 0 0.94148 1.46299 1.46299)">
@@ -260,12 +282,20 @@ class ProductInfo extends Component {
 				/>
 			</g>{' '}
 		</svg>
-			 {!data.is_in_wishlist ?<span style={{margingRight:"35px"}}><FormattedMessage id="PageTitle.add-wishlist" defaultMessage="Add to wishlist" /></span>: <span style={{margingRight:"35px"}}><FormattedMessage id="PageTitle.remove-wishlist" defaultMessage="Remove to wishlist" /></span>}
+			 {!this.state.is_in_wishlist_item ?<span style={{margingRight:"35px"}}><FormattedMessage id="PageTitle.add-wishlist" defaultMessage="Add to wishlist" /></span>: <span style={{margingRight:"35px"}}><FormattedMessage id="PageTitle.remove-wishlist" defaultMessage="Remove to wishlist" /></span>}
 		</span>);
 		}
 	}
 
 	render() {
+		if(this.props.productWishDetail.wishlist_success!==undefined)
+		{
+			Alert.info(this.props.productWishDetail.wishlist_success, {
+				position: 'bottom-left',
+				effect: 'bouncyflip',
+				timeout: 'none'
+			});
+		}
 		const { data } = this.props;
 	 const store_locale = this.props.globals.store_locale;
 
@@ -587,10 +617,12 @@ const mapStateToProps = state => {
 	return {
 		isUserLoggedIn: state.login.isUserLoggedIn,
 		globals: state.global,
+		 user_details: state.login.customer_details,
 		productZoomDetails: state.productDetails.productData,
 		customerDetails: state.login.customer_details,
 		productWishDetail: state.productDetails.productWishDetail,
 		productDetails: state.productDetails.productColor,
+		wishlistItem:state.wishList,
 		productDetailLoader: state.productDetails.productDetailLoader,
 		addToCardLoader: state.productDetails.addToCardLoader,
 		cart_details: state.myCart,
@@ -603,6 +635,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
 	return {
 		onAddToWishList: payload => dispatch(actions.addToWishlist(payload)),
+		onGetWishListItem: (payload) => dispatch(actions.getWishlist(payload)),
 		onRemoveWishList: (payload) => dispatch(actions.removeWishList(payload)),
 		onAddToCart: payload => dispatch(actions.addToCart(payload)),
 		onGuestAddToCart: (payload, myCart) => dispatch(actions.guestAddToCart(payload, myCart)),

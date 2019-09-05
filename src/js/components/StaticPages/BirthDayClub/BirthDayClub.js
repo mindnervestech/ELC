@@ -64,7 +64,7 @@ import BirthDayClubImage from '../../../../assets/images/BirthDayClub/birthday-c
                 </p>
                 <div style={{ justifyContent: "center",textAlign: "center",paddingTop:20 }}>
                   <button
-                    className="button-add-to-basket"
+                    className="add-child-buttton bclub-button"
                     style={{ textAlign: "center" }}
                     onClick={this.redirectToAddChild}
                   >
