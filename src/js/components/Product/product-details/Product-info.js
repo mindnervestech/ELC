@@ -42,6 +42,34 @@ class ProductInfo extends Component {
 	}
 
 
+	componentDidMount()
+	{
+		if(this.props.customerDetails.customer_id!=undefined)
+		{
+			this.props.onGetWishListItem({ customerid: this.props.customerDetails.customer_id, store_id:this.props.globals.currentStore})
+		}
+	}
+
+
+	componentWillReceiveProps(nextProps)
+	{
+		console.log("next props",nextProps)
+		let i=0;
+		for(i=0;i<this.props.wishlistItem.products.length;i++)
+		{
+			if(this.props.productZoomDetails.id===this.props.wishlistItem.products[i].product_id)
+			{ 
+				document.getElementById('Capa_1').setAttribute('class', 'naylove-icon active');
+				this.setState({is_in_wishlist_item:true})
+			}
+			else
+
+			{
+				document.getElementById('Capa_1').setAttribute('class', 'naylove-icon ');
+				this.setState({is_in_wishlist_item:false})
+			}
+		}
+	}
 
 	decrement = totalQty => {
 		let currQty = this.state.defaultQty;
