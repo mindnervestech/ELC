@@ -218,8 +218,6 @@ class ProductInfo extends Component {
 					index: null,
 					wishlist_id: this.props.productWishDetail.wishlist_itemid
 				})
-			
-				console.log("state",false)
 			}
 		} else {
 			

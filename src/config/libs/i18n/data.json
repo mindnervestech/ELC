@@ -576,7 +576,8 @@
     "header.EN|English": "EN | English",
     "header.AR|Arabic": "AR | Arabic",
     "header.English": "English",
-    "header.Arabic": "Arabic"
+    "header.Arabic": "Arabic",
+    "cart.Price": "Price"
   },
   "ar": {
 
@@ -1130,6 +1131,7 @@
     "header.AR|Arabic": "عربي| اللغة العربية",
     "header.English": "اللغة الإنجليزية",
     "header.Arabic": "اللغة العربي",
+    "cart.Price": " برايس",
     "Signup.validation.confirmEmail.invalid": "Email and Confirm Email must be same"
   }
 }
