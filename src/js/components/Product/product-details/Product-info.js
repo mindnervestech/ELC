@@ -36,7 +36,8 @@ class ProductInfo extends Component {
 		this.state = {
 			defaultQty: 1,
 			openShareModel: false,
-			is_in_wishlist_item:false
+			is_in_wishlist_item:false,
+      showLearning: false,
 		};
 		this.addToCart = this.addToCart.bind(this);
 	}
@@ -83,10 +84,10 @@ class ProductInfo extends Component {
 	};
 
 	addToCart(e) {
-		const {data, customerDetails, guest_user, isUserLoggedIn} = this.props;
+		const { data, customerDetails, guest_user, isUserLoggedIn } = this.props;
 		let prodData = {};
-		if(isUserLoggedIn){
-			if(data.type == 'simple'){
+		if (isUserLoggedIn) {
+			if (data.type == 'simple') {
 				prodData = {
 					"quote_id": customerDetails.quote_id,
 					"product_type": data.type,
@@ -96,9 +97,9 @@ class ProductInfo extends Component {
 						"extension_attributes": {}
 					}
 				}
-			}else{
+			} else {
 				prodData = {
-					"quote_id":customerDetails.quote_id,
+					"quote_id": customerDetails.quote_id,
 					"product_type": data.type,
 					"sku": data.sku,
 					"qty": this.state.defaultQty,
@@ -115,8 +116,8 @@ class ProductInfo extends Component {
 				}
 			}
 			this.props.onAddToCart(prodData);
-		}else{
-			if(data.type == 'simple'){
+		} else {
+			if (data.type == 'simple') {
 				prodData = {
 					"quote_id": guest_user.temp_quote_id,
 					"product_type": data.type,
@@ -126,7 +127,7 @@ class ProductInfo extends Component {
 						"extension_attributes": {}
 					}
 				}
-			}else{
+			} else {
 				prodData = {
 					"quote_id": guest_user.temp_quote_id,
 					"product_type": data.type,
@@ -199,18 +200,17 @@ class ProductInfo extends Component {
 
 
 	_handleClick = async () => {
-		
+
 		//  if (this.props.customerDetails) {
 		// 	 if(this.props.customerDetails.customer_id === undefined)
 		// 	 {
 		// 		// this.props.history.push("");
 		// 		 this.context.router.push('/');
-		   
+
 		// 	 }
 		//  }
-		 if (document.getElementById('Capa_1').getAttribute('class').includes('active')) {
+		if (document.getElementById('Capa_1').getAttribute('class').includes('active')) {
 			document.getElementById('Capa_1').setAttribute('class', 'naylove-icon');
-			
 			if (this.props.productWishDetail.wishlist_itemid) {
 				
 				this.setState({is_in_wishlist_item:false})
@@ -225,8 +225,8 @@ class ProductInfo extends Component {
 			this.setState({is_in_wishlist_item:true})
 			
 			const data = {
-				customer_id:this.props.customerDetails.customer_id,
-				product_id:this.props.productZoomDetails.id
+				customer_id: this.props.customerDetails.customer_id,
+				product_id: this.props.productZoomDetails.id
 			};
 			this.props.onAddToWishList(data);
 			if(this.props.productWishDetail.wishlist_success!==undefined)
@@ -256,6 +256,16 @@ class ProductInfo extends Component {
 			.map(e => arr[e]);
 		return unique;
 	};
+
+	learningSkills2(value){
+		let checkData = value.replace(' ', "")
+		console.log(checkData)
+		return(
+			<div style={{display: 'inline-block'}}>
+				{checkData != '' ? <img src={'/images/' + checkData + '.png'} /> : null}
+			</div>
+		);
+	}
 
 	addToWishList = (data) => {
 		if ((this.props.customerDetails && this.props.customerDetails.customer_id === undefined) || !this.props.customerDetails) {
@@ -380,13 +390,13 @@ class ProductInfo extends Component {
 								Write a review
 							</span>
 							<span> | </span> */}
-							{data.age ?<span className="age-sec">
+							{data.age ? <span className="age-sec">
 								Age: {data.age}
 							</span> : <span />}
 						</div>
 						<div>
 							<ProductZoom />
-							
+
 						</div>
 					</Col>
 					<Col xs="12" md="5" lg="5" className="padding-mob">
@@ -429,12 +439,12 @@ class ProductInfo extends Component {
 													<span className="product-price">{data.currency}&nbsp;{Number(data.price).toFixed(2)}</span>}
 											</div>
 											{data.simplecolor !== "" ?
-											<div className="prod-color">
-												<div>
-													<FormattedMessage id="Cart.Color.Title" defaultMessage="Color" /> :
+												<div className="prod-color">
+													<div>
+														<FormattedMessage id="Cart.Color.Title" defaultMessage="Color" /> :
 													<span>{data.simplecolor}</span>
-												</div>
-											</div> : <div /> }
+													</div>
+												</div> : <div />}
 
 											<div className="color-img">
 												<div>
@@ -444,44 +454,44 @@ class ProductInfo extends Component {
 												<img src='http://nayomidev.iksulalive.com/pub/media/attribute/swatch/w/h/white_1_.jpg'></img> */}
 												</div>
 											</div>
-											<div style={{width:'100%'}}>
-											<div className="choose-dil">
-												Choose your delivery option:
+											<div style={{ width: '100%' }}>
+												<div className="choose-dil">
+													Choose your delivery option:
 											</div>
-											<div className="row del-options">
-												<div className="row home-deli">
-													<img src={freeDelivery}/>
-													<span>
-														Home delivery
+												<div className="row del-options">
+													<div className="row home-deli">
+														<img src={freeDelivery} />
+														<span>
+															Home delivery
 													</span>
-													<span style={{margin:'10px', color: '#ee0E19'}}>
-													{data.simplestatus == 1 || (newImageArray[0] && newImageArray[0].stock == 1) ?
-													<span className="in-stock" style={{ color: '#0D943F' }}>
-													<FormattedMessage id="PDP.InStock" defaultMessage="In Stock" />
-												</span> :
-													<span style={{ margin: '10px', color: '#ee0E19' }}>
-													<FormattedMessage id="PDP.OutOfStock" defaultMessage="Out of Stock" />
-												</span>}
-													</span>
-												</div>
-												<div className="row click-collect">
-													<img src={freeCollect}/>
-													<span>
-														Click & Collect
+														<span style={{ margin: '10px', color: '#ee0E19' }}>
+															{data.simplestatus == 1 || (newImageArray[0] && newImageArray[0].stock == 1) ?
+																<span className="in-stock" style={{ color: '#0D943F' }}>
+																	<FormattedMessage id="PDP.InStock" defaultMessage="In Stock" />
+																</span> :
+																<span style={{ margin: '10px', color: '#ee0E19' }}>
+																	<FormattedMessage id="PDP.OutOfStock" defaultMessage="Out of Stock" />
+																</span>}
+														</span>
+													</div>
+													<div className="row click-collect">
+														<img src={freeCollect} />
+														<span>
+															Click & Collect
 													</span>
 
-													{/* <span className="in-stock">
+														{/* <span className="in-stock">
 														In stock
 													</span> */}
-													<span style={{margin:'10px'}}>
-														<a href=''>Coming Soon</a>
-													</span>
+														<span style={{ margin: '10px' }}>
+															<a href=''>Coming Soon</a>
+														</span>
+													</div>
 												</div>
-											</div>
-											{/* <div className="free-uk-dly">
+												{/* <div className="free-uk-dly">
 												This product includes free UK delivery
 											</div> */}
-										</div>
+											</div>
 
 											<div className="t-Form-inputContainer col col-5 row quantity-mob" style={{ marginBottom: 20, marginLeft: 0, padding: 0 }}>
 												<div className="t-Form-itemWrapper" style={{ border: '0.1rem solid #EAEAEA', borderRadius: '0.2rem' }}>
@@ -506,7 +516,7 @@ class ProductInfo extends Component {
 													<span className="t-Form-itemText t-Form-itemText--post">
 														<i
 															className="icon max qty-dec-inc"
-															onClick={e => this.increment(data.type == 'simple'? parseInt(data.simpleqty) : newImageArray[0].qty)}
+															onClick={e => this.increment(data.type == 'simple' ? parseInt(data.simpleqty) : newImageArray[0].qty)}
 														>
 															+
 													</i>
@@ -516,11 +526,11 @@ class ProductInfo extends Component {
 											<div style={{ width: '100%', marginBottom: 20 }}>
 												{data.simplestatus == 1 || (newImageArray[0] && newImageArray[0].stock == 1) ?
 													<span className="in-stock" style={{ color: '#0D943F' }}>
-													<FormattedMessage id="PDP.InStock" defaultMessage="In Stock" />
-												</span> :
+														<FormattedMessage id="PDP.InStock" defaultMessage="In Stock" />
+													</span> :
 													<span style={{ margin: '10px', color: '#ee0E19' }}>
-													<FormattedMessage id="PDP.OutOfStock" defaultMessage="Out of Stock" />
-												</span>}
+														<FormattedMessage id="PDP.OutOfStock" defaultMessage="Out of Stock" />
+													</span>}
 											</div>
 											<Popup />
 											<div className="alsoLikeCard add-cart">
@@ -531,8 +541,8 @@ class ProductInfo extends Component {
 											</div>
 
 											<div className="share-wishlist">
-											{this.addToWishList(data)} 
-											{/* <svg
+												{this.addToWishList(data)}
+												{/* <svg
 												xmlns="http://www.w3.org/2000/svg"
 												xmlnsXlink="http://www.w3.org/1999/xlink"
 												version="1.1"
@@ -556,12 +566,12 @@ class ProductInfo extends Component {
 											</svg>
 												 {!data.is_in_wishlist ?<span style={{margingRight:"35px"}}><FormattedMessage id="PageTitle.add-wishlist" defaultMessage="Add to wishlist" /></span>: <span style={{margingRight:"35px"}}><FormattedMessage id="PageTitle.remove-wishlist" defaultMessage="Remove to wishlist" /></span>}
 											</span> */}
-											
-												<span style={{display:"inline-flex", marginRight: '10px'}}>	
-												<a onClick={() => this.setState({ openShareModel: true })} className="hover-on-favorite">
-													<i className='fa fa-share-alt' style={{ fontSize: 25, marginRight: 13 }}></i>
-													<span ><FormattedMessage id="Share" defaultMessage="Share" /></span>
-												</a>
+
+												<span style={{ display: "inline-flex", marginRight: '10px' }}>
+													<a onClick={() => this.setState({ openShareModel: true })} className="hover-on-favorite">
+														<i className='fa fa-share-alt' style={{ fontSize: 25, marginRight: 13 }}></i>
+														<span ><FormattedMessage id="Share" defaultMessage="Share" /></span>
+													</a>
 												</span>
 											</div>
 
@@ -573,16 +583,19 @@ class ProductInfo extends Component {
 											{/* <div className="deliy-free">
 												<span>this product includes free UK delivery</span>
 											</div> */}
-											{data.learning_skills !== "" || data.learning_skills_2 !== "" || data.learning_skills_3 !== "" ? <div className="learn-skill">
+											{this.state.showLearning ? <div className="learn-skill">
 												<span><FormattedMessage id="LearningSkills" defaultMessage="Learning skills" />:</span>
 											</div> : <div />}
 											<div className="learn-skill-img">
-												{data.learning_skills === 'Imagination' || data.learning_skills_2 === 'Imagination' || data.learning_skills_3 === 'Imagination' ?
-													<img src={imagination_icon} /> : null }
-												{data.learning_skills === 'Social Skills' || data.learning_skills_2 === 'Social Skills' || data.learning_skills_3 === 'Social Skills' ?
-													<img src={socialskills_icon} /> : null }
-												{/* <img src={discovertheworld_icons} /> */}
+												{data.learningSkills != undefined ?
+													<div>
+														{Object.values(data.learningSkills).map((item, i) =>
+															this.learningSkills2(item)
+														)}
+													</div>
+												: ""}
 											</div>
+											
 											{/* <div className="col col-6 apex-col-auto">
 											<div
 												className="t-Region t-Region--noPadding t-Region--removeHeader t-Region--noBorder t-Region--scrollBody"
