@@ -1360,6 +1360,8 @@ html[dir="rtl"] .write-review .write-a-re i{
     font-family: "VAG Rounded ELC Light";
     font-size: 2.7rem;
     font-weight: 300;
+    width: 26%;
+    text-align: center;
 }
 
 @media only screen and (max-width: 767px) {
@@ -1786,4 +1788,16 @@ html[dir="rtl"] .styles_modal__gNwvD div{
 .styles_modal__gNwvD div {
     padding: 16px 14px !important;
 }
+}
+
+@media (max-width:767px){
+    .zoom-gallery-thumbnails{
+        width:70px;
+        padding-right: 0px;
+        vertical-align: top;
+    }
+    html[dir="rtl"] .zoom-gallery-thumbnails{        
+        padding-left: 0px;
+        padding-right: 0 !important;        
+    }
 }

@@ -226,10 +226,6 @@ class MainHeader extends Component {
             ]
         }
 
-        if(this.props.new_quote_id){
-            this.props.user_details.customer_details.quote_id = this.props.new_quote_id;
-        }
-
         const store_locale = this.props.globals.store_locale;
         const { globals } = this.props;
         const cartDetails = <Cart showCart={this.state.showCart}
@@ -274,7 +270,7 @@ class MainHeader extends Component {
                         <div className="row-1">
                             <div className="containers-main">
                                 <ul className="leftLink" style={{ paddingTop: 7 }}>
-                                <li style={{paddingTop: 7}}>
+                                    <li style={{ paddingTop: 7 }}>
                                         <div className="changecountry">
                                             <div className="country">
                                                 <div onClick={this.showCountries} className={this.state.showCountries ? "activeCountry open divShowOnWeb" : "activeCountry divShowOnWeb"}>
@@ -283,7 +279,7 @@ class MainHeader extends Component {
                                                         <img style={{ height: '20px', width: '30px' }} src={UAEImage}></img>
                                                         : <img style={{ height: '20px', width: '30px' }} src={KSAImage}></img>
                                                     }
-                                                    <label className="text-color" style={{fontSize: '1.2rem'}}>&nbsp;{this.state.country_name} </label>
+                                                    <label className="text-color" style={{ fontSize: '1.2rem' }}>&nbsp;{this.state.country_name} </label>
                                                     <span className="selected">
                                                         <FormattedMessage id="header.defaultCountry" defaultMessage="Select Your Country" />
 
@@ -307,10 +303,10 @@ class MainHeader extends Component {
                                         </div>
                                     </li>
                                     <li className="ll" style={{ padding: 0, paddingLeft: 5 }}>
-                                        <div className="lang" style={{fontSize: '1.2rem'}}>
+                                        <div className="lang" style={{ fontSize: '1.2rem' }}>
                                             <a href="javascript:void(0);" onClick={(e) => this.translate('en', 'ltr')} className="active" >English</a></div>
                                     </li>
-                                    <li style={{paddingLeft: 8}}> - </li>
+                                    <li style={{ paddingLeft: 8 }}> - </li>
                                     <li className="ll" style={{ padding: 0 }}>
                                         <div className="lang" style={{ paddingLeft: 8, fontSize: '1.2rem' }}>
                                             <a href="javascript:void(0);" onClick={(e) => this.translate('ar', 'rtl')} >العربية</a></div>
@@ -343,14 +339,16 @@ class MainHeader extends Component {
                                         <Button className="firstButton text-color">The Entertainer</Button>
                                     </li> */}
                                     <li style={{ height: 40, marginLeft: 20 }}>
-                                        <Button className="secondButton text-color"><FormattedMessage id="header.TheBirthdayclub" defaultMessage="Birthday Club" /></Button>
+                                        <Link to={`/${store_locale}/birth-day-club`} style={{ textDecoration: 'none' }}>
+                                            <Button className="secondButton text-color"><FormattedMessage id="header.TheBirthdayclub" defaultMessage="Birthday Club" /></Button>
+                                        </Link>
                                     </li>
-                                    
-                                        {/* <li className="ll" style={{padding:0}}>
+
+                                    {/* <li className="ll" style={{padding:0}}>
                                            <div className="lang">
                                                  <a href="javascript:void(0);" onClick={(e) => this.translate('en', 'ltr')} className="active" >en</a> | <a href="javascript:void(0);" onClick={(e) => this.translate('ar', 'rtl')} >العربية</a></div>
                                          </li> */}
-                                
+
                                     {/* <li><Link to={`/${store_locale}/amirah-club`}>
                                         <FormattedMessage id="header.clubName" defaultMessage="THE BODY SHOP" />
                                     </Link></li> */}
@@ -370,7 +368,7 @@ class MainHeader extends Component {
                                         {/* <img src={help} className="image-ion"></img>
                                         <label style={{ lineHeight: '0.5rem' }} className="iconLeble text-color changeLinkText"></label> */}
                                         <Link to={`/${store_locale}/help-and-faq`} style={{ textDecoration: 'none' }}>
-                                            <img src={help} className="image-ion" style={{marginTop: 6}}></img>
+                                            <img src={help} className="image-ion" style={{ marginTop: 6 }}></img>
                                             <label className="iconLeble text-color changeLinkText"><FormattedMessage id="Header.Help" defaultMessage="help" /></label>
                                         </Link>
                                     </li>
@@ -467,8 +465,7 @@ class MainHeader extends Component {
                                 </Col>
                             </Row>
                             <div className="divShowOnMobile" style={{ backgroundColor: "#fff", height: '4.2rem', paddingTop: 10 }}>
-                                <div className="language">
-                                    {/* <button className={this.state.showMenu ? 'Button is-open' : 'Button'} onClick={this.showMenu}>EN</button> */}
+                                {/* <div className="language">
                                     <button className={this.state.showMenu ? 'Button is-open' : 'Button'} onClick={this.showMenu}>{globals.language.toUpperCase()}</button>
                                     {
                                         this.state.showMenu
@@ -488,13 +485,8 @@ class MainHeader extends Component {
                                                 null
                                             )
                                     }
-                                </div>
-                                <div style={{ display: 'inline-block', textAlign: 'start'}}>
-                                    <span style={{ height: 40 }}>
-                                        <button className="mobileHomePageButtonSecond text-color"><FormattedMessage id="header.TheBirthdayclub" defaultMessage="The Birthday Club" /></button>
-                                    </span>
-                                </div>
-
+                                </div> */}
+                               
                                 <div className="changecountry">
                                     <div className="country">
                                         <div onClick={this.showCountries} className={this.state.showCountries ? "activeCountry open divShowOnMobile" : "activeCountry divShowOnMobile"}>
@@ -521,16 +513,34 @@ class MainHeader extends Component {
                                                     <li><a href="javascript:void(0);" className="ksa" id="cart" onClick={() => this.onChangeCountry('UAE', 'SLOVENIA')}><FormattedMessage id="header.slovenia" defaultMessage="KSA" /></a></li>
                                                     <li><a href="javascript:void(0);" className="usd" id="cart" onClick={() => this.onChangeCountry('International', 'UNITED KINGDOM')}><FormattedMessage id="header.uk" defaultMessage="International" /></a></li> */}
                                         </div>
-                                      
+
                                     </div>
                                 </div>
-                                  <div className="help-icon">
-                                            <Link to={`/${store_locale}/help-and-faq`} style={{ textDecoration: 'none' }}>
-                                                <li className="titleHover">
-                                                    <img src={help} className="image-ion" style={{height:30,width:30}}></img>
-                                                </li>
-                                            </Link>
-                                        </div>
+                                <div className="ll" style={{ display: 'inline-block' }}>
+                                        <div className="lang" style={{ fontSize: '1.2rem' }}>
+                                            <a href="javascript:void(0);" onClick={(e) => this.translate('en', 'ltr')} className="active" >English</a>
+                                            </div>
+                                </div>
+                                <div style={{ paddingLeft: 8, display: 'inline-block' }}> - </div>
+                                <div className="ll" style={{ padding: 0, display: 'inline-block' }}>
+                                        <div className="lang" style={{ paddingLeft: 8, fontSize: '1.2rem' }}>
+                                            <a href="javascript:void(0);" onClick={(e) => this.translate('ar', 'rtl')} >العربية</a>
+                                            </div>
+                                </div>
+                                <div style={{ display: 'inline-block', textAlign: 'start', marginLeft: 10 }}>
+                                    <span style={{ height: 40 }}>
+                                        <Link to={`/${store_locale}/birth-day-club`} style={{ textDecoration: 'none' }}>
+                                            <button className="mobileHomePageButtonSecond text-color"><FormattedMessage id="header.TheBirthdayclub" defaultMessage="The Birthday Club" /></button>
+                                        </Link>
+                                    </span>
+                                </div>
+                                <div className="help-icon">
+                                    <Link to={`/${store_locale}/help-and-faq`} style={{ textDecoration: 'none' }}>
+                                        <li className="titleHover">
+                                            <img src={help} className="image-ion" style={{ height: 30, width: 30 }}></img>
+                                        </li>
+                                    </Link>
+                                </div>
                             </div>
                             <div className="divShowOnMobile" style={{ paddingTop: 10 }}>
                                 <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
@@ -538,8 +548,8 @@ class MainHeader extends Component {
                                 </Link>
                                 <img src={location} className="mobileHomePageIcon hide-mob"></img>
                                 <Link className="basket-icon" to={`/${store_locale}/cart`} style={{ textDecoration: 'none' }}>
-                                <img src={bagLogo} className="mobileHomePageIcon" style={{height: 25, width: 25}}/>
-                               <label className="lable-count">{this.props.cart_details.products ? this.props.cart_details.products.length : 0}</label>
+                                    <img src={bagLogo} className="mobileHomePageIcon" style={{ height: 25, width: 25 }} />
+                                    <label className="lable-count">{this.props.cart_details.products ? this.props.cart_details.products.length : 0}</label>
                                 </Link>
                             </div>
                             <div className="divShowOnMobile" style={{ padding: "0px 10px", marginTop: 10 }}>
@@ -595,64 +605,64 @@ class MainHeader extends Component {
                         </div>
                     </div>
                     <div className="header-slider">
-                    <Link to={`/${store_locale}/delivery-policy`} style={{ textDecoration: 'none' }}>
-                                <Slider {...settings}>
-                                    <div>
-                                        <Row className="direction-r">
-                                            <Col xs="3" lg="3" md="3" className="col-width"></Col>
-                                            <Col xs="2" lg="2" md="2" style={{paddingLeft: 0}} className="padd-icon-zero first-imag">
-                                                <img src={deliveryBy} className="imageHight40" />
-                                            </Col>
-                                            <Col xs="6" lg="7" md="7">
-                                                <ul style={{ textAlign: 'start', paddingTop: 10 }}>
-                                                    <li style={{ fontSize: 13, color: "#0D943F" }}>
+                        <Link to={`/${store_locale}/delivery-policy`} style={{ textDecoration: 'none' }}>
+                            <Slider {...settings}>
+                                <div>
+                                    <Row className="direction-r">
+                                        <Col xs="3" lg="3" md="3" className="col-width"></Col>
+                                        <Col xs="2" lg="2" md="2" style={{ paddingLeft: 0 }} className="padd-icon-zero first-imag">
+                                            <img src={deliveryBy} className="imageHight40" />
+                                        </Col>
+                                        <Col xs="6" lg="7" md="7">
+                                            <ul style={{ textAlign: 'start', paddingTop: 10 }}>
+                                                <li style={{ fontSize: 13, color: "#0D943F" }}>
                                                     <FormattedMessage id="header.FreeStdDelivery" defaultMessage="Free Std Delivery" />
-                                                    </li>
-                                                    {/* <li style={{ fontSize: 11 }} className="text-color">
+                                                </li>
+                                                {/* <li style={{ fontSize: 11 }} className="text-color">
                                                         when you spend £10
                                                     </li> */}
-                                                </ul>
-                                            </Col>
-                                        </Row>
-                                    </div>
-                                    <div>
-                                        <Row className="direction-r">
-                                            <Col xs="3" lg="3" md="3"></Col>
-                                            <Col xs="2" lg="2" md="2" className="padd-icon-zero">
-                                                <img src={freeDelivery} className="imageHight40" />
-                                            </Col>
-                                            <Col xs="6" lg="7" md="7" className="padd-zer">
-                                                <ul style={{ textAlign: 'start', paddingTop: 10 }}>
-                                                    <li style={{ fontSize: 13, color: "#0D943F" }}>
+                                            </ul>
+                                        </Col>
+                                    </Row>
+                                </div>
+                                <div>
+                                    <Row className="direction-r">
+                                        <Col xs="3" lg="3" md="3"></Col>
+                                        <Col xs="2" lg="2" md="2" className="padd-icon-zero">
+                                            <img src={freeDelivery} className="imageHight40" />
+                                        </Col>
+                                        <Col xs="6" lg="7" md="7" className="padd-zer">
+                                            <ul style={{ textAlign: 'start', paddingTop: 10 }}>
+                                                <li style={{ fontSize: 13, color: "#0D943F" }}>
                                                     <FormattedMessage id="header.FreeGiftwrapping" defaultMessage="Free Gift wrapping" />
-                                                    </li>
-                                                    {/* <li style={{ fontSize: 11 }} className="text-color">
+                                                </li>
+                                                {/* <li style={{ fontSize: 11 }} className="text-color">
                                                         for next working day delivery
                                                     </li> */}
-                                                </ul>
-                                            </Col>
-                                        </Row>
-                                    </div>
-                                    <div>
-                                        <Row className="direction-r">
-                                            <Col xs="3" lg="3" md="3"></Col>
-                                            <Col xs="2" lg="2" md="2" className="padd-icon-zero">
-                                                <img src={freeCollect} className="imageHight40" />
-                                            </Col>
-                                            <Col xs="6" lg="7" md="7">
-                                                <ul style={{ textAlign: 'start', paddingTop: 10 }}>
-                                                    <li style={{ fontSize: 13, color: "#0D943F" }}>
+                                            </ul>
+                                        </Col>
+                                    </Row>
+                                </div>
+                                <div>
+                                    <Row className="direction-r">
+                                        <Col xs="3" lg="3" md="3"></Col>
+                                        <Col xs="2" lg="2" md="2" className="padd-icon-zero">
+                                            <img src={freeCollect} className="imageHight40" />
+                                        </Col>
+                                        <Col xs="6" lg="7" md="7">
+                                            <ul style={{ textAlign: 'start', paddingTop: 10 }}>
+                                                <li style={{ fontSize: 13, color: "#0D943F" }}>
                                                     <FormattedMessage id="header.FreeReturns" defaultMessage="Free Returns" />
-                                                    </li>
-                                                    {/* <li style={{ fontSize: 11 }} className="text-color">
+                                                </li>
+                                                {/* <li style={{ fontSize: 11 }} className="text-color">
                                                         in as little as 30 minutes
                                                     </li> */}
-                                                </ul>
-                                            </Col>
-                                        </Row>
-                                    </div>
-                                </Slider>
-                                </Link>
+                                            </ul>
+                                        </Col>
+                                    </Row>
+                                </div>
+                            </Slider>
+                        </Link>
 
                         {/* <Row className="row-4">
                             <Col xs="1"></Col>
@@ -741,7 +751,6 @@ const mapStateToProps = state => {
         guest_user: state.guest_user,
         menu: state.menu.menuNavData,
         OfferMessage: state.menu.OfferMessage,
-        new_quote_id: state.myCart.new_quote_id,
 
     }
 }

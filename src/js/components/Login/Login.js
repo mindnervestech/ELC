@@ -199,7 +199,7 @@ class Login extends Component {
       }} />;
     }
 
-    let breadCrumb = <Breadcrumb name={`Sign in`} translate={true} translationDataId="signin.title" defaultMessage="Sign in" />;
+    let breadCrumb = <Breadcrumb name={`Sign in`} translate={true} translationDataId="Header.SignInOrRegister2" defaultMessage="Sign in \ Register" />;
     if (this.state.isGuest && this.state.startGuestCheckout) {
       breadCrumb = null;
     }

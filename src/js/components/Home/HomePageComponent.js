@@ -79,9 +79,9 @@ class HomePageComponent extends Component {
                                 <div style={{ padding: "0px 0px" }} className="divShowOnMobile">
                                     <Slider {...settings3}>
                                         {homeData && homeData.banners.map((item, index) => (
-                                            <Link to={`/` + store_locale + `/products` + item.BLOCK_MOBILE_BANNER + ``}>
+                                            <Link to={`/` + store_locale + `/products` + item.BLOCK_URL + ``}>
                                                 <div>
-                                                    <img src={item.BLOCK_BANNER} className="banner-image-hight" />
+                                                    <img src={item.BLOCK_MOBILE_BANNER} className="banner-image-hight" />
                                                 </div>
                                             </Link>
                                         ))}

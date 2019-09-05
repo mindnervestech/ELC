@@ -3180,6 +3180,37 @@ html[dir="rtl"] .Collapsible__trigger:after{
         font-size: 1.4rem;
         font-family: "VAG Rounded ELC Bold";
     }
+
+    html[dir="rtl"] .footer-css .Collapsible__trigger{
+        display: block;
+        text-decoration: none;
+        position: relative;
+        border: none;
+        padding: 10px;
+        background: #fff;
+        color: #0D943F;
+        font-size: 1.5rem;
+        text-align: center;
+        font-family: "VAG Rounded ELC Light";
+    }
+
+    html[dir="rtl"] .footer-css .Collapsible__trigger:after{
+        font-family: 'FontAwesome';
+        content: '\25BE';
+        position: absolute;
+        left: 60px;
+        top: 0px;
+        font-size: 25px;
+        display: block;
+        transition: transform 300ms;
+    }
+
+    html[dir="rtl"] .footer-css .Collapsible__trigger.is-open:after{
+        /* -webkit-transform: rotateZ(180deg); */
+        transform: rotateZ(0deg);
+        content: '\25B4' !important;
+        top: 0px !important;
+    }
     
     .product-list li, .feature li, .group-row li{
         margin: 10px 5px 0px;
@@ -5573,6 +5604,31 @@ a:hover {
     margin-right: 51px;
     }
 }
+
+@media (max-width:320px){
+    .help-icon{
+        height: 18px;
+        width: 18px;
+        position: absolute;
+        display: inline-block;
+        right: 10px !important;
+    }
+
+    html[dir="rtl"] .help-icon{
+        height: 18px;
+        width: 18px;
+        position: absolute;
+        display: inline-block;
+        left: 10px !important;
+    }
+
+    .header .changecountry{
+        border: none !important;
+        width: 29% !important;
+        display: inline-block !important;
+    }
+}
+
 @media (max-width:767px){
     .hide-mob{
          visibility: hidden;
@@ -5605,7 +5661,7 @@ html[dir="rtl"] .language {
 }
 .header .changecountry {
       border: none !important;
-      width: 30% !important;
+      width: 26%;
       display: inline-block !important;
 
 }

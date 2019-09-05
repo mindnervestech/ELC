@@ -553,6 +553,7 @@
     "Header.StoreFinder": "store finder",
     "Header.Help": "Help",
     "Header.SignInOrRegister": "Sign in / Register",
+    "Header.SignInOrRegister2": "Sign in  \\\\  Register",
     "footer.BirthdayClub": "Birthday Club",
     "footer.Newsletter": "Newsletter",
     "footer.Charity": "Charity",
@@ -1078,7 +1079,7 @@
     "Header.StoreFinder": "البحث عن متجر",
     "Header.Help": "المساعدة",
     "Header.SignInOrRegister": "تسجيل الدخول / التسجيل",
-
+    "Header.SignInOrRegister2": "تسجيل الدخول \\\\ التسجيل",
     "footer.helpFaqs": "الأسئلة الأكثر شيوعاً",
     "footer.contactUs": "تواصل معنا",
     "footer.aboutElc": "نبذة على ألعاب التعليم المبكر",

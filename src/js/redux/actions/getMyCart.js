@@ -59,7 +59,6 @@ export const getMyCart = (payload) => {
                     }
                 }
 
-
                 dispatch(loadingSpinner({ loading: false }))
                 dispatch({
                     type: actionType.CARD_LOADER,
