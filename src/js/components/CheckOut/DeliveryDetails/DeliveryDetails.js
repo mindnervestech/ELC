@@ -42,6 +42,7 @@ class DeliveryDetails extends Component {
         addressThree: '',
         addressType: '',
         primaryAddress: '',
+        postcode:'',
       },
 
       storeInfo: {},
@@ -160,7 +161,8 @@ class DeliveryDetails extends Component {
             street: `${this.state.AddressFields.addressOne},${this.state.AddressFields.addressTwo}, ${this.state.AddressFields.addressThree}`,
             carrier_code: this.state.ContactFields.carrierCode,
             telephone: this.state.ContactFields.contactNumber,
-            customer_address_type: this.state.AddressFields.addressType
+            customer_address_type: this.state.AddressFields.addressType,
+            postcode: this.state.AddressFields.postcode,
           };
 
           this.props.OnaddNewAddressAndRedirectToCheckout(payload)

@@ -22,7 +22,8 @@ class ShoppingBagItem extends Component {
 
    checkOut(){
       if(this.props.isUserLoggedIn){
-         this.props.history.push(`/${this.props.globals.store_locale}/new-check-out`);
+         // this.props.history.push(`/${this.props.globals.store_locale}/new-check-out`);
+         this.props.history.push(`/${this.props.globals.store_locale}/delivery-details`);
       }else{
          this.props.history.push(`/${this.props.globals.store_locale}/checkout-login`);
       }

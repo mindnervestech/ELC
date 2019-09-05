@@ -326,6 +326,7 @@ class DeliveryLocation extends Component {
                 telephone: this.state.AddressFields.contactNumber,
                 customer_address_type: this.state.AddressFields.addressType,
                 postcode: this.state.AddressFields.postcode,
+                customer_email:this.props.user_details.customer_details.email,
 
               };
     
