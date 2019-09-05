@@ -20,6 +20,14 @@ class ShoppingBagItem extends Component {
       this.props.OnremoveProduct({ index: index })
    }
 
+   checkOut(){
+      if(this.props.isUserLoggedIn){
+         this.props.history.push(`/${this.props.globals.store_locale}/new-check-out`);
+      }else{
+         this.props.history.push(`/${this.props.globals.store_locale}/checkout-login`);
+      }
+   }
+
    render() {
       const product = this.props.cart_details.products;
       const store_locale = this.props.globals.store_locale;
@@ -182,9 +190,11 @@ class ShoppingBagItem extends Component {
                   <Row className="changeRow">
                      <Col xs="9"></Col>
                      <Col xs="3" style={{ textAlign: 'end' }}>
-                        <Link to={`/${store_locale}/new-check-out`}>
+                        {/* <Link to={`/${store_locale}/new-check-out`}> */}
+                        <div onClick={() => this.checkOut()}>
                            <button className="alsoLikeCardButton">Check out</button>
-                        </Link>
+                           </div>
+                        {/* </Link> */}
                      </Col>
                   </Row>
                </div>
@@ -257,10 +267,10 @@ class ShoppingBagItem extends Component {
                         <span>Order Total</span><span className="floatRight">{this.props.cart_details.currency}&nbsp;{this.props.cart_details.grand_total}</span>
                      </div>
                   </div>
-                  <div>
-                     <Link to={`/${store_locale}/new-check-out`}>
+                  <div onClick={() => this.checkOut()}>
+                     {/* <Link to={`/${store_locale}/new-check-out`}> */}
                         <button className="alsoLikeCardButton">Check out</button>
-                     </Link>
+                     {/* </Link> */}
                   </div>
                </div>
             </div> :

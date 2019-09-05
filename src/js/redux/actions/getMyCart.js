@@ -11,9 +11,16 @@ export const callActionForMyCart = (payload) => {
     };
 }
 
+const CallActionForUpdateNewQuoteId = (payload) => {
+    return {
+        type: actionType.UPDATE_NEW_QUOTE_ID,
+        payload: payload
+    };
+};
+
 export const getMyCart = (payload) => {
     //console.log('get my cart : ', payload)
-    return dispatch => {
+    return (dispatch, getState) => {
 
         const data = {
             quote_id: payload.quote_id,
@@ -32,7 +39,6 @@ export const getMyCart = (payload) => {
 
         let cb = {
             success: (res) => {
-                // console.log('LOCAL getMyCart res', res);
 
                 if ((res.status) && (res.code == 200) && ('data' in res)) {
                     let newState = {
@@ -43,7 +49,16 @@ export const getMyCart = (payload) => {
 
                 } else if ((res.status) && (res.code == 200) && (!('data' in res))) {
                     dispatch(clearCartItem())
+                }else if(!res.status && res.code === 400){
+                    if (res.new_quote_id !== "") {
+                        let newQuoteId = {
+                            ...getState().login.customer_details,
+                            quote_id: res.new_quote_id,
+                        }
+                        dispatch(CallActionForUpdateNewQuoteId({ customer_details: { ...newQuoteId } }))
+                    }
                 }
+
 
                 dispatch(loadingSpinner({ loading: false }))
                 dispatch({

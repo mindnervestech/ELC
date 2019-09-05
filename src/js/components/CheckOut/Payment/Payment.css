@@ -868,7 +868,7 @@ html[dir="rtl"] .intl-tel-input .country-list {
 
 
 .shipping-tabs .tab {
-        width: 48%;
+    width: 46%;
     float: left;
     border: solid 1px #dae0e1;
     border-radius: 2px;
@@ -880,7 +880,7 @@ html[dir="rtl"] .intl-tel-input .country-list {
     margin: 1%;}
 
 .shipping-tabs .tab.selected {
-    border: solid 2px #faced7;
+    border: solid 2px #0d943f;
 color: #000;
 }
 
@@ -917,7 +917,7 @@ td .prddesc h2 {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    width: 100px;
+    width: 150px;
 }
 
 td .prddesc p{
@@ -925,15 +925,15 @@ td .prddesc p{
 }
 
 td .prddesc p strong{
-        color:#f599ba;
+        color:#0d943f;
 }
 
 
 td .prddesc a{
         margin-top: 30px;
     display: block;
-    background: #f599ba;
-    color: #fff;
+    background: #0d943f;
+    color: #fff !important;
     padding: 5px;
     text-decoration: none;
     text-align: center;
@@ -948,7 +948,7 @@ td .prdimg a{
 
 .p-price {
     font-size: 15px;
-    color: #f599ba;
+    color: #0d943f;
 }
 
 

@@ -142,9 +142,6 @@ class ProductQty extends Component {
 				quote_id: this.props.guestUser.temp_quote_id,
 				store_id: this.props.globals.currentStore,
 			};
-
-			console.log('cartItems', cart_item);
-			console.log('Guest myCart', myCart);
 			this.props.onGuestAddToCart(cart_item, myCart);
 			if(live) {
 				trackF('AddtoCard', cart_item);

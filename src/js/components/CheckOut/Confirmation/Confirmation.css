@@ -44,7 +44,7 @@ font-size: 1.4rem;
 overflow: hidden;
 white-space: nowrap;
 text-overflow: ellipsis;
-width: 100px;
+width: 150px;
 }
 
 td .prddesc p{
@@ -52,7 +52,7 @@ td .prddesc p{
 }
 
 td .prddesc p strong{
-    color:#f599ba;
+    color:#0d943f;
 }
 
 
@@ -76,7 +76,7 @@ margin-right: 10px;
 
 .p-price {
 font-size: 15px;
-color: #f599ba;
+color: #0d943f;
 }
 .p-price-saving{
     font-size: 11px;

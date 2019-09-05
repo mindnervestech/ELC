@@ -36,7 +36,6 @@ class ProductZoom extends Component {
 			// console.log('selectedColor',this.props.productDetails.selectedColor);
 			this.changeColor(this.props.productDetails.selectedColor);
 		}
-		console.log("Api response of product list",this.props)
 		if (prevProps.productWishDetail.wishlist_itemid != this.props.productWishDetail.wishlist_itemid) {
 			// if (this.props.productWishDetail.is_in_wishlist) {
 			// 	document.getElementById('Capa_1').setAttribute('class', 'naylove-icon active');
@@ -108,7 +107,6 @@ class ProductZoom extends Component {
 	_getImageData = data => {
 		if (data) {
 			// console.log('In Zoom Image',data);
-			console.log(data);
 
 			// return (
 			// 	<a href={data.zoomimage} className="MagicZoom" id="zoom-v">
@@ -163,7 +161,6 @@ class ProductZoom extends Component {
 
 	_checkSingleImage = (imageUrl, color, index) => {
 		// console.log(imageUrl);
-		console.log(imageUrl);	
 		// if ( (imageUrl) && (imageUrl.thumbnail) ) {
 		// 	// console.log('imageUrl',imageUrl);
 
@@ -284,7 +281,6 @@ class ProductZoom extends Component {
 
 	render() {
 		const { isActive, globals, productZoomDetails } = this.props;
-		console.log('In render productZoomDetails', this.props);
 
 		if (this.state.guestUser) {
 			return <Redirect to={`/${globals.store_locale}/add-wishlist?item=${productZoomDetails.id}`} />

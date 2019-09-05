@@ -899,17 +899,31 @@ li {
 }
 
 .header .logo {
-    background: url(../logo/logo.png) no-repeat 0 0;
+    background: url(../logo/Logo_Group.png) no-repeat 0 0;
     background-size: contain;
     display: block;
     margin: 0 auto;
     position: relative;
-    width: 58px
+    width: 100%;
+    height: 70%;
+}
+
+.t-Region .t-Region-body{
+    padding: 8px !important;
 }
 
 @media only screen and (min-width: 1280px) {
     .header .logo .logo-img {
         width: 120px
+    }
+}
+
+@media (max-width:767px){
+    .header .logo {
+        width: 50% !important;
+        height: 50%;
+        margin-left: 15px;
+        top: 7px;
     }
 }
 
@@ -3149,6 +3163,10 @@ html[dir="rtl"] .Collapsible__trigger:after{
     .data .slick-prev {
         left: 11px !important;
         z-index: 1;
+    }
+
+    .apex-item-group--rc .apex-item-option:first-child:nth-last-child(3), .apex-item-group--rc .apex-item-option:first-child:nth-last-child(3)~.apex-item-option{
+        width: 49%;
     }
 
     .Collapsible__trigger {

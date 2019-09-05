@@ -459,12 +459,23 @@ li {
 }
 
 .header .logo {
-    background: url(https://storage.googleapis.com/nay/images/web/logo.b9e5f14e.png) no-repeat 0 0;
+    background: url(../logo/Logo_Group.png) no-repeat 0 0;
     background-size: contain;
     display: block;
     margin: 0 auto;
     position: relative;
-    width: 58px
+    width: 100% !important;
+    height: 70%;
+    margin-left: 20px;
+}
+
+@media (max-width:767px){
+    .header .logo {
+        width: 50% !important;
+        height: 50%;
+        margin-left: 15px;
+        top: 7px;
+    }
 }
 
 @media only screen and (min-width: 600px) {
@@ -790,7 +801,10 @@ html[dir="rtl"] .header .row-1 .cart span {
         width: 100%;
         z-index: 999;
         top: 0;
-        left: 0
+        left: 0;
+    }
+    .header .checkout-header{
+        height: 50px !important;
     }
 }
 

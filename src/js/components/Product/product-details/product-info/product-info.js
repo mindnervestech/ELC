@@ -63,7 +63,6 @@ class ProductInformation extends Component {
 		const { data, type } = this.props;
 		const sizeComponent = this.state.isBandCup ? <><ProductBandSize productSize={data} />
 			<ProductCupSize productSize={data} /></> : <ProductSize productSize={data} />;
-		console.log(this.props);
 		return (
 			<div className="col col-12 apex-col-auto">
 				{/* <div

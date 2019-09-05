@@ -21,7 +21,7 @@ class Login extends Component {
   constructor(props) {
     super(props);
     let isGuest = this.props.isGuest ? true : false;
-    let startGuestCheckout = this.props.startGuestCheckout ? true : false;
+    let startGuestCheckout = this.props.startGuestCheckout ? true : true;
 
     //console.log(this.props)
     
@@ -191,7 +191,6 @@ class Login extends Component {
       guest = <GuestCheckout />;
       newStyle = { marginBottom: 90 }
     }
-
     if (login_details.isUserLoggedIn && this.state.isGuest && this.state.startGuestCheckout) {
       //console.log('Hello : this is called');
       return <Redirect to={{

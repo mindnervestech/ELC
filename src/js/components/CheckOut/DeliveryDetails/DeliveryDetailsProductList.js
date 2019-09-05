@@ -86,12 +86,13 @@ class DeliveryProductList extends Component {
                   {item.color && (<p><FormattedMessage id="product.color" defaultMessage="Color" />: {item.color}</p>)}
                   {item.size && (<p><FormattedMessage id="product.size" defaultMessage="Size" />: {item.size}</p>)}
                   <p>{item.sku}</p>
+                  {this.priceView(item)}
                 </td>
               </tr>
             </tbody>
           </table>
         </td>
-        <td className="t-Report-cell" align="right" headers="SUBTOTAL">
+        {/* <td className="t-Report-cell" align="right" headers="SUBTOTAL">
           <table className="qty">
             <tbody>
               <tr>
@@ -99,7 +100,7 @@ class DeliveryProductList extends Component {
               </tr>
             </tbody>
           </table>
-        </td>
+        </td> */}
       </tr>)
     })
 

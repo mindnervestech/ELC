@@ -50,64 +50,64 @@ class SavedAddressList extends Component {
       addressItem = this.props.addressData.map((item, index) => {
         let item_id = 'P7_ADDRESSES_' + item.Id
 
-        if (item.country_id === 'SA') {
-          return (<div className="apex-item-option" key={index}>
-            <input type="radio" id={item_id} name="ADDRESSES" Value={item.Id}
-              onClick={() => this.radioClick(item)} />
+        // if (item.country_id === 'SA') {
+        return (<div className="apex-item-option" key={index}>
+          <input type="radio" id={item_id} name="ADDRESSES" Value={item.Id}
+            onClick={() => this.radioClick(item)} />
 
-            <label htmlFor={item_id}>
-              Address: {item.address_type}<br />
-              {item.userFirstName} {item.userLastName}<br />
-              {item.city}, {item.street}, {item.state}<br />
-              {item.state}<br />
-              {item.country_id}<br />
-              {item.telephone}</label></div>)
-        } else {
-          return (<div className="apex-item-option apex_disabled" >
-            <input type="radio" id={item_id} name="P7_ADDRESSES" />
-            <label htmlFor={item_id}>
-              Address: {item.address_type}<br />
-              {item.userFirstName} {item.userLastName}<br />
-              {item.city}, {item.street}, {item.state}<br />
-              {item.state}<br />
-              {item.country_id}<br />
-              {item.telephone}
-              <span style={{ background: '#c7c7c7', color: '#000' }}>
-                <FormattedMessage id="saved.add.text" defaultMessage="Selected country" />.</span></label>
-          </div>)
-        }
+          <label htmlFor={item_id}>
+            Address: {item.address_type}<br />
+            {item.userFirstName} {item.userLastName}<br />
+            {item.city}, {item.street}, {item.state}<br />
+            {item.state}<br />
+            {item.country_id}<br />
+            {item.telephone}</label></div>)
+        // } else {
+        //   return (<div className="apex-item-option apex_disabled" >
+        //     <input type="radio" id={item_id} name="P7_ADDRESSES" />
+        //     <label htmlFor={item_id}>
+        //       Address: {item.address_type}<br />
+        //       {item.userFirstName} {item.userLastName}<br />
+        //       {item.city}, {item.street}, {item.state}<br />
+        //       {item.state}<br />
+        //       {item.country_id}<br />
+        //       {item.telephone}
+        //       <span style={{ background: '#c7c7c7', color: '#000' }}>
+        //         <FormattedMessage id="saved.add.text" defaultMessage="Selected country" />.</span></label>
+        //   </div>)
+        // }
 
       })
     } else if (selected_country === 'UAE') {
       addressItem = this.props.addressData.map((item, index) => {
         let item_id = 'P7_ADDRESSES_' + item.Id
 
-        if (item.country_id === 'AE') {
-          return (<div className="apex-item-option" key={index}>
-            <input type="radio" id={item_id} name="ADDRESSES" Value={item.Id}
-              onClick={() => this.radioClick(item)} />
+        // if (item.country_id === 'AE') {
+        return (<div className="apex-item-option" style={{display:'block'}} key={index}>
+          <input type="radio" id={item_id} name="ADDRESSES" Value={item.Id}
+            onClick={() => this.radioClick(item)} />
 
-            <label htmlFor={item_id}>
-              Address: {item.address_type}<br />
-              {item.userFirstName} {item.userLastName}<br />
-              {item.city}, {item.street}, {item.state}<br />
-              {item.state}<br />
-              {item.country_id}<br />
-              {item.telephone}</label></div>)
-        } else {
-          return (<div className="apex-item-option apex_disabled" >
-            <input type="radio" id={item_id} name="P7_ADDRESSES" />
-            <label htmlFor={item_id}>
-              Address: {item.address_type}<br />
-              {item.userFirstName} {item.userLastName}<br />
-              {item.city}, {item.street}, {item.state}<br />
-              {item.state}<br />
-              {item.country_id}<br />
-              {item.telephone}
-              <span style={{ background: '#c7c7c7', color: '#000' }}>
-                <FormattedMessage id="saved.add.text" defaultMessage="Selected country" />.</span></label>
-          </div>)
-        }
+          <label htmlFor={item_id}>
+            Address: {item.address_type}<br />
+            {item.userFirstName} {item.userLastName}<br />
+            {item.city}, {item.street}, {item.state}<br />
+            {item.state}<br />
+            {item.country_id}<br />
+            {item.telephone}</label></div>)
+        // } else {
+        //   return (<div className="apex-item-option apex_disabled" >
+        //     <input type="radio" id={item_id} name="P7_ADDRESSES" />
+        //     <label htmlFor={item_id}>
+        //       Address: {item.address_type}<br />
+        //       {item.userFirstName} {item.userLastName}<br />
+        //       {item.city}, {item.street}, {item.state}<br />
+        //       {item.state}<br />
+        //       {item.country_id}<br />
+        //       {item.telephone}
+        //       <span style={{ background: '#c7c7c7', color: '#000' }}>
+        //         <FormattedMessage id="saved.add.text" defaultMessage="Selected country" />.</span></label>
+        //   </div>)
+        // }
 
       })
     }
@@ -135,7 +135,7 @@ class SavedAddressList extends Component {
           <div className="t-Region-body">
             <div className="container">
               <div className="row">
-                <div className="col col-4 ">
+                <div className="col col-12 ">
                   <div className="t-Region t-Region--removeHeader t-Region--noBorder t-Region--hiddenOverflow" id="R34927712771907735">
                     <div className="t-Region-header">
                       <div className="t-Region-headerItems t-Region-headerItems--title">
@@ -160,7 +160,7 @@ class SavedAddressList extends Component {
                       </div>
                     </div>
                   </div>
-                </div><div className="col col-8 apex-col-auto">
+                </div><div className="col col-12 apex-col-auto">
                   <div className="t-Region t-Region--noPadding t-Region--removeHeader t-Region--noBorder t-Region--hiddenOverflow t-Form--stretchInputs margin-top-none margin-bottom-none" id="R28611824894643382">
                     <div className="t-Region-header">
                       <div className="t-Region-headerItems t-Region-headerItems--title">
@@ -205,7 +205,7 @@ class SavedAddressList extends Component {
                             <div className="col col-2 ">
                               <span className="apex-grid-nbsp">&nbsp;</span>
                             </div><div className="col col-8 ">
-                              <button onClick={this.props.addNewAddress} className="t-Button t-Button--stretch" type="button" id="B28612101734643385"><span className="t-Button-label">Add New Address</span></button>
+                              <button onClick={this.props.addNewAddress} className="t-Button t-Button--stretch" type="button" id="B28612101734643385"><span className="t-Button-label"><FormattedMessage id="AddNewAddress.Text" defaultMessage="Add new Address" /></span></button>
                             </div>
                           </div>
                         </div>
@@ -220,7 +220,7 @@ class SavedAddressList extends Component {
                     <div className="t-Region-header">
                       <div className="t-Region-headerItems t-Region-headerItems--title">
                         <span className="t-Region-headerIcon"><span className="t-Icon " aria-hidden="true" /></span>
-                        <h2 className="t-Region-title" id="R631680584527102694_heading">Add New Address</h2>
+                        <h2 className="t-Region-title" id="R631680584527102694_heading"><FormattedMessage id="AddNewAddress.Text" defaultMessage="Add new Address" /></h2>
                       </div>
                       <div className="t-Region-headerItems t-Region-headerItems--buttons"><span className="js-maximizeButtonContainer" /></div>
                     </div>
@@ -230,15 +230,15 @@ class SavedAddressList extends Component {
                         <div className="t-Region-buttons-right" />
                       </div>
                       <div className="t-Region-body">
-                        <p style={{ fontSize: '11px', marginBottom: '20px' }}> 
-                        <i className="fa fa-exclamation-circle" style={{ color: '#f599ba', fontSize: '22px' }} />
-                         <FormattedMessage id="delivery-details.addressContent" defaultMessage="Address Information content" /></p><div className="container">
+                        <p style={{ fontSize: '11px', marginBottom: '20px' }}>
+                          <i className="fa fa-exclamation-circle" style={{ color: '#f599ba', fontSize: '22px' }} />
+                          <FormattedMessage id="delivery-details.addressContent" defaultMessage="Address Information content" /></p><div className="container">
                           <div className="row">
                             <div className="col col-12 apex-col-auto">
                               <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel is-required apex-item-wrapper apex-item-wrapper--select-list js-show-label" id="P7_R_COUNTRY_CONTAINER"><div className="t-Form-labelContainer">
                                 <label htmlFor="P7_R_COUNTRY" id="P7_R_COUNTRY_LABEL" className="t-Form-label">
-                                <FormattedMessage id="Checkout.Location" defaultMessage="Location" />
-                                <span className="u-VisuallyHidden">(Value Required)</span></label>
+                                  <FormattedMessage id="Checkout.Location" defaultMessage="Location" />
+                                  <span className="u-VisuallyHidden">(Value Required)</span></label>
                               </div><div className="t-Form-inputContainer"><div className="t-Form-itemWrapper"><select id="P7_R_COUNTRY" name="P7_R_COUNTRY" className="selectlist apex-item-select" readOnly="readonly" size={1}><option value="SA" selected="selected">Saudi Arabia</option>
                               </select></div><span id="P7_R_COUNTRY_error_placeholder" className="a-Form-error" data-template-id="33610259035469734_ET" /></div></div>
                             </div>

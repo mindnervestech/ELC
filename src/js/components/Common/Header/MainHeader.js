@@ -226,6 +226,10 @@ class MainHeader extends Component {
             ]
         }
 
+        if(this.props.new_quote_id){
+            this.props.user_details.customer_details.quote_id = this.props.new_quote_id;
+        }
+
         const store_locale = this.props.globals.store_locale;
         const { globals } = this.props;
         const cartDetails = <Cart showCart={this.state.showCart}
@@ -737,6 +741,7 @@ const mapStateToProps = state => {
         guest_user: state.guest_user,
         menu: state.menu.menuNavData,
         OfferMessage: state.menu.OfferMessage,
+        new_quote_id: state.myCart.new_quote_id,
 
     }
 }

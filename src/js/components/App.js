@@ -94,21 +94,15 @@ class App extends Component {
 
   static getDerivedStateFromProps = (props, state) => {
     if (props.changeData) {
-      // console.log("props", props);
-      //console.log("state", state);
       let lang;
-      //console.log('statechangeData', state.changeData);
 
       if (state.changeData) {
         lang = state.language;
-        //console.log("true");
       }
       else {
         lang = props.selectedLang;
-        //console.log("false");
       }
 
-      //console.log("Lang", lang);
 
       let toHome = props.toHome;
 
@@ -130,7 +124,6 @@ class App extends Component {
     };
 
     API.post('/Storechange', reqdata).then(res => {
-      // console.log('Storechange API called', res);
      
       this._redirectWithLocale(store_locale);   //Change URL Location based on new Locale
     })
@@ -139,8 +132,6 @@ class App extends Component {
 
   getStoreId = (country, lang) => {
     //const { store } = this.props;
-    //console.log('STORE' ,store);
-    //console.log('STORE state' ,store.getState());
     //let store_data = country + "_" + lang;
 
     if(country == undefined){
@@ -162,7 +153,6 @@ class App extends Component {
     };
 
     API.get('/storeinfo?store_data='+reqdata.store_data, reqdata).then(res => {
-      console.log('STOREINFO res', res);
       let storeId = res.data.store_id;
       if(!storeId){
         if(lang === 'en'){
@@ -207,7 +197,6 @@ class App extends Component {
   }
 
   _redirectWithLocale = (newLocale) => {
-    // console.log('window.location.pathname', window.location.pathname);
     const curr_pathname = window.location.pathname;
     let new_path = curr_pathname.split('/');
     let new_pathname;
@@ -219,7 +208,6 @@ class App extends Component {
   }
 
   handleLanguageSelection = (language) => {
-    //console.log('In App Lang sel');
 
     let country;
     //country = (cookie.load('country') === null) ? 'KSA' : cookie.load('country');

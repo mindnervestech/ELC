@@ -79,7 +79,6 @@ class ProductDetails extends Component {
 			};
 			this.props.onGetProductDetails(data);
 		}
-
 		if(prevProps.addToCardLoader !== this.props.addToCardLoader){
 			if (this.props.user_details.isUserLoggedIn) {
 				this.props.OngetMyCart({
@@ -175,7 +174,6 @@ class ProductDetails extends Component {
 }
 
 const mapStateToProps = state => {
-	//console.log('pdpstate', state);
 
 	return {
 		globals: state.global,

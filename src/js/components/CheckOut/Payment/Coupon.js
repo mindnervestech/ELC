@@ -29,7 +29,7 @@ class CouponCode extends Component {
               </div>
               <div className="t-Region-body">
                 <div className="container">
-                  <div className="row">
+                  {/* <div className="row">
                     <div className="col col-1 ">
                       <span className="apex-grid-nbsp">&nbsp;</span>
                     </div>
@@ -47,7 +47,7 @@ class CouponCode extends Component {
                     <div className="col col-3 apex-col-auto">
                       <button className="t-Button t-Button--noLabel t-Button--icon t-Button--large t-Button--gapTop" onclick={this.showSnackbar} type="button" id="vouch" title="Vouch" aria-label="Vouch"><span className="t-Icon fa fa-check" aria-hidden="true" /></button>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
               <div className="t-Region-buttons t-Region-buttons--bottom">

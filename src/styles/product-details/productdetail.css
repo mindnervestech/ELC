@@ -1606,10 +1606,43 @@ html[dir="rtl"] .styles_modal__gNwvD div{
     font-weight: bold;
 }
 
+.country-model{
+    margin-bottom: 50px;
+    height: 205px;
+    position: absolute;
+    width: 100%;
+    z-index: 99;
+}
+.country-model ul li{
+    display: block !important;
+}
+
+.intel-phone-width{
+    width: 95% !important;
+}
+
+.country-model .country-list{
+    width: 100% !important;
+}
+
+.country-model .intl-tel-input{
+    width: 95% !important;
+}
+
+.country-inside{
+    margin-top: 55px !important;
+}
+
+
+
 @media (max-width:767px){ 
     html[dir="rtl"] .row.rating-review {
         /* margin: 0; */
         margin-right: 0px;
+    }
+
+    .country-model{
+        height: 50px !important;
     }
     html[dir="rtl"] .share-icon-twitter{
         margin-right: 18px !important;

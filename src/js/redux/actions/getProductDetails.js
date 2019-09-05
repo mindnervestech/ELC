@@ -18,6 +18,13 @@ export const callProductWishDetail = payload => {
 	})
 }
 
+const CallActionForUpdateNewQuoteId = (payload) => {
+    return {
+        type: actionTypes.UPDATE_NEW_QUOTE_ID,
+        payload: payload
+    };
+};
+
 export const addToWishlist = payload => {
 	return dispatch => {
 		const data = {
@@ -443,7 +450,7 @@ export const getProductDetails = payload => {
 };
 
 export const getPlaceOrder = payload => {
-	return dispatch => {
+	return (dispatch, getState) => {
 		const data = {
 			store_id: payload.store_id,
 			quote_id: payload.quote_id
@@ -456,6 +463,14 @@ export const getPlaceOrder = payload => {
 					type: actionTypes.GET_PLACE_ORDER,
 					payload: { payfort_data: res.payfort_data }
 				})
+
+				if (res.new_quote_id !== "") {
+					let newQuoteId = {
+						...getState().login.customer_details,
+						quote_id: res.new_quote_id,
+					}
+					dispatch(CallActionForUpdateNewQuoteId({ customer_details: { ...newQuoteId } }))
+				}
 			},
 			error: err => {
 				dispatch(loadingSpinner({ loading: false }))

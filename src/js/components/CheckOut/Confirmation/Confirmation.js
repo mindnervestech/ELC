@@ -92,7 +92,6 @@ class Confirmation extends Component {
 
 
   gotoProductScreen = (item) => {
-    console.log("item-----------",item);
     const store_locale = this.props.global.store_locale;
 
     const data = {

@@ -11,7 +11,7 @@ class CheckoutHeader extends Component {
         const store_locale = this.props.globals.store_locale;
         return (<>
             <header className="header" id="t_Header">
-                <div id="R127923585041798397" className="row-2">
+                <div id="R127923585041798397" className="row-2 checkout-header">
                     <div className="containers-main">
                         <figure className="logo"><Link to={`/${store_locale}/`}></Link></figure>
                     </div>

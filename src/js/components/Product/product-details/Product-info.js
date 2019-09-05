@@ -33,7 +33,7 @@ class ProductInfo extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			defaultQty: 0,
+			defaultQty: 1,
 			openShareModel: false,
 		};
 		this.addToCart = this.addToCart.bind(this);
@@ -51,42 +51,73 @@ class ProductInfo extends Component {
 	};
 
 	addToCart(e) {
-		const {data, customerDetails} = this.props;
+		const {data, customerDetails, guest_user, isUserLoggedIn} = this.props;
 		let prodData = {};
-		if(data.type == 'simple'){
-			prodData = {
-				"quote_id": customerDetails.quote_id,
-				"product_type": data.type,
-				"sku": data.sku,
-				"qty": this.state.defaultQty,
-				"product_option": {
-					"extension_attributes": {}
+		if(isUserLoggedIn){
+			if(data.type == 'simple'){
+				prodData = {
+					"quote_id": customerDetails.quote_id,
+					"product_type": data.type,
+					"sku": data.sku,
+					"qty": this.state.defaultQty,
+					"product_option": {
+						"extension_attributes": {}
+					}
 				}
-			}
-		}else{
-			prodData = {
-				"quote_id": customerDetails.quote_id,
-				"product_type": data.type,
-				"sku": data.sku,
-				"qty": this.state.defaultQty,
-				"product_option": {
-					"extension_attributes": {
-						"configurable_item_options": [
-							{
-								"option_id": data.simpleproducts[0].color.option_id,
-								"option_value": data.simpleproducts[0].color.option_value
-							}
-						]
+			}else{
+				prodData = {
+					"quote_id":customerDetails.quote_id,
+					"product_type": data.type,
+					"sku": data.sku,
+					"qty": this.state.defaultQty,
+					"product_option": {
+						"extension_attributes": {
+							"configurable_item_options": [
+								{
+									"option_id": data.simpleproducts[0].color.option_id,
+									"option_value": data.simpleproducts[0].color.option_value
+								}
+							]
+						}
 					}
 				}
 			}
+			this.props.onAddToCart(prodData);
+		}else{
+			if(data.type == 'simple'){
+				prodData = {
+					"quote_id": guest_user.temp_quote_id,
+					"product_type": data.type,
+					"sku": data.sku,
+					"qty": this.state.defaultQty,
+					"product_option": {
+						"extension_attributes": {}
+					}
+				}
+			}else{
+				prodData = {
+					"quote_id": guest_user.temp_quote_id,
+					"product_type": data.type,
+					"sku": data.sku,
+					"qty": this.state.defaultQty,
+					"product_option": {
+						"extension_attributes": {
+							"configurable_item_options": [
+								{
+									"option_id": data.simpleproducts[0].color.option_id,
+									"option_value": data.simpleproducts[0].color.option_value
+								}
+							]
+						}
+					}
+				}
+			}
+			const myCart = {
+				quote_id: guest_user.temp_quote_id,
+				store_id: this.props.globals.currentStore,
+			};
+			this.props.onGuestAddToCart(prodData, myCart);
 		}
-		
-		// const data = {
-		// 	customer_id: 13, // this.props.customerDetails.customer_id,
-		// 	product_id: productId,
-		// };
-		this.props.onAddToCart(prodData);
 	}
 
 	increment = totalQty => {
@@ -179,7 +210,6 @@ class ProductInfo extends Component {
 	};
 
 	addToWishList = (data) => {
-		console.log()
 		if ((this.props.customerDetails && this.props.customerDetails.customer_id === undefined) || !this.props.customerDetails) {
 			return (<Link to={`/${this.props.globals.store_locale}/Login`}><span style={{display:"inline-flex", marginRight: '10px'}}>
 				<svg
@@ -439,7 +469,7 @@ class ProductInfo extends Component {
 											<Popup />
 											<div className="alsoLikeCard add-cart">
 												<div className="homePage">
-													<button disabled={(data.simplestatus === 0 && newImageArray[0] && newImageArray[0].stock == 0) || this.state.defaultQty == 0} onClick={this.addToCart} className="alsoLikeCardButton" style={{ marginTop: 0 }}>
+													<button disabled={(data.simplestatus === 0 || (newImageArray[0] && newImageArray[0].stock == 0)) || this.state.defaultQty == 0} onClick={this.addToCart} className="alsoLikeCardButton" style={{ marginTop: 0 }}>
 														<FormattedMessage id="Product.Detail.addToBasket" defaultMessage="Add to basket" /></button>
 												</div>
 											</div>
@@ -564,6 +594,7 @@ const mapStateToProps = state => {
 		productDetailLoader: state.productDetails.productDetailLoader,
 		addToCardLoader: state.productDetails.addToCardLoader,
 		cart_details: state.myCart,
+		guest_user: state.guest_user,
 	};
 };
 
@@ -573,7 +604,8 @@ const mapDispatchToProps = dispatch => {
 	return {
 		onAddToWishList: payload => dispatch(actions.addToWishlist(payload)),
 		onRemoveWishList: (payload) => dispatch(actions.removeWishList(payload)),
-		onAddToCart: payload => dispatch(actions.addToCart(payload))
+		onAddToCart: payload => dispatch(actions.addToCart(payload)),
+		onGuestAddToCart: (payload, myCart) => dispatch(actions.guestAddToCart(payload, myCart)),
 	};
 };
 
