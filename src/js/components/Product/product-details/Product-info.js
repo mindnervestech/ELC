@@ -7,8 +7,6 @@ import ProductZoom from './product-zoom/Product-zoom';
 import ProductInformation from './product-info/product-info';
 import ProductSocial from './product-social/product-social';
 import { Carousel } from 'react-responsive-carousel';
-import Alert from 'react-s-alert';
-import 'react-s-alert/dist/s-alert-default.css';
 import freeDelivery from '../../../../assets/images/header/Truck1.svg';
 import freeCollect from '../../../../assets/images/header/Mouse.svg';
 import home from '../../../../assets/images/social/Hero.png';
@@ -231,11 +229,6 @@ class ProductInfo extends Component {
 			this.props.onAddToWishList(data);
 			if(this.props.productWishDetail.wishlist_success!==undefined)
 		{
-			Alert.info(this.props.productWishDetail.wishlist_success, {
-				position: 'bottom-left',
-				effect: 'bouncyflip',
-				timeout: 'none'
-			});
 		}
 			
 		
@@ -326,11 +319,7 @@ class ProductInfo extends Component {
 	render() {
 		if(this.props.productWishDetail.wishlist_success!==undefined)
 		{
-			Alert.info(this.props.productWishDetail.wishlist_success, {
-				position: 'bottom-left',
-				effect: 'bouncyflip',
-				timeout: 'none'
-			});
+			
 		}
 		const { data } = this.props;
 	 const store_locale = this.props.globals.store_locale;
