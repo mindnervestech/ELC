@@ -463,11 +463,11 @@ export const getPlaceOrder = payload => {
 					type: actionTypes.GET_PLACE_ORDER,
 					payload: { payfort_data: res.payfort_data }
 				})
-
-				if (res.new_quote_id !== "") {
+				
+				if (res.order_data.new_quote_id !== "") {
 					let newQuoteId = {
 						...getState().login.customer_details,
-						quote_id: res.new_quote_id,
+						quote_id: res.order_data.new_quote_id,
 					}
 					dispatch(CallActionForUpdateNewQuoteId({ customer_details: { ...newQuoteId } }))
 				}
