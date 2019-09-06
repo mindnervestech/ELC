@@ -4471,7 +4471,7 @@ html[dir="rtl"] .hide-screen-sm .t-Form-fieldContainer--floatingLabel.is-require
 .header .row-1 .rightLink {
     float: right;
     margin-bottom: 0px;
-    padding-top: 16px;
+    padding-top: 24px;
     margin-right: 1.5%;
 }
 .header .row-2 .search {
@@ -4503,7 +4503,7 @@ html[dir="rtl"] .hide-screen-sm .t-Form-fieldContainer--floatingLabel.is-require
 }
 .width-custom{
     flex: 0 0 33.333333% !important;
-    max-width: 33.333333% !important;
+    max-width: 25% !important;
         padding-top: 0px !important;
 }
 .divShowOnWeb{
@@ -4622,4 +4622,21 @@ html[dir="rtl"] .header .navTrigger {
         {
             margin-right: 30px!important;
         }
+}
+
+@media only screen and (max-width: 1279px) and (min-width: 768px){
+    .shipping-tabs .tab{
+        width: 45% !important;
+    }
+
+    .header .logo{
+        background: url(../logo/Logo_Group.png) no-repeat 0 0;
+        background-size: contain;
+        display: block;
+        margin: 0 auto;
+        position: relative;
+        width: 47% !important;
+        height: 47%;
+        margin-left: 20px;
+    }
 }

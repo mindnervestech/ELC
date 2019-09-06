@@ -104,21 +104,18 @@ margin:0px;
 
 @media only screen and (min-width:768px) and(max-width:1024px)
 {
-    .add-child-buttton-club
-    {
-    
+    .add-child-buttton-club{
         max-height: 40px !important;
         background: #ee0e19;
         text-decoration: none;
         color: #ffffff;
         text-align: center;
-        width: 100%!important;
+        width: 30%!important;
         padding: 10px 0px 10px 0px;
         cursor: pointer;
         border: solid 1px #ee0e19;
         border-radius: 4px;
         -webkit-appearance: inherit!important;
-    
     }
 
 }
