@@ -1,3 +1,4 @@
+
 #MiscContent {
   margin-top: 10px;
 }
@@ -1070,6 +1071,10 @@ h3.h3p {
 
 @media only screen and (max-width:640px)
 {
+  html[dir='rtl'] .padding-right-ar
+{
+  padding-right: 8px!important;
+}
   .static-page-style
 {
     font-size:24px!important;
@@ -1080,9 +1085,13 @@ h3.h3p {
 
 
 
-@media only screen and (min-width:640px) and(max-width:767px)
+@media only screen and (min-width:640px) and (max-width:767px)
 
 {
+  html[dir='rtl'] .padding-right-ar
+{
+  padding-right: 8px!important;
+}
 
   .static-page-style
 {
@@ -1095,6 +1104,11 @@ h3.h3p {
 
 @media only screen and  (min-width:768px) and  (max-width:1024px)
 {
+
+  html[dir='rtl'] .padding-right-ar
+{
+  padding-right: 8px!important;
+}
 
   .static-page-style
 {

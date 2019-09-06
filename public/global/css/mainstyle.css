@@ -5657,6 +5657,7 @@ a:hover {
     bottom: 0 !important;
     }
     .basket-icon{
+        margin-right:30px;
         position: relative;
     }
     .language {

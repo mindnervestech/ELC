@@ -43,7 +43,7 @@ import BirthDayClubImage from '../../../../assets/images/BirthDayClub/birthday-c
         <Row style={{ marginTop: "40px" }}>
           <Col xs={1} lg={1} md={1} sm={1}></Col>
           <Col style={{ marginBottom: "40px" }}>
-          <div>
+          <div style={{textAlign:'start'}}>
             <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
               <span className="titleHover" style={{fontSize:12}}><FormattedMessage id="Checkout.Home" defaultMessage/></span><span>&nbsp;\&nbsp;&nbsp;</span>
             </Link>

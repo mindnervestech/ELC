@@ -257,7 +257,7 @@ class ContactUs extends Component {
                 <div className="container">
                   <div className="row">
                     
-						  <div style={{margin:10}}>
+						  <div style={{margin:10}} className="padding-right-ar">
             <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
               <span className="titleHover" style={{fontSize:12}}><FormattedMessage id="Checkout.Home" defaultMessage/></span><span>&nbsp;\&nbsp;&nbsp;</span>
             </Link>
@@ -306,7 +306,7 @@ class ContactUs extends Component {
                                           <div className="row">
                                             <div className="col col-12 apex-col-auto">
                                               <div id="R715189986681792754" >
-                                                <div style={{paddingLeft:15}} className="html[dir='rtl']. paddingRight-ar"> <br />
+                                                <div style={{paddingLeft:15}} className="paddingRight-ar"> <br />
                                                   <h2 className="t-Region-title"> <FormattedMessage id="Wite.Text" defaultMessage="Wite to us" /></h2>
                                                 </div>
                                                 <br />

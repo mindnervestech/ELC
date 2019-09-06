@@ -1165,6 +1165,13 @@ ul li.active-tab a{
     margin-bottom: 30px;
 }
 
+html[dir="rtl"] .del-options
+{
+    margin-left:0px; 
+    margin-right:14px !important;
+    margin-bottom: 30px;
+}
+
 .home-deli {
     color: #0D943F;
     font-size: 1.5rem;
