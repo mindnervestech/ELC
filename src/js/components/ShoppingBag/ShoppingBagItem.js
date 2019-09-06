@@ -190,7 +190,7 @@ class ShoppingBagItem extends Component {
                         </div>
                      </Col>
                      <Col xs="6">
-                        <div className="row-4">
+                        <div className="row-4" style={{textAlign: 'start'}}>
                            <div style={{ padding: '15px 25px', fontFamily: 'VAG Rounded ELC Light' }}>
                               <span><FormattedMessage id="delivery-details.Subtotal.Title" defaultMessage="Subtotal" />:</span>
                               <span className="floatRight">{this.props.cart_details.currency}&nbsp;{this.props.cart_details.subtotal}</span>
@@ -266,7 +266,7 @@ class ShoppingBagItem extends Component {
                         <div className="row-3 blackTitle" style={{ fontSize: 16 }}>
                            <span>{item.currency}&nbsp;{item.price}</span>
                         </div>
-                        <div className="row-3 blackTitle" style={{ fontSize: 16 }}>
+                        <div className="row-3 blackTitle" style={{ fontSize: 16, textAlign: 'start' }}>
                            <span><FormattedMessage id="Item.Qty" defaultMessage="Qty" />: </span>
                            <span className="qut">{item.qty}</span>
                            <span className="floatRight" style={{ fontSize: 22 }}>{item.currency}&nbsp;{item.price * item.qty}</span>
@@ -277,7 +277,7 @@ class ShoppingBagItem extends Component {
                      <input type="text" placeholder="Enter promo code" className="email-field"></input>
                      <input type="submit" value="submit" className="submit-button"></input>
                   </div>
-                  <div className="row-4">
+                  <div className="row-4" style={{textAlign: 'start'}}>
                      <div style={{ padding: '10px 10px', fontFamily: 'VAG Rounded ELC Light', fontSize: 20 }}>
                         <span><FormattedMessage id="delivery-details.Subtotal.Title" defaultMessage="Subtotal" />:</span>
                         <span className="floatRight">{this.props.cart_details.currency}&nbsp;{this.props.cart_details.subtotal}</span>

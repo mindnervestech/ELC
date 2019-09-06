@@ -56,6 +56,7 @@
     -webkit-touch-callout: none;
     -webkit-tap-highlight-color: transparent;
 }
+
 .MagicScroll.MagicScroll-horizontal {
     -moz-touch-action: pan-y;
     -ms-touch-action: pan-y;
@@ -1152,7 +1153,7 @@ body.mcs-dragging button.mcs-button.mcs-horizontal.mcs-button-arrow {
     height: 12px;
     position: absolute;
     border-width: 3px;
-    border-color: rgba(49,51,61,0.6);
+    border-color: #0D943F; 
     border-style: solid;
     border-right: none;
     border-bottom: none;
@@ -1218,8 +1219,8 @@ body.mcs-dragging button.mcs-button.mcs-horizontal.mcs-button-arrow {
 }
 
 .MagicScroll.MagicScroll-arrows-inside .mcs-button-arrow:before {
-    width: 8px;
-    height: 8px;
+    width: 15px;
+    height: 15px;
 }
 
 .MagicScroll-horizontal.MagicScroll-arrows-inside:hover > .mcs-button-arrow:hover:not(.mcs-disabled) {
@@ -1561,4 +1562,14 @@ body.mcs-dragging button.mcs-button.mcs-horizontal.mcs-button-arrow {
 .lt-ie9-magic .MagicScroll.mcs-rounded .mcs-button-arrow.mcs-disabled {
     filter: alpha(opacity = 75) !important;
     color: #ccc;
+}
+
+@media (max-width:767px){
+    a[data-zoom-id] img, .mz-thumb img{
+        width: 100% !important;
+    }
+
+    .MagicScroll-horizontal .mcs-item{
+        padding-left: 7%;
+    }
 }

@@ -338,7 +338,7 @@ class MainHeader extends Component {
                                     {/* <li style={{height:40}}>
                                         <Button className="firstButton text-color">The Entertainer</Button>
                                     </li> */}
-                                    <li style={{ height: 40, marginLeft: 20 }}>
+                                    <li style={{ height: 40, marginLeft: 20, paddingTop: 5 }}>
                                         <Link to={`/${store_locale}/birth-day-club`} style={{ textDecoration: 'none' }}>
                                             <Button className="secondButton text-color"><FormattedMessage id="header.TheBirthdayclub" defaultMessage="Birthday Club" /></Button>
                                         </Link>
@@ -378,7 +378,7 @@ class MainHeader extends Component {
                                             <label className="iconLeble text-color changeLinkText"><FormattedMessage id="Header.SignInOrRegister" defaultMessage="sign in / register" /></label>
                                         </Link>
                                     </li>
-                                    <li style={this.state.userLogin ? { display: 'inline-block' } : { display: 'none' }}>
+                                    <li style={this.state.userLogin ? { display: 'inline-block', paddingTop: 1 } : { display: 'none' }}>
                                         <img src={profile} className="image-ion"></img>
                                         <label className="iconLeble text-color changeLinkText"><FormattedMessage id="header.Hello" defaultMessage="Hello" /> {this.props.user_details.customer_details.firstname} {this.props.user_details.customer_details.lastname}</label>
                                     </li>
@@ -516,7 +516,7 @@ class MainHeader extends Component {
 
                                     </div>
                                 </div>
-                                <div className="ll" style={{ display: 'inline-block' }}>
+                                <div className="ll enghishTextPadding" style={{ display: 'inline-block' }}>
                                         <div className="lang" style={{ fontSize: '1.2rem' }}>
                                             <a href="javascript:void(0);" onClick={(e) => this.translate('en', 'ltr')} className="active" >English</a>
                                             </div>

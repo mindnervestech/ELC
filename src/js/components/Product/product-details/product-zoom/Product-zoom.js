@@ -433,10 +433,10 @@ class ProductZoom extends Component {
 						</tr>
 					</tbody>
 				</table>
-				<div>
+				<div style={{paddingTop: 15}}>
 					<div
 						className="MagicScroll MagicScroll-arrows-inside"
-						data-options="items: 3; orientation: horizontal; loop: off; arrows: inside; draggable: true;"
+						data-options="items: 4; orientation: horizontal; loop: off; arrows: inside; draggable: true;"
 						data-mode="scroll"
 						id="MagicScroll-1479315243536"
 						style={{

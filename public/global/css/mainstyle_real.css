@@ -4539,6 +4539,24 @@ html[dir="rtl"] .header .navTrigger {
     margin: 0px 10px 0px !important;
     }
 
+    html.no-touch .header .link>li:hover .submenu{
+        display: block;
+        text-align: initial;
+        background-color: rgb(255, 255, 255);
+        -webkit-box-shadow: 0 0 0 0;
+        -moz-box-shadow: 0 0 0 0 ;
+        box-shadow: 0 0 0 0 ;
+    }
+
+    .header .row-3 .containers-main{
+        position: relative;
+        height: 100%;
+        overflow: auto;
+        margin: 0;
+        width: 100%;
+        padding: 20px;
+    }
+
 .header .changecountry .country .activeCountry .selected {
     display: none;
 }

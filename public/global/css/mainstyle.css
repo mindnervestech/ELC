@@ -202,6 +202,7 @@ html[dir="rtl"] .clearAll {
     width: 50%;
     border: solid 1px;
     border-color: #0D943F;
+    border-radius: 0px;
 }
 
 .cardPage .submit-button {
@@ -654,6 +655,7 @@ a {
     width: 70%;
     border: solid 1px;
     border-color: #0D943F;
+    border-radius: 0px;
 }
 
 .footer-css .submit-button {
@@ -3058,6 +3060,11 @@ html[dir="rtl"] .floatLift {
     float: right;
 }
 
+.enghishTextPadding{}
+html[dir="rtl"] .enghishTextPadding{
+    padding-left: 8px
+}
+
 li {
     font-size: 1.3rem;
 }
@@ -3273,7 +3280,7 @@ html[dir="rtl"] .Collapsible__trigger:after{
         padding: 1%;
         text-align: center;
         position: relative;
-        height: 120px;
+        height: 70px;
         background: #1da44c;
     }
 
