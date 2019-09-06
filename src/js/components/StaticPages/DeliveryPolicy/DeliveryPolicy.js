@@ -63,7 +63,7 @@ class DeliveryPolicy extends Component {
 				{this.state.spinner ? <Spinner loading={this.state.spinner}/> :
 				<div className="container">
 					<div className="row">
-					<div>
+					<div style={{margin:10}}>
             <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
               <span className="titleHover" style={{fontSize:12}}><FormattedMessage id="Checkout.Home" defaultMessage/></span><span>&nbsp;\&nbsp;&nbsp;</span>
             </Link>
@@ -74,7 +74,7 @@ class DeliveryPolicy extends Component {
 
 						
 							<div
-								className="t-Region g-wrapper-main_content  t-Region--removeHeader t-Region--noBorder t-Region--scrollBody margin-top-lg"
+								className="t-Region g-wrapper-main_content  t-Region--removeHeader t-Region--noBorder t-Region--scrollBody"
 								id="R231982418266982051"
 							>
 								<div className="t-Region-header">

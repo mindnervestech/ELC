@@ -34,3 +34,91 @@ margin:0px;
     padding: 0px 0px 19px;
     text-transform:none;
 }
+
+
+.add-child-buttton-club
+{
+
+    max-height: 40px !important;
+    background: #ee0e19;
+    text-decoration: none;
+    color: #ffffff;
+    text-align: center;
+    width: 15%!important;
+    padding: 10px 0px 10px 0px;
+    cursor: pointer;
+    border: solid 1px #ee0e19;
+    border-radius: 4px;
+    -webkit-appearance: inherit!important;
+
+}
+
+
+
+
+@media only screen and (max-width:640px)
+{
+
+    
+.add-child-buttton-club
+{
+
+    max-height: 40px !important;
+    background: #ee0e19;
+    text-decoration: none;
+    color: #ffffff;
+    text-align: center;
+    width: 100%!important;
+    padding: 10px 0px 10px 0px;
+    cursor: pointer;
+    border: solid 1px #ee0e19;
+    border-radius: 4px;
+    -webkit-appearance: inherit!important;
+
+}
+}
+
+
+
+@media only screen and (max-width:767px)
+{
+    .add-child-buttton-club
+{
+
+    max-height: 40px !important;
+    background: #ee0e19;
+    text-decoration: none;
+    color: #ffffff;
+    text-align: center;
+    width: 100%!important;
+    padding: 10px 0px 10px 0px;
+    cursor: pointer;
+    border: solid 1px #ee0e19;
+    border-radius: 4px;
+    -webkit-appearance: inherit!important;
+
+}
+}
+
+
+
+@media only screen and (min-width:768px) and(max-width:1024px)
+{
+    .add-child-buttton-club
+    {
+    
+        max-height: 40px !important;
+        background: #ee0e19;
+        text-decoration: none;
+        color: #ffffff;
+        text-align: center;
+        width: 100%!important;
+        padding: 10px 0px 10px 0px;
+        cursor: pointer;
+        border: solid 1px #ee0e19;
+        border-radius: 4px;
+        -webkit-appearance: inherit!important;
+    
+    }
+
+}

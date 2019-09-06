@@ -257,7 +257,7 @@ class ContactUs extends Component {
                 <div className="container">
                   <div className="row">
                     
-						  <div>
+						  <div style={{margin:10}}>
             <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
               <span className="titleHover" style={{fontSize:12}}><FormattedMessage id="Checkout.Home" defaultMessage/></span><span>&nbsp;\&nbsp;&nbsp;</span>
             </Link>

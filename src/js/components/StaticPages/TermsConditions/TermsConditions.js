@@ -31,7 +31,7 @@ class TermConditions extends Component {
 			<div className="t-Body-contentInner">
 				<div className="container">
 					<div className="row">
-					<div>
+					<div style={{margin:10}}>
             <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
               <span className="titleHover" style={{fontSize:12}}><FormattedMessage id="Checkout.Home" defaultMessage/></span><span>&nbsp;\&nbsp;&nbsp;</span>
             </Link>
@@ -39,7 +39,7 @@ class TermConditions extends Component {
           </div>
 						<div className="col col-12 apex-col-auto">
 							<div
-								className="t-Region g-wrapper-main_content  t-Region--removeHeader t-Region--noBorder t-Region--scrollBody margin-top-lg"
+								className="t-Region g-wrapper-main_content  t-Region--removeHeader t-Region--noBorder t-Region--scrollBody"
 								id="R231982418266982051"
 							>
 								<div className="t-Region-header">

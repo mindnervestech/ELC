@@ -3,6 +3,7 @@ import { Row, Col, Image, Form, FormGroup } from "react-bootstrap";
 import "./AddNewChild.css";
 //import BirthDayClubImage from '../../../../assets/images/BirthDayClub/birthday-club.png'
 //import BirthDayClubImage from '../../../assets/images/BirthDayClub/birthday-club.png'
+import { Link, Redirect } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import AlertBox from '../../Common/AlertBox/AlertBox';
 import { connect } from 'react-redux';
@@ -10,7 +11,7 @@ import * as actions from '../../../redux/actions/index';
 
 import BirthDayClubImage from '../../../../assets/images/BirthDayClub/birthday-club.png';
 
-export default class AddNewChild extends Component {
+ class AddNewChild extends Component {
   constructor(props) {
     super(props);
     this.state={
@@ -28,6 +29,7 @@ export default class AddNewChild extends Component {
     e.preventDefault();
   }
   render() {
+    let store_locale=this.props.globals.store_locale
 
     let firstNameInputField = <div ><div >
       {/* <div>  <FormattedMessage id="Form.FirstName" defaultMessage="First Name" /></div> */}
@@ -41,6 +43,12 @@ export default class AddNewChild extends Component {
         <Row style={{ marginTop: "40px" }}>
           <Col xs={1} lg={1} md={1} sm={1}></Col>
           <Col style={{ marginBottom: "40px" }}>
+          <div>
+            <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
+              <span className="titleHover" style={{fontSize:12}}><FormattedMessage id="Checkout.Home" defaultMessage/></span><span>&nbsp;\&nbsp;&nbsp;</span>
+            </Link>
+            <span  style={{fontSize:12}}><FormattedMessage id="birthdayclub.header" defaultMessage="Contact Us"/></span>
+          </div>
             <div className="paddingLeft">
               <h3 className="header-birth-club"><FormattedMessage id="birthdayclub.header" defaultMessage="" /></h3>
               <div className="img-src-width">
@@ -78,7 +86,7 @@ export default class AddNewChild extends Component {
                             <span className="blackTitle1"><FormattedMessage id="addnewchild.dateofbirth" defaultMessage="" /></span>
                         </div>
                         <div>
-                          <div style={{ paddingRight: 10 ,display:"inline"}}>
+                          <div style={{ paddingRight:'1.5%' ,display:"inline"}}>
                             <select name="title" className="select-field-box2" style={{marginRight: 0, padding:10 }}>
                                 <option selected disabled>DD</option>
                                 <option value="2011">value1</option>
@@ -86,7 +94,7 @@ export default class AddNewChild extends Component {
                                 <option value="2013">value3</option>
                             </select>
                             </div>
-                          <div style={{ paddingRight: 10 ,display:"inline"}}>
+                          <div style={{ paddingRight:'1.5%',display:"inline"}}>
                           <select name="title"  className="select-field-box2" style={{marginRight: 0,padding:10 }}>
                                 <option selected disabled>MM</option>
                                 <option value="2011">value1</option>
@@ -153,3 +161,14 @@ export default class AddNewChild extends Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+	return {
+	
+		spinnerProduct: state.spinner.loadingProduct,
+		globals:state.global
+ 	}
+}
+
+
+export default connect(mapStateToProps)(AddNewChild);

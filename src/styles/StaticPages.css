@@ -1066,3 +1066,40 @@ h3.h3p {
     line-height: 90px;
     color: #0d943f;
 }
+
+
+@media only screen and (max-width:640px)
+{
+  .static-page-style
+{
+    font-size:24px!important;
+    line-height: 50px;
+    color: #0d943f;
+}
+}
+
+
+
+@media only screen and (min-width:640px) and(max-width:767px)
+
+{
+
+  .static-page-style
+{
+    font-size:24px!important;
+    line-height: 50px;
+    color: #0d943f;
+}
+}
+
+
+@media only screen and  (min-width:768px) and  (max-width:1024px)
+{
+
+  .static-page-style
+{
+    font-size:24px!important;
+    line-height: 50px;
+    color: #0d943f;
+}
+}

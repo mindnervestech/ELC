@@ -40,15 +40,16 @@ import BirthDayClubImage from '../../../../assets/images/BirthDayClub/birthday-c
       <div>
         <Row style={{ marginTop: "40px" }}>
                   
-						  <div style={{textAlign:'center'}}>
+						  
+          <Col xs={1} lg={1} md={1} />
+          <Col style={{ marginBottom: "40px" }}>
+          <div>
             <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
               <span className="titleHover" style={{fontSize:12}}><FormattedMessage id="Checkout.Home" defaultMessage/></span><span>&nbsp;\&nbsp;&nbsp;</span>
             </Link>
             <span  style={{fontSize:12}}><FormattedMessage id="birthdayclub.header" defaultMessage="Contact Us"/></span>
           </div>
-          <Col xs={1} lg={1} md={1} />
-          <Col style={{ marginBottom: "40px" }}>
-            <div className="paddingLeft">
+            <div className="paddingLeft" style={{paddingRight:30}}> 
               <h3 className="header-birth-club"><FormattedMessage id="birthdayclub.header" defaultMessage="" /></h3>
               <div className="img-src-width">
                 <img src={BirthDayClubImage}/>
@@ -64,7 +65,7 @@ import BirthDayClubImage from '../../../../assets/images/BirthDayClub/birthday-c
                 </p>
                 <div style={{ justifyContent: "center",textAlign: "center",paddingTop:20 }}>
                   <button
-                    className="add-child-buttton bclub-button"
+                    className="add-child-buttton-club"
                     style={{ textAlign: "center" }}
                     onClick={this.redirectToAddChild}
                   >
