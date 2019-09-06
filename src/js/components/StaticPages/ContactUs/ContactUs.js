@@ -278,7 +278,7 @@ class ContactUs extends Component {
                             <div className="t-Region-buttons-left" />
                             <div className="t-Region-buttons-right" />
                           </div>
-                          <div className="t-Region-body">
+                          <div className="t-Region-body" >
                             <input type="hidden" id="MIS" name="MIS" defaultValue />
                             <center> <br />
                               <h1 className="t-page-titles"> <FormattedMessage id="ContactUs.Title" defaultMessage="ContactUs" /></h1>
@@ -306,7 +306,7 @@ class ContactUs extends Component {
                                           <div className="row">
                                             <div className="col col-12 apex-col-auto">
                                               <div id="R715189986681792754" >
-                                                <div> <br />
+                                                <div style={{paddingLeft:15}} className="html[dir='rtl']. paddingRight-ar"> <br />
                                                   <h2 className="t-Region-title"> <FormattedMessage id="Wite.Text" defaultMessage="Wite to us" /></h2>
                                                 </div>
                                                 <br />

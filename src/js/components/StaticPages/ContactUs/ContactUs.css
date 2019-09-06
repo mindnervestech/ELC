@@ -1,3 +1,9 @@
+
+html[dir='rtl'] .paddingRight-ar
+{
+    padding-right: 15px!important;
+}
+
 .paddingStyle
 {
 padding:10px!important;

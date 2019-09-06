@@ -18,6 +18,10 @@
   padding-left: 20%;
 }
 
+.bclub-button
+{
+     width:100%!important;
+}
 .header-birth-club {
   color: green;
   padding-left: 5px;
@@ -41,7 +45,7 @@
     text-decoration: none;
     color: #ffffff;
     text-align: center;
-    width: 100%!important;
+    width: 25%!important;
     padding: 10px 0px 10px 0px;
     cursor: pointer;
     border: solid 1px #ee0e19;
@@ -84,10 +88,10 @@
 }
 
 .button-div {
-  justify-content: center;
-  text-align: center;
+
+ 
   margin-top: 40px !important;
-  display: inline-flex;
+  
 }
 
 .button-cancel {
@@ -96,7 +100,7 @@
   text-decoration: none;
   color: #ffffff;
   text-align: center;
-  width: 154px!important;
+  width: 25%!important;
   border-radius: 4px;
   margin: 0px;
   padding: 10px 0px 10px 0px;
@@ -123,7 +127,7 @@
   }
 
   .bclub-button {
-    width: 48% !important;
+    width: 47% !important;
   }
 
   .m-40 {
