@@ -313,8 +313,7 @@ padding: 5px;
 /*number*/
 
 a[data-zoom-id] img, .mz-thumb img {
-    
-    width: 56px;
+    width: 55%;
 }
 
 

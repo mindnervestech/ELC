@@ -32,7 +32,7 @@ class ProductZoom extends Component {
 
 	componentDidUpdate(prevProps, prevState, snapshot) {
 
-		if(prevProps.productDetails.selectedColor != this.props.productDetails.selectedColor){
+		if (prevProps.productDetails.selectedColor != this.props.productDetails.selectedColor) {
 			// console.log('selectedColor',this.props.productDetails.selectedColor);
 			this.changeColor(this.props.productDetails.selectedColor);
 		}
@@ -47,18 +47,18 @@ class ProductZoom extends Component {
 
 
 	changeColor = color => {
-		var nodeno=0;
-		$("a[name='zoom-images-lg']").each( function () {
+		var nodeno = 0;
+		$("a[name='zoom-images-lg']").each(function () {
 			// $(this).removeClass('mz-thumb-selected');
 			var colorid = `${color}_0`;
 
 			if ($(this).attr('color-id') === colorid) {
 				// return false;
-				if(window.MagicZoom){
+				if (window.MagicZoom) {
 					// window.MagicZoom.switchTo('zoom-v', nodeno);
 					// $(this).addClass('mz-thumb mz-thumb-selected');
 
-					window.MagicZoom.switchTo('zoom-v',nodeno);
+					window.MagicZoom.switchTo('zoom-v', nodeno);
 					// window.MagicZoom.switchTo(nodeno,'zoom-v');
 				}
 			}
@@ -67,8 +67,8 @@ class ProductZoom extends Component {
 	}
 
 	_getImageDataColor = (data, color, index) => {
-		if(Object.keys(data).length === 0 && data.constructor === Object){
-			return ;
+		if (Object.keys(data).length === 0 && data.constructor === Object) {
+			return;
 		}
 
 		if (data) {
@@ -146,15 +146,15 @@ class ProductZoom extends Component {
 
 
 	_getVideoData = data => {
-		if ( (data) && (data.length > 0) ) {
+		if ((data) && (data.length > 0)) {
 			// console.log('videodata',data);
 			// console.log('videodata',data[0]);
 
 			return (
-				  <video controls autoplay="autoplay" loop muted preload style={{width: '100%'}}>
+				<video controls autoplay="autoplay" loop muted preload style={{ width: '100%' }}>
 					<source src={data[0]} type="video/mp4" />
-				  </video>
-			  );
+				</video>
+			);
 		}
 	}
 
@@ -174,13 +174,13 @@ class ProductZoom extends Component {
 		// return (
 		// 	this._checkDataExist(imageUrl.zoomimage, color, index)
 		// );
-		
-	}	
+
+	}
 
 	_checkDataExist = (data, color, index) => {
 		if (data) {
 			if ((data.thumbnail) && (data.thumbnail.length >= 1)) {				// if (data) {
-				const asdf = data.thumbnail.map((item, index) => this._renderData(item, index,color));				// 	const asdf = data.map((item, index) => this._renderData(item, index,color));
+				const asdf = data.thumbnail.map((item, index) => this._renderData(item, index, color));				// 	const asdf = data.map((item, index) => this._renderData(item, index,color));
 				return asdf;				// 	return asdf;
 			}
 			// return (
@@ -194,7 +194,7 @@ class ProductZoom extends Component {
 	_renderData = (item, index, color) => {
 		// console.log('item', item);
 		return (
-			<a data-slide-id="zoom" data-zoom-id="zoom-v" href={item} data-image={item} color-id={`${color}_${index}`} name="zoom-images-lg" onClick={(e)=> this._handleThumbImgClick(e,'img')}>
+			<a data-slide-id="zoom" data-zoom-id="zoom-v" href={item} data-image={item} color-id={`${color}_${index}`} name="zoom-images-lg" onClick={(e) => this._handleThumbImgClick(e, 'img')}>
 				<img srcSet={item} src={item} alt="" />
 			</a>
 		);
@@ -219,7 +219,7 @@ class ProductZoom extends Component {
 		}
 
 		return (
-			<a data-slide-id="video-1" href="#" data-load={thumbnails[0]} data-poster={thumbnails[0]} onClick={ (e) => this._handleThumbImgClick(e,'vid') } >
+			<a data-slide-id="video-1" href="#" data-load={thumbnails[0]} data-poster={thumbnails[0]} onClick={(e) => this._handleThumbImgClick(e, 'vid')} >
 				<img src={thumbnails[0]} alt="" />
 				<span className="fa fa-play-circle">&nbsp;</span>
 			</a>
@@ -253,7 +253,7 @@ class ProductZoom extends Component {
 		}
 	};
 
-	_handleThumbImgClick = (e,thumbType='img') => {
+	_handleThumbImgClick = (e, thumbType = 'img') => {
 
 		e.preventDefault();
 
@@ -265,7 +265,7 @@ class ProductZoom extends Component {
 			window.jQuery('.zoom-gallery .video-slide').addClass('active');
 		}
 	}
-  
+
 
 	_getUnique = (arr, comp) => {
 		const unique = arr
@@ -295,7 +295,7 @@ class ProductZoom extends Component {
 				let img = {
 					text: productZoomDetails.simpleproducts[item].color.text,
 					image: productZoomDetails.simpleproducts[item].simple_image,
-					video:productZoomDetails.simpleproducts[item].simple_video
+					video: productZoomDetails.simpleproducts[item].simple_video
 				}
 				imageArray.push(img);
 			});
@@ -306,17 +306,17 @@ class ProductZoom extends Component {
 		let image_array = {
 		};
 
-		if(newImageArray.length == 0){
-			if(this.props.productZoomDetails.imageUrl)
+		if (newImageArray.length == 0) {
+			if (this.props.productZoomDetails.imageUrl)
 				image_array['default'] = this.props.productZoomDetails.imageUrl;
 		}
 
-		for(let i=0;i<newImageArray.length; i++){
+		for (let i = 0; i < newImageArray.length; i++) {
 			image_array[newImageArray[i].text] = newImageArray[i].image;
 		}
-		
+
 		// console.log("image_array------------", image_array);
-		
+
 		// console.log('this.props.productZoomDetails.imageUrl', this.props.productZoomDetails.imageUrl);
 
 		return (
@@ -329,7 +329,7 @@ class ProductZoom extends Component {
 				<table style={{ margin: '0 auto' }}>
 					<tbody>
 						<tr>
-							<td className="zoom-gallery-thumbnails">
+							{/* <td className="zoom-gallery-thumbnails">
 								<div
 									className="MagicScroll MagicScroll-arrows-inside MagicScroll-vertical"
 									data-options="items: 4; orientation: vertical; loop: off; arrows: inside; draggable: true;"
@@ -346,11 +346,11 @@ class ProductZoom extends Component {
 									{this._checkDataExist(this.props.productZoomDetails.imageUrl)}
 									{this._checkDataExist(this.props.productZoomDetails.mediaVideoUrl)}
 								</div>
-							</td>
+							</td> */}
 
 							{/* this.checkSingleImage(this.props.productZoomDetails.imageUrl) */}
-							{productZoomDetails.imageUrl && productZoomDetails.imageUrl.thumbnail.length > 1 && 
-								( <td className="zoom-gallery-thumbnails hide-td">
+							{/* {productZoomDetails.imageUrl && productZoomDetails.imageUrl.thumbnail.length > 1 &&
+								(<td className="zoom-gallery-thumbnails hide-td">
 									<div
 										className="MagicScroll MagicScroll-arrows-inside MagicScroll-vertical"
 										data-options="items: 4; orientation: vertical; loop: off; arrows: inside; draggable: true;"
@@ -372,10 +372,10 @@ class ProductZoom extends Component {
 
 										{this._checkVideoDataExist(productZoomDetails.mediaVideoUrl)}
 
-									</div>	
+									</div>
 								</td>)
-							}	
-							
+							} */}
+
 							<td style={{ width: '80%' }}>
 								<div data-slide-id="zoom" className="zoom-gallery-slide active">
 									{/* <a>
@@ -405,34 +405,52 @@ class ProductZoom extends Component {
 										</button>
 									</a> */}
 
-									{	image_array && Object.keys(image_array).map((color, index) => {
+									{image_array && Object.keys(image_array).map((color, index) => {
 
-											if(color === this.props.productDetails.selectedColor) {
-												// return (this._getImageDataColor(image_array[color], color, index));
-											}
-											if(color === 'default'){
-												// return (this._getImageDataColor(image_array[color], color, index));
-											}
+										if (color === this.props.productDetails.selectedColor) {
+											// return (this._getImageDataColor(image_array[color], color, index));
+										}
+										if (color === 'default') {
+											// return (this._getImageDataColor(image_array[color], color, index));
+										}
 
-										})
+									})
 									}
-									
+
 									{this._getImageData(productZoomDetails.imageUrl)}
 
 								</div>
-                
-                				{
+
+								{
 									(productZoomDetails.mediaVideoUrl && productZoomDetails.mediaVideoUrl.length > 0) ?
 
-									<div data-slide-id="video-1" class="zoom-gallery-slide video-slide">
+										<div data-slide-id="video-1" class="zoom-gallery-slide video-slide">
 											{this._getVideoData(productZoomDetails.mediaVideoUrl)}
-									</div>
-									: ''
+										</div>
+										: ''
 								}
 							</td>
 						</tr>
 					</tbody>
 				</table>
+				<div>
+					<div
+						className="MagicScroll MagicScroll-arrows-inside"
+						data-options="items: 3; orientation: horizontal; loop: off; arrows: inside; draggable: true;"
+						data-mode="scroll"
+						id="MagicScroll-1479315243536"
+						style={{
+							visibility: 'visible',
+							display: 'inline-block',
+							width: '100%',
+							height: '100px',
+							overflow: 'visible',
+						}}
+					>
+						{this._checkDataExist(this.props.productZoomDetails.imageUrl)}
+						{this._checkDataExist(this.props.productZoomDetails.mediaVideoUrl)}
+					</div>
+				</div>
 			</div>
 		);
 	}
