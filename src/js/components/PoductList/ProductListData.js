@@ -61,7 +61,13 @@ class ProductListData extends Component {
 	handler(id) {
 		productList = id;
 		let count = 0
+		let checkFirstValue = true
+		let firstValue = 0
 		for (var element in productList) {
+			if(checkFirstValue){
+				checkFirstValue = false
+				firstValue = element
+			}
 			count++
 		}
 		let totalPages = 1
@@ -71,8 +77,13 @@ class ProductListData extends Component {
 			totalPages = Math.floor(count / pagenationCount) + 1
 		}
 		this.setState({ totalPages: totalPages, pageNumber: 1 })
-		this.state.check = false
-		this.pagenation(0, pagenationCount - 1)
+		if(firstValue == 0){
+			this.state.check = false
+			this.pagenation(0, pagenationCount - 1)
+		}else{
+			this.state.check = true
+			this.pagenation(1, pagenationCount)
+		}
 	}
 
 	componentWillMount() {
