@@ -38,7 +38,7 @@ class ProductInfo extends Component {
 			is_in_wishlist_item:false,
 			wishlist_message:'',
 			ischeck:true,
-      showLearning: false,
+      		showLearning: false,
 		};
 		this.addToCart = this.addToCart.bind(this);
 	}
@@ -285,7 +285,7 @@ class ProductInfo extends Component {
 	};
 
 	learningSkills2(value){
-		let checkData = value.replace(' ', "")
+		let checkData = value.replace(/\s/g,'')
 		return(
 			<div style={{display: 'inline-block'}}>
 				{checkData != '' ? <img src={'/images/' + checkData + '.png'} /> : null}
@@ -528,7 +528,7 @@ class ProductInfo extends Component {
 														{/* <span className="in-stock">
 														In stock
 													</span> */}
-														<span style={{ margin: '10px' }}>
+														<span style={{ marginLeft: '20px' }}>
 															<a href=''>Coming Soon</a>
 														</span>
 													</div>
@@ -628,7 +628,8 @@ class ProductInfo extends Component {
 											{/* <div className="deliy-free">
 												<span>this product includes free UK delivery</span>
 											</div> */}
-											{this.state.showLearning ? <div className="learn-skill">
+											{data.learningSkills && (Object.values(data.learningSkills)[0].length> 0 || Object.values(data.learningSkills)[1].length > 0 || Object.values(data.learningSkills)[2].length > 0) ? 
+											<div className="learn-skill">
 												<span><FormattedMessage id="LearningSkills" defaultMessage="Learning skills" />:</span>
 											</div> : <div />}
 											<div className="learn-skill-img">
