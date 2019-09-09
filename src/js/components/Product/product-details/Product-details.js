@@ -130,7 +130,7 @@ class ProductDetails extends Component {
 			</Helmet></>;
 		}
 		if(document.getElementsByClassName("styles_modal__gNwvD")[0]){
-			document.getElementsByClassName("styles_modal__gNwvD")[0].style.cssText="height: 500px !important; width:450px !important"
+			document.getElementsByClassName("styles_modal__gNwvD")[0].style.cssText="height: auto !important; width:450px !important"
 		}
 
 		return (

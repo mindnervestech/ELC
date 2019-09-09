@@ -1045,7 +1045,7 @@ h3.h3p {
 
 @media only screen and (max-width: 767px) {
     .loginFormHight{
-        height: 999px!important;
+        height: auto!important;
         overflow: hidden!important;
     }
 }

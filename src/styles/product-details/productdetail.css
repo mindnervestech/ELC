@@ -1732,7 +1732,75 @@ html[dir="rtl"] .styles_modal__gNwvD div{
     font-family: "VAG Rounded ELC Bold";
 }
 
+.addToCardPopup{
+    padding: 25px;
+}
+
+.addToCardPopup .productImageDiv{
+    width: 20%;
+    vertical-align: top;
+    display: inline-block;
+}
+
+.addToCardPopup .productDetailDiv{
+    width: 42%;
+    margin-left: 15px;
+    vertical-align: top;
+    display: inline-block;
+}
+
+.addToCardPopup .addTocardButtonDiv{
+    width: 30%;
+    margin-left: 15px;
+    display: inline-block;
+}
+
+.addToCardPopup .productListDiv{
+    padding-top: 15px !important;
+    max-height: 295px;
+    overflow: scroll;
+}
+
+.removeRowCss{
+
+}
+
 @media (max-width:767px){ 
+
+    .addToCardPopup{
+        padding: 15px !important;
+    }
+
+    .addToCardPopup .productImageDiv{
+        width: 25%;
+        vertical-align: top;
+        display: inline-block;
+    }
+    
+    .addToCardPopup .productDetailDiv{
+        width: 70%;
+        margin-left: 5%;
+        vertical-align: top;
+        display: inline-block;
+    }
+
+    .addToCardPopup .removeRowCss{
+        margin: 0px;
+    }
+
+    .addToCardPopup .addTocardButtonDiv{
+        width: 100%;
+        margin-left: 0px;
+        display: block;
+        margin-top: 5px;
+    }
+
+    .cart_modeal h2{
+        width: 100%;
+        border-bottom: 1px solid #d6d6d6;
+        padding: 3px;
+    }
+
     html[dir="rtl"] .row.rating-review {
         margin-right: 0px;
     }
@@ -1889,7 +1957,7 @@ html[dir="rtl"] .styles_modal__gNwvD div{
 { 
 
 .styles_modal__gNwvD div {
-    padding: 16px 14px !important;
+    /* padding: 16px 14px !important; */
 }
 }
 
@@ -1902,5 +1970,13 @@ html[dir="rtl"] .styles_modal__gNwvD div{
     html[dir="rtl"] .zoom-gallery-thumbnails{        
         padding-left: 0px;
         padding-right: 0 !important;        
+    }
+}
+
+@media only screen and (max-width: 1279px) and (min-width: 768px){
+    .cart_modeal h2{
+        width: 100%;
+        border-bottom: 1px solid #d6d6d6;
+        padding: 3px;
     }
 }

@@ -113,7 +113,7 @@ class ProductBasic extends Component {
         console.log("this.props", this.props);
         return (
 
-            <div className="col" style={{ padding: 25 }}>
+            <div className="col addToCardPopup">
                 <div>
                     <span>
                         <i className="fa fa-check cbox-icon-success right-icon-fa">
@@ -121,7 +121,7 @@ class ProductBasic extends Component {
                         </i>
                     </span>
                 </div>
-                <div className="row padding-model">
+                <div className="row padding-model removeRowCss">
                     <div className="button-model" onClick={() => this.checkOut('shopping')}>
                         <button className="contunue-shopping-btn"><FormattedMessage id="Cart.ContinueShopping.Title" defaultMessage="Continue Shopping" /></button>
                     </div>
@@ -136,18 +136,18 @@ class ProductBasic extends Component {
                     <h2 />
                 </div>
 
-                <div className="col padding-model">
+                <div className="col" style={{padding: 0}}>
                     <div className="button-model on-mobile">
                         <span className="related-title">Related Products</span>
                     </div>
 
-                    <div className="row related-item">
-                        <div style={{width:'20%'}}>
+                    <div className="related-item productListDiv">
+                        <div className="productImageDiv">
                             {/* <Link to={`/${store_locale}/products-details/${list[keyName].json.url_key}`}> */}
                                 <img className="related-item-img"  src={logo1} />
                             {/* </Link> */}
                         </div>
-                        <div className="col" style={{width:'55%', marginLeft: '15px'}}>
+                        <div className="productDetailDiv">
                             <div className="related-title">
                                 {/* <Link to={`/${store_locale}/products-details/${list[keyName].json.url_key}`}> */}
                                 <span>Early Learning Centre Bouncy Palace</span>
@@ -159,7 +159,7 @@ class ProductBasic extends Component {
                             </div>
                         </div>
 
-                        <div className="alsoLikeCard add-cart" style={{width:'30%', marginLeft: '15px'}}>
+                        <div className="alsoLikeCard add-cart addTocardButtonDiv">
                             <div className="homePage">
                                 <button  onClick={this.addToCart} className="alsoLikeCardButton" style={{ marginTop: 0, width:'100%' }}>
                                     <FormattedMessage id="Product.Detail.addToBasket" defaultMessage="Add to basket" /></button>

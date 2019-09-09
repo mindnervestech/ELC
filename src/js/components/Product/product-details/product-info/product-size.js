@@ -302,7 +302,7 @@ class ProductSize extends Component {
 			// 		<div data-selector="box" data-name="band-size" data-label-id role="radiogroup">
 			// 			{newArr.map(this.__renderProductSizes)}
 			// 		</div>
-				<div className="row" style={{padding: 40}}>
+				<div className="row" style={{padding: 25}}>
 					{/* <div className="Demo__some-network share-icon">
 						<FacebookShareButton
 							url={shareUrl}

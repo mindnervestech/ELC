@@ -368,7 +368,7 @@ class ContactUs extends Component {
                                                       </div>
                                                       <div className="row">
                                                         <div className="mob-width col col-6 apex-col-auto width-full padd-right-div width-full-desk">
-                                                          <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel is-required apex-item-wrapper js-show-label" id="PHONE_CONTAINER">
+                                                          <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel is-required apex-item-wrapper js-show-label" id="PHONE_CONTAINER" style={{right: 13}}>
                                                             <div className="t-Form-labelContainer">
 
                                                               <label htmlFor="PHONE" id="PHONE_LABEL" className="t-Form-label">
