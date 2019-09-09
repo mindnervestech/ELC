@@ -50,20 +50,14 @@ class ProductInfo extends Component {
 	}
 
 
-	componentWillReceiveProps(nextProps)
-	{
-		console.log("next props",nextProps)
+	componentWillReceiveProps(nextProps){
 		let i=0;
-		for(i=0;i<this.props.wishlistItem.products.length;i++)
-		{
-			if(this.props.productZoomDetails.id===this.props.wishlistItem.products[i].product_id)
-			{ 
+		for(i=0;i<this.props.wishlistItem.products.length;i++){
+			if(this.props.productZoomDetails.id===this.props.wishlistItem.products[i].product_id){ 
 				document.getElementById('Capa_1').setAttribute('class', 'naylove-icon active');
 				this.setState({is_in_wishlist_item:true})
 			}
-			else
-
-			{
+			else{
 				document.getElementById('Capa_1').setAttribute('class', 'naylove-icon ');
 				this.setState({is_in_wishlist_item:false})
 			}
@@ -252,7 +246,6 @@ class ProductInfo extends Component {
 
 	learningSkills2(value){
 		let checkData = value.replace(' ', "")
-		console.log(checkData)
 		return(
 			<div style={{display: 'inline-block'}}>
 				{checkData != '' ? <img src={'/images/' + checkData + '.png'} /> : null}

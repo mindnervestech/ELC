@@ -1004,6 +1004,7 @@ font-weight: 100;
 
 .styles_modal__gNwvD {
    width: 417px !important;
+   height: 129px !important;
 }
 
 .short-text {
@@ -1359,6 +1360,52 @@ html[dir="rtl"] .write-review .write-a-re i{
     border-bottom: 1px solid #d6d6d6;
 }
 
+.cart_modeal h2 {
+    width: 100%; 
+    border-bottom: 1px solid #d6d6d6;
+    padding: 15px;
+}
+
+.related-title{
+    font-size: 20px;
+    line-height: 26px;
+    font-weight: 100;
+    color: #717171;
+}
+
+.related-item-img{
+    height: 80px;
+    width: 80px;
+}
+
+.related-item{
+    padding: 14px 0px 0px 0px!important;
+    width: 100%;
+}
+
+.related-item .special_price{
+    color: #b3b3b3;
+    text-decoration: line-through;
+    margin-bottom: 0px;
+    margin-left: 0.5rem;
+    font-weight: normal;
+}
+
+.related-item .related-title{
+    font-size: 14px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #0d943f;
+    line-height: 23px;
+    font-weight: bold;
+}
+
+.related-item div{
+    padding: 0px !important;
+}
+
+
+
 .you-may-like-title label{
     padding-left: 35px;
     color: #4f4f4f;
@@ -1454,10 +1501,17 @@ html[dir="rtl"] .review_title{
     width: 92px;
 }
 
-.styles_modal__gNwvD{
+/* .styles_modal__gNwvD{
     height: 66% !important;
-}
+} */
 
+.padding-model{
+    padding: 0px 0px 0px 15px !important;
+}
+.button-model{
+    width: 50% !important;
+    padding: 0px !important;
+}
 .padding-mob{
     padding-left: 55px;
 }
@@ -1580,14 +1634,14 @@ html[dir="rtl"] .quantity-mob{
     margin-right: 0px !important;
 }
 
-.styles_modal__gNwvD{
+/* .styles_modal__gNwvD{
     height: 129px !important;
-}
+} */
 .styles_modal__gNwvD div{
-        padding: 16px 17px !important;
+    padding: 16px 17px;
 }
 html[dir="rtl"] .styles_modal__gNwvD div{
-        padding: 16px 17px !important;
+    padding: 16px 17px;
 }
 
 .specification-title{
@@ -1641,12 +1695,55 @@ html[dir="rtl"] .styles_modal__gNwvD div{
     margin-top: 55px !important;
 }
 
+.fa-check:before{
+    margin-right: 12px;
+}
 
+.right-icon-fa{
+    color:#0d943f;
+    font-size:24px;
+}
+
+.alsoLikeCardButton {
+    background-color: #EE0E19;
+    color: #fff;
+    border: solid 1px #EE0E19;
+    border-radius: .4rem;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 0px;
+    width: 95%;
+    height: 4.3rem;
+    text-align: center;
+    font-family: "VAG Rounded ELC Bold";
+}
+
+.contunue-shopping-btn{
+    background-color: #0D943F;
+    color: #fff;
+    border: solid 1px #0D943F;
+    border-radius: .4rem;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 0px;
+    width: 95%;
+    height: 4.3rem;
+    text-align: center;
+    font-family: "VAG Rounded ELC Bold";
+}
 
 @media (max-width:767px){ 
     html[dir="rtl"] .row.rating-review {
-        /* margin: 0; */
         margin-right: 0px;
+    }
+
+    .on-mobile{
+        width: 70% !important;
+        padding: 0px !important;
+    }
+
+    .padding-model{
+        padding: 0px 0px 0px 0px !important;
     }
 
     .country-model{
@@ -1788,7 +1885,7 @@ html[dir="rtl"] .styles_modal__gNwvD div{
    
 
 }
-@media only screen and (min-width:340px) and (max-width:767px)
+@media only screen and (min-width:340px) and (max-width:768px)
 { 
 
 .styles_modal__gNwvD div {

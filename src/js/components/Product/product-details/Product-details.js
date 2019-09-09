@@ -13,10 +13,12 @@ import * as actions from '../../../redux/actions/index';
 import Spinner from '../../Spinner/Spinner2';
 import ProductInformation from './product-info/product-info';
 import ProductReview from '../product-details/product-info/product-sizeGuide';
-
+import AddToCartModal from '../product-details/product-info/product-basic';
 import { trackF, initializeF } from '../../utility/facebookPixel';
 import { live } from '../../../api/globals';
+import Modal from 'react-responsive-modal';
 import ProductRecentlyViewed from '../product-details/product-info/product-color';
+import { FormattedMessage } from 'react-intl';
 
 class ProductDetails extends Component {
 	constructor(props) {
@@ -24,6 +26,8 @@ class ProductDetails extends Component {
 		this.state = {
 			productData: [],
 			productDetailTab: 'Product Information',
+			addToCartModal: false,
+			cartModelFlag: false,
 		};
 	}
 
@@ -42,7 +46,7 @@ class ProductDetails extends Component {
 		const data = {
 			customerid: typeof this.props.customer_details.customer_id !== 'undefined' ? parseInt(this.props.customer_details.customer_id) : " ",
 			store: this.props.globals.currentStore,
-			 url_key: params.category,
+			url_key: params.category,
 			// url_key:'elc18-1'
 		};
 		this.props.onGetProductDetails(data);
@@ -79,27 +83,38 @@ class ProductDetails extends Component {
 			};
 			this.props.onGetProductDetails(data);
 		}
-		if(prevProps.addToCardLoader !== this.props.addToCardLoader){
+		if (prevProps.addToCardLoader !== this.props.addToCardLoader) {
 			if (this.props.user_details.isUserLoggedIn) {
 				this.props.OngetMyCart({
-				quote_id: this.props.user_details.customer_details.quote_id,
-				store_id: this.props.globals.currentStore
+					quote_id: this.props.user_details.customer_details.quote_id,
+					store_id: this.props.globals.currentStore
 				})
 			} else {
 				this.props.OngetMyCart({
-				quote_id: this.props.guest_user.new_quote_id,
-				store_id: this.props.globals.currentStore
+					quote_id: this.props.guest_user.new_quote_id,
+					store_id: this.props.globals.currentStore
 				})
-		
+
 			}
 		}
-		
-		
+		console.log(this.props.addToCardLoader);
+		if (this.props.addToCardLoader) {
+			if (!this.state.cartModelFlag) {
+				this.setState({
+					addToCartModal: true,
+					cartModelFlag: true
+				})
+			}
+		}
 	}
 
-	getProductInfoDetail(type){
-		this.setState({productDetailTab : type});
-		
+	onCloseCartModal = () => {
+		this.setState({ addToCartModal: false, cartModelFlag: false })
+	}
+
+	getProductInfoDetail(type) {
+		this.setState({ productDetailTab: type });
+
 	}
 
 	render() {
@@ -114,6 +129,9 @@ class ProductDetails extends Component {
 				<meta name="description" content={this.props.productDetails.meta_description} />
 			</Helmet></>;
 		}
+		if(document.getElementsByClassName("styles_modal__gNwvD")[0]){
+			document.getElementsByClassName("styles_modal__gNwvD")[0].style.cssText="height: 500px !important; width:450px !important"
+		}
 
 		return (
 			<div className="t-Body">
@@ -121,12 +139,12 @@ class ProductDetails extends Component {
 				<div className="t-Body-main" style={{ marginTop: '0px !important' }}>
 					<div className="t-Body-title" id="t_Body_title" style={{ top: '294px' }}>
 						{this.props.productDetails.name && (<Breadcrumb name={`${this.props.productDetails.category_names && this.props.productDetails.category_names.length > 0
-						 ? this.props.productDetails.category_names : localStorage.getItem('current-categogy-name')}--${this.props.productDetails.short_description}`} />)}
+							? this.props.productDetails.category_names : localStorage.getItem('current-categogy-name')}--${this.props.productDetails.short_description}`} />)}
 					</div>
 					<div className="t-Body-content" id="t_Body_content">
 						<div id="t_Body_content_offset" style={{ height: '85px' }} />
 						<div className="t-Body-contentInner">
-							{this.props.productDetailLoader || this.props.addToCardLoader ? <Spinner /> : (<div className="container" style={{maxWidth: '85%'}}>
+							{this.props.productDetailLoader || this.props.addToCardLoader ? <Spinner /> : (<div className="container" style={{ maxWidth: '85%' }}>
 								<ProductInfo data={this.props.productDetails} currentStore={this.props.globals.currentStore} />
 
 								{/* {this.props.productDetails.similar_products && (
@@ -137,8 +155,8 @@ class ProductDetails extends Component {
 						</div>
 						<div className="col col-12 product-tab show-web">
 							<div>
-								<ul style={{marginBottom:0}}>
-									<li style={{width:184, marginRight:25}} className={this.state.productDetailTab == "Product Information" ? "active-tab" : ''}>
+								<ul style={{ marginBottom: 0 }}>
+									<li style={{ width: 184, marginRight: 25 }} className={this.state.productDetailTab == "Product Information" ? "active-tab" : ''}>
 										<a onClick={() => this.getProductInfoDetail('Product Information')} className="product-des">Product Information</a>
 									</li>
 									{/* <li style={{width:184, marginRight:25}} className={this.state.productDetailTab == "Delivery options" ? "active-tab" : ''}>
@@ -151,15 +169,20 @@ class ProductDetails extends Component {
 							</div>
 						</div>
 						{this.state.productDetailTab !== '' ?
-						<div className="col col-12">
-							<div className="product-info">
-								<ProductInformation data={this.props.productDetails} type={this.state.productDetailTab} currentStore={this.props.currentStore}/>
+							<div className="col col-12">
+								<div className="product-info">
+									<ProductInformation data={this.props.productDetails} type={this.state.productDetailTab} currentStore={this.props.currentStore} />
+								</div>
 							</div>
-						</div>
-						: ''}
+							: ''}
+						{this.state.addToCartModal ? <div>
+							<Modal  open={this.state.addToCartModal} onClose={this.onCloseCartModal}>
+								<AddToCartModal onCloseCartModal={this.onCloseCartModal} />
+							</Modal>
+						</div> : ''}
 						{/* You may also like */}
 						<ProductSlider currency={this.props.productDetails.currency} store_name={this.props.globals.store_locale} similar_product={this.props.productDetails.similar_products} />
-					
+
 						{/* Product Review */}
 
 						{/* <ProductReview /> */}
@@ -184,7 +207,7 @@ const mapStateToProps = state => {
 		addToCardLoader: state.productDetails.addToCardLoader,
 		cart_details: state.myCart,
 		user_details: state.login,
-    	guest_user: state.guest_user,
+		guest_user: state.guest_user,
 	};
 };
 
