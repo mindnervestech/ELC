@@ -38,7 +38,7 @@ class ProductInfo extends Component {
 			is_in_wishlist_item:false,
 			wishlist_message:'',
 			ischeck:true,
-      		showLearning: false,
+      showLearning: false,
 		};
 		this.addToCart = this.addToCart.bind(this);
 	}

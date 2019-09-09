@@ -1356,7 +1356,7 @@ html[dir="rtl"] .write-review .write-a-re i{
 }
 
 .you-may-like-title h2{
-    width: 37%; 
+    width: 42%; 
     border-bottom: 1px solid #d6d6d6;
 }
 
@@ -1407,13 +1407,11 @@ html[dir="rtl"] .write-review .write-a-re i{
 
 
 .you-may-like-title label{
-    padding-left: 35px;
     color: #4f4f4f;
-    padding-right: 35px;
     font-family: "VAG Rounded ELC Light";
-    font-size: 2.7rem;
+    font-size: 30px;
     font-weight: 300;
-    width: 26%;
+    width: 16%;
     text-align: center;
 }
 
