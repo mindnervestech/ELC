@@ -6952,7 +6952,7 @@ html[dir="rtl"] .t-Report-report tr .t-Report-cell:last-child,
 
 @media only screen and (max-width: 500px) {
 .t-Alert--page.t-Alert--success {  
-    margin-top: 15em !important;
+    margin-top: 0px !important;
   
   }
   .t-Alert--page .t-Alert-title {

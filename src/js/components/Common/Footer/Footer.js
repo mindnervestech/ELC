@@ -12,17 +12,18 @@ import parse from 'html-react-parser';
 import ShowMore from 'react-show-more';
 import $ from 'jquery';
  import { Container, Row, Col, Button } from 'reactstrap';
-
+import * as util from '../../utility/utility';
 import payPalImg from '../../../../assets/images/social/paypal.svg';
 import masterCardImg from '../../../../assets/images/social/masterCard.svg';
 import VISAImg from '../../../../assets/images/social/visa.svg';
 import verisignSecureImg from '../../../../assets/images/social/verisign-secure.svg';
-
+import Axios from 'axios';
 import facebook from '../../../../assets/images/social/Facebook.svg';
 import instagram from '../../../../assets/images/social/instagram.svg';
 import youtube from '../../../../assets/images/social/youtube.svg';
 import twitter from '../../../../assets/images/social/twitter.svg';
 import Collapsible from 'react-collapsible';
+import { BASE_URL, API_TOKEN } from '../../../api/globals';
 
 import ScrollToTop from 'react-scroll-up';
 const style = {
@@ -30,55 +31,222 @@ const style = {
     opacity: 0.5,
 }
 class Footer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: "",
+      success:'',
+      showAlert:false,
+      errorMessage: {}
+    };
+  }
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            
+  handleValidation = () => {
+    let email = this.state.email;
+
+    let errors = {};
+    let formIsValid = true;
+    //Email
+    if (typeof email !== "undefined") {
+      if (email.length === 0) {
+        formIsValid = false;
+        errors["email"] = (
+          <FormattedMessage
+            id="Signup.validation.email.empty"
+            defaultMessage="Please enter email"
+          />
+        );
+      }
+
+      if (email.length > 0) {
+        let lastAtPos = email.lastIndexOf("@");
+        let lastDotPos = email.lastIndexOf(".");
+        if (
+          !(
+            lastAtPos < lastDotPos &&
+            lastAtPos > 0 &&
+            email.indexOf("@@") == -1 &&
+            lastDotPos > 2 &&
+            email.length - lastDotPos > 2 &&
+            !email.includes(" ")
+          )
+        ) {
+          formIsValid = false;
+          errors['email'] = (
+            <FormattedMessage
+              id="Signup.validation.email.invalid"
+              defaultMessage="Please enter email in valid format"
+            />
+          );
         }
+      }
     }
 
-    render() {
-        
-let store_locale=this.props.globals.store_locale
-        return (
-            <>
-            <footer className="footer-css">
-                <div className="row footer-line footer-show-web">
-                    <div className="col col-4" style={{textAlign: 'start', paddingLeft: '15%'}}>
-                        <div className="footer-title">
-                            <span><FormattedMessage id="footer.AboutELC" defaultMessage="About ELC" /></span>
-                        </div>
-                        <ul className="text-color">
-                            <li>
-                                <Link to={`/${store_locale}/about-us`} style={{ textDecoration: 'none' }}>
-                                    <FormattedMessage id="footer.aboutElc" defaultMessage="About ELC Toys" />
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to={`/${store_locale}/help-and-faq`} style={{ textDecoration: 'none' }}>
-                                    <FormattedMessage id="footer.helpFaqs" defaultMessage="FAQ" />
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to={`/${store_locale}/contact-us`} style={{ textDecoration: 'none' }}>
-                                    <FormattedMessage id="footer.contactUs" defaultMessage="Contact Us" />
-                                </Link>
-                            </li>
-                            <li>
-                            <Link to={`/${store_locale}/birth-day-club`} style={{ textDecoration: 'none' }}>
-                                <FormattedMessage id="footer.BirthdayClub" defaultMessage="Birthday Club" />
-                            </Link>
-                            </li>
-                            <li>
-                            <a><FormattedMessage id="footer.Newsletter" defaultMessage="Newsletter" /></a>
-                            </li>
-                            <li>
-                            <Link to={`/${store_locale}/charity`} style={{ textDecoration: 'none' }}>
-                                <FormattedMessage id="footer.Charity" defaultMessage="Charity" /></Link>
-                            </li>
-                        </ul>
-                    </div>
+    this.setState({ errors: errors });
+    return formIsValid;
+  };
+  closeAlert = () => {
+    this.setState({ showAlert: false });
+  }
+
+  handleChange = (event) => {
+    this.setState({ email: event.target.value });
+  }
+
+  submitNewsLetter = (event) => {
+
+
+    if (this.handleValidation()) {
+      const data = this.state.email;
+      if (this.state.email) {
+
+        const API = Axios.create({
+          baseURL: BASE_URL,
+          headers: { Authorization: `Bearer ${API_TOKEN}`, 'Content-Type': 'application/json' },
+        });
+
+        API.post(`subscribetonewsletter`, { 'email': data }).then(res => {
+
+          this.setState({ email: '', success: res.data.message, showAlert: true });
+          setTimeout(() => {
+            this.closeAlert()
+          }, 5000);
+
+        });
+      }
+    }
+
+
+  };
+
+
+  render() {
+    let errorObj = this.state.errors;
+    let store_locale = this.props.globals.store_locale;
+    let emailInputField = <input
+      type="text"
+      placeholder="enter your e-mail address"
+      className="email-field"
+      value={this.state.email}
+      onChange={this.handleChange}
+    ></input>
+
+    let emailInputErrorField = null;
+    if (errorObj) {
+      emailInputErrorField =
+
+        <div><span style={{ color: 'red' }}>{errorObj['email']}</span></div>
+    }
+
+
+    let respo_message = null;
+
+    if (this.state.success && this.state.showAlert) {
+      respo_message = <span id="APEX_SUCCESS_MESSAGE" data-template-id="126769709897686936_S" className="apex-page-success u-visible"><div className="t-Body-alert">
+        <div className="t-Alert t-Alert--defaultIcons t-Alert--success t-Alert--horizontal t-Alert--page t-Alert--colorBG" id="t_Alert_Success" role="alert">
+          <div className="t-Alert-wrap">
+            <div className="t-Alert-icon">
+              <span className="t-Icon" />
+            </div>
+            <div className="t-Alert-content">
+              <div className="t-Alert-header">
+                <h2 className="t-Alert-title">{this.state.success}</h2>
+              </div>
+            </div>
+            <div className="t-Alert-buttons">
+              <button className="t-Button t-Button--noUI t-Button--icon t-Button--closeAlert" type="button" title="Close Notification" onClick={this.closeAlert} ><span className="t-Icon icon-close" /></button>
+            </div>
+          </div>
+        </div>
+      </div></span>;
+
+    }
+
+
+
+    return (
+      <>
+        {respo_message}
+        <footer className="footer-css">
+          <div className="row footer-line footer-show-web">
+            <div
+              className="col col-4"
+              style={{ textAlign: "start", paddingLeft: "15%" }}
+            >
+              <div className="footer-title">
+                <span>
+                  <FormattedMessage
+                    id="footer.AboutELC"
+                    defaultMessage="About ELC"
+                  />
+                </span>
+              </div>
+              <ul className="text-color">
+                <li>
+                  <Link
+                    to={`/${store_locale}/about-us`}
+                    style={{ textDecoration: "none" }}
+                  >
+                    <FormattedMessage
+                      id="footer.aboutElc"
+                      defaultMessage="About ELC Toys"
+                    />
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to={`/${store_locale}/help-and-faq`}
+                    style={{ textDecoration: "none" }}
+                  >
+                    <FormattedMessage
+                      id="footer.helpFaqs"
+                      defaultMessage="FAQ"
+                    />
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to={`/${store_locale}/contact-us`}
+                    style={{ textDecoration: "none" }}
+                  >
+                    <FormattedMessage
+                      id="footer.contactUs"
+                      defaultMessage="Contact Us"
+                    />
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to={`/${store_locale}/birth-day-club`}
+                    style={{ textDecoration: "none" }}
+                  >
+                    <FormattedMessage
+                      id="footer.BirthdayClub"
+                      defaultMessage="Birthday Club"
+                    />
+                  </Link>
+                </li>
+                <li>
+                  <a>
+                    <FormattedMessage
+                      id="footer.Newsletter"
+                      defaultMessage="Newsletter"
+                    />
+                  </a>
+                </li>
+                <li>
+                  <Link
+                    to={`/${store_locale}/charity`}
+                    style={{ textDecoration: "none" }}
+                  >
+                    <FormattedMessage
+                      id="footer.Charity"
+                      defaultMessage="Charity"
+                    />
+                  </Link>
+                </li>
+              </ul>
+            </div>
 
                     <div className="col col-3" style={{textAlign: 'start', padding: 0}}>
                         <div className="footer-title">
@@ -118,8 +286,18 @@ let store_locale=this.props.globals.store_locale
                             
                         </div>
                         <div>
-                            <input type="text" placeholder="enter your e-mail address" className="email-field"></input>
-                            <button className="submit-button"><FormattedMessage id="Submit.Text" defaultMessage="Submit" /></button>
+              {emailInputField}
+                {/* <input
+                  type="text"
+                  placeholder="enter your e-mail address"
+                  className="email-field"
+                  value={this.state.email}
+                  onChange={this.handleChange}
+                ></input> */}
+                <button className="submit-button" onClick={ () => this.submitNewsLetter()}>
+                  <FormattedMessage id="Submit.Text" defaultMessage="Submit" />
+                </button>
+                {emailInputErrorField}
                         </div>
                     </div>
 
@@ -153,8 +331,20 @@ let store_locale=this.props.globals.store_locale
                     <FormattedMessage id="footer.signUpAd" defaultMessage="sign up for our latest news and offers" />
                     </div>
                     <div>
-                        <input type="text" placeholder="enter your e-mail address" className="email-field" style={{borderRadius: 0}}></input>
-                        <button className="submit-button"><FormattedMessage id="Submit.Text" defaultMessage="Submit"/></button>
+              {/* <input
+                type="text"
+                placeholder="enter your e-mail address"
+                value={this.state.email}
+                onChange={this.handleChange}
+                className="email-field"
+                style={{ borderRadius: 0 }}
+              ></input> */}
+              {emailInputField}
+              <button className="submit-button" onClick={ () => this.submitNewsLetter()}>
+                <FormattedMessage id="Submit.Text" defaultMessage="Submit" />
+              </button>
+
+              {emailInputErrorField}
                     </div>
                     <div className="mobile-manu">
                         <Collapsible trigger={<FormattedMessage id="footer.AboutELC" defaultMessage="About ELC" />}>
