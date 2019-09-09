@@ -98,7 +98,8 @@ export const removeWishList = (payload) => {
                         prodArray.splice(payload.index, 1);
                         dispatch(callActionForRemoveWishlist({ products: [...prodArray] }))
                     }
-                    dispatch(callProductWishDetail({ productWishDetail: { is_in_wishlist: false, wishlist_itemid: null } }))
+                    console.log("Remove api response",res.message)
+                    dispatch(callProductWishDetail({ productWishDetail: { is_in_wishlist: false, wishlist_itemid: null,wishlist_success:res.message } }))
 
                 }
             },

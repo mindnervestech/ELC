@@ -34,7 +34,10 @@ class ProductInfo extends Component {
 		this.state = {
 			defaultQty: 1,
 			openShareModel: false,
+			showAlert:false,
 			is_in_wishlist_item:false,
+			wishlist_message:'',
+			ischeck:true,
       showLearning: false,
 		};
 		this.addToCart = this.addToCart.bind(this);
@@ -61,6 +64,26 @@ class ProductInfo extends Component {
 				document.getElementById('Capa_1').setAttribute('class', 'naylove-icon ');
 				this.setState({is_in_wishlist_item:false})
 			}
+		}
+	}
+
+
+	componentDidUpdate()
+	{
+		if(this.props.productWishDetail.wishlist_success !== undefined)
+		{
+			if(this.state.ischeck)
+			{
+				console.log("componentDidUpdate",this.props.productWishDetail)
+			this.setState({wishlist_message:this.props.productWishDetail.wishlist_success,showAlert:true,ischeck:false});
+
+			setTimeout(() => {
+				this.closeAlert();
+			}, 5000);	
+			}
+			
+			// console.log("sucess toaster",this.props.productWishDetail.wishlist_success)
+			// toastr.success('Success Message', 'Title', {displayDuration:3000})
 		}
 	}
 
@@ -191,6 +214,11 @@ class ProductInfo extends Component {
 	}
 
 
+	 closeAlert=()=>
+	 {
+		 this.setState({showAlert:false});
+	 }
+
 	_handleClick = async () => {
 
 		//  if (this.props.customerDetails) {
@@ -205,25 +233,37 @@ class ProductInfo extends Component {
 			document.getElementById('Capa_1').setAttribute('class', 'naylove-icon');
 			if (this.props.productWishDetail.wishlist_itemid) {
 				
-				this.setState({is_in_wishlist_item:false})
+				
 				this.props.onRemoveWishList({
 					index: null,
 					wishlist_id: this.props.productWishDetail.wishlist_itemid
 				})
+				this.setState({is_in_wishlist_item:false,ischeck:true})
 			}
 		} else {
 			
 			document.getElementById('Capa_1').setAttribute('class', 'naylove-icon active');
-			this.setState({is_in_wishlist_item:true})
+			
 			
 			const data = {
 				customer_id: this.props.customerDetails.customer_id,
 				product_id: this.props.productZoomDetails.id
 			};
 			this.props.onAddToWishList(data);
-			if(this.props.productWishDetail.wishlist_success!==undefined)
-		{
-		}
+			this.setState({is_in_wishlist_item:true,ischeck:true})
+			
+              console.log("this.props.productWishDetail.wishlist_success",this.props)
+		// 	if(this.props.productWishDetail.wishlist_success)
+		// {
+
+		// 	this.setState({wishlist_message:this.props.productWishDetail.wishlist_success,showAlert:true});
+
+		// 	setTimeout(() => {
+		// 		this.showAlert();
+		// 	}, 50000);
+		// 	// console.log("sucess toaster",this.props.productWishDetail.wishlist_success)
+		// 	// toastr.success('Success Message', 'Title', {displayDuration:3000})
+		// }
 			
 		
 	     
@@ -310,9 +350,30 @@ class ProductInfo extends Component {
 	}
 
 	render() {
-		if(this.props.productWishDetail.wishlist_success!==undefined)
-		{
-			
+
+
+		
+
+		let respo_message = null;
+
+		if (this.state.showAlert) {
+		  respo_message = <span id="APEX_SUCCESS_MESSAGE" data-template-id="126769709897686936_S" className="apex-page-success u-visible"><div className="t-Body-alert">
+			<div className="t-Alert t-Alert--defaultIcons t-Alert--success t-Alert--horizontal t-Alert--page t-Alert--colorBG" id="t_Alert_Success" role="alert">
+			  <div className="t-Alert-wrap">
+				<div className="t-Alert-icon">
+				  <span className="t-Icon" />
+				</div>
+				<div className="t-Alert-content">
+				  <div className="t-Alert-header">
+					<h2 className="t-Alert-title">{this.state.wishlist_message}</h2>
+				  </div>
+				</div>
+				<div className="t-Alert-buttons">
+				  <button className="t-Button t-Button--noUI t-Button--icon t-Button--closeAlert" type="button" title="Close Notification" onClick={this.closeAlert} ><span className="t-Icon icon-close" /></button>
+				</div>
+			  </div>
+			</div>
+		  </div></span>;
 		}
 		const { data } = this.props;
 	 const store_locale = this.props.globals.store_locale;
@@ -356,7 +417,9 @@ class ProductInfo extends Component {
 		}
 
 		return (
+			
 			<div className="row">
+				{respo_message}
 				<Helmet>
 					<script src="/global/css/magiczoomplus/magiczoomplus.js"></script>
 					<script src="/global/css/magicscroll/magicscroll.js"></script>

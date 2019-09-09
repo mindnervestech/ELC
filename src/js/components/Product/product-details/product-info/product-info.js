@@ -165,9 +165,9 @@ class ProductInformation extends Component {
 
 					<p className="detail-info">{producDetail.climate.label}: {producDetail.climate.value}</p> */}
 
-					<p className="detail-info">{data.description}</p>
+					<p className="detail-info" style={{textAlign:'start'}}>{data.description}</p>
 					{data.brand || data.age || data.assembly_req || data.battery_inc || data.battery_req? 
-						<h3 className="specification-title">
+						<h3 className="specification-title" style={{textAlign:'start'}}>
 							Specifications</h3> : <div/>}
 					{data.age ?<div className="row specification-item-content">
 						<span class="specification-item-key">Age :</span> 
