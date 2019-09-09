@@ -53,6 +53,8 @@ class ProductListData extends Component {
 			end: pagenationCount,
 			check: true,
 			showFilterOnMobile: false,
+			sortByText: "",
+			sortByShowOption: false,
 		};
 	}
 
@@ -118,30 +120,32 @@ class ProductListData extends Component {
 	}
 
 
-	filter = (value) => {
-		if (value.target.value == "price_desc") {
+	filter = (value, text) => {
+		this.state.sortByText = text
+		this.setState({ sortByShowOption: false })
+		if (value == "price_desc") {
 			const sortData = _.values(productList).sort((a, b) => b.price - a.price);
 			productList = sortData
 			this.state.pageNumber = 1
 			this.state.check = false
 			this.pagenation(0, pagenationCount - 1)
-		} else if (value.target.value == 'price_asc') {
+		} else if (value == 'price_asc') {
 			const sortData = _.values(productList).sort((a, b) => a.price - b.price);
 			productList = sortData
 			this.state.pageNumber = 1
 			this.state.check = false
 			this.pagenation(0, pagenationCount - 1)
-		} else if (value.target.value == 'relevance') {
+		} else if (value == 'relevance') {
 			productList = productListData
 			this.state.check = true
 			this.pagenation(1, pagenationCount)
-		} else if (value.target.value == 'a-z') {
+		} else if (value == 'a-z') {
 			const myData = _.values(productList).sort((a, b) => a.json.name.localeCompare(b.json.name));
 			productList = myData
 			this.state.check = false
 			this.state.pageNumber = 1
 			this.pagenation(0, pagenationCount - 1)
-		} else if (value.target.value == 'z-a') {
+		} else if (value == 'z-a') {
 			const myData = _.values(productList).sort((a, b) => b.json.name.localeCompare(a.json.name));
 			productList = myData
 			this.state.check = false
@@ -161,6 +165,14 @@ class ProductListData extends Component {
 	getAge = (age) => {
 		for (let data in age) {
 			return age[data]
+		}
+	}
+
+	showSortByOption = () => {
+		if(this.state.sortByShowOption){
+			this.setState({ sortByShowOption: false })
+		}else{
+			this.setState({ sortByShowOption: true })
 		}
 	}
 
@@ -266,7 +278,7 @@ class ProductListData extends Component {
 													<span className="blackTitle"><FormattedMessage id="Product.Listing.SortBy" defaultMessage="Sort by" /></span>
 												</Col>
 												<Col xs="8" style={{ padding: 0 }}>
-													<select placeholder={'Filter'} onChange={this.filter}>
+													{/* <select placeholder={'Filter'} onChange={this.filter}>
 														<FormattedMessage id="Product.Listing.Relevance" defaultMessage="Relevance">
 															{(message) =>
 																<option value="relevance">{message}</option>
@@ -276,7 +288,60 @@ class ProductListData extends Component {
 														<option value="z-a">Name (Z-A)</option>
 														<option value="price_asc">Price (lowest first)</option>
 														<option value="price_desc">Price (highest first)</option>
-													</select>
+													</select> */}
+
+
+
+													<div className={this.state.sortByShowOption ? "sortBySelectedText open" : "sortBySelectedText"} onClick={()=> this.showSortByOption()}>
+														<span>{this.state.sortByText != "" ? this.state.sortByText : <FormattedMessage id="Product.Listing.Relevance" defaultMessage="Relevance"></FormattedMessage>}</span>
+														<i className="icon-down sortBySelectedTextIcon" ></i>
+													</div>
+													<div>
+														<div className="sortByOption" style={this.state.sortByShowOption ? {display: 'block'} : {display: 'none'}}>
+															<FormattedMessage id="Product.Listing.Relevance" defaultMessage="Relevance">
+															{(message) =>
+															<div className="sortByOptionText" onClick={()=> this.filter("relevance", message)}>
+																<span>{message}</span>
+															</div>
+															}
+															</FormattedMessage>
+															<div className="sortByOptionText" onClick={()=> this.filter("a-z", "Name (A-Z)")}>
+																<span>Name (A-Z)</span>
+															</div>
+															<div className="sortByOptionText" onClick={()=> this.filter("z-a", "Name (Z-A)")}>
+																<span>Name (Z-A)</span>
+															</div>
+															<div className="sortByOptionText" onClick={()=> this.filter("price_asc", "Price (lowest first)")}>
+																<span>Price (lowest first)</span>
+															</div>
+															<div className="sortByOptionText" onClick={()=> this.filter("price_desc", "Price (highest first)")}>
+																<span>Price (highest first)</span>
+															</div>
+														</div>
+													</div>
+													
+													{/* <div className="changecountry">
+                                            <div className="country">
+                                                <div onClick={this.showCountries} className={this.state.showCountries ? "activeCountry open divShowOnWeb" : "activeCountry divShowOnWeb"}>
+                                                    <span className="selected">
+                                                        <FormattedMessage id="header.defaultCountry" defaultMessage="Select Your Country" />
+                                                    </span>
+                                                    <i className="icon-down" ></i>
+                                                </div>
+                                                <div className="list" style={{ textAlign: 'start' }}>
+                                                    <div style={{ paddingLeft: 10, paddingBottom: 7, fontSize: '1.2rem' }}>
+                                                        <span>Name (A-Z)</span>
+                                                    </div>
+                                                    <div style={{ paddingLeft: 10, fontSize: '1.2rem' }}>
+														<span>Name (Z-A)</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> */}
+
+
+
+
 												</Col>
 											</Row>
 										</Col>

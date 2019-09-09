@@ -4114,6 +4114,10 @@ html[dir="rtl"] .homePage .contentBox h6 {
         width: 40px;
     }
 
+    .apex-icons-fontapex .downMenu{
+        display: none;
+    }
+
     .footer-css .submit-button{
         background-color: #0D943F;
         color: #fff;
@@ -6046,4 +6050,34 @@ html[dir="rtl"] .header .navTrigger {
 
 .webBanner .slick-prev:before{
     display: none!important;
+}
+
+.sortBySelectedText{
+    border: solid 2px #b1b1b1;
+    padding: 5px 15px;
+}
+
+.sortBySelectedTextIcon{
+    position: absolute;
+    right: 10px;
+    top: 11px;
+}
+
+.sortByOption{
+    padding: 0px 15px;
+    border: solid 1px #b1b1b1;
+    border-top: none;
+    position: absolute;
+    width: 100%;
+    background-color: #fff;
+    z-index: 99;
+}
+
+.sortByOptionText{
+    padding: 5px 0px;
+}
+
+.open .icon-down:before{
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
 }

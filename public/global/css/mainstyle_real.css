@@ -4639,4 +4639,13 @@ html[dir="rtl"] .header .navTrigger {
         height: 47%;
         margin-left: 20px;
     }
+
+    html.no-touch .header .link>li:hover .submenu{
+        display: block;
+        text-align: initial;
+        background-color: rgb(255, 255, 255);
+        -webkit-box-shadow: 0 0 0 0;
+        -moz-box-shadow: 0 0 0 0 ;
+        box-shadow: 0 0 0 0 ;
+    }
 }
