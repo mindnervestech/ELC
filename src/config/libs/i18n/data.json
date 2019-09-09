@@ -7,7 +7,6 @@
     "ContactUs.payment":"Payment",
     "ContactUs.returns":"Returns",
     "ContactUs.stores":"Stores" ,                                                      
-
     "birthdayclub.header":"Birthday Club",
     "birthdayclub.text1":" You can add upto 10 childrens Birthday Club. We will pop the date in our diary and send on you mail",
     "birthdayclub.text2":"ahead of the big day with a special birthday offer",
@@ -16,16 +15,13 @@
     "select.mm":"MM",
     "select.dd":"DD",
     "select.yyyy":"YYYY",
-
     "addnewchild.firstname":"First Name",
     "addnewchild.dateofbirth":"Date Of Birth",
     "addnewchild.boyorgirl":"Boy or Girl",
     "addnewchild.realationship":"Realationship",
     "cancelButton":"Cancel",
-
     "footer.followUsOn": "follow us on",
     "footer.signUpAd": "sign up for our latest news and offers",
-
     "Form.RecieveEmail": "I'd like to receive emails from ELC about Special offers, new toys and voucher codes.",
     "Register.SignIn": "sign in or register",
     "newToElc.newToElc": "New to ELC",
@@ -215,7 +211,6 @@
     "Cart.ContinueShopping.Title": "Continue Shopping",
     "Cart.YouMayAlsoLove.Title": "You May Also Love",
     "Cart.AddProductInCart": " Please Add Product in cart for Checkout..",
-
     "login.RegisteredCustomers.Title": "Registered Customers",
     "login.RegisteredCustomers.Message": "If you have already registered with Nayomi, then sign in here.",
     "login.ForgotPassword.Title": "Forgot Password?",
@@ -268,7 +263,6 @@
     "Product.Details.Panty": "Panty",
     "Product.Details.Bras": "Bras",
     "Product.Details.SizeFit": "Size & Fit",
-
     "Product.Details.ProductInfo": "Product Information",
     "Product.Details.DeliveryOption": "Delivery Options",
     "Product.Details.Question": "Question",
@@ -319,7 +313,6 @@
     "Checkout.paymentMethod": "Payment Method",
     "Checkout.CodNotForCC": "Cash on delivery cannot be selcted for click and collect.",
     "Checkout.CodNotForOtherThanGCC": "Cash on delivery not available for countries other than GCC countries.",
-
     "Checkout.voucher": "Voucher",
     "Place.Order.Text": "Place Order",
     "Edit.Text": "Edit",
@@ -379,7 +372,6 @@
     "RemoveQuantity.Text": "Remove Quantity",
     "Login.username": "Please Enter Valid Email Address",
     "Login.password": "Please Enter Valid password",
-
     "Signup.validation.firstName.empty": "Please enter first name.",
     "Signup.validation.firstName.onlyletters": "Please enter only letters.",
     "Signup.validation.lastName.empty": "Please enter last name",
@@ -472,7 +464,6 @@
     "alertBoxText.Ok": "Ok",
     "alertBoxText.Cancel": "Cancel",
     "confirmBox.Warning": "Are you sure you want to delete this address?",
-
     "PageTitle.Home": "Online Shopping in Saudi for Toys at ELC",
     "PageTitle.NA": "Online Shopping in Saudi for Toys at ELC",
     "PageTitle.Nayomi": "Online Shopping in Saudi for Toys at ELC",
@@ -572,9 +563,6 @@
     "cart.Price": "Price"
   },
   "ar": {
-
-
-    
     "ContactUs.customerSerivces":"خدمة العملاء",
     "ContactUs.Deliveries":"التسليم",
     "ContactUs.General":"جنرال لواء",
@@ -582,8 +570,6 @@
     "ContactUs.payment":"تسديد الديون",
     "ContactUs.returns":"عائدات",
     "ContactUs.stores":"محل تجاري" , 
-
-
     "birthdayclub.header":"جاك عيد ميلاد النادي" ,
     "birthdayclub.text1":"يمكنك إضافة حتى 10 أعياد ميلاد للنادي. سنصدر التاريخ في مذكراتنا ونرسل لك بريدًا",
     "birthdayclub.text2":"قبل يوم كبير مع عرض عيد ميلاد خاص",
@@ -594,8 +580,6 @@
     "addnewchild.boyorgirl":"صبي أو فتاة",
     "addnewchild.realationship":"صلة",
     "cancelButton":"إلغاء",
-
-
     "header.clubName": "نادي الأميرة ",
     "header.VIPRegister": "سجل الآن ",
     "header.VIPClubTitle": "في نادي كبار الشخصيات ",
@@ -693,7 +677,6 @@
     "password": "كلمة المرور *",
     "emailaddress":"عنوان بريد الكتروني",
     "account.Creation": "انشئ حساب ",
-
     "order.tracking": "تتبعي الطلب ",
     "wishlist": "قائمة المفضلة ",
     "save.addresses": "حفظ العناوين ",
@@ -787,7 +770,6 @@
     "Product.Details.Panty": "سروال",
     "Product.Details.Bras": "صدريات",
     "Product.Details.SizeFit": "حجم وتلائم",
-
     "Product.Details.ProductInfo": "Product Information",
     "Product.Details.DeliveryOption": "Delivery Options",
     "Product.Details.Question": "Question",
@@ -905,7 +887,6 @@
     "Thankyou.Content": "لقد تلقينا طلبك ، ستتلقى رسالة تأكيد قريباً ..",
     "Sorry.Text": "آسف..",
     "Sorry.Content": "غير قادر على معالجة طلبك. يمكنك إعادة المحاولة أو الاتصال بوكيل خدمة العملاء للحصول على مزيد من المعلومات ..",
-
     "Ok.text": "حسنا",
     "profile.NoData": "لا يوجد عنوان مسجل حاليا، لاضافة عنوان للتوصيل يرجى  ",
     "PDP.ATB": "أضف الى الحقيبة",
@@ -999,7 +980,6 @@
     "alertBoxText.Ok": "حسنا",
     "alertBoxText.Cancel": "إلغاء",
     "confirmBox.Warning": "هل أنت متأكد أنك تريد حذف هذا العنوان؟",
-
     "PageTitle.Home": "لينجيري | تسوق اون لاين ملابس داخلية للنساء | نعومي",
     "PageTitle.NA": "لينجيري | تسوق اون لاين ملابس داخلية للنساء | نعومي",
     "PageTitle.Nayomi": "لينجيري | تسوق اون لاين ملابس داخلية للنساء | نعومي",
@@ -1082,9 +1062,7 @@
     "footer.ConsumerRights": "حقوق المستهلك",
     "footer.termsAndConditions": "الأحكام والشروط ",
     "footer.Legal": "قانوني",
-
     "footer.text": "© تتم إدارة الموقع من قبل شركة كمال عصمان جمجوم ذات المسؤولية المحدودة، باسم مركز التعليم المبكر",
-
     "newToElc.header.login.text": "لديك حساب مسبقاً؟ قم بتسجيل الدخول لإسترداد معلومات حسابك ",
     "register.header.text": "الحقول المعلمة * مطلوبة",
     "account.Creation.text": "يرجى ملء النموذج لإنشاء حساب",
