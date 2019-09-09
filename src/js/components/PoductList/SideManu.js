@@ -125,24 +125,104 @@ class SideManu extends Component {
 			this.props.action(productListingData);
 		} else {
 			this.setState({clearAllOption: true });
+			let checkForMultipalFilter = true
+			let firstValueCategary = ""
 			for (let categrayData in filterOptionArray) {
+				firstValueCategary = ""
 				let splitData = filterOptionArray[categrayData].split('/')
-				if (splitData[0] == "price") {
-
-				} else if (splitData[0] == "color") {
-					let filterValue = splitData[1]
-					for (let value in productList) {
-						if (productList[value].json.color_english) {
-							if (productList[value].json.color_english == filterValue) {
-								filterData.push(productList[value])
-							}
-						}
-					}
-				} else{
+				if (splitData[0] == "brand") {
 					let filterValue = splitData[1]
 					this.getFilterData(filterValue, splitData[0])
 				}
 			}
+			let uniqueNames2 = Array.from(new Set(filterData));
+			productList = uniqueNames2
+			for (let categrayData in filterOptionArray) {
+				let splitData = filterOptionArray[categrayData].split('/')
+				if (splitData[0] == "age") {
+					if(checkForMultipalFilter){
+						checkForMultipalFilter = false
+						filterData = []
+					}
+					let filterValue = splitData[1]
+					this.getFilterData(filterValue, splitData[0])
+				}
+			}
+			checkForMultipalFilter = true
+			uniqueNames2 = Array.from(new Set(filterData));
+			productList = uniqueNames2
+			for (let categrayData in filterOptionArray) {
+				let splitData = filterOptionArray[categrayData].split('/')
+				if (splitData[0] == "gender") {
+					if(checkForMultipalFilter){
+						checkForMultipalFilter = false
+						filterData = []
+					}
+					let filterValue = splitData[1]
+					this.getFilterData(filterValue, splitData[0])
+				}
+			}
+			checkForMultipalFilter = true
+			uniqueNames2 = Array.from(new Set(filterData));
+			productList = uniqueNames2
+			for (let categrayData in filterOptionArray) {
+				let splitData = filterOptionArray[categrayData].split('/')
+				if (splitData[0] == "subcategory") {
+					if(checkForMultipalFilter){
+						checkForMultipalFilter = false
+						filterData = []
+					}
+					let filterValue = splitData[1]
+					this.getFilterData(filterValue, splitData[0])
+				}
+			}
+			checkForMultipalFilter = true
+			uniqueNames2 = Array.from(new Set(filterData));
+			productList = uniqueNames2
+
+			for (let categrayData in filterOptionArray) {
+				let splitData = filterOptionArray[categrayData].split('/')
+				if (splitData[0] == "color") {
+					if(checkForMultipalFilter){
+						checkForMultipalFilter = false
+						filterData = []
+					}
+					let filterValue = splitData[1]
+						for (let value in productList) {
+							if (productList[value].json.color_english) {
+								if (productList[value].json.color_english == filterValue) {
+									filterData.push(productList[value])
+								}
+							}
+						}
+				}
+			}
+			checkForMultipalFilter = true
+			uniqueNames2 = Array.from(new Set(filterData));
+			productList = uniqueNames2
+
+
+
+			// for (let categrayData in filterOptionArray) {
+			// 	let splitData = filterOptionArray[categrayData].split('/')
+			// 	if(splitData[0] != "brand"){
+			// 			checkForMultipalFilter = false
+			// 			filterData = []
+			// 		if (splitData[0] == "color") {
+			// 			let filterValue = splitData[1]
+			// 			for (let value in productList) {
+			// 				if (productList[value].json.color_english) {
+			// 					if (productList[value].json.color_english == filterValue) {
+			// 						filterData.push(productList[value])
+			// 					}
+			// 				}
+			// 			}
+			// 		} else{
+			// 			let filterValue = splitData[1]
+			// 			this.getFilterData(filterValue, splitData[0])
+			// 		}
+			// 	}
+			// }
 			const uniqueNames = Array.from(new Set(filterData));
 			filterData = uniqueNames
 			this.props.action(filterData)
