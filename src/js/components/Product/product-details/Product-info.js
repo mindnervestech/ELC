@@ -521,7 +521,7 @@ class ProductInfo extends Component {
 													</div>
 													<div className="row click-collect">
 														<img src={freeCollect} />
-														<span>
+														<span style={{marginTop:'14px'}}>
 															Click & Collect
 													</span>
 
