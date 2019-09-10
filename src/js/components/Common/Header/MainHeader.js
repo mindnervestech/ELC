@@ -302,11 +302,11 @@ class MainHeader extends Component {
                                             </div>
                                         </div>
                                     </li>
-                                    <li className="ll" style={{ padding: 0, paddingLeft: 5 }}>
+                                    <li className="ll" className="paddingForEnglish">
                                         <div className="lang" style={{ fontSize: '1.2rem' }}>
                                             <a href="javascript:void(0);" onClick={(e) => this.translate('en', 'ltr')} className="active" >English</a></div>
                                     </li>
-                                    <li style={{ paddingLeft: 8 }}> - </li>
+                                    <li className="paddingForDash"> - </li>
                                     <li className="ll" style={{ padding: 0 }}>
                                         <div className="lang" style={{ paddingLeft: 8, fontSize: '1.2rem' }}>
                                             <a href="javascript:void(0);" onClick={(e) => this.translate('ar', 'rtl')} >العربية</a></div>
@@ -379,7 +379,7 @@ class MainHeader extends Component {
                                         </Link>
                                     </li>
                                     <li style={this.state.userLogin ? { display: 'inline-block', paddingTop: 1 } : { display: 'none' }}>
-                                        <img src={profile} className="image-ion"></img>
+                                        <img src={profile} className="image-ion" style={{marginTop: 2, height: 16, width: 16}}></img>
                                         <label className="iconLeble text-color changeLinkText"><FormattedMessage id="header.Hello" defaultMessage="Hello" /> {this.props.user_details.customer_details.firstname} {this.props.user_details.customer_details.lastname}</label>
                                     </li>
                                     <li style={this.state.userLogin ? { display: 'inline-block' } : { display: 'none' }}>

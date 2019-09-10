@@ -76,7 +76,11 @@ class ProductListData extends Component {
 		} else {
 			totalPages = Math.floor(count / pagenationCount) + 1
 		}
-		this.setState({ totalPages: totalPages, pageNumber: 1 })
+		if(productList.length == 0){
+			this.setState({ totalPages: totalPages, pageNumber: 0 })
+		}else{
+			this.setState({ totalPages: totalPages, pageNumber: 1 })
+		}
 		if (firstValue == 0) {
 			this.state.check = false
 			this.pagenation(0, pagenationCount - 1)
@@ -103,7 +107,7 @@ class ProductListData extends Component {
 
 
 	prevButton = () => {
-		if (this.state.pageNumber != 1) {
+		if (this.state.pageNumber != 1 && this.state.pageNumber != 0) {
 			this.setState({ pageNumber: this.state.pageNumber - 1 })
 			setTimeout(() => {
 				if (this.state.check) {
@@ -180,10 +184,12 @@ class ProductListData extends Component {
 	}
 
 	showSortByOption = () => {
-		if (this.state.sortByShowOption) {
-			this.setState({ sortByShowOption: false })
-		} else {
-			this.setState({ sortByShowOption: true })
+		if(this.state.pageNumber != 0){
+			if (this.state.sortByShowOption) {
+				this.setState({ sortByShowOption: false })
+			} else {
+				this.setState({ sortByShowOption: true })
+			}
 		}
 	}
 
@@ -293,7 +299,7 @@ class ProductListData extends Component {
 							</div>
 						</div>
 					</div>
-					{Object.keys(list).length > 0 ?
+					{/* {Object.keys(list).length > 0 ? */}
 						<div className="homePage">
 							<div className="start3">
 								<div>
@@ -346,7 +352,7 @@ class ProductListData extends Component {
 												<Col xs="11">
 													<Row>
 														<Col xs="4">
-															<button onClick={this.prevButton} className={this.state.pageNumber == 1 ? "prevButton" : "nextButton"} style={{ width: "80%" }}>Prev</button>
+															<button onClick={this.prevButton} className={this.state.pageNumber == 1 || this.state.pageNumber == 0 ? "prevButton" : "nextButton"} style={{ width: "80%" }}>Prev</button>
 														</Col>
 														<Col xs="4">
 															<span>Page {this.state.pageNumber} of {this.state.totalPages}</span>
@@ -374,6 +380,7 @@ class ProductListData extends Component {
 									</div>
 								</div>
 							</div>
+							{Object.keys(list).length > 0 ?
 							<div className="start">
 								<ul className="products">
 									{Object.keys(list).map((keyName, index) =>
@@ -418,6 +425,8 @@ class ProductListData extends Component {
 									)}
 								</ul>
 							</div>
+							: <div><p style={{ fontSize: '22px', letterSpacing: '0.04em', fontWeight: 500, padding: '70px 25px 10px' }}><FormattedMessage id="NoData.Text" defaultMessage="No Data available." /></p></div>}
+							{Object.keys(list).length > 0 ?
 							<div className="start2 divShowOnWeb">
 								<Row>
 									<Col xs="2"></Col>
@@ -437,6 +446,7 @@ class ProductListData extends Component {
 									<Col xs="2"></Col>
 								</Row>
 							</div>
+							: ""}
 							<div className="divShowOnMobile pagenation" style={{ padding: '10px 20px' }}>
 								<ul>
 									<li className="liTag" style={{ textAlign: 'start' }}>
@@ -451,7 +461,7 @@ class ProductListData extends Component {
 								</ul>
 							</div>
 						</div>
-						: <div><p style={{ fontSize: '22px', letterSpacing: '0.04em', fontWeight: 500, padding: '70px 25px 10px' }}><FormattedMessage id="NoData.Text" defaultMessage="No Data available." /></p></div>}
+						
 				</Col>
 			</Row>
 		);

@@ -787,7 +787,7 @@ html[dir="rtl"] .header .row-1 .cart span {
 }
 
 .header .row-1 .iconLeble {
-    font-size: 12px;
+    font-size: 14px;
     margin-left: 10px;
     margin-right: 5px;
 }
@@ -1210,7 +1210,7 @@ html[dir="rtl"] .header .closeNav {
     }
 
     html[dir="rtl"] .header .search {
-        padding: 9px 1.5em 9px 0
+        padding: 0px;
     }
 }
 

@@ -57,11 +57,36 @@
     letter-spacing: 0.065rem;
 }
 .searchLogo{
-    height: 25px;
-    width: 25px;
+    height: 24px;
+    width: 24px;
     position: absolute;
     top: 10px;
     right: 35px;
+}
+
+html[dir="rtl"] .searchLogo{
+    height: 24px;
+    width: 24px;
+    position: absolute;
+    top: 10px;
+    left: 0;
+    right: 89%;
+}
+
+.paddingForDash{
+    padding-left: 8px;
+}
+
+html[dir="rtl"] .paddingForDash{
+    padding-left: 0px;
+}
+
+.paddingForEnglish {
+    padding: 0px 0px 0px 5px;
+}
+
+html[dir="rtl"] .paddingForEnglish {
+    padding: 0px;
 }
 /* product list css */
 
@@ -351,11 +376,12 @@ html[dir="rtl"] .clearAll {
 
 .titleHover:hover {
     color: #0D943F;
-    border-bottom: solid 1px #0D943F;
+    cursor: pointer;
 }
 
 .changeLinkText:hover {
     color: #0D943F;
+    cursor: pointer;
 }
 
 .product-list .logoImages {
@@ -5798,6 +5824,22 @@ a:hover {
 }
 
 @media (max-width:767px){
+
+    .searchLogo{
+        height: 24px;
+        width: 24px;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+    
+    html[dir="rtl"] .searchLogo{
+        height: 24px;
+        width: 24px;
+        position: absolute;
+        top: 10px;
+        right: 25px;
+    }
     .hide-mob{
          visibility: hidden;
     }
