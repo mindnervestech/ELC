@@ -290,21 +290,21 @@ class SignUp extends Component {
       {/* <div>  <FormattedMessage id="Form.FirstName" defaultMessage="First Name" /></div> */}
       <FormattedMessage id="Form.FirstName" defaultMessage="First Name">
         {(message) =>
-          <input type="text" required={true} placeholder={message} id="P1001_FNAME" name="P1001_FNAME" onChange={this.handleChange.bind(this, "firstName")} value={this.state.fields["firstName"]} size={30} />}
+          <input type="text" required={true} id="P1001_FNAME" name="P1001_FNAME" onChange={this.handleChange.bind(this, "firstName")} value={this.state.fields["firstName"]} size={30} />}
       </FormattedMessage>
     </div><span id="P1001_FNAME_error_placeholder" className="a-Form-error" data-template-id="33610259035469734_ET"></span></div>;
 
     let LastNameInputField = <div ><div >
       <FormattedMessage id="Form.LastName" defaultMessage="Last Name">
         {(message) =>
-          <input type="text" id="P1001_LNAME" name="P1001_LNAME" placeholder={message} onChange={this.handleChange.bind(this, "lastName")} value={this.state.fields["lastName"]} size={30} />}
+          <input type="text" id="P1001_LNAME" name="P1001_LNAME" onChange={this.handleChange.bind(this, "lastName")} value={this.state.fields["lastName"]} size={30} />}
       </FormattedMessage>
     </div></div>
 
     let emailInputField = <div><div>
       <FormattedMessage id="ContactUs.Email" defaultMessage="Email">
         {(message) =>
-          <input type="email" id="P1001_EMAIL" name="P1001_EMAIL" placeholder={message} onChange={this.handleChange.bind(this, "email")} value={this.state.fields["email"]} size={30} />}
+          <input type="email" id="P1001_EMAIL" name="P1001_EMAIL"  onChange={this.handleChange.bind(this, "email")} value={this.state.fields["email"]} size={30} />}
       </FormattedMessage>
     </div></div>
 
@@ -312,7 +312,7 @@ class SignUp extends Component {
     let confirmEmailInputField = <div><div>
       <FormattedMessage id="ContactUs.ConfirmEmail" defaultMessage="Confirm Email">
         {(message) =>
-          <input type="email" id="P1001_ConfirmEMAIL" name="P1001_ConfirmEMAIL" placeholder={message} onChange={this.handleChange.bind(this, "confirmEmail")} value={this.state.fields["confirmEmail"]} size={30} />}
+          <input type="email" id="P1001_ConfirmEMAIL" name="P1001_ConfirmEMAIL"  onChange={this.handleChange.bind(this, "confirmEmail")} value={this.state.fields["confirmEmail"]} size={30} />}
       </FormattedMessage>
 
     </div><span id="P1001_ConfirmEMAIL_error_placeholder" className="a-Form-error" data-template-id="33610259035469734_ET"></span></div>
@@ -323,13 +323,13 @@ class SignUp extends Component {
     let passwordInputField = <div><div>
       <FormattedMessage id="password" defaultMessage="Password">
         {(message) =>
-          <input type="password" name="P1001_PWD" size="30" onChange={this.handleChange.bind(this, "password")} value={this.state.fields["password"]} id="P1001_PWD" placeholder={message} aria-autocomplete="list" />}
+          <input type="password" name="P1001_PWD" size="30" onChange={this.handleChange.bind(this, "password")} value={this.state.fields["password"]} id="P1001_PWD"  aria-autocomplete="list" />}
       </FormattedMessage>
     </div></div>
     let confirmPasswordInputField = <div ><div >
       <FormattedMessage id="profile.Confirm.Password" defaultMessage="Confirm Password">
         {(message) =>
-          <input type="password" name="P1001_RPWD" size="30" onChange={this.handleChange.bind(this, "confirmPassword")} value={this.state.fields["confirmPassword"]} id="P1001_RPWD" placeholder={message} />}
+          <input type="password" name="P1001_RPWD" size="30" onChange={this.handleChange.bind(this, "confirmPassword")} value={this.state.fields["confirmPassword"]} id="P1001_RPWD" />}
       </FormattedMessage>
     </div><span id="P1001_RPWD_error_placeholder" className="a-Form-error" data-template-id="33610259035469734_ET"></span></div>;
 
@@ -339,7 +339,7 @@ class SignUp extends Component {
         <div>
         <FormattedMessage id="Form.FirstName" defaultMessage="First Name">
         {(message) =>
-          <input type="text" required={true} placeholder={message} id="P1001_FNAME" name="P1001_FNAME" onChange={this.handleChange.bind(this, "firstName")} value={this.state.fields["firstName"]} size={30} />}
+          <input type="text" required={true}  id="P1001_FNAME" name="P1001_FNAME" onChange={this.handleChange.bind(this, "firstName")} value={this.state.fields["firstName"]} size={30} />}
       </FormattedMessage>
         </div><span id="P1001_FNAME_error_placeholder" className="a-Form-error u-visible" data-template-id="33609965712469734_ET"><span className="t-Form-error"><div id="P1001_FNAME_error">{errorsObj["firstName"]}</div></span></span></div>
     }
@@ -348,7 +348,7 @@ class SignUp extends Component {
       LastNameInputField = <div ><div>
         <FormattedMessage id="Form.LastName" defaultMessage="Last Name">
         {(message) =>
-          <input type="text" id="P1001_LNAME" name="P1001_LNAME" placeholder={message} onChange={this.handleChange.bind(this, "lastName")} value={this.state.fields["lastName"]} size={30} />}
+          <input type="text" id="P1001_LNAME" name="P1001_LNAME"  onChange={this.handleChange.bind(this, "lastName")} value={this.state.fields["lastName"]} size={30} />}
       </FormattedMessage>
         </div>
         <span id="P1001_FNAME_error_placeholder" className="a-Form-error u-visible" data-template-id="33609965712469734_ET"><span className="t-Form-error"><div id="P1001_FNAME_error">
@@ -358,7 +358,7 @@ class SignUp extends Component {
       emailInputField = <div><div>
         <FormattedMessage id="ContactUs.Email" defaultMessage="Email">
         {(message) =>
-          <input type="email" id="P1001_EMAIL" name="P1001_EMAIL" placeholder={message} onChange={this.handleChange.bind(this, "email")} value={this.state.fields["email"]} size={30} />}
+          <input type="email" id="P1001_EMAIL" name="P1001_EMAIL" onChange={this.handleChange.bind(this, "email")} value={this.state.fields["email"]} size={30} />}
       </FormattedMessage>
         </div>
         <span id="P1001_EMAIL_error_placeholder" className="a-Form-error u-visible" data-template-id="33609965712469734_ET"><span className="t-Form-error"><div id="P1001_EMAIL_error">
@@ -366,12 +366,12 @@ class SignUp extends Component {
     }
 
     if ('confirmEmail' in errorsObj) {
-      console.log("Error email");
+    
       confirmEmailInputField = <div><div>
 
 <FormattedMessage id="ContactUs.ConfirmEmail" defaultMessage="Confirm Email">
         {(message) =>
-          <input type="email" id="P1001_ConfirmEMAIL" name="P1001_ConfirmEMAIL" placeholder={message} onChange={this.handleChange.bind(this, "confirmEmail")} value={this.state.fields["confirmEmail"]} size={30} />}
+          <input type="email" id="P1001_ConfirmEMAIL" name="P1001_ConfirmEMAIL"  onChange={this.handleChange.bind(this, "confirmEmail")} value={this.state.fields["confirmEmail"]} size={30} />}
       </FormattedMessage>
        </div>
         <span id="P1001_ConfirmEMAIL_error_placeholder" className="a-Form-error u-visible" data-template-id="33609965712469734_ET"><span className="t-Form-error"><div id="P1001_ConfirmEMAIL_error">
@@ -396,7 +396,7 @@ class SignUp extends Component {
       passwordInputField = <div><div >
         <FormattedMessage id="password" defaultMessage="Password">
         {(message) =>
-          <input type="password" name="P1001_PWD" size="30" onChange={this.handleChange.bind(this, "password")} value={this.state.fields["password"]} id="P1001_PWD" placeholder={message} aria-autocomplete="list" />}
+          <input type="password" name="P1001_PWD" size="30" onChange={this.handleChange.bind(this, "password")} value={this.state.fields["password"]} id="P1001_PWD"  aria-autocomplete="list" />}
       </FormattedMessage>
       </div>
         <span id="P1001_PWD_error_placeholder" className="a-Form-error u-visible" data-template-id="33610259035469734_ET"><span className="t-Form-error"><div id="P1001_PWD_error">{errorsObj["password"]}</div></span></span></div>;
@@ -406,7 +406,7 @@ class SignUp extends Component {
       confirmPasswordInputField = <div><div>
          <FormattedMessage id="profile.Confirm.Password" defaultMessage="Confirm Password">
         {(message) =>
-          <input type="password" name="P1001_RPWD" size="30" onChange={this.handleChange.bind(this, "confirmPassword")} value={this.state.fields["confirmPassword"]} id="P1001_RPWD" placeholder={message} />}
+          <input type="password" name="P1001_RPWD" size="30" onChange={this.handleChange.bind(this, "confirmPassword")} value={this.state.fields["confirmPassword"]} id="P1001_RPWD" />}
       </FormattedMessage>
       </div>
         <span id="P1001_RPWD_error_placeholder" className="a-Form-error u-visible" data-template-id="33610259035469734_ET">
