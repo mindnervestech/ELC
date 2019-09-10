@@ -93,7 +93,7 @@ class TermConditions extends Component {
 												</strong>
 											</p> */}
 											<div
-												style={{ fontSize: '14px' }}
+												className="staticPagesText"
 												dangerouslySetInnerHTML={{ __html: this.props.termConditions.content }}
 											/>
 										</div>

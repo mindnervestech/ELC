@@ -124,7 +124,7 @@ class DeliveryPolicy extends Component {
 											</p>
 
 											<div
-												style={{ fontSize: '14px' }}
+												className="staticPagesText"
 												dangerouslySetInnerHTML={{ __html: this.state.data.content }}
 											/>
 											<p>&nbsp;</p>

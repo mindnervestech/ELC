@@ -79,7 +79,7 @@ class PromotionTermsCondition extends Component {
 
 											<p style={{ textAlign: 'center' }}>&nbsp;</p>
 											<div
-												style={{ fontSize: '14px' }}
+												className="staticPagesText"
 												dangerouslySetInnerHTML={{ __html: this.props.promotionTermsCondition.content }}
 											/>
 

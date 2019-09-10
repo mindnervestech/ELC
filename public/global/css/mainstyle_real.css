@@ -1435,7 +1435,7 @@ html[dir="rtl"] .header .link>li .subMenuTrigger {
 
 .header .link>li>a {
     display: block;
-    text-transform: lowercase;
+    text-transform: none;
     color: #000;
     transition: color .5s;
     text-align: left;

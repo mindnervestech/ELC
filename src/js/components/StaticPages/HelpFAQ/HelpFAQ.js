@@ -88,7 +88,7 @@ class HelpFAQ extends Component {
 										<div id="MiscContent">
 
 											<div
-												style={{ fontSize: '14px' }}
+												className="staticPagesText"
 												dangerouslySetInnerHTML={{ __html: this.props.help.content }}
 											/>
 											<div>&nbsp;</div>

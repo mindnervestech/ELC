@@ -145,7 +145,7 @@ class menuList extends Component {
 			<>
 				<li key={index}>
 					<Link to={'/' + this.state.store_locale + '/products/' + item.url_path} style={{ textDecoration: 'none' }} onClick={() => document.getElementById("closeNav").click()} className={item.children[0].length > 0 ? '' : "removeWhite"}>
-						{item.name.toLowerCase()}
+						{item.name}
 						{item.children[0].length > 0 ?
 							<i class="fa fa-caret-down downMenu divShowOnWeb" aria-hidden="true"></i>
 						: <span  />}

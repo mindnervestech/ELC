@@ -86,7 +86,7 @@ class AboutUs extends Component {
 										<div id="MiscContent">
 
 											<div
-												style={{ fontSize: '14px' }}
+												className="staticPagesText"
 												dangerouslySetInnerHTML={{ __html: this.props.aboutUs.content }}
 											/>
 											<div>&nbsp;</div>
