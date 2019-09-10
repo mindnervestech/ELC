@@ -609,7 +609,7 @@ html[dir="rtl"] .header .row-1 .leftLink {
 
 
 html[dir="rtl"] .header .row-1 .leftLink li {
-    margin-left: 20px;
+    margin-left: 7px;
     margin-right: 0
 }
 
@@ -1709,6 +1709,11 @@ html[dir="rtl"] .header .link .submenu .menufigure {
     .header .changecountry {
         top: 0px;
         margin-left: 10px;
+    }
+    html[dir="rtl"] .header .changecountry {
+        top: 0px;
+        margin-right: 10px;
+        margin-left: 0px;
     }
 }
 
