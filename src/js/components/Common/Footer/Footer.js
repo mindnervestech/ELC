@@ -264,7 +264,7 @@ class Footer extends Component {
                                 </Link>
                             </li>
                             <li>
-                {this.props.globals.store_locale==='uae-en' || this.props.globals.store_locale==='en'|| this.props.globals.store_locale==='ar'||  this.props.globals.store_locale==='uae-en' ? 
+                {this.props.globals.store_locale==='uae-en' || this.props.globals.store_locale==='en'|| this.props.globals.store_locale==='ar'||  this.props.globals.store_locale==='uae-ar' ? 
                       
                        <a className="hoverclass">
                          <FormattedMessage
