@@ -24,8 +24,8 @@ import youtube from '../../../../assets/images/social/youtube.svg';
 import twitter from '../../../../assets/images/social/twitter.svg';
 import Collapsible from 'react-collapsible';
 import { BASE_URL, API_TOKEN } from '../../../api/globals';
-
-import ScrollToTop from 'react-scroll-up';
+import ConsumerRightsLogo from '../../../../assets/images/staticPages/consumer_right_logo_1024.png';
+import ScrollToTop from "react-scroll-up";
 const style = {
     visibility: 'visible',
     opacity: 0.5,
@@ -264,9 +264,28 @@ class Footer extends Component {
                                 </Link>
                             </li>
                             <li>
-                                <Link to={`/${store_locale}/consumer-rights`} style={{ textDecoration: 'none' }}>
-                                <FormattedMessage id="footer.ConsumerRights" defaultMessage="Consumer Rights" />
-                                </Link>
+                {this.props.globals.store_locale==='uae-en' || this.props.globals.store_locale==='en'|| this.props.globals.store_locale==='ar'||  this.props.globals.store_locale==='uae-en' ? 
+                      
+                       <a className="hoverclass">
+                         <FormattedMessage
+                           id="footer.ConsumerRights"
+                           defaultMessage="Consumer Rights"
+                         />
+                       </a>
+                    
+                      :
+                      <Link
+                      to={`/${store_locale}/consumer-rights`}
+                      style={{ textDecoration: "none" }}
+                    >
+                      <a>
+                        <FormattedMessage
+                          id="footer.ConsumerRights"
+                          defaultMessage="Consumer Rights"
+                        />
+                      </a>
+                    </Link>}
+                      
                             </li>
                         </ul>
                     </div>
