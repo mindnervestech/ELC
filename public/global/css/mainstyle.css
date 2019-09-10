@@ -8,9 +8,9 @@
     content: url(consumer_right_logo_1024.png);
     display: block;
     position: absolute;
-    right: 25%;
-    left:25%;
-    transform: scale(.2);
+    right: 10%;
+    bottom: 50px;
+    transform: scale(.15);
     height: 200px;
     width: 200px;
 }
