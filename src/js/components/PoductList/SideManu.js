@@ -88,13 +88,11 @@ class SideManu extends Component {
 	}
 
 	getFilterData(filterValue, code) {
-		let count = 1
 		for (let value in productList) {
 			if (productList[value].json.filtersdata) {
 				for (let item in productList[value].json.filtersdata[code]) {
 					if (productList[value].json.filtersdata[code][item] == filterValue) {
 						filterData.push(productList[value])
-						count++
 					}
 				}
 			}
@@ -126,9 +124,7 @@ class SideManu extends Component {
 		} else {
 			this.setState({clearAllOption: true });
 			let checkForMultipalFilter = true
-			let firstValueCategary = ""
 			for (let categrayData in filterOptionArray) {
-				firstValueCategary = ""
 				let splitData = filterOptionArray[categrayData].split('/')
 				if (splitData[0] == "brand") {
 					let filterValue = splitData[1]

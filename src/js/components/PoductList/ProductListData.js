@@ -64,7 +64,7 @@ class ProductListData extends Component {
 		let checkFirstValue = true
 		let firstValue = 0
 		for (var element in productList) {
-			if(checkFirstValue){
+			if (checkFirstValue) {
 				checkFirstValue = false
 				firstValue = element
 			}
@@ -77,10 +77,10 @@ class ProductListData extends Component {
 			totalPages = Math.floor(count / pagenationCount) + 1
 		}
 		this.setState({ totalPages: totalPages, pageNumber: 1 })
-		if(firstValue == 0){
+		if (firstValue == 0) {
 			this.state.check = false
 			this.pagenation(0, pagenationCount - 1)
-		}else{
+		} else {
 			this.state.check = true
 			this.pagenation(1, pagenationCount)
 		}
@@ -180,18 +180,18 @@ class ProductListData extends Component {
 	}
 
 	showSortByOption = () => {
-		if(this.state.sortByShowOption){
+		if (this.state.sortByShowOption) {
 			this.setState({ sortByShowOption: false })
-		}else{
+		} else {
 			this.setState({ sortByShowOption: true })
 		}
 	}
 
 	opensortByOnMobile = () => {
 		console.log("in")
-		if(this.state.sortByShowOption){
+		if (this.state.sortByShowOption) {
 			this.setState({ sortByShowOption: false })
-		}else{
+		} else {
 			this.setState({ sortByShowOption: true })
 		}
 	}
@@ -199,7 +199,7 @@ class ProductListData extends Component {
 	render() {
 		let list = this.state.list1
 		const store_locale = this.props.globals.store_locale
-		
+
 		return (
 			<Row>
 				<Col xs="3" lg="3" md="3" className="divShowOnWeb">
@@ -210,7 +210,7 @@ class ProductListData extends Component {
 						<div
 							id="R29005156978427060"
 							className="t-BreadcrumbRegion h-hidden-desktop t-BreadcrumbRegion--showBreadcrumb t-BreadcrumbRegion--useBreadcrumbTitle"
-						style={{paddingBottom: 0}}>
+							style={{ paddingBottom: 0 }}>
 							<div className="t-BreadcrumbRegion-body">
 								<div className="t-BreadcrumbRegion-breadcrumb">
 									<ul className="mobile-filter" style={{ borderBottom: 'solid 1px #b1b1b1', borderTop: 'solid 1px #b1b1b1' }}>
@@ -226,40 +226,29 @@ class ProductListData extends Component {
 							<div className="t-BreadcrumbRegion-buttons" />
 						</div>
 						<div className="sortDroupDownOnMobile">
-							{/* <select placeholder={'Filter'} onChange={this.filter} style={{ height: 50, width: '100%', color: 'transparent', backgroundColor: 'transparent', border: 'none' }}>
-								<FormattedMessage id="Product.Listing.Relevance" defaultMessage="Relevance">
-									{(message) =>
-										<option value="relevance">{message}</option>
-									}
-								</FormattedMessage>
-								<option value="a-z">Name (A-Z)</option>
-								<option value="z-a">Name (Z-A)</option>
-								<option value="price_asc">Price (lowest first)</option>
-								<option value="price_desc">Price (highest first)</option>
-							</select> */}
-										<div>
-														<div className="sortByOption" style={this.state.sortByShowOption ? {display: 'block'} : {display: 'none'}}>
-															<FormattedMessage id="Product.Listing.Relevance" defaultMessage="Relevance">
-															{(message) =>
-															<div className="sortByOptionText" onClick={()=> this.filter("relevance", message)}>
-																<span>{message}</span>
-															</div>
-															}
-															</FormattedMessage>
-															<div className="sortByOptionText" onClick={()=> this.filter("a-z", "Name (A-Z)")}>
-																<span>Name (A-Z)</span>
-															</div>
-															<div className="sortByOptionText" onClick={()=> this.filter("z-a", "Name (Z-A)")}>
-																<span>Name (Z-A)</span>
-															</div>
-															<div className="sortByOptionText" onClick={()=> this.filter("price_asc", "Price (lowest first)")}>
-																<span>Price (lowest first)</span>
-															</div>
-															<div className="sortByOptionText" onClick={()=> this.filter("price_desc", "Price (highest first)")}>
-																<span>Price (highest first)</span>
-															</div>
-														</div>
-													</div>
+							<div>
+								<div className="sortByOption" style={this.state.sortByShowOption ? { display: 'block' } : { display: 'none' }}>
+									<FormattedMessage id="Product.Listing.Relevance" defaultMessage="Relevance">
+										{(message) =>
+											<div className="sortByOptionText" onClick={() => this.filter("relevance", message)}>
+												<span>{message}</span>
+											</div>
+										}
+									</FormattedMessage>
+									<div className="sortByOptionText" onClick={() => this.filter("a-z", "Name (A-Z)")}>
+										<span>Name (A-Z)</span>
+									</div>
+									<div className="sortByOptionText" onClick={() => this.filter("z-a", "Name (Z-A)")}>
+										<span>Name (Z-A)</span>
+									</div>
+									<div className="sortByOptionText" onClick={() => this.filter("price_asc", "Price (lowest first)")}>
+										<span>Price (lowest first)</span>
+									</div>
+									<div className="sortByOptionText" onClick={() => this.filter("price_desc", "Price (highest first)")}>
+										<span>Price (highest first)</span>
+									</div>
+								</div>
+							</div>
 						</div>
 
 						<div className="row">
@@ -292,7 +281,7 @@ class ProductListData extends Component {
 											<div className="t-Region-buttons-left" />
 											<div className="t-Region-buttons-right" />
 										</div>
-										<div style={{padding: "0px 15px"}}>
+										<div style={{ padding: "0px 15px" }}>
 											<SideManu action={this.handler}></SideManu>
 										</div>
 										<div className="t-Region-buttons t-Region-buttons--bottom">
@@ -321,70 +310,33 @@ class ProductListData extends Component {
 													<span className="blackTitle"><FormattedMessage id="Product.Listing.SortBy" defaultMessage="Sort by" /></span>
 												</Col>
 												<Col xs="8" style={{ padding: 0 }}>
-													{/* <select placeholder={'Filter'} onChange={this.filter}>
-														<FormattedMessage id="Product.Listing.Relevance" defaultMessage="Relevance">
-															{(message) =>
-																<option value="relevance">{message}</option>
-															}
-														</FormattedMessage>
-														<option value="a-z">Name (A-Z)</option>
-														<option value="z-a">Name (Z-A)</option>
-														<option value="price_asc">Price (lowest first)</option>
-														<option value="price_desc">Price (highest first)</option>
-													</select> */}
-
-
-
-													<div className={this.state.sortByShowOption ? "sortBySelectedText open" : "sortBySelectedText"} onClick={()=> this.showSortByOption()}>
+													<div className={this.state.sortByShowOption ? "sortBySelectedText open" : "sortBySelectedText"} onClick={() => this.showSortByOption()}>
 														<span>{this.state.sortByText != "" ? this.state.sortByText : <FormattedMessage id="Product.Listing.Relevance" defaultMessage="Relevance"></FormattedMessage>}</span>
 														<i className="icon-down sortBySelectedTextIcon" ></i>
 													</div>
 													<div>
-														<div className="sortByOption" style={this.state.sortByShowOption ? {display: 'block'} : {display: 'none'}}>
+														<div className="sortByOption" style={this.state.sortByShowOption ? { display: 'block' } : { display: 'none' }}>
 															<FormattedMessage id="Product.Listing.Relevance" defaultMessage="Relevance">
-															{(message) =>
-															<div className="sortByOptionText" onClick={()=> this.filter("relevance", message)}>
-																<span>{message}</span>
-															</div>
-															}
+																{(message) =>
+																	<div className="sortByOptionText" onClick={() => this.filter("relevance", message)}>
+																		<span>{message}</span>
+																	</div>
+																}
 															</FormattedMessage>
-															<div className="sortByOptionText" onClick={()=> this.filter("a-z", "Name (A-Z)")}>
+															<div className="sortByOptionText" onClick={() => this.filter("a-z", "Name (A-Z)")}>
 																<span>Name (A-Z)</span>
 															</div>
-															<div className="sortByOptionText" onClick={()=> this.filter("z-a", "Name (Z-A)")}>
+															<div className="sortByOptionText" onClick={() => this.filter("z-a", "Name (Z-A)")}>
 																<span>Name (Z-A)</span>
 															</div>
-															<div className="sortByOptionText" onClick={()=> this.filter("price_asc", "Price (lowest first)")}>
+															<div className="sortByOptionText" onClick={() => this.filter("price_asc", "Price (lowest first)")}>
 																<span>Price (lowest first)</span>
 															</div>
-															<div className="sortByOptionText" onClick={()=> this.filter("price_desc", "Price (highest first)")}>
+															<div className="sortByOptionText" onClick={() => this.filter("price_desc", "Price (highest first)")}>
 																<span>Price (highest first)</span>
 															</div>
 														</div>
 													</div>
-													
-													{/* <div className="changecountry">
-                                            <div className="country">
-                                                <div onClick={this.showCountries} className={this.state.showCountries ? "activeCountry open divShowOnWeb" : "activeCountry divShowOnWeb"}>
-                                                    <span className="selected">
-                                                        <FormattedMessage id="header.defaultCountry" defaultMessage="Select Your Country" />
-                                                    </span>
-                                                    <i className="icon-down" ></i>
-                                                </div>
-                                                <div className="list" style={{ textAlign: 'start' }}>
-                                                    <div style={{ paddingLeft: 10, paddingBottom: 7, fontSize: '1.2rem' }}>
-                                                        <span>Name (A-Z)</span>
-                                                    </div>
-                                                    <div style={{ paddingLeft: 10, fontSize: '1.2rem' }}>
-														<span>Name (Z-A)</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div> */}
-
-
-
-
 												</Col>
 											</Row>
 										</Col>
