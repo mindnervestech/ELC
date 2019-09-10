@@ -24,8 +24,8 @@ import youtube from '../../../../assets/images/social/youtube.svg';
 import twitter from '../../../../assets/images/social/twitter.svg';
 import Collapsible from 'react-collapsible';
 import { BASE_URL, API_TOKEN } from '../../../api/globals';
-import ConsumerRightsLogo from '../../../../assets/images/staticPages/consumer_right_logo_1024.png';
-import ScrollToTop from "react-scroll-up";
+
+import ScrollToTop from 'react-scroll-up';
 const style = {
     visibility: 'visible',
     opacity: 0.5,
