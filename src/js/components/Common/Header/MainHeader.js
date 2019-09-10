@@ -369,13 +369,13 @@ class MainHeader extends Component {
                                         <label style={{ lineHeight: '0.5rem' }} className="iconLeble text-color changeLinkText"></label> */}
                                         <Link to={`/${store_locale}/help-and-faq`} style={{ textDecoration: 'none' }}>
                                             <img src={help} className="image-ion" style={{ marginTop: 6 }}></img>
-                                            <label className="iconLeble text-color changeLinkText"><FormattedMessage id="Header.Help" defaultMessage="help" /></label>
+                                            <label className="iconLeble text-color changeLinkText"><FormattedMessage id="Header.Help" defaultMessage="Help" /></label>
                                         </Link>
                                     </li>
                                     <li className="titleHover" style={this.state.userLogin ? { display: 'none' } : { display: 'inline-block', marginBottom: 5 }}>
                                         <Link to={`/${store_locale}/Login`} style={{ textDecoration: 'none' }}>
                                             <img src={profile} className="image-ion" style={{ marginTop: 8 }}></img>
-                                            <label className="iconLeble text-color changeLinkText"><FormattedMessage id="Header.SignInOrRegister" defaultMessage="sign in / register" /></label>
+                                            <label className="iconLeble text-color changeLinkText"><FormattedMessage id="Header.SignInOrRegister" defaultMessage="Sign in / Register" /></label>
                                         </Link>
                                     </li>
                                     <li style={this.state.userLogin ? { display: 'inline-block', paddingTop: 1 } : { display: 'none' }}>
