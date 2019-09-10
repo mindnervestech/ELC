@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link, Redirect, withRouter } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
+import searchLogo from '../../../../assets/images/header/search.svg';
 
 class Search extends Component {
     constructor(props) {
@@ -32,14 +33,15 @@ class Search extends Component {
         return(
               <div className="search">
                 {this.renderRedirect()}
-                <FormattedMessage id="SearchText" defaultMessage="Search">
+                <FormattedMessage id="SearchText" defaultMessage="search...">
                     {(message)=>  
                     <input type="text" id="searchnay" className="textInput" placeholder={message} onKeyDown={this.handleKeyPress} />}
                 </FormattedMessage>
-                <button className="searchButton" style={{backgroundColor: '#fff'}}><i className="icon-search"></i></button>
+                <button className="searchButton" style={{backgroundColor: '#fff'}}>
+                <img src={searchLogo} className="searchLogo"></img>
+                </button>
               </div>
         )
     }
 }
-
 export default withRouter(Search);

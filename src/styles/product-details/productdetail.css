@@ -1312,6 +1312,13 @@ html[dir="rtl"] .click-collect{
     margin-right: 25px;
 }
 
+html[dir="rtl"] .learn-skill-img img{
+    width: 70px;
+    height:70px;
+    margin-left: 25px;
+    margin-right: 0px;
+}
+
 .product-title{
     font-family: VAG Rounded ELC Light;
     font-size: 2.9rem;
