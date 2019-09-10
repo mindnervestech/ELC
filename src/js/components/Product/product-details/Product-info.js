@@ -37,7 +37,8 @@ class ProductInfo extends Component {
 			showAlert:false,
 			is_in_wishlist_item:false,
 			wishlist_message:'',
-			ischeck:true,
+			ischeckremove:true,
+			ischeckadd:true,
       showLearning: false,
 		};
 		this.addToCart = this.addToCart.bind(this);
@@ -71,19 +72,34 @@ class ProductInfo extends Component {
 	componentDidUpdate()
 	{
 		if(this.props.productWishDetail.wishlist_success !== undefined)
-		{
-			if(this.state.ischeck)
-			{
-				console.log("componentDidUpdate",this.props.productWishDetail)
-			this.setState({wishlist_message:this.props.productWishDetail.wishlist_success,showAlert:true,ischeck:false});
-
-			setTimeout(() => {
-				this.closeAlert();
-			}, 5000);	
-			}
+		{   
 			
-			// console.log("sucess toaster",this.props.productWishDetail.wishlist_success)
-			// toastr.success('Success Message', 'Title', {displayDuration:3000})
+			if(this.state.ischeckadd)
+			{
+				console.log("Add Wishlist",this.props.productWishDetail.wishlist_success)
+					
+					this.setState({wishlist_message:this.props.productWishDetail.wishlist_success,showAlert:true,ischeckadd:false});
+
+					setTimeout(() => {
+						this.closeAlert();
+					}, 5000);	
+			}
+
+		}
+
+		 if (this.props.removeWishListDetail.remove_wishlist_success)
+		{
+             
+			if(this.state.ischeckremove)
+			{
+				console.log("Remove Wishlist",this.props.removeWishListDetail.remove_wishlist_success)
+					this.setState({wishlist_message:this.props.removeWishListDetail.remove_wishlist_success,showAlert:true,ischeckremove:false});
+
+					setTimeout(() => {
+						this.closeAlert();
+					}, 5000);	
+			}
+
 		}
 	}
 
@@ -92,7 +108,8 @@ class ProductInfo extends Component {
 		let decrementedQty = currQty - 1;
 		if ((totalQty > 0) && (decrementedQty > 0)) {
 			if (currQty <= 0) {
-			} else {
+			} 
+			else {
 				this.setState({ defaultQty: currQty - 1 });
 			}
 		}
@@ -229,47 +246,63 @@ class ProductInfo extends Component {
 
 		// 	 }
 		//  }
-		if (document.getElementById('Capa_1').getAttribute('class').includes('active')) {
+		if (document.getElementById('Capa_1').getAttribute('class').includes('active'))
+		 {
 			document.getElementById('Capa_1').setAttribute('class', 'naylove-icon');
 			if (this.props.productWishDetail.wishlist_itemid) {
 				
-				
+				this.setState({is_in_wishlist_item:false,ischeckremove:true})
 				this.props.onRemoveWishList({
 					index: null,
 					wishlist_id: this.props.productWishDetail.wishlist_itemid
 				})
-				this.setState({is_in_wishlist_item:false,ischeck:true})
+				
 			}
 		} else {
 			
 			document.getElementById('Capa_1').setAttribute('class', 'naylove-icon active');
 			
-			
+			this.setState({is_in_wishlist_item:true,ischeckadd:true})
 			const data = {
 				customer_id: this.props.customerDetails.customer_id,
 				product_id: this.props.productZoomDetails.id
 			};
 			this.props.onAddToWishList(data);
-			this.setState({is_in_wishlist_item:true,ischeck:true})
-			
-              console.log("this.props.productWishDetail.wishlist_success",this.props)
-		// 	if(this.props.productWishDetail.wishlist_success)
-		// {
 
-		// 	this.setState({wishlist_message:this.props.productWishDetail.wishlist_success,showAlert:true});
-
-		// 	setTimeout(() => {
-		// 		this.showAlert();
-		// 	}, 50000);
-		// 	// console.log("sucess toaster",this.props.productWishDetail.wishlist_success)
-		// 	// toastr.success('Success Message', 'Title', {displayDuration:3000})
-		// }
-			
-		
-	     
-		
-
+			console.log("prosp",this.props.productWishDetail)
 		}
+
+		// if(this.props.productWishDetail.wishlist_success !== undefined)
+		// {   
+			
+		// 	if(this.state.ischeck)
+		// 	{
+		// 		console.log("Add Wishlist",this.props.productWishDetail.wishlist_success)
+					
+		// 			this.setState({wishlist_message:this.props.productWishDetail.wishlist_success,showAlert:true,ischeck:false});
+
+		// 			setTimeout(() => {
+		// 				this.closeAlert();
+		// 			}, 5000);	
+		// 	}
+
+		// }
+
+		//  if (this.props.removeWishListDetail.remove_wishlist_success)
+		// {
+             
+		// 	if(this.state.ischeck)
+		// 	{
+		// 		console.log("Remove Wishlist",this.props.removeWishListDetail.remove_wishlist_success)
+		// 			this.setState({wishlist_message:this.props.removeWishListDetail.remove_wishlist_success,showAlert:true,ischeck:false});
+
+		// 			setTimeout(() => {
+		// 				this.closeAlert();
+		// 			}, 5000);	
+		// 	}
+
+		// }
+
 	};
 
 
@@ -706,6 +739,7 @@ const mapStateToProps = state => {
 		productZoomDetails: state.productDetails.productData,
 		customerDetails: state.login.customer_details,
 		productWishDetail: state.productDetails.productWishDetail,
+		removeWishListDetail:state.productDetails.productWishDetail,
 		productDetails: state.productDetails.productColor,
 		wishlistItem:state.wishList,
 		productDetailLoader: state.productDetails.productDetailLoader,
