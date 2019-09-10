@@ -1281,6 +1281,23 @@ html[dir="rtl"] .click-collect{
     margin-right: 3.5rem;
 }
 
+html[dir="rtl"] .share-wishlist{
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 2rem;
+    margin-right:-20px;
+   
+}
+
+html[dir="rtl"] .mr-10-span{
+   margin-left:10px;
+   
+}
+
+html[dir="rtl"] .mr-6-span{
+    margin-left:6px;
+    
+ }
 .deliy-free{
     width: 100%;
     margin-left: 0; 

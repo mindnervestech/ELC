@@ -341,7 +341,7 @@ class ProductInfo extends Component {
 												xmlSpace="preserve"
 												width="20px"
 												height="20px"
-												className={"naylove-icon " + (this.state.is_in_wishlist_item ? 'active' : '')}
+												className={"naylove-icon  " + (this.state.is_in_wishlist_item ? 'active' : '')}
 												
 											>
 												<g transform="matrix(0.94148 0 0 0.94148 1.46299 1.46299)">
@@ -351,7 +351,7 @@ class ProductInfo extends Component {
 													/>
 												</g>{' '}
 											</svg>
-												 {!this.state.is_in_wishlist_item ? <span style={{margingRight:"35px"}}><FormattedMessage id="PageTitle.add-wishlist" defaultMessage="Add to wishlist" /></span> : <span style={{margingRight:"35px"}}><FormattedMessage id="PageTitle.remove-wishlist" defaultMessage="Remove to wishlist" /></span>}
+												 {!this.state.is_in_wishlist_item ? <span style={{margingRight:"35px"}} classsName="mr-10-span"><FormattedMessage id="PageTitle.add-wishlist" defaultMessage="Add to wishlist" /></span> : <span style={{margingRight:"35px"}} classsName="mr-10-span"><FormattedMessage id="PageTitle.remove-wishlist" defaultMessage="Remove to wishlist" /></span>}
 											</span>
 			</Link>);
 		} else {
