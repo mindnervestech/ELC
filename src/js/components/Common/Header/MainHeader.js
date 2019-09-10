@@ -547,7 +547,7 @@ class MainHeader extends Component {
                                     <img className="mobileHomeLogo" src={logoGroup} />
                                 </Link>
                                 <img src={location} className="mobileHomePageIcon hide-mob"></img>
-                                <Link className="basket-icon" to={`/${store_locale}/cart`} style={{ textDecoration: 'none' }}>
+                                <Link className="basket-icon" to={`/${store_locale}/cart`} style={{ textDecoration: 'none', marginRight: 0 }}>
                                     <img src={bagLogo} className="mobileHomePageIcon" style={{ height: 25, width: 25 }} />
                                     <label className="lable-count">{this.props.cart_details.products ? this.props.cart_details.products.length : 0}</label>
                                 </Link>

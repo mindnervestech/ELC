@@ -187,6 +187,15 @@ class ProductListData extends Component {
 		}
 	}
 
+	opensortByOnMobile = () => {
+		console.log("in")
+		if(this.state.sortByShowOption){
+			this.setState({ sortByShowOption: false })
+		}else{
+			this.setState({ sortByShowOption: true })
+		}
+	}
+
 	render() {
 		let list = this.state.list1
 		const store_locale = this.props.globals.store_locale
@@ -201,14 +210,14 @@ class ProductListData extends Component {
 						<div
 							id="R29005156978427060"
 							className="t-BreadcrumbRegion h-hidden-desktop t-BreadcrumbRegion--showBreadcrumb t-BreadcrumbRegion--useBreadcrumbTitle"
-						>
+						style={{paddingBottom: 0}}>
 							<div className="t-BreadcrumbRegion-body">
 								<div className="t-BreadcrumbRegion-breadcrumb">
 									<ul className="mobile-filter" style={{ borderBottom: 'solid 1px #b1b1b1', borderTop: 'solid 1px #b1b1b1' }}>
 										<li id="cd-cart-trigger" onClick={this._callFilters} style={{ borderRight: 'solid 1px #b1b1b1' }}>
 											<FormattedMessage id="Product.Listing.FilterBy" defaultMessage="Filter by" />
 										</li>
-										<li>
+										<li onClick={() => this.opensortByOnMobile()}>
 											<div><FormattedMessage id="Product.Listing.SortBy" defaultMessage="Sort by" /></div>
 										</li>
 									</ul>
@@ -217,7 +226,7 @@ class ProductListData extends Component {
 							<div className="t-BreadcrumbRegion-buttons" />
 						</div>
 						<div className="sortDroupDownOnMobile">
-							<select placeholder={'Filter'} onChange={this.filter} style={{ height: 50, width: '100%', color: 'transparent', backgroundColor: 'transparent', border: 'none' }}>
+							{/* <select placeholder={'Filter'} onChange={this.filter} style={{ height: 50, width: '100%', color: 'transparent', backgroundColor: 'transparent', border: 'none' }}>
 								<FormattedMessage id="Product.Listing.Relevance" defaultMessage="Relevance">
 									{(message) =>
 										<option value="relevance">{message}</option>
@@ -227,7 +236,30 @@ class ProductListData extends Component {
 								<option value="z-a">Name (Z-A)</option>
 								<option value="price_asc">Price (lowest first)</option>
 								<option value="price_desc">Price (highest first)</option>
-							</select>
+							</select> */}
+										<div>
+														<div className="sortByOption" style={this.state.sortByShowOption ? {display: 'block'} : {display: 'none'}}>
+															<FormattedMessage id="Product.Listing.Relevance" defaultMessage="Relevance">
+															{(message) =>
+															<div className="sortByOptionText" onClick={()=> this.filter("relevance", message)}>
+																<span>{message}</span>
+															</div>
+															}
+															</FormattedMessage>
+															<div className="sortByOptionText" onClick={()=> this.filter("a-z", "Name (A-Z)")}>
+																<span>Name (A-Z)</span>
+															</div>
+															<div className="sortByOptionText" onClick={()=> this.filter("z-a", "Name (Z-A)")}>
+																<span>Name (Z-A)</span>
+															</div>
+															<div className="sortByOptionText" onClick={()=> this.filter("price_asc", "Price (lowest first)")}>
+																<span>Price (lowest first)</span>
+															</div>
+															<div className="sortByOptionText" onClick={()=> this.filter("price_desc", "Price (highest first)")}>
+																<span>Price (highest first)</span>
+															</div>
+														</div>
+													</div>
 						</div>
 
 						<div className="row">

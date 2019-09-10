@@ -3100,18 +3100,13 @@ li {
 .sortDroupDownOnMobile{
     width: 50%;
     height: 50px;
-    position: absolute;
-    top: 1px;
-    right: 0px;
+    float: right;
 }
 
 html[dir="rtl"] .sortDroupDownOnMobile{
     width: 50%;
     height: 50px;
-    position: absolute;
-    top: 1px;
-    left: 0px;
-    right: 50%;
+    float: left;
 }
 
 html[dir="rtl"] .Collapsible__trigger{
@@ -3178,6 +3173,28 @@ html[dir="rtl"] .Collapsible__trigger:after{
     .data .slick-prev {
         left: 11px !important;
         z-index: 1;
+    }
+
+    .sortByOption{
+        padding: 0px 15px;
+        border: solid 1px #b1b1b1;
+        border-top: none;
+        position: absolute;
+        width: 46.5% !important;
+        right: 16px;
+        background-color: #fff;
+        z-index: 99;
+    }
+    
+    html[dir="rtl"] .sortByOption{
+        padding: 0px 15px;
+        border: solid 1px #b1b1b1;
+        border-top: none;
+        position: absolute;
+        left: 16px;
+        width: 44%;
+        background-color: #fff;
+        z-index: 99;
     }
 
     .apex-item-group--rc .apex-item-option:first-child:nth-last-child(3), .apex-item-group--rc .apex-item-option:first-child:nth-last-child(3)~.apex-item-option{
@@ -5746,7 +5763,7 @@ a:hover {
 
     .header .changecountry{
         border: none !important;
-        width: 29% !important;
+        width: 30% !important;
         display: inline-block !important;
     }
 }
