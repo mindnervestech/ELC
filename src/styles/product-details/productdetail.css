@@ -1174,11 +1174,11 @@ html[dir="rtl"] .del-options
 }
 
 .home-deli {
-    color: #0D943F;
+    color: #0d943f;
     font-size: 1.5rem;
-    border: 2px solid #0D943F; 
-    width: 45%;
-    margin-left: 18px !important;
+    border: 2px solid #0d943f;
+    width: 48%;
+    margin-left: 0px!important;
     border-radius: 5px;
 }
 
@@ -1197,8 +1197,17 @@ html[dir="rtl"] .del-options
 .click-collect{
     border: 1px solid #d6d6d6;
     font-size: 1.5rem;
-    width: 45%;
-    margin-left: 25px !important;
+    width: 48%;
+    margin-left: 25px!important;
+    border-radius: 5px;
+}
+
+html[dir="rtl"] .click-collect{
+    border: 1px solid #d6d6d6;
+    font-size: 1.5rem;
+    width: 48%;
+    margin-left: 0px!important;
+    margin-right: 15px;
     border-radius: 5px;
 }
 
