@@ -539,7 +539,7 @@ class ProductInfo extends Component {
 												<div className="row del-options">
 													<div className="row home-deli">
 														<img src={freeDelivery} />
-														<span>
+														<span style={{fontSize:'15px', fontWeight: 'bold'}}>
 															Home delivery
 													</span>
 														<span style={{ margin: '10px', color: '#ee0E19' }}>
@@ -547,21 +547,21 @@ class ProductInfo extends Component {
 																<span className="in-stock" style={{ color: '#0D943F' }}>
 																	<FormattedMessage id="PDP.InStock" defaultMessage="In Stock" />
 																</span> :
-																<span style={{ margin: '10px', color: '#ee0E19' }}>
+																<span style={{ margin: '10px', color: '#ee0E19',fontSize:'15px' }}>
 																	<FormattedMessage id="PDP.OutOfStock" defaultMessage="Out of Stock" />
 																</span>}
 														</span>
 													</div>
 													<div className="row click-collect">
 														<img src={freeCollect} />
-														<span style={{marginTop:'14px'}}>
+														<span style={{marginTop:'15px' ,fontSize:'15px', fontWeight: 'bold'}}>
 															Click & Collect
 													</span>
 
 														{/* <span className="in-stock">
 														In stock
 													</span> */}
-														<span style={{ marginLeft: '20px' }}>
+														<span style={{ marginLeft: '20px',fontSize:'15px' }}>
 															<a href=''>Coming Soon</a>
 														</span>
 													</div>
