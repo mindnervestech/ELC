@@ -20,7 +20,7 @@ import deliveryBy from '../../../../assets/images/header/Truck1.svg';
 import freeDelivery from '../../../../assets/images/elc_icon_03.png';
 import freeCollect from '../../../../assets/images/elc_icon_05.png';
 import logoGroup from '../../../../assets/images/social/Logo Group.svg';
-import bagLogo from '../../../../assets/images/header/basket.svg';
+import bagLogo from '../../../../assets/images/header/basket_w.svg';
 
 import location from '../../../../assets/images/header/location.svg';
 import help from '../../../../assets/images/header/help.svg';
