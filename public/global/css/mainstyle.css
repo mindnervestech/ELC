@@ -73,12 +73,22 @@ html[dir="rtl"] .hoverclass :hover::before{
     color: #4f4f4f;
     letter-spacing: 0.065rem;
 }
-.searchLogo{
-    height: 24px;
-    width: 24px;
+.sortBySelectedText .icon-down:before{
+    content: "\E909";
     position: absolute;
-    top: 10px;
-    right: 35px;
+    top: 11px;
+    right: 11px;
+    font-size: 17px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.icon-down:before{
+    content: "\E909";
+    /* position: absolute;
+    top: 11px;
+    right: 11px;
+    font-size: 17px; */
 }
 
 html[dir="rtl"] .searchLogo{
@@ -5842,6 +5852,12 @@ a:hover {
 
 @media (max-width:767px){
 
+    .PLPCategaryName{
+        font-size: 18px;
+        font-family: "VAG Rounded ELC Light";
+        color: #0D943F;
+    }
+
     .searchLogo{
         height: 24px;
         width: 24px;
@@ -6158,23 +6174,40 @@ html[dir="rtl"] .header .navTrigger {
 }
 
 .sortBySelectedText{
-    border: solid 2px #b1b1b1;
-    padding: 5px 15px;
+    border: solid 3px #b1b1b1;
+    padding: 9px 15px 5px;
+    border-radius: 4px;
+    height: 45px;
 }
 
 .sortBySelectedTextIcon{
+     position: absolute;
+    right: 0px;
+    top: 0px;
+    background-color: #b3b3b3;
+    height: 100%;
+    width: 40px;
+    border-radius: 4px;
+}
+
+.sortBySelectedText .searchLogo{
+    height: 24px;
+    width: 24px;
     position: absolute;
-    right: 10px;
-    top: 11px;
+    top: 10px;
+    right: 35px;
+    color: #fff;
+    font-weight: bold;
 }
 
 .sortByOption{
-    border: solid 1px #b1b1b1;
+    border: solid 1px #b3b3b3;
     border-top: none;
     position: absolute;
     width: 100%;
     background-color: #fff;
     z-index: 99;
+    border-radius: 0px 0px 4px 4px;
 }
 
 .sortByOptionText{

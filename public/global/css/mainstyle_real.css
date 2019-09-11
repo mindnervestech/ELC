@@ -1908,7 +1908,7 @@ html[dir="rtl"] .header .changecountry .country .list {
 
 @media only screen and (min-width: 1280px) {
     .header .changecountry .country .list {
-        margin-top: 10px
+        margin-top: 5px
     }
 }
 

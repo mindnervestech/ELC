@@ -303,12 +303,12 @@ class MainHeader extends Component {
                                         </div>
                                     </li>
                                     <li className="ll" className="paddingForEnglish">
-                                        <div className="lang" style={{ fontSize: '1.2rem' }}>
+                                        <div className="lang" style={{ fontSize: '1.3rem' }}>
                                             <a href="javascript:void(0);" onClick={(e) => this.translate('en', 'ltr')} className="active" >English</a></div>
                                     </li>
                                     <li className="paddingForDash"> - </li>
                                     <li className="ll" style={{ padding: 0 }}>
-                                        <div className="lang" style={{ paddingLeft: 8, fontSize: '1.2rem' }}>
+                                        <div className="lang" style={{ paddingLeft: 8, fontSize: '1.3rem' }}>
                                             <a href="javascript:void(0);" onClick={(e) => this.translate('ar', 'rtl')} >العربية</a></div>
                                     </li>
                                     {/* <li>
