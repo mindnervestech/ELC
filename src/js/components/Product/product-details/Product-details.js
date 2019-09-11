@@ -129,9 +129,9 @@ class ProductDetails extends Component {
 				<meta name="description" content={this.props.productDetails.meta_description} />
 			</Helmet></>;
 		}
-		if(document.getElementsByClassName("styles_modal__gNwvD")[0]){
-			document.getElementsByClassName("styles_modal__gNwvD")[0].style.cssText="height: auto !important; width:450px !important"
-		}
+		//if(document.getElementsByClassName("styles_modal__gNwvD")[0]){
+			//document.getElementsByClassName("styles_modal__gNwvD")[0].style.cssText="height: auto !important; width:450px !important"
+		//}
 
 		return (
 			<div className="t-Body">
@@ -176,9 +176,9 @@ class ProductDetails extends Component {
 							</div>
 							: ''}
 						{this.state.addToCartModal ? <div>
-							<Modal  open={this.state.addToCartModal} onClose={this.onCloseCartModal}>
+							{/* <Modal  open={this.state.addToCartModal} onClose={this.onCloseCartModal}>
 								<AddToCartModal onCloseCartModal={this.onCloseCartModal} />
-							</Modal>
+							</Modal> */}
 						</div> : ''}
 						{/* You may also like */}
 						<ProductSlider currency={this.props.productDetails.currency} store_name={this.props.globals.store_locale} similar_product={this.props.productDetails.similar_products} />
