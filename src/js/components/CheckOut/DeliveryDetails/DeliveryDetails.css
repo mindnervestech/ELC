@@ -770,7 +770,7 @@ html[dir="rtl"] .intl-tel-input.iti-container {
 
 html[dir="rtl"] .intl-tel-input .country-list {
     position: relative;
-    z-index: 2;
+    z-index: 99;
     list-style: none;
     text-align: right;
     padding: 0;
@@ -846,7 +846,7 @@ html[dir="rtl"] .intl-tel-input.iti-container {
 
 html[dir="rtl"] .intl-tel-input .country-list {
     position: relative;
-    z-index: 2;
+    z-index: 99;
     list-style: none;
     text-align: right;
     padding: 0;
