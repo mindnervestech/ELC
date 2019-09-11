@@ -2844,13 +2844,13 @@ html[dir='rtl'] .t-Form-fieldContainer--floatingLabel.t-Form-fieldContainer{
 }
 
 .slick-next:before {
-    content: '\203A' !important;
+    content: url(chevron_right.svg)!important;
     font-size: 80px !important;
     line-height: 0 !important;
 }
 
 .slick-prev:before {
-    content: '\2039' !important;
+    content: url(chevron_left.svg)!important;
     font-size: 80px !important;
     line-height: 0 !important;
 }
@@ -2865,7 +2865,7 @@ html[dir='rtl'] .t-Form-fieldContainer--floatingLabel.t-Form-fieldContainer{
 }
 
 .data .slick-next {
-    right: -80px !important;
+    right: -70px !important;
 }
 
 html[dir="rtl"] .data .slick-next {
@@ -6142,26 +6142,26 @@ html[dir="rtl"] .header .navTrigger {
 .webBanner .slick-next {
     width: 32px;
     height: 32px;
-    background-image: url(https://www.elc.co.uk/_ui/responsive/theme-elc/images/chevron_right.svg);
+    background-image: url(chevron_right.svg);
     background-size: cover;
 }
 .webBanner .slick-prev {
     width: 32px;
     height: 32px;
-    background-image: url(https://www.elc.co.uk/_ui/responsive/theme-elc/images/chevron_left.svg);
+    background-image: url(chevron_left.svg);
     background-size: cover;
 }
 
 .webBanner .slick-next:hover {
     width: 32px;
     height: 32px;
-    background-image: url(https://www.elc.co.uk/_ui/responsive/theme-elc/images/chevron_right.svg)!important;
+    background-image: url(chevron_right.svg)!important;
     background-size: cover;
 }
 .webBanner .slick-prev:hover {
     width: 32px;
     height: 32px;
-    background-image: url(https://www.elc.co.uk/_ui/responsive/theme-elc/images/chevron_left.svg)!important;
+    background-image: url(chevron_left.svg)!important;
     background-size: cover;
 }
 

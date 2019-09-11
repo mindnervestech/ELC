@@ -1347,7 +1347,7 @@ html[dir="rtl"] .header .search .textInput {
     }
 
     html[dir="rtl"] .header .link>li {
-        margin-left: 25px
+        margin-left: 20px
     }
 }
 
