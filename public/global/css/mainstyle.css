@@ -62,7 +62,11 @@ html[dir="rtl"] .hoverclass :hover::before{
 }
 
 /*! normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */
-
+.PLPCategaryName{
+    font-size: 24px;
+    font-family: "VAG Rounded ELC Light";
+    color: #0D943F;
+}
 .staticPagesText{
     font-size: 14px;
     line-height: 23px;
@@ -6165,7 +6169,6 @@ html[dir="rtl"] .header .navTrigger {
 }
 
 .sortByOption{
-    padding: 0px 15px;
     border: solid 1px #b1b1b1;
     border-top: none;
     position: absolute;
@@ -6175,7 +6178,11 @@ html[dir="rtl"] .header .navTrigger {
 }
 
 .sortByOptionText{
-    padding: 5px 0px;
+    padding: 8px 15px;
+}
+
+.sortByOptionText:hover{
+    background-color: #f8f8f8;
 }
 
 .open .icon-down:before{

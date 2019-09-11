@@ -303,7 +303,7 @@ class ProductListData extends Component {
 						<div className="homePage">
 							<div className="start3">
 								<div>
-									<span className="blackTitle">{this.props.list.category_name}</span>
+									<span className="PLPCategaryName">{this.props.list.category_name}</span>
 								</div>
 								<div style={{ height: 32 }}>
 									<span>{this.props.list.category_description}</span>
