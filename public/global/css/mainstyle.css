@@ -6222,3 +6222,14 @@ html[dir="rtl"] .header .navTrigger {
     -webkit-transform: rotate(180deg);
     transform: rotate(180deg);
 }
+
+.commingSoonText{
+    font-size: 15px;
+    margin-left: 20px
+}
+
+html[dir="rtl"] .commingSoonText{
+    font-size: 15px;
+    margin-left: 0px;
+    margin-right: 20px
+}

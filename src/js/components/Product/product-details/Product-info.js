@@ -550,7 +550,7 @@ class ProductInfo extends Component {
 														{/* <span className="in-stock">
 														In stock
 													</span> */}
-														<span style={{ marginLeft: '20px',fontSize:'15px' }}>
+														<span className="commingSoonText">
 															<a href=''>Coming Soon</a>
 														</span>
 													</div>
