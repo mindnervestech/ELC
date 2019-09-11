@@ -1289,9 +1289,30 @@ html[dir="rtl"] .share-wishlist{
    
 }
 
+
+.wishlist-span-1
+{
+   display: inline-flex !important;
+   margin-right:10px !important; 
+}
+
+html[dir="rtl"] .wishlist-span-1
+{
+   display: inline-flex !important;
+   margin-right:10px ! important; 
+}
+html[dir="rtl"] .mr-10-wishlist
+{
+    margin-right: 10px!important;
+}
 html[dir="rtl"] .mr-10-span{
    margin-left:10px;
    
+}
+
+html[dir="rtl"] .mr-10-share
+{
+    margin-right: 10px!important;
 }
 
 html[dir="rtl"] .mr-6-span{

@@ -237,15 +237,6 @@ class ProductInfo extends Component {
 	 }
 
 	_handleClick = async () => {
-
-		//  if (this.props.customerDetails) {
-		// 	 if(this.props.customerDetails.customer_id === undefined)
-		// 	 {
-		// 		// this.props.history.push("");
-		// 		 this.context.router.push('/');
-
-		// 	 }
-		//  }
 		if (document.getElementById('Capa_1').getAttribute('class').includes('active'))
 		 {
 			document.getElementById('Capa_1').setAttribute('class', 'naylove-icon');
@@ -268,8 +259,6 @@ class ProductInfo extends Component {
 				product_id: this.props.productZoomDetails.id
 			};
 			this.props.onAddToWishList(data);
-
-			console.log("prosp",this.props.productWishDetail)
 		}
 
 		// if(this.props.productWishDetail.wishlist_success !== undefined)
@@ -328,7 +317,7 @@ class ProductInfo extends Component {
 
 	addToWishList = (data) => {
 		if ((this.props.customerDetails && this.props.customerDetails.customer_id === undefined) || !this.props.customerDetails) {
-			return (<Link to={`/${this.props.globals.store_locale}/Login`}><span style={{display:"inline-flex", marginRight: '10px'}}>
+			return (<Link to={`/${this.props.globals.store_locale}/Login`}><span className="wishlist-span-1 mr-10-wishlist" style={{margin:10}}>
 				<svg
 												xmlns="http://www.w3.org/2000/svg"
 												xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -349,13 +338,13 @@ class ProductInfo extends Component {
 														d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543  c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503  c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"
 														className="naylove"
 													/>
-												</g>{' '}
+												</g>
 											</svg>
-												 {!this.state.is_in_wishlist_item ? <span style={{margingRight:"35px"}} classsName="mr-10-span"><FormattedMessage id="PageTitle.add-wishlist" defaultMessage="Add to wishlist" /></span> : <span style={{margingRight:"35px"}} classsName="mr-10-span"><FormattedMessage id="PageTitle.remove-wishlist" defaultMessage="Remove to wishlist" /></span>}
+												 {!this.state.is_in_wishlist_item ? <span style={{margingRight:"35px"}}  className="mr-10-wishlist" ><FormattedMessage id="PageTitle.add-wishlist" defaultMessage="Add to wishlist" /></span> : <span style={{margingRight:"35px"}} className="mr-10-wishlist" ><FormattedMessage id="PageTitle.remove-wishlist" defaultMessage="Remove to wishlist" /></span>}
 											</span>
 			</Link>);
 		} else {
-			return (<span onClick={this._handleClick} style={{display:"inline-flex", marginRight: '10px'}}><svg
+			return (<span onClick={this._handleClick} className="wishlist-span-1 mr-10-wishlist"><svg
 			xmlns="http://www.w3.org/2000/svg"
 			xmlnsXlink="http://www.w3.org/1999/xlink"
 			version="1.1"
@@ -645,10 +634,10 @@ class ProductInfo extends Component {
 												 {!data.is_in_wishlist ?<span style={{margingRight:"35px"}}><FormattedMessage id="PageTitle.add-wishlist" defaultMessage="Add to wishlist" /></span>: <span style={{margingRight:"35px"}}><FormattedMessage id="PageTitle.remove-wishlist" defaultMessage="Remove to wishlist" /></span>}
 											</span> */}
 
-												<span style={{ display: "inline-flex", marginRight: '10px' }}>
+												<span className="wishlist-span-1">
 													<a onClick={() => this.setState({ openShareModel: true })} className="hover-on-favorite">
 														<i className='fa fa-share-alt' style={{ fontSize: 25, marginRight: 13 }}></i>
-														<span ><FormattedMessage id="Share" defaultMessage="Share" /></span>
+														<span className="mr-10-share" ><FormattedMessage id="Share" defaultMessage="Share" /></span>
 													</a>
 												</span>
 											</div>

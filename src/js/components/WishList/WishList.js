@@ -19,22 +19,65 @@ class WishList extends Component {
     super(props);
     this.state = {
       goToProduct: false,
-      url_key: null
+      url_key: null,
+      showAlert:false,
+      wishlist_message:'',
+      ischeckremove:true
     }
   }
 
   componentDidMount() {
     this.props.onGetWishListItem({ customerid: this.props.user_details.customer_id, store_id:this.props.globals.currentStore})
+
+  }
+
+
+  componentDidUpdate()
+  {
+
+    if (this.props.removeWishListDetail.remove_wishlist_success)
+		{
+             
+			if(this.state.ischeckremove)
+			{
+				console.log("Remove Wishlist",this.props.removeWishListDetail.remove_wishlist_success)
+					this.setState({wishlist_message:this.props.removeWishListDetail.remove_wishlist_success,showAlert:true,ischeckremove:false});
+
+					setTimeout(() => {
+						this.closeAlert();
+					}, 5000);	
+			}
+
+		}
   }
 
   wishlistToggle = (index, wishlist_id) => {
     this.props.onRemoveProductFromWishList({ index: index, wishlist_id: wishlist_id })
+    if (this.props.removeWishListDetail.remove_wishlist_success)
+		{
+             
+			if(this.state.ischeckremove)
+			{
+				console.log("Remove Wishlist",this.props.removeWishListDetail.remove_wishlist_success)
+					this.setState({wishlist_message:this.props.removeWishListDetail.remove_wishlist_success,showAlert:true,ischeckremove:false});
+
+					setTimeout(() => {
+						this.closeAlert();
+					}, 5000);	
+			}
+
+		}
   }
 
 
 
   logOut = () => {
     this.props.onLogoutUser();
+  }
+  
+  closeAlert=()=>
+  {
+    this.setState({showAlert:false});
   }
 
   gotoProductDetail = (item) => {
@@ -59,8 +102,31 @@ class WishList extends Component {
 
 
   render() {
-
+    
     const store_locale = this.props.globals.store_locale;
+
+    
+		let respo_message = null;
+
+		if (this.state.showAlert) {
+		  respo_message = <span id="APEX_SUCCESS_MESSAGE" data-template-id="126769709897686936_S" className="apex-page-success u-visible"><div className="t-Body-alert">
+			<div className="t-Alert t-Alert--defaultIcons t-Alert--success t-Alert--horizontal t-Alert--page t-Alert--colorBG" id="t_Alert_Success" role="alert">
+			  <div className="t-Alert-wrap">
+				<div className="t-Alert-icon">
+				  <span className="t-Icon" />
+				</div>
+				<div className="t-Alert-content">
+				  <div className="t-Alert-header">
+					<h2 className="t-Alert-title">{this.state.wishlist_message}</h2>
+				  </div>
+				</div>
+				<div className="t-Alert-buttons">
+				  <button className="t-Button t-Button--noUI t-Button--icon t-Button--closeAlert" type="button" title="Close Notification" onClick={this.closeAlert} ><span className="t-Icon icon-close" /></button>
+				</div>
+			  </div>
+			</div>
+		  </div></span>;
+		}
 
     // if (this.state.goToProduct) {
     //   return <Redirect to={{
@@ -171,8 +237,8 @@ class WishList extends Component {
                 </div>
                 <div style={{ paddingTop: 10 }}>
                   <span onClick={()=>this.wishlistToggle(index,this.props.products[item].wishlist_id)}>
-                  <i className="icon-heart"></i>
-                  <span style={{ paddingLeft: 7 }} ><FormattedMessage id="PageTitle.remove-wishlist" defaultMessage="Remove from Wishlist"/></span></span>
+                  <i className="icon-heart">
+                  <span style={{ paddingLeft: 7 ,cursor:'pointer'}} ><FormattedMessage id="PageTitle.remove-wishlist" defaultMessage="Remove from Wishlist"/></span></i></span>
                 </div>
               </div>
             </li>
@@ -219,6 +285,7 @@ const mapStateToProps = state => {
     products: state.wishList.products,
     orderHistory: state.orders.orders_history,
     globals: state.global,
+    removeWishListDetail:state.productDetails.productWishDetail,
     wishLoader: state.wishList.wishLoader
   }
 }
