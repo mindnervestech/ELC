@@ -8,8 +8,7 @@
     content: url(consumer_right_logo_1024.png);
     display: block;
     position: absolute;
-    right: auto;
-    left: -15px;
+    right: 10px;
     bottom: 50px;
     transform: scale(.15);
     height: 200px;
@@ -20,7 +19,8 @@ html[dir="rtl"] .hoverclass :hover::before{
     content: url(consumer_right_logo_1024.png);
     display: block;
     position: absolute;
-    right: 10%;
+    right: auto;
+    left: -15px;
     bottom: 50px;
     transform: scale(.15);
     height: 200px;
