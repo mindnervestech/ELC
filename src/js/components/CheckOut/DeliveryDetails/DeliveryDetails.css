@@ -828,7 +828,6 @@ html[dir="rtl"] .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-4 inpu
 .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-4 input[type=tel] {
     padding-right: 0%;
     width: 100%;
-    padding-top: 8%;
 }
 
 html[dir="rtl"] .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-4 input,

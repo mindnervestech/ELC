@@ -153,7 +153,7 @@ class DeliveryProductList extends Component {
                                     </tr>
                                   </tbody>
                                 </table>
-                                <div className="t-Report-tableWrap">
+                                <div className="t-Report-tableWrap" style={{overflow:'hidden'}}>
                                   <table className="t-Report-report" summary="Shopping Bag">
                                     <tbody>
 

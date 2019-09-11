@@ -4,7 +4,6 @@ import Modal from 'react-responsive-modal';
 import ZeroItem from './Instagram';
 import InstagramItems from './Instagram';
 
-import flower from '../../../assets/images/Home/homepage-flower.png';
 import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
 

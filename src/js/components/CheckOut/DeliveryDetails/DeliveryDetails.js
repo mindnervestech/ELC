@@ -267,25 +267,25 @@ class DeliveryDetails extends Component {
     if (e.target.tagName === 'H3' || e.target.tagName == 'SPAN') {
       if ((e.target.parentNode.id === 'CC') && (selected_country === 'International')) {
         // alert(this.myIntl.formatMessage({ id: 'Click&Collect.Text' }));
-        this.setState({
-          ...this.state,
-          alertBoxDetails: {
-            status: true,
-            message: this.myIntl.formatMessage({ id: 'Click&Collect.Text' }),
-          }
-        })
-        return;
+        // this.setState({
+        //   ...this.state,
+        //   alertBoxDetails: {
+        //     status: true,
+        //     message: this.myIntl.formatMessage({ id: 'Click&Collect.Text' }),
+        //   }
+        // })
+        // return;
       } else {
         let array = e.currentTarget.children;
-        for (let item of array) {
-          item.classList.remove('selected');
-        }
-        e.target.parentNode.classList.add('selected');
+        // for (let item of array) {
+        //   item.classList.remove('selected');
+        // }
+        // e.target.parentNode.classList.add('selected');
 
         if (e.target.parentNode.id === 'CC') {
-          this.setState({
-            isCollectFromStore: true,
-          })
+          // this.setState({
+          //   isCollectFromStore: true,
+          // })
         } else if (e.target.parentNode.id === 'DA') {
           this.setState({
             isCollectFromStore: false,
@@ -298,25 +298,25 @@ class DeliveryDetails extends Component {
     } else {
       if ((e.target.id === 'CC') && (selected_country === 'International')) {
         //alert(this.myIntl.formatMessage({ id: 'Click&Collect.Text' }));
-        this.setState({
-          ...this.state,
-          alertBoxDetails: {
-            status: true,
-            message: this.myIntl.formatMessage({ id: 'Click&Collect.Text' }),
-          }
-        })
-        return;
+        // this.setState({
+        //   ...this.state,
+        //   alertBoxDetails: {
+        //     status: true,
+        //     message: this.myIntl.formatMessage({ id: 'Click&Collect.Text' }),
+        //   }
+        // })
+        // return;
       } else {
         let array = e.currentTarget.children;
-        for (let item of array) {
-          item.classList.remove('selected');
-        }
-        e.target.classList.add('selected');
+        // for (let item of array) {
+        //   item.classList.remove('selected');
+        // }
+        // e.target.classList.add('selected');
 
         if (e.target.id === 'CC') {
-          this.setState({
-            isCollectFromStore: true,
-          })
+          // this.setState({
+          //   isCollectFromStore: true,
+          // })
         } else if (e.target.id === 'DA') {
           this.setState({
             isCollectFromStore: false,
@@ -514,7 +514,7 @@ class DeliveryDetails extends Component {
                               <div className="t-Region-body">
                                 <ul className="shipping-tabs" onClick={this.changeDeliveryType}>
 
-                                  <li id="CC" className="tab click-collect">
+                                  <li style={{cursor:'unset'}} id="CC" className="tab click-collect">
                                     <h3 className="method"><FormattedMessage id="delivery-details.Click&Collect.Title" defaultMessage="Click&Collect" /></h3>
                                     <span className="method-description h-hidden-mobile"><FormattedMessage id="delivery-details.Click&Collect.Message" defaultMessage="Click&Collect Message" /></span>
                                   </li>
