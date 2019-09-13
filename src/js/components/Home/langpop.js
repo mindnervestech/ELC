@@ -10,15 +10,11 @@ class LangPop extends Component {
     }
 
     handleclick = () => {
-        //console.log("called !!");
-        //setting a cookie
         cookie.save('displayFlag', 'false', { path: '/' })
     }
 
     render() {
-
         const { show } = this.props;
-        //console.log("show", show);
 
         return(
           <>

@@ -323,33 +323,46 @@ class Product extends Component {
 	// 	}
 	// }
 
-	getCatagoryName = (category_path, category_name) => {
-		let catName = category_name.split(' ');
-		let catPath = category_path.split('-');
-		if (catName && catPath) {
-			if (catName[0].toUpperCase() == catPath[0].toUpperCase()) {
-				localStorage.setItem('current-categogy-name', category_name);
-				return category_name;
-			} else {
-				localStorage.setItem('current-categogy-name', category_path + '\'' + category_name);
-				return category_path + '--' + category_name;
+	getCatagoryName = (value) => {
+		let url = value.split('/');
+		let bradCome = ""
+		if(this.props.category_name != undefined){
+			if(url[url.length-2] == "products"){
+				bradCome = this.props.category_name //url[url.length-1]
+			}else{
+				bradCome = url[url.length-2] + "--" + this.props.category_name
 			}
-		} else {
-			localStorage.setItem('current-categogy-name', category_name);
-			return category_name;
+			return bradCome
+		}else{
+			return bradCome
 		}
+		// let catName = category_name.split(' ');
+		// let catPath = category_path.split('-');
+		// if (catName && catPath) {
+		// 	if (catName[0].toUpperCase() == catPath[0].toUpperCase()) {
+		// 		localStorage.setItem('current-categogy-name', category_name);
+		// 		return category_name;
+		// 	} else {
+		// 		localStorage.setItem('current-categogy-name', category_path + '\'' + category_name);
+		// 		return category_path + '--' + category_name;
+		// 	}
+		// } else {
+		// 	localStorage.setItem('current-categogy-name', category_name);
+		// 	return category_name;
+		// }
 	}
+
+	
 
 	render() {
 		const values = queryString.parse(this.props.location.search);
+		let pathName = this.props.location.pathname
 		let searchQuery = values.query;
 		let filterKey = {}
 		Object.keys(this.props.productDetails.filters).map((item, index)=> {
 			filterKey[item] = this.props.productDetails.filters[item][0].code;
 		});
 
-		
-         
 		let meta_tag = null;
 		if (this.props.productDetails.metainfo.meta_title && this.props.productDetails.metainfo.meta_keywords && this.props.productDetails.metainfo.meta_description) {
 			
@@ -360,13 +373,13 @@ class Product extends Component {
 				<meta name="description" content={this.props.productDetails.metainfo.meta_description} />
 			</Helmet></>;
 		}
-
+		
 		return (
 			<div className="t-Body">
 				{meta_tag}
 				<div className="t-Body-main" style={{ marginTop: '0px !important' }}>
 					<div className="t-Body-title" id="t_Body_title" style={{ top: '294px' }}>
-						<Breadcrumb name={searchQuery ? searchQuery : this.props.category_name ? this.getCatagoryName(this.props.match.params.category_path,  this.props.category_name) : this.props.match.params.category_path} />
+						<Breadcrumb name={this.getCatagoryName(pathName)} />
 
 						{/* Product filter goes here */}
  

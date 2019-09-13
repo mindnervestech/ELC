@@ -30,7 +30,6 @@ const LangPopup = (data) => WrappedComponent => {
             // let isDisplay = (cookie.load('displayFlag') === undefined) ? false : cookie.load('displayFlag');
 
             let isDisplay = cookie.load('displayFlag') === undefined;
-            console.log('isDisplayflag', isDisplay);
 
             if (isDisplay) {
                 this.setState({ isDisplay: true });

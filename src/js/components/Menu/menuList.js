@@ -23,7 +23,6 @@ class menuList extends Component {
 	_renderSubMenuItem = (item, index) => {
 		const category = item.url_path.split('/');
 		// let menu_item = 'menu.' + item.name.toUpperCase();
-
 		return (
 			<li key={index}>
 				<Link to={'/' + this.state.store_locale + '/products/' + item.url_path} onClick={() => document.getElementById("closeNav").click()}>
@@ -71,22 +70,22 @@ class menuList extends Component {
 		return (
 
 			<>
-				<ul className="subLink">
+				<ul className="subLink" style={{textAlign: 'start'}}>
 					{data1.map(this._renderSubMenuItem)}
 				</ul>
-				<ul className="subLink">
+				<ul className="subLink" style={{textAlign: 'start'}}>
 					{data2.map(this._renderSubMenuItem)}
 				</ul>
-				<ul className="subLink">
+				<ul className="subLink" style={{textAlign: 'start'}}>
 					{data3.map(this._renderSubMenuItem)}
 				</ul>
-				<ul className="subLink">
+				<ul className="subLink" style={{textAlign: 'start'}}>
 					{data4.map(this._renderSubMenuItem)}
 				</ul>
-				<ul className="subLink">
+				<ul className="subLink" style={{textAlign: 'start'}}>
 					{data5.map(this._renderSubMenuItem)}
 				</ul>
-				<ul className="subLink">
+				<ul className="subLink" style={{textAlign: 'start'}}>
 					{data6.map(this._renderSubMenuItem)}
 				</ul>
 
@@ -106,13 +105,6 @@ class menuList extends Component {
 
 			return (
 				<div className="submenu" style={item.children[0].length > 0 ? {backgroundColor: '#fff'} : {display: 'none'}}>
-					<div className="all">
-						<Link to={'/' + this.state.store_locale + '/products/' + item.url_path} onClick={() => document.getElementById("closeNav").click()}>
-							{/* <FormattedMessage id={menu_item} defaultMessage={default_message} /> */}
-							{/* <FormattedMessage id="menu.BRAS.SHOW_ALL_BRAS" defaultMessage="SHOW ALL Bras" /> */}
-
-						</Link>
-					</div>
 					{
 						item.children.map(
 							(x) => this._renderSubMenuList(x, item.name, item.url_path)

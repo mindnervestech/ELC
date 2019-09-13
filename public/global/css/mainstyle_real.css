@@ -1269,7 +1269,7 @@ html[dir="rtl"] .header .search .textInput {
     font-size: 13px;
     display: table;
     margin: 0 auto;
-    width: 92%;
+    width: 100%;
     text-align: center;
 }
 
@@ -1292,7 +1292,7 @@ html[dir="rtl"] .header .search .textInput {
     .header .link {
         font-size: 15px;
         display: table;
-        margin: 0 auto;
+        margin: 0px;
     }
 }
 
@@ -1500,8 +1500,8 @@ html[dir="rtl"] .header .link .submenu {
 @media only screen and (min-width: 1280px) {
     .header .link .submenu {
         display: none;
-        left: 0;
-        width: 103%;
+        left: 2.5%;
+        width: 95%;
         max-height: 100% important;
         position: absolute;
         /* top: 100%; */

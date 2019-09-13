@@ -33,7 +33,6 @@ class phoneNumber extends Component {
             // IntlTelInput.setFlag(CountryCodeList[this.props.defaultPhone.carrier_code].country_id, false)
         }
         //var countryData = window.intlTelInputGlobals.getCountryData();
-        // console.log(CountryCodeList[1].country_id);
     }
 
 
@@ -53,7 +52,6 @@ class phoneNumber extends Component {
 
 
     render() {
-        // console.log('::::', this.state);
         let country = ['us'];
         if (this.props.country === 'International') {
             country = ['us'];
@@ -72,7 +70,6 @@ class phoneNumber extends Component {
                     preferredCountries={country}
                     onPhoneNumberChange={(status, value, countryData, number, id) => {
                         this.setState({ phone: value })
-                        //console.log(status, value, countryData, number, id)
                     }}
                     onPhoneNumberBlur={(status, value, countryData, number, id) => {
                         this.setState({
@@ -88,7 +85,6 @@ class phoneNumber extends Component {
                         this.setState({
                             phone: ''
                         })
-                        //console.log(this.state)
                     }}
 
                     value={this.state.phone}
