@@ -615,7 +615,7 @@ class MainHeader extends Component {
                                         </Col>
                                         <Col xs="6" lg="7" md="7" style={{padding: 0}}>
                                             <ul style={{ textAlign: 'start', paddingTop: 10 }}>
-                                                <li style={{ fontSize: 13, color: "#0D943F" }}>
+                                                <li style={{ fontSize: 15, color: "#0D943F" }}>
                                                     <FormattedMessage id="header.FreeStdDelivery" defaultMessage="Free Std Delivery" />
                                                 </li>
                                                 {/* <li style={{ fontSize: 11 }} className="text-color">
@@ -633,7 +633,7 @@ class MainHeader extends Component {
                                         </Col>
                                         <Col xs="6" lg="7" md="7" className="padd-zer" style={{padding: 0}}>
                                             <ul style={{ textAlign: 'start', paddingTop: 10 }}>
-                                                <li style={{ fontSize: 13, color: "#0D943F" }}>
+                                                <li style={{ fontSize: 15, color: "#0D943F" }}>
                                                     <FormattedMessage id="header.FreeGiftwrapping" defaultMessage="Free Gift wrapping" />
                                                 </li>
                                                 {/* <li style={{ fontSize: 11 }} className="text-color">
@@ -651,7 +651,7 @@ class MainHeader extends Component {
                                         </Col>
                                         <Col xs="6" lg="7" md="7" style={{padding: 0}}>
                                             <ul style={{ textAlign: 'start', paddingTop: 10 }}>
-                                                <li style={{ fontSize: 13, color: "#0D943F" }}>
+                                                <li style={{ fontSize: 15, color: "#0D943F" }}>
                                                     <FormattedMessage id="header.FreeReturns" defaultMessage="Free Returns" />
                                                 </li>
                                                 {/* <li style={{ fontSize: 11 }} className="text-color">
