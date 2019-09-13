@@ -1004,7 +1004,7 @@ font-weight: 100;
 
 .styles_modal__gNwvD {
    width: 417px !important;
-   height: 129px !important;
+   height: 260px !important;
 }
 
 .short-text {
@@ -1481,6 +1481,31 @@ html[dir="rtl"] .write-review .write-a-re i{
         width: 15%;
         border-bottom: 1px solid #d6d6d6;
     }
+
+    .click-collect2{
+        margin-left: 1% !important;
+    }
+
+    .shipping-tabs .tab{
+        width: 48%;
+    }
+}
+
+@media only screen and (max-width: 1204px) and (min-width: 768px){
+    .click-collect2{
+        margin-left: 1% !important;
+    }
+}
+
+
+
+.click-collect2{
+    margin: 1%;
+    margin-left: 25px;
+}
+
+.del-add2{
+    margin: 1%;
 }
 
 .alsoLikeCard1{
@@ -1690,7 +1715,7 @@ html[dir="rtl"] .quantity-mob{
     height: 129px !important;
 } */
 .styles_modal__gNwvD div{
-    padding: 16px 17px;
+    /* padding: 16px 17px; */
 }
 html[dir="rtl"] .styles_modal__gNwvD div{
     padding: 16px 17px;

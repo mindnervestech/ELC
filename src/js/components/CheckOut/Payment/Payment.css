@@ -877,7 +877,7 @@ html[dir="rtl"] .intl-tel-input .country-list {
     text-align: center;
     color: #969ca0;
     cursor: pointer;
-    margin: 1%;}
+}
 
 .shipping-tabs .tab.selected {
     border: solid 2px #0d943f;

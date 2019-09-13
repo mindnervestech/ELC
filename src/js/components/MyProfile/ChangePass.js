@@ -97,7 +97,6 @@ class ChangePass extends Component {
     if (this.handleValidation()) {
       this.changePassword();
     } else {
-      //alert(this.myIntl.formatMessage({ id: 'ChangePassword.Validate' }));
       this.setState({
         ...this.state,
         alertBoxDetails: {
@@ -127,7 +126,6 @@ class ChangePass extends Component {
         message: ''
       }
     })
-    console.log('Close alert Box Parent');
   }
 
 
@@ -170,15 +168,31 @@ class ChangePass extends Component {
                         <div className="container">
                           <div className="row">
                             <div className="col col-12 apex-col-auto">
-                              <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel apex-item-wrapper apex-item-wrapper--password" id="P23_PASSWORD_CONTAINER"><div className="t-Form-labelContainer">
-                                <label htmlFor="P23_PASSWORD" id="P23_PASSWORD_LABEL" className="t-Form-label"><FormattedMessage id="password" defaultMessage="Password" /></label>
-                              </div><div className="t-Form-inputContainer"><div className="t-Form-itemWrapper"><input type="password" name="P23_PASSWORD" size={30} maxLength defaultValue id="P23_PASSWORD" className="password apex-item-text" onChange={this.handleChange.bind(this, "pass")} value={this.state.fields["pass"]} /></div><span id="P23_PASSWORD_error_placeholder" className="a-Form-error" data-template-id="33609965712469734_ET" /></div></div>
+                              <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel apex-item-wrapper apex-item-wrapper--password" id="P23_PASSWORD_CONTAINER">
+                                <div className="t-Form-inputContainer">
+                                  <div className="t-Form-itemWrapper">
+                                  <FormattedMessage id="password" defaultMessage="Password">
+                                  {(message2) =>
+                                    <input style={{padding: 10}} type="password" placeholder={message2} name="P23_PASSWORD" size={30} maxLength defaultValue id="P23_PASSWORD" className="password apex-item-text" onChange={this.handleChange.bind(this, "pass")} value={this.state.fields["pass"]} />
+                                  }</FormattedMessage>
+                                    </div>
+                                  <span id="P23_PASSWORD_error_placeholder" className="a-Form-error" data-template-id="33609965712469734_ET" />
+                                </div>
+                              </div>
                             </div>
                           </div><div className="row">
                             <div className="col col-12 apex-col-auto">
-                              <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel apex-item-wrapper apex-item-wrapper--password" id="P23_CPASSWORD_CONTAINER"><div className="t-Form-labelContainer">
-                                <label htmlFor="P23_CPASSWORD" id="P23_CPASSWORD_LABEL" className="t-Form-label"><FormattedMessage id="profile.Confirm.Password" defaultMessage="Confirm Password" /></label>
-                              </div><div className="t-Form-inputContainer"><div className="t-Form-itemWrapper"><input type="password" name="P23_CPASSWORD" size={30} maxLength defaultValue id="P23_CPASSWORD" className="password apex-item-text" onChange={this.handleChange.bind(this, "cpass")} value={this.state.fields["cpass"]} /></div><span id="P23_CPASSWORD_error_placeholder" className="a-Form-error" data-template-id="33609965712469734_ET" /></div></div>
+                              <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel apex-item-wrapper apex-item-wrapper--password" id="P23_CPASSWORD_CONTAINER">
+                                <div className="t-Form-inputContainer">
+                                  <div className="t-Form-itemWrapper">
+                                    <FormattedMessage id="profile.Confirm.Password" defaultMessage="Confirm Password">
+                                      {(message) =>
+                                        <input style={{padding: 10}} type="password" placeholder={message} name="P23_CPASSWORD" size={30} maxLength defaultValue id="P23_CPASSWORD" className="password apex-item-text" onChange={this.handleChange.bind(this, "cpass")} value={this.state.fields["cpass"]} />
+                                      }</FormattedMessage>
+                                  </div>
+                                  <span id="P23_CPASSWORD_error_placeholder" className="a-Form-error" data-template-id="33609965712469734_ET" />
+                                </div>
+                              </div>
                             </div>
                           </div>
                         </div>

@@ -92,7 +92,6 @@ class ProductInfo extends Component {
              
 			if(this.state.ischeckremove)
 			{
-				console.log("Remove Wishlist",this.props.removeWishListDetail.remove_wishlist_success)
 					this.setState({wishlist_message:this.props.removeWishListDetail.remove_wishlist_success,showAlert:true,ischeckremove:false});
 
 					setTimeout(() => {
@@ -372,10 +371,6 @@ class ProductInfo extends Component {
 	}
 
 	render() {
-
-
-		
-
 		let respo_message = null;
 
 		if (this.state.showAlert) {
@@ -438,6 +433,9 @@ class ProductInfo extends Component {
 			image_array[newImageArray[i].text] = newImageArray[i].image;
 		}
 
+		if(document.getElementsByClassName("styles_modal__gNwvD")[0]){
+			document.getElementsByClassName("styles_modal__gNwvD")[0].style.cssText="height: 130px !important"
+		}
 		return (
 			
 			<div className="row">

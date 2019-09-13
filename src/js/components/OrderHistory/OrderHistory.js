@@ -122,8 +122,6 @@ class Order extends Component {
            <div style={{marginBottom:20}}><span style={{fontSize:"24px"}}><FormattedMessage id="PageTitle.orderhistory.Empty" defaultMessage="You havn't ordered item yet"/></span></div>
                                             }
                                         </div>
-
-                                            
                                         <div className="t-Report-links" />
                                         <table className="t-Report-pagination t-Report-pagination--bottom" role="presentation" />
                                     </div>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Route, Link, Switch, Redirect } from 'react-router-dom'
+import { Container, Row, Col } from 'reactstrap';
 
 class SavedAddressList extends Component {
 
@@ -201,13 +202,15 @@ class SavedAddressList extends Component {
                             </div>
 
 
-                          </div><div className="row">
-                            <div className="col col-2 ">
-                              <span className="apex-grid-nbsp">&nbsp;</span>
-                            </div><div className="col col-8 ">
-                              <button onClick={this.props.addNewAddress} className="t-Button t-Button--stretch" type="button" id="B28612101734643385"><span className="t-Button-label"><FormattedMessage id="AddNewAddress.Text" defaultMessage="Add new Address" /></span></button>
-                            </div>
                           </div>
+                          <Row className="row">
+                            <Col xs="0" lg="2" md="2">
+                              <span className="apex-grid-nbsp">&nbsp;</span>
+                            </Col>
+                            <Col xs="12" lg="8" md="8">
+                              <button onClick={this.props.addNewAddress} className="t-Button t-Button--stretch" type="button" id="B28612101734643385"><span className="t-Button-label"><FormattedMessage id="AddNewAddress.Text" defaultMessage="Add new Address" /></span></button>
+                            </Col>
+                          </Row>
                         </div>
                       </div>
                       <div className="t-Region-buttons t-Region-buttons--bottom">

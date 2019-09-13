@@ -18,6 +18,7 @@ import * as actions from '../../../redux/actions/index';
 import SavedAddressList from './SavedAddressList';
 import { initializeF, trackF } from '../../utility/facebookPixel';
 import { live } from '../../../api/globals';
+import { Container, Row, Col } from 'reactstrap';
 
 let Eventcount = 0;
 class DeliveryDetails extends Component {
@@ -496,8 +497,8 @@ class DeliveryDetails extends Component {
                   </div>
                   <div className="t-Region-body">
                     <div className="container">
-                      <div className="row">
-                        <div className="col col-8 ">
+                      <Row className="row">
+                        <Col xs="12" lg="8" md="12">
                           <div className="t-Region t-Region--noPadding t-Region--removeHeader t-Region--scrollBody" id="R78416017776728831">
                             <div className="t-Region-header">
                               <div className="t-Region-headerItems t-Region-headerItems--title">
@@ -514,13 +515,13 @@ class DeliveryDetails extends Component {
                               <div className="t-Region-body">
                                 <ul className="shipping-tabs" onClick={this.changeDeliveryType}>
 
-                                  <li style={{cursor:'unset'}} id="CC" className="tab click-collect">
+                                  <li style={{cursor:'unset'}} id="CC" className="tab click-collect2">
                                     <h3 className="method"><FormattedMessage id="delivery-details.Click&Collect.Title" defaultMessage="Click&Collect" /></h3>
                                     {/* <span className="method-description h-hidden-mobile"><FormattedMessage id="delivery-details.Click&Collect.Message" defaultMessage="Click&Collect Message" /></span> */}
                                     <span className="method"><FormattedMessage id="Comingsoon" defaultMessage="Coming soon" /></span>
                                   </li>
 
-                                  <li id="DA" className="tab del-add selected">
+                                  <li id="DA" className="tab del-add2 selected">
                                     <h3 className="method"><FormattedMessage id="delivery-details.HomeDelivery.Title" defaultMessage="Home Delivery" /></h3>
                                     <span className="method-description h-hidden-mobile"><FormattedMessage id="delivery-details.HomeDelivery.Message" defaultMessage="HomeDelivery Message" /></span>
                                   </li>
@@ -543,13 +544,13 @@ class DeliveryDetails extends Component {
 
 
 
-                        </div>
+                        </Col>
 
-                      <div className="col col-4 apex-col-auto">
+                      <Col xs="12" lg="4" md="12">
                         <DeliveryProductList cart_details={this.props.cart_details} store_locale={this.props.globals.store_locale} gotoProductScreen={this.gotoProductScreen}/>
 
-                        </div>
-                      </div>
+                        </Col>
+                      </Row>
 
 
 

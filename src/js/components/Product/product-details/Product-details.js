@@ -97,7 +97,6 @@ class ProductDetails extends Component {
 
 			}
 		}
-		console.log(this.props.addToCardLoader);
 		if (this.props.addToCardLoader) {
 			if (!this.state.cartModelFlag) {
 				this.setState({
