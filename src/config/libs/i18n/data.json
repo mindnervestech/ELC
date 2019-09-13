@@ -560,7 +560,8 @@
     "header.AR|Arabic": "AR | Arabic",
     "header.English": "English",
     "header.Arabic": "Arabic",
-    "cart.Price": "Price"
+    "cart.Price": "Price",
+    "Comingsoon": "Coming Soon"
   },
   "ar": {
     "ContactUs.customerSerivces":"خدمة العملاء",
@@ -1102,6 +1103,7 @@
     "header.English": "اللغة الإنجليزية",
     "header.Arabic": "اللغة العربي",
     "cart.Price": " برايس",
-    "Signup.validation.confirmEmail.invalid": "Email and Confirm Email must be same"
+    "Signup.validation.confirmEmail.invalid": "Email and Confirm Email must be same",
+    "Comingsoon": " آتقريبا"
   }
 }

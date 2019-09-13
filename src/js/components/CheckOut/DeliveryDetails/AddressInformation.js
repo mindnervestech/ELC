@@ -133,7 +133,7 @@ class Address extends Component {
 
         if (!fields["addressOne"]) {
             formIsValid = false;
-            errors["addressOne"] = <FormattedMessage id="Address.Validate" defaultMessage="ValidAddress" />;
+            errors["addressOne"] = <FormattedMessage id="Address.Validate" defaultMessage="Please enter address" />;
         }
 
         let obj = this.state.city_details;
@@ -473,7 +473,8 @@ class Address extends Component {
                                                     </div>
                                                     <div className="row">
                                                         <div className="col col-12 apex-col-auto">
-                                                            <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel is-required  apex-item-wrapper apex-item-wrapper--text-field " id="P7_RADD1_CONTAINER">
+                                                            <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel is-required  apex-item-wrapper apex-item-wrapper--text-field " onFocus={(e) => this.divOnFocus(e)}
+                                                            onBlur={(e) => this.divOnBlure(e)} id="P7_RADD1_CONTAINER">
                                                                 <div className="t-Form-labelContainer">
                                                                     <label htmlFor="P7_RADD1" id="P7_RADD1_LABEL" className="t-Form-label"><FormattedMessage id="Address1.Text" defaultMessage="Address 1" /> <span className="u-VisuallyHidden">(Value Required)</span></label>
                                                                 </div>

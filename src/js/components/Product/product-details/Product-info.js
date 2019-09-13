@@ -551,7 +551,7 @@ class ProductInfo extends Component {
 														In stock
 													</span> */}
 														<span className="commingSoonText">
-															<a href=''>Coming Soon</a>
+															<a href=''><FormattedMessage id="Comingsoon" defaultMessage="Coming soon" /></a>
 														</span>
 													</div>
 												</div>

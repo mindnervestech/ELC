@@ -516,7 +516,8 @@ class DeliveryDetails extends Component {
 
                                   <li style={{cursor:'unset'}} id="CC" className="tab click-collect">
                                     <h3 className="method"><FormattedMessage id="delivery-details.Click&Collect.Title" defaultMessage="Click&Collect" /></h3>
-                                    <span className="method-description h-hidden-mobile"><FormattedMessage id="delivery-details.Click&Collect.Message" defaultMessage="Click&Collect Message" /></span>
+                                    {/* <span className="method-description h-hidden-mobile"><FormattedMessage id="delivery-details.Click&Collect.Message" defaultMessage="Click&Collect Message" /></span> */}
+                                    <span className="method"><FormattedMessage id="Comingsoon" defaultMessage="Coming soon" /></span>
                                   </li>
 
                                   <li id="DA" className="tab del-add selected">
