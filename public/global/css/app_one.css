@@ -820,6 +820,12 @@ html.mobile :focus {
 
 @media (min-width: 768px) and (max-width: 1024px) {
     .hide-buttons {
+        display: block !important;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .hide-buttons {
         display: none !important;
     }
 }

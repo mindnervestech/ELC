@@ -94,10 +94,12 @@ class Order extends Component {
                 </div><div className="row">
                     <div className="col col-12 apex-col-auto">
                         <div className="t-ContentBlock containers t-ContentBlock--h3 margin-top-lg a-Tabs-panel apex-rds-element-selected" id="R28337577127179591" role="tabpanel" aria-labelledby="R28337577127179591_tab" aria-live="polite" aria-hidden="false">
+                        {this.props.orderHistory > 0 ?
                             <div className="t-ContentBlock-header">
                                 <h1 className="t-ContentBlock-title">
                                     <span className="FormattedMessage"><FormattedMessage id="profile.OrderHistory.Title" defaultMessage="Order History" /></span>
                                 </h1></div>
+                        : ""}
                             <div className="t-ContentBlock-body">
 
                                 <div id="report_28337577127179591_catch"><div className="t-Report t-Report--stretch t-Report--staticRowColors t-Report--rowHighlightOff t-Report--horizontalBorders" id="report_R28337577127179591" data-region-id="R28337577127179591">
@@ -105,21 +107,21 @@ class Order extends Component {
                                         <table className="t-Report-pagination" role="presentation"><tbody><tr><td /></tr></tbody></table>
                                         <div className="t-Report-tableWrap">
 
-                                            { this.props.orderHistory > 0 ? 
-                                            <table className="t-Report-report" summary="Order History">
-                                                <thead>
-                                                    <tr>
-                                                        <th className="t-Report-colHead" align="left" id="ORDERED_ON"><FormattedMessage id="profile.OrderDate.Title" defaultMessage="OrderDate" /></th>
-                                                        <th className="t-Report-colHead" align="left" id="ORDER_ID"><FormattedMessage id="profile.OrderNumber.Title" defaultMessage="Order Number" /></th>
-                                                        <th className="t-Report-colHead" align="left" id="CODE_DESC"><FormattedMessage id="profile.ShippingType.Title" defaultMessage="Shipping Type" /></th>
-                                                        <th className="t-Report-colHead" align="left" id="PAYMENT_METHOD"><FormattedMessage id="profile.PaymentType.Title" defaultMessage="Payment Type" /></th>
-                                                        <th className="t-Report-colHead" align="right" id="ORDER_TOTAL"><FormattedMessage id="profile.OrderTotal.Title" defaultMessage="Order Total" /></th>
-                                                    </tr></thead>
-                                                <tbody>
-                                                    {orderList}
-                                                </tbody>
-                                            </table>:
-           <div style={{marginBottom:20}}><span style={{fontSize:"24px"}}><FormattedMessage id="PageTitle.orderhistory.Empty" defaultMessage="You havn't ordered item yet"/></span></div>
+                                            {this.props.orderHistory > 0 ?
+                                                <table className="t-Report-report" summary="Order History">
+                                                    <thead>
+                                                        <tr>
+                                                            <th className="t-Report-colHead" align="left" id="ORDERED_ON"><FormattedMessage id="profile.OrderDate.Title" defaultMessage="OrderDate" /></th>
+                                                            <th className="t-Report-colHead" align="left" id="ORDER_ID"><FormattedMessage id="profile.OrderNumber.Title" defaultMessage="Order Number" /></th>
+                                                            <th className="t-Report-colHead" align="left" id="CODE_DESC"><FormattedMessage id="profile.ShippingType.Title" defaultMessage="Shipping Type" /></th>
+                                                            <th className="t-Report-colHead" align="left" id="PAYMENT_METHOD"><FormattedMessage id="profile.PaymentType.Title" defaultMessage="Payment Type" /></th>
+                                                            <th className="t-Report-colHead" align="right" id="ORDER_TOTAL"><FormattedMessage id="profile.OrderTotal.Title" defaultMessage="Order Total" /></th>
+                                                        </tr></thead>
+                                                    <tbody>
+                                                        {orderList}
+                                                    </tbody>
+                                                </table> :
+                                                <div style={{ marginBottom: 50 }}><span style={{ fontSize: "24px" }}><FormattedMessage id="PageTitle.orderhistory.Empty" defaultMessage="Order history is not available" /></span></div>
                                             }
                                         </div>
                                         <div className="t-Report-links" />
