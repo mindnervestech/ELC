@@ -104,6 +104,8 @@ class Order extends Component {
                                     <div className="t-Report-wrap">
                                         <table className="t-Report-pagination" role="presentation"><tbody><tr><td /></tr></tbody></table>
                                         <div className="t-Report-tableWrap">
+
+                                            { this.props.orderHistory > 0 ? 
                                             <table className="t-Report-report" summary="Order History">
                                                 <thead>
                                                     <tr>
@@ -116,8 +118,12 @@ class Order extends Component {
                                                 <tbody>
                                                     {orderList}
                                                 </tbody>
-                                            </table>
+                                            </table>:
+           <div style={{marginBottom:20}}><span style={{fontSize:"24px"}}><FormattedMessage id="PageTitle.orderhistory.Empty" defaultMessage="You havn't ordered item yet"/></span></div>
+                                            }
                                         </div>
+
+                                            
                                         <div className="t-Report-links" />
                                         <table className="t-Report-pagination t-Report-pagination--bottom" role="presentation" />
                                     </div>

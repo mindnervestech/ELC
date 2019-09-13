@@ -561,9 +561,12 @@
     "header.English": "English",
     "header.Arabic": "Arabic",
     "cart.Price": "Price",
-    "Comingsoon": "Coming Soon"
+    "PageTitle.orderhistory.Empty":"Order history is not available",
+    "PageTitle.Wishlist.Empty":"Wishlist is empty"
   },
   "ar": {
+    "PageTitle.Wishlist.Empty":"قائمة الامنيات فارغة",
+    "PageTitle.orderhistory.Empty":"سجل الطلبات غير متاح",
     "ContactUs.customerSerivces":"خدمة العملاء",
     "ContactUs.Deliveries":"التسليم",
     "ContactUs.General":"جنرال لواء",
