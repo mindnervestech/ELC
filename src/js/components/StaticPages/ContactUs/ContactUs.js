@@ -259,9 +259,9 @@ class ContactUs extends Component {
                     
 						  <div style={{margin:10}} className="padding-right-ar">
             <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
-              <span className="titleHover" style={{fontSize:12}}><FormattedMessage id="Checkout.Home" defaultMessage/></span><span>&nbsp;\&nbsp;&nbsp;</span>
+              <span className="titleHover" style={{fontSize:15}}><FormattedMessage id="Checkout.Home" defaultMessage/></span><span>&nbsp;\&nbsp;&nbsp;</span>
             </Link>
-            <span  style={{fontSize:12}}><FormattedMessage id="ContactUs.Title" defaultMessage="Contact Us"/></span>
+            <span  style={{fontSize:15, fontWeight: 'bold'}}><FormattedMessage id="ContactUs.Title" defaultMessage="Contact Us"/></span>
           </div>
 
                     <div className="col col-12 apex-col-auto">

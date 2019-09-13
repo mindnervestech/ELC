@@ -45,9 +45,9 @@ import BirthDayClubImage from '../../../../assets/images/BirthDayClub/birthday-c
           <Col style={{ marginBottom: "40px" }}>
           <div style={{textAlign:'start'}}>
             <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
-              <span className="titleHover" style={{fontSize:12}}><FormattedMessage id="Checkout.Home" defaultMessage/></span><span>&nbsp;\&nbsp;&nbsp;</span>
+              <span className="titleHover" style={{fontSize:15}}><FormattedMessage id="Checkout.Home" defaultMessage/></span><span>&nbsp;\&nbsp;&nbsp;</span>
             </Link>
-            <span  style={{fontSize:12}}><FormattedMessage id="birthdayclub.header" defaultMessage="Contact Us"/></span>
+            <span  style={{fontSize:15, fontWeight: 'bold'}}><FormattedMessage id="birthdayclub.header" defaultMessage="Contact Us"/></span>
           </div>
             <div className="paddingLeft">
               <h3 className="header-birth-club"><FormattedMessage id="birthdayclub.header" defaultMessage="" /></h3>

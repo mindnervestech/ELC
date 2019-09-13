@@ -33,9 +33,9 @@ class HelpFAQ extends Component {
 					<div className="row">
 					<div style={{margin:10}} className="padding-right-ar">
             <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
-              <span className="titleHover" style={{fontSize:12}}><FormattedMessage id="Checkout.Home" defaultMessage/></span><span>&nbsp;\&nbsp;&nbsp;</span>
+              <span className="titleHover" style={{fontSize:15}}><FormattedMessage id="Checkout.Home" defaultMessage/></span><span>&nbsp;\&nbsp;&nbsp;</span>
             </Link>
-            <span  style={{fontSize:12}}>{this.props.help.title}</span>
+            <span  style={{fontSize:15, fontWeight: 'bold'}}>{this.props.help.title}</span>
           </div>
 						<div className="col col-12 apex-col-auto">
 							<div className="t-Region g-wrapper-main_content  t-Region--removeHeader t-Region--noBorder t-Region--scrollBody"

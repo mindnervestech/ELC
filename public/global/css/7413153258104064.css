@@ -927,6 +927,7 @@ a {
 .t-BreadcrumbRegion--useBreadcrumbTitle .t-Breadcrumb-item.is-active,
 .t-BreadcrumbRegion-titleText {
   color: #000000;
+  font-weight: bold!important;
 }
 
 .t-Button,

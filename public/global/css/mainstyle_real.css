@@ -4370,6 +4370,19 @@ html[dir="rtl"] .hide-screen-sm .t-Form-fieldContainer--floatingLabel.is-require
         padding: 0;
     }
 
+    html[dir="rtl"] .header .search .searchButton{
+        height: 50px;
+    }
+
+    html[dir="rtl"] .searchLogo {
+        height: 26px;
+        width: 26px;
+        position: absolute;
+        top: 12px;
+        left: 0;
+        right: 87%;
+    }
+
     html[dir="rtl"] .forgetPassword .col-8 {
         clear: left;
     }

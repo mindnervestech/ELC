@@ -76,10 +76,10 @@ class Breadcrumb extends Component {
 							<li className="t-Breadcrumb-item is-active activeStyle">
 							{ !showAlt &&
 
-								<p className="t-Breadcrumb-label cbread " style={{fontSize: "small"}}>{subCat ? subCat : mainCat[0]}</p>
+								<p className="t-Breadcrumb-label cbread " style={{fontSize: 15}}>{subCat ? subCat : mainCat[0]}</p>
 							}{
 								showAlt &&
-								<p className="t-Breadcrumb-label cbread" style={{fontSize: "small"}}><FormattedMessage id={translationDataId} defaultMessage={defaultMessage} /></p>
+								<p className="t-Breadcrumb-label cbread" style={{fontSize: 15}}><FormattedMessage id={translationDataId} defaultMessage={defaultMessage} /></p>
 							}
 							</li>
 						</ol>

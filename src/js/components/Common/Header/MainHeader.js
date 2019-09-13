@@ -375,7 +375,7 @@ class MainHeader extends Component {
                                     <li className="titleHover" style={this.state.userLogin ? { display: 'none' } : { display: 'inline-block', marginBottom: 5 }}>
                                         <Link to={`/${store_locale}/Login`} style={{ textDecoration: 'none' }}>
                                             <img src={profile} className="image-ion" style={{ marginTop: 8 }}></img>
-                                            <label className="iconLeble text-color changeLinkText"><FormattedMessage id="Header.SignInOrRegister" defaultMessage="Sign in / Register" /></label>
+                                            <label className="iconLeble text-color changeLinkText" style={{paddingTop: 2}}><FormattedMessage id="Header.SignInOrRegister" defaultMessage="Sign in / Register" /></label>
                                         </Link>
                                     </li>
                                     <li style={this.state.userLogin ? { display: 'inline-block', paddingTop: 1 } : { display: 'none' }}>

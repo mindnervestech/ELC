@@ -4213,6 +4213,11 @@ html[dir="rtl"] .homePage .contentBox h6 {
         width: 40px;
     }
 
+    .searchLogo{
+        height: 26px;
+        width: 26px;
+    }
+
     .apex-icons-fontapex .downMenu{
         display: none;
     }
