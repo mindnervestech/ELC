@@ -16,6 +16,8 @@ let filterOptionArrayForCheck = []
 let filterOptionArrayForCheckValidate = []
 let filterOptionArraySubCategary = []
 let filterList = {}
+let filterOptionCheck = true
+
 class SideManu extends Component {
 	constructor(props) {
 		super(props);
@@ -35,56 +37,83 @@ class SideManu extends Component {
 	}
 
 	componentWillMount() {
-		// if (Object.keys(this.props.productDetails.products).length > 0) {
-		// 	if (this.state.filterOptionCheck == true) {
-		// 		this.state.filterOptionCheck = false;
-		// 		const filterOptionList = this.props.productDetails.filters;
-		// 		for (let Categary in filterOptionList) {
-		// 			for (let subCategary in filterOptionList[Categary]) {
-		// 				filterOptionArrayForCheck.push(filterOptionList[Categary][subCategary].code + "/" + filterOptionList[Categary][subCategary].name);
-		// 				filterOptionArraySubCategary.push(filterOptionList[Categary][subCategary].name)
-		// 			}
-		// 		}
-		// 		for (let value in filterOptionArrayForCheck) {
-		// 			let splitValue = filterOptionArrayForCheck[value].split("/");
-		// 			let checkSubmanu = 0
-		// 			let remove = value
-		// 			for (let item in productListingData) {
-		// 				if (splitValue[0] == "color") {
-		// 					if (splitValue[1] == productListingData[item].json.color_english) {
-		// 						if (checkSubmanu == 0) {
-		// 							checkSubmanu = 1
-		// 							filterOptionArrayForCheckValidate.push(filterOptionArrayForCheck[value])
-		// 						}
-		// 					}
-		// 				} else if (splitValue[0] == "brand") {
-		// 					for (let filter in productListingData[item].json.filtersdata) {
-		// 						for (let age in productListingData[item].json.filtersdata[filter]) {
-		// 							if (checkSubmanu == 0) {
-		// 								if (splitValue[1] == productListingData[item].json.filtersdata[filter][age]) {
-		// 									filterOptionArrayForCheckValidate.push(filterOptionArrayForCheck[value])
-		// 									checkSubmanu = 1
-		// 								}
-		// 							}
-		// 						}
-		// 					}
-		// 				} else if (splitValue[0] == "age") {
-		// 					for (let filter in productListingData[item].json.filtersdata) {
-		// 						for (let age in productListingData[item].json.filtersdata[filter]) {
-		// 							if (checkSubmanu == 0) {
-		// 								if (splitValue[1] == productListingData[item].json.filtersdata[filter][age]) {
-		// 									filterOptionArrayForCheckValidate.push(filterOptionArrayForCheck[value])
-		// 									checkSubmanu = 1
-		// 								}
-		// 							}
-		// 						}
-		// 					}
-		// 				}
-		// 			}
-		// 		}
-		// 		this.setState({ list: filterList });
-		// 	}
-		// }
+		if (Object.keys(this.props.productDetails.products).length > 0) {
+			if (filterOptionCheck == true) {
+				filterOptionCheck = false;
+				const filterOptionList = this.props.productDetails.filters;
+				for (let Categary in filterOptionList) {
+					for (let subCategary in filterOptionList[Categary]) {
+						filterOptionArrayForCheck.push(filterOptionList[Categary][subCategary].code + "/" + filterOptionList[Categary][subCategary].name);
+						filterOptionArraySubCategary.push(filterOptionList[Categary][subCategary].name)
+					}
+				}
+				for (let value in filterOptionArrayForCheck) {
+					let splitValue = filterOptionArrayForCheck[value].split("/");
+					let checkSubmanu = 0
+					let remove = value
+					for (let item in productListingData) {
+						if (splitValue[0] == "color") {
+							if (splitValue[1] == productListingData[item].json.color_english) {
+								if (checkSubmanu == 0) {
+									checkSubmanu = 1
+									filterOptionArrayForCheckValidate.push(filterOptionArrayForCheck[value])
+								}
+							}
+						} else {
+							for (let filter in productListingData[item].json.filtersdata) {
+								for (let age in productListingData[item].json.filtersdata[filter]) {
+									if (checkSubmanu == 0) {
+										if (splitValue[1] == productListingData[item].json.filtersdata[filter][age]) {
+											filterOptionArrayForCheckValidate.push(filterOptionArrayForCheck[value])
+											checkSubmanu = 1
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				this.setState({ list: filterList });
+			}
+		}
+	}
+
+	hideFilterOtionThoseNotInProduct(){
+		filterOptionArrayForCheckValidate = []
+				const filterOptionList = this.props.productDetails.filters;
+				for (let Categary in filterOptionList) {
+					for (let subCategary in filterOptionList[Categary]) {
+						filterOptionArrayForCheck.push(filterOptionList[Categary][subCategary].code + "/" + filterOptionList[Categary][subCategary].name);
+						filterOptionArraySubCategary.push(filterOptionList[Categary][subCategary].name)
+					}
+				}
+				for (let value in filterOptionArrayForCheck) {
+					let splitValue = filterOptionArrayForCheck[value].split("/");
+					let checkSubmanu = 0
+					let remove = value
+					for (let item in productList) {
+						if (splitValue[0] == "color") {
+							if (splitValue[1] == productList[item].json.color_english) {
+								if (checkSubmanu == 0) {
+									checkSubmanu = 1
+									filterOptionArrayForCheckValidate.push(filterOptionArrayForCheck[value])
+								}
+							}
+						} else {
+							for (let filter in productList[item].json.filtersdata) {
+								for (let age in productList[item].json.filtersdata[filter]) {
+									if (checkSubmanu == 0) {
+										if (splitValue[1] == productList[item].json.filtersdata[filter][age]) {
+											filterOptionArrayForCheckValidate.push(filterOptionArrayForCheck[value])
+											checkSubmanu = 1
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				this.setState({ list: filterList });
 	}
 
 	getFilterData(filterValue, code) {
@@ -121,6 +150,7 @@ class SideManu extends Component {
 			productList = productListingData;
 			filterData = [];
 			this.props.action(productListingData);
+			this.hideFilterOtionThoseNotInProduct()
 		} else {
 			this.setState({clearAllOption: true });
 			let checkForMultipalFilter = true
@@ -132,7 +162,9 @@ class SideManu extends Component {
 				}
 			}
 			let uniqueNames2 = Array.from(new Set(filterData));
-			productList = uniqueNames2
+			if(Object.keys(uniqueNames2).length != 0){
+				productList = uniqueNames2
+			}
 			for (let categrayData in filterOptionArray) {
 				let splitData = filterOptionArray[categrayData].split('/')
 				if (splitData[0] == "age") {
@@ -146,7 +178,9 @@ class SideManu extends Component {
 			}
 			checkForMultipalFilter = true
 			uniqueNames2 = Array.from(new Set(filterData));
-			productList = uniqueNames2
+			if(Object.keys(uniqueNames2).length != 0){
+				productList = uniqueNames2
+			}
 			for (let categrayData in filterOptionArray) {
 				let splitData = filterOptionArray[categrayData].split('/')
 				if (splitData[0] == "gender") {
@@ -160,7 +194,9 @@ class SideManu extends Component {
 			}
 			checkForMultipalFilter = true
 			uniqueNames2 = Array.from(new Set(filterData));
-			productList = uniqueNames2
+			if(Object.keys(uniqueNames2).length != 0){
+				productList = uniqueNames2
+			}
 			for (let categrayData in filterOptionArray) {
 				let splitData = filterOptionArray[categrayData].split('/')
 				if (splitData[0] == "subcategory") {
@@ -174,7 +210,9 @@ class SideManu extends Component {
 			}
 			checkForMultipalFilter = true
 			uniqueNames2 = Array.from(new Set(filterData));
-			productList = uniqueNames2
+			if(Object.keys(uniqueNames2).length != 0){
+				productList = uniqueNames2
+			}
 
 			for (let categrayData in filterOptionArray) {
 				let splitData = filterOptionArray[categrayData].split('/')
@@ -195,34 +233,12 @@ class SideManu extends Component {
 			}
 			checkForMultipalFilter = true
 			uniqueNames2 = Array.from(new Set(filterData));
-			productList = uniqueNames2
-
-
-
-			// for (let categrayData in filterOptionArray) {
-			// 	let splitData = filterOptionArray[categrayData].split('/')
-			// 	if(splitData[0] != "brand"){
-			// 			checkForMultipalFilter = false
-			// 			filterData = []
-			// 		if (splitData[0] == "color") {
-			// 			let filterValue = splitData[1]
-			// 			for (let value in productList) {
-			// 				if (productList[value].json.color_english) {
-			// 					if (productList[value].json.color_english == filterValue) {
-			// 						filterData.push(productList[value])
-			// 					}
-			// 				}
-			// 			}
-			// 		} else{
-			// 			let filterValue = splitData[1]
-			// 			this.getFilterData(filterValue, splitData[0])
-			// 		}
-			// 	}
-			// }
-			const uniqueNames = Array.from(new Set(filterData));
-			filterData = uniqueNames
+			if(Object.keys(uniqueNames2).length != 0){
+				productList = uniqueNames2
+			}
 			this.props.action(filterData)
 			filterData = []
+			this.hideFilterOtionThoseNotInProduct()
 		}
 	}
 
@@ -234,70 +250,81 @@ class SideManu extends Component {
 		productList = productListingData;
 	}
 
-	// checkFilterIsAvailable = (value, code) => {
-	// 	for (let item in filterOptionArrayForCheckValidate) {
-	// 		let splitData = filterOptionArrayForCheckValidate[item].split('/')
-	// 		if (splitData[1] == value) {
-	// 			//  render(){
-	// 			return (
-	// 				<div>
-	// 					<input type="checkbox" onClick={() => this.applyFilter(code + "/" + value, "")} value={value} /> {value}
-	// 				</div>
-	// 			)
-	// 		}
-	// 		// }
-	// 	}
-	// }
+	checkFilterIsAvailable = (value, code) => {
+		for (let item in filterOptionArrayForCheckValidate) {
+			let splitData = filterOptionArrayForCheckValidate[item].split('/')
+			if (splitData[1] == value) {
+				//  render(){
+				return (
+					<div>
+						<input type="checkbox" onClick={() => this.applyFilter(code + "/" + value, "")} value={value} /> {value}
+					</div>
+				)
+			}
+			// }
+		}
+	}
 
-	assignFilterdata(data) {
+	checkSubCategaryValue(data){
+		return(Object.keys(data).map((keyName) => {
+			for(let item in filterOptionArrayForCheckValidate){
+				let splitData = filterOptionArrayForCheckValidate[item].split('/')
+				if (splitData[1] == data[keyName].name) {
+					return(
+						this.assignFilterdata(data[keyName].name,data[keyName].code)
+					);
+				}
+			}
+		}));
+	}
+
+	assignFilterdata(name,code) {
 		let Checked = 0
-			return (Object.keys(data).map((keyName, index) => {
-			
+			// return (Object.keys(data).map((keyName, index) => {
 			for(let item in this.state.narrowResult){
-				if(this.state.narrowResult[item] == data[keyName].code + "/" + data[keyName].name){
+				if(this.state.narrowResult[item] == code + "/" + name){
 					Checked++;
 				}
 			}
 			if(Checked == 0){
 				return (
 					<div>
-						<input type="checkbox" checked={false} onClick={() => this.applyFilter(data[keyName].code + "/" + data[keyName].name, "")} value={data[keyName].name} /> {data[keyName].name}
+						<input type="checkbox" checked={false} onClick={() => this.applyFilter(code + "/" + name, "")} value={name} /> {name}
 					</div>
 					);
 			}else{
 				Checked = 0;
 				return (
 					<div>
-						<input type="checkbox" checked={true} onClick={() => this.applyFilter(data[keyName].code + "/" + data[keyName].name, "")} value={data[keyName].name} /> {data[keyName].name}
+						<input type="checkbox" checked={true} onClick={() => this.applyFilter(code + "/" + name, "")} value={name} /> {name}
 					</div>
 					);		
 			}
-		}))
+		// )
 	}
 
-	// checkMainFilterName(value) {
-	// 	let checkManu = 0
-	// 	for (let item in filterOptionArrayForCheckValidate) {
-	// 		let splitData = filterOptionArrayForCheckValidate[item].split('/')
-	// 		if (splitData[0] == value.toLowerCase()) {
-	// 			if (checkManu == 0) {
-	// 				checkManu = 1
-	// 				return (
-	// 					<div className="bottomBorder" style={{ paddingTop: 10 }}>
-	// 						<Collapsible trigger={value} >
-	// 							<div style={{ textAlign: 'start' }}>{this.assignFilterdata(this.state.list[value])}</div>
-	// 						</Collapsible>
-	// 					</div>
-
-	// 				);
-	// 			}
-	// 		}
-	// 	}
-	// }
+	checkMainFilterName(value) {
+		let checkManu = 0
+		for (let item in filterOptionArrayForCheckValidate) {
+			let splitData = filterOptionArrayForCheckValidate[item].split('/')
+			if (splitData[0] == value.toLowerCase().replace(/\s/g,'')) {
+				if (checkManu == 0) {
+					checkManu = 1
+					
+					return (
+						<div className="bottomBorder" style={{ paddingTop: 10 }}>
+							<Collapsible trigger={value} >
+								<div style={{ textAlign: 'start' }}>{this.checkSubCategaryValue(this.state.list[value])}</div>
+							</Collapsible>
+						</div>
+					);
+				}
+			}
+		}
+	}
 
 	render() {
 		const list = this.props.productDetails.filters;
-		productList = this.props.productDetails.products.product_data
 		return (
 			<div>
 				<div>
@@ -318,12 +345,13 @@ class SideManu extends Component {
                     </ul>
 					</div>
 					<div>
-						{Object.keys(list).map((keyName) =>
-							<div className="bottomBorder" style={{ paddingTop: 10 }}>
-								<Collapsible trigger={keyName} >
-									<div style={{ textAlign: 'start' }}> {this.assignFilterdata(list[keyName])} </div>
-								</Collapsible>
-							</div>
+						{Object.keys(this.state.list).map((keyName) =>
+						this.checkMainFilterName(keyName)
+							// <div className="bottomBorder" style={{ paddingTop: 10 }}>
+							// 	<Collapsible trigger={keyName} >
+							// 		<div style={{ textAlign: 'start' }}> {this.assignFilterdata(list[keyName])} </div>
+							// 	</Collapsible>
+							// </div>
 						)}
 					</div>
 				</div>

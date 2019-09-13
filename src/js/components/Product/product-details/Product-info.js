@@ -76,7 +76,6 @@ class ProductInfo extends Component {
 			
 			if(this.state.ischeckadd)
 			{
-				console.log("Add Wishlist",this.props.productWishDetail.wishlist_success)
 					
 					this.setState({wishlist_message:this.props.productWishDetail.wishlist_success,showAlert:true,ischeckadd:false});
 
