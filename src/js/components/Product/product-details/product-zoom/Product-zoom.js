@@ -124,13 +124,13 @@ class ProductZoom extends Component {
 
 			if (data.thumbnail.length > 1) {
 				return (
-					<a href={zoomimages[0]} className="MagicZoom" id="zoom-v">
+					<a href={zoomimages[0]} className="MagicZoom" id="zoom-v" data-options="hint:false; zoomMode: off; expand: off;">
 						<img src={thumbnails[0]} alt="" />
 					</a>
 				);
 			} else {
 				return (
-					<a href={zoomimages[0]} className="MagicZoom" id="zoom-v">
+					<a href={zoomimages[0]} className="MagicZoom" id="zoom-v" data-options="hint:false; zoomMode: off; expand: off;">
 						<img src={zoomimages[0]} alt="" />
 					</a>
 				);
