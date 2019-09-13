@@ -66,11 +66,11 @@ class ShoppingBagItem extends Component {
             <div>
                <div className="cart-breadcrumb">
                   <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
-                     <span className="titleHover">
-                        <FormattedMessage id="Checkout.Home" defaultMessage="Home" />
+                     <span className="titleHover" style={{fontSize: 15}}>
+                        <FormattedMessage id="Checkout.Home" defaultMessage="Home" />&nbsp;\&nbsp;&nbsp;
                      </span>
                   </Link>
-                  <span>  > <FormattedMessage id="header.mybasket" defaultMessage="My Basket" /></span>
+                  <span style={{fontSize: 15, color: "#000", fontWeight: 'bold'}}><FormattedMessage id="header.mybasket" defaultMessage="My Basket" /></span>
                </div>
                <div className="wishlist-title cart-breadcrumb">
                   <label>
