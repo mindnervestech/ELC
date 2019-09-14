@@ -359,11 +359,12 @@ class MainHeader extends Component {
                                     <li><a href="https://api.whatsapp.com/send?phone=971565069237" target="_blank" className="whatsapp"><i className="icon-whatsapp" /><span style={{ whiteSpace: 'nowrap' }}><FormattedMessage id="header.ContactUs" defaultMessage="Contact Us" /></span></a></li> */}
                                 </ul >
                                 <ul className="rightLink">
-                                    {/* <li className="titleHover">
-                                     
+                                     <li className="titleHover">
+                                     <Link to={`/${store_locale}/store-locator`} style={{ textDecoration: 'none' }}>
                                         <img src={location} className="image-ion"></img>
-                                        <label className="iconLeble text-color changeLinkText">store finder</label>
-                                    </li> */}
+                                        <label className="iconLeble text-color changeLinkText"><FormattedMessage id="Header.StoreFinder" defaultMessage="Store Finder" /></label>
+                                        </Link>
+                                    </li> 
                                     <li className="titleHover">
                                         {/* <img src={help} className="image-ion"></img>
                                         <label style={{ lineHeight: '0.5rem' }} className="iconLeble text-color changeLinkText"></label> */}
@@ -546,7 +547,8 @@ class MainHeader extends Component {
                                 <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
                                     <img className="mobileHomeLogo" src={logoGroup} />
                                 </Link>
-                                <img src={location} className="mobileHomePageIcon hide-mob"></img>
+                                <Link to={`/${store_locale}/store-locator`} style={{ textDecoration: 'none' }}>
+                                <img src={location} className="mobileHomePageIcon hide-mob"></img></Link>
                                 <Link className="basket-icon" to={`/${store_locale}/cart`} style={{ textDecoration: 'none', marginRight: 0 }}>
                                     <img src={bagLogo} className="mobileHomePageIcon" style={{ height: 25, width: 25 }} />
                                     <label className="lable-count">{this.props.cart_details.products ? this.props.cart_details.products.length : 0}</label>

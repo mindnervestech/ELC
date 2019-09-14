@@ -15,6 +15,12 @@
     width: 200px;
 }
 
+.bcolor
+{
+    background-color:'green'!important;
+
+}
+
 html[dir="rtl"] .hoverclass :hover::before{
     content: url(consumer_right_logo_1024.png);
     display: block;
@@ -5880,7 +5886,7 @@ a:hover {
         right: 17px;
     }
     .hide-mob{
-         visibility: hidden;
+         
     }
     .header .row-2 .lable-count{
     position: absolute !important;
