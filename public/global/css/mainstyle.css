@@ -6197,7 +6197,7 @@ html[dir="rtl"] .header .navTrigger {
     right: 0px;
     top: 0px;
     background-color: #b3b3b3;
-    height: 100%;
+    height: 45px;
     width: 40px;
     border-radius: 4px;
 }
@@ -6244,4 +6244,68 @@ html[dir="rtl"] .commingSoonText{
     font-size: 15px;
     margin-left: 0px;
     margin-right: 20px
+}
+
+.pagenation{}
+
+.pagenation li{
+    margin: 0px !important;
+    width: 14% !important;
+}
+
+.pagenation .number{
+    text-align: center!important;
+    padding: 5px!important;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.pagenation .arrow{
+    height: 35px;
+    width: 35px;
+    cursor: pointer;
+}
+
+.pagenation .selectedNumber{
+    border: 2px solid #0d943f;
+    color: #000;
+    border-radius: 2px;
+    font-family: "VAG Rounded ELC Bold";
+    padding: 8px;
+    font-size: 17px;
+}
+
+@media (max-width:767px){
+    .pagenation li{
+        margin: 0px !important;
+        width: 13% !important;
+    }
+
+    .pagenation .number{
+        text-align: center!important;
+        padding: 5px!important;
+        font-size: 16px;
+        cursor: pointer;
+        margin: 0px !important;
+    }
+}
+
+@media (max-width: 320px){
+    .pagenation li{
+        margin: 0px !important;
+        width: 13% !important;
+    }
+
+    .pagenation .number{
+        text-align: center!important;
+        padding: 5px!important;
+        font-size: 16px;
+        cursor: pointer;
+        margin: 0px !important;
+        width: 13% !important;
+    }
+
+    #iphone5Pagenation{
+        width: 13% !important;
+    }
 }
