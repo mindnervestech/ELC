@@ -158,9 +158,15 @@ class ShoppingBagItem extends Component {
                            </Link>
                         </Col>
                         <Col xs="4">
+                           <div>
                            <Link to={`/${store_locale}/products-details/${item.url_key}`}>
                               <span className="blackTitle" style={{ fontSize: 16, color:"#0D943F"}}>{item.name}</span>
                            </Link>
+                           </div>
+                           <div>
+                              <span className="blackTitle" style={{ fontSize: 14,color:'#4f4f4f'}}>Product # : </span>
+                              <span style={{ fontSize: 14,color:'#4f4f4f'}}>{item.sku}</span>
+                           </div>
                         </Col>
                         <Col xs="1" className="row-3" style={{ fontSize: 16, color: "#4f4f4f" }}>
                            <span>{item.currency}&nbsp;{item.price}</span>
@@ -255,9 +261,15 @@ class ShoppingBagItem extends Component {
                            </Link>
                         </div>
                         <div style={{ marginTop: 20 }}>
-                           <Link to={`/${store_locale}/products-details/${item.url_key}`}>
-                              <span className="blackTitle" style={{ fontSize: 16, color: "#0D943F" }}>{item.name}</span>
-                           </Link>
+                           <div>
+                              <Link to={`/${store_locale}/products-details/${item.url_key}`}>
+                                 <span className="blackTitle" style={{ fontSize: 16, color: "#0D943F" }}>{item.name}</span>
+                              </Link>
+                           </div>
+                           <div>
+                              <span className="blackTitle" style={{ fontSize: 14,color:'#4f4f4f'}}>Product # : </span>
+                              <span style={{ fontSize: 14,color:'#4f4f4f'}}>{item.sku}</span>
+                           </div>
                         </div>
                         <div className="row-3 blackTitle" style={{ fontSize: 16 }}>
                            <span>{item.currency}&nbsp;{item.price}</span>

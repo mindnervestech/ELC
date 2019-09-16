@@ -3,6 +3,7 @@ import { Route, Link, Switch } from 'react-router-dom';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
 import * as actions from '../../../redux/actions/index';
+import { Container, Row, Col } from 'reactstrap';
 
 
 class OrderDetails extends Component {
@@ -53,7 +54,7 @@ class OrderDetails extends Component {
         console.log()
         return (<>
 
-            <div className="col col-4 ">
+            <Col xs="12" lg="4" md="12">
                 <div className="t-Region confirmation-info-header  t-Region--noBorder t-Region--hiddenOverflow margin-bottom-none" id="R1261007701091374327">
                     <div className="t-Region-header">
                         <div className="t-Region-headerItems t-Region-headerItems--title">
@@ -85,12 +86,12 @@ class OrderDetails extends Component {
                         </div>
                     </div>
                 </div>
-            </div>
+            </Col>
 
 
 
 
-            <div className="col col-4 ">
+            <Col xs="12" lg="4" md="12">
                 <div className="t-Region confirmation-info-header  t-Region--noBorder t-Region--hiddenOverflow margin-bottom-none" id="R42440037778375838">
                     <div className="t-Region-header">
                         <div className="t-Region-headerItems t-Region-headerItems--title">
@@ -114,11 +115,11 @@ class OrderDetails extends Component {
                         </div>
                     </div>
                 </div>
-            </div>
+            </Col>
 
 
 
-            <div className="col col-4 ">
+            <Col xs="12" lg="4" md="12">
                 <div className="t-Region confirmation-info-header-last  t-Region--noBorder t-Region--hiddenOverflow" id="R42440193724375840">
                     <div className="t-Region-header">
                         <div className="t-Region-headerItems t-Region-headerItems--title">
@@ -142,7 +143,7 @@ class OrderDetails extends Component {
                         </div>
                     </div>
                 </div>
-            </div>
+            </Col>
 
         </>)
     }

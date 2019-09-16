@@ -14,6 +14,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../../redux/actions/index';
 import { initializeF, trackF } from '../../utility/facebookPixel';
 import { live } from '../../../api/globals';
+import { Container, Row, Col } from 'reactstrap';
 
 let Ptype = "CC";
 class Payment extends Component {
@@ -309,8 +310,8 @@ class Payment extends Component {
                   </div>
                   <div className="t-Region-body">
                     <div className="container">
-                      <div className="row">
-                        <div className="col col-8 ">
+                      <Row className="row">
+                        <Col xs="12" lg="8" md="12">
                           <div className="t-Region t-Region--noPadding t-Region--removeHeader t-Region--scrollBody" id="R88324702982838492">
                             <div className="t-Region-header">
                               <div className="t-Region-headerItems t-Region-headerItems--title">
@@ -361,14 +362,14 @@ class Payment extends Component {
 
 
 
-                        </div>
+                        </Col>
 
 
-                      <div className="col col-4 apex-col-auto">
+                      <Col xs="12" lg="4" md="12">
                         <DeliveryProductList cart_details={this.props.cart_details} coupan_code={true} store_locale={this.props.global.store_locale} gotoProductScreen={this.gotoProductScreen}/>
 
-                        </div>
-                      </div>
+                        </Col>
+                      </Row>
                     </div>
 
 

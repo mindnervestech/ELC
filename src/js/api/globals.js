@@ -16,8 +16,6 @@ export const WEB_URL_ALL = {
     live: `https://elcm2uat.iksulalive.com/`,
 }
 
-
-
 export const WEB_URL = WEB_URL_ALL[active_server];
 
 export const API_URL = ROOT_URL[active_server];
