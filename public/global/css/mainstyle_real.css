@@ -772,12 +772,14 @@ html[dir="rtl"] .header .row-1 .cart span {
     font-weight: bold;
     margin-left: 10px;
     margin-right: 10px;
+    cursor: pointer!important;
     padding: 0px 0px 0px 0px;
 }
 
 .header .row-2 .headerLable2 {
     color: #fff;
     font-size: 1.4rem;
+    cursor: pointer;
 }
 
 .header .row-2 .headerIcon {
