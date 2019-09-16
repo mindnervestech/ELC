@@ -563,7 +563,8 @@
     "header.Arabic": "Arabic",
     "cart.Price": "Price",
     "PageTitle.orderhistory.Empty":"Order history is not available",
-    "PageTitle.Wishlist.Empty":"Wishlist is empty"
+    "PageTitle.Wishlist.Empty":"Wishlist is empty",
+    "Comingsoon": "Coming Soon"
   },
   "ar": {
     "PageTitle.Wishlist.Empty":"قائمة الامنيات فارغة",
