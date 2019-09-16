@@ -61,7 +61,7 @@ class ShoppingBagItem extends Component {
       // }
 
       return (<>
-         <div className="homePage cardPage padding30" style={{ color: '#407ec9' }}>
+         <div className="homePage cardPage padding30" style={{ color: '#0D943F' }}>
             {this.props.cart_details.products.length != 0 ?
             <div>
                <div className="cart-breadcrumb">
@@ -126,33 +126,29 @@ class ShoppingBagItem extends Component {
                         </div>
                      </Col>
                   </Row> */}
-                  <Row className="row-1 changeRow" style={{ textAlign: 'start' }}>
-                     <Col xs="3">
-
-                     </Col>
+                  <Row className="row-1 changeRow" style={{ textAlign: 'start', color: "#4f4f4f", fontSize: 14 }}>
+                     <Col xs="3"></Col>
                      <Col xs="4">
-                        <span className="blackTitle" style={{ fontSize: 14 }}>
-                           <FormattedMessage id="Item" defaultMessage="Item" />
+                        <span className="blackTitle">
+                           <FormattedMessage id="Item" defaultMessage="Item (style number)" />
                         </span>
                      </Col>
                      <Col xs="1">
-                        <span className="blackTitle" style={{ fontSize: 14 }}>
+                        <span className="blackTitle">
                            <FormattedMessage id="cart.Price" defaultMessage="Price" />
                         </span>
                      </Col>
                      <Col xs="1">
-                        <span className="blackTitle" style={{ fontSize: 14 }}>
+                        <span className="blackTitle">
                            <FormattedMessage id="Item.Qty" defaultMessage="Qty" />
                         </span>
                      </Col>
                      <Col xs="1">
-                        <span className="blackTitle" style={{ fontSize: 14 }}>
+                        <span className="blackTitle">
                            <FormattedMessage id="delivery-details.Total.Title" defaultMessage="Total" />
                         </span>
                      </Col>
-                     <Col xs="2">
-
-                     </Col>
+                     <Col xs="2"></Col>
                   </Row>
                   {product && product.map((item, index) => (
                      <Row className="row-2 changeRow" style={{ textAlign: 'start' }}>
@@ -163,13 +159,13 @@ class ShoppingBagItem extends Component {
                         </Col>
                         <Col xs="4">
                            <Link to={`/${store_locale}/products-details/${item.url_key}`}>
-                              <span className="blackTitle" style={{ fontSize: 16, color: '#407ec9' }}>{item.name}</span>
+                              <span className="blackTitle" style={{ fontSize: 16, color:"#0D943F"}}>{item.name}</span>
                            </Link>
                         </Col>
-                        <Col xs="1" className="row-3 blackTitle" style={{ fontSize: 16 }}>
+                        <Col xs="1" className="row-3" style={{ fontSize: 16, color: "#4f4f4f" }}>
                            <span>{item.currency}&nbsp;{item.price}</span>
                         </Col>
-                        <Col xs="1" className="row-3 blackTitle" style={{ fontSize: 16 }}>
+                        <Col xs="1" className="row-3 blackTitle" style={{ fontSize: 22, color: "#4f4f4f" }}>
                            <span className="qut">{item.qty}</span>
                         </Col>
                         <Col xs="1" className="row-3 blackTitle" style={{ fontSize: 22, marginTop: '4.7%' }}>
@@ -186,16 +182,16 @@ class ShoppingBagItem extends Component {
                      <Col xs="6">
                         <div style={{ paddingTop: 30, textAlign: 'start' }}>
                            <input type="text" placeholder="Enter promo code" className="email-field"></input>
-                           <input type="submit" value="submit" className="submit-button"></input>
+                           <input type="submit" value="Apply" className="submit-button"></input>
                         </div>
                      </Col>
                      <Col xs="6">
                         <div className="row-4" style={{textAlign: 'start'}}>
-                           <div style={{ padding: '15px 25px', fontFamily: 'VAG Rounded ELC Light' }}>
+                           <div style={{ padding: '15px 25px', fontFamily: 'VAG Rounded ELC Light', color: "#4f4f4f" }}>
                               <span><FormattedMessage id="delivery-details.Subtotal.Title" defaultMessage="Subtotal" />:</span>
                               <span className="floatRight">{this.props.cart_details.currency}&nbsp;{this.props.cart_details.subtotal}</span>
                            </div>
-                           <div style={{ backgroundColor: '#e9f7ff', padding: '15px 25px' }}>
+                           <div style={{ backgroundColor: '#eef8f2', padding: '15px 25px' }}>
                               <span><FormattedMessage id="profile.OrderTotal.Title" defaultMessage="Order Total" /></span>
                               <span className="floatRight">{this.props.cart_details.currency}&nbsp;{this.props.cart_details.grand_total}</span>
                            </div>
@@ -247,7 +243,7 @@ class ShoppingBagItem extends Component {
 
                   {product && product.map((item, index) => (
 
-                     <div style={{ padding: '20px 0px', borderBottom: 'solid 1px #b1b1b1' }}>
+                     <div style={{ padding: '20px 0px', borderBottom: 'solid 1px #b1b1b1', color: "#4f4f4f" }}>
                         <div style={{ marginTop: 10 }} onClick={() => this.remove(index)}>
                            <span className="remove blackTitle floatRight" style={{ fontSize: 14, lineHeight: 1 }}>
                               <FormattedMessage id="Cart.Remove.Title" defaultMessage="Remove" />
@@ -260,29 +256,29 @@ class ShoppingBagItem extends Component {
                         </div>
                         <div style={{ marginTop: 20 }}>
                            <Link to={`/${store_locale}/products-details/${item.url_key}`}>
-                              <span className="blackTitle" style={{ fontSize: 16 }}>{item.name}</span>
+                              <span className="blackTitle" style={{ fontSize: 16, color: "#0D943F" }}>{item.name}</span>
                            </Link>
                         </div>
                         <div className="row-3 blackTitle" style={{ fontSize: 16 }}>
                            <span>{item.currency}&nbsp;{item.price}</span>
                         </div>
-                        <div className="row-3 blackTitle" style={{ fontSize: 16, textAlign: 'start' }}>
+                        <div className="row-3 blackTitle" style={{ fontSize: 16, textAlign: 'start', color: "#4f4f4f"}}>
                            <span><FormattedMessage id="Item.Qty" defaultMessage="Qty" />: </span>
                            <span className="qut">{item.qty}</span>
-                           <span className="floatRight" style={{ fontSize: 22 }}>{item.currency}&nbsp;{item.price * item.qty}</span>
+                           <span className="floatRight" style={{ fontSize: 22, color: "#0D943F" }}>{item.currency}&nbsp;{item.price * item.qty}</span>
                         </div>
                      </div>
                   ))}
                   <div style={{ paddingTop: 30 }}>
                      <input type="text" placeholder="Enter promo code" className="email-field"></input>
-                     <input type="submit" value="submit" className="submit-button"></input>
+                     <input type="submit" value="Apply" className="submit-button"></input>
                   </div>
                   <div className="row-4" style={{textAlign: 'start'}}>
                      <div style={{ padding: '10px 10px', fontFamily: 'VAG Rounded ELC Light', fontSize: 20 }}>
                         <span><FormattedMessage id="delivery-details.Subtotal.Title" defaultMessage="Subtotal" />:</span>
                         <span className="floatRight">{this.props.cart_details.currency}&nbsp;{this.props.cart_details.subtotal}</span>
                      </div>
-                     <div style={{ backgroundColor: '#e9f7ff', padding: '10px 10px', fontSize: 25 }}>
+                     <div style={{ backgroundColor: '#eef8f2', padding: '10px 10px', fontSize: 25 }}>
                         <span><FormattedMessage id="profile.OrderTotal.Title" defaultMessage="Order Total" /></span>
                         <span className="floatRight">{this.props.cart_details.currency}&nbsp;{this.props.cart_details.grand_total}</span>
                      </div>
