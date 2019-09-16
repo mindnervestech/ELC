@@ -303,6 +303,11 @@ html[dir="rtl"] .clearAll {
     font-weight: bold;
 }
 
+html[dir="rtl"] .cardPage .submit-button {
+    margin-left: 0px;
+    margin-right: 10px;
+}
+
 .cardPage .row-1 {
     padding: 20px 20px;
     border-bottom: solid 1px #b1b1b1;

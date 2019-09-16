@@ -269,7 +269,7 @@ class ShoppingBagItem extends Component {
                         </div>
                      </div>
                   ))}
-                  <div style={{ paddingTop: 30 }}>
+                  <div style={{ paddingTop: 30, textAlign: 'start' }}>
                      <input type="text" placeholder="Enter promo code" className="email-field"></input>
                      <input type="submit" value="Apply" className="submit-button"></input>
                   </div>
