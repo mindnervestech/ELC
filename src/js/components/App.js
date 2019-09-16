@@ -79,327 +79,327 @@ addLocaleData([...en, ...ar]);
 
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      language: 'en',
-      dir: 'ltr',
-      changeData: false,
-      store_id: '',
-      toHome: false,
-      selectedStore: ''
-    }
-  }
-
-
-  static getDerivedStateFromProps = (props, state) => {
-    if (props.changeData) {
-      let lang;
-
-      if (state.changeData) {
-        lang = state.language;
-      }
-      else {
-        lang = props.selectedLang;
-      }
-
-
-      let toHome = props.toHome;
-
-      let dir = lang === 'en' ? 'ltr' : 'rtl';
-      return { language: lang, dir: dir, toHome: toHome }
-    }
-    return null;
-  }
-
-  _changeStoreId = (store_id, quote_id, store_locale) => {
-    const API = Axios.create({
-      baseURL: CLONE_BASE_URL,
-      headers: { Authorization: `Bearer ${API_TOKEN}`, "Content-Type": "application/json" }
-    });
-
-    const reqdata = {
-      store_id: store_id,
-      quote_id: quote_id
-    };
-
-    API.post('/Storechange', reqdata).then(res => {
-     
-      this._redirectWithLocale(store_locale);   //Change URL Location based on new Locale
-    })
-
-  }
-
-  getStoreId = (country, lang) => {
-    //const { store } = this.props;
-    //let store_data = country + "_" + lang;
-
-    if(country == undefined){
-      country = 'uae'
-    }
-    if(lang == undefined){
-      lang = 'en';
-    }
-    let store_data = country + "_" + lang;
-    // let store_data = cookie.load('country') + "_" + lang;
-
-    const API = Axios.create({
-      baseURL: CLONE_BASE_URL,
-      headers: { Authorization: `Bearer ${API_TOKEN}`, "Content-Type": "application/json" }
-    });
-
-    const reqdata = {
-      store_data: store_data
-    };
-
-    API.get('/storeinfo?store_data='+reqdata.store_data, reqdata).then(res => {
-      let storeId = res.data.store_id;
-      if(!storeId){
-        if(lang === 'en'){
-          storeId = 4;
-        }else if(lang === 'ar'){
-          storeId = 3;
+    constructor(props) {
+        super(props);
+        this.state = {
+            language: 'en',
+            dir: 'ltr',
+            changeData: false,
+            store_id: '',
+            toHome: false,
+            selectedStore: ''
         }
-      }
-      localStorage.setItem('tempstoreid', storeId);
-      localStorage.setItem('templang', lang);
-      
-
-      const country_name = this.getCountryName(country);
-      const store_locale = ((country_name === '') || (country_name === null) || (country_name === undefined)) ? lang : country_name + "-" + lang;
-      
-      cookie.save('storeid', storeId, { path: '/' });
-      cookie.save('language', lang, { path: '/' });
-      cookie.save('country', country, { path: '/' });
-      cookie.save('country_name', country_name, { path: '/' });
-      cookie.save('store_locale', store_locale, { path: '/' });
-
-      localStorage.setItem('storeid', storeId);
-      localStorage.setItem('store_locale', store_locale);
-
-      this.setState({ selectedStore: store_data, store_id: storeId, language: lang, changeData: true });
-      store.dispatch(setChangeStore({ store_id: storeId, language: lang }));
-
-      let { guest_user, login } = store.getState();
-      let quote_id;
-
-      if (login.customer_details.quote_id) {
-        quote_id = login.customer_details.quote_id;
-      } else {
-        quote_id = (guest_user.new_quote_id) ? guest_user.new_quote_id : guest_user.temp_quote_id;
-      }
-
-      // quote_id = (guest_user.new_quote_id) ? guest_user.new_quote_id : guest_user.temp_quote_id;
-
-      this._changeStoreId(storeId, quote_id, store_locale);
-
-    })
-  }
-
-  _redirectWithLocale = (newLocale) => {
-    const curr_pathname = window.location.pathname;
-    let new_path = curr_pathname.split('/');
-    let new_pathname;
-    if (new_path.length > 0) {
-      new_path[1] = newLocale;
-      new_pathname = new_path.join('/');
-      window.location.pathname = new_pathname;
-    }
-  }
-
-  handleLanguageSelection = (language) => {
-
-    let country;
-    //country = (cookie.load('country') === null) ? 'KSA' : cookie.load('country');
-
-    if ((cookie.load('country') === null) || (cookie.load('country') === "undefined")) {
-      country = 'UAE';
-    } else {
-      country = cookie.load('country');
-    }
-    this.getStoreId(country, language);
-    this.handleDir(language);
-  }
-
-  handleCountrySelection = (country) => {
-    //console.log('In App country sel',country);
-
-    let language;
-    // language = (cookie.load('language') === null) ? 'ar' : cookie.load('language');
-    if ((cookie.load('language') === null) || (cookie.load('language') === "undefined")) {
-      language = 'en';
-    } else {
-      language = cookie.load('language');
     }
 
-    this.getStoreId(country, language);
-    this.handleDir(language);
-  }
 
-  handleDir = (language) => {
-    if (language === 'ar') {
-      document.getElementById("dir").classList.add("u-RTL");
-      document.getElementById("dir").lang = 'ar';
-      document.getElementById("dir").dir = 'rtl';
-    } else {
-      document.getElementById("dir").lang = 'en';
-      document.getElementById("dir").classList.remove("u-RTL");
-      document.getElementById("dir").removeAttribute('dir');
-    }
-  }
+    static getDerivedStateFromProps = (props, state) => {
+        if (props.changeData) {
+            let lang;
 
-  getStoreLocale(storeid) {
-    var str_lc;
+            if (state.changeData) {
+                lang = state.language;
+            }
+            else {
+                lang = props.selectedLang;
+            }
 
-    if (storeid === '1') {
-      str_lc = 'saudi-ar';
-    } else if (storeid === '2') {
-      str_lc = 'saudi-en';
-    } else if (storeid === '3') {
-      str_lc = 'uae-ar';
-    } else if (storeid === '4') {
-      str_lc = 'uae-en';
-    } else if (storeid === '5') {
-      str_lc = 'ar';
-    } else if (storeid === '6') {
-      str_lc = 'en';
-    }
-    return str_lc;
-  }
 
-  getCountryName(country) {
-    var country_name;
+            let toHome = props.toHome;
 
-    switch (country) {
-      case 'KSA':
-        country_name = 'saudi';
-        break;
-      case 'UAE':
-        country_name = 'uae';
-        break;
-      case 'International':
-        country_name = '';
-        break;
-      default:
-        country_name = '';
-    }
-    return country_name;
-  }
-
-  componentDidMount() {
-    //console.log('LOCAL APP mounted');
-
-    let changedLang = localStorage.getItem('tempstoreid');
-    if (changedLang) {
-      let templang = localStorage.getItem('templang');
-
-      this.setState({ store_id: changedLang, language: templang, changeData: true });
-    }
-    else {
-
-    }
-  }
-
-  _renderVipReg() {
-
-    const store_locale = localStorage.getItem('store_locale');
-    const displayVipReg = localStorage.getItem('displayVipReg');
-    let vipRegPopup;
-
-    if ((store_locale !== null) && (displayVipReg === "true")) {
-
-      return (
-        <VipRegPopup store_locale={store_locale} />
-      );
+            let dir = lang === 'en' ? 'ltr' : 'rtl';
+            return { language: lang, dir: dir, toHome: toHome }
+        }
+        return null;
     }
 
-  }
+    _changeStoreId = (store_id, quote_id, store_locale) => {
+        const API = Axios.create({
+            baseURL: CLONE_BASE_URL,
+            headers: { Authorization: `Bearer ${API_TOKEN}`, "Content-Type": "application/json" }
+        });
 
-  render() {
-    // document.getElementById("dir").dir = this.state.dir;
-    let { language } = this.state;
-    //console.log('In App Render', this.state);
-    //const messages = localeData[language] || localeData.en;
-    const messages = localeData[language] || localeData.en;
+        const reqdata = {
+            store_id: store_id,
+            quote_id: quote_id
+        };
 
-    //console.log('Inside Render', this.props);
-    //let dir = this.props.selectedLang === 'ar' ? 'rtl' : 'ltr';
-    this.handleDir(language);
+        API.post('/Storechange', reqdata).then(res => {
+
+            this._redirectWithLocale(store_locale);   //Change URL Location based on new Locale
+        })
+
+    }
+
+    getStoreId = (country, lang) => {
+        //const { store } = this.props;
+        //let store_data = country + "_" + lang;
+
+        if (country == undefined) {
+            country = 'uae'
+        }
+        if (lang == undefined) {
+            lang = 'en';
+        }
+        let store_data = country + "_" + lang;
+        // let store_data = cookie.load('country') + "_" + lang;
+
+        const API = Axios.create({
+            baseURL: CLONE_BASE_URL,
+            headers: { Authorization: `Bearer ${API_TOKEN}`, "Content-Type": "application/json" }
+        });
+
+        const reqdata = {
+            store_data: store_data
+        };
+
+        API.get('/storeinfo?store_data=' + reqdata.store_data, reqdata).then(res => {
+            let storeId = res.data.store_id;
+            if (!storeId) {
+                if (lang === 'en') {
+                    storeId = 4;
+                } else if (lang === 'ar') {
+                    storeId = 3;
+                }
+            }
+            localStorage.setItem('tempstoreid', storeId);
+            localStorage.setItem('templang', lang);
 
 
-    return (
-      <>
-        <CookiesProvider>
-          <IntlProvider locale={language} messages={messages}>
-            <BrowserRouter>
-              <ScrollToTop>
-                <>
-                  {/* <Header /> */}
-                  {this._renderVipReg()}
-                  <Header handleLanguageSelection={this.handleLanguageSelection} handleCountrySelection={this.handleCountrySelection} />
-                  <Switch>
-                    <Route path="/home" component={Home} />
-                    <Route exact path="/" component={Home} />
-                    <Route exact path="/:locale" component={Home} />
-                    <Route exact path="/:locale/home" component={Home} />
-                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/Login" component={Login} />
-                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/profile" component={MyProfile} />
-                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/order-history" component={Order} />
-                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/view-voucher" component={OredrDetails} />
-                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/wish-list" component={WishList} />
-                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/birth-day-club" component={BirthDayClub}/>
-                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/add-new-birth-day-club-child" component={AddNewBirthDayClubChild}/>
-                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/about-us" component={AboutUs} />
-                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/affiliates" component={Affiliate} />
-                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/careers" component={Careers} />
-                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/contact-us" component={ContactUs} />
-                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/cookie-policy" component={CookiePolicy} />
-                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/newsletter" component={NewsLetter} />
-                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/charity" component={Charity} />
-                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/delivery-policy" component={DeliveryPolicy} />
-                  
-                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/corporate-responsibility" component={CorporateResponsibility} />
-                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/delivery-information" component={DeliveryInformation} />
-                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/help-and-faq" component={HelpFAQ} />
-                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/elc-franchising" component={Franchising} />
-                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/consumer-rights" component={ ConsumerRights} />
-                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/elc-for-business" component={Business} />
-                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/privacy-policy" component={PrivacyPolicy} />
-                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/promotion-terms-and-condition" component={PromotionTermsCondition} />
-                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/return-and-exchanges" component={ReturnPolicy} />
-                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/sitemap" component={Sitemap} />
-                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/term-of-use" component={TermOfUse} />
-                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/terms-and-conditions" component={TermConditions} />
+            const country_name = this.getCountryName(country);
+            const store_locale = ((country_name === '') || (country_name === null) || (country_name === undefined)) ? lang : country_name + "-" + lang;
 
-                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/products/:category_path" component={Product} />
-                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/products-details/:category" component={ProductDetails} />
+            cookie.save('storeid', storeId, { path: '/' });
+            cookie.save('language', lang, { path: '/' });
+            cookie.save('country', country, { path: '/' });
+            cookie.save('country_name', country_name, { path: '/' });
+            cookie.save('store_locale', store_locale, { path: '/' });
 
-                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/(store-locator-uae|store-locator-saudi|store-locator-kuwait|store-locator-bahrain|store-locator-qatar|store-locator-oman|store-locator-morocco|store-locator)/" component={StoreLocator} />
-                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/cart" component={ShoppingBag} />
+            localStorage.setItem('storeid', storeId);
+            localStorage.setItem('store_locale', store_locale);
 
-                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/checkout-login" component={CheckOutLoginWelcome} />
-                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/checkout-payment" component={CheckoutPayment} />
-                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/order-confirm" component={Confirmation} />
-                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/delivery-details" component={DeliveryDetails} />
-                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/order-summary" component={OrderSummary} />
+            this.setState({ selectedStore: store_data, store_id: storeId, language: lang, changeData: true });
+            store.dispatch(setChangeStore({ store_id: storeId, language: lang }));
 
-                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/profile-address" component={ProfileAddress} />
-                    {/* <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/add-wishlist" component={Login} /> */}
+            let { guest_user, login } = store.getState();
+            let quote_id;
 
-                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/password-rest" component={ResetPassword} />
-                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/product-list" component={ProductList} />
-                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/new-check-out" component={NewCheckOut} />
-                  </Switch>
-                  <Footer />
+            if (login.customer_details.quote_id) {
+                quote_id = login.customer_details.quote_id;
+            } else {
+                quote_id = (guest_user.new_quote_id) ? guest_user.new_quote_id : guest_user.temp_quote_id;
+            }
 
-                </>
-              </ScrollToTop>
-            </BrowserRouter>
-          </IntlProvider>
-        </CookiesProvider>
-      </>
-    );
-  }
+            // quote_id = (guest_user.new_quote_id) ? guest_user.new_quote_id : guest_user.temp_quote_id;
+
+            this._changeStoreId(storeId, quote_id, store_locale);
+
+        })
+    }
+
+    _redirectWithLocale = (newLocale) => {
+        const curr_pathname = window.location.pathname;
+        let new_path = curr_pathname.split('/');
+        let new_pathname;
+        if (new_path.length > 0) {
+            new_path[1] = newLocale;
+            new_pathname = new_path.join('/');
+            window.location.pathname = new_pathname;
+        }
+    }
+
+    handleLanguageSelection = (language) => {
+
+        let country;
+        //country = (cookie.load('country') === null) ? 'KSA' : cookie.load('country');
+
+        if ((cookie.load('country') === null) || (cookie.load('country') === "undefined")) {
+            country = 'UAE';
+        } else {
+            country = cookie.load('country');
+        }
+        this.getStoreId(country, language);
+        this.handleDir(language);
+    }
+
+    handleCountrySelection = (country) => {
+        //console.log('In App country sel',country);
+
+        let language;
+        // language = (cookie.load('language') === null) ? 'ar' : cookie.load('language');
+        if ((cookie.load('language') === null) || (cookie.load('language') === "undefined")) {
+            language = 'en';
+        } else {
+            language = cookie.load('language');
+        }
+
+        this.getStoreId(country, language);
+        this.handleDir(language);
+    }
+
+    handleDir = (language) => {
+        if (language === 'ar') {
+            document.getElementById("dir").classList.add("u-RTL");
+            document.getElementById("dir").lang = 'ar';
+            document.getElementById("dir").dir = 'rtl';
+        } else {
+            document.getElementById("dir").lang = 'en';
+            document.getElementById("dir").classList.remove("u-RTL");
+            document.getElementById("dir").removeAttribute('dir');
+        }
+    }
+
+    getStoreLocale(storeid) {
+        var str_lc;
+
+        if (storeid === '1') {
+            str_lc = 'saudi-ar';
+        } else if (storeid === '2') {
+            str_lc = 'saudi-en';
+        } else if (storeid === '3') {
+            str_lc = 'uae-ar';
+        } else if (storeid === '4') {
+            str_lc = 'uae-en';
+        } else if (storeid === '5') {
+            str_lc = 'ar';
+        } else if (storeid === '6') {
+            str_lc = 'en';
+        }
+        return str_lc;
+    }
+
+    getCountryName(country) {
+        var country_name;
+
+        switch (country) {
+            case 'KSA':
+                country_name = 'saudi';
+                break;
+            case 'UAE':
+                country_name = 'uae';
+                break;
+            case 'International':
+                country_name = '';
+                break;
+            default:
+                country_name = '';
+        }
+        return country_name;
+    }
+
+    componentDidMount() {
+        //console.log('LOCAL APP mounted');
+
+        let changedLang = localStorage.getItem('tempstoreid');
+        if (changedLang) {
+            let templang = localStorage.getItem('templang');
+
+            this.setState({ store_id: changedLang, language: templang, changeData: true });
+        }
+        else {
+
+        }
+    }
+
+    _renderVipReg() {
+
+        const store_locale = localStorage.getItem('store_locale');
+        const displayVipReg = localStorage.getItem('displayVipReg');
+        let vipRegPopup;
+
+        if ((store_locale !== null) && (displayVipReg === "true")) {
+
+            return (
+                <VipRegPopup store_locale={store_locale} />
+            );
+        }
+
+    }
+
+    render() {
+        // document.getElementById("dir").dir = this.state.dir;
+        let { language } = this.state;
+        //console.log('In App Render', this.state);
+        //const messages = localeData[language] || localeData.en;
+        const messages = localeData[language] || localeData.en;
+
+        //console.log('Inside Render', this.props);
+        //let dir = this.props.selectedLang === 'ar' ? 'rtl' : 'ltr';
+        this.handleDir(language);
+
+
+        return (
+            <>
+                <CookiesProvider>
+                    <IntlProvider locale={language} messages={messages}>
+                        <BrowserRouter>
+                            <ScrollToTop>
+                                <>
+                                    {/* <Header /> */}
+                                    {this._renderVipReg()}
+                                    <Header handleLanguageSelection={this.handleLanguageSelection} handleCountrySelection={this.handleCountrySelection} />
+                                    <Switch>
+                                        <Route path="/home" component={Home} />
+                                        <Route exact path="/" component={Home} />
+                                        <Route exact path="/:locale" component={Home} />
+                                        <Route exact path="/:locale/home" component={Home} />
+                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/Login" component={Login} />
+                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/profile" component={MyProfile} />
+                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/order-history" component={Order} />
+                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/view-voucher" component={OredrDetails} />
+                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/wish-list" component={WishList} />
+                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/birth-day-club" component={BirthDayClub} />
+                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/add-new-birth-day-club-child" component={AddNewBirthDayClubChild} />
+                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/about-us" component={AboutUs} />
+                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/affiliates" component={Affiliate} />
+                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/careers" component={Careers} />
+                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/contact-us" component={ContactUs} />
+                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/cookie-policy" component={CookiePolicy} />
+                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/newsletter" component={NewsLetter} />
+                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/charity" component={Charity} />
+                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/delivery-policy" component={DeliveryPolicy} />
+
+                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/corporate-responsibility" component={CorporateResponsibility} />
+                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/delivery-information" component={DeliveryInformation} />
+                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/help-and-faq" component={HelpFAQ} />
+                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/elc-franchising" component={Franchising} />
+                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/consumer-rights" component={ConsumerRights} />
+                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/elc-for-business" component={Business} />
+                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/privacy-policy" component={PrivacyPolicy} />
+                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/promotion-terms-and-condition" component={PromotionTermsCondition} />
+                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/return-and-exchanges" component={ReturnPolicy} />
+                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/sitemap" component={Sitemap} />
+                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/term-of-use" component={TermOfUse} />
+                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/terms-and-conditions" component={TermConditions} />
+
+                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/products/:category_path" component={Product} />
+                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/products-details/:category" component={ProductDetails} />
+
+                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/(store-locator-uae|store-locator-saudi|store-locator-kuwait|store-locator-bahrain|store-locator-qatar|store-locator-oman|store-locator-morocco|store-locator)/" component={StoreLocator} />
+                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/cart" component={ShoppingBag} />
+
+                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/checkout-login" component={CheckOutLoginWelcome} />
+                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/checkout-payment" component={CheckoutPayment} />
+                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/order-confirm" component={Confirmation} />
+                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/delivery-details" component={DeliveryDetails} />
+                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/order-summary" component={OrderSummary} />
+
+                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/profile-address" component={ProfileAddress} />
+                                        {/* <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/add-wishlist" component={Login} /> */}
+
+                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/password-rest" component={ResetPassword} />
+                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/product-list" component={ProductList} />
+                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/new-check-out" component={NewCheckOut} />
+                                    </Switch>
+                                    <Footer />
+
+                                </>
+                            </ScrollToTop>
+                        </BrowserRouter>
+                    </IntlProvider>
+                </CookiesProvider>
+            </>
+        );
+    }
 }
 
 export default LangPopup({})(App);

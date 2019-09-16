@@ -4,7 +4,7 @@ import cookie from 'react-cookies';
 
 const initialState = {
     allStores: {},
-    currentStore: cookie.load('storeid')? cookie.load('storeid'): 2,
+    currentStore: cookie.load('storeid')? cookie.load('storeid'): 4,
     loading: false,
     language: cookie.load('language')? cookie.load('language'): 'en',
     country: cookie.load('country')? cookie.load('country'): 'UAE',
