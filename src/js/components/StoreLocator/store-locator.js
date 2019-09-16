@@ -10,6 +10,7 @@ import * as utility from '../utility/utility';
 
 import { connect } from 'react-redux';
 import * as actions from '../../redux/actions/index';
+import { Link, Redirect } from 'react-router-dom';
 
 let selectedMarker = {};
 let overId = null;
@@ -87,8 +88,8 @@ class StoreLocator extends Component {
 
     if (obj.length <= 0) {
       this.props.onGetStoreList({
-        country_id: '',
-        city: ''
+        country_id: this.state.countryCode,
+        city: this.state.selectedCity
       });
     }
 
@@ -242,7 +243,7 @@ class StoreLocator extends Component {
     //console.log(":::::", this.state.storeList)
     let display = this.state.isDisplay ? 'block' : 'none';
     let errorMessage = this.state.showError ? <div id="P7_STORE_error_placeholder" data-template-id="FALLBACK_ET" className="u-visible"><div className="t-Form-error"><div id="P7_STORE_error"><FormattedMessage id="SelectStore.Validate" defaultMessage="Select the Store" /></div></div></div> : null;
-
+    let store_locale=this.props.globals.store_locale
 
 
     return (
@@ -254,8 +255,8 @@ class StoreLocator extends Component {
                 <div className="t-BreadcrumbRegion-breadcrumb">
                   <ul className="t-Breadcrumb ">
                     <li className="t-Breadcrumb-item">
-                      <a href="https://www.nayomi.com/saudi-en/store-locator" className="t-Breadcrumb-label">
-                        <FormattedMessage id="Cart.OnlineShopping.Title" defaultMessage="Online Shopping" /></a></li>
+                      <Link to={`/${store_locale}/`}><a  className="t-Breadcrumb-label">
+                        <FormattedMessage id="Cart.Home" defaultMessage="Home" /></a></Link></li>
                     <li className="t-Breadcrumb-item is-active">
                       <h1 className="t-Breadcrumb-label"><FormattedMessage id="header.storeLocator" defaultMessage="Store Locator" /></h1></li></ul>
                 </div>
@@ -416,7 +417,8 @@ class StoreLocator extends Component {
 const mapStateToProps = state => {
   return {
     storeList: state.address.storeList,
-    language: state.global.language
+    language: state.global.language,
+    globals:state.global
   };
 }
 

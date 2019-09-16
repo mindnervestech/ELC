@@ -70,7 +70,7 @@ import { setChangeStore } from '../redux/actions/globals';
 import localeData from '../../config/libs/i18n/data.json'
 import ProductList from '../components/PoductList/ProductListing'
 import NewCheckOut from '../components/NewCheckOut/CheckOut'
-
+import PresentFinder from '../components/PresentFinder/PresentFinder';
 addLocaleData([...en, ...ar]);
 
 
@@ -355,6 +355,7 @@ class App extends Component {
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/contact-us" component={ContactUs} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/cookie-policy" component={CookiePolicy} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/newsletter" component={NewsLetter} />
+                    <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/presentfinder" component={PresentFinder} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/charity" component={Charity} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/delivery-policy" component={DeliveryPolicy} />
 
