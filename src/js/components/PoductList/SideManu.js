@@ -32,6 +32,7 @@ class SideManu extends Component {
 			narrowResult: [],
 			clearAllOption: false,
 		};
+
 	}
 
 	componentDidUpdate(prevProps, prevState) {
@@ -39,8 +40,14 @@ class SideManu extends Component {
 	}
 
 	componentWillMount() {
+
+		
 		if (Object.keys(this.props.productDetails.products).length > 0) {
-			if (filterOptionCheck == true) {
+	
+			// if (filterOptionCheck == true) {
+				
+				filterOptionArrayForCheck = []
+				filterOptionArraySubCategary=[]
 				filterOptionCheck = false;
 				const filterOptionList = this.props.productDetails.filters;
 				for (let Categary in filterOptionList) {
@@ -76,7 +83,7 @@ class SideManu extends Component {
 					}
 				}
 				this.setState({ list: filterList });
-			}
+			// }
 		}
 	}
 
@@ -274,7 +281,7 @@ class SideManu extends Component {
 			if(Object.keys(uniqueNames2).length != 0){
 				productList = uniqueNames2
 			}
-			console.log(productList)
+			//console.log(productList)
 			this.props.action(filterData)
 			updateHideOption = true
 			this.hideFilterOtionThoseNotInProduct()

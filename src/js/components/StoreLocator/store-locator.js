@@ -12,6 +12,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../redux/actions/index';
 import { Link, Redirect } from 'react-router-dom';
 
+
 let selectedMarker = {};
 let overId = null;
 let reload = true;
