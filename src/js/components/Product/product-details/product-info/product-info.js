@@ -170,23 +170,23 @@ class ProductInformation extends Component {
 						<h3 className="specification-title" style={{textAlign:'start'}}>
 							<FormattedMessage id="Specifications" defaultMessage="Specifications" /></h3> : <div/>}
 					{data.age ?<div className="row specification-item-content">
-						<span class="specification-item-key"><FormattedMessage id="Age" defaultMessage="Age" /> :</span> 
+						<span class="specification-item-key"><FormattedMessage id="Age" defaultMessage="Age" />:</span> 
 						<span className="specification-item-value">{data.age}</span>
 					</div> : <div/>}
 					{data.assembly_req ?<div className="row specification-item-content">
-						<span class="specification-item-key"><FormattedMessage id="AssemblyRequired" defaultMessage="Assembly Required" /> :</span>
+						<span class="specification-item-key"><FormattedMessage id="AssemblyRequired" defaultMessage="Assembly Required" />:</span>
 						<span className="specification-item-value">{data.assembly_req}</span>
 					</div> : <div/>}
 					{data.battery_inc ?<div className="row specification-item-content">
-						<span class="specification-item-key"><FormattedMessage id="BatteryIncluded" defaultMessage="Battery Included" /> :</span> 
+						<span class="specification-item-key"><FormattedMessage id="BatteryIncluded" defaultMessage="Battery Included" />:</span> 
 						<span className="specification-item-value">{data.battery_inc}</span>
 					</div> : <div/>}
 					{data.battery_req ?<div className="row specification-item-content">
-						<span class="specification-item-key"><FormattedMessage id="BatteryRequired" defaultMessage="Battery Required" /> :</span> 
+						<span class="specification-item-key"><FormattedMessage id="BatteryRequired" defaultMessage="Battery Required" />:</span> 
 						<span className="specification-item-value">{data.battery_req}</span>
 					</div> : <div/>}
 					{data.brand ?<div className="row specification-item-content">
-						<span class="specification-item-key"><FormattedMessage id="Brand" defaultMessage="Brand" /> :</span> 
+						<span class="specification-item-key"><FormattedMessage id="Brand" defaultMessage="Brand" />:</span> 
 						<span className="specification-item-value">{data.brand}</span>
 					</div> : <div/>}
 				 </div> : type == 'Delivery options' ?

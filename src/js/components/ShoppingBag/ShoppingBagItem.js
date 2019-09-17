@@ -11,11 +11,17 @@ import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; 
 import logo1 from '../../../assets/images/you_may_also_like_1.png'
 import Popup from 'react-popup';
-import Spinner from '../Spinner/Spinner';
+import Spinner from '../Spinner/Spinner2';
 class ShoppingBagItem extends Component {
 
    constructor(props) {
       super(props);
+      this.state={
+          prod_qty: {
+            item: '',
+          },
+           timeout: 0,
+      }
    }
    remove = (index) => {
        confirmAlert({
