@@ -7,24 +7,38 @@ import { connect } from 'react-redux';
 import * as actions from '../../redux/actions/index';
 import { Redirect, withRouter } from 'react-router-dom';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import Spinner from '../Spinner/Spinner2';
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import 'react-confirm-alert/src/react-confirm-alert.css'; 
 import logo1 from '../../../assets/images/you_may_also_like_1.png'
 import Popup from 'react-popup';
+import Spinner from '../Spinner/Spinner';
 class ShoppingBagItem extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            prod_qty: {
-                item: '',
-                timeout: 0
-            },
+   constructor(props) {
+      super(props);
+   }
+   remove = (index) => {
+       confirmAlert({
+      title: 'Confirm to yes',
+      message: 'Are you sure to remove this product.',
+      buttons: [
+        {
+          label: 'Yes',
+          onClick: () => this.props.OnremoveProduct({ index: index })
+        },
+        {
+          label: 'No',
+          
         }
-    }
-
-    remove = (index) => {
-        this.props.OnremoveProduct({ index: index })
-    }
+      ],
+      closeOnEscape: true,
+      closeOnClickOutside: true,
+      willUnmount: () => {},
+      onClickOutside: () => {},
+      onKeypressEscape: () => {}
+    });
+      
+   }
 
     checkOut() {
         if (this.props.isUserLoggedIn) {

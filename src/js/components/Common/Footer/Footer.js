@@ -450,9 +450,9 @@ class Footer extends Component {
                     </div>
                 </div>
             </footer>
-                <ScrollToTop showUnder={10} duration={550}>
+                {/* <ScrollToTop showUnder={10} duration={550}>
                     <a className="cd-top js-cd-top cd-top--fade-out cd-top--show" style={style}>Top</a>
-                </ScrollToTop>
+                </ScrollToTop> */}
             </>
         );
     }

@@ -6,6 +6,7 @@ import { Row, Col, Image } from "react-bootstrap";
 import { Link, Redirect } from 'react-router-dom';
 import * as actions from '../../../redux/actions/index';
 import BirthDayClubImage from '../../../../assets/images/BirthDayClub/birthday-club.png';
+import AddNewChild from './AddNewChild';
 
  class BirthDayClub extends Component {
   constructor(props)
@@ -20,7 +21,10 @@ import BirthDayClubImage from '../../../../assets/images/BirthDayClub/birthday-c
   }
 
 
-
+   onCancleClick=()=>
+   {
+    this.setState({redirectToAddNewChild:false})
+   }
   redirectToAddChild=()=>
   {
     this.setState({redirectToAddNewChild:true})
@@ -29,11 +33,8 @@ import BirthDayClubImage from '../../../../assets/images/BirthDayClub/birthday-c
 
     let store_locale=this.props.globals.store_locale
 
-    if (this.state.redirectToAddNewChild) {
-      return <Redirect to={{
-        pathname: `/${store_locale}/add-new-birth-day-club-child`,
-      }} />;
-    }
+    // if (this.state.redirectToAddNewChild) {
+    // }
 
 
     return (
@@ -73,6 +74,8 @@ import BirthDayClubImage from '../../../../assets/images/BirthDayClub/birthday-c
                     <FormattedMessage id="birthdayclub.addnewchildbutton" defaultMessage="" />
                     {/* Add new child */}
                   </button>
+      
+                  <div>{this.state.redirectToAddNewChild ? <AddNewChild/>:null }</div>
                 </div>
               </div>
             </div>

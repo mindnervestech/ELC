@@ -375,7 +375,7 @@ class MainHeader extends Component {
                                 <ul className="rightLink">
                                      <li className="titleHover">
                                      <Link to={`/${store_locale}/store-locator`} style={{ textDecoration: 'none' }}>
-                                        <img src={location} className="image-ion"></img>
+                                        <img src={location} className="image-ion" style={{marginTop:5}}></img>
                                         <label className="iconLeble text-color changeLinkText"><FormattedMessage id="Header.StoreFinder" defaultMessage="Store Finder" /></label>
                                         </Link>
                                     </li> 
@@ -546,7 +546,7 @@ class MainHeader extends Component {
                                             <a href="javascript:void(0);" onClick={(e) => this.translate('ar', 'rtl')} >العربية</a>
                                             </div>
                                 </div>
-                                <div style={{ display: 'inline-block', textAlign: 'start', marginLeft: 10 }}>
+                                <div style={{ display: 'inline-block', textAlign: 'start', marginLeft: 10, float:'right' }}>
                                     <span style={{ height: 40 }}>
                                         <Link to={`/${store_locale}/birth-day-club`} style={{ textDecoration: 'none' }}>
                                             <button className="mobileHomePageButtonSecond text-color"><FormattedMessage id="header.TheBirthdayclub" defaultMessage="The Birthday Club" /></button>
@@ -631,7 +631,7 @@ class MainHeader extends Component {
                                     <Row className="direction-r">
                                         <Col xs="3" lg="3" md="3" className="col-width"></Col>
                                         <Col xs="2" lg="2" md="2" style={{ paddingLeft: 0 }} className="padd-icon-zero first-imag">
-                                            <img src={deliveryBy} className="imageHight40" />
+                                             <img src={deliveryBy} className="imageHight40 divShowWeb " /> 
                                         </Col>
                                         <Col xs="6" lg="7" md="7" style={{padding: 0}}>
                                             <ul style={{ textAlign: 'start', paddingTop: 10 }}>
@@ -649,7 +649,7 @@ class MainHeader extends Component {
                                     <Row className="direction-r">
                                         <Col xs="3" lg="3" md="3"></Col>
                                         <Col xs="2" lg="2" md="2" className="padd-icon-zero">
-                                            <img src={freeDelivery} className="imageHight40" />
+                                             <img src={freeDelivery} className="imageHight40 divShowOnWeb" /> 
                                         </Col>
                                         <Col xs="6" lg="7" md="7" className="padd-zer" style={{padding: 0}}>
                                             <ul style={{ textAlign: 'start', paddingTop: 10 }}>
@@ -667,7 +667,7 @@ class MainHeader extends Component {
                                     <Row className="direction-r">
                                         <Col xs="3" lg="3" md="3"></Col>
                                         <Col xs="2" lg="2" md="2" className="padd-icon-zero">
-                                            <img src={freeCollect} className="imageHight40" />
+                                            <img src={freeCollect} className="imageHight40 divShowOnWeb" /> 
                                         </Col>
                                         <Col xs="6" lg="7" md="7" style={{padding: 0}}>
                                             <ul style={{ textAlign: 'start', paddingTop: 10 }}>

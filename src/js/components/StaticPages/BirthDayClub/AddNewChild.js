@@ -24,7 +24,8 @@ import BirthDayClubImage from '../../../../assets/images/BirthDayClub/birthday-c
          realationship:''
       }, 
 
-      errors: {}
+      errors: {},
+      redirectToAddNewChild:true
     }
     
    
@@ -94,7 +95,7 @@ import BirthDayClubImage from '../../../../assets/images/BirthDayClub/birthday-c
 
     let firstnameinputField = <div>
     <div>
-    <input name="first_name" className="input-box" value={this.state.fields['name']}></input>
+    <input name="first_name" className="input-box" placeholder="First Name" value={this.state.fields['name']}></input>
     </div>
     <span id="P1000_USERNAME_error_placeholder" className="a-Form-error" data-template-id="33609965712469734_ET"></span>
   </div>;
@@ -160,7 +161,7 @@ let relationshipInputField= <div>
 
     return (
       <div>
-        <Row style={{ marginTop: "40px" }}>
+        {/* <Row style={{ marginTop: "40px" }}>
           <Col xs={1} lg={1} md={1} sm={1}></Col>
           <Col style={{ marginBottom: "40px" }}>
           <div style={{textAlign:'start'}}>
@@ -187,12 +188,13 @@ let relationshipInputField= <div>
             </div>
           </Col>
           <Col xs={1} lg={1} md={1} sm={1}></Col>
-        </Row>
+        </Row> */}
 
         <Row>
           <Col xs="0" lg="3"></Col>
           <Col xs="12" lg="6" style={{marginBottom:30}}>
-            <div className="border-block" >
+            <div><h2 style={{textAlign:'start',paddingRight:5}}>Add New Child</h2></div>
+            <div className="border-block" style={{textAlign:'start'}}>
               <div>
                 <Form>
                   <FormGroup className="m-40">
@@ -253,6 +255,7 @@ let relationshipInputField= <div>
                   <button
                     className="button-cancel bclub-button"
                     style={{ textAlign: "center" }}
+                    onClick={this.onCancleClick}
                   >
                    <FormattedMessage id="cancelButton" defaultMessage="" />
                   
