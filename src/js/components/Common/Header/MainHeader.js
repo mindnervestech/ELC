@@ -118,6 +118,20 @@ class MainHeader extends Component {
         }
     }
 
+    componentWillReceiveProps(nextProps)
+    {
+
+        // console.log("Basket Props",nextProps)
+        // setTimeout(() => {
+        //     this.getStore();
+        // }, 1000);
+    }
+    
+
+    logOut = () => {
+        this.props.onLogoutUser();
+    }
+
     getStore = () => {
         let obj = this.props.user_details.customer_details;
 
@@ -361,7 +375,7 @@ class MainHeader extends Component {
                                 <ul className="rightLink">
                                      <li className="titleHover">
                                      <Link to={`/${store_locale}/store-locator`} style={{ textDecoration: 'none' }}>
-                                        <img src={location} className="image-ion"></img>
+                                        <img src={location} className="image-ion" style={{margin:5}}></img>
                                         <label className="iconLeble text-color changeLinkText"><FormattedMessage id="Header.StoreFinder" defaultMessage="Store Finder" /></label>
                                         </Link>
                                     </li> 
@@ -387,6 +401,10 @@ class MainHeader extends Component {
                                         <Link to={`/${store_locale}/Login`} style={{ textDecoration: 'none' }}>
                                             <label className="iconLeble text-color changeLinkText"><FormattedMessage id="header.MyAccount" defaultMessage="My Account" /></label>
                                         </Link>
+                                    </li>
+
+                                    <li style={this.state.userLogin ? { display: 'inline-block' } : { display: 'none' }}>
+                                            <label className="iconLeble text-color changeLinkText" onClick={this.logOut}><FormattedMessage id="header.SignOut" defaultMessage="Sign Out" /></label>     
                                     </li>
                                     {/* <li style={this.state.userLogin ? {display: 'inline-block'} : {display: 'none'}}>
                                         <label className="iconLeble text-color changeLinkText"><FormattedMessage id="header.SignOut" defaultMessage="Sign Out" /></label>
@@ -528,20 +546,20 @@ class MainHeader extends Component {
                                             <a href="javascript:void(0);" onClick={(e) => this.translate('ar', 'rtl')} >العربية</a>
                                             </div>
                                 </div>
-                                <div style={{ display: 'inline-block', textAlign: 'start', marginLeft: 10 }}>
+                                <div style={{ display: 'inline-block', textAlign: 'start', marginLeft: 10, float:'right' }}>
                                     <span style={{ height: 40 }}>
                                         <Link to={`/${store_locale}/birth-day-club`} style={{ textDecoration: 'none' }}>
                                             <button className="mobileHomePageButtonSecond text-color"><FormattedMessage id="header.TheBirthdayclub" defaultMessage="The Birthday Club" /></button>
                                         </Link>
                                     </span>
                                 </div>
-                                <div className="help-icon">
+                                {/* <div className="help-icon">
                                     <Link to={`/${store_locale}/help-and-faq`} style={{ textDecoration: 'none' }}>
                                         <li className="titleHover">
                                             <img src={help} className="image-ion" style={{ height: 30, width: 30 }}></img>
                                         </li>
                                     </Link>
-                                </div>
+                                </div> */}
                             </div>
                             <div className="divShowOnMobile" style={{ paddingTop: 10 }}>
                                 <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
@@ -759,6 +777,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
+        onLogoutUser: () => dispatch(actions.logoutUser()),
         onGetStoreIds: () => dispatch(actions.getStoreIds()),
         onGetMyCart: (quoteId) => dispatch(actions.getMyCart(quoteId)),
         onGetCountryList: () => dispatch(actions.getCountryList()),

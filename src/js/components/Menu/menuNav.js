@@ -46,7 +46,7 @@ class menuNav extends Component {
     //console.log('In Menu globals store locale',store_locale);
 
     return (
-      <div className="navigation" style={{ height: 44, paddingTop: 2, paddingBottom: 9 }}>
+      <div className="navigation" style={{ height: 72, paddingTop: 2, paddingBottom: 9, textAlign:'center' }}>
         <div className="profile">
           <figure className=""><i className="icon-user"></i></figure>
           <div className="">
@@ -56,13 +56,13 @@ class menuNav extends Component {
           </div>
         </div>
         {this.renderRedirect()}
-        <div className="search">
+        {/* <div className="search">
           <i className="icon-search"></i>
           <FormattedMessage id="SearchText" defaultMessage="Search">
             {(message) =>
               <input type="text" id="search-mobile" className="textInput" placeholder={message} onKeyDown={this.handleKeyPress} />}
           </FormattedMessage>
-        </div>
+        </div> */}
         <MenuList navData={this.props.menu} store_locale={this.props.globals.store_locale} />
       </div>
     );

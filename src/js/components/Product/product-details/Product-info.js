@@ -30,6 +30,7 @@ const mediaVideo = 'https://storage.googleapis.com/nay/videos/product/au19/nay-a
 
 class ProductInfo extends Component {
 	constructor(props) {
+
 		super(props);
 		this.state = {
 			defaultQty: 1,
@@ -520,13 +521,13 @@ class ProductInfo extends Component {
 											</div>
 											<div style={{ width: '100%' }}>
 												<div className="choose-dil">
-													Choose your delivery option:
+													<FormattedMessage id="choose.your.delivery" defaultMessage=":Choose your delivery options"/>
 											</div>
 												<div className="row del-options">
 													<div className="row home-deli">
 														<img src={freeDelivery} />
 														<span style={{fontSize:'15px', fontWeight: 'bold'}}>
-															Home delivery
+															<FormattedMessage id="home.delivery" defaultMessage="Home Delivery"/>
 													</span>
 														<span style={{ margin: '10px', color: '#ee0E19' }}>
 															{data.simplestatus == 1 || (newImageArray[0] && newImageArray[0].stock == 1) ?
@@ -749,4 +750,3 @@ const mapDispatchToProps = dispatch => {
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductInfo);
 
-// export default ProductInfo;

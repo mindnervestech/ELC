@@ -21,7 +21,7 @@ var _ = require('lodash');
 
 let productListData = {}
 let productList = {}
-let pagenationCount = 8
+let pagenationCount = 36
 let startPagenation = 1
 let start = 1
 let end = 5

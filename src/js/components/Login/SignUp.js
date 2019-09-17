@@ -147,7 +147,7 @@ class SignUp extends Component {
 
     if (!(fields["confirmEmail"] === fields["email"])) {
       formIsValid = false;
-      errors["confirmEmail"] = <FormattedMessage id="Signup.validation.confirmEmail.invalid" defaultMessage="email and confirm email must be same" />;
+      errors["confirmEmail"] = <FormattedMessage id="Signup.validation.confirmEmail.invalid" defaultMessage="Email and Confirm Email must be same" />;
     }
 
     // if (!(this.state.isPhoneValid)) {

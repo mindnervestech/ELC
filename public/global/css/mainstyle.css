@@ -368,7 +368,7 @@ html[dir="rtl"] .cardPage .submit-button {
     border: none;
     padding: 11px 11px 11px 0px;
     background: #fff;
-    color: #4f4f4f;
+    color: #0D943F;
     font-size: 1.4rem;
     font-family: "VAG Rounded ELC Bold";
 }
@@ -1909,6 +1909,10 @@ html[dir="rtl"] .header .link>li .subMenuTrigger {
     transition: transform .5s;
     transition: transform .5s, -webkit-transform .5s
 }
+
+
+
+
 
 .header .link>li .subMenuTrigger:after {
     content: "";

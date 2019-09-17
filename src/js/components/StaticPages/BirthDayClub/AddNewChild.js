@@ -16,7 +16,12 @@ import BirthDayClubImage from '../../../../assets/images/BirthDayClub/birthday-c
     super(props);
     this.state={
       fields:{
-
+         name:'',
+         dd:'',
+         mm:'',
+         yyyy:'',
+         gender:'',
+         realationship:''
       }, 
 
       errors: {}
@@ -25,19 +30,134 @@ import BirthDayClubImage from '../../../../assets/images/BirthDayClub/birthday-c
    
   }
 
+
+  onChangeField = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
+  }
+
   handleValidation = (e) => {
     e.preventDefault();
+   
+      let fields = this.state.fields;
+      let errors = {};
+      let formIsValid = true;
+  
+    if (!fields["name"]) {
+      formIsValid = false;
+      errors["name"] = <FormattedMessage id="Signup.validation.name.empty" defaultMessage="First name cannot be empty" />;
+    }
+
+    if (typeof fields["name"] !== "undefined") {
+      if (!fields["name"].match(/^[a-zA-Z]+$/) && fields["name"].length > 0) {
+        formIsValid = false;
+        errors["name"] = <FormattedMessage id="Signup.validation.name.onlyletters" defaultMessage="Please enter only letters" />;
+      }
+    }
+
+    
+    if (!fields["dd"]) {
+      formIsValid = false;
+      errors["dd"] = <FormattedMessage id="Signup.validation.name.empty" defaultMessage="Date field cannot be empty" />;
+    }
+    
+    if (!fields["mm"]) {
+      formIsValid = false;
+      errors["mm"] = <FormattedMessage id="Signup.validation.name.empty" defaultMessage="Month field cannot be empty" />;
+    }
+
+    
+    if (!fields["yyyy"]) {
+      formIsValid = false;
+      errors["yyyy"] = <FormattedMessage id="Signup.validation.name.empty" defaultMessage="Year field cannot be empty" />;
+    }
+
+    
+    if (!fields["gender"]) {
+      formIsValid = false;
+      errors["gender"] = <FormattedMessage id="Signup.validation.name.empty" defaultMessage="Gender field cannot be empty" />;
+    }
+
+    
+    if (!fields["realationship"]) {
+      formIsValid = false;
+      errors["realationship"] = <FormattedMessage id="Signup.validation.name.empty" defaultMessage=" Realationship field cannot be empty" />;
+    }
+
+    this.setState({ errors: errors });
+    return formIsValid;
   }
+
+  
   render() {
     let store_locale=this.props.globals.store_locale
+    const errorsObj = this.state.errors;
 
-    let firstNameInputField = <div ><div >
-      {/* <div>  <FormattedMessage id="Form.FirstName" defaultMessage="First Name" /></div> */}
-      <FormattedMessage id="Form.FirstName" defaultMessage="First Name">
-        {(message) =>
-          <input type="text" required={true} placeholder={message} id="P1001_FNAME" name="P1001_FNAME" onChange={this.handleChange.bind(this, "firstName")} value={this.state.fields["firstName"]} size={30} />}
-      </FormattedMessage>
-    </div><span id="P1001_FNAME_error_placeholder" className="a-Form-error" data-template-id="33610259035469734_ET"></span></div>;
+    let firstnameinputField = <div>
+    <div>
+    <input name="first_name" className="input-box" value={this.state.fields['name']}></input>
+    </div>
+    <span id="P1000_USERNAME_error_placeholder" className="a-Form-error" data-template-id="33609965712469734_ET"></span>
+  </div>;
+
+
+
+let ddinputField = 
+<div style={{ paddingRight:'1.5%' ,display:"inline"}}>
+                            <select name="title" className="select-field-box2" style={{marginRight: 0, padding:10 }}>
+                                <option selected disabled>DD</option>
+                                <option value="2011">value1</option>
+                                <option value="2012">value2</option>
+                                <option value="2013">value3</option>
+                            </select>
+                            </div>
+
+let mminputField= <div style={{ paddingRight:'1.5%',display:"inline"}}>
+<select name="title"  className="select-field-box2" style={{marginRight: 0,padding:10 }}>
+      <option selected disabled>MM</option>
+      <option value="2011">value1</option>
+      <option value="2012">value2</option>
+      <option value="2013">value3</option>
+  </select>
+  </div> 
+let yyyyinputField= <div style={{ display:"inline"}}>
+<select name="title"  className="select-field-box2" style={{marginRight: 0,padding:10 }}>
+    <option selected disabled>YYYY</option>
+    <option value="2011">value1</option>
+    <option value="2012">value2</option>
+    <option value="2013">value3</option>
+</select>
+</div>
+ 
+
+ let genderInputField=<div>
+ <select name="title" className="select-field-box" style={{ width: "50%", marginRight: 0 }}>
+ <option selected disabled>Please Select</option>
+     <option value="2011">value1</option>
+     <option value="2012">value2</option>
+     <option value="2013">value3</option>
+ </select>
+</div>;
+
+let relationshipInputField= <div>
+<select name="title" className="select-field-box" style={{ width: "50%", marginRight: 0 }}>
+    <option selected disabled>Please Select</option>
+    <option value="2011">value1</option>
+    <option value="2012">value2</option>
+    <option value="2013">value3</option>
+</select>
+</div>
+ 
+ if('name' in errorsObj)
+ {
+  let firstnameinputField = <div>
+  <div>
+  <input name="first_name" className="input-box" value={this.state.fields['name']}></input>
+  </div>
+  <span id="P1000_USERNAME_error_placeholder" className="a-Form-error" data-template-id="33609965712469734_ET">{errorsObj["name"]}</span>
+</div>;
+ }
+  
+
     return (
       <div>
         <Row style={{ marginTop: "40px" }}>
@@ -45,9 +165,9 @@ import BirthDayClubImage from '../../../../assets/images/BirthDayClub/birthday-c
           <Col style={{ marginBottom: "40px" }}>
           <div style={{textAlign:'start'}}>
             <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
-              <span className="titleHover" style={{fontSize:15}}><FormattedMessage id="Checkout.Home" defaultMessage/></span><span>&nbsp;\&nbsp;&nbsp;</span>
+              <span className="titleHover" style={{fontSize:12}}><FormattedMessage id="Checkout.Home" defaultMessage/></span><span>&nbsp;\&nbsp;&nbsp;</span>
             </Link>
-            <span  style={{fontSize:15, fontWeight: 'bold'}}><FormattedMessage id="birthdayclub.header" defaultMessage="Contact Us"/></span>
+            <span  style={{fontSize:12}}><FormattedMessage id="birthdayclub.header" defaultMessage="Contact Us"/></span>
           </div>
             <div className="paddingLeft">
               <h3 className="header-birth-club"><FormattedMessage id="birthdayclub.header" defaultMessage="" /></h3>
@@ -80,59 +200,47 @@ import BirthDayClubImage from '../../../../assets/images/BirthDayClub/birthday-c
                             <span className="blackTitle1"> <FormattedMessage id="addnewchild.firstname" defaultMessage="" /></span>
                   </div>
                   <div>
-                    <input name="first_name" className="input-box"></input>
+                  {firstnameinputField}
                   </div>
                   <div style={{ marginTop: 40 }}>
                             <span className="blackTitle1"><FormattedMessage id="addnewchild.dateofbirth" defaultMessage="" /></span>
                         </div>
                         <div>
-                          <div style={{ paddingRight:'1.5%' ,display:"inline"}}>
-                            <select name="title" className="select-field-box2" style={{marginRight: 0, padding:10 }}>
-                                <option selected disabled>DD</option>
-                                <option value="2011">value1</option>
-                                <option value="2012">value2</option>
-                                <option value="2013">value3</option>
-                            </select>
-                            </div>
-                          <div style={{ paddingRight:'1.5%',display:"inline"}}>
+                        {ddinputField}
+
+                        {mminputField}
+
+                        {yyyyinputField}
+
+                          {/* <div style={{ paddingRight:'1.5%',display:"inline"}}>
                           <select name="title"  className="select-field-box2" style={{marginRight: 0,padding:10 }}>
                                 <option selected disabled>MM</option>
                                 <option value="2011">value1</option>
                                 <option value="2012">value2</option>
                                 <option value="2013">value3</option>
-                            </select></div>
-                          <div style={{ display:"inline"}}>
+                            </select>
+                            </div> */}
+                          {/* <div style={{ display:"inline"}}>
                             <select name="title"  className="select-field-box2" style={{marginRight: 0,padding:10 }}>
                                 <option selected disabled>YYYY</option>
                                 <option value="2011">value1</option>
                                 <option value="2012">value2</option>
                                 <option value="2013">value3</option>
-                            </select></div>
-                            
+                            </select>
+                            </div>
+                             */}
                             
                         </div>
                   <div style={{ marginTop: 40 }}>
                             <span className="blackTitle1"><FormattedMessage id="addnewchild.boyorgirl" defaultMessage="" /></span>
                         </div>
-                        <div>
-                            <select name="title" className="select-field-box" style={{ width: "50%", marginRight: 0 }}>
-                            <option selected disabled>Please Select</option>
-                                <option value="2011">value1</option>
-                                <option value="2012">value2</option>
-                                <option value="2013">value3</option>
-                            </select>
-                  </div>
+                        {genderInputField}
+                        
                   <div style={{ marginTop: 40 }}>
                             <span className="blackTitle1"><FormattedMessage id="addnewchild.realationship" defaultMessage="" /></span>
                         </div>
-                        <div>
-                            <select name="title" className="select-field-box" style={{ width: "50%", marginRight: 0 }}>
-                                <option selected disabled>Please Select</option>
-                                <option value="2011">value1</option>
-                                <option value="2012">value2</option>
-                                <option value="2013">value3</option>
-                            </select>
-                        </div>
+                        {relationshipInputField}
+                       
 
                 <div className="button-div">
                   <button

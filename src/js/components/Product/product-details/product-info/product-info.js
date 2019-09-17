@@ -174,15 +174,15 @@ class ProductInformation extends Component {
 						<span className="specification-item-value">{data.age}</span>
 					</div> : <div/>}
 					{data.assembly_req ?<div className="row specification-item-content">
-						<span class="specification-item-key">Assembly Req :</span>
+						<span class="specification-item-key">Assembly Required :</span>
 						<span className="specification-item-value">{data.assembly_req}</span>
 					</div> : <div/>}
 					{data.battery_inc ?<div className="row specification-item-content">
-						<span class="specification-item-key">Battery Inc :</span> 
+						<span class="specification-item-key">Battery Included :</span> 
 						<span className="specification-item-value">{data.battery_inc}</span>
 					</div> : <div/>}
 					{data.battery_req ?<div className="row specification-item-content">
-						<span class="specification-item-key">Battery Req :</span> 
+						<span class="specification-item-key">Battery Required :</span> 
 						<span className="specification-item-value">{data.battery_req}</span>
 					</div> : <div/>}
 					{data.brand ?<div className="row specification-item-content">

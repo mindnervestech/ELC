@@ -7,16 +7,36 @@ import { connect } from 'react-redux';
 import * as actions from '../../redux/actions/index';
 import { Redirect, withRouter } from 'react-router-dom';
 import { FormattedMessage, injectIntl } from 'react-intl';
-
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import 'react-confirm-alert/src/react-confirm-alert.css'; 
 import logo1 from '../../../assets/images/you_may_also_like_1.png'
+
 class ShoppingBagItem extends Component {
 
    constructor(props) {
       super(props);
    }
-
    remove = (index) => {
-      this.props.OnremoveProduct({ index: index })
+       confirmAlert({
+      title: 'Confirm to yes',
+      message: 'Are you sure to remove this product.',
+      buttons: [
+        {
+          label: 'Yes',
+          onClick: () => this.props.OnremoveProduct({ index: index })
+        },
+        {
+          label: 'No',
+          
+        }
+      ],
+      closeOnEscape: true,
+      closeOnClickOutside: true,
+      willUnmount: () => {},
+      onClickOutside: () => {},
+      onKeypressEscape: () => {}
+    });
+      
    }
 
    checkOut(){
