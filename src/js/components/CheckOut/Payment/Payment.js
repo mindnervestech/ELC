@@ -330,7 +330,7 @@ class Payment extends Component {
 
                                 <ul className="shipping-tabs">
 
-                                  <li onClick={() => this.handleClick("CC")} id="CC" className="tab click-collect selected" >
+                                  <li onClick={() => this.handleClick("CC")} id="CC" className="tab click-collect2 selected" >
                                     <h3 className="method">
                                       <FormattedMessage id="PaybyCard.Text" defaultMessage="Pay by Card" />
                                     </h3>
@@ -338,7 +338,7 @@ class Payment extends Component {
                                       <FormattedMessage id="PaybyCard.Content" defaultMessage="Pay by Card" /></span>
                                   </li>
 
-                                  <li onClick={() => this.handleClick("COD")} id="DA" className="tab del-add ">
+                                  <li onClick={() => this.handleClick("COD")} id="DA" className="tab del-add2 ">
                                     <h3 className="method"><FormattedMessage id="CashOnDelivery.Text" defaultMessage="Cash On Delivery" /></h3>
                                     <span className="method-description h-hidden-mobile">
                                       <FormattedMessage id="CashOnDelivery.Content" defaultMessage="Cash On Delivery" />

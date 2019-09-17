@@ -36,7 +36,7 @@ class ShoppingBagItem extends Component {
     }
 
     handleChange(item, index, e) {
-        console.log(item, index, e);
+        console.log(this.props);
         let { user_details, globals } = this.props;
         const { timeout } = this.state
         if (timeout) {
@@ -45,56 +45,56 @@ class ShoppingBagItem extends Component {
 
         // this.setState({
             // timeout: setTimeout(() => {
-                if (item.is_in_stock) {
-                    console.log("hererer121212", e.target.value)
-                    if (parseInt(item.is_in_stock.stock) <= e.target.value) {
-                        console.log("hererer121212", e.target.value)
-                        let popupMessage = null;
-                        let currentStore = this.props.globals.currentStore;
-                        if (currentStore == 1 || currentStore == 3 || currentStore == 5) {
-                            popupMessage = Popup.register({
-                                title: 'محزر',
-                                content: `الحد الأقصى لكمية الطلب من هذا المنتج هي ${item.is_in_stock.stock} يرجى تغيير الكمية المحددة لتكون ضمن هذا العدد. لطلب كمية أكثر من ${item.is_in_stock.stock} يرجى اللاتصال بنا.`,
-                                buttons: {
-                                    right: [{
-                                        text: 'حسنا',
-                                        action: function () {
-                                            Popup.close();
-                                        }
-                                    }]
-                                }
-                            });
-                            Popup.queue(popupMessage);
-                        } else {
-                            popupMessage = Popup.register({
-                                title: 'Alert',
-                                content: `This product has a maximum orderable quantity of ${parseInt(item.is_in_stock.stock)} Please update your selected quantity to be within this limit.To order quantity more than ${parseInt(item.is_in_stock.stock)} please contact us.`,
-                                buttons: {
-                                    right: [{
-                                        text: 'OK',
-                                        action: function () {
-                                            Popup.close();
-                                        }
-                                    }]
-                                }
-                            });
-                            Popup.queue(popupMessage);
-                        }
-                        return;
-                    }
-                }
+                // if (item.is_in_stock) {
+                //     console.log("hererer121212", e.target.value)
+                //     if (parseInt(item.is_in_stock.stock) <= e.target.value) {
+                //         console.log("hererer121212", e.target.value)
+                //         let popupMessage = null;
+                //         let currentStore = this.props.globals.currentStore;
+                //         if (currentStore == 1 || currentStore == 3 || currentStore == 5) {
+                //             popupMessage = Popup.register({
+                //                 title: 'محزر',
+                //                 content: `الحد الأقصى لكمية الطلب من هذا المنتج هي ${item.is_in_stock.stock} يرجى تغيير الكمية المحددة لتكون ضمن هذا العدد. لطلب كمية أكثر من ${item.is_in_stock.stock} يرجى اللاتصال بنا.`,
+                //                 buttons: {
+                //                     right: [{
+                //                         text: 'حسنا',
+                //                         action: function () {
+                //                             Popup.close();
+                //                         }
+                //                     }]
+                //                 }
+                //             });
+                //             Popup.queue(popupMessage);
+                //         } else {
+                //             popupMessage = Popup.register({
+                //                 title: 'Alert',
+                //                 content: `This product has a maximum orderable quantity of ${parseInt(item.is_in_stock.stock)} Please update your selected quantity to be within this limit.To order quantity more than ${parseInt(item.is_in_stock.stock)} please contact us.`,
+                //                 buttons: {
+                //                     right: [{
+                //                         text: 'OK',
+                //                         action: function () {
+                //                             Popup.close();
+                //                         }
+                //                     }]
+                //                 }
+                //             });
+                //             Popup.queue(popupMessage);
+                //         }
+                //         return;
+                //     }
+                // }
             // }, 3000)
         // });
         let obj = {
             product_id: item.id,
             qty: e.target.value,
-            quote_id: user_details.customer_details.quote_id,
+            quote_id:user_details.isUserLoggedIn ? user_details.customer_details.quote_id : this.props.guest_user.new_quote_id,
             sku: item.sku,
             store_id: globals.currentStore
         }
         timeout: setTimeout(() => {
             this.props.OnChangeQty(obj);
-        }, 3000)
+        }, 2000)
     }
 
     render() {
