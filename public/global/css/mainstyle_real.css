@@ -1038,7 +1038,8 @@ html[dir="rtl"] .header .row-2 .cta .cart span {
 
 .header .profile {
     color: #0D943F;
-    margin-bottom: 10px
+    margin-bottom: 10px;
+    text-align: start;
 }
 
 .header .profile figure {
@@ -1382,7 +1383,7 @@ html.no-touch .header .link>li:hover .submenu {
     position: absolute;
     cursor: pointer;
     right: 0;
-    top: 6px;
+    top: 17px;
     background: #000;
     width: 11px;
     height: 1px
@@ -4557,6 +4558,16 @@ html[dir="rtl"] .header .navTrigger {
 @media (max-width: 767px){
     .products li{
     margin: 0px 10px 0px !important;
+    }
+
+    .header .link>li>a{
+        color: #0D943F !important;
+        font-weight: bold;
+    }
+
+    .header .link .subLink li a{
+        color: #4f4f4f !important;
+        font-weight: 500;
     }
 
     html.no-touch .header .link>li:hover .submenu{

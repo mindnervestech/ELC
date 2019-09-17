@@ -546,7 +546,7 @@ class MainHeader extends Component {
                                             <a href="javascript:void(0);" onClick={(e) => this.translate('ar', 'rtl')} >العربية</a>
                                             </div>
                                 </div>
-                                <div style={{ display: 'inline-block', textAlign: 'start', marginLeft: 10, float:'right' }}>
+                                <div style={{ display: 'inline-block', textAlign: 'start', marginLeft: 10 }}>
                                     <span style={{ height: 40 }}>
                                         <Link to={`/${store_locale}/birth-day-club`} style={{ textDecoration: 'none' }}>
                                             <button className="mobileHomePageButtonSecond text-color"><FormattedMessage id="header.TheBirthdayclub" defaultMessage="The Birthday Club" /></button>
