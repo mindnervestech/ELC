@@ -30,7 +30,6 @@ const mediaVideo = 'https://storage.googleapis.com/nay/videos/product/au19/nay-a
 
 class ProductInfo extends Component {
 	constructor(props) {
-
 		super(props);
 		this.state = {
 			defaultQty: 1,
@@ -339,7 +338,7 @@ class ProductInfo extends Component {
 													/>
 												</g>
 											</svg>
-												 {!this.state.is_in_wishlist_item ? <span style={{margingRight:"35px"}}  className="mr-10-wishlist" ><FormattedMessage id="PageTitle.add-wishlist" defaultMessage="Add to wishlist" /></span> : <span style={{margingRight:"35px"}} className="mr-10-wishlist" ><FormattedMessage id="PageTitle.remove-wishlist" defaultMessage="Remove to wishlist" /></span>}
+												 {!this.state.is_in_wishlist_item ? <span style={{margingRight:"35px"}}  className="mr-10-wishlist" ><FormattedMessage id="PageTitle.add-wishlist" defaultMessage="Add to wishlist" /></span> : <span style={{margingRight:"35px"}} className="mr-10-wishlist" ><FormattedMessage id="PageTitle.removewishlist" defaultMessage="Remove to wishlist" /></span>}
 											</span>
 			</Link>);
 		} else {
@@ -365,7 +364,7 @@ class ProductInfo extends Component {
 				/>
 			</g>{' '}
 		</svg>
-			 {!this.state.is_in_wishlist_item ?<span style={{margingRight:"35px"}}><FormattedMessage id="PageTitle.add-wishlist" defaultMessage="Add to wishlist" /></span>: <span style={{margingRight:"35px"}}><FormattedMessage id="PageTitle.remove-wishlist" defaultMessage="Remove to wishlist" /></span>}
+			 {!this.state.is_in_wishlist_item ?<span style={{margingRight:"35px"}}><FormattedMessage id="PageTitle.add-wishlist" defaultMessage="Add to wishlist" /></span>: <span style={{margingRight:"35px"}}><FormattedMessage id="PageTitle.removewishlist" defaultMessage="Remove to wishlist" /></span>}
 		</span>);
 		}
 	}
@@ -527,7 +526,7 @@ class ProductInfo extends Component {
 													<div className="row home-deli">
 														<img src={freeDelivery} />
 														<span style={{fontSize:'15px', fontWeight: 'bold'}}>
-															<FormattedMessage id="home.delivery" defaultMessage="Home Delivery"/>
+														<FormattedMessage id="delivery-details.HomeDelivery.Title" defaultMessage="Home Delivery" />
 													</span>
 														<span style={{ margin: '10px', color: '#ee0E19' }}>
 															{data.simplestatus == 1 || (newImageArray[0] && newImageArray[0].stock == 1) ?
@@ -542,7 +541,7 @@ class ProductInfo extends Component {
 													<div className="row click-collect">
 														<img src={freeCollect} />
 														<span style={{marginTop:'15px' ,fontSize:'15px', fontWeight: 'bold'}}>
-															Click & Collect
+														<FormattedMessage id="delivery-details.Click&Collect.Title" defaultMessage="Click&Collect" />
 													</span>
 
 														{/* <span className="in-stock">
@@ -629,7 +628,7 @@ class ProductInfo extends Component {
 													/>
 												</g>{' '}
 											</svg>
-												 {!data.is_in_wishlist ?<span style={{margingRight:"35px"}}><FormattedMessage id="PageTitle.add-wishlist" defaultMessage="Add to wishlist" /></span>: <span style={{margingRight:"35px"}}><FormattedMessage id="PageTitle.remove-wishlist" defaultMessage="Remove to wishlist" /></span>}
+												 {!data.is_in_wishlist ?<span style={{margingRight:"35px"}}><FormattedMessage id="PageTitle.add-wishlist" defaultMessage="Add to wishlist" /></span>: <span style={{margingRight:"35px"}}><FormattedMessage id="PageTitle.removewishlist" defaultMessage="Remove to wishlist" /></span>}
 											</span> */}
 
 												<span className="wishlist-span-1">

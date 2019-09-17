@@ -112,27 +112,26 @@ export const changeQtyState = (payload) => {
 }
 
 export const changeQty = (payload) => {
-
     return (dispatch, getState) => {
         let prodArray = getState().myCart.products;
         let newProduct = prodArray[payload.index];
-        let newQty = newProduct.qty;
+        // let newQty = payload.qty;
 
-        if (payload.type === 'inc') {
-            newQty = payload.qty + 1;
+        // if (payload.type === 'inc') {
+        //     newQty = payload.qty + 1;
 
-        } else if ((payload.type === 'dec') && (newQty > 1)) {
-            newQty = payload.qty - 1;
+        // } else if ((payload.type === 'dec') && (newQty > 1)) {
+        //     newQty = payload.qty - 1;
 
-        }
+        // }
 
 
         let data = {
-            product_id: newProduct.id,
-            quote_id: getState().myCart.quote_id,
-            qty: newQty,
-            sku: newProduct.sku,
-            store_id: getState().global.currentStore,
+            product_id: payload.product_id,
+            quote_id: payload.quote_id,
+            qty: payload.qty,
+            sku: payload.sku,
+            store_id: payload.store_id,
         }
         dispatch(loadingSpinner({ loading: true }))
         dispatch({
@@ -141,15 +140,14 @@ export const changeQty = (payload) => {
         });
         let cb = {
             success: (res) => {
-                //console.log(res);
                 if (res.status) {
-                    if (payload.type === 'inc') {
-                        newProduct.qty = res.data.cart_count;
+                    // if (payload.type === 'inc') {
+                    //     newProduct.qty = res.data.cart_count;
 
-                    } else if ((payload.type === 'dec') && (newProduct.qty > 1)) {
-                        newProduct.qty = res.data.cart_count;
+                    // } else if ((payload.type === 'dec') && (newProduct.qty > 1)) {
+                    //     newProduct.qty = res.data.cart_count;
 
-                    }
+                    // }
 
                     dispatch(changeQtyState({ products: prodArray }))
                     dispatch(getMyCart({
@@ -170,7 +168,6 @@ export const changeQty = (payload) => {
                 });
             }
         }
-
         API.updateCart(data, cb)
 
 

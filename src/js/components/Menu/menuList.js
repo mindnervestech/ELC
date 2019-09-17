@@ -139,7 +139,7 @@ class menuList extends Component {
 					<Link to={'/' + this.state.store_locale + '/products/' + item.url_path} style={{ textDecoration: 'none' ,padding:10}} onClick={() => document.getElementById("closeNav").click()} className={item.children[0].length > 0 ? '' : "removeWhite"}>
 						{item.name}
 						{item.children[0].length > 0 ?
-							<i class="fa fa-caret-down downMenu divShowOnWeb" aria-hidden="true"></i>
+							<i className="fa fa-caret-down downMenu divShowOnWeb" aria-hidden="true"></i>
 						: <span  />}
 					</Link>
 					{item.children[0].length > 0 ?<i className="subMenuTrigger" /> : <span />}

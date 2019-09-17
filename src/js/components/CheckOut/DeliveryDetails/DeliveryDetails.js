@@ -78,7 +78,7 @@ class DeliveryDetails extends Component {
     }
 
     componentDidMount() {
-        this.props.OnproceedToCheckout({quote_id : 10})
+        //this.props.OnproceedToCheckout({quote_id : 10})
         if (this.props.cart_details.is_cart_details_rec) {
 
             let obj = this.props.user_details.customer_details;

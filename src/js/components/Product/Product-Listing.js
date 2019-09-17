@@ -508,7 +508,7 @@ class Product extends Component {
 														type="button"
 														id="B29004859664427057"
 													>
-														<span className="t-Button-label">Done</span>
+														<span className="t-Button-label"><FormattedMessage id="done" defaultMessage="Done" /></span>
 													</button>
 													<span className="js-maximizeButtonContainer" />
 												</div>

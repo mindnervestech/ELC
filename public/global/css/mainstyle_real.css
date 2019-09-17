@@ -1435,8 +1435,6 @@ html[dir="rtl"] .header .link>li .subMenuTrigger {
     cursor: pointer;
 }
 
-
-
 .header .link>li>a {
     display: block;
     text-transform: none;

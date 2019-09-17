@@ -279,16 +279,16 @@ class ProductListData extends Component {
 										}
 									</FormattedMessage>
 									<div className="sortByOptionText" onClick={() => this.filter("a-z", "Name (A-Z)")}>
-										<span>Name (A-Z)</span>
+										<span><FormattedMessage id="NameAtoZ" defaultMessage="Name (A-Z)"/></span>
 									</div>
 									<div className="sortByOptionText" onClick={() => this.filter("z-a", "Name (Z-A)")}>
-										<span>Name (Z-A)</span>
+										<span><FormattedMessage id="NameZtoA" defaultMessage="Name (Z-A)"/></span>
 									</div>
 									<div className="sortByOptionText" onClick={() => this.filter("price_asc", "Price (lowest first)")}>
-										<span>Price (lowest first)</span>
+										<span><FormattedMessage id="PriceLowtoHigh" defaultMessage="Price (lowest first)"/></span>
 									</div>
 									<div className="sortByOptionText" onClick={() => this.filter("price_desc", "Price (highest first)")}>
-										<span>Price (highest first)</span>
+										<span><FormattedMessage id="PriceHightoLow" defaultMessage="Price (highest first)"/></span>
 									</div>
 								</div>
 							</div>
@@ -314,7 +314,7 @@ class ProductListData extends Component {
 												type="button"
 												id="B29004859664427057"
 											>
-												<span className="t-Button-label">Done</span>
+												<span className="t-Button-label"><FormattedMessage id="done" defaultMessage="Done" /></span>
 											</button>
 											<span className="js-maximizeButtonContainer" />
 										</div>

@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../redux/actions/index';
 import Collapsible from 'react-collapsible';
 import { Link, Redirect, withRouter } from 'react-router-dom';
+import { FormattedMessage } from 'react-intl';
 
 var _ = require('lodash');
 
@@ -375,7 +376,7 @@ class SideManu extends Component {
 			<div>
 				<div>
 					<div className="row-2" style={{ paddingTop: 21, borderBottom: 'solid 1px #b1b1b1', textAlign: 'start' }}>
-						<span className="blackTitle">Narrow your Results</span>
+						<span className="blackTitle"> <FormattedMessage id="NarrowyourResults" defaultMessage="Narrow your Results" /></span>
 						<span className="clearAll floatRight" style={this.state.clearAllOption ? {display: 'block'} : {display: 'none'}} onClick={() => this.clearFilter()}>Clear All</span>
 					</div>
 					<div style={{height: 55, overflow: 'auto'}}>

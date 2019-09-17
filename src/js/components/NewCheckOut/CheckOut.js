@@ -234,7 +234,7 @@ class CheckOut extends Component {
                                     <span className="header-text"><FormattedMessage id="OrderSummary.Text" defaultMessage="Order summary" /></span>
                                 </div>
                                 <div className="blackTitle1" style={{ paddingTop: 10 }}>
-                                    <span>Ship to: {customer_details.firstname}&nbsp; {customer_details.lastname}</span>
+                                    <span><FormattedMessage id="DeliverTo.shipTo" defaultMessage="Ship to" />: {customer_details.firstname}&nbsp; {customer_details.lastname}</span>
                                 </div>
                             </div>
                             <div className="block2">
@@ -252,7 +252,7 @@ class CheckOut extends Component {
                                                     <span style={{ fontFamily: "VAG Rounded ELC Bold", color: '#0D943F' }}>{item.name}</span>
                                                 </div>
                                                 <div>
-                                                    <span style={{ fontFamily: "VAG Rounded ELC Bold" }}>Item price: </span><span> {item.currency} &nbsp;{item.price}</span>
+                                                    <span style={{ fontFamily: "VAG Rounded ELC Bold" }}><FormattedMessage id="Item.price" defaultMessage="Item price" />: </span><span> {item.currency} &nbsp;{item.price}</span>
                                                 </div>
                                                 <div>
                                                     <span style={{ fontFamily: "VAG Rounded ELC Bold" }}><FormattedMessage id="Item.Qty" defaultMessage="Qty" />: </span><span> {item.qty}</span>

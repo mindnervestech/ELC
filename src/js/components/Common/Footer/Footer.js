@@ -123,13 +123,18 @@ class Footer extends Component {
   render() {
     let errorObj = this.state.errors;
     let store_locale = this.props.globals.store_locale;
-    let emailInputField = <input
-      type="text"
-      placeholder="enter your e-mail address"
-      className="email-field"
-      value={this.state.email}
-      onChange={this.handleChange}
-    ></input>
+    
+    let emailInputField = 
+    <FormattedMessage id="enteryouremailaddress" defaultMessage="enter your email address">
+    {(message) =>
+    <input
+          type="text"
+          placeholder={message}
+          className="email-field"
+          value={this.state.email}
+          onChange={this.handleChange}
+        ></input>}
+    </FormattedMessage>
 
     let emailInputErrorField = null;
     if (errorObj) {
