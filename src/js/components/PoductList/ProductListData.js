@@ -249,7 +249,7 @@ class ProductListData extends Component {
 					<SideManu action={this.handler}></SideManu>
 				</Col>
 				<Col xs="12" lg="9" md="9" style={{ padding: 0 }}>
-					<div className="divShowOnMobile" style={{ width: '100%', position: 'absolute', top: '-2%' }}>
+					<div className="divShowOnMobile" style={{ width: '100%', position: 'absolute', top: '-0.5%' }}>
 						<div
 							id="R29005156978427060"
 							className="t-BreadcrumbRegion h-hidden-desktop t-BreadcrumbRegion--showBreadcrumb t-BreadcrumbRegion--useBreadcrumbTitle"

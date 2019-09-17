@@ -335,15 +335,19 @@ class SideManu extends Component {
 			}
 			if(Checked == 0){
 				return (
-					<div>
-						<input type="checkbox" checked={false} onClick={() => this.applyFilter(code + "/" + name, "")} value={name} /> {name}
+					<div style={{position: 'relative'}}>
+						<div onClick={() => this.applyFilter(code + "/" + name, "")} class="likeAInputNotSelected"><div class="likeAInput"></div></div>
+						<span className="likeAInputName" onClick={() => this.applyFilter(code + "/" + name, "")}>{name}</span>
+						{/* <input type="checkbox" checked={false} onClick={() => this.applyFilter(code + "/" + name, "")} value={name} /> {name} */}
 					</div>
 					);
 			}else{
 				Checked = 0;
 				return (
-					<div>
-						<input type="checkbox" checked={true} onClick={() => this.applyFilter(code + "/" + name, "")} value={name} /> {name}
+					<div style={{position: 'relative'}}>
+						<div onClick={() => this.applyFilter(code + "/" + name, "")} class="likeAInputSelected"><div class="likeAInput"></div></div>
+						<span className="likeAInputName" onClick={() => this.applyFilter(code + "/" + name, "")}>{name}</span>
+						{/* <input type="checkbox" checked={true} onClick={() => this.applyFilter(code + "/" + name, "")} value={name} /> {name} */}
 					</div>
 					);		
 			}
@@ -380,7 +384,7 @@ class SideManu extends Component {
 						<span className="clearAll floatRight" style={this.state.clearAllOption ? {display: 'block'} : {display: 'none'}} onClick={() => this.clearFilter()}>Clear All</span>
 					</div>
 					<div style={{height: 55, overflow: 'auto'}}>
-                    <ul className="filter" id="PRDSEL-CAT">                
+                    <ul className="filter" id="PRDSEL-CAT" style={{textAlign: "start"}}>                
                         {this.state.narrowResult.map((keyName) =>
                          <li style={{width: 'auto', margin: '0px 10px 0px 0px'}}>
                             <div className="chip">

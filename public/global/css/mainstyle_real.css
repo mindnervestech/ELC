@@ -1345,11 +1345,11 @@ html[dir="rtl"] .header .search .textInput {
 
 @media only screen and (min-width: 1280px) {
     .header .link>li {
-        margin-right: 25px
+        margin-right: 15px
     }
 
     html[dir="rtl"] .header .link>li {
-        margin-left: 20px
+        margin-left: 0px
     }
 }
 
@@ -1451,35 +1451,6 @@ html.no-touch .header .link>li>a:hover {
     color: #f599ba
 }
 
-
-@media only screen and (max-width:767px)
-{
-    .header .link>li>a {
-        display: block;
-        text-transform: none;
-        color: #0d943f!important;
-        transition: color .5s;
-        text-align: left;
-        font-size: 16px;
-       line-height: 21px
-    }
-}
-
-
-
-@media only screen and (min-width:768px) and (max-width:1024px)
-{
-
-    .header .link>li>a {
-        display: block;
-        text-transform: none;
-        color: #0d943f!important;
-        transition: color .5s;
-        text-align: left;
-        font-size: 16px;
-       line-height: 21px
-    }
-}
 @media only screen and (min-width: 1280px) {
     .header .link>li>a {
         position: relative;

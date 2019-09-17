@@ -3288,8 +3288,9 @@ html[dir="rtl"] .Collapsible__trigger:after{
         border: solid 1px #b1b1b1;
         border-top: none;
         position: absolute;
-        left: 16px;
-        width: 44%;
+        left: 15px;
+        right: auto;
+        width: 44% !important;
         background-color: #fff;
         z-index: 99;
     }
@@ -6296,6 +6297,18 @@ html[dir="rtl"] .commingSoonText{
         cursor: pointer;
         margin: 0px !important;
     }
+
+    .likeAInput{
+        position: absolute;
+        border: solid 1px #fff;
+        padding: 0px 5px;
+        background-color: #fff;
+        border-radius: 50%;
+        top: 2.5px;
+        left: 1.5px !important;
+        width: 0px;
+        height: 12px;
+    }
 }
 
 @media (max-width: 320px){
@@ -6317,3 +6330,49 @@ html[dir="rtl"] .commingSoonText{
         width: 13% !important;
     }
 }
+
+.likeAInputNotSelected{
+    border: solid 1px #000;
+     background-color: #fff;
+     width: 18px;
+     height: 18px;
+     position: relative;
+     border-radius: 3px;
+     display: inline-block;
+ }
+
+ .likeAInputSelected{
+    border: solid 1px #000;
+     background-color: #000;
+     width: 18px;
+     height: 18px;
+     position: relative;
+     border-radius: 3px;
+     display: inline-block;
+ }
+ 
+ .likeAInput{
+    position: absolute;
+    border: solid 1px #fff;
+    padding: 0px 5px;
+    background-color: #fff;
+    border-radius: 50%;
+    top: 2.5px;
+    left: 2.5px;
+    width: 0px;
+    height: 12px;
+}
+
+.likeAInputName {
+    position: absolute;
+    top: -1px;
+    padding-left: 15px;
+}
+
+html[dir="rtl"] .likeAInputName {
+    position: absolute;
+    top: -1px;
+    padding-left: 0px;
+    padding-right: 15px;
+}
+    
