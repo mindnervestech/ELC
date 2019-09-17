@@ -38,7 +38,7 @@ class Order extends Component {
                 pathname: `/${store_locale}/login`,
             }} />;
         }
-
+        
         const orderList = this.props.orderHistory.map((c, index) => {
             return <OrderRow
                 value={c}
@@ -107,7 +107,7 @@ class Order extends Component {
                                         <table className="t-Report-pagination" role="presentation"><tbody><tr><td /></tr></tbody></table>
                                         <div className="t-Report-tableWrap">
 
-                                            {this.props.orderHistory > 0 ?
+                                            {this.props.orderHistory.length > 0 ?
                                                 <table className="t-Report-report" summary="Order History">
                                                     <thead>
                                                         <tr>

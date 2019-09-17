@@ -9,7 +9,6 @@ import { Redirect, withRouter } from 'react-router-dom';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
 import logo1 from '../../../assets/images/you_may_also_like_1.png'
-
 class ShoppingBagItem extends Component {
 
    constructor(props) {
