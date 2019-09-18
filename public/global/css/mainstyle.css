@@ -68,6 +68,22 @@ html[dir="rtl"] .hoverclass :hover::before{
 }
 
 /*! normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */
+
+@media (max-width:767px){
+    .headerSlider2 .slick-prev, .slick-next {
+        display: block !important;
+    }
+
+    .headerSlider2 .slick-prev{
+        display: block !important;
+    }
+
+    .headerSlider2 .slick-next{
+        display: block !important;
+        right: 10px !important;
+    }
+}
+
 .PLPCategaryName{
     font-size: 24px;
     font-family: "VAG Rounded ELC Light";
@@ -6420,6 +6436,8 @@ html[dir="rtl"] .PagenationRightArrow{
 .paddingRemoveForText{}
 
 .borderForMobileManu{}
+
+.headerSlider2{}
 
 @media (max-width:767px){
     @supports (-webkit-overflow-scrolling: touch) { 

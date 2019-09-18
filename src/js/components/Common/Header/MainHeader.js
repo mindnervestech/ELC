@@ -625,7 +625,7 @@ class MainHeader extends Component {
                             </div> */}
                         </div>
                     </div>
-                    <div className="header-slider">
+                    <div className="header-slider headerSlider2">
                         <Link to={`/${store_locale}/delivery-policy`} style={{ textDecoration: 'none' }}>
                             <Slider {...settings}>
                                 <div>

@@ -308,7 +308,8 @@ template {
 }
 
 .icon-user:before {
-    content: "\E905"
+    /* content: "\E905" */
+    content: url(user.svg)
 }
 
 .icon-whatsapp:before {
@@ -1049,8 +1050,8 @@ html[dir="rtl"] .header .row-2 .cta .cart span {
 }
 
 .header .profile figure {
-    width: 40px;
-    height: 40px;
+    width: 0px;
+    height: 0px;
     border-radius: 50%;
     border: 1px solid #0D943F;
     display: inline-block;
@@ -1065,8 +1066,8 @@ html[dir="rtl"] .header .profile figure {
 
 @media only screen and (min-width: 600px) {
     .header .profile figure {
-        width: 50px;
-        height: 50px
+        width: 0px;
+        height: 0px
     }
 }
 
@@ -1076,7 +1077,12 @@ html[dir="rtl"] .header .profile figure {
     top: 50%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    font-size: 20px
+    font-size: 20px;
+    margin: 0px 18px;
+}
+
+html[dir="rtl"] .header .profile figure i {
+    margin: 0px -15px;
 }
 
 @media only screen and (min-width: 600px) {
@@ -1116,9 +1122,10 @@ html[dir="rtl"] .header .profile figure {
 
 .header .profile>div a {
     display: block;
-    font-size: .9em;
+    font-size: 15px;
     color: #000;
-    padding-top: 3px
+    padding-top: 3px;
+    padding: 2px 25px 0px;
 }
 
 .header .navTrigger {
@@ -1175,7 +1182,8 @@ html[dir="rtl"] .header .navTrigger {
 
 .header .closeNav {
     position: absolute;
-    left: 90%;
+    left: 85%;
+    top: 15px;
     color: #000 !important;
     font-size: 23px;
     font-weight: 100;
@@ -1353,12 +1361,13 @@ html[dir="rtl"] .header .search .textInput {
 
 @media only screen and (min-width: 1280px) {
     .header .link>li {
-        margin-right: 15px
+        margin-right: 16px;
+        font-weight: bold;
     }
 
     html[dir="rtl"] .header .link>li {
         margin-left: 0px;
-        font-size:1.2 rem;
+        font-size: 1.1rem;
     }
 }
 
@@ -1399,7 +1408,7 @@ html.no-touch .header .link>li:hover .submenu {
 }
 
 html[dir="rtl"] .header .link>li .subMenuTrigger {
-    left: 0;
+    left: 25px;
     right: auto
 }
 

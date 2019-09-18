@@ -41,7 +41,7 @@ class EmptyCart extends Component{
                           <div className="t-Region-buttons-right" />
                         </div>
                         <div className="t-Region-body">
-                          <div id="report_226902533466451275_catch"><span className="nodatafound"><h1><FormattedMessage id="Cart.YBE"  defaultMessage="Your bag is emapty."/></h1></span>
+                          <div id="report_226902533466451275_catch"><span className="nodatafound"><h1><FormattedMessage id="Cart.YBE"  defaultMessage="Your bag is empty."/></h1></span>
                           </div>
                         </div>
                         <div className="t-Region-buttons t-Region-buttons--bottom">
