@@ -45,12 +45,11 @@ class ProductInfo extends Component {
 	}
 
 
-	componentDidMount()
-	{
-		if(this.props.customerDetails.customer_id!=undefined)
-		{
+	componentDidMount(){
+		if(this.props.customerDetails.customer_id!=undefined){
 			this.props.onGetWishListItem({ customerid: this.props.customerDetails.customer_id, store_id:this.props.globals.currentStore})
 		}
+		
 	}
 
 

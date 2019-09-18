@@ -229,7 +229,10 @@ export const removeProduct = (payload) => {
 export const clearCartItem = () => {
     return {
         type: actionType.CLEAR_CART_ITEM,
-        payload: {}
+        payload: {
+            new_quote_id: null,
+            startGuestCheckout: false,
+        }
     }
 }
 

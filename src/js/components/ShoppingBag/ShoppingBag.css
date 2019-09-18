@@ -1035,7 +1035,7 @@ font-size: 1em !important;
 }
 
 .increse-item-qty{
-    border-color: #d6d6d6;
+    /* border-color: #d6d6d6; */
     font-family: "VAG Rounded Std Bold", "Arial", "Helvetica", sans-serif;
     font-weight: normal;
     font-size: 22px;

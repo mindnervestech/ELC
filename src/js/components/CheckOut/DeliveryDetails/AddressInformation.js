@@ -36,7 +36,10 @@ class Address extends Component {
 
     componentDidMount() {
         const selected_country = this.props.globals.country;
-        if (selected_country === 'KSA') {
+        if(this.props.country_list.length == 0){
+            this.props.onGetCountryList();
+        }
+        if (selected_country === 'KSA' || selected_country === 'ksa') {
             this.setState({
                 cities: [],
                 AddressFields: {
@@ -46,7 +49,7 @@ class Address extends Component {
                 }
             })
             this.defineCities('SA');
-        } else if (selected_country === 'UAE') {
+        } else if (selected_country === 'UAE' || selected_country === 'uae') {
             this.setState({
                 cities: [],
                 AddressFields: {
@@ -201,10 +204,13 @@ class Address extends Component {
                 return obj.id === location
             })
 
-            this.setState({
-                country_details: result[0],
-                cities: result[0].available_regions
-            })
+            if(result[0]){
+                this.setState({
+                    country_details: result[0],
+                    cities: result[0].available_regions
+                })
+            }
+            
         } else if (location === 'NA') {
             this.setState({
                 cities: [],
@@ -657,6 +663,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
+        onGetCountryList: () => dispatch(actions.getCountryList()),
         OnproceedToCheckout: (quoteId) => dispatch(actions.getAddressFromShippingDetails(quoteId)),
         OnaddNewAddressAndRedirectToCheckout: (quoteId) => dispatch(actions.AddNewAddressAndRedirectToCheckout(quoteId)),
         OnaddOldAddressAndRedirectToCheckout: (quoteId) => dispatch(actions.AddOldAddressAndRedirectToCheckout(quoteId)),

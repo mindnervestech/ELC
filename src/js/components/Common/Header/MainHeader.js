@@ -86,6 +86,9 @@ class MainHeader extends Component {
             country_id: '',
             city: ''
         });
+        if (this.props.guest_user.temp_quote_id == null) {
+            this.props.onGetGuestCartId();
+        }
     }
 
     componentDidUpdate(prevProps, prevState) {

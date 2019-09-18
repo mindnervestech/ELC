@@ -9,9 +9,9 @@ import { Redirect, withRouter } from 'react-router-dom';
 import { FormattedMessage, injectIntl } from 'react-intl';
 //import { confirmAlert } from 'react-confirm-alert'; // Import
 //import 'react-confirm-alert/src/react-confirm-alert.css'; 
-import logo1 from '../../../assets/images/you_may_also_like_1.png'
 import Popup from 'react-popup';
 import Spinner from '../Spinner/Spinner2';
+
 class ShoppingBagItem extends Component {
 
    constructor(props) {
@@ -56,66 +56,94 @@ class ShoppingBagItem extends Component {
         }
     }
 
+    componentWillReceiveProps(nextProps){
+        console.log(nextProps);
+        console.log(this.props);
+        if(this.props.updateLoader){
+            let popupMessage = null;
+            popupMessage = Popup.register({
+                title: 'Alert',
+                content: `Quantity is updated`,
+                buttons: {
+                    right: [{
+                        text: 'OK',
+                        action: function () {
+                            Popup.close();
+                        }
+                    }]
+                }
+            });
+            Popup.queue(popupMessage);
+        }
+    }
+
     handleChange(item, index, e) {
         console.log(this.props);
         let { user_details, globals } = this.props;
         const { timeout } = this.state
+        let qty =  e.target.value;
         if (timeout) {
             clearTimeout(timeout);
         }
-
-        // this.setState({
-            // timeout: setTimeout(() => {
-                // if (item.is_in_stock) {
-                //     console.log("hererer121212", e.target.value)
-                //     if (parseInt(item.is_in_stock.stock) <= e.target.value) {
-                //         console.log("hererer121212", e.target.value)
-                //         let popupMessage = null;
-                //         let currentStore = this.props.globals.currentStore;
-                //         if (currentStore == 1 || currentStore == 3 || currentStore == 5) {
-                //             popupMessage = Popup.register({
-                //                 title: 'محزر',
-                //                 content: `الحد الأقصى لكمية الطلب من هذا المنتج هي ${item.is_in_stock.stock} يرجى تغيير الكمية المحددة لتكون ضمن هذا العدد. لطلب كمية أكثر من ${item.is_in_stock.stock} يرجى اللاتصال بنا.`,
-                //                 buttons: {
-                //                     right: [{
-                //                         text: 'حسنا',
-                //                         action: function () {
-                //                             Popup.close();
-                //                         }
-                //                     }]
-                //                 }
-                //             });
-                //             Popup.queue(popupMessage);
-                //         } else {
-                //             popupMessage = Popup.register({
-                //                 title: 'Alert',
-                //                 content: `This product has a maximum orderable quantity of ${parseInt(item.is_in_stock.stock)} Please update your selected quantity to be within this limit.To order quantity more than ${parseInt(item.is_in_stock.stock)} please contact us.`,
-                //                 buttons: {
-                //                     right: [{
-                //                         text: 'OK',
-                //                         action: function () {
-                //                             Popup.close();
-                //                         }
-                //                     }]
-                //                 }
-                //             });
-                //             Popup.queue(popupMessage);
-                //         }
-                //         return;
-                //     }
-                // }
-            // }, 3000)
-        // });
-        let obj = {
-            product_id: item.id,
-            qty: e.target.value,
-            quote_id:user_details.isUserLoggedIn ? user_details.customer_details.quote_id : this.props.guest_user.new_quote_id,
-            sku: item.sku,
-            store_id: globals.currentStore
-        }
-        timeout: setTimeout(() => {
-            this.props.OnChangeQty(obj);
-        }, 3000)
+        let popupMessage = null;
+        this.setState({
+            timeout: setTimeout(() => {
+                if (item.is_in_stock && qty > 0) {
+                    // this.setState({
+                    //     prod_qty:{["item" + index] : qty}
+                    // })
+                    console.log("hererer121212", qty, parseInt(item.is_in_stock.stock))
+                    if (parseInt(item.is_in_stock.stock) <= parseInt(qty)) {
+                        
+                        let currentStore = this.props.globals.currentStore;
+                        if (currentStore == 1 || currentStore == 3 || currentStore == 5) {
+                            popupMessage = Popup.register({
+                                title: 'محزر',
+                                content: `الحد الأقصى لكمية الطلب من هذا المنتج هي ${parseInt(item.is_in_stock.stock)} يرجى تغيير الكمية المحددة لتكون ضمن هذا العدد. لطلب كمية أكثر من ${parseInt(item.is_in_stock.stock)} يرجى اللاتصال بنا.`,
+                                buttons: {
+                                    right: [{
+                                        text: 'حسنا',
+                                        action: function () {
+                                            Popup.close();
+                                        }
+                                    }]
+                                }
+                            });
+                            Popup.queue(popupMessage);
+                        } else {
+                            popupMessage = Popup.register({
+                                title: 'Alert',
+                                content: `This product has a maximum orderable quantity of ${parseInt(item.is_in_stock.stock)} Please update your selected quantity to be within this limit.To order quantity more than ${parseInt(item.is_in_stock.stock)} please contact us.`,
+                                buttons: {
+                                    right: [{
+                                        text: 'OK',
+                                        action: function () {
+                                            Popup.close();
+                                        }
+                                    }]
+                                }
+                            });
+                            Popup.queue(popupMessage);
+                        }
+                    }else{
+                        let obj = {
+                            product_id: item.id,
+                            qty: qty,
+                            quote_id:user_details.isUserLoggedIn ? user_details.customer_details.quote_id : this.props.guest_user.new_quote_id,
+                            sku: item.sku,
+                            store_id: globals.currentStore
+                        }
+                        console.log(obj);
+                        this.props.OnChangeQty(obj);
+                    }
+                } else if(qty < 0){
+                    // this.setState({
+                    //     prod_qty:{["item" + index] : 0}
+                    // })
+                }
+            }, 3000)
+        });
+        
     }
 
     render() {
@@ -254,7 +282,7 @@ class ShoppingBagItem extends Component {
                                             </Link>
                                         </div>
                                         <div>
-                                            <span className="blackTitle" style={{ fontSize: 14, color: '#4f4f4f' }}>Product # : </span>
+                                            <span className="blackTitle" style={{ fontSize: 14, color: '#4f4f4f' }}><FormattedMessage id="product" defaultMessage="Product" /> # : </span>
                                             <span style={{ fontSize: 14, color: '#4f4f4f' }}>{item.sku}</span>
                                         </div>
                                     </Col>
@@ -263,7 +291,7 @@ class ShoppingBagItem extends Component {
                                     </Col>
                                     <Col xs="1" className="row-3 blackTitle" style={{ fontSize: 22, color: "#4f4f4f" }}>
                                         {/* <span className="qut">{item.qty}</span> */}
-                                        <input type="text" className="increse-item-qty"
+                                        <input type="number" className="increse-item-qty"
                                             onChange={this.handleChange.bind(this, item, index)} value={this.state.prod_qty["item" + index]} placeholder={item.qty}></input>
                                     </Col>
                                     <Col xs="1" className="row-3 blackTitle" style={{ fontSize: 22, marginTop: '4.7%' }}>
@@ -359,7 +387,7 @@ class ShoppingBagItem extends Component {
                                             </Link>
                                         </div>
                                         <div>
-                                            <span className="blackTitle" style={{ fontSize: 14, color: '#4f4f4f' }}>Product # : </span>
+                                            <span className="blackTitle" style={{ fontSize: 14, color: '#4f4f4f' }}><FormattedMessage id="product" defaultMessage="Product" /> # : </span>
                                             <span style={{ fontSize: 14, color: '#4f4f4f' }}>{item.sku}</span>
                                         </div>
                                     </div>
@@ -368,7 +396,9 @@ class ShoppingBagItem extends Component {
                                     </div>
                                     <div className="row-3 blackTitle" style={{ fontSize: 16, textAlign: 'start', color: "#4f4f4f" }}>
                                         <span><FormattedMessage id="Item.Qty" defaultMessage="Qty" />: </span>
-                                        <span className="qut">{item.qty}</span>
+                                        {/* <span className="qut">{item.qty}</span> */}
+                                        <input type="number" className="increse-item-qty"
+                                            onChange={this.handleChange.bind(this, item, index)} value={this.state.prod_qty["item" + index]} placeholder={item.qty}></input>
                                         <span className="floatRight" style={{ fontSize: 22, color: "#0D943F" }}>{item.currency}&nbsp;{item.price * item.qty}</span>
                                     </div>
                                 </div>
