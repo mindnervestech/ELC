@@ -1659,7 +1659,7 @@ html[dir="rtl"] .header .link .submenu .menufigure {
     .header .link .subLink {
         display: inline-block;
         vertical-align: top;
-        width: 170px;
+        width: auto;
         margin-right: 40px;
         font-size: .9em
     }
@@ -1705,7 +1705,7 @@ html[dir="rtl"] .header .link .submenu .menufigure {
 
 @media only screen and (min-width: 1280px) {
     .header .link .subLink li:first-child {
-        padding: 6px 0
+        padding: 0px;
     }
 }
 

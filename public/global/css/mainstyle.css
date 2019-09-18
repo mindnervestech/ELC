@@ -2143,7 +2143,7 @@ html[dir="rtl"] .header .link .submenu .menufigure {
     .header .link .subLink {
         display: inline-block;
         vertical-align: top;
-        width: 170px;
+        width: auto;
         margin-right: 15px;
         font-size: .9em
     }
