@@ -70,25 +70,36 @@ class menuList extends Component {
 		return (
 
 			<>
+			{data1.length > 0 &&
 				<ul className="subLink" style={{textAlign: 'start'}}>
 					{data1.map(this._renderSubMenuItem)}
 				</ul>
+			}
+			{data2.length > 0 &&
 				<ul className="subLink" style={{textAlign: 'start'}}>
 					{data2.map(this._renderSubMenuItem)}
 				</ul>
+			}
+			{data3.length > 0 &&
 				<ul className="subLink" style={{textAlign: 'start'}}>
 					{data3.map(this._renderSubMenuItem)}
 				</ul>
+			}
+			{data4.length > 0 &&
 				<ul className="subLink" style={{textAlign: 'start'}}>
 					{data4.map(this._renderSubMenuItem)}
 				</ul>
+			}
+			{data5.length > 0 &&
 				<ul className="subLink" style={{textAlign: 'start'}}>
 					{data5.map(this._renderSubMenuItem)}
 				</ul>
+			}
+			{data6.length > 0 &&
 				<ul className="subLink" style={{textAlign: 'start'}}>
 					{data6.map(this._renderSubMenuItem)}
 				</ul>
-
+			}
 			</>
 		);
 	};
@@ -104,7 +115,7 @@ class menuList extends Component {
 			let default_message = 'SHOW ALL ' + item.url_key.toLowerCase();
 
 			return (
-				<div className="submenu" style={item.children[0].length > 0 ? {backgroundColor: '#fff'} : {display: 'none'}}>
+				<div className="submenu" style={item.children[0].length > 0 ? {backgroundColor: '#fff', textAlign: 'center'} : {display: 'none'}}>
 					{
 						item.children.map(
 							(x) => this._renderSubMenuList(x, item.name, item.url_path)
@@ -135,7 +146,7 @@ class menuList extends Component {
 
 		return (
 			<>
-				<li key={index}>
+				<li key={index} className="borderForMobileManu">
 					<Link to={'/' + this.state.store_locale + '/products/' + item.url_path} style={{ textDecoration: 'none' ,padding:10}} onClick={() => document.getElementById("closeNav").click()} className={item.children[0].length > 0 ? '' : "removeWhite"}>
 						{item.name}
 						{item.children[0].length > 0 ?

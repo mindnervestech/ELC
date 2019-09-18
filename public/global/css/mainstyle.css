@@ -1905,9 +1905,9 @@ html[dir="rtl"] .header .link>li .subMenuTrigger {
     width: 1px;
     left: 5px;
     top: -5px;
-    transition: -webkit-transform .5s;
+    /* transition: -webkit-transform .5s;
     transition: transform .5s;
-    transition: transform .5s, -webkit-transform .5s
+    transition: transform .5s, -webkit-transform .5s */
 }
 
 .header .link>li .subMenuTrigger:after {
@@ -6319,6 +6319,11 @@ html[dir="rtl"] .commingSoonText{
         padding-right: 9px !important;
         padding-left: 0px !important;
     }
+
+    .borderForMobileManu{
+        border-bottom: solid 1px #b1b1b1;
+        margin-bottom: 5px;
+    }
 }
 
 @media (max-width: 320px){
@@ -6413,6 +6418,8 @@ html[dir="rtl"] .PagenationRightArrow{
 .paddingRemove{}
 
 .paddingRemoveForText{}
+
+.borderForMobileManu{}
 
 @media (max-width:767px){
     @supports (-webkit-overflow-scrolling: touch) { 

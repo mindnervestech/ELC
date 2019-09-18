@@ -7,8 +7,8 @@ import { connect } from 'react-redux';
 import * as actions from '../../redux/actions/index';
 import { Redirect, withRouter } from 'react-router-dom';
 import { FormattedMessage, injectIntl } from 'react-intl';
-// import { confirmAlert } from 'react-confirm-alert'; // Import
-// import 'react-confirm-alert/src/react-confirm-alert.css'; 
+//import { confirmAlert } from 'react-confirm-alert'; // Import
+//import 'react-confirm-alert/src/react-confirm-alert.css'; 
 import logo1 from '../../../assets/images/you_may_also_like_1.png'
 import Popup from 'react-popup';
 import Spinner from '../Spinner/Spinner2';
