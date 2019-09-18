@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../../redux/actions/index';
 import { FormattedMessage } from 'react-intl';
+import { Container, Row, Col, Button } from 'reactstrap';
 
 class Address extends Component {
 
@@ -431,8 +432,8 @@ class Address extends Component {
                     </div>
                     <div className="t-Region-body">
                         <div className="container">
-                            <div className="row">
-                                <div className="col col-4 ">
+                            <Row className="row">
+                                <Col xs="12" lg="4" md="12" className="paddingRemove">
                                     <div className="t-Region t-Region--removeHeader t-Region--noBorder t-Region--hiddenOverflow" id="R34927712771907735">
                                         <div className="t-Region-header">
                                             <div className="t-Region-headerItems t-Region-headerItems--title">
@@ -457,8 +458,8 @@ class Address extends Component {
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div className="col col-8 apex-col-auto">
+                                </Col>
+                                <Col xs="12" lg="8" md="12" className="paddingRemove">
                                     <div className="t-Region t-Region--noPadding t-Region--removeHeader t-Region--noUI t-Region--hiddenOverflow t-Form--slimPadding t-Form--stretchInputs t-Form--labelsAbove margin-top-none margin-bottom-none" id="R631680584527102694">
                                         <div className="t-Region-header">
                                             <div className="t-Region-headerItems t-Region-headerItems--title">
@@ -474,8 +475,9 @@ class Address extends Component {
                                             </div>
                                             <div className="t-Region-body">
                                                 <p style={{ fontSize: '11px', marginBottom: '20px' }}>
-                                                    <i className="fa fa-exclamation-circle" style={{ color: '#f599ba', fontSize: '22px' }} /> <FormattedMessage id="delivery-details.addressContent" defaultMessage="Address Information content" /></p>
-                                                <div className="container">
+                                                    {/* <i className="fa fa-exclamation-circle" style={{ color: '#f599ba', fontSize: '22px' }} /> */}
+                                                     <FormattedMessage id="delivery-details.addressContent" defaultMessage="Address Information content" /></p>
+                                                <div className="container paddingRemove">
                                                     <div className="row">
                                                         <div className="col col-12 apex-col-auto">
 
@@ -570,8 +572,8 @@ class Address extends Component {
                                                         </div>
 
                                                     </div>
-                                                    <div className="row">
-                                                        <div className="col col-6 apex-col-auto">
+                                                    <Row className="row">
+                                                        <Col xs="12" lg="6" md="6">
                                                             <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel  apex-item-wrapper apex-item-wrapper--radiogroup " id="P7_ADDR_TYPE_CONTAINER">
                                                                 <div className="t-Form-labelContainer">
                                                                     <label htmlFor="P7_ADDR_TYPE" id="P7_ADDR_TYPE_LABEL" className="t-Form-label"><FormattedMessage id="Checkout.AddressType" defaultMessage="Address Type" /></label>
@@ -591,8 +593,8 @@ class Address extends Component {
                                                                     <span id="P7_ADDR_TYPE_error_placeholder" className="a-Form-error" data-template-id="33609965712469734_ET" />
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div className="col col-6 apex-col-auto">
+                                                        </Col>
+                                                        <Col xs="12" lg="6" md="6">
                                                             <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--yes-no " id="P7_PRIMARY_ADDR_CONTAINER">
                                                                 <div className="t-Form-labelContainer">
                                                                     <label htmlFor="P7_PRIMARY_ADDR" id="P7_PRIMARY_ADDR_LABEL" className="t-Form-label"><FormattedMessage id="Checkout.PrimaryAddress" defaultMessage="Primary Address " /></label>
@@ -607,8 +609,8 @@ class Address extends Component {
                                                                     <span id="P7_PRIMARY_ADDR_error_placeholder" className="a-Form-error" data-template-id="33609965712469734_ET" />
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    </div>
+                                                        </Col>
+                                                    </Row>
 
                                                     {cancelButton}
 
@@ -622,8 +624,8 @@ class Address extends Component {
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
+                                </Col>
+                            </Row>
                         </div>
                     </div>
                     <div className="t-Region-buttons t-Region-buttons--bottom">

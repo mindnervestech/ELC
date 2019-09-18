@@ -4,6 +4,7 @@ import PhoneNumber from '../../Login/IntlTelePhone';
 import { connect } from 'react-redux';
 import * as actions from '../../../redux/actions/index';
 import { FormattedMessage } from 'react-intl';
+import { Container, Row, Col, Button } from 'reactstrap';
 
 class Contact extends Component {
     constructor(props) {
@@ -209,8 +210,8 @@ class Contact extends Component {
                 </div>
                 <div className="t-Region-body">
                     <div className="container">
-                        <div className="row">
-                            <div className="col col-4 ">
+                        <Row className="row">
+                            <Col xs="12" lg="4" md="12">
                                 <div className="t-Region t-Region--removeHeader t-Region--noBorder t-Region--hiddenOverflow" id="R34927466655907732">
                                     <div className="t-Region-header">
                                         <div className="t-Region-headerItems t-Region-headerItems--title">
@@ -240,8 +241,8 @@ class Contact extends Component {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div className="col col-8 apex-col-auto">
+                            </Col>
+                            <Col xs="12" lg="8" md="12" className="paddingRemove">
                                 <div className="Delivery-Details-Form t-Region t-Region--noPadding t-Region--removeHeader t-Region--noBorder t-Region--hiddenOverflow t-Form--slimPadding t-Form--stretchInputs t-Form--labelsAbove"
                                     id="R606364606897292622">
                                     <div className="t-Region-header">
@@ -259,35 +260,29 @@ class Contact extends Component {
                                             <div className="t-Region-buttons-right" />
                                         </div>
                                         <div className="t-Region-body">
-                                            <div className="container">
-                                                <div className="row">
-                                                    <div className="col col-6 apex-col-auto DeliveryDetailsPhonenumber">
+                                            <div className="container paddingRemove">
+                                                <Row className="row">
+                                                    <Col xs="12" lg="6" md="6" className="DeliveryDetailsPhonenumber">
                                                         <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel is-required apex-item-wrapper apex-item-wrapper--text-field" onFocus={(e) => this.divOnFocus(e)}
                                                             onBlur={(e) => this.divOnBlure(e)} id="P7_FNAME_CONTAINER">
                                                             <div className="t-Form-labelContainer">
                                                                 <label htmlFor="P7_FNAME" id="P7_FNAME_LABEL" className="t-Form-label"><FormattedMessage id="Form.FirstName" defaultMessage="First Name" /> <span className="u-VisuallyHidden">(Value Required)</span></label>
                                                             </div>
-
                                                             {firstNameInputField}
-
-
                                                         </div>
-                                                    </div>
-                                                    <div className="col col-6 apex-col-auto">
+                                                    </Col>
+                                                    <Col xs="12" lg="6" md="6">
                                                         <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel is-required apex-item-wrapper apex-item-wrapper--text-field" onFocus={(e) => this.divOnFocus(e)}
                                                             onBlur={(e) => this.divOnBlure(e)} id="P7_LNAME_CONTAINER">
                                                             <div className="t-Form-labelContainer">
                                                                 <label htmlFor="P7_LNAME" id="P7_LNAME_LABEL" className="t-Form-label"><FormattedMessage id="Form.LastName" defaultMessage="Last Name" /></label>
                                                             </div>
-
                                                             {LastNameInputField}
-
-
                                                         </div>
-                                                    </div>
-                                                </div>
-                                                <div className="row">
-                                                    <div className="col col-6 apex-col-auto">
+                                                    </Col>
+                                                </Row>
+                                                <Row className="row">
+                                                    <Col xs="12" lg="6" md="6">
                                                         <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel is-required apex-item-wrapper plugin-intltelinput-www.jqueryscript.net js-show-label" id="P7_PHONE_CONTAINER">
                                                             <div className="t-Form-labelContainer">
                                                                 <label htmlFor="P7_PHONE" id="P7_PHONE_LABEL" className="t-Form-label"> <span className="u-VisuallyHidden">(Value Required)</span></label>
@@ -296,22 +291,18 @@ class Contact extends Component {
                                                                 <PhoneNumber changed={this.contactNumber} />
                                                                 {contactNumberInputField}
                                                             </div>
-
                                                         </div>
-                                                    </div>
-                                                    <div className="col col-6 apex-col-auto">
+                                                    </Col>
+                                                    <Col xs="12" lg="6" md="6">
                                                         <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel is-required apex-item-wrapper apex-item-wrapper--text-field" onFocus={(e) => this.divOnFocus(e)}
                                                             onBlur={(e) => this.divOnBlure(e)} id="P7_EMAIL_CONTAINER">
                                                             <div className="t-Form-labelContainer">
                                                                 <label htmlFor="P7_EMAIL" id="P7_EMAIL_LABEL" className="t-Form-label"><FormattedMessage id="Form.Email" defaultMessage="Email" /> <span className="u-VisuallyHidden">(Value Required)</span></label>
                                                             </div>
-
                                                             {emailInputField}
-
-
                                                         </div>
-                                                    </div>
-                                                </div>
+                                                    </Col>
+                                                </Row>
                                             </div>
                                         </div>
                                         <div className="t-Region-buttons t-Region-buttons--bottom">
@@ -320,8 +311,8 @@ class Contact extends Component {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
+                            </Col>
+                        </Row>
                     </div>
                 </div>
                 <div className="t-Region-buttons t-Region-buttons--bottom">

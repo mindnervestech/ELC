@@ -6309,6 +6309,16 @@ html[dir="rtl"] .commingSoonText{
         width: 0px;
         height: 12px;
     }
+
+    .paddingRemove{
+        padding-right: 0px !important;
+        padding-left: 0px !important;
+    }
+
+    .paddingRemoveForText{
+        padding-right: 9px !important;
+        padding-left: 0px !important;
+    }
 }
 
 @media (max-width: 320px){
@@ -6400,4 +6410,7 @@ html[dir="rtl"] .PagenationRightArrow{
     height: 30px;
 }
 
+.paddingRemove{}
+
+.paddingRemoveForText{}
     

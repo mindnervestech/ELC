@@ -545,9 +545,9 @@ class MainHeader extends Component {
                                 <div className="ll" style={{ padding: 0, display: 'inline-block' }}>
                                         <div className="lang" style={{ paddingLeft: 8, fontSize: '1.2rem' }}>
                                             <a href="javascript:void(0);" onClick={(e) => this.translate('ar', 'rtl')} >العربية</a>
-                                            </div>
+                                        </div>
                                 </div>
-                                <div style={{ display: 'inline-block', textAlign: 'start', marginLeft: 10 }}>
+                                <div className="floatRight" style={{ display: 'inline-block' }}>
                                     <span style={{ height: 40 }}>
                                         <Link to={`/${store_locale}/birth-day-club`} style={{ textDecoration: 'none' }}>
                                             <button className="mobileHomePageButtonSecond text-color"><FormattedMessage id="header.TheBirthdayclub" defaultMessage="The Birthday Club" /></button>
