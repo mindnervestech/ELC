@@ -269,8 +269,8 @@ class ShoppingBagItem extends Component {
                                     <Col xs="1" className="row-3 blackTitle" style={{ fontSize: 22, marginTop: '4.7%' }}>
                                         <span>{item.currency}&nbsp;{item.price * item.qty}</span>
                                     </Col>
-                                    <Col xs="2" className="row-3 blackTitle" onClick={() => this.remove(index)} style={{ textAlign: 'end', cursor: 'pointer' }}>
-                                        <span className="remove" style={{ fontSize: 14 }}>
+                                    <Col xs="2" className="row-3 blackTitle"  style={{ textAlign: 'end'}}>
+                                        <span className="remove" style={{ fontSize: 14, cursor: 'pointer' }} onClick={() => this.remove(index)}>
                                             <FormattedMessage id="Cart.Remove.Title" defaultMessage="Remove" />
                                         </span>
                                     </Col>
@@ -342,8 +342,8 @@ class ShoppingBagItem extends Component {
                             {product && product.map((item, index) => (
 
                                 <div style={{ padding: '20px 0px', borderBottom: 'solid 1px #b1b1b1', color: "#4f4f4f" }}>
-                                    <div style={{ marginTop: 10 }} onClick={() => this.remove(index)}>
-                                        <span className="remove blackTitle floatRight" style={{ fontSize: 14, lineHeight: 1 }}>
+                                    <div style={{ marginTop: 10 }} >
+                                        <span onClick={() => this.remove(index)} className="remove blackTitle floatRight" style={{ fontSize: 14, lineHeight: 1 }}>
                                             <FormattedMessage id="Cart.Remove.Title" defaultMessage="Remove" />
                                         </span>
                                     </div>
