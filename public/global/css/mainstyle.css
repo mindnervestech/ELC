@@ -1731,6 +1731,13 @@ html[dir="rtl"] .header .closeNav {
     margin-bottom: 15px;
 }
 
+html[dir="rtl"] .header .search {
+    position: relative;
+    font-size: 16px;
+    margin-bottom: 0px;
+    margin-top: 10px;
+}
+
 /* html[dir="rtl"] .header .search {
     padding: 8px 1.5em 8px 0;
     padding-left: 0
@@ -3197,6 +3204,15 @@ li {
     height: 20px;
     width: 20px;
     margin-left: 5%;
+    margin-top: 7px;
+}
+
+html[dir="rtl"] .mobileHomePageIcon{
+    height: 20px;
+    width: 20px;
+    margin-left: 0px;
+    margin-right: 5%;
+    margin-top: 7px;
 }
 
 .mobileHomePageButtonSecond {
@@ -5919,8 +5935,18 @@ a:hover {
     width: 15px !important;
     height: 15px !important;
     font-size: 11px !important;  
-    top: -7px !important;
+    top: -2px !important;
     }
+
+    html[dir="rtl"] .header .row-2 .lable-count{
+        position: absolute !important;
+        left: 7px !important;
+        width: 15px !important;
+        height: 15px !important;
+        font-size: 11px !important;
+        top: -3px !important;
+        }
+
     .basket-icon{
        
         position: relative;
@@ -5972,7 +5998,7 @@ html[dir="rtl"] .header .changecountry .country .list {
 }
 html[dir="rtl"] .header .changecountry {
     border: none !important;
-    width: 30% !important;
+    width: 25% !important;
     display: inline-block !important;
     position: relative !important;
     left: 5px !important;
@@ -6359,6 +6385,14 @@ html[dir="rtl"] .commingSoonText{
 
     #iphone5Pagenation{
         width: 13% !important;
+    }
+
+    html[dir="rtl"] .header .changecountry {
+        border: none !important;
+        width: 30% !important;
+        display: inline-block !important;
+        position: relative !important;
+        left: 5px !important;
     }
 }
 

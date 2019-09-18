@@ -1292,13 +1292,13 @@ html[dir="rtl"] .share-wishlist{
 
 .wishlist-span-1
 {
-   display: inline-flex !important;
+   display: inline-block !important;
    margin-right:10px !important; 
 }
 
 html[dir="rtl"] .wishlist-span-1
 {
-   display: inline-flex !important;
+   display: inline-block !important;
    margin-right:10px ! important; 
 }
 html[dir="rtl"] .mr-10-wishlist
