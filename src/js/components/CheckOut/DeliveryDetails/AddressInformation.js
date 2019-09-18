@@ -478,7 +478,8 @@ class Address extends Component {
                                                      <FormattedMessage id="delivery-details.addressContent" defaultMessage="Address Information content" /></p>
                                                 <div className="container">
                                                     {/* <i className="fa fa-exclamation-circle" style={{ color: '#f599ba', fontSize: '22px' }} /> */}
-                                                     <FormattedMessage id="delivery-details.addressContent" defaultMessage="Address Information content" /></p>
+                                                     <FormattedMessage id="delivery-details.addressContent" defaultMessage="Address Information content" />
+                                                     </div>
                                                 <div className="container paddingRemove">
                                                     <div className="row">
                                                         <div className="col col-12 apex-col-auto">
