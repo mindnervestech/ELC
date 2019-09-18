@@ -58,16 +58,18 @@ class PrivacyPolicy extends Component {
 	render() {
 		let store_locale=this.props.globals.store_locale
 		return (
-			<div className="t-Body-contentInner">
+			<>
 				{this.state.spinner ? <Spinner loding={this.state.spinner}/> :
+				<div className="t-Body-contentInner">
+				<div  className="padding-right-ar padding-breadcrumb">
+				<Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
+				  <span className="titleHover" style={{fontSize:15}}><FormattedMessage id="Checkout.Home" defaultMessage/></span><span>&nbsp;\&nbsp;&nbsp;</span>
+				</Link>
+				<span  style={{fontSize:15, fontWeight: 'bold'}}>{this.state.data.title}</span>
+			  </div>
 				<div className="container">
 					<div className="row">
-						  <div style={{margin:10}} className="padding-right-ar">
-            <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
-              <span className="titleHover" style={{fontSize:15}}><FormattedMessage id="Checkout.Home" defaultMessage/></span><span>&nbsp;\&nbsp;&nbsp;</span>
-            </Link>
-            <span  style={{fontSize:15, fontWeight: 'bold'}}>{this.state.data.title}</span>
-          </div>
+						 
          
           
 						<div className="col col-12 apex-col-auto">
@@ -137,9 +139,10 @@ class PrivacyPolicy extends Component {
 							</div>
 						</div>
 					</div>
+					</div>
 				</div>
 				}
-			</div>
+		</>
 		);
 	}
 }

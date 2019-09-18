@@ -28,14 +28,15 @@ class AboutUs extends Component {
 		
 			<Spinner  loading={this.props.spinnerProduct}>
 			<div className="t-Body-contentInner ">
-				<div className="container">
-					<div className="row">
-			<div style={{margin:10}} className="padding-right-ar">  
+			<div  className="padding-right-ar padding-breadcrumb">  
             <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
               <span className="titleHover" style={{fontSize:15}}><FormattedMessage id="Checkout.Home" defaultMessage/></span><span>&nbsp;\&nbsp;&nbsp;</span>
             </Link>
             <span  style={{fontSize:15, fontWeight: 'bold'}}>{this.props.aboutUs.title}</span>
           </div>
+				<div className="container">
+					<div className="row">
+			
 						<div className="col col-12 apex-col-auto">
 							<div className="t-Region g-wrapper-main_content  t-Region--removeHeader t-Region--noBorder t-Region--scrollBody"
 								id="R231982418266982051">
