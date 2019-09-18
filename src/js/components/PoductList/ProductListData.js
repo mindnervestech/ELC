@@ -367,16 +367,16 @@ class ProductListData extends Component {
 															}
 														</FormattedMessage>
 														<div className="sortByOptionText" onClick={() => this.filter("a-z", "Name (A-Z)")}>
-															<span>Name (A-Z)</span>
+															<span><FormattedMessage id="NameAtoZ" defaultMessage="Name (A-Z)" /></span>
 														</div>
 														<div className="sortByOptionText" onClick={() => this.filter("z-a", "Name (Z-A)")}>
-															<span>Name (Z-A)</span>
+															<span><FormattedMessage id="NameZtoA" defaultMessage="Name (Z-A)" /></span>
 														</div>
 														<div className="sortByOptionText" onClick={() => this.filter("price_asc", "Price (lowest first)")}>
-															<span>Price (lowest first)</span>
+															<span><FormattedMessage id="PriceLowtoHigh" defaultMessage="Price (lowest first)" /></span>
 														</div>
 														<div className="sortByOptionText" onClick={() => this.filter("price_desc", "Price (highest first)")}>
-															<span>Price (highest first)</span>
+															<span><FormattedMessage id="PriceHightoLow" defaultMessage="Price (highest first)" /></span>
 														</div>
 													</div>
 												</div>
@@ -410,7 +410,7 @@ class ProductListData extends Component {
 								</Row>
 								<div className="divShowOnMobile pagenation">
 									<ul class="">
-									<li className="PagenationLeftArrow" id="iphone5Pagenation" onClick={this.prevButton} style={this.state.pageNumber == 1 ? { opacity: "0.5" } : { opacity: 1 }}></li>
+										<li className="PagenationLeftArrow" id="iphone5Pagenation" onClick={this.prevButton} style={this.state.pageNumber == 1 ? { opacity: "0.5" } : { opacity: 1 }}></li>
 										<li className="number" onClick={() => this.ApplyPagenation(start)}><span className={this.state.pageNumber == start ? "selectedNumber" : ""}>{start}</span></li>
 										{start + 1 <= this.state.totalPages ?
 											<li className="number" onClick={() => this.ApplyPagenation(start + 1)}><span className={this.state.pageNumber == start + 1 ? "selectedNumber" : ""}>{start + 1}</span></li>
@@ -504,7 +504,7 @@ class ProductListData extends Component {
 							: ""}
 						<div className="divShowOnMobile pagenation" style={{ padding: '10px 20px' }}>
 							<ul class="">
-							<li className="PagenationLeftArrow" id="iphone5Pagenation" onClick={this.prevButton} style={this.state.pageNumber == 1 ? { opacity: "0.5" } : { opacity: 1 }}></li>
+								<li className="PagenationLeftArrow" id="iphone5Pagenation" onClick={this.prevButton} style={this.state.pageNumber == 1 ? { opacity: "0.5" } : { opacity: 1 }}></li>
 								<li className="number" onClick={() => this.ApplyPagenation(start)}><span className={this.state.pageNumber == start ? "selectedNumber" : ""}>{start}</span></li>
 								{start + 1 <= this.state.totalPages ?
 									<li className="number" onClick={() => this.ApplyPagenation(start + 1)}><span className={this.state.pageNumber == start + 1 ? "selectedNumber" : ""}>{start + 1}</span></li>
