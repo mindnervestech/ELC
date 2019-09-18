@@ -613,14 +613,14 @@ class DeliveryDetails extends Component {
                                     <div className="t-ButtonRegion-col t-ButtonRegion-col--content">
                                         <h2 className="t-ButtonRegion-title" id="mobile-buttons_heading">Mobile Button</h2>
                                         <div className="DeliveryDetails container">
-                                            <div className="row">
-                                                <div className="col col-2 ">
+                                            <Row className="row">
+                                                <Col xs="2" lg="2" md="2">
                                                     <button onClick={this.goToCartDetails} className="t-Button t-Button--noLabel t-Button--icon t-Button--large t-Button--pillStart t-Button--stretch t-Button--padLeft t-Button--padRight t-Button--padTop t-Button--padBottom" type="button" id="B29280522081851518" title="Continue Shopping" aria-label="Continue Shopping"><span className="t-Icon fa fa-angle-left" aria-hidden="true" /></button>
-                                                </div>
-                                                <div className="col col-10 ">
+                                                </Col>
+                                                <Col xs="10" lg="10" md="10">
                                                     <button onClick={this.submitForm} className="t-Button t-Button--hot t-Button--large t-Button--pillEnd t-Button--stretch t-Button--padLeft t-Button--padRight t-Button--padTop t-Button--padBottom" type="button" id="B29280091835851517"><span className="t-Button-label"><FormattedMessage id="Checkout.Proceed" defaultMessage="Proceed" /></span></button>
-                                                </div>
-                                            </div>
+                                                </Col>
+                                            </Row>
                                         </div>
                                         <div className="t-ButtonRegion-buttons" />
                                     </div>

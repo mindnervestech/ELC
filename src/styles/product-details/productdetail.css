@@ -2084,3 +2084,19 @@ html[dir="rtl"] .styles_modal__gNwvD div{
         padding: 3px;
     }
 }
+
+@media (max-width:767px){
+    @supports (-webkit-overflow-scrolling: touch) { 
+        /* CSS specific to iOS devices */ 
+        .padding-mob{
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+
+        .you-may-like-title label {
+            width: 48%!important;
+            font-size: 20px;
+            text-align: center;
+        }
+    }
+}

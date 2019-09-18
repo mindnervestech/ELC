@@ -6413,4 +6413,30 @@ html[dir="rtl"] .PagenationRightArrow{
 .paddingRemove{}
 
 .paddingRemoveForText{}
+
+@media (max-width:767px){
+    @supports (-webkit-overflow-scrolling: touch) { 
+        /* CSS specific to iOS devices */ 
+        .footer-css .Collapsible__trigger:after {
+            font-family: 'FontAwesome';
+            content: '\25BE';
+            position: absolute;
+            right: 30px;
+            top: 0px;
+            font-size: 25px;
+            display: block;
+            transition: transform 300ms;
+        }
+
+        .mobileHomePageButtonSecond {
+            color: #4f4f4f;
+            font-size: 1.3rem;
+            background-color: #fff;
+            height: 97%;
+            border: none;
+            border-radius: 0px;
+            padding: 0px 10px;
+        }
+    }
+}
     

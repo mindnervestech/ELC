@@ -1549,3 +1549,12 @@ textarea .error {
 }
     }
 
+    @media (max-width:767px){
+        @supports (-webkit-overflow-scrolling: touch) { 
+            /* CSS specific to iOS devices */ 
+            .loginFormHight {
+                height: 1080px;
+                overflow: hidden!important;
+            }
+        }
+    }

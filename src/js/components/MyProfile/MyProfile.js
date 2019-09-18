@@ -11,6 +11,7 @@ import styles from './Modal.css';
 
 import { connect } from 'react-redux';
 import * as actions from '../../redux/actions/index';
+import { Container, Row, Col, Button } from 'reactstrap';
 
 class Profile extends Component {
   constructor(props) {
@@ -216,8 +217,8 @@ class Profile extends Component {
                 <div className="t-ContentBlock containers t-ContentBlock--padded t-ContentBlock--h3 t-ContentBlock--shadowBG margin-top-lg a-Tabs-panel apex-rds-before apex-rds-element-selected" id="R28333887549179555" role="tabpanel" aria-labelledby="R28333887549179555_tab" aria-hidden="false" style={{}}>
                   <div className="t-ContentBlock-header"><h1 className="t-ContentBlock-title"><FormattedMessage id="profile.Account.Title" defaultMessage="Account" /></h1></div>
                   <div className="t-ContentBlock-body"><div className="container">
-                    <div className="row">
-                      <div className="col col-5 ">
+                    <Row className="row">
+                      <Col xs="12" lg="5" md="12">
                         <div className="t-Region t-Region--noUI t-Region--hiddenOverflow" id="R28334177511179557" style={{ borderRight: '1px solid #e1e1e1' }}>
                           <div className="t-Region-header">
                             <div className="t-Region-headerItems t-Region-headerItems--title">
@@ -269,7 +270,8 @@ class Profile extends Component {
                             </div>
                           </div>
                         </div>
-                      </div><div className="col col-7 apex-col-auto">
+                      </Col>
+                      <Col xs="12" lg="7" md="12">
                         <div className="t-Region t-Region--noUI t-Region--hiddenOverflow" id="caddress" aria-live="polite">
                           <div className="t-Region-header">
                             <div className="t-Region-headerItems t-Region-headerItems--title">
@@ -286,8 +288,8 @@ class Profile extends Component {
                           {addressBook}
 
                         </div>
-                      </div>
-                    </div>
+                      </Col>
+                    </Row>
                   </div></div>
                   <div className="t-ContentBlock-buttons" />
                 </div>
