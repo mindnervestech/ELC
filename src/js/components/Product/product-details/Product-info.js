@@ -540,7 +540,7 @@ class ProductInfo extends Component {
 													</div>
 													<div className="row click-collect">
 														<img src={freeCollect} />
-														<span style={{marginTop:'15px' ,fontSize:'15px', fontWeight: 'bold'}}>
+														<span style={{marginTop:'15px' ,fontSize:'15px'}}>
 														<FormattedMessage id="delivery-details.Click&Collect.Title" defaultMessage="Click&Collect" />
 													</span>
 
@@ -548,7 +548,7 @@ class ProductInfo extends Component {
 														In stock
 													</span> */}
 														<span className="commingSoonText">
-															<a href=''><FormattedMessage id="Comingsoon" defaultMessage="Coming soon" /></a>
+															<span><FormattedMessage id="Comingsoon" defaultMessage="Coming soon" /></span>
 														</span>
 													</div>
 												</div>
