@@ -40,18 +40,17 @@ class OrderDetails extends Component {
         let payment_method = this.payment_method;
         let delivery_type = this.delivery_type;
 
-        if (payment_method == 'Cash on Delivery') {
-            payment_method = this.myIntl.formatMessage({ id: 'OrderHistory.Payment.CashOnDel' });
-        } else if (payment_method == 'Credit Card') {
-            payment_method = this.myIntl.formatMessage({ id: 'OrderHistory.Payment.PayByCard' });
-        }
+        // if (payment_method == 'Cash on Delivery') {
+        //     payment_method = this.myIntl.formatMessage({ id: 'OrderHistory.Payment.CashOnDel' });
+        // } else if (payment_method == 'Credit Card') {
+        //     payment_method = this.myIntl.formatMessage({ id: 'OrderHistory.Payment.PayByCard' });
+        // }
 
-        if (delivery_type == 'Deliver to Address') {
-            delivery_type = this.myIntl.formatMessage({ id: 'OrderHistory.Shipping.DelToAddress' });
-        } else if (delivery_type == 'Click & Collect') {
-            delivery_type = this.myIntl.formatMessage({ id: 'OrderHistory.Shipping.PickUpFromStore' });
-        }
-        console.log()
+        // if (delivery_type == 'Deliver to Address') {
+        //     delivery_type = this.myIntl.formatMessage({ id: 'OrderHistory.Shipping.DelToAddress' });
+        // } else if (delivery_type == 'Click & Collect') {
+        //     delivery_type = this.myIntl.formatMessage({ id: 'OrderHistory.Shipping.PickUpFromStore' });
+        // }
         return (<>
 
             <Col xs="12" lg="4" md="12">
@@ -107,7 +106,12 @@ class OrderDetails extends Component {
                             <div className="t-Region-buttons-right" />
                         </div>
                         <div className="t-Region-body">
-                            <p style={{ fontSize: '22px', letterSpacing: '0.04em', fontWeight: 200 }}>{delivery_type}</p>
+                            <p style={{ fontSize: '22px', letterSpacing: '0.04em', fontWeight: 200 }}>
+                            {delivery_type == 'Deliver to Address' ? 
+                                <FormattedMessage id="OrderHistory.Shipping.DelToAddress" defaultMessage="Deliver to Address" />
+                                : <FormattedMessage id="OrderHistory.Shipping.PickUpFromStore" defaultMessage="Pickup from Store" />
+                            }
+                            </p>
                         </div>
                         <div className="t-Region-buttons t-Region-buttons--bottom">
                             <div className="t-Region-buttons-left" />
@@ -135,7 +139,12 @@ class OrderDetails extends Component {
                             <div className="t-Region-buttons-right" />
                         </div>
                         <div className="t-Region-body">
-                            <p style={{ fontSize: '22px', letterSpacing: '0.04em', fontWeight: 200 }}>{payment_method}</p>
+                            <p style={{ fontSize: '22px', letterSpacing: '0.04em', fontWeight: 200 }}>
+                            {payment_method == 'Cash on Delivery' ? 
+                                <FormattedMessage id="OrderHistory.Payment.CashOnDel" defaultMessage="Cash On Delivery" />
+                                : <FormattedMessage id="OrderHistory.Payment.PayByCard" defaultMessage="Pay By Card" />
+                            }
+                            </p>
                         </div>
                         <div className="t-Region-buttons t-Region-buttons--bottom">
                             <div className="t-Region-buttons-left" />

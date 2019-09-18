@@ -87,14 +87,21 @@ class ProductSlider extends Component {
                             </div>
                         </div>
                      */}
-                        <div className="row you-may-like-title">
+                        {!window.location.pathname.includes('products-details') ?
+                        <div className="row bestsellers">
                             <h2 />
                             <label>
                                 <FormattedMessage id="Product.Detail.youMayAlsoLike" defaultMessage="Bestsellers" />
-                                
                             </label>
                             <h2/>
-                        </div>
+                        </div> :
+                        <div className="row you-may-like-title">
+                            <h2 />
+                            <label>
+                                <FormattedMessage id="Cart.YouMayAlsoLove.Title" defaultMessage="You may also like" />
+                            </label>
+                            <h2/>
+                        </div> }
                         <div className="row">
                             <div className="col col-12 apex-col-auto homeBlock">
                                 <div id="R36275003485418909" className="homePage">

@@ -1409,8 +1409,18 @@ html[dir="rtl"] .write-review .write-a-re i{
     align-Items:center
 }
 
-.you-may-like-title h2{
+.bestsellers{
+    background:#fff; 
+    align-Items:center
+}
+
+.bestsellers h2{
     width: 42%; 
+    border-bottom: 1px solid #d6d6d6;
+}
+
+.you-may-like-title h2{
+    width: 38%; 
     border-bottom: 1px solid #d6d6d6;
 }
 
@@ -1461,6 +1471,15 @@ html[dir="rtl"] .write-review .write-a-re i{
 
 
 .you-may-like-title label{
+    color: #4f4f4f;
+    font-family: "VAG Rounded ELC Light";
+    font-size: 30px;
+    font-weight: 300;
+    width: 22%;
+    text-align: center;
+}
+
+.bestsellers label{
     color: #4f4f4f;
     font-family: "VAG Rounded ELC Light";
     font-size: 30px;
@@ -1977,6 +1996,14 @@ html[dir="rtl"] .styles_modal__gNwvD div{
         width: 25% !important;
     }
     .you-may-like-title label{
+        width: 48% !important;
+    }
+
+    .bestsellers h2{
+        width: 25%; 
+    }
+
+    .bestsellers label{
         width: 48% !important;
     }
 
