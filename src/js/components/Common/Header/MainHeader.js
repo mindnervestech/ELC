@@ -550,7 +550,7 @@ class MainHeader extends Component {
                                 <div className="floatRight" style={{ display: 'inline-block' }}>
                                     <span style={{ height: 40 }}>
                                         <Link to={`/${store_locale}/birth-day-club`} style={{ textDecoration: 'none' }}>
-                                            <button className="mobileHomePageButtonSecond text-color"><FormattedMessage id="header.TheBirthdayclub" defaultMessage="The Birthday Club" /></button>
+                                            <button className="mobileHomePageButtonSecond text-color"><FormattedMessage id="header.TheBirthdayclub" defaultMessage="Birthday Club" /></button>
                                         </Link>
                                     </span>
                                 </div>

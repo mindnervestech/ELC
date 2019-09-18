@@ -1356,7 +1356,8 @@ html[dir="rtl"] .header .search .textInput {
     }
 
     html[dir="rtl"] .header .link>li {
-        margin-left: 0px
+        margin-left: 0px;
+        font-size:1.2 rem;
     }
 }
 

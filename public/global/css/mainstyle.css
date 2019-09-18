@@ -1763,7 +1763,7 @@ html[dir="rtl"] .header .search i {
     margin: 0 auto;
 }
 
-.footer-css a:hover {
+.footer-css .footer-link:hover {
     color: #0D943F !important;
     text-decoration: underline !important;
 }
@@ -5906,7 +5906,7 @@ a:hover {
     top: -7px !important;
     }
     .basket-icon{
-        margin-right:30px;
+       
         position: relative;
     }
     .language {

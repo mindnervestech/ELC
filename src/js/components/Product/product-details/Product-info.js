@@ -520,7 +520,7 @@ class ProductInfo extends Component {
 											</div>
 											<div style={{ width: '100%' }}>
 												<div className="choose-dil">
-													<FormattedMessage id="choose.your.delivery" defaultMessage=":Choose your delivery options"/>
+													<FormattedMessage id="choose.your.delivery" defaultMessage="Choose your delivery options"/>
 											</div>
 												<div className="row del-options">
 													<div className="row home-deli">
