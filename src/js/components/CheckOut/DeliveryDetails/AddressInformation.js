@@ -296,14 +296,14 @@ class Address extends Component {
                 //console.log('country_select_list : ', country_select_list)
                 //document.getElementById("SA").setAttribute('selected', true);
 
-            } else if (selected_country === 'KSA') {
+            } else if (selected_country === 'KSA' || selected_country === 'ksa') {
                 //this.defineCities('SA');
                 country_select_list = country_list.filter(item => item.id === 'SA').map((item) => {
                     return (
                         <option key={item.id} value={item.id} selected={true}>{item.full_name_english}</option>
                     );
                 })
-            } else if (selected_country === 'UAE') {
+            } else if (selected_country === 'UAE' || selected_country === 'uae') {
                 //this.defineCities('AE');
                 country_select_list = country_list.filter(item => item.id === 'AE').map((item) => {
                     return (

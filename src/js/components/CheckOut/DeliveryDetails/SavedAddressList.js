@@ -47,7 +47,7 @@ class SavedAddressList extends Component {
         }
 
       })
-    } else if (selected_country === 'KSA') {
+    } else if (selected_country === 'KSA' || selected_country === 'ksa') {
       addressItem = this.props.addressData.map((item, index) => {
         let item_id = 'P7_ADDRESSES_' + item.Id
 
@@ -79,7 +79,7 @@ class SavedAddressList extends Component {
         // }
 
       })
-    } else if (selected_country === 'UAE') {
+    } else if (selected_country === 'UAE' || selected_country === 'uae') {
       addressItem = this.props.addressData.map((item, index) => {
         let item_id = 'P7_ADDRESSES_' + item.Id
 
