@@ -6375,4 +6375,29 @@ html[dir="rtl"] .likeAInputName {
     padding-left: 0px;
     padding-right: 15px;
 }
+
+.PagenationLeftArrow{
+    background-image: url(chevron_left.svg);
+    background-repeat: no-repeat;
+    height: 30px;
+}
+
+.PagenationRightArrow{
+    background-image: url(chevron_right.svg);
+    background-repeat: no-repeat;
+    height: 30px;
+}
+
+html[dir="rtl"] .PagenationLeftArrow{
+    background-image: url(chevron_right.svg);
+    background-repeat: no-repeat;
+    height: 30px;
+}
+
+html[dir="rtl"] .PagenationRightArrow{
+    background-image: url(chevron_left.svg);
+    background-repeat: no-repeat;
+    height: 30px;
+}
+
     

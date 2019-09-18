@@ -279,16 +279,16 @@ class ProductListData extends Component {
 										}
 									</FormattedMessage>
 									<div className="sortByOptionText" onClick={() => this.filter("a-z", "Name (A-Z)")}>
-										<span><FormattedMessage id="NameAtoZ" defaultMessage="Name (A-Z)"/></span>
+										<span><FormattedMessage id="NameAtoZ" defaultMessage="Name (A-Z)" /></span>
 									</div>
 									<div className="sortByOptionText" onClick={() => this.filter("z-a", "Name (Z-A)")}>
-										<span><FormattedMessage id="NameZtoA" defaultMessage="Name (Z-A)"/></span>
+										<span><FormattedMessage id="NameZtoA" defaultMessage="Name (Z-A)" /></span>
 									</div>
 									<div className="sortByOptionText" onClick={() => this.filter("price_asc", "Price (lowest first)")}>
-										<span><FormattedMessage id="PriceLowtoHigh" defaultMessage="Price (lowest first)"/></span>
+										<span><FormattedMessage id="PriceLowtoHigh" defaultMessage="Price (lowest first)" /></span>
 									</div>
 									<div className="sortByOptionText" onClick={() => this.filter("price_desc", "Price (highest first)")}>
-										<span><FormattedMessage id="PriceHightoLow" defaultMessage="Price (highest first)"/></span>
+										<span><FormattedMessage id="PriceHightoLow" defaultMessage="Price (highest first)" /></span>
 									</div>
 								</div>
 							</div>
@@ -387,21 +387,8 @@ class ProductListData extends Component {
 										<Row>
 											<Col xs="5"></Col>
 											<Col xs="7">
-												{/* <Row>
-														<Col xs="4">
-															<button onClick={this.prevButton} className={this.state.pageNumber == 1 || this.state.pageNumber == 0 ? "prevButton" : "nextButton"} style={{ width: "80%" }}>Prev</button>
-														</Col>
-														<Col xs="4">
-															<span>Page {this.state.pageNumber} of {this.state.totalPages}</span>
-														</Col>
-														<Col xs="4">
-															<button onClick={this.nextButton} className={this.state.totalPages == this.state.pageNumber ? "prevButton" : "nextButton"} style={{ width: "80%" }}>Next</button>
-														</Col>
-													</Row> */}
 												<ul class="pagenation">
-													<li>
-														<img src={leftArrow} className="arrow" onClick={this.prevButton} style={this.state.pageNumber == 1 ? { opacity: "0.5" } : { opacity: 1 }}></img>
-													</li>
+													<li className="PagenationLeftArrow" onClick={this.prevButton} style={this.state.pageNumber == 1 ? { opacity: "0.5" } : { opacity: 1 }}></li>
 													<li className="number" onClick={() => this.ApplyPagenation(start)}><span className={this.state.pageNumber == start ? "selectedNumber" : ""}>{start}</span></li>
 													{start + 1 <= this.state.totalPages ?
 														<li className="number" onClick={() => this.ApplyPagenation(start + 1)}><span className={this.state.pageNumber == start + 1 ? "selectedNumber" : ""}>{start + 1}</span></li>
@@ -415,9 +402,7 @@ class ProductListData extends Component {
 													{start + 4 <= this.state.totalPages ?
 														<li className="number" onClick={() => this.ApplyPagenation(end)}><span className={this.state.pageNumber == end ? "selectedNumber" : ""}>{end}</span></li>
 														: null}
-													<li>
-														<img src={rightArrow} className="arrow" onClick={this.nextButton} style={this.state.pageNumber == this.state.totalPages ? { opacity: "0.5" } : { opacity: 1 }}></img>
-													</li>
+													<li className="PagenationRightArrow" onClick={this.nextButton} style={this.state.pageNumber == this.state.totalPages ? { opacity: "0.5" } : { opacity: 1 }}></li>
 												</ul>
 											</Col>
 										</Row>
@@ -425,9 +410,7 @@ class ProductListData extends Component {
 								</Row>
 								<div className="divShowOnMobile pagenation">
 									<ul class="">
-										<li id="iphone5Pagenation">
-											<img src={leftArrow} className="arrow" onClick={this.prevButton} style={this.state.pageNumber == 1 ? { opacity: "0.5" } : { opacity: 1 }}></img>
-										</li>
+									<li className="PagenationLeftArrow" id="iphone5Pagenation" onClick={this.prevButton} style={this.state.pageNumber == 1 ? { opacity: "0.5" } : { opacity: 1 }}></li>
 										<li className="number" onClick={() => this.ApplyPagenation(start)}><span className={this.state.pageNumber == start ? "selectedNumber" : ""}>{start}</span></li>
 										{start + 1 <= this.state.totalPages ?
 											<li className="number" onClick={() => this.ApplyPagenation(start + 1)}><span className={this.state.pageNumber == start + 1 ? "selectedNumber" : ""}>{start + 1}</span></li>
@@ -441,9 +424,7 @@ class ProductListData extends Component {
 										{start + 4 <= this.state.totalPages ?
 											<li className="number" onClick={() => this.ApplyPagenation(end)}><span className={this.state.pageNumber == end ? "selectedNumber" : ""}>{end}</span></li>
 											: null}
-										<li id="iphone5Pagenation">
-											<img src={rightArrow} className="arrow" onClick={this.nextButton} style={this.state.pageNumber == this.state.totalPages ? { opacity: "0.5" } : { opacity: 1 }}></img>
-										</li>
+										<li className="PagenationRightArrow" id="iphone5Pagenation" onClick={this.nextButton} style={this.state.pageNumber == this.state.totalPages ? { opacity: "0.5" } : { opacity: 1 }}></li>
 									</ul>
 								</div>
 							</div>
@@ -500,9 +481,7 @@ class ProductListData extends Component {
 									<Col xs="3"></Col>
 									<Col xs="6">
 										<ul class="pagenation">
-											<li>
-												<img src={leftArrow} className="arrow" onClick={this.prevButton} style={this.state.pageNumber == 1 ? { opacity: "0.5" } : { opacity: 1 }}></img>
-											</li>
+											<li className="PagenationLeftArrow" onClick={this.prevButton} style={this.state.pageNumber == 1 ? { opacity: "0.5" } : { opacity: 1 }}></li>
 											<li className="number" onClick={() => this.ApplyPagenation(start)}><span className={this.state.pageNumber == start ? "selectedNumber" : ""}>{start}</span></li>
 											{start + 1 <= this.state.totalPages ?
 												<li className="number" onClick={() => this.ApplyPagenation(start + 1)}><span className={this.state.pageNumber == start + 1 ? "selectedNumber" : ""}>{start + 1}</span></li>
@@ -516,9 +495,7 @@ class ProductListData extends Component {
 											{start + 4 <= this.state.totalPages ?
 												<li className="number" onClick={() => this.ApplyPagenation(end)}><span className={this.state.pageNumber == end ? "selectedNumber" : ""}>{end}</span></li>
 												: null}
-											<li>
-												<img src={rightArrow} className="arrow" onClick={this.nextButton} style={this.state.pageNumber == this.state.totalPages ? { opacity: "0.5" } : { opacity: 1 }}></img>
-											</li>
+											<li className="PagenationRightArrow" onClick={this.nextButton} style={this.state.pageNumber == this.state.totalPages ? { opacity: "0.5" } : { opacity: 1 }}></li>
 										</ul>
 									</Col>
 									<Col xs="3"></Col>
@@ -527,9 +504,7 @@ class ProductListData extends Component {
 							: ""}
 						<div className="divShowOnMobile pagenation" style={{ padding: '10px 20px' }}>
 							<ul class="">
-								<li id="iphone5Pagenation">
-									<img src={leftArrow} className="arrow" onClick={this.prevButton} style={this.state.pageNumber == 1 ? { opacity: "0.5" } : { opacity: 1 }}></img>
-								</li>
+							<li className="PagenationLeftArrow" id="iphone5Pagenation" onClick={this.prevButton} style={this.state.pageNumber == 1 ? { opacity: "0.5" } : { opacity: 1 }}></li>
 								<li className="number" onClick={() => this.ApplyPagenation(start)}><span className={this.state.pageNumber == start ? "selectedNumber" : ""}>{start}</span></li>
 								{start + 1 <= this.state.totalPages ?
 									<li className="number" onClick={() => this.ApplyPagenation(start + 1)}><span className={this.state.pageNumber == start + 1 ? "selectedNumber" : ""}>{start + 1}</span></li>
@@ -543,9 +518,7 @@ class ProductListData extends Component {
 								{start + 4 <= this.state.totalPages ?
 									<li className="number" onClick={() => this.ApplyPagenation(end)}><span className={this.state.pageNumber == end ? "selectedNumber" : ""}>{end}</span></li>
 									: null}
-								<li id="iphone5Pagenation">
-									<img src={rightArrow} className="arrow" onClick={this.nextButton} style={this.state.pageNumber == this.state.totalPages ? { opacity: "0.5" } : { opacity: 1 }}></img>
-								</li>
+								<li className="PagenationRightArrow" id="iphone5Pagenation" onClick={this.nextButton} style={this.state.pageNumber == this.state.totalPages ? { opacity: "0.5" } : { opacity: 1 }}></li>
 							</ul>
 						</div>
 					</div>
