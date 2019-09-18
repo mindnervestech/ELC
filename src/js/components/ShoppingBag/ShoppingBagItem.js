@@ -396,7 +396,7 @@ class ShoppingBagItem extends Component {
                     </div> :
                     !this.props.updateLoader ?
                         <div style={{ fontSize: 24, marginLeft: '5%', color: "#4f4f4f" }}>
-                            <FormattedMessage id="Cart.YBE" defaultMessage="Your bag is emapty." />
+                            <FormattedMessage id="Cart.YBE" defaultMessage="Your bag is empty." />
                         </div> : <div />}
             </div>
 
