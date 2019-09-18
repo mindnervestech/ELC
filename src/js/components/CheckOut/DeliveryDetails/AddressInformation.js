@@ -474,7 +474,7 @@ class Address extends Component {
                                             </div>
                                             <div className="t-Region-body">
                                                 <p style={{ fontSize: '11px', marginBottom: '20px' }}>
-                                                    <i className="fa fa-exclamation-circle" style={{ color: '#f599ba', fontSize: '22px' }} /> <FormattedMessage id="delivery-details.addressContent" defaultMessage="Address Information content" /></p>
+                                                     <FormattedMessage id="delivery-details.addressContent" defaultMessage="Address Information content" /></p>
                                                 <div className="container">
                                                     <div className="row">
                                                         <div className="col col-12 apex-col-auto">

@@ -253,14 +253,19 @@ class StoreLocator extends Component {
           <div className="t-Body-title" id="t_Body_title" style={{ top: '294px' }}>
             <div id="R55451813294588531" className="t-BreadcrumbRegion containers t-BreadcrumbRegion--showBreadcrumb t-BreadcrumbRegion--useBreadcrumbTitle">
               <div className="t-BreadcrumbRegion-body">
-                <div className="t-BreadcrumbRegion-breadcrumb">
-                  <ul className="t-Breadcrumb ">
-                    <li className="t-Breadcrumb-item">
-                      <Link to={`/${store_locale}/`}><a  className="t-Breadcrumb-label">
-                        <FormattedMessage id="Cart.Home" defaultMessage="Home" /></a></Link></li>
-                    <li className="t-Breadcrumb-item is-active">
-                      <h1 className="t-Breadcrumb-label"><FormattedMessage id="header.storeLocator" defaultMessage="Store Locator" /></h1></li></ul>
-                </div>
+              {/* <div style={{margin:10}} className="padding-right-ar">  
+            <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
+              <span className="titleHover" style={{fontSize:15}}><FormattedMessage id="Checkout.Home" defaultMessage/></span><span>&nbsp;\&nbsp;&nbsp;</span>
+            </Link>
+            <span  style={{fontSize:15, fontWeight: 'bold'}}>{this.props.aboutUs.title}</span>
+          </div> */}
+
+          <div style={{margin:10}} className="padding-right-ar">  
+            <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
+              <span className="titleHover" style={{fontSize:15}}><FormattedMessage id="Checkout.Home" defaultMessage/></span><span>&nbsp;\&nbsp;&nbsp;</span>
+            </Link>
+            <span  style={{fontSize:15, fontWeight: 'bold'}}><FormattedMessage id="header.storeLocator" defaultMessage="Store Locator" /></span>
+          </div>
                 <div className="t-BreadcrumbRegion-title">
                   <h1 className="t-BreadcrumbRegion-titleText"><FormattedMessage id="header.storeLocator" defaultMessage="Store Locator" /></h1>
                 </div>
@@ -272,7 +277,7 @@ class StoreLocator extends Component {
           <div className="t-Body-content" id="t_Body_content"><div id="t_Body_content_offset" style={{ height: '85px' }} />
             <span id="APEX_SUCCESS_MESSAGE" data-template-id="33770911730796245_S" className="apex-page-success u-hidden" /><span id="APEX_ERROR_MESSAGE" data-template-id="33770911730796245_E" className="apex-page-error u-hidden" />
             <div className="t-Body-contentInner">
-              <div className="container">
+              <div className="container" style={{maxWidth: '100%'}}>
 
 
                 <div className="row">
@@ -298,7 +303,7 @@ class StoreLocator extends Component {
                             <div className="row">
                               <div className="col col-1 ">
                                 <span className="apex-grid-nbsp">&nbsp;</span>
-                              </div><div className="col col-5 ">
+                              </div><div className="col col-5 storeLocatorRmPadding">
                                 <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel apex-item-wrapper apex-item-wrapper--select-list js-show-label" id="P12_COUNTRY_CONTAINER"><div className="t-Form-labelContainer">
                                   <label htmlFor="P12_COUNTRY" id="P12_COUNTRY_LABEL" className="t-Form-label">{this.myIntl.formatMessage({ id: 'SelectCountrySingle.Text' })}</label>
                                 </div><div className="t-Form-inputContainer"><div className="t-Form-itemWrapper">

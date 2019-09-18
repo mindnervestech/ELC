@@ -568,7 +568,7 @@ class MainHeader extends Component {
                                 </Link>
                                 <Link to={`/${store_locale}/store-locator`} style={{ textDecoration: 'none' }}>
                                 <img src={location} className="mobileHomePageIcon hide-mob"></img></Link>
-                                <Link className="basket-icon" to={`/${store_locale}/cart`} style={{ textDecoration: 'none', marginRight: 0 }}>
+                                <Link className="basket-icon" to={`/${store_locale}/cart`} style={{ textDecoration: 'none'}}>
                                     <img src={bagLogo} className="mobileHomePageIcon" style={{ height: 25, width: 25 }} />
                                     <label className="lable-count">{this.props.cart_details.products ? this.props.cart_details.products.length : 0}</label>
                                 </Link>
@@ -632,7 +632,7 @@ class MainHeader extends Component {
                                     <Row className="direction-r">
                                         <Col xs="3" lg="3" md="3" className="col-width"></Col>
                                         <Col xs="2" lg="2" md="2" style={{ paddingLeft: 0 }} className="padd-icon-zero first-imag">
-                                             <img src={deliveryBy} className="imageHight40 divShowWeb " /> 
+                                             <img src={deliveryBy} className="imageHight40 divShowOnWeb " /> 
                                         </Col>
                                         <Col xs="6" lg="7" md="7" style={{padding: 0}}>
                                             <ul style={{ textAlign: 'start', paddingTop: 10 }}>

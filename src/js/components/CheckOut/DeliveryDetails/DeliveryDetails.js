@@ -449,7 +449,7 @@ class DeliveryDetails extends Component {
                 <div className="DeliveryDetails container">
                     <div className="row">
                         <div className="col col-12 apex-col-auto">
-                            <div className="t-Wizard containers  t-Wizard--showTitle t-Wizard--hideStepsSmall" id="R271153290088972814">
+                            <div className="t-Wizard containers  t-Wizard--showTitle t-Wizard--hideStepsSmall" id="R271153290088972814" style={{marginBottom:'10px'}}>
                                 <div className="t-Wizard-header">
                                     <h1 className="t-Wizard-title"><FormattedMessage id="DeliveryDetails.Title" defaultMessage="Delivery Details" /></h1>
                                     <div className="u-Table t-Wizard-controls">
@@ -481,7 +481,7 @@ class DeliveryDetails extends Component {
                         </div>
                     </div>
                     <div className="row">
-                        <div className="col col-12 apex-col-auto">
+                        <div className="col col-12 apex-col-auto shoppingbagdetails">
                             <div className="t-Region containers  t-Region--noPadding t-Region--removeHeader t-Region--noBorder t-Region--hiddenOverflow margin-bottom-lg" id="R620852575803856306">
                                 <div className="t-Region-header">
                                     <div className="t-Region-headerItems t-Region-headerItems--title">
