@@ -14,20 +14,21 @@ import AddNewChild from './AddNewChild';
     super(props);
     this.state=
     {
-      redirectToAddNewChild:false
+      redirectToAddNewChild:false,
+      showhideAddNewChildButton:true
     }
 
 
   }
 
-
+  
    onCancleClick=()=>
    {
-    this.setState({redirectToAddNewChild:false})
+    this.setState({redirectToAddNewChild:false,showhideAddNewChildButton:true})
    }
   redirectToAddChild=()=>
   {
-    this.setState({redirectToAddNewChild:true})
+    this.setState({redirectToAddNewChild:true,showhideAddNewChildButton:false})
   }
   render() {
 
@@ -65,16 +66,19 @@ import AddNewChild from './AddNewChild';
                   {/* ahead of the big day with a special birthday offer */}
                 </p>
                 <div style={{ justifyContent: "center",textAlign: "center",paddingTop:20 }}>
+                  {this.state.showhideAddNewChildButton ?
                   <button
                     className="add-child-buttton-club"
                     style={{ textAlign: "center" }}
                     onClick={this.redirectToAddChild}
                   >
+                  
                     {" "}
                     <FormattedMessage id="birthdayclub.addnewchildbutton" defaultMessage="" />
                     {/* Add new child */}
-                  </button>
-      
+                  </button>:null
+                  }
+        
                   <div>{this.state.redirectToAddNewChild ? <AddNewChild/>:null }</div>
                 </div>
               </div>

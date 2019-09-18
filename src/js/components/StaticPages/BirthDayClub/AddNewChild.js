@@ -8,7 +8,7 @@ import { FormattedMessage } from 'react-intl';
 import AlertBox from '../../Common/AlertBox/AlertBox';
 import { connect } from 'react-redux';
 import * as actions from '../../../redux/actions/index';
-
+import BirthDayClub from './BirthDayClub';
 import BirthDayClubImage from '../../../../assets/images/BirthDayClub/birthday-club.png';
 
  class AddNewChild extends Component {
@@ -27,10 +27,15 @@ import BirthDayClubImage from '../../../../assets/images/BirthDayClub/birthday-c
       errors: {},
       redirectToAddNewChild:true
     }
+
+    this.child = React.createRef();
     
    
   }
-
+  onCancleClick=()=>
+  {
+    this.child.current.cancleForm();
+  }
 
   onChangeField = (e) => {
     this.setState({ [e.target.name]: e.target.value });
@@ -252,6 +257,7 @@ let relationshipInputField= <div>
                     <FormattedMessage id="birthdayclub.addnewchildbutton" defaultMessage="" />
                   
                   </button>&nbsp;&nbsp;&nbsp;&nbsp;
+                  {/* <BirthDayClub ref={this.child} /> */}
                   <button
                     className="button-cancel bclub-button"
                     style={{ textAlign: "center" }}

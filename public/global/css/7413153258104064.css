@@ -5,7 +5,9 @@
  * This CSS file was generated using the Oracle Application Express 5.0 Theme Roller. 
  * 
  */
-
+ .shoppingbagdetails .t-Report-wrap .t-Report-report tbody tr:last-child td.t-Report-cell {
+  border: none;
+}
 .t-AVPList-value {
   color: #666666;
 }

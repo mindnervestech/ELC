@@ -50,6 +50,12 @@ body {
     overflow-x: hidden;
 }
 
+
+.storeLocatorRmPadding{
+   padding-left: 0px!important;
+   padding-right: 0px!important;
+}
+
 h1 {
     font-size: 2em;
     margin: 0
