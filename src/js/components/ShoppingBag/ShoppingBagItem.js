@@ -334,36 +334,34 @@ class ShoppingBagItem extends Component {
                             </Row>
                         </div>
                         <div className="hideDivOnMobile">
-                            {/* <div className="blackTitle" style={{ fontSize: 20, paddingTop: 10 }}>
-                     <span>Select Delivery</span><span className="floatRight">1 item | £99.99</span>
+                            <div className="blackTitle" style={{ fontSize: 18, paddingTop: 10, color: "#4f4f4f" }}>
+                     <span>Select Delivery</span><span className="floatRight">{productCount}&nbsp; <FormattedMessage id="Item.text" defaultMessage="Item" /> &nbsp;|&nbsp;{this.props.cart_details.currency}&nbsp;{this.props.cart_details.grand_total}</span>
                   </div>
-                  <div className="prod-color">
+                  <div className="prod-color" style={{color: "#4f4f4f"}}>
                      <div className="row del-options" style={{ textAlign: 'center' }}>
                         <div className="row home-deli" style={{ display: 'block' }}>
                            <img src={freeDelivery} />
-                           <div style={{ padding: "30px 0px" }}>
-                              <span>Home delivery</span>
+                           <div style={{ padding: "30px 0px" }} className="blockTextColor">
+                              <span><FormattedMessage id="delivery-details.HomeDelivery.Title" defaultMessage="Home Delivery" /></span>
                            </div>
-                           <div style={{ padding: "20px 0px" }}>
-                              <span style={{ color: '#ee0E19' }}>Out of stock</span>
+                           <div style={{ padding: "30% 0px 9%" }}>
+                              <span style={{ color: '#0D943F', fontWeight: 'bold' }}>Available</span>
                            </div>
                         </div>
                         <div className="row click-collect" style={{ display: 'block' }}>
                            <img src={freeCollect} />
-                           <div style={{ padding: "30px 0px" }}>
-                              <span>Click & Collect</span>
+                           <div style={{ padding: "30px 0px" }} className="blockTextColor">
+                              <span>Click & Collect at The Entertainer</span>
                            </div>
-                           <div style={{ padding: "20px 0px" }}>
-                              <a href=''>Change store</a>
+                           <div style={{ padding: "10% 0px",fontWeight: 'bold',color: '#0D943F' }}>
+                           <span><FormattedMessage id="Comingsoon" defaultMessage="Coming soon" /></span>
                            </div>
                         </div>
                      </div>
                   </div>
                   <div>
-                     <Link to={`/${store_locale}/new-check-out`}>
-                        <button className="alsoLikeCardButton">Check out</button>
-                     </Link>
-                  </div> */}
+                    <button onClick={() => this.checkOut()} className="alsoLikeCardButton"><FormattedMessage id="Cart.CheckOut.Title" defaultMessage="Check out" /></button>
+                  </div>
 
                             {product && product.map((item, index) => (
 
@@ -416,9 +414,7 @@ class ShoppingBagItem extends Component {
                                 </div>
                             </div>
                             <div onClick={() => this.checkOut()}>
-                                {/* <Link to={`/${store_locale}/new-check-out`}> */}
                                 <button className="alsoLikeCardButton"><FormattedMessage id="Cart.CheckOut.Title" defaultMessage="Check out" /></button>
-                                {/* </Link> */}
                             </div>
                         </div>
                     </div> :
