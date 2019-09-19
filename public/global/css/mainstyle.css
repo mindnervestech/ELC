@@ -1652,7 +1652,7 @@ html[dir="rtl"] .header .profile figure {
     position: absolute;
     float: left;
     width: 30px;
-    padding: 8px 0px;
+    padding: 12px 0px;
     cursor: pointer;
     top: 50px;
     left: 10px;
@@ -6034,7 +6034,7 @@ html[dir="rtl"] .header .navTrigger {
     position: absolute;
     float: left;
     width: 30px;
-    padding: 8px 0px;
+    padding: 12px 0px;
     cursor: pointer;
     top: 50px;
     left: 10px;
@@ -6508,4 +6508,13 @@ html[dir="rtl"] .PagenationRightArrow{
         }
     }
 }
-    
+   
+@media (max-width:360px){
+    html[dir="rtl"] .header .changecountry {
+        border: none !important;
+        width: 26% !important;
+        display: inline-block !important;
+        position: relative !important;
+        left: 5px !important;
+    }
+}
