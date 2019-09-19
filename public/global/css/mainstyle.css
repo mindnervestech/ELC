@@ -5988,7 +5988,7 @@ html[dir="rtl"] .language {
     padding: 0px 5px !important;
 }
 html[dir="rtl"] .header .changecountry .country .list {
-      right: -10px !important;
+      right: 5px !important;
     padding-right: 4px;
 }
 html[dir="rtl"] .header .changecountry {

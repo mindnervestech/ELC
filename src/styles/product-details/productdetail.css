@@ -2101,6 +2101,11 @@ html[dir="rtl"] .styles_modal__gNwvD div{
         padding: 3px;
     }
 }
+@media (max-width:767px){
+    .padding-mob{
+        padding: 0px !important;
+    }
+}
 
 @media (max-width:767px){
     @supports (-webkit-overflow-scrolling: touch) { 

@@ -176,9 +176,9 @@ class SavedAddressList extends Component {
                         <div className="t-Region-buttons-right" />
                       </div>
                       <div className="t-Region-body">
-                        <div className="container">
-                          <div className="row">
-                            <div className="col col-12 apex-col-auto">
+                        <div className="container paddingRemove">
+                          <div className="row" >
+                            <div className="col col-12 apex-col-auto paddingRemove">
                               <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel  apex-item-wrapper apex-item-wrapper--radiogroup " id="P7_ADDRESSES_CONTAINER"><div className="t-Form-labelContainer">
                                 <label htmlFor="P7_ADDRESSES" id="P7_ADDRESSES_LABEL" className="t-Form-label"><FormattedMessage id="SavedAddress.Text" defaultMessage="SavedAddress" /></label>
                               </div>
