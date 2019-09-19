@@ -132,6 +132,7 @@ class MainHeader extends Component {
 
     logOut = () => {
         this.props.onLogoutUser();
+        this.props.onGetMenuNav(this.props.globals);
         this.props.history.push(`/${this.props.globals.store_locale}/Login`);
     }
 

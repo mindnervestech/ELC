@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import { injectIntl, intlShape } from 'react-intl';
 import Bimg from '../../../assets/images/menu/bra-sar-en.jpg';
-
+import Spinner from '../Spinner/Spinner';
+import { connect } from 'react-redux';
+import * as actions from '../../redux/actions/index';
 class menuList extends Component {
 	constructor(props) {
 		super(props);
@@ -170,8 +172,8 @@ class menuList extends Component {
 
 	render() {
 		const { navData } = this.props;
-
-		return <ul className="link">
+     
+		return  <Spinner  loading={this.props.spinnerProduct}><ul className="link">
 			{/* <li>
 				<Link to={`/${this.state.store_locale}/offers`} onClick={this.closeHBMenu}>
 					<span>
@@ -182,9 +184,15 @@ class menuList extends Component {
 			</li> */}
 			{Object.keys(navData).map(this._renderMenuNavigation)}
 
-		</ul>;
+		</ul></Spinner>;
 	}
 }
 
+const mapStateToProps=state=>
+{
+	return{
+		spinnerProduct: state.spinner.loadingProduct,
+	}
+}
 
-export default menuList;
+export default connect(mapStateToProps)(menuList);

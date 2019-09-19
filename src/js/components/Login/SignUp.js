@@ -150,12 +150,12 @@ class SignUp extends Component {
       errors["confirmEmail"] = <FormattedMessage id="Signup.validation.confirmEmail.invalid" defaultMessage="Email and Confirm Email must be same" />;
     }
 
-    // if (!(this.state.isPhoneValid)) {
+    if (!(this.state.isPhoneValid)) {
 
-    //   formIsValid = false;
-    //   errors["contactNumber"] = <FormattedMessage id="Signup.validation.contactNumber.empty" defaultMessage="Eneter Valid Contact Number" />;
+      formIsValid = false;
+      errors["contactNumber"] = <FormattedMessage id="Signup.validation.contactNumber.empty" defaultMessage="Eneter Valid Contact Number" />;
 
-    // }
+    }
 
     //Password
     if (typeof fields["password"] !== "undefined") {
@@ -212,7 +212,7 @@ class SignUp extends Component {
       lastname: this.state.fields.lastName,
       contact_number: "1234567891",
       email: this.state.fields.email,
-      // carrier_code: "non",
+      carrier_code:this.state.fields.carrierCode,
       password: this.state.fields.password,
       confirmpassword: this.state.fields.confirmPassword,
       store_id: this.props.globals.currentStore,
@@ -378,12 +378,12 @@ class SignUp extends Component {
           {errorsObj["confirmEmail"]}</div></span></span></div>
     }
 
-    // if ('contactNumber' in errorsObj) {
-    //   phoneNumberClassName = "t-Form-inputContainer";
-    //   contactNumberInputField = <span id="P1001_PHONE_error_placeholder" className="a-Form-error u-visible" data-template-id="33610259035469734_ET"><span className="t-Form-error">
-    //     <div id="P1001_PHONE_error">{errorsObj["contactNumber"]}</div></span></span>
+    if ('contactNumber' in errorsObj) {
+      phoneNumberClassName = "t-Form-inputContainer";
+      contactNumberInputField = <span id="P1001_PHONE_error_placeholder" className="a-Form-error u-visible" data-template-id="33610259035469734_ET"><span className="t-Form-error">
+        <div id="P1001_PHONE_error">{errorsObj["contactNumber"]}</div></span></span>
 
-    // }
+    }
     // if ('email' in errorsObj) {
 
     //   emailInputField = <div className="t-Form-inputContainer"><div >
@@ -490,21 +490,22 @@ class SignUp extends Component {
                                   </div>
                                 </div>
                               </div>
-
-                              {/* <div className="row">
-                                <div className="col col-12 apex-col-auto">
-                                  <div className="padding t-Form-fieldContainer t-Form-fieldContainer--floatingLabel is-required apex-item-wrapper plugin-intltelinput-www.jqueryscript.net js-show-label" id="P1001_PHONE_CONTAINER">
-                                    <div className="t-Form-labelContainer">
-                                    </div>
+                               <div className="padding row">
+                                <div className=" col-12 apex-col-auto">
+                                <div className="row block" id="P1001_LNAME_CONTAINER"><div className="rmPadding rmTopPadding t-Form-labelContainer">
+                                    <label htmlFor="P1001_LNAME" id="P1001_LNAME_LABEL" className="t-Form-label bolt"><FormattedMessage id="Form.PhoneNumber" defaultMessage="Contact Number" /></label></div>
+                                  </div>
+                                  <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel is-required apex-item-wrapper plugin-intltelinput-www.jqueryscript.net js-show-label" id="P1001_PHONE_CONTAINER">
+                              
                                     <div id="PhoneNumber" className={phoneNumberClassName} >
                                       <PhoneNumber changed={this.contactNumber} />
                                       {contactNumberInputField}
                                     </div>
-
                                   </div>
                                 </div>
-                              </div> */}
+                              </div> 
 
+                              
                               <div className="padding row">
                                 <div className="rmPadding col col-12 apex-col-auto">
                                   <div className="block row" id="P1001_EMAIL_CONTAINER"><div className="rmTopPadding rmPadding t-Form-labelContainer">

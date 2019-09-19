@@ -31,7 +31,9 @@ class menuNav extends Component {
  }
 
  logOut = () => {
+  this.props.onGetMenuNav(this.props.globals);
   this.props.onLogoutUser();
+   
 }
   closeHBMenu = () => {
     document.querySelector("html").classList.remove("menuOpen");
@@ -54,14 +56,14 @@ class menuNav extends Component {
           <figure className=""><i className="icon-user"></i></figure>
           <div className="">
             <Link to={`/${store_locale}/login`} onClick={this.closeHBMenu}>
-    {this.props.user_details.isUserLoggedIn ?  this.props.user_details.customer_details.firstname +' '+this.props.user_details.customer_details.lastname :<FormattedMessage id="Header.SignInOrRegister" defaultMessage="Sign in / Register" />}</Link>
+    {this.props.user_details.isUserLoggedIn ? 'Hello '+ this.props.user_details.customer_details.firstname  :<FormattedMessage id="Header.SignInOrRegister" defaultMessage="Sign in / Register" />}</Link>
             <Link to={`/${store_locale}/login`} className="hide"><FormattedMessage id="header.logoutName" defaultMessage="logout" /></Link>
           </div>
         </div>
         {this.renderRedirect()}
        
         { this.props.user_details.isUserLoggedIn ?
-        <div className="divShowOnMobile" style={{textAlign:'start',marginRight:10} }>
+        <div style={{textAlign:'start',marginLeft:12} }>
          <span onClick={this.logOut}><FormattedMessage id="out" defaultMessage="Sign Out"/></span>
         </div>:<div></div>
         }
