@@ -39,7 +39,7 @@ html {
 }
 
 body {
-    font-family: "VAG Rounded ELC Light";
+    font-family: "VAG Rounded ELC Light" !important;
     font-size: 1.3rem;
     line-height: 1.7;
     font-weight: 300;
@@ -68,7 +68,7 @@ hr {
 }
 
 pre {
-    font-family: monospace, monospace;
+    /* font-family: monospace, monospace; */
     font-size: 1em
 }
 
@@ -91,7 +91,7 @@ strong {
 code,
 kbd,
 samp {
-    font-family: monospace, monospace;
+    /* font-family: monospace, monospace; */
     font-size: 1em
 }
 
@@ -320,7 +320,7 @@ template {
     content: "\E907"
 }
 
-@font-face {
+/* @font-face {
     font-family: "swirl";
     src: url(/nayfonts/frenchvanillaswirlitalic-webfont.b73eedcb.woff2) format("woff2"), url(/nayfonts/frenchvanillaswirlitalic-webfont.817c56d5.woff) format("woff");
     font-weight: 300;
@@ -333,7 +333,7 @@ template {
     src: url("../font/notokufiarabic-regular-webfont.woff2") format("woff2"), url("../font/notokufiarabic-regular-webfont.woff") format("woff");
     font-weight: 300;
     font-style: normal
-}
+} */
 
 html[dir="rtl"] html {
     direction: rtl
@@ -341,12 +341,12 @@ html[dir="rtl"] html {
 
 body {
     background: #fafafa;
-    font-family: 'Noto Sans KR', Helvetica, Arial, sans-serif;
+    /* font-family: 'Noto Sans KR', Helvetica, Arial, sans-serif; */
     font-size: 14px
 }
 
 html[dir="rtl"] body {
-    font-family: 'Noto AR', Helvetica, Arial, sans-serif
+    /* font-family: 'Noto AR', Helvetica, Arial, sans-serif */
 }
 
 html.noScroll {
@@ -1403,8 +1403,8 @@ html.no-touch .header .link>li:hover .submenu {
     top: 17px;
     /* background: #000; */
     background: #fff;
-    width: 11px;
-    height: 1px
+    width: 22px;
+    height: 22px
 }
 
 html[dir="rtl"] .header .link>li .subMenuTrigger {
@@ -1425,13 +1425,13 @@ html[dir="rtl"] .header .link>li .subMenuTrigger {
 }
 
 .header .link>li .subMenuTrigger.open:before {
-    -webkit-transform: scaleY(0);
-    transform: scaleY(0);
+    /* -webkit-transform: scaleY(0);
+    transform: scaleY(0); */
     transform: rotate(180deg);
-    height: 11px;
-    width: 1px;
-    left: 5px;
-    top: 2px;
+    height: 22px;
+    width: 22px;
+    left: -4px;
+    top: -8px;
 }
 
 .header .link>li .subMenuTrigger:before {
@@ -1440,8 +1440,8 @@ html[dir="rtl"] .header .link>li .subMenuTrigger {
     position: absolute;
     /* background: #000; */
     background: #fff;
-    height: 11px;
-    width: 1px;
+    height: 22px;
+    width: 22px;
     left: -10px;
     top: -7px;
     font-size: 20px;
@@ -2187,7 +2187,7 @@ html[dir="rtl"] .header .changecountry .country .list {
 }
 
 .homePage .contentBox h2 {
-    font-family: 'Conv_frenchvanillaswirlitalic-webfont', cursive;
+    /* font-family: 'Conv_frenchvanillaswirlitalic-webfont', cursive; */
     font-size: 3.5em;
     font-weight: normal;
     line-height: .8;
@@ -2221,7 +2221,7 @@ html[dir="rtl"] .header .changecountry .country .list {
 
 
 .homePage .contentBox h6 {
-    font-family: 'Conv_frenchvanillaswirlitalic-webfont', cursive;
+    /* font-family: 'Conv_frenchvanillaswirlitalic-webfont', cursive; */
     font-size: 3.5em;
     font-weight: normal;
     line-height: .8;
@@ -2231,7 +2231,7 @@ html[dir="rtl"] .header .changecountry .country .list {
 }
 
 html[dir="rtl"] .homePage .contentBox h6 {
-    font-family: 'Noto AR', Helvetica, Arial, sans-serif;
+    /* font-family: 'Noto AR', Helvetica, Arial, sans-serif; */
 }
 
 .homePage .contentBox h6:after {
@@ -2718,7 +2718,7 @@ html[dir="rtl"] .homePage .contentBox {
 }
 
 html[dir="rtl"] .homePage .contentBox h2 {
-    font-family: 'Noto AR', Helvetica, Arial, sans-serif !important;
+    /* font-family: 'Noto AR', Helvetica, Arial, sans-serif !important; */
     white-space: nowrap;
     text-align: center
 }
@@ -2890,7 +2890,7 @@ html[dir="rtl"] .homePage .textBox .arrowLink:after {
     text-transform: unset;
     font-weight: 100;
     margin-bottom: 15px;
-    font-family: 'Noto Sans KR', Helvetica, Arial, sans-serif;
+    /* font-family: 'Noto Sans KR', Helvetica, Arial, sans-serif; */
 }
 
 .footer .row-1 h4 {
@@ -4108,7 +4108,7 @@ img.block3_banner1.hideInMobile {
 }
 
 .b-footer_navigation .b-accordion_container a {
-    font-family: Noto AR, Helvetica, Arial, sans-serif !important
+    /* font-family: Noto AR, Helvetica, Arial, sans-serif !important */
 }
 
 .p-price-saving .p-desc {
@@ -4282,12 +4282,12 @@ html[dir="rtl"] a.Acregister {
 }
 
 .b-footer_navigation .b-accordion_container a {
-    font-family: 'Noto Sans KR', Helvetica, Arial, sans-serif !important;
+    /* font-family: 'Noto Sans KR', Helvetica, Arial, sans-serif !important; */
 }
 
 html[dir="rtl"] .b-footer_navigation .b-accordion_container a {
     font-weight: 700;
-    font-family: Noto AR, Helvetica, Arial, sans-serif !important;
+    /* font-family: Noto AR, Helvetica, Arial, sans-serif !important; */
 }
 
 li#SORTPRICE .dropbtn span#fsbh-occ {

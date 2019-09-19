@@ -215,7 +215,7 @@ html[dir="rtl"] .shopping-cart .flyout-price {
 
 .fabric h4,
 .fabric .fab-h4 {
-    font-family: BentonSans, sans-serif;
+    /* font-family: BentonSans, sans-serif; */
     -webkit-font-feature-settings: "liga"0;
     font-feature-settings: "liga"0;
     font-size: 14px;
@@ -273,7 +273,7 @@ html[dir="rtl"] .shopping-cart .flyout-price {
     line-height: 21px;
     min-width: 150px;
     padding: 7px 28px 4px;
-    font-family: BentonSansCompMedium, sans-serif;
+    /* font-family: BentonSansCompMedium, sans-serif; */
     font-size: 14px;
     letter-spacing: .15em;
     text-transform: uppercase;
@@ -380,7 +380,7 @@ html[dir="rtl"] .shopping-cart a.fab-btn--secondary {
 .fabric .fab-btn--secondary-small,
 .fabric .fab-btn--secondary-flex,
 .fabric .fab-btn--primary-black {
-    font-family: BentonSansCompMedium, sans-serif;
+    /* font-family: BentonSansCompMedium, sans-serif; */
     font-size: 19px;
     letter-spacing: .15em;
     text-transform: uppercase;

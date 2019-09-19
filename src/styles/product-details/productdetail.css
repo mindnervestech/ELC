@@ -1508,6 +1508,23 @@ html[dir="rtl"] .write-review .write-a-re i{
     .shipping-tabs .tab{
         width: 48%;
     }
+
+    .click-collect{
+        border: 1px solid #d6d6d6;
+        font-size: 1.5rem;
+        width: 48%;
+        margin-left: 10px!important;
+        border-radius: 5px;
+    }
+    
+    html[dir="rtl"] .click-collect{
+        border: 1px solid #d6d6d6;
+        font-size: 1.5rem;
+        width: 48%;
+        margin-left: 0px!important;
+        margin-right: 10px;
+        border-radius: 5px;
+    }
 }
 
 @media only screen and (max-width: 1204px) and (min-width: 768px){

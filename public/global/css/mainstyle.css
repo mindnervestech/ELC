@@ -477,11 +477,6 @@ html {
     font-size: 67.6%;
 }
 
-/* body {
-    margin: 0;
-    font-family: "VAG Rounded ELC Light"!important;
-} */
-
 body {
     font-family: "VAG Rounded ELC Light" !important;
     font-size: 1.3rem !important;
@@ -506,7 +501,7 @@ hr {
 }
 
 pre {
-    font-family: monospace, monospace;
+    /* font-family: monospace, monospace; */
     font-size: 1em
 }
 
@@ -529,7 +524,7 @@ strong {
 code,
 kbd,
 samp {
-    font-family: monospace, monospace;
+    /* font-family: monospace, monospace; */
     font-size: 1em
 }
 
@@ -562,7 +557,7 @@ input,
 optgroup,
 select,
 textarea {
-    font-family: inherit;
+    /* font-family: inherit; */
     font-size: 100%;
     line-height: 1.15;
     margin: 0
@@ -872,7 +867,7 @@ a {
     content: "\E907"
 }
 
-@font-face {
+/* @font-face {
     font-family: "swirl";
     src: url('/font/frenchvanillaswirlitalic-webfont.b73eedcb.woff2') format("woff2"), url('/font/frenchvanillaswirlitalic-webfont.817c56d5.woff') format("woff");
     font-weight: 300;
@@ -885,7 +880,7 @@ a {
     src: url("../font/notokufiarabic-regular-webfont.woff2") format("woff2"), url("../font/notokufiarabic-regular-webfont.woff") format("woff");
     font-weight: 300;
     font-style: normal
-}
+} */
 
 html[dir="rtl"] html {
     direction: rtl
@@ -893,12 +888,12 @@ html[dir="rtl"] html {
 
 body {
     background: #fafafa;
-    font-family: 'Noto Sans KR', Helvetica, Arial, sans-serif;
+    /* font-family: 'Noto Sans KR', Helvetica, Arial, sans-serif; */
     font-size: 14px
 }
 
 html[dir="rtl"] body {
-    font-family: 'Noto AR', Helvetica, Arial, sans-serif
+    /* font-family: 'Noto AR', Helvetica, Arial, sans-serif */
 }
 
 html.noScroll {
@@ -3859,7 +3854,7 @@ html[dir="rtl"] .Collapsible__trigger:after{
 }
 
 .homePage .contentBox h2 {
-    font-family: 'swirl', cursive;
+    /* font-family: 'swirl', cursive; */
     font-size: 3.5em;
     font-weight: normal;
     line-height: .8;
@@ -3893,7 +3888,7 @@ html[dir="rtl"] .Collapsible__trigger:after{
 
 
 .homePage .contentBox h6 {
-    font-family: 'swirl', cursive;
+    /* font-family: 'swirl', cursive; */
     font-size: 3.5em;
     font-weight: normal;
     line-height: .8;
@@ -3903,7 +3898,7 @@ html[dir="rtl"] .Collapsible__trigger:after{
 }
 
 html[dir="rtl"] .homePage .contentBox h6 {
-    font-family: 'Noto AR', Helvetica, Arial, sans-serif;
+    /* font-family: 'Noto AR', Helvetica, Arial, sans-serif; */
 }
 
 .homePage .contentBox h6:after {
@@ -4479,7 +4474,7 @@ html[dir="rtl"] .homePage .contentBox {
 }
 
 html[dir="rtl"] .homePage .contentBox h2 {
-    font-family: 'Noto AR', Helvetica, Arial, sans-serif !important;
+    /* font-family: 'Noto AR', Helvetica, Arial, sans-serif !important; */
     white-space: nowrap;
     text-align: center
 }
@@ -4649,7 +4644,7 @@ html[dir="rtl"] .homePage .textBox .arrowLink:after {
     text-transform: unset;
     font-weight: 100;
     margin-bottom: 15px;
-    font-family: 'Noto Sans KR', Helvetica, Arial, sans-serif;
+    /* font-family: 'Noto Sans KR', Helvetica, Arial, sans-serif; */
 }
 
 .footer .row-1 h4 {
@@ -6366,6 +6361,10 @@ html[dir="rtl"] .commingSoonText{
         border-bottom: solid 1px #b1b1b1;
         margin-bottom: 5px;
     }
+
+    .paddingOnMobile0px10px{
+        padding: 0px 10px;
+    }
 }
 
 @media (max-width: 320px){
@@ -6472,6 +6471,8 @@ html[dir="rtl"] .PagenationRightArrow{
 .borderForMobileManu{}
 
 .headerSlider2{}
+
+.paddingOnMobile0px10px{}
 
 @media (max-width:767px){
     @supports (-webkit-overflow-scrolling: touch) { 

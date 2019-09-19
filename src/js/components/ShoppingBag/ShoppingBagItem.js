@@ -217,10 +217,10 @@ class ShoppingBagItem extends Component {
                                  <div className="blockImage">
                                     <img src={freeCollect} style={{height: 60}}/>
                                  </div>
-                                 <div className="blockTextColor">
+                                 <div className="blockTextColor" style={{color: 'gray'}}>
                                     <span>Click & Collect at The Entertainer</span>
                                  </div>
-                                 <div style={{ padding: '40px 20px 5px', fontWeight: 'bold' }}>
+                                 <div style={{ padding: '40px 20px 5px', fontWeight: 'bold', color: 'gray' }}>
                                     <span><FormattedMessage id="Comingsoon" defaultMessage="Coming soon" /></span>
                                  </div>
                               </div>
@@ -334,12 +334,12 @@ class ShoppingBagItem extends Component {
                             </Row>
                         </div>
                         <div className="hideDivOnMobile">
-                            <div className="blackTitle" style={{ fontSize: 18, paddingTop: 10, color: "#4f4f4f" }}>
+                            <div className="blackTitle" style={{ fontSize: 18, padding: '10px 0px', color: "#4f4f4f" }}>
                      <span>Select Delivery</span><span className="floatRight">{productCount}&nbsp; <FormattedMessage id="Item.text" defaultMessage="Item" /> &nbsp;|&nbsp;{this.props.cart_details.currency}&nbsp;{this.props.cart_details.grand_total}</span>
                   </div>
                   <div className="prod-color" style={{color: "#4f4f4f"}}>
-                     <div className="row del-options" style={{ textAlign: 'center' }}>
-                        <div className="row home-deli" style={{ display: 'block' }}>
+                     <div>
+                        <div className="home-deli" style={{ display: 'block', display: 'inline-block', textAlign: 'center' }}>
                            <img src={freeDelivery} />
                            <div style={{ padding: "30px 0px" }} className="blockTextColor">
                               <span><FormattedMessage id="delivery-details.HomeDelivery.Title" defaultMessage="Home Delivery" /></span>
@@ -348,12 +348,12 @@ class ShoppingBagItem extends Component {
                               <span style={{ color: '#0D943F', fontWeight: 'bold' }}>Available</span>
                            </div>
                         </div>
-                        <div className="row click-collect" style={{ display: 'block' }}>
+                        <div className="click-collect" style={{ display: 'inline-block', textAlign: 'center', verticalAlign: 'top'}}>
                            <img src={freeCollect} />
-                           <div style={{ padding: "30px 0px" }} className="blockTextColor">
+                           <div style={{ padding: "30px 0px", color: 'gray' }} className="blockTextColor">
                               <span>Click & Collect at The Entertainer</span>
                            </div>
-                           <div style={{ padding: "10% 0px",fontWeight: 'bold',color: '#0D943F' }}>
+                           <div style={{ padding: "19% 0px 9%",fontWeight: 'bold',color: 'gray' }}>
                            <span><FormattedMessage id="Comingsoon" defaultMessage="Coming soon" /></span>
                            </div>
                         </div>
@@ -366,15 +366,15 @@ class ShoppingBagItem extends Component {
                             {product && product.map((item, index) => (
 
                                 <div style={{ padding: '20px 0px', borderBottom: 'solid 1px #b1b1b1', color: "#4f4f4f" }}>
-                                    <div style={{ marginTop: 10 }} >
-                                        <span onClick={() => this.remove(index)} className="remove blackTitle floatRight" style={{ fontSize: 14, lineHeight: 1 }}>
-                                            <FormattedMessage id="Cart.Remove.Title" defaultMessage="Remove" />
-                                        </span>
-                                    </div>
-                                    <div>
+                                    <div style={{display: 'inline-block', width: "80%"}}>
                                         <Link to={`/${store_locale}/products-details/${item.url_key}`}>
                                             <img src={item.image[0]} className="cardImage"></img>
                                         </Link>
+                                    </div>
+                                    <div style={{display: 'inline-block', width: "18%", verticalAlign: 'top'}} >
+                                        <span onClick={() => this.remove(index)} className="remove blackTitle floatRight" style={{ fontSize: 14, lineHeight: 1 }}>
+                                            <FormattedMessage id="Cart.Remove.Title" defaultMessage="Remove" />
+                                        </span>
                                     </div>
                                     <div style={{ marginTop: 20 }}>
                                         <div>

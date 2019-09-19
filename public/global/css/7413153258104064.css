@@ -4213,7 +4213,7 @@ a.t-MediaList-itemWrap:focus {
 }
 
 .ui-widget {
-  font-family: 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif;
+  /* font-family: 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif; */
   font-size: 12px;
 }
 

@@ -69,14 +69,13 @@ class MainHeader extends Component {
         this.props.onGetStoreIds();
         //console.log('In componentDidMount before onGetMenuNav', this.props.global);
         //this.props.onGetMenuNav(this.props.globals);
-
         // if (this.props.globals.currentStore) {
         //     this.props.onGetMenuNav(this.props.globals);
         // }
 
-        if (this.props.countryList.length === 0) {
-            this.props.onGetCountryList();
-        }
+        // if (this.props.countryList.length === 0) {
+        //     this.props.onGetCountryList();
+        // }
 
 
         let country = (cookie.load('country') === null) ? 'KSA' : cookie.load('country');
