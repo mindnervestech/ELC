@@ -30,6 +30,9 @@ class menuNav extends Component {
     }
  }
 
+ logOut = () => {
+  this.props.onLogoutUser();
+}
   closeHBMenu = () => {
     document.querySelector("html").classList.remove("menuOpen");
   }
@@ -56,6 +59,12 @@ class menuNav extends Component {
           </div>
         </div>
         {this.renderRedirect()}
+       
+        { this.props.user_details.isUserLoggedIn ?
+        <div style={{textAlign:'start',marginRight:10} }>
+         <span onClick={this.logOut}><FormattedMessage id="out" defaultMessage="Sign Out"/></span>
+        </div>:<div></div>
+        }
         {/* <div className="search">
           <i className="icon-search"></i>
           <FormattedMessage id="SearchText" defaultMessage="Search">
@@ -79,6 +88,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    onLogoutUser: () => dispatch(actions.logoutUser()),
     onGetMenuNav: (payload) => dispatch(actions.getMenuNav(payload)),
   }
 }

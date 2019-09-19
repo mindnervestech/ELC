@@ -1053,7 +1053,7 @@ html[dir="rtl"] .header .row-2 .cta .cart span {
     width: 0px;
     height: 0px;
     border-radius: 50%;
-    border: 1px solid #0D943F;
+    border: 1px solid #fff;
     display: inline-block;
     vertical-align: middle;
     position: relative;
