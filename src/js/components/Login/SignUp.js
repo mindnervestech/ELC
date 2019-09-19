@@ -490,12 +490,12 @@ class SignUp extends Component {
                                   </div>
                                 </div>
                               </div>
-                               {/* <div className="padding row">
+                               <div className="padding row">
                                 <div className=" col-12 apex-col-auto">
                                 <div className="row block" id="P1001_LNAME_CONTAINER"><div className="rmPadding rmTopPadding t-Form-labelContainer">
                                     <label htmlFor="P1001_LNAME" id="P1001_LNAME_LABEL" className="t-Form-label bolt"><FormattedMessage id="Form.PhoneNumber" defaultMessage="Contact Number" /></label></div>
                                   </div>
-                                  <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel is-required apex-item-wrapper plugin-intltelinput-www.jqueryscript.net js-show-label" id="P1001_PHONE_CONTAINER">
+                                  <div style={{width: '100%'}} className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel is-required apex-item-wrapper plugin-intltelinput-www.jqueryscript.net js-show-label" id="P1001_PHONE_CONTAINER">
                               
                                     <div id="PhoneNumber" className={phoneNumberClassName} >
                                       <PhoneNumber changed={this.contactNumber} />
@@ -503,7 +503,7 @@ class SignUp extends Component {
                                     </div>
                                   </div>
                                 </div>
-                              </div>  */}
+                              </div> 
 
                               
                               <div className="padding row">

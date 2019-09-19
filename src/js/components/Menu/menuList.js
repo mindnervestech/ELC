@@ -173,7 +173,7 @@ class menuList extends Component {
 	render() {
 		const { navData } = this.props;
      
-		return  <Spinner  loading={this.props.spinnerProduct}><ul className="link">
+		return  <ul className="link">
 			{/* <li>
 				<Link to={`/${this.state.store_locale}/offers`} onClick={this.closeHBMenu}>
 					<span>
@@ -184,7 +184,7 @@ class menuList extends Component {
 			</li> */}
 			{Object.keys(navData).map(this._renderMenuNavigation)}
 
-		</ul></Spinner>;
+		</ul>;
 	}
 }
 

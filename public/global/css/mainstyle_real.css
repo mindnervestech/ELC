@@ -32,6 +32,17 @@
     font-style: normal;
 }
 
+html[dir="rtl"] .signOut {
+   
+    margin-left: 12px!important; 
+    margin-right:7px!important;
+}
+
+.signOut{
+  
+   margin-left: 12px!important; 
+}
+
 html {
     line-height: 1.15;
     -webkit-text-size-adjust: 100%;
