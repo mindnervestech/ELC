@@ -12,6 +12,7 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import Popup from 'react-popup';
 import Spinner from '../Spinner/Spinner2';
 
+let productCount = 0
 class ShoppingBagItem extends Component {
 
    constructor(props) {
@@ -57,8 +58,6 @@ class ShoppingBagItem extends Component {
     }
 
     componentWillReceiveProps(nextProps){
-        console.log(nextProps);
-        console.log(this.props);
         if(this.props.updateLoader){
             let popupMessage = null;
             popupMessage = Popup.register({
@@ -78,7 +77,6 @@ class ShoppingBagItem extends Component {
     }
 
     handleChange(item, index, e) {
-        console.log(this.props);
         let { user_details, globals } = this.props;
         const { timeout } = this.state
         let qty =  e.target.value;
@@ -92,7 +90,6 @@ class ShoppingBagItem extends Component {
                     // this.setState({
                     //     prod_qty:{["item" + index] : qty}
                     // })
-                    console.log("hererer121212", qty, parseInt(item.is_in_stock.stock))
                     if (parseInt(item.is_in_stock.stock) <= parseInt(qty)) {
                         
                         let currentStore = this.props.globals.currentStore;
@@ -133,7 +130,6 @@ class ShoppingBagItem extends Component {
                             sku: item.sku,
                             store_id: globals.currentStore
                         }
-                        console.log(obj);
                         this.props.OnChangeQty(obj);
                     }
                 } else if(qty < 0){
@@ -176,8 +172,9 @@ class ShoppingBagItem extends Component {
         //             </td>
         //          )
         // }
-
+        productCount = product.length
         return (<>
+        
             <div className="homePage cardPage padding30" style={{ color: '#0D943F' }}>
                 {this.props.updateLoader && <Spinner />}
                 {!this.props.updateLoader && this.props.cart_details.products.length != 0 ?
@@ -196,35 +193,35 @@ class ShoppingBagItem extends Component {
                             </label>
                         </div>
                         <div className="displayDivOnWeb">
-                            {/* <Row className="row-5 changeRow">
+                            <Row className="row-5 changeRow">
                      <Col xs="6">
-                        <div className="blackTitle" style={{ fontSize: 22 }}>
+                        <div className="blackTitle" style={{ fontSize: 22, textAlign: 'start', color: "#4f4f4f" }}>
                            Select Delivery
                      </div>
                         <div className="prod-color">
                            <div className="row del-options">
-                              <div className="row home-deli">
-                                 <div style={{ width: "100%", textAlign: 'center' }}>
+                              <div className="home-deli2">
+                                 <div className="blockImage">
                                     <img src={freeDelivery} />
                                  </div>
-                                 <div style={{ width: "100%", textAlign: 'center', padding: '10px 10px' }}>
-                                    <span>Home delivery</span>
+                                 <div className="blockTextColor">
+                                    <span><FormattedMessage id="delivery-details.HomeDelivery.Title" defaultMessage="Home Delivery" /></span>
                                  </div>
-                                 <div style={{ width: "100%", textAlign: 'center', padding: '10px 10px' }}>
-                                    <span style={{ margin: '10px', color: '#ee0E19' }}>
-                                       Out of stock
+                                 <div style={{ padding: '45px 20px 5px', fontWeight: 'bold' }}>
+                                    <span>
+                                    Available
                               </span>
                                  </div>
                               </div>
-                              <div className="row click-collect">
-                                 <div style={{ width: "100%", textAlign: 'center' }}>
-                                    <img src={freeCollect} />
+                              <div className="click-collect3">
+                                 <div className="blockImage">
+                                    <img src={freeCollect} style={{height: 60}}/>
                                  </div>
-                                 <div style={{ width: "100%", textAlign: 'center', padding: '10px 10px' }}>
-                                    <span>Click & Collect</span>
+                                 <div className="blockTextColor">
+                                    <span>Click & Collect at The Entertainer</span>
                                  </div>
-                                 <div style={{ width: "100%", textAlign: 'center', padding: '10px 10px' }}>
-                                    <span className="in-stock">In stock</span>
+                                 <div style={{ padding: '40px 20px 5px', fontWeight: 'bold' }}>
+                                    <span><FormattedMessage id="Comingsoon" defaultMessage="Coming soon" /></span>
                                  </div>
                               </div>
                            </div>
@@ -234,16 +231,14 @@ class ShoppingBagItem extends Component {
                      <Col xs="3" style={{ textAlign: 'end' }}>
                         <div>
                            <div className="blackTitle" style={{ fontSize: 22 }}>
-                              <span>1 item | £99.99</span>
+                              <span>{productCount}&nbsp; <FormattedMessage id="Item.text" defaultMessage="Item" /> &nbsp; | &nbsp;{this.props.cart_details.currency}&nbsp;{this.props.cart_details.grand_total}</span>
                            </div>
                            <div>
-                              <Link to={`/${store_locale}/new-check-out`}>
-                                 <button className="alsoLikeCardButton">Check out</button>
-                              </Link>
+                                <button className="alsoLikeCardButton" onClick={() => this.checkOut()}><FormattedMessage id="Cart.CheckOut.Title" defaultMessage="Check out" /></button>
                            </div>
                         </div>
                      </Col>
-                  </Row> */}
+                  </Row>
                             <Row className="row-1 changeRow" style={{ textAlign: 'start', color: "#4f4f4f", fontSize: 14 }}>
                                 <Col xs="3"></Col>
                                 <Col xs="4">
@@ -308,7 +303,10 @@ class ShoppingBagItem extends Component {
                                 <Col xs="6">
                                     <div style={{ paddingTop: 30, textAlign: 'start' }}>
                                         <input type="text" placeholder="Enter promo code" className="email-field"></input>
-                                        <input type="submit" value="Apply" className="submit-button"></input>
+                                        <FormattedMessage id="ResetPassword.Apply.Text" defaultMessage="Apply">
+                                        {(message) =>
+                                        <input type="submit" value={message} className="submit-button"></input>
+                                        }</FormattedMessage>
                                     </div>
                                 </Col>
                                 <Col xs="6">
@@ -429,61 +427,6 @@ class ShoppingBagItem extends Component {
                             <FormattedMessage id="Cart.YBE" defaultMessage="Your bag is empty." />
                         </div> : <div />}
             </div>
-
-            {/* <tr>
-            <td className="t-Report-cell" headers="PRODUCT_DESC">
-               <table>
-                  <tbody>
-                     <tr>
-
-                        <td className="Cart prdimg">
-                              <a onClick={this.props.gotoProductDetail} style={{cursor: "pointer"}}>
-                                    <img src={product.image[0]} />
-                              </a>
-                        </td>
-                        <td className="prddesc">
-                           <h2>{product.name}</h2>
-                           {product.color && (<p><FormattedMessage id="Cart.Color.Title" defaultMessage="Color" />: {product.color}</p>)}
-                           {product.size && (<p><FormattedMessage id="Cart.Size.Title" defaultMessage="Size" />: {product.size}</p>)}
-                           <p>{product.sku}</p>
-                           {parseInt(product.price)!=0 && (<a style={{ width: '80px' }} href="#" onClick={this.props.remove}><FormattedMessage id="Cart.Remove.Title" defaultMessage="Remove" /></a>)}
-                        </td>
-                     </tr>
-                  </tbody>
-               </table>
-            </td>
-            <td className="t-Report-cell" align="right" headers="SUBTOTAL">
-               <table className="qty">
-                  <tbody>
-                     <tr>
-                        {cartProductPrice}
-                     </tr>
-                     <tr>
-                        <td className="qtyid">
-                          {parseInt(product.price)!=0  ? 
-                           <FormattedMessage id="RemoveQuantity.Text" defaultMessage="Add Quantity">
-                           {(message)=>  
-                           <button className="t-Button t-Button--noLabel t-Button--icon  t-Button--noUI " onClick={this.props.dec} type="button" id="ITMBTN_2" title={message} aria-label="Dec" disabled={product.qty <= 1}>
-                           <span className="t-Icon fa fa-minus" aria-hidden="true" /></button> 
-                            }
-                            </FormattedMessage>
-                           : <span style={{width: 43}}></span> }
-                           <input type="text" name="f02" size={3} maxLength={2000} defaultValue={product.qty} className="qtybox apex_disabled" qtyval="ITMBTN_2" min={1} max={10} id="a2"  value={product.qty}/>
-                           {parseInt(product.price)!=0 ? 
-                           <FormattedMessage id="AddQuantity.Text" defaultMessage="Add Quantity">
-                           {(message)=>  
-                            <button className="t-Button t-Button--noLabel t-Button--icon  t-Button--noUI" onClick={this.props.inc} type="button" id={2} title={message} aria-label="Add Quantity">
-                            <span className="t-Icon fa fa-plus" aria-hidden="true" />
-                            </button>
-                            }
-                            </FormattedMessage> : <span style={{width: 43}}></span> }
-                        </td>
-                     </tr>
-                  </tbody>
-               </table>
-            </td>
-         </tr> */}
-
         </>)
     }
 }

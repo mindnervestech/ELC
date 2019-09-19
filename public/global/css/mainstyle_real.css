@@ -4629,6 +4629,57 @@ html[dir="rtl"] .header .navTrigger {
     }
 }
 
+.home-deli2 img {
+    height: 40px;
+    width: 100%;
+    margin-top: 8px;
+    margin-bottom: 1rem;
+}
+.home-deli2 {
+    color: #0d943f;
+    font-size: 1.5rem;
+    border: 2px solid #0d943f;
+    width: 45%;
+    margin-left: 0px!important;
+    border-radius: 5px;
+    height: 160px;
+}
+
+.blockTextColor{
+    font-size: 17px;
+    color: #4f4f4f;
+    font-weight: bold;
+    padding: 17px 10px;
+    display: inline-block;
+    width: 66%;
+    letter-spacing: 0.065rem;
+    line-height: 1;
+}
+
+.blockImage{
+    text-align: center;
+    width: 34%;
+    display: inline-block;
+}
+
+.click-collect3 {
+    border: 1px solid #d6d6d6;
+    font-size: 1.5rem;
+    width: 45%;
+    margin-left: 25px;
+    border-radius: 5px;
+    height: 160px;
+}
+
+html[dir="rtl"] .click-collect3 {
+    border: 1px solid #d6d6d6;
+    font-size: 1.5rem;
+    width: 45%;
+    margin-right: 25px!important;
+    margin-left: 0px!important;
+    border-radius: 5px;
+    height: 160px;
+}
 
 @media only screen and (max-width:640px)
 {
