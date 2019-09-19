@@ -1254,8 +1254,9 @@ input[type=text] {
     box-sizing: border-box;
     padding: 12px 15px 12px 15px;
     margin: 0px;
-    color: #999999;
-    border: 1px solid #999999;
+    color: #4f4f4f;
+    border: 1px solid #b1b1b1;
+    background-color: #fff;
 }
 
 input:focus {
@@ -1267,8 +1268,9 @@ input[type=email] {
     box-sizing: border-box;
     padding: 12px 15px 12px 15px;
     margin: 0px;
-    color: #999999;
-    border: 1px solid #999999;
+    color: #4f4f4f;
+    border: 1px solid #b1b1b1;
+    background-color: #fff;
 }
 
 input[type=password] {
@@ -1276,8 +1278,9 @@ input[type=password] {
     box-sizing: border-box;
     padding: 12px 15px 12px 15px;
     margin: 0px;
-    color: #999999;
-    border: 1px solid #999999;
+    color: #4f4f4f;
+    border: 1px solid #b1b1b1;
+    background-color: #fff;
 }
 
 input:focus {

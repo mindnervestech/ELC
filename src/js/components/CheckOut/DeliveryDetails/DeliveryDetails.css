@@ -880,7 +880,7 @@ html[dir="rtl"] .intl-tel-input .country-list {
 
 
 .shipping-tabs .tab {
-    width: 45% !important;
+    width: 45.5% !important;
     float: left;
     border: solid 1px #dae0e1;
     border-radius: 2px;
@@ -910,8 +910,11 @@ font-size : 18px;
 }
 }
 
-
-
+@media (max-width: 767px){
+    .shipping-tabs .tab {
+        width: 48% !important;
+    }
+}
 
 #PRDBASKET img{
     max-width:148px;

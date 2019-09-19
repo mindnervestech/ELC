@@ -198,7 +198,7 @@ class Confirmation extends Component {
 
             cart_product_details = obj.cart_details.products.map((item, index) => {
                 return (<>
-                    <tr key={index}>
+                    <tr key={index} className="divShowOnWeb">
                         <td className="t-Report-cell" headers="PRODUCT_DESC">
                             <table>
                                 <tbody>
@@ -229,6 +229,39 @@ class Confirmation extends Component {
                             </table>
                         </td>
                     </tr>
+                    <div className="divShowOnMobile">
+                        <div key={index}>
+                            <div className="t-Report-cell" headers="PRODUCT_DESC">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td className="prdimg">
+                                            <a onClick={() => this.gotoProductScreen(item)} style={{ cursor: 'pointer' }}>
+                                                <img src={item.image[0]} alt={item.image[0]} />
+                                            </a>
+                                        </td>
+                                        <td className="prddesc">
+                                            <h2>{item.name}</h2>
+                                            {item.color && (<p><FormattedMessage id="product.color" defaultMessage="Color" />: {item.color}</p>)}
+                                            {item.size && (<p><FormattedMessage id="product.size" defaultMessage="Size" />: {item.size}</p>)}
+                                            <p>{item.id}</p>
+                                            {item.sku != 'freeproduct' && (<Link to={`/${this.props.global.store_locale}/cart`} onClick={this.goToCartDetails}><button className="paymentEditButton"><FormattedMessage id="Edit.Text" defaultMessage="Edit" /></button></Link>)}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            </div>
+                            <div className="t-Report-cell" align="right" headers="SUBTOTAL">
+                            <table className="qty">
+                                <tbody>
+                                    <tr>
+                                        {this.priceView(item)}
+                                    </tr>
+                                </tbody>
+                            </table>
+                            </div>
+                        </div>
+                    </div>
                 </>)
             });
 

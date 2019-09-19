@@ -230,7 +230,7 @@ class ShoppingBagItem extends Component {
                      <Col xs="3"></Col>
                      <Col xs="3" style={{ textAlign: 'end' }}>
                         <div>
-                           <div className="blackTitle" style={{ fontSize: 22 }}>
+                           <div className="blackTitle" style={{ fontSize: 22, color: "#4f4f4f" }}>
                               <span>{productCount}&nbsp; <FormattedMessage id="Item.text" defaultMessage="Item" /> &nbsp; | &nbsp;{this.props.cart_details.currency}&nbsp;{this.props.cart_details.grand_total}</span>
                            </div>
                            <div>
@@ -406,11 +406,11 @@ class ShoppingBagItem extends Component {
                                 <input type="submit" value="Apply" className="submit-button"></input>
                             </div>
                             <div className="row-4" style={{ textAlign: 'start' }}>
-                                <div style={{ padding: '10px 10px', fontFamily: 'VAG Rounded ELC Light', fontSize: 20 }}>
+                                <div style={{ padding: '10px 10px', fontFamily: 'VAG Rounded ELC Light', fontSize: 18, color: '#4f4f4f' }}>
                                     <span><FormattedMessage id="delivery-details.Subtotal.Title" defaultMessage="Subtotal" />:</span>
                                     <span className="floatRight">{this.props.cart_details.currency}&nbsp;{this.props.cart_details.subtotal}</span>
                                 </div>
-                                <div style={{ backgroundColor: '#eef8f2', padding: '10px 10px', fontSize: 25 }}>
+                                <div style={{ backgroundColor: '#eef8f2', padding: '10px 10px', fontSize: 24 }}>
                                     <span><FormattedMessage id="profile.OrderTotal.Title" defaultMessage="Order Total" /></span>
                                     <span className="floatRight">{this.props.cart_details.currency}&nbsp;{this.props.cart_details.grand_total}</span>
                                 </div>

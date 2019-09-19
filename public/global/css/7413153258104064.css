@@ -1941,7 +1941,8 @@ body .ui-widget-content.fc-today.ui-state-highlight {
 .t-Form-inputContainer select.selectlist,
 .t-Form-inputContainer select.yes_no {
   color: #343434;
-  border-color: #dadada;
+  border: solid 1px #b1b1b1;
+  background-color: #fff;
 }
 
 .t-Form-field--readOnly {

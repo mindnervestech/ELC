@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
-import { Route, Link, Switch, Redirect } from 'react-router-dom'
+import { Route, Link, Switch, Redirect, withRouter } from 'react-router-dom'
+import { connect } from 'react-redux';
+
 class CashOnDelivery extends Component {
   constructor(props) {
     super(props)
@@ -21,7 +23,7 @@ class CashOnDelivery extends Component {
     })
   }
   render() {
-
+    let store_locale = this.props.globals.store_locale;
     let cashondelivery = this.props.cashondelivery;
     return (
 
@@ -47,10 +49,10 @@ class CashOnDelivery extends Component {
 
             <div className="col-lg-6" style={{ padding: '5px' }}>
             <FormattedMessage id="Checkout.Payment.Msg1" defaultMessage="By placing your order, you agree to our" /><br /> 
-            <Link to="/privacy-policy" title="Privacy & Cookie Policy" target="_blank" style={{ textDecoration: 'underline' }}>
-            <FormattedMessage id="Checkout.Payment.Msg2" defaultMessage="Privacy" />
-            </Link> <FormattedMessage id="Checkout.Payment.Msg3" defaultMessage="And" /> <Link to="/terms-and-conditions" title="Terms & Conditions" target="_blank" style={{ textDecoration: 'underline' }}>
-            <FormattedMessage id="Checkout.Payment.Msg4" defaultMessage="terms-and-conditions" /></Link>.</div>
+            <Link to={`/${store_locale}/privacy-policy`} title="Privacy & Cookie Policy" target="_blank" style={{ textDecoration: 'underline' }}>
+            <FormattedMessage id="Checkout.Payment.Msg2" defaultMessage="Privacy & Cookie Policy" />
+            </Link> <FormattedMessage id="Checkout.Payment.Msg3" defaultMessage="And" /> <Link to={`/${store_locale}/terms-and-conditions`} title="Terms & Conditions" target="_blank" style={{ textDecoration: 'underline' }}>
+            <FormattedMessage id="Checkout.Payment.Msg4" defaultMessage="Terms & Conditions" /></Link>.</div>
 
             <input type="hidden" id="P8_TOTAL" name="P8_TOTAL" defaultValue={129} /><div className="container">
               <div className="row">
@@ -85,4 +87,10 @@ class CashOnDelivery extends Component {
   }
 }
 
-export default CashOnDelivery;
+const mapStateToProps = state => {
+  return {
+      globals: state.global,
+  }
+}
+
+export default withRouter(connect(mapStateToProps)(CashOnDelivery));

@@ -64,7 +64,7 @@ html[dir="rtl"] .marginForContactDroupDown{
     width: 72% !important;
     margin: 0 auto !important;
 }
-    .mob-width ..intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-3 input, .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-3 input[type=text], .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-3 input[type=tel]{
+    .mob-width .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-3 input, .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-3 input[type=text], .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-3 input[type=tel]{
            padding-top: 12px !important;
     }
     .iti-mobile .intl-tel-input.iti-container {

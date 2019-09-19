@@ -1700,7 +1700,7 @@ html[dir="rtl"] .header .link .submenu .menufigure {
 }
 
 .header .link .subLink li:first-child {
-    padding: 6px 0
+    padding: 0px;
 }
 
 @media only screen and (min-width: 1280px) {
@@ -4361,10 +4361,6 @@ html[dir="rtl"] #AddAddress .intl-tel-input .country-list {
     font-size: 1.1rem;
 }
 
-html[dir="rtl"] .hide-screen-sm .t-Form-fieldContainer--floatingLabel.is-required:before {
-    left: 0;
-}
-
 @media only screen and (min-width: 769px) {
     .mobile-filter {
         display: none !important;
@@ -4696,9 +4692,7 @@ html[dir="rtl"] .click-collect3 {
 }
 
 
-@media only screen and (max-width:767px)
-{
-
+@media only screen and (max-width:767px){
     html[dir="rtl"]  .lable-count-class
     {
        margin-right: 35px!important;
@@ -4721,6 +4715,10 @@ html[dir="rtl"] .click-collect3 {
         background-color: #fff;
         -webkit-transform: translateX(-120%);
         transform: translateX(-120%)
+    }
+
+    .header .link .subLink{
+        padding: 0px;
     }
 }
 

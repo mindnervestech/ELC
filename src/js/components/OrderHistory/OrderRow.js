@@ -32,7 +32,7 @@ class OrderRow extends Component {
 
             <td className="t-Report-cell" headers="PAYMENT_METHOD">{payment_type}</td>
 
-            <td className="t-Report-cell" align="right" headers="ORDER_TOTAL">{this.props.value.currency} {this.props.value.order_total}</td>
+            <td className="t-Report-cell" align="left" headers="ORDER_TOTAL">{this.props.value.currency} {this.props.value.order_total}</td>
 
         </tr >);
     }

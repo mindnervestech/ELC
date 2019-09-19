@@ -6474,6 +6474,15 @@ html[dir="rtl"] .PagenationRightArrow{
 
 .paddingOnMobile0px10px{}
 
+.paymentEditButton{
+    background-color: #0D943F;
+    color: #fff;
+    border: solid 1px #0D943F;
+    border-radius: 20px;
+    padding: 10px 30px;
+    font-size: 15px;
+}
+
 @media (max-width:767px){
     @supports (-webkit-overflow-scrolling: touch) { 
         /* CSS specific to iOS devices */ 
