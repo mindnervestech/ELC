@@ -490,7 +490,7 @@ class SignUp extends Component {
                                   </div>
                                 </div>
                               </div>
-                               <div className="padding row">
+                               {/* <div className="padding row">
                                 <div className=" col-12 apex-col-auto">
                                 <div className="row block" id="P1001_LNAME_CONTAINER"><div className="rmPadding rmTopPadding t-Form-labelContainer">
                                     <label htmlFor="P1001_LNAME" id="P1001_LNAME_LABEL" className="t-Form-label bolt"><FormattedMessage id="Form.PhoneNumber" defaultMessage="Contact Number" /></label></div>
@@ -503,7 +503,7 @@ class SignUp extends Component {
                                     </div>
                                   </div>
                                 </div>
-                              </div> 
+                              </div>  */}
 
                               
                               <div className="padding row">
