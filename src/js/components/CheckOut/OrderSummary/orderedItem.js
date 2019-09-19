@@ -10,7 +10,7 @@ class OrderedItem extends Component {
 
     }
     render() {
-        
+
         let item_details = this.props.item.product_options.map((c, index) => {
             return (
                 <>
@@ -38,23 +38,29 @@ class OrderedItem extends Component {
                             </tr>
                         </tbody>
                     </table>
-                    <table className="qty" style={{textAlign: 'start'}}>
+                    <table className="qty" style={{ textAlign: 'start' }}>
                         <tr>
-                            <td className="price" style={{padding: "0px 10px"}}>
-                                <span className="p-price">
-                                    <span className="p-desc">Now </span>
-                                    <span className="p-currency">{this.props.item.currency}</span> {Math.round(this.props.item.special_price)}
-                                </span>
-                                <br />
-                                <del className="p-desc">
-                                    <span>Was </span>
-                                    <strong><span className="p-currency">{this.props.item.currency} </span> {this.props.item.price}</strong>
-                                </del>
-                                <br />
-                                <span className="p-price-saving">
-                                    <span className="p-desc"><FormattedMessage id="Savings.title" defaultMessage="Savings" /></span>
-                                    <span className="p-currency"> {Math.round(((this.props.item.price - this.props.item.special_price) / this.props.item.price) * 100)} %</span>
-                                </span>
+                            <td className="price" style={{ padding: "0px 10px" }}>
+                                {this.props.item.special_price ?
+                                    <div>
+                                        <span className="p-price">
+                                            <span className="p-desc">Now </span>
+                                            <span className="p-currency">{this.props.item.currency}</span> {Math.round(this.props.item.special_price)}
+                                        </span>
+                                        <br />
+                                        <del className="p-desc">
+                                            <span>Was </span>
+                                            <strong><span className="p-currency">{this.props.item.currency} </span> {this.props.item.price}</strong>
+                                        </del>
+                                        <br />
+                                        <span className="p-price-saving">
+                                            <span className="p-desc"><FormattedMessage id="Savings.title" defaultMessage="Savings" /></span>
+                                            <span className="p-currency"> {Math.round(((this.props.item.price - this.props.item.special_price) / this.props.item.price) * 100)} %</span>
+                                        </span>
+                                    </div>
+                                    : <del className="p-desc" style={{ textDecoration: 'unset' }}>
+                                        <strong><span className="p-currency">{this.props.item.currency} </span> {this.props.item.price}</strong>
+                                    </del>}
                                 <p><FormattedMessage id="Item.Qty" defaultMessage="Qty" /> {this.props.item.qty_ordered}</p>
                             </td>
                             {/* <td className="price">
@@ -76,51 +82,45 @@ class OrderedItem extends Component {
                                             <td className="prdimg">
                                                 <a href="">
                                                     <img src={this.props.item.image[0]} /></a></td>
-
                                             <td className="prddesc">
                                                 <h2>{this.props.item.name}</h2>
                                                 {item_details}
                                                 <p>{this.props.item.sku}</p>
-
                                             </td>
-
                                         </tr>
                                     </tbody>
                                 </table>
-
                             </td>
                             <td className="t-Report-cell" align="right" headers="SUBTOTAL">
                                 <table className="qty">
                                     <tbody>
                                         <tr>
-                                        <td className="price">
-                                            { this.props.item.special_price ?
-                                            <div>
-                                                <span className="p-price">
-                                                    <span className="p-desc">Now </span>
-                                                    <span className="p-currency">{this.props.item.currency}</span> { Math.round(this.props.item.special_price) }
-                                                </span>
-                                                <br/>
-                                                
-                                                <del className="p-desc">
-                                                    <span>Was </span>
-                                                    <strong><span className="p-currency">{this.props.item.currency} </span> {this.props.item.price}</strong>
-                                                </del>
-                                                <br/>
-                                                
-                                                <span className="p-price-saving">
-                                                    <span className="p-desc"><FormattedMessage id="Savings.title" defaultMessage="Savings"/></span>
-                                                    <span className="p-currency"> {Math.round( ( (this.props.item.price - this.props.item.special_price) / this.props.item.price) * 100)} %</span>
-                                                </span>
-                                            </div>  : 
-                                                <del className="p-desc p-price" style={{textDecoration:'unset'}}>
-                                                    <strong><span className="p-currency">{this.props.item.currency} </span> {this.props.item.price}</strong>
-                                                </del>
-                                            }
-                                            
+                                            <td className="price">
+                                                {this.props.item.special_price ?
+                                                    <div>
+                                                        <span className="p-price">
+                                                            <span className="p-desc">Now </span>
+                                                            <span className="p-currency">{this.props.item.currency}</span> {Math.round(this.props.item.special_price)}
+                                                        </span>
+                                                        <br />
 
-                                            <p><FormattedMessage id="Item.Qty" defaultMessage="Qty" /> {this.props.item.qty_ordered}</p>
-                                        </td>
+                                                        <del className="p-desc">
+                                                            <span>Was </span>
+                                                            <strong><span className="p-currency">{this.props.item.currency} </span> {this.props.item.price}</strong>
+                                                        </del>
+                                                        <br />
+
+                                                        <span className="p-price-saving">
+                                                            <span className="p-desc"><FormattedMessage id="Savings.title" defaultMessage="Savings" /></span>
+                                                            <span className="p-currency"> {Math.round(((this.props.item.price - this.props.item.special_price) / this.props.item.price) * 100)} %</span>
+                                                        </span>
+                                                    </div> :
+                                                    <del className="p-desc p-price" style={{ textDecoration: 'unset' }}>
+                                                        <strong><span className="p-currency">{this.props.item.currency} </span> {this.props.item.price}</strong>
+                                                    </del>
+                                                }
+                                                <p><FormattedMessage id="Item.Qty" defaultMessage="Qty" /> {this.props.item.qty_ordered}</p>
+                                            </td>
 
                                             {/* <td className="price">
                                             <span className="p-price">
