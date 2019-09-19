@@ -33,7 +33,7 @@ class menuNav extends Component {
  logOut = () => {
   this.props.onGetMenuNav(this.props.globals);
   this.props.onLogoutUser();
-   
+   this.closeHBMenu();
 }
   closeHBMenu = () => {
     document.querySelector("html").classList.remove("menuOpen");

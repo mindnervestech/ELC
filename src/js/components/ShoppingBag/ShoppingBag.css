@@ -1047,3 +1047,11 @@ font-size: 1em !important;
     padding-right: 0;
     text-align: center
 }
+
+.cart-subtotal{
+    padding: 20px 25px;
+    font-family: VAG Rounded ELC Light;
+    color: #4f4f4f; 
+    font-size: 22px;
+    line-height: 2em
+}

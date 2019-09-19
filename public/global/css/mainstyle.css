@@ -354,8 +354,8 @@ html[dir="rtl"] .cardPage .submit-button {
     font-size: 30px;
     font-family: "VAG Rounded ELC Bold";
     background-color: #fff;
-    border: solid 3px #eef8f2;
-    border-radius: 10px;
+    border: 1px solid #d6d6d6;
+    border-radius: 2px;
 }
 
 .cardPage .remove {
@@ -4338,8 +4338,8 @@ html[dir="rtl"] .homePage .contentBox h6 {
         font-size: 25px;
         font-family: "VAG Rounded ELC Bold";
         background-color: #fff;
-        border: solid 3px #e9f7ff;
-        border-radius: 10px;
+        border: 1px solid #d6d6d6;
+        border-radius: 2px;
     }
 
     .cardPage .email-field{

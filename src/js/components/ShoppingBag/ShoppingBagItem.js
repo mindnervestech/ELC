@@ -311,7 +311,7 @@ class ShoppingBagItem extends Component {
                                 </Col>
                                 <Col xs="6">
                                     <div className="row-4" style={{ textAlign: 'start' }}>
-                                        <div style={{ padding: '15px 25px', fontFamily: 'VAG Rounded ELC Light', color: "#4f4f4f" }}>
+                                        <div className="cart-subtotal">
                                             <span><FormattedMessage id="delivery-details.Subtotal.Title" defaultMessage="Subtotal" />:</span>
                                             <span className="floatRight">{this.props.cart_details.currency}&nbsp;{this.props.cart_details.subtotal}</span>
                                         </div>
