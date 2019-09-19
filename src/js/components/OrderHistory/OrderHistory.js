@@ -81,6 +81,7 @@ class Order extends Component {
                                             }} role="tab" aria-controls="USERWISHLIST" aria-selected="false" tabIndex={-1}>
                                                 <span className="FormattedMessage"><FormattedMessage id="profile.Wishlist.Title" defaultMessage="Wishlist" /></span>
                                             </Link></li>
+                                        <button onClick={this.logOut} className="t-Button t-Button--hot t-Button--gapTop showOnMobile floatRight" type="button" id="B28512592134220867"><span className="t-Button-label"><FormattedMessage id="header.logoutName" defaultMessage="Logout" /></span></button>
 
                                     </ul></div>
                                     <div className="t-ButtonRegion-buttons" />
