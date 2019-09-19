@@ -73,9 +73,9 @@ class MainHeader extends Component {
         //     this.props.onGetMenuNav(this.props.globals);
         // }
 
-        // if (this.props.countryList.length === 0) {
-        //     this.props.onGetCountryList();
-        // }
+        if (this.props.countryList.length === 0) {
+            this.props.onGetCountryList();
+        }
 
 
         let country = (cookie.load('country') === null) ? 'KSA' : cookie.load('country');
