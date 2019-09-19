@@ -156,7 +156,7 @@ class OrderSummary extends Component {
                                             </div>
                                             <div className="t-Region-body">
                                                                                             <div id="caddress">
-                                                                                                <p style={{ fontSize: '12px', letterSpacing: '0.1em' }}><span><strong><FormattedMessage id="DeliverTo.Text" defaultMessage="Deliver To" /></strong>
+                                                                                                <p style={{ fontSize: '12px', letterSpacing: '0.1em' }}><span><strong><FormattedMessage id="DeliverTo.Text" defaultMessage="Deliver To" />:</strong>
                                                                                                     {this.props.shipping_address.firstname ?
                                                                                                         this.props.shipping_address.firstname :
                                                                                                         this.props.shipping_address.deliver_to}

@@ -4192,6 +4192,14 @@ a.t-MediaList-itemWrap:focus {
   background-color: #e1e1e1;
 }
 
+html[dir="rtl"] .t-WizardSteps-wrap:after {
+  background-color: #e1e1e1;
+  right: 50%;
+}
+
+html[dir="rtl"] .t-WizardSteps-step:first-child .t-WizardSteps-wrap:after {
+  width: 100%
+}
 .t-WizardSteps-step .t-WizardSteps-marker {
   background-color: #c7c7c7;
 }
