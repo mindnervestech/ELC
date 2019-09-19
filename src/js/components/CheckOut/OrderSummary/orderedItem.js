@@ -9,17 +9,16 @@ class OrderedItem extends Component {
 
     }
     render() {
-        console.log('OrderedItem',this.props);
+        
         let item_details = this.props.item.product_options.map((c, index) => {
             return (
                 <>
                   {(c.label == 'Color' || c.label == 'اللون') &&  <p key={index}><FormattedMessage id="Cart.Color.Title" defaultMessage="Color" />: {c.value}</p>}
                   {(c.label == 'Size' || c.label == 'المقاس') && <p key={index}><FormattedMessage id="Cart.Size.Title" defaultMessage="Size" /> : {c.value}</p> } 
                </> 
-            )  
-        }
-            
+            ) }
         )
+        
         return (
             <table className="t-Report-report" summary="BASKET" key={this.props.key}>
                 <tbody>
@@ -49,20 +48,30 @@ class OrderedItem extends Component {
                                 <tbody>
                                     <tr>
                                         <td className="price">
-                                            <span className="p-price">
-                                                <span className="p-desc">Now </span>
-                                                <span className="p-currency">{this.props.item.currency}</span> { Math.round(this.props.item.special_price) }
-                                            </span>
-                                            <br/>
-                                            <del className="p-desc">
-                                                <span>Was </span>
-                                                <strong><span className="p-currency">{this.props.item.currency} </span> {this.props.item.price}</strong>
-                                            </del>
-                                            <br/>
-                                            <span className="p-price-saving">
-                                                <span className="p-desc"><FormattedMessage id="Savings.title" defaultMessage="Savings"/></span>
-                                                <span className="p-currency"> {Math.round( ( (this.props.item.price - this.props.item.special_price) / this.props.item.price) * 100)} %</span>
-                                            </span>
+                                            { this.props.item.special_price ?
+                                            <div>
+                                                <span className="p-price">
+                                                    <span className="p-desc">Now </span>
+                                                    <span className="p-currency">{this.props.item.currency}</span> { Math.round(this.props.item.special_price) }
+                                                </span>
+                                                <br/>
+                                                
+                                                <del className="p-desc">
+                                                    <span>Was </span>
+                                                    <strong><span className="p-currency">{this.props.item.currency} </span> {this.props.item.price}</strong>
+                                                </del>
+                                                <br/>
+                                                
+                                                <span className="p-price-saving">
+                                                    <span className="p-desc"><FormattedMessage id="Savings.title" defaultMessage="Savings"/></span>
+                                                    <span className="p-currency"> {Math.round( ( (this.props.item.price - this.props.item.special_price) / this.props.item.price) * 100)} %</span>
+                                                </span>
+                                            </div>  : 
+                                                <del className="p-desc p-price" style={{textDecoration:'unset'}}>
+                                                    <strong><span className="p-currency">{this.props.item.currency} </span> {this.props.item.price}</strong>
+                                                </del>
+                                            }
+                                            
 
                                             <p><FormattedMessage id="Item.Qty" defaultMessage="Qty" /> {this.props.item.qty_ordered}</p>
                                         </td>

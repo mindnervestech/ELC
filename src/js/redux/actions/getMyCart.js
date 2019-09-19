@@ -149,7 +149,10 @@ export const changeQty = (payload) => {
 
                     // }
 
-                    dispatch(changeQtyState({ products: prodArray }))
+                    dispatch(changeQtyState({ 
+                        products: prodArray,
+                        qtyData: res
+                    }))
                     dispatch(getMyCart({
                         quote_id: getState().myCart.quote_id,
                         store_id: getState().global.currentStore,
