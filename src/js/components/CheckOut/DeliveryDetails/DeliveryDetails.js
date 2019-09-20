@@ -614,10 +614,10 @@ class DeliveryDetails extends Component {
                                         <h2 className="t-ButtonRegion-title" id="mobile-buttons_heading">Mobile Button</h2>
                                         <div className="DeliveryDetails container">
                                             <Row className="row">
-                                                <Col xs="2" lg="2" md="2">
+                                                <Col xs="2" lg="2" md="2" style={{padding: 0}}>
                                                     <button onClick={this.goToCartDetails} className="t-Button t-Button--noLabel t-Button--icon t-Button--large t-Button--pillStart t-Button--stretch t-Button--padLeft t-Button--padRight t-Button--padTop t-Button--padBottom" type="button" id="B29280522081851518" title="Continue Shopping" aria-label="Continue Shopping"><span className="t-Icon fa fa-angle-left" aria-hidden="true" /></button>
                                                 </Col>
-                                                <Col xs="10" lg="10" md="10">
+                                                <Col xs="9" lg="9" md="9" style={{padding: 0}}>
                                                     <button onClick={this.submitForm} className="t-Button t-Button--hot t-Button--large t-Button--pillEnd t-Button--stretch t-Button--padLeft t-Button--padRight t-Button--padTop t-Button--padBottom" type="button" id="B29280091835851517"><span className="t-Button-label"><FormattedMessage id="Checkout.Proceed" defaultMessage="Proceed" /></span></button>
                                                 </Col>
                                             </Row>

@@ -392,13 +392,13 @@ class Payment extends Component {
 
 
                     <div className="Payment container">
-                      <div className="row">
-                        <div className="col col-2 ">
+                      <Row className="row">
+                        <Col xs="2" lg="2" md="2" style={{padding: 0}}>
                           <button className="t-Button t-Button--noLabel t-Button--icon t-Button--large t-Button--pillStart t-Button--stretch t-Button--padLeft t-Button--padRight t-Button--padTop t-Button--padBottom" onClick={this.goToDeliveryDetails} type="button" id="B29282633551930637" title="Continue Shopping" aria-label="Continue Shopping"><span className="t-Icon fa fa-angle-left" aria-hidden="true" /></button>
-                        </div><div className="col col-10 ">
+                        </Col><Col xs="9" lg="9" md="9" style={{padding: 0}}>
                           <button onClick={this.redirectToConfirm} className="t-Button t-Button--hot t-Button--large t-Button--pillEnd t-Button--stretch t-Button--padLeft t-Button--padRight t-Button--padTop t-Button--padBottom" type="button" id="B29282227949930637"><span className="t-Button-label"><FormattedMessage id="Checkout.Proceed" defaultMessage="Proceed" /></span></button>
-                        </div>
-                      </div>
+                        </Col>
+                      </Row>
                     </div>
 
 

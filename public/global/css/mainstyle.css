@@ -6531,3 +6531,16 @@ html[dir="rtl"] #mobile-click-colect{
         left: 5px !important;
     }
 }
+
+    @media (max-width:767px){
+        @supports (-webkit-overflow-scrolling: touch) { 
+            /* CSS specific to iOS devices */
+            html[dir="rtl"] .changecountry {
+                border: none !important;
+                width: 29% !important;
+                display: inline-block !important;
+                position: relative !important;
+                left: 5px !important;
+                }
+        }
+    }
