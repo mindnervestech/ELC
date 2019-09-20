@@ -339,21 +339,21 @@ class ShoppingBagItem extends Component {
                   </div>
                   <div className="prod-color" style={{color: "#4f4f4f"}}>
                      <div>
-                        <div className="home-deli" style={{ display: 'block', display: 'inline-block', textAlign: 'center' }}>
+                        <div id="mobile-home-deli" className="home-deli" style={{ display: 'block', display: 'inline-block', textAlign: 'center' }}>
                            <img src={freeDelivery} />
-                           <div style={{ padding: "30px 0px" }} className="blockTextColor">
+                           <div style={{ padding: "30px 10px", height: 140, width: '100%' }} className="blockTextColor">
                               <span><FormattedMessage id="delivery-details.HomeDelivery.Title" defaultMessage="Home Delivery" /></span>
                            </div>
-                           <div style={{ padding: "30% 0px 9%" }}>
+                           <div>
                               <span style={{ color: '#0D943F', fontWeight: 'bold' }}>Available</span>
                            </div>
                         </div>
-                        <div className="click-collect" style={{ display: 'inline-block', textAlign: 'center', verticalAlign: 'top'}}>
+                        <div id="mobile-click-colect" className="click-collect" style={{ display: 'inline-block', textAlign: 'center', verticalAlign: 'top'}}>
                            <img src={freeCollect} />
-                           <div style={{ padding: "30px 0px", color: 'gray' }} className="blockTextColor">
+                           <div style={{ padding: "30px 10px",height: 140, width: '100%', color: 'gray' }} className="blockTextColor">
                               <span>Click & Collect at The Entertainer</span>
                            </div>
-                           <div style={{ padding: "19% 0px 9%",fontWeight: 'bold',color: 'gray' }}>
+                           <div style={{ fontWeight: 'bold',color: 'gray' }}>
                            <span><FormattedMessage id="Comingsoon" defaultMessage="Coming soon" /></span>
                            </div>
                         </div>

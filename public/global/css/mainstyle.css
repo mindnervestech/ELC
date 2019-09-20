@@ -6483,6 +6483,21 @@ html[dir="rtl"] .PagenationRightArrow{
     font-size: 15px;
 }
 
+#mobile-click-colect{
+    margin-left: 10px !important;
+    height: 240px;
+}
+
+html[dir="rtl"] #mobile-click-colect{
+    margin-left: 0px !important;
+    margin-right: 10px !important;
+    height: 240px;
+}
+
+#mobile-home-deli{
+    height: 240px;
+}
+
 @media (max-width:767px){
     @supports (-webkit-overflow-scrolling: touch) { 
         /* CSS specific to iOS devices */ 

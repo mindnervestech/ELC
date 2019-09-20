@@ -587,7 +587,7 @@
         "BestSellers":"Best Sellers"
     },
     "ar": {
-        "Form.PhoneNumber":"",
+        "Form.PhoneNumber":"Contact Number *",
         "PageTitle.Wishlist.Empty": "قائمة الامنيات فارغة",
         "PageTitle.orderhistory.Empty": "سجل الطلبات غير متاح",
         "ContactUs.customerSerivces": "خدمة العملاء",

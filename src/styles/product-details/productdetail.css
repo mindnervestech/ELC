@@ -1880,6 +1880,10 @@ html[dir="rtl"] .styles_modal__gNwvD div{
 
 @media (max-width:767px){ 
 
+    .click-collect {
+        margin-left: 25px!important;
+    }
+    
     .addToCardPopup{
         padding: 15px !important;
     }
