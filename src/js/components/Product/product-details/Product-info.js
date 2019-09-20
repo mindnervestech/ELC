@@ -430,8 +430,8 @@ class ProductInfo extends Component {
 			image_array[newImageArray[i].text] = newImageArray[i].image;
 		}
 
-		if (document.getElementsByClassName("styles_modal__gNwvD")[0]) {
-			document.getElementsByClassName("styles_modal__gNwvD")[0].style.cssText = "height: 130px !important"
+		if(document.getElementsByClassName("styles_modal__gNwvD")[0]){
+			document.getElementsByClassName("styles_modal__gNwvD")[0].style.cssText="height: auto !important"
 		}
 		return (
 
