@@ -493,10 +493,10 @@ class SignUp extends Component {
                               </div>
                                <div className="padding row">
                                 <div className=" col-12 apex-col-auto" style={{padding: 0}}>
-                                <div className="row block" id="P1001_LNAME_CONTAINER" style={{paddingLeft:15}}><div className="rmPadding rmTopPadding t-Form-labelContainer">
-                                    <label htmlFor="P1001_LNAME" id="P1001_LNAME_LABEL" className="t-Form-label bolt"><FormattedMessage id="Form.PhoneNumber" defaultMessage="Contact Number" /></label></div>
+                                <div className="row block" id="P1001_LNAME_CONTAINER" style={{paddingLeft:0}}><div className="rmPadding rmTopPadding t-Form-labelContainer">
+                                    <label htmlFor="P1001_LNAME" id="P1001_LNAME_LABEL" className="t-Form-label bolt"><FormattedMessage id="Form.PhoneNumber" defaultMessage="Contact Number *" /></label></div>
                                   </div>
-                                  <div style={{padding: 0}} className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel is-required apex-item-wrapper plugin-intltelinput-www.jqueryscript.net js-show-label" id="P1001_PHONE_CONTAINER">
+                                  <div style={{padding: 0}} className="row t-Form-fieldContainer t-Form-fieldContainer--floatingLabel is-required apex-item-wrapper plugin-intltelinput-www.jqueryscript.net js-show-label" id="P1001_PHONE_CONTAINER">
                               
                                     <div style={{width: '100%'}} id="PhoneNumber" className={phoneNumberClassName} >
                                       <PhoneNumber changed={this.contactNumber} />

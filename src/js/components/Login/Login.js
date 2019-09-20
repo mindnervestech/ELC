@@ -60,6 +60,10 @@ class Login extends Component {
     }
   }
 
+  componentDidMount() {
+    this.props.onGetMenuNav(this.props.globals);
+  }
+
 
   // componentDidUpdate(prevProps, prevState, snapshot) {
   //   this.invalidLogin();
@@ -516,6 +520,7 @@ const mapStateToProps = state => {
     login_details: state.login,
     login_error: state.invalidLogin,
     globals: state.global,
+    menu: state.menu.menuNavData
   };
 }
 
@@ -523,6 +528,7 @@ const mapDispatchToProps = dispatch => {
   return {
     onLoginUser: (payload) => dispatch(actions.loginUser(payload)),
     onLogoutUser: () => dispatch(actions.logoutUser()),
+    onGetMenuNav: (payload) => dispatch(actions.getMenuNav(payload)),
     onAddToWishList: payload => dispatch(actions.addToWishlist(payload)),
     onClearForgotPass: () => dispatch(actions.clearForgotPass()),
   }

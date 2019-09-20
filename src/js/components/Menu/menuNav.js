@@ -57,7 +57,7 @@ class menuNav extends Component {
           <figure className=""><i className="icon-user"></i></figure>
           <div className="">
             <Link to={`/${store_locale}/login`} onClick={this.closeHBMenu}>
-    {this.props.user_details.isUserLoggedIn ? <span><FormattedMessage id="header.Hello" defaultMessage="Hello," />,&nbsp;&nbsp;{this.props.user_details.customer_details.firstname}</span> :<FormattedMessage id="Header.SignInOrRegister" defaultMessage="Sign in / Register" />}</Link>
+    {this.props.user_details.isUserLoggedIn ? <span><FormattedMessage id="header.Hello" defaultMessage="Hello" />,&nbsp;&nbsp;{this.props.user_details.customer_details.firstname}</span> :<FormattedMessage id="Header.SignInOrRegister" defaultMessage="Sign in / Register" />}</Link>
             <Link to={`/${store_locale}/login`} className="hide"><FormattedMessage id="header.logoutName" defaultMessage="logout" /></Link>
           </div>
         </div>

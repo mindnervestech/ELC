@@ -808,6 +808,16 @@ html[dir="rtl"] .intl-tel-input .selected-flag .iti-arrow {
     border-top: 4px solid #555
 }
 
+@media only screen and (min-width:767px) and (max-width:1024px)
+{
+    html[dir="rtl"] .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-4 input[type=tel] {
+        padding-right: 36%;
+        width: 100%;
+        padding-top: 4%!important;
+    }
+}
+
+
 html[dir="rtl"] .intl-tel-input.allow-dropdown .flag-container {
     right: 0;
     left: auto;
@@ -822,7 +832,7 @@ html[dir="rtl"] .intl-tel-input.allow-dropdown.separate-dial-code .selected-dial
 html[dir="rtl"] .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-4 input[type=tel] {
     padding-right: 36%;
     width: 100%;
-    padding-top: 10%;
+    padding-top: 6%!important;
 }
 
 .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-4 input[type=tel] {
