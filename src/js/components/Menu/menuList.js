@@ -173,7 +173,10 @@ class menuList extends Component {
 	render() {
 		const { navData } = this.props;
      
-		return  <ul className="link">
+		return <ul className="link">
+		<div className="divShowOnMobile">
+		<Spinner loading={this.props.spinnerProduct}></Spinner>
+		</div>
 			{/* <li>
 				<Link to={`/${this.state.store_locale}/offers`} onClick={this.closeHBMenu}>
 					<span>
