@@ -90,7 +90,6 @@ import logo1 from '../../../../../assets/images/you_may_also_like_1.png';
 class ProductBasic extends Component {
     constructor(props) {
         super(props);
-        console.log("this.props", this.props);
         this.state = {
 
         };

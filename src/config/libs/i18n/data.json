@@ -587,7 +587,8 @@
         "BestSellers":"Best Sellers",
         "Productquantityhasbeenupdated": "Product quantity has been updated.",
         "StockShortage1": "STOCK SHORTAGE - we have added ",
-        "StockShortage2": " units to your basket because we do not have enough stock."
+        "StockShortage2": " units to your basket because we do not have enough stock.",
+        "NotAvailableforcurrentstoreDelivery": "Not Available for current store Delivery"
     },
     "ar": {
         "Form.PhoneNumber":"Contact Number *",
@@ -1150,6 +1151,7 @@
         "BestSellers":"الأفضل مبيعاً",
         "Productquantityhasbeenupdated": "Product quantity has been updated.",
         "StockShortage1": "STOCK SHORTAGE - we have added ",
-        "StockShortage2": " units to your basket because we do not have enough stock."
+        "StockShortage2": " units to your basket because we do not have enough stock.",
+        "NotAvailableforcurrentstoreDelivery": "Not Available for current store Delivery"
     }
 }

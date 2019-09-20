@@ -113,7 +113,14 @@ class Product extends Component {
 		if(category_path[category_path.length - 2] == "products"){
 			url = category_path[category_path.length - 1]
 		}else{
-			url = category_path[category_path.length - 2] + '-' +category_path[category_path.length - 1]
+			if(category_path[category_path.length - 2] !== 'uae-en' &&
+				category_path[category_path.length - 2] !== 'uae-ar' &&
+				category_path[category_path.length - 2] !== 'ksa-en' &&
+				category_path[category_path.length - 2] !== 'ksa-en'){
+					url = category_path[category_path.length - 2] + '-' +category_path[category_path.length - 1]
+			}else{
+				url = category_path[category_path.length - 1]
+			}
 		}
 		const data = {
 			customerid: typeof this.props.customer_details.customer_id !== 'undefined' ? parseInt(this.props.customer_details.customer_id) : " ",

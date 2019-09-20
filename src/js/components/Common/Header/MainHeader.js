@@ -598,7 +598,7 @@ class MainHeader extends Component {
 
                     <div id="R33786937309169806" className="menuOverlay"> </div>
                     <div id="R33786847982169805" className="row-3">
-                        <a to="JavaScript:;" id="closeNav" className="closeNav">X</a>
+                        <a to="JavaScript:;" id="closeNav" className="closeNav"><i className="close fa fa-times" aria-hidden="true" /></a>
                         <div className="containers-main">
                             <div style={{ padding: "0px 10px" }}>
                                 <MenuNav />
