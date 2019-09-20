@@ -1039,13 +1039,20 @@ h3.h3p {
 }
 
 .loginFormHight{
-    height: 1000px;
+    height: 1130px;
     overflow: hidden!important;
 }
 
 @media only screen and (max-width: 767px) {
     .loginFormHight{
-        height: auto!important;
+        height:1200px!important;
+        overflow: hidden!important;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .loginFormHight{
+        height:1235px!important;
         overflow: hidden!important;
     }
 }

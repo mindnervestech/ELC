@@ -62,12 +62,13 @@ class phoneNumber extends Component {
         }
 
         return (
-            <div className='t-Form-itemWrapper'>
+            <div id="widthfull" className='t-Form-itemWrapper'>
                 <IntlTelInput
                     separateDialCode='true'
                     containerClassName="intl-tel-input allow-dropdown separate-dial-code iti-sdc-3"
                     inputClassName="text_field apex-item-text"
                     preferredCountries={country}
+                    style={{width: "100%!important"}}
                     onPhoneNumberChange={(status, value, countryData, number, id) => {
                         this.setState({ phone: value })
                     }}

@@ -64,7 +64,7 @@ class menuNav extends Component {
         {this.renderRedirect()}
        
         { this.props.user_details.isUserLoggedIn ?
-        <div className="signOut" style={{textAlign:'start'}}>
+        <div className="signOut divShowOnMobile" style={{textAlign:'start'}}>
          <span onClick={this.logOut}><FormattedMessage id="header.SignOut" defaultMessage="Sign Out"/></span>
         </div>:<div></div>
         }

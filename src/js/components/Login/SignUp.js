@@ -210,7 +210,7 @@ class SignUp extends Component {
     const data = {
       firstname: this.state.fields.firstName,
       lastname: this.state.fields.lastName,
-      contact_number: "1234567891",
+      contact_number:this.state.fields.contactNumber,
       email: this.state.fields.email,
       carrier_code:this.state.fields.carrierCode,
       password: this.state.fields.password,
@@ -220,6 +220,7 @@ class SignUp extends Component {
       quest_quote: "non",
       subscribe_to_newsletter: this.state.subscribe_to_newsletter,
     }
+
     this.props.onRegisterUserUser(data);
   }
 
@@ -491,13 +492,13 @@ class SignUp extends Component {
                                 </div>
                               </div>
                                <div className="padding row">
-                                <div className=" col-12 apex-col-auto">
-                                <div className="row block" id="P1001_LNAME_CONTAINER"><div className="rmPadding rmTopPadding t-Form-labelContainer">
+                                <div className=" col-12 apex-col-auto" style={{padding: 0}}>
+                                <div className="row block" id="P1001_LNAME_CONTAINER" style={{paddingLeft:15}}><div className="rmPadding rmTopPadding t-Form-labelContainer">
                                     <label htmlFor="P1001_LNAME" id="P1001_LNAME_LABEL" className="t-Form-label bolt"><FormattedMessage id="Form.PhoneNumber" defaultMessage="Contact Number" /></label></div>
                                   </div>
-                                  <div style={{width: '100%'}} className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel is-required apex-item-wrapper plugin-intltelinput-www.jqueryscript.net js-show-label" id="P1001_PHONE_CONTAINER">
+                                  <div style={{padding: 0}} className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel is-required apex-item-wrapper plugin-intltelinput-www.jqueryscript.net js-show-label" id="P1001_PHONE_CONTAINER">
                               
-                                    <div id="PhoneNumber" className={phoneNumberClassName} >
+                                    <div style={{width: '100%'}} id="PhoneNumber" className={phoneNumberClassName} >
                                       <PhoneNumber changed={this.contactNumber} />
                                       {contactNumberInputField}
                                     </div>

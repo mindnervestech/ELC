@@ -1603,3 +1603,26 @@ only screen and (min-resolution: 2dppx) {
 .hide {
     display: none;
 }
+
+
+#widthfull .intl-tel-input
+{
+    width:100%!important;
+}
+
+#widthfull .country-list{
+    width:100% !important;
+}
+
+
+@media only screen and (min-width:768px) and (max-width:1024px)
+{
+    #widthfull .country-list{
+        width:100% !important;
+    }
+    
+#widthfull .intl-tel-input
+{
+    width:100%!important;
+}
+}
