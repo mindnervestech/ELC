@@ -90,6 +90,7 @@ import logo1 from '../../../../../assets/images/you_may_also_like_1.png';
 class ProductBasic extends Component {
     constructor(props) {
         super(props);
+        console.log("this.props", this.props);
         this.state = {
 
         };
@@ -100,21 +101,92 @@ class ProductBasic extends Component {
 
     }
 
-    checkOut(type){
+    
+	addToCart(e) {
+        const { data, customerDetails, guest_user, isUserLoggedIn } = this.props;
+        
+		let prodData = {};
+		if (isUserLoggedIn) {
+			if (data.type == 'simple') {
+				prodData = {
+					"quote_id": customerDetails.quote_id,
+					"product_type": data.type,
+					"sku": data.sku,
+					"qty": this.state.defaultQty,
+					"product_option": {
+						"extension_attributes": {}
+					}
+				}
+			} else {
+				prodData = {
+					"quote_id": customerDetails.quote_id,
+					"product_type": data.type,
+					"sku": data.sku,
+					"qty": this.state.defaultQty,
+					"product_option": {
+						"extension_attributes": {
+							"configurable_item_options": [
+								{
+									"option_id": data.simpleproducts[0].color.option_id,
+									"option_value": data.simpleproducts[0].color.option_value
+								}
+							]
+						}
+					}
+				}
+			}
+			this.props.onAddToCart(prodData);
+		} else {
+			if (data.type == 'simple') {
+				prodData = {
+					"quote_id": guest_user.temp_quote_id,
+					"product_type": data.type,
+					"sku": data.sku,
+					"qty": this.state.defaultQty,
+					"product_option": {
+						"extension_attributes": {}
+					}
+				}
+			} else {
+				prodData = {
+					"quote_id": guest_user.temp_quote_id,
+					"product_type": data.type,
+					"sku": data.sku,
+					"qty": this.state.defaultQty,
+					"product_option": {
+						"extension_attributes": {
+							"configurable_item_options": [
+								{
+									"option_id": data.simpleproducts[0].color.option_id,
+									"option_value": data.simpleproducts[0].color.option_value
+								}
+							]
+						}
+					}
+				}
+			}
+			const myCart = {
+				quote_id: guest_user.temp_quote_id,
+				store_id: this.props.globals.currentStore,
+			};
+			this.props.onGuestAddToCart(prodData, myCart);
+		}
+	}
+    checkOut(type) {
         // if(type === 'CheckOut'){
         //    // this.props.history.push(`/${this.props.globals.store_locale}/new-check-out`);
         //    this.props.history.push(`/${this.props.globals.store_locale}/cart`);
         // }else{
-           this.props.onCloseCartModal();
+        this.props.onCloseCartModal();
         // }
-     }
+    }
 
     render() {
-        console.log("this.props", this.props);
-        return (
 
+        const store_locale=this.props.globals.store_locale
+        return (
             <div className="col addToCardPopup">
-                <div>
+                <div style={{marginBottom:15}}>
                     <span>
                         <i className="fa fa-check cbox-icon-success right-icon-fa">
                             <span>added to your basket </span>
@@ -136,37 +208,41 @@ class ProductBasic extends Component {
                     <h2 />
                 </div>
 
-                <div className="col" style={{padding: 0}}>
+                <div className="col" style={{ padding: 0, overflow: 'scroll', maxHeight: 300 }}>
                     <div className="button-model on-mobile">
                         <span className="related-title">Related Products</span>
                     </div>
+                    {this.props.cart_details.similar_products.map((item, index) =>
+                        (
+                            <div className="related-item productListDiv" key={index}>
+                                <div className="productImageDiv">
+                                <Link to={`/${store_locale}/products-details/${this.props.cart_details.similar_products[index].url_key}`} >
+                                    <img  onClick={() => this.checkOut('shopping')} className="related-item-img" src={this.props.cart_details.similar_products[index].productImageUrl[0]} />
+                                 </Link>
+                                </div>
+                                <div className="productDetailDiv" >
+                                    <div className="related-title">
+                                         <Link to={`/${store_locale}/products-details/${this.props.cart_details.similar_products[index].url_key}`}>
+                                        <span onClick={() => this.checkOut('shopping')}>{this.props.cart_details.similar_products[index].name}</span>
+                                         </Link> 
+                                    </div>
+                                    <div className="related-title">
+                                        <span>{this.props.cart_details.similar_products[index].currency} {this.props.cart_details.similar_products[index].price}</span>
+                                        {/* <span className="special_price">£49.99</span> */}
+                                    </div>
+                                </div>
 
-                    <div className="related-item productListDiv">
-                        <div className="productImageDiv">
-                            {/* <Link to={`/${store_locale}/products-details/${list[keyName].json.url_key}`}> */}
-                                <img className="related-item-img"  src={logo1} />
-                            {/* </Link> */}
-                        </div>
-                        <div className="productDetailDiv">
-                            <div className="related-title">
-                                {/* <Link to={`/${store_locale}/products-details/${list[keyName].json.url_key}`}> */}
-                                <span>Early Learning Centre Bouncy Palace</span>
-                                {/* </Link> */}
+                                <div className="alsoLikeCard add-cart addTocardButtonDiv">
+                                    <div className="homePage">
+                                        <button className="alsoLikeCardButton" style={{ marginTop: 0, width: '100%' }}>
+                                            <FormattedMessage id="Product.Detail.addToBasket" defaultMessage="Add to basket" /></button>
+                                    </div>
+                                </div>
                             </div>
-                            <div className="related-title">
-                                <span>£34.99 </span>
-                                <span className="special_price">£49.99</span>
-                            </div>
-                        </div>
-
-                        <div className="alsoLikeCard add-cart addTocardButtonDiv">
-                            <div className="homePage">
-                                <button  onClick={this.addToCart} className="alsoLikeCardButton" style={{ marginTop: 0, width:'100%' }}>
-                                    <FormattedMessage id="Product.Detail.addToBasket" defaultMessage="Add to basket" /></button>
-                            </div>
-                        </div>
-                    </div>
+                        ))
+                    }
                 </div>
+
             </div>
         );
     }
@@ -174,14 +250,30 @@ class ProductBasic extends Component {
 
 const mapStateToProps = state => {
     return {
-        globals: state.global,
-        productDetails: state.productDetails,
+        
+		isUserLoggedIn: state.login.isUserLoggedIn,
+		globals: state.global,
+		user_details: state.login.customer_details,
+		productZoomDetails: state.productDetails.productData,
+		customerDetails: state.login.customer_details,
+		productWishDetail: state.productDetails.productWishDetail,
+		removeWishListDetail:state.productDetails.productWishDetail,
+		productDetails: state.productDetails.productColor,
+		wishlistItem:state.wishList,
+		productDetailLoader: state.productDetails.productDetailLoader,
+		addToCardLoader: state.productDetails.addToCardLoader,
+		cart_details: state.myCart,
+		guest_user: state.guest_user,
+    
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
         onGetSize: payload => dispatch(actions.getSize(payload)),
+        OngetMyCart: (quoteId) => dispatch(actions.getMyCart(quoteId)),
+    	onAddToCart: payload => dispatch(actions.addToCart(payload)),
+	
     };
 };
 
