@@ -324,8 +324,8 @@ class ShoppingBagItem extends Component {
                             </Row>
                         </div>
                         <div className="hideDivOnMobile">
-                            <div className="blackTitle" style={{ fontSize: 18, padding: '10px 0px', color: "#4f4f4f" }}>
-                     <span>Select Delivery</span><span className="floatRight">{productCount}&nbsp; <FormattedMessage id="Item.text" defaultMessage="Item" /> &nbsp;|&nbsp;{this.props.cart_details.currency}&nbsp;{this.props.cart_details.grand_total}</span>
+                            <div className="blackTitle" style={{ fontSize: 18, padding: '10px 0px', color: "#4f4f4f", height: 50 }}>
+                     <span className="floatLift">Select Delivery</span><span className="floatRight">{productCount}&nbsp; <FormattedMessage id="Item.text" defaultMessage="Item" /> &nbsp;|&nbsp;{this.props.cart_details.currency}&nbsp;{this.props.cart_details.grand_total}</span>
                   </div>
                   <div className="prod-color" style={{color: "#4f4f4f"}}>
                      <div>
