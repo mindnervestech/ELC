@@ -3219,8 +3219,6 @@ html[dir="rtl"] .mobileHomePageIcon{
     border-radius: 0px;
 }
 
-
-
 .sortDroupDownOnMobile{
     width: 50%;
     height: 50px;
@@ -3241,7 +3239,7 @@ html[dir="rtl"] .Collapsible__trigger{
     border: none;
     padding: 11px;
     background: #fff;
-    color: #4f4f4f;
+    color: #0D943F;
     font-size: 1.4rem;
     font-family: "VAG Rounded ELC Bold";
 }

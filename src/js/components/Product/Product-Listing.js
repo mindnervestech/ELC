@@ -109,10 +109,15 @@ class Product extends Component {
 		// 	newCat = mainCat[0];
 		// }
 		let category_path = this.props.location.pathname.split('/')
-		
+		let url = ''
+		if(category_path[category_path.length - 2] == "products"){
+			url = category_path[category_path.length - 1]
+		}else{
+			url = category_path[category_path.length - 2] + '-' +category_path[category_path.length - 1]
+		}
 		const data = {
 			customerid: typeof this.props.customer_details.customer_id !== 'undefined' ? parseInt(this.props.customer_details.customer_id) : " ",
-			url_key: category_path[category_path.length - 1].trim(),//newCat ? newCat : mainCat[0],
+			url_key: url,//category_path[category_path.length - 1].trim(),//newCat ? newCat : mainCat[0],
 			sortby: sortbyv,
 			storeid: this.props.globals.currentStore,
 			filters: filters,
@@ -481,7 +486,7 @@ class Product extends Component {
 						<div className="t-Body-contentInner">
 							<div>
 								<div >
-									<div >
+									<div>
 										{/* Product List Component gose here*/}
 										{this.props.spinnerProduct ? <Spinner /> : <ProductData Data={this.props.productDetails.products} loading1={this.props.spinnerProduct} />}
 									</div>

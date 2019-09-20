@@ -1438,11 +1438,12 @@ html[dir="rtl"] .header .link>li .subMenuTrigger {
 .header .link>li .subMenuTrigger.open:before {
     /* -webkit-transform: scaleY(0);
     transform: scaleY(0); */
-    transform: rotate(180deg);
+    /* transform: rotate(180deg); */
     height: 22px;
     width: 22px;
-    left: -4px;
-    top: -8px;
+    left: -8px;
+    top: -10px;
+    transform: skewX(10deg) rotate(180deg);
 }
 
 .header .link>li .subMenuTrigger:before {
@@ -1456,6 +1457,7 @@ html[dir="rtl"] .header .link>li .subMenuTrigger {
     left: -10px;
     top: -7px;
     font-size: 20px;
+    transform: skewX(10deg);
 }
 
 .header .link>li .subMenuTrigger:after {

@@ -16,10 +16,13 @@ let filterOptionArray = []
 let filterOptionArrayForCheck = []
 let filterOptionArrayForCheckValidate = []
 let filterOptionArraySubCategary = []
+let filterOptionArrayForCheckValidateBackup = []
+let afterFilterShowOptionList = []
 let filterList = {}
 let filterOptionCheck = true
 let filterFirstOption = ""
 let updateHideOption = true
+let afterFilterShowOptionListCheck = true
 
 class SideManu extends Component {
 	constructor(props) {
@@ -41,14 +44,10 @@ class SideManu extends Component {
 	}
 
 	componentWillMount() {
-
-		
 		if (Object.keys(this.props.productDetails.products).length > 0) {
-	
-			// if (filterOptionCheck == true) {
-				
 				filterOptionArrayForCheck = []
 				filterOptionArraySubCategary=[]
+				filterOptionArrayForCheckValidate = []
 				filterOptionCheck = false;
 				const filterOptionList = this.props.productDetails.filters;
 				for (let Categary in filterOptionList) {
@@ -83,8 +82,9 @@ class SideManu extends Component {
 						}
 					}
 				}
+				filterOptionArrayForCheckValidateBackup = filterOptionArrayForCheckValidate
+				afterFilterShowOptionList = filterOptionArrayForCheckValidate
 				this.setState({ list: filterList });
-			// }
 		}
 	}
 
@@ -92,58 +92,52 @@ class SideManu extends Component {
 		if(updateHideOption){
 			updateHideOption = false
 			filterOptionArrayForCheckValidate = []
-				const filterOptionList = this.props.productDetails.filters;
-				for (let Categary in filterOptionList) {
-					for (let subCategary in filterOptionList[Categary]) {
-						filterOptionArrayForCheck.push(filterOptionList[Categary][subCategary].code + "/" + filterOptionList[Categary][subCategary].name);
-						filterOptionArraySubCategary.push(filterOptionList[Categary][subCategary].name)
-					}
-				}
-				
-				for (let value in filterOptionArrayForCheck) {
-					let splitValue = filterOptionArrayForCheck[value].split("/");
-					let checkSubmanu = 0
-					let remove = value
-					
-					for (let item in productList) {
-						if (splitValue[0] == "color") {
-							if(filterFirstOption == "color"){
-								for (let item in productListingData) {
-									if (splitValue[1] == productListingData[item].json.color_english) {
+				for(let applyFilter in filterOptionArray){
+					filterFirstOption = filterOptionArray[applyFilter].split("/")[0];
+					for (let value in afterFilterShowOptionList) {
+						let splitValue = afterFilterShowOptionList[value].split("/");
+						let checkSubmanu = 0
+						let remove = value
+						for (let item in productList) {
+							if (splitValue[0] == "color") {
+								if(filterFirstOption == "color"){
+									for (let item in productListingData) {
+										if (splitValue[1] == productListingData[item].json.color_english) {
+											if (checkSubmanu == 0) {
+												checkSubmanu = 1
+												filterOptionArrayForCheckValidate.push(afterFilterShowOptionList[value])
+											}
+										}
+									}
+								}else{
+									if (splitValue[1] == productList[item].json.color_english) {
 										if (checkSubmanu == 0) {
 											checkSubmanu = 1
-											filterOptionArrayForCheckValidate.push(filterOptionArrayForCheck[value])
+											filterOptionArrayForCheckValidate.push(afterFilterShowOptionList[value])
 										}
 									}
 								}
-							}else{
-								if (splitValue[1] == productList[item].json.color_english) {
-									if (checkSubmanu == 0) {
-										checkSubmanu = 1
-										filterOptionArrayForCheckValidate.push(filterOptionArrayForCheck[value])
-									}
-								}
-							}
-						} else {
-							for (let filter in productList[item].json.filtersdata) {
-								for (let age in productList[item].json.filtersdata[filter]) {
-									if (checkSubmanu == 0) {
-										if(filterFirstOption == filter){
-											let checkSubmanu2 = 0
-											for (let item2 in productListingData) {
-												for (let age2 in productListingData[item2].json.filtersdata[filterFirstOption]) {
-													if (checkSubmanu2 == 0) {
-														if (splitValue[1] == productListingData[item2].json.filtersdata[filterFirstOption][age2]) {
-															filterOptionArrayForCheckValidate.push(filterOptionArrayForCheck[value])
-															checkSubmanu2 = 1
+							} else {
+								for (let filter in productList[item].json.filtersdata) {
+									for (let age in productList[item].json.filtersdata[filter]) {
+										if (checkSubmanu == 0) {
+											if(filterFirstOption == filter){
+												let checkSubmanu2 = 0
+												for (let item2 in productListingData) {
+													for (let age2 in productListingData[item2].json.filtersdata[filterFirstOption]) {
+														if (checkSubmanu2 == 0) {
+															if (splitValue[1] == productListingData[item2].json.filtersdata[filterFirstOption][age2]) {
+																filterOptionArrayForCheckValidate.push(afterFilterShowOptionList[value])
+																checkSubmanu2 = 1
+															}
 														}
 													}
 												}
-											}
-										}else{
-											if (splitValue[1] == productList[item].json.filtersdata[filter][age]) {
-												filterOptionArrayForCheckValidate.push(filterOptionArrayForCheck[value])
-												checkSubmanu = 1
+											}else{
+												if (splitValue[1] == productList[item].json.filtersdata[filter][age]) {
+													filterOptionArrayForCheckValidate.push(afterFilterShowOptionList[value])
+													checkSubmanu = 1
+												}
 											}
 										}
 									}
@@ -153,6 +147,10 @@ class SideManu extends Component {
 					}
 				}
 				filterOptionArrayForCheckValidate = Array.from(new Set(filterOptionArrayForCheckValidate));
+				if(afterFilterShowOptionListCheck){
+					afterFilterShowOptionList = filterOptionArrayForCheckValidate
+					afterFilterShowOptionListCheck = false
+				}
 				this.setState({ list: filterList });
 		}
 	}
@@ -191,8 +189,10 @@ class SideManu extends Component {
 			productList = productListingData;
 			filterData = [];
 			this.props.action(productListingData);
-			updateHideOption = true
-			this.hideFilterOtionThoseNotInProduct()
+			filterOptionArrayForCheckValidate = filterOptionArrayForCheckValidateBackup
+			afterFilterShowOptionList = filterOptionArrayForCheckValidateBackup
+			afterFilterShowOptionListCheck = true
+			this.setState({ list: filterList });
 		} else {
 			this.setState({clearAllOption: true });
 			let checkForMultipalFilter = true
@@ -282,7 +282,6 @@ class SideManu extends Component {
 			if(Object.keys(uniqueNames2).length != 0){
 				productList = uniqueNames2
 			}
-			//console.log(productList)
 			this.props.action(filterData)
 			updateHideOption = true
 			this.hideFilterOtionThoseNotInProduct()
@@ -295,6 +294,10 @@ class SideManu extends Component {
 		filterOptionArray = []
 		filterData = []
 		productList = productListingData;
+		filterOptionArrayForCheckValidate = filterOptionArrayForCheckValidateBackup
+		afterFilterShowOptionList = filterOptionArrayForCheckValidateBackup
+		afterFilterShowOptionListCheck = true
+		this.setState({ list: filterList });
 	}
 
 	checkFilterIsAvailable = (value, code) => {
@@ -358,7 +361,7 @@ class SideManu extends Component {
 		let checkManu = 0
 		for (let item in filterOptionArrayForCheckValidate) {
 			let splitData = filterOptionArrayForCheckValidate[item].split('/')
-			if (splitData[0] == value.toLowerCase().replace(/\s/g,'')) {
+			if (splitData[0] == value.toLowerCase().replace(' ', '_')) {
 				if (checkManu == 0) {
 					checkManu = 1
 					
