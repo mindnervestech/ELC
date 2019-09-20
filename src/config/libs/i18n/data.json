@@ -584,7 +584,10 @@
         "BatteryIncluded":"Battery Included",
         "BatteryRequired":"Battery Required",
         "Brand":"Brand",
-        "BestSellers":"Best Sellers"
+        "BestSellers":"Best Sellers",
+        "Productquantityhasbeenupdated": "Product quantity has been updated.",
+        "StockShortage1": "STOCK SHORTAGE - we have added ",
+        "StockShortage2": " units to your basket because we do not have enough stock."
     },
     "ar": {
         "Form.PhoneNumber":"Contact Number *",
@@ -1144,6 +1147,9 @@
         "BatteryIncluded":"البطارية مشمولة",
         "BatteryRequired":"تتطلب بطارية",
         "Brand":"العلامة التجارية",
-        "BestSellers":"الأفضل مبيعاً"
+        "BestSellers":"الأفضل مبيعاً",
+        "Productquantityhasbeenupdated": "Product quantity has been updated.",
+        "StockShortage1": "STOCK SHORTAGE - we have added ",
+        "StockShortage2": " units to your basket because we do not have enough stock."
     }
 }

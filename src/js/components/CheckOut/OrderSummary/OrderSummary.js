@@ -29,6 +29,8 @@ class OrderSummary extends Component {
 
   componentDidMount() {
     const query = new URLSearchParams(this.props.location.search);
+    console.log("query.get('paytype')",query.get('paytype'))
+    cryptr= new Cryptr(query.get('order_id'));
     if (query.get('paytype') == 'COD') {
       this.props.orderJson({
         order_id: query.get('order_id')
@@ -42,7 +44,10 @@ class OrderSummary extends Component {
         trackF('Purchase');
       }
     } else {
-      success = query.get('status');
+        console.log("query.get('status')",query.get('status'))
+    //   success = query.get('status');
+      success = cryptr.decrypt(query.get('status'));
+      console.log(success);
       if (success == 'true') {
         this.props.orderJson({
           order_id: query.get('order_id')
@@ -53,7 +58,10 @@ class OrderSummary extends Component {
         }
       }
       if (query.get('order_id') && query.get('store_id')) {
-        success = query.get('status');
+          console.log(query.get('status'));
+        // success = query.get('status');
+        success = cryptr.decrypt(query.get('status'));
+        console.log(success);
         this.props.setOrderSummary({
           store_id: this.props.globals.currentStore ? this.props.globals.currentStore : query.get('store_id'),
           order_id: query.get('order_id')

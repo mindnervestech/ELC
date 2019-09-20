@@ -13,7 +13,7 @@ import NumericInput from 'react-numeric-input';
 import Popup from 'react-popup';
 import Spinner from '../Spinner/Spinner2';
 
-let successFlag = true;
+let successFlag = false;
 let stockSortageFlag = false;
 let stockSortageQTY = 0;
 let productCount = 0
@@ -49,7 +49,6 @@ class ShoppingBagItem extends Component {
         //   onKeypressEscape: () => {}
         // });
         this.props.OnremoveProduct({ index: index })
-
     }
 
     checkOut() {
@@ -61,46 +60,12 @@ class ShoppingBagItem extends Component {
         }
     }
 
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.qtyData && (successFlag || stockSortageFlag)) {
-            console.log(nextProps.qtyData);
-            let popupMessage = null;
-            if(stockSortageFlag){
-                stockSortageFlag = false;
-                popupMessage = Popup.register({
-                    title: 'Alert',
-                    content: `STOCK SHORTAGE - we have added ${stockSortageQTY} units to your basket because we do not have enough stock.`,
-                    buttons: {
-                        right: [{
-                            text: 'OK',
-                            action: function () {
-                                Popup.close();
-                            }
-                        }]
-                    }
-                });
-                Popup.queue(popupMessage);
-            }else{
-                successFlag = false;
-                popupMessage = Popup.register({
-                    title: 'Alert',
-                    content: 'Product quantity has been updated.',
-                    buttons: {
-                        right: [{
-                            text: 'OK',
-                            action: function () {
-                                Popup.close();
-                            }
-                        }]
-                    }
-                });
-                Popup.queue(popupMessage);
-            }
-        }
+    componentDidMount(){
+        successFlag = false;
+        stockSortageFlag = false;
     }
 
     handleChange(item, index, value) {
-        console.log(item, index, value);
         let { user_details, globals } = this.props;
         const { timeout } = this.state
         let qty = value;
@@ -109,6 +74,8 @@ class ShoppingBagItem extends Component {
         }
 
         if (item.is_in_stock && qty > 0) {
+            stockSortageFlag = false;
+            successFlag = false;
             if (parseInt(item.is_in_stock.stock) < parseInt(qty)) {
                 this.setState({
                     timeout: setTimeout(() => {
@@ -142,12 +109,19 @@ class ShoppingBagItem extends Component {
         }
     }
 
+    closeModal(type){
+        stockSortageFlag = false;
+        successFlag = false;
+        this.setState({
+            stockSortageFlag: true,
+        })
+    }
+
     render() {
         const product = this.props.cart_details.products;
         const store_locale = this.props.globals.store_locale;
 
         let cartProductPrice;
-
         // if (product.special_price !== null) {
         //    cartProductPrice = (
         //       <td className="price"><span className="p-price">
@@ -183,9 +157,25 @@ class ShoppingBagItem extends Component {
                             <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
                                 <span className="titleHover" style={{ fontSize: 15 }}>
                                     <FormattedMessage id="Checkout.Home" defaultMessage="Home" />&nbsp;\&nbsp;&nbsp;
-                     </span>
+                                </span>
                             </Link>
                             <span style={{ fontSize: 15, color: "#000", fontWeight: 'bold' }}><FormattedMessage id="header.mybasket" defaultMessage="My Basket" /></span>
+                        </div>
+                        <div className="modal-cart-update">
+                            {successFlag ?
+                                <div className="updated-qty-msg">
+                                <FormattedMessage id="Productquantityhasbeenupdated" defaultMessage="Product quantity has been updated." />
+                                <i className="close fa fa-times close-icon-update" aria-hidden="true" onClick={() => this.closeModal("stockSortageFlag")}/>
+                                </div>
+                            : ''}
+                            {stockSortageFlag ? 
+                                <div className="sort-storage-qty-msg">
+                                <FormattedMessage id="StockShortage1" defaultMessage="STOCK SHORTAGE - we have added " />
+                                    {stockSortageQTY}
+                                <FormattedMessage id="StockShortage2" defaultMessage=" units to your basket because we do not have enough stock." />
+                                <i className="close fa fa-times close-icon-sort" aria-hidden="true" onClick={() => this.closeModal("successFlag")}/>
+                                </div>
+                            : ''}
                         </div>
                         <div className="wishlist-title cart-breadcrumb">
                             <label>
