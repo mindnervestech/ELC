@@ -68,35 +68,23 @@ class ProductInfo extends Component {
 	}
 
 
-	componentDidUpdate()
-	{
-		if(this.props.productWishDetail.wishlist_success !== undefined)
-		{   
-			
-			if(this.state.ischeckadd)
-			{
-					
-					this.setState({wishlist_message:this.props.productWishDetail.wishlist_success,showAlert:true,ischeckadd:false});
-
-					setTimeout(() => {
-						this.closeAlert();
-					}, 5000);	
+	componentDidUpdate(){
+		if(this.props.productWishDetail.wishlist_success !== undefined){
+			if(this.state.ischeckadd){
+				this.setState({wishlist_message:this.props.productWishDetail.wishlist_success,showAlert:true,ischeckadd:false});
+				setTimeout(() => {
+					this.closeAlert();
+				}, 5000);	
 			}
-
 		}
+		if (this.props.removeWishListDetail.remove_wishlist_success){
+			if(this.state.ischeckremove){
+				this.setState({wishlist_message:this.props.removeWishListDetail.remove_wishlist_success,showAlert:true,ischeckremove:false});
 
-		 if (this.props.removeWishListDetail.remove_wishlist_success)
-		{
-             
-			if(this.state.ischeckremove)
-			{
-					this.setState({wishlist_message:this.props.removeWishListDetail.remove_wishlist_success,showAlert:true,ischeckremove:false});
-
-					setTimeout(() => {
-						this.closeAlert();
-					}, 5000);	
+				setTimeout(() => {
+					this.closeAlert();
+				}, 5000);	
 			}
-
 		}
 	}
 
@@ -115,13 +103,20 @@ class ProductInfo extends Component {
 	addToCart(e) {
 		const { data, customerDetails, guest_user, isUserLoggedIn } = this.props;
 		let prodData = {};
+		let totalQty = this.props.data.type === 'simple' ? parseInt(this.props.data.simpleqty): this.props.data.simpleproducts[0].qty;
+		let addQty = 0;
+		if(totalQty < this.state.defaultQty){
+			addQty = totalQty;
+		}else{
+			addQty = this.state.defaultQty;
+		}
 		if (isUserLoggedIn) {
 			if (data.type == 'simple') {
 				prodData = {
 					"quote_id": customerDetails.quote_id,
 					"product_type": data.type,
 					"sku": data.sku,
-					"qty": this.state.defaultQty,
+					"qty": addQty,
 					"product_option": {
 						"extension_attributes": {}
 					}
@@ -131,7 +126,7 @@ class ProductInfo extends Component {
 					"quote_id": customerDetails.quote_id,
 					"product_type": data.type,
 					"sku": data.sku,
-					"qty": this.state.defaultQty,
+					"qty": addQty,
 					"product_option": {
 						"extension_attributes": {
 							"configurable_item_options": [
@@ -151,7 +146,7 @@ class ProductInfo extends Component {
 					"quote_id": guest_user.temp_quote_id,
 					"product_type": data.type,
 					"sku": data.sku,
-					"qty": this.state.defaultQty,
+					"qty": addQty,
 					"product_option": {
 						"extension_attributes": {}
 					}
@@ -161,7 +156,7 @@ class ProductInfo extends Component {
 					"quote_id": guest_user.temp_quote_id,
 					"product_type": data.type,
 					"sku": data.sku,
-					"qty": this.state.defaultQty,
+					"qty": addQty,
 					"product_option": {
 						"extension_attributes": {
 							"configurable_item_options": [
@@ -222,6 +217,13 @@ class ProductInfo extends Component {
 			this.setState({ defaultQty: currQty + 1 });
 		}
 	};
+
+	handleChange(e){
+		let totalQty = this.props.data.type === 'simple' ? parseInt(this.props.data.simpleqty): this.props.data.simpleproducts[0].qty;
+		if(e.target.value.match("^[0-9]*$")!=null) {
+			this.setState({defaultQty: e.target.value});
+		}
+	}
 
 	onCloseFirstModal = () => {
 		this.setState({ openShareModel: false })
@@ -571,15 +573,18 @@ class ProductInfo extends Component {
 														type="text"
 														id="P3_QTY"
 														name="P3_QTY"
+														maxLength="3"
+														min={1}
 														value={this.state.defaultQty}
-														readOnly
+														// readOnly
+														onChange={this.handleChange.bind(this)}
 														className="input-qty"
 													/>
 
 													<span className="t-Form-itemText t-Form-itemText--post">
 														<i
 															className="icon max qty-dec-inc"
-															onClick={e => this.increment(data.type == 'simple' ? parseInt(data.simpleqty) : newImageArray[0].qty)}
+															onClick={e => this.increment(data.type === 'simple' ? parseInt(data.simpleqty) : newImageArray[0].qty)}
 														>
 															+
 													</i>

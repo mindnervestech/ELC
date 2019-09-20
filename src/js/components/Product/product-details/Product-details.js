@@ -84,18 +84,21 @@ class ProductDetails extends Component {
 			this.props.onGetProductDetails(data);
 		}
 		if (prevProps.addToCardLoader !== this.props.addToCardLoader) {
-			if (this.props.user_details.isUserLoggedIn) {
-				this.props.OngetMyCart({
-					quote_id: this.props.user_details.customer_details.quote_id,
-					store_id: this.props.globals.currentStore
-				})
-			} else {
-				this.props.OngetMyCart({
-					quote_id: this.props.guest_user.new_quote_id,
-					store_id: this.props.globals.currentStore
-				})
-
-			}
+			setTimeout(() => {
+				if (this.props.user_details.isUserLoggedIn) {
+					this.props.OngetMyCart({
+						quote_id: this.props.user_details.customer_details.quote_id,
+						store_id: this.props.globals.currentStore
+					})
+				} else {
+					this.props.OngetMyCart({
+						quote_id: this.props.guest_user.new_quote_id,
+						store_id: this.props.globals.currentStore
+					})
+	
+				}
+			}, 2000);
+			
 		}
 		if (this.props.addToCardLoader) {
 			if (!this.state.cartModelFlag) {
