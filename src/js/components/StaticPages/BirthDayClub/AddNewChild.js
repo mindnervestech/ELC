@@ -11,29 +11,29 @@ import * as actions from '../../../redux/actions/index';
 import BirthDayClub from './BirthDayClub';
 import BirthDayClubImage from '../../../../assets/images/BirthDayClub/birthday-club.png';
 
- class AddNewChild extends Component {
+
+class AddNewChild extends Component {
   constructor(props) {
     super(props);
-    this.state={
-      fields:{
-         name:'',
-         dd:'',
-         mm:'',
-         yyyy:'',
-         gender:'',
-         realationship:''
-      }, 
+    this.state = {
+      fields: {
+        name: '',
+        dd: '',
+        mm: '',
+        yyyy: '',
+        gender: '',
+        realationship: ''
+      },
 
       errors: {},
-      redirectToAddNewChild:true
+      redirectToAddNewChild: true
     }
 
     this.child = React.createRef();
-    
-   
   }
-  onCancleClick=()=>
-  {
+
+
+  onCancleClick = () => {
     this.child.current.cancleForm();
   }
 
@@ -43,11 +43,11 @@ import BirthDayClubImage from '../../../../assets/images/BirthDayClub/birthday-c
 
   handleValidation = (e) => {
     e.preventDefault();
-   
-      let fields = this.state.fields;
-      let errors = {};
-      let formIsValid = true;
-  
+
+    let fields = this.state.fields;
+    let errors = {};
+    let formIsValid = true;
+
     if (!fields["name"]) {
       formIsValid = false;
       errors["name"] = <FormattedMessage id="Signup.validation.name.empty" defaultMessage="First name cannot be empty" />;
@@ -60,30 +60,30 @@ import BirthDayClubImage from '../../../../assets/images/BirthDayClub/birthday-c
       }
     }
 
-    
+
     if (!fields["dd"]) {
       formIsValid = false;
       errors["dd"] = <FormattedMessage id="Signup.validation.name.empty" defaultMessage="Date field cannot be empty" />;
     }
-    
+
     if (!fields["mm"]) {
       formIsValid = false;
       errors["mm"] = <FormattedMessage id="Signup.validation.name.empty" defaultMessage="Month field cannot be empty" />;
     }
 
-    
+
     if (!fields["yyyy"]) {
       formIsValid = false;
       errors["yyyy"] = <FormattedMessage id="Signup.validation.name.empty" defaultMessage="Year field cannot be empty" />;
     }
 
-    
+
     if (!fields["gender"]) {
       formIsValid = false;
       errors["gender"] = <FormattedMessage id="Signup.validation.name.empty" defaultMessage="Gender field cannot be empty" />;
     }
 
-    
+
     if (!fields["realationship"]) {
       formIsValid = false;
       errors["realationship"] = <FormattedMessage id="Signup.validation.name.empty" defaultMessage=" Realationship field cannot be empty" />;
@@ -93,76 +93,130 @@ import BirthDayClubImage from '../../../../assets/images/BirthDayClub/birthday-c
     return formIsValid;
   }
 
-  
+
   render() {
-    let store_locale=this.props.globals.store_locale
+    let store_locale = this.props.globals.store_locale
     const errorsObj = this.state.errors;
+    let ddArray = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31'];
+
+    let mmArray = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    console.log("Date Array",ddArray)
+
+    let renderddArray = ddArray.map = (data, index) =>
+      (
+        <option key={index} value={data}>{data}</option>
+      )
+
+
+    let rendermmArray = mmArray.map = (data, index) =>
+      (
+        <option key={data} value={data}>{data}</option>
+      )
+
+
+    let yyArray = []
+    let d = new Date();
+    let currentYear = d.getFullYear();
+    let previousyear = currentYear - 25
+
+
+    for (let currentyy = currentYear; currentyy >= previousyear; currentyy--) {
+      yyArray.push(currentyy);
+
+      // yyArray.push(currentYear)
+      // currentYear=null;
+    }
+
+    console.log("Array of Year", yyArray)
+    let emailInputField =
+      <FormattedMessage id="enteryouremailaddress" defaultMessage="enter your email address">
+        {(message) =>
+          <input
+            type="text"
+            placeholder={message}
+            className="email-field"
+            value={this.state.email}
+            onChange={this.handleChange}
+          ></input>}
+      </FormattedMessage>
+
 
     let firstnameinputField = <div>
-    <div>
-    <input name="first_name" className="input-box" placeholder="First Name" value={this.state.fields['name']}></input>
+      <div>
+        <FormattedMessage id="addnewchild.firstname" defaultMessage="First Name">
+          {(message) =>
+            <input name="first_name" className="input-box" placeholder={message} value={this.state.fields['name']}></input>}
+        </FormattedMessage>
+      </div>
+      <span id="P1000_USERNAME_error_placeholder" className="a-Form-error" data-template-id="33609965712469734_ET"></span>
+    </div>;
+
+
+    let dinputField=<div style={{ paddingRight: '1.5%', display: "inline" }}>
+      { ddArray.map((data,index)=>{
+        return (
+          <option key={index} value={data}>{data}</option>
+        )
+      }
+      )
+
+      }
     </div>
-    <span id="P1000_USERNAME_error_placeholder" className="a-Form-error" data-template-id="33609965712469734_ET"></span>
-  </div>;
+    let ddinputField =
+      <div style={{ paddingRight: '1.5%', display: "inline" }}>
+            <select name="title" className="select-field-box2" style={{ marginRight: 0, padding: 10 }}>
+             {dinputField}           
+              </select>
+      </div>
+
+    let mminputField = <div style={{ paddingRight: '1.5%', display: "inline" }}>
+      <select name="title" className="select-field-box2" style={{ marginRight: 0, padding: 10 }}>
+        <option selected disabled>MM</option>
+        <option value="2011">value1</option>
+        <option value="2012">value2</option>
+        <option value="2013">value3</option>
+      </select>
+    </div>
+    let yyyyinputField = <div style={{ display: "inline" }}>
+      <select name="title" className="select-field-box2" style={{ marginRight: 0, padding: 10 }}>
+        <option selected disabled>YYYY</option>
+        <option value="2011">value1</option>
+        <option value="2012">value2</option>
+        <option value="2013">value3</option>
+      </select>
+    </div>
 
 
+    let genderInputField = <div>
+      <select name="title" className="select-field-box" style={{ width: "50%", marginRight: 0 }}>
+        <option selected disabled>Please Select</option>
+        <option value="2011">value1</option>
+        <option value="2012">value2</option>
+        <option value="2013">value3</option>
+      </select>
+    </div>;
 
-let ddinputField = 
-<div style={{ paddingRight:'1.5%' ,display:"inline"}}>
-                            <select name="title" className="select-field-box2" style={{marginRight: 0, padding:10 }}>
-                                <option selected disabled>DD</option>
-                                <option value="2011">value1</option>
-                                <option value="2012">value2</option>
-                                <option value="2013">value3</option>
-                            </select>
-                            </div>
+    let relationshipInputField = <div>
+      <select name="title" className="select-field-box" style={{ width: "50%", marginRight: 0 }}>
+        <option selected disabled>Please Select</option>
+        <option value="2011">value1</option>
+        <option value="2012">value2</option>
+        <option value="2013">value3</option>
+      </select>
+    </div>
 
-let mminputField= <div style={{ paddingRight:'1.5%',display:"inline"}}>
-<select name="title"  className="select-field-box2" style={{marginRight: 0,padding:10 }}>
-      <option selected disabled>MM</option>
-      <option value="2011">value1</option>
-      <option value="2012">value2</option>
-      <option value="2013">value3</option>
-  </select>
-  </div> 
-let yyyyinputField= <div style={{ display:"inline"}}>
-<select name="title"  className="select-field-box2" style={{marginRight: 0,padding:10 }}>
-    <option selected disabled>YYYY</option>
-    <option value="2011">value1</option>
-    <option value="2012">value2</option>
-    <option value="2013">value3</option>
-</select>
-</div>
- 
+    if ('name' in errorsObj) {
+      let firstnameinputField = <div>
+        <div>
+          <FormattedMessage id="first.name" defaultMessage="First Name">
+            {(message) =>
+              <input name="first_name" className="input-box" placeholder={message} value={this.state.fields['name']}></input>}
+          </FormattedMessage>
+        </div>
+        <span id="P1000_USERNAME_error_placeholder" className="a-Form-error" data-template-id="33609965712469734_ET">{errorsObj["name"]}</span>
+      </div>;
+    }
 
- let genderInputField=<div>
- <select name="title" className="select-field-box" style={{ width: "50%", marginRight: 0 }}>
- <option selected disabled>Please Select</option>
-     <option value="2011">value1</option>
-     <option value="2012">value2</option>
-     <option value="2013">value3</option>
- </select>
-</div>;
-
-let relationshipInputField= <div>
-<select name="title" className="select-field-box" style={{ width: "50%", marginRight: 0 }}>
-    <option selected disabled>Please Select</option>
-    <option value="2011">value1</option>
-    <option value="2012">value2</option>
-    <option value="2013">value3</option>
-</select>
-</div>
- 
- if('name' in errorsObj)
- {
-  let firstnameinputField = <div>
-  <div>
-  <input name="first_name" className="input-box" value={this.state.fields['name']}></input>
-  </div>
-  <span id="P1000_USERNAME_error_placeholder" className="a-Form-error" data-template-id="33609965712469734_ET">{errorsObj["name"]}</span>
-</div>;
- }
-  
 
     return (
       <div>
@@ -197,29 +251,29 @@ let relationshipInputField= <div>
 
         <Row>
           <Col xs="0" lg="3"></Col>
-          <Col xs="12" lg="6" style={{marginBottom:30}}>
-            <div><h2 style={{textAlign:'start',paddingRight:5}}>Add New Child</h2></div>
-            <div className="border-block" style={{textAlign:'start'}}>
+          <Col xs="12" lg="6" style={{ marginBottom: 30 }}>
+            <div><h2 style={{ textAlign: 'start', paddingRight: 5 }}>Add New Child</h2></div>
+            <div className="border-block" style={{ textAlign: 'start' }}>
               <div>
                 <Form>
                   <FormGroup className="m-40">
-                  <div style={{ marginTop: 15 }}>
-                            <span className="blackTitle1"> <FormattedMessage id="addnewchild.firstname" defaultMessage="" /></span>
-                  </div>
-                  <div>
-                  {firstnameinputField}
-                  </div>
-                  <div style={{ marginTop: 40 }}>
-                            <span className="blackTitle1"><FormattedMessage id="addnewchild.dateofbirth" defaultMessage="" /></span>
-                        </div>
-                        <div>
-                        {ddinputField}
+                    <div style={{ marginTop: 15 }}>
+                      <span className="blackTitle1"> <FormattedMessage id="addnewchild.firstname" defaultMessage="" /></span>
+                    </div>
+                    <div>
+                      {firstnameinputField}
+                    </div>
+                    <div style={{ marginTop: 40 }}>
+                      <span className="blackTitle1"><FormattedMessage id="addnewchild.dateofbirth" defaultMessage="" /></span>
+                    </div>
+                    <div>
+                      {ddinputField}
 
-                        {mminputField}
+                      {mminputField}
 
-                        {yyyyinputField}
+                      {yyyyinputField}
 
-                          {/* <div style={{ paddingRight:'1.5%',display:"inline"}}>
+                      {/* <div style={{ paddingRight:'1.5%',display:"inline"}}>
                           <select name="title"  className="select-field-box2" style={{marginRight: 0,padding:10 }}>
                                 <option selected disabled>MM</option>
                                 <option value="2011">value1</option>
@@ -227,7 +281,7 @@ let relationshipInputField= <div>
                                 <option value="2013">value3</option>
                             </select>
                             </div> */}
-                          {/* <div style={{ display:"inline"}}>
+                      {/* <div style={{ display:"inline"}}>
                             <select name="title"  className="select-field-box2" style={{marginRight: 0,padding:10 }}>
                                 <option selected disabled>YYYY</option>
                                 <option value="2011">value1</option>
@@ -236,37 +290,34 @@ let relationshipInputField= <div>
                             </select>
                             </div>
                              */}
-                            
-                        </div>
-                  <div style={{ marginTop: 40 }}>
-                            <span className="blackTitle1"><FormattedMessage id="addnewchild.boyorgirl" defaultMessage="" /></span>
-                        </div>
-                        {genderInputField}
-                        
-                  <div style={{ marginTop: 40 }}>
-                            <span className="blackTitle1"><FormattedMessage id="addnewchild.realationship" defaultMessage="" /></span>
-                        </div>
-                        {relationshipInputField}
-                       
 
-                <div className="button-div">
-                  <button
-                    className="add-child-buttton bclub-button"
-                    style={{ textAlign: "center" }}
-                  >
-                    <FormattedMessage id="birthdayclub.addnewchildbutton" defaultMessage="" />
-                  
-                  </button>&nbsp;&nbsp;&nbsp;&nbsp;
+                    </div>
+                    <div style={{ marginTop: 40 }}>
+                      <span className="blackTitle1"><FormattedMessage id="addnewchild.boyorgirl" defaultMessage="" /></span>
+                    </div>
+                    {genderInputField}
+
+                    <div style={{ marginTop: 40 }}>
+                      <span className="blackTitle1"><FormattedMessage id="addnewchild.realationship" defaultMessage="" /></span>
+                    </div>
+                    {relationshipInputField}
+                    <div className="button-div">
+                      <button
+                        className="add-child-buttton bclub-button"
+                        style={{ textAlign: "center" }}
+                      >
+                        <FormattedMessage id="birthdayclub.addnewchildbutton" defaultMessage="Add New Child" />
+                      </button>&nbsp;&nbsp;&nbsp;&nbsp;
                   {/* <BirthDayClub ref={this.child} /> */}
-                  <button
-                    className="button-cancel bclub-button"
-                    style={{ textAlign: "center" }}
-                    onClick={this.onCancleClick}
-                  >
-                   <FormattedMessage id="cancelButton" defaultMessage="" />
-                  
-                  </button>
-                </div>
+                      <button
+                        className="button-cancel bclub-button"
+                        style={{ textAlign: "center" }}
+                        onClick={this.onCancleClick}
+                      >
+                        <FormattedMessage id="cancelButton" defaultMessage="Cancel" />
+
+                      </button>
+                    </div>
                   </FormGroup>
                 </Form>
               </div>
@@ -280,11 +331,11 @@ let relationshipInputField= <div>
 }
 
 const mapStateToProps = state => {
-	return {
-	
-		spinnerProduct: state.spinner.loadingProduct,
-		globals:state.global
- 	}
+  return {
+
+    spinnerProduct: state.spinner.loadingProduct,
+    globals: state.global
+  }
 }
 
 
