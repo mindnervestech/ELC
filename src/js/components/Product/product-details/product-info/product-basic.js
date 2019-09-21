@@ -233,7 +233,7 @@ class ProductBasic extends Component {
 
                                 <div className="alsoLikeCard add-cart addTocardButtonDiv">
                                     <div className="homePage">
-                                        <button className="alsoLikeCardButton" style={{ marginTop: 0, width: '100%' }}>
+                                        <button className="alsoLikeCardButton" disabled="disabled" style={{ marginTop: 0, width: '100%' }}>
                                             <FormattedMessage id="Product.Detail.addToBasket" defaultMessage="Add to basket" /></button>
                                     </div>
                                 </div>

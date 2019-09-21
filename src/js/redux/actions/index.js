@@ -53,6 +53,11 @@ export {
 	getYouMayAlsoLikeData,
 } from './getProductDetails';
 
+
+export {
+
+	getAutoSuggestionProductSearchList
+} from './getAutoSugesstionProduct'
 export { getGuestCartId, getGuestCart, startGuestCheckout } from './guestUser';
 
 export {

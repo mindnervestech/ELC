@@ -6497,9 +6497,18 @@ html[dir="rtl"] #mobile-click-colect{
     height: 240px;
 }
 
+
+@media only screen and (min-width:768px) and (max-width:1024px)
+{
+    .width-autoSearch
+    {
+        width:100%
+    }
+}
+
 .autoSearch{
     width: 95%;
-    top: 45px;
+    top: 47px;
     z-index: 999;
     padding: 20px;
     position: absolute;
@@ -6508,6 +6517,8 @@ html[dir="rtl"] #mobile-click-colect{
    -moz-box-shadow: 0 2000vh 0 2000vh rgba(0, 0, 0, 0.3);
    box-shadow: 0 2000vh 0 2000vh rgba(0, 0, 0, 0.3);
    border-radius: 4px;
+   overflow: scroll;
+    max-height: 490px;
 }
 
 .autoSearch .images{
@@ -6540,6 +6551,8 @@ html[dir="rtl"] #mobile-click-colect{
     .autoSearch{
         width: 100%;
         top: 43px;
+        overflow: scroll;
+        max-height: 490px;
         z-index: 999;
         padding: 10px;
         position: absolute;

@@ -77,6 +77,10 @@ const GET_PROMOTION_TERMS_AND_CONDITION_DATA = { type: 'GET', url: STATIC_PAGES_
 
 
 
+//Auto Suggestion API
+
+const GET_AUTO_SUGG_DATA={type:'GET',url:'',dynamic:true}
+
 //Birthday club
 
 
@@ -108,6 +112,15 @@ export const API = {
 	getMenuNav: (data, cb) => request(data, cb, GET_MENU_NAVIGATION),
 	getProductDetails: (data, cb) =>{
 		let GET_PRODUCT_DETAILS = `${BASE_URL}productbyid/?store_id=${data.store}&url_key=${data.url_key}`;
+		request({}, cb, { type: 'GET', url: GET_PRODUCT_DETAILS });
+		// productbyid/?store_id=2&url_key=elc17-1
+		// request(data, cb, GET_PRODUCT_DETAILS)
+	} ,
+
+	
+
+	getAutoSuggestionProduct: (data, cb) =>{
+		let GET_PRODUCT_DETAILS = `${BASE_URL}searchautosuggest/?q=${data.q}&storeid=${data.storeId}`;
 		request({}, cb, { type: 'GET', url: GET_PRODUCT_DETAILS });
 		// productbyid/?store_id=2&url_key=elc17-1
 		// request(data, cb, GET_PRODUCT_DETAILS)

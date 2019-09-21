@@ -1,3 +1,5 @@
+
+export const GET_SUGGESTION_API='GET_SUGGESTION_API';
 export const GET_STORE_ID = 'GET_STORE_ID';
 export const CHANGE_STORE = 'CHANGE_STORE';
 export const STORE_LOCALE = 'STORE_LOCALE';
