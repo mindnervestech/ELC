@@ -6552,7 +6552,7 @@ html[dir="rtl"] #mobile-click-colect{
         width: 100%;
         top: 43px;
         overflow: scroll;
-        max-height: 490px;
+        max-height: 370px;
         z-index: 999;
         padding: 10px;
         position: absolute;

@@ -69,14 +69,15 @@ class Search extends Component {
 
   componentDidUpdate() {
     console.log(Object.keys(this.props.autoSearchSuggestionData).length)
-    if (this.state.checkLoop) {
+    
       if (Object.keys(this.props.autoSearchSuggestionData).length > 0) {
+        if (this.state.checkLoop) {
         console.log(this.props.autoSearchSuggestionData.autoSerachsuggestionData.product_data)
         productData = this.props.autoSearchSuggestionData.autoSerachsuggestionData.product_data
         this.setState({ checkLoop: false })
+        }
       }
     }
-  }
 
 
   autoSearchText = (e) => {
@@ -91,7 +92,7 @@ class Search extends Component {
       $("#autoSuagestion").show();
       this.props.onGetProductSuggestionData(data);
       //call auto suggestion api
-
+      this.setState({ checkLoop: true })
     } else {
       this.setState({ showAutoSuggestion: false })
     }
