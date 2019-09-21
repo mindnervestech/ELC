@@ -78,6 +78,183 @@ margin:0px;
 }
 }
 
+.addChildrenButton{
+    background-color: #fff;
+    color: #0D943F;
+    border: solid 1px #0D943F;
+    border-radius: 4px;
+    padding: 5px 50px;
+}
+
+.addChildrenRegisterButton:hover{
+    color: #0C8539;
+    border: solid 1px #0C8539;
+}
+
+.badyCloubImage{
+    width: 100%;
+    height: 460px;
+    object-fit: cover;
+    padding-left: 20px;
+}
+
+html[dir="rtl"] .badyCloubImage{
+    width: 100%;
+    height: 460px;
+    object-fit: cover;
+    padding-left: 0px;
+    padding-right: 20px;
+}
+
+.addChildrenRegisterButton{
+    background-color: #0D943F;
+    color: #fff;
+    border: solid 1px #0D943F;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: bold;
+    width: 60%;
+    padding: 10px 0px;
+}
+
+.addChildrenRegisterButton:hover{
+    background-color: #0C8539;
+    color: #fff;
+}
+
+.errorMessageDiv{
+    width: 100%;
+    padding: 15px 0px;
+}
+
+.errorMessage{
+    margin-top: 10px;
+    border-color: #EE0E19;
+    color: #EE0E19;
+    background-color: #ffffff;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 4px;
+    padding: 5px 30px 5px 30px;
+    padding-right: 30px;
+    text-align: center;
+    font-size: 14px;
+    letter-spacing: 0.065rem;
+}
+
+.crossIcon{
+    position: absolute !important;
+    top: 50px;
+    right: 0;
+    font-size: 20px !important;
+    color: black !important;
+    cursor: pointer;
+    z-index: 99;
+}
+
+html[dir="rtl"] .crossIcon{
+    position: absolute !important;
+    top: 50px;
+    right: auto;
+    left: -20px;
+    font-size: 20px !important;
+    color: black !important;
+    cursor: pointer;
+    z-index: 99;
+}
+
+.react-datepicker__input-container{
+    width: 100%;
+}
+
+.react-datepicker-wrapper{
+    display: block !important;
+}
+
+.alignStart{
+    text-align: start
+}
+
+.RadioButton{
+    height: 20px;
+    width: 20px;
+}
+.radioButton{
+    margin-left: 20px;
+}
+
+html[dir="rtl"] .radioButton{
+    margin-right: 20px;
+    margin-left: 0px
+}
+
+.radioButtonText{
+    margin-left: 10px;
+}
+
+html[dir="rtl"] .radioButtonText{
+    margin-right: 10px;
+    margin-left: 0px
+}
+.genderPadding{}
+
+html[dir="rtl"] .genderPadding{
+    padding: 9px 22% 5px 15px;
+}
+
+.removeRow{}
+
+@media (max-width:767px){
+    .crossIcon {
+        position: absolute !important;
+        top: 50px;
+        right: -10px;
+        font-size: 20px !important;
+        color: black !important;
+        cursor: pointer;
+        z-index: 99;
+    }
+
+    html[dir="rtl"] .crossIcon {
+        position: absolute !important;
+        top: 50px;
+        right: auto;
+        left: -10px;
+        font-size: 20px !important;
+        color: black !important;
+        cursor: pointer;
+        z-index: 99;
+    }
+
+    .addChildrenRegisterButton{
+        width: 100%;
+    }
+
+    html[dir="rtl"] .genderPadding{
+        padding: 9px 17% 5px 15px;
+    }
+
+    .addChildrenButton{
+        background-color: #fff;
+        color: #0D943F;
+        border: solid 1px #0D943F;
+        border-radius: 4px;
+        padding: 5px 20px;
+        width: 100%;
+    }
+
+    .removeRow{
+        margin-right: 0px !important;
+        margin-left: 0px !important;
+    }
+
+    .badyCloubImage{
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        padding-left: 0px;
+    }
+}
 
 
 @media only screen and (max-width:767px)
