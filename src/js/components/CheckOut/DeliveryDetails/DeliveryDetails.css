@@ -899,6 +899,13 @@ html[dir="rtl"] .intl-tel-input .country-list {
     text-align: center;
     color: #969ca0;
     cursor: pointer;
+    height: 70px;
+    overflow: hidden;
+}
+
+html[dir="rtl"] .shipping-tabs .tab{
+    height: 80px !important;
+    overflow: hidden;
 }
 
 .shipping-tabs .tab.selected {

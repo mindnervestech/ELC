@@ -181,7 +181,7 @@ class ProductDetails extends Component {
 								</div>
 							</div>
 							: ''}
-						{this.state.addToCartModal ? <div>
+						{this.state.addToCartModal && this.props.cart_details.similar_products ? <div>
 							<Modal  open={this.state.addToCartModal} onClose={this.onCloseCartModal}>
 								<AddToCartModal onCloseCartModal={this.onCloseCartModal} />
 							</Modal>
