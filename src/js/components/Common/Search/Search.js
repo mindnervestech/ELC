@@ -66,31 +66,33 @@ class Search extends Component {
     }
   }
 
-  componentDidUpdate() {
-      if (Object.keys(this.props.autoSearchSuggestionData).length > 0 && this.props.autoSearchSuggestionData.autoSerachsuggestionData != undefined) {
-        if (this.state.checkLoop) {
-        productData = this.props.autoSearchSuggestionData.autoSerachsuggestionData.product_data
-        this.setState({ checkLoop: false })
-        }
-      }
-    }
+  // componentDidUpdate() {
+  //     if (Object.keys(this.props.autoSearchSuggestionData).length > 0 && this.props.autoSearchSuggestionData.autoSerachsuggestionData != undefined) {
+  //       console.log(this.props.autoSearchSuggestionData.autoSerachsuggestionData.product_data)
+  //       if (this.state.checkLoop) {
+  //       productData = this.props.autoSearchSuggestionData.autoSerachsuggestionData.product_data
+  //       this.setState({ checkLoop: false })
+  //       }
+  //     }
+  // }
+
 
   autoSearchText = (e) => {
-    this.state.searchText = e.target.value
-    if (e.target.value.length >= 3) {
-      console.log(e.target.value)
-      const data = {
-        q: this.state.searchText,
-        storeId: this.props.globals.currentStore
-      }
-      this.setState({ showAutoSuggestion: true })
-      $("#autoSuagestion").show();
-      this.props.onGetProductSuggestionData(data);
-      //call auto suggestion api
-      this.setState({ checkLoop: true })
-    } else {
-      this.setState({ showAutoSuggestion: false })
-    }
+    // this.state.searchText = e.target.value
+    // if (e.target.value.length >= 3) {
+    //   console.log(e.target.value)
+    //   const data = {
+    //     q: this.state.searchText,
+    //     storeId: this.props.globals.currentStore
+    //   }
+    //   this.setState({ showAutoSuggestion: true })
+    //   $("#autoSuagestion").show();
+    //   this.props.onGetProductSuggestionData(data);
+    //   //call auto suggestion api
+    //   this.setState({ checkLoop: true })
+    // } else {
+    //   this.setState({ showAutoSuggestion: false })
+    // }
   }
 
   gotoProductListPage = (key) => {
@@ -117,7 +119,7 @@ class Search extends Component {
           <img src={searchLogo} className="searchLogo"></img>
         </button>
 
-        <div id="autoSuagestion" className="autoSearch width-autoSearch" style={this.state.showAutoSuggestion ? { display: 'block' } : { display: 'none' }}>
+        {/* <div id="autoSuagestion" className="autoSearch width-autoSearch" style={this.state.showAutoSuggestion ? { display: 'block' } : { display: 'none' }}>
 
           {Object.keys(productData).map((item, index) => (
 
@@ -137,7 +139,7 @@ class Search extends Component {
               </Col>
             </Row>
           ))}
-        </div>
+        </div> */}
       </div>
 
     )
