@@ -68,14 +68,15 @@ class Search extends Component {
 
 
   componentDidUpdate() {
-    console.log(Object.keys(this.props.autoSearchSuggestionData).length)
-    
-      if (Object.keys(this.props.autoSearchSuggestionData).length > 0) {
+      if (Object.keys(this.props.autoSearchSuggestionData).length > 0 && this.props.autoSearchSuggestionData.autoSerachsuggestionData != undefined) {
+        console.log(this.props.autoSearchSuggestionData)
         if (this.state.checkLoop) {
         console.log(this.props.autoSearchSuggestionData.autoSerachsuggestionData.product_data)
         productData = this.props.autoSearchSuggestionData.autoSerachsuggestionData.product_data
         this.setState({ checkLoop: false })
         }
+      }else{
+        this.state.showAutoSuggestion = false;
       }
     }
 

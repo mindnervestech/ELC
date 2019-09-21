@@ -185,10 +185,10 @@ class ProductBasic extends Component {
         const store_locale=this.props.globals.store_locale
         return (
             <div className="col addToCardPopup">
-                <div style={{marginBottom:15}}>
+                <div style={{marginBottom:15, textAlign: 'start'}}>
                     <span>
                         <i className="fa fa-check cbox-icon-success right-icon-fa">
-                            <span>added to your basket </span>
+                            <span>Added to your basket </span>
                         </i>
                     </span>
                 </div>
