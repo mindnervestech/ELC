@@ -6497,7 +6497,61 @@ html[dir="rtl"] #mobile-click-colect{
     height: 240px;
 }
 
+.autoSearch{
+    width: 95%;
+    top: 45px;
+    z-index: 999;
+    padding: 20px;
+    position: absolute;
+    background-color: #fff;
+    -webkit-box-shadow: 0 2000vh 0 2000vh rgba(0, 0, 0, 0.3);
+   -moz-box-shadow: 0 2000vh 0 2000vh rgba(0, 0, 0, 0.3);
+   box-shadow: 0 2000vh 0 2000vh rgba(0, 0, 0, 0.3);
+   border-radius: 4px;
+}
+
+.autoSearch .images{
+    height: 80px;
+    width: 80px;
+}
+
+.autoSearch .productName {
+    font-size: 15px;
+    color: #0D943F;
+    font-weight: bold;
+    height: 80px;
+    vertical-align: middle;
+    display: table-cell;
+}
+
+.autoSearch .producyPrise {
+    font-size: 17px;
+    color: #0D943F;
+    font-weight: bold;
+    height: 80px;
+    vertical-align: middle;
+    display: block;
+    padding-top: 20px;
+    width: 100%;
+    text-align: end;
+}
+
 @media (max-width:767px){
+    .autoSearch{
+        width: 100%;
+        top: 43px;
+        z-index: 999;
+        padding: 10px;
+        position: absolute;
+        background-color: #fff;
+        -webkit-box-shadow: 0 2000vh 0 2000vh rgba(0, 0, 0, 0.3);
+        -moz-box-shadow: 0 2000vh 0 2000vh rgba(0, 0, 0, 0.3);
+        box-shadow: 0 2000vh 0 2000vh rgba(0, 0, 0, 0.3);
+        border-radius: 4px;
+    }
+}
+
+
     @supports (-webkit-overflow-scrolling: touch) { 
         /* CSS specific to iOS devices */ 
         .footer-css .Collapsible__trigger:after {

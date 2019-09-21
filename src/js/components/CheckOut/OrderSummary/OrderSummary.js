@@ -12,6 +12,7 @@ let Cryptr = require('cryptr');
 let cryptr = null;
 
 let success = 'true';
+let orderNumber = '';
 class OrderSummary extends Component {
 
   constructor(props) {
@@ -56,6 +57,9 @@ class OrderSummary extends Component {
           initializeF()
           trackF('Purchase');
         }
+        let string = window.location.href
+		    let data = string.split('=')
+		    orderNumber = data[2].split('&')[0]
       }
       if (query.get('order_id') && query.get('store_id')) {
           console.log(query.get('status'));
@@ -139,8 +143,10 @@ class OrderSummary extends Component {
                                               <div className="t-Region-buttons-right" />
                                             </div>
                                             <div className="t-Region-body">
-                                              <p className="paddingOnMobile0px10px" style={{ fontSize: '22px', letterSpacing: '0.04em', fontWeight: 200 }}>{this.props.order_number}</p>
-                                            </div>
+                                            {success == 'true'?
+                                              <p className="paddingOnMobile0px10px" style={{ fontSize: '22px', letterSpacing: '0.04em', fontWeight: 200 }}>{orderNumber}</p>
+                                              :<p className="paddingOnMobile0px10px" style={{ fontSize: '22px', letterSpacing: '0.04em', fontWeight: 200 }}>{this.props.order_number}</p>}
+                                              </div>
                                             <div className="t-Region-buttons t-Region-buttons--bottom">
                                               <div className="t-Region-buttons-left" />
                                               <div className="t-Region-buttons-right" />
