@@ -72,8 +72,6 @@ class Search extends Component {
         productData = this.props.autoSearchSuggestionData.autoSerachsuggestionData.product_data
         this.setState({ checkLoop: false })
         }
-      }else{
-        this.state.showAutoSuggestion = false;
       }
     }
 
