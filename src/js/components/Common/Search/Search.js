@@ -6,6 +6,7 @@ import { Container, Row, Col } from 'reactstrap';
 import logo1 from '../../../../assets/images/you_may_also_like_1.png';
 import { connect } from 'react-redux';
 import * as actions from '../../../redux/actions/index';
+import $ from 'jquery';
 
 let data = {};
 let productData = {}
@@ -21,9 +22,6 @@ class Search extends Component {
       popupVisible: false
     }
   }
-
-
-
 
 
   // handleClick= ()=>{
@@ -75,13 +73,9 @@ class Search extends Component {
       if (Object.keys(this.props.autoSearchSuggestionData).length > 0) {
         console.log(this.props.autoSearchSuggestionData.autoSerachsuggestionData.product_data)
         productData = this.props.autoSearchSuggestionData.autoSerachsuggestionData.product_data
-
-        //this.setState({showAutoSuggestion:true})
-        //console.log(this.state.showAutoSuggestion)
         this.setState({ checkLoop: false })
       }
     }
-
   }
 
 
@@ -94,6 +88,7 @@ class Search extends Component {
         storeId: this.props.globals.currentStore
       }
       this.setState({ showAutoSuggestion: true })
+      $("#autoSuagestion").show();
       this.props.onGetProductSuggestionData(data);
       //call auto suggestion api
 
@@ -110,9 +105,13 @@ class Search extends Component {
 
 
   render() {
-
+   $(document).click(function(e) {
+    if( e.target.id != 'check') {
+      $("#autoSuagestion").hide();
+    }
+  });
     return (
-      <div className="search">
+      <div className="search" id="check">
         {this.renderRedirect()}
         <FormattedMessage id="SearchText" defaultMessage="search...">
           {(message) =>
@@ -122,7 +121,7 @@ class Search extends Component {
           <img src={searchLogo} className="searchLogo"></img>
         </button>
 
-        <div className="autoSearch width-autoSearch" style={this.state.showAutoSuggestion ? { display: 'block' } : { display: 'none' }}>
+        <div id="autoSuagestion" className="autoSearch width-autoSearch" style={this.state.showAutoSuggestion ? { display: 'block' } : { display: 'none' }}>
 
           {Object.keys(productData).map((item, index) => (
 
