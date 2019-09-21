@@ -17,7 +17,7 @@ class AlertMsg extends Component {
       this.props.closedScroll();
    }
    render() {
-      let showAlert = <> <div className="alertify"><div className="dialog"><div><p className="msg"> <FormattedMessage id="OutOfStock.Message" defaultMessage="Out Of Stock Message" /></p><nav><button className="ok" tabIndex={1} onClick={this.hideAlertBox}><FormattedMessage id="Ok.text" defaultMessage="Ok" /></button></nav></div></div></div>);</>;
+      let showAlert = <> <div className="alertify"><div className="dialog"><div><p className="msg" style={{color:'#f42121'}}> <FormattedMessage id="OutOfStock.Message" defaultMessage="Out Of Stock Message" /></p><nav><button className="ok" tabIndex={1} onClick={this.hideAlertBox}><FormattedMessage id="Ok.text" defaultMessage="Ok" /></button></nav></div></div></div>);</>;
       return (<>
          {this.state.showAlert ? showAlert : null}
       </>

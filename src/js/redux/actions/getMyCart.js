@@ -48,7 +48,7 @@ export const getMyCart = (payload) => {
                     dispatch(callActionForMyCart(newState))
 
                 } else if ((res.status) && (res.code == 200) && (!('data' in res))) {
-                    dispatch(clearCartItem())
+                    // dispatch(clearCartItem())
                 }else if(!res.status && res.code === 400){
                     if (res.new_quote_id !== "") {
                         let newQuoteId = {
@@ -235,6 +235,7 @@ export const clearCartItem = () => {
         payload: {
             new_quote_id: null,
             startGuestCheckout: false,
+            temp_quote_id: null,
         }
     }
 }
@@ -258,6 +259,7 @@ export const setOrderSummary = (payload) => {
                     payload: { order_summary: { order_data: res.order_data } }
                 })
                 dispatch(loadingSpinner({ loading: false }))
+                dispatch(clearCartItem())
             },
             error: err => {
                 dispatch(loadingSpinner({ loading: false }))

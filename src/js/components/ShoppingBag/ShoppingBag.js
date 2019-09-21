@@ -3,7 +3,7 @@ import ShoppingBagItem from './ShoppingBagItem';
 import OutOfStock from './OutOfStock';
 import EmptyShoppingBag from './EmptyShoppingBag';
 import ReactDOM from 'react-dom';
-import Alert from './AlertMsg'
+import Alert from './AlertMsg';
 import AlertBox from '../Common/AlertBox/AlertBox';
 
 import { Redirect, withRouter } from 'react-router-dom'

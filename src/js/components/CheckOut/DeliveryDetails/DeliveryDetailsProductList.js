@@ -228,10 +228,10 @@ class DeliveryProductList extends Component {
                                                                                 <td className="t-Report-cell" headers="TYPE"><span className="order-total"><FormattedMessage id="delivery-details.Total.Title" defaultMessage="Total" /></span></td>
                                                                                 <td className="t-Report-cell" align="right" headers="PRICE"><span className="order-total">{this.props.cart_details.currency}</span> <span className="order-total">{this.props.cart_details.grand_total}</span></td>
                                                                             </tr>
-                                                                            <tr>
+                                                                            {/* <tr>
                                                                                 <td className="t-Report-cell" headers="TYPE"><FormattedMessage id="VAT.Message" defaultMessage="VAT Message" /></td>
                                                                                 <td className="t-Report-cell" align="right" headers="PRICE">{this.props.cart_details.currency} <span>6.14</span></td>
-                                                                            </tr>
+                                                                            </tr> */}
                                                                         </tbody>
                                                                     </table>
                                                                 </div>

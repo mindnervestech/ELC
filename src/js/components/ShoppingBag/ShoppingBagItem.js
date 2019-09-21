@@ -12,6 +12,7 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import NumericInput from 'react-numeric-input'; 
 import Popup from 'react-popup';
 import Spinner from '../Spinner/Spinner2';
+import Alert from './AlertMsg';
 
 let successFlag = false;
 let stockSortageFlag = false;
@@ -155,10 +156,16 @@ class ShoppingBagItem extends Component {
                 break;
             }
         }
+        let outOfStockAlert = null;
+        if(!visible_on_store){
+            outOfStockAlert = <Alert  />
+        }
+        
         return (<>
             <div className="homePage cardPage padding30" style={{ color: '#0D943F' }}>
                 {this.props.updateLoader && <Spinner />}
                 <Popup />
+                {outOfStockAlert}
                 {!this.props.updateLoader && this.props.cart_details.products.length != 0 ?
                     <div>
                         <div className="cart-breadcrumb">

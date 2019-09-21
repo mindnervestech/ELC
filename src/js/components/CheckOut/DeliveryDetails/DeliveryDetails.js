@@ -82,7 +82,7 @@ class DeliveryDetails extends Component {
         if (this.props.cart_details.is_cart_details_rec) {
 
             let obj = this.props.user_details.customer_details;
-            if (!(utility.emptyObj(obj))) {
+            if (!(utility.emptyObj(obj)) && this.props.user_details.isUserLoggedIn) {
                 if (this.props.cart_details.is_cart_details_rec && (this.props.cart_details.is_shipping_details_rec === false)) {
                     this.props.OnGetShippingDetails({
                         customer_id: this.props.user_details.customer_details.customer_id,

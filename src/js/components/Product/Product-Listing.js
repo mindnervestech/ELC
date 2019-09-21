@@ -115,8 +115,8 @@ class Product extends Component {
 		}else{
 			if(category_path[category_path.length - 2] !== 'uae-en' &&
 				category_path[category_path.length - 2] !== 'uae-ar' &&
-				category_path[category_path.length - 2] !== 'ksa-en' &&
-				category_path[category_path.length - 2] !== 'ksa-en'){
+				category_path[category_path.length - 2] !== 'saudi-en' &&
+				category_path[category_path.length - 2] !== 'saudi-ar'){
 					url = category_path[category_path.length - 2] + '-' +category_path[category_path.length - 1]
 			}else{
 				url = category_path[category_path.length - 1]
