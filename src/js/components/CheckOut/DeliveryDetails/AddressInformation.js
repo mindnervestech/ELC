@@ -439,7 +439,7 @@ class Address extends Component {
                     <div className="t-Region-body">
                         <div className="container">
                             <Row className="row">
-                                <Col xs="12" lg="4" md="12" className="paddingRemove">
+                                <Col xs="12" lg="3" md="12" className="paddingRemove">
                                     <div className="t-Region t-Region--removeHeader t-Region--noBorder t-Region--hiddenOverflow" id="R34927712771907735">
                                         <div className="t-Region-header">
                                             <div className="t-Region-headerItems t-Region-headerItems--title">
@@ -465,7 +465,7 @@ class Address extends Component {
                                         </div>
                                     </div>
                                 </Col>
-                                <Col xs="12" lg="8" md="12" className="paddingRemove">
+                                <Col xs="12" lg="9" md="12" style={{paddingLeft: 0, paddingRight: 0}}>
                                     <div className="t-Region t-Region--noPadding t-Region--removeHeader t-Region--noUI t-Region--hiddenOverflow t-Form--slimPadding t-Form--stretchInputs t-Form--labelsAbove margin-top-none margin-bottom-none" id="R631680584527102694">
                                         <div className="t-Region-header">
                                             <div className="t-Region-headerItems t-Region-headerItems--title">
@@ -482,11 +482,11 @@ class Address extends Component {
                                             <div className="t-Region-body">
                                                 <p style={{ fontSize: '11px', marginBottom: '20px' }}>
                                                      <FormattedMessage id="delivery-details.addressContent" defaultMessage="Address Information content" /></p>
-                                                <div className="container">
+                                                <div className="container" style={{paddingLeft: 0, paddingRight: 0}}>
                                                     {/* <i className="fa fa-exclamation-circle" style={{ color: '#f599ba', fontSize: '22px' }} /> */}
                                                      <FormattedMessage id="delivery-details.addressContent" defaultMessage="Address Information content" />
                                                      </div>
-                                                <div className="container paddingRemove">
+                                                <div className="container" style={{paddingLeft: 0, paddingRight: 0}}>
                                                     <div className="row">
                                                         <div className="col col-12 apex-col-auto">
 

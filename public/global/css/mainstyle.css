@@ -6549,6 +6549,21 @@ html[dir="rtl"] #mobile-click-colect{
     font-family: "VAG Rounded ELC bold" !important;
 }
 
+html[dir="rtl"] .t-Button--pillEnd{
+    border-top-right-radius: 0!important;
+    border-bottom-right-radius: 0!important;
+    border-top-left-radius: 24px!important;
+    border-bottom-left-radius: 24px!important;
+}
+
+html[dir="rtl"] .t-Button--pillStart{
+    border-top-left-radius: 0!important;
+    border-bottom-left-radius: 0!important;
+    border-top-right-radius: 24px!important;
+    border-bottom-right-radius: 24px!important;
+    margin-right: 0!important;
+}
+
 @media (max-width:767px){
     .autoSearch{
         width: 100%;
@@ -6613,7 +6628,6 @@ html[dir="rtl"] #mobile-click-colect{
             padding: 0px 10px;
         }
     }
-}
    
 @media (max-width:360px){
     html[dir="rtl"] .header .changecountry {
