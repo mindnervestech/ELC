@@ -29,7 +29,6 @@ letter-spacing: unset;
 text-transform: unset;
 font-weight: 100;
 margin-bottom: 15px;
-font-family: 'Noto Sans KR', Helvetica, Arial, sans-serif;
 }
 
 h1.h1p,h2.h2p,h3.h3p {
@@ -85,7 +84,6 @@ html[lang="en"] .b-accordion_title {
     letter-spacing: .1em;
     text-transform: uppercase;
     font-weight: normal;
-          font-family: 'Noto AR', Helvetica, Arial, sans-serif !important;
 }
       
 html[dir="rtl"] .b-accordion_title {
@@ -96,7 +94,6 @@ html[dir="rtl"] .b-accordion_title {
     letter-spacing: 0em;
     text-transform: uppercase;
     font-weight: normal;
-          font-family: 'Noto AR', Helvetica, Arial, sans-serif !important;
 }
 
 

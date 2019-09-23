@@ -399,7 +399,7 @@ class MainHeader extends Component {
                                     </li>
                                     <li style={this.state.userLogin ? { display: 'inline-block', paddingTop: 1 } : { display: 'none' }}>
                                         <img src={profile} className="image-ion" style={{marginTop: 2, height: 16, width: 16}}></img>
-                                        <label className="iconLeble text-color changeLinkText"><span><FormattedMessage id="header.Hello" defaultMessage="Hello," />,&nbsp; {this.props.user_details.customer_details.firstname} </span></label>
+                                        <label className="iconLeble text-color changeLinkText"><span><FormattedMessage id="header.Hello" defaultMessage="Hello" />,&nbsp; {this.props.user_details.customer_details.firstname} </span></label>
                                     </li>
                                     <li style={this.state.userLogin ? { display: 'inline-block' } : { display: 'none' }}>
                                         <Link to={`/${store_locale}/Login`} style={{ textDecoration: 'none' }}>

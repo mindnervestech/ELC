@@ -62,7 +62,6 @@
       .gm-style-pbt {
         font-size: 22px;
         color: white;
-        font-family: Roboto, Arial, sans-serif;
         position: relative;
         margin: 0;
         top: 50%;
@@ -500,7 +499,6 @@
         text-transform: unset;
         font-weight: 100;
         margin-bottom: 15px;
-        font-family: 'Noto Sans KR', Helvetica, Arial, sans-serif;
       }
 
       h1.h1p,

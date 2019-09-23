@@ -149,7 +149,6 @@ class SideManu extends Component {
 				filterOptionArrayForCheckValidate = Array.from(new Set(filterOptionArrayForCheckValidate));
 				if(afterFilterShowOptionListCheck){
 					afterFilterShowOptionList = filterOptionArrayForCheckValidate
-					afterFilterShowOptionListCheck = false
 				}
 				this.setState({ list: filterList });
 		}
@@ -199,6 +198,15 @@ class SideManu extends Component {
 			filterData = []
 			productList = productListingData;
 			filterFirstOption = filterOptionArray[0].split('/')[0]
+			for(let checkMultepal in filterOptionArray){
+				if(filterFirstOption == filterOptionArray[checkMultepal].split('/')[0]){
+					afterFilterShowOptionListCheck = false
+				}else{
+					afterFilterShowOptionListCheck = true
+					afterFilterShowOptionList = filterOptionArrayForCheckValidate
+				}
+			}
+
 			for (let categrayData in filterOptionArray) {
 				let splitData = filterOptionArray[categrayData].split('/')
 				if (splitData[0] == "brand") {
