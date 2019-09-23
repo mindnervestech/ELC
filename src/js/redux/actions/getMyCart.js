@@ -2,6 +2,7 @@ import * as actionType from './actionTypes';
 import { API } from '../../api/api';
 import { loadingSpinner } from './globals';
 
+import * as action from './index';
 /////////////////////////////////////////GET CART//////////////////////////////////////////////////
 export const callActionForMyCart = (payload) => {
 
@@ -416,7 +417,133 @@ export const redirectToCart = () => {
         )
 
     }
-
-
 }
 
+export const applyVoucode = (payload) => {
+    return dispatch => {
+        const data = {
+            ...payload
+        }
+ 
+        dispatch(loadingSpinner({ loading: true }))
+        let cb = {
+            success: (res) => {
+                if (res.status) {
+                    dispatch(action.getMyCartAfterVoucher({
+                        store_id: payload.store,
+                        quote_id: payload.quoteid
+                    }));
+                    dispatch(action.getPaymentDetails({
+                        store_id: payload.store,
+                        quote_id: payload.quoteid,
+                        voucher: payload.voucode
+                    }));
+                    dispatch({
+                        type: actionType.SET_VOU_CODE,
+                        payload: { voucherSuccess: res.message }
+                    })
+                } else {
+                    dispatch(loadingSpinner({ loading: false }))
+                    dispatch({
+                        type: actionType.SET_VOU_CODE,
+                        payload: { voucher: payload.voucode, removevouher: false, voucherError: res.message }
+                    });
+                }
+            },
+            error: (err) => {
+                dispatch(loadingSpinner({ loading: false }))
+                dispatch({
+                    type: actionType.SET_VOU_CODE,
+                    payload: { voucher: payload.voucode, removevouher: false }
+                });
+            }
+        }
+ 
+ 
+        API.applyVoucode(data, cb);
+    }
+ }
+ 
+ export const removeVoucode = (payload) => {
+    return dispatch => {
+        const data = {
+            voucode: payload.voucode,
+            quoteid: payload.quoteid
+        }
+ 
+        dispatch(loadingSpinner({ loading: true }))
+        let cb = {
+            success: (res) => {
+                if (res.status) {
+                    dispatch(action.getMyCartAfterVoucher({
+                        store_id: payload.store,
+                        quote_id: payload.quoteid
+                    }));
+                    dispatch(action.getPaymentDetails({
+                        store_id: payload.store,
+                        quote_id: payload.quoteid
+                    }));
+                    dispatch({
+                        type: actionType.SET_VOU_CODE,
+                        payload: { voucher: '', removevouher: false, voucherError: null, voucherSuccess: res.message }
+                    })
+                    setTimeout(()=>{
+                        dispatch({
+                            type: actionType.SET_VOU_CODE,
+                            payload: { voucherSuccess: null }
+                        })
+                    }, 8000)
+                } else {
+                    dispatch(loadingSpinner({ loading: false }))
+                    dispatch({
+                        type: actionType.SET_VOU_CODE,
+                        payload: { voucher: payload.voucode, removevouher: true, voucherError: res.message }
+                    })
+                }
+            },
+            error: (err) => {
+                dispatch(loadingSpinner({ loading: false }))
+                dispatch({
+                    type: actionType.SET_VOU_CODE,
+                    payload: { voucher: payload.voucode, removevouher: true }
+                })
+            }
+        }
+ 
+ 
+        API.removeVoucode(data, cb);
+    }
+ }
+
+ export const getMyCartAfterVoucher = (payload) => {
+    //console.log('get my cart : ', payload)
+    return (dispatch, getState) => {
+ 
+        const data = {
+            quote_id: payload.quote_id,
+            store_id: payload.store_id,
+        }
+    
+        let cb = {
+            success: (res) => {
+                // console.log('LOCAL getMyCart res', res);
+                const payload = getState().myCart;
+                if ((res.status) && (res.code == 200) && ('data' in res)) {
+                    let newState = {
+                        ...payload,
+                        products: res.data.products
+                    }
+                    dispatch(callActionForMyCart(newState))
+ 
+                } else if ((res.status) && (res.code == 200) && (!('data' in res))) {
+                    dispatch(clearCartItem())
+                }
+            },
+            error: (err) => {
+                dispatch(callActionForMyCart(err.data))
+            }
+        }
+        API.getMyCartApi(data, cb)
+    }
+ 
+ }

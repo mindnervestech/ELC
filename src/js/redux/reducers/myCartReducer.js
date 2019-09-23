@@ -98,7 +98,8 @@ const reducer = (state = initialState, action) => {
         
         case actionType.SET_ORDER_DETAILS_LOADER:
             return updateObject(state, action.payload)
-
+        case actionType.SET_VOU_CODE:
+            return updateObject(state, action.payload)
         default:
             return state;
     }

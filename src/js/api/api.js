@@ -75,7 +75,9 @@ const GET_HELP_DATA = { type: 'GET', url: STATIC_PAGES_URL + 'help-and-faqs/stor
 const GET_RETURN_AND_EXCHANGES_DATA = { type: 'GET', url: STATIC_PAGES_URL + 'return-and-exchanges/storeId', dynamic: true };
 const GET_PROMOTION_TERMS_AND_CONDITION_DATA = { type: 'GET', url: STATIC_PAGES_URL + 'promotion-terms-and-condition/storeId', dynamic: true };
 
+const SET_VOU_CODE = { type: 'POST', url: BASE_URL + 'checkvoucher' }
 
+const REMOVE_VOU_CODE = { type: 'POST', url: BASE_URL + 'removevoucher' }
 
 //Auto Suggestion API
 
@@ -196,7 +198,10 @@ export const API = {
 	saveContactUsData: (data, cb) => request(data, cb, SAVE_CONTACT_US_DATA),
 
 	getSizeChart: (data, cb) => request(data, cb, GET_SIZE_CHART),
-	resetPassword: (data, cb) => request(data, cb, RESET_PASSWORD)
+	resetPassword: (data, cb) => request(data, cb, RESET_PASSWORD),
+
+	applyVoucode: (data, cb) => request(data, cb, SET_VOU_CODE),
+	removeVoucode: (data, cb) => request(data, cb, REMOVE_VOU_CODE),
 };
 
 function getRequestData(data) {

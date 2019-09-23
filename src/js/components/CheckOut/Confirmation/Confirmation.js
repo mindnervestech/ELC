@@ -136,6 +136,10 @@ class Confirmation extends Component {
                         <p> <FormattedMessage id="Item.Qty" defaultMessage="Qty" /> {product.qty}</p>
                     </span>
 
+                    {product.is_in_stock.status == 0 ?<span style={{ fontSize:'18px', color: '#ee0E19' }}>
+                            <FormattedMessage id="PDP.OutOfStock" defaultMessage="Out of Stock" />
+                        </span> :''}
+
                 </td>
             )
         } else if (parseInt(product.price) == 0) {
@@ -149,6 +153,9 @@ class Confirmation extends Component {
                 <td className="price">
                     <span className="p-currency">{product.currency}</span> {parseInt(product.price * product.qty)}<br />
                     <p> <FormattedMessage id="Item.Qty" defaultMessage="Qty" /> {product.qty}</p>
+                    {product.is_in_stock.status == 0 ?<span style={{ fontSize:'18px', color: '#ee0E19' }}>
+                        <FormattedMessage id="PDP.OutOfStock" defaultMessage="Out of Stock" />
+                    </span> :''}
                 </td>
             )
         }
@@ -191,7 +198,16 @@ class Confirmation extends Component {
         let cart_product_details = null;
         let cart_price_details = null;
         let obj = this.props.cart_details.order_details;
-
+        let OutOfStockFlag = false;
+        if(obj.cart_details){
+            for(var i in obj.cart_details.products){
+                if(obj.cart_details.products[i].is_in_stock.status == 0){
+                    OutOfStockFlag = true;
+                }
+            }
+        }
+        
+        
         if (!((Object.entries(obj).length === 0) && (obj.constructor === Object))) {
 
             order_details_comp = <OrderDetails history={this.props.history} />;
@@ -212,6 +228,7 @@ class Confirmation extends Component {
                                             <h2>{item.name}</h2>
                                             {item.color && (<p><FormattedMessage id="product.color" defaultMessage="Color" />: {item.color}</p>)}
                                             {item.size && (<p><FormattedMessage id="product.size" defaultMessage="Size" />: {item.size}</p>)}
+                                            
                                             <p>{item.id}</p>
                                             {item.sku != 'freeproduct' && (<Link to={`/${this.props.global.store_locale}/cart`} onClick={this.goToCartDetails}><FormattedMessage id="Edit.Text" defaultMessage="Edit" /></Link>)}
                                         </td>
@@ -493,7 +510,7 @@ class Confirmation extends Component {
                                                                                         <img src={wait} style={{ width: 25, height: 25, marginTop: -4 }} />
                                                                                         <span className="t-Button-label">Please wait.......</span>
                                                                                     </button> :
-                                                                                    <button onClick={this.placeOrder} className="t-Button t-Button--hot t-Button--stretch t-Button--gapTop" type="button" id="COD_D">
+                                                                                    <button disabled={OutOfStockFlag} onClick={this.placeOrder} className="t-Button t-Button--hot t-Button--stretch t-Button--gapTop" type="button" id="COD_D">
                                                                                         <span className="t-Button-label"><FormattedMessage id="Place.Order.Text" defaultMessage="Place Order" /></span>
                                                                                     </button>
                                                                                 }
@@ -533,7 +550,7 @@ class Confirmation extends Component {
                                                     <button onClick={this.goToPaymentDetails} className="t-Button t-Button--noLabel t-Button--icon js-ignoreChange t-Button--large t-Button--pillStart t-Button--stretch t-Button--padLeft t-Button--padRight t-Button--padTop t-Button--padBottom" type="button" id="B29297167193605136" title="Continue Shopping" aria-label="Continue Shopping"><span className="t-Icon fa fa-angle-left" aria-hidden="true" /></button>
                                                 </Col>
                                                 <Col xs="9" lg="9" md="9" style={{padding: 0}}>
-                                                    <button onClick={this.placeOrder} className="t-Button t-Button--hot t-Button--large t-Button--stretch t-Button--gapTop" type="button" id="COD_D_M">{isClickOnPlaceOrder ? <span className="t-Button-label">Please wait.......</span> : <span className="t-Button-label"><FormattedMessage id="Place.Order.Text" defaultMessage="Place Order" /></span>}</button>
+                                                    <button disabled={OutOfStockFlag} onClick={this.placeOrder} className="t-Button t-Button--hot t-Button--large t-Button--stretch t-Button--gapTop" type="button" id="COD_D_M">{isClickOnPlaceOrder ? <span className="t-Button-label">Please wait.......</span> : <span className="t-Button-label"><FormattedMessage id="Place.Order.Text" defaultMessage="Place Order" /></span>}</button>
                                                 </Col>
                                             </Row>
                                         </div>

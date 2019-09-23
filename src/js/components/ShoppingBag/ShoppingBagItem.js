@@ -172,8 +172,16 @@ class ShoppingBagItem extends Component {
                 break;
             }
         }
+        let OutOfStockFlag = false;
+        if(product){
+            for(var i in product){
+                if(product[i].is_in_stock.status == 0){
+                    OutOfStockFlag = true;
+                }
+            }
+        }
         let outOfStockAlert = null;
-        if (!visible_on_store) {
+        if (!visible_on_store || OutOfStockFlag) {
             outOfStockAlert = <Alert />
         }
 
@@ -261,7 +269,7 @@ class ShoppingBagItem extends Component {
                                             <span>{productCount}&nbsp; <FormattedMessage id="Item.text" defaultMessage="Item" /> &nbsp; | &nbsp;{this.props.cart_details.currency}&nbsp;{this.props.cart_details.grand_total}</span>
                                         </div>
                                         <div>
-                                            <button disabled={!visible_on_store} className="alsoLikeCardButton" onClick={() => this.checkOut()}><FormattedMessage id="Cart.CheckOut.Title" defaultMessage="Check out" /></button>
+                                            <button disabled={!visible_on_store || OutOfStockFlag} className="alsoLikeCardButton" onClick={() => this.checkOut()}><FormattedMessage id="Cart.CheckOut.Title" defaultMessage="Check out" /></button>
                                         </div>
                                     </div>
                                 </Col>
@@ -312,7 +320,7 @@ class ShoppingBagItem extends Component {
                                         <Col xs="1" className="row-3" style={{ fontSize: 16, color: "#4f4f4f" }}>
                                             <span>{item.currency}&nbsp;{item.price}</span>
                                         </Col> : ''}
-                                    {item.visible_on_store ?
+                                    {item.visible_on_store && item.is_in_stock.status == 1 ?
                                         <Col xs="1" className="row-3 blackTitle" style={{ fontSize: 22, color: "#4f4f4f" }}>
                                             {/* <span className="qut">{item.qty}</span> */}
                                             {/* <NumericInput max={500} min={1} className="increse-item-qty"
@@ -328,16 +336,24 @@ class ShoppingBagItem extends Component {
                                                 className="increse-item-qty"
                                             />
                                         </Col> : ""}
-                                    {item.visible_on_store ?
+                                    {item.visible_on_store  && item.is_in_stock.status == 1 ?
                                         <Col xs="1" className="row-3 blackTitle" style={{ fontSize: 22, marginTop: '4.7%' }}>
                                             <span>{item.currency}&nbsp;{item.price * item.qty}</span>
                                         </Col> :
-                                        <Col xs="3" className="row-9">
-                                            <div style={{ fontSize: '18px', color: 'red', marginBottom: '30px' }}>
-                                                <FormattedMessage id="NotAvailableforcurrentstoreDelivery " defaultMessage="Not Available for current store Delivery" />
-                                            </div>
-                                        </Col>
+                                        ''
                                     }
+                                    {!item.visible_on_store ?
+                                        <Col xs="3" className="row-9">
+                                        <div style={{ fontSize: '18px', color: 'red', marginBottom: '30px' }}>
+                                            <FormattedMessage id="NotAvailableforcurrentstoreDelivery " defaultMessage="Not Available for current store Delivery" />
+                                        </div>
+                                    </Col>:''}
+                                    {item.is_in_stock.status == 0 ?
+                                    <Col xs="2" className="row-9" style={{marginTop:'64px'}}>
+                                    <span style={{ fontSize:'18px', color: '#ee0E19' , marginBottom: '30px' }}>
+                                        <FormattedMessage id="PDP.OutOfStock" defaultMessage="Out of Stock" />
+                                    </span>
+                                    </Col> :''}
                                     <Col xs="2" className="row-3 blackTitle" style={{ textAlign: 'end' }}>
                                         <span className="remove" style={{ fontSize: 14, cursor: 'pointer' }} onClick={() => this.remove(index)}>
                                             <FormattedMessage id="Cart.Remove.Title" defaultMessage="Remove" />
@@ -347,13 +363,13 @@ class ShoppingBagItem extends Component {
                             ))}
                             <Row className="changeRow">
                                 <Col xs="6">
-                                    <div style={{ paddingTop: 30, textAlign: 'start' }}>
+                                    {/* <div style={{ paddingTop: 30, textAlign: 'start' }}>
                                         <input type="text" placeholder="Enter promo code" className="email-field"></input>
                                         <FormattedMessage id="ResetPassword.Apply.Text" defaultMessage="Apply">
                                             {(message) =>
                                                 <input type="submit" value={message} className="submit-button"></input>
                                             }</FormattedMessage>
-                                    </div>
+                                    </div> */}
                                 </Col>
                                 <Col xs="6">
                                     <div className="row-4" style={{ textAlign: 'start' }}>
@@ -373,7 +389,7 @@ class ShoppingBagItem extends Component {
                                 <Col xs="3" style={{ textAlign: 'end' }}>
                                     {/* <Link to={`/${store_locale}/new-check-out`}> */}
                                     <div>
-                                        <button disabled={!visible_on_store} onClick={() => this.checkOut()} className="alsoLikeCardButton"><FormattedMessage id="Cart.CheckOut.Title" defaultMessage="Check out" /></button>
+                                        <button disabled={!visible_on_store || OutOfStockFlag} onClick={() => this.checkOut()} className="alsoLikeCardButton"><FormattedMessage id="Cart.CheckOut.Title" defaultMessage="Check out" /></button>
                                     </div>
                                     {/* </Link> */}
                                 </Col>
@@ -406,7 +422,7 @@ class ShoppingBagItem extends Component {
                                 </div>
                             </div>
                             <div>
-                                <button disabled={!visible_on_store} onClick={() => this.checkOut()} className="alsoLikeCardButton"><FormattedMessage id="Cart.CheckOut.Title" defaultMessage="Check out" /></button>
+                                <button disabled={!visible_on_store || OutOfStockFlag} onClick={() => this.checkOut()} className="alsoLikeCardButton"><FormattedMessage id="Cart.CheckOut.Title" defaultMessage="Check out" /></button>
                             </div>
 
                             {product && product.map((item, index) => (
@@ -433,11 +449,14 @@ class ShoppingBagItem extends Component {
                                             <span style={{ fontSize: 14, color: '#4f4f4f' }}>{item.sku}</span>
                                         </div>
                                     </div>
-                                    {item.visible_on_store ?
+                                    {item.is_in_stock.status == 0 ?<span style={{ fontSize:'18px', color: '#ee0E19' }}>
+                                        <FormattedMessage id="PDP.OutOfStock" defaultMessage="Out of Stock" />
+                                    </span> :''}
+                                    {item.visible_on_store && item.is_in_stock.status == 1 ?
                                         <div className="row-3 blackTitle" style={{ fontSize: 16 }}>
                                             <span>{item.currency}&nbsp;{item.price}</span>
                                         </div> : ''}
-                                    {item.visible_on_store ?
+                                    {item.visible_on_store  && item.is_in_stock.status == 1 ?
                                         <div className="row-3 blackTitle" style={{ fontSize: 16, textAlign: 'start', color: "#4f4f4f" }}>
                                             <span><FormattedMessage id="Item.Qty" defaultMessage="Qty" />: </span>
                                             {/* <span className="qut">{item.qty}</span> */}
@@ -458,16 +477,18 @@ class ShoppingBagItem extends Component {
                                             />
                                             <span className="floatRight" style={{ fontSize: 22, color: "#0D943F" }}>{item.currency}&nbsp;{item.price * item.qty}</span>
                                         </div> :
-                                        <div style={{ fontSize: '18px', color: 'red', marginBottom: '30px' }}>
-                                            <FormattedMessage id="NotAvailableforcurrentstoreDelivery " defaultMessage="Not Available for current store Delivery" />
-                                        </div>
+                                        ''
                                     }
+                                    {!item.visible_on_store ?
+                                    <div style={{ fontSize: '18px', color: 'red', marginBottom: '30px' }}>
+                                    <FormattedMessage id="NotAvailableforcurrentstoreDelivery " defaultMessage="Not Available for current store Delivery" />
+                                </div>: ''}
                                 </div>
                             ))}
-                            <div style={{ paddingTop: 30, textAlign: 'start' }}>
+                            {/* <div style={{ paddingTop: 30, textAlign: 'start' }}>
                                 <input type="text" placeholder="Enter promo code" className="email-field"></input>
                                 <input type="submit" value="Apply" className="submit-button"></input>
-                            </div>
+                            </div> */}
                             <div className="row-4" style={{ textAlign: 'start' }}>
                                 <div style={{ padding: '10px 10px', fontFamily: 'VAG Rounded ELC Light', fontSize: 18, color: '#4f4f4f' }}>
                                     <span><FormattedMessage id="delivery-details.Subtotal.Title" defaultMessage="Subtotal" />:</span>
@@ -478,8 +499,8 @@ class ShoppingBagItem extends Component {
                                     <span className="floatRight">{this.props.cart_details.currency}&nbsp;{this.props.cart_details.grand_total}</span>
                                 </div>
                             </div>
-                            <div onClick={() => this.checkOut()}>
-                                <button disabled={!visible_on_store} className="alsoLikeCardButton"><FormattedMessage id="Cart.CheckOut.Title" defaultMessage="Check out" /></button>
+                            <div >
+                                <button disabled={!visible_on_store|| OutOfStockFlag} onClick={() => this.checkOut()} className="alsoLikeCardButton"><FormattedMessage id="Cart.CheckOut.Title" defaultMessage="Check out" /></button>
                             </div>
                         </div>
                     </div> :

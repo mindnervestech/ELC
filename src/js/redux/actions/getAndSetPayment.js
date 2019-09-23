@@ -27,6 +27,12 @@ export const getPaymentDetails = (payload) => {
                     }))
                 }
                 dispatch(loadingSpinner({ loading: false }))
+                if(payload.voucher) {
+                    dispatch({
+                        type: actionType.SET_VOU_CODE,
+                        payload:{voucher: payload.voucher, removevouher: true, voucherError: null}
+                    });
+                }
             },
             error: (err) => {
                 dispatch(loadingSpinner({ loading: false }))
@@ -56,6 +62,10 @@ export const setPaymentDetails = (payload) => {
             payment_code: payload.payment_code
         }
         dispatch(loadingSpinner({ loading: true }))
+            dispatch({
+                type: actionType.SET_VOU_CODE,
+                payload:{removevouher: false, voucherError: null}
+            });
         let cb = {
             success: (res) => {
                 if (res.status && res.code === 200) {

@@ -57,6 +57,28 @@ class DeliveryProductList extends Component {
         return cartProductPrice;
     }
 
+    applyVoucode = (voucode) => {
+
+        if (voucode == '') {
+          return;
+        }
+     
+        this.props.onApplyVoucode({
+          store: this.props.global.currentStore,
+          voucode: voucode,
+          quoteid: this.props.cart_details.quote_id,
+        });
+     
+      }
+     
+      removeVoucode = (voucode) => {
+        this.props.onRemoveVoucode({
+          store: this.props.global.currentStore,
+          voucode: voucode,
+          quoteid: this.props.cart_details.quote_id,
+        });
+      }
+
 
     render() {
         let coupan_code = null;
@@ -67,7 +89,7 @@ class DeliveryProductList extends Component {
         }
 
         if (this.props.coupan_code) {
-            coupan_code = <CouponCode />
+            coupan_code = <CouponCode applyVoucode={this.applyVoucode} removeVoucode={this.removeVoucode} />
         }
 
         let productItems = this.props.cart_details.products;
@@ -263,13 +285,22 @@ class DeliveryProductList extends Component {
     }
 }
 
-
+const mapStateToProps = state => {
+    return {
+        guest_checkout: state.guest_user,
+        user_details: state.login,
+        cart_details: state.myCart,
+        global: state.global
+    };
+}
 
 const mapDispatchToProps = dispatch => {
     return {
         onRedirectToCart: () => dispatch(actions.redirectToCart()),
+        onApplyVoucode: (payload) => dispatch(actions.applyVoucode(payload)),
+        onRemoveVoucode: (payload) => dispatch(actions.removeVoucode(payload))
     }
 
 }
 
-export default connect(null, mapDispatchToProps)(DeliveryProductList);
+export default connect(mapStateToProps, mapDispatchToProps)(DeliveryProductList);
