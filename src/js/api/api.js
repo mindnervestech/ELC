@@ -86,7 +86,7 @@ const GET_AUTO_SUGG_DATA={type:'GET',url:'',dynamic:true}
 //Birthday club
 
 
-const SAVE_BIRTHDAYCLUB_DATA={type:'POST' ,url:BASE_URL +'',dynamic: true};
+const SAVE_BIRTHDAYCLUB_DATA={type:'POST' ,url:BASE_URL +'birthdayclub'};
 
 
 export const API = {

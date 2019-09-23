@@ -6566,6 +6566,12 @@ html[dir="rtl"] .t-Button--pillStart{
     margin-right: 0!important;
 }
 
+.ShippingTitle{
+    color: #0D943F;
+    font-size: 22px;
+    font-family: "VAG Rounded ELC bold" !important;
+}
+
 @media (max-width:767px){
     .autoSearch{
         width: 100%;

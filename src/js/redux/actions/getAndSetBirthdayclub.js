@@ -14,7 +14,6 @@ export const clearBirthdayClubRegisterError = () => {
 }
 
 const callActionForSaveBirthDayClubData = payload => {
-  console.log("Payload",payload)
   return {
     type: actionType.SAVE_BIRTHDAY_CLUB_DATA,
     payload: payload

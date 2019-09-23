@@ -32,6 +32,7 @@ class BirthDayClub extends Component {
       childName: '',
       showAlert:false,
       ischeckremove:true,
+      lang: 'en',
       fields:
       {
         parentFirstName: '',
@@ -39,7 +40,6 @@ class BirthDayClub extends Component {
         carriercode: '',
         contactNumber: '',
         email: '',
-        lang: '',
         name: '',
         gender: '',
         dob: ''
@@ -50,7 +50,9 @@ class BirthDayClub extends Component {
     }
   }
 
-
+  closeAlert =() =>{
+    this.setState({showAlert:false});
+  }
 
   componentDidUpdate()
   {
@@ -60,9 +62,7 @@ class BirthDayClub extends Component {
       let message=obj.message  
 			if(this.state.ischeckremove)
 			{
-
 					this.setState({sucesss_message:message,showAlert:true,ischeckremove:false});
-
 					setTimeout(() => {
 						this.closeAlert();
 					}, 5000);	
@@ -284,27 +284,20 @@ class BirthDayClub extends Component {
         dob: ''
       }})
 
-     ChildrenDate = ['']
-ChildrenName = ['']
-ChildrenGender = ['']
+      ChildrenDate = ['']
+      ChildrenName = ['']
+      ChildrenGender = ['']
+      ChildrenCount = ['1']
   }
-  register = () => {
-   
-  
-   
 
+  register = () => {
     if (ChildrenDate[ChildrenDate.length - 1] == '' || ChildrenName[ChildrenName.length - 1] == '' || ChildrenGender[ChildrenGender.length - 1] == '') {
       this.setState({ error: true })
-    }
-   
-    else 
-    {   moreinfoData = ''
+    }else{
+      moreinfoData = ''
       for (let i = 0; i < ChildrenName.length; i++) {
-
         moreinfoData = moreinfoData + ChildrenName[i] + ':' + ChildrenGender[i] + ':' + ChildrenDate[i].getDate() + '' + (ChildrenDate[i].getMonth() + 1) + '' + ChildrenDate[i].getFullYear() + ';'
-        //moreinfoData=`"${this.ChildrenName[i]}:${this.ChildrenGender[i]}:${this.ChildrenDate[i].getDate()}${this.ChildrenDate[i].getMonth()}${this.ChildrenDate[i].getYear()};"`
       }
-      
       const data = {
         firstname: this.state.fields.parentFirstName,
         lastname: this.state.fields.parentLastName,
@@ -312,22 +305,15 @@ ChildrenGender = ['']
         email: this.state.fields.email,
         countryCode: this.state.fields.carrierCode,
         storeid: this.props.globals.currentStore,
-        language: this.state.fields.lang,
+        language: this.state.lang,
         moreinfo: moreinfoData
-  
       }
-      this.props.onRegisterBirthdayClubUser(data);
+      console.log(data)
       this.clearContactState();
       this.setState({ error: false })
-  
+      this.props.onRegisterBirthdayClubUser(data);
     }
-    
-    
   }
-
-
-
-
 
   render() {
 
@@ -499,8 +485,6 @@ ChildrenGender = ['']
                   </div>
                 </div>
                
-                
-                
               </Col>
             </Row>
             <Row>
@@ -509,8 +493,8 @@ ChildrenGender = ['']
                   <span className="blackTitle1"><FormattedMessage id="PreferedLanguage" defaultMessage="Prefered Language" /></span>
                 </div>
                 <div>
-                  <input className="RadioButton" type="radio" name="gender"  selected="selected" value="arabic" name="P1001_EMAIL" onChange={this.handleChange.bind(this, "lang")} /> <span className="radioButtonText"><FormattedMessage id="header.Arabic" defaultMessage="Arabic" /></span>
-                  <input className="radioButton RadioButton" type="radio" name="gender" value="english" name="P1001_EMAIL" onChange={this.handleChange.bind(this, "lang")} /> <span className="radioButtonText"><FormattedMessage id="header.English" defaultMessage="English" /></span>
+                  <input className="RadioButton" type="radio" name="gender" value="arabic" name="P1001_EMAIL" onChange={()=> this.state.lang = 'ar'} /> <span className="radioButtonText"><FormattedMessage id="header.Arabic" defaultMessage="Arabic" /></span>
+                  <input className="radioButton RadioButton" checked="checked" type="radio" name="gender" value="english" name="P1001_EMAIL" onChange={()=> this.state.lang = 'en'} /> <span className="radioButtonText"><FormattedMessage id="header.English" defaultMessage="English" /></span>
                 </div>
               </Col>
             </Row>
