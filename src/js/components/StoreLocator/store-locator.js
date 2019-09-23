@@ -260,7 +260,7 @@ class StoreLocator extends Component {
             <span  style={{fontSize:15, fontWeight: 'bold'}}>{this.props.aboutUs.title}</span>
           </div> */}
 
-          <div style={{margin:10}} className="padding-right-ar">  
+          <div style={{margin:10,textAlign:'start'}} className="padding-right-ar">  
             <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
               <span className="titleHover" style={{fontSize:15}}><FormattedMessage id="Checkout.Home" defaultMessage/></span><span>&nbsp;\&nbsp;&nbsp;</span>
             </Link>
@@ -380,7 +380,7 @@ class StoreLocator extends Component {
 
                                         </div>
                                         <div id="over_map" style={{ display: display }}>
-                                          <span className="close" /><br />
+                                          {/* <span className="close" /><br /> */}
                                           <span id="show-store-info">
                                             {this.state.selectedLoc.name}
                                             <br />

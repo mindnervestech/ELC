@@ -1626,3 +1626,16 @@ only screen and (min-resolution: 2dppx) {
     width:100%!important;
 }
 }
+
+
+.PhoneNumberBClub #widthfull .country-list{
+    display: grid;
+    width: 100% !important;
+}
+.PhoneNumberBClub #widthfull .country-list .country {
+    margin: 5px 5px;
+}
+.PhoneNumberBClub #widthfull .text_field.apex-item-text {
+    min-height: 40px;
+    padding: 0px;
+}

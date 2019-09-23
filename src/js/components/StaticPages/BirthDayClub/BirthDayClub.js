@@ -17,10 +17,12 @@ let ChildrenDate = ['']
 let ChildrenName = ['']
 let ChildrenGender = ['']
 let sortByShowOption = [false]
+let moreinfoData = ''
 let editingRow = 0
 class BirthDayClub extends Component {
   constructor(props) {
     super(props);
+    console.log(props)
     this.state = {
       sortByText: "",
       startDate: new Date(),
@@ -28,24 +30,172 @@ class BirthDayClub extends Component {
       update: true,
       error: false,
       childName: '',
-      fieldsCustomer:
+      showAlert:false,
+      ischeckremove:true,
+      fields:
       {
         parentFirstName: '',
         parentLastName: '',
         carriercode: '',
-        phoneNumber: '',
+        contactNumber: '',
         email: '',
-        lang: ''
-
-      },
-      fieldsChildren:
-      {
+        lang: '',
         name: '',
         gender: '',
         dob: ''
-      }
+      },
+      errors: {},
+      isPhoneValid: false,
+
     }
   }
+
+
+
+  componentDidUpdate()
+  {
+    let obj = this.props.registartion_details;
+    if (this.props.registartion_details!==undefined)
+		{
+      let message=obj.message  
+			if(this.state.ischeckremove)
+			{
+
+					this.setState({sucesss_message:message,showAlert:true,ischeckremove:false});
+
+					setTimeout(() => {
+						this.closeAlert();
+					}, 5000);	
+			}
+
+		}
+  }
+
+
+
+  // componentDidUpdate(prevProps, prevState, snapshot) {
+  //   let obj = this.props.registartion_details;
+  //   if (!((Object.entries(obj).length === 0) && (obj.constructor === Object))) {
+  //     console.log('Cleare Registration Error');
+  //     let reg_status = obj.status;
+  //     if (!reg_status) {
+  //       let errors = {};
+  //       alert(obj.message);
+
+  //       if (obj.message === 'Customer mobile# already exists<p>') {
+
+  //         errors["contactNumber"] = <FormattedMessage id="Signup.validation.contactNumber.exists" defaultMessage="The mobile number you entered already exists with another account" />;
+  //       } else if (obj.message === 'Customer Email already exists<p>') {
+  //         alert("hi")
+  //         errors["email"] = <FormattedMessage id="Signup.validation.email.exists" defaultMessage="The email you entered already exists with another account" />;
+  //       } else {
+  //         // alert(obj.message);
+
+  //       //   this.setState({
+  //       //     ...this.state,
+  //       //     alertBoxDetails: {
+  //       //       status: true,
+  //       //       message: obj.message,
+  //       //     }
+  //       //   })
+  //       }
+  //       this.setState({ errors: errors });
+  //     }
+  //     this.props.onClearRegistrationError();
+  //   }
+  // }
+
+
+
+  componentWillUnmount() {
+    this.props.onClearRegistrationError();
+  }
+
+
+  handleValidation = () => {
+    let fields = this.state.fields;
+
+    let errors = {};
+    let formIsValid = true;
+
+
+    if (!fields["parentFirstName"]) {
+      formIsValid = false;
+      errors["parentFirstName"] = <FormattedMessage id="Signup.validation.firstName.empty" defaultMessage="First name cannot be empty" />;
+    }
+
+    if (!fields["parentLastName"]) {
+      formIsValid = false;
+      errors["parentLastName"] = <FormattedMessage id="Signup.validation.lastName.empty" defaultMessage="Last name cannot be empty" />;
+    }
+
+    if (typeof fields["parentFirstName"] !== "undefined") {
+      if (!fields["parentFirstName"].match(/^[a-zA-Z]+$/) && fields["parentFirstName"].length > 0) {
+        formIsValid = false;
+        errors["parentFirstName"] = <FormattedMessage id="Signup.validation.firstName.onlyletters" defaultMessage="Please enter only letters" />;
+      }
+    }
+
+    if (typeof fields["parentLastName"] !== "undefined") {
+      if (!fields["parentLastName"].match(/^[a-zA-Z]+$/) && fields["parentLastName"].length > 0) {
+        formIsValid = false;
+        errors["parentLastName"] = <FormattedMessage id="Signup.validation.lastName.onlyletters" defaultMessage="Please enter only letters" />;
+      }
+    }
+
+    //Email
+    if (typeof fields["email"] !== "undefined") {
+
+      if (fields["email"].length === 0) {
+        formIsValid = false;
+        errors["email"] = <FormattedMessage id="Signup.validation.email.empty" defaultMessage="Please enter email" />;
+      }
+
+      if (fields["email"].length > 0) {
+        let lastAtPos = fields["email"].lastIndexOf('@');
+        let lastDotPos = fields["email"].lastIndexOf('.');
+        if (!(lastAtPos < lastDotPos && lastAtPos > 0 && fields["email"].indexOf('@@') == -1 && lastDotPos > 2 && (fields["email"].length - lastDotPos) > 2 && !fields["email"].includes(' '))) {
+          formIsValid = false;
+          errors["email"] = <FormattedMessage id="Signup.validation.email.invalid" defaultMessage="Please enter email in valid format" />;
+        }
+      }
+    }
+    if (!(this.state.isPhoneValid)) {
+
+      formIsValid = false;
+      errors["contactNumber"] = <FormattedMessage id="Signup.validation.contactNumber.empty" defaultMessage="Eneter Valid Contact Number" />;
+
+    }
+
+    console.log("Errors", this.state.errors)
+
+    this.setState({ errors: errors });
+    return formIsValid;
+  }
+
+  signUpSubmit = (e) => {
+
+    e.preventDefault();
+    if(this.props.isUserLoggedIn)
+    {
+      if (this.handleValidation()) {
+        this.register();
+      }
+    }
+
+    else
+    {
+      this.props.history.push(`/${this.props.globals.store_locale}/Login`);
+    }
+    
+  }
+  handleChange
+    = (field, e) => {
+      let fields = this.state.fields;
+      fields[field] = e.target.value;
+      this.setState({ fields });
+
+    }
 
   contactNumber = (status, value, countryData, number, id) => {
     if (status) {
@@ -77,21 +227,19 @@ class BirthDayClub extends Component {
     this.setState({ update: true })
   }
 
-  handleChange = (index, date) => {
+  handleChangeDOB = (index, date) => {
     ChildrenDate[index] = date
     this.setState({ update: true })
   };
 
   ragester() {
-    console.log(ChildrenName)
-    console.log(ChildrenGender)
-    console.log(ChildrenDate)
+
   }
 
   addChild() {
     if (ChildrenDate[ChildrenDate.length - 1] == '' || ChildrenName[ChildrenName.length - 1] == '' || ChildrenGender[ChildrenGender.length - 1] == '') {
       //"input-field error" : "input-field"
-      this.setState({error: true})
+      this.setState({ error: true })
     } else {
       ChildrenDate.push("")
       ChildrenName.push("")
@@ -99,36 +247,128 @@ class BirthDayClub extends Component {
       sortByShowOption[sortByShowOption.length] = false
       ChildrenCount.push(String(this.state.ChildrenCountNumber + 1))
       this.setState({ ChildrenCountNumber: this.state.ChildrenCountNumber + 1 });
-      this.setState({error: false})
+      this.setState({ error: false })
     }
   }
 
   autoSearchText = (e, index) => {
-    console.log(e.target.value)
-    console.log(index)
+
     this.state.childName = e.target.value
   }
 
   removeChild = (index) => {
-    if(index != 0){
+    if (index != 0) {
       ChildrenDate.splice(index, 1);
       ChildrenName.splice(index, 1);
       ChildrenGender.splice(index, 1);
       ChildrenCount.splice(index, 1);
       this.setState({ ChildrenCountNumber: this.state.ChildrenCountNumber - 1 });
-      this.setState({error: false})
+      this.setState({ error: false })
     }
   }
 
+
+  clearContactState = () => {
+    this.setState({
+      ...this.state,
+      fields:
+      {
+        parentFirstName: '',
+        parentLastName: '',
+        carriercode: '',
+        contactNumber: '',
+        email: '',
+        lang: '',
+        name: '',
+        gender: '',
+        dob: ''
+      }})
+
+     ChildrenDate = ['']
+ChildrenName = ['']
+ChildrenGender = ['']
+  }
+  register = () => {
+   
+  
+   
+
+    if (ChildrenDate[ChildrenDate.length - 1] == '' || ChildrenName[ChildrenName.length - 1] == '' || ChildrenGender[ChildrenGender.length - 1] == '') {
+      this.setState({ error: true })
+    }
+   
+    else 
+    {   moreinfoData = ''
+      for (let i = 0; i < ChildrenName.length; i++) {
+
+        moreinfoData = moreinfoData + ChildrenName[i] + ':' + ChildrenGender[i] + ':' + ChildrenDate[i].getDate() + '' + (ChildrenDate[i].getMonth() + 1) + '' + ChildrenDate[i].getFullYear() + ';'
+        //moreinfoData=`"${this.ChildrenName[i]}:${this.ChildrenGender[i]}:${this.ChildrenDate[i].getDate()}${this.ChildrenDate[i].getMonth()}${this.ChildrenDate[i].getYear()};"`
+      }
+      
+      const data = {
+        firstname: this.state.fields.parentFirstName,
+        lastname: this.state.fields.parentLastName,
+        phoneNumber: parseInt((this.state.fields.contactNumber).trim()),
+        email: this.state.fields.email,
+        countryCode: this.state.fields.carrierCode,
+        storeid: this.props.globals.currentStore,
+        language: this.state.fields.lang,
+        moreinfo: moreinfoData
+  
+      }
+      this.props.onRegisterBirthdayClubUser(data);
+      this.clearContactState();
+      this.setState({ error: false })
+  
+    }
+    
+    
+  }
+
+
+
+
+
   render() {
-    let store_locale = this.props.globals.store_locale
+
+    let respo_message = null;
+    if (this.state.showAlert) {
+		  respo_message = <span id="APEX_SUCCESS_MESSAGE" data-template-id="126769709897686936_S" className="apex-page-success u-visible"><div className="t-Body-alert">
+			<div className="t-Alert t-Alert--defaultIcons t-Alert--success t-Alert--horizontal t-Alert--page t-Alert--colorBG" id="t_Alert_Success" role="alert">
+			  <div className="t-Alert-wrap">
+				<div className="t-Alert-icon">
+				  <span className="t-Icon" />
+				</div>
+				<div className="t-Alert-content">
+				  <div className="t-Alert-header">
+					<h2 className="t-Alert-title">{this.sucesss_message}</h2>
+				  </div>
+				</div>
+				<div className="t-Alert-buttons">
+				  {/* <button className="t-Button t-Button--noUI t-Button--icon t-Button--closeAlert" type="button" title="Close Notification" onClick={this.closeAlert} ><span className="t-Icon icon-close" /></button> */}
+				</div>
+			  </div>
+			</div>
+		  </div></span>;
+		}
+    let store_locale = this.props.globals.store_locale;
+    const errorsObj = this.state.errors;
     let phoneNumberClassName = null;
-    phoneNumberClassName = "t-Form-inputContainer";
-    let firstnameinputField = <div>
+    phoneNumberClassName = "t-Form-inputContainer PhoneNumberBClub";
+    let parentFirstNameField = <div>
       <div>
-        <FormattedMessage id="addnewchild.firstname" defaultMessage="First Name">
+        <FormattedMessage id="addnewchild.parentfirstname" defaultMessage="Parent First Name">
           {(message) =>
-            <input name="first_name" className="input-box" placeholder={message} value={this.state.fieldsCustomer['parentFirstName']}></input>}
+            <input name="first_name" className="input-field" placeholder={message} onChange={this.handleChange.bind(this, "parentFirstName")} value={this.state.fields['parentFirstName']}></input>}
+        </FormattedMessage>
+      </div>
+      <span id="P1000_USERNAME_error_placeholder" className="a-Form-error" data-template-id="33609965712469734_ET"></span>
+    </div>;
+    let parentLastNameField = <div>
+      <div>
+        <FormattedMessage id="addnewchild.parentlastname" defaultMessage="Parent Last Name">
+          {(message) =>
+            <input name="first_name" className="input-field" placeholder={message} onChange={this.handleChange.bind(this, "parentLastName")} value={this.state.fields['parentLastName']}></input>}
         </FormattedMessage>
       </div>
       <span id="P1000_USERNAME_error_placeholder" className="a-Form-error" data-template-id="33609965712469734_ET"></span>
@@ -138,11 +378,16 @@ class BirthDayClub extends Component {
     let emailInputField = <div><div>
       <FormattedMessage id="ContactUs.Email" defaultMessage="Email">
         {(message) =>
-          <input type="email" className="input-box" style={{ borderRadius: 0 }} id="P1001_EMAIL" name="P1001_EMAIL" value={this.state.fieldsCustomer["email"]} size={30} />}
+          <input type="email" placeholder={message} className="input-field" style={{ borderRadius: 0 }} id="P1001_EMAIL" value={this.state.fields['email']} name="P1001_EMAIL" onChange={this.handleChange.bind(this, "email")} size={30} />}
       </FormattedMessage>
     </div></div>
 
+    if ('contactNumber' in errorsObj) {
+      phoneNumberClassName = "t-Form-inputContainer PhoneNumberBClub";
+      contactNumberInputField = <span id="P1001_PHONE_error_placeholder" className="a-Form-error u-visible" data-template-id="33610259035469734_ET"><span className="t-Form-error">
+        <div id="P1001_PHONE_error">{errorsObj["contactNumber"]}</div></span></span>
 
+    }
 
     let arLangRadioField = <div><div>
       <FormattedMessage id="ContactUs.Email" defaultMessage="Email">
@@ -153,7 +398,47 @@ class BirthDayClub extends Component {
 
     let contactNumberInputField = null
 
+
+
+
+    if ('parentFirstName' in errorsObj) {
+      parentFirstNameField = <div>
+        <div>
+          <FormattedMessage id="addnewchild.parentfirstname" defaultMessage="Parent First Name">
+            {(message) =>
+              <input name="first_name" className="input-field" placeholder={message} onChange={this.handleChange.bind(this, "parentFirstName")} value={this.state.fields['parentFirstName']}></input>}
+          </FormattedMessage>
+        </div><span id="P1001_FNAME_error_placeholder" className="a-Form-error u-visible" data-template-id="33609965712469734_ET"><span className="t-Form-error"><div id="P1001_FNAME_error">{errorsObj["parentFirstName"]}</div></span></span></div>
+    }
+
+
+
+    if ('parentLastName' in errorsObj) {
+      parentLastNameField = <div>
+        <div>
+          <FormattedMessage id="addnewchild.parentlastname" defaultMessage="Parent Last Name">
+            {(message) =>
+              <input name="first_name" className="input-field" placeholder={message} onChange={this.handleChange.bind(this, "parentLastName")} value={this.state.fields['parentLastName']}></input>}
+          </FormattedMessage>
+        </div><span id="P1001_FNAME_error_placeholder" className="a-Form-error u-visible" data-template-id="33609965712469734_ET"><span className="t-Form-error"><div id="P1001_FNAME_error">{errorsObj["parentLastName"]}</div></span></span></div>
+    }
+
+
+    if ('email' in errorsObj) {
+      emailInputField = <div>
+        <div>
+          <FormattedMessage id="ContactUs.Email" defaultMessage="Email">
+            {(message) =>
+              <input type="email" placeholder={message} className="input-field" style={{ borderRadius: 0 }} id="P1001_EMAIL" value={this.state.fields['email']} name="P1001_EMAIL" onChange={this.handleChange.bind(this, "email")} size={30} />}
+          </FormattedMessage>
+        </div><span id="P1001_FNAME_error_placeholder" className="a-Form-error u-visible" data-template-id="33609965712469734_ET"><span className="t-Form-error"><div id="P1001_FNAME_error">{errorsObj["email"]}</div></span></span></div>
+    }
+
     return (
+
+
+
+      
       <div>
         <div className="padding-breadcrumb">
           <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
@@ -170,70 +455,76 @@ class BirthDayClub extends Component {
             <Row>
               <Col xs={12} lg={6} md={6} className="alignStart">
                 <div style={{ marginTop: 15 }}>
-                  <span style={{ color: 'red' }}>*&nbsp;</span><span className="blackTitle1">Parent First Name</span>
+                  <span style={{ color: 'red' }}>*&nbsp;</span><span className="blackTitle1"><FormattedMessage id="addnewchild.parentfirstname" defaultMessage="Parent First Name " /></span>
                 </div>
                 <div>
-                  <input className={"input-field"}></input>
+                  {parentFirstNameField}
+                  {/* <input className={"input-field"} value={this.state.fields['parentFirstName']} onChange={this.handleChange.bind(this, "parentFirstName")}></input> */}
                 </div>
                 <div style={{ marginTop: 15 }}>
-                  <span style={{ color: 'red' }}>*&nbsp;</span><span className="blackTitle1">Email Address</span>
+                  <span style={{ color: 'red' }}>*&nbsp;</span><span className="blackTitle1"><FormattedMessage id="ContactUs.Email" defaultMessage="Email Address " /></span>
                 </div>
                 <div>
-                  <input className={"input-field"}></input>
+                  {emailInputField}
+                  {/* <input className={"input-field"} value={this.state.fields['email']} onChange={this.handleChange.bind(this, "email")}></input> */}
                 </div>
               </Col>
               <Col xs={12} lg={6} md={6} className="alignStart">
                 <div style={{ marginTop: 15 }}>
-                  <span style={{ color: 'red' }}>*&nbsp;</span><span className="blackTitle1">Parent Last Name</span>
+                  <span style={{ color: 'red' }}>*&nbsp;</span><span className="blackTitle1"><FormattedMessage id="addnewchild.parentlasttname" defaultMessage="Parent Last Name " /></span>
                 </div>
                 <div>
-                  <input className="input-field"></input>
+                  {parentLastNameField}
                 </div>
                 <div style={{ marginTop: 15 }}>
-                  <span style={{ color: 'red' }}>*&nbsp;</span><span className="blackTitle1">Contact Numbe</span>
+                  <span style={{ color: 'red' }}>*&nbsp;</span><span className="blackTitle1"><FormattedMessage id="parentFirstName" defaultMessage="Contact Number" /></span>
                 </div>
                 <div className="paddingLeft" style={{ marginTop: 5 }}>
                   <div style={{ textAlign: "start" }} >
                     <div className="padding row">
                       <div className=" col-12 apex-col-auto" style={{ padding: 0 }}>
-                        {/* <div className="row block" id="P1001_LNAME_CONTAINER" style={{ paddingLeft: 12 }}><div className="rmPadding rmTopPadding t-Form-labelContainer">
-                          <label htmlFor="P1001_LNAME" id="P1001_LNAME_LABEL" className="t-Form-label bolt"><FormattedMessage id="Form.PhoneNumber" defaultMessage="Contact Number *" /></label></div>
-                        </div> */}
+                      
                         <div style={{ padding: 0 }} className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel is-required apex-item-wrapper plugin-intltelinput-www.jqueryscript.net js-show-label" id="P1001_PHONE_CONTAINER">
 
                           <div style={{ width: '100%' }} id="PhoneNumber" className={phoneNumberClassName} >
                             <PhoneNumber changed={this.contactNumber} />
-                            {contactNumberInputField}
+                            <span id="PHONE_error_placeholder" className="a-Form-error" data-template-id="33610259035469734_ET" style={{ color: 'red' }}>
+                                                                {errorsObj["contactNumber"]}
+                                                              </span>
+                            {/* {contactNumberInputField} */}
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
+               
+                
+                
               </Col>
             </Row>
             <Row>
               <Col xs={12} lg={12} md={12} className="alignStart">
                 <div style={{ marginTop: 15 }}>
-                  <span className="blackTitle1">Prefered Language</span>
+                  <span className="blackTitle1"><FormattedMessage id="PreferedLanguage" defaultMessage="Prefered Language" /></span>
                 </div>
                 <div>
-                  <input className="RadioButton" type="radio" name="gender" value="male" /> <span className="radioButtonText">Arabic</span>
-                  <input className="radioButton RadioButton" type="radio" name="gender" value="female" /> <span className="radioButtonText">English</span>
+                  <input className="RadioButton" type="radio" name="gender"  selected="selected" value="arabic" name="P1001_EMAIL" onChange={this.handleChange.bind(this, "lang")} /> <span className="radioButtonText"><FormattedMessage id="header.Arabic" defaultMessage="Arabic" /></span>
+                  <input className="radioButton RadioButton" type="radio" name="gender" value="english" name="P1001_EMAIL" onChange={this.handleChange.bind(this, "lang")} /> <span className="radioButtonText"><FormattedMessage id="header.English" defaultMessage="English" /></span>
                 </div>
               </Col>
             </Row>
-            <div className="errorMessageDiv" style={this.state.error ? {display: 'block'}: {display: 'none'}}>
+            <div className="errorMessageDiv" style={this.state.error ? { display: 'block' } : { display: 'none' }}>
               <div className="errorMessage">
-                  Please select data
-                  <i className="close fa fa-times close-icon-sort" aria-hidden="true" onClick={() => this.setState({error: false})}/>
+                Please select data
+                  <i className="close fa fa-times close-icon-sort" aria-hidden="true" onClick={() => this.setState({ error: false })} />
               </div>
             </div>
             {ChildrenCount.map((keyName, index) =>
-              <Row style={{position: 'relative'}} className="alignStart">
+              <Row style={{ position: 'relative' }} className="alignStart">
                 <Col xs={12} lg={4} md={4} >
                   <div style={{ marginTop: 15 }}>
-                    <span className="blackTitle1 alignStart">Name</span>
+                    <span className="blackTitle1 alignStart"><FormattedMessage id="ContactUs.Name" defaultMessage="Name" /></span>
                   </div>
                   <div>
                     <input className={"input-field"} placeholder="Name" onChange={this.getName.bind(this, index)}></input>
@@ -241,7 +532,7 @@ class BirthDayClub extends Component {
                 </Col>
                 <Col xs={12} lg={4} md={4} >
                   <div style={{ marginTop: 15 }}>
-                    <span className="blackTitle1 alignStart">Gender</span>
+                    <span className="blackTitle1 alignStart"><FormattedMessage id="gender" defaultMessage="Gender" /></span>
                   </div>
                   <div style={{ position: 'relative', marginTop: 5 }}>
                     <div className={sortByShowOption[index] ? "sortBySelectedText2 open genderPadding" : "sortBySelectedText2 genderPadding"} onClick={() => this.showGenderOption(index)} style={{border: 'solid 1px #b1b1b1'}}>
@@ -251,13 +542,13 @@ class BirthDayClub extends Component {
                     <div>
                       <div className="sortByOption" style={sortByShowOption[index] ? { display: 'block' } : { display: 'none' }}>
                         <div className="sortByOptionText" onClick={() => this.onClickGender("Male", index)}>
-                          <span>Male</span>
+                          <span><FormattedMessage id="male" defaultMessage="Male" /></span>
                         </div>
                         <div className="sortByOptionText" onClick={() => this.onClickGender("Female", index)}>
-                          <span>Female</span>
+                          <span><FormattedMessage id="female" defaultMessage="Female" /></span>
                         </div>
                         <div className="sortByOptionText" onClick={() => this.onClickGender("Other", index)}>
-                          <span>Other</span>
+                          <span><FormattedMessage id="other" defaultMessage="other" /></span>
                         </div>
                       </div>
                     </div>
@@ -265,27 +556,30 @@ class BirthDayClub extends Component {
                 </Col>
                 <Col xs={12} lg={4} md={4} >
                   <div style={{ marginTop: 15 }}>
-                    <span className="blackTitle1 alignStart">DOB</span>
+                    <span className="blackTitle1 alignStart"><FormattedMessage id="addnewchild.dob" defaultMessage="DOB" /></span>
                   </div>
-                  <div style={{width: "100%", marginTop: 5}} id="badyClubDate">
+                  <div style={{width: "100%", marginTop: 5 ,borderRadius:0}} id="badyClubDate">
                     <DatePicker
                       selected={ChildrenDate[index] != "" ? ChildrenDate[index] : new Date()}
-                      onChange={this.handleChange.bind(this, index)}
-                      style={{width: "100%"}}
+                      onChange={this.handleChangeDOB.bind(this, index)}
+                      style={{ width: "100%" }}
                     />
                   </div>
                 </Col>
-                <i style={{position: 'absolute'}} className="close fa fa-times crossIcon" aria-hidden="true" onClick={() => this.removeChild(index)}/>
+                <i style={{ position: 'absolute' }} className="close fa fa-times crossIcon" aria-hidden="true" onClick={() => this.removeChild(index)} />
               </Row>
             )}
             <Row style={{ textAlign: 'center', paddingTop: 20 }}>
               <Col xs={12} lg={12} md={12}>
-                <button class="addChildrenButton" onClick={() => this.addChild()}>Add Children</button>
-              </Col>
+                <button className="addChildrenButton" onClick={() => this.addChild()}><FormattedMessage id="header.addChildern" defaultMessage="Add Children" /></button>
+
+                            </Col>
             </Row>
             <Row style={{ textAlign: 'center', paddingTop: 10 }}>
               <Col>
-                <button class="addChildrenRegisterButton" onClick={() => this.ragester()}>Register</button>
+                <button class="addChildrenRegisterButton" onClick={this.signUpSubmit}><FormattedMessage id="Form.Register" defaultMessage="Register" /></button>
+               
+                
               </Col>
             </Row>
           </Col>
@@ -298,11 +592,19 @@ class BirthDayClub extends Component {
 
 const mapStateToProps = state => {
   return {
-    aboutUs: state.static.aboutUs,
+    isUserLoggedIn: state.login.isUserLoggedIn,
     spinnerProduct: state.spinner.loadingProduct,
-    globals: state.global
+    globals: state.global,
+    registartion_details: state.birthdayclubData.registerBClubUserDetails,
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onRegisterBirthdayClubUser: (payload) => dispatch(actions.setBirthDayClubData(payload)),
+    onClearRegistrationError: () => dispatch(actions.clearBirthdayClubRegisterError()),
   }
 }
 
 
-export default connect(mapStateToProps)(BirthDayClub);
+export default connect(mapStateToProps, mapDispatchToProps)(BirthDayClub);
