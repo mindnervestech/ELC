@@ -230,7 +230,7 @@ class Contact extends Component {
                                                 <span><FormattedMessage id="delivery-details.ContactInformation.Title" defaultMessage="Contact Information" /></span>
                                             </h3>
                                             <span className="hide-screen-sm" style={{ fontSize: '11px', lineHeight: '17px', letterSpacing: '.04em', textTransform: 'inherit', fontWeight: 'normal' }}>
-                                                <FormattedMessage id="delivery-details.ContactInformation.Message1" defaultMessage="Fields marked with" />
+                                                <FormattedMessage id="delivery-details.ContactInformation.Message1" defaultMessage="Fields marked with *" />
                                                 <span className="t-Form-fieldContainer--floatingLabel is-required"> </span>
                                                 <FormattedMessage id="delivery-details.ContactInformation.Message2" defaultMessage="are required" />
                                             </span>
@@ -266,7 +266,7 @@ class Contact extends Component {
                                                         <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel is-required apex-item-wrapper apex-item-wrapper--text-field" onFocus={(e) => this.divOnFocus(e)}
                                                             onBlur={(e) => this.divOnBlure(e)} id="P7_FNAME_CONTAINER">
                                                             <div className="t-Form-labelContainer">
-                                                                <label htmlFor="P7_FNAME" id="P7_FNAME_LABEL" className="t-Form-label"><FormattedMessage id="Form.FirstName" defaultMessage="First Name" /> <span className="u-VisuallyHidden">(Value Required)</span></label>
+                                                                <label htmlFor="P7_FNAME" id="P7_FNAME_LABEL" className="t-Form-label"><FormattedMessage id="Form.FirstName" defaultMessage="First Name*" /> <span className="u-VisuallyHidden">(Value Required)</span></label>
                                                             </div>
                                                             {firstNameInputField}
                                                         </div>
@@ -275,7 +275,7 @@ class Contact extends Component {
                                                         <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel is-required apex-item-wrapper apex-item-wrapper--text-field" onFocus={(e) => this.divOnFocus(e)}
                                                             onBlur={(e) => this.divOnBlure(e)} id="P7_LNAME_CONTAINER">
                                                             <div className="t-Form-labelContainer">
-                                                                <label htmlFor="P7_LNAME" id="P7_LNAME_LABEL" className="t-Form-label"><FormattedMessage id="Form.LastName" defaultMessage="Last Name" /></label>
+                                                                <label htmlFor="P7_LNAME" id="P7_LNAME_LABEL" className="t-Form-label"><FormattedMessage id="Form.LastName" defaultMessage="Last Name*" /></label>
                                                             </div>
                                                             {LastNameInputField}
                                                         </div>
@@ -297,7 +297,7 @@ class Contact extends Component {
                                                         <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel is-required apex-item-wrapper apex-item-wrapper--text-field" onFocus={(e) => this.divOnFocus(e)}
                                                             onBlur={(e) => this.divOnBlure(e)} id="P7_EMAIL_CONTAINER">
                                                             <div className="t-Form-labelContainer">
-                                                                <label htmlFor="P7_EMAIL" id="P7_EMAIL_LABEL" className="t-Form-label"><FormattedMessage id="Form.Email" defaultMessage="Email" /> <span className="u-VisuallyHidden">(Value Required)</span></label>
+                                                                <label htmlFor="P7_EMAIL" id="P7_EMAIL_LABEL" className="t-Form-label"><FormattedMessage id="Form.Email" defaultMessage="Email*" /> <span className="u-VisuallyHidden">(Value Required)</span></label>
                                                             </div>
                                                             {emailInputField}
                                                         </div>

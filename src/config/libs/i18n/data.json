@@ -240,7 +240,7 @@
         "delivery-details.ContactInformation.Title": "Contact Information",
         "delivery-details.AddressInformation.Title": "ADDRESS INFORMATION",
         "delivery-details.addressContent": "Any changes you make will automatically update your address book in Your Account.",
-        "delivery-details.ContactInformation.Message1": "Fields marked with",
+        "delivery-details.ContactInformation.Message1": "Fields marked with *",
         "delivery-details.ContactInformation.Message2": "are required.",
         "delivery-details.ContinueShopping.Title": "Continue Shopping",
         "delivery-details.Proceed.Title": "Proceed",
@@ -300,10 +300,10 @@
         "Checkout.Proceed": "Proceed",
         "Checkout.Location": "Location",
         "Checkout.City": "City",
-        "Address1.Text": "Address 1",
+        "Address1.Text": "Address 1*",
         "Address2.Text": "Address 2",
         "Address3.Text": "Address 3",
-        "Postcode.Text": "Post code",
+        "Postcode.Text": "Post code*",
         "Postcode.Validate": "Please enter Post code",
         "Address.Validate": "Please enter address",
         "CashOnDelivery.Text": "Cash On Delivery",
@@ -591,7 +591,9 @@
         "StockShortage1": "STOCK SHORTAGE - we have added ",
         "StockShortage2": " units to your basket because we do not have enough stock.",
         "NotAvailableforcurrentstoreDelivery": "Not Available for current store Delivery",
-        "Paymentpending":"Payment pending"
+        "Paymentpending":"Payment pending",
+        "InvalidvalueQty" : "Please provide a positive number to update the quantity of an item."
+
     },
     "ar": {
         "Form.PhoneNumber":"Contact Number *",
@@ -643,7 +645,7 @@
         "Amirah.PhoneNumber": "الرجاء ادخال رقم الهاتف!",
         "Form.FirstName": "ألاسم الاول *",
         "Form.LastName": "اسم العائلة *",
-        "Form.Email": "البريد الإلكتروني ",
+        "Form.Email": "البريد الإلكتروني* ",
         "Form.Send": "إرسال",
         "Form.Register": "تسجيل",
         "footer.aboutTitle": "عن نيومي ",
@@ -772,7 +774,7 @@
         "delivery-details.Total.Title": "مجموع",
         "delivery-details.ContactInformation.Title": "معلومات التواصل",
         "delivery-details.ContactInformation.Message1": "الحقول المميزة بعلامة  ",
-        "delivery-details.ContactInformation.Message2": ".مطلوبة  ",
+        "delivery-details.ContactInformation.Message2": ".مطلوبة  *",
         "delivery-details.addressContent": " أي تغييرات تقومين بها، سيتم تحديثها تلقائيًا في دفتر عناوينكي في حسابكي  ",
         "delivery-details.AddressInformation.Title": "معلومات العنوان  ",
         "delivery-details.ContinueShopping.Title": "تابع التسوق",
@@ -836,7 +838,7 @@
         "Checkout.Proceed": "تقدم ",
         "Checkout.Location": "موقعك  ",
         "Checkout.City": "المدينة  ",
-        "Address1.Text": "Address 1",
+        "Address1.Text": "Address 1*",
         "Address2.Text": "Address 2",
         "Address3.Text": "Address 3",
         "included.text": "شمل",
@@ -974,10 +976,10 @@
         "BUYMORESAVEMORE": "اشتر أكثر ووفر أكثر",
         "NoData.Text": "آسف .. لا توجد بيانات متاحة ",
         "ClearAll.Text": "امسح الكل",
-        "Address1.Text": "العنوان 1",
+        "Address1.Text": "العنوان 1*",
         "Address2.Text": "العنوان 2",
         "Address3.Text": "العنوان 3",
-        "Postcode.Text": "الرمز البريدي",
+        "Postcode.Text": "الرمز البريدي*",
         "Postcode.Validate": "يرجى إدخال رمزك البريدي",
         "Address.Validate": "من فضلك ادخل العنوان  ",
         "saved.add.text": "لا يمكن استخدام هذا العنوان للبلد المحدد",
@@ -1158,6 +1160,7 @@
         "StockShortage1": "STOCK SHORTAGE - we have added ",
         "StockShortage2": " units to your basket because we do not have enough stock.",
         "NotAvailableforcurrentstoreDelivery": "Not Available for current store Delivery",
-        "Paymentpending":"Payment pending"
+        "Paymentpending":"Payment pending",
+        "InvalidvalueQty" : "Please provide a positive number to update the quantity of an item."
     }
 }

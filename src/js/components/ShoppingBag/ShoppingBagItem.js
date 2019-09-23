@@ -9,13 +9,14 @@ import { Redirect, withRouter } from 'react-router-dom';
 import { FormattedMessage, injectIntl } from 'react-intl';
 //import { confirmAlert } from 'react-confirm-alert'; // Import
 //import 'react-confirm-alert/src/react-confirm-alert.css';
-import NumericInput from 'react-numeric-input'; 
+import NumericInput from 'react-numeric-input';
 import Popup from 'react-popup';
 import Spinner from '../Spinner/Spinner2';
 import Alert from './AlertMsg';
 
 let successFlag = false;
 let stockSortageFlag = false;
+let invalidValue = false
 let stockSortageQTY = 0;
 let productCount = 0
 class ShoppingBagItem extends Component {
@@ -61,59 +62,74 @@ class ShoppingBagItem extends Component {
         }
     }
 
-    componentDidMount(){
+    componentDidMount() {
         successFlag = false;
         stockSortageFlag = false;
+        invalidValue = false;
     }
 
     handleChange(item, index, value) {
         let { user_details, globals } = this.props;
-        if (value.target.value.match("^[0-9]*$") != null) {
-            const { timeout } = this.state
-            let qty = value.target.value;
-            if (timeout) {
-                clearTimeout(timeout);
+        const { timeout } = this.state
+        let qty = value.target.value;
+        if (timeout) {
+            clearTimeout(timeout);
+        }
+        stockSortageFlag = false;
+        successFlag = false;
+        invalidValue = false;
+        if (item.is_in_stock && qty > 0) {
+            if (parseInt(item.is_in_stock.stock) < parseInt(qty)) {
+                this.setState({
+                    timeout: setTimeout(() => {
+                        stockSortageQTY = item.is_in_stock.stock;
+                        let obj = {
+                            product_id: item.id,
+                            qty: item.is_in_stock.stock,
+                            quote_id: user_details.isUserLoggedIn ? user_details.customer_details.quote_id : this.props.guest_user.new_quote_id,
+                            sku: item.sku,
+                            store_id: globals.currentStore
+                        }
+                        this.props.OnChangeQty(obj);
+                        stockSortageFlag = true;
+                    }, 3000)
+                });
+            } else {
+                this.setState({
+                    timeout: setTimeout(() => {
+                        let obj = {
+                            product_id: item.id,
+                            qty: qty,
+                            quote_id: user_details.isUserLoggedIn ? user_details.customer_details.quote_id : this.props.guest_user.new_quote_id,
+                            sku: item.sku,
+                            store_id: globals.currentStore
+                        }
+                        successFlag = true;
+                        this.props.OnChangeQty(obj);
+                    }, 3000)
+                });
             }
-            if (item.is_in_stock && qty > 0) {
-                stockSortageFlag = false;
-                successFlag = false;
-                if (parseInt(item.is_in_stock.stock) < parseInt(qty)) {
-                    this.setState({
-                        timeout: setTimeout(() => {
-                            stockSortageQTY = item.is_in_stock.stock;
-                            let obj = {
-                                product_id: item.id,
-                                qty: item.is_in_stock.stock,
-                                quote_id: user_details.isUserLoggedIn ? user_details.customer_details.quote_id : this.props.guest_user.new_quote_id,
-                                sku: item.sku,
-                                store_id: globals.currentStore
-                            }
-                            this.props.OnChangeQty(obj);
-                            stockSortageFlag = true;
-                        }, 3000)
-                    });
-                } else {
-                    this.setState({
-                        timeout: setTimeout(() => {
-                            let obj = {
-                                product_id: item.id,
-                                qty: qty,
-                                quote_id: user_details.isUserLoggedIn ? user_details.customer_details.quote_id : this.props.guest_user.new_quote_id,
-                                sku: item.sku,
-                                store_id: globals.currentStore
-                            }
-                            successFlag = true;
-                            this.props.OnChangeQty(obj);
-                        }, 3000)
-                    });
-                }
-            }
+        } else {
+            this.setState({
+                timeout: setTimeout(() => {
+                    let obj = {
+                        product_id: item.id,
+                        qty: qty,
+                        quote_id: user_details.isUserLoggedIn ? user_details.customer_details.quote_id : this.props.guest_user.new_quote_id,
+                        sku: item.sku,
+                        store_id: globals.currentStore
+                    }
+                    invalidValue = true;
+                    this.props.OnChangeQty(obj);
+                }, 3000)
+            });
         }
     }
 
-    closeModal(type){
+    closeModal(type) {
         stockSortageFlag = false;
         successFlag = false;
+        invalidValue = false
         this.setState({
             stockSortageFlag: true,
         })
@@ -150,17 +166,17 @@ class ShoppingBagItem extends Component {
         // }
         productCount = product.length
         let visible_on_store = true;
-        for(var i in product){
-            if(product[i].visible_on_store === false){
+        for (var i in product) {
+            if (product[i].visible_on_store === false) {
                 visible_on_store = false;
                 break;
             }
         }
         let outOfStockAlert = null;
-        if(!visible_on_store){
-            outOfStockAlert = <Alert  />
+        if (!visible_on_store) {
+            outOfStockAlert = <Alert />
         }
-        
+
         return (<>
             <div className="homePage cardPage padding30" style={{ color: '#0D943F' }}>
                 {this.props.updateLoader && <Spinner />}
@@ -179,18 +195,24 @@ class ShoppingBagItem extends Component {
                         <div className="modal-cart-update">
                             {successFlag ?
                                 <div className="updated-qty-msg">
-                                <FormattedMessage id="Productquantityhasbeenupdated" defaultMessage="Product quantity has been updated." />
-                                <i className="close fa fa-times close-icon-update" aria-hidden="true" onClick={() => this.closeModal("stockSortageFlag")}/>
+                                    <FormattedMessage id="Productquantityhasbeenupdated" defaultMessage="Product quantity has been updated." />
+                                    <i className="close fa fa-times close-icon-update" aria-hidden="true" onClick={() => this.closeModal("stockSortageFlag")} />
                                 </div>
-                            : ''}
-                            {stockSortageFlag ? 
+                                : ''}
+                            {stockSortageFlag ?
                                 <div className="sort-storage-qty-msg">
-                                <FormattedMessage id="StockShortage1" defaultMessage="STOCK SHORTAGE - we have added " />
+                                    <FormattedMessage id="StockShortage1" defaultMessage="STOCK SHORTAGE - we have added " />
                                     {stockSortageQTY}
-                                <FormattedMessage id="StockShortage2" defaultMessage=" units to your basket because we do not have enough stock." />
-                                <i className="close fa fa-times close-icon-sort" aria-hidden="true" onClick={() => this.closeModal("successFlag")}/>
+                                    <FormattedMessage id="StockShortage2" defaultMessage=" units to your basket because we do not have enough stock." />
+                                    <i className="close fa fa-times close-icon-sort" aria-hidden="true" onClick={() => this.closeModal("successFlag")} />
                                 </div>
-                            : ''}
+                                : ''}
+                            {invalidValue ?
+                                <div className="sort-storage-qty-msg">
+                                    <FormattedMessage id="InvalidvalueQty" defaultMessage="Please provide a positive number to update the quantity of an item." />
+                                    <i className="close fa fa-times close-icon-sort" aria-hidden="true" onClick={() => this.closeModal("invalidValue")} />
+                                </div>
+                                : ''}
                         </div>
                         <div className="wishlist-title cart-breadcrumb">
                             <label>
@@ -199,51 +221,51 @@ class ShoppingBagItem extends Component {
                         </div>
                         <div className="displayDivOnWeb">
                             <Row className="row-5 changeRow">
-                     <Col xs="6">
-                        <div className="blackTitle" style={{ fontSize: 22, textAlign: 'start', color: "#4f4f4f" }}>
-                           Select Delivery
+                                <Col xs="6">
+                                    <div className="blackTitle" style={{ fontSize: 22, textAlign: 'start', color: "#4f4f4f" }}>
+                                        Select Delivery
                      </div>
-                        <div className="prod-color">
-                           <div className="row del-options">
-                              <div className="home-deli2">
-                                 <div className="blockImage">
-                                    <img src={freeDelivery} />
-                                 </div>
-                                 <div className="blockTextColor">
-                                    <span><FormattedMessage id="delivery-details.HomeDelivery.Title" defaultMessage="Home Delivery" /></span>
-                                 </div>
-                                 <div style={{ padding: '45px 20px 5px', fontWeight: 'bold' }}>
-                                    <span>
-                                    Available
+                                    <div className="prod-color">
+                                        <div className="row del-options">
+                                            <div className="home-deli2">
+                                                <div className="blockImage">
+                                                    <img src={freeDelivery} />
+                                                </div>
+                                                <div className="blockTextColor">
+                                                    <span><FormattedMessage id="delivery-details.HomeDelivery.Title" defaultMessage="Home Delivery" /></span>
+                                                </div>
+                                                <div style={{ padding: '45px 20px 5px', fontWeight: 'bold' }}>
+                                                    <span>
+                                                        Available
                               </span>
-                                 </div>
-                              </div>
-                              <div className="click-collect3">
-                                 <div className="blockImage">
-                                    <img src={freeCollect} style={{height: 60}}/>
-                                 </div>
-                                 <div className="blockTextColor" style={{color: 'gray'}}>
-                                    <span>Click & Collect at The Entertainer</span>
-                                 </div>
-                                 <div style={{ padding: '40px 20px 5px', fontWeight: 'bold', color: 'gray' }}>
-                                    <span><FormattedMessage id="Comingsoon" defaultMessage="Coming soon" /></span>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </Col>
-                     <Col xs="3"></Col>
-                     <Col xs="3" style={{ textAlign: 'end' }}>
-                        <div>
-                           <div className="blackTitle" style={{ fontSize: 22, color: "#4f4f4f" }}>
-                              <span>{productCount}&nbsp; <FormattedMessage id="Item.text" defaultMessage="Item" /> &nbsp; | &nbsp;{this.props.cart_details.currency}&nbsp;{this.props.cart_details.grand_total}</span>
-                           </div>
-                           <div>
-                                <button disabled={!visible_on_store} className="alsoLikeCardButton" onClick={() => this.checkOut()}><FormattedMessage id="Cart.CheckOut.Title" defaultMessage="Check out" /></button>
-                           </div>
-                        </div>
-                     </Col>
-                  </Row>
+                                                </div>
+                                            </div>
+                                            <div className="click-collect3">
+                                                <div className="blockImage">
+                                                    <img src={freeCollect} style={{ height: 60 }} />
+                                                </div>
+                                                <div className="blockTextColor" style={{ color: 'gray' }}>
+                                                    <span>Click & Collect at The Entertainer</span>
+                                                </div>
+                                                <div style={{ padding: '40px 20px 5px', fontWeight: 'bold', color: 'gray' }}>
+                                                    <span><FormattedMessage id="Comingsoon" defaultMessage="Coming soon" /></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </Col>
+                                <Col xs="3"></Col>
+                                <Col xs="3" style={{ textAlign: 'end' }}>
+                                    <div>
+                                        <div className="blackTitle" style={{ fontSize: 22, color: "#4f4f4f" }}>
+                                            <span>{productCount}&nbsp; <FormattedMessage id="Item.text" defaultMessage="Item" /> &nbsp; | &nbsp;{this.props.cart_details.currency}&nbsp;{this.props.cart_details.grand_total}</span>
+                                        </div>
+                                        <div>
+                                            <button disabled={!visible_on_store} className="alsoLikeCardButton" onClick={() => this.checkOut()}><FormattedMessage id="Cart.CheckOut.Title" defaultMessage="Check out" /></button>
+                                        </div>
+                                    </div>
+                                </Col>
+                            </Row>
                             <Row className="row-1 changeRow" style={{ textAlign: 'start', color: "#4f4f4f", fontSize: 14 }}>
                                 <Col xs="3"></Col>
                                 <Col xs="4">
@@ -287,31 +309,31 @@ class ShoppingBagItem extends Component {
                                         </div>
                                     </Col>
                                     {item.visible_on_store ?
-                                    <Col xs="1" className="row-3" style={{ fontSize: 16, color: "#4f4f4f" }}>
-                                        <span>{item.currency}&nbsp;{item.price}</span>
-                                    </Col> : ''}
+                                        <Col xs="1" className="row-3" style={{ fontSize: 16, color: "#4f4f4f" }}>
+                                            <span>{item.currency}&nbsp;{item.price}</span>
+                                        </Col> : ''}
                                     {item.visible_on_store ?
-                                    <Col xs="1" className="row-3 blackTitle" style={{ fontSize: 22, color: "#4f4f4f" }}>
-                                        {/* <span className="qut">{item.qty}</span> */}
-                                        {/* <NumericInput max={500} min={1} className="increse-item-qty"
+                                        <Col xs="1" className="row-3 blackTitle" style={{ fontSize: 22, color: "#4f4f4f" }}>
+                                            {/* <span className="qut">{item.qty}</span> */}
+                                            {/* <NumericInput max={500} min={1} className="increse-item-qty"
                                             onChange={this.handleChange.bind(this, item, index)} placeholder={item.qty}></NumericInput> */}
                                             <input
-                                                type="number"
+                                                type="text"
                                                 id="P3_QTY"
                                                 name="P3_QTY"
-                                                maxLength="3"
+                                                maxLength="7"
                                                 min={1}
                                                 placeholder={item.qty}
                                                 onChange={this.handleChange.bind(this, item, index)}
                                                 className="increse-item-qty"
                                             />
-                                    </Col> : ""}
+                                        </Col> : ""}
                                     {item.visible_on_store ?
-                                    <Col xs="1" className="row-3 blackTitle" style={{ fontSize: 22, marginTop: '4.7%' }}>
-                                        <span>{item.currency}&nbsp;{item.price * item.qty}</span>
-                                    </Col> : 
+                                        <Col xs="1" className="row-3 blackTitle" style={{ fontSize: 22, marginTop: '4.7%' }}>
+                                            <span>{item.currency}&nbsp;{item.price * item.qty}</span>
+                                        </Col> :
                                         <Col xs="3" className="row-9">
-                                            <div style={{fontSize:'18px', color:'red', marginBottom:'30px'}}>
+                                            <div style={{ fontSize: '18px', color: 'red', marginBottom: '30px' }}>
                                                 <FormattedMessage id="NotAvailableforcurrentstoreDelivery " defaultMessage="Not Available for current store Delivery" />
                                             </div>
                                         </Col>
@@ -328,9 +350,9 @@ class ShoppingBagItem extends Component {
                                     <div style={{ paddingTop: 30, textAlign: 'start' }}>
                                         <input type="text" placeholder="Enter promo code" className="email-field"></input>
                                         <FormattedMessage id="ResetPassword.Apply.Text" defaultMessage="Apply">
-                                        {(message) =>
-                                        <input type="submit" value={message} className="submit-button"></input>
-                                        }</FormattedMessage>
+                                            {(message) =>
+                                                <input type="submit" value={message} className="submit-button"></input>
+                                            }</FormattedMessage>
                                     </div>
                                 </Col>
                                 <Col xs="6">
@@ -359,43 +381,43 @@ class ShoppingBagItem extends Component {
                         </div>
                         <div className="hideDivOnMobile">
                             <div className="blackTitle" style={{ fontSize: 18, padding: '10px 0px', color: "#4f4f4f" }}>
-                     <span>Select Delivery</span><span className="floatRight">{productCount}&nbsp; <FormattedMessage id="Item.text" defaultMessage="Item" /> &nbsp;|&nbsp;{this.props.cart_details.currency}&nbsp;{this.props.cart_details.grand_total}</span>
-                  </div>
-                  <div className="prod-color" style={{color: "#4f4f4f"}}>
-                     <div>
-                        <div id="mobile-home-deli" className="home-deli" style={{ display: 'block', display: 'inline-block', textAlign: 'center' }}>
-                           <img src={freeDelivery} />
-                           <div style={{ padding: "30px 10px", height: 140, width: '100%' }} className="blockTextColor">
-                              <span><FormattedMessage id="delivery-details.HomeDelivery.Title" defaultMessage="Home Delivery" /></span>
-                           </div>
-                           <div>
-                              <span style={{ color: '#0D943F', fontWeight: 'bold' }}>Available</span>
-                           </div>
-                        </div>
-                        <div id="mobile-click-colect" className="click-collect" style={{ display: 'inline-block', textAlign: 'center', verticalAlign: 'top'}}>
-                           <img src={freeCollect} />
-                           <div style={{ padding: "30px 10px",height: 140, width: '100%', color: 'gray' }} className="blockTextColor">
-                              <span>Click & Collect at The Entertainer</span>
-                           </div>
-                           <div style={{ fontWeight: 'bold',color: 'gray' }}>
-                           <span><FormattedMessage id="Comingsoon" defaultMessage="Coming soon" /></span>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div>
-                    <button disabled={!visible_on_store} onClick={() => this.checkOut()} className="alsoLikeCardButton"><FormattedMessage id="Cart.CheckOut.Title" defaultMessage="Check out" /></button>
-                  </div>
+                                <span>Select Delivery</span><span className="floatRight">{productCount}&nbsp; <FormattedMessage id="Item.text" defaultMessage="Item" /> &nbsp;|&nbsp;{this.props.cart_details.currency}&nbsp;{this.props.cart_details.grand_total}</span>
+                            </div>
+                            <div className="prod-color" style={{ color: "#4f4f4f" }}>
+                                <div>
+                                    <div id="mobile-home-deli" className="home-deli" style={{ display: 'block', display: 'inline-block', textAlign: 'center' }}>
+                                        <img src={freeDelivery} />
+                                        <div style={{ padding: "30px 10px", height: 140, width: '100%' }} className="blockTextColor">
+                                            <span><FormattedMessage id="delivery-details.HomeDelivery.Title" defaultMessage="Home Delivery" /></span>
+                                        </div>
+                                        <div>
+                                            <span style={{ color: '#0D943F', fontWeight: 'bold' }}>Available</span>
+                                        </div>
+                                    </div>
+                                    <div id="mobile-click-colect" className="click-collect" style={{ display: 'inline-block', textAlign: 'center', verticalAlign: 'top' }}>
+                                        <img src={freeCollect} />
+                                        <div style={{ padding: "30px 10px", height: 140, width: '100%', color: 'gray' }} className="blockTextColor">
+                                            <span>Click & Collect at The Entertainer</span>
+                                        </div>
+                                        <div style={{ fontWeight: 'bold', color: 'gray' }}>
+                                            <span><FormattedMessage id="Comingsoon" defaultMessage="Coming soon" /></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <button disabled={!visible_on_store} onClick={() => this.checkOut()} className="alsoLikeCardButton"><FormattedMessage id="Cart.CheckOut.Title" defaultMessage="Check out" /></button>
+                            </div>
 
                             {product && product.map((item, index) => (
 
                                 <div style={{ padding: '20px 0px', borderBottom: 'solid 1px #b1b1b1', color: "#4f4f4f" }}>
-                                    <div style={{display: 'inline-block', width: "80%"}}>
+                                    <div style={{ display: 'inline-block', width: "80%" }}>
                                         <Link to={`/${store_locale}/products-details/${item.url_key}`}>
                                             <img src={item.image[0]} className="cardImage"></img>
                                         </Link>
                                     </div>
-                                    <div style={{display: 'inline-block', width: "18%", verticalAlign: 'top'}} >
+                                    <div style={{ display: 'inline-block', width: "18%", verticalAlign: 'top' }} >
                                         <span onClick={() => this.remove(index)} className="remove blackTitle floatRight" style={{ fontSize: 14, lineHeight: 1 }}>
                                             <FormattedMessage id="Cart.Remove.Title" defaultMessage="Remove" />
                                         </span>
@@ -412,33 +434,33 @@ class ShoppingBagItem extends Component {
                                         </div>
                                     </div>
                                     {item.visible_on_store ?
-                                    <div className="row-3 blackTitle" style={{ fontSize: 16 }}>
-                                        <span>{item.currency}&nbsp;{item.price}</span>
-                                    </div> : '' }
+                                        <div className="row-3 blackTitle" style={{ fontSize: 16 }}>
+                                            <span>{item.currency}&nbsp;{item.price}</span>
+                                        </div> : ''}
                                     {item.visible_on_store ?
-                                    <div className="row-3 blackTitle" style={{ fontSize: 16, textAlign: 'start', color: "#4f4f4f" }}>
-                                        <span><FormattedMessage id="Item.Qty" defaultMessage="Qty" />: </span>
-                                        {/* <span className="qut">{item.qty}</span> */}
-                                        {/* <input type="number" className="increse-item-qty"
+                                        <div className="row-3 blackTitle" style={{ fontSize: 16, textAlign: 'start', color: "#4f4f4f" }}>
+                                            <span><FormattedMessage id="Item.Qty" defaultMessage="Qty" />: </span>
+                                            {/* <span className="qut">{item.qty}</span> */}
+                                            {/* <input type="number" className="increse-item-qty"
                                             onChange={this.handleChange.bind(this, item, index)} value={this.state.prod_qty["item" + index]} placeholder={item.qty}></input> */}
-                                        {/* <NumericInput max={500} min={1} className="increse-item-qty"
+                                            {/* <NumericInput max={500} min={1} className="increse-item-qty"
                                             onChange={this.handleChange.bind(this, item, index)} placeholder={item.qty}></NumericInput> */}
                                             <input
                                                 type="number"
                                                 id="P3_QTY"
                                                 name="P3_QTY"
-                                                maxLength="3"
+                                                maxLength="8"
                                                 min={1}
                                                 value={this.state.defaultQty}
                                                 placeholder={item.qty}
                                                 onChange={this.handleChange.bind(this, item, index)}
                                                 className="increse-item-qty"
                                             />
-                                        <span className="floatRight" style={{ fontSize: 22, color: "#0D943F" }}>{item.currency}&nbsp;{item.price * item.qty}</span>
-                                    </div> : 
-                                    <div style={{fontSize:'18px', color:'red', marginBottom:'30px'}}>
-                                        <FormattedMessage id="NotAvailableforcurrentstoreDelivery " defaultMessage="Not Available for current store Delivery" />
-                                    </div>
+                                            <span className="floatRight" style={{ fontSize: 22, color: "#0D943F" }}>{item.currency}&nbsp;{item.price * item.qty}</span>
+                                        </div> :
+                                        <div style={{ fontSize: '18px', color: 'red', marginBottom: '30px' }}>
+                                            <FormattedMessage id="NotAvailableforcurrentstoreDelivery " defaultMessage="Not Available for current store Delivery" />
+                                        </div>
                                     }
                                 </div>
                             ))}

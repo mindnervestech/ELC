@@ -425,7 +425,7 @@ class AddressForm extends Component {
                                                                 <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel is-required apex-item-wrapper apex-item-wrapper--text-field " onFocus={(e) => this.divOnFocus(e)}
                                                                     onBlur={(e) => this.divOnBlure(e)} id="P25_FIRST_NAME_CONTAINER"><div className="t-Form-labelContainer">
                                                                         <label htmlFor="P25_FIRST_NAME" id="P25_FIRST_NAME_LABEL" className="t-Form-label">
-                                                                            <FormattedMessage id="Form.FirstName" defaultMessage="First Name" />
+                                                                            <FormattedMessage id="Form.FirstName" defaultMessage="First Name*" />
                                                                             <span className="u-VisuallyHidden">(Value Required)</span></label>
                                                                     </div>
 
@@ -437,7 +437,7 @@ class AddressForm extends Component {
                                                             </div><div className="col col-6 apex-col-auto">
                                                                 <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel apex-item-wrapper apex-item-wrapper--text-field" onFocus={(e) => this.divOnFocus(e)}
                                                                     onBlur={(e) => this.divOnBlure(e)} id="P25_LAST_NAME_CONTAINER"><div className="t-Form-labelContainer">
-                                                                        <label htmlFor="P25_LAST_NAME" id="P25_LAST_NAME_LABEL" className="t-Form-label"><FormattedMessage id="Form.LastName" defaultMessage="Last Name" /></label>
+                                                                        <label htmlFor="P25_LAST_NAME" id="P25_LAST_NAME_LABEL" className="t-Form-label"><FormattedMessage id="Form.LastName" defaultMessage="Last Name*" /></label>
                                                                     </div>
                                                                     {lastNameInputField}
 
@@ -474,7 +474,7 @@ class AddressForm extends Component {
                                                             <div className="col col-12 apex-col-auto">
                                                                 <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel is-required apex-item-wrapper apex-item-wrapper--text-field " onFocus={(e) => this.divOnFocus(e)}
                                                                     onBlur={(e) => this.divOnBlure(e)} id="P25_RADD1_CONTAINER"><div className="t-Form-labelContainer">
-                                                                        <label htmlFor="P25_RADD1" id="P25_RADD1_LABEL" className="t-Form-label"><FormattedMessage id="Address1.Text" defaultMessage="Address 1" /><span className="u-VisuallyHidden">(Value Required)</span></label>
+                                                                        <label htmlFor="P25_RADD1" id="P25_RADD1_LABEL" className="t-Form-label"><FormattedMessage id="Address1.Text" defaultMessage="Address 1*" /><span className="u-VisuallyHidden">(Value Required)</span></label>
                                                                     </div>
 
                                                                     {addressOneInputField}
@@ -528,7 +528,7 @@ class AddressForm extends Component {
                                                             <div className="col col- apex-col-auto">
                                                                 <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel apex-item-wrapper apex-item-wrapper--text-field" onFocus={(e) => this.divOnFocus(e)}
                                                                     onBlur={(e) => this.divOnBlure(e)} id="P25_RADD3_CONTAINER"><div className="t-Form-labelContainer">
-                                                                        <label htmlFor="P25_RADD3" id="P25_RADD3_LABEL" className="t-Form-label"><FormattedMessage id="Postcode.Text" defaultMessage="Post Code" /></label>
+                                                                        <label htmlFor="P25_RADD3" id="P25_RADD3_LABEL" className="t-Form-label"><FormattedMessage id="Postcode.Text" defaultMessage="Post Code*" /></label>
                                                                     </div>
                                                                     <div className="t-Form-inputContainer">
                                                                         <div className="t-Form-itemWrapper">
