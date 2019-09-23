@@ -6469,7 +6469,9 @@ html[dir="rtl"] .PagenationRightArrow{
 
 .borderForMobileManu{}
 
-.headerSlider2{}
+.headerSlider2{
+    border-bottom: solid 1px #b1b1b1;
+}
 
 .paddingOnMobile0px10px{}
 

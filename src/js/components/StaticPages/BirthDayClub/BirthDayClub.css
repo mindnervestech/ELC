@@ -204,6 +204,37 @@ html[dir="rtl"] .genderPadding{
 
 .removeRow{}
 
+#badyClubDate input[type=text]{
+    height: 40px;
+}
+
+.sortBySelectedText2{
+    border: solid 1px #b1b1b1;
+    padding: 9px 15px 5px;
+    border-radius: 4px;
+    height: 40px;
+}
+
+.sortBySelectedText2 .icon-down:before{
+    content: "\E909";
+    position: absolute;
+    top: 12px;
+    right: 11px;
+    font-size: 17px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.sortBySelectedTextIcon2{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    background-color: #b3b3b3;
+    height: 40px;
+    width: 40px;
+    border-radius: 4px;
+}
+
 @media (max-width:767px){
     .crossIcon {
         position: absolute !important;

@@ -155,7 +155,7 @@ class BirthDayClub extends Component {
 
     return (
       <div>
-        <div>
+        <div className="padding-breadcrumb">
           <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
             <span className="titleHover" style={{ fontSize: 15 }}><FormattedMessage id="Checkout.Home" defaultMessage="Home" /></span><span>&nbsp;\&nbsp;&nbsp;</span>
           </Link>
@@ -243,10 +243,10 @@ class BirthDayClub extends Component {
                   <div style={{ marginTop: 15 }}>
                     <span className="blackTitle1 alignStart">Gender</span>
                   </div>
-                  <div style={{ position: 'relative' }}>
-                    <div className={sortByShowOption[index] ? "sortBySelectedText open genderPadding" : "sortBySelectedText genderPadding"} onClick={() => this.showGenderOption(index)} style={{border: 'solid 1px #b1b1b1'}}>
+                  <div style={{ position: 'relative', marginTop: 5 }}>
+                    <div className={sortByShowOption[index] ? "sortBySelectedText2 open genderPadding" : "sortBySelectedText2 genderPadding"} onClick={() => this.showGenderOption(index)} style={{border: 'solid 1px #b1b1b1'}}>
                       <span>{ChildrenGender[index] != "" ? ChildrenGender[index] : "Select Gender"}</span>
-                      <i className="icon-down sortBySelectedTextIcon" ></i>
+                      <i className="icon-down sortBySelectedTextIcon2" ></i>
                     </div>
                     <div>
                       <div className="sortByOption" style={sortByShowOption[index] ? { display: 'block' } : { display: 'none' }}>
@@ -267,7 +267,7 @@ class BirthDayClub extends Component {
                   <div style={{ marginTop: 15 }}>
                     <span className="blackTitle1 alignStart">DOB</span>
                   </div>
-                  <div style={{width: "100%"}}>
+                  <div style={{width: "100%", marginTop: 5}} id="badyClubDate">
                     <DatePicker
                       selected={ChildrenDate[index] != "" ? ChildrenDate[index] : new Date()}
                       onChange={this.handleChange.bind(this, index)}

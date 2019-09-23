@@ -31,9 +31,7 @@ class Breadcrumb extends Component {
 			const defaultMessage = (showAlt) ? this.props.defaultMessage : '';
 
 		return (
-			<div
-				id="R33898647756650024"
-				style={{ borderBottom: '1px solid #c1c1c1' }}
+			<div id="R33898647756650024"
 				className="t-BreadcrumbRegion containers t-BreadcrumbRegion--showBreadcrumb t-BreadcrumbRegion--useBreadcrumbTitle"
 			>
 				<div className="t-BreadcrumbRegion-body">
