@@ -244,7 +244,7 @@ class BirthDayClub extends Component {
                     <span className="blackTitle1 alignStart">Gender</span>
                   </div>
                   <div style={{ position: 'relative' }}>
-                    <div className={sortByShowOption[index] ? "sortBySelectedText open genderPadding" : "sortBySelectedText genderPadding"} onClick={() => this.showGenderOption(index)}>
+                    <div className={sortByShowOption[index] ? "sortBySelectedText open genderPadding" : "sortBySelectedText genderPadding"} onClick={() => this.showGenderOption(index)} style={{border: 'solid 1px #b1b1b1'}}>
                       <span>{ChildrenGender[index] != "" ? ChildrenGender[index] : "Select Gender"}</span>
                       <i className="icon-down sortBySelectedTextIcon" ></i>
                     </div>

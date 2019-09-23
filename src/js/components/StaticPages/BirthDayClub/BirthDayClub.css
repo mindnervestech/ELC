@@ -145,7 +145,7 @@ html[dir="rtl"] .badyCloubImage{
 .crossIcon{
     position: absolute !important;
     top: 50px;
-    right: 0;
+    right: -20px;
     font-size: 20px !important;
     color: black !important;
     cursor: pointer;

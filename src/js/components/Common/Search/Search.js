@@ -10,6 +10,7 @@ import $ from 'jquery';
 
 let data = {};
 let productData = {}
+let checkAgen = true
 class Search extends Component {
   constructor(props) {
     super(props);
@@ -52,10 +53,9 @@ class Search extends Component {
     if (e.keyCode === 13) {
       //console.log('value', e.target.value);
       this.setState({ showAutoSuggestion: false })
-      console.log(this.state.showAutoSuggestion)
+      //$("#autoSuagestion").hide();
       this.setState({ redirect: true, searchText: e.target.value });
       this.props.history.push(`/${store_locale}/products/search?query=` + e.target.value);
-      // put the login here
     }
   }
 
@@ -66,45 +66,60 @@ class Search extends Component {
     }
   }
 
-  // componentDidUpdate() {
-  //     if (Object.keys(this.props.autoSearchSuggestionData).length > 0 && this.props.autoSearchSuggestionData.autoSerachsuggestionData != undefined) {
-  //       console.log(this.props.autoSearchSuggestionData.autoSerachsuggestionData.product_data)
-  //       if (this.state.checkLoop) {
-  //       productData = this.props.autoSearchSuggestionData.autoSerachsuggestionData.product_data
-  //       this.setState({ checkLoop: false })
-  //       }
-  //     }
-  // }
+  componentDidUpdate() {
+      if (Object.keys(this.props.autoSearchSuggestionData).length > 0 && this.props.autoSearchSuggestionData.autoSerachsuggestionData != undefined) {
+        if(checkAgen){
+          if (this.state.checkLoop) {
+            productData = this.props.autoSearchSuggestionData.autoSerachsuggestionData.product_data
+            this.setState({ checkLoop: false })
+            //$("#autoSuagestion").show();
+          }
+          checkAgen = false
+        }else{
+          if(Object.keys(this.props.autoSearchSuggestionData.autoSerachsuggestionData.product_data).length > 0){
+            if(this.props.autoSearchSuggestionData.autoSerachsuggestionData.product_data[1].json.sku != productData[1].json.sku){
+              if (this.state.checkLoop) {
+                productData = this.props.autoSearchSuggestionData.autoSerachsuggestionData.product_data
+                this.setState({ checkLoop: false })
+                //$("#autoSuagestion").show();
+              }
+            }
+          }
+        } 
+      }
+  }
 
 
   autoSearchText = (e) => {
-    // this.state.searchText = e.target.value
-    // if (e.target.value.length >= 3) {
-    //   console.log(e.target.value)
-    //   const data = {
-    //     q: this.state.searchText,
-    //     storeId: this.props.globals.currentStore
-    //   }
-    //   this.setState({ showAutoSuggestion: true })
-    //   $("#autoSuagestion").show();
-    //   this.props.onGetProductSuggestionData(data);
-    //   //call auto suggestion api
-    //   this.setState({ checkLoop: true })
-    // } else {
-    //   this.setState({ showAutoSuggestion: false })
-    // }
+    if (e.keyCode != 13) {
+      this.state.searchText = e.target.value
+      if (e.target.value.length >= 3) {
+        const data = {
+          q: this.state.searchText,
+          storeId: this.props.globals.currentStore
+        }
+        this.setState({ showAutoSuggestion: true })
+        //$("#autoSuagestion").show();
+        this.props.onGetProductSuggestionData(data);
+        this.setState({ checkLoop: true })
+      } else {
+        //$("#autoSuagestion").hide();
+        this.setState({ showAutoSuggestion: false })
+      }
+    }
   }
 
   gotoProductListPage = (key) => {
     let store_locale = this.props.globals.store_locale
     this.setState({ showAutoSuggestion: false })
+    //$("#autoSuagestion").hide();
     this.props.history.push(`/${store_locale}/products/search?query=` + key);
   }
 
 
   render() {
    $(document).click(function(e) {
-    if( e.target.id != 'check') {
+    if( e.target.id != 'check' && e.target.id != 'searchnay') {
       $("#autoSuagestion").hide();
     }
   });
@@ -119,16 +134,14 @@ class Search extends Component {
           <img src={searchLogo} className="searchLogo"></img>
         </button>
 
-        {/* <div id="autoSuagestion" className="autoSearch width-autoSearch" style={this.state.showAutoSuggestion ? { display: 'block' } : { display: 'none' }}>
-
+        <div id="autoSuagestion" className="autoSearch width-autoSearch" style={this.state.showAutoSuggestion ? { display: 'block' } : { display: 'none' }}>
           {Object.keys(productData).map((item, index) => (
-
             <Row style={{ padding: "15px 20px", borderBottom: 'solid 1px #b1b1b1' }} onClick={() => this.gotoProductListPage(productData[item].json.url_key)}>
               <Col xs="4" lg="4" md="4">
                 <img src={productData[item].json.imageUrl.primaryimage[0]} className="images" />
               </Col>
               <Col xs="8" lg="8" md="8">
-                <Row style={{ fontSize: 15 }}>
+                <Row style={{ fontSize: 15 }} className="divShowOnWeb">
                   <Col xs="7" lg="7" md="7">
                     <div className="productName">{productData[item].json.name}</div>
                   </Col>
@@ -136,10 +149,14 @@ class Search extends Component {
                     <div className="producyPrise">{productData[item].currency} {productData[item].price}</div>
                   </Col>
                 </Row>
+                <div className="divShowOnMobile">
+                  <div className="productName">{productData[item].json.name}</div>
+                  <div className="producyPrise">{productData[item].currency} {productData[item].price}</div>
+                </div>
               </Col>
             </Row>
           ))}
-        </div> */}
+        </div>
       </div>
 
     )

@@ -5992,7 +5992,7 @@ html[dir="rtl"] .header .changecountry .country .list {
 }
 html[dir="rtl"] .header .changecountry {
     border: none !important;
-    width: 25% !important;
+    width: 26% !important;
     display: inline-block !important;
     position: relative !important;
     left: 5px !important;
@@ -6533,10 +6533,11 @@ html[dir="rtl"] #mobile-click-colect{
     height: 80px;
     vertical-align: middle;
     display: table-cell;
+    font-family: "VAG Rounded ELC bold" !important;
 }
 
 .autoSearch .producyPrise {
-    font-size: 17px;
+    font-size: 20px;
     color: #0D943F;
     font-weight: bold;
     height: 80px;
@@ -6545,6 +6546,7 @@ html[dir="rtl"] #mobile-click-colect{
     padding-top: 20px;
     width: 100%;
     text-align: end;
+    font-family: "VAG Rounded ELC bold" !important;
 }
 
 @media (max-width:767px){
@@ -6561,6 +6563,29 @@ html[dir="rtl"] #mobile-click-colect{
         -moz-box-shadow: 0 2000vh 0 2000vh rgba(0, 0, 0, 0.3);
         box-shadow: 0 2000vh 0 2000vh rgba(0, 0, 0, 0.3);
         border-radius: 4px;
+    }
+
+    .autoSearch .productName {
+        font-size: 14px;
+        color: #0D943F;
+        font-weight: bold;
+        height: auto;
+        vertical-align: middle;
+        display: block;
+        font-family: "VAG Rounded ELC bold" !important;
+    }
+
+    .autoSearch .producyPrise{
+        font-size: 20px;
+        color: #0D943F;
+        font-weight: bold;
+        height: auto;
+        vertical-align: middle;
+        display: block;
+        padding-top: 0px;
+        width: 100%;
+        text-align: start;
+        font-family: "VAG Rounded ELC bold" !important;
     }
 }
 
