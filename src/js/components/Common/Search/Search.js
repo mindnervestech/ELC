@@ -72,6 +72,7 @@ class Search extends Component {
           if (this.state.checkLoop) {
             productData = this.props.autoSearchSuggestionData.autoSerachsuggestionData.product_data
             this.setState({ checkLoop: false })
+            this.setState({ showAutoSuggestion: true })
             //$("#autoSuagestion").show();
           }
           checkAgen = false
@@ -81,6 +82,7 @@ class Search extends Component {
               if (this.state.checkLoop) {
                 productData = this.props.autoSearchSuggestionData.autoSerachsuggestionData.product_data
                 this.setState({ checkLoop: false })
+                this.setState({ showAutoSuggestion: true })
                 //$("#autoSuagestion").show();
               }
             }
@@ -98,7 +100,7 @@ class Search extends Component {
           q: this.state.searchText,
           storeId: this.props.globals.currentStore
         }
-        this.setState({ showAutoSuggestion: true })
+        this.setState({ showAutoSuggestion: false })
         //$("#autoSuagestion").show();
         this.props.onGetProductSuggestionData(data);
         this.setState({ checkLoop: true })
@@ -113,7 +115,7 @@ class Search extends Component {
     let store_locale = this.props.globals.store_locale
     this.setState({ showAutoSuggestion: false })
     //$("#autoSuagestion").hide();
-    this.props.history.push(`/${store_locale}/products/search?query=` + key);
+    this.props.history.push(`/${store_locale}/products-details/${key}`);
   }
 
 
@@ -136,7 +138,7 @@ class Search extends Component {
 
         <div id="autoSuagestion" className="autoSearch width-autoSearch" style={this.state.showAutoSuggestion ? { display: 'block' } : { display: 'none' }}>
           {Object.keys(productData).map((item, index) => (
-            <Row style={{ padding: "15px 20px", borderBottom: 'solid 1px #b1b1b1' }} onClick={() => this.gotoProductListPage(productData[item].json.url_key)}>
+            <Row style={{ padding: "15px 20px", borderBottom: 'solid 1px #b1b1b1', cursor: 'pointer' }} onClick={() => this.gotoProductListPage(productData[item].json.url_key)}>
               <Col xs="4" lg="4" md="4">
                 <img src={productData[item].json.imageUrl.primaryimage[0]} className="images" />
               </Col>
