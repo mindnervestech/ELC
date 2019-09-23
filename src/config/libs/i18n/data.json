@@ -474,7 +474,7 @@
         "confirmBox.Warning": "Are you sure you want to delete this address?",
         "PageTitle.Home": "Online Shopping in Saudi for Toys at ELC",
         "PageTitle.NA": "Online Shopping in Saudi for Toys at ELC",
-        "PageTitle.Nayomi": "Online Shopping in Saudi for Toys at ELC",
+        "PageTitle.ELC": "Online Shopping in Saudi for Toys at ELC",
         "PageTitle.login": "Sign in - Sign in to Your ELC Account",
         "PageTitle.Login": "Sign in - Sign in to Your ELC Account",
         "PageTitle.profile": "Account",
@@ -486,8 +486,10 @@
         "PageTitle.products": "product list",
         "PageTitle.products-details": "Product",
         "PageTitle.help": "Help Center",
+        "PageTitle.about-us": "About ELC",
         "PageTitle.delivery": "Return Policy",
-        "PageTitle.faq": "Frequently Asked Questions (FAQ)",
+        "PageTitle.help-and-faq": "Frequently Asked Questions (FAQ)",
+        "PageTitle.charity": "Charity",
         "PageTitle.returns-and-exchanges": "Return Policy",
         "PageTitle.privacy-policy": "Legal - Privacy and Policy ELC",
         "PageTitle.terms-and-conditions": "Legal - Privacy and Policy ELC",
@@ -588,7 +590,8 @@
         "Productquantityhasbeenupdated": "Product quantity has been updated.",
         "StockShortage1": "STOCK SHORTAGE - we have added ",
         "StockShortage2": " units to your basket because we do not have enough stock.",
-        "NotAvailableforcurrentstoreDelivery": "Not Available for current store Delivery"
+        "NotAvailableforcurrentstoreDelivery": "Not Available for current store Delivery",
+        "Paymentpending":"Payment pending"
     },
     "ar": {
         "Form.PhoneNumber":"Contact Number *",
@@ -1026,8 +1029,10 @@
         "PageTitle.products": "قائمة المنتجات",
         "PageTitle.products-details": "المنتج",
         "PageTitle.help": "مركز المساعدة",
+        "PageTitle.about-us": "عن إي ال سي",
         "PageTitle.delivery": "سياسة الإرجاع - نعومي",
-        "PageTitle.faq": "أسئلة وأجوبة (الأسئلة المتكررة) - نعومي ",
+        "PageTitle.help-and-faq": "أسئلة وأجوبة (الأسئلة المتكررة) - نعومي ",
+        "PageTitle.charity": "الاعمال الخيرية",
         "PageTitle.returns-and-exchanges": "سياسة الارجاع والتبديل",
         "PageTitle.privacy-policy": "القانون - خصوصية وسياسة نعومي",
         "PageTitle.terms-and-conditions": "القانون - خصوصية وسياسة نعومي",
@@ -1152,6 +1157,7 @@
         "Productquantityhasbeenupdated": "Product quantity has been updated.",
         "StockShortage1": "STOCK SHORTAGE - we have added ",
         "StockShortage2": " units to your basket because we do not have enough stock.",
-        "NotAvailableforcurrentstoreDelivery": "Not Available for current store Delivery"
+        "NotAvailableforcurrentstoreDelivery": "Not Available for current store Delivery",
+        "Paymentpending":"Payment pending"
     }
 }

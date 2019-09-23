@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
-import { injectIntl } from 'react-intl';
+import { injectIntl, FormattedMessage } from 'react-intl';
 
 
 class PageTitle extends Component {
     constructor(props) {
         super(props);
+        this.myIntl = props.intl
         this.state = {
             title: 'ELC'
         }
@@ -20,11 +21,9 @@ class PageTitle extends Component {
 
     componentDidUpdate(prevProps) {
         if ((this.props.pageTitle !== prevProps.pageTitle) || (this.props.globals.language !== prevProps.globals.language)) {
-            if(this.props.pageTitle != 'NA'){
-                this.setState({
-                    title: this.getTital(this.props.pageTitle)
-                })
-            }
+            this.setState({
+                title: this.getTital(this.props.pageTitle)
+            })
         }
     }
 
@@ -32,9 +31,10 @@ class PageTitle extends Component {
     getTital = (title) => {
         const { intl } = this.props;
         const country = this.props.globals.country;
-
-        let mainTitle = `PageTitle.${title}` in intl.messages ? intl.formatMessage({ id: `PageTitle.${title}` }) : intl.formatMessage({ id: `PageTitle.Home` })
-        let appendTitle = intl.formatMessage({ id: `PageTitle.nayomi.${country}` });
+        let mainTitle = title !== 'NA' ? this.myIntl.formatMessage({ id: `PageTitle.${title}` }) : this.myIntl.formatMessage({ id: `PageTitle.Home` });
+        // `PageTitle.${title}` in intl.messages ? intl.formatMessage({ id: `PageTitle.${title}` }) : intl.formatMessage({ id: `PageTitle.Home` })
+        let appendTitle = this.myIntl.formatMessage({ id: `PageTitle.nayomi.${country}` })
+        // intl.formatMessage({ id: `PageTitle.nayomi.${country}` });
 
         return `${mainTitle} | ${appendTitle}`
     }
