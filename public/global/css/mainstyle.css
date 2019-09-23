@@ -6512,7 +6512,7 @@ html[dir="rtl"] #mobile-click-colect{
     width: 95%;
     top: 47px;
     z-index: 999;
-    padding: 20px;
+    padding: 0px 20px;
     position: absolute;
     background-color: #fff;
     -webkit-box-shadow: 0 2000vh 0 2000vh rgba(0, 0, 0, 0.3);
@@ -6573,7 +6573,7 @@ html[dir="rtl"] .t-Button--pillStart{
         overflow: scroll;
         max-height: 370px;
         z-index: 999;
-        padding: 10px;
+        padding: 0px;
         position: absolute;
         background-color: #fff;
         -webkit-box-shadow: 0 2000vh 0 2000vh rgba(0, 0, 0, 0.3);

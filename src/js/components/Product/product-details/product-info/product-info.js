@@ -189,7 +189,7 @@ class ProductInformation extends Component {
 						<span class="specification-item-key"><FormattedMessage id="Brand" defaultMessage="Brand" />:</span> 
 						<span className="specification-item-value">{data.brand}</span>
 					</div> : <div/>}
-				 </div> : type == 'Delivery options' ?
+				 </div> : type == 'Shipping' ?
 				 <div style={{marginBottom: '5rem', marginTop:40}}>
 					<p className="detail-info">{type}</p>
 					<p className="detail-info">Product code: 148138 </p>

@@ -138,7 +138,7 @@ class Search extends Component {
 
         <div id="autoSuagestion" className="autoSearch width-autoSearch" style={this.state.showAutoSuggestion ? { display: 'block' } : { display: 'none' }}>
           {Object.keys(productData).map((item, index) => (
-            <Row style={{ padding: "15px 20px", borderBottom: 'solid 1px #b1b1b1', cursor: 'pointer' }} onClick={() => this.gotoProductListPage(productData[item].json.url_key)}>
+            <Row style={{ padding: "15px 20px", borderTop: 'solid 1px #b1b1b1', cursor: 'pointer' }} onClick={() => this.gotoProductListPage(productData[item].json.url_key)}>
               <Col xs="4" lg="4" md="4">
                 <img src={productData[item].json.imageUrl.primaryimage[0]} className="images" />
               </Col>

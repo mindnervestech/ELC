@@ -160,6 +160,10 @@ export const changeQty = (payload) => {
 
                 }
                 dispatch(loadingSpinner({ loading: false }))
+                dispatch({
+                    type: actionType.QTY_UPDATE_LOADER,
+                    payload: { update_loader: false }
+                });
 
             },
             error: (err) => {
