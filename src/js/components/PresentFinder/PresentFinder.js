@@ -84,7 +84,7 @@ import * as actions from '../../redux/actions/index';
 										</div>
 									</div>
 									<div>
-										<h2 className="present_finder_age_header">Budget:</h2>
+										<h2 className="present_finder_age_header"><FormattedMessage id="budget" defaultMessage="Budget"/>:</h2>
 									</div>
 									<div>
 										<ul>

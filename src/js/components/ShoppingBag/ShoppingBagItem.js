@@ -231,7 +231,7 @@ class ShoppingBagItem extends Component {
                             <Row className="row-5 changeRow">
                                 <Col xs="6">
                                     <div className="blackTitle" style={{ fontSize: 22, textAlign: 'start', color: "#4f4f4f" }}>
-                                        Select Delivery
+                                        <FormattedMessage id="SelectDelivery" defaultMessage="Select Delivery" />
                      </div>
                                     <div className="prod-color">
                                         <div className="row del-options">
@@ -244,8 +244,8 @@ class ShoppingBagItem extends Component {
                                                 </div>
                                                 <div style={{ padding: '45px 20px 5px', fontWeight: 'bold' }}>
                                                     <span>
-                                                        Available
-                              </span>
+                                                        <FormattedMessage id="available" defaultMessage="Available" />
+                                                    </span>
                                                 </div>
                                             </div>
                                             <div className="click-collect3">
@@ -253,7 +253,7 @@ class ShoppingBagItem extends Component {
                                                     <img src={freeCollect} style={{ height: 60 }} />
                                                 </div>
                                                 <div className="blockTextColor" style={{ color: 'gray' }}>
-                                                    <span>Click & Collect at The Entertainer</span>
+                                                    <span><FormattedMessage id="ClickCollectatselectedELCStore" defaultMessage="Click & Collect at selected ELC Store" /></span>
                                                 </div>
                                                 <div style={{ padding: '40px 20px 5px', fontWeight: 'bold', color: 'gray' }}>
                                                     <span><FormattedMessage id="Comingsoon" defaultMessage="Coming soon" /></span>
@@ -397,7 +397,7 @@ class ShoppingBagItem extends Component {
                         </div>
                         <div className="hideDivOnMobile">
                             <div className="blackTitle" style={{ fontSize: 18, padding: '10px 0px', color: "#4f4f4f" }}>
-                                <span>Select Delivery</span><span className="floatRight">{productCount}&nbsp; <FormattedMessage id="Item.text" defaultMessage="Item" /> &nbsp;|&nbsp;{this.props.cart_details.currency}&nbsp;{this.props.cart_details.grand_total}</span>
+                                <span><FormattedMessage id="SelectDelivery" defaultMessage="Select Delivery" /></span><span className="floatRight">{productCount}&nbsp; <FormattedMessage id="Item.text" defaultMessage="Item" /> &nbsp;|&nbsp;{this.props.cart_details.currency}&nbsp;{this.props.cart_details.grand_total}</span>
                             </div>
                             <div className="prod-color" style={{ color: "#4f4f4f" }}>
                                 <div>
@@ -407,13 +407,13 @@ class ShoppingBagItem extends Component {
                                             <span><FormattedMessage id="delivery-details.HomeDelivery.Title" defaultMessage="Home Delivery" /></span>
                                         </div>
                                         <div>
-                                            <span style={{ color: '#0D943F', fontWeight: 'bold' }}>Available</span>
+                                            <span style={{ color: '#0D943F', fontWeight: 'bold' }}><FormattedMessage id="available" defaultMessage="Available" /></span>
                                         </div>
                                     </div>
                                     <div id="mobile-click-colect" className="click-collect" style={{ display: 'inline-block', textAlign: 'center', verticalAlign: 'top' }}>
                                         <img src={freeCollect} />
                                         <div style={{ padding: "30px 10px", height: 140, width: '100%', color: 'gray' }} className="blockTextColor">
-                                            <span>Click & Collect at The Entertainer</span>
+                                            <span><FormattedMessage id="ClickCollectatselectedELCStore" defaultMessage="Click & Collect at selected ELC Store" /></span>
                                         </div>
                                         <div style={{ fontWeight: 'bold', color: 'gray' }}>
                                             <span><FormattedMessage id="Comingsoon" defaultMessage="Coming soon" /></span>

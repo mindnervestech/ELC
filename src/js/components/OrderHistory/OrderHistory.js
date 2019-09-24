@@ -38,7 +38,7 @@ class Order extends Component {
                 pathname: `/${store_locale}/login`,
             }} />;
         }
-        
+
         const orderList = this.props.orderHistory.map((c, index) => {
             return <OrderRow
                 value={c}
@@ -51,6 +51,17 @@ class Order extends Component {
 
 
         return (<Spinner><div className="t-Body-contentInner">
+
+            <div className="padding-right-ar padding-breadcrumb" style={{ textAlign: 'start' }}>
+                <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
+                    <span className="titleHover" style={{ fontSize: 15 }}><FormattedMessage id="Checkout.Home" defaultMessage="Home" /></span>
+                    {this.props.globals.language === 'en' ?
+                        <span>&nbsp;\&nbsp;&nbsp;</span> :
+                        <span>&nbsp;/&nbsp;&nbsp;</span>
+                    }
+                </Link>
+                <span style={{ fontSize: 15, fontWeight: 'bold' }}><FormattedMessage id="profile.OrderHistory.Title" defaultMessage="Order History" /></span>
+            </div>
             <div className="container">
                 <div className="row">
                     <div className="col col-12 apex-col-auto">
@@ -86,7 +97,7 @@ class Order extends Component {
                                     </ul></div>
                                     <div className="t-ButtonRegion-buttons" />
                                 </div>
-                                <div className="t-ButtonRegion-col t-ButtonRegion-col--right"><div className="t-ButtonRegion-buttons"><button onClick={this.logOut} className="t-Button t-Button--hot t-Button--gapTop divShowOnWeb" type="button" id="B28512592134220867"><span className="t-Button-label"><FormattedMessage id="header.logoutName" defaultMessage="Logout" /></span></button></div></div> 
+                                <div className="t-ButtonRegion-col t-ButtonRegion-col--right"><div className="t-ButtonRegion-buttons"><button onClick={this.logOut} className="t-Button t-Button--hot t-Button--gapTop divShowOnWeb" type="button" id="B28512592134220867"><span className="t-Button-label"><FormattedMessage id="header.logoutName" defaultMessage="Logout" /></span></button></div></div>
                                 {/* <div className="t-ButtonRegion-col t-ButtonRegion-col--right"><div className="t-ButtonRegion-buttons"><button onClick={this.logOut} className="t-Button t-Button--hot t-Button--gapTop" type="button" id="B28512592134220867"><span className="t-Button-label"><FormattedMessage id="header.logoutName" defaultMessage="Logout" /></span></button></div></div> */}
                             </div>
                         </div>
@@ -96,12 +107,12 @@ class Order extends Component {
                 </div><div className="row">
                     <div className="col col-12 apex-col-auto">
                         <div className="t-ContentBlock containers t-ContentBlock--h3 margin-top-lg a-Tabs-panel apex-rds-element-selected" id="R28337577127179591" role="tabpanel" aria-labelledby="R28337577127179591_tab" aria-live="polite" aria-hidden="false">
-                        {this.props.orderHistory > 0 ?
-                            <div className="t-ContentBlock-header">
-                                <h1 className="t-ContentBlock-title">
-                                    <span className="FormattedMessage"><FormattedMessage id="profile.OrderHistory.Title" defaultMessage="Order History" /></span>
-                                </h1></div>
-                        : ""}
+                            {this.props.orderHistory > 0 ?
+                                <div className="t-ContentBlock-header">
+                                    <h1 className="t-ContentBlock-title">
+                                        <span className="FormattedMessage"><FormattedMessage id="profile.OrderHistory.Title" defaultMessage="Order History" /></span>
+                                    </h1></div>
+                                : ""}
                             <div className="t-ContentBlock-body">
 
                                 <div id="report_28337577127179591_catch"><div className="t-Report t-Report--stretch t-Report--staticRowColors t-Report--rowHighlightOff t-Report--horizontalBorders" id="report_R28337577127179591" data-region-id="R28337577127179591">

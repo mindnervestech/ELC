@@ -188,7 +188,7 @@ class ProductBasic extends Component {
                 <div style={{marginBottom:15, textAlign: 'start'}}>
                     <span>
                         <i className="fa fa-check cbox-icon-success right-icon-fa">
-                            <span>Added to your basket </span>
+                            <span><FormattedMessage id="Addedtoyourbasket" defaultMessage="Added to your basket" />  </span>
                         </i>
                     </span>
                 </div>
@@ -209,7 +209,7 @@ class ProductBasic extends Component {
 
                 <div className="col" style={{ padding: 0, overflow: 'scroll', maxHeight: 300 }}>
                     <div className="button-model on-mobile">
-                        <span className="related-title">Related Products</span>
+                        <span className="related-title"><FormattedMessage id="RelatedProducts" defaultMessage="Related Products" /></span>
                     </div>
                     {this.props.cart_details.similar_products.map((item, index) =>
                         (

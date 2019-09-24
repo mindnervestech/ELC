@@ -599,8 +599,13 @@
         "StockShortage2": " units to your basket because we do not have enough stock.",
         "NotAvailableforcurrentstoreDelivery": "Not Available for current store Delivery",
         "Paymentpending":"Payment pending",
-        "InvalidvalueQty" : "Please provide a positive number to update the quantity of an item."
-
+        "InvalidvalueQty" : "Please provide a positive number to update the quantity of an item.",
+        "budget":"Budget",
+        "available":"Available",
+        "SelectDelivery":"Select Delivery",
+        "ClickCollectatselectedELCStore":"Click & Collect at selected ELC Store",
+        "Addedtoyourbasket":"Added to your basket",
+        "RelatedProducts":"Related Products"
     },
     "ar": {
         
@@ -743,7 +748,7 @@
         "SaveMore.Message": "  ووفر أكثر ",
         "DiscoverMore.Message": "إكتشف أكثر ",
         "Shop.Collection.Msg": "تسوق التشكيلات  ",
-        "OutOfStock.Message": "المخزون غير متوفر لبعض من المنتجات، يرجى إضافتها إلى قائمة المفضلة أو إزالتها لمتابعة عملية الشراء!",
+        "OutOfStock.Message": " إن بعض المنتجات غير متوفرة في المخزون أو غير متاحة لخدمة التوصيل الحالي، يرجى إضافتها لقائمة الأمنيات أو إزالتها للإستمرار.",
         "Cart.OnlineShopping.Title": "التسوق عبر الانترنت  ",
         "Cart.item.count.msg": "المنتج في حقيبة التسوق",
         "view.all": "عرض الكل  ",
@@ -754,8 +759,8 @@
         "Cart.RemoveAll.Title": "إزالة هذه العناصر ",
         "Cart.Subtotal.Title": "المبلغ الإجمالي ",
         "Cart.CheckOut.Title": "الدفع",
-        "Item": "Item (style number)",
-        "Item.text": "Item",
+        "Item": "المنتج (رقم الشكل) ",
+        "Item.text": "منتج",
         "Item.Qty": "الكمية  ",
         "Item.price": "سعر المنتج ",
         "PDP.Qty": " الكمية  ",
@@ -1171,11 +1176,18 @@
         "BatteryRequired":"تتطلب بطارية",
         "Brand":"العلامة التجارية",
         "BestSellers":"الأفضل مبيعاً",
-        "Productquantityhasbeenupdated": "Product quantity has been updated.",
-        "StockShortage1": "STOCK SHORTAGE - we have added ",
-        "StockShortage2": " units to your basket because we do not have enough stock.",
-        "NotAvailableforcurrentstoreDelivery": "Not Available for current store Delivery",
-        "Paymentpending":"Payment pending",
-        "InvalidvalueQty" : "Please provide a positive number to update the quantity of an item."
+        "Productquantityhasbeenupdated": "تم تحديث كمية المنتج",
+        "StockShortage1": "نقص في المخزون- لقد أضفنا  ",
+        "StockShortage2": "  وحدات في عربتك وذلك لعدم توفر مخزون كافي",
+        "NotAvailableforcurrentstoreDelivery": "غير متاح للتوصيل الحالي",
+        "Paymentpending":"بإنتظار عملية الدفع",
+        "InvalidvalueQty" : "يرجى تزويد رقم موجب لتحديث كمية المنتج ",
+        "budget":"الميزانية",
+        "available":"متاح ",
+        "SelectDelivery":"إختر التوصيل",
+        "ClickCollectatselectedELCStore":"تسوق وإستلم من محلات مركز التعليم المبكر المختارة",
+        "Addedtoyourbasket":"تمت إضافة المنتج إلى عربتك ",
+        "RelatedProducts":"منتجات مشابهه",
+        "choose.your.delivery":"إختر وسيلة التوصيل "
     }
 }

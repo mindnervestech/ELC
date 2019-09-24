@@ -169,7 +169,7 @@ class ProfileAddress extends Component {
         const store_locale = this.props.globals.store_locale;
         if (!(this.props.user_details.isUserLoggedIn)) {
             return <Redirect to={{
-              pathname: `/${store_locale}/login`,
+                pathname: `/${store_locale}/login`,
             }} />;
         }
 
@@ -207,6 +207,16 @@ class ProfileAddress extends Component {
             </Modal>
 
             <div className="t-Body-contentInner">
+                <div className="padding-right-ar padding-breadcrumb" style={{ textAlign: 'start' }}>
+                    <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
+                        <span className="titleHover" style={{ fontSize: 15 }}><FormattedMessage id="Checkout.Home" defaultMessage="Home" /></span>
+                        {this.props.globals.language === 'en' ?
+                            <span>&nbsp;\&nbsp;&nbsp;</span> :
+                            <span>&nbsp;/&nbsp;&nbsp;</span>
+                        }
+                    </Link>
+                    <span style={{ fontSize: 15, fontWeight: 'bold' }}><FormattedMessage id="profile.Account.Title" defaultMessage="Account" /></span>
+                </div>
                 <div className="container">
                     <div className="row">
                         <div className="col col-12 apex-col-auto">
