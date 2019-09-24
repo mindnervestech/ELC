@@ -1639,3 +1639,19 @@ only screen and (min-resolution: 2dppx) {
     min-height: 40px;
     padding: 0px;
 }
+
+@media only screen and (min-width:768px) and (max-width:1024px)
+{
+    .PhoneNumberBClub #widthfull .text_field.apex-item-text {
+        min-height: 40px;
+     padding: 9px 2px;
+    }
+}
+
+@media only screen and (max-width:767px) 
+{
+    .PhoneNumberBClub #widthfull .text_field.apex-item-text {
+        min-height: 40px;
+     padding: 9px 2px;
+    }
+}

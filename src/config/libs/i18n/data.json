@@ -1,5 +1,6 @@
 {
     "en": {
+        "addchild.ChildName":"Child Name",
         "addnewchild.parentfirstname":"Parent First Name",
         "addnewchild.parentlasttname":"Parent Last Name",
         "PreferedLanguage":"Prefered Language",
@@ -602,6 +603,7 @@
 
     },
     "ar": {
+        "addchild.ChildName":"Child Name",
         "Form.PhoneNumber":"Contact Number *",
         "addnewchild.parentfirstname":"Parent First Name",
         "addnewchild.parentlasttname":"Parent Last Name",
