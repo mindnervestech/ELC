@@ -28,7 +28,6 @@ font-weight: normal;
 font-stretch: normal;
 font-size: 18px;
 line-height: 22px;
-font-family: Arial, sans-serif;
 }
 .l-clp .b-puff_banner_heading {
 margin-bottom: 5px;
@@ -41,7 +40,6 @@ font-weight: normal;
 font-stretch: normal;
 font-size: 16px;
 line-height: 1;
-font-family: elc_bold;
 color: #fb0000;
 }
 .l-clp .b-puff_banner span {
@@ -214,6 +212,5 @@ font-size: 12px;
 border-radius: 25px;
 font-weight: lighter;
 color: #fff;
-font-family: 'Noto Sans KR', Helvetica, Arial, sans-serif;
 }
 

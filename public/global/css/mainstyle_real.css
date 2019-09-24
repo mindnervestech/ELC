@@ -4007,7 +4007,7 @@ button.swiper-pagination-bullet {
 }
 
 #AddAddress {
-    max-height: 600px;
+    height: 400px !important;
     width: 720px !important;
 }
 
@@ -4361,7 +4361,7 @@ html[dir="rtl"] .ViewVoucherSection table tbody .t-Report-cell,
 }
 
 html[dir="rtl"] #AddAddress .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-3 input[type=tel] {
-    padding-right: 89px;
+    padding-right: 110px;
     padding-left: 0;
 }
 

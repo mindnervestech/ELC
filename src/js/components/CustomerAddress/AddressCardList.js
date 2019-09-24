@@ -154,7 +154,7 @@ class AddressCardList extends Component {
       <>
         {alertBox}
         {confirmBox}
-        <Modal open={openFirstModal} onClose={this.onCloseFirstModal} center style={{ width: '550.9584px' }}>
+        <Modal modalId="AddAddress" open={openFirstModal} onClose={this.onCloseFirstModal} center style={{ width: '550.9584px' }}>
           <h3>Edit Address</h3>
           <div>{add}</div>
         </Modal>

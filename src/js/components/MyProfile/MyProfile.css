@@ -274,6 +274,10 @@
     text-decoration: underline;
     color: #000 !important;
     cursor: pointer;
+    background-color: #fff;
+    border: solid 1px #b1b1b1;
+    padding: 5px 10px;
+    border-radius: 18px;
 }
 
 .addr_link_edit {
@@ -281,6 +285,10 @@
     text-decoration: underline;
     color: #000 !important;
     cursor: pointer;
+    background-color: #fff;
+    border: solid 1px #b1b1b1;
+    padding: 5px 10px;
+    border-radius: 18px;
 }
 
 html[dir="rtl"] .addr_link_del {
@@ -306,7 +314,6 @@ html[dir="rtl"] .addr_link_edit {
     text-transform: unset;
     font-weight: 100;
     margin-bottom: 15px;
-    font-family: 'Noto Sans KR', Helvetica, Arial, sans-serif;
 }
 
 h1.h1p,
@@ -367,7 +374,6 @@ html[lang="en"] .b-accordion_title {
     letter-spacing: .1em;
     text-transform: uppercase;
     font-weight: normal;
-    font-family: 'Noto AR', Helvetica, Arial, sans-serif !important;
 }
 
 html[dir="rtl"] .b-accordion_title {
@@ -378,7 +384,6 @@ html[dir="rtl"] .b-accordion_title {
     letter-spacing: 0em;
     text-transform: uppercase;
     font-weight: normal;
-    font-family: 'Noto AR', Helvetica, Arial, sans-serif !important;
 }
 
 ol,

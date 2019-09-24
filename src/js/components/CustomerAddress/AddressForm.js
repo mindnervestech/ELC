@@ -4,6 +4,7 @@ import PhoneNumber from '../Login/IntlTelePhone';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import * as actions from '../../redux/actions/index';
+import { Row, Col, Button } from 'reactstrap';
 
 class AddressForm extends Component {
 
@@ -529,8 +530,8 @@ class AddressForm extends Component {
                                                                 </div>
                                                             </div> */}
                                                         </div>
-                                                        <div className="row">
-                                                            <div className="col col- apex-col-auto">
+                                                        <Row className="row">
+                                                            <Col xs="12" lg="6" md="6" style={{paddingLeft: 0, paddingRight: 0}}>
                                                                 <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel apex-item-wrapper apex-item-wrapper--text-field" onFocus={(e) => this.divOnFocus(e)}
                                                                     onBlur={(e) => this.divOnBlure(e)} id="P25_RADD3_CONTAINER"><div className="t-Form-labelContainer">
                                                                         <label htmlFor="P25_RADD3" id="P25_RADD3_LABEL" className="t-Form-label"><FormattedMessage id="Postcode.Text" defaultMessage="Post Code*" /></label>
@@ -542,8 +543,8 @@ class AddressForm extends Component {
                                                                         <span id="P25_RADD3_error_placeholder" className="a-Form-error" data-template-id="33609965712469734_ET" />
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            <div className="col col-6 apex-col-auto">
+                                                            </Col>
+                                                            <Col xs="12" lg="6" md="6" style={{paddingLeft: 0, paddingRight: 0}}>
                                                                 <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel apex-item-wrapper plugin-intltelinput-www.jqueryscript.net js-show-label">
                                                                     <div className="t-Form-inputContainer PhoneNumber">
                                                                         <PhoneNumber
@@ -554,8 +555,8 @@ class AddressForm extends Component {
 
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                        </div>
+                                                            </Col>
+                                                        </Row>
                                                         <div className="row">
                                                             <div className="col col-6 apex-col-auto">
                                                                 <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel  apex-item-wrapper apex-item-wrapper--radiogroup " id="P25_ADDR_TYPE_CONTAINER"><div className="t-Form-labelContainer">
