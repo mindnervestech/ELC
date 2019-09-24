@@ -249,7 +249,7 @@ class WishList extends Component {
             </li>
           ))} 
           </ul>
-          :<div style={{marginBottom:50, marginTop: 15}}><span style={{fontSize:"24px", padding:"20px 0px"}}><FormattedMessage id="PageTitle.Wishlist.Empty" defaultMessage="Wishlist is empty"/></span></div>}
+          :<div style={{marginBottom:50, marginTop: 15,textAlign:'start'}}><span style={{fontSize:"24px", padding:"20px 0px"}}><FormattedMessage id="PageTitle.Wishlist.Empty" defaultMessage="Wishlist is empty"/></span></div>}
         </div>
         <div className="container">
           <div className="row">

@@ -18,6 +18,7 @@ let ChildrenName = ['']
 let ChildrenGender = ['']
 let sortByShowOption = [false]
 let moreinfoData = ''
+let langerror=false
 let editingRow = 0
 class BirthDayClub extends Component {
   constructor(props) {
@@ -56,11 +57,10 @@ class BirthDayClub extends Component {
   }
 
   componentDidUpdate() {
-    let obj = this.props.bclubDetails;
-    console.log(obj)
+  
     if (this.props.bclubDetails !== undefined) {
-      let message = obj[0].message
-      console.log(message)
+      let message = this.props.bclubDetails.message
+      console.log("message",this.props.bclubDetails )
       if (this.state.ischeckremove) {
 
         console.log(message)
@@ -77,9 +77,9 @@ class BirthDayClub extends Component {
 
 
 
-  componentWillUnmount() {
-    this.props.onClearRegistrationError();
-  }
+  // componentWillUnmount() {
+  //   this.props.onClearRegistrationError();
+  // }
 
 
   handleValidation = () => {
@@ -87,8 +87,13 @@ class BirthDayClub extends Component {
 
     let errors = {};
     let formIsValid = true;
+   
+    if(this.state.lang==' ')
+    {
+      langerror=true
 
-
+        
+    }
     if (!fields["parentFirstName"]) {
       formIsValid = false;
       errors["parentFirstName"] = <FormattedMessage id="Signup.validation.firstName.empty" defaultMessage="First name cannot be empty" />;
@@ -346,6 +351,12 @@ class BirthDayClub extends Component {
 
     }
 
+    let spanerrorlangmessage=null
+    if(langerror)
+    {
+     spanerrorlangmessage=<span style={{color:'red'}}>Select Language</span>
+    }
+
     let arLangRadioField = <div><div>
       <FormattedMessage id="ContactUs.Email" defaultMessage="Email">
         {(message) =>
@@ -434,7 +445,7 @@ class BirthDayClub extends Component {
                   {parentLastNameField}
                 </div>
                 <div style={{ marginTop: 15 }}>
-                  <span style={{ color: 'red' }}>*&nbsp;</span><span className="blackTitle1"><FormattedMessage id="parentFirstName" defaultMessage="Contact Number" /></span>
+                  <span style={{ color: 'red' }}>*&nbsp;</span><span className="blackTitle1"><FormattedMessage id="Form.PhoneNumber" defaultMessage="Contact Number" /></span>
                 </div>
                 <div className="paddingLeft" style={{ marginTop: 5 }}>
                   <div style={{ textAlign: "start" }} >
@@ -517,9 +528,11 @@ class BirthDayClub extends Component {
                 <span style={{ color: 'red' }}>*&nbsp;</span>  <span className="blackTitle1"><FormattedMessage id="PreferedLanguage" defaultMessage="Prefered Language" /></span>
                 </div>
                 <div style={{display:'inline-flex'}}>
-                  <input className="RadioButton" type="radio" name="gender" value="arabic" name="P1001_EMAIL" onChange={() => this.state.lang = 'ar'} /> <span className="radioButtonText"><FormattedMessage id="header.Arabic" defaultMessage="Arabic" /></span>
-                  <input className="radioButton RadioButton" checked="checked" type="radio" name="gender" value="english" name="P1001_EMAIL" onChange={() => this.state.lang = 'en'} /> <span className="radioButtonText"><FormattedMessage id="header.English" defaultMessage="English" /></span>
+                  <input className="RadioButton" type="radio"  name="gender" value="arabic" name="P1001_EMAIL" onChange={() => this.state.lang = 'ar'} /> <span className="radioButtonText"><FormattedMessage id="header.Arabic" defaultMessage="Arabic" /></span>
+                  <input className="radioButton RadioButton"  type="radio" name="gender" value="english" name="P1001_EMAIL" onChange={() => this.state.lang = 'en'} /> <span className="radioButtonText"><FormattedMessage id="header.English" defaultMessage="English" /></span>
+                  
                 </div>
+                {spanerrorlangmessage}
               </Col>
             </Row>
             <div className="errorMessageDiv" style={this.state.error ? { display: 'block' } : { display: 'none' }}>
@@ -540,7 +553,7 @@ class BirthDayClub extends Component {
                 </Col>
                 <Col xs={12} lg={4} md={12} >
                   <div style={{ marginTop: 15 }}>
-                  <span style={{ color: 'red' }}>*&nbsp;</span><span className="blackTitle1 alignStart"><FormattedMessage id="gender" defaultMessage="Gender" /></span>
+                  <span style={{ color: 'red' }}>*&nbsp;</span><span className="blackTitle1 alignStart"><FormattedMessage id="addnewchild.Gender" defaultMessage="Gender" /></span>
                   </div>
                   <div style={{ position: 'relative', marginTop: 5 }}>
                     <div className={sortByShowOption[index] ? "sortBySelectedText2 open genderPadding" : "sortBySelectedText2 genderPadding"} onClick={() => this.showGenderOption(index)} style={{ border: 'solid 1px #b1b1b1' }}>
@@ -604,7 +617,7 @@ const mapStateToProps = state => {
     isUserLoggedIn: state.login.isUserLoggedIn,
     spinnerProduct: state.spinner.loadingProduct,
     globals: state.global,
-    bclubDetails: state.birthdayclubData.registerBClubUserDetails,
+    bclubDetails: state.birthdayclubData,
   }
 }
 

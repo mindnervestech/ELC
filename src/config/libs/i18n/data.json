@@ -603,14 +603,15 @@
 
     },
     "ar": {
-        "addchild.ChildName":"Child Name",
-        "Form.PhoneNumber":"Contact Number *",
-        "addnewchild.parentfirstname":"Parent First Name",
-        "addnewchild.parentlasttname":"Parent Last Name",
-        "PreferedLanguage":"Prefered Language",
-        "addnewchild.Gender":"Gender",
-        "addnewchild.dob":"DOB",
-        "header.addChildern":"Add Children",
+        
+        "addchild.ChildName":"إسم الطفل ",
+        "Form.PhoneNumber":"رقم الإتصال*",
+        "addnewchild.parentfirstname":"إسم الوالد الأول ",
+        "addnewchild.parentlasttname":"إسم الوالد الأخير ",
+        "PreferedLanguage":"اللغة المفضلة ",
+        "addnewchild.Gender":"النوع",
+        "addnewchild.dob":"تاريخ الميلاد",
+        "header.addChildern":"أضف طفل آخر",
         "PageTitle.Wishlist.Empty": "قائمة الامنيات فارغة",
         "PageTitle.orderhistory.Empty": "سجل الطلبات غير متاح",
         "ContactUs.customerSerivces": "خدمة العملاء",
