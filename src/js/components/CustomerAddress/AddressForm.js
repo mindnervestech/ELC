@@ -531,7 +531,7 @@ class AddressForm extends Component {
                                                             </div> */}
                                                         </div>
                                                         <Row className="row">
-                                                            <Col xs="12" lg="6" md="6" style={{paddingLeft: 0, paddingRight: 0}}>
+                                                            <Col xs="12" lg="6" md="6" className="editAddresspopupPadding">
                                                                 <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel apex-item-wrapper apex-item-wrapper--text-field" onFocus={(e) => this.divOnFocus(e)}
                                                                     onBlur={(e) => this.divOnBlure(e)} id="P25_RADD3_CONTAINER"><div className="t-Form-labelContainer">
                                                                         <label htmlFor="P25_RADD3" id="P25_RADD3_LABEL" className="t-Form-label"><FormattedMessage id="Postcode.Text" defaultMessage="Post Code*" /></label>
@@ -544,7 +544,7 @@ class AddressForm extends Component {
                                                                     </div>
                                                                 </div>
                                                             </Col>
-                                                            <Col xs="12" lg="6" md="6" style={{paddingLeft: 0, paddingRight: 0}}>
+                                                            <Col xs="12" lg="6" md="6" className="editAddresspopupPadding">
                                                                 <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel apex-item-wrapper plugin-intltelinput-www.jqueryscript.net js-show-label">
                                                                     <div className="t-Form-inputContainer PhoneNumber">
                                                                         <PhoneNumber

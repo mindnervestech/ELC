@@ -6499,6 +6499,10 @@ html[dir="rtl"] #mobile-click-colect{
     height: 240px;
 }
 
+.editAddresspopupPadding{
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
 
 @media only screen and (min-width:768px) and (max-width:1024px)
 {
@@ -6586,6 +6590,11 @@ html[dir="rtl"] .t-Button--pillStart{
         -moz-box-shadow: 0 2000vh 0 2000vh rgba(0, 0, 0, 0.3);
         box-shadow: 0 2000vh 0 2000vh rgba(0, 0, 0, 0.3);
         border-radius: 4px;
+    }
+
+    .editAddresspopupPadding{
+        padding-left: 6px !important;
+        padding-right: 6px !important;
     }
 
     .autoSearch .productName {
