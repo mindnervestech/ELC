@@ -272,13 +272,15 @@
 .addr_link_del {
     float: right;
     text-decoration: underline;
-    color: #f599bb;
+    color: #000 !important;
+    cursor: pointer;
 }
 
 .addr_link_edit {
     float: left;
     text-decoration: underline;
-    color: #f599bb;
+    color: #000 !important;
+    cursor: pointer;
 }
 
 html[dir="rtl"] .addr_link_del {

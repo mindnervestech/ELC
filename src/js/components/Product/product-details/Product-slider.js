@@ -5,12 +5,6 @@ import Slider from "react-slick";
 import { Link, Redirect } from 'react-router-dom';
 import Spinner from '../../Spinner/Spinner2';
 
-import logo1 from '../../../../assets/images/you_may_also_like_1.png'
-import logo2 from '../../../../assets/images/you_may_also_like_2.png'
-import logo3 from '../../../../assets/images/you_may_also_like_3.png'
-import logo4 from '../../../../assets/images/you_may_also_like_4.png'
-
-
 class ProductSlider extends Component {
     constructor(props) {
         super(props);

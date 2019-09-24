@@ -445,6 +445,16 @@
       .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-4 input[type=tel] {
         padding-right: 92px
       }
+
+      .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-4 input[type=tel]{
+        width: 92.2% !important;
+      }
+
+      @media (max-width:767px){ 
+        .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-4 input[type=tel]{
+          width: 90% !important;
+        }
+      }
   
       html[dir="rtl"] .intl-tel-input.iti-container {
         position: absolute;

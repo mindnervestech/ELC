@@ -326,10 +326,15 @@ class AddressForm extends Component {
 
         const errorsObj = this.state.errors;
 
-        let firstNameInputField = <div className="t-Form-inputContainer"><div className="t-Form-itemWrapper"><input type="text" id="P25_FIRST_NAME" name="P25_FIRST_NAME" className="text_field apex-item-text" onChange={this.handleChange.bind(this, "firstName")} value={this.state.AddressFields["firstName"]} size="30" maxLength="" /></div><span id="P25_FIRST_NAME_error_placeholder" className="a-Form-error" data-template-id="33610259035469734_ET" /></div>;
+        let firstNameInputField = <div className="t-Form-inputContainer">
+            <div className="t-Form-itemWrapper">
+            <input type="text" id="P25_FIRST_NAME" style={{minHeight: '5rem', padding: '3.2rem .8rem .6rem'}} name="P25_FIRST_NAME" className="text_field apex-item-text" onChange={this.handleChange.bind(this, "firstName")} value={this.state.AddressFields["firstName"]} size="30" maxLength="" /></div>
+            <span id="P25_FIRST_NAME_error_placeholder" className="a-Form-error" data-template-id="33610259035469734_ET" /></div>;
 
 
-        let lastNameInputField = <div className="t-Form-inputContainer"><div className="t-Form-itemWrapper"><input type="text" id="P25_LAST_NAME" name="P25_LAST_NAME" className="text_field apex-item-text" onChange={this.handleChange.bind(this, "lastName")} value={this.state.AddressFields["lastName"]} size="30" maxLength="" /></div><span id="P25_LAST_NAME_error_placeholder" className="a-Form-error" data-template-id="33609965712469734_ET" /></div>
+        let lastNameInputField = <div className="t-Form-inputContainer">
+            <div className="t-Form-itemWrapper">
+                <input type="text" id="P25_LAST_NAME" name="P25_LAST_NAME" style={{minHeight: '5rem', padding: '3.2rem .8rem .6rem'}} className="text_field apex-item-text" onChange={this.handleChange.bind(this, "lastName")} value={this.state.AddressFields["lastName"]} size="30" maxLength="" /></div><span id="P25_LAST_NAME_error_placeholder" className="a-Form-error" data-template-id="33609965712469734_ET" /></div>
 
 
         let location = <div className="t-Form-inputContainer">

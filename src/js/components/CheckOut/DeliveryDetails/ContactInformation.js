@@ -153,7 +153,8 @@ class Contact extends Component {
         const errorsObj = this.state.errors;
         //console.log(errorsObj);
         let firstNameInputField = <div className="t-Form-inputContainer">
-            <div className="t-Form-itemWrapper"><input type="text" id="P7_FNAME" name="P7_FNAME" className="text_field apex-item-text" size={30} maxLength={100} onChange={this.handleChange.bind(this, "firstName")} value={this.state.ContactFields["firstName"]} /></div>
+            <div className="t-Form-itemWrapper">
+            <input type="text" id="P7_FNAME" name="P7_FNAME" className="text_field apex-item-text" size={30} maxLength={100} onChange={this.handleChange.bind(this, "firstName")} value={this.state.ContactFields["firstName"]} /></div>
             <span id="P7_FNAME_error_placeholder" className="a-Form-error" data-template-id="33610259035469734_ET" />
         </div>;
 
