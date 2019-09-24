@@ -396,7 +396,7 @@ class BirthDayClub extends Component {
 
 
       <div>
-        <div className="padding-breadcrumb">
+        <div className="padding-breadcrumb" style={{textAlign:'start'}}>
           <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
             <span className="titleHover" style={{ fontSize: 15 }}><FormattedMessage id="Checkout.Home" defaultMessage="Home" /></span><span>&nbsp;\&nbsp;&nbsp;</span>
           </Link>
