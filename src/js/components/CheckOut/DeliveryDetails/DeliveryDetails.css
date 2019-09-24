@@ -817,7 +817,7 @@ html[dir="rtl"] .intl-tel-input.allow-dropdown.separate-dial-code .selected-dial
 html[dir="rtl"] .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-4 input[type=tel] {
     padding-right: 36%;
     width: 100%;
-    padding-top: 6%!important;
+    padding-top: 0px!important;
 }
 
 .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-4 input[type=tel] {

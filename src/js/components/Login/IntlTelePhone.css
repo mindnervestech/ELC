@@ -1644,7 +1644,11 @@ html[dir="rtl"] .PhoneNumberBClub #widthfull .text_field.apex-item-text {
     padding: 0px;
     
    padding-right: 115px;
-    padding-bottom: 17px;
+    padding-bottom: 0px;
+}
+
+ html[dir="rtl"] .PhoneNumberBClub #widthfull .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-3 input, .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-3 input[type=text], .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-3 input[type=tel]{
+    width: 100% !important;
 }
 
 

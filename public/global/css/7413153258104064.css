@@ -6852,7 +6852,7 @@ body .ui-dialog .ui-dialog-buttonpane {
 .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-4 input,
 .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-4 input[type=text],
 .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-4 input[type=tel] {
-  padding-bottom: 20px;
+  padding-bottom: 0px;
 }
 
 .t-Wizard .t-Wizard-body,

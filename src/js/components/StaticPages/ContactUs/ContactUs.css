@@ -188,3 +188,9 @@ margin: 0px !important;
     height: 40px !important;
     width: 40px !important;
 }
+#ph #widthfull .country-list {
+    width: 95% !important;
+}
+#ph input[type=tel] {
+    width: 95.2% !important;
+}

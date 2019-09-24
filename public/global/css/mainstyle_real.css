@@ -4279,7 +4279,7 @@ img.block3_banner1.hideInMobile {
 html[dir="rtl"] #P7_PHONE_CONTAINER .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-3 input[type=tel] {
     padding-left: 0px !important;
     padding-right: 110px;
-    padding-top: 9%!important;
+    padding-top: 0%!important;
 }
 
 html[dir="rtl"] a.Acregister {

@@ -165,10 +165,12 @@ class ProductDetails extends Component {
 									<li style={{ width: 184, marginRight: 25 }} className={this.state.productDetailTab == "Product Information" ? "active-tab" : ''}>
 										<a onClick={() => this.getProductInfoDetail('Product Information')} className="product-des">Product Information</a>
 									</li>
-									{/* <li style={{width:184, marginRight:25}} className={this.state.productDetailTab == "Delivery options" ? "active-tab" : ''}>
-										<a onClick={() => this.getProductInfoDetail('Delivery options')} className="product-des">Delivery options</a>
+									 <li style={{width:184, marginRight:25}} className={this.state.productDetailTab == "Shipping" ? "active-tab" : ''}>
+										<a onClick={() => this.getProductInfoDetail('Shipping')} className="product-des">
+											<FormattedMessage id="Checkout.Shipping" defaultMessage="Shipping" />
+										</a>
 									</li>
-									<li style={{width:184, marginRight:25}} className={this.state.productDetailTab == "Questions" ? "active-tab" : ''}>
+									{/*<li style={{width:184, marginRight:25}} className={this.state.productDetailTab == "Questions" ? "active-tab" : ''}>
 										<a onClick={() => this.getProductInfoDetail('Questions')} className="product-des">Questions</a>
 									</li> */}
 								</ul>

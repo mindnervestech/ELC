@@ -114,9 +114,11 @@ class ProductSlider extends Component {
                                                             <span style={{ fontSize: 14, color: "#0D943F", fontWeight: "bold" }}>{item.currency ? item.currency : currency} &nbsp;{item.price}</span>
                                                             {/* <span style={{ color: "gray", textDecorationLine: 'line-through', fontSize: 14, marginLeft: 10 }}>{currency} &nbsp;{item.price}</span> */}
                                                         </div>
-                                                        {/* <div>
-                                                            <button className="alsoLikeCardButton">add to basket</button>
-                                                        </div> */}
+                                                        <div>
+                                                            <button className="alsoLikeCardButton">
+                                                                <FormattedMessage id="Product.Detail.addToBasket" defaultMessage="Add to basket" />
+                                                            </button>
+                                                        </div>
                                                     </div>
                                                     </Link>
                                                 ))}

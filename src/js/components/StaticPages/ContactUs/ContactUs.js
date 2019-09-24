@@ -185,7 +185,7 @@ class ContactUs extends Component {
             let searchWord = this.props.searchWord;
             errorBox = <div className="alertify"><div className="dialog"><div>
                 <p className="msg"><FormattedMessage id="help.searchtext1" defaultMessage="Sorry couldn't search" />;  {searchWord} .
-      <FormattedMessage id="help.searchtext2" defaultMessage="Submit your search!!" />.!!</p><nav><button className="ok" tabIndex={1} onClick={this.closeErrorBox}><FormattedMessage id="Ok.text" defaultMessage="Ok" /></button></nav></div></div></div>
+            <FormattedMessage id="help.searchtext2" defaultMessage="Submit your search!!" />.!!</p><nav><button className="ok" tabIndex={1} onClick={this.closeErrorBox}><FormattedMessage id="Ok.text" defaultMessage="Ok" /></button></nav></div></div></div>
 
         }
 
@@ -239,9 +239,13 @@ class ContactUs extends Component {
 
 
                             <div className="t-Body-contentInner">
-                                <div className="padding-right-ar padding-breadcrumb">
+                                <div className="padding-right-ar padding-breadcrumb" style={{textAlign:'start'}}>
                                     <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
-                                        <span className="titleHover" style={{ fontSize: 15 }}><FormattedMessage id="Checkout.Home" defaultMessage /></span><span>&nbsp;\&nbsp;&nbsp;</span>
+                                        <span className="titleHover" style={{ fontSize: 15 }}><FormattedMessage id="Checkout.Home" defaultMessage="Home" /></span>
+                                        {this.props.globals.language === 'en' ?
+                                        <span>&nbsp;\&nbsp;&nbsp;</span>: 
+                                        <span>&nbsp;/&nbsp;&nbsp;</span>
+                                        }
                                     </Link>
                                     <span style={{ fontSize: 15, fontWeight: 'bold' }}><FormattedMessage id="ContactUs.Title" defaultMessage="Contact Us" /></span>
                                 </div>
@@ -265,7 +269,7 @@ class ContactUs extends Component {
                                                     <div className="t-Region-body" >
                                                         <input type="hidden" id="MIS" name="MIS" defaultValue />
                                                         <center> <br />
-                                                            <h1 className="t-page-titles"> <FormattedMessage id="ContactUs.Title" defaultMessage="ContactUs" /></h1>
+                                                            <h1 className="t-page-titles"> <FormattedMessage id="ContactUs.Title" defaultMessage="Contact Us" /></h1>
                                                         </center>
                                                         <br />
                                                         <br />
@@ -337,7 +341,7 @@ class ContactUs extends Component {
                                                                                                                     <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel is-required apex-item-wrapper apex-item-wrapper--text-field"
                                                                                                                         id="P14_EMAIL_CONTAINER" onFocus={(e) => this.divOnFocus(e)} onBlur={(e) => this.divOnBlure(e)}>
                                                                                                                         <div className="t-Form-labelContainer">
-                                                                                                                            <label htmlFor="P14_EMAIL" id="P14_EMAIL_LABEL" className="t-Form-label"><FormattedMessage id="ContactUs.Email" defaultMessage="ContactUs.Email" /> <span className="u-VisuallyHidden">(Value Required)</span></label>
+                                                                                                                            <label htmlFor="P14_EMAIL" id="P14_EMAIL_LABEL" className="t-Form-label"><FormattedMessage id="ContactUs.Email" defaultMessage="Email Address" /> <span className="u-VisuallyHidden">(Value Required)</span></label>
                                                                                                                         </div>
                                                                                                                         <div className="t-Form-inputContainer">
                                                                                                                             <div className="t-Form-itemWrapper">
@@ -358,7 +362,7 @@ class ContactUs extends Component {
                                                                                                                             <label htmlFor="PHONE" id="PHONE_LABEL" className="t-Form-label">
                                                                                                                                 <span className="u-VisuallyHidden">(Value Required)</span></label>
                                                                                                                         </div>
-                                                                                                                        <div className="t-Form-inputContainer">
+                                                                                                                        <div id="ph" className="t-Form-inputContainer phoneNumber-type">
                                                                                                                             <PhoneNumber changed={this.contactNumber} />
                                                                                                                             <span id="PHONE_error_placeholder" className="a-Form-error" data-template-id="33610259035469734_ET" style={{ color: 'red' }}>
                                                                                                                                 {errorsObj["phone"]}
@@ -382,13 +386,13 @@ class ContactUs extends Component {
 
                                                                                                                                     onChange={this.handleChange.bind(this, "purpose")}
                                                                                                                                     value={this.state.contact_fields["purpose"]}>
-                                                                                                                                    <FormattedMessage id="ContactUs.customerSerivces">{(translatedText) => <option value="customer_services">{translatedText}</option>}</FormattedMessage>
-                                                                                                                                    <FormattedMessage id="ContactUs.Deliveries">{(translatedText) => <option value="deliveries">{translatedText}</option>}</FormattedMessage>
-                                                                                                                                    <FormattedMessage id="ContactUs.General">{(translatedText) => <option value="genral_enq">{translatedText}</option>}</FormattedMessage>
-                                                                                                                                    <FormattedMessage id="ContactUs.order">{(translatedText) => <option value="order">{translatedText}</option>}</FormattedMessage>
-                                                                                                                                    <FormattedMessage id="ContactUs.payment">{(translatedText) => <option value="payment">{translatedText}</option>}</FormattedMessage>
-                                                                                                                                    <FormattedMessage id="ContactUs.returns">{(translatedText) => <option value="returns">{translatedText}</option>}</FormattedMessage>
-                                                                                                                                    <FormattedMessage id="ContactUs.stores">{(translatedText) => <option value="stores">{translatedText}</option>}</FormattedMessage>
+                                                                                                                                    <FormattedMessage id="ContactUs.customerSerivces" defaultMessage="Customer Service">{(translatedText) => <option value="customer_services">{translatedText}</option>}</FormattedMessage>
+                                                                                                                                    <FormattedMessage id="ContactUs.Deliveries" defaultMessage="Deliveries">{(translatedText) => <option value="deliveries">{translatedText}</option>}</FormattedMessage>
+                                                                                                                                    <FormattedMessage id="ContactUs.General" defaultMessage="General">{(translatedText) => <option value="genral_enq">{translatedText}</option>}</FormattedMessage>
+                                                                                                                                    <FormattedMessage id="ContactUs.order" defaultMessage="Orders">{(translatedText) => <option value="order">{translatedText}</option>}</FormattedMessage>
+                                                                                                                                    <FormattedMessage id="ContactUs.payment" defaultMessage="Payment">{(translatedText) => <option value="payment">{translatedText}</option>}</FormattedMessage>
+                                                                                                                                    <FormattedMessage id="ContactUs.returns" defaultMessage="Returns">{(translatedText) => <option value="returns">{translatedText}</option>}</FormattedMessage>
+                                                                                                                                    <FormattedMessage id="ContactUs.stores" defaultMessage="Stores">{(translatedText) => <option value="stores">{translatedText}</option>}</FormattedMessage>
                                                                                                                                 </select></div><span id="P14_PURPOSE_error_placeholder" className="a-Form-error" data-template-id="33609965712469734_ET" />
                                                                                                                         </div>
                                                                                                                     </div>
@@ -398,7 +402,7 @@ class ContactUs extends Component {
                                                                                                                 <div className="col col-12 apex-col-auto">
                                                                                                                     <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel apex-item-wrapper apex-item-wrapper--textarea js-show-label" id="P14_COMMENT_CONTAINER">
                                                                                                                         <div className="t-Form-labelContainer">
-                                                                                                                            <label htmlFor="P14_COMMENT" id="P14_COMMENT_LABEL" className="t-Form-label"><FormattedMessage id="ContactUs.comment" defaultMessage="Comment" /></label>
+                                                                                                                            <label htmlFor="P14_COMMENT" id="P14_COMMENT_LABEL" className="t-Form-label"><FormattedMessage id="ContactUs.comment" defaultMessage="Your comment" /></label>
                                                                                                                         </div>
                                                                                                                         <div className="t-Form-inputContainer">
                                                                                                                             <div className="t-Form-itemWrapper">

@@ -30,7 +30,12 @@ class PageTitle extends Component {
 
     getTital = (title) => {
         const { intl } = this.props;
-        const country = this.props.globals.country;
+        let country = this.props.globals.country;
+        if(country === 'uae'){
+            country = 'UAE';
+        }else if(country === 'ksa'){
+            country = 'KSA'
+        }
         let mainTitle = title !== 'NA' ? this.myIntl.formatMessage({ id: `PageTitle.${title}` }) : this.myIntl.formatMessage({ id: `PageTitle.Home` });
         // `PageTitle.${title}` in intl.messages ? intl.formatMessage({ id: `PageTitle.${title}` }) : intl.formatMessage({ id: `PageTitle.Home` })
         let appendTitle = this.myIntl.formatMessage({ id: `PageTitle.nayomi.${country}` })

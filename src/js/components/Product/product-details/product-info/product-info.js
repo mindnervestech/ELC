@@ -22,7 +22,7 @@ class ProductInformation extends Component {
 		super(props);
 		this.state = {
 			openSizeChatModel: false,
-      isBandCup: false
+			isBandCup: false
 		};
 	}
 
@@ -152,10 +152,10 @@ class ProductInformation extends Component {
 					</div>
 				</div>
 			 */}
-			 <div className="show-web">
-			 	{type == 'Product Information' ? <div style={{marginBottom: '5rem', marginTop:40}}>
-					 {/* <p className="detail-info">{type}</p> */}
-					{/* <p className="detail-info">{producDetail.sku.label}: {producDetail.sku.value} </p>
+				<div className="show-web">
+					{type == 'Product Information' ? <div style={{ marginBottom: '5rem', marginTop: 40 }}>
+						{/* <p className="detail-info">{type}</p> */}
+						{/* <p className="detail-info">{producDetail.sku.label}: {producDetail.sku.value} </p>
 
 					<p className="detail-info">{producDetail.weight.label}: {producDetail.weight.value}</p>
 
@@ -165,83 +165,100 @@ class ProductInformation extends Component {
 
 					<p className="detail-info">{producDetail.climate.label}: {producDetail.climate.value}</p> */}
 
-					<p className="detail-info" style={{textAlign:'start'}}>{data.description}</p>
-					{data.brand || data.age || data.assembly_req || data.battery_inc || data.battery_req? 
-						<h3 className="specification-title" style={{textAlign:'start'}}>
-							<FormattedMessage id="Specifications" defaultMessage="Specifications" /></h3> : <div/>}
-					{data.age ?<div className="row specification-item-content">
-						<span class="specification-item-key"><FormattedMessage id="Age" defaultMessage="Age" />:</span> 
-						<span className="specification-item-value">{data.age}</span>
-					</div> : <div/>}
-					{data.assembly_req ?<div className="row specification-item-content">
-						<span class="specification-item-key"><FormattedMessage id="AssemblyRequired" defaultMessage="Assembly Required" />:</span>
-						<span className="specification-item-value">{data.assembly_req}</span>
-					</div> : <div/>}
-					{data.battery_inc ?<div className="row specification-item-content">
-						<span class="specification-item-key"><FormattedMessage id="BatteryIncluded" defaultMessage="Battery Included" />:</span> 
-						<span className="specification-item-value">{data.battery_inc}</span>
-					</div> : <div/>}
-					{data.battery_req ?<div className="row specification-item-content">
-						<span class="specification-item-key"><FormattedMessage id="BatteryRequired" defaultMessage="Battery Required" />:</span> 
-						<span className="specification-item-value">{data.battery_req}</span>
-					</div> : <div/>}
-					{data.brand ?<div className="row specification-item-content">
-						<span class="specification-item-key"><FormattedMessage id="Brand" defaultMessage="Brand" />:</span> 
-						<span className="specification-item-value">{data.brand}</span>
-					</div> : <div/>}
-				 </div> : type == 'Shipping' ?
-				 <div style={{marginBottom: '5rem', marginTop:40}}>
-					<p className="detail-info">{type}</p>
-					<p className="detail-info">Product code: 148138 </p>
+						<p className="detail-info" style={{ textAlign: 'start' }}>{data.description}</p>
+						{data.brand || data.age || data.assembly_req || data.battery_inc || data.battery_req ?
+							<h3 className="specification-title" style={{ textAlign: 'start' }}>
+								<FormattedMessage id="Specifications" defaultMessage="Specifications" /></h3> : <div />}
+						{data.age ? <div className="row specification-item-content">
+							<span class="specification-item-key"><FormattedMessage id="Age" defaultMessage="Age" />:</span>
+							<span className="specification-item-value">{data.age}</span>
+						</div> : <div />}
+						{data.assembly_req ? <div className="row specification-item-content">
+							<span class="specification-item-key"><FormattedMessage id="AssemblyRequired" defaultMessage="Assembly Required" />:</span>
+							<span className="specification-item-value">{data.assembly_req}</span>
+						</div> : <div />}
+						{data.battery_inc ? <div className="row specification-item-content">
+							<span class="specification-item-key"><FormattedMessage id="BatteryIncluded" defaultMessage="Battery Included" />:</span>
+							<span className="specification-item-value">{data.battery_inc}</span>
+						</div> : <div />}
+						{data.battery_req ? <div className="row specification-item-content">
+							<span class="specification-item-key"><FormattedMessage id="BatteryRequired" defaultMessage="Battery Required" />:</span>
+							<span className="specification-item-value">{data.battery_req}</span>
+						</div> : <div />}
+						{data.brand ? <div className="row specification-item-content">
+							<span class="specification-item-key"><FormattedMessage id="Brand" defaultMessage="Brand" />:</span>
+							<span className="specification-item-value">{data.brand}</span>
+						</div> : <div />}
+					</div> : type == 'Shipping' ?
+							<div style={{ marginBottom: '5rem', marginTop: 40 }}>
+								<p className="detail-info">{type}</p>
+								<p className="detail-info">Product code: 148138 </p>
 
-					<p className="detail-info">At a Glance </p>
+								<p className="detail-info">At a Glance </p>
 
-					<p className="detail-info">All aboard the elc bus for colour-matching, problem-solving fun! </p>
+								<p className="detail-info">All aboard the elc bus for colour-matching, problem-solving fun! </p>
 
-					<p className="detail-info">Features and benefits for elc wooden shopping trolley </p>
-				</div> : type == 'Questions' ?
-				<div style={{marginBottom: '5rem', marginTop:40}}>
-					<p className="detail-info">{type}</p>
-					<p className="detail-info">Product code: 148138 </p>
+								<p className="detail-info">Features and benefits for elc wooden shopping trolley </p>
+							</div> : type == 'Questions' ?
+								<div style={{ marginBottom: '5rem', marginTop: 40 }}>
+									<p className="detail-info">{type}</p>
+									<p className="detail-info">Product code: 148138 </p>
 
-					<p className="detail-info">At a Glance </p>
+									<p className="detail-info">At a Glance </p>
 
-					<p className="detail-info">All aboard the elc bus for colour-matching, problem-solving fun! </p>
+									<p className="detail-info">All aboard the elc bus for colour-matching, problem-solving fun! </p>
 
-					<p className="detail-info">Features and benefits for elc wooden shopping trolley </p>
-				</div> : ''}
+									<p className="detail-info">Features and benefits for elc wooden shopping trolley </p>
+								</div> : ''}
 				</div>
+
+
 				<div className="footer-css  footer-line show-mobile">
-                    
-                    <div className="mobile-manu">
-                        <Collapsible trigger={<FormattedMessage id="Product.Details.ProductInfo" defaultMessage="Product Information" />}>
-						<div style={{marginBottom: '5rem', textAlign:'left'}}>
-							{/* <p className="detail-info">{producDetail.sku.label}: {producDetail.sku.value} </p>
 
-							<p className="detail-info">{producDetail.weight.label}: {producDetail.weight.value}</p>
+					<div className="mobile-manu">
+						<Collapsible trigger={<FormattedMessage id="Product.Details.ProductInfo" defaultMessage="Product Information" />}>
+							{/* <div style={{ marginBottom: '5rem', textAlign: 'left' }}>
+								<p className="detail-info">{data.description}</p>
+							</div> */}
 
-							<p className="detail-info">{producDetail.pattern.label}: {producDetail.pattern.value}</p>
+							<p className="detail-info" style={{ textAlign: 'start' }}>{data.description}</p>
+							{data.brand || data.age || data.assembly_req || data.battery_inc || data.battery_req ?
+								<h3 className="specification-title" style={{ textAlign: 'start' }}>
+									<FormattedMessage id="Specifications" defaultMessage="Specifications" /></h3> : <div />}
+							{data.age ? <div className="row specification-item-content">
+								<span class="specification-item-key"><FormattedMessage id="Age" defaultMessage="Age" />:</span>
+								<span className="specification-item-value">{data.age}</span>
+							</div> : <div />}
+							{data.assembly_req ? <div className="row specification-item-content">
+								<span class="specification-item-key"><FormattedMessage id="AssemblyRequired" defaultMessage="Assembly Required" />:</span>
+								<span className="specification-item-value">{data.assembly_req}</span>
+							</div> : <div />}
+							{data.battery_inc ? <div className="row specification-item-content">
+								<span class="specification-item-key"><FormattedMessage id="BatteryIncluded" defaultMessage="Battery Included" />:</span>
+								<span className="specification-item-value">{data.battery_inc}</span>
+							</div> : <div />}
+							{data.battery_req ? <div className="row specification-item-content">
+								<span class="specification-item-key"><FormattedMessage id="BatteryRequired" defaultMessage="Battery Required" />:</span>
+								<span className="specification-item-value">{data.battery_req}</span>
+							</div> : <div />}
+							{data.brand ? <div className="row specification-item-content">
+								<span class="specification-item-key"><FormattedMessage id="Brand" defaultMessage="Brand" />:</span>
+								<span className="specification-item-value">{data.brand}</span>
+							</div> : <div />}
+						</Collapsible>
+						<Collapsible trigger={<FormattedMessage id="Checkout.Shipping" defaultMessage="Shipping" />}>
+							<div style={{ marginBottom: '5rem', textAlign: 'left' }}>
+								<p className="detail-info">Delivery Options</p>
+								<p className="detail-info">Product code: 148138 </p>
 
-							<p className="detail-info">{producDetail.material.label}: {producDetail.material.value}</p>
+								<p className="detail-info">At a Glance </p>
 
-							<p className="detail-info">{producDetail.climate.label}: {producDetail.climate.value}</p> */}
+								<p className="detail-info">All aboard the elc bus for colour-matching, problem-solving fun! </p>
 
-							<p className="detail-info">{data.description}</p>
-						</div>
-                        </Collapsible>
-                        {/* <Collapsible trigger={<FormattedMessage id="Product.Details.DeliveryOption" defaultMessage="Delivery Options" />}>
-						<div style={{marginBottom: '5rem', textAlign:'left'}}>
-							<p className="detail-info">Delivery Options</p>
-							<p className="detail-info">Product code: 148138 </p>
-
-							<p className="detail-info">At a Glance </p>
-
-							<p className="detail-info">All aboard the elc bus for colour-matching, problem-solving fun! </p>
-
-							<p className="detail-info">Features and benefits for elc wooden shopping trolley </p>
-						</div>
-                        </Collapsible>
-						<Collapsible trigger={<FormattedMessage id="Product.Details.Question" defaultMessage="Question" />}>
+								<p className="detail-info">Features and benefits for elc wooden shopping trolley </p>
+							</div>
+						</Collapsible>
+						{/*<Collapsible trigger={<FormattedMessage id="Product.Details.Question" defaultMessage="Question" />}>
 						<div style={{marginBottom: '5rem', textAlign:'left'}}>
 							<p className="detail-info">Question</p>
 							<p className="detail-info">Product code: 148138 </p>
@@ -253,10 +270,10 @@ class ProductInformation extends Component {
 							<p className="detail-info">Features and benefits for elc wooden shopping trolley </p>
 						</div>
                         </Collapsible> */}
-                        
-                    </div>
-                    
-                </div>
+
+					</div>
+
+				</div>
 			</div>
 		);
 	}
