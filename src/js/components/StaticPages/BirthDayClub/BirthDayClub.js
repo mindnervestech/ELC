@@ -184,6 +184,7 @@ class BirthDayClub extends Component {
 
   getName = (index, name) => {
     ChildrenName[index] = name.target.value
+    this.setState({ update: true })
   }
 
   showGenderOption = (index) => {
@@ -534,7 +535,7 @@ class BirthDayClub extends Component {
                   <span style={{ color: 'red' }}>*&nbsp;</span> <span className="blackTitle1 alignStart"  ><FormattedMessage id="addchild.ChildName" defaultMessage="Child Name" /></span>
                   </div>
                   <div>
-                    <input value={ChildrenName[index] != "" ? ChildrenName[index] : ""} className={"input-field"} placeholder="Name" onChange={this.getName.bind(this, index)}></input>
+                    <input  value={ChildrenName[index] !== "" ? ChildrenName[index] : ""} className={"input-field"} placeholder="Name" onChange={this.getName.bind(this, index)}></input>
                   </div>
                 </Col>
                 <Col xs={12} lg={4} md={12} >
