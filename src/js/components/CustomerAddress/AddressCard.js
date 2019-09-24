@@ -13,7 +13,8 @@ class AddressCard extends Component{
                                 <p><span><strong><FormattedMessage id="profile.Address.Title" defaultMessage="Address" />: {this.props.address.address_type} </strong> 
                                 <br />{this.props.address.userFirstName} {this.props.address.userLastName}
                                 <br />{this.props.address.street}
-                                <br />{this.props.address.state} {this.props.address.city}
+                                <br /> {this.props.address.city}
+                                {/* {this.props.address.state} */}
                                 <br /> 
                                 <a href={"tel:" + this.props.address.telephone}>{this.props.address.carrier_code ? `${this.props.address.carrier_code == '91' ? '+' : ''}${this.props.address.carrier_code}${this.props.address.telephone}`: this.props.address.telephone}</a>
                                 <br />

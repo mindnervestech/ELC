@@ -40,15 +40,16 @@ class OrderSummary extends Component {
                 store_id: this.props.globals.currentStore,
                 order_id: query.get('order_id')
             });
+            let string = window.location.href
+            let data = string.split('=')
+            orderNumber = data[data.length -1];
             if (live) {
                 initializeF()
                 trackF('Purchase');
             }
         } else {
-            console.log("query.get('status')", query.get('status'))
             //   success = query.get('status');
             success = cryptr.decrypt(query.get('status'));
-            console.log(success);
             if (success == 'true') {
                 this.props.orderJson({
                     order_id: query.get('order_id')
@@ -62,10 +63,8 @@ class OrderSummary extends Component {
                 orderNumber = data[2].split('&')[0]
             }
             if (query.get('order_id') && query.get('store_id')) {
-                console.log(query.get('status'));
                 // success = query.get('status');
                 success = cryptr.decrypt(query.get('status'));
-                console.log(success);
                 this.props.setOrderSummary({
                     store_id: this.props.globals.currentStore ? this.props.globals.currentStore : query.get('store_id'),
                     order_id: query.get('order_id')
@@ -143,7 +142,7 @@ class OrderSummary extends Component {
                                                                                             <div className="t-Region-buttons-right" />
                                                                                         </div>
                                                                                         <div className="t-Region-body">
-                                                                                            {success == 'true' ?
+                                                                                            {orderNumber ?
                                                                                                 <p className="paddingOnMobile0px10px" style={{ fontSize: '22px', letterSpacing: '0.04em', fontWeight: 200 }}>{orderNumber}</p>
                                                                                                 : <p className="paddingOnMobile0px10px" style={{ fontSize: '22px', letterSpacing: '0.04em', fontWeight: 200 }}>{this.props.order_number}</p>}
                                                                                         </div>
@@ -178,7 +177,7 @@ class OrderSummary extends Component {
                                                                                                         this.props.shipping_address.lastname : ''}<br />
                                                                                                     {this.props.shipping_address.street}<br />
                                                                                                     {this.props.shipping_address.city},
-                                                                                                    {this.props.shipping_address.region}<br />
+                                                                                                    {this.props.shipping_address.country}<br />
                                                                                                     <a href={`tel:${this.props.shipping_address.telephone ?
                                                                                                         this.props.shipping_address.telephone : this.props.shipping_address.phone_number}`}>
                                                                                                         {this.props.shipping_address.telephone ?
