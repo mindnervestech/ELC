@@ -4795,6 +4795,36 @@ html[dir="rtl"] .click-collect3 {
 
 @media only screen and (max-width:767px)
 {
+    html[dir="rtl"] .select-div
+    {
+        right:0px!important
+    }
+
+    html[dir="rtl"] .width-select-div
+    {
+        width:100% !important;
+    }
+}
+
+@media only screen and (min-width:768px) and (max-width:1024px)
+{
+    html[dir="rtl"]  .select-div
+    {
+        right:0px !important
+    }
+
+    html[dir="rtl"] .width-select-div
+    {
+        width:100% !important;
+    }
+}
+
+
+
+
+
+@media only screen and (max-width:767px)
+{
     .select-div
     {
         right:0px!important
