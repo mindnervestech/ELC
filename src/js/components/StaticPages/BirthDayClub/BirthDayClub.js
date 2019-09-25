@@ -84,8 +84,7 @@ class BirthDayClub extends Component {
 
       setTimeout(() => {
         this.setState({ sucesss_message: message, ischeckremove: false, showAlert: true });
-        console.log(this.state.showAlert)
-        console.log("smessgae", this.state.sucesss_message)
+        
       }, 100);
 
       setTimeout(() => {
@@ -164,7 +163,7 @@ class BirthDayClub extends Component {
 
     }
 
-    console.log("Errors", this.state.errors)
+   
 
     this.setState({ errors: errors });
     return formIsValid;
@@ -304,7 +303,7 @@ class BirthDayClub extends Component {
         language: this.state.lang,
         moreinfo: moreinfoData
       }
-      console.log(data)
+     
       this.clearContactState();
       this.setState({ error: false })
       this.props.onRegisterBirthdayClubUser(data);
@@ -315,9 +314,9 @@ class BirthDayClub extends Component {
 
   render() {
     let respo_message = null;
-    console.log('this.state.showAlert this.state.showAlert', this.state.showAlert)
+   
     if (this.state.showAlert) {
-      console.log("in render div")
+      
       respo_message = <span id="APEX_SUCCESS_MESSAGE" data-template-id="126769709897686936_S" className="apex-page-success u-visible"><div className="t-Body-alert">
         <div className="t-Alert t-Alert--defaultIcons t-Alert--success t-Alert--horizontal t-Alert--page t-Alert--colorBG" id="t_Alert_Success" role="alert">
           <div className="t-Alert-wrap">
