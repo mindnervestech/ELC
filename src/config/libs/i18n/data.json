@@ -1,5 +1,8 @@
 {
     "en": {
+        "addChildren.male":"Male",
+        "addChildren.female":"Female",
+        "addChildren.Other":"Other",
         "addchild.ChildName":"Child Name",
         "addnewchild.parentfirstname":"Parent First Name",
         "addnewchild.parentlastname":"Parent Last Name",
@@ -639,6 +642,10 @@
 
     },
     "ar": {
+         
+        "addChildren.male":"Male",
+        "addChildren.female":"Female",
+        "addChildren.Other":"Other",
         
         "HowmuchdoesUAEdeliverycost?":"كم تكلفة التوصيل للإمارات العربية المتحدة؟",
         "StandardDelivery":"التوصيل العادي",

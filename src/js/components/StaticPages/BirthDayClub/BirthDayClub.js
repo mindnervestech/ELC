@@ -18,7 +18,7 @@ let ChildrenName = ['']
 let ChildrenGender = ['']
 let sortByShowOption = [false]
 let moreinfoData = ''
-let langerror=false
+let langerror = false
 let editingRow = 0
 class BirthDayClub extends Component {
   constructor(props) {
@@ -45,7 +45,7 @@ class BirthDayClub extends Component {
         gender: '',
         dob: ''
       },
-      sucesss_message:'',
+      sucesss_message: '',
       errors: {},
       isPhoneValid: false,
 
@@ -56,24 +56,46 @@ class BirthDayClub extends Component {
     this.setState({ showAlert: false });
   }
 
-  componentDidUpdate() {
-    
-    if (this.props.bclubDetails !== undefined) {
-      let message = this.props.bclubDetails.message
-      console.log("message outside  ischeckremove",message)
-      if (this.state.ischeckremove) {
-       console.log("message ischeckremove",message)
-        this.setState({ sucesss_message: message, showAlert:!this.state.showAlert, ischeckremove: false });
-       
-       
-        setTimeout(() => {
-          this.closeAlert();
-        }, 5000);
-      }
+  // componentDidUpdate() {
+
+  //   if (this.props.bclubDetails !== undefined) {
+  //     let message = this.props.bclubDetails.message
+  //     console.log("message outside  ischeckremove",message)
+  //     if (this.state.ischeckremove) {
+  //      console.log("message ischeckremove",message)
+  //       this.setState({ sucesss_message: message,  ischeckremove: false });
+
+  //       this.setState({showAlert:true})
+  //      console.log("smessgae",this.state.sucesss_message)
+  //      console.log(this.state.showAlert)
+  //       // setTimeout(() => {
+  //       //   this.closeAlert();
+  //       // }, 5000);
+  //     }
+
+  //   }
+  // }
+
+
+  componentWillReceiveProps(nextprops) {
+
+    if (nextprops.bclubDetails && !nextprops.bclubDetails.status) {
+      let message = nextprops.bclubDetails.message
+
+      setTimeout(() => {
+        this.setState({ sucesss_message: message, ischeckremove: false, showAlert: true });
+        console.log(this.state.showAlert)
+        console.log("smessgae", this.state.sucesss_message)
+      }, 100);
+
+      setTimeout(() => {
+        this.closeAlert();
+      }, 3000);
 
     }
   }
-  
+
+
 
 
 
@@ -88,12 +110,11 @@ class BirthDayClub extends Component {
 
     let errors = {};
     let formIsValid = true;
-   
-    if(this.state.lang==' ')
-    {
-      langerror=true
 
-        
+    if (this.state.lang == ' ') {
+      langerror = true
+
+
     }
     if (!fields["parentFirstName"]) {
       formIsValid = false;
@@ -287,32 +308,33 @@ class BirthDayClub extends Component {
       this.clearContactState();
       this.setState({ error: false })
       this.props.onRegisterBirthdayClubUser(data);
-     
-     
+
+
     }
   }
 
   render() {
     let respo_message = null;
-
+    console.log('this.state.showAlert this.state.showAlert', this.state.showAlert)
     if (this.state.showAlert) {
-        respo_message = <span id="APEX_SUCCESS_MESSAGE" data-template-id="126769709897686936_S" className="apex-page-success u-visible"><div className="t-Body-alert">
-            <div className="t-Alert t-Alert--defaultIcons t-Alert--success t-Alert--horizontal t-Alert--page t-Alert--colorBG" id="t_Alert_Success" role="alert">
-                <div className="t-Alert-wrap">
-                    <div className="t-Alert-icon">
-                        <span className="t-Icon" />
-                    </div>
-                    <div className="t-Alert-content">
-                        <div className="t-Alert-header">
-                            <h2 className="t-Alert-title">{this.state.sucesss_message}</h2>
-                        </div>
-                    </div>
-                    <div className="t-Alert-buttons">
-                        <button className="t-Button t-Button--noUI t-Button--icon t-Button--closeAlert" type="button" title="Close Notification" onClick={this.closeAlert} ><span className="t-Icon icon-close" /></button>
-                    </div>
-                </div>
+      console.log("in render div")
+      respo_message = <span id="APEX_SUCCESS_MESSAGE" data-template-id="126769709897686936_S" className="apex-page-success u-visible"><div className="t-Body-alert">
+        <div className="t-Alert t-Alert--defaultIcons t-Alert--success t-Alert--horizontal t-Alert--page t-Alert--colorBG" id="t_Alert_Success" role="alert">
+          <div className="t-Alert-wrap">
+            <div className="t-Alert-icon">
+              <span className="t-Icon" />
             </div>
-        </div></span>;
+            <div className="t-Alert-content">
+              <div className="t-Alert-header">
+                <h2 className="t-Alert-title">{this.state.sucesss_message}</h2>
+              </div>
+            </div>
+            <div className="t-Alert-buttons">
+              <button className="t-Button t-Button--noUI t-Button--icon t-Button--closeAlert" type="button" title="Close Notification" onClick={this.closeAlert} ><span className="t-Icon icon-close" /></button>
+            </div>
+          </div>
+        </div>
+      </div></span>;
     }
 
     let store_locale = this.props.globals.store_locale;
@@ -353,10 +375,9 @@ class BirthDayClub extends Component {
 
     }
 
-    let spanerrorlangmessage=null
-    if(langerror)
-    {
-     spanerrorlangmessage=<span style={{color:'red'}}>Select Language</span>
+    let spanerrorlangmessage = null
+    if (langerror) {
+      spanerrorlangmessage = <span style={{ color: 'red' }}>Select Language</span>
     }
 
     let arLangRadioField = <div><div>
@@ -368,7 +389,7 @@ class BirthDayClub extends Component {
 
     let contactNumberInputField = null
 
-  
+
 
 
 
@@ -410,7 +431,8 @@ class BirthDayClub extends Component {
 
 
       <div>
-        <div className="padding-breadcrumb" style={{textAlign:'start'}}>
+        {respo_message}
+        <div className="padding-breadcrumb" style={{ textAlign: 'start' }}>
           <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
             <span className="titleHover" style={{ fontSize: 15 }}><FormattedMessage id="Checkout.Home" defaultMessage="Home" /></span><span>&nbsp;\&nbsp;&nbsp;</span>
           </Link>
@@ -470,9 +492,9 @@ class BirthDayClub extends Component {
                 </div>
 
               </Col>
-              </Row>
+            </Row>
 
-             <Row className="divShowOnMobile">
+            <Row className="divShowOnMobile">
               <Col xs={12} lg={6} md={12} className="alignStart divShowOnMobile">
                 <div style={{ marginTop: 15 }}>
                   <span style={{ color: 'red' }}>*&nbsp;</span><span className="blackTitle1"><FormattedMessage id="addnewchild.parentfirstname" defaultMessage="Parent First Name " /></span>
@@ -522,17 +544,17 @@ class BirthDayClub extends Component {
                 </div>
 
               </Col>
-              </Row>
-            
+            </Row>
+
             <Row>
               <Col xs={12} lg={12} md={12} className="alignStart">
                 <div style={{ marginTop: 15 }}>
-                <span style={{ color: 'red' }}>*&nbsp;</span>  <span className="blackTitle1"><FormattedMessage id="PreferedLanguage" defaultMessage="Prefered Language" /></span>
+                  <span style={{ color: 'red' }}>*&nbsp;</span>  <span className="blackTitle1"><FormattedMessage id="PreferedLanguage" defaultMessage="Prefered Language" /></span>
                 </div>
-                <div style={{display:'inline-flex'}}>
-                  <input className="RadioButton" type="radio"  name="gender" value="arabic" name="P1001_EMAIL" onChange={() => this.state.lang = 'ar'} /> <span className="radioButtonText"><FormattedMessage id="header.Arabic" defaultMessage="Arabic" /></span>
-                  <input className="radioButton RadioButton"  type="radio" name="gender" value="english" name="P1001_EMAIL" onChange={() => this.state.lang = 'en'} /> <span className="radioButtonText"><FormattedMessage id="header.English" defaultMessage="English" /></span>
-                  
+                <div style={{ display: 'inline-flex' }}>
+                  <input className="RadioButton" type="radio" name="gender" value="arabic" name="P1001_EMAIL" onChange={() => this.state.lang = 'ar'} /> <span className="radioButtonText"><FormattedMessage id="header.Arabic" defaultMessage="Arabic" /></span>
+                  <input className="radioButton RadioButton" type="radio" name="gender" value="english" name="P1001_EMAIL" onChange={() => this.state.lang = 'en'} /> <span className="radioButtonText"><FormattedMessage id="header.English" defaultMessage="English" /></span>
+
                 </div>
                 {spanerrorlangmessage}
               </Col>
@@ -547,16 +569,16 @@ class BirthDayClub extends Component {
               <Row style={{ position: 'relative' }} className="alignStart">
                 <Col xs={12} lg={4} md={12} >
                   <div style={{ marginTop: 15 }}>
-                  <span style={{ color: 'red' }}>*&nbsp;</span> <span className="blackTitle1 alignStart"  ><FormattedMessage id="addchild.ChildName" defaultMessage="Child Name" /></span>
+                    <span style={{ color: 'red' }}>*&nbsp;</span> <span className="blackTitle1 alignStart"  ><FormattedMessage id="addchild.ChildName" defaultMessage="Child Name" /></span>
                   </div>
                   <div>
-                    <input  value={ChildrenName[index] !== "" ? ChildrenName[index] : ""} className={"input-field"} placeholder="Name" onChange={this.getName.bind(this, index)}></input>
+                    <input value={ChildrenName[index] !== "" ? ChildrenName[index] : ""} className={"input-field"} placeholder="Name" onChange={this.getName.bind(this, index)}></input>
                   </div>
                   {/* {childNameDiv} */}
                 </Col>
                 <Col xs={12} lg={4} md={12} >
                   <div style={{ marginTop: 15 }}>
-                  <span style={{ color: 'red' }}>*&nbsp;</span><span className="blackTitle1 alignStart"><FormattedMessage id="addnewchild.Gender" defaultMessage="Gender" /></span>
+                    <span style={{ color: 'red' }}>*&nbsp;</span><span className="blackTitle1 alignStart"><FormattedMessage id="addnewchild.Gender" defaultMessage="Gender" /></span>
                   </div>
                   <div style={{ position: 'relative', marginTop: 5 }}>
                     <div className={sortByShowOption[index] ? "sortBySelectedText2 open genderPadding" : "sortBySelectedText2 genderPadding"} onClick={() => this.showGenderOption(index)} style={{ border: 'solid 1px #b1b1b1' }}>
@@ -566,13 +588,13 @@ class BirthDayClub extends Component {
                     <div>
                       <div className="sortByOption select-div width-select-div" style={sortByShowOption[index] ? { display: 'block' } : { display: 'none' }}>
                         <div className="sortByOptionText" onClick={() => this.onClickGender("Male", index)}>
-                          <span><FormattedMessage id="male" defaultMessage="Male" /></span>
+                          <span><FormattedMessage id="addChildren.male" defaultMessage="Male" /></span>
                         </div>
                         <div className="sortByOptionText" onClick={() => this.onClickGender("Female", index)}>
-                          <span><FormattedMessage id="female" defaultMessage="Female" /></span>
+                          <span><FormattedMessage id="addChildren.female" defaultMessage="Female" /></span>
                         </div>
                         <div className="sortByOptionText" onClick={() => this.onClickGender("Other", index)}>
-                          <span><FormattedMessage id="Other" defaultMessage="Other" /></span>
+                          <span><FormattedMessage id="addChildren.Other" defaultMessage="Other" /></span>
                         </div>
                       </div>
                     </div>
@@ -580,7 +602,7 @@ class BirthDayClub extends Component {
                 </Col>
                 <Col xs={12} lg={4} md={12} >
                   <div style={{ marginTop: 15 }}>
-                  <span style={{ color: 'red' }}>*&nbsp;</span> <span className="blackTitle1 alignStart"><FormattedMessage id="addnewchild.dob" defaultMessage="DOB" /></span>
+                    <span style={{ color: 'red' }}>*&nbsp;</span> <span className="blackTitle1 alignStart"><FormattedMessage id="addnewchild.dob" defaultMessage="DOB" /></span>
                   </div>
                   <div style={{ width: "100%", marginTop: 5, borderRadius: 0 }} id="badyClubDate">
                     <DatePicker
@@ -590,8 +612,8 @@ class BirthDayClub extends Component {
                     />
                   </div>
                 </Col>
-                {index !=0 ? 
-            <i style={{ position: 'absolute' }} className="close fa fa-times crossIcon" aria-hidden="true" onClick={() => this.removeChild(index)} /> :<div/> }
+                {index != 0 ?
+                  <i style={{ position: 'absolute' }} className="close fa fa-times crossIcon" aria-hidden="true" onClick={() => this.removeChild(index)} /> : <div />}
               </Row>
             )}
             <Row style={{ textAlign: 'center', paddingTop: 20 }}>
@@ -616,7 +638,7 @@ class BirthDayClub extends Component {
 }
 
 const mapStateToProps = state => {
- 
+
   return {
     isUserLoggedIn: state.login.isUserLoggedIn,
     spinnerProduct: state.spinner.loadingProduct,
