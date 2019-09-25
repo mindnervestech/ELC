@@ -269,7 +269,7 @@ class ContactUs extends Component {
                                                     <div className="t-Region-body" >
                                                         <input type="hidden" id="MIS" name="MIS" defaultValue />
                                                         <center> <br />
-                                                            <h1 className="t-page-titles"> <FormattedMessage id="ContactUs.Title" defaultMessage="Contact Us" /></h1>
+                                                            <h1 className="t-page-titles static-page-style"> <FormattedMessage id="ContactUs.Title" defaultMessage="Contact Us" /></h1>
                                                         </center>
                                                         <br />
                                                         <br />
@@ -407,7 +407,7 @@ class ContactUs extends Component {
                                                                                                                         <div className="t-Form-inputContainer">
                                                                                                                             <div className="t-Form-itemWrapper">
                                                                                                                                 <div className="apex-item-group apex-item-group--textarea" role="group" aria-labelledby="P14_COMMENT_LABEL" tabIndex={-1}>
-                                                                                                                                    <FormattedMessage id="ContactUs.comment">{(message) => <textarea name="P14_COMMENT" rows={5} cols={2000} maxLength={2000} wrap="virtual" id="P14_COMMENT" placeholder={message} className="textarea apex-item-textarea" style={{ resize: 'both', color: 'rgb(0, 0, 0)' }} onChange={this.handleChange.bind(this, "comment")} value={this.state.contact_fields["comment"]} />}</FormattedMessage>
+                                                                                                                                    <FormattedMessage id="ContactUs.comment">{(message) => <textarea name="P14_COMMENT" rows={5} cols={2000} maxLength={2000} wrap="virtual" id="P14_COMMENT" placeholder={message} className="textarea apex-item-textarea" style={{ resize: 'both', color: 'rgb(0, 0, 0)', backgroundColor: '#fff', border: "solid 1px #b1b1b1" }} onChange={this.handleChange.bind(this, "comment")} value={this.state.contact_fields["comment"]} />}</FormattedMessage>
 
                                                                                                                                     <div id="P14_COMMENT_CHAR_COUNT" style={{ color: 'rgb(0, 0, 0)', display: 'none' }} className="apex-item-textarea-counter"><span id="P14_COMMENT_CHAR_COUNTER" className="apex-item-textarea-counter--length">{this.state.comment_count}</span> of
                                                                                                                                         <span className="apex-item-textarea-counter--size">2000</span>

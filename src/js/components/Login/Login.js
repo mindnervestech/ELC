@@ -393,7 +393,7 @@ class Login extends Component {
                                   <div className="t-Region-headerItems t-Region-headerItems--buttons"><span className="js-maximizeButtonContainer"></span></div>
                                 </div>
                                 <div className="t-Region-bodyWrap">
-                                  <div className="headerText"><FormattedMessage id="newToElc.header.login.text" defaultMessage="Already have an account?Sign in to retreive your account settings." /></div>
+                                  <div className="headerText"><FormattedMessage id="newToElc.header.login.text" defaultMessage="Already have an account? Sign in to retreive your account settings." /></div>
                                   <div className="t-Region-buttons  t-Region-buttons--top">
                                     <div className="t-Region-buttons-left"></div>
                                     <div className="t-Region-buttons-right"></div>

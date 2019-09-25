@@ -537,6 +537,7 @@ html[dir="rtl"] div#mobile-sort-by-content-div{
     background-color: #ffffff;
     margin-right: 5px;
     width: 100%;
+    text-transform: capitalize;
   }
 
 

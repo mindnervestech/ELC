@@ -16,7 +16,6 @@ import * as util from '../../utility/utility';
 import payPalImg from '../../../../assets/images/social/paypal.svg';
 import masterCardImg from '../../../../assets/images/social/masterCard.svg';
 
-import paymentImgAR from '../../../../assets/images/social/paymentmethod-ar.png';
 import paymentImgEN from '../../../../assets/images/social/paymentmethod-en.png';
 import VISAImg from '../../../../assets/images/social/visa.svg';
 import verisignSecureImg from '../../../../assets/images/social/verisign-secure.svg';
@@ -337,18 +336,18 @@ class Footer extends Component {
                         </div>
                         <div className="col col-4" style={{ textAlign: "end" }}>
                             <div className="row">
-                                <div className="col col-3">
+                                <div className="col col-1">
                                     {/* <img className="bottom-imagePaypal" src={payPalImg}/> */}
                                 </div>
-                                <div className="col col-3">
+                                <div className="col col-1">
                                     {/* <img className="bottom-imagePaypal" src={verisignSecureImg}/> */}
                                 </div>
                                 {this.props.globals.language == 'en' ?
-                                    <div className="col col-3">
-                                        <img className="bottom-imagePaypal" src={paymentImgEN} />
+                                    <div className="col col-6">
+                                        <img className="bottom-imagePaypal" src="https://storage.googleapis.com/nay/icons/paymentmethod-en.png" />
                                     </div>
-                                    : <div className="col col-3">
-                                        <img className="bottom-imagePaypal" src={paymentImgAR} />
+                                    : <div className="col col-6">
+                                        <img className="bottom-imagePaypal" src="https://storage.googleapis.com/nay/icons/paymentmethod-ar.png" />
                                     </div>}
                                 {/* <div className="col col-3">
                                 <img className="bottom-imagePaypal" src={VISAImg}/>
@@ -453,9 +452,9 @@ class Footer extends Component {
                             {/* <img className="bottom-imagePaypal-mobile" src={masterCardImg}/>
                     <img className="bottom-imagePaypal-mobile" src={VISAImg}/> */}
                             {this.props.globals.language == 'en' ?
-                                <img className="bottom-imagePaypal-mobile" src={paymentImgEN} />
+                                <img className="bottom-imagePaypal-mobile" src="https://storage.googleapis.com/nay/icons/paymentmethod-en.png" />
                                 :
-                                <img className="bottom-imagePaypal-mobile" src={paymentImgAR} />
+                                <img className="bottom-imagePaypal-mobile" src="https://storage.googleapis.com/nay/icons/paymentmethod-ar.png" />
                             }
                         </div>
                     </div>

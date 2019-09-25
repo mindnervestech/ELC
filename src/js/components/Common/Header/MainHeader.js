@@ -399,7 +399,7 @@ class MainHeader extends Component {
                                     </li>
                                     <li style={this.state.userLogin ? { display: 'inline-block', paddingTop: 1 } : { display: 'none' }}>
                                         <img src={profile} className="image-ion" style={{marginTop: 2, height: 16, width: 16}}></img>
-                                        <label className="iconLeble text-color changeLinkText"><span><FormattedMessage id="header.Hello" defaultMessage="Hello" />,&nbsp; {this.props.user_details.customer_details.firstname} </span></label>
+                                        <label className="iconLeble text-color"><span><FormattedMessage id="header.Hello" defaultMessage="Hello" />,&nbsp; {this.props.user_details.customer_details.firstname} </span></label>
                                     </li>
                                     <li style={this.state.userLogin ? { display: 'inline-block' } : { display: 'none' }}>
                                         <Link to={`/${store_locale}/Login`} style={{ textDecoration: 'none' }}>
@@ -639,12 +639,12 @@ class MainHeader extends Component {
                                         </Col>
                                         <Col xs="6" lg="7" md="7" style={{padding: 0}}>
                                             <ul style={{ textAlign: 'start', paddingTop: 10 }}>
-                                                <li style={{ fontSize: 15, color: "#0D943F" }}>
+                                                <li style={{ fontSize: 15, color: "#0D943F", lineHeight: '0.5', fontWeight: 'bold' }}>
                                                     <FormattedMessage id="header.FreeStdDelivery" defaultMessage="Free Std Delivery" />
                                                 </li>
-                                                {/* <li style={{ fontSize: 11 }} className="text-color">
-                                                        when you spend £10
-                                                    </li> */}
+                                                <li style={{ fontSize: 12, lineHeight: '2.5', fontWeight: 'bold' }} className="text-color">
+                                                    When you spend AED 250
+                                                </li>
                                             </ul>
                                         </Col>
                                     </Row>
@@ -657,12 +657,12 @@ class MainHeader extends Component {
                                         </Col>
                                         <Col xs="6" lg="7" md="7" className="padd-zer" style={{padding: 0}}>
                                             <ul style={{ textAlign: 'start', paddingTop: 10 }}>
-                                                <li style={{ fontSize: 15, color: "#0D943F" }}>
+                                                <li style={{ fontSize: 15, color: "#0D943F", lineHeight: '0.5', fontWeight: 'bold' }}>
                                                     <FormattedMessage id="header.FreeGiftwrapping" defaultMessage="Free Gift wrapping" />
                                                 </li>
-                                                {/* <li style={{ fontSize: 11 }} className="text-color">
-                                                        for next working day delivery
-                                                    </li> */}
+                                                <li style={{ fontSize: 12, lineHeight: '2.5', fontWeight: 'bold' }} className="text-color">
+                                                    On any order
+                                                </li>
                                             </ul>
                                         </Col>
                                     </Row>
@@ -675,12 +675,12 @@ class MainHeader extends Component {
                                         </Col>
                                         <Col xs="6" lg="7" md="7" style={{padding: 0}}>
                                             <ul style={{ textAlign: 'start', paddingTop: 10 }}>
-                                                <li style={{ fontSize: 15, color: "#0D943F" }}>
+                                                <li style={{ fontSize: 15, color: "#0D943F",lineHeight: '0.5', fontWeight: 'bold' }}>
                                                     <FormattedMessage id="header.FreeReturns" defaultMessage="Free Returns" />
                                                 </li>
-                                                {/* <li style={{ fontSize: 11 }} className="text-color">
-                                                        in as little as 30 minutes
-                                                    </li> */}
+                                                <li style={{ fontSize: 12, lineHeight: '2.5', fontWeight: 'bold' }} className="text-color">
+                                                    In stores or Online
+                                                </li>
                                             </ul>
                                         </Col>
                                     </Row>

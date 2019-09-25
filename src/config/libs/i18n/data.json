@@ -44,7 +44,7 @@
         "newToElc.join": "You can join our Birthday Club to receive special birthday offers",
         "newToElc.store": "You can get through the checkout faster",
         "newToElc.checkout": "Save details for your favourite store",
-        "newToElc.header.login.text": "Already have an account?Sign in to retreive your account settings.",
+        "newToElc.header.login.text": "Already have an account? Sign in to retreive your account settings.",
         "Form.PasswordConventions": "Password must be at least 8 characters long and contain an uppercase letter, a lowercase letter and a number.",
         "Form.PasswordLength": "Minimum length is 8 characters",
         "Form.Facebook": "Login with Facebook",

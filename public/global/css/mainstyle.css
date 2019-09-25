@@ -875,7 +875,7 @@ template {
 
 .footer-css .bottom-imagePaypal-mobile {
     height: 30px;
-    width: 25%;
+    width: 50%;
 }
 
 .footer-css .footer-show-web {
@@ -6705,7 +6705,7 @@ html[dir="rtl"] #mobile-click-colect{
     font-family: "VAG Rounded ELC Bold" !important;
 }
 
-#ShareModule .styles_modal__gNwvD{
+#ShareModule{
     height: 150px !important;
 }
 
