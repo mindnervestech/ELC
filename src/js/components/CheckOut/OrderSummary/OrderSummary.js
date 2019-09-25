@@ -400,11 +400,12 @@ class OrderSummary extends Component {
                                                                                                                 <td className="t-Report-cell" headers="APEX_LANG.LANG('ORDERSTATUS')">
                                                                                                                     <FormattedMessage id="OrderStatus.Text" defaultMessage="Order Status" />
                                                                                                                 </td>
-                                                                                                                {success == true ? <td className="t-Report-cell" align="right" headers="CODE_DESC">{this.props.order_status}</td>
-                                                                                                                : <td className="t-Report-cell" align="right" headers="CODE_DESC">
+                                                                                                                {/* {success == true ?  */}
+                                                                                                                <td className="t-Report-cell" align="right" headers="CODE_DESC">{this.props.order_status}</td>
+                                                                                                                {/*  : <td className="t-Report-cell" align="right" headers="CODE_DESC">
                                                                                                                     <FormattedMessage id="Paymentpending" defaultMessage="Payment pending" />
                                                                                                                     </td>
-                                                                                                                }
+                                                                                                                 } */}
                                                                                                             </tr>
                                                                                                             </tbody>
                                                                                                         </table>
@@ -463,7 +464,7 @@ class OrderSummary extends Component {
                                                                                 </div>
                                                                             </Col>
                                                                         </Row>
-                                                                        <div className="row">
+                                                                        {/* <div className="row">
                                                                             <div className="col col-12 apex-col-auto">
                                                                                 <div id="R35741415174996328" style={{ background: '#f4f4f4' }}>
                                                                                     <input type="hidden" id="P10_ORD_SUM" name="P10_ORD_SUM" defaultValue="Y" />
@@ -471,7 +472,7 @@ class OrderSummary extends Component {
                                                                                         <FormattedMessage id="Customer.Service.text" defaultMessage="Customer Service" /></p>
                                                                                 </div>
                                                                             </div>
-                                                                        </div>
+                                                                        </div> */}
                                                                     </div>
                                                                 </div>
                                                                 <div className="t-Region-buttons t-Region-buttons--bottom">

@@ -188,6 +188,23 @@ class ProductInformation extends Component {
 							<span class="specification-item-key"><FormattedMessage id="Brand" defaultMessage="Brand" />:</span>
 							<span className="specification-item-value">{data.brand}</span>
 						</div> : <div />}
+
+						{data.packaging_height ? <div className="row specification-item-content">
+							<span class="specification-item-key"><FormattedMessage id="Height" defaultMessage="Height" />:</span>
+							<span className="specification-item-value">{data.packaging_height}</span>
+						</div> : <div />}
+						{data.packaging_width ? <div className="row specification-item-content">
+							<span class="specification-item-key"><FormattedMessage id="Width" defaultMessage="Width" />:</span>
+							<span className="specification-item-value">{data.packaging_width}</span>
+						</div> : <div />}
+						{data.packaging_length ? <div className="row specification-item-content">
+							<span class="specification-item-key"><FormattedMessage id="Length" defaultMessage="Length" />:</span>
+							<span className="specification-item-value">{data.packaging_length}</span>
+						</div> : <div />}
+						{data.packaging_weight ? <div className="row specification-item-content">
+							<span class="specification-item-key"><FormattedMessage id="Weight" defaultMessage="Weight" />:</span>
+							<span className="specification-item-value">{data.packaging_weight}</span>
+						</div> : <div />}
 					</div> : type == 'Shipping' ?
 							<div style={{ marginBottom: '5rem', marginTop: 40 }}>
 							{this.props.globals.country == 'UAE' ?
@@ -309,6 +326,23 @@ class ProductInformation extends Component {
 							{data.brand ? <div className="row specification-item-content">
 								<span class="specification-item-key"><FormattedMessage id="Brand" defaultMessage="Brand" />:</span>
 								<span className="specification-item-value">{data.brand}</span>
+							</div> : <div />}
+
+							{data.packaging_height ? <div className="row specification-item-content">
+								<span class="specification-item-key"><FormattedMessage id="Height" defaultMessage="Height" />:</span>
+								<span className="specification-item-value">{data.packaging_height}</span>
+							</div> : <div />}
+							{data.packaging_width ? <div className="row specification-item-content">
+								<span class="specification-item-key"><FormattedMessage id="Width" defaultMessage="Width" />:</span>
+								<span className="specification-item-value">{data.packaging_width}</span>
+							</div> : <div />}
+							{data.packaging_length ? <div className="row specification-item-content">
+								<span class="specification-item-key"><FormattedMessage id="Length" defaultMessage="Length" />:</span>
+								<span className="specification-item-value">{data.packaging_length}</span>
+							</div> : <div />}
+							{data.packaging_weight ? <div className="row specification-item-content">
+								<span class="specification-item-key"><FormattedMessage id="Weight" defaultMessage="Weight" />:</span>
+								<span className="specification-item-value">{data.packaging_weight}</span>
 							</div> : <div />}
 						</Collapsible>
 						<Collapsible trigger={<FormattedMessage id="Checkout.Shipping" defaultMessage="Shipping" />} className="textStartShippingTab">

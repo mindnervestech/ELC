@@ -11,15 +11,15 @@ class OrderRow extends Component {
         let shipping_type = this.props.value.shipping_type;
         let payment_type = this.props.value.payment_type;
         if (payment_type == 'Cash On Delivery') {
-            payment_type = this.myIntl.formatMessage({ id: 'OrderHistory.Payment.CashOnDel' });
+            payment_type = this.myIntl.formatMessage({ id: 'OrderHistory.Payment.CashOnDel', defaultMessage:"Cash On Delivery" });
         } else if (payment_type == 'Pay By Card') {
-            payment_type = this.myIntl.formatMessage({ id: 'OrderHistory.Payment.PayByCard' });
+            payment_type = this.myIntl.formatMessage({ id: 'OrderHistory.Payment.PayByCard', defaultMessage:"Pay By Card" });
         }
 
         if (shipping_type == 'Deliver to Address') {
-            shipping_type = this.myIntl.formatMessage({ id: 'OrderHistory.Shipping.DelToAddress' });
+            shipping_type = this.myIntl.formatMessage({ id: 'OrderHistory.Shipping.DelToAddress', defaultMessage:"Deliver to Address" });
         } else if (shipping_type == 'Pickup from Store') {
-            shipping_type = this.myIntl.formatMessage({ id: 'OrderHistory.Shipping.PickUpFromStore' });
+            shipping_type = this.myIntl.formatMessage({ id: 'OrderHistory.Shipping.PickUpFromStore', defaultMessage:"Pickup from Store" });
         }
 
         return (<tr>

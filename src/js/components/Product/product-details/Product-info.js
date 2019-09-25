@@ -14,10 +14,6 @@ import favoriteImg from '../../../../assets/images/header/favorite.svg'
 import Modal from 'react-responsive-modal';
 import { Helmet } from 'react-helmet';
 import { Link, Redirect } from 'react-router-dom';
-import discovertheworld_icons from '../../../../assets/images/social/discovertheworld_icons.png';
-import socialskills_icon from '../../../../assets/images/social/socialskills_icon.png';
-import imagination_icon from '../../../../assets/images/social/imagination_icon.png';
-import { withRouter } from 'react-router-dom';
 import ShareUrl from '../product-details/product-info/product-size';
 import Popup from 'react-popup';
 import { connect } from 'react-redux';

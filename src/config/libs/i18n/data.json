@@ -630,9 +630,11 @@
         "FreedeliveryoverSAR250appliesforallofKSA":"Free delivery over SAR 250 applies for all of KSA .",
         "ComingsoontoJeddah":"Coming soon to Jeddah",
         "FREEASSEMBLYonOutdoorlineswhenyouspendSAR1000andabove":"FREE ASSEMBLY –on Outdoor lines when you spend SAR 1,000 and above",
-        "ServiceavailableinJeddah":"Service available in Jeddah ."
-      
-
+        "ServiceavailableinJeddah":"Service available in Jeddah .",
+        "Height":"Height",
+        "Width":"Width",
+        "Length":"Length",
+        "Weight":"Weight"
 
     },
     "ar": {
@@ -1239,7 +1241,11 @@
         "Addedtoyourbasket":"تمت إضافة المنتج إلى عربتك ",
         "RelatedProducts":"منتجات مشابهه",
         "choose.your.delivery":"إختر وسيلة التوصيل ",
-        "voucherdiscount": "voucher discount",
+        "voucherdiscount": "Voucher discount",
+        "Height":"Height",
+        "Width":"Width",
+        "Length":"Length",
+        "Weight":"Weight",
 	"BuyMoreBtn.Message": "Buy More, Save More!",
         "BuyMoreBtn.Message2": "Sell"
     }
