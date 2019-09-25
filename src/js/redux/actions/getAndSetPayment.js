@@ -21,9 +21,11 @@ export const getPaymentDetails = (payload) => {
             success: (res) => {
                 if (res.status && res.code === 200) {
                     let payment_d = { ...res.data }
+                    let cart_data = { ...res.cart_data }
                     dispatch(callActionForGetPaymentDetails({
                         is_payment_details_rec: true,
-                        payment_details: payment_d
+                        payment_details: payment_d,
+                        cart_data:cart_data
                     }))
                 }
                 dispatch(loadingSpinner({ loading: false }))

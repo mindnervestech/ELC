@@ -1885,3 +1885,15 @@ html[dir="rtl"] a.appStore {
         text-transform: lowercase;
     }
 }
+
+#voucher-pay input[type=text] {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px 15px 12px 15px;
+    margin: 0px;
+    color: #4f4f4f;
+    border-bottom: 1px solid #0b7e36 !important;
+    border: none;
+    border-radius: 1px;
+    background-color: #fff;
+}

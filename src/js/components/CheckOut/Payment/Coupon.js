@@ -12,13 +12,23 @@ class CouponCode extends Component {
     }
 
     componentDidUpdate(prevProps) {
-
         if (prevProps.cart_details.voucher != this.props.cart_details.voucher) {
             this.setState({ voucode: this.props.cart_details.voucher });
         } else if (this.props.cart_details.removevouher && prevProps.cart_details.voucher == this.props.cart_details.voucher && this.state.voucode != this.props.cart_details.voucher) {
             this.setState({ voucode: this.props.cart_details.voucher });
         }
+    }
 
+    divOnFocus = (e) => {
+        e.currentTarget.className = 't-Form-fieldContainer t-Form-fieldContainer--floatingLabel apex-item-wrapper apex-item-wrapper--text-field is-active';
+    }
+
+    divOnBlure = (e) => {
+        if ((e.target.value === null) || (e.target.value === '')) {
+            e.currentTarget.className = 't-Form-fieldContainer t-Form-fieldContainer--floatingLabel apex-item-wrapper apex-item-wrapper--text-field';
+        } else {
+            e.currentTarget.className = 't-Form-fieldContainer t-Form-fieldContainer--floatingLabel apex-item-wrapper apex-item-wrapper--text-field is-active';
+        }
     }
 
     render() {
@@ -45,12 +55,14 @@ class CouponCode extends Component {
                                             <span className="apex-grid-nbsp">&nbsp;</span>
                                         </div> */}
                                         <div className="col col-8 ">
-                                            <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel t-Form-fieldContainer--stretchInputs apex-item-wrapper apex-item-wrapper--text-field" id="P8_VOUCHER_CONTAINER">
+                                            <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel t-Form-fieldContainer--stretchInputs apex-item-wrapper apex-item-wrapper--text-field"
+                                            onFocus={(e) => this.divOnFocus(e)}
+                                            onBlur={(e) => this.divOnBlure(e)} id="P8_VOUCHER_CONTAINER">
                                                 <div className="t-Form-labelContainer">
-                                                    <label htmlFor="P8_VOUCHER" id="P8_VOUCHER_LABEL" className="t-Form-label" style={{ top: -7 }}><FormattedMessage id="Checkout.voucher" defaultMessage="Voucher" /></label>
+                                                    <label htmlFor="P8_VOUCHER" id="P8_VOUCHER_LABEL" className="t-Form-label"><FormattedMessage id="Checkout.voucher" defaultMessage="Voucher" /></label>
                                                 </div>
                                                 <div className="t-Form-inputContainer">
-                                                    <div className="t-Form-itemWrapper">
+                                                    <div className="t-Form-itemWrapper" id="voucher-pay">
                                                         <input type="text" id="P8_VOUCHER" name="P8_VOUCHER" className="text_field apex-item-text" size={30}
                                                             onChange={(e) => { this.setState({ voucode: e.target.value }) }}
                                                             value={this.state.voucode}

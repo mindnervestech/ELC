@@ -288,24 +288,29 @@ class Confirmation extends Component {
                         <td className="t-Report-cell" headers="TYPE"><FormattedMessage id="delivery-details.Subtotal.Title" defaultMessage="Subtotal" /></td>
                         <td className="t-Report-cell" align="right" headers="PRICE">{obj.cart_price.currency} <span>{obj.cart_price.Subtotal}</span></td>
                     </tr>
-
+                    {obj.cart_price.Savings > 0 ?
                     <tr>
                         <td className="t-Report-cell" headers="TYPE">
                             <FormattedMessage id="delivery-details.Savings.Title" defaultMessage="Savings" /></td>
                         <td className="t-Report-cell" align="right" headers="PRICE"><span className="p-price">{obj.cart_price.currency} {obj.cart_price.Savings}</span></td>
 
-                    </tr>
-
+                    </tr>:''}
+                    {obj.cart_price && obj.cart_price["Voucher Discount"] > 0?
+                    <tr>
+                        <td class="t-Report-cell" headers="TYPE"><FormattedMessage id="voucherdiscount" defaultMessage="voucher discount" /></td>
+                        <td class="t-Report-cell" align="right" headers="PRICE"><span class="p-price">{obj.cart_price.currency} {obj.cart_price["Voucher Discount"]}</span></td>
+                    </tr> : ''}
+                    {obj.cart_price.Shipping > 0 ?
                     <tr>
                         <td className="t-Report-cell" headers="TYPE"><FormattedMessage id="Checkout.Shipping" defaultMessage="Shipping" /></td>
                         <td className="t-Report-cell" align="right" headers="PRICE">{obj.cart_price.currency} <span>{obj.cart_price.Shipping}</span></td>
-                    </tr>
-
+                    </tr> : ''}
+                    {obj.cart_price.COD > 0 ?
                     <tr>
                         <td className="t-Report-cell" headers="TYPE"><FormattedMessage id="Checkout.COD" defaultMessage="COD" /></td>
                         <td className="t-Report-cell" align="right" headers="PRICE">{obj.cart_price.currency} <span>{obj.cart_price.COD}</span></td>
-                    </tr>
-
+                    </tr> : ''}
+                        
                     <tr>
                         <td className="t-Report-cell" headers="TYPE"><span className="order-total"><FormattedMessage id="delivery-details.Total.Title" defaultMessage="Total" /></span></td>
                         <td className="t-Report-cell" align="right" headers="PRICE">

@@ -329,6 +329,7 @@
         "Checkout.CodNotForCC": "Cash on delivery cannot be selcted for click and collect.",
         "Checkout.CodNotForOtherThanGCC": "Cash on delivery not available for countries other than GCC countries.",
         "Checkout.voucher": "Voucher",
+        "voucherdiscount": "voucher discount",
         "Place.Order.Text": "Place Order",
         "Edit.Text": "Edit",
         "Payment.text": "Payment ",
@@ -1236,6 +1237,7 @@
         "ClickCollectatselectedELCStore":"تسوق وإستلم من محلات مركز التعليم المبكر المختارة",
         "Addedtoyourbasket":"تمت إضافة المنتج إلى عربتك ",
         "RelatedProducts":"منتجات مشابهه",
-        "choose.your.delivery":"إختر وسيلة التوصيل "
+        "choose.your.delivery":"إختر وسيلة التوصيل ",
+        "voucherdiscount": "voucher discount"
     }
 }

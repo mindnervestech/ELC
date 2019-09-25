@@ -135,7 +135,7 @@ class App extends Component {
         //let store_data = country + "_" + lang;
 
         if (country == undefined) {
-            country = 'uae'
+            country = 'UAE'
         }
         if (lang == undefined) {
             lang = 'en';

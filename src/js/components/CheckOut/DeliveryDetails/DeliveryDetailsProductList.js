@@ -126,8 +126,6 @@ class DeliveryProductList extends Component {
             </tr>)
         })
 
-
-
         return (<>
             <ShippingSpinner>
                 <div className="t-Region t-Region--noPadding t-Region--scrollBody margin-bottom-sm" id="PRDBASKET">
@@ -239,21 +237,30 @@ class DeliveryProductList extends Component {
                                                                                 <td className="t-Report-cell" headers="TYPE"><FormattedMessage id="delivery-details.Subtotal.Title" defaultMessage="Subtotal" /></td>
                                                                                 <td className="t-Report-cell" align="right" headers="PRICE">{this.props.cart_details.currency} <span>{this.props.cart_details.subtotal}</span></td>
                                                                             </tr>
-
-                                                                            <tr><td class="t-Report-cell" headers="TYPE"><FormattedMessage id="Savings.title" defaultMessage="Savings" /></td><td class="t-Report-cell" align="right" headers="PRICE"><span class="p-price">{this.props.cart_details.currency} {this.props.cart_details.discount_amount}</span></td></tr>
-
+                                                                            {this.props.cart_details.cart_data && this.props.cart_details.cart_data.discount_amount !== 0?
+                                                                            <tr>
+                                                                                <td class="t-Report-cell" headers="TYPE"><FormattedMessage id="Savings.title" defaultMessage="Savings" /></td>
+                                                                                <td class="t-Report-cell" align="right" headers="PRICE"><span class="p-price">{this.props.cart_details.currency} { this.props.cart_details.cart_data.discount_amount}</span></td>
+                                                                            </tr> : ''}
+                                                                            {this.props.cart_details.cart_data && this.props.cart_details.cart_data.voucher_discount !== 0?
+                                                                            <tr>
+                                                                                <td class="t-Report-cell" headers="TYPE"><FormattedMessage id="voucherdiscount" defaultMessage="voucher discount" /></td>
+                                                                                <td class="t-Report-cell" align="right" headers="PRICE"><span class="p-price">{this.props.cart_details.currency} { this.props.cart_details.cart_data.voucher_discount}</span></td>
+                                                                            </tr> : ''}
+                                                                            {this.props.cart_details.cart_data && this.props.cart_details.cart_data.shipping_amount !== 0?
                                                                             <tr>
                                                                                 <td className="t-Report-cell" headers="TYPE"><FormattedMessage id="delivery-details.Shipping.Title" defaultMessage="Shipping" /></td>
-                                                                                <td className="t-Report-cell" align="right" headers="PRICE">{this.props.cart_details.currency} <span>0</span></td>
-                                                                            </tr>
+                                                                                <td className="t-Report-cell" align="right" headers="PRICE">{this.props.cart_details.currency} <span>{this.props.cart_details.cart_data.shipping_amount}</span></td>
+                                                                            </tr> : ''}
                                                                             <tr>
                                                                                 <td className="t-Report-cell" headers="TYPE"><span className="order-total"><FormattedMessage id="delivery-details.Total.Title" defaultMessage="Total" /></span></td>
                                                                                 <td className="t-Report-cell" align="right" headers="PRICE"><span className="order-total">{this.props.cart_details.currency}</span> <span className="order-total">{this.props.cart_details.grand_total}</span></td>
                                                                             </tr>
-                                                                            {/* <tr>
+                                                                            {this.props.cart_details.cart_data && this.props.cart_details.cart_data.tax_amount !== 0?
+                                                                            <tr>
                                                                                 <td className="t-Report-cell" headers="TYPE"><FormattedMessage id="VAT.Message" defaultMessage="VAT Message" /></td>
-                                                                                <td className="t-Report-cell" align="right" headers="PRICE">{this.props.cart_details.currency} <span>6.14</span></td>
-                                                                            </tr> */}
+                                                                                <td className="t-Report-cell" align="right" headers="PRICE">{this.props.cart_details.currency} <span>{this.props.cart_details.cart_data.tax_amount}</span></td>
+                                                                            </tr> : ''}
                                                                         </tbody>
                                                                     </table>
                                                                 </div>

@@ -50,6 +50,9 @@ class OrderSummary extends Component {
         } else {
             //   success = query.get('status');
             success = cryptr.decrypt(query.get('status'));
+            let string = window.location.href
+            let data = string.split('=')
+            orderNumber = data[2].split('&')[0]
             if (success == 'true') {
                 this.props.orderJson({
                     order_id: query.get('order_id')
@@ -58,9 +61,6 @@ class OrderSummary extends Component {
                     initializeF()
                     trackF('Purchase');
                 }
-                let string = window.location.href
-                let data = string.split('=')
-                orderNumber = data[2].split('&')[0]
             }
             if (query.get('order_id') && query.get('store_id')) {
                 // success = query.get('status');
@@ -104,7 +104,13 @@ class OrderSummary extends Component {
                                             <div className="t-Region-buttons-right" />
                                         </div>
                                         <div className="t-Region-body">
-                                            {success == 'true' ? <p style={{ fontSize: '22px', letterSpacing: '0.04em', fontWeight: 500, padding: '20px 16px 10px' }}> <FormattedMessage id="Thankyou.Text" defaultMessage="Thankyou" /> </p> : <p style={{ fontSize: '22px', letterSpacing: '0.04em', fontWeight: 500, padding: '20px 16px 10px' }}><FormattedMessage id="Sorry.Text" defaultMessage="Sorry" /></p>}
+                                            {success == 'true' ? 
+                                                <p style={{ fontSize: '22px', letterSpacing: '0.04em', fontWeight: 500, padding: '20px 16px 10px' }}> 
+                                                    <FormattedMessage id="Thankyou.Text" defaultMessage="Thankyou" /> 
+                                                </p> : 
+                                                <p style={{ fontSize: '22px', letterSpacing: '0.04em', fontWeight: 500, padding: '20px 16px 10px' }}>
+                                                    <FormattedMessage id="Sorry.Text" defaultMessage="Sorry" />
+                                                </p>}
                                             {success == 'true' ? <p style={{ padding: '0 16px 10px', fontSize: '15px' }}><FormattedMessage id="Thankyou.Content" defaultMessage="Thankyou" /></p> : <p style={{ padding: '0 16px 10px', fontSize: '15px' }}><FormattedMessage id="Sorry.Content" defaultMessage="Sorry" /></p>}
 
                                             <div className="container">
@@ -394,7 +400,7 @@ class OrderSummary extends Component {
                                                                                                                 <td className="t-Report-cell" headers="APEX_LANG.LANG('ORDERSTATUS')">
                                                                                                                     <FormattedMessage id="OrderStatus.Text" defaultMessage="Order Status" />
                                                                                                                 </td>
-                                                                                                                {success ? <td className="t-Report-cell" align="right" headers="CODE_DESC">{this.props.order_status}</td>
+                                                                                                                {success == true ? <td className="t-Report-cell" align="right" headers="CODE_DESC">{this.props.order_status}</td>
                                                                                                                 : <td className="t-Report-cell" align="right" headers="CODE_DESC">
                                                                                                                     <FormattedMessage id="Paymentpending" defaultMessage="Payment pending" />
                                                                                                                     </td>
