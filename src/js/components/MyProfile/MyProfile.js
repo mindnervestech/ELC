@@ -31,8 +31,9 @@ class Profile extends Component {
     }
 
 
-
+    
     componentDidMount() {
+        this.props.onGetMenuNav(this.props.globals);
         let obj = this.customer_details;
         if (!((Object.entries(obj).length === 0) && (obj.constructor === Object))) {
             this.props.onGetUserAddress({ customerid: this.customer_details.customer_id })
@@ -213,12 +214,12 @@ class Profile extends Component {
                                                     }}
                                                         role="tab" aria-controls="USERWISHLIST" aria-selected="false" tabIndex={-1}>
                                                         <span className="FormattedMessage"><FormattedMessage id="profile.Wishlist.Title" defaultMessage="Wishlist" /></span></Link></li>
-                                                <button onClick={this.logOut} className="t-Button t-Button--hot t-Button--gapTop divShowOnMobile floatRight" type="button" id="B28512592134220867"><span className="t-Button-label"><FormattedMessage id="header.SignOut" defaultMessage="Sign Out" /></span></button>
+                                                <button onClick={this.logOut} className="t-Button t-Button--hot t-Button--gapTop divShowOnMobile floatRight" type="button" id="B28512592134220867"><span className="t-Button-label"><FormattedMessage id="header.logoutName" defaultMessage="Logout" /></span></button>
                                             </ul></div>
 
                                             <div className="t-ButtonRegion-buttons" />
                                         </div>
-                                        <div className="t-ButtonRegion-col t-ButtonRegion-col--right"><div className="t-ButtonRegion-buttons"><button onClick={this.logOut} className="t-Button t-Button--hot t-Button--gapTop divShowOnWeb" type="button" id="B28512592134220867"><span className="t-Button-label"><FormattedMessage id="header.SignOut" defaultMessage="Sign Out" /></span></button></div></div>
+                                        <div className="t-ButtonRegion-col t-ButtonRegion-col--right"><div className="t-ButtonRegion-buttons"><button onClick={this.logOut} className="t-Button t-Button--hot t-Button--gapTop divShowOnWeb" type="button" id="B28512592134220867"><span className="t-Button-label"><FormattedMessage id="header.logoutName" defaultMessage="Logout" /></span></button></div></div>
                                     </div>
                                 </div>
                             </div>
@@ -328,6 +329,7 @@ const mapStateToProps = state => {
         addressResp: state.address.addressResp,
         isAddBookRec: state.address.isAddBookRec,
         globals: state.global,
+        menu: state.menu.menuNavData
     }
 }
 
@@ -337,6 +339,7 @@ const mapDispatchToProps = dispatch => {
         onGetUserAddress: (payload) => dispatch(actions.getUserAddress(payload)),
         onGetCountryList: () => dispatch(actions.getCountryList()),
         onClearChangePass: () => dispatch(actions.clearChangePass()),
+        onGetMenuNav: (payload) => dispatch(actions.getMenuNav(payload)),
     }
 
 }
