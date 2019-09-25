@@ -1065,6 +1065,7 @@ h3.h3p {
 
 .padding-breadcrumb{
   padding: 10px 30px 0px;
+  text-align: start;
 }
 
 

@@ -48,7 +48,6 @@ class StoreLocator extends Component {
   }
 
   componentDidMount() {
-    console.log('>>>>>>>>> : ', this.props)
     const obj = this.props.storeList;
 
     if (obj.length <= 0) {

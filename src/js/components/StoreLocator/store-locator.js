@@ -264,7 +264,7 @@ class StoreLocator extends Component {
             <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
               <span className="titleHover" style={{fontSize:15}}><FormattedMessage id="Checkout.Home" defaultMessage/></span><span>&nbsp;\&nbsp;&nbsp;</span>
             </Link>
-            <span  style={{fontSize:15, fontWeight: 'bold'}}><FormattedMessage id="header.storeLocator" defaultMessage="Store Locator" /></span>
+            <span  style={{fontSize:15, fontWeight: 'bold'}}><FormattedMessage id="Header.StoreFinder" defaultMessage="Store Finder" /></span>
           </div>
                 <div className="t-BreadcrumbRegion-title">
                   <h1 className="t-BreadcrumbRegion-titleText"><FormattedMessage id="header.storeLocator" defaultMessage="Store Locator" /></h1>
