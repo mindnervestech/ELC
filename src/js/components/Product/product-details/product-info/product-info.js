@@ -311,7 +311,7 @@ class ProductInformation extends Component {
 								<span className="specification-item-value">{data.brand}</span>
 							</div> : <div />}
 						</Collapsible>
-						<Collapsible trigger={<FormattedMessage id="Checkout.Shipping" defaultMessage="Shipping" />} style={{textAlign: 'start !important'}}>
+						<Collapsible trigger={<FormattedMessage id="Checkout.Shipping" defaultMessage="Shipping" />} className="textStartShippingTab">
 							<div style={{ marginTop: 40 }}>
 								{this.props.globals.country == 'UAE' ?
 									<div className="uae">
