@@ -6670,8 +6670,8 @@ html[dir="rtl"] #mobile-click-colect{
 }
 
 .editAddresspopupPadding{
-    padding-left: 0px !important;
-    padding-right: 0px !important;
+    padding-left: 6px !important;
+    padding-right: 6px !important;
 }
 
 @media only screen and (min-width:768px) and (max-width:1024px)
