@@ -2,7 +2,7 @@
     "en": {
         "addchild.ChildName":"Child Name",
         "addnewchild.parentfirstname":"Parent First Name",
-        "addnewchild.parentlasttname":"Parent Last Name",
+        "addnewchild.parentlastname":"Parent Last Name",
         "PreferedLanguage":"Prefered Language",
         "addnewchild.Gender":"Gender",
         "Form.PhoneNumber":"Contact Number *",
@@ -605,14 +605,63 @@
         "SelectDelivery":"Select Delivery",
         "ClickCollectatselectedELCStore":"Click & Collect at selected ELC Store",
         "Addedtoyourbasket":"Added to your basket",
-        "RelatedProducts":"Related Products"
+        "RelatedProducts":"Related Products",
+
+
+        "HowmuchdoesUAEdeliverycost?":"How much does UAE delivery cost?",
+        "StandardDelivery":"Standard Delivery",
+        "FREEwhenyouspendAED250orAED20forordersunderAED250":"FREE - when you spend AED 250, or AED 20 for orders under AED 250.",
+        "Deliveryin2to3workingdays":"Delivery in 2 to 3 working days",
+        "FreedeliveryoverAED250appliesforalloftheU.A.E":"Free delivery over AED 250 applies for all of the U.A.E.",
+        "SameDayDeliverycomingsoon":"Same Day Delivery –coming soon",
+        "ClickCollectcomingsoon":"Click & Collect –coming soon",
+        "ComingsoontoDubai":"Coming soon to Dubai",
+        "ComingsoontotheU.A.E.inselectedELCStores":"Coming soon to the U.A.E. in selected ELC Stores",
+        "OutdoorItems":"Outdoor Items",
+        "FREEASSEMBLYonOutdoorlineswhenyouspendAED1000andabove":"FREE ASSEMBLY –on Outdoor lines when you spend AED 1,000 and above",
+        "Deliveryin5to7workingdays":"Delivery in 5 to 7 working days.",
+        "ServiceavailableinDubaiAbuDhabiAlAinAjmanRasAlKhaimahSharjah":"Service available in Dubai, Abu Dhabi, Al Ain, Ajman, Ras Al Khaimah, Sharjah",
+        
+        "HowmuchdoesKSAdeliverycost?":"How much does KSA delivery cost?",
+        "whenyouspendSAR250orSAR20forordersunderSAR250":"- when you spend SAR 250, or SAR 20 for orders under SAR 250.",
+        "Deliveryin3to4workingdays":"Delivery in 3 to 4 working days.",
+        "FreedeliveryoverSAR250appliesforallofKSA":"Free delivery over SAR 250 applies for all of KSA .",
+        "ComingsoontoJeddah":"Coming soon to Jeddah",
+        "FREEASSEMBLYonOutdoorlineswhenyouspendSAR1000andabove":"FREE ASSEMBLY –on Outdoor lines when you spend SAR 1,000 and above",
+        "ServiceavailableinJeddah":"Service available in Jeddah ."
+      
+
+
     },
     "ar": {
+
+        
+        "HowmuchdoesUAEdeliverycost?":"كم تكلفة التوصيل للإمارات العربية المتحدة؟",
+        "StandardDelivery":"التوصيل العادي",
+        "FREEwhenyouspendAED250orAED20forordersunderAED250":"جاناً- عند الشراء بقيمة 250 درهم إماراتي، أو 20 درهم إماراتي للطلبات الأقل من 250 درهم.",
+        "Deliveryin2to3workingdays":"التسليم في 2-3 أيام عمل",
+        "FreedeliveryoverAED250appliesforalloftheU.A.E":"تنطبق خاصية التوصيل المجاني للطلبات التي تزيد عن 250 درهم إماراتي على جميع الإمارات العربية المتحدة",
+        "SameDayDeliverycomingsoon":"قريباً- التوصيل في نفس اليوم",
+        "ClickCollectcomingsoon":"انقر وجمع قريبا",
+        "ComingsoontoDubai":"قريباً في دبي",
+        "ComingsoontotheU.A.E.inselectedELCStores":"ستتوفر هذه الخدمة قريبا في معارض مختارة داخل دولة الإمارات العربية المتحدة",
+        "OutdoorItems":"منتجات الهواء الطلق",
+        "FREEASSEMBLYonOutdoorlineswhenyouspendAED1000andabove":"تركيب مجاني- على منتجات الهواء الطلق عند شرائك بقيمة 1000 درهم إماراتي وأكثر",
+        "Deliveryin5to7workingdays":"التوصيل في غضون 5 إلى 7 أيام عمل",
+        "ServiceavailableinDubaiAbuDhabiAlAinAjmanRasAlKhaimahSharjah":"هذه الخدمة متوفرة في دبي، أبوظبي، العين، عجمان، رأس الخيمة، الشارقة",
+        
+        "HowmuchdoesKSAdeliverycost?":"كم تكلفة التوصيل للمملكة العربية السعودية؟",
+        "whenyouspendSAR250orSAR20forordersunderSAR250":"جاناً- عند الشراء بقيمة 250 ريال سعودي، أو 20 ريال سعودي للطلبات الأقل من 250 ريال. ",
+        "Deliveryin3to4workingdays":"التوصيل في غضون 3 إلى 4 أيام عمل .",
+        "FreedeliveryoverSAR250appliesforallofKSA":"تنطبق خاصية التوصيل المجاني للطلبات التي تزيد عن 250 ريال سعودي على جميع مناطق المملكة العربية السعودية.",
+        "ComingsoontoJeddah":"قريباً في جدة ",
+        "FREEASSEMBLYonOutdoorlineswhenyouspendSAR1000andabove":"تركيب مجاني- عند شرائك بقيمة 1000 ريال سعودي وأكثر من منتجات الهواء الطلق",
+        "ServiceavailableinJeddah":"هذه الخدمة متوفرة في جدة .",
         
         "addchild.ChildName":"إسم الطفل ",
         "Form.PhoneNumber":"رقم الإتصال*",
         "addnewchild.parentfirstname":"إسم الوالد الأول ",
-        "addnewchild.parentlasttname":"إسم الوالد الأخير ",
+        "addnewchild.parentlastname":"إسم الوالد الأخير ",
         "PreferedLanguage":"اللغة المفضلة ",
         "addnewchild.Gender":"النوع",
         "addnewchild.dob":"تاريخ الميلاد",

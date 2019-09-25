@@ -19,6 +19,7 @@ let ChildrenGender = ['']
 let sortByShowOption = [false]
 let moreinfoData = ''
 let langerror=false
+let index=0;
 let editingRow = 0
 class BirthDayClub extends Component {
   constructor(props) {
@@ -366,6 +367,15 @@ class BirthDayClub extends Component {
 
     let contactNumberInputField = null
 
+  let childNameDiv=
+    <div>
+       <FormattedMessage id="addchild.ChildName" defaultMessage="Child Name">
+        {(message) =>
+         <input  value={ChildrenName[index] !== "" ? ChildrenName[index] : ""} className={"input-field"} placeholder={message} onChange={this.getName.bind(this, index)}></input>}
+      </FormattedMessage>
+    
+  </div>
+
 
 
 
@@ -439,7 +449,7 @@ class BirthDayClub extends Component {
               </Col>
               <Col xs={12} lg={6} md={12} className="alignStart">
                 <div style={{ marginTop: 15 }}>
-                  <span style={{ color: 'red' }}>*&nbsp;</span><span className="blackTitle1"><FormattedMessage id="addnewchild.parentlasttname" defaultMessage="Parent Last Name " /></span>
+                  <span style={{ color: 'red' }}>*&nbsp;</span><span className="blackTitle1"><FormattedMessage id="addnewchild.parentlastname" defaultMessage="Parent Last Name " /></span>
                 </div>
                 <div>
                   {parentLastNameField}
@@ -480,7 +490,7 @@ class BirthDayClub extends Component {
                   {/* <input className={"input-field"} value={this.state.fields['parentFirstName']} onChange={this.handleChange.bind(this, "parentFirstName")}></input> */}
                 </div>
                 <div style={{ marginTop: 15 }}>
-                  <span style={{ color: 'red' }}>*&nbsp;</span><span className="blackTitle1"><FormattedMessage id="addnewchild.parentlasttname" defaultMessage="Parent Last Name " /></span>
+                  <span style={{ color: 'red' }}>*&nbsp;</span><span className="blackTitle1"><FormattedMessage id="addnewchild.parentlastname" defaultMessage="Parent Last Name " /></span>
                 </div>
                 <div>
                   {parentLastNameField}
@@ -547,9 +557,10 @@ class BirthDayClub extends Component {
                   <div style={{ marginTop: 15 }}>
                   <span style={{ color: 'red' }}>*&nbsp;</span> <span className="blackTitle1 alignStart"  ><FormattedMessage id="addchild.ChildName" defaultMessage="Child Name" /></span>
                   </div>
-                  <div>
+                  {/* <div>
                     <input  value={ChildrenName[index] !== "" ? ChildrenName[index] : ""} className={"input-field"} placeholder="Name" onChange={this.getName.bind(this, index)}></input>
-                  </div>
+                  </div> */}
+                  {childNameDiv}
                 </Col>
                 <Col xs={12} lg={4} md={12} >
                   <div style={{ marginTop: 15 }}>

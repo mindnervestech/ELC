@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-
+import { Link, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 import ProductColor from './product-color';
 import ProductSize from './product-size';
 import ProductBandSize from './product-bandsize';
@@ -8,14 +9,12 @@ import ProductOffer from './product-offer';
 import ProductQty from './product-qty';
 import ProductBasic from './product-basic';
 import ProductPayment from './product-payment';
-
 import SizeGuide from './product-sizeGuide';
 import { FormattedMessage } from 'react-intl';
 import Modal from 'react-responsive-modal';
 import * as utility from '../../../utility/utility';
 import parse from 'html-react-parser';
 import Collapsible from 'react-collapsible';
-import { Link, withRouter } from 'react-router-dom';
 
 class ProductInformation extends Component {
 	constructor(props) {
@@ -191,14 +190,80 @@ class ProductInformation extends Component {
 						</div> : <div />}
 					</div> : type == 'Shipping' ?
 							<div style={{ marginBottom: '5rem', marginTop: 40 }}>
-								<p className="detail-info">{type}</p>
-								<p className="detail-info">Product code: 148138 </p>
+							{this.props.globals.country == 'UAE' ?
+									<div className="uae">
+										<h1 className="shipping-tab-h1 shipping-tab-border" style={{ marginBottom: 20, marginTop: 40 }}><FormattedMessage id="HowmuchdoesUAEdeliverycost?" defaultMessage="How much does UAE delivery cost?"></FormattedMessage></h1>
+										<h2 className="shipping-tab-h2" style={{ marginBottom: 10, marginTop: 20 }}><FormattedMessage id="StandardDelivery" defaultMessage="Standard Delivery"></FormattedMessage></h2>
 
-								<p className="detail-info">At a Glance </p>
+										<h3 className="shipping-tab-h3"><FormattedMessage id="FREEwhenyouspendAED250orAED20forordersunderAED250" defaultMessage="FREE - when you spend AED 250, or AED 20 for orders under AED 250."/></h3>
+										<div>
+											<ul className="shipping-tab-ul">
+												<li className="shipping-tab-li"><FormattedMessage id="Deliveryin2to3workingdays" defaultMessage="Delivery in 2 to 3 working days"/></li>
+												<li className="shipping-tab-li"><FormattedMessage id="FreedeliveryoverAED250appliesforalloftheU.A.E" defaultMessage="Free delivery over AED 250 applies for all of the U.A.E."/></li>
+											</ul>
+										</div>
+										<hr></hr>
+										<h2 className="shipping-tab-h2" style={{ marginBottom: 10, marginTop: 20 }}><FormattedMessage id="SameDayDeliverycomingsoon" defaultMessage="Same Day Delivery –coming soon"/></h2>
+										<div>
+											<ul className="shipping-tab-ul">
+												<li className="shipping-tab-li"><FormattedMessage  id="ComingsoontoDubai" defaultMessage="Coming soon to Dubai"/></li>
+											</ul></div>
+										<hr></hr>
 
-								<p className="detail-info">All aboard the elc bus for colour-matching, problem-solving fun! </p>
+										<h2 className="shipping-tab-h2" style={{ marginBottom: 10, marginTop: 20 }}><FormattedMessage id="ClickCollectcomingsoon" defaultMessage="Click & Collect –coming soon"/></h2>
+										<div><ul className="shipping-tab-ul">
+											<li className="shipping-tab-li"><FormattedMessage id="ComingsoontotheU.A.E.inselectedELCStores" defaultMessage="Coming soon to the U.A.E. in selected ELC Stores."/></li>
 
-								<p className="detail-info">Features and benefits for elc wooden shopping trolley </p>
+										</ul></div>
+										<hr></hr>
+										<h2 className="shipping-tab-h2" style={{ marginBottom: 10, marginTop: 20 }}><FormattedMessage id="OutdoorItems" defaultMessage="Outdoor Items"/></h2>
+										<h3 className="shipping-tab-h3"><FormattedMessage id="FREEASSEMBLYonOutdoorlineswhenyouspendAED1000andabove" defaultMessage="FREE ASSEMBLY –on Outdoor lines when you spend AED 1,000 and above"/></h3>
+
+										<div><ul className="shipping-tab-ul">
+											<li className="shipping-tab-li"><FormattedMessage id="Deliveryin5to7workingdays" defaultMessage="Delivery in 5 to 7 working days."/></li>
+											<li className="shipping-tab-li"><FormattedMessage id="ServiceavailableinDubaiAbuDhabiAlAinAjmanRasAlKhaimahSharjah" defaultMessage="Service available in Dubai, Abu Dhabi, Al Ain, Ajman, Ras Al Khaimah, Sharjah"/></li>
+
+										</ul></div>
+									</div> : <div></div>
+
+								}
+
+
+{this.props.globals.country == 'KSA' ?
+									<div className="ksa">
+
+
+										<div className="ksa">
+											<h1 className="shipping-tab-h1 shipping-tab-border" style={{ marginBottom: 20, marginTop: 40 }}><FormattedMessage id="HowmuchdoesKSAdeliverycost?" defaultMessage="How much does KSA delivery cost?"/></h1>
+											<h2 className="shipping-tab-h2" style={{ marginBottom: 10, marginTop: 20 }}><FormattedMessage id="StandardDelivery" defaultMessage="Standard Delivery"/></h2>
+
+											<h3 className="shipping-tab-h3"><FormattedMessage id="whenyouspendSAR250orSAR20forordersunderSAR250" defaultMessage="- when you spend SAR 250, or SAR 20 for orders under SAR 250."/></h3>
+											<div>
+												<ul className="shipping-tab-ul">
+													<li className="shipping-tab-li"><FormattedMessage id="Deliveryin3to4workingdays" defaultMessage="Delivery in 3 to 4 working days."/></li>
+													<li className="shipping-tab-li"><FormattedMessage id="FreedeliveryoverSAR250appliesforallofKSA" defaultMessage="Free delivery over SAR 250 applies for all of KSA ."/></li>
+												</ul>
+											</div>
+											<hr></hr>
+											<h2 className="shipping-tab-h2" style={{ marginBottom: 10, marginTop: 20 }}> <FormattedMessage id="SameDayDeliverycomingsoon" defaultMessage="Same Day Delivery –coming soon"/></h2>
+											<div>
+												<ul className="shipping-tab-ul">
+													<li className="shipping-tab-li"><FormattedMessage id="ComingsoontoJeddah" defaultMessage="Coming soon to Jeddah"/></li>
+												</ul></div>
+
+
+											<h2 className="shipping-tab-h2" style={{ marginBottom: 10, marginTop: 20 }}><FormattedMessage id="OutdoorItems" defaultMessage="Outdoor Items"/></h2>
+											<h3 className="shipping-tab-h3"><FormattedMessage id="FREEASSEMBLYonOutdoorlineswhenyouspendSAR1000andabove" defaultMessage="FREE ASSEMBLY –on Outdoor lines when you spend SAR 1,000 and above"/></h3>
+
+											<div><ul className="shipping-tab-ul">
+												<li className="shipping-tab-li"><FormattedMessage id="Deliveryin5to7workingdays" defaultMessage="Delivery in 5 to 7 working days."/></li>
+												<li className="shipping-tab-li"><FormattedMessage id="ServiceavailableinJeddah" defaultMessage="Service available in Jeddah ."/></li>
+
+											</ul></div>
+
+										</div></div>
+									: <div></div>
+								}
 							</div> : type == 'Questions' ?
 								<div style={{ marginBottom: '5rem', marginTop: 40 }}>
 									<p className="detail-info">{type}</p>
@@ -246,8 +311,85 @@ class ProductInformation extends Component {
 								<span className="specification-item-value">{data.brand}</span>
 							</div> : <div />}
 						</Collapsible>
-						<Collapsible trigger={<FormattedMessage id="Checkout.Shipping" defaultMessage="Shipping" />}>
-							<div style={{ marginBottom: '5rem', textAlign: 'left' }}>
+						<Collapsible trigger={<FormattedMessage id="Checkout.Shipping" defaultMessage="Shipping" />} style={{textAlign: 'start !important'}}>
+							<div style={{ marginTop: 40 }}>
+								{this.props.globals.country == 'UAE' ?
+									<div className="uae">
+										<h1 className="shipping-tab-h1 shipping-tab-border" style={{ marginBottom: 20, marginTop: 40 }}><FormattedMessage id="HowmuchdoesUAEdeliverycost?" defaultMessage="How much does UAE delivery cost?"></FormattedMessage></h1>
+										<h2 className="shipping-tab-h2" style={{ marginBottom: 10, marginTop: 20 }}><FormattedMessage id="StandardDelivery" defaultMessage="Standard Delivery"></FormattedMessage></h2>
+
+										<h3 className="shipping-tab-h3"><FormattedMessage id="FREEwhenyouspendAED250orAED20forordersunderAED250" defaultMessage="FREE - when you spend AED 250, or AED 20 for orders under AED 250."/></h3>
+										<div>
+											<ul className="shipping-tab-ul">
+												<li className="shipping-tab-li"><FormattedMessage id="Deliveryin2to3workingdays" defaultMessage="Delivery in 2 to 3 working days"/></li>
+												<li className="shipping-tab-li"><FormattedMessage id="FreedeliveryoverAED250appliesforalloftheU.A.E" defaultMessage="Free delivery over AED 250 applies for all of the U.A.E."/></li>
+											</ul>
+										</div>
+										<hr></hr>
+										<h2 className="shipping-tab-h2" style={{ marginBottom: 10, marginTop: 20 }}><FormattedMessage id="SameDayDeliverycomingsoon" defaultMessage="Same Day Delivery –coming soon"/></h2>
+										<div>
+											<ul className="shipping-tab-ul">
+												<li className="shipping-tab-li"><FormattedMessage  id="ComingsoontoDubai" defaultMessage="Coming soon to Dubai"/></li>
+											</ul></div>
+										<hr></hr>
+
+										<h2 className="shipping-tab-h2" style={{ marginBottom: 10, marginTop: 20 }}><FormattedMessage id="ClickCollectcomingsoon" defaultMessage="Click & Collect –coming soon"/></h2>
+										<div><ul className="shipping-tab-ul">
+											<li className="shipping-tab-li"><FormattedMessage id="ComingsoontotheU.A.E.inselectedELCStores" defaultMessage="Coming soon to the U.A.E. in selected ELC Stores."/></li>
+
+										</ul></div>
+										<hr></hr>
+										<h2 className="shipping-tab-h2" style={{ marginBottom: 10, marginTop: 20 }}><FormattedMessage id="OutdoorItems" defaultMessage="Outdoor Items"/></h2>
+										<h3 className="shipping-tab-h3"><FormattedMessage id="FREEASSEMBLYonOutdoorlineswhenyouspendAED1000andabove" defaultMessage="FREE ASSEMBLY –on Outdoor lines when you spend AED 1,000 and above"/></h3>
+
+										<div><ul className="shipping-tab-ul">
+											<li className="shipping-tab-li"><FormattedMessage id="Deliveryin5to7workingdays" defaultMessage="Delivery in 5 to 7 working days."/></li>
+											<li className="shipping-tab-li"><FormattedMessage id="ServiceavailableinDubaiAbuDhabiAlAinAjmanRasAlKhaimahSharjah" defaultMessage="Service available in Dubai, Abu Dhabi, Al Ain, Ajman, Ras Al Khaimah, Sharjah"/></li>
+
+										</ul></div>
+									</div> : <div></div>
+
+								}
+
+								{this.props.globals.country == 'KSA' ?
+									<div className="ksa">
+
+
+										<div className="ksa">
+											<h1 className="shipping-tab-h1 shipping-tab-border" style={{ marginBottom: 20, marginTop: 40 }}><FormattedMessage id="HowmuchdoesKSAdeliverycost?" defaultMessage="How much does KSA delivery cost?"/></h1>
+											<h2 className="shipping-tab-h2" style={{ marginBottom: 10, marginTop: 20 }}><FormattedMessage id="StandardDelivery" defaultMessage="Standard Delivery"/></h2>
+
+											<h3 className="shipping-tab-h3"><FormattedMessage id="whenyouspendSAR250orSAR20forordersunderSAR250" defaultMessage="- when you spend SAR 250, or SAR 20 for orders under SAR 250."/></h3>
+											<div>
+												<ul className="shipping-tab-ul">
+													<li className="shipping-tab-li"><FormattedMessage id="Deliveryin3to4workingdays" defaultMessage="Delivery in 3 to 4 working days."/></li>
+													<li className="shipping-tab-li"><FormattedMessage id="FreedeliveryoverSAR250appliesforallofKSA" defaultMessage="Free delivery over SAR 250 applies for all of KSA ."/></li>
+												</ul>
+											</div>
+											<hr></hr>
+											<h2 className="shipping-tab-h2" style={{ marginBottom: 10, marginTop: 20 }}> <FormattedMessage id="SameDayDeliverycomingsoon" defaultMessage="Same Day Delivery –coming soon"/></h2>
+											<div>
+												<ul className="shipping-tab-ul">
+													<li className="shipping-tab-li"><FormattedMessage id="ComingsoontoJeddah" defaultMessage="Coming soon to Jeddah"/></li>
+												</ul></div>
+
+
+											<h2 className="shipping-tab-h2" style={{ marginBottom: 10, marginTop: 20 }}><FormattedMessage id="OutdoorItems" defaultMessage="Outdoor Items"/></h2>
+											<h3 className="shipping-tab-h3"><FormattedMessage id="FREEASSEMBLYonOutdoorlineswhenyouspendSAR1000andabove" defaultMessage="FREE ASSEMBLY –on Outdoor lines when you spend SAR 1,000 and above"/></h3>
+
+											<div><ul className="shipping-tab-ul">
+												<li className="shipping-tab-li"><FormattedMessage id="Deliveryin5to7workingdays" defaultMessage="Delivery in 5 to 7 working days."/></li>
+												<li className="shipping-tab-li"><FormattedMessage id="ServiceavailableinJeddah" defaultMessage="Service available in Jeddah ."/></li>
+
+											</ul></div>
+
+										</div></div>
+									: <div></div>
+								}
+							</div>
+
+
+							{/* <div style={{ marginBottom: '5rem', textAlign: 'left' }}>
 								<p className="detail-info">Delivery Options</p>
 								<p className="detail-info">Product code: 148138 </p>
 
@@ -256,7 +398,7 @@ class ProductInformation extends Component {
 								<p className="detail-info">All aboard the elc bus for colour-matching, problem-solving fun! </p>
 
 								<p className="detail-info">Features and benefits for elc wooden shopping trolley </p>
-							</div>
+							</div> */}
 						</Collapsible>
 						{/*<Collapsible trigger={<FormattedMessage id="Product.Details.Question" defaultMessage="Question" />}>
 						<div style={{marginBottom: '5rem', textAlign:'left'}}>
@@ -279,4 +421,16 @@ class ProductInformation extends Component {
 	}
 }
 
-export default ProductInformation;
+
+const mapStateToProps = state => {
+	return {
+
+		globals: state.global,
+
+	}
+}
+
+
+
+export default connect(mapStateToProps)(ProductInformation);
+
