@@ -4,10 +4,8 @@ import { updateObject } from '../utility/utility';
 const initialState = {};
 
 const reducer = (state = initialState, action) => {
- 
- 
-  switch (action.type) {
 
+  switch (action.type) {
     case actionType.SAVE_BIRTHDAY_CLUB_DATA:
       return updateObject(state, action.payload);
 

@@ -8,7 +8,8 @@
  font-size: 2em !important;
  line-height: 1 !important; 
  text-align: center !important;
- padding-bottom:10px !important
+ padding-bottom:10px !important;
+ text-transform: none!important;
 
 }
 
@@ -17,7 +18,8 @@
  color: #0d943f;
  font-size: 2em !important;
  line-height: 1 !important; 
- text-align: start !important
+ text-align: start !important;
+ text-transform: none!important;
 
 }
 
@@ -25,6 +27,7 @@
 line-height: 34px !important;
 color: #0d943f !important;
 font-size: 15pt !important;
+text-transform: none!important;
 }
 .shipping-tab-ul
 {   
@@ -62,26 +65,29 @@ font-size: 15pt !important;
     .shipping-tab-h1
 {
  color: #0d943f !important;
- font-size: 2em !important;
+ font-size: 25px !important;
  line-height: 1 !important; 
- text-align: center !important;
- padding-bottom:10px !important
+ text-align: start  !important;
+ padding-bottom:10px !important;
+ text-transform: none!important;
 
 }
 
 .shipping-tab-h2
 {
  color: #0d943f;
- font-size: 2em !important;
+ font-size: 20px !important;
  line-height: 1 !important; 
- text-align: start !important
+ text-align: start !important;
+ text-transform: none!important;
 
 }
 
 .shipping-tab-h3{
-line-height: 34px !important;
+line-height: 1.5 !important;
 color: #0d943f !important;
-font-size: 15pt !important;
+font-size: 15px !important;
+text-transform: none!important;
 }
 .shipping-tab-ul
 {   
@@ -119,29 +125,33 @@ font-size: 15pt !important;
     text-align: start !important
 }
 
-    .shipping-tab-h1
+.shipping-tab-h1
 {
  color: #0d943f !important;
- font-size: 2em !important;
+ font-size: 25px !important;
  line-height: 1 !important; 
- text-align: center !important;
- padding-bottom:10px !important
+ text-align: start  !important;
+ padding-bottom:10px !important;
+ text-transform: none!important;
 
 }
 
 .shipping-tab-h2
 {
  color: #0d943f;
- font-size: 2em !important;
+ font-size: 20px !important;
  line-height: 1 !important; 
- text-align: start !important
+ text-align: start !important;
+ text-transform: none!important;
 
 }
 
 .shipping-tab-h3{
-line-height: 34px !important;
+line-height: 1.5 !important;
 color: #0d943f !important;
-font-size: 15pt !important;
+font-size: 15px !important;
+text-transform: none!important;
+
 }
 .shipping-tab-ul
 {   

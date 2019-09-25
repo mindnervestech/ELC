@@ -19,7 +19,6 @@ let ChildrenGender = ['']
 let sortByShowOption = [false]
 let moreinfoData = ''
 let langerror=false
-let index=0;
 let editingRow = 0
 class BirthDayClub extends Component {
   constructor(props) {
@@ -58,14 +57,15 @@ class BirthDayClub extends Component {
   }
 
   componentDidUpdate() {
-  
+    
     if (this.props.bclubDetails !== undefined) {
       let message = this.props.bclubDetails.message
-      console.log("message",this.props.bclubDetails )
+      console.log("message outside  ischeckremove",message)
       if (this.state.ischeckremove) {
-
-        console.log(message)
-        this.setState({ sucesss_message: message, showAlert: true, ischeckremove: false });
+       console.log("message ischeckremove",message)
+        this.setState({ sucesss_message: message, showAlert:!this.state.showAlert, ischeckremove: false });
+       
+       
         setTimeout(() => {
           this.closeAlert();
         }, 5000);
@@ -73,7 +73,7 @@ class BirthDayClub extends Component {
 
     }
   }
-
+  
 
 
 
@@ -293,27 +293,28 @@ class BirthDayClub extends Component {
   }
 
   render() {
-
     let respo_message = null;
+
     if (this.state.showAlert) {
-      respo_message = <span id="APEX_SUCCESS_MESSAGE" data-template-id="126769709897686936_S" className="apex-page-success u-visible"><div className="t-Body-alert">
-        <div className="t-Alert t-Alert--defaultIcons t-Alert--success t-Alert--horizontal t-Alert--page t-Alert--colorBG" id="t_Alert_Success" role="alert">
-          <div className="t-Alert-wrap">
-            <div className="t-Alert-icon">
-              <span className="t-Icon" />
+        respo_message = <span id="APEX_SUCCESS_MESSAGE" data-template-id="126769709897686936_S" className="apex-page-success u-visible"><div className="t-Body-alert">
+            <div className="t-Alert t-Alert--defaultIcons t-Alert--success t-Alert--horizontal t-Alert--page t-Alert--colorBG" id="t_Alert_Success" role="alert">
+                <div className="t-Alert-wrap">
+                    <div className="t-Alert-icon">
+                        <span className="t-Icon" />
+                    </div>
+                    <div className="t-Alert-content">
+                        <div className="t-Alert-header">
+                            <h2 className="t-Alert-title">{this.state.sucesss_message}</h2>
+                        </div>
+                    </div>
+                    <div className="t-Alert-buttons">
+                        <button className="t-Button t-Button--noUI t-Button--icon t-Button--closeAlert" type="button" title="Close Notification" onClick={this.closeAlert} ><span className="t-Icon icon-close" /></button>
+                    </div>
+                </div>
             </div>
-            <div className="t-Alert-content">
-              <div className="t-Alert-header">
-                <h2 className="t-Alert-title">{this.state.sucesss_message}</h2>
-              </div>
-            </div>
-            <div className="t-Alert-buttons">
-              {/* <button className="t-Button t-Button--noUI t-Button--icon t-Button--closeAlert" type="button" title="Close Notification" onClick={this.closeAlert} ><span className="t-Icon icon-close" /></button> */}
-            </div>
-          </div>
-        </div>
-      </div></span>;
+        </div></span>;
     }
+
     let store_locale = this.props.globals.store_locale;
     const errorsObj = this.state.errors;
     let phoneNumberClassName = null;
@@ -367,14 +368,7 @@ class BirthDayClub extends Component {
 
     let contactNumberInputField = null
 
-  let childNameDiv=
-    <div>
-       <FormattedMessage id="addchild.ChildName" defaultMessage="Child Name">
-        {(message) =>
-         <input  value={ChildrenName[index] !== "" ? ChildrenName[index] : ""} className={"input-field"} placeholder={message} onChange={this.getName.bind(this, index)}></input>}
-      </FormattedMessage>
-    
-  </div>
+  
 
 
 
@@ -413,8 +407,6 @@ class BirthDayClub extends Component {
     }
 
     return (
-
-
 
 
       <div>
@@ -547,7 +539,7 @@ class BirthDayClub extends Component {
             </Row>
             <div className="errorMessageDiv" style={this.state.error ? { display: 'block' } : { display: 'none' }}>
               <div className="errorMessage">
-                Please select data
+                Please fill all * fields compulsory
                   <i className="close fa fa-times close-icon-sort" aria-hidden="true" onClick={() => this.setState({ error: false })} />
               </div>
             </div>
@@ -557,10 +549,10 @@ class BirthDayClub extends Component {
                   <div style={{ marginTop: 15 }}>
                   <span style={{ color: 'red' }}>*&nbsp;</span> <span className="blackTitle1 alignStart"  ><FormattedMessage id="addchild.ChildName" defaultMessage="Child Name" /></span>
                   </div>
-                  {/* <div>
+                  <div>
                     <input  value={ChildrenName[index] !== "" ? ChildrenName[index] : ""} className={"input-field"} placeholder="Name" onChange={this.getName.bind(this, index)}></input>
-                  </div> */}
-                  {childNameDiv}
+                  </div>
+                  {/* {childNameDiv} */}
                 </Col>
                 <Col xs={12} lg={4} md={12} >
                   <div style={{ marginTop: 15 }}>
@@ -580,7 +572,7 @@ class BirthDayClub extends Component {
                           <span><FormattedMessage id="female" defaultMessage="Female" /></span>
                         </div>
                         <div className="sortByOptionText" onClick={() => this.onClickGender("Other", index)}>
-                          <span><FormattedMessage id="other" defaultMessage="other" /></span>
+                          <span><FormattedMessage id="Other" defaultMessage="Other" /></span>
                         </div>
                       </div>
                     </div>
@@ -598,7 +590,8 @@ class BirthDayClub extends Component {
                     />
                   </div>
                 </Col>
-                <i style={{ position: 'absolute' }} className="close fa fa-times crossIcon" aria-hidden="true" onClick={() => this.removeChild(index)} />
+                {index !=0 ? 
+            <i style={{ position: 'absolute' }} className="close fa fa-times crossIcon" aria-hidden="true" onClick={() => this.removeChild(index)} /> :<div/> }
               </Row>
             )}
             <Row style={{ textAlign: 'center', paddingTop: 20 }}>
@@ -623,12 +616,12 @@ class BirthDayClub extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state)
+ 
   return {
     isUserLoggedIn: state.login.isUserLoggedIn,
     spinnerProduct: state.spinner.loadingProduct,
     globals: state.global,
-    bclubDetails: state.birthdayclubData,
+    bclubDetails: state.birthdayclubData.registerBClubUserDetails,
   }
 }
 

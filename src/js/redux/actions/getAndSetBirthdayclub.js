@@ -25,7 +25,7 @@ export const setBirthDayClubData = payload => {
     const data = {
       ...payload
   }
-     dispatch(loadingSpinner({ loading: true }))
+     
     let cb = {
       success: res => {
         if (res.status && res.code === 200) {
@@ -37,15 +37,18 @@ export const setBirthDayClubData = payload => {
               page_data: { ...res },registerBClubUserDetails: { ...registerBClubUserDetails }
             })
           );
-          dispatch(loadingSpinner({ loading: false }));
+         
         } else {
           let registerBClubUserDetails = {
             ...res
         }
-        callActionForSaveBirthDayClubData({
+        dispatch(
+          callActionForSaveBirthDayClubData({
             page_data: { ...res },registerBClubUserDetails: { ...registerBClubUserDetails }
           })
-          dispatch(loadingSpinner({ loading: false }));
+        );
+          // console.log(">>>>>>>>>>>>>>>>>>Bclub Res",registerBClubUserDetails)
+         
         }
       },
       error: err => {
