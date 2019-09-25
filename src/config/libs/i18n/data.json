@@ -196,6 +196,7 @@
         "BuyMoreBtn.Message": "Buy More, Save More!",
         "BuyMoreBtn.Message2": "Sell",
         "BuyMore.Message": "Buy More,",
+        "BuyMore.Text": "BUY MORE SAVE MORE",
         "SaveMore.Message": " Save More!",
         "DiscoverMore.Message": "DISCOVER MORE",
         "Shop.Collection.Msg": "SHOP COLLECTIONS",
@@ -1246,7 +1247,9 @@
         "Width":"Width",
         "Length":"Length",
         "Weight":"Weight",
-	"BuyMoreBtn.Message": "Buy More, Save More!",
-        "BuyMoreBtn.Message2": "Sell"
+	"BuyMoreBtn.Message": "اشتر أكثر, ووفر أكثر ",
+        "BuyMoreBtn.Message2": "Sell",
+        "BuyMore.Text": "اشتر أكثر ووفر أكثر"
+
     }
 }

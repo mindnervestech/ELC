@@ -6705,6 +6705,10 @@ html[dir="rtl"] #mobile-click-colect{
     font-family: "VAG Rounded ELC Bold" !important;
 }
 
+#ShareModule .styles_modal__gNwvD{
+    height: 150px !important;
+}
+
 @media only screen and (min-width:768px) and (max-width:1024px)
 {
     .width-autoSearch

@@ -377,7 +377,7 @@ class ProductInfo extends Component {
 					return (
 						<div style={{width: '100%', paddingBottom: 10}}>
 							<div className="buyAndSaveMOreText">
-								<span>BUY MORE SAVE MORE</span>
+								<span><FormattedMessage id="BuyMore.Text" defaultMessage="BUY MORE SAVE MORE" /></span>
 							</div>
 							<div>
 								<span>{value} For {currency}&nbsp;{offer[value]}</span>
@@ -400,8 +400,8 @@ class ProductInfo extends Component {
 			console.log(showOffer)
 			return (
 				<div style={{width: '100%', paddingBottom: 10}}>
-					<div>
-						<span className="buyAndSaveMOreText">BUY MORE SAVE MORE</span>
+					<div className="buyAndSaveMOreText">
+						<span><FormattedMessage id="BuyMore.Text" defaultMessage="BUY MORE SAVE MORE" /></span>
 					</div>
 					<div>
 						<span>{showOffer[0]} For {currency}&nbsp;{showOffer[1]} | {showOffer[2]} For {currency}&nbsp;{showOffer[3]}</span>
@@ -696,7 +696,7 @@ class ProductInfo extends Component {
 											</div>
 
 											{this.state.openShareModel ? <div>
-												<Modal open={this.state.openShareModel} onClose={this.onCloseFirstModal}>
+												<Modal modalId="ShareModule" open={this.state.openShareModel} onClose={this.onCloseFirstModal}>
 													<ShareUrl />
 												</Modal>
 											</div> : ''}
