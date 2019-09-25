@@ -4,6 +4,7 @@
         "addChildren.female":"Female",
         "addChildren.Other":"Other",
         "addchild.ChildName":"Child Name",
+        "addchild.PhoneNumber":" Contact Number",
         "addnewchild.parentfirstname":"Parent First Name",
         "addnewchild.parentlastname":"Parent Last Name",
         "PreferedLanguage":"Prefered Language",
@@ -668,7 +669,7 @@
         "ComingsoontoJeddah":"قريباً في جدة ",
         "FREEASSEMBLYonOutdoorlineswhenyouspendSAR1000andabove":"تركيب مجاني- عند شرائك بقيمة 1000 ريال سعودي وأكثر من منتجات الهواء الطلق",
         "ServiceavailableinJeddah":"هذه الخدمة متوفرة في جدة .",
-        
+        "addchild.PhoneNumber":" رقم الإتصال",
         "addchild.ChildName":"إسم الطفل ",
         "Form.PhoneNumber":"رقم الإتصال*",
         "addnewchild.parentfirstname":"إسم الوالد الأول ",

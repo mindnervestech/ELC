@@ -468,7 +468,7 @@ class BirthDayClub extends Component {
                   {parentLastNameField}
                 </div>
                 <div style={{ marginTop: 15 }}>
-                  <span style={{ color: 'red' }}>*&nbsp;</span><span className="blackTitle1"><FormattedMessage id="Form.PhoneNumber" defaultMessage="Contact Number" /></span>
+                  <span style={{ color: 'red' }}>*&nbsp;</span><span className="blackTitle1"><FormattedMessage id="addchild.PhoneNumber" defaultMessage="Contact Number" /></span>
                 </div>
                 <div className="paddingLeft" style={{ marginTop: 5 }}>
                   <div style={{ textAlign: "start" }} >
