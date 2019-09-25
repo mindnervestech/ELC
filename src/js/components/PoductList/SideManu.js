@@ -23,10 +23,12 @@ let filterOptionCheck = true
 let filterFirstOption = ""
 let updateHideOption = true
 let afterFilterShowOptionListCheck = true
+let onClickFilterOptionToApplyFilter = false
 
 class SideManu extends Component {
 	constructor(props) {
 		super(props);
+		onClickFilterOptionToApplyFilter = false
 		productListingData = this.props.productDetails.products.product_data;
 		productList = this.props.productDetails.products.product_data;
 		filterList = this.props.productDetails.filters;
@@ -41,6 +43,57 @@ class SideManu extends Component {
 
 	componentDidUpdate(prevProps, prevState) {
 
+	}
+
+	changeFilterManu(){
+		this.state = {
+			list: {},
+			filterOptionCheck: true,
+			narrowResult: [],
+			clearAllOption: false,
+		};
+		if (Object.keys(this.props.productDetails.products).length > 0) {
+			filterOptionArrayForCheck = []
+			filterOptionArraySubCategary=[]
+			filterOptionArrayForCheckValidate = []
+			filterOptionCheck = false;
+			const filterOptionList = this.props.productDetails.filters;
+			for (let Categary in filterOptionList) {
+				for (let subCategary in filterOptionList[Categary]) {
+					filterOptionArrayForCheck.push(filterOptionList[Categary][subCategary].code + "/" + filterOptionList[Categary][subCategary].name);
+					filterOptionArraySubCategary.push(filterOptionList[Categary][subCategary].name)
+				}
+			}
+			for (let value in filterOptionArrayForCheck) {
+				let splitValue = filterOptionArrayForCheck[value].split("/");
+				let checkSubmanu = 0
+				let remove = value
+				for (let item in productListingData) {
+					if (splitValue[0] == "color") {
+						if (splitValue[1] == productListingData[item].json.color_english) {
+							if (checkSubmanu == 0) {
+								checkSubmanu = 1
+								filterOptionArrayForCheckValidate.push(filterOptionArrayForCheck[value])
+							}
+						}
+					} else {
+						for (let filter in productListingData[item].json.filtersdata) {
+							for (let age in productListingData[item].json.filtersdata[filter]) {
+								if (checkSubmanu == 0) {
+									if (splitValue[1] == productListingData[item].json.filtersdata[filter][age]) {
+										filterOptionArrayForCheckValidate.push(filterOptionArrayForCheck[value])
+										checkSubmanu = 1
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			filterOptionArrayForCheckValidateBackup = filterOptionArrayForCheckValidate
+			afterFilterShowOptionList = filterOptionArrayForCheckValidate
+			this.state.list = filterList
+	}
 	}
 
 	componentWillMount() {
@@ -167,6 +220,7 @@ class SideManu extends Component {
 	}
 
 	applyFilter = (value, check) => {
+		onClickFilterOptionToApplyFilter = true
 		let find = true
 		let remove = -1
 		for (let data in filterOptionArray) {
@@ -297,6 +351,7 @@ class SideManu extends Component {
 	}
 
 	clearFilter = () =>{
+		onClickFilterOptionToApplyFilter = true
 		this.props.action(productListingData)
 		this.setState({ narrowResult: [], clearAllOption: false })
 		filterOptionArray = []
@@ -387,6 +442,12 @@ class SideManu extends Component {
 
 	render() {
 		const list = this.props.productDetails.filters;
+		if(onClickFilterOptionToApplyFilter == false){
+			productListingData = this.props.productDetails.products.product_data;
+			productList = this.props.productDetails.products.product_data;
+			filterList = this.props.productDetails.filters;
+			this.changeFilterManu()
+		}
 		return (
 			<div>
 				<div>

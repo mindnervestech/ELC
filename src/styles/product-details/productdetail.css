@@ -258,10 +258,10 @@ html[dir="rtl"] .naylove {
     fill: #888888;
 }
 .naylove-icon:hover {
-    fill: #f599ba;
+    fill: #0D943F;
 }
 .naylove-icon .active {
-    fill: #f599ba;
+    fill: #0D943F;
 }
 #P3_QTY_CONTAINER {
     display: flex;

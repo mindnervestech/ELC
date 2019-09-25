@@ -6684,6 +6684,27 @@ html[dir="rtl"] #mobile-click-colect{
     padding-right: 6px !important;
 }
 
+.bayMoreAndSaveMore {
+    width: 69%;
+    background-color: #EE0E19;
+    color: #fff;
+    font-family: "VAG Rounded ELC Bold" !important;
+    padding: 10px;
+    border: solid 1px #EE0E19;
+    border-radius: 4px;
+}
+
+.bayMoreAndSaveMore:hover{
+    background-color: #dF0C00;
+    border: solid 1px #dF0C00;
+}
+
+.buyAndSaveMOreText{
+    font-size: 18px;
+    color: #0D943F;
+    font-family: "VAG Rounded ELC Bold" !important;
+}
+
 @media only screen and (min-width:768px) and (max-width:1024px)
 {
     .width-autoSearch

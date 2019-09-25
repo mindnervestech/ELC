@@ -368,6 +368,53 @@ class ProductInfo extends Component {
 		}
 	}
 
+	checkBuyAndMore(offer, currency) {
+		console.log(offer)
+		console.log(Object.keys(offer).length)
+		if (Object.keys(offer).length == 1) {
+			for (let value in offer) {
+				if (value == '1') {
+					return (
+						<div></div>
+					);
+				} else {
+					return (
+						<div style={{width: '100%', paddingBottom: 10}}>
+							<div className="buyAndSaveMOreText">
+								<span>BUY MORE SAVE MORE</span>
+							</div>
+							<div>
+								<span>{value} For {currency}&nbsp;{offer[value]}</span>
+							</div>
+						</div>
+					);
+				}
+			}
+		} else {
+			let showOffer = []
+			let count = 0
+			for (let value in offer) {
+				if(count < 2){
+					showOffer.push(value)
+					showOffer.push(offer[value])
+				}
+				count++
+			}
+			count = 0
+			console.log(showOffer)
+			return (
+				<div style={{width: '100%', paddingBottom: 10}}>
+					<div>
+						<span className="buyAndSaveMOreText">BUY MORE SAVE MORE</span>
+					</div>
+					<div>
+						<span>{showOffer[0]} For {currency}&nbsp;{showOffer[1]} | {showOffer[2]} For {currency}&nbsp;{showOffer[3]}</span>
+					</div>
+				</div>
+			);
+		}
+	}
+
 	render() {
 		let respo_message = null;
 
@@ -430,8 +477,8 @@ class ProductInfo extends Component {
 			image_array[newImageArray[i].text] = newImageArray[i].image;
 		}
 
-		if(document.getElementsByClassName("styles_modal__gNwvD")[0]){
-			document.getElementsByClassName("styles_modal__gNwvD")[0].style.cssText="height: auto !important"
+		if (document.getElementsByClassName("styles_modal__gNwvD")[0]) {
+			document.getElementsByClassName("styles_modal__gNwvD")[0].style.cssText = "height: auto !important"
 		}
 		return (
 
@@ -517,100 +564,103 @@ class ProductInfo extends Component {
 												</div>
 											</div>
 											{data.visible_on_store ?
-													<div style={{ width: '100%' }}>
-														<div className="choose-dil">
-															<FormattedMessage id="choose.your.delivery" defaultMessage="Choose your delivery options" />
+												<div style={{ width: '100%' }}>
+													<div className="choose-dil">
+														<FormattedMessage id="choose.your.delivery" defaultMessage="Choose your delivery options" />
+													</div>
+													<div className="row del-options">
+														<div className="row home-deli">
+															<img src={freeDelivery} />
+															<span style={{ fontSize: '15px', fontWeight: 'bold' }}>
+																<FormattedMessage id="delivery-details.HomeDelivery.Title" defaultMessage="Home Delivery" />
+															</span>
+															<span style={{ margin: '10px', color: '#ee0E19' }}>
+																{data.simplestatus == 1 || (newImageArray[0] && newImageArray[0].stock == 1) ?
+																	<span className="in-stock" style={{ color: '#0D943F' }}>
+																		<FormattedMessage id="PDP.InStock" defaultMessage="In Stock" />
+																	</span> :
+																	<span style={{ margin: '10px', color: '#ee0E19', fontSize: '15px' }}>
+																		<FormattedMessage id="PDP.OutOfStock" defaultMessage="Out of Stock" />
+																	</span>}
+															</span>
 														</div>
-														<div className="row del-options">
-															<div className="row home-deli">
-																<img src={freeDelivery} />
-																<span style={{ fontSize: '15px', fontWeight: 'bold' }}>
-																	<FormattedMessage id="delivery-details.HomeDelivery.Title" defaultMessage="Home Delivery" />
-																</span>
-																<span style={{ margin: '10px', color: '#ee0E19' }}>
-																	{data.simplestatus == 1 || (newImageArray[0] && newImageArray[0].stock == 1) ?
-																		<span className="in-stock" style={{ color: '#0D943F' }}>
-																			<FormattedMessage id="PDP.InStock" defaultMessage="In Stock" />
-																		</span> :
-																		<span style={{ margin: '10px', color: '#ee0E19', fontSize: '15px' }}>
-																			<FormattedMessage id="PDP.OutOfStock" defaultMessage="Out of Stock" />
-																		</span>}
-																</span>
-															</div>
-															<div className="row click-collect">
-																<img src={freeCollect} />
-																<span style={{ marginTop: '15px', fontSize: '15px' }}>
-																	<FormattedMessage id="delivery-details.Click&Collect.Title" defaultMessage="Click&Collect" />
-																</span>
+														<div className="row click-collect">
+															<img src={freeCollect} />
+															<span style={{ marginTop: '15px', fontSize: '15px' }}>
+																<FormattedMessage id="delivery-details.Click&Collect.Title" defaultMessage="Click&Collect" />
+															</span>
 
-																{/* <span className="in-stock">
+															{/* <span className="in-stock">
 														In stock
 													</span> */}
-																<span className="commingSoonText">
-																	<span><FormattedMessage id="Comingsoon" defaultMessage="Coming soon" /></span>
-																</span>
-															</div>
+															<span className="commingSoonText">
+																<span><FormattedMessage id="Comingsoon" defaultMessage="Coming soon" /></span>
+															</span>
 														</div>
-														{/* <div className="free-uk-dly">
+													</div>
+													{/* <div className="free-uk-dly">
 															This product includes free UK delivery
 														</div> */}
-													</div> : ''}
-													{data.visible_on_store ?
-													<div className="t-Form-inputContainer col col-5 row quantity-mob" style={{ marginBottom: 20, marginLeft: 0, padding: 0 }}>
-														<div className="t-Form-itemWrapper" style={{ border: '0.1rem solid #EAEAEA', borderRadius: '0.2rem' }}>
-															<span className="t-Form-itemText t-Form-itemText--pre">
-																<i
-																	className="icon min qty-dec-inc"
-																	onClick={e => this.decrement(this.state.defaultQty)}
-																>
-																	-
+												</div> : ''}
+											{data.offers && data.offers.status == 1 &&
+												this.checkBuyAndMore(data.offers.data, data.currency)
+											}
+											{data.visible_on_store ?
+												<div className="t-Form-inputContainer col col-5 row quantity-mob" style={{ marginBottom: 20, marginLeft: 0, padding: 0 }}>
+													<div className="t-Form-itemWrapper" style={{ border: '0.1rem solid #EAEAEA', borderRadius: '0.2rem' }}>
+														<span className="t-Form-itemText t-Form-itemText--pre">
+															<i
+																className="icon min qty-dec-inc"
+																onClick={e => this.decrement(this.state.defaultQty)}
+															>
+																-
 																</i>
-															</span>
+														</span>
 
-															<input
-																type="text"
-																id="P3_QTY"
-																name="P3_QTY"
-																maxLength="3"
-																min={1}
-																value={this.state.defaultQty}
-																// readOnly
-																onChange={this.handleChange.bind(this)}
-																className="input-qty"
-															/>
+														<input
+															type="text"
+															id="P3_QTY"
+															name="P3_QTY"
+															maxLength="3"
+															min={1}
+															value={this.state.defaultQty}
+															// readOnly
+															onChange={this.handleChange.bind(this)}
+															className="input-qty"
+														/>
 
-															<span className="t-Form-itemText t-Form-itemText--post">
-																<i
-																	className="icon max qty-dec-inc"
-																	onClick={e => this.increment(data.type === 'simple' ? parseInt(data.simpleqty) : newImageArray[0].qty)}
-																>
-																	+
+														<span className="t-Form-itemText t-Form-itemText--post">
+															<i
+																className="icon max qty-dec-inc"
+																onClick={e => this.increment(data.type === 'simple' ? parseInt(data.simpleqty) : newImageArray[0].qty)}
+															>
+																+
 																</i>
-															</span>
-														</div>
+														</span>
 													</div>
-													: ''}
-													{data.visible_on_store ?
-													<div style={{ width: '100%', marginBottom: 20 }}>
-														{data.simplestatus == 1 || (newImageArray[0] && newImageArray[0].stock == 1) ?
-															<span className="in-stock" style={{ color: '#0D943F' }}>
-																<FormattedMessage id="PDP.InStock" defaultMessage="In Stock" />
-															</span> :
-															<span style={{ margin: '10px', color: '#ee0E19' }}>
-																<FormattedMessage id="PDP.OutOfStock" defaultMessage="Out of Stock" />
-															</span>}
+												</div>
+												: ''}
+											{data.visible_on_store ?
+												<div style={{ width: '100%', marginBottom: 20 }}>
+													{data.simplestatus == 1 || (newImageArray[0] && newImageArray[0].stock == 1) ?
+														<span className="in-stock" style={{ color: '#0D943F' }}>
+															<FormattedMessage id="PDP.InStock" defaultMessage="In Stock" />
+														</span> :
+														<span style={{ margin: '10px', color: '#ee0E19' }}>
+															<FormattedMessage id="PDP.OutOfStock" defaultMessage="Out of Stock" />
+														</span>}
+												</div>
+												: ''}
+											<Popup />
+											{data.visible_on_store ?
+												<div className="alsoLikeCard add-cart">
+													<div className="homePage">
+														<button disabled={(data.simplestatus === 0 || (newImageArray[0] && newImageArray[0].stock == 0)) || this.state.defaultQty == 0} onClick={this.addToCart} className="alsoLikeCardButton" style={{ marginTop: 0 }}>
+															<FormattedMessage id="Product.Detail.addToBasket" defaultMessage="Add to basket" /></button>
 													</div>
-													: ''}
-													<Popup />
-													{data.visible_on_store ?
-													<div className="alsoLikeCard add-cart">
-														<div className="homePage">
-															<button disabled={(data.simplestatus === 0 || (newImageArray[0] && newImageArray[0].stock == 0)) || this.state.defaultQty == 0} onClick={this.addToCart} className="alsoLikeCardButton" style={{ marginTop: 0 }}>
-																<FormattedMessage id="Product.Detail.addToBasket" defaultMessage="Add to basket" /></button>
-														</div>
-													</div>
-												 :
-												<div style={{fontSize:'18px', color:'red', marginBottom:'30px'}}>
+												</div>
+												:
+												<div style={{ fontSize: '18px', color: 'red', marginBottom: '30px' }}>
 													<FormattedMessage id="NotAvailableforcurrentstoreDelivery " defaultMessage="Not Available for current store Delivery" />
 												</div>}
 

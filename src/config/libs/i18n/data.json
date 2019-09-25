@@ -194,6 +194,7 @@
         "secure.signin": "Log In",
         "secure.signintext": "Sign In",
         "BuyMoreBtn.Message": "Buy More, Save More!",
+        "BuyMoreBtn.Message2": "Sell",
         "BuyMore.Message": "Buy More,",
         "SaveMore.Message": " Save More!",
         "DiscoverMore.Message": "DISCOVER MORE",
@@ -1238,6 +1239,8 @@
         "Addedtoyourbasket":"تمت إضافة المنتج إلى عربتك ",
         "RelatedProducts":"منتجات مشابهه",
         "choose.your.delivery":"إختر وسيلة التوصيل ",
-        "voucherdiscount": "voucher discount"
+        "voucherdiscount": "voucher discount",
+	"BuyMoreBtn.Message": "Buy More, Save More!",
+        "BuyMoreBtn.Message2": "Sell"
     }
 }

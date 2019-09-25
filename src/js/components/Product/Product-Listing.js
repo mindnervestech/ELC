@@ -45,9 +45,7 @@ class Product extends Component {
 	}
 
 	static getDerivedStateFromProps = (props, state) => {
-		// console.log('getDerivedStateFromProps Called!!');
-
-		// console.log('new state', state);
+		
 	};
 
 	_closeSlider = () => {
@@ -61,7 +59,6 @@ class Product extends Component {
 	};
 
 	_callFilters = () => {
-		//console.log('call filters!!');
 		document.getElementById('cd-cart').classList.add('speed-in');
 	};
 	_fetchSearchedProducts = async (query, filters = {}) => {
@@ -88,7 +85,6 @@ class Product extends Component {
 		const {
 			match: { params },
 		} = this.props;
-		//console.log('params', params.category_path);
 		if (params.category_path === "search") {
 			return;
 		}
@@ -130,7 +126,6 @@ class Product extends Component {
 			filters: filters,
 		};
 		this.setState({ loading: true });
-
 		await this.props.onGetProductList(data);
 
 		setTimeout(() => {
@@ -144,16 +139,18 @@ class Product extends Component {
 		let searchQuery = values.query;
 		if (searchQuery && searchValue !== searchQuery) {
 			searchValue = searchQuery;
-			this.clearFilter();
+			//this.clearFilter();
 			this._fetchSearchedProducts(searchQuery, filters);
 		}
-		if (prevProps.match.params.category_path !== this.props.match.params.category_path) {
-			this.clearFilter();
+		let url = this.props.location.pathname.split('/')
+		let preUrl = prevProps.location.pathname.split('/')
+		if (preUrl[preUrl.length - 1] !== url[url.length - 1]) {
+			//this.clearFilter();
 			this._fetchProducts();
 		}
 
 		if (prevProps.globals.currentStore !== this.props.globals.currentStore) {
-			this.clearFilter();
+			//this.clearFilter();
 			if (searchQuery) {
 				searchValue = searchQuery;
 				this._fetchSearchedProducts(searchQuery, filters);
@@ -172,7 +169,6 @@ class Product extends Component {
 	}
 
 	componentDidMount() {
-		//console.log('currProps', this.props.match);
 		if (count == 0)
 			this._fetchProducts();
 		count++;
@@ -385,7 +381,6 @@ class Product extends Component {
 				<meta name="description" content={this.props.productDetails.metainfo.meta_description} />
 			</Helmet></>;
 		}
-		
 		return (
 			<div className="t-Body">
 				{meta_tag}

@@ -25,10 +25,12 @@ let pagenationCount = 36
 let startPagenation = 1
 let start = 1
 let end = 5
+let changeFilterData = false
 
 class ProductListData extends Component {
 	constructor(props) {
 		super(props);
+		changeFilterData = false
 		productListData = this.props.list.product_data
 		productList = this.props.list.product_data
 		let totalPages = 1
@@ -62,7 +64,39 @@ class ProductListData extends Component {
 		};
 	}
 
+	changeThePagenationData(){
+		let totalPages = 1
+		let count = 0
+		let pageNumber = 1
+		let start = 1 * pageNumber
+		let end = pagenationCount * pageNumber
+		let list1 = {}
+		for (var element in productList) {
+			if (element >= start && element <= end) {
+				list1[element] = productList[element]
+			}
+			count = count + 1
+		}
+		if (count % pagenationCount == 0) {
+			totalPages = count / pagenationCount
+		} else {
+			totalPages = Math.floor(count / pagenationCount) + 1
+		}
+		this.state = {
+			totalPages: totalPages,
+			pageNumber: 1,
+			list1: list1,
+			start: 1,
+			end: pagenationCount,
+			check: true,
+			showFilterOnMobile: false,
+			sortByText: "",
+			sortByShowOption: false,
+		};
+	}
+
 	handler(id) {
+		changeFilterData = true
 		productList = id;
 		start = 1
 		end = 5
@@ -239,9 +273,43 @@ class ProductListData extends Component {
 		}
 	}
 
+	checkBuyAndMore(offer){
+		console.log(offer)
+		console.log(Object.keys(offer).length)
+		if(Object.keys(offer).length == 1){
+			for(let value in offer){
+				if(value == '1'){
+					return (
+						<div>
+							<button className="bayMoreAndSaveMore"><FormattedMessage id="BuyMoreBtn.Message2" defaultMessage="Sell" /></button>
+						</div>
+					);
+				}else{
+					return (
+						<div>
+							<button className="bayMoreAndSaveMore"><FormattedMessage id="BuyMoreBtn.Message" defaultMessage="Buy More, Save More!" /></button>
+						</div>
+					);
+				}
+			}
+		}else{
+			return (
+				<div>
+					<button className="bayMoreAndSaveMore"><FormattedMessage id="BuyMoreBtn.Message" defaultMessage="Buy More, Save More!" /></button>
+				</div>
+			);
+		}
+	}
+
 	render() {
 		let list = this.state.list1
+		//let list = this.props.list.product_data
 		const store_locale = this.props.globals.store_locale
+		if(changeFilterData == false){
+			productListData = this.props.list.product_data
+			productList = this.props.list.product_data
+			this.changeThePagenationData()
+		}
 
 		return (
 			<Row>
@@ -429,7 +497,7 @@ class ProductListData extends Component {
 								</div>
 							</div>
 						</div>
-						{Object.keys(list).length > 0 ?
+						{Object.keys(productList).length > 0 ?
 							<div className="start">
 								<ul className="products">
 									{Object.keys(list).map((keyName, index) =>
