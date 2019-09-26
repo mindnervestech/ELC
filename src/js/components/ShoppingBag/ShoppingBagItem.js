@@ -389,7 +389,7 @@ class ShoppingBagItem extends Component {
                                 <Col xs="3" style={{ textAlign: 'end' }}>
                                     {/* <Link to={`/${store_locale}/new-check-out`}> */}
                                     <div>
-                                        <button disabled={!visible_on_store || OutOfStockFlag} onClick={() => this.checkOut()} className="alsoLikeCardButton"><FormattedMessage id="Cart.CheckOut.Title" defaultMessage="Check out" /></button>
+                                        <button disabled={!visible_on_store || OutOfStockFlag} onClick={() => this.checkOut()} className="alsoLikeCardButton" style={{marginTop: 30}}><FormattedMessage id="Cart.CheckOut.Title" defaultMessage="Check out" /></button>
                                     </div>
                                     {/* </Link> */}
                                 </Col>

@@ -2877,7 +2877,7 @@ html[dir="rtl"] .header .changecountry .country .list a:before {
     width: 69%;
     height: 4rem;
     text-align: center;
-    margin-top: 20px;
+    margin-top: 10px;
     font-family: "VAG Rounded ELC Bold";
 }
 
@@ -3092,6 +3092,7 @@ html[dir="rtl"] .data .slick-next {
 
 .data .marginTop25 {
     margin-top: 25px;
+    min-height: 50px;
 }
 
 .header-slider {
@@ -3614,7 +3615,7 @@ html[dir="rtl"] .Collapsible__trigger:after{
     }
 
     .banner-image-hight {
-        height: 383px;
+        height: auto;
     }
 
     html[dir="rtl"] .data .slick-prev {
@@ -3706,6 +3707,7 @@ html[dir="rtl"] .Collapsible__trigger:after{
 
     .data .marginTop25 {
         margin-top: 15px;
+        min-height: 50px;
     }
 
     .t-Body .contener {
