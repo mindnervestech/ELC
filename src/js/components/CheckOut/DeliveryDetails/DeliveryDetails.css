@@ -1255,7 +1255,8 @@ input#p_P7_PHONE {
 }
 
 #wrapper { position: relative; }
-   #show-store-info{   
+   #show-store-info{  
+       padding-top: 17px !important; 
        float: right;
     width: calc(100% - 50px);
     margin-top: -20px;
