@@ -199,4 +199,8 @@ margin: 0px !important;
     #ph input[type=tel] {
         width: 90.2% !important;
     }
+
+    html[dir="rtl"] #ph input[type=tel] {
+        width: 89.6% !important;
+    }
 }

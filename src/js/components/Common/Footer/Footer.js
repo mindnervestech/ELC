@@ -344,10 +344,10 @@ class Footer extends Component {
                                 </div>
                                 {this.props.globals.language == 'en' ?
                                     <div className="col col-6">
-                                        <img className="bottom-imagePaypal" src="https://storage.googleapis.com/nay/icons/paymentmethod-en.png" />
+                                        <img className="bottom-imagePaypal" src={'/images/logoEn.png'} />
                                     </div>
                                     : <div className="col col-6">
-                                        <img className="bottom-imagePaypal" src="https://storage.googleapis.com/nay/icons/paymentmethod-ar.png" />
+                                        <img className="bottom-imagePaypal" src={'/images/logoAr.png'} />
                                     </div>}
                                 {/* <div className="col col-3">
                                 <img className="bottom-imagePaypal" src={VISAImg}/>
@@ -452,9 +452,9 @@ class Footer extends Component {
                             {/* <img className="bottom-imagePaypal-mobile" src={masterCardImg}/>
                     <img className="bottom-imagePaypal-mobile" src={VISAImg}/> */}
                             {this.props.globals.language == 'en' ?
-                                <img className="bottom-imagePaypal-mobile" src="https://storage.googleapis.com/nay/icons/paymentmethod-en.png" />
+                                <img className="bottom-imagePaypal-mobile" src={'/images/logoEn.png'} />
                                 :
-                                <img className="bottom-imagePaypal-mobile" src="https://storage.googleapis.com/nay/icons/paymentmethod-ar.png" />
+                                <img className="bottom-imagePaypal-mobile" src={'/images/logoAr.png'} />
                             }
                         </div>
                     </div>

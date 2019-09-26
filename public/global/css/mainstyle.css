@@ -2974,7 +2974,6 @@ html[dir="rtl"] .header .changecountry .country .list a:before {
 }
 
 .homePage .wishlist-title {
-    padding-top: 30px;
     border-bottom: solid 1px #b1b1b1;
     font-size: 30px;
     color: #4f4f4f;
@@ -3707,7 +3706,7 @@ html[dir="rtl"] .Collapsible__trigger:after{
 
     .data .marginTop25 {
         margin-top: 15px;
-        min-height: 50px;
+        min-height: 55px;
     }
 
     .t-Body .contener {

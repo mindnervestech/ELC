@@ -148,6 +148,7 @@ class ProductListData extends Component {
 
 
 	prevButton = () => {
+		changeFilterData = true
 		if (this.state.pageNumber != 1 && this.state.pageNumber != 0) {
 			this.setState({ pageNumber: this.state.pageNumber - 1 })
 			if (this.state.totalPages <= 5) {
@@ -173,6 +174,7 @@ class ProductListData extends Component {
 	}
 
 	nextButton = () => {
+		changeFilterData = true
 		if (this.state.pageNumber != this.state.totalPages) {
 			this.setState({ pageNumber: this.state.pageNumber + 1 })
 			if (this.state.check) {
@@ -196,6 +198,7 @@ class ProductListData extends Component {
 	}
 
 	ApplyPagenation = (value) => {
+		changeFilterData = true
 		this.setState({ pageNumber: value });
 		if (this.state.check) {
 			let value = pagenationCount * this.state.pageNumber + 1
@@ -208,6 +211,7 @@ class ProductListData extends Component {
 
 
 	filter = (value, text) => {
+		changeFilterData = true
 		this.state.sortByText = text
 		this.setState({ sortByShowOption: false })
 		if (value == "price_desc") {
@@ -256,6 +260,7 @@ class ProductListData extends Component {
 	}
 
 	showSortByOption = () => {
+		changeFilterData = true
 		if (this.state.pageNumber != 0) {
 			if (this.state.sortByShowOption) {
 				this.setState({ sortByShowOption: false })
