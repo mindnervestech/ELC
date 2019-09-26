@@ -592,9 +592,14 @@ class BirthDayClub extends Component {
                     <span style={{ color: 'red' }}>*&nbsp;</span> <span className="blackTitle1 alignStart"  ><FormattedMessage id="addchild.ChildName" defaultMessage="Child Name" /></span>
                   </div>
                   <div>
-                    <input value={ChildrenName[index] !== "" ? ChildrenName[index] : ""} className={"input-field"} placeholder="Name" onChange={this.getName.bind(this, index)}></input>
+                    {/* <input value={ChildrenName[index] !== "" ? ChildrenName[index] : ""} className={"input-field"}  onChange={this.getName.bind(this, index)}></input> */}
+                    <FormattedMessage id="addchild.ChildName" defaultMessage="Name">
+                  {(message) =>
+                  <input value={ChildrenName[index] !== "" ? ChildrenName[index] : ""} className={"input-field"}  placeholder={message} onChange={this.getName.bind(this, index)}></input>
+                  }
+                  </FormattedMessage>
                   </div>
-                  {/* {childNameDiv} */}
+                  
                 </Col>
                 <Col xs={12} lg={4} md={12} >
                   <div style={{ marginTop: 15 }}>
@@ -602,7 +607,7 @@ class BirthDayClub extends Component {
                   </div>
                   <div style={{ position: 'relative', marginTop: 5 }}>
                     <div className={sortByShowOption[index] ? "sortBySelectedText2 open genderPadding" : "sortBySelectedText2 genderPadding"} onClick={() => this.showGenderOption(index)} style={{ border: 'solid 1px #b1b1b1' }}>
-                      <span>{ChildrenGender[index] != "" ? ChildrenGender[index] : "Select Gender"}</span>
+                      <span>{ChildrenGender[index] != "" ? ChildrenGender[index] : <FormattedMessage id="select.gender" defaultMessage="Select Gender"/>}</span>
                       <i className="icon-down sortBySelectedTextIcon2" ></i>
                     </div>
                     <div>

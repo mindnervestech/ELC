@@ -3,12 +3,12 @@
         "addChildren.male":"Male",
         "addChildren.female":"Female",
         "addChildren.Other":"Other",
-        "addchild.ChildName":"Child Name",
         "addchild.PhoneNumber":" Contact Number",
         "addnewchild.parentfirstname":"Parent First Name",
         "addnewchild.parentlastname":"Parent Last Name",
         "PreferedLanguage":"Prefered Language",
         "addnewchild.Gender":"Gender",
+        "addchild.ChildName":"Child Name",
         "Form.PhoneNumber":"Contact Number *",
         "addnewchild.dob":"DOB",
         "header.addChildern":"Add Children",
@@ -659,10 +659,12 @@
         "Profile.EditAddress":"Edit Address",
         "Instoresoronline":"In stores or Online",
         "Onanyorder":"On any order",
-        "WhenyouspendAED250":"When you spend AED 250"
+        "WhenyouspendAED250":"When you spend AED 250",
+	"select.gender":"Select Gender",
 
     },
     "ar": {
+        "select.gender":"Select Gender",
         "PageTitle.NA":"الصفحة الرئيسية",
         "PageTitle.new-in":"المنتجات الجديدة في ",
         "PageTitle.birth-day-club":"نادي عيد الميلاد ",
