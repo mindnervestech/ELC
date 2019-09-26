@@ -4,7 +4,7 @@ import AddressForm from './AddressForm';
 import AddressCard from './AddressCard';
 import ConfirmBox from '../Common/AlertBox/ConfirmBox';
 import AlertBox from '../Common/AlertBox/AlertBox';
-
+import { FormattedMessage, injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
 import * as actions from '../../redux/actions/index';
 
@@ -155,7 +155,7 @@ class AddressCardList extends Component {
         {alertBox}
         {confirmBox}
         <Modal modalId="AddAddress" open={openFirstModal} onClose={this.onCloseFirstModal} center style={{ width: '550.9584px' }}>
-          <h3>Edit Address</h3>
+          <h3><FormattedMessage id="Profile.EditAddress" defaultMessage="Edit Address" /></h3>
           <div>{add}</div>
         </Modal>
 

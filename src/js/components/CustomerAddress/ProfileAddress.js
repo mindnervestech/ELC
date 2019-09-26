@@ -200,8 +200,9 @@ class ProfileAddress extends Component {
                 onClose={this.onCloseFirstModal}
                 center
                 style={{ width: '425.9584px' }}>
-
+                {this.state.modalType == 'Add' ?
                 <h3><FormattedMessage id="Profile.AddAddress" defaultMessage="Add Address" /></h3>
+                : <h3><FormattedMessage id="Profile.EditAddress" defaultMessage="Edit Address" /></h3>}
                 <div>{add}</div>
 
             </Modal>

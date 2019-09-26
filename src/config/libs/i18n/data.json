@@ -640,7 +640,8 @@
         "Width":"Width",
         "Length":"Length",
         "Weight":"Weight",
-        "Pleasefillallfieldscompulsory":"Please fill all * fields compulsory"
+        "Pleasefillallfieldscompulsory":"Please fill all * fields compulsory",
+        "Profile.EditAddress":"Edit Address"
 
     },
     "ar": {
@@ -1258,7 +1259,7 @@
         "Length":"Length",
         "Weight":"Weight",
         "BuyMoreBtn.Message2": "Sell",
-        "BuyMore.Text": "اشتر أكثر ووفر أكثر"
-
+        "BuyMore.Text": "اشتر أكثر ووفر أكثر",
+        "Profile.EditAddress":"Edit Address"
     }
 }

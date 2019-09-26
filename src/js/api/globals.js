@@ -32,7 +32,7 @@ export const TOKEN_URL = `${ROOT_URL[active_server]}index.php/rest/V1/integratio
 export const COUNTRY_URL = `${ROOT_URL[active_server]}index.php/rest/V1/directory/`;
 export const CART_URL = `${ROOT_URL[active_server]}index.php/rest/${replace_store_locale}/V1/carts/mine/`; 
 export const GUEST_CART_URL = `${ROOT_URL[active_server]}index.php/rest/${replace_store_locale}/V1/`; 
-export const STATIC_PAGES_URL = `${ROOT_URL[active_server]}index.php/rest//V1/cmsPageIdentifier/`;
+export const STATIC_PAGES_URL = `${ROOT_URL[active_server]}index.php/rest/V1/cmsPageIdentifier/`;
 
 export const API_TOKEN = "exn50dak2a5iahy02hawo5il0y6j25ct" //"q7fhtd4w5ysvzbsg8v86ydf6epnyhf2m"
 export const IP_INFO_TOKEN = "69e46a82457d45"
