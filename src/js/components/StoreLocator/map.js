@@ -6,7 +6,6 @@ const mapStyles = {
   width: '100%',
   height: '100%'
 };
-
 export class MapContainer extends Component {
 
   state = {
@@ -22,7 +21,7 @@ export class MapContainer extends Component {
         onClick={(props, marker, e) => this.props.onMarkerClick(props, marker, e, item)}
         onMouseover={(props, marker, e) => this.props.onMouseoverMarker(props, marker, e, item)}
         position={{ lat: item.lattitude, lng: item.longitude }}
-        icon={{ url: "https://storage.googleapis.com/nay/icons/map-marker.png" }}>
+        icon={{ url:  '/images/map-marker.png'}}>
       </Marker>
     )
   }
