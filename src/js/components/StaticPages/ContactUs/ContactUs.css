@@ -192,5 +192,11 @@ margin: 0px !important;
     width: 95% !important;
 }
 #ph input[type=tel] {
-    width: 95.2% !important;
+    width: 92.2% !important;
+}
+
+@media (max-width:767px){
+    #ph input[type=tel] {
+        width: 90.2% !important;
+    }
 }
