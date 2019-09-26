@@ -51,7 +51,8 @@ class CashOnDelivery extends Component {
             <FormattedMessage id="Checkout.Payment.Msg1" defaultMessage="By placing your order, you agree to our" /><br /> 
             <Link to={`/${store_locale}/privacy-policy`} title="Privacy & Cookie Policy" target="_blank" style={{ textDecoration: 'underline' }}>
             <FormattedMessage id="Checkout.Payment.Msg2" defaultMessage="Privacy & Cookie Policy" />
-            </Link> <FormattedMessage id="Checkout.Payment.Msg3" defaultMessage="And" /> <Link to={`/${store_locale}/terms-and-conditions`} title="Terms & Conditions" target="_blank" style={{ textDecoration: 'underline' }}>
+            </Link> <FormattedMessage id="Checkout.Payment.Msg3" defaultMessage="And" /> 
+            <Link to={`/${store_locale}/terms-and-conditions`} title="Terms & Conditions" target="_blank" style={{ textDecoration: 'underline' }}>
             <FormattedMessage id="Checkout.Payment.Msg4" defaultMessage="Terms & Conditions" /></Link>.</div>
 
             <input type="hidden" id="P8_TOTAL" name="P8_TOTAL" defaultValue={129} /><div className="container">

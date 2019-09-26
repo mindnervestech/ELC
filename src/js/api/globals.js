@@ -20,7 +20,13 @@ export const WEB_URL_ALL = {
 
 
 let store_locale=cookie.load('store_locale');
-let replace_store_locale=store_locale.replace("-","_")
+let replace_store_locale = '';
+if(store_locale){
+    replace_store_locale=store_locale.replace("-","_")
+}else{
+    replace_store_locale='uae_en';
+}
+
 //console.log("Store Locale from global",store_locale)
 export const WEB_URL = WEB_URL_ALL[active_server];
 

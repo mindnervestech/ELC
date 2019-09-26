@@ -4,14 +4,44 @@ import { FormattedMessage } from 'react-intl'
 import Slider from "react-slick";
 import { Link, Redirect } from 'react-router-dom';
 import Spinner from '../../Spinner/Spinner2';
+import * as actions from '../../../redux/actions/index';
+import { connect } from 'react-redux';
+import AddToBasketModal from '../product-details/product-info/add-to-basket-modal';
+import Modal from 'react-responsive-modal';
 
 class ProductSlider extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            spnner: true
+            spnner: true,
+            basketPopupFlag: false,
+            url_key: ''
         }
     }
+
+    openAddTOBasketModal = (url_key) =>{
+        console.log(url_key);
+        const data = {
+            customerid: this.props.customer_details.customer_id ? parseInt(this.props.customer_details.customer_id) : '',
+            store: this.props.globals.currentStore,
+            url_key: url_key,
+        };
+        this.props.onGetProductDetails(data);
+        this.setState({
+            basketPopupFlag: true,
+            url_key:url_key
+        })
+    }
+
+    onCloseCartModal = () => {
+		this.setState({ basketPopupFlag: false})
+	}
+
+    // componentWillMount() {
+	// 	if (this.props.productDetails) {
+	// 		this.props.onClearProductDetails(this.props.productDetails);
+	// 	}
+	// }
 
     render() {
         const {store_locale, store_name, currency, similar_product} = this.props;
@@ -53,6 +83,11 @@ class ProductSlider extends Component {
         }
         return (
             <div className="row">
+                {this.state.basketPopupFlag && this.props.productDetails ? <div>
+                    <Modal modalId="add_to_basket"  open={this.state.basketPopupFlag} onClose={this.onCloseCartModal}>
+                        <AddToBasketModal url_key={this.state.url_key} data={this.props.productDetails} onCloseCartModal={this.onCloseCartModal}/>
+                    </Modal>
+                </div> : ''}
                 {this.state.spnner ? <Spinner /> : 
                 <div className="col col-12 apex-col-auto rowPadding">
                     <div style={{paddingTop: 15, backgroundColor: '#fff'}} className="t-Region containers  t-Region--noBorder t-Region--hiddenOverflow margin-bottom-lg reduse-width" id="R35743384497996348" aria-live="polite">
@@ -81,6 +116,7 @@ class ProductSlider extends Component {
                             </div>
                         </div>
                      */}
+                        
                         {!window.location.pathname.includes('products-details') ?
                         <div className="row bestsellers">
                             <h2 />
@@ -104,8 +140,9 @@ class ProductSlider extends Component {
                                             <div className="trendingList">
                                                 <Slider {...settings3}>
                                                 {similar_product && similar_product.map((item, index) => (
-                                                <Link to={`/${store_name ? store_name :store_locale}/products-details/${item.url_key}`}>
+                                                
                                                     <div className="alsoLikeCard">
+                                                    <Link to={`/${store_name ? store_name :store_locale}/products-details/${item.url_key}`}>
                                                         <img src={item.productImageUrl[0]} />
                                                         <div className="marginTop25">
                                                             <label className="text-color">{item.name}</label>
@@ -114,13 +151,14 @@ class ProductSlider extends Component {
                                                             <span style={{ fontSize: 14, color: "#0D943F", fontWeight: "bold" }}>{item.currency ? item.currency : currency} &nbsp;{item.price}</span>
                                                             {/* <span style={{ color: "gray", textDecorationLine: 'line-through', fontSize: 14, marginLeft: 10 }}>{currency} &nbsp;{item.price}</span> */}
                                                         </div>
+                                                        </Link>
                                                         <div>
-                                                            <button className="alsoLikeCardButton">
+                                                            <button className="alsoLikeCardButton" onClick={() => this.openAddTOBasketModal(item.url_key)}>
                                                                 <FormattedMessage id="Product.Detail.addToBasket" defaultMessage="Add to basket" />
                                                             </button>
                                                         </div>
                                                     </div>
-                                                    </Link>
+                                                   
                                                 ))}
                                                 </Slider>
                                             </div>
@@ -137,4 +175,34 @@ class ProductSlider extends Component {
     }
 }
 
-export default ProductSlider;
+
+const mapStateToProps = state => {
+
+	return {
+		globals: state.global,
+		// menu: state.menu.menuNavData,
+		productDetails: state.productDetails.productData,
+		productDetailLoader: state.productDetails.productDetailLoader,
+		customer_details: state.login.customer_details,
+		addToCardLoader: state.productDetails.addToCardLoader,
+		cart_details: state.myCart,
+		user_details: state.login,
+		guest_user: state.guest_user,
+	};
+};
+
+const mapDispatchToProps = dispatch => {
+	return {
+		onClearProductDetails: payload => dispatch(actions.clearProductDetails(payload)),
+		onGetProductDetails: payload => dispatch(actions.getProductDetails(payload)),
+		// getSizeChart: payload => dispatch(actions.getSizeChart(payload)),
+		// OngetMyCart: (quoteId) => dispatch(actions.getMyCart(quoteId)),
+		// onGetGuestCartId: () => dispatch(actions.getGuestCartId()),
+	};
+};
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(ProductSlider);
+// export default ProductSlider;

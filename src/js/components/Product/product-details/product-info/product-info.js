@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import ProductColor from './product-color';
 import ProductSize from './product-size';
 import ProductBandSize from './product-bandsize';
-import ProductCupSize from './product-cup-size';
+// import ProductCupSize from './product-cup-size';
 import ProductOffer from './product-offer';
 import ProductQty from './product-qty';
 import ProductBasic from './product-basic';
@@ -61,7 +61,8 @@ class ProductInformation extends Component {
 	render() {
 		const { data, type } = this.props;
 		const sizeComponent = this.state.isBandCup ? <><ProductBandSize productSize={data} />
-			<ProductCupSize productSize={data} /></> : <ProductSize productSize={data} />;
+			{/* <ProductCupSize productSize={data} /> */}
+			</> : <ProductSize productSize={data} />;
 		return (
 			<div className="col col-12 apex-col-auto">
 				{/* <div

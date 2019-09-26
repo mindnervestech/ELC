@@ -2125,3 +2125,7 @@ html[dir="rtl"] .styles_modal__gNwvD div{
         }
     }
 }
+
+.zoom-img-width{
+    width: 71% !important;
+}

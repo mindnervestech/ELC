@@ -19,13 +19,13 @@ class DeliveryPolicy extends Component {
 
     static getDerivedStateFromProps = (props, state) => { };
     getDeliveyPolicyData = () => {
-        if (this.state.storeId) {
+        if (this.props.globals) {
             const API = Axios.create({
                 baseURL: STATIC_PAGES_URL,
                 headers: { Authorization: `Bearer ${API_TOKEN}`, 'Content-Type': 'application/json' },
             });
 
-            API.get('delivery-policy/storeId/' + this.state.storeId).then(res => {
+            API.get('delivery-policy/storeId/' + this.props.globals.currentStore).then(res => {
                 this.setState({ data: res.data, spinner: false });
             });
         }

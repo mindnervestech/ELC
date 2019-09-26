@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
-import { Route, Link, Switch, Redirect } from 'react-router-dom'
+import { Route, Link,withRouter } from 'react-router-dom'
+import { connect } from 'react-redux';
 class PayByCard extends Component {
 
   constructor(props) {
@@ -25,6 +26,7 @@ class PayByCard extends Component {
   render() {
     let payfort_fort_cc = this.props.payfort_fort_cc;
     //console.log(payfort_fort_cc);
+    let store_locale = this.props.globals.store_locale;
     return (
 
       <div className={this.state.className} id="CCI">
@@ -47,10 +49,10 @@ class PayByCard extends Component {
               <span className="m-value js-remaining-balance" data-value={payfort_fort_cc.total}> {payfort_fort_cc.currency} {payfort_fort_cc.total}</span><br />
             </div>
             <div className="col-lg-6" style={{ padding: '5px' }}><FormattedMessage id="Checkout.Payment.Msg1" defaultMessage="By placing your order, you agree to our" /><br /> 
-            <Link to="/privacy-policy" title="Privacy & Cookie Policy" target="_blank" style={{ textDecoration: 'underline' }}>
+            <Link to={`/${store_locale}/privacy-policy`} title="Privacy & Cookie Policy" target="_blank" style={{ textDecoration: 'underline' }}>
              <FormattedMessage id="Checkout.Payment.Msg2" defaultMessage="Privacy" /></Link> 
              <FormattedMessage id="Checkout.Payment.Msg3" defaultMessage="And" />
-            <Link to="/terms-and-conditions" title="Terms & Conditions" target="_blank" style={{ textDecoration: 'underline' }}>
+            <Link to={`/${store_locale}/terms-and-conditions`} title="Terms & Conditions" target="_blank" style={{ textDecoration: 'underline' }}>
             <FormattedMessage id="Checkout.Payment.Msg4" defaultMessage="terms-and-conditions" /></Link>.</div>
             <div className="container">
               <div className="row">
@@ -83,4 +85,10 @@ class PayByCard extends Component {
   }
 }
 
-export default PayByCard;
+const mapStateToProps = state => {
+  return {
+      globals: state.global,
+  }
+}
+
+export default withRouter(connect(mapStateToProps)(PayByCard));
