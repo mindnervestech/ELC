@@ -92,7 +92,28 @@ class BirthDayClub extends Component {
       }, 3000);
 
     }
-  }
+    else if(nextprops.bclubDetails && nextprops.bclubDetails.status)
+    {
+       
+      let message = nextprops.bclubDetails.message
+
+      setTimeout(() => {
+        this.setState({ sucesss_message: message, ischeckremove: false, showAlert: true });
+        
+      }, 100);
+
+      setTimeout(() => {
+        this.closeAlert();
+      }, 3000);
+
+    }
+    else
+    {
+
+    }
+
+    }
+  
 
 
 
@@ -520,7 +541,7 @@ class BirthDayClub extends Component {
                 </div>
 
                 <div style={{ marginTop: 15 }}>
-                  <span style={{ color: 'red' }}>*&nbsp;</span><span className="blackTitle1"><FormattedMessage id="parentFirstName" defaultMessage="Contact Number" /></span>
+                  <span style={{ color: 'red' }}>*&nbsp;</span><span className="blackTitle1"><FormattedMessage id="addnewchild.parentfirstname" defaultMessage="Parent First Name" /></span>
                 </div>
                 <div className="paddingLeft" style={{ marginTop: 5 }}>
                   <div style={{ textAlign: "start" }} >
@@ -560,7 +581,7 @@ class BirthDayClub extends Component {
             </Row>
             <div className="errorMessageDiv" style={this.state.error ? { display: 'block' } : { display: 'none' }}>
               <div className="errorMessage">
-                Please fill all * fields compulsory
+                <FormattedMessage id="Pleasefillallfieldscompulsory" defaultMessage="Please fill all * fields compulsory"/>
                   <i className="close fa fa-times close-icon-sort" aria-hidden="true" onClick={() => this.setState({ error: false })} />
               </div>
             </div>

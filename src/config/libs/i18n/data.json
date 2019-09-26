@@ -639,7 +639,8 @@
         "Height":"Height",
         "Width":"Width",
         "Length":"Length",
-        "Weight":"Weight"
+        "Weight":"Weight",
+        "Pleasefillallfieldscompulsory":"Please fill all * fields compulsory"
 
     },
     "ar": {
@@ -647,7 +648,8 @@
         "addChildren.male":"Male",
         "addChildren.female":"Female",
         "addChildren.Other":"Other",
-        
+        "Pleasefillallfieldscompulsory":"Please fill all * fields compulsory",
+
         "HowmuchdoesUAEdeliverycost?":"كم تكلفة التوصيل للإمارات العربية المتحدة؟",
         "StandardDelivery":"التوصيل العادي",
         "FREEwhenyouspendAED250orAED20forordersunderAED250":"جاناً- عند الشراء بقيمة 250 درهم إماراتي، أو 20 درهم إماراتي للطلبات الأقل من 250 درهم.",
