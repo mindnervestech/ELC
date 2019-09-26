@@ -76,10 +76,10 @@ html[dir="rtl"] .marginForContactDroupDown{
     transform: translateY(30%);
 }
  html[dir="rtl"] .iti-mobile .intl-tel-input.iti-container {
-    top: 36em !important;
+    top: 50% !important;
     position: absolute!important;
     height: 300px !important;
-    z-index: 9 !important;
+    z-index: 9999 !important;
     transform: translateY(30%);
 }
     .t-Region-body {
