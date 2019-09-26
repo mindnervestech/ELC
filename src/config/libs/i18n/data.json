@@ -574,7 +574,7 @@
         "header.UAE": "UAE",
         "header.FreeReturns": "Free Returns",
         "header.FreeGiftwrapping": "Free Gift wrapping",
-        "header.FreeStdDelivery": "Free Std Delivery",
+        "header.FreeStdDelivery": "Free Standard Delivery",
         "header.MyAccount": "My Account",
         "header.Hello": "Hello",
         "header.mybasket": "My Basket",
@@ -1257,7 +1257,6 @@
         "Width":"Width",
         "Length":"Length",
         "Weight":"Weight",
-	"BuyMoreBtn.Message": "اشتر أكثر, ووفر أكثر ",
         "BuyMoreBtn.Message2": "Sell",
         "BuyMore.Text": "اشتر أكثر ووفر أكثر"
 

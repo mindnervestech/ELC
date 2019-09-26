@@ -293,11 +293,11 @@ class MainHeader extends Component {
                                             <div className="country">
                                                 <div onClick={this.showCountries} className={this.state.showCountries ? "activeCountry open divShowOnWeb" : "activeCountry divShowOnWeb"}>
                                                     {/* <i className={`flag ${this.state.country_flag}`} onClick={this.showCountries}>  </i> */}
-                                                    {this.state.country_name == 'UAE' ?
+                                                    {this.state.country_name === 'UAE' || this.state.country_name === 'uae' ?
                                                         <img style={{ height: '20px', width: '30px' }} src={UAEImage}></img>
                                                         : <img style={{ height: '20px', width: '30px' }} src={KSAImage}></img>
                                                     }
-                                                    <label className="text-color" style={{ fontSize: '1.2rem' }}>&nbsp;{this.state.country_name} </label>
+                                                    <label className="text-color" style={{ fontSize: '1.2rem' }}>&nbsp;{this.state.country_name.toUpperCase()} </label>
                                                     <span className="selected">
                                                         <FormattedMessage id="header.defaultCountry" defaultMessage="Select Your Country" />
 
@@ -640,7 +640,7 @@ class MainHeader extends Component {
                                         <Col xs="6" lg="7" md="7" style={{padding: 0}}>
                                             <ul style={{ textAlign: 'start', paddingTop: 10 }}>
                                                 <li style={{ fontSize: 15, color: "#0D943F", lineHeight: '0.5', fontWeight: 'bold' }}>
-                                                    <FormattedMessage id="header.FreeStdDelivery" defaultMessage="Free Std Delivery" />
+                                                    <FormattedMessage id="header.FreeStdDelivery" defaultMessage="Free Standard Delivery" />
                                                 </li>
                                                 <li style={{ fontSize: 12, lineHeight: '2.5', fontWeight: 'bold' }} className="text-color">
                                                     When you spend AED 250

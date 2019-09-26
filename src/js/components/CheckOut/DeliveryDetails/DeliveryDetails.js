@@ -523,7 +523,7 @@ class DeliveryDetails extends Component {
 
                                                                     <li id="DA" className="tab del-add2 selected">
                                                                         <h3 className="method"><FormattedMessage id="delivery-details.HomeDelivery.Title" defaultMessage="Home Delivery" /></h3>
-                                                                        <span className="method-description h-hidden-mobile"><FormattedMessage id="delivery-details.HomeDelivery.Message" defaultMessage="HomeDelivery Message" /></span>
+                                                                        <span className="method-description h-hidden-mobile"><FormattedMessage id="delivery-details.HomeDelivery.Message" defaultMessage="Home Delivery Message" /></span>
                                                                     </li>
 
                                                                 </ul>

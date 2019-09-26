@@ -61,7 +61,8 @@ class OrderedItem extends Component {
                                     : <del className="p-desc" style={{ textDecoration: 'unset' }}>
                                         <strong><span className="p-currency">{this.props.item.currency} </span> {this.props.item.price}</strong>
                                     </del>}
-                                <p><FormattedMessage id="Item.Qty" defaultMessage="Qty" /> {this.props.item.qty_ordered}</p>
+                                    <p><FormattedMessage id="Item.Qty" defaultMessage="Qty" /> 
+                                    <span>{parseInt(this.props.item.qty_orderded)}</span></p>
                             </td>
                             {/* <td className="price">
                                             <span className="p-price">
@@ -119,7 +120,7 @@ class OrderedItem extends Component {
                                                         <strong><span className="p-currency">{this.props.item.currency} </span> {this.props.item.price}</strong>
                                                     </del>
                                                 }
-                                                <p><FormattedMessage id="Item.Qty" defaultMessage="Qty" /> {this.props.item.qty_ordered}</p>
+                                                <p><FormattedMessage id="Item.Qty" defaultMessage="Qty" /> <span>{parseInt(this.props.item.qty_orderded)}</span></p>
                                             </td>
 
                                             {/* <td className="price">
