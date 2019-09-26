@@ -335,7 +335,7 @@
         "Checkout.CodNotForCC": "Cash on delivery cannot be selcted for click and collect.",
         "Checkout.CodNotForOtherThanGCC": "Cash on delivery not available for countries other than GCC countries.",
         "Checkout.voucher": "Voucher",
-        "voucherdiscount": "voucher discount",
+        "voucherdiscount": "Voucher discount",
         "Place.Order.Text": "Place Order",
         "Edit.Text": "Edit",
         "Payment.text": "Payment ",
@@ -655,9 +655,11 @@
         "PageTitle.order-history": "Your account",
         "PageTitle.new-in":"Shop our newest toys",
         "PageTitle.NA":"Home Page",
-        "PageTitle.shop-by-brand":"shop-by-brand"
-
-       
+        "PageTitle.shop-by-brand":"shop-by-brand",
+        "Profile.EditAddress":"Edit Address",
+        "Instoresoronline":"In stores or Online",
+        "Onanyorder":"On any order",
+        "WhenyouspendAED250":"When you spend AED 250"
 
     },
     "ar": {
@@ -665,9 +667,9 @@
         "PageTitle.new-in":"المنتجات الجديدة في ",
         "PageTitle.birth-day-club":"نادي عيد الميلاد ",
         "PageTitle.checkout-login":"تسجيل الخروج ",
-        "addChildren.male":"Male",
-        "addChildren.female":"Female",
-        "addChildren.Other":"Other",
+        "addChildren.male":"ذكر ",
+        "addChildren.female":"أنثى ",
+        "addChildren.Other":"غير ذلك",
         "Pleasefillallfieldscompulsory":"Please fill all * fields compulsory",
 
         "HowmuchdoesUAEdeliverycost?":"كم تكلفة التوصيل للإمارات العربية المتحدة؟",
@@ -911,7 +913,7 @@
         "Product.Details.Panty": "سروال",
         "Product.Details.Bras": "صدريات",
         "Product.Details.SizeFit": "حجم وتلائم",
-        "Product.Details.ProductInfo": "Product Information",
+        "Product.Details.ProductInfo": "تفاصيل المنتج",
         "Product.Details.DeliveryOption": "خيارات التوصيل",
         "Product.Details.Question": "سؤال",
         "Product.Detail.addToBasket": "أضف إلى السلة",
@@ -949,7 +951,7 @@
         "FreeClickCollect.Text": " اطلبي واستلمي من المعرض مجاناً  ",
         "DeliveryDays.Text": "التوصيل من 3 إلى 5 أيام ",
         "PaybyCard.Text": "الدفع عن طريق البطاقة  ",
-        "PaybyCard.Content": "سيتم توجيهك إلى بطاقة الماستر/ الفيزا لاستكمال الدفع ثم إعادتك إلى نعومي  ",
+        "PaybyCard.Content": "سيتم توجيهك إلى صفحة ماستر/فيزا لإنهاء عملية الدفع وسيعاد توجيهك إلى موقع إي ال سي",
         "CashOnDelivery.Text": "الدفع عن الاستلام ",
         "CashOnDelivery.Content": "الدفع عند الإستلام. سيتم إضافة مبلغ التوصيل  ",
         "Checkout.Payment.Msg1": "من خلال تقديم طلبك ، فإنك توافق على  ",
@@ -987,7 +989,7 @@
         "ContactUs.SocialMedia": "التواصل الاجتماعي  ",
         "Submit.Text": "تقديم ",
         "Customs.Text": "معلومات عن رسوم الجمارك والاستيراد ",
-        "Customs.content": "عندما توافقين على الطلب، فإنك تقرين: بأن طلبك قد يخضع لرسوم الاستيراد والضرائب التي يتم تحصيلها بمجرد وصول الطرد الخاص بك إلى بلدك ؛ لا تقوم نعومي بتحصيل الرسوم والضرائب ولا يمكنها التنبؤ بالرسوم. وفي حالة تحمل هذه الرسوم الإضافية ، يجب أن يتم دفعها. لمزيد من المعلومات حول سياسة الجمارك في بلدك ، .يرجى الاتصال بمكتب الجمارك المحلي  ",
+        "Customs.content": "عن طريق تقديم طلبك، فأنت تقر بالآتي: قد يخضع طلبك لرسوم الاستيراد والضرائب، والتي يتم فرضها بمجرد وصول الشحنة الخاصة بك إلى بلدك؛ لاتقوم إي ال سي بتحصيل الرسوم والضرائب ولا يمكنها التنبؤ بما قد تكون عليه الرسوم الخاصة بك؛ وفي حالة تكبدك هذه الرسوم الإضافية، يجب تقديمها حتى تتمكن الشحنة من عبور التخليص الجمركي. لمزيد من المعلومات فيما يتعلق بالسياسات الجمركية في بلدك، يرجى الاتصال بمكتب الجمارك المحلي في بلدك .",
         "help.Welcome.Title": "مرحباً. كيف يمكننا مساعدتك؟",
         "help.NeedAssistance.Title": "تحتاج آلى المساعدة ؟",
         "help.ContactUs.Title": "اتصل بنا",
@@ -1242,7 +1244,7 @@
         "header.Arabic": "اللغة العربي",
         "cart.Price": " برايس",
         "Signup.validation.confirmEmail.invalid": "يجب أن يكون البريد الإلكتروني المدخل وبريد التأكيد متطابقين",
-        "Comingsoon": " آتقريبا",
+        "Comingsoon": " آتقريبا", 
         "enteryouremailaddress":"أدخل بريدك الإلكتروني",
         "done": "تم",
         "NarrowyourResults": "إحصر نتائجك",
@@ -1270,13 +1272,16 @@
         "Addedtoyourbasket":"تمت إضافة المنتج إلى عربتك ",
         "RelatedProducts":"منتجات مشابهه",
         "choose.your.delivery":"إختر وسيلة التوصيل ",
-        "voucherdiscount": "Voucher discount",
-        "Height":"Height",
-        "Width":"Width",
-        "Length":"Length",
-        "Weight":"Weight",
+        "voucherdiscount": "قسيمة الخصم ",
+        "Height":"الإرتفاع ",
+        "Width":"العرض ",
+        "Length":"الطول ",
+        "Weight":"الوزن",
         "BuyMoreBtn.Message2": "Sell",
         "BuyMore.Text": "اشتر أكثر ووفر أكثر",
-        "Profile.EditAddress":"Edit Address"
+        "Profile.EditAddress":"تعديل العنوان ",
+        "Instoresoronline":"في المحل أو أونلاين ",
+        "Onanyorder":"على أي طلب ",
+        "WhenyouspendAED250":"عند شرائك بقيمة 250 ريال "
     }
 }

@@ -8,6 +8,7 @@ import * as actions from '../../../redux/actions/index';
 import { connect } from 'react-redux';
 import AddToBasketModal from '../product-details/product-info/add-to-basket-modal';
 import Modal from 'react-responsive-modal';
+import AddToCartModal from '../product-details/product-info/product-basic';
 
 class ProductSlider extends Component {
     constructor(props) {
@@ -15,18 +16,13 @@ class ProductSlider extends Component {
         this.state = {
             spnner: true,
             basketPopupFlag: false,
-            url_key: ''
+            url_key: '',
+            addToCartModal: false,
+			cartModelFlag: false,
         }
     }
 
     openAddTOBasketModal = (url_key) =>{
-        console.log(url_key);
-        const data = {
-            customerid: this.props.customer_details.customer_id ? parseInt(this.props.customer_details.customer_id) : '',
-            store: this.props.globals.currentStore,
-            url_key: url_key,
-        };
-        this.props.onGetProductDetails(data);
         this.setState({
             basketPopupFlag: true,
             url_key:url_key
@@ -34,7 +30,33 @@ class ProductSlider extends Component {
     }
 
     onCloseCartModal = () => {
-		this.setState({ basketPopupFlag: false})
+		this.setState({ addToCartModal: false, cartModelFlag: false })
+	}
+
+    onCloseAddCartModal = () => {
+        this.setState({ basketPopupFlag: false})
+        setTimeout(() => {
+            if (this.props.user_details.isUserLoggedIn) {
+                this.props.OngetMyCart({
+                    quote_id: this.props.user_details.customer_details.quote_id,
+                    store_id: this.props.globals.currentStore
+                })
+            } else {
+                this.props.OngetMyCart({
+                    quote_id: this.props.guest_user.new_quote_id,
+                    store_id: this.props.globals.currentStore
+                })
+
+            }
+            if (this.props.addToCardLoader) {
+                if (!this.state.cartModelFlag) {
+                    this.setState({
+                        addToCartModal: true,
+                        cartModelFlag: true
+                    })
+                }
+            }
+        }, 2000);
 	}
 
     // componentWillMount() {
@@ -81,13 +103,23 @@ class ProductSlider extends Component {
         if(similar_product != undefined){
             this.state.spnner = false
         }
+
+        if(this.state.addToCartModal && this.props.cart_details.similar_products && document.getElementsByClassName("styles_modal__gNwvD")[0]){
+			document.getElementsByClassName("styles_modal__gNwvD")[0].style.cssText="height: auto !important; width:450px !important"
+        }
+
         return (
             <div className="row">
-                {this.state.basketPopupFlag && this.props.productDetails ? <div>
-                    <Modal modalId="add_to_basket"  open={this.state.basketPopupFlag} onClose={this.onCloseCartModal}>
-                        <AddToBasketModal url_key={this.state.url_key} data={this.props.productDetails} onCloseCartModal={this.onCloseCartModal}/>
+                {this.state.basketPopupFlag && this.props.productData ? <div>
+                    <Modal modalId="add_to_basket"  open={this.state.basketPopupFlag} onClose={this.onCloseAddCartModal}>
+                        <AddToBasketModal url_key={this.state.url_key} onCloseAddCartModal={this.onCloseAddCartModal}/>
                     </Modal>
                 </div> : ''}
+                {this.state.addToCartModal && this.props.cart_details.similar_products && !window.location.href.includes('products-details') ? <div>
+                        <Modal  open={this.state.addToCartModal} onClose={this.onCloseCartModal}>
+                            <AddToCartModal onCloseCartModal={this.onCloseCartModal} />
+                        </Modal>
+                    </div> : ''}
                 {this.state.spnner ? <Spinner /> : 
                 <div className="col col-12 apex-col-auto rowPadding">
                     <div style={{paddingTop: 15, backgroundColor: '#fff'}} className="t-Region containers  t-Region--noBorder t-Region--hiddenOverflow margin-bottom-lg reduse-width" id="R35743384497996348" aria-live="polite">
@@ -181,7 +213,7 @@ const mapStateToProps = state => {
 	return {
 		globals: state.global,
 		// menu: state.menu.menuNavData,
-		productDetails: state.productDetails.productData,
+		productData: state.productDetails.productData,
 		productDetailLoader: state.productDetails.productDetailLoader,
 		customer_details: state.login.customer_details,
 		addToCardLoader: state.productDetails.addToCardLoader,
@@ -193,10 +225,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
 	return {
-		onClearProductDetails: payload => dispatch(actions.clearProductDetails(payload)),
-		onGetProductDetails: payload => dispatch(actions.getProductDetails(payload)),
+		// onClearProductDetails: payload => dispatch(actions.clearProductDetails(payload)),
+		// onGetProductDetails: payload => dispatch(actions.getProductDetails(payload)),
 		// getSizeChart: payload => dispatch(actions.getSizeChart(payload)),
-		// OngetMyCart: (quoteId) => dispatch(actions.getMyCart(quoteId)),
+		OngetMyCart: (quoteId) => dispatch(actions.getMyCart(quoteId)),
 		// onGetGuestCartId: () => dispatch(actions.getGuestCartId()),
 	};
 };

@@ -111,7 +111,7 @@ class OrderSummary extends Component {
                                                 <p style={{ fontSize: '22px', letterSpacing: '0.04em', fontWeight: 500, padding: '20px 16px 10px' }}>
                                                     <FormattedMessage id="Sorry.Text" defaultMessage="Sorry" />
                                                 </p>}
-                                            {success == 'true' ? <p style={{ padding: '0 16px 10px', fontSize: '15px' }}><FormattedMessage id="Thankyou.Content" defaultMessage="Thankyou" /></p> : <p style={{ padding: '0 16px 10px', fontSize: '15px' }}><FormattedMessage id="Sorry.Content" defaultMessage="Sorry" /></p>}
+                                            {success == 'true' ? <p style={{ padding: '0 16px 10px', fontSize: '15px' }}><FormattedMessage id="Thankyou.Content" defaultMessage="We have received your order, you'll receive a confirmation mail soon.." /></p> : <p style={{ padding: '0 16px 10px', fontSize: '15px' }}><FormattedMessage id="Sorry.Content" defaultMessage="Unable to process your order.You can try again or contact to our customer service agent for more information.." /></p>}
 
                                             <div className="container">
                                                 <div className="row">

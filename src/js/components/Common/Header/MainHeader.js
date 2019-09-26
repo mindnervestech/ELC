@@ -643,7 +643,7 @@ class MainHeader extends Component {
                                                     <FormattedMessage id="header.FreeStdDelivery" defaultMessage="Free Standard Delivery" />
                                                 </li>
                                                 <li style={{ fontSize: 12, lineHeight: '2.5', fontWeight: 'bold' }} className="text-color">
-                                                    When you spend AED 250
+                                                    <FormattedMessage id="WhenyouspendAED250" defaultMessage="When you spend AED 250" />
                                                 </li>
                                             </ul>
                                         </Col>
@@ -661,7 +661,7 @@ class MainHeader extends Component {
                                                     <FormattedMessage id="header.FreeGiftwrapping" defaultMessage="Free Gift wrapping" />
                                                 </li>
                                                 <li style={{ fontSize: 12, lineHeight: '2.5', fontWeight: 'bold' }} className="text-color">
-                                                    On any order
+                                                    <FormattedMessage id="Onanyorder" defaultMessage="On any order" />
                                                 </li>
                                             </ul>
                                         </Col>
@@ -679,7 +679,7 @@ class MainHeader extends Component {
                                                     <FormattedMessage id="header.FreeReturns" defaultMessage="Free Returns" />
                                                 </li>
                                                 <li style={{ fontSize: 12, lineHeight: '2.5', fontWeight: 'bold' }} className="text-color">
-                                                    In stores or Online
+                                                    <FormattedMessage id="Instoresoronline" defaultMessage="In stores or Online" />
                                                 </li>
                                             </ul>
                                         </Col>

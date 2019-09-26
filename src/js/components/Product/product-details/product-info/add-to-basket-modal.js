@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import * as actions from '../../../../redux/actions/index';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
-import {Row, Col} from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 import { Helmet } from 'react-helmet';
 import ProductImage from '../product-zoom/Product-image';
 import freeDelivery from '../../../../../assets/images/header/Truck1.svg';
@@ -14,25 +14,25 @@ import { Link, Redirect } from 'react-router-dom';
 import Modal from 'react-responsive-modal';
 
 class AddToBasketModal extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
+	constructor(props) {
+		super(props);
+		this.state = {
 			defaultQty: 1,
-        };
+		};
 
-    }
+	}
 
-    componentDidMount(){
-        console.log(this.props);
-        // const data = {
-        //     customerid: this.props.customerDetails.customer_id ? parseInt(this.props.customerDetails.customer_id) : '',
-        //     store: this.props.globals.currentStore,
-        //     url_key: this.props.url_key,
-        // };
-        // this.props.onGetProductDetails(data);
-    }
+	componentDidMount() {
+		console.log(this.props);
+		const data = {
+			customerid: this.props.customerDetails.customer_id ? parseInt(this.props.customerDetails.customer_id) : '',
+			store: this.props.globals.currentStore,
+			url_key: this.props.url_key,
+		};
+		this.props.onGetProductDetails(data);
+	}
 
-    _getUnique = (arr, comp) => {
+	_getUnique = (arr, comp) => {
 		const unique = arr
 			.map(e => e[comp])
 			// store the keys of the unique objects
@@ -43,17 +43,21 @@ class AddToBasketModal extends Component {
 		return unique;
 	};
 
-    
-	addToCart(e) {
-        const { data, customerDetails, guest_user, isUserLoggedIn } = this.props;
-        
+	componentDidUpdate(prevProps){
+		
+	}
+
+
+	addToCart() {
+		const { productData, customerDetails, guest_user, isUserLoggedIn } = this.props;
+		
 		let prodData = {};
 		if (isUserLoggedIn) {
-			if (data.type == 'simple') {
+			if (productData.type == 'simple') {
 				prodData = {
 					"quote_id": customerDetails.quote_id,
-					"product_type": data.type,
-					"sku": data.sku,
+					"product_type": productData.type,
+					"sku": productData.sku,
 					"qty": this.state.defaultQty,
 					"product_option": {
 						"extension_attributes": {}
@@ -62,15 +66,15 @@ class AddToBasketModal extends Component {
 			} else {
 				prodData = {
 					"quote_id": customerDetails.quote_id,
-					"product_type": data.type,
-					"sku": data.sku,
+					"product_type": productData.type,
+					"sku": productData.sku,
 					"qty": this.state.defaultQty,
 					"product_option": {
 						"extension_attributes": {
 							"configurable_item_options": [
 								{
-									"option_id": data.simpleproducts[0].color.option_id,
-									"option_value": data.simpleproducts[0].color.option_value
+									"option_id": productData.simpleproducts[0].color.option_id,
+									"option_value": productData.simpleproducts[0].color.option_value
 								}
 							]
 						}
@@ -79,11 +83,11 @@ class AddToBasketModal extends Component {
 			}
 			this.props.onAddToCart(prodData);
 		} else {
-			if (data.type == 'simple') {
+			if (productData.type == 'simple') {
 				prodData = {
 					"quote_id": guest_user.temp_quote_id,
-					"product_type": data.type,
-					"sku": data.sku,
+					"product_type": productData.type,
+					"sku": productData.sku,
 					"qty": this.state.defaultQty,
 					"product_option": {
 						"extension_attributes": {}
@@ -92,15 +96,15 @@ class AddToBasketModal extends Component {
 			} else {
 				prodData = {
 					"quote_id": guest_user.temp_quote_id,
-					"product_type": data.type,
-					"sku": data.sku,
+					"product_type": productData.type,
+					"sku": productData.sku,
 					"qty": this.state.defaultQty,
 					"product_option": {
 						"extension_attributes": {
 							"configurable_item_options": [
 								{
-									"option_id": data.simpleproducts[0].color.option_id,
-									"option_value": data.simpleproducts[0].color.option_value
+									"option_id": productData.simpleproducts[0].color.option_id,
+									"option_value": productData.simpleproducts[0].color.option_value
 								}
 							]
 						}
@@ -113,7 +117,61 @@ class AddToBasketModal extends Component {
 			};
 			this.props.onGuestAddToCart(prodData, myCart);
 		}
+		this.props.onCloseAddCartModal();
 	}
+
+	decrement = totalQty => {
+		let currQty = this.state.defaultQty;
+		let decrementedQty = currQty - 1;
+		if ((totalQty > 0) && (decrementedQty > 0)) {
+			if (currQty <= 0) {
+			}
+			else {
+				this.setState({ defaultQty: currQty - 1 });
+			}
+		}
+	};
+
+	increment = totalQty => {
+		// this.setState({ defaultQty: totalQty + 1 });
+		let currQty = this.state.defaultQty;
+		if (currQty >= totalQty) {
+			let popupMessage = null;
+			let currentStore = this.props.currentStore;
+
+			if (currentStore == 1 || currentStore == 3 || currentStore == 5) {
+				popupMessage = Popup.register({
+					title: 'محزر',
+					content: `الحد الأقصى لكمية الطلب من هذا المنتج هي ${parseInt(totalQty)} يرجى تغيير الكمية المحددة لتكون ضمن هذا العدد. لطلب كمية أكثر من ${parseInt(totalQty)} يرجى اللاتصال بنا.`,
+					buttons: {
+						right: [{
+							text: 'حسنا',
+							action: function () {
+								Popup.close();
+							}
+						}]
+					}
+				});
+				Popup.queue(popupMessage);
+			} else {
+				popupMessage = Popup.register({
+					title: 'Alert',
+					content: `This product has a maximum orderable quantity of ${parseInt(totalQty)} Please update your selected quantity to be within this limit.To order quantity more than ${parseInt(totalQty)} please contact us.`,
+					buttons: {
+						right: [{
+							text: 'OK',
+							action: function () {
+								Popup.close();
+							}
+						}]
+					}
+				});
+				Popup.queue(popupMessage);
+			}
+		} else {
+			this.setState({ defaultQty: currQty + 1 });
+		}
+	};
 
 	handleChange(e) {
 		let totalQty = this.props.data.type === 'simple' ? parseInt(this.props.data.simpleqty) : this.props.data.simpleproducts[0].qty;
@@ -122,10 +180,10 @@ class AddToBasketModal extends Component {
 		}
 	}
 
-    render() {
+	render() {
 
 		// const store_locale=this.props.globals.store_locale
-		let {data} = this.props;
+		let data = this.props.productData;
 
 		let respo_message = null;
 
@@ -178,7 +236,6 @@ class AddToBasketModal extends Component {
 
 		let image_array = {
 		};
-		console.log(this.props, data);
 		if (newImageArray.length == 0) {
 			if (data.imageUrl)
 				image_array['default'] = data.imageUrl;
@@ -188,49 +245,42 @@ class AddToBasketModal extends Component {
 			image_array[newImageArray[i].text] = newImageArray[i].image;
 		}
 
-        return (
-            <div className="row">
-                <Helmet>
+		return (
+			<div className="row">
+				<Helmet>
 					<script src="/global/css/magiczoomplus/magiczoomplus.js"></script>
 					<script src="/global/css/magicscroll/magicscroll.js"></script>
-				</Helmet> 
+				</Helmet>
 				{data ?
-				<Row className="apex-col-auto carpusel-dots">
-					<Col xs="12" md="7" lg="7" style={{paddingLeft:'70px'}}>
-						<h2 className="product-title" style={{ marginBottom: 20 }}>
-							{data.name}
-						</h2>
-						<div>
-							<ProductImage />
+					<Row className="apex-col-auto carpusel-dots">
+						<Col xs="12" md="7" lg="7" style={{ paddingLeft: '70px' }}>
+							<h2 className="product-title" style={{ marginBottom: 20 }}>
+								{data.name}
+							</h2>
+							<div>
+								<ProductImage />
 
-						</div>
-					</Col>
-					<Col xs="12" md="5" lg="5" className="padding-mob" style={{paddingRight:'70px'}}>
+							</div>
+						</Col>
+						<Col xs="12" md="5" lg="5" className="padding-mob" style={{ paddingRight: '70px' }}>
 
-						<div
-							className="t-Region--removeHeader t-Region--noBorder t-Region--scrollBody margin-top-md"
-							id="R33789882492169835"
-						>
-							<div className="t-Region-bodyWrap">
-								<div className="t-Region-body">
-									<div className="container" style={{ overflow: 'hidden' }}>
-										<div className="row details-body">
-											<div className="prod-price">
-												{data.special_price ?
-													<div>
-														<span className="product-price">{data.currency}&nbsp;{data.special_price}</span>
-														<span className="product-price-line">{data.currency}&nbsp;{Number(data.price).toFixed(2)}</span>
-													</div> :
-													<span className="product-price">{data.currency}&nbsp;{Number(data.price).toFixed(2)}</span>}
-											</div>
-											{/* {data.simplecolor !== "" ?
-												<div className="prod-color">
-													<div>
-														<FormattedMessage id="Cart.Color.Title" defaultMessage="Color" /> :
-													<span>{data.simplecolor}</span>
-													</div>
-												</div> : <div />} */}
-													{data && data.visible_on_store ?
+							<div
+								className="t-Region--removeHeader t-Region--noBorder t-Region--scrollBody margin-top-md"
+								id="R33789882492169835"
+							>
+								<div className="t-Region-bodyWrap">
+									<div className="t-Region-body">
+										<div className="container" style={{ overflow: 'hidden' }}>
+											<div className="row details-body">
+												<div className="prod-price">
+													{data.special_price ?
+														<div>
+															<span className="product-price">{data.currency}&nbsp;{data.special_price}</span>
+															<span className="product-price-line">{data.currency}&nbsp;{Number(data.price).toFixed(2)}</span>
+														</div> :
+														<span className="product-price">{data.currency}&nbsp;{Number(data.price).toFixed(2)}</span>}
+												</div>
+												{data && data.visible_on_store ?
 													<div style={{ width: '100%' }}>
 														<div className="choose-dil">
 															<FormattedMessage id="choose.your.delivery" defaultMessage="Choose your delivery options" />
@@ -263,7 +313,7 @@ class AddToBasketModal extends Component {
 															</div>
 														</div>
 													</div> : ''}
-													{data && data.visible_on_store ?
+												{data && data.visible_on_store ?
 													<div className="t-Form-inputContainer col col-5 row quantity-mob" style={{ marginBottom: 20, marginLeft: 0, padding: 0 }}>
 														<div className="t-Form-itemWrapper" style={{ border: '0.1rem solid #EAEAEA', borderRadius: '0.2rem' }}>
 															<span className="t-Form-itemText t-Form-itemText--pre">
@@ -298,7 +348,7 @@ class AddToBasketModal extends Component {
 														</div>
 													</div>
 													: ''}
-													{data && data.visible_on_store ?
+												{data && data.visible_on_store ?
 													<div style={{ width: '100%', marginBottom: 20 }}>
 														{data.simplestatus == 1 || (newImageArray[0] && newImageArray[0].stock == 1) ?
 															<span className="in-stock" style={{ color: '#0D943F' }}>
@@ -309,82 +359,59 @@ class AddToBasketModal extends Component {
 															</span>}
 													</div>
 													: ''}
-													{data && data.visible_on_store ?
+												{data && data.visible_on_store ?
 													<div className="alsoLikeCard add-cart">
 														<div className="homePage">
-															<button disabled={(data.simplestatus === 0 || (newImageArray[0] && newImageArray[0].stock == 0)) || this.state.defaultQty == 0} onClick={this.addToCart} className="alsoLikeCardButton" style={{ marginTop: 0 }}>
+															<button disabled={(data.simplestatus === 0 || (newImageArray[0] && newImageArray[0].stock == 0)) || this.state.defaultQty == 0} onClick={() => this.addToCart()} className="alsoLikeCardButton" style={{ marginTop: 0 }}>
 																<FormattedMessage id="Product.Detail.addToBasket" defaultMessage="Add to basket" /></button>
 														</div>
 													</div>
-												 :
-												<div style={{fontSize:'18px', color:'red', marginBottom:'30px'}}>
-													<FormattedMessage id="NotAvailableforcurrentstoreDelivery " defaultMessage="Not Available for current store Delivery" />
-												</div>}
-
-											{/* <div className="share-wishlist">
-												<span className="wishlist-span-1">
-													<a onClick={() => this.setState({ openShareModel: true })} className="hover-on-favorite">
-														<i className='fa fa-share-alt' style={{ fontSize: 25, marginRight: 13 }}></i>
-														<span className="mr-10-share" ><FormattedMessage id="Share" defaultMessage="Share" /></span>
-													</a>
-												</span>
-											</div> */}
-
-											{/* {data.learningSkills && (Object.values(data.learningSkills)[0].length > 0 || Object.values(data.learningSkills)[1].length > 0 || Object.values(data.learningSkills)[2].length > 0) ?
-												<div className="learn-skill">
-													<span><FormattedMessage id="LearningSkills" defaultMessage="Learning skills" />:</span>
-												</div> : <div />} */}
-											{/* <div className="learn-skill-img">
-												{data.learningSkills != undefined ?
-													<div>
-														{Object.values(data.learningSkills).map((item, i) =>
-															this.learningSkills2(item)
-														)}
-													</div>
-													: ""}
-											</div> */}
+													:
+													<div style={{ fontSize: '18px', color: 'red', marginBottom: '30px' }}>
+														<FormattedMessage id="NotAvailableforcurrentstoreDelivery " defaultMessage="Not Available for current store Delivery" />
+													</div>}
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-					</Col>
-				
-				</Row> : ''}
+						</Col>
 
-            </div>
-        );
-    }
+					</Row> : ''}
+
+			</div>
+		);
+	}
 }
 
 const mapStateToProps = state => {
-    return {
-        
+	return {
+
 		isUserLoggedIn: state.login.isUserLoggedIn,
 		globals: state.global,
 		user_details: state.login.customer_details,
-		// productZoomDetails: state.productDetails.productData,
+		productData: state.productDetails.productData,
 		customerDetails: state.login.customer_details,
 		// productWishDetail: state.productDetails.productWishDetail,
 		// removeWishListDetail:state.productDetails.productWishDetail,
 		// productDetails: state.productDetails.productData,
-		wishlistItem:state.wishList,
+		wishlistItem: state.wishList,
 		// productDetailLoader: state.productDetails.productDetailLoader,
 		// addToCardLoader: state.productDetails.addToCardLoader,
 		cart_details: state.myCart,
 		guest_user: state.guest_user,
-    
-    };
+
+	};
 };
 
 const mapDispatchToProps = dispatch => {
-    return {
-        onClearProductDetails: payload => dispatch(actions.clearProductDetails(payload)),
-		// onGetProductDetails: payload => dispatch(actions.getProductDetails(payload)),
-        OngetMyCart: (quoteId) => dispatch(actions.getMyCart(quoteId)),
-    	onAddToCart: payload => dispatch(actions.addToCart(payload)),
-	
-    };
+	return {
+		// onClearProductDetails: payload => dispatch(actions.clearProductDetails(payload)),
+		onGetProductDetails: payload => dispatch(actions.getProductDetails(payload)),
+		// OngetMyCart: (quoteId) => dispatch(actions.getMyCart(quoteId)),
+		onAddToCart: payload => dispatch(actions.addToCart(payload)),
+
+	};
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddToBasketModal);
