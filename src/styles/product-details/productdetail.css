@@ -2127,5 +2127,18 @@ html[dir="rtl"] .styles_modal__gNwvD div{
 }
 
 .zoom-img-width{
-    width: 71% !important;
+    /* width: 71% !important; */
+    max-width: 420px !important;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    max-height: 664px;
+}
+
+.zoom-img-width .MagicZoom > img, .mz-figure > img{
+    max-width: 420px !important;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    max-height: 420px !important;
 }

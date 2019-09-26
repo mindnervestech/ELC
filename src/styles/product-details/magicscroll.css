@@ -111,7 +111,7 @@ body.mcs-dragging button.mcs-button.mcs-horizontal.mcs-button-arrow {
 }
 
 .MagicScroll img {
-    visibility: visible !important;
+    visibility: hidden;
 }
 .MagicScroll .mcs-item img {
     visibility: visible;
