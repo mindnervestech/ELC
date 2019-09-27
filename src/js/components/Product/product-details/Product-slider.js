@@ -104,9 +104,9 @@ class ProductSlider extends Component {
             this.state.spnner = false
         }
 
-        if(this.state.addToCartModal && this.props.cart_details.similar_products && document.getElementsByClassName("styles_modal__gNwvD")[0]){
-			document.getElementsByClassName("styles_modal__gNwvD")[0].style.cssText="height: auto !important; width:450px !important"
-        }
+        // if(this.state.addToCartModal && this.props.cart_details.similar_products && document.getElementsByClassName("styles_modal__gNwvD")[0]){
+		// 	document.getElementsByClassName("styles_modal__gNwvD")[0].style.cssText="height: auto !important; width:450px !important"
+        // }
 
         return (
             <div className="row">
@@ -116,7 +116,7 @@ class ProductSlider extends Component {
                     </Modal>
                 </div> : ''}
                 {this.state.addToCartModal && this.props.cart_details.similar_products && !window.location.href.includes('products-details') ? <div>
-                        <Modal  open={this.state.addToCartModal} onClose={this.onCloseCartModal}>
+                        <Modal modalId="addToCartPopupID" open={this.state.addToCartModal} onClose={this.onCloseCartModal}>
                             <AddToCartModal onCloseCartModal={this.onCloseCartModal} />
                         </Modal>
                     </div> : ''}

@@ -6808,6 +6808,11 @@ html[dir="rtl"] #add_to_basket .pdoductDetailSpasing{
     width: 35%;
 }
 
+#addToCartPopupID{
+    height: auto !important; 
+    width:450px !important
+}
+
 @media only screen and (min-width:768px) and (max-width:1024px)
 {
     .width-autoSearch
