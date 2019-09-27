@@ -6771,9 +6771,34 @@ html[dir="rtl"] #mobile-click-colect{
 }
 
 #add_to_basket{
-    height: 85% !important;
+    height: 590px !important;
     width: 85% !important;
     padding: 16px 17px !important;
+}
+
+#add_to_basket .pdoductImageSpasing{
+    padding-left: 70px;
+}
+
+#add_to_basket .pdoductDetailSpasing{
+    padding-right: 70px;
+}
+
+html[dir="rtl"] #add_to_basket .pdoductImageSpasing{
+    padding-right: 70px;
+}
+
+html[dir="rtl"] #add_to_basket .pdoductDetailSpasing{
+    padding-left: 70px;
+}
+
+#add_to_basket .product-title2 {
+    font-family: "VAG Rounded ELC Light";
+    font-size: 2.9rem;
+    line-height: 1.7;
+    font-weight: 300;
+    color: #4f4f4f;
+    margin-bottom: 20px;
 }
 
 @media only screen and (min-width:768px) and (max-width:1024px)
@@ -6849,6 +6874,43 @@ html[dir="rtl"] .t-Button--pillStart{
 }
 
 @media (max-width:767px){
+    #add_to_basket{
+        height: auto !important;
+        width: 85% !important;
+        padding: 16px 17px !important;
+    }
+
+    #add_to_basket .pdoductImageSpasing{
+        padding-left: 0px;
+        padding: 0px 15px;
+    }
+    
+    #add_to_basket .pdoductDetailSpasing{
+        padding-right: 0px;
+        padding: 0px 15px;
+    }
+    
+    html[dir="rtl"] #add_to_basket .pdoductImageSpasing{
+        padding-right: 0px;
+        padding: 0px 15px;
+    }
+    
+    html[dir="rtl"] #add_to_basket .pdoductDetailSpasing{
+        padding-left: 0px;
+        padding: 0px 15px;
+    }
+
+    #add_to_basket .product-title2 {
+        font-family: "VAG Rounded ELC Light";
+        font-size: 1.8rem;
+        line-height: 1.7;
+        font-weight: 300;
+        color: #4f4f4f;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        text-align: start;
+    }
+
     .autoSearch{
         width: 100%;
         top: 43px;

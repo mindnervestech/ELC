@@ -246,15 +246,15 @@ class AddToBasketModal extends Component {
 		}
 
 		return (
-			<div className="row">
+			<div>
 				<Helmet>
 					<script src="/global/css/magiczoomplus/magiczoomplus.js"></script>
 					<script src="/global/css/magicscroll/magicscroll.js"></script>
 				</Helmet>
 				{data ?
 					<Row className="apex-col-auto carpusel-dots">
-						<Col xs="12" md="7" lg="7" style={{ paddingLeft: '70px' }}>
-							<h2 className="product-title" style={{ marginBottom: 20 }}>
+						<Col xs="12" md="7" lg="7" className="pdoductImageSpasing">
+							<h2 className="product-title2">
 								{data.name}
 							</h2>
 							<div>
@@ -262,7 +262,7 @@ class AddToBasketModal extends Component {
 
 							</div>
 						</Col>
-						<Col xs="12" md="5" lg="5" className="padding-mob" style={{ paddingRight: '70px' }}>
+						<Col xs="12" md="5" lg="5" className="pdoductDetailSpasing">
 
 							<div
 								className="t-Region--removeHeader t-Region--noBorder t-Region--scrollBody margin-top-md"

@@ -189,7 +189,11 @@ margin: 0px !important;
     width: 40px !important;
 }
 #ph #widthfull .country-list {
-    width: 95% !important;
+    width: 92.2% !important;
+}
+
+html[dir="rtl"] #ph #widthfull .country-list {
+    width: 92.5% !important;
 }
 #ph input[type=tel] {
     width: 92.2% !important;
