@@ -6772,25 +6772,25 @@ html[dir="rtl"] #mobile-click-colect{
 
 #add_to_basket{
     height: 590px !important;
-    width: 85% !important;
+    width: 95% !important;
     padding: 16px 17px !important;
 }
 
 #add_to_basket .pdoductImageSpasing{
-    padding-left: 70px;
+    padding-left: 30px;
 }
 
 #add_to_basket .pdoductDetailSpasing{
-    padding-right: 70px;
+    padding-right: 30px;
 }
 
 html[dir="rtl"] #add_to_basket .pdoductImageSpasing{
-    padding-right: 70px;
+    padding-right: 30px;
     padding-left: 0px;
 }
 
 html[dir="rtl"] #add_to_basket .pdoductDetailSpasing{
-    padding-left: 70px;
+    padding-left: 30px;
     padding-right: 0px;
 }
 
@@ -6805,7 +6805,7 @@ html[dir="rtl"] #add_to_basket .pdoductDetailSpasing{
 }
 
 #add_to_basket .qantityNumberDiv{
-    width: 42%;
+    width: 35%;
 }
 
 @media only screen and (min-width:768px) and (max-width:1024px)
