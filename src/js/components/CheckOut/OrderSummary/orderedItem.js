@@ -10,7 +10,7 @@ class OrderedItem extends Component {
 
     }
     render() {
-
+        let {globals} = this.props;
         let item_details = this.props.item.product_options.map((c, index) => {
             return (
                 <>
@@ -28,8 +28,10 @@ class OrderedItem extends Component {
                         <tbody>
                             <tr>
                                 <td className="prdimg">
-                                    <a href="">
-                                        <img src={this.props.item.image[0]} /></a></td>
+                                    <Link to={`/${globals.store_locale}/products-details/${this.props.item.url_key}`}>
+                                        <img src={this.props.item.image[0]} />
+                                    </Link>
+                                </td>
                                 <td className="prddesc">
                                     <h2>{this.props.item.name}</h2>
                                     {item_details}
@@ -81,8 +83,10 @@ class OrderedItem extends Component {
                                     <tbody>
                                         <tr>
                                             <td className="prdimg">
-                                                <a href="">
-                                                    <img src={this.props.item.image[0]} /></a></td>
+                                                <Link to={`/${globals.store_locale}/products-details/${this.props.item.url_key}`}>
+                                                    <img src={this.props.item.image[0]} />
+                                                </Link>
+                                            </td>
                                             <td className="prddesc">
                                                 <h2>{this.props.item.name}</h2>
                                                 {item_details}

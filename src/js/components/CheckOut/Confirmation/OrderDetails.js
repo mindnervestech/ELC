@@ -39,7 +39,6 @@ class OrderDetails extends Component {
 
         let payment_method = this.payment_method;
         let delivery_type = this.delivery_type;
-
         // if (payment_method == 'Cash on Delivery') {
         //     payment_method = this.myIntl.formatMessage({ id: 'OrderHistory.Payment.CashOnDel' });
         // } else if (payment_method == 'Credit Card') {

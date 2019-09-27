@@ -4,17 +4,22 @@ export const live = true;
 //server ['uat','dev','live']
 export let active_server = 'dev';
 if(window.location.href.includes('elcjsuat')){
+    active_server = 'uat';
+} else if(window.location.href.includes('elctoys.com')){
     active_server = 'live';
 }
 
 export const ROOT_URL = {
     dev: 'https://elcm2.iksulalive.com/', // 'http://nayomidev.iksulalive.com/',
-    live: 'https://elcm2uat.iksulalive.com/'
+    uat: 'https://elcm2uat.iksulalive.com/',
+    live: 'cms.elctoys.com/'
+
 };
 
 export const WEB_URL_ALL = {
     dev: `http://elcm2.iksulalive.com/`,
-    live: `https://elcm2uat.iksulalive.com/`,
+    uat: `https://elcm2uat.iksulalive.com/`,
+    live: 'cms.elctoys.com/'
 }
 
 

@@ -30,7 +30,6 @@ class OrderSummary extends Component {
 
     componentDidMount() {
         const query = new URLSearchParams(this.props.location.search);
-        console.log("query.get('paytype')", query.get('paytype'))
         cryptr = new Cryptr(query.get('order_id'));
         if (query.get('paytype') == 'COD') {
             this.props.orderJson({
@@ -80,6 +79,7 @@ class OrderSummary extends Component {
                 return <OrderedItem
                     item={c}
                     key={index}
+                    globals={this.props.globals}
                 />
             });
         }

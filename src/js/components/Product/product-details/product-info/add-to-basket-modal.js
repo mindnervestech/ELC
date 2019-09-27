@@ -410,6 +410,7 @@ const mapDispatchToProps = dispatch => {
 		onGetProductDetails: payload => dispatch(actions.getProductDetails(payload)),
 		// OngetMyCart: (quoteId) => dispatch(actions.getMyCart(quoteId)),
 		onAddToCart: payload => dispatch(actions.addToCart(payload)),
+		onGuestAddToCart: (payload, myCart) => dispatch(actions.guestAddToCart(payload, myCart)),
 
 	};
 };

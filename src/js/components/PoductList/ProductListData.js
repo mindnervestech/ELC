@@ -16,6 +16,9 @@ import StarRatings from 'react-star-ratings';
 import SideManu from './SideManu';
 import leftArrow from '../../../assets/images/chevron_left.svg';
 import rightArrow from '../../../assets/images/chevron_right.svg';
+import AddToBasketModal from '../Product/product-details/product-info/add-to-basket-modal';
+import Modal from 'react-responsive-modal';
+import AddToCartModal from '../Product/product-details/product-info/product-basic';
 
 var _ = require('lodash');
 
@@ -62,7 +65,41 @@ class ProductListData extends Component {
 			showFilterOnMobile: false,
 			sortByText: "",
 			sortByShowOption: false,
+			basketPopupFlag: false,
+			addToCartModal: false,
+			cartModelFlag: false,
+			url_key: '',
 		};
+	}
+
+	onCloseCartModal = () => {
+		this.setState({ addToCartModal: false, cartModelFlag: false })
+	}
+
+    onCloseAddCartModal = () => {
+        this.setState({ basketPopupFlag: false})
+        setTimeout(() => {
+            if (this.props.user_details.isUserLoggedIn) {
+                this.props.OngetMyCart({
+                    quote_id: this.props.user_details.customer_details.quote_id,
+                    store_id: this.props.globals.currentStore
+                })
+            } else {
+                this.props.OngetMyCart({
+                    quote_id: this.props.guest_user.new_quote_id,
+                    store_id: this.props.globals.currentStore
+                })
+
+            }
+            if (this.props.addToCardLoader) {
+                if (!this.state.cartModelFlag) {
+                    this.setState({
+                        addToCartModal: true,
+                        cartModelFlag: true
+                    })
+                }
+            }
+        }, 2000);
 	}
 
 	changeThePagenationData() {
@@ -93,6 +130,10 @@ class ProductListData extends Component {
 			showFilterOnMobile: false,
 			sortByText: "",
 			sortByShowOption: false,
+			basketPopupFlag: false,
+			addToCartModal: false,
+			cartModelFlag: false,
+			url_key: '',
 		};
 	}
 
@@ -402,9 +443,12 @@ class ProductListData extends Component {
 			productList = this.props.list.product_data
 			this.changeThePagenationData()
 		}
-
+		if(this.state.addToCartModal && this.props.cart_details.similar_products && document.getElementsByClassName("styles_modal__gNwvD")[0]){
+			document.getElementsByClassName("styles_modal__gNwvD")[0].style.cssText="height: auto !important; width:450px !important"
+		}
 		return (
 			<Row>
+				
 				<Col xs="3" lg="3" md="3" className="divShowOnWeb">
 					<SideManu action={this.handler}></SideManu>
 				</Col>
@@ -589,6 +633,16 @@ class ProductListData extends Component {
 								</div>
 							</div>
 						</div>
+						{this.state.basketPopupFlag ? <div>
+							<Modal modalId="add_to_basket"  open={this.state.basketPopupFlag} onClose={this.onCloseAddCartModal}>
+								<AddToBasketModal url_key={this.state.url_key} onCloseAddCartModal={this.onCloseAddCartModal}/>
+							</Modal>
+						</div> : ''}
+                		{this.state.addToCartModal && this.props.cart_details.similar_products && !window.location.href.includes('products-details') ? <div>
+							<Modal  open={this.state.addToCartModal} onClose={this.onCloseCartModal}>
+								<AddToCartModal onCloseCartModal={this.onCloseCartModal} />
+							</Modal>
+						</div> : ''}
 						{Object.keys(productList).length > 0 ?
 							<div className="start">
 								<ul className="products">
@@ -713,12 +767,15 @@ const mapStateToProps = state => {
 		globals: state.global,
 		menu: state.menu.menuNavData,
 		productDetails: state.productDetails.productData,
+		user_details: state.login,
+		cart_details: state.myCart,
 	};
 }
 
 const mapDispatchToProps = dispatch => {
 	return {
 		onGetMenuNav: (payload) => dispatch(actions.getMenuNav(payload)),
+		OngetMyCart: (quoteId) => dispatch(actions.getMyCart(quoteId)),
 	}
 }
 

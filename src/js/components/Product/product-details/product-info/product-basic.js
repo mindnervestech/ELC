@@ -102,8 +102,8 @@ class ProductBasic extends Component {
 
     
 	addToCart(e) {
-        const { data, customerDetails, guest_user, isUserLoggedIn } = this.props;
-        
+        const { customerDetails, guest_user, isUserLoggedIn } = this.props;
+        let data = e;
 		let prodData = {};
 		if (isUserLoggedIn) {
 			if (data.type == 'simple') {
@@ -111,7 +111,7 @@ class ProductBasic extends Component {
 					"quote_id": customerDetails.quote_id,
 					"product_type": data.type,
 					"sku": data.sku,
-					"qty": this.state.defaultQty,
+					"qty": 1,//this.state.defaultQty,
 					"product_option": {
 						"extension_attributes": {}
 					}
@@ -121,7 +121,7 @@ class ProductBasic extends Component {
 					"quote_id": customerDetails.quote_id,
 					"product_type": data.type,
 					"sku": data.sku,
-					"qty": this.state.defaultQty,
+					"qty": 1, //this.state.defaultQty,
 					"product_option": {
 						"extension_attributes": {
 							"configurable_item_options": [
@@ -141,7 +141,7 @@ class ProductBasic extends Component {
 					"quote_id": guest_user.temp_quote_id,
 					"product_type": data.type,
 					"sku": data.sku,
-					"qty": this.state.defaultQty,
+					"qty": 1, //this.state.defaultQty,
 					"product_option": {
 						"extension_attributes": {}
 					}
@@ -151,7 +151,7 @@ class ProductBasic extends Component {
 					"quote_id": guest_user.temp_quote_id,
 					"product_type": data.type,
 					"sku": data.sku,
-					"qty": this.state.defaultQty,
+					"qty": 1, //this.state.defaultQty,
 					"product_option": {
 						"extension_attributes": {
 							"configurable_item_options": [
@@ -233,8 +233,9 @@ class ProductBasic extends Component {
 
                                 <div className="alsoLikeCard add-cart addTocardButtonDiv">
                                     <div className="homePage">
-                                        <button className="alsoLikeCardButton" disabled="disabled" style={{ marginTop: 0, width: '100%' }}>
-                                            <FormattedMessage id="Product.Detail.addToBasket" defaultMessage="Add to basket" /></button>
+                                        <button disabled={this.props.cart_details.similar_products[index].simplestatus === 0 || this.state.defaultQty == 0} onClick={() => this.addToCart(this.props.cart_details.similar_products[index])} className="alsoLikeCardButton" style={{ marginLeft: 10, width:'85%' }}>
+										    <FormattedMessage id="Product.Detail.addToBasket" defaultMessage="Add to basket" />
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -271,7 +272,8 @@ const mapDispatchToProps = dispatch => {
     return {
         onGetSize: payload => dispatch(actions.getSize(payload)),
         OngetMyCart: (quoteId) => dispatch(actions.getMyCart(quoteId)),
-    	onAddToCart: payload => dispatch(actions.addToCart(payload)),
+        onAddToCart: payload => dispatch(actions.addToCart(payload)),
+        onGuestAddToCart: (payload, myCart) => dispatch(actions.guestAddToCart(payload, myCart)),
 	
     };
 };
