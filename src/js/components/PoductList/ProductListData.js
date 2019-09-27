@@ -30,7 +30,9 @@ let start = 1
 let end = 5
 let changeFilterData = false
 let showPopupIndex = 0
-
+let basketPopupFlag = false;
+let url_key = '';
+let addToCartModal = false;
 class ProductListData extends Component {
 	constructor(props) {
 		super(props);
@@ -73,11 +75,14 @@ class ProductListData extends Component {
 	}
 
 	onCloseCartModal = () => {
+		addToCartModal = false;
 		this.setState({ addToCartModal: false, cartModelFlag: false })
+		basketPopupFlag = false;
 	}
 
     onCloseAddCartModal = () => {
-        this.setState({ basketPopupFlag: false})
+		this.setState({ basketPopupFlag: false})
+		basketPopupFlag = false;
         setTimeout(() => {
             if (this.props.user_details.isUserLoggedIn) {
                 this.props.OngetMyCart({
@@ -91,16 +96,26 @@ class ProductListData extends Component {
                 })
 
             }
-            if (this.props.addToCardLoader) {
-                if (!this.state.cartModelFlag) {
-                    this.setState({
-                        addToCartModal: true,
-                        cartModelFlag: true
-                    })
-                }
-            }
-        }, 2000);
+            // if (this.props.addToCardLoader) {
+            //     if (!this.state.cartModelFlag) {
+            //         this.setState({
+            //             addToCartModal: true,
+            //             cartModelFlag: true
+			// 		})
+			// 	}
+            // }
+		}, 1000);
+		addToCartModal = true;
 	}
+
+	openAddTOBasketModal = (url) =>{
+        this.setState({
+            basketPopupFlag: true,
+            url_key:url_key
+		})
+		basketPopupFlag = true;
+		url_key = url;
+    }
 
 	changeThePagenationData() {
 		let totalPages = 1
@@ -443,7 +458,7 @@ class ProductListData extends Component {
 			productList = this.props.list.product_data
 			this.changeThePagenationData()
 		}
-		if(this.state.addToCartModal && this.props.cart_details.similar_products && document.getElementsByClassName("styles_modal__gNwvD")[0]){
+		if(addToCartModal && this.props.cart_details.similar_products && document.getElementsByClassName("styles_modal__gNwvD")[0]){
 			document.getElementsByClassName("styles_modal__gNwvD")[0].style.cssText="height: auto !important; width:450px !important"
 		}
 		return (
@@ -633,13 +648,13 @@ class ProductListData extends Component {
 								</div>
 							</div>
 						</div>
-						{this.state.basketPopupFlag ? <div>
-							<Modal modalId="add_to_basket"  open={this.state.basketPopupFlag} onClose={this.onCloseAddCartModal}>
-								<AddToBasketModal url_key={this.state.url_key} onCloseAddCartModal={this.onCloseAddCartModal}/>
+						{basketPopupFlag ? <div>
+							<Modal modalId="add_to_basket"  open={basketPopupFlag} onClose={this.onCloseAddCartModal}>
+								<AddToBasketModal url_key={url_key} onCloseAddCartModal={this.onCloseAddCartModal}/>
 							</Modal>
 						</div> : ''}
-                		{this.state.addToCartModal && this.props.cart_details.similar_products && !window.location.href.includes('products-details') ? <div>
-							<Modal  open={this.state.addToCartModal} onClose={this.onCloseCartModal}>
+                		{addToCartModal && this.props.cart_details.similar_products && !window.location.href.includes('products-details') ? <div>
+							<Modal open={addToCartModal} onClose={this.onCloseCartModal}>
 								<AddToCartModal onCloseCartModal={this.onCloseCartModal} />
 							</Modal>
 						</div> : ''}
@@ -687,6 +702,11 @@ class ProductListData extends Component {
 									</div> */}
 												</div>
 											</Link>
+											<div>
+												<button className="alsoLikeCardButton" onClick={() => this.openAddTOBasketModal(list[keyName].json.url_key)} style={{width:'100%',borderRadius:'4px', marginBottom:'10px'}}>
+													<FormattedMessage id="Product.Detail.addToBasket" defaultMessage="Add to basket" />
+												</button>
+											</div>
 											<div>
 												{list[keyName].json.offers && list[keyName].json.offers.status == 1 &&
 													this.checkBuyAndMore(list[keyName].json.offers.data, keyName)

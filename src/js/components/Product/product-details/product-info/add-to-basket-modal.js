@@ -12,6 +12,7 @@ import ShareUrl from '../product-info/product-size';
 import Popup from 'react-popup';
 import { Link, Redirect } from 'react-router-dom';
 import Modal from 'react-responsive-modal';
+import Spinner from '../../../../components/Spinner/Spinner2';
 
 class AddToBasketModal extends Component {
 	constructor(props) {
@@ -137,8 +138,7 @@ class AddToBasketModal extends Component {
 		let currQty = this.state.defaultQty;
 		if (currQty >= totalQty) {
 			let popupMessage = null;
-			let currentStore = this.props.currentStore;
-
+			let currentStore = this.props.globals.currentStore;
 			if (currentStore == 1 || currentStore == 3 || currentStore == 5) {
 				popupMessage = Popup.register({
 					title: 'محزر',
@@ -251,7 +251,9 @@ class AddToBasketModal extends Component {
 					<script src="/global/css/magiczoomplus/magiczoomplus.js"></script>
 					<script src="/global/css/magicscroll/magicscroll.js"></script>
 				</Helmet>
-				{data ?
+				{data.name ?
+				<div>
+					<Popup />
 					<Row className="apex-col-auto carpusel-dots">
 						<Col xs="12" md="7" lg="7" className="pdoductImageSpasing">
 							<h2 className="product-title2">
@@ -377,8 +379,8 @@ class AddToBasketModal extends Component {
 							</div>
 						</Col>
 
-					</Row> : ''}
-
+					</Row></div> : <Spinner />}
+				
 			</div>
 		);
 	}

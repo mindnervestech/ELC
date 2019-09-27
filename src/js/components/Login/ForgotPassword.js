@@ -71,7 +71,7 @@ class ForGotPassword extends Component {
     //Email
     if (!fields["email"]) {
       formIsValid = false;
-      errors["email"] = <FormattedMessage id="Signup.validation.email.empty" defaultMessage="First Name cannot be empty" />;
+      errors["email"] = <FormattedMessage id="Signup.validation.email.empty" defaultMessage="Please enter email" />;
     }
 
     if (typeof fields["email"] !== "undefined") {
