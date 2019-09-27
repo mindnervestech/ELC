@@ -26,6 +26,7 @@ let startPagenation = 1
 let start = 1
 let end = 5
 let changeFilterData = false
+let showPopupIndex = 0
 
 class ProductListData extends Component {
 	constructor(props) {
@@ -64,7 +65,7 @@ class ProductListData extends Component {
 		};
 	}
 
-	changeThePagenationData(){
+	changeThePagenationData() {
 		let totalPages = 1
 		let count = 0
 		let pageNumber = 1
@@ -278,29 +279,115 @@ class ProductListData extends Component {
 		}
 	}
 
-	checkBuyAndMore(offer){
-		console.log(offer)
-		console.log(Object.keys(offer).length)
-		if(Object.keys(offer).length == 1){
-			for(let value in offer){
-				if(value == '1'){
+	openShowAndMorePopup(index) {
+		showPopupIndex = index
+		this.setState({ changeFilterData: true })
+	}
+
+	closeBuyAndMore(index){
+		showPopupIndex = 0
+		this.setState({ changeFilterData: true })
+	}
+
+	checkBuyAndMore(offer, index) {
+		if (Object.keys(offer).length == 1) {
+			for (let value in offer) {
+				if (value == '1') {
 					return (
 						<div>
-							<button className="bayMoreAndSaveMore"><FormattedMessage id="BuyMoreBtn.Message2" defaultMessage="Sell" /></button>
+							<button onClick={() => this.openShowAndMorePopup(index)} className="bayMoreAndSaveMore"><FormattedMessage id="BuyMoreBtn.Message2" defaultMessage="Sale" /></button>
 						</div>
 					);
-				}else{
+				} else {
 					return (
 						<div>
-							<button className="bayMoreAndSaveMore"><FormattedMessage id="BuyMoreBtn.Message" defaultMessage="Buy More, Save More!" /></button>
+							<button onClick={() => this.openShowAndMorePopup(index)} className="bayMoreAndSaveMore"><FormattedMessage id="BuyMoreBtn.Message" defaultMessage="Buy More, Save More!" /></button>
 						</div>
 					);
 				}
 			}
-		}else{
+		} else {
 			return (
 				<div>
-					<button className="bayMoreAndSaveMore"><FormattedMessage id="BuyMoreBtn.Message" defaultMessage="Buy More, Save More!" /></button>
+					<button onClick={() => this.openShowAndMorePopup(index)} className="bayMoreAndSaveMore"><FormattedMessage id="BuyMoreBtn.Message" defaultMessage="Buy More, Save More!" /></button>
+				</div>
+			);
+		}
+	}
+
+	showDiscountPrise(offerData , orignalPrise, currency){
+		if (Object.keys(offerData).length == 1) {
+			for (let value in offerData) {
+				if (value == '1') {
+					return (
+						<div>
+							<span style={{ fontSize: 14, color: "#0D943F", fontWeight: "bold" }}>{currency}&nbsp;{offerData[value]}</span>
+							<span style={{ color: "gray", textDecorationLine: 'line-through', fontSize: 14, marginLeft: 10 }}>{currency}&nbsp;{orignalPrise}</span>
+						</div>
+					);
+				} else {
+					return (
+						<div>
+							<span style={{ fontSize: 14, color: "#0D943F", fontWeight: "bold" }}>{currency}&nbsp;{orignalPrise}.00</span>
+						</div>
+					);
+				}
+			}
+		} else {
+			return (
+				<div>
+					<span style={{ fontSize: 14, color: "#0D943F", fontWeight: "bold" }}>{currency}&nbsp;{orignalPrise}.00</span>
+				</div>
+			);
+		}
+	}
+
+	showMessageOnBuyAndMorePopup(offer, currency) {
+		if (Object.keys(offer).length == 1) {
+			for (let value in offer) {
+				if (value == '1') {
+					return (
+						<div className="buyAndMorePopupText">
+							<FormattedMessage id="BuyMoreBtn.Message2" defaultMessage="Sale" />
+						</div>
+					);
+				} else {
+					return (
+						<div>
+							<div className="buyAndMorePopupText">
+								<FormattedMessage id="BuyMoreBtn.Message" defaultMessage="Buy More, Save More!" />
+							</div>
+							<div className="buyAndMoreOffer">
+								<span>{value} For {currency}&nbsp;{offer[value]}</span>
+							</div>
+						</div>
+					);
+				}
+			}
+		} else {
+			let showOffer = []
+			let count = 0
+			for (let value in offer) {
+				if(count < 2){
+					showOffer.push(value)
+					showOffer.push(offer[value])
+				}
+				count++
+			}
+			count = 0
+			return (
+				<div>
+					<div className="buyAndMorePopupText">
+						<FormattedMessage id="BuyMoreBtn.Message" defaultMessage="Buy More, Save More!" />
+					</div>
+					<div>
+						<div className="buyAndMoreOffer">
+							<span>{showOffer[0]} For {currency}&nbsp;{showOffer[1]}</span>
+						</div>
+						<div className="buyAndMoreOffer">
+						<span>{showOffer[2]} For {currency}&nbsp;{showOffer[3]}</span>
+						</div>
+					</div>
 				</div>
 			);
 		}
@@ -310,7 +397,7 @@ class ProductListData extends Component {
 		let list = this.state.list1
 		//let list = this.props.list.product_data
 		const store_locale = this.props.globals.store_locale
-		if(changeFilterData == false){
+		if (changeFilterData == false) {
 			productListData = this.props.list.product_data
 			productList = this.props.list.product_data
 			this.changeThePagenationData()
@@ -506,8 +593,8 @@ class ProductListData extends Component {
 							<div className="start">
 								<ul className="products">
 									{Object.keys(list).map((keyName, index) =>
-										<Link to={`/${store_locale}/products-details/${list[keyName].json.url_key}`}>
-											<li key={index}>
+										<li key={index} style={{ position: 'relative' }}>
+											<Link to={`/${store_locale}/products-details/${list[keyName].json.url_key}`}>
 												<div className="alsoLikeCard">
 													{/* <span className="percentage-text" style={{ display: 'none' }}>30</span>
 									<span className="save-text">5</span>
@@ -517,10 +604,12 @@ class ProductListData extends Component {
 													<div style={{ marginTop: 10 }}>
 														<label className="text-color">{list[keyName].json.name}</label>
 													</div>
-													<div>
+													{list[keyName].json.offers && list[keyName].json.offers.status == 1 ?
+														this.showDiscountPrise(list[keyName].json.offers.data,list[keyName].price,list[keyName].currency)
+													:<div>
 														<span style={{ fontSize: 14, color: "#0D943F", fontWeight: "bold" }}>{list[keyName].currency} {list[keyName].price}.00</span>
 														{/* <span style={{ color: "gray", textDecorationLine: 'line-through', fontSize: 14, marginLeft: 10 }}>AED 14.50</span> */}
-													</div>
+													</div>}
 													<div style={{ paddingTop: 10 }}>
 														{/* <StarRatings
 											rating={3}
@@ -534,6 +623,7 @@ class ProductListData extends Component {
 										/> */}
 														<span> {this.getAge(list[keyName].json.filtersdata.age)}</span>
 													</div>
+
 													{/* <div>
 										<button className="alsoLikeCardButton CardButton">Add to Basket</button>
 									</div>
@@ -542,8 +632,24 @@ class ProductListData extends Component {
 										<span>Add to Wishlist</span>
 									</div> */}
 												</div>
-											</li>
-										</Link>
+											</Link>
+											<div>
+												{list[keyName].json.offers && list[keyName].json.offers.status == 1 &&
+													this.checkBuyAndMore(list[keyName].json.offers.data, keyName)
+												}
+											</div>
+											<div className="buyAndSaveMorePopup" style={showPopupIndex == keyName ? { display: 'block' } : { display: 'none' }}>
+												<i className="close fa fa-times" aria-hidden="true" onClick={() => this.closeBuyAndMore(keyName)} />
+												<div style={{ marginTop: 40 }}>
+													<i className="icon-cart basket iconBasket" />
+												</div>
+												<div style={{ padding: '0px 10px' }}>
+													{list[keyName].json.offers && list[keyName].json.offers.status == 1 &&
+														this.showMessageOnBuyAndMorePopup(list[keyName].json.offers.data, list[keyName].currency)
+													}
+												</div>
+											</div>
+										</li>
 									)}
 								</ul>
 							</div>

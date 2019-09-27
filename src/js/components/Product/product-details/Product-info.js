@@ -365,8 +365,6 @@ class ProductInfo extends Component {
 	}
 
 	checkBuyAndMore(offer, currency) {
-		console.log(offer)
-		console.log(Object.keys(offer).length)
 		if (Object.keys(offer).length == 1) {
 			for (let value in offer) {
 				if (value == '1') {
@@ -397,7 +395,6 @@ class ProductInfo extends Component {
 				count++
 			}
 			count = 0
-			console.log(showOffer)
 			return (
 				<div style={{width: '100%', paddingBottom: 10}}>
 					<div className="buyAndSaveMOreText">
@@ -406,6 +403,33 @@ class ProductInfo extends Component {
 					<div>
 						<span>{showOffer[0]} For {currency}&nbsp;{showOffer[1]} | {showOffer[2]} For {currency}&nbsp;{showOffer[3]}</span>
 					</div>
+				</div>
+			);
+		}
+	}
+
+	showDiscountPrise(offerData , orignalPrise, currency){
+		if (Object.keys(offerData).length == 1) {
+			for (let value in offerData) {
+				if (value == '1') {
+					return (
+						<div>
+							<span className="product-price">{currency}&nbsp;{offerData[value]}</span>
+							<span className="product-price-line">{currency}&nbsp;{Number(orignalPrise).toFixed(2)}</span>
+						</div>
+					);
+				} else {
+					return (
+						<div>
+							<span className="product-price">{currency}&nbsp;{Number(orignalPrise).toFixed(2)}</span>
+						</div>
+					);
+				}
+			}
+		} else {
+			return (
+				<div>
+					<span className="product-price">{currency}&nbsp;{Number(orignalPrise).toFixed(2)}</span>
 				</div>
 			);
 		}
@@ -536,11 +560,9 @@ class ProductInfo extends Component {
 											</div> */}
 
 											<div className="prod-price">
-												{data.special_price ?
-													<div>
-														<span className="product-price">{data.currency}&nbsp;{data.special_price}</span>
-														<span className="product-price-line">{data.currency}&nbsp;{Number(data.price).toFixed(2)}</span>
-													</div> :
+												{data.offers && data.offers.status == 1 ?
+													this.showDiscountPrise(data.offers.data,data.price,data.currency)
+													:
 													<span className="product-price">{data.currency}&nbsp;{Number(data.price).toFixed(2)}</span>}
 											</div>
 											{data.simplecolor !== "" ?

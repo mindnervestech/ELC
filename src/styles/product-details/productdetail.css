@@ -1047,16 +1047,18 @@ font-weight: 100;
 
 .product-price {
     font-weight: 900; 
-    font-family: VAG Rounded ELC Black ;
+    font-family: "VAG Rounded ELC Bold" ;
     color: #0D943F;
-    font-size: 2.6rem; 
-    margin-right: 1rem
+    font-size: 26px; 
+    margin-right: 1.5rem;
 }
 
 .product-price-line {
     opacity: 0.7;
     text-decoration: line-through;
-    font-size: 2.6rem;
+    font-size: 26px;
+    font-family: "VAG Rounded ELC Bold" ;
+    color: #b3b3b3;
 }
 
 .available-by{

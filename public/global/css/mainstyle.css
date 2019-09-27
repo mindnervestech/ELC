@@ -6583,6 +6583,8 @@ html[dir="rtl"] .commingSoonText{
      position: relative;
      border-radius: 3px;
      display: inline-block;
+
+     vertical-align: top;
  }
 
  .likeAInputSelected{
@@ -6608,9 +6610,15 @@ html[dir="rtl"] .commingSoonText{
 }
 
 .likeAInputName {
-    position: absolute;
+    /* position: absolute;
     top: -1px;
-    padding-left: 15px;
+    padding-left: 15px; */
+
+       
+        top: -1px;
+        padding-left: 15px;
+        display: inline-block;
+        width: 93%;
 }
 
 html[dir="rtl"] .likeAInputName {
@@ -6686,24 +6694,76 @@ html[dir="rtl"] #mobile-click-colect{
 }
 
 .bayMoreAndSaveMore {
-    width: 69%;
-    background-color: #EE0E19;
+    width: 100%;
+    background-color: #0D943F;
     color: #fff;
     font-family: "VAG Rounded ELC Bold" !important;
     padding: 10px;
-    border: solid 1px #EE0E19;
+    border: solid 1px #0D943F;
     border-radius: 4px;
 }
 
 .bayMoreAndSaveMore:hover{
-    background-color: #dF0C00;
-    border: solid 1px #dF0C00;
+    background-color: #0C8539;
+    border: solid 1px #0C8539;
 }
 
 .buyAndSaveMOreText{
     font-size: 18px;
     color: #0D943F;
     font-family: "VAG Rounded ELC Bold" !important;
+}
+
+.buyAndSaveMorePopup{
+    background-color: rgb(13, 148, 63,.92);
+    height: 335px;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    padding: 7px;
+    text-align: center;
+}
+
+.buyAndSaveMorePopup .close{
+    float: right;
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 1;
+    color: #fff;
+    text-shadow: 0 1px 0 #fff;
+    opacity: 1;
+}
+
+.buyAndSaveMorePopup .iconBasket{
+    color: #fff;
+    font-size: 30px;
+    border: solid 1px #fff;
+    border-radius: 50%;
+    padding: 10px;
+}
+
+.buyAndSaveMorePopup .buyAndMorePopupText{
+    font-size: 23px;
+    line-height: 38px;
+    margin-top: 20px;
+    color: #fff;
+    font-family: "VAG Rounded ELC Light" !important;
+    border-bottom: solid 1px #fff;
+    padding: 0px 10px;
+}
+
+.buyAndSaveMorePopup .discoverMoreButton{
+    background-color: #fff;
+    border: solid 1px #fff;
+    border-radius: 13px;
+    padding: 3px 15px;
+}
+
+.buyAndSaveMorePopup .buyAndMoreOffer{
+    color: #fff;
+    font-size: 15px;
+    border-bottom: 1px solid;
+    padding: 10px 0px;
 }
 
 #ShareModule{

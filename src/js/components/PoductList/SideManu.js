@@ -177,11 +177,13 @@ class SideManu extends Component {
 											if(filterFirstOption == filter){
 												let checkSubmanu2 = 0
 												for (let item2 in productListingData) {
-													for (let age2 in productListingData[item2].json.filtersdata[filterFirstOption]) {
-														if (checkSubmanu2 == 0) {
-															if (splitValue[1] == productListingData[item2].json.filtersdata[filterFirstOption][age2]) {
-																filterOptionArrayForCheckValidate.push(afterFilterShowOptionList[value])
-																checkSubmanu2 = 1
+													if(productListingData[item2].json.filtersdata){
+														for (let age2 in productListingData[item2].json.filtersdata[filterFirstOption]) {
+															if (checkSubmanu2 == 0) {
+																if (splitValue[1] == productListingData[item2].json.filtersdata[filterFirstOption][age2]) {
+																	filterOptionArrayForCheckValidate.push(afterFilterShowOptionList[value])
+																	checkSubmanu2 = 1
+																}
 															}
 														}
 													}
@@ -306,7 +308,7 @@ class SideManu extends Component {
 			}
 			for (let categrayData in filterOptionArray) {
 				let splitData = filterOptionArray[categrayData].split('/')
-				if (splitData[0] == "subcategory") {
+				if (splitData[0] == "sub_category") {
 					if(checkForMultipalFilter){
 						checkForMultipalFilter = false
 						filterData = []
@@ -333,7 +335,6 @@ class SideManu extends Component {
 							if (productList[value].json.color_english) {
 								if (productList[value].json.color_english == filterValue) {
 									filterData.push(productList[value])
-									console.log(productList[value])
 								}
 							}
 						}
@@ -403,7 +404,7 @@ class SideManu extends Component {
 				return (
 					<div style={{position: 'relative'}}>
 						<div onClick={() => this.applyFilter(code + "/" + name, "")} class="likeAInputNotSelected"><div class="likeAInput"></div></div>
-						<span className="likeAInputName" onClick={() => this.applyFilter(code + "/" + name, "")}>{name}</span>
+						<div className="likeAInputName" onClick={() => this.applyFilter(code + "/" + name, "")}>{name}</div>
 						{/* <input type="checkbox" checked={false} onClick={() => this.applyFilter(code + "/" + name, "")} value={name} /> {name} */}
 					</div>
 					);
@@ -412,7 +413,7 @@ class SideManu extends Component {
 				return (
 					<div style={{position: 'relative'}}>
 						<div onClick={() => this.applyFilter(code + "/" + name, "")} class="likeAInputSelected"><div class="likeAInput"></div></div>
-						<span className="likeAInputName" onClick={() => this.applyFilter(code + "/" + name, "")}>{name}</span>
+						<div className="likeAInputName" onClick={() => this.applyFilter(code + "/" + name, "")}>{name}</div>
 						{/* <input type="checkbox" checked={true} onClick={() => this.applyFilter(code + "/" + name, "")} value={name} /> {name} */}
 					</div>
 					);		
