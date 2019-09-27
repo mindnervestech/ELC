@@ -6786,10 +6786,12 @@ html[dir="rtl"] #mobile-click-colect{
 
 html[dir="rtl"] #add_to_basket .pdoductImageSpasing{
     padding-right: 70px;
+    padding-left: 0px;
 }
 
 html[dir="rtl"] #add_to_basket .pdoductDetailSpasing{
     padding-left: 70px;
+    padding-right: 0px;
 }
 
 #add_to_basket .product-title2 {
@@ -6799,6 +6801,11 @@ html[dir="rtl"] #add_to_basket .pdoductDetailSpasing{
     font-weight: 300;
     color: #4f4f4f;
     margin-bottom: 20px;
+    text-align: start;
+}
+
+#add_to_basket .qantityNumberDiv{
+    width: 42%;
 }
 
 @media only screen and (min-width:768px) and (max-width:1024px)
@@ -6909,6 +6916,10 @@ html[dir="rtl"] .t-Button--pillStart{
         margin-top: 10px;
         margin-bottom: 10px;
         text-align: start;
+    }
+
+    #add_to_basket .qantityNumberDiv {
+        width: 65% !important;
     }
 
     .autoSearch{

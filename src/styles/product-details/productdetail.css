@@ -1522,7 +1522,7 @@ html[dir="rtl"] .write-review .write-a-re i{
     html[dir="rtl"] .click-collect{
         border: 1px solid #d6d6d6;
         font-size: 1.5rem;
-        width: 48%;
+        width: 50%;
         margin-left: 0px!important;
         margin-right: 10px;
         border-radius: 5px;
@@ -2096,6 +2096,15 @@ html[dir="rtl"] .styles_modal__gNwvD div{
     html[dir="rtl"] .zoom-gallery-thumbnails{        
         padding-left: 0px;
         padding-right: 0 !important;        
+    }
+
+    html[dir="rtl"] .home-deli {
+        color: #0d943f;
+        font-size: 1.5rem;
+        border: 2px solid #0d943f;
+        width: 50%;
+        margin-left: 0px!important;
+        border-radius: 5px;
     }
 }
 

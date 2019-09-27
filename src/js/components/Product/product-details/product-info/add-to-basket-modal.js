@@ -314,7 +314,7 @@ class AddToBasketModal extends Component {
 														</div>
 													</div> : ''}
 												{data && data.visible_on_store ?
-													<div className="t-Form-inputContainer col col-5 row quantity-mob" style={{ marginBottom: 20, marginLeft: 0, padding: 0 }}>
+													<div className="t-Form-inputContainer qantityNumberDiv row quantity-mob" style={{ marginBottom: 20, marginLeft: 0, padding: 0 }}>
 														<div className="t-Form-itemWrapper" style={{ border: '0.1rem solid #EAEAEA', borderRadius: '0.2rem' }}>
 															<span className="t-Form-itemText t-Form-itemText--pre">
 																<i

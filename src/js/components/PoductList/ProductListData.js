@@ -399,7 +399,7 @@ class ProductListData extends Component {
 								<FormattedMessage id="BuyMoreBtn.Message" defaultMessage="Buy More, Save More!" />
 							</div>
 							<div className="buyAndMoreOffer">
-								<span>{value} For {currency}&nbsp;{offer[value]}</span>
+								<span>{value}&nbsp;<FormattedMessage id="For.Text" defaultMessage="For" />&nbsp;{currency}&nbsp;{offer[value]}</span>
 							</div>
 						</div>
 					);
@@ -423,10 +423,10 @@ class ProductListData extends Component {
 					</div>
 					<div>
 						<div className="buyAndMoreOffer">
-							<span>{showOffer[0]} For {currency}&nbsp;{showOffer[1]}</span>
+							<span>{showOffer[0]}&nbsp;<FormattedMessage id="For.Text" defaultMessage="For" />&nbsp;{currency}&nbsp;{showOffer[1]}</span>
 						</div>
 						<div className="buyAndMoreOffer">
-						<span>{showOffer[2]} For {currency}&nbsp;{showOffer[3]}</span>
+						<span>{showOffer[2]}&nbsp;<FormattedMessage id="For.Text" defaultMessage="For" />&nbsp;{currency}&nbsp;{showOffer[3]}</span>
 						</div>
 					</div>
 				</div>

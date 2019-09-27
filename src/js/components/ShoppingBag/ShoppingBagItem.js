@@ -401,7 +401,7 @@ class ShoppingBagItem extends Component {
                             </div>
                             <div className="prod-color" style={{ color: "#4f4f4f" }}>
                                 <div>
-                                    <div id="mobile-home-deli" className="home-deli" style={{ display: 'block', display: 'inline-block', textAlign: 'center' }}>
+                                    <div id="mobile-home-deli" className="home-deli" style={{ display: 'block', display: 'inline-block', textAlign: 'center', width: "48%" }}>
                                         <img src={freeDelivery} />
                                         <div style={{ padding: "30px 10px", height: 140, width: '100%' }} className="blockTextColor">
                                             <span><FormattedMessage id="delivery-details.HomeDelivery.Title" defaultMessage="Home Delivery" /></span>
@@ -410,7 +410,7 @@ class ShoppingBagItem extends Component {
                                             <span style={{ color: '#0D943F', fontWeight: 'bold' }}><FormattedMessage id="available" defaultMessage="Available" /></span>
                                         </div>
                                     </div>
-                                    <div id="mobile-click-colect" className="click-collect" style={{ display: 'inline-block', textAlign: 'center', verticalAlign: 'top' }}>
+                                    <div id="mobile-click-colect" className="click-collect" style={{ display: 'inline-block', textAlign: 'center', verticalAlign: 'top' , width: "48%" }}>
                                         <img src={freeCollect} />
                                         <div style={{ padding: "30px 10px", height: 140, width: '100%', color: 'gray' }} className="blockTextColor">
                                             <span><FormattedMessage id="ClickCollectatselectedELCStore" defaultMessage="Click & Collect at selected ELC Store" /></span>
