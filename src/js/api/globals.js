@@ -12,14 +12,14 @@ if(window.location.href.includes('elcjsuat')){
 export const ROOT_URL = {
     dev: 'https://elcm2.iksulalive.com/', // 'http://nayomidev.iksulalive.com/',
     uat: 'https://elcm2uat.iksulalive.com/',
-    live: 'cms.elctoys.com/'
+    live: 'https://cms.elctoys.com/'
 
 };
 
 export const WEB_URL_ALL = {
     dev: `http://elcm2.iksulalive.com/`,
     uat: `https://elcm2uat.iksulalive.com/`,
-    live: 'cms.elctoys.com/'
+    live: 'https://cms.elctoys.com/'
 }
 
 

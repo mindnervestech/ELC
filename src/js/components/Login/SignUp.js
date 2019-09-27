@@ -53,9 +53,9 @@ class SignUp extends Component {
         let errors = {};
         //alert(obj.message);
         if (obj.message === 'The mobile number you entered already exists with another account.') {
-          errors["contactNumber"] = <FormattedMessage id="Signup.validation.contactNumber.exists" defaultMessage="First Name cannot be empty" />;
+          errors["contactNumber"] = <FormattedMessage id="Signup.validation.contactNumber.exists" defaultMessage="The mobile number you entered already exists with another account." />;
         } else if (obj.message === 'Email Id already exist.') {
-          errors["email"] = <FormattedMessage id="Signup.validation.email.exists" defaultMessage="First Name cannot be empty" />;
+          errors["email"] = <FormattedMessage id="Signup.validation.email.exists" defaultMessage="The email you entered already exists with another account." />;
         } else {
           // alert(obj.message);
 
