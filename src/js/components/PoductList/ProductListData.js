@@ -29,7 +29,7 @@ let startPagenation = 1
 let start = 1
 let end = 5
 let changeFilterData = false
-let showPopupIndex = 0
+let showPopupIndex = -1
 let basketPopupFlag = false;
 let url_key = '';
 let addToCartModal = false;
@@ -341,7 +341,7 @@ class ProductListData extends Component {
 	}
 
 	closeBuyAndMore(index){
-		showPopupIndex = 0
+		showPopupIndex = -1
 		this.setState({ changeFilterData: true })
 	}
 
