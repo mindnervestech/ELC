@@ -601,11 +601,22 @@ class BirthDayClub extends Component {
                     <span style={{ color: 'red' }}>*&nbsp;</span> <span className="blackTitle1 alignStart"><FormattedMessage id="addnewchild.dob" defaultMessage="DOB" /></span>
                   </div>
                   <div style={{ width: "100%", marginTop: 5, borderRadius: 0 }} id="badyClubDate">
-                    <DatePicker
+                    {/* <DatePicker
                       selected={ChildrenDate[index] != "" ? ChildrenDate[index] : new Date()}
                       onChange={this.handleChangeDOB.bind(this, index)}
-                      style={{ width: "100%" }}
-                    />
+                    
+                    /> */}
+
+<FormattedMessage id="addchild.Clicktoaselectdate" defaultMessage="Click to a select date">
+{(message) =>
+<DatePicker
+       selected={ChildrenDate[index] != "" ? ChildrenDate[index] : ""}
+       onChange={this.handleChangeDOB.bind(this, index)}
+       style={{ width: "100%" }}
+     placeholderText={message}
+      maxDate={new Date()}
+      showDisabledMonthNavigation
+    />}</FormattedMessage>
                   </div>
                 </Col>
                 {index != 0 ?
