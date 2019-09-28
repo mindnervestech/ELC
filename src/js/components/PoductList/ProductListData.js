@@ -670,7 +670,7 @@ class ProductListData extends Component {
 									<img src={save} className="save" /> */}
 													<img src={(list[keyName].json.imageUrl) ? list[keyName].json.imageUrl.primaryimage : placeholder} className="cardImage" />
 													{/* <img src={percentage} className="percentage" style={{ display: 'none' }} /> */}
-													<div style={{ marginTop: 10 }}>
+													<div style={{ marginTop: 10, height: 50 }}>
 														<label className="text-color">{list[keyName].json.name}</label>
 													</div>
 													{list[keyName].json.offers && list[keyName].json.offers.status == 1 ?

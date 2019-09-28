@@ -561,7 +561,6 @@ class MainHeader extends Component {
                                                     <li><a href="javascript:void(0);" className="ksa" id="cart" onClick={() => this.onChangeCountry('UAE', 'SLOVENIA')}><FormattedMessage id="header.slovenia" defaultMessage="KSA" /></a></li>
                                                     <li><a href="javascript:void(0);" className="usd" id="cart" onClick={() => this.onChangeCountry('International', 'UNITED KINGDOM')}><FormattedMessage id="header.uk" defaultMessage="International" /></a></li> */}
                                         </div>
-
                                     </div>
                                 </div>
                                 <div className="ll enghishTextPadding" style={{ display: 'inline-block' }}>
