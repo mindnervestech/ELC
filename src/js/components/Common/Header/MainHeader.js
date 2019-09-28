@@ -356,7 +356,7 @@ class MainHeader extends Component {
                                     {/* <li style={{height:40}}>
                                         <Button className="firstButton text-color">The Entertainer</Button>
                                     </li> */}
-                                    <li style={{ height: 40, marginLeft: 20, paddingTop: 5 }}>
+                                    <li className="badyCloubLink">
                                         <Link to={`/${store_locale}/birth-day-club`} style={{ textDecoration: 'none' }}>
                                             <Button className="secondButton text-color"><FormattedMessage id="header.TheBirthdayclub" defaultMessage="Birthday Club" /></Button>
                                         </Link>

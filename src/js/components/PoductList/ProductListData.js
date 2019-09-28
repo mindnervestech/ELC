@@ -566,7 +566,7 @@ class ProductListData extends Component {
 							</div>
 							<div style={{ paddingTop: 29 }}>
 								<Row className="divShowOnWeb">
-									<Col xs="4">
+									<Col xs="4" lg="4" md="5">
 										<Row>
 											<Col xs="4">
 												<span className="blackTitle"><FormattedMessage id="Product.Listing.SortBy" defaultMessage="Sort by" /></span>
@@ -602,10 +602,10 @@ class ProductListData extends Component {
 											</Col>
 										</Row>
 									</Col>
-									<Col xs="8">
+									<Col xs="8" lg="8" md="7">
 										<Row>
-											<Col xs="5"></Col>
-											<Col xs="7">
+											<Col xs="5" lg="5" md="3"></Col>
+											<Col xs="7" lg="7" md="9">
 												<ul class="pagenation">
 													<li className="PagenationLeftArrow" onClick={this.prevButton} style={this.state.pageNumber == 1 ? { opacity: "0.5" } : { opacity: 1 }}></li>
 													<li className="number" onClick={() => this.ApplyPagenation(start)}><span className={this.state.pageNumber == start ? "selectedNumber" : ""}>{start}</span></li>

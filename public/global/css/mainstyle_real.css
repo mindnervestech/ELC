@@ -4691,6 +4691,12 @@ html[dir="rtl"] .click-collect3 {
     height: 160px;
 }
 
+.badyCloubLink{
+    height: 40px;
+    margin-left: 20px;
+    padding-top: 5px
+}
+
 @media only screen and (max-width:640px)
 {
     html[dir="rtl"] .lable-count-class
@@ -4846,5 +4852,74 @@ html[dir="rtl"] .click-collect3 {
     .width-select-div
     {
         width:100% !important;
+    }
+
+    .header .row-1 .rightLink li{
+        margin-left: 3px;
+    }
+
+    .header .row-1 .rightLink{
+        margin-right: 0px;
+    }
+
+    .header .row-1 .leftLink{
+        margin-bottom: 0px;
+        padding-left: 0px;
+    }
+
+    html[dir="rtl"] .header .row-1 .rightLink li{
+        margin-left: 0px;
+        margin-right: 4px;
+    }
+
+    html[dir="rtl"] .header .row-1 .leftLink{
+        padding-right: 10px;
+    }
+
+    .divShowOnWeb{
+        padding-left: 0px !important;
+    }
+
+    .badyCloubLink{
+        margin-left: 5px;
+    }
+
+    html[dir="rtl"] .header .row-1 .leftLink li{
+        margin-left: 5px;   
+    }
+
+    .products li, .feature li{
+        width: 21.2% !important;
+    }
+
+    .pagenation li {
+        margin: 0px !important;
+        width: 14% !important;
+    }
+
+    .share-wishlist{
+        margin-right: 0.5rem;
+    }
+
+    #add_to_basket .pdoductImageSpasing{
+        padding-left: 20px;
+    }
+
+    #add_to_basket .pdoductDetailSpasing{
+        padding-right: 20px;
+    }
+
+    #add_to_basket .qantityNumberDiv{
+        width: 56%;
+    }
+
+    html[dir="rtl"] #add_to_basket .pdoductDetailSpasing{
+        padding-left: 20px;
+        padding-right: 0px;
+    }
+
+    html[dir="rtl"] #add_to_basket .pdoductImageSpasing {
+        padding-right: 20px;
+        padding-left: 0px;
     }
 }

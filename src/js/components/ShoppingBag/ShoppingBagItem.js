@@ -337,7 +337,7 @@ class ShoppingBagItem extends Component {
                                             />
                                         </Col> : ""}
                                     {item.visible_on_store  && item.is_in_stock.status == 1 ?
-                                        <Col xs="1" className="row-3 blackTitle" style={{ fontSize: 22, marginTop: '4.7%' }}>
+                                        <Col xs="2" className="row-3 blackTitle" style={{ fontSize: 22, marginTop: '4.7%' }}>
                                             <span>{item.currency}&nbsp;{item.price * item.qty}</span>
                                         </Col> :
                                         ''
@@ -349,12 +349,12 @@ class ShoppingBagItem extends Component {
                                         </div>
                                     </Col>:''}
                                     {item.is_in_stock.status == 0 ?
-                                    <Col xs="2" className="row-9" style={{marginTop:'64px'}}>
+                                    <Col xs="1" className="row-9" style={{marginTop:'64px', padding: 0}}>
                                     <span style={{ fontSize:'18px', color: '#ee0E19' , marginBottom: '30px' }}>
                                         <FormattedMessage id="PDP.OutOfStock" defaultMessage="Out of Stock" />
                                     </span>
                                     </Col> :''}
-                                    <Col xs="2" className="row-3 blackTitle" style={{ textAlign: 'end' }}>
+                                    <Col xs="1" className="row-3 blackTitle" style={{ textAlign: 'end' }}>
                                         <span className="remove" style={{ fontSize: 14, cursor: 'pointer' }} onClick={() => this.remove(index)}>
                                             <FormattedMessage id="Cart.Remove.Title" defaultMessage="Remove" />
                                         </span>
