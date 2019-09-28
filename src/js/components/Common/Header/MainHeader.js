@@ -120,15 +120,14 @@ class MainHeader extends Component {
         }
     }
 
-    componentWillReceiveProps(nextProps)
-    {
+    componentWillReceiveProps(nextProps) {
 
         // console.log("Basket Props",nextProps)
         // setTimeout(() => {
         //     this.getStore();
         // }, 1000);
     }
-    
+
 
     logOut = () => {
         this.props.onLogoutUser();
@@ -305,14 +304,27 @@ class MainHeader extends Component {
                                                     <i className="icon-down" ></i>
                                                 </div>
                                                 <div className="list" style={{ textAlign: 'start' }}>
-                                                    <div style={{ paddingLeft: 10, paddingBottom: 7, fontSize: '1.2rem' }}>
-                                                        <img style={{ height: '20px', width: '30px' }} src={UAEImage}></img>
-                                                        <a href="javascript:void(0);" className="uae" id="cart" onClick={() => this.onChangeCountry('UAE')}>UAE</a>
-                                                    </div>
-                                                    <div style={{ paddingLeft: 10, fontSize: '1.2rem' }}>
-                                                        <img style={{ height: '20px', width: '30px' }} src={KSAImage}></img>
-                                                        <a href="javascript:void(0);" className="ksa" id="cart" onClick={() => this.onChangeCountry('KSA')}><FormattedMessage id="header.ksa" defaultMessage="KSA" /></a>
-                                                    </div>
+                                                    {this.state.country_name.toUpperCase() == 'UAE' ?
+                                                        <div>
+                                                            <div style={{ paddingLeft: 10, paddingBottom: 7, fontSize: '1.2rem' }}>
+                                                                <img style={{ height: '20px', width: '30px' }} src={UAEImage}></img>
+                                                                <a href="javascript:void(0);" className="uae" id="cart" onClick={() => this.onChangeCountry('UAE')}><FormattedMessage id="header.uae" defaultMessage="UAE" /></a>
+                                                            </div>
+                                                            <div style={{ paddingLeft: 10, fontSize: '1.2rem' }}>
+                                                                <img style={{ height: '20px', width: '30px' }} src={KSAImage}></img>
+                                                                <a href="javascript:void(0);" className="ksa" id="cart" onClick={() => this.onChangeCountry('KSA')}><FormattedMessage id="header.ksa" defaultMessage="KSA" /></a>
+                                                            </div>
+                                                        </div>
+                                                        : <div>
+                                                            <div style={{ paddingLeft: 10, fontSize: '1.2rem' }}>
+                                                                <img style={{ height: '20px', width: '30px' }} src={KSAImage}></img>
+                                                                <a style={{ verticalAlign: 'middle' }} href="javascript:void(0);" className="ksa" id="cart" onClick={() => this.onChangeCountry('KSA')}><FormattedMessage id="header.ksa" defaultMessage="KSA" /></a>
+                                                            </div>
+                                                            <div style={{ paddingLeft: 10, paddingTop: 7, fontSize: '1.2rem' }}>
+                                                                <img style={{ height: '20px', width: '30px' }} src={UAEImage}></img>
+                                                                <a href="javascript:void(0);" className="uae" id="cart" onClick={() => this.onChangeCountry('UAE')}><FormattedMessage id="header.uae" defaultMessage="UAE" /></a>
+                                                            </div>
+                                                        </div>}
                                                     {/* <li><a href="javascript:void(0);" className="ksa" id="cart" onClick={() => this.onChangeCountry('UAE', 'NETHERLANDS')}><FormattedMessage id="header.netherlands" defaultMessage="KSA" /></a></li>
                                                     <li><a href="javascript:void(0);" className="ksa" id="cart" onClick={() => this.onChangeCountry('UAE', 'SLOVENIA')}><FormattedMessage id="header.slovenia" defaultMessage="KSA" /></a></li>
                                                     <li><a href="javascript:void(0);" className="usd" id="cart" onClick={() => this.onChangeCountry('International', 'UNITED KINGDOM')}><FormattedMessage id="header.uk" defaultMessage="International" /></a></li> */}
@@ -377,12 +389,12 @@ class MainHeader extends Component {
                                     <li><a href="https://api.whatsapp.com/send?phone=971565069237" target="_blank" className="whatsapp"><i className="icon-whatsapp" /><span style={{ whiteSpace: 'nowrap' }}><FormattedMessage id="header.ContactUs" defaultMessage="Contact Us" /></span></a></li> */}
                                 </ul >
                                 <ul className="rightLink">
-                                     <li className="titleHover">
-                                     <Link to={`/${store_locale}/store-locator`} style={{ textDecoration: 'none' }}>
-                                        <img src={location} className="image-ion" style={{marginTop:5}}></img>
-                                        <label className="iconLeble text-color changeLinkText"><FormattedMessage id="Header.StoreFinder" defaultMessage="Store Finder" /></label>
+                                    <li className="titleHover">
+                                        <Link to={`/${store_locale}/store-locator`} style={{ textDecoration: 'none' }}>
+                                            <img src={location} className="image-ion" style={{ marginTop: 5 }}></img>
+                                            <label className="iconLeble text-color changeLinkText"><FormattedMessage id="Header.StoreFinder" defaultMessage="Store Finder" /></label>
                                         </Link>
-                                    </li> 
+                                    </li>
                                     <li className="titleHover">
                                         {/* <img src={help} className="image-ion"></img>
                                         <label style={{ lineHeight: '0.5rem' }} className="iconLeble text-color changeLinkText"></label> */}
@@ -394,11 +406,11 @@ class MainHeader extends Component {
                                     <li className="titleHover" style={this.state.userLogin ? { display: 'none' } : { display: 'inline-block', marginBottom: 5 }}>
                                         <Link to={`/${store_locale}/Login`} style={{ textDecoration: 'none' }}>
                                             <img src={profile} className="image-ion" style={{ marginTop: 8 }}></img>
-                                            <label className="iconLeble text-color changeLinkText" style={{paddingTop: 2}}><FormattedMessage id="Header.SignInOrRegister" defaultMessage="Sign in / Register" /></label>
+                                            <label className="iconLeble text-color changeLinkText" style={{ paddingTop: 2 }}><FormattedMessage id="Header.SignInOrRegister" defaultMessage="Sign in / Register" /></label>
                                         </Link>
                                     </li>
                                     <li style={this.state.userLogin ? { display: 'inline-block', paddingTop: 1 } : { display: 'none' }}>
-                                        <img src={profile} className="image-ion" style={{marginTop: 2, height: 16, width: 16}}></img>
+                                        <img src={profile} className="image-ion" style={{ marginTop: 2, height: 16, width: 16 }}></img>
                                         <label className="iconLeble text-color"><span><FormattedMessage id="header.Hello" defaultMessage="Hello" />,&nbsp; {this.props.user_details.customer_details.firstname} </span></label>
                                     </li>
                                     <li style={this.state.userLogin ? { display: 'inline-block' } : { display: 'none' }}>
@@ -408,7 +420,7 @@ class MainHeader extends Component {
                                     </li>
 
                                     <li style={this.state.userLogin ? { display: 'inline-block' } : { display: 'none' }}>
-                                            <label className="iconLeble text-color changeLinkText" onClick={this.logOut}><FormattedMessage id="header.SignOut" defaultMessage="Sign Out" /></label>     
+                                        <label className="iconLeble text-color changeLinkText" onClick={this.logOut}><FormattedMessage id="header.SignOut" defaultMessage="Sign Out" /></label>
                                     </li>
                                     {/* <li style={this.state.userLogin ? {display: 'inline-block'} : {display: 'none'}}>
                                         <label className="iconLeble text-color changeLinkText"><FormattedMessage id="header.SignOut" defaultMessage="Sign Out" /></label>
@@ -509,7 +521,7 @@ class MainHeader extends Component {
                                             )
                                     }
                                 </div> */}
-                               
+
                                 <div className="changecountry">
                                     <div className="country">
                                         <div onClick={this.showCountries} className={this.state.showCountries ? "activeCountry open divShowOnMobile" : "activeCountry divShowOnMobile"}>
@@ -524,14 +536,27 @@ class MainHeader extends Component {
                                             <i className="icon-down" ></i>
                                         </div>
                                         <div className="list" style={{ textAlign: 'start' }}>
-                                            <div style={{ paddingLeft: 10, paddingBottom: 7 }}>
-                                                <img style={{ height: '20px', width: '30px' }} src={UAEImage}></img>
-                                                <a href="javascript:void(0);" className="uae" id="cart" onClick={() => this.onChangeCountry('UAE')}>UAE</a>
-                                            </div>
-                                            <div style={{ paddingLeft: 10 }}>
-                                                <img style={{ height: '20px', width: '30px' }} src={KSAImage}></img>
-                                                <a href="javascript:void(0);" className="ksa" id="cart" onClick={() => this.onChangeCountry('KSA')}><FormattedMessage id="header.ksa" defaultMessage="KSA" /></a>
-                                            </div>
+                                            {this.state.country_name.toUpperCase() == 'UAE' ?
+                                                <div>
+                                                    <div style={{ paddingLeft: 10, paddingBottom: 7 }}>
+                                                        <img style={{ height: '20px', width: '30px' }} src={UAEImage}></img>
+                                                        <a href="javascript:void(0);" className="uae" id="cart" onClick={() => this.onChangeCountry('UAE')}><FormattedMessage id="header.uae" defaultMessage="UAE" /></a>
+                                                    </div>
+                                                    <div style={{ paddingLeft: 10 }}>
+                                                        <img style={{ height: '20px', width: '30px' }} src={KSAImage}></img>
+                                                        <a href="javascript:void(0);" className="ksa" id="cart" onClick={() => this.onChangeCountry('KSA')}><FormattedMessage id="header.ksa" defaultMessage="KSA" /></a>
+                                                    </div>
+                                                </div>
+                                                : <div>
+                                                    <div style={{ paddingLeft: 10 }}>
+                                                        <img style={{ height: '20px', width: '30px' }} src={KSAImage}></img>
+                                                        <a href="javascript:void(0);" className="ksa" id="cart" onClick={() => this.onChangeCountry('KSA')}><FormattedMessage id="header.ksa" defaultMessage="KSA" /></a>
+                                                    </div>
+                                                    <div style={{ paddingLeft: 10, paddingTop: 7 }}>
+                                                        <img style={{ height: '20px', width: '30px' }} src={UAEImage}></img>
+                                                        <a href="javascript:void(0);" className="uae" id="cart" onClick={() => this.onChangeCountry('UAE')}><FormattedMessage id="header.uae" defaultMessage="UAE" /></a>
+                                                    </div>
+                                                </div>}
                                             {/* <li><a href="javascript:void(0);" className="ksa" id="cart" onClick={() => this.onChangeCountry('UAE', 'NETHERLANDS')}><FormattedMessage id="header.netherlands" defaultMessage="KSA" /></a></li>
                                                     <li><a href="javascript:void(0);" className="ksa" id="cart" onClick={() => this.onChangeCountry('UAE', 'SLOVENIA')}><FormattedMessage id="header.slovenia" defaultMessage="KSA" /></a></li>
                                                     <li><a href="javascript:void(0);" className="usd" id="cart" onClick={() => this.onChangeCountry('International', 'UNITED KINGDOM')}><FormattedMessage id="header.uk" defaultMessage="International" /></a></li> */}
@@ -540,15 +565,15 @@ class MainHeader extends Component {
                                     </div>
                                 </div>
                                 <div className="ll enghishTextPadding" style={{ display: 'inline-block' }}>
-                                        <div className="lang" style={{ fontSize: '1.2rem' }}>
-                                            <a href="javascript:void(0);" onClick={(e) => this.translate('en', 'ltr')} className="active" >English</a>
-                                            </div>
+                                    <div className="lang" style={{ fontSize: '1.2rem' }}>
+                                        <a href="javascript:void(0);" onClick={(e) => this.translate('en', 'ltr')} className="active" >English</a>
+                                    </div>
                                 </div>
                                 <div style={{ paddingLeft: 8, display: 'inline-block' }}> - </div>
                                 <div className="ll" style={{ padding: 0, display: 'inline-block' }}>
-                                        <div className="lang" style={{ paddingLeft: 8, fontSize: '1.2rem' }}>
-                                            <a href="javascript:void(0);" onClick={(e) => this.translate('ar', 'rtl')} >العربية</a>
-                                        </div>
+                                    <div className="lang" style={{ paddingLeft: 8, fontSize: '1.2rem' }}>
+                                        <a href="javascript:void(0);" onClick={(e) => this.translate('ar', 'rtl')} >العربية</a>
+                                    </div>
                                 </div>
                                 <div className="floatRight" style={{ display: 'inline-block' }}>
                                     <span style={{ height: 40 }}>
@@ -570,8 +595,8 @@ class MainHeader extends Component {
                                     <img className="mobileHomeLogo" src={logoGroup} />
                                 </Link>
                                 <Link to={`/${store_locale}/store-locator`} style={{ textDecoration: 'none' }}>
-                                <img src={location} className="mobileHomePageIcon hide-mob"></img></Link>
-                                <Link className="basket-icon" to={`/${store_locale}/cart`} style={{ textDecoration: 'none'}}>
+                                    <img src={location} className="mobileHomePageIcon hide-mob"></img></Link>
+                                <Link className="basket-icon" to={`/${store_locale}/cart`} style={{ textDecoration: 'none' }}>
                                     <img src={bagLogo} className="mobileHomePageIcon" style={{ height: 25, width: 25 }} />
                                     <label className="lable-count">{this.props.cart_details.products ? this.props.cart_details.products.length : 0}</label>
                                 </Link>
@@ -635,19 +660,19 @@ class MainHeader extends Component {
                                     <Row className="direction-r">
                                         <Col xs="3" lg="3" md="3" className="col-width"></Col>
                                         <Col xs="2" lg="2" md="2" style={{ paddingLeft: 0 }} className="padd-icon-zero first-imag">
-                                             <img src={deliveryBy} className="imageHight40 divShowOnWeb " /> 
+                                            <img src={deliveryBy} className="imageHight40 divShowOnWeb " />
                                         </Col>
-                                        <Col xs="6" lg="7" md="7" style={{padding: 0}}>
+                                        <Col xs="6" lg="7" md="7" style={{ padding: 0 }}>
                                             <ul style={{ textAlign: 'start', paddingTop: 10 }}>
                                                 <li style={{ fontSize: 15, color: "#0D943F", lineHeight: '0.5', fontWeight: 'bold' }}>
                                                     <FormattedMessage id="header.FreeStdDelivery" defaultMessage="Free Standard Delivery" />
                                                 </li>
-                                                {this.props.globals.store_locale=='uae-en'?
-                                                <li style={{ fontSize: 12, lineHeight: '2.5', fontWeight: 'bold' }} className="text-color">
-                                                    <FormattedMessage id="WhenyouspendAED250UAE" defaultMessage="When you spend AED 250" />
-                                                </li>:<li style={{ fontSize: 12, lineHeight: '2.5', fontWeight: 'bold' }} className="text-color">
-                                                    <FormattedMessage id="WhenyouspendSAR250KSA" defaultMessage="When you spend SAR 250" />
-                                                </li>
+                                                {this.props.globals.store_locale == 'uae-en' ?
+                                                    <li style={{ fontSize: 12, lineHeight: '2.5', fontWeight: 'bold' }} className="text-color">
+                                                        <FormattedMessage id="WhenyouspendAED250UAE" defaultMessage="When you spend AED 250" />
+                                                    </li> : <li style={{ fontSize: 12, lineHeight: '2.5', fontWeight: 'bold' }} className="text-color">
+                                                        <FormattedMessage id="WhenyouspendSAR250KSA" defaultMessage="When you spend SAR 250" />
+                                                    </li>
                                                 }
                                             </ul>
                                         </Col>
@@ -657,9 +682,9 @@ class MainHeader extends Component {
                                     <Row className="direction-r">
                                         <Col xs="3" lg="3" md="3"></Col>
                                         <Col xs="2" lg="2" md="2" className="padd-icon-zero">
-                                             <img src={freeDelivery} className="imageHight40 divShowOnWeb" /> 
+                                            <img src={freeDelivery} className="imageHight40 divShowOnWeb" />
                                         </Col>
-                                        <Col xs="6" lg="7" md="7" className="padd-zer" style={{padding: 0}}>
+                                        <Col xs="6" lg="7" md="7" className="padd-zer" style={{ padding: 0 }}>
                                             <ul style={{ textAlign: 'start', paddingTop: 10 }}>
                                                 <li style={{ fontSize: 15, color: "#0D943F", lineHeight: '0.5', fontWeight: 'bold' }}>
                                                     <FormattedMessage id="header.FreeGiftwrapping" defaultMessage="Free Gift wrapping" />
@@ -675,11 +700,11 @@ class MainHeader extends Component {
                                     <Row className="direction-r">
                                         <Col xs="3" lg="3" md="3"></Col>
                                         <Col xs="2" lg="2" md="2" className="padd-icon-zero">
-                                            <img src={freeCollect} className="imageHight40 divShowOnWeb" /> 
+                                            <img src={freeCollect} className="imageHight40 divShowOnWeb" />
                                         </Col>
-                                        <Col xs="6" lg="7" md="7" style={{padding: 0}}>
+                                        <Col xs="6" lg="7" md="7" style={{ padding: 0 }}>
                                             <ul style={{ textAlign: 'start', paddingTop: 10 }}>
-                                                <li style={{ fontSize: 15, color: "#0D943F",lineHeight: '0.5', fontWeight: 'bold' }}>
+                                                <li style={{ fontSize: 15, color: "#0D943F", lineHeight: '0.5', fontWeight: 'bold' }}>
                                                     <FormattedMessage id="header.FreeReturns" defaultMessage="Free Returns" />
                                                 </li>
                                                 <li style={{ fontSize: 12, lineHeight: '2.5', fontWeight: 'bold' }} className="text-color">
