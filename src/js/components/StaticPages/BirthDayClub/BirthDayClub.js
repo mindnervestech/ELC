@@ -149,26 +149,17 @@ class BirthDayClub extends Component {
       errors["contactNumber"] = <FormattedMessage id="Signup.validation.contactNumber.empty" defaultMessage="Enter Valid Contact Number" />;
 
     }
-
-   
-
     this.setState({ errors: errors });
     return formIsValid;
   }
 
   signUpSubmit = (e) => {
-
     e.preventDefault();
-    if (this.props.isUserLoggedIn) {
+    
       if (this.handleValidation()) {
         this.register();
       }
-    }
-
-    else {
-      this.props.history.push(`/${this.props.globals.store_locale}/Login`);
-    }
-
+     
   }
   handleChange
     = (field, e) => {
@@ -306,6 +297,10 @@ class BirthDayClub extends Component {
 
   render() {
     let respo_message = null;
+    if(!this.props.isUserLoggedIn)
+    {
+      this.props.history.push(`/${this.props.globals.store_locale}/Login`); 
+    }
    
     if (this.state.showAlert) {
       
