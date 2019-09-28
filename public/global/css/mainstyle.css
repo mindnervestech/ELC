@@ -3094,9 +3094,7 @@ html[dir="rtl"] .data .slick-next {
     min-height: 50px;
 }
 
-.header-slider {
-    padding-bottom: 8px;
-}
+.header-slider {}
 
 .product-list {
     margin: 20px 0;
