@@ -307,7 +307,7 @@ class MainHeader extends Component {
                                                 <div className="list" style={{ textAlign: 'start' }}>
                                                     <div style={{ paddingLeft: 10, paddingBottom: 7, fontSize: '1.2rem' }}>
                                                         <img style={{ height: '20px', width: '30px' }} src={UAEImage}></img>
-                                                        <a href="javascript:void(0);" className="uae" id="cart" onClick={() => this.onChangeCountry('UAE')}>UAE</a>
+                                                        <a href="javascript:void(0);" className="uae" id="cart" onClick={() => this.onChangeCountry('UAE')}><FormattedMessage id="header.uae" defaultMessage="UAE" /></a>
                                                     </div>
                                                     <div style={{ paddingLeft: 10, fontSize: '1.2rem' }}>
                                                         <img style={{ height: '20px', width: '30px' }} src={KSAImage}></img>
