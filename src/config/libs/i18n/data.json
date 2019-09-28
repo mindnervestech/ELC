@@ -660,10 +660,12 @@
         "Instoresoronline":"In stores or Online",
         "Onanyorder":"On any order",
         "WhenyouspendAED250":"When you spend AED 250",
-	"select.gender":"Select Gender"
+    "select.gender":"Select Gender",
+    "select.langauge":"Select Language"
 
     },
     "ar": {
+        "select.langauge":"Select Language",
         "select.gender":"Select Gender",
         "PageTitle.NA":"الصفحة الرئيسية",
         "PageTitle.new-in":"المنتجات الجديدة في ",

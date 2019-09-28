@@ -23,7 +23,7 @@ let editingRow = 0
 class BirthDayClub extends Component {
   constructor(props) {
     super(props);
-    console.log(props)
+   
     this.state = {
       sortByText: "",
       startDate: new Date(),
@@ -33,7 +33,7 @@ class BirthDayClub extends Component {
       childName: '',
       showAlert: false,
       ischeckremove: true,
-      lang: 'en',
+      lang: '',
       fields:
       {
         parentFirstName: '',
@@ -55,27 +55,6 @@ class BirthDayClub extends Component {
   closeAlert = () => {
     this.setState({ showAlert: false });
   }
-
-  // componentDidUpdate() {
-
-  //   if (this.props.bclubDetails !== undefined) {
-  //     let message = this.props.bclubDetails.message
-  //     console.log("message outside  ischeckremove",message)
-  //     if (this.state.ischeckremove) {
-  //      console.log("message ischeckremove",message)
-  //       this.setState({ sucesss_message: message,  ischeckremove: false });
-
-  //       this.setState({showAlert:true})
-  //      console.log("smessgae",this.state.sucesss_message)
-  //      console.log(this.state.showAlert)
-  //       // setTimeout(() => {
-  //       //   this.closeAlert();
-  //       // }, 5000);
-  //     }
-
-  //   }
-  // }
-
 
   componentWillReceiveProps(nextprops) {
 
@@ -112,29 +91,16 @@ class BirthDayClub extends Component {
 
     }
 
-    }
+  }
   
-
-
-
-
-
-
-  // componentWillUnmount() {
-  //   this.props.onClearRegistrationError();
-  // }
-
-
   handleValidation = () => {
     let fields = this.state.fields;
 
     let errors = {};
     let formIsValid = true;
 
-    if (this.state.lang == ' ') {
+    if (this.state.lang == '') {
       langerror = true
-
-
     }
     if (!fields["parentFirstName"]) {
       formIsValid = false;
@@ -254,7 +220,7 @@ class BirthDayClub extends Component {
 
   addChild() {
     if (ChildrenDate[ChildrenDate.length - 1] == '' || ChildrenName[ChildrenName.length - 1] == '' || ChildrenGender[ChildrenGender.length - 1] == '') {
-      //"input-field error" : "input-field"
+    
       this.setState({ error: true })
     } else {
       ChildrenDate.push("")
@@ -304,7 +270,11 @@ class BirthDayClub extends Component {
         dob: ''
       }
     })
+    this.setState({errors:{}})
+    langerror=false;
   }
+
+ 
 
   register = () => {
     if (ChildrenDate[ChildrenDate.length - 1] == '' || ChildrenName[ChildrenName.length - 1] == '' || ChildrenGender[ChildrenGender.length - 1] == '') {
@@ -397,7 +367,7 @@ class BirthDayClub extends Component {
 
     let spanerrorlangmessage = null
     if (langerror) {
-      spanerrorlangmessage = <span style={{ color: 'red' }}>Select Language</span>
+      spanerrorlangmessage = <div><span className="a-Form-error u-visible" style={{ color: 'red' }}><FormattedMessage id="select.langauge" defaultMessage="Select Language"></FormattedMessage></span></div>
     }
 
     let arLangRadioField = <div><div>
