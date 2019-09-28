@@ -281,17 +281,7 @@ class Footer extends Component {
                                         </a>
 
                                         :
-                                        <Link
-                                            to={`/${store_locale}/consumer-rights`}
-                                            style={{ textDecoration: "none" }}
-                                        >
-                                            <a>
-                                                <FormattedMessage
-                                                    id="footer.ConsumerRights"
-                                                    defaultMessage="Consumer Rights"
-                                                />
-                                            </a>
-                                        </Link>}
+                                        <div></div>}
 
                                 </li>
                             </ul>
@@ -424,9 +414,10 @@ class Footer extends Component {
                                             </Link>
                                         </li>
                                         <li>
+                                            {this.props.globals.store_locale === 'uae-en'?
                                             <Link to={`/${store_locale}/consumer-rights`} style={{ textDecoration: 'none' }}>
                                                 <a><FormattedMessage id="footer.ConsumerRights" defaultMessage="Consumer Rights" /></a>
-                                            </Link>
+                                            </Link>:<div></div>}
                                         </li>
                                     </ul>
                                 </div>

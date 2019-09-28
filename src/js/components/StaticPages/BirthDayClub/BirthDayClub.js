@@ -68,7 +68,7 @@ class BirthDayClub extends Component {
 
       setTimeout(() => {
         this.closeAlert();
-      }, 3000);
+      }, 6000);
 
     }
     else if(nextprops.bclubDetails && nextprops.bclubDetails.status)
@@ -272,12 +272,13 @@ class BirthDayClub extends Component {
     })
     this.setState({errors:{}})
     langerror=false;
+    this.state.lang='';
   }
 
  
 
   register = () => {
-    if (ChildrenDate[ChildrenDate.length - 1] == '' || ChildrenName[ChildrenName.length - 1] == '' || ChildrenGender[ChildrenGender.length - 1] == '') {
+    if (ChildrenDate[ChildrenDate.length - 1] == '' || ChildrenName[ChildrenName.length - 1] == '' || ChildrenGender[ChildrenGender.length - 1] == '' || this.state.lang=='') {
       this.setState({ error: true })
     } else {
       moreinfoData = ''
@@ -308,7 +309,7 @@ class BirthDayClub extends Component {
    
     if (this.state.showAlert) {
       
-      respo_message = <span id="APEX_SUCCESS_MESSAGE" data-template-id="126769709897686936_S" className="apex-page-success u-visible"><div className="t-Body-alert">
+      respo_message = <span id="APEX_SUCCESS_MESSAGE" data-template-id="126769709897686936_S" style={{top:'50 %'}} className="apex-page-success u-visible"><div className="t-Body-alert">
         <div className="t-Alert t-Alert--defaultIcons t-Alert--success t-Alert--horizontal t-Alert--page t-Alert--colorBG" id="t_Alert_Success" role="alert">
           <div className="t-Alert-wrap">
             <div className="t-Alert-icon">
