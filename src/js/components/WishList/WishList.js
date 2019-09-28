@@ -288,7 +288,7 @@ class WishList extends Component {
                                                 <img src={save} className="save" style={{ display: 'none' }}/> */}
                                             <img src={this.props.products[item].image[0]} className="cardImage" style={{ height: 'auto' }} />
                                             {/* <img src={percentage} className="percentage"/> */}
-                                            <div style={{ marginTop: 10 }}>
+                                            <div style={{ marginTop: 10, height: 50 }}>
                                                 <label className="text-color">{this.props.products[item].name}</label>
                                             </div>
                                             <div>
