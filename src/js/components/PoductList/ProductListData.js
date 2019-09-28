@@ -456,6 +456,8 @@ class ProductListData extends Component {
 		if (changeFilterData == false) {
 			productListData = this.props.list.product_data
 			productList = this.props.list.product_data
+			this.state.list1 = productList
+			list = this.state.list1
 			this.changeThePagenationData()
 		}
 		
