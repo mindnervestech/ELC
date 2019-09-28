@@ -146,7 +146,7 @@ class BirthDayClub extends Component {
     if (!(this.state.isPhoneValid)) {
 
       formIsValid = false;
-      errors["contactNumber"] = <FormattedMessage id="Signup.validation.contactNumber.empty" defaultMessage="Eneter Valid Contact Number" />;
+      errors["contactNumber"] = <FormattedMessage id="Signup.validation.contactNumber.empty" defaultMessage="Enter Valid Contact Number" />;
 
     }
 
