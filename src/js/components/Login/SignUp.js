@@ -186,24 +186,17 @@ class SignUp extends Component {
   }
 
   signUpSubmit = (e) => {
-    console.log('::', this.state);
-    console.log('::', e);
     e.preventDefault();
-
     if (this.handleValidation()) {
       this.registerUser();
-      //console.log('::', this.state)
-
     }
   }
 
   handleChange = (field, e) => {
-    console.log(field, e.target.value);
+    
     let fields = this.state.fields;
     fields[field] = e.target.value;
     this.setState({ fields });
-
-    console.log(this.state.fields);
   }
 
   registerUser = () => {

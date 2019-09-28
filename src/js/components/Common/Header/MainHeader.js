@@ -33,6 +33,7 @@ import KSAImage from '../../../../assets/images/header/sa.svg';
 class MainHeader extends Component {
     constructor(props) {
         super(props);
+        console.log(props)
         let login = false
         if (this.props.user_details.isUserLoggedIn == true) {
             login = true
@@ -667,10 +668,11 @@ class MainHeader extends Component {
                                                 <li style={{ fontSize: 15, color: "#0D943F", lineHeight: '0.5', fontWeight: 'bold' }}>
                                                     <FormattedMessage id="header.FreeStdDelivery" defaultMessage="Free Standard Delivery" />
                                                 </li>
-                                                {this.props.globals.store_locale == 'uae-en' ?
+                                                {this.props.globals.country == 'UAE' ?
                                                     <li style={{ fontSize: 12, lineHeight: '2.5', fontWeight: 'bold' }} className="text-color">
                                                         <FormattedMessage id="WhenyouspendAED250UAE" defaultMessage="When you spend AED 250" />
-                                                    </li> : <li style={{ fontSize: 12, lineHeight: '2.5', fontWeight: 'bold' }} className="text-color">
+                                                    </li> :
+                                                     <li style={{ fontSize: 12, lineHeight: '2.5', fontWeight: 'bold' }} className="text-color">
                                                         <FormattedMessage id="WhenyouspendSAR250KSA" defaultMessage="When you spend SAR 250" />
                                                     </li>
                                                 }

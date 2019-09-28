@@ -87,8 +87,8 @@ class BirthDayClub extends Component {
 
     }
     else
-    {
-
+    { 
+      
     }
 
   }
@@ -264,6 +264,7 @@ class BirthDayClub extends Component {
     this.setState({errors:{}})
     langerror=false;
     this.state.lang='';
+ 
   }
 
  
@@ -279,7 +280,7 @@ class BirthDayClub extends Component {
       const data = {
         firstname: this.state.fields.parentFirstName,
         lastname: this.state.fields.parentLastName,
-        phoneNumber: parseInt((this.state.fields.contactNumber).trim()),
+        phoneNumber: parseInt((this.state.fields.contactNumber).replace(/\s/g,'')),
         email: this.state.fields.email,
         countryCode: this.state.fields.carrierCode,
         storeid: this.props.globals.currentStore,
@@ -469,7 +470,7 @@ class BirthDayClub extends Component {
                             <span id="PHONE_error_placeholder" className="a-Form-error" data-template-id="33610259035469734_ET" style={{ color: 'red' }}>
                               {errorsObj["contactNumber"]}
                             </span>
-                            {/* {contactNumberInputField} */}
+                            {contactNumberInputField}
                           </div>
                         </div>
                       </div>
@@ -518,10 +519,10 @@ class BirthDayClub extends Component {
 
                           <div style={{ width: '100%' }} id="PhoneNumber" className={phoneNumberClassName} >
                             <PhoneNumber changed={this.contactNumber} />
-                            <span id="PHONE_error_placeholder" className="a-Form-error" data-template-id="33610259035469734_ET" style={{ color: 'red' }}>
+                            {/* <span id="PHONE_error_placeholder" className="a-Form-error" data-template-id="33610259035469734_ET" style={{ color: 'red' }}>
                               {errorsObj["contactNumber"]}
-                            </span>
-                            {/* {contactNumberInputField} */}
+                            </span> */}
+                            {contactNumberInputField}
                           </div>
                         </div>
                       </div>
