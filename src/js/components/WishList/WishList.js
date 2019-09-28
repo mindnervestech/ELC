@@ -12,7 +12,14 @@ import percentage from '../../../assets/images/product-details/percentage.png';
 import save from '../../../assets/images/product-details/save.png';
 import logo1 from '../../../assets/images/you_may_also_like_1.png'
 import StarRatings from 'react-star-ratings';
+import AddToBasketModal from '../Product/product-details/product-info/add-to-basket-modal';
+import Modal from 'react-responsive-modal';
+import AddToCartModal from '../Product/product-details/product-info/product-basic';
 
+let basketPopupFlag = false;
+let addToCartModal = false
+let cartModelFlag = false;
+let url_key = '';
 class WishList extends Component {
 
     constructor(props) {
@@ -22,15 +29,64 @@ class WishList extends Component {
             url_key: null,
             showAlert: false,
             wishlist_message: '',
-            ischeckremove: true
+            ischeckremove: true,
+            basketPopupFlag: false,
+			addToCartModal: false,
+			cartModelFlag: false,
+			url_key: '',
         }
     }
 
     componentDidMount() {
         this.props.onGetWishListItem({ customerid: this.props.user_details.customer_id, store_id: this.props.globals.currentStore })
-
     }
 
+    openAddTOBasketModal = (url) =>{
+        this.setState({
+            basketPopupFlag: true,
+            url_key:url_key
+        })
+        url_key = url;
+        basketPopupFlag = true;
+        console.log(this.state.basketPopupFlag, basketPopupFlag);
+        console.log(url_key, url);
+    }
+
+    onCloseCartModal = () => {
+        addToCartModal = false;
+        cartModelFlag = false;
+		this.setState({ addToCartModal: false, cartModelFlag: false })
+	}
+
+    onCloseAddCartModal = () => {
+        this.setState({ basketPopupFlag: false})
+        setTimeout(() => {
+            console.log(this.props);
+            if (this.props.isUserLoggedIn) {
+                this.props.OngetMyCart({
+                    quote_id: this.props.user_details.quote_id,
+                    store_id: this.props.globals.currentStore
+                })
+            } else {
+                this.props.OngetMyCart({
+                    quote_id: this.props.guest_user.new_quote_id,
+                    store_id: this.props.globals.currentStore
+                })
+
+            }
+            if (this.props.addToCardLoader) {
+                if (!this.state.cartModelFlag) {
+                    this.setState({
+                        addToCartModal: true,
+                        cartModelFlag: true
+                    })
+                }
+            }
+        }, 500);
+        basketPopupFlag = false;
+        addToCartModal = true;
+        cartModelFlag = true;
+	}
 
     componentDidUpdate() {
 
@@ -142,10 +198,20 @@ class WishList extends Component {
         //     productDetail={() => this.gotoProductDetail(item)}
         //     clicked={() => this.wishlistToggle(index, item.wishlist_id)} />)
         // })
+        
 
         return (
             <div className="t-Body-contentInner homePage">
-
+                {basketPopupFlag ? <div>
+                    <Modal modalId="add_to_basket"  open={basketPopupFlag} onClose={this.onCloseAddCartModal}>
+                        <AddToBasketModal url_key={url_key} onCloseAddCartModal={this.onCloseAddCartModal}/>
+                    </Modal>
+                </div> : ''}
+                {addToCartModal && this.props.cart_details.similar_products && !window.location.href.includes('products-details') ? <div>
+                        <Modal modalId="addToCartPopupID"  open={addToCartModal} onClose={this.onCloseCartModal}>
+                            <AddToCartModal onCloseCartModal={this.onCloseCartModal} />
+                        </Modal>
+                    </div> : ''}
                 <div className="padding-right-ar padding-breadcrumb" style={{ textAlign: 'start' }}>
                     <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
                         <span className="titleHover" style={{ fontSize: 15 }}><FormattedMessage id="Checkout.Home" defaultMessage="Home" /></span>
@@ -158,16 +224,16 @@ class WishList extends Component {
                 </div>
                 <div className="container">
                     {/* <div>
-            <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
-              <span className="titleHover">Home</span>
-            </Link>
-            <span>  > Wishlist</span>
-          </div>
-          <div className="wishlist-title">
-            <label>
-              My WishList
-            </label>
-          </div> */}
+                        <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
+                        <span className="titleHover">Home</span>
+                        </Link>
+                        <span>  > Wishlist</span>
+                    </div>
+                    <div className="wishlist-title">
+                        <label>
+                        My WishList
+                        </label>
+                    </div> */}
                     <div className="row">
                         <div className="col col-12 apex-col-auto">
                             <div className="t-ButtonRegion t-Form--floatLeft containers t-ButtonRegion--noPadding t-ButtonRegion--noUI apex-tabs-region js-apex-region" id="R28512406002220865">
@@ -218,8 +284,8 @@ class WishList extends Component {
                                     <li key={index}>
                                         <div className="alsoLikeCard">
                                             {/* <span className="percentage-text">30</span>
-                <span className="save-text" style={{ display: 'none' }}>5</span>
-                <img src={save} className="save" style={{ display: 'none' }}/> */}
+                                                <span className="save-text" style={{ display: 'none' }}>5</span>
+                                                <img src={save} className="save" style={{ display: 'none' }}/> */}
                                             <img src={this.props.products[item].image[0]} className="cardImage" style={{ height: 'auto' }} />
                                             {/* <img src={percentage} className="percentage"/> */}
                                             <div style={{ marginTop: 10 }}>
@@ -230,20 +296,22 @@ class WishList extends Component {
                                                 {/* <span style={{ color: "gray", textDecorationLine: 'line-through', fontSize: 14, marginLeft: 10 }}>AED 14.50</span> */}
                                             </div>
                                             {/* <div style={{ paddingTop: 10 }}>
-                   <StarRatings
-                    rating={3}
-                    starRatedColor='#FAD961'
-                    changeRating={this.changeRating}
-                    numberOfStars={5}
-                    name='rating'
-                    starHoverColor='#0D943F'
-                    starDimension='15px'
-                    starSpacing='0px'
-                  /> 
-                  <span style={{ marginLeft: 5 }}>3 - 10 years</span>
-                </div> */}
+                                                <StarRatings
+                                                    rating={3}
+                                                    starRatedColor='#FAD961'
+                                                    changeRating={this.changeRating}
+                                                    numberOfStars={5}
+                                                    name='rating'
+                                                    starHoverColor='#0D943F'
+                                                    starDimension='15px'
+                                                    starSpacing='0px'
+                                                /> 
+                                                <span style={{ marginLeft: 5 }}>3 - 10 years</span>
+                                                </div> */}
                                             <div>
-                                                <button className="alsoLikeCardButton"><FormattedMessage id="Product.Detail.addToBasket" defaultMessage="Add to basket" /></button>
+                                                <button className="alsoLikeCardButton" onClick={() => this.openAddTOBasketModal(this.props.products[item].url_key)}>
+                                                    <FormattedMessage id="Product.Detail.addToBasket" defaultMessage="Add to basket" />
+                                                </button>
                                             </div>
                                             <div style={{ paddingTop: 10 }}>
                                                 <span onClick={() => this.wishlistToggle(index, this.props.products[item].wishlist_id)}>
@@ -265,21 +333,21 @@ class WishList extends Component {
 
                     </div>
                     {/* <div className="row">
-            <div className="col col-12 apex-col-auto">
-              <div className="t-ContentBlock containers t-ContentBlock--h3 margin-top-lg a-Tabs-panel apex-rds-after apex-rds-element-selected" id="USERWISHLIST" role="tabpanel" aria-labelledby="USERWISHLIST_tab" aria-live="polite" aria-hidden="false" style={{}}>
-                <div className="t-ContentBlock-header"><h1 className="t-ContentBlock-title"><FormattedMessage id="profile.Wishlist.Title" defaultMessage="Wishlist" /></h1></div>
-                <div className="t-ContentBlock-body"><div id="report_28511608561220857_catch"><ul className="t-Cards t-Cards--basic t-Cards--4cols t-Cards--animColorFill products" id="USERWISHLIST_cards" data-region-id="USERWISHLIST" style={{ touchAction: 'pan-y', userSelect: 'none', WebkitUserDrag: 'none', WebkitTapHighlightColor: 'rgba(0, 0, 0, 0)' }}>
+                        <div className="col col-12 apex-col-auto">
+                        <div className="t-ContentBlock containers t-ContentBlock--h3 margin-top-lg a-Tabs-panel apex-rds-after apex-rds-element-selected" id="USERWISHLIST" role="tabpanel" aria-labelledby="USERWISHLIST_tab" aria-live="polite" aria-hidden="false" style={{}}>
+                            <div className="t-ContentBlock-header"><h1 className="t-ContentBlock-title"><FormattedMessage id="profile.Wishlist.Title" defaultMessage="Wishlist" /></h1></div>
+                            <div className="t-ContentBlock-body"><div id="report_28511608561220857_catch"><ul className="t-Cards t-Cards--basic t-Cards--4cols t-Cards--animColorFill products" id="USERWISHLIST_cards" data-region-id="USERWISHLIST" style={{ touchAction: 'pan-y', userSelect: 'none', WebkitUserDrag: 'none', WebkitTapHighlightColor: 'rgba(0, 0, 0, 0)' }}>
 
 
-                  {this.props.wishLoader ? <Spinner /> : productList ? productList : null}
+                            {this.props.wishLoader ? <Spinner /> : productList ? productList : null}
 
 
-                </ul>
-                  <table className="t-Report-pagination" role="presentation" /></div></div>
-                <div className="t-ContentBlock-buttons" />
-              </div>
-            </div>
-          </div> */}
+                            </ul>
+                            <table className="t-Report-pagination" role="presentation" /></div></div>
+                            <div className="t-ContentBlock-buttons" />
+                        </div>
+                        </div>
+                    </div> */}
                 </div>
             </div>
         );
@@ -294,7 +362,9 @@ const mapStateToProps = state => {
         orderHistory: state.orders.orders_history,
         globals: state.global,
         removeWishListDetail: state.productDetails.productWishDetail,
-        wishLoader: state.wishList.wishLoader
+        wishLoader: state.wishList.wishLoader,
+        cart_details: state.myCart,
+		guest_user: state.guest_user,
     }
 }
 
@@ -303,8 +373,8 @@ const mapDispatchToProps = dispatch => {
         onLogoutUser: () => dispatch(actions.logoutUser()),
         onGetWishListItem: (payload) => dispatch(actions.getWishlist(payload)),
         onGetProductDetails: payload => dispatch(actions.getProductDetails(payload)),
-        getSizeChart: payload => dispatch(actions.getSizeChart(payload)),
-
+        // getSizeChart: payload => dispatch(actions.getSizeChart(payload)),
+        OngetMyCart: (quoteId) => dispatch(actions.getMyCart(quoteId)),
         onRemoveProductFromWishList: (payload) => dispatch(actions.removeWishList(payload)),
     }
 

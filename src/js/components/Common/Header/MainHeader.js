@@ -33,7 +33,6 @@ import KSAImage from '../../../../assets/images/header/sa.svg';
 class MainHeader extends Component {
     constructor(props) {
         super(props);
-        console.log(props)
         let login = false
         if (this.props.user_details.isUserLoggedIn == true) {
             login = true

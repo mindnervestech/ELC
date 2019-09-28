@@ -24,7 +24,6 @@ class AddToBasketModal extends Component {
 	}
 
 	componentDidMount() {
-		console.log(this.props);
 		const data = {
 			customerid: this.props.customerDetails.customer_id ? parseInt(this.props.customerDetails.customer_id) : '',
 			store: this.props.globals.currentStore,
@@ -174,7 +173,7 @@ class AddToBasketModal extends Component {
 	};
 
 	handleChange(e) {
-		let totalQty = this.props.data.type === 'simple' ? parseInt(this.props.data.simpleqty) : this.props.data.simpleproducts[0].qty;
+		let totalQty = this.props.productData.type === 'simple' ? parseInt(this.props.productData.simpleqty) : this.props.productData.simpleproducts[0].qty;
 		if (e.target.value.match("^[0-9]*$") != null) {
 			this.setState({ defaultQty: e.target.value });
 		}
