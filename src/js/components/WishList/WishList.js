@@ -423,7 +423,7 @@ class WishList extends Component {
                                                 <span style={{ marginLeft: 5 }}>3 - 10 years</span>
                                                 </div> */}
                                             <div>
-                                                <button className="alsoLikeCardButton" onClick={() => this.openAddTOBasketModal(this.props.products[item].url_key)}>
+                                                <button style={{width: '100%'}} className="alsoLikeCardButton" onClick={() => this.openAddTOBasketModal(this.props.products[item].url_key)}>
                                                     <FormattedMessage id="Product.Detail.addToBasket" defaultMessage="Add to basket" />
                                                 </button>
                                             </div>
@@ -433,7 +433,7 @@ class WishList extends Component {
                                                         <span style={{ paddingLeft: 7, cursor: 'pointer', fontFamily: 'VAG Rounded ELC Light' }} ><FormattedMessage id="PageTitle.remove-wishlist" defaultMessage="Remove from Wishlist" /></span></i></span>
                                             </div>
                                         </div>
-                                            <div>
+                                            <div style={{padding: "0px 10px"}}>
 												{this.props.products[item].offers && this.props.products[item].offers.status == 1 &&
 													this.checkBuyAndMore(this.props.products[item].offers.data, item)
 												}
