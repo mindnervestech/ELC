@@ -191,8 +191,8 @@ class SideManu extends Component {
 													}
 												}
 											}else{
-												if(productListingData[item].json.filtersdata){
-													if(productListingData[item].json.filtersdata[filter]){
+												if(productList[item].json.filtersdata){
+													if(productList[item].json.filtersdata[filter]){
 														if (splitValue[1] == productList[item].json.filtersdata[filter][age]) {
 															filterOptionArrayForCheckValidate.push(afterFilterShowOptionList[value])
 															checkSubmanu = 1
