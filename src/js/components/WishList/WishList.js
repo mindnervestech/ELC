@@ -48,8 +48,6 @@ class WishList extends Component {
         })
         url_key = url;
         basketPopupFlag = true;
-        console.log(this.state.basketPopupFlag, basketPopupFlag);
-        console.log(url_key, url);
     }
 
     onCloseCartModal = () => {
@@ -60,8 +58,8 @@ class WishList extends Component {
 
     onCloseAddCartModal = () => {
         this.setState({ basketPopupFlag: false})
+        basketPopupFlag = false;
         setTimeout(() => {
-            console.log(this.props);
             if (this.props.isUserLoggedIn) {
                 this.props.OngetMyCart({
                     quote_id: this.props.user_details.quote_id,
@@ -74,33 +72,29 @@ class WishList extends Component {
                 })
 
             }
-            if (this.props.addToCardLoader) {
-                if (!this.state.cartModelFlag) {
-                    this.setState({
-                        addToCartModal: true,
-                        cartModelFlag: true
-                    })
-                }
-            }
         }, 500);
-        basketPopupFlag = false;
-        addToCartModal = true;
-        cartModelFlag = true;
 	}
 
-    componentDidUpdate() {
+    componentDidUpdate(prevProps) {
 
         if (this.props.removeWishListDetail.remove_wishlist_success) {
-
             if (this.state.ischeckremove) {
-                console.log("Remove Wishlist", this.props.removeWishListDetail.remove_wishlist_success)
                 this.setState({ wishlist_message: this.props.removeWishListDetail.remove_wishlist_success, showAlert: true, ischeckremove: false });
 
                 setTimeout(() => {
                     this.closeAlert();
                 }, 5000);
             }
-
+        }
+        if (prevProps.addToCardLoader !== this.props.addToCardLoader) {
+            if (!this.state.cartModelFlag) {
+                this.setState({
+                    addToCartModal: true,
+                    cartModelFlag: true
+                })
+            }
+            addToCartModal = true;
+            cartModelFlag = true;
         }
     }
 
@@ -109,7 +103,6 @@ class WishList extends Component {
         if (this.props.removeWishListDetail.remove_wishlist_success) {
 
             if (this.state.ischeckremove) {
-                console.log("Remove Wishlist", this.props.removeWishListDetail.remove_wishlist_success)
                 this.setState({ wishlist_message: this.props.removeWishListDetail.remove_wishlist_success, showAlert: true, ischeckremove: false });
 
                 setTimeout(() => {
@@ -364,7 +357,8 @@ const mapStateToProps = state => {
         removeWishListDetail: state.productDetails.productWishDetail,
         wishLoader: state.wishList.wishLoader,
         cart_details: state.myCart,
-		guest_user: state.guest_user,
+        guest_user: state.guest_user,
+        addToCardLoader: state.productDetails.addToCardLoader,
     }
 }
 

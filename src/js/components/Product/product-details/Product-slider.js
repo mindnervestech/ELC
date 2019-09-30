@@ -48,16 +48,30 @@ class ProductSlider extends Component {
                 })
 
             }
-            if (this.props.addToCardLoader) {
-                if (!this.state.cartModelFlag) {
-                    this.setState({
-                        addToCartModal: true,
-                        cartModelFlag: true
-                    })
-                }
+            if(window.location.href.includes('products-details')){
+                
+                let data = {
+                    customerid: typeof this.props.customer_details.customer_id !== 'undefined' ? parseInt(this.props.customer_details.customer_id) : " ",
+                    store: this.props.globals.currentStore,
+                    url_key: '',
+                };
+                let url = window.location.href.split('/');
+                data.url_key = url[url.length - 1];
+                this.props.onGetProductDetails(data);
             }
-        }, 1000);
-	}
+        }, 500);
+    }
+    
+    componentDidUpdate(prevProps){
+        if (prevProps.addToCardLoader !== this.props.addToCardLoader) {
+            if (!this.state.cartModelFlag) {
+                this.setState({
+                    addToCartModal: true,
+                    cartModelFlag: true
+                })
+            }
+        }
+    }
 
     // componentWillMount() {
 	// 	if (this.props.productDetails) {
@@ -226,7 +240,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
 	return {
 		// onClearProductDetails: payload => dispatch(actions.clearProductDetails(payload)),
-		// onGetProductDetails: payload => dispatch(actions.getProductDetails(payload)),
+		onGetProductDetails: payload => dispatch(actions.getProductDetails(payload)),
 		// getSizeChart: payload => dispatch(actions.getSizeChart(payload)),
 		OngetMyCart: (quoteId) => dispatch(actions.getMyCart(quoteId)),
 		// onGetGuestCartId: () => dispatch(actions.getGuestCartId()),

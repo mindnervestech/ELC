@@ -33,6 +33,7 @@ let showPopupIndex = -1
 let basketPopupFlag = false;
 let url_key = '';
 let addToCartModal = false;
+let cartModelFlag = false;
 class ProductListData extends Component {
 	constructor(props) {
 		super(props);
@@ -97,16 +98,20 @@ class ProductListData extends Component {
                 })
 
             }
-            // if (this.props.addToCardLoader) {
-            //     if (!this.state.cartModelFlag) {
-            //         this.setState({
-            //             addToCartModal: true,
-            //             cartModelFlag: true
-			// 		})
-			// 	}
-            // }
 		}, 1000);
-		addToCartModal = true;
+	}
+
+	componentDidUpdate(prevProps){
+		if (prevProps.addToCardLoader !== this.props.addToCardLoader) {
+            if (!this.state.cartModelFlag) {
+                this.setState({
+                    addToCartModal: true,
+                    cartModelFlag: true
+                })
+            }
+            addToCartModal = true;
+            cartModelFlag = true;
+        }
 	}
 
 	openAddTOBasketModal = (url) =>{

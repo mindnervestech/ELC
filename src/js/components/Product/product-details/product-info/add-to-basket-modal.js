@@ -46,18 +46,23 @@ class AddToBasketModal extends Component {
 	componentDidUpdate(prevProps){
 		
 	}
-
+	
+	componentWillMount() {
+		if (this.props.data && !window.location.href.includes('products-details')) {
+			this.props.onClearProductDetails(this.props.data);
+		}
+	}
 
 	addToCart() {
-		const { productData, customerDetails, guest_user, isUserLoggedIn } = this.props;
+		const { data, customerDetails, guest_user, isUserLoggedIn } = this.props;
 		
 		let prodData = {};
 		if (isUserLoggedIn) {
-			if (productData.type == 'simple') {
+			if (data.type == 'simple') {
 				prodData = {
 					"quote_id": customerDetails.quote_id,
-					"product_type": productData.type,
-					"sku": productData.sku,
+					"product_type": data.type,
+					"sku": data.sku,
 					"qty": this.state.defaultQty,
 					"product_option": {
 						"extension_attributes": {}
@@ -66,15 +71,15 @@ class AddToBasketModal extends Component {
 			} else {
 				prodData = {
 					"quote_id": customerDetails.quote_id,
-					"product_type": productData.type,
-					"sku": productData.sku,
+					"product_type": data.type,
+					"sku": data.sku,
 					"qty": this.state.defaultQty,
 					"product_option": {
 						"extension_attributes": {
 							"configurable_item_options": [
 								{
-									"option_id": productData.simpleproducts[0].color.option_id,
-									"option_value": productData.simpleproducts[0].color.option_value
+									"option_id": data.simpleproducts[0].color.option_id,
+									"option_value": data.simpleproducts[0].color.option_value
 								}
 							]
 						}
@@ -83,11 +88,11 @@ class AddToBasketModal extends Component {
 			}
 			this.props.onAddToCart(prodData);
 		} else {
-			if (productData.type == 'simple') {
+			if (data.type == 'simple') {
 				prodData = {
 					"quote_id": guest_user.temp_quote_id,
-					"product_type": productData.type,
-					"sku": productData.sku,
+					"product_type": data.type,
+					"sku": data.sku,
 					"qty": this.state.defaultQty,
 					"product_option": {
 						"extension_attributes": {}
@@ -96,15 +101,15 @@ class AddToBasketModal extends Component {
 			} else {
 				prodData = {
 					"quote_id": guest_user.temp_quote_id,
-					"product_type": productData.type,
-					"sku": productData.sku,
+					"product_type": data.type,
+					"sku": data.sku,
 					"qty": this.state.defaultQty,
 					"product_option": {
 						"extension_attributes": {
 							"configurable_item_options": [
 								{
-									"option_id": productData.simpleproducts[0].color.option_id,
-									"option_value": productData.simpleproducts[0].color.option_value
+									"option_id": data.simpleproducts[0].color.option_id,
+									"option_value": data.simpleproducts[0].color.option_value
 								}
 							]
 						}
@@ -173,7 +178,7 @@ class AddToBasketModal extends Component {
 	};
 
 	handleChange(e) {
-		let totalQty = this.props.productData.type === 'simple' ? parseInt(this.props.productData.simpleqty) : this.props.productData.simpleproducts[0].qty;
+		let totalQty = this.props.data.type === 'simple' ? parseInt(this.props.data.simpleqty) : this.props.data.simpleproducts[0].qty;
 		if (e.target.value.match("^[0-9]*$") != null) {
 			this.setState({ defaultQty: e.target.value });
 		}
@@ -182,7 +187,7 @@ class AddToBasketModal extends Component {
 	render() {
 
 		// const store_locale=this.props.globals.store_locale
-		let data = this.props.productData;
+		let data = this.props.data;
 
 		let respo_message = null;
 
@@ -391,7 +396,7 @@ const mapStateToProps = state => {
 		isUserLoggedIn: state.login.isUserLoggedIn,
 		globals: state.global,
 		user_details: state.login.customer_details,
-		productData: state.productDetails.productData,
+		data: state.productDetails.productData,
 		customerDetails: state.login.customer_details,
 		// productWishDetail: state.productDetails.productWishDetail,
 		// removeWishListDetail:state.productDetails.productWishDetail,
@@ -407,7 +412,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
 	return {
-		// onClearProductDetails: payload => dispatch(actions.clearProductDetails(payload)),
+		onClearProductDetails: payload => dispatch(actions.clearProductDetails(payload)),
 		onGetProductDetails: payload => dispatch(actions.getProductDetails(payload)),
 		// OngetMyCart: (quoteId) => dispatch(actions.getMyCart(quoteId)),
 		onAddToCart: payload => dispatch(actions.addToCart(payload)),
