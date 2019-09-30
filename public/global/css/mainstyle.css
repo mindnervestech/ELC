@@ -6715,7 +6715,7 @@ html[dir="rtl"] #mobile-click-colect{
 
 .buyAndSaveMorePopup{
     background-color: rgb(13, 148, 63,.92);
-    height: 390px;
+    height: 415px;
     position: absolute;
     width: 100%;
     top: 0;
@@ -6770,7 +6770,7 @@ html[dir="rtl"] #mobile-click-colect{
 }
 
 #add_to_basket{
-    height: 590px !important;
+    height: 610px !important;
     width: 95% !important;
     padding: 16px 17px !important;
 }
