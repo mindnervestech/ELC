@@ -668,11 +668,13 @@
 
     },
     "ar": {
-        "addchild.Clicktoaselectdate":"Click to a select date",
-        "WhenyouspendAED250UAE":"When you spend AED 250",
-        "WhenyouspendSAR250KSA":"When you spend SAR 250",
-        "select.langauge":"Select Language",
-        "select.gender":"Select Gender",
+        
+        
+        "addchild.Clicktoaselectdate":"Cإضغط لإختيار التاريخ ",
+        "WhenyouspendAED250UAE":"عند إنفاقك 250 درهم إماراتي",
+        "WhenyouspendSAR250KSA":"عند إنفاقك 250 ريال سعودي",
+        "select.langauge":"إختر اللغة",
+        "select.gender":"إختر النوع ",
         "PageTitle.NA":"الصفحة الرئيسية",
         "PageTitle.new-in":"المنتجات الجديدة في ",
         "PageTitle.birth-day-club":"نادي عيد الميلاد ",
