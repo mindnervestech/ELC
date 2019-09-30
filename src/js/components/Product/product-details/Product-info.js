@@ -679,7 +679,7 @@ class ProductInfo extends Component {
 												</div>
 												:
 												<div style={{ fontSize: '18px', color: 'red', marginBottom: '30px' }}>
-													<FormattedMessage id="NotAvailableforcurrentstoreDelivery " defaultMessage="Not Available for current store Delivery" />
+													<FormattedMessage id="NotAvailableforcurrentstoreDelivery" defaultMessage="Not Available for current store Delivery" />
 												</div>}
 
 											<div className="share-wishlist">

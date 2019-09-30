@@ -6156,7 +6156,7 @@ html[dir="rtl"] .language {
     background-color: #fff;
     border-top: 1px dotted #e3e3e3;
     margin-top: -3px;
-    min-width: 100px !important;
+    min-width: 110px !important;
     z-index: 9999999;
     position: absolute;
     padding: 7px 0px;
@@ -6816,6 +6816,14 @@ html[dir="rtl"] #add_to_basket .pdoductDetailSpasing{
 .headerSlideTextAlign{
     text-align: start;
     padding-top: 10px;
+}
+
+.webOutOfStockTetx{
+    padding: 29px 20px 5px;
+}
+
+html[dir="rtl"] .webOutOfStockTetx{
+    padding: 11px 20px 5px;
 }
 
 @media only screen and (min-width:768px) and (max-width:1024px)

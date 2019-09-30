@@ -42,7 +42,7 @@ class MainHeader extends Component {
         this.state = {
             showCountries: false,
             country_flag: '',
-            country_name: '',
+            country_name: 'UAE',
             showCart: false,
             cartItemCount: 3,
             showMenu: false,
