@@ -27,7 +27,8 @@ class Search extends Component {
   handleKeyPress = (e) => {
     const store_locale = this.props.store_locale;
     if (e.keyCode === 13) {
-      this.setState({ showAutoSuggestion: false })
+      $("#autoSuagestion").hide();
+      check = false
       this.setState({ redirect: true, searchText: e.target.value });
       this.props.history.push(`/${store_locale}/products/search?query=` + e.target.value);
     }
