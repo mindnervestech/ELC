@@ -98,7 +98,7 @@ class ProductListData extends Component {
                 })
 
             }
-		}, 500);
+		}, 1000);
 	}
 
 	componentDidUpdate(prevProps){

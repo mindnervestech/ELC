@@ -162,14 +162,6 @@ class Payment extends Component {
                 })
             }
         }
-
-
-
-
-
-
-
-
     }
 
     handleChange = (event) => {
@@ -178,7 +170,6 @@ class Payment extends Component {
 
     redirectToConfirm = () => {
         let obj = this.props.cart_details.payment_details;
-
         if (!((Object.entries(obj).length === 0) && (obj.constructor === Object))) {
 
             this.props.onSetPaymentDetails({
@@ -186,15 +177,11 @@ class Payment extends Component {
                 store_id: this.props.global.currentStore,
                 payment_code: this.state.payment_code
             });
-
-
-
         }
     }
 
     redirectToShopping = () => {
         this.props.history.push(`/${this.props.global.store_locale}/`);
-
     }
 
     closeErrorBox = () => {

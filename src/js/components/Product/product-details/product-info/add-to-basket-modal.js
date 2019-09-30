@@ -57,13 +57,20 @@ class AddToBasketModal extends Component {
 		const { data, customerDetails, guest_user, isUserLoggedIn } = this.props;
 		
 		let prodData = {};
+		let totalQty = this.props.data.type === 'simple' ? parseInt(this.props.data.simpleqty) : this.props.data.simpleproducts[0].qty;
+		let addQty = 0;
+		if (totalQty < this.state.defaultQty) {
+			addQty = totalQty;
+		} else {
+			addQty = this.state.defaultQty;
+		}
 		if (isUserLoggedIn) {
 			if (data.type == 'simple') {
 				prodData = {
 					"quote_id": customerDetails.quote_id,
 					"product_type": data.type,
 					"sku": data.sku,
-					"qty": this.state.defaultQty,
+					"qty": addQty,
 					"product_option": {
 						"extension_attributes": {}
 					}
@@ -73,7 +80,7 @@ class AddToBasketModal extends Component {
 					"quote_id": customerDetails.quote_id,
 					"product_type": data.type,
 					"sku": data.sku,
-					"qty": this.state.defaultQty,
+					"qty": addQty,
 					"product_option": {
 						"extension_attributes": {
 							"configurable_item_options": [
@@ -93,7 +100,7 @@ class AddToBasketModal extends Component {
 					"quote_id": guest_user.temp_quote_id,
 					"product_type": data.type,
 					"sku": data.sku,
-					"qty": this.state.defaultQty,
+					"qty": addQty,
 					"product_option": {
 						"extension_attributes": {}
 					}
@@ -103,7 +110,7 @@ class AddToBasketModal extends Component {
 					"quote_id": guest_user.temp_quote_id,
 					"product_type": data.type,
 					"sku": data.sku,
-					"qty": this.state.defaultQty,
+					"qty": addQty,
 					"product_option": {
 						"extension_attributes": {
 							"configurable_item_options": [

@@ -207,13 +207,8 @@ class ProductBasic extends Component {
 		this.setState({ showAlert: false });
 	}
 
-    checkOut(type) {
-        // if(type === 'CheckOut'){
-        //    // this.props.history.push(`/${this.props.globals.store_locale}/new-check-out`);
-        //    this.props.history.push(`/${this.props.globals.store_locale}/cart`);
-        // }else{
+    checkOut() {
         this.props.onCloseCartModal();
-        // }
     }
 
     render() {
@@ -258,11 +253,11 @@ class ProductBasic extends Component {
                     </span>
                 </div>
                 <div className="row padding-model removeRowCss">
-                    <div className="button-model" onClick={() => this.checkOut('shopping')}>
+                    <div className="button-model" onClick={() => this.checkOut()}>
                         <button className="contunue-shopping-btn"><FormattedMessage id="Cart.ContinueShopping.Title" defaultMessage="Continue Shopping" /></button>
                     </div>
 
-                    <div className="button-model">
+                    <div className="button-model" onClick={() => this.checkOut()}>
                         <Link to={`/${this.props.globals.store_locale}/cart`}>
                             <button className="alsoLikeCardButton"><FormattedMessage id="Cart.CheckOut.Title" defaultMessage="Check out" /></button>
                         </Link>
@@ -281,13 +276,13 @@ class ProductBasic extends Component {
                             <div className="related-item productListDiv" key={index}>
                                 <div className="productImageDiv">
                                 <Link to={`/${store_locale}/products-details/${this.props.cart_details.similar_products[index].url_key}`} >
-                                    <img  onClick={() => this.checkOut('shopping')} className="related-item-img" src={this.props.cart_details.similar_products[index].productImageUrl[0]} />
+                                    <img  onClick={() => this.checkOut()} className="related-item-img" src={this.props.cart_details.similar_products[index].productImageUrl[0]} />
                                  </Link>
                                 </div>
                                 <div className="productDetailDiv" >
                                     <div className="related-title">
                                          <Link to={`/${store_locale}/products-details/${this.props.cart_details.similar_products[index].url_key}`}>
-                                        <span onClick={() => this.checkOut('shopping')}>{this.props.cart_details.similar_products[index].name}</span>
+                                        <span onClick={() => this.checkOut()}>{this.props.cart_details.similar_products[index].name}</span>
                                          </Link> 
                                     </div>
                                     <div className="related-title">
