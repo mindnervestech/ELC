@@ -1874,7 +1874,7 @@ only screen and (min-resolution: 2dppx) {
 
 .button-add-to-basket {
       max-height: 40px !important;
-    background: #ee0e19;
+    background: #0D943F;
     text-decoration: none;
     color: #ffffff;
     text-align: center;
@@ -1882,9 +1882,11 @@ only screen and (min-resolution: 2dppx) {
     margin: 8px 0px;
     padding: 10px 0px 10px 0px;
     cursor: pointer;
-    border: solid 1px #ee0e19;
+    border: solid 1px #0D943F;
     border-radius: 4px;
     -webkit-appearance: inherit!important;
+    font-size: 15px;
+    font-weight: bold;
 }
 
 .button-add-to-basket:active {
