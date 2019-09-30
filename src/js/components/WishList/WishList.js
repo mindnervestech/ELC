@@ -20,6 +20,7 @@ let basketPopupFlag = false;
 let addToCartModal = false
 let cartModelFlag = false;
 let url_key = '';
+let showPopupIndex = -1
 class WishList extends Component {
 
     constructor(props) {
@@ -142,6 +143,120 @@ class WishList extends Component {
             url_key: item.url_key
         });
     }
+
+    checkBuyAndMore(offer, index) {
+		if (Object.keys(offer).length == 1) {
+			for (let value in offer) {
+				if (value == '1') {
+					return (
+						<div>
+							<button onClick={() => this.openShowAndMorePopup(index)} className="bayMoreAndSaveMore"><FormattedMessage id="BuyMoreBtn.Message2" defaultMessage="Sale" /></button>
+						</div>
+					);
+				} else {
+					return (
+						<div>
+							<button onClick={() => this.openShowAndMorePopup(index)} className="bayMoreAndSaveMore"><FormattedMessage id="BuyMoreBtn.Message" defaultMessage="Buy More, Save More!" /></button>
+						</div>
+					);
+				}
+			}
+		} else {
+			return (
+				<div>
+					<button onClick={() => this.openShowAndMorePopup(index)} className="bayMoreAndSaveMore"><FormattedMessage id="BuyMoreBtn.Message" defaultMessage="Buy More, Save More!" /></button>
+				</div>
+			);
+		}
+    }
+    
+    closeBuyAndMore(index){
+		showPopupIndex = -1
+		this.setState({ changeFilterData: true })
+    }
+
+    openShowAndMorePopup(index) {
+		showPopupIndex = index
+		this.setState({ changeFilterData: true })
+	}
+    
+    showMessageOnBuyAndMorePopup(offer, currency) {
+		if (Object.keys(offer).length == 1) {
+			for (let value in offer) {
+				if (value == '1') {
+					return (
+						<div className="buyAndMorePopupText">
+							<FormattedMessage id="BuyMoreBtn.Message2" defaultMessage="Sale" />
+						</div>
+					);
+				} else {
+					return (
+						<div>
+							<div className="buyAndMorePopupText">
+								<FormattedMessage id="BuyMoreBtn.Message" defaultMessage="Buy More, Save More!" />
+							</div>
+							<div className="buyAndMoreOffer">
+								<span>{value}&nbsp;<FormattedMessage id="For.Text" defaultMessage="For" />&nbsp;{currency}&nbsp;{offer[value]}</span>
+							</div>
+						</div>
+					);
+				}
+			}
+		} else {
+			let showOffer = []
+			let count = 0
+			for (let value in offer) {
+				if(count < 2){
+					showOffer.push(value)
+					showOffer.push(offer[value])
+				}
+				count++
+			}
+			count = 0
+			return (
+				<div>
+					<div className="buyAndMorePopupText">
+						<FormattedMessage id="BuyMoreBtn.Message" defaultMessage="Buy More, Save More!" />
+					</div>
+					<div>
+						<div className="buyAndMoreOffer">
+							<span>{showOffer[0]}&nbsp;<FormattedMessage id="For.Text" defaultMessage="For" />&nbsp;{currency}&nbsp;{showOffer[1]}</span>
+						</div>
+						<div className="buyAndMoreOffer">
+						<span>{showOffer[2]}&nbsp;<FormattedMessage id="For.Text" defaultMessage="For" />&nbsp;{currency}&nbsp;{showOffer[3]}</span>
+						</div>
+					</div>
+				</div>
+			);
+		}
+    }
+    
+    showDiscountPrise(offerData , orignalPrise, currency){
+		if (Object.keys(offerData).length == 1) {
+			for (let value in offerData) {
+				if (value == '1') {
+					return (
+						<div>
+							<span style={{ fontSize: 14, color: "#0D943F", fontWeight: "bold" }}>{currency}&nbsp;{offerData[value]}</span>
+							<span style={{ color: "#b3b3b3", textDecorationLine: 'line-through', fontSize: 14, marginLeft: 10 }}>{currency}&nbsp;{orignalPrise}.00</span>
+						</div>
+					);
+				} else {
+					return (
+						<div>
+							<span style={{ fontSize: 14, color: "#0D943F", fontWeight: "bold" }}>{currency}&nbsp;{orignalPrise}.00</span>
+						</div>
+					);
+				}
+			}
+		} else {
+			return (
+				<div>
+					<span style={{ fontSize: 14, color: "#0D943F", fontWeight: "bold" }}>{currency}&nbsp;{orignalPrise}.00</span>
+				</div>
+			);
+		}
+	}
 
 
     render() {
@@ -285,8 +400,14 @@ class WishList extends Component {
                                                 <label className="text-color">{this.props.products[item].name}</label>
                                             </div>
                                             <div>
-                                                <span style={{ fontSize: 14, color: "#0D943F", fontWeight: "bold" }}>AED {this.props.products[item].price}</span>
+                                               
                                                 {/* <span style={{ color: "gray", textDecorationLine: 'line-through', fontSize: 14, marginLeft: 10 }}>AED 14.50</span> */}
+                                                {this.props.products[item].offers && this.props.products[item].offers.status == 1 ?
+														this.showDiscountPrise(this.props.products[item].offers.data,this.props.products[item].price,"AED")
+													:<div>
+														<span style={{ fontSize: 14, color: "#0D943F", fontWeight: "bold" }}>AED {this.props.products[item].price}</span>
+														{/* <span style={{ color: "gray", textDecorationLine: 'line-through', fontSize: 14, marginLeft: 10 }}>AED 14.50</span> */}
+													</div>}
                                             </div>
                                             {/* <div style={{ paddingTop: 10 }}>
                                                 <StarRatings
@@ -312,6 +433,22 @@ class WishList extends Component {
                                                         <span style={{ paddingLeft: 7, cursor: 'pointer', fontFamily: 'VAG Rounded ELC Light' }} ><FormattedMessage id="PageTitle.remove-wishlist" defaultMessage="Remove from Wishlist" /></span></i></span>
                                             </div>
                                         </div>
+                                            <div>
+												{this.props.products[item].offers && this.props.products[item].offers.status == 1 &&
+													this.checkBuyAndMore(this.props.products[item].offers.data, item)
+												}
+											</div>
+											<div className="buyAndSaveMorePopup" style={showPopupIndex == item ? { display: 'block' } : { display: 'none' }}>
+												<i className="close fa fa-times" aria-hidden="true" onClick={() => this.closeBuyAndMore(item)} />
+												<div style={{ marginTop: 40 }}>
+													<i className="icon-cart basket iconBasket" />
+												</div>
+												<div style={{ padding: '0px 10px' }}>
+													{this.props.products[item].offers && this.props.products[item].offers.status == 1 &&
+														this.showMessageOnBuyAndMorePopup(this.props.products[item].offers.data, 'AED')
+													}
+												</div>
+											</div>
                                     </li>
                                 ))}
                         </ul>
