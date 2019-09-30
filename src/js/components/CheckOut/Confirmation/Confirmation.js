@@ -314,7 +314,7 @@ class Confirmation extends Component {
                     <tr>
                         <td className="t-Report-cell" headers="TYPE"><span className="order-total"><FormattedMessage id="delivery-details.Total.Title" defaultMessage="Total" /></span></td>
                         <td className="t-Report-cell" align="right" headers="PRICE">
-                            <span className="order-total">{obj.cart_price.currency}</span>
+                            <span className="order-total">{obj.cart_price.currency}&nbsp;</span>
                             <span className="order-total">{obj.cart_price.Total}</span>
                         </td>
                     </tr>

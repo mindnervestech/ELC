@@ -42,7 +42,8 @@ const AppRootReducer = combineReducers({
     vipReg: vipRegReducer,
     contact: contactUsReducer,
     birthdayclubData:birthdayclubReducer,
-    autoSerachProduct:productSuggestionSearchReducer
+    autoSerachProduct:productSuggestionSearchReducer,
+    item_added:productDetailReducer,
 })
 
 const rootReducer = (state, action) => {

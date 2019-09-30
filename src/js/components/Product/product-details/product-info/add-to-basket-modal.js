@@ -187,29 +187,7 @@ class AddToBasketModal extends Component {
 	render() {
 
 		// const store_locale=this.props.globals.store_locale
-		let data = this.props.data;
-
-		let respo_message = null;
-
-		if (this.state.showAlert) {
-			respo_message = <span id="APEX_SUCCESS_MESSAGE" data-template-id="126769709897686936_S" className="apex-page-success u-visible"><div className="t-Body-alert">
-				<div className="t-Alert t-Alert--defaultIcons t-Alert--success t-Alert--horizontal t-Alert--page t-Alert--colorBG" id="t_Alert_Success" role="alert">
-					<div className="t-Alert-wrap">
-						<div className="t-Alert-icon">
-							<span className="t-Icon" />
-						</div>
-						<div className="t-Alert-content">
-							<div className="t-Alert-header">
-								<h2 className="t-Alert-title">{this.state.wishlist_message}</h2>
-							</div>
-						</div>
-						<div className="t-Alert-buttons">
-							<button className="t-Button t-Button--noUI t-Button--icon t-Button--closeAlert" type="button" title="Close Notification" onClick={this.closeAlert} ><span className="t-Icon icon-close" /></button>
-						</div>
-					</div>
-				</div>
-			</div></span>;
-		}
+		let data = this.props.data;		
 		// const { data } = this.props;
 		const store_locale = this.props.globals.store_locale;
 
@@ -392,7 +370,6 @@ class AddToBasketModal extends Component {
 
 const mapStateToProps = state => {
 	return {
-
 		isUserLoggedIn: state.login.isUserLoggedIn,
 		globals: state.global,
 		user_details: state.login.customer_details,
@@ -406,6 +383,7 @@ const mapStateToProps = state => {
 		// addToCardLoader: state.productDetails.addToCardLoader,
 		cart_details: state.myCart,
 		guest_user: state.guest_user,
+		item_added: state.item_added
 
 	};
 };

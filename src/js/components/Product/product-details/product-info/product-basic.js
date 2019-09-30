@@ -91,7 +91,9 @@ class ProductBasic extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
+			cartModelFlag : false,
+			showAlert: false,
+			item_added_message: ''
         };
 
     }
@@ -112,7 +114,18 @@ class ProductBasic extends Component {
 	
 				}
 			}, 2000);
-			
+			if (!this.state.cartModelFlag) {
+				console.log(this.props.item_added);
+				this.setState({ 
+					item_added_message: this.props.item_added.message ? this.props.item_added.message : 'added', 
+					cartModelFlag: true 
+				});
+				if(this.state.showAlert){
+					setTimeout(() => {
+						this.closeAlert();
+					}, 5000);
+				}
+			}
 		}
     }
 
@@ -121,6 +134,7 @@ class ProductBasic extends Component {
         const { customerDetails, guest_user, isUserLoggedIn } = this.props;
         let data = e;
 		let prodData = {};
+		this.setState({showAlert: true, cartModelFlag: false})
 		if (isUserLoggedIn) {
 			if (data.type == 'simple') {
 				prodData = {
@@ -185,8 +199,14 @@ class ProductBasic extends Component {
 				store_id: this.props.globals.currentStore,
 			};
 			this.props.onGuestAddToCart(prodData, myCart);
+			
 		}
 	}
+
+	closeAlert = () => {
+		this.setState({ showAlert: false });
+	}
+
     checkOut(type) {
         // if(type === 'CheckOut'){
         //    // this.props.history.push(`/${this.props.globals.store_locale}/new-check-out`);
@@ -198,9 +218,38 @@ class ProductBasic extends Component {
 
     render() {
 
-        const store_locale=this.props.globals.store_locale
+		const store_locale=this.props.globals.store_locale;
+		
+		let respo_message = null;
+		console.log(this.props.item_added);
+		console.log(this.state.showAlert);
+		if (this.state.showAlert) {
+			respo_message = <span id="APEX_SUCCESS_MESSAGE" data-template-id="126769709897686936_S" className="apex-page-success u-visible"><div className="t-Body-alert">
+				<div className="t-Alert t-Alert--defaultIcons t-Alert--success t-Alert--horizontal t-Alert--page t-Alert--colorBG" id="t_Alert_Success" role="alert">
+					<div className="t-Alert-wrap">
+						<div className="t-Alert-icon">
+							<span className="t-Icon" />
+						</div>
+						<div className="t-Alert-content">
+							{this.state.item_added_message !== 'added' ? <div className="t-Alert-header">
+								<h2 className="t-Alert-title">{this.state.item_added_message}</h2>
+							</div> :
+							<div className="t-Alert-header">
+								<h2 className="t-Alert-title">
+								<FormattedMessage id="Addedtoyourbasket" defaultMessage="Added to your basket" />
+								</h2>
+							</div> }
+						</div>
+						<div className="t-Alert-buttons">
+							<button className="t-Button t-Button--noUI t-Button--icon t-Button--closeAlert" type="button" title="Close Notification" onClick={this.closeAlert} ><span className="t-Icon icon-close" /></button>
+						</div>
+					</div>
+				</div>
+			</div></span>;
+		}
         return (
             <div className="col addToCardPopup">
+				{respo_message}
                 <div style={{marginBottom:15, textAlign: 'start'}}>
                     <span>
                         <i className="fa fa-check cbox-icon-success right-icon-fa">
@@ -249,7 +298,7 @@ class ProductBasic extends Component {
 
                                 <div className="alsoLikeCard add-cart addTocardButtonDiv">
                                     <div className="homePage">
-                                        <button disabled={this.props.cart_details.similar_products[index].simplestatus === 0 || this.state.defaultQty == 0} onClick={() => this.addToCart(this.props.cart_details.similar_products[index])} className="alsoLikeCardButton" style={{ marginLeft: 10, width:'85%' }}>
+                                        <button disabled={this.props.cart_details.similar_products[index].simplestatus === 0 || this.state.defaultQty == 0 || this.state.showAlert} onClick={() => this.addToCart(this.props.cart_details.similar_products[index])} className="alsoLikeCardButton" style={{ marginLeft: 10, width:'85%' }}>
 										    <FormattedMessage id="Product.Detail.addToBasket" defaultMessage="Add to basket" />
                                         </button>
                                     </div>
@@ -266,27 +315,27 @@ class ProductBasic extends Component {
 
 const mapStateToProps = state => {
     return {
-        
 		isUserLoggedIn: state.login.isUserLoggedIn,
 		globals: state.global,
 		user_details: state.login.customer_details,
-		productZoomDetails: state.productDetails.productData,
+		// productZoomDetails: state.productDetails.productData,
 		customerDetails: state.login.customer_details,
-		productWishDetail: state.productDetails.productWishDetail,
-		removeWishListDetail:state.productDetails.productWishDetail,
+		// productWishDetail: state.productDetails.productWishDetail,
+		// removeWishListDetail:state.productDetails.productWishDetail,
 		productDetails: state.productDetails.productColor,
-		wishlistItem:state.wishList,
-		productDetailLoader: state.productDetails.productDetailLoader,
+		// wishlistItem:state.wishList,
+		// productDetailLoader: state.productDetails.productDetailLoader,
 		addToCardLoader: state.productDetails.addToCardLoader,
 		cart_details: state.myCart,
 		guest_user: state.guest_user,
+		item_added: state.item_added
     
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        onGetSize: payload => dispatch(actions.getSize(payload)),
+        // onGetSize: payload => dispatch(actions.getSize(payload)),
         OngetMyCart: (quoteId) => dispatch(actions.getMyCart(quoteId)),
         onAddToCart: payload => dispatch(actions.addToCart(payload)),
         onGuestAddToCart: (payload, myCart) => dispatch(actions.guestAddToCart(payload, myCart)),

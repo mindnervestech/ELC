@@ -299,6 +299,7 @@ export const addToCart = (payload, myCart) => {
 
 				// if (res.status && res.code === 200) {
 				//     let newState = { ...res.product[0] }
+				dispatch(callActionitem_added({ item_added: res}));
 				dispatch(getMyCart(myCart));
 				// }
 				// else {
@@ -378,6 +379,14 @@ const callActionGetProductDetails = payload => {
 		payload: payload,
 	};
 };
+
+const callActionitem_added = payload => {
+	return {
+		type: actionTypes.GET_ITEM_ADDED,
+		payload: payload,
+	};
+};
+
 
 const callActionGetColor = payload => {
 	return {

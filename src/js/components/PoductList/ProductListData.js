@@ -98,20 +98,20 @@ class ProductListData extends Component {
                 })
 
             }
-		}, 1000);
+		}, 500);
 	}
 
 	componentDidUpdate(prevProps){
 		if (prevProps.addToCardLoader !== this.props.addToCardLoader) {
-            if (!this.state.cartModelFlag) {
+            if (!this.state.cartModelFlag || !cartModelFlag) {
                 this.setState({
                     addToCartModal: true,
                     cartModelFlag: true
-                })
+				})
+				addToCartModal = true;
+            	cartModelFlag = true;
             }
-            addToCartModal = true;
-            cartModelFlag = true;
-        }
+		}
 	}
 
 	openAddTOBasketModal = (url) =>{
@@ -704,7 +704,7 @@ class ProductListData extends Component {
 											starDimension='15px'
 											starSpacing='0px'
 										/> */}
-														<span> {this.getAge(list[keyName].json.filtersdata.age)}</span>
+														<span> {this.getAge(list[keyName].json.filtersdata ? list[keyName].json.filtersdata.age : "")}</span>
 													</div>
 
 													{/* <div>
@@ -803,6 +803,7 @@ const mapStateToProps = state => {
 		productDetails: state.productDetails.productData,
 		user_details: state.login,
 		cart_details: state.myCart,
+		addToCardLoader: state.productDetails.addToCardLoader,
 	};
 }
 

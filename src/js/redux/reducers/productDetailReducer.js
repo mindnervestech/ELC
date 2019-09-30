@@ -60,6 +60,8 @@ const reducer = (state = initialState, action) => {
 			return updateObject(state, action.payload)
 		case actionTypes.ADD_TO_CARD_LOADER:
 			return updateObject(state, action.payload)
+		case actionTypes.GET_ITEM_ADDED:
+			return updateObject(state, action.payload)
 		default:
 			return state;
 	}

@@ -90,13 +90,13 @@ class ProductImage extends Component {
 			}
 			if (data.thumbnail.length > 1) {
 				return (
-					<a href={zoomimages[0]} className="MagicZoom" id="zoom-v" data-options="hint:false; zoomMode: off; expand: off;">
+					<a className="MagicZoom" id="zoom-v" data-options="hint:false; zoomMode: off; expand: off;">
 						<img className="zoom-img-width" src={thumbnails[0]} alt="" />
 					</a>
 				);
 			} else {
 				return (
-					<a href={zoomimages[0]} className="MagicZoom" id="zoom-v" data-options="hint:false; zoomMode: off; expand: off;">
+					<a className="MagicZoom" id="zoom-v" data-options="hint:false; zoomMode: off; expand: off;">
 						<img className="zoom-img-width" src={zoomimages[0]} alt="" />
 					</a>
 				);
@@ -132,7 +132,7 @@ class ProductImage extends Component {
 
 	_renderData = (item, index, color) => {
 		return (
-			<a data-slide-id="zoom" data-zoom-id="zoom-v" href={item} data-image={item} color-id={`${color}_${index}`} name="zoom-images-lg" onClick={(e) => this._handleThumbImgClick(e, 'img')}>
+			<a data-slide-id="zoom" data-zoom-id="zoom-v" data-image={item} color-id={`${color}_${index}`} name="zoom-images-lg" onClick={(e) => this._handleThumbImgClick(e, 'img')}>
 				<img srcSet={item} src={item} alt="" />
 			</a>
 		);
