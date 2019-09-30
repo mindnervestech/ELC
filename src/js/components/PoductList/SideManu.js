@@ -178,20 +178,26 @@ class SideManu extends Component {
 												let checkSubmanu2 = 0
 												for (let item2 in productListingData) {
 													if(productListingData[item2].json.filtersdata){
-														for (let age2 in productListingData[item2].json.filtersdata[filterFirstOption]) {
-															if (checkSubmanu2 == 0) {
-																if (splitValue[1] == productListingData[item2].json.filtersdata[filterFirstOption][age2]) {
-																	filterOptionArrayForCheckValidate.push(afterFilterShowOptionList[value])
-																	checkSubmanu2 = 1
+														if(productListingData[item2].json.filtersdata[filterFirstOption]){
+															for (let age2 in productListingData[item2].json.filtersdata[filterFirstOption]) {
+																if (checkSubmanu2 == 0) {
+																	if (splitValue[1] == productListingData[item2].json.filtersdata[filterFirstOption][age2]) {
+																		filterOptionArrayForCheckValidate.push(afterFilterShowOptionList[value])
+																		checkSubmanu2 = 1
+																	}
 																}
 															}
 														}
 													}
 												}
 											}else{
-												if (splitValue[1] == productList[item].json.filtersdata[filter][age]) {
-													filterOptionArrayForCheckValidate.push(afterFilterShowOptionList[value])
-													checkSubmanu = 1
+												if(productList[item].json.filtersdata){
+													if(productList[item].json.filtersdata[filter]){
+														if (splitValue[1] == productList[item].json.filtersdata[filter][age]) {
+															filterOptionArrayForCheckValidate.push(afterFilterShowOptionList[value])
+															checkSubmanu = 1
+														}
+													}
 												}
 											}
 										}

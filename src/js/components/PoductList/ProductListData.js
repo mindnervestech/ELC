@@ -71,6 +71,7 @@ class ProductListData extends Component {
 			addToCartModal: false,
 			cartModelFlag: false,
 			url_key: '',
+			sortByOptionValue: '',
 		};
 	}
 
@@ -149,6 +150,7 @@ class ProductListData extends Component {
 			addToCartModal: false,
 			cartModelFlag: false,
 			url_key: '',
+			sortByOptionValue: '',
 		};
 	}
 
@@ -166,6 +168,9 @@ class ProductListData extends Component {
 				firstValue = element
 			}
 			count++
+		}
+		if(this.state.sortByText != ""){
+			this.filter(this.state.sortByOptionValue,this.state.sortByText)
 		}
 		let totalPages = 1
 		if (count % pagenationCount == 0) {
@@ -270,6 +275,7 @@ class ProductListData extends Component {
 	filter = (value, text) => {
 		changeFilterData = true
 		this.state.sortByText = text
+		this.state.sortByOptionValue = value
 		this.setState({ sortByShowOption: false })
 		if (value == "price_desc") {
 			const sortData = _.values(productList).sort((a, b) => b.price - a.price);
