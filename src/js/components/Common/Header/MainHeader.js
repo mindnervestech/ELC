@@ -26,7 +26,7 @@ import location from '../../../../assets/images/header/location.svg';
 import help from '../../../../assets/images/header/help.svg';
 import profile from '../../../../assets/images/header/profile.png';
 import Slider from "react-slick";
-
+import storeFinderMobile from '../../../../assets/images/header/storeFinder.svg';
 import UAEImage from '../../../../assets/images/header/ae.svg';
 import KSAImage from '../../../../assets/images/header/sa.svg';
 
@@ -594,7 +594,7 @@ class MainHeader extends Component {
                                     <img className="mobileHomeLogo" src={logoGroup} />
                                 </Link>
                                 <Link to={`/${store_locale}/store-locator`} style={{ textDecoration: 'none' }}>
-                                    <img src={location} className="mobileHomePageIcon hide-mob"></img></Link>
+                                    <img src={storeFinderMobile} className="mobileHomePageIcon hide-mob"></img></Link>
                                 <Link className="basket-icon" to={`/${store_locale}/cart`} style={{ textDecoration: 'none' }}>
                                     <img src={bagLogo} className="mobileHomePageIcon" style={{ height: 25, width: 25 }} />
                                     <label className="lable-count">{this.props.cart_details.products ? this.props.cart_details.products.length : 0}</label>
@@ -657,12 +657,12 @@ class MainHeader extends Component {
                             <Slider {...settings}>
                                 <div>
                                     <Row className="direction-r">
-                                        <Col xs="3" lg="3" md="3" className="col-width"></Col>
-                                        <Col xs="2" lg="2" md="2" style={{ paddingLeft: 0 }} className="padd-icon-zero first-imag">
+                                        <Col xs="0" lg="3" md="3" className="col-width"></Col>
+                                        <Col xs="0" lg="2" md="2" style={{ paddingLeft: 0 }} className="padd-icon-zero first-imag">
                                             <img src={deliveryBy} className="imageHight40 divShowOnWeb " />
                                         </Col>
-                                        <Col xs="6" lg="7" md="7" style={{ padding: 0 }}>
-                                            <ul style={{ textAlign: 'start', paddingTop: 10 }}>
+                                        <Col xs="12" lg="7" md="7" style={{ padding: 0}}>
+                                            <ul className="headerSlideTextAlign">
                                                 <li style={{ fontSize: 15, color: "#0D943F", lineHeight: '0.5', fontWeight: 'bold' }}>
                                                     <FormattedMessage id="header.FreeStdDelivery" defaultMessage="Free Standard Delivery" />
                                                 </li>
@@ -680,12 +680,12 @@ class MainHeader extends Component {
                                 </div>
                                 <div>
                                     <Row className="direction-r">
-                                        <Col xs="3" lg="3" md="3"></Col>
-                                        <Col xs="2" lg="2" md="2" className="padd-icon-zero">
+                                        <Col xs="0" lg="3" md="3"></Col>
+                                        <Col xs="0" lg="2" md="2" className="padd-icon-zero">
                                             <img src={freeDelivery} className="imageHight40 divShowOnWeb" />
                                         </Col>
-                                        <Col xs="6" lg="7" md="7" className="padd-zer" style={{ padding: 0 }}>
-                                            <ul style={{ textAlign: 'start', paddingTop: 10 }}>
+                                        <Col xs="12" lg="7" md="7" className="padd-zer" style={{ padding: 0 }}>
+                                            <ul className="headerSlideTextAlign">
                                                 <li style={{ fontSize: 15, color: "#0D943F", lineHeight: '0.5', fontWeight: 'bold' }}>
                                                     <FormattedMessage id="header.FreeGiftwrapping" defaultMessage="Free Gift wrapping" />
                                                 </li>
@@ -698,12 +698,12 @@ class MainHeader extends Component {
                                 </div>
                                 <div>
                                     <Row className="direction-r">
-                                        <Col xs="3" lg="3" md="3"></Col>
-                                        <Col xs="2" lg="2" md="2" className="padd-icon-zero">
+                                        <Col xs="0" lg="3" md="3"></Col>
+                                        <Col xs="0" lg="2" md="2" className="padd-icon-zero">
                                             <img src={freeCollect} className="imageHight40 divShowOnWeb" />
                                         </Col>
-                                        <Col xs="6" lg="7" md="7" style={{ padding: 0 }}>
-                                            <ul style={{ textAlign: 'start', paddingTop: 10 }}>
+                                        <Col xs="12" lg="7" md="7" style={{ padding: 0 }}>
+                                            <ul className="headerSlideTextAlign">
                                                 <li style={{ fontSize: 15, color: "#0D943F", lineHeight: '0.5', fontWeight: 'bold' }}>
                                                     <FormattedMessage id="header.FreeReturns" defaultMessage="Free Returns" />
                                                 </li>
