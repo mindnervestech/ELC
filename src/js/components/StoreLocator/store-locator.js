@@ -241,10 +241,9 @@ class StoreLocator extends Component {
 
   }
   render() {
-    //console.log(":::::", this.state.storeList)
     let display = this.state.isDisplay ? 'block' : 'none';
     let errorMessage = this.state.showError ? <div id="P7_STORE_error_placeholder" data-template-id="FALLBACK_ET" className="u-visible"><div className="t-Form-error"><div id="P7_STORE_error"><FormattedMessage id="SelectStore.Validate" defaultMessage="Select the Store" /></div></div></div> : null;
-    let store_locale=this.props.globals.store_locale
+    let store_locale = this.props.globals.store_locale
 
 
     return (
@@ -253,19 +252,19 @@ class StoreLocator extends Component {
           <div className="t-Body-title" id="t_Body_title" style={{ top: '294px' }}>
             <div id="R55451813294588531" className="t-BreadcrumbRegion containers t-BreadcrumbRegion--showBreadcrumb t-BreadcrumbRegion--useBreadcrumbTitle">
               <div className="t-BreadcrumbRegion-body">
-              {/* <div style={{margin:10}} className="padding-right-ar">  
+                {/* <div style={{margin:10}} className="padding-right-ar">  
             <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
               <span className="titleHover" style={{fontSize:15}}><FormattedMessage id="Checkout.Home" defaultMessage/></span><span>&nbsp;\&nbsp;&nbsp;</span>
             </Link>
             <span  style={{fontSize:15, fontWeight: 'bold'}}>{this.props.aboutUs.title}</span>
           </div> */}
 
-          <div style={{margin:10,textAlign:'start'}} className="padding-right-ar">  
-            <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
-              <span className="titleHover" style={{fontSize:15}}><FormattedMessage id="Checkout.Home" defaultMessage/></span><span>&nbsp;\&nbsp;&nbsp;</span>
-            </Link>
-            <span  style={{fontSize:15, fontWeight: 'bold'}}><FormattedMessage id="Header.StoreFinder" defaultMessage="Store Finder" /></span>
-          </div>
+                <div style={{ margin: 10, textAlign: 'start' }} className="padding-right-ar">
+                  <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
+                    <span className="titleHover" style={{ fontSize: 15 }}><FormattedMessage id="Checkout.Home" defaultMessage /></span><span>&nbsp;\&nbsp;&nbsp;</span>
+                  </Link>
+                  <span style={{ fontSize: 15, fontWeight: 'bold' }}><FormattedMessage id="Header.StoreFinder" defaultMessage="Store Finder" /></span>
+                </div>
                 <div className="t-BreadcrumbRegion-title">
                   <h1 className="t-BreadcrumbRegion-titleText"><FormattedMessage id="header.storeLocator" defaultMessage="Store Locator" /></h1>
                 </div>
@@ -277,7 +276,7 @@ class StoreLocator extends Component {
           <div className="t-Body-content" id="t_Body_content"><div id="t_Body_content_offset" style={{ height: '85px' }} />
             <span id="APEX_SUCCESS_MESSAGE" data-template-id="33770911730796245_S" className="apex-page-success u-hidden" /><span id="APEX_ERROR_MESSAGE" data-template-id="33770911730796245_E" className="apex-page-error u-hidden" />
             <div className="t-Body-contentInner">
-              <div className="container" style={{maxWidth: '100%'}}>
+              <div className="container" style={{ maxWidth: '100%' }}>
 
 
                 <div className="row">
@@ -305,7 +304,7 @@ class StoreLocator extends Component {
                                 <span className="apex-grid-nbsp">&nbsp;</span>
                               </div><div className="col col-5 storeLocatorRmPadding">
                                 <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel apex-item-wrapper apex-item-wrapper--select-list js-show-label" id="P12_COUNTRY_CONTAINER"><div className="t-Form-labelContainer">
-                                  <label htmlFor="P12_COUNTRY" id="P12_COUNTRY_LABEL" className="t-Form-label">{this.myIntl.formatMessage({ id: 'SelectCountrySingle.Text' })}</label>
+                                  <label htmlFor="P12_COUNTRY" id="P12_COUNTRY_LABEL" className="t-Form-label"><FormattedMessage id="SelectCountrySingle.Text" defaultMessage="Country" /></label>
                                 </div><div className="t-Form-inputContainer"><div className="t-Form-itemWrapper">
 
 
@@ -316,11 +315,12 @@ class StoreLocator extends Component {
                                 </div><span id="P12_COUNTRY_error_placeholder" className="a-Form-error" data-template-id="33609965712469734_ET" /></div></div>
                               </div><div className="col col-5 ">
                                 <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel apex-item-wrapper apex-item-wrapper--select-list js-show-label is-active" id="P12_CITY_CONTAINER"><div className="t-Form-labelContainer">
-                                  <label htmlFor="P12_CITY" id="P12_CITY_LABEL" className="t-Form-label">{this.myIntl.formatMessage({ id: 'SelectCitySingle.Text' })}</label>
+                                  <label htmlFor="P12_CITY" id="P12_CITY_LABEL" className="t-Form-label"><FormattedMessage id="SelectCitySingle.Text" defaultMessage="City" /></label>
                                 </div><div className="t-Form-inputContainer"><div className="t-Form-itemWrapper">
-
-                                  <CityList handleCityChange={this.handleCityChange} selectedCountry={this.state.selectedCountry} locations={this.props.storeList} selectCitytext={this.myIntl.formatMessage({ id: 'SelectCity.Text' })}> </CityList>
-
+                                  <FormattedMessage id="SelectCity.Text" defaultMessage="Select City">
+                                    {(message) =>
+                                      <CityList handleCityChange={this.handleCityChange} selectedCountry={this.state.selectedCountry} locations={this.props.storeList} selectCitytext={message}> </CityList>
+                                    }</FormattedMessage>
                                 </div><span id="P12_CITY_error_placeholder" className="a-Form-error" data-template-id="33609965712469734_ET" /></div></div><input type="hidden" id="MI" name="MI" defaultValue /><input type="hidden" id="P12_PAGE_TITLE" name="P12_PAGE_TITLE" defaultValue="Store Locator UAE - Nayomi UAE" /><input type="hidden" id="P12_PAGE_DESC" name="P12_PAGE_DESC" defaultValue="Store locator UAE - Locate your nearest nayomi store in UAE" />
                               </div>
                             </div>
@@ -344,8 +344,10 @@ class StoreLocator extends Component {
                                           <div className="storeLocator-container">
                                             <div className="storeLocator-searchBox">
                                               <div className="storeLocator-searchInput">
-
-                                                <input type="text" ref={this.autocompleteInput} id="autocomplete" placeholder={this.myIntl.formatMessage({ id: 'StoreLocatorEnterALocation.Text' })} autoComplete="off" />
+                                                <FormattedMessage id="StoreLocatorEnterALocation.Text" defaultMessage="Enter a locationd">
+                                                  {(message) =>
+                                                    <input type="text" ref={this.autocompleteInput} id="autocomplete" placeholder={message} autoComplete="off" />
+                                                  }</FormattedMessage>
                                                 <svg className="storeLocator-searchIcon" xmlns="http://www.w3.org/2000/svg" version="1.2" baseProfile="tiny" width="23.888" height="16px" viewBox="0 0 23.888 24.117">
                                                   <g fill="none" stroke="#666" strokeWidth={4} strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit={10}>
                                                     <circle cx="10.12" cy="10.12" r="8.12" />
@@ -354,10 +356,11 @@ class StoreLocator extends Component {
                                                 </svg>
                                               </div>
                                               <ul className="storeLocator-storesList">
-
-                                                <StoreList locations={this.state.storeList}
-                                                  getSelectedStore={this.getSelectedStore} directionText={this.myIntl.formatMessage({ id: 'StoreLocatorDirection.Text' })} />
-
+                                                <FormattedMessage id="StoreLocatorDirection.Text" defaultMessage="DIRECTIONS">
+                                                  {(message) =>
+                                                    <StoreList locations={this.state.storeList}
+                                                      getSelectedStore={this.getSelectedStore} directionText={message} />
+                                                  }</FormattedMessage>
                                               </ul>
                                             </div>
                                             <div className="storeLocator-map" style={{ position: 'relative', overflow: 'hidden' }}>
@@ -424,7 +427,7 @@ const mapStateToProps = state => {
   return {
     storeList: state.address.storeList,
     language: state.global.language,
-    globals:state.global
+    globals: state.global
   };
 }
 
