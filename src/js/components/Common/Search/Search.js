@@ -8,9 +8,9 @@ import { connect } from 'react-redux';
 import * as actions from '../../../redux/actions/index';
 import $ from 'jquery';
 
-let data = {};
 let productData = {}
-let checkAgen = true
+let check = false
+
 class Search extends Component {
   constructor(props) {
     super(props);
@@ -24,36 +24,10 @@ class Search extends Component {
     }
   }
 
-
-  // handleClick= ()=>{
-  //   if (!this.state.popupVisible) {
-  //     // attach/remove event handler
-  //     document.addEventListener('click', this.handleOutsideClick, false);
-  //   } else {
-  //     document.removeEventListener('click', this.handleOutsideClick, false);
-  //   }
-
-  //   this.setState(prevState => ({
-  //      popupVisible: !prevState.popupVisible,
-  //   }));
-  // }
-
-  // handleOutsideClick=(e)= {
-  //   // ignore clicks on the component itself
-  //   if (this.node.contains(e.target)) {
-  //     return;
-  //   }
-
-  //   this.handleClick();
-  // }
-
-
   handleKeyPress = (e) => {
     const store_locale = this.props.store_locale;
     if (e.keyCode === 13) {
-      //console.log('value', e.target.value);
       this.setState({ showAutoSuggestion: false })
-      //$("#autoSuagestion").hide();
       this.setState({ redirect: true, searchText: e.target.value });
       this.props.history.push(`/${store_locale}/products/search?query=` + e.target.value);
     }
@@ -66,32 +40,6 @@ class Search extends Component {
     }
   }
 
-  componentDidUpdate() {
-      if (Object.keys(this.props.autoSearchSuggestionData).length > 0 && this.props.autoSearchSuggestionData.autoSerachsuggestionData != undefined) {
-        if(checkAgen){
-          if (this.state.checkLoop) {
-            productData = this.props.autoSearchSuggestionData.autoSerachsuggestionData.product_data
-            this.setState({ checkLoop: false })
-            this.setState({ showAutoSuggestion: true })
-            //$("#autoSuagestion").show();
-          }
-          checkAgen = false
-        }else{
-          if(Object.keys(this.props.autoSearchSuggestionData.autoSerachsuggestionData.product_data).length > 0){
-            if(this.props.autoSearchSuggestionData.autoSerachsuggestionData.product_data[1].json.sku != productData[1].json.sku){
-              if (this.state.checkLoop) {
-                productData = this.props.autoSearchSuggestionData.autoSerachsuggestionData.product_data
-                this.setState({ checkLoop: false })
-                this.setState({ showAutoSuggestion: true })
-                //$("#autoSuagestion").show();
-              }
-            }
-          }
-        } 
-      }
-  }
-
-
   autoSearchText = (e) => {
     if (e.keyCode != 13) {
       this.state.searchText = e.target.value
@@ -100,12 +48,12 @@ class Search extends Component {
           q: this.state.searchText,
           storeId: this.props.globals.currentStore
         }
+        check = true
         this.setState({ showAutoSuggestion: false })
-        //$("#autoSuagestion").show();
         this.props.onGetProductSuggestionData(data);
         this.setState({ checkLoop: true })
       } else {
-        //$("#autoSuagestion").hide();
+        check = false
         this.setState({ showAutoSuggestion: false })
       }
     }
@@ -114,7 +62,6 @@ class Search extends Component {
   gotoProductListPage = (key) => {
     let store_locale = this.props.globals.store_locale
     this.setState({ showAutoSuggestion: false })
-    //$("#autoSuagestion").hide();
     this.props.history.push(`/${store_locale}/products-details/${key}`);
   }
 
@@ -123,8 +70,15 @@ class Search extends Component {
    $(document).click(function(e) {
     if( e.target.id != 'check' && e.target.id != 'searchnay') {
       $("#autoSuagestion").hide();
+      check = false
     }
   });
+  if(check){
+    if (Object.keys(this.props.autoSearchSuggestionData).length > 0 && this.props.autoSearchSuggestionData.autoSerachsuggestionData != undefined) {
+      productData = this.props.autoSearchSuggestionData.autoSerachsuggestionData.product_data
+      this.state.showAutoSuggestion = true
+    }
+  }
     return (
       <div className="search" id="check">
         {this.renderRedirect()}
@@ -160,7 +114,6 @@ class Search extends Component {
           ))}
         </div>
       </div>
-
     )
   }
 }
