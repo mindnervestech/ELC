@@ -1889,11 +1889,6 @@ only screen and (min-resolution: 2dppx) {
     font-weight: bold;
 }
 
-.button-add-to-basket:active {
-    background: #cd2d23;
-}
-
-
 .button-pre-order {
     max-height: 40px !important;
     background: #20b579;

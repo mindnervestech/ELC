@@ -353,7 +353,7 @@ class Login extends Component {
                                     <span className="js-maximizeButtonContainer"></span></div>
                                 </div>
                                 <div className="t-Region-bodyWrap">
-                                  <div style={{fontSize: 11}}><FormattedMessage id="register.header.text" defaultMessage="Order Tracking" /></div>
+                                  <div style={{fontSize: 11}}><FormattedMessage id="register.header.text" defaultMessage="Fields marked * are required" /></div>
                                   <div>
                                   <p className="" style={{
                                       fontSize: 11,
@@ -362,7 +362,7 @@ class Login extends Component {
                                       textTransform: 'inherit',
                                       fontWeight: 'normal',
                                       marginBottom: 10
-                                    }}><FormattedMessage id="account.Creation.text" defaultMessage="Account Creation text" /></p>
+                                    }}><FormattedMessage id="account.Creation.text" defaultMessage="Please complete the form to create an account:" /></p>
                                   </div>
                                   {/* <div className="t-Region-buttons t-Region-buttons--top">
                                     <div className="t-Region-buttons-left"></div>

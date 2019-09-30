@@ -1234,11 +1234,6 @@ html[dir="rtl"] .nay {
     cursor: pointer;
 }
 
-.button-add-to-basket:active {
-    background: #cd2d23;
-}
-
-
 .button-pre-order {
     max-height: 40px !important;
     background: #20b579;

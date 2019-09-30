@@ -287,7 +287,7 @@ class MainHeader extends Component {
                         <div className="row-1">
                             <div className="containers-main">
                                 <ul className="leftLink" style={{ paddingTop: 7 }}>
-                                    <li style={{ paddingTop: 7 }}>
+                                    <li style={{ paddingTop: 2 }}>
                                         <div className="changecountry">
                                             <div className="country">
                                                 <div onClick={this.showCountries} className={this.state.showCountries ? "activeCountry open divShowOnWeb" : "activeCountry divShowOnWeb"}>
@@ -296,7 +296,7 @@ class MainHeader extends Component {
                                                         <img style={{ height: '20px', width: '30px' }} src={UAEImage}></img>
                                                         : <img style={{ height: '20px', width: '30px' }} src={KSAImage}></img>
                                                     }
-                                                    <label className="text-color" style={{ fontSize: '1.2rem' }}>&nbsp;{this.state.country_name.toUpperCase()} </label>
+                                                    <label className="text-color" style={{ fontSize: '1.3rem' }}>&nbsp;{this.state.country_name.toUpperCase()} </label>
                                                     <span className="selected">
                                                         <FormattedMessage id="header.defaultCountry" defaultMessage="Select Your Country" />
 
@@ -306,21 +306,21 @@ class MainHeader extends Component {
                                                 <div className="list" style={{ textAlign: 'start' }}>
                                                     {this.state.country_name.toUpperCase() == 'UAE' ?
                                                         <div>
-                                                            <div style={{ paddingLeft: 10, paddingBottom: 7, fontSize: '1.2rem' }}>
+                                                            <div style={{ paddingLeft: 10, paddingBottom: 7, fontSize: '1.3rem' }}>
                                                                 <img style={{ height: '20px', width: '30px' }} src={UAEImage}></img>
                                                                 <a href="javascript:void(0);" className="uae" id="cart" onClick={() => this.onChangeCountry('UAE')}><FormattedMessage id="header.uae" defaultMessage="UAE" /></a>
                                                             </div>
-                                                            <div style={{ paddingLeft: 10, fontSize: '1.2rem' }}>
+                                                            <div style={{ paddingLeft: 10, fontSize: '1.3rem' }}>
                                                                 <img style={{ height: '20px', width: '30px' }} src={KSAImage}></img>
                                                                 <a href="javascript:void(0);" className="ksa" id="cart" onClick={() => this.onChangeCountry('KSA')}><FormattedMessage id="header.ksa" defaultMessage="KSA" /></a>
                                                             </div>
                                                         </div>
                                                         : <div>
-                                                            <div style={{ paddingLeft: 10, fontSize: '1.2rem' }}>
+                                                            <div style={{ paddingLeft: 10, fontSize: '1.3rem' }}>
                                                                 <img style={{ height: '20px', width: '30px' }} src={KSAImage}></img>
                                                                 <a style={{ verticalAlign: 'middle' }} href="javascript:void(0);" className="ksa" id="cart" onClick={() => this.onChangeCountry('KSA')}><FormattedMessage id="header.ksa" defaultMessage="KSA" /></a>
                                                             </div>
-                                                            <div style={{ paddingLeft: 10, paddingTop: 7, fontSize: '1.2rem' }}>
+                                                            <div style={{ paddingLeft: 10, paddingTop: 7, fontSize: '1.3rem' }}>
                                                                 <img style={{ height: '20px', width: '30px' }} src={UAEImage}></img>
                                                                 <a href="javascript:void(0);" className="uae" id="cart" onClick={() => this.onChangeCountry('UAE')}><FormattedMessage id="header.uae" defaultMessage="UAE" /></a>
                                                             </div>
@@ -337,7 +337,7 @@ class MainHeader extends Component {
                                             <a href="javascript:void(0);" onClick={(e) => this.translate('en', 'ltr')} className="active" >English</a></div>
                                     </li>
                                     <li className="paddingForDash"> - </li>
-                                    <li className="ll" style={{ padding: 0 }}>
+                                    <li className="ll" style={{ padding: 0, marginTop: -3 }}>
                                         <div className="lang" style={{ paddingLeft: 8, fontSize: '1.3rem' }}>
                                             <a href="javascript:void(0);" onClick={(e) => this.translate('ar', 'rtl')} >العربية</a></div>
                                     </li>
@@ -403,10 +403,10 @@ class MainHeader extends Component {
                                             <label className="iconLeble text-color changeLinkText"><FormattedMessage id="Header.Help" defaultMessage="Help" /></label>
                                         </Link>
                                     </li>
-                                    <li className="titleHover" style={this.state.userLogin ? { display: 'none' } : { display: 'inline-block', marginBottom: 5 }}>
+                                    <li className="titleHover" style={this.state.userLogin ? { display: 'none' } : { display: 'inline-block'}}>
                                         <Link to={`/${store_locale}/Login`} style={{ textDecoration: 'none' }}>
-                                            <img src={profile} className="image-ion" style={{ marginTop: 8 }}></img>
-                                            <label className="iconLeble text-color changeLinkText" style={{ paddingTop: 2 }}><FormattedMessage id="Header.SignInOrRegister" defaultMessage="Sign in / Register" /></label>
+                                            <img src={profile} className="image-ion" style={{ marginTop: 6 }}></img>
+                                            <label className="iconLeble text-color changeLinkText"><FormattedMessage id="Header.SignInOrRegister" defaultMessage="Sign in / Register" /></label>
                                         </Link>
                                     </li>
                                     <li style={this.state.userLogin ? { display: 'inline-block', paddingTop: 1 } : { display: 'none' }}>
