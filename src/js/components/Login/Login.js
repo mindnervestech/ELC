@@ -368,7 +368,7 @@ class Login extends Component {
                                     <div className="t-Region-buttons-left"></div>
                                     <div className="t-Region-buttons-right"></div>
                                   </div> */}
-                                  <div className="loginFormHight headerText">
+                                  <div className="headerText">
                                     <div>
                                       <SignUp />
                                     </div>

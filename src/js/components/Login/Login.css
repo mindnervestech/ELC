@@ -160,7 +160,6 @@ svg.styles_closeIcon__1QwbI {
     text-transform: unset;
     font-weight: 100;
     margin-bottom: 15px;
-    font-family: 'Noto Sans KR', Helvetica, Arial, sans-serif;
 }
 
 h1.h1p,
@@ -225,7 +224,6 @@ html[lang="en"] .b-accordion_title {
     letter-spacing: .1em;
     text-transform: uppercase;
     font-weight: normal;
-    font-family: 'Noto AR', Helvetica, Arial, sans-serif !important;
 }
 
 html[dir="rtl"] .b-accordion_title {
@@ -236,7 +234,6 @@ html[dir="rtl"] .b-accordion_title {
     letter-spacing: 0em;
     text-transform: uppercase;
     font-weight: normal;
-    font-family: 'Noto AR', Helvetica, Arial, sans-serif !important;
 }
 
 ol,
@@ -995,7 +992,6 @@ html[dir="rtl"] .link {
     text-transform: unset;
     font-weight: 100;
     margin-bottom: 15px;
-    font-family: 'Noto Sans KR', Helvetica, Arial, sans-serif;
 }
 
 h1.h1p,
@@ -1036,25 +1032,6 @@ h3.h3p {
 
 .leftSpace {
     margin-left: 15px;
-}
-
-.loginFormHight{
-    height: 1130px;
-    overflow: hidden!important;
-}
-
-@media only screen and (max-width: 767px) {
-    .loginFormHight{
-        height:1200px!important;
-        overflow: hidden!important;
-    }
-}
-
-@media only screen and (max-width: 320px) {
-    .loginFormHight{
-        height:1235px!important;
-        overflow: hidden!important;
-    }
 }
 
 .topSpace {}
@@ -1550,16 +1527,6 @@ textarea .error {
 }
 @media (max-width: 767px){
    .button-add-to-basket {   
-    margin-top: 10px !important;
+        margin-top: 10px !important;
+    }
 }
-    }
-
-    @media (max-width:767px){
-        @supports (-webkit-overflow-scrolling: touch) { 
-            /* CSS specific to iOS devices */ 
-            .loginFormHight {
-                height: 1080px;
-                overflow: hidden!important;
-            }
-        }
-    }

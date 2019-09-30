@@ -6984,6 +6984,10 @@ html[dir="rtl"] .t-Button--pillStart{
         text-align: start;
         font-family: "VAG Rounded ELC bold" !important;
     }
+
+    .topSpace{
+        margin-bottom: 10px !important;
+    }
 }
 
 

@@ -237,7 +237,6 @@ letter-spacing: unset;
 text-transform: unset;
 font-weight: 100;
 margin-bottom: 15px;
-font-family: 'Noto Sans KR', Helvetica, Arial, sans-serif;
 }
 
 h1.h1p,h2.h2p,h3.h3p {
@@ -293,7 +292,6 @@ html[lang="en"] .b-accordion_title {
     letter-spacing: .1em;
     text-transform: uppercase;
     font-weight: normal;
-          font-family: 'Noto AR', Helvetica, Arial, sans-serif !important;
 }
       
 html[dir="rtl"] .b-accordion_title {
@@ -304,7 +302,6 @@ html[dir="rtl"] .b-accordion_title {
     letter-spacing: 0em;
     text-transform: uppercase;
     font-weight: normal;
-          font-family: 'Noto AR', Helvetica, Arial, sans-serif !important;
 }
 
 ol,
@@ -1002,7 +999,6 @@ letter-spacing: unset;
 text-transform: unset;
 font-weight: 100;
 margin-bottom: 15px;
-font-family: 'Noto Sans KR', Helvetica, Arial, sans-serif;
 }
 
 h1.h1p,h2.h2p,h3.h3p {
@@ -1035,8 +1031,7 @@ font-size: 1em !important;
 }
 
 .increse-item-qty{
-    /* border-color: #d6d6d6; */
-    font-family: "VAG Rounded Std Bold", "Arial", "Helvetica", sans-serif;
+    font-family: "VAG Rounded Std Bold";
     font-weight: normal;
     font-size: 22px;
     height: 40px;
@@ -1050,7 +1045,7 @@ font-size: 1em !important;
 
 .cart-subtotal{
     padding: 20px 25px;
-    font-family: VAG Rounded ELC Light;
+    font-family: 'VAG Rounded ELC Light';
     color: #4f4f4f; 
     font-size: 22px;
     line-height: 2em

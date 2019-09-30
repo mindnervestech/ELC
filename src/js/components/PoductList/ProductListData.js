@@ -462,14 +462,17 @@ class ProductListData extends Component {
 
 	render() {
 		let list = this.state.list1
-		//let list = this.props.list.product_data
 		const store_locale = this.props.globals.store_locale
 		if (changeFilterData == false) {
 			productListData = this.props.list.product_data
 			productList = this.props.list.product_data
-			this.state.list1 = productList
-			list = this.state.list1
 			this.changeThePagenationData()
+			for (var element in productList) {
+				if (element >= 1 && element <= 36) {
+					this.state.list1[element] = productList[element]
+				}
+			}
+			list = this.state.list1
 		}
 		
 		return (

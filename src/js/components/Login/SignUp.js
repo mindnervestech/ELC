@@ -422,10 +422,10 @@ class SignUp extends Component {
           <input type="hidden" value="137581352146482158347459965137747212594" id="pSalt" />
 
 
-          <div className="t-Dialog " role="dialog" aria-label="Create an Account">
+          <div className="t-Dialog " role="dialog" aria-label="Create an Account" style={{height: 'auto'}}>
             <div className="t-Dialog-header"></div>
-            <div className="t-Dialog-bodyWrapperOut">
-              <div className="t-Dialog-bodyWrapperIn overFlowVisible  backWhite"><div className="">
+            <div className="">
+              <div className="overFlowVisible  backWhite"><div className="">
                 <span id="APEX_SUCCESS_MESSAGE" data-template-id="33515671899469661_S" className="apex-page-success u-hidden"></span><span id="APEX_ERROR_MESSAGE" data-template-id="33515671899469661_E" className="apex-page-error u-hidden"></span>
                 <div className="container">
                   <div className="row">
