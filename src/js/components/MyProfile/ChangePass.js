@@ -101,7 +101,7 @@ class ChangePass extends Component {
         ...this.state,
         alertBoxDetails: {
           status: true,
-          message: this.myIntl.formatMessage({ id: 'ChangePassword.Validate' }),
+          message: this.myIntl.formatMessage({ id: 'ChangePassword.Validate' ,defaultMessage: 'Enter Valid Password and Confirm Password'}),
         }
       })
     }
