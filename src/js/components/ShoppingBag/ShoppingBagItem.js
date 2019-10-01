@@ -525,7 +525,7 @@ class ShoppingBagItem extends Component {
                             </div>
                         </div>
                     </div> :
-                    !this.props.updateLoader ?
+                    !this.props.updateLoader && cookie.load('myCartItem') !== undefined ?
                         <div style={{ fontSize: 24, marginLeft: '5%', color: "#4f4f4f" }}>
                             <FormattedMessage id="Cart.YBE" defaultMessage="Your basket is empty." />
                         </div> : <div />}

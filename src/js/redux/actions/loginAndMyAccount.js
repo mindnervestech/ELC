@@ -1,6 +1,7 @@
 import * as actionType from './actionTypes';
 import { API } from '../../api/api';
 import { loadingSpinner } from './globals';
+import cookie from 'react-cookies';
 import { getMyCart } from './getMyCart';
 
 const callActionLoginUser = (payload) => {
@@ -42,7 +43,7 @@ export const loginUser = (payload) => {
                         isUserLoggedIn: res.status,
                         loginMessage: res.message
                     }
-
+                    cookie.save('myCartItem', {});
                     dispatch(callActionLoginUser({ ...newState }))
 
                 } else {
