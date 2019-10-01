@@ -332,7 +332,14 @@ class Product extends Component {
 	// }
 
 	getCatagoryName = (value) => {
-		let url = value.split('/');
+		let replesUrl = value
+		replesUrl = replesUrl.replace(/uae-ar|uae-en/gi,"")
+		let url = replesUrl.split('/');
+		for(let data in url){
+			if(url[data] == ""){
+				url.splice(data, 1);
+			}
+		}
 		let bradCome = ""
 		if(this.props.category_name != undefined){
 			if(url[url.length-2] == "products"){
