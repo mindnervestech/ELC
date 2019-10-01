@@ -121,21 +121,24 @@ class ProductImage extends Component {
 
 	}
 
-	_checkDataExist = (data, color, index) => {
+	_checkDataExist = (data) => {
 		if (data) {
 			if ((data.thumbnail) && (data.thumbnail.length >= 1)) {				// if (data) {
-				const asdf = data.thumbnail.map((item, index) => this._renderData(item, index, color));				// 	const asdf = data.map((item, index) => this._renderData(item, index,color));
+				const asdf = data.thumbnail.map((item, index) => this._renderData(item, index));				// 	const asdf = data.map((item, index) => this._renderData(item, index,color));
 				return asdf;				// 	return asdf;
 			}
 		}
 	};
 
-	_renderData = (item, index, color) => {
-		return (
-			<a data-slide-id="zoom" data-zoom-id="zoom-v" data-image={item} color-id={`${color}_${index}`} name="zoom-images-lg" onClick={(e) => this._handleThumbImgClick(e, 'img')}>
-				<img srcSet={item} src={item} alt="" />
-			</a>
-		);
+	_renderData = (item,index) => {
+		let color = 'img';
+		if(item){
+			return (
+				<a data-slide-id="zoom" data-zoom-id="zoom-v" href={item} data-image={item} color-id={`${color}_${index}`} name="zoom-images-lg" onClick={(e) => this._handleThumbImgClick(e, 'img')}>
+					<img style={{height:90,width: 90, visibility:'visible', marginLeft: '30px'}} srcSet={item} src={item} alt="" />
+				</a>
+			);
+		}
 	};
 
 	_checkVideoDataExist = data => {
@@ -185,7 +188,7 @@ class ProductImage extends Component {
 		}
 	};
 
-	_handleThumbImgClick = (e, thumbType = 'img') => {
+	_handleThumbImgClick = (e, thumbType) => {
 
 		e.preventDefault();
 
@@ -267,7 +270,7 @@ class ProductImage extends Component {
 						</tr>
 					</tbody>
 				</table>
-				<div style={{paddingTop: 15}}>
+				<div style={{paddingTop: 15, textAlign:'center', textAlign: '-webkit-center'}}>
 					<div
 						className="MagicScroll MagicScroll-arrows-inside"
 						data-options="items: 4; orientation: horizontal; loop: off; arrows: inside; draggable: true;"

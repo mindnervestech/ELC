@@ -173,7 +173,7 @@ class ShoppingBagItem extends Component {
         //             </td>
         //          )
         // }
-        if(product > 0){
+        if(product){
             productCount = product.length
         }
         let visible_on_store = true;
