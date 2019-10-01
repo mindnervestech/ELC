@@ -11,24 +11,13 @@ import '../../styles/App.css';
 
 
 import AboutUs from './StaticPages/AboutUs/AboutUs';
-import Affiliate from './StaticPages/Affiliate/Affiliate';
 import NewsLetter from './StaticPages/Newsletter/Newsletter'
 import Charity from './StaticPages/Charity/Charity'
-import Business from './StaticPages/Business/Business';
-import Careers from './StaticPages/Careers/Careers';
 import ContactUs from './StaticPages/ContactUs/ContactUs';
-import CookiePolicy from './StaticPages/CookiePolicy/CookiePolicy';
 import DeliveryPolicy from "./StaticPages/DeliveryPolicy/DeliveryPolicy";
 import ConsumerRights from './StaticPages/ConsumerRights/ConsumerRights'
-import DeliveryInformation from './StaticPages/DeliveryInformation/DeliveryInformation';
-import CorporateResponsibility from './StaticPages/CorporateResponsibility/CorporateResponsibility';
-import Franchising from './StaticPages/Franchising/Franchising';
 import HelpFAQ from './StaticPages/HelpFAQ/HelpFAQ';
 import PrivacyPolicy from './StaticPages/PrivacyPolicy/PrivacyPolicy';
-import PromotionTermsCondition from './StaticPages/PromotionTermsCondition/PromotionTermsCondition';
-import ReturnPolicy from './StaticPages/ReturnPolicy/ReturnPolicy';
-import Sitemap from './StaticPages/Sitemap/Sitemap';
-import TermOfUse from './StaticPages/TermOfUse/TermOfUse';
 import TermConditions from './StaticPages/TermsConditions/TermsConditions';
 
 import ProfileAddress from './CustomerAddress/ProfileAddress';
@@ -73,10 +62,7 @@ import NewCheckOut from '../components/NewCheckOut/CheckOut'
 import PresentFinder from '../components/PresentFinder/PresentFinder';
 addLocaleData([...en, ...ar]);
 
-
-
 //const language = 'en';
-
 
 class App extends Component {
     constructor(props) {
@@ -222,8 +208,6 @@ class App extends Component {
     }
 
     handleCountrySelection = (country) => {
-        //console.log('In App country sel',country);
-
         let language;
         // language = (cookie.load('language') === null) ? 'ar' : cookie.load('language');
         if ((cookie.load('language') === null) || (cookie.load('language') === "undefined")) {
@@ -287,16 +271,10 @@ class App extends Component {
     }
 
     componentDidMount() {
-        //console.log('LOCAL APP mounted');
-
         let changedLang = localStorage.getItem('tempstoreid');
         if (changedLang) {
             let templang = localStorage.getItem('templang');
-
             this.setState({ store_id: changedLang, language: templang, changeData: true });
-        }
-        else {
-
         }
     }
 
@@ -318,14 +296,10 @@ class App extends Component {
     render() {
         // document.getElementById("dir").dir = this.state.dir;
         let { language } = this.state;
-        //console.log('In App Render', this.state);
         //const messages = localeData[language] || localeData.en;
         const messages = localeData[language] || localeData.en;
-
-        //console.log('Inside Render', this.props);
         //let dir = this.props.selectedLang === 'ar' ? 'rtl' : 'ltr';
         this.handleDir(language);
-
 
         return (
             <>
@@ -350,26 +324,15 @@ class App extends Component {
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/birth-day-club" component={BirthDayClub} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/add-new-birth-day-club-child" component={AddNewBirthDayClubChild} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/about-us" component={AboutUs} />
-                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/affiliates" component={Affiliate} />
-                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/careers" component={Careers} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/contact-us" component={ContactUs} />
-                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/cookie-policy" component={CookiePolicy} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/newsletter" component={NewsLetter} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/presentfinder" component={PresentFinder} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/charity" component={Charity} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/delivery-policy" component={DeliveryPolicy} />
 
-                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/corporate-responsibility" component={CorporateResponsibility} />
-                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/delivery-information" component={DeliveryInformation} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/help-and-faq" component={HelpFAQ} />
-                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/elc-franchising" component={Franchising} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/consumer-rights" component={ConsumerRights} />
-                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/elc-for-business" component={Business} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/privacy-policy" component={PrivacyPolicy} />
-                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/promotion-terms-and-condition" component={PromotionTermsCondition} />
-                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/return-and-exchanges" component={ReturnPolicy} />
-                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/sitemap" component={Sitemap} />
-                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/term-of-use" component={TermOfUse} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/terms-and-conditions" component={TermConditions} />
 
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/products/:category_path" component={Product} />

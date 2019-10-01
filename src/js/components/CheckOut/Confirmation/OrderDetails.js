@@ -13,9 +13,6 @@ class OrderDetails extends Component {
         this.shipping_address = this.props.OrderDetails.shipping_address;
         this.delivery_type = this.props.OrderDetails.delivery_type;
         this.payment_method = this.props.OrderDetails.payment_method;
-
-
-        //console.log(props);
     }
 
     goToDeliveryDetails = () => {
@@ -32,8 +29,6 @@ class OrderDetails extends Component {
         this.props.onRedirectToCart();
         this.props.history.push(`/${this.props.global.store_locale}/cart`);
     }
-
-
 
     render() {
 

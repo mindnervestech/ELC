@@ -477,7 +477,6 @@ class ProductListData extends Component {
 		
 		return (
 			<Row>
-				
 				<Col xs="3" lg="3" md="3" className="divShowOnWeb">
 					<SideManu action={this.handler}></SideManu>
 				</Col>
@@ -569,7 +568,6 @@ class ProductListData extends Component {
 							</div>
 						</div>
 					</div>
-					{/* {Object.keys(list).length > 0 ? */}
 					<div className="homePage">
 						<div className="start3">
 							<div>
@@ -789,7 +787,6 @@ class ProductListData extends Component {
 							</ul>
 						</div>
 					</div>
-
 				</Col>
 			</Row>
 		);

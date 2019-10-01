@@ -16,7 +16,6 @@ class DeliveryProductList extends Component {
     }
 
     redirectToCart = () => {
-        //console.log(' redirecting cart');
         this.setState({
             redirectToCart: true
         })
@@ -58,17 +57,14 @@ class DeliveryProductList extends Component {
     }
 
     applyVoucode = (voucode) => {
-
         if (voucode == '') {
           return;
         }
-     
         this.props.onApplyVoucode({
           store: this.props.global.currentStore,
           voucode: voucode,
           quoteid: this.props.cart_details.quote_id,
         });
-     
       }
      
       removeVoucode = (voucode) => {
@@ -79,10 +75,8 @@ class DeliveryProductList extends Component {
         });
       }
 
-
     render() {
         let coupan_code = null;
-        //console.log('this.props.store_locale :', this.props.store_locale);
         if (this.state.redirectToCart) {
             this.props.onRedirectToCart();
             return <Redirect to={`/${this.props.store_locale}/cart`} />
@@ -143,11 +137,8 @@ class DeliveryProductList extends Component {
                         </div>
                         <div className="t-Region-body">
                             <div className="container">
-
                                 {coupan_code}
-
                                 <div className="row">
-
                                     <div className="col col-12 apex-col-auto">
                                         <div className="t-Region r-h480  t-Region--noPadding t-Region--removeHeader t-Region--noBorder t-Region--scrollBody margin-bottom-none" id="R34425355779836347" aria-live="polite">
                                             <div className="t-Region-header">
@@ -176,13 +167,7 @@ class DeliveryProductList extends Component {
                                                                 <div className="t-Report-tableWrap" style={{ overflow: 'hidden' }}>
                                                                     <table className="t-Report-report" summary="Shopping Bag">
                                                                         <tbody>
-
-
                                                                             {productItem}
-
-
-
-
                                                                         </tbody>
                                                                     </table>
                                                                 </div>
@@ -199,8 +184,6 @@ class DeliveryProductList extends Component {
                                             </div>
                                         </div>
                                     </div>
-
-
                                 </div>
                                 <div className="row">
                                     <div className="col col-12 apex-col-auto">
@@ -223,13 +206,6 @@ class DeliveryProductList extends Component {
                                                     <div id="report_621308466133696681_catch">
                                                         <div className="t-Report t-Report--stretch t-Report--staticRowColors t-Report--rowHighlightOff t-Report--horizontalBorders" id="report_R621308466133696681" data-region-id="R621308466133696681">
                                                             <div className="t-Report-wrap">
-                                                                <table className="t-Report-pagination" role="presentation">
-                                                                    <tbody>
-                                                                        <tr>
-                                                                            <td />
-                                                                        </tr>
-                                                                    </tbody>
-                                                                </table>
                                                                 <div className="t-Report-tableWrap">
                                                                     <table className="t-Report-report" summary="Order Summary">
                                                                         <tbody>
@@ -287,7 +263,6 @@ class DeliveryProductList extends Component {
                     </div>
                 </div>
             </ShippingSpinner>
-
         </>);
     }
 }
@@ -307,7 +282,6 @@ const mapDispatchToProps = dispatch => {
         onApplyVoucode: (payload) => dispatch(actions.applyVoucode(payload)),
         onRemoveVoucode: (payload) => dispatch(actions.removeVoucode(payload))
     }
-
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(DeliveryProductList);

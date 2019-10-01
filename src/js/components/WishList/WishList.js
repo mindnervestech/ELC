@@ -31,9 +31,9 @@ class WishList extends Component {
             wishlist_message: '',
             ischeckremove: true,
             basketPopupFlag: false,
-			addToCartModal: false,
-			cartModelFlag: false,
-			url_key: '',
+            addToCartModal: false,
+            cartModelFlag: false,
+            url_key: '',
         }
     }
 
@@ -41,10 +41,10 @@ class WishList extends Component {
         this.props.onGetWishListItem({ customerid: this.props.user_details.customer_id, store_id: this.props.globals.currentStore })
     }
 
-    openAddTOBasketModal = (url) =>{
+    openAddTOBasketModal = (url) => {
         this.setState({
             basketPopupFlag: true,
-            url_key:url_key
+            url_key: url_key
         })
         url_key = url;
         basketPopupFlag = true;
@@ -53,11 +53,11 @@ class WishList extends Component {
     onCloseCartModal = () => {
         addToCartModal = false;
         cartModelFlag = false;
-		this.setState({ addToCartModal: false, cartModelFlag: false })
-	}
+        this.setState({ addToCartModal: false, cartModelFlag: false })
+    }
 
     onCloseAddCartModal = () => {
-        this.setState({ basketPopupFlag: false})
+        this.setState({ basketPopupFlag: false })
         basketPopupFlag = false;
         setTimeout(() => {
             if (this.props.isUserLoggedIn) {
@@ -73,7 +73,7 @@ class WishList extends Component {
 
             }
         }, 500);
-	}
+    }
 
     componentDidUpdate(prevProps) {
 
@@ -113,8 +113,6 @@ class WishList extends Component {
         }
     }
 
-
-
     logOut = () => {
         this.props.onLogoutUser();
     }
@@ -125,7 +123,6 @@ class WishList extends Component {
 
     gotoProductDetail = (item) => {
         const store_locale = this.props.globals.store_locale;
-
         const data = {
             customerid: typeof this.props.user_details.customer_id !== 'undefined' ? parseInt(this.props.user_details.customer_id) : " ",
             store: this.props.globals.currentStore,
@@ -144,127 +141,122 @@ class WishList extends Component {
     }
 
     checkBuyAndMore(offer, index) {
-		if (Object.keys(offer).length == 1) {
-			for (let value in offer) {
-				if (value == '1') {
-					return (
-						<div>
-							<button onClick={() => this.openShowAndMorePopup(index)} className="bayMoreAndSaveMore"><FormattedMessage id="BuyMoreBtn.Message2" defaultMessage="Sale" /></button>
-						</div>
-					);
-				} else {
-					return (
-						<div>
-							<button onClick={() => this.openShowAndMorePopup(index)} className="bayMoreAndSaveMore"><FormattedMessage id="BuyMoreBtn.Message" defaultMessage="Buy More, Save More!" /></button>
-						</div>
-					);
-				}
-			}
-		} else {
-			return (
-				<div>
-					<button onClick={() => this.openShowAndMorePopup(index)} className="bayMoreAndSaveMore"><FormattedMessage id="BuyMoreBtn.Message" defaultMessage="Buy More, Save More!" /></button>
-				</div>
-			);
-		}
+        if (Object.keys(offer).length == 1) {
+            for (let value in offer) {
+                if (value == '1') {
+                    return (
+                        <div>
+                            <button onClick={() => this.openShowAndMorePopup(index)} className="bayMoreAndSaveMore"><FormattedMessage id="BuyMoreBtn.Message2" defaultMessage="Sale" /></button>
+                        </div>
+                    );
+                } else {
+                    return (
+                        <div>
+                            <button onClick={() => this.openShowAndMorePopup(index)} className="bayMoreAndSaveMore"><FormattedMessage id="BuyMoreBtn.Message" defaultMessage="Buy More, Save More!" /></button>
+                        </div>
+                    );
+                }
+            }
+        } else {
+            return (
+                <div>
+                    <button onClick={() => this.openShowAndMorePopup(index)} className="bayMoreAndSaveMore"><FormattedMessage id="BuyMoreBtn.Message" defaultMessage="Buy More, Save More!" /></button>
+                </div>
+            );
+        }
     }
-    
-    closeBuyAndMore(index){
-		showPopupIndex = -1
-		this.setState({ changeFilterData: true })
+
+    closeBuyAndMore(index) {
+        showPopupIndex = -1
+        this.setState({ changeFilterData: true })
     }
 
     openShowAndMorePopup(index) {
-		showPopupIndex = index
-		this.setState({ changeFilterData: true })
-	}
-    
-    showMessageOnBuyAndMorePopup(offer, currency) {
-		if (Object.keys(offer).length == 1) {
-			for (let value in offer) {
-				if (value == '1') {
-					return (
-						<div className="buyAndMorePopupText">
-							<FormattedMessage id="BuyMoreBtn.Message2" defaultMessage="Sale" />
-						</div>
-					);
-				} else {
-					return (
-						<div>
-							<div className="buyAndMorePopupText">
-								<FormattedMessage id="BuyMoreBtn.Message" defaultMessage="Buy More, Save More!" />
-							</div>
-							<div className="buyAndMoreOffer">
-								<span>{value}&nbsp;<FormattedMessage id="For.Text" defaultMessage="For" />&nbsp;{currency}&nbsp;{offer[value]}</span>
-							</div>
-						</div>
-					);
-				}
-			}
-		} else {
-			let showOffer = []
-			let count = 0
-			for (let value in offer) {
-				if(count < 2){
-					showOffer.push(value)
-					showOffer.push(offer[value])
-				}
-				count++
-			}
-			count = 0
-			return (
-				<div>
-					<div className="buyAndMorePopupText">
-						<FormattedMessage id="BuyMoreBtn.Message" defaultMessage="Buy More, Save More!" />
-					</div>
-					<div>
-						<div className="buyAndMoreOffer">
-							<span>{showOffer[0]}&nbsp;<FormattedMessage id="For.Text" defaultMessage="For" />&nbsp;{currency}&nbsp;{showOffer[1]}</span>
-						</div>
-						<div className="buyAndMoreOffer">
-						<span>{showOffer[2]}&nbsp;<FormattedMessage id="For.Text" defaultMessage="For" />&nbsp;{currency}&nbsp;{showOffer[3]}</span>
-						</div>
-					</div>
-				</div>
-			);
-		}
+        showPopupIndex = index
+        this.setState({ changeFilterData: true })
     }
-    
-    showDiscountPrise(offerData , orignalPrise, currency){
-		if (Object.keys(offerData).length == 1) {
-			for (let value in offerData) {
-				if (value == '1') {
-					return (
-						<div>
-							<span style={{ fontSize: 14, color: "#0D943F", fontWeight: "bold" }}>{currency}&nbsp;{offerData[value]}</span>
-							<span style={{ color: "#b3b3b3", textDecorationLine: 'line-through', fontSize: 14, marginLeft: 10 }}>{currency}&nbsp;{orignalPrise}.00</span>
-						</div>
-					);
-				} else {
-					return (
-						<div>
-							<span style={{ fontSize: 14, color: "#0D943F", fontWeight: "bold" }}>{currency}&nbsp;{orignalPrise}.00</span>
-						</div>
-					);
-				}
-			}
-		} else {
-			return (
-				<div>
-					<span style={{ fontSize: 14, color: "#0D943F", fontWeight: "bold" }}>{currency}&nbsp;{orignalPrise}.00</span>
-				</div>
-			);
-		}
-	}
 
+    showMessageOnBuyAndMorePopup(offer, currency) {
+        if (Object.keys(offer).length == 1) {
+            for (let value in offer) {
+                if (value == '1') {
+                    return (
+                        <div className="buyAndMorePopupText">
+                            <FormattedMessage id="BuyMoreBtn.Message2" defaultMessage="Sale" />
+                        </div>
+                    );
+                } else {
+                    return (
+                        <div>
+                            <div className="buyAndMorePopupText">
+                                <FormattedMessage id="BuyMoreBtn.Message" defaultMessage="Buy More, Save More!" />
+                            </div>
+                            <div className="buyAndMoreOffer">
+                                <span>{value}&nbsp;<FormattedMessage id="For.Text" defaultMessage="For" />&nbsp;{currency}&nbsp;{offer[value]}</span>
+                            </div>
+                        </div>
+                    );
+                }
+            }
+        } else {
+            let showOffer = []
+            let count = 0
+            for (let value in offer) {
+                if (count < 2) {
+                    showOffer.push(value)
+                    showOffer.push(offer[value])
+                }
+                count++
+            }
+            count = 0
+            return (
+                <div>
+                    <div className="buyAndMorePopupText">
+                        <FormattedMessage id="BuyMoreBtn.Message" defaultMessage="Buy More, Save More!" />
+                    </div>
+                    <div>
+                        <div className="buyAndMoreOffer">
+                            <span>{showOffer[0]}&nbsp;<FormattedMessage id="For.Text" defaultMessage="For" />&nbsp;{currency}&nbsp;{showOffer[1]}</span>
+                        </div>
+                        <div className="buyAndMoreOffer">
+                            <span>{showOffer[2]}&nbsp;<FormattedMessage id="For.Text" defaultMessage="For" />&nbsp;{currency}&nbsp;{showOffer[3]}</span>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+    }
+
+    showDiscountPrise(offerData, orignalPrise, currency) {
+        if (Object.keys(offerData).length == 1) {
+            for (let value in offerData) {
+                if (value == '1') {
+                    return (
+                        <div>
+                            <span style={{ fontSize: 14, color: "#0D943F", fontWeight: "bold" }}>{currency}&nbsp;{offerData[value]}</span>
+                            <span style={{ color: "#b3b3b3", textDecorationLine: 'line-through', fontSize: 14, marginLeft: 10 }}>{currency}&nbsp;{orignalPrise}.00</span>
+                        </div>
+                    );
+                } else {
+                    return (
+                        <div>
+                            <span style={{ fontSize: 14, color: "#0D943F", fontWeight: "bold" }}>{currency}&nbsp;{orignalPrise}.00</span>
+                        </div>
+                    );
+                }
+            }
+        } else {
+            return (
+                <div>
+                    <span style={{ fontSize: 14, color: "#0D943F", fontWeight: "bold" }}>{currency}&nbsp;{orignalPrise}.00</span>
+                </div>
+            );
+        }
+    }
 
     render() {
-
         const store_locale = this.props.globals.store_locale;
-
-
         let respo_message = null;
-
         if (this.state.showAlert) {
             respo_message = <span id="APEX_SUCCESS_MESSAGE" data-template-id="126769709897686936_S" className="apex-page-success u-visible"><div className="t-Body-alert">
                 <div className="t-Alert t-Alert--defaultIcons t-Alert--success t-Alert--horizontal t-Alert--page t-Alert--colorBG" id="t_Alert_Success" role="alert">
@@ -285,37 +277,23 @@ class WishList extends Component {
             </div></span>;
         }
 
-        // if (this.state.goToProduct) {
-        //   return <Redirect to={{
-        //     pathname: `/${store_locale}/products-details/${this.state.url_key}`,
-        //   }} />
-        // }
-
         if (!(this.props.isUserLoggedIn)) {
             return <Redirect to={{
                 pathname: `/${store_locale}/login`,
             }} />;
         }
 
-        // const productList = this.props.products.map((item, index) => {
-        //   return (<Product
-        //     value={item}
-        //     key={index}
-        //     store_locale={store_locale}
-        //     productDetail={() => this.gotoProductDetail(item)}
-        //     clicked={() => this.wishlistToggle(index, item.wishlist_id)} />)
-        // })
-        
-
         return (<Spinner>
             <div className="t-Body-contentInner homePage">
-                {basketPopupFlag ? <div>
-                    <Modal modalId="add_to_basket"  open={basketPopupFlag} onClose={this.onCloseAddCartModal}>
-                        <AddToBasketModal url_key={url_key} onCloseAddCartModal={this.onCloseAddCartModal}/>
-                    </Modal>
-                </div> : ''}
-                {addToCartModal && this.props.cart_details.similar_products && !window.location.href.includes('products-details') ? <div>
-                        <Modal modalId="addToCartPopupID"  open={addToCartModal} onClose={this.onCloseCartModal}>
+                {basketPopupFlag ?
+                    <div>
+                        <Modal modalId="add_to_basket" open={basketPopupFlag} onClose={this.onCloseAddCartModal}>
+                            <AddToBasketModal url_key={url_key} onCloseAddCartModal={this.onCloseAddCartModal} />
+                        </Modal>
+                    </div> : ''}
+                {addToCartModal && this.props.cart_details.similar_products && !window.location.href.includes('products-details') ?
+                    <div>
+                        <Modal modalId="addToCartPopupID" open={addToCartModal} onClose={this.onCloseCartModal}>
                             <AddToCartModal onCloseCartModal={this.onCloseCartModal} />
                         </Modal>
                     </div> : ''}
@@ -330,17 +308,6 @@ class WishList extends Component {
                     <span style={{ fontSize: 15, fontWeight: 'bold' }}><FormattedMessage id="profile.Wishlist.Title" defaultMessage="Wishlist" /></span>
                 </div>
                 <div className="container">
-                    {/* <div>
-                        <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
-                        <span className="titleHover">Home</span>
-                        </Link>
-                        <span>  > Wishlist</span>
-                    </div>
-                    <div className="wishlist-title">
-                        <label>
-                        My WishList
-                        </label>
-                    </div> */}
                     <div className="row">
                         <div className="col col-12 apex-col-auto">
                             <div className="t-ButtonRegion t-Form--floatLeft containers t-ButtonRegion--noPadding t-ButtonRegion--noUI apex-tabs-region js-apex-region" id="R28512406002220865">
@@ -349,43 +316,34 @@ class WishList extends Component {
                                     <div className="t-ButtonRegion-col t-ButtonRegion-col--content">
                                         <h2 className="t-ButtonRegion-title" id="R28512406002220865_heading">Region Display Selector</h2>
                                         <div className="apex-rds-container"><div className="apex-rds-slider"><div className="apex-rds-hover left" style={{ display: 'none' }}><a> <span className="a-Icon icon-left-chevron" /> </a></div><div className="apex-rds-hover right" style={{ display: 'none' }}><a> <span className="a-Icon icon-right-chevron" /> </a></div></div><ul id="28512406002220865_RDS" className="apex-rds a-Tabs" role="tablist" style={{ whiteSpace: 'nowrap', overflowX: 'hidden' }}><li className="apex-rds-item apex-rds-first apex-rds-before" role="presentation" id="R28333887549179555_tab">
-
                                             <Link
                                                 to={{
                                                     pathname: `/${store_locale}/profile`,
                                                     state: { ...this.state }
                                                 }} role="tab" aria-controls="R28333887549179555" aria-selected="false" tabIndex={-1}><span><FormattedMessage id="profile.Account.Title" defaultMessage="Account" /></span></Link>
-
                                         </li><li className="" role="presentation" id="R28337577127179591_tab">
-
-
                                                 <Link to={{
                                                     pathname: `/${store_locale}/order-history`,
                                                 }} role="tab" aria-controls="R28337577127179591" aria-selected="true">
                                                     <span className="FormattedMessage"><FormattedMessage id="profile.OrderHistory.Title" defaultMessage="Order History" /></span>
                                                 </Link></li>
-
                                             <li className="apex-rds-item apex-rds-last apex-rds-selected" role="presentation" id="USERWISHLIST_tab">
-
                                                 <Link to={{
                                                     pathname: `/${store_locale}/wish-list`,
                                                 }} role="tab" aria-controls="USERWISHLIST" aria-selected="false" tabIndex={-1}>
                                                     <span className="FormattedMessage"><FormattedMessage id="profile.Wishlist.Title" defaultMessage="Wishlist" /></span></Link>
-
                                             </li>
                                             <button onClick={this.logOut} className="t-Button t-Button--hot t-Button--gapTop divShowOnMobile floatRight" type="button" id="B28512592134220867"><span className="t-Button-label"><FormattedMessage id="header.SignOut" defaultMessage="Sign Out" /></span></button>
                                         </ul></div>
                                         <div className="t-ButtonRegion-buttons" />
                                     </div>
                                     <div className="t-ButtonRegion-col t-ButtonRegion-col--right"><div className="t-ButtonRegion-buttons"><button onClick={this.logOut} className="t-Button t-Button--hot t-Button--gapTop divShowOnWeb" type="button" id="B28512592134220867"><span className="t-Button-label"><FormattedMessage id="header.SignOut" defaultMessage="Sign Out" /></span></button></div></div>
-                                    {/* <div className="t-ButtonRegion-col t-ButtonRegion-col--right"><div className="t-ButtonRegion-buttons"><button onClick={this.logOut} className="t-Button t-Button--hot t-Button--gapTop" type="button" id="B28512592134220867"><span className="t-Button-label"><FormattedMessage id="header.logoutName" defaultMessage="Logout" /></span></button></div></div> */}
                                 </div>
                             </div>
                         </div>
                     </div>
                     {this.props.products.length > 0 ?
                         <ul className="products wishlist-products">
-
                             {this.props.products.map((index, item) =>
                                 (
                                     <li key={index}>
@@ -399,14 +357,11 @@ class WishList extends Component {
                                                 <label className="text-color">{this.props.products[item].name}</label>
                                             </div>
                                             <div>
-                                               
-                                                {/* <span style={{ color: "gray", textDecorationLine: 'line-through', fontSize: 14, marginLeft: 10 }}>AED 14.50</span> */}
                                                 {this.props.products[item].offers && this.props.products[item].offers.status == 1 ?
-														this.showDiscountPrise(this.props.products[item].offers.data,this.props.products[item].price,"AED")
-													:<div>
-														<span style={{ fontSize: 14, color: "#0D943F", fontWeight: "bold" }}>AED {this.props.products[item].price}</span>
-														{/* <span style={{ color: "gray", textDecorationLine: 'line-through', fontSize: 14, marginLeft: 10 }}>AED 14.50</span> */}
-													</div>}
+                                                    this.showDiscountPrise(this.props.products[item].offers.data, this.props.products[item].price, "AED")
+                                                    : <div>
+                                                        <span style={{ fontSize: 14, color: "#0D943F", fontWeight: "bold" }}>AED {this.props.products[item].price}</span>
+                                                    </div>}
                                             </div>
                                             {/* <div style={{ paddingTop: 10 }}>
                                                 <StarRatings
@@ -422,7 +377,7 @@ class WishList extends Component {
                                                 <span style={{ marginLeft: 5 }}>3 - 10 years</span>
                                                 </div> */}
                                             <div>
-                                                <button style={{width: '100%'}} className="alsoLikeCardButton" onClick={() => this.openAddTOBasketModal(this.props.products[item].url_key)}>
+                                                <button style={{ width: '100%' }} className="alsoLikeCardButton" onClick={() => this.openAddTOBasketModal(this.props.products[item].url_key)}>
                                                     <FormattedMessage id="Product.Detail.addToBasket" defaultMessage="Add to basket" />
                                                 </button>
                                             </div>
@@ -432,51 +387,26 @@ class WishList extends Component {
                                                         <span style={{ paddingLeft: 7, cursor: 'pointer', fontFamily: 'VAG Rounded ELC Light' }} ><FormattedMessage id="PageTitle.remove-wishlist" defaultMessage="Remove from Wishlist" /></span></i></span>
                                             </div>
                                         </div>
-                                            <div style={{padding: "0px 10px"}}>
-												{this.props.products[item].offers && this.props.products[item].offers.status == 1 &&
-													this.checkBuyAndMore(this.props.products[item].offers.data, item)
-												}
-											</div>
-											<div className="buyAndSaveMorePopup" style={showPopupIndex == item ? { display: 'block' } : { display: 'none' }}>
-												<i className="close fa fa-times" aria-hidden="true" onClick={() => this.closeBuyAndMore(item)} />
-												<div style={{ marginTop: 40 }}>
-													<i className="icon-cart basket iconBasket" />
-												</div>
-												<div style={{ padding: '0px 10px' }}>
-													{this.props.products[item].offers && this.props.products[item].offers.status == 1 &&
-														this.showMessageOnBuyAndMorePopup(this.props.products[item].offers.data, 'AED')
-													}
-												</div>
-											</div>
+                                        <div style={{ padding: "0px 10px" }}>
+                                            {this.props.products[item].offers && this.props.products[item].offers.status == 1 &&
+                                                this.checkBuyAndMore(this.props.products[item].offers.data, item)
+                                            }
+                                        </div>
+                                        <div className="buyAndSaveMorePopup" style={showPopupIndex == item ? { display: 'block' } : { display: 'none' }}>
+                                            <i className="close fa fa-times" aria-hidden="true" onClick={() => this.closeBuyAndMore(item)} />
+                                            <div style={{ marginTop: 40 }}>
+                                                <i className="icon-cart basket iconBasket" />
+                                            </div>
+                                            <div style={{ padding: '0px 10px' }}>
+                                                {this.props.products[item].offers && this.props.products[item].offers.status == 1 &&
+                                                    this.showMessageOnBuyAndMorePopup(this.props.products[item].offers.data, 'AED')
+                                                }
+                                            </div>
+                                        </div>
                                     </li>
                                 ))}
                         </ul>
                         : <div style={{ marginBottom: 50, marginTop: 15, textAlign: 'start' }}><span style={{ fontSize: "24px", padding: "20px 0px" }}><FormattedMessage id="PageTitle.Wishlist.Empty" defaultMessage="Wishlist is empty" /></span></div>}
-                </div>
-                <div className="container">
-                    <div className="row">
-
-                    </div>
-
-                    <div className="row">
-
-                    </div>
-                    {/* <div className="row">
-                        <div className="col col-12 apex-col-auto">
-                        <div className="t-ContentBlock containers t-ContentBlock--h3 margin-top-lg a-Tabs-panel apex-rds-after apex-rds-element-selected" id="USERWISHLIST" role="tabpanel" aria-labelledby="USERWISHLIST_tab" aria-live="polite" aria-hidden="false" style={{}}>
-                            <div className="t-ContentBlock-header"><h1 className="t-ContentBlock-title"><FormattedMessage id="profile.Wishlist.Title" defaultMessage="Wishlist" /></h1></div>
-                            <div className="t-ContentBlock-body"><div id="report_28511608561220857_catch"><ul className="t-Cards t-Cards--basic t-Cards--4cols t-Cards--animColorFill products" id="USERWISHLIST_cards" data-region-id="USERWISHLIST" style={{ touchAction: 'pan-y', userSelect: 'none', WebkitUserDrag: 'none', WebkitTapHighlightColor: 'rgba(0, 0, 0, 0)' }}>
-
-
-                            {this.props.wishLoader ? <Spinner /> : productList ? productList : null}
-
-
-                            </ul>
-                            <table className="t-Report-pagination" role="presentation" /></div></div>
-                            <div className="t-ContentBlock-buttons" />
-                        </div>
-                        </div>
-                    </div> */}
                 </div>
             </div>
             </Spinner>
@@ -508,7 +438,6 @@ const mapDispatchToProps = dispatch => {
         OngetMyCart: (quoteId) => dispatch(actions.getMyCart(quoteId)),
         onRemoveProductFromWishList: (payload) => dispatch(actions.removeWishList(payload)),
     }
-
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(WishList);

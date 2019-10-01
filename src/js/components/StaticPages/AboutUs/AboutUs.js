@@ -16,16 +16,12 @@ class AboutUs extends Component {
 	static getDerivedStateFromProps = (props, state) => { };
 
 	componentDidMount() {
-		
 			this.props.onGetAboutUsData({ storeId: this.props.globals.currentStore});
-		
 	}
 
 	render() {
 		let store_locale=this.props.globals.store_locale
 		return (
-
-		
 			<Spinner  loading={this.props.spinnerProduct}>
 			<div className="t-Body-contentInner ">
 			<div  className="padding-right-ar padding-breadcrumb">  
@@ -36,7 +32,6 @@ class AboutUs extends Component {
           </div>
 				<div className="container">
 					<div className="row">
-			
 						<div className="col col-12 apex-col-auto">
 							<div className="t-Region g-wrapper-main_content  t-Region--removeHeader t-Region--noBorder t-Region--scrollBody"
 								id="R231982418266982051">
@@ -61,7 +56,6 @@ class AboutUs extends Component {
 									<div className="t-Region-body">
 										<center> <br />
 											<h1 className="t-page-titles static-page-style">{this.props.aboutUs.title}</h1>
-											{/* <h1 className="t-page-titles"> <FormattedMessage id="ContactUs.Title" defaultMessage="ContactUs" /></h1> */}
 										</center>
 										<input type="hidden" id="P15_SEARCHSTRING" name="P15_SEARCHSTRING" value="" />
 										<input
@@ -83,9 +77,7 @@ class AboutUs extends Component {
 											name="P15_PAGE_DESC"
 											value="Nayomi was founded in the Kingdom of Saudi Arabia in 1992 as a single lingerie store, and 24 years later has evolved into a distinctive, leading online lingerie brand in Saudi &amp; other regions."
 										/>
-
 										<div id="MiscContent">
-
 											<div
 												className="staticPagesText"
 												dangerouslySetInnerHTML={{ __html: this.props.aboutUs.content }}
@@ -107,8 +99,6 @@ class AboutUs extends Component {
 		);
 	}
 }
-
-
 
 const mapStateToProps = state => {
 	return {

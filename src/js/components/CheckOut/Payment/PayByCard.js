@@ -25,10 +25,8 @@ class PayByCard extends Component {
 
   render() {
     let payfort_fort_cc = this.props.payfort_fort_cc;
-    //console.log(payfort_fort_cc);
     let store_locale = this.props.globals.store_locale;
     return (
-
       <div className={this.state.className} id="CCI">
         <div className="t-Region-header">
           <div className="t-Region-headerItems t-Region-headerItems--title">
@@ -43,7 +41,6 @@ class PayByCard extends Component {
             <div className="t-Region-buttons-right" />
           </div>
           <div className="t-Region-body">
-
             <div className="b-price_total" style={{ padding: '10px', borderBottom: '1px solid #d6d6d6', marginBottom: '10px' }}>
               <span className="m-label"><FormattedMessage id="delivery-details.Total.Title" defaultMessage="Total" /></span>
               <span className="m-value js-remaining-balance" data-value={payfort_fort_cc.total}> {payfort_fort_cc.currency} {payfort_fort_cc.total}</span><br />
@@ -59,19 +56,15 @@ class PayByCard extends Component {
                 <div className="col col-2 ">
                   <span className="apex-grid-nbsp">&nbsp;</span>
                 </div>
-
                 <div className="col col-4 ">
                   <button onClick={this.props.continueShopping} className="t-Button h-hidden-mobile  t-Button--pillStart t-Button--stretch" type="button" id="B34959181376190685">
                   <span className="t-Button-label">
                   <FormattedMessage id="Cart.ContinueShopping.Title" defaultMessage="Continue Shopping" />
                   </span></button>
                 </div>
-
                 <div className="col col-4 ">
                   <button onClick={this.props.redirectToCheckout} className="t-Button t-Button--hot h-hidden-mobile t-Button--pillEnd t-Button--stretch" type="button" id="CODB"><span className="t-Button-label"><FormattedMessage id="Checkout.Proceed" defaultMessage="Proceed" /></span></button>
                 </div>
-
-
               </div>
             </div>
           </div>

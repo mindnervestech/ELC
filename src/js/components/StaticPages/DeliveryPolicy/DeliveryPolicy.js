@@ -24,12 +24,10 @@ class DeliveryPolicy extends Component {
                 baseURL: STATIC_PAGES_URL,
                 headers: { Authorization: `Bearer ${API_TOKEN}`, 'Content-Type': 'application/json' },
             });
-
             API.get('delivery-policy/storeId/' + this.props.globals.currentStore).then(res => {
                 this.setState({ data: res.data, spinner: false });
             });
         }
-
     }
 
     componentDidMount(prevProps, prevState) {
@@ -72,11 +70,7 @@ class DeliveryPolicy extends Component {
                         </div>
                         <div className="container">
                             <div className="row">
-
                                 <div className="col col-12 apex-col-auto">
-
-
-
                                     <div
                                         className="t-Region g-wrapper-main_content  t-Region--removeHeader t-Region--noBorder t-Region--scrollBody"
                                         id="R231982418266982051"
@@ -120,13 +114,10 @@ class DeliveryPolicy extends Component {
                                                     name="P15_PAGE_DESC"
                                                     value="Checkout the privacy policy of Nayomi Saudi website. The Website Policies and Terms &amp; Conditions may be changed or updated occasionally to meet the requirements and standards."
                                                 />
-
                                                 <div id="MiscContent">
                                                     <p style={{ textAlign: 'center' }}>
                                                         <h1 className="t-page-titles static-page-style">{this.state.data.title}</h1>
-
                                                     </p>
-
                                                     <div
                                                         className="staticPagesText"
                                                         dangerouslySetInnerHTML={{ __html: this.state.data.content }}

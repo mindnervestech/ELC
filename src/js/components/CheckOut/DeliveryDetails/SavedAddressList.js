@@ -10,11 +10,9 @@ class SavedAddressList extends Component {
     }
     render() {
         const selected_country = this.props.selected_country;
-
         let country_code = null;
         let addressItem = null;
         if (selected_country === 'International') {
-            //console.log(selected_country);
             country_code = 'NA';
             addressItem = this.props.addressData.map((item, index) => {
                 let item_id = 'P7_ADDRESSES_' + item.Id
@@ -51,7 +49,6 @@ class SavedAddressList extends Component {
                                 <FormattedMessage id="saved.add.text" defaultMessage="Selected country" />.</span></label>
                     </div>)
                 }
-
             })
         } else if (selected_country === 'KSA' || selected_country === 'ksa') {
             addressItem = this.props.addressData.map((item, index) => {
@@ -125,14 +122,8 @@ class SavedAddressList extends Component {
             })
         }
 
-
-
-
-
         return (<>
-
             <div className="t-Region find-store_hide t-Region--removeHeader t-Region--stacked t-Region--hiddenOverflow find-store_show" id="DTA">
-
                 <div className="t-Region-header">
                     <div className="t-Region-headerItems t-Region-headerItems--title">
                         <span className="t-Region-headerIcon"><span className="t-Icon " aria-hidden="true" /></span>
@@ -194,26 +185,15 @@ class SavedAddressList extends Component {
                                                             <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel  apex-item-wrapper apex-item-wrapper--radiogroup " id="P7_ADDRESSES_CONTAINER"><div className="t-Form-labelContainer">
                                                                 <label htmlFor="P7_ADDRESSES" id="P7_ADDRESSES_LABEL" className="t-Form-label"><FormattedMessage id="SavedAddress.Text" defaultMessage="SavedAddress" /></label>
                                                             </div>
-
                                                                 <div className="t-Form-inputContainer">
-
                                                                     <div className="t-Form-itemWrapper">
                                                                         <div tabIndex={-1} id="P7_ADDRESSES" aria-labelledby="P7_ADDRESSES_LABEL" className="radio_group apex-item-group apex-item-group--rc apex-item-radio" role="group">
                                                                             <div className="apex-item-grid radio_group">
                                                                                 <div className="apex-item-grid-row">
-
-
-
                                                                                     {addressItem}
-
-
-
-
                                                                                 </div></div></div>
                                                                     </div><span id="P7_ADDRESSES_error_placeholder" className="a-Form-error" data-template-id="33609965712469734_ET" /></div></div>
                                                         </div>
-
-
                                                     </div>
                                                     <Row className="row">
                                                         <Col xs="0" lg="2" md="2">
@@ -262,7 +242,6 @@ class SavedAddressList extends Component {
                                                             <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel is-required apex-item-wrapper apex-item-wrapper--select-list js-show-label" id="P7_R_CITY_CONTAINER"><div className="t-Form-labelContainer">
                                                                 <label htmlFor="P7_R_CITY" id="P7_R_CITY_LABEL" className="t-Form-label"><FormattedMessage id="Checkout.City" defaultMessage="City" /> <span className="u-VisuallyHidden">(Value Required)</span></label>
                                                             </div><div className="t-Form-inputContainer"><div className="t-Form-itemWrapper"><select id="P7_R_CITY" name="P7_R_CITY" className="selectlist apex-item-select" size={1}><option value>--Select City--</option>
-
                                                             </select></div><span id="P7_R_CITY_error_placeholder" className="a-Form-error" data-template-id="33610259035469734_ET" /></div></div>
                                                         </div>
                                                     </div><div className="row">
@@ -327,8 +306,6 @@ class SavedAddressList extends Component {
                     </div>
                 </div>
             </div>
-
-
         </>)
     }
 }

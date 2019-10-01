@@ -32,7 +32,6 @@ if(store_locale){
     replace_store_locale='uae_en';
 }
 
-//console.log("Store Locale from global",store_locale)
 export const WEB_URL = WEB_URL_ALL[active_server];
 
 export const API_URL = ROOT_URL[active_server];

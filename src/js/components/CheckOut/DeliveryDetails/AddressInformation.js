@@ -28,10 +28,7 @@ class Address extends Component {
             data: {},
             cities: [],
             country_details: {},
-
-
         }
-
     }
 
     componentDidMount() {
@@ -98,9 +95,6 @@ class Address extends Component {
                 this.defineCities('AE');
             }
         }
-
-
-
     }
 
     cancelAddNewAddress = () => {
@@ -112,7 +106,6 @@ class Address extends Component {
         let errors = {};
         let formIsValid = true;
 
-        //Name
         if (!fields["location"]) {
             formIsValid = false;
             errors["location"] = <FormattedMessage id="SelectCountry.Validate" defaultMessage="Select Country" />;
@@ -127,8 +120,6 @@ class Address extends Component {
             formIsValid = false;
             errors["city"] = <FormattedMessage id="SelectCity.Validate" defaultMessage="Select City" />;
         }
-
-
 
         if (!fields["city"]) {
             formIsValid = false;
@@ -146,20 +137,15 @@ class Address extends Component {
         }
 
         let obj = this.state.city_details;
-        //console.log(this.state);
         if ((Object.entries(obj).length === 0) && (obj.constructor === Object)) {
             formIsValid = false;
             errors["city"] = <FormattedMessage id="SelectState.Validate" defaultMessage="Please Select State/City" />;
         }
-
-
-
         this.setState({ errors: errors });
         return formIsValid;
     }
 
     signUpSubmitAddress = () => {
-        //console.log(this.handleValidation());
         if (this.handleValidation()) {
             this.addInfo();
         }
@@ -185,18 +171,13 @@ class Address extends Component {
                     city: ''
                 }
             })
-
             this.defineCities(e.target.value);
         } else if (field === 'city') {
-            //console.log('(e.target.value >>>', (e.target.value))
             this.setCitydetails(e.target.value);
         }
-
-        //console.log(this.state);
     }
 
     defineCities = (location) => {
-        //console.log('>>>>>>>>>>>>>>',location);
         if ((location !== null) && (location !== 'NA')) {
             const countryList = this.props.country_list;
 
@@ -223,10 +204,8 @@ class Address extends Component {
     }
 
     setCitydetails = (city) => {
-
         if ((city !== null) && (city !== 'NA')) {
             const cityList = this.state.cities;
-
             let result = cityList.filter(obj => {
                 return obj.id === city
             })
@@ -235,13 +214,10 @@ class Address extends Component {
                     city_details: result[0]
                 });
             }
-
         }
-
     }
 
     setAddressType = (event) => {
-
         let fields = this.state.AddressFields;
         fields['addressType'] = event.target.value;
         this.setState({ fields });
@@ -249,7 +225,6 @@ class Address extends Component {
     }
 
     setPrimaryAddress = (event) => {
-
         let fields = this.state.AddressFields;
         fields['primaryAddress'] = event.target.value;
         this.setState({ fields });
@@ -261,32 +236,22 @@ class Address extends Component {
     }
 
     divOnBlure = (e) => {
-
         if ((e.target.value === null) || (e.target.value === '')) {
             e.currentTarget.className = 't-Form-fieldContainer t-Form-fieldContainer--floatingLabel apex-item-wrapper apex-item-wrapper--text-field';
-
         } else {
-
             e.currentTarget.className = 't-Form-fieldContainer t-Form-fieldContainer--floatingLabel apex-item-wrapper apex-item-wrapper--text-field is-active';
         }
-
     }
 
     render() {
-
         let cancelButton = null;
         const selected_country = this.props.globals.country;
         const country_list = this.props.country_list;
         const city_list = this.state.cities;
-
-
-
         let country_select_list = null;
         let city_select_list = null;
         if (country_list.length > 0) {
             if (selected_country === 'International') {
-
-
                 country_select_list = country_list.filter((item) => {
                     if (item.id === 'SA' || item.id === 'AE') {
                         return false;
@@ -298,10 +263,6 @@ class Address extends Component {
                         <option key={item.id} value={item.id} selected={true}>{item.full_name_english}</option>
                     );
                 })
-
-                //console.log('country_select_list : ', country_select_list)
-                //document.getElementById("SA").setAttribute('selected', true);
-
             } else if (selected_country === 'KSA' || selected_country === 'ksa') {
                 //this.defineCities('SA');
                 country_select_list = country_list.filter(item => item.id === 'SA').map((item) => {
@@ -318,7 +279,6 @@ class Address extends Component {
                 })
             }
         }
-
 
         if (city_list.length !== 0) {
             city_select_list = city_list.map((item) => {
@@ -421,7 +381,6 @@ class Address extends Component {
                             <div id="P7_RADD1_error">{this.state.errors.addressOne}</div></span></span></div>;
         }
         return (<>
-
             <div className="t-Region find-store_hide t-Region--removeHeader t-Region--stacked t-Region--hiddenOverflow find-store_show" id="DTA">
 
                 <div className="t-Region-header">
@@ -489,17 +448,13 @@ class Address extends Component {
                                                 <div className="container" style={{paddingLeft: 0, paddingRight: 0}}>
                                                     <div className="row">
                                                         <div className="col col-12 apex-col-auto">
-
                                                             <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel is-required apex-item-wrapper apex-item-wrapper--select-list js-show-label" id="P7_R_COUNTRY_CONTAINER"><div className="t-Form-labelContainer">
                                                                 <label htmlFor="P7_R_COUNTRY" id="P7_R_COUNTRY_LABEL" className="t-Form-label">
                                                                     <FormattedMessage id="Checkout.Location" defaultMessage="Location" />
                                                                     <span className="u-VisuallyHidden">(Value Required)</span></label>
                                                             </div>
-
                                                                 {locationWithErrorSpan}
-
                                                             </div>
-
                                                         </div>
                                                     </div>
                                                     <div className="row">
@@ -519,12 +474,7 @@ class Address extends Component {
                                                                 <div className="t-Form-labelContainer">
                                                                     <label htmlFor="P7_RADD1" id="P7_RADD1_LABEL" className="t-Form-label"><FormattedMessage id="Address1.Text" defaultMessage="Address 1*" /> <span className="u-VisuallyHidden">(Value Required)</span></label>
                                                                 </div>
-
-
                                                                 {addressOneWithErrorSpan}
-
-
-
                                                             </div>
                                                         </div>
                                                     </div>
@@ -535,14 +485,10 @@ class Address extends Component {
                                                                 <div className="t-Form-labelContainer">
                                                                     <label htmlFor="P7_RADD2" id="P7_RADD2_LABEL" className="t-Form-label"><FormattedMessage id="Address2.Text" defaultMessage="Address 2" /></label>
                                                                 </div>
-
-
                                                                 <div className="t-Form-inputContainer">
                                                                     <div className="t-Form-itemWrapper"><input type="text" id="P7_RADD2" name="P7_RADD2" className="text_field apex-item-text" size={30} maxLength={100} onChange={this.handleChange.bind(this, "addressTwo")} value={this.state.AddressFields["addressTwo"]} /></div>
                                                                     <span id="P7_RADD2_error_placeholder" className="a-Form-error" data-template-id="33609965712469734_ET" />
                                                                 </div>
-
-
                                                             </div>
                                                         </div>
                                                     </div>
@@ -553,14 +499,10 @@ class Address extends Component {
                                                                 <div className="t-Form-labelContainer">
                                                                     <label htmlFor="P7_RADD3" id="P7_RADD3_LABEL" className="t-Form-label"><FormattedMessage id="Address3.Text" defaultMessage="Address 3" /></label>
                                                                 </div>
-
-
                                                                 <div className="t-Form-inputContainer">
                                                                     <div className="t-Form-itemWrapper"><input type="text" id="P7_RADD3" name="P7_RADD3" className="text_field apex-item-text" size={30} maxLength={100} onChange={this.handleChange.bind(this, "addressThree")} value={this.state.AddressFields["addressThree"]} /></div>
                                                                     <span id="P7_RADD3_error_placeholder" className="a-Form-error" data-template-id="33609965712469734_ET" />
                                                                 </div>
-
-
                                                             </div>
                                                         </div>
                                                     </div>
@@ -580,7 +522,6 @@ class Address extends Component {
                                                                 {postcodeInputField}
                                                             </div>
                                                         </div>
-
                                                     </div>
                                                     <Row className="row">
                                                         <Col xs="12" lg="6" md="6">
@@ -621,13 +562,9 @@ class Address extends Component {
                                                             </div>
                                                         </Col>
                                                     </Row>
-
                                                     {cancelButton}
-
-
                                                 </div>
                                             </div>
-
                                             <div className="t-Region-buttons t-Region-buttons--bottom">
                                                 <div className="t-Region-buttons-left" />
                                                 <div className="t-Region-buttons-right" />
@@ -644,7 +581,6 @@ class Address extends Component {
                     </div>
                 </div>
             </div>
-
         </>);
     }
 }

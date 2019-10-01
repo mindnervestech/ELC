@@ -25,8 +25,6 @@ class DeliveryDetails extends Component {
     constructor(props) {
         super(props);
         this.myIntl = props.intl
-        //console.log('Props ::: ', props.intl);
-
         this.state = {
             ContactFields: {
                 firstName: '',
@@ -68,19 +66,16 @@ class DeliveryDetails extends Component {
                 status: false,
                 message: '',
             }
-
         }
         this.submitContact = React.createRef();
         this.submitAddress = React.createRef();
         this.submitStore = React.createRef();
         Eventcount = 0;
-        //console.log(props);
     }
 
     componentDidMount() {
         //this.props.OnproceedToCheckout({quote_id : 10})
         if (this.props.cart_details.is_cart_details_rec) {
-
             let obj = this.props.user_details.customer_details;
             if (!(utility.emptyObj(obj)) && this.props.user_details.isUserLoggedIn) {
                 if (this.props.cart_details.is_cart_details_rec && (this.props.cart_details.is_shipping_details_rec === false)) {
@@ -97,12 +92,10 @@ class DeliveryDetails extends Component {
                             store_id: this.props.globals.currentStore
                         })
                     }
-
                 } else {
                     this.props.history.push(`/${this.props.globals.store_locale}/login`);
                 }
             }
-
         } else {
             this.props.history.push(`/${this.props.globals.store_locale}/cart`);
         }
@@ -110,7 +103,6 @@ class DeliveryDetails extends Component {
             initializeF()
             trackF('DeliveryDetails');
         }
-
     }
 
 
@@ -132,7 +124,6 @@ class DeliveryDetails extends Component {
     }
 
     submitForm = () => {
-
         if (((this.state.addNewAddress)
             || (!(this.props.cart_details.available_address)))
             && (!(this.state.isCollectFromStore))) {
@@ -145,10 +136,8 @@ class DeliveryDetails extends Component {
                 UserID = this.props.user_details.customer_details.customer_id;
             }
 
-
             setTimeout(() => {
                 if (this.state.isContactValid && this.state.isAddressValid) {
-
                     let payload = {
                         addressId: '',
                         UserID: this.props.user_details.customer_details.customer_id,
@@ -165,23 +154,17 @@ class DeliveryDetails extends Component {
                         customer_address_type: this.state.AddressFields.addressType,
                         postcode: this.state.AddressFields.postcode,
                     };
-
                     this.props.OnaddNewAddressAndRedirectToCheckout(payload)
-                    //console.log('payload ', payload);
                 }
-
             }, 5000)
 
         } else if (this.state.isOldAddressSelcted && (!(this.state.isCollectFromStore))) {
-
             this.props.OnaddOldAddressAndRedirectToCheckout(this.state.oldAddressValue);
-
         } else if (this.state.isCollectFromStore) {
             this.submitContact.current.signUpSubmitContact();
             this.submitStore.current.signUpSubmitStore();
             setTimeout(() => {
                 if (this.state.isContactValid && this.state.isStoreValid) {
-                    //console.log('>>>>>>>.', this.state.storeInfo);
                     let data = {
                         store: { ...this.state.storeInfo },
                         contact: { ...this.state.ContactFields }
@@ -195,10 +178,8 @@ class DeliveryDetails extends Component {
                             message: this.myIntl.formatMessage({ id: 'delivery-details.invalidStore' }),
                         }
                     })
-
                 }
             }, 3000)
-
         } else {
             this.setState({
                 ...this.state,
@@ -207,38 +188,28 @@ class DeliveryDetails extends Component {
                     message: this.myIntl.formatMessage({ id: 'delivery-details.validAddress' }),
                 }
             })
-
         }
-
-
     }
 
     goToCartDetails = () => {
-        //console.log('goToCartDetails');
         this.props.onRedirectToCart();
         this.props.history.push(`/${this.props.globals.store_locale}/cart`);
     }
 
     AddressRadioClick = (addressId) => {
-
         this.setState({
             isOldAddressSelcted: true,
             oldAddressValue: addressId
         })
-
     }
 
-
     getContactInfo = (params) => {
-
         this.setState({
             ContactFields: params,
             isContactValid: true,
         })
-
     }
     getAddressInfo = (params) => {
-
         this.setState({
             AddressFields: params.AddressFields,
             city_details: params.city_details,
@@ -248,8 +219,6 @@ class DeliveryDetails extends Component {
     }
 
     getStoreInfo = (params) => {
-        //console.log('getStoreInfo : ', params);
-
         this.setState({
             storeInfo: { ...params },
             isStoreValid: true,
@@ -293,9 +262,6 @@ class DeliveryDetails extends Component {
                     })
                 }
             }
-
-
-
         } else {
             if ((e.target.id === 'CC') && (selected_country === 'International')) {
                 //alert(this.myIntl.formatMessage({ id: 'Click&Collect.Text' }));
@@ -313,7 +279,6 @@ class DeliveryDetails extends Component {
                 //   item.classList.remove('selected');
                 // }
                 // e.target.classList.add('selected');
-
                 if (e.target.id === 'CC') {
                     // this.setState({
                     //   isCollectFromStore: true,
@@ -325,8 +290,6 @@ class DeliveryDetails extends Component {
                 }
             }
         }
-
-
     }
 
     cancelAddNewAddress = () => {
@@ -340,7 +303,6 @@ class DeliveryDetails extends Component {
     }
 
     continueShopping = () => {
-        //console.log('hi')
         this.props.history.push(`/${this.props.globals.store_locale}`);
     }
 
@@ -374,28 +336,19 @@ class DeliveryDetails extends Component {
 
     render() {
         const selected_country = this.props.globals.country;
-
         let obj = this.props.cart_details.shipping_details;
         if (!(utility.emptyObj(obj))) {
             return <Redirect to={`/${this.props.globals.store_locale}/checkout-payment`} />
         }
-
-
         let addressContainer = null;
-
         if (this.props.cart_details.is_shipping_details_rec) {
-
             if (this.props.cart_details.available_address) {
-
                 addressContainer = <SavedAddressList
                     addressData={this.props.cart_details.addressData}
                     addNewAddress={this.addNewAddress}
                     radioClick={this.AddressRadioClick}
                     selected_country={this.props.globals.country} />
-
-
             } else if (!(this.props.cart_details.available_address)) {
-
                 addressContainer = <>
                     <Contact ref={this.submitContact} changed={this.getContactInfo} />
                     <Address ref={this.submitAddress} changed={this.getAddressInfo}
@@ -403,9 +356,7 @@ class DeliveryDetails extends Component {
                 </>
             }
 
-
             if (this.state.addNewAddress) {
-
                 addressContainer = <>
                     <Contact ref={this.submitContact} changed={this.getContactInfo} />
                     <Address ref={this.submitAddress} changed={this.getAddressInfo}
@@ -414,12 +365,9 @@ class DeliveryDetails extends Component {
                         selected_country={this.props.globals.country} />
                 </>;
             }
-
         }
 
-
         if (this.state.isCollectFromStore && (selected_country !== 'International')) {
-            console.log(this.myIntl.formatMessage({ id: 'StoreLocatorEnterALocation.Text' }));
             addressContainer = <>
                 <Store
                     ref={this.submitStore}
@@ -433,15 +381,12 @@ class DeliveryDetails extends Component {
         }
 
         let alertBox = null;
-
         if (this.state.alertBoxDetails.status) {
             alertBox = <AlertBox
                 message={this.state.alertBoxDetails.message}
                 alertBoxStatus={this.state.alertBoxDetails.status}
                 closeBox={this.closeErrorBox} />
         }
-
-
 
         return (<> <ShippingSpinner>
             {alertBox}
@@ -525,7 +470,6 @@ class DeliveryDetails extends Component {
                                                                         <h3 className="method"><FormattedMessage id="delivery-details.HomeDelivery.Title" defaultMessage="Home Delivery" /></h3>
                                                                         <span className="method-description h-hidden-mobile"><FormattedMessage id="delivery-details.HomeDelivery.Message" defaultMessage="Home Delivery Message" /></span>
                                                                     </li>
-
                                                                 </ul>
                                                             </div>
                                                             <div className="t-Region-buttons t-Region-buttons--bottom">
@@ -534,26 +478,12 @@ class DeliveryDetails extends Component {
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    {/*apex:cache id="620852921648856310"*/}
-
-
-                                                    {/*/apex:cache*/}
-
-
                                                     {addressContainer}
-
-
-
                                                 </Col>
-
                                                 <Col xs="12" lg="4" md="12">
                                                     <DeliveryProductList cart_details={this.props.cart_details} store_locale={this.props.globals.store_locale} gotoProductScreen={this.gotoProductScreen} />
-
                                                 </Col>
                                             </Row>
-
-
-
                                             <div className="row">
                                                 <div className="col col-8 ">
                                                     <div className="t-Region h-hidden-mobile  t-Region--removeHeader t-Region--stacked t-Region--scrollBody" id="R34928405250907742">
@@ -601,7 +531,6 @@ class DeliveryDetails extends Component {
                                 </div>
                             </div>
                         </div>
-
                     </div>
                     <div className="row">
                         <div className="col col-12 apex-col-auto">

@@ -22,13 +22,11 @@ class ConsumerRights extends Component {
 			const API = Axios.create({
 				baseURL: STATIC_PAGES_URL,
 				headers: { Authorization: `Bearer ${API_TOKEN}`, 'Content-Type': 'application/json' },
-			});
-            
+			});   
 			API.get('consumer-rights/storeId/' + this.state.storeId).then(res => {
 				this.setState({ data: res.data ,spinner:!this.state.spinner});
 			});
 		}
-
 	}
 
 	componentDidMount(prevProps, prevState) {
@@ -67,10 +65,7 @@ class ConsumerRights extends Component {
 		   </div>
 				<div className="container">
 					<div className="row">
-						
-
 						<div className="col col-12 apex-col-auto">
-						
 							<div
 								className="t-Region g-wrapper-main_content  t-Region--removeHeader t-Region--noBorder t-Region--scrollBody "
 								id="R231982418266982051"
@@ -114,7 +109,6 @@ class ConsumerRights extends Component {
 											name="P15_PAGE_DESC"
 											value="Checkout the privacy policy of Nayomi Saudi website. The Website Policies and Terms &amp; Conditions may be changed or updated occasionally to meet the requirements and standards."
 										/>
-
 										<div id="MiscContent">
 											<p style={{ textAlign: 'center' }}>
 										
@@ -145,8 +139,6 @@ class ConsumerRights extends Component {
 }
 const mapStateToProps = state => {
 	return {
-	
-	 
 	  globals: state.global,
 	};
   }

@@ -225,25 +225,18 @@ class Payment extends Component {
     render() {
         const shipping_type = this.props.cart_details.shipping_details.shipping_code;
         const selected_country = this.props.global.country;
-
-
         let obj = this.props.cart_details.payment_details;
         let payment_type = null;
-        //console.log('Heelo : ', !((Object.entries(obj).length === 0) && (obj.constructor === Object)))
-
         if (!(utility.emptyObj(obj))) {
-
             if (obj.redirectToOrderConfirmation && (obj.payment_code !== null)) {
                 return <Redirect to={`/${this.props.global.store_locale}/order-confirm?payment_type=${Ptype}`} />
             }
-
             if ((Ptype === 'COD') && (shipping_type !== 'freeshipping_freeshipping') && (selected_country !== 'International')) {
                 payment_type = <CashOnDelivery
                     cashondelivery={obj.cashondelivery}
                     continueShopping={this.redirectToShopping}
                     redirectToCheckout={this.redirectToConfirm} />
             } else if ((Ptype === 'CC') || (selected_country !== 'International')) {
-
                 payment_type = <PayByCard
                     payfort_fort_cc={obj.payfort_fort_cc}
                     continueShopping={this.redirectToShopping}
@@ -332,9 +325,7 @@ class Payment extends Component {
                                                             </div>
                                                             <div className="t-Region-body">
                                                                 <input type="hidden" id="P8_PAYMENT_METHOD" name="P8_PAYMENT_METHOD" defaultValue="CRD" /><input type="hidden" id="P8_DELIVERY_METHOD" name="P8_DELIVERY_METHOD" defaultValue="DA" />
-
                                                                 <ul className="shipping-tabs">
-
                                                                     <li onClick={() => this.handleClick("CC")} id="CC" className="tab click-collect2 selected" >
                                                                         <h3 className="method">
                                                                             <FormattedMessage id="PaybyCard.Text" defaultMessage="Pay by Card" />
@@ -342,14 +333,12 @@ class Payment extends Component {
                                                                         <span className="method-description h-hidden-mobile">
                                                                             <FormattedMessage id="PaybyCard.Content" defaultMessage="You will be directed to master/visa to complete payment and then returned to ELC" /></span>
                                                                     </li>
-
                                                                     <li onClick={() => this.handleClick("COD")} id="DA" className="tab del-add2 ">
                                                                         <h3 className="method"><FormattedMessage id="CashOnDelivery.Text" defaultMessage="Cash On Delivery" /></h3>
                                                                         <span className="method-description h-hidden-mobile">
                                                                             <FormattedMessage id="CashOnDelivery.Content" defaultMessage="Cash On Delivery" />
                                                                         </span>
                                                                     </li>
-
                                                                 </ul>
                                                             </div>
                                                             <div className="t-Region-buttons t-Region-buttons--bottom">
@@ -358,27 +347,13 @@ class Payment extends Component {
                                                             </div>
                                                         </div>
                                                     </div>
-
-
-
                                                     {payment_type}
-
-
-
-
-
                                                 </Col>
-
-
                                                 <Col xs="12" lg="4" md="12">
                                                     <DeliveryProductList cart_details={this.props.cart_details} coupan_code={true} store_locale={this.props.global.store_locale} gotoProductScreen={this.gotoProductScreen} />
-
                                                 </Col>
                                             </Row>
                                         </div>
-
-
-
                                     </div>
                                     <div className="t-Region-buttons t-Region-buttons--bottom">
                                         <div className="t-Region-buttons-left" />
@@ -394,8 +369,6 @@ class Payment extends Component {
                                     <div className="t-ButtonRegion-col t-ButtonRegion-col--left"><div className="t-ButtonRegion-buttons" /></div>
                                     <div className="t-ButtonRegion-col t-ButtonRegion-col--content">
                                         <h2 className="t-ButtonRegion-title" id="mobile-buttons_heading">Mobile Button</h2>
-
-
                                         <div className="Payment container">
                                             <Row className="row">
                                                 <Col xs="2" lg="2" md="2" style={{ padding: 0 }}>
@@ -405,9 +378,6 @@ class Payment extends Component {
                                                 </Col>
                                             </Row>
                                         </div>
-
-
-
                                         <div className="t-ButtonRegion-buttons" />
                                     </div>
                                     <div className="t-ButtonRegion-col t-ButtonRegion-col--right"><div className="t-ButtonRegion-buttons" /></div>
@@ -439,7 +409,6 @@ const mapDispatchToProps = dispatch => {
         onGetProductDetails: payload => dispatch(actions.getProductDetails(payload)),
         getSizeChart: payload => dispatch(actions.getSizeChart(payload)),
     }
-
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(Payment));

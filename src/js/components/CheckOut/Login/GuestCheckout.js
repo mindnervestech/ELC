@@ -5,7 +5,6 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import * as actions from '../../../redux/actions/index';
 
 class GuestCheckout extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
@@ -22,7 +21,6 @@ class GuestCheckout extends Component {
     }
 
     render() {
-        //console.log(`/${this.props.globals.store_locale}/delivery-details`);
         if (this.state.isRedirecAsGuestToDelivery) {
             return <Redirect to={`/${this.props.globals.store_locale}/delivery-details`} />
         }
@@ -39,7 +37,6 @@ class GuestCheckout extends Component {
                     <div className="t-Region-buttons-left" />
                     <div className="t-Region-buttons-right" />
                 </div>
-
                 <div className="t-Region-body">
                     <div className="container">
                         <div className="row">

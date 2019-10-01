@@ -18,7 +18,6 @@ class Confirmation extends Component {
 
     constructor(props) {
         super(props);
-        //console.log(props);
         this.state = {
             isClickOnPlaceOrder: false
         }
@@ -56,7 +55,6 @@ class Confirmation extends Component {
     }
 
     goToCartDetails = () => {
-        //console.log('goToCartDetails');
         this.props.onRedirectToCart();
         this.props.history.push(`/${this.props.global.store_locale}/cart`);
     }
@@ -67,7 +65,6 @@ class Confirmation extends Component {
     }
 
     goToPaymentDetails = () => {
-        //console.log('goToPaymentDetails');
         this.props.onRedirectToPayment();
         this.props.history.push(`/${this.props.global.store_locale}/checkout-payment`);
     }

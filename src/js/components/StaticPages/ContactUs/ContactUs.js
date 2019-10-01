@@ -13,8 +13,8 @@ import facebook from '../../../../assets/images/social/Facebook.svg';
 import instagram from '../../../../assets/images/social/instagram.svg';
 import youtube from '../../../../assets/images/social/youtube.svg';
 import twitter from '../../../../assets/images/social/twitter.svg';
-class ContactUs extends Component {
 
+class ContactUs extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -34,21 +34,16 @@ class ContactUs extends Component {
             search: this.props.search ? true : false,
             showErrorBox: this.props.search ? true : false,
         }
-
     }
 
     handleValidation = () => {
         let fields = this.state.contact_fields;
         let errors = {};
         let formIsValid = true;
-
-        //Name
         if (!fields["name"]) {
             formIsValid = false;
             errors["name"] = <FormattedMessage id="Signup.validation.firstName.empty" defaultMessage=" Name cannot be empty" />;
         }
-
-
         //Email
         if (typeof fields["email"] !== "undefined") {
 
@@ -66,15 +61,12 @@ class ContactUs extends Component {
                 }
             }
         }
-
         if (!(this.state.isPhoneValid)) {
             if (fields["phone"].length === 0) {
                 formIsValid = false;
                 errors["phone"] = <FormattedMessage id="Signup.validation.contactNumber.empty" defaultMessage="Enter Valid phone number" />;
             }
         }
-
-
         this.setState({ errors: errors });
         return formIsValid;
     }
@@ -145,7 +137,6 @@ class ContactUs extends Component {
     }
 
     handleFormSubmit = () => {
-
         if (this.handleValidation()) {
             let data = {
                 name: this.state.contact_fields['name'],
@@ -156,7 +147,6 @@ class ContactUs extends Component {
                 comment: this.state.contact_fields['comment'],
                 storeId: this.props.store_id,
             }
-
             this.props.onSaveContactUsData({ ...data });
         }
     }
@@ -166,15 +156,11 @@ class ContactUs extends Component {
     }
 
     divOnBlure = (e) => {
-
         if ((e.target.value == null) || (e.target.value == '')) {
             e.currentTarget.className = 't-Form-fieldContainer t-Form-fieldContainer--floatingLabel apex-item-wrapper apex-item-wrapper--text-field';
-
         } else {
-
             e.currentTarget.className = 't-Form-fieldContainer t-Form-fieldContainer--floatingLabel apex-item-wrapper apex-item-wrapper--text-field is-active';
         }
-
     }
 
     render() {
@@ -186,9 +172,7 @@ class ContactUs extends Component {
             errorBox = <div className="alertify"><div className="dialog"><div>
                 <p className="msg"><FormattedMessage id="help.searchtext1" defaultMessage="Sorry couldn't search" />;  {searchWord} .
             <FormattedMessage id="help.searchtext2" defaultMessage="Submit your search!!" />.!!</p><nav><button className="ok" tabIndex={1} onClick={this.closeErrorBox}><FormattedMessage id="Ok.text" defaultMessage="Ok" /></button></nav></div></div></div>
-
         }
-
         let contact_number = this.props.contact_data.page_data.contactnumber_ksa;
         if (this.props.country === 'KSA') {
             contact_number = this.props.contact_data.page_data.contactnumber_ksa;
@@ -221,11 +205,7 @@ class ContactUs extends Component {
             }
         }
 
-
-
-
         return (
-
             <>
                 {errorBox}
                 <div className="t-Body">
@@ -234,10 +214,7 @@ class ContactUs extends Component {
                         </div>
                         <div className="t-Body-content" id="t_Body_content">
                             <div id="t_Body_content_offset" style={{ height: '1px' }} />
-
                             {respo_message}
-
-
                             <div className="t-Body-contentInner">
                                 <div className="padding-right-ar padding-breadcrumb" style={{textAlign:'start'}}>
                                     <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
@@ -251,7 +228,6 @@ class ContactUs extends Component {
                                 </div>
                                 <div className="container">
                                     <div className="row">
-
                                         <div className="col col-12 apex-col-auto">
                                             <div className="t-Region g-wrapper-main_content  t-Region--noPadding t-Region--removeHeader t-Region--noBorder t-Region--hiddenOverflow" id="R715188865100792743">
                                                 <div className="t-Region-header">
@@ -382,8 +358,6 @@ class ContactUs extends Component {
                                                                                                                                     name="P14_PURPOSE"
                                                                                                                                     className="selectlist apex-item-select"
                                                                                                                                     size={1}
-
-
                                                                                                                                     onChange={this.handleChange.bind(this, "purpose")}
                                                                                                                                     value={this.state.contact_fields["purpose"]}>
                                                                                                                                     <FormattedMessage id="ContactUs.customerSerivces" defaultMessage="Customer Service">{(translatedText) => <option value="customer_services">{translatedText}</option>}</FormattedMessage>
@@ -408,11 +382,9 @@ class ContactUs extends Component {
                                                                                                                             <div className="t-Form-itemWrapper">
                                                                                                                                 <div className="apex-item-group apex-item-group--textarea" role="group" aria-labelledby="P14_COMMENT_LABEL" tabIndex={-1}>
                                                                                                                                     <FormattedMessage id="ContactUs.comment">{(message) => <textarea name="P14_COMMENT" rows={5} cols={2000} maxLength={2000} wrap="virtual" id="P14_COMMENT" placeholder={message} className="textarea apex-item-textarea" style={{ resize: 'both', color: 'rgb(0, 0, 0)', backgroundColor: '#fff', border: "solid 1px #b1b1b1" }} onChange={this.handleChange.bind(this, "comment")} value={this.state.contact_fields["comment"]} />}</FormattedMessage>
-
                                                                                                                                     <div id="P14_COMMENT_CHAR_COUNT" style={{ color: 'rgb(0, 0, 0)', display: 'none' }} className="apex-item-textarea-counter"><span id="P14_COMMENT_CHAR_COUNTER" className="apex-item-textarea-counter--length">{this.state.comment_count}</span> of
                                                                                                                                         <span className="apex-item-textarea-counter--size">2000</span>
                                                                                                                                     </div>
-
                                                                                                                                 </div>
                                                                                                                             </div><span id="P14_COMMENT_error_placeholder" className="a-Form-error" data-template-id="33609965712469734_ET" />
                                                                                                                         </div>
@@ -471,8 +443,6 @@ class ContactUs extends Component {
                                                                                                     <br />
                                                                                                     <i className="far fa-envelope" /> <a className="js-ga-tracking" data-ga-category="Contact Us" data-ga-action="click" data-ga-label="Email" href="mailto:help@elctoys.com">help@elctoys.com</a>
                                                                                                     <br />
-                                                                                                    {/* <br />
-                                                                                                    <i className="fab fa-whatsapp" /> <a className="js-ga-tracking" data-ga-category="WhatsApp" data-ga-action="click" data-ga-label="WhatsApp Chat" href={`${this.props.contact_data.page_data.whatsapp}&text=I%20Initiate%20This%20Chat%20From%20Nayomi%20Website`} target="_blank"><FormattedMessage id="ContactUs.WhatsApp" defaultMessage="WhatsApp" /></a> */}
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div className="t-Region-buttons t-Region-buttons--bottom">
@@ -500,7 +470,6 @@ class ContactUs extends Component {
                                                                                                 <div className="t-Region-buttons-right" />
                                                                                             </div>
                                                                                             <div className="t-Region-body">
-
                                                                                                 <div id="remove-line">
                                                                                                     <a href="https://www.facebook.com/elctoys" target="_blank"><img src={facebook} className="icon ft-icon"></img></a>
                                                                                                     <a href="https://www.twitter.com/elctoysme" target="_blank"><img src={twitter} className="icon ft-icon"></img></a>
@@ -530,15 +499,6 @@ class ContactUs extends Component {
                                             </div>
                                         </div>
                                     </div>
-                                    {/* <div className="row">
-                    <div className="col col-12 apex-col-auto">
-                      <div id="R715189881759792753" className="margin-bottom-none">
-                        <div id="map" style={{ position: 'relative', overflow: 'hidden' }}>
-                          <MapContainer />
-                        </div>
-                      </div>
-                    </div>
-                  </div> */}
                                 </div>
                             </div>
                         </div>

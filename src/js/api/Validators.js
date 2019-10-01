@@ -9,7 +9,6 @@ export const RequiredFieldValidator = (txt) => {
 }
 
 export const RegularExpressionName = (txt) => {
-	//console.log('inside RegularExpressionName '+txt);
 	var isValid = false;
 	var reg = /^[A-Za-z ]+$/g;
 	//var reg = /^([A-Za-z ]+) {2,20}$/;

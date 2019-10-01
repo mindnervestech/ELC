@@ -103,12 +103,9 @@ class Contact extends Component {
     }
 
     handleChange = (field, e) => {
-        //console.log(field, e.target.value);
-
         let fields = this.state.ContactFields;
         fields[field] = e.target.value;
         this.setState({ fields });
-        //console.log(this.state);
     }
 
     addInfo = () => {
@@ -134,14 +131,11 @@ class Contact extends Component {
 
 
     contactNumber = (status, value, countryData, number, id) => {
-        //console.log('from parent',status, value, countryData, number, id)
-        //console.log('from parent',status, value, countryData, number, id)
         if (status) {
             let fields = this.state.ContactFields;
             fields['contactNumber'] = value;
             fields['carrierCode'] = countryData.dialCode;
             this.setState({ fields, isPhoneValid: true });
-            //console.log(this.state);
         } else {
             this.setState({ isPhoneValid: false })
         }
@@ -149,9 +143,7 @@ class Contact extends Component {
 
 
     render() {
-
         const errorsObj = this.state.errors;
-        //console.log(errorsObj);
         let firstNameInputField = <div className="t-Form-inputContainer">
             <div className="t-Form-itemWrapper">
             <input type="text" id="P7_FNAME" name="P7_FNAME" className="text_field apex-item-text" size={30} maxLength={100} onChange={this.handleChange.bind(this, "firstName")} value={this.state.ContactFields["firstName"]} /></div>
@@ -164,9 +156,7 @@ class Contact extends Component {
         </div>;
 
         let emailInputField = <div className="t-Form-inputContainer"><div className="t-Form-itemWrapper"><input type="email" id="P7_EMAIL" name="P7_EMAIL" className="text_field apex-item-text" size={30} maxLength={100} onChange={this.handleChange.bind(this, "email")} value={this.state.ContactFields["email"]} /></div><span id="P7_EMAIL_error_placeholder" className="a-Form-error u-hidden" data-template-id="33610259035469734_ET" /></div>
-
         let contactNumberInputField = null;
-
 
         if ('firstName' in errorsObj) {
             firstNameInputField = <div class="t-Form-inputContainer">
@@ -180,7 +170,6 @@ class Contact extends Component {
             LastNameInputField = <div className="t-Form-inputContainer"><div className="t-Form-itemWrapper">
                 <input type="text" id="P7_LNAME" name="P7_LNAME" className="text_field apex-item-text apex-page-item-error" size={30} maxLength={100} onChange={this.handleChange.bind(this, "lastName")} value={this.state.ContactFields["lastName"]} aria-describedby="P1001_LNAME_error" aria-invalid="true" /></div>
                 <span id="P7_LNAME_error_placeholder" class="a-Form-error u-visible" data-template-id="33609965712469734_ET"><span class="t-Form-error"><div id="P1001_FNAME_error">{errorsObj['lastName']}</div></span></span></div>
-
         }
 
         if ('contactNumber' in errorsObj) {
@@ -188,13 +177,9 @@ class Contact extends Component {
         }
 
         if ('email' in errorsObj) {
-
             emailInputField = <div className="t-Form-inputContainer"><div className="t-Form-itemWrapper">
                 <input type="email" id="P7_EMAIL" name="P7_EMAIL" className="text_field apex-item-text  apex-page-item-error" size={30} maxLength={100} onChange={this.handleChange.bind(this, "email")} value={this.state.ContactFields["email"]} aria-describedby="P7_EMAIL_error" aria-invalid="true" /></div><span id="P7_EMAIL_error_placeholder" className="a-Form-error  u-visible" data-template-id="33610259035469734_ET"><span class="t-Form-error"><div id="P7_EMAIL_error">{errorsObj['email']}</div></span></span></div>;
-
-
         }
-
 
         return (<> <div className="t-Region t-Region--removeHeader t-Region--stacked t-Region--hiddenOverflow" id="R34927372384907731">
             <div className="t-Region-header">
@@ -337,7 +322,6 @@ const mapDispatchToProps = dispatch => {
         OnaddNewAddressAndRedirectToCheckout: (quoteId) => dispatch(actions.AddNewAddressAndRedirectToCheckout(quoteId)),
         OnaddOldAddressAndRedirectToCheckout: (quoteId) => dispatch(actions.AddOldAddressAndRedirectToCheckout(quoteId)),
     }
-
 }
 
 export default connect(mapStateToProps, mapDispatchToProps, null, { forwardRef: true })(Contact);

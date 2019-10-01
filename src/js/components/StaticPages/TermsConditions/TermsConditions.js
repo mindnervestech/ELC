@@ -16,15 +16,10 @@ class TermConditions extends Component {
 	static getDerivedStateFromProps = (props, state) => { };
 
 	componentDidMount() {
-		
-		
 			this.props.onGetTermConditionsData({ storeId: this.props.globals.currentStore});
-		
-		//this.props.onGetTermConditionsData({ storeId: 1 });
 	}
 
 	render() {
-
 		let store_locale=this.props.globals.store_locale
 		return (
 			<Spinner  loading={this.props.spinnerProduct}>
@@ -37,7 +32,6 @@ class TermConditions extends Component {
           </div>
 				<div className="container">
 					<div className="row">
-					
 						<div className="col col-12 apex-col-auto">
 							<div
 								className="t-Region g-wrapper-main_content  t-Region--removeHeader t-Region--noBorder t-Region--scrollBody"
@@ -64,7 +58,6 @@ class TermConditions extends Component {
 									<div className="t-Region-body">
 										<center> <br />
 											<h1 className="t-page-titles static-page-style">{this.props.termConditions.title}</h1>
-											{/* <h1 className="t-page-titles"> <FormattedMessage id="ContactUs.Title" defaultMessage="ContactUs" /></h1> */}
 										</center>
 										<input type="hidden" id="P15_SEARCHSTRING" name="P15_SEARCHSTRING" value="" />
 										<input
@@ -86,13 +79,7 @@ class TermConditions extends Component {
 											name="P15_PAGE_DESC"
 											value="Checkout the privacy policy of Nayomi Saudi website. The Website Policies and Terms &amp; Conditions may be changed or updated occasionally to meet the requirements and standards."
 										/>
-
 										<div id="MiscContent">
-											{/* <p style={{ textAlign: 'center' }}>
-												<strong>
-													<span style={{ fontSize: 28 }}>{this.state.data.title}</span>
-												</strong>
-											</p> */}
 											<div
 												className="staticPagesText"
 												dangerouslySetInnerHTML={{ __html: this.props.termConditions.content }}
@@ -110,8 +97,6 @@ class TermConditions extends Component {
 				</div>
 			</div>
 			</Spinner>
-			
-
 		);
 	}
 }

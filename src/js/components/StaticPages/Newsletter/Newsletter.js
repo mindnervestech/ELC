@@ -18,19 +18,16 @@ class Newsletter extends Component {
 	}
 	static getDerivedStateFromProps = (props, state) => { };
 	getCharityData = () => {
-		
 		if (this.state.storeId) {
 			const API = Axios.create({
 				baseURL: STATIC_PAGES_URL,
 				headers: { Authorization: `Bearer ${API_TOKEN}`, 'Content-Type': 'application/json' },
-			});
-            
+			});   
 			API.get('charity/storeId/' + this.state.storeId).then(res => {
 				this.setState({ data: res.data,spinner:!this.state.spinner });
 				
 			});
 		}
-
 	}
 
 	componentDidMount(prevProps, prevState) {
@@ -47,7 +44,6 @@ class Newsletter extends Component {
 	}
 
 	componentDidUpdate(prevProps, prevState) {
-		console.log('componentDidUpdateCalled!!');
 		let changedLang = localStorage.getItem('tempstoreid');
 		if (this.state.storeId !== changedLang) {
 			this.setState({ storeId: changedLang, data: [] }, () => {
@@ -71,7 +67,6 @@ class Newsletter extends Component {
             <span  style={{fontSize:12}}>{this.state.data.title}</span>
           </div>
 						<div className="col col-12 apex-col-auto">
-						
 							<div
 								className="t-Region g-wrapper-main_content  t-Region--removeHeader t-Region--noBorder t-Region--scrollBody"
 								id="R231982418266982051"
@@ -115,13 +110,10 @@ class Newsletter extends Component {
 											name="P15_PAGE_DESC"
 											value="Checkout the privacy policy of Nayomi Saudi website. The Website Policies and Terms &amp; Conditions may be changed or updated occasionally to meet the requirements and standards."
 										/>
-
 										<div id="MiscContent">
 											<p style={{ textAlign: 'center' }}>
 											<h1 className="t-page-titles static-page-style">{this.state.data.title}</h1>
-												
 											</p>
-
 											<div
 												style={{ fontSize: '14px' }}
 												dangerouslySetInnerHTML={{ __html: this.state.data.content }}
@@ -146,11 +138,9 @@ class Newsletter extends Component {
 
 const mapStateToProps = state => {
 	return {
-	
-	 
 	  globals: state.global,
 	};
-  }
+}
 
 export default connect(mapStateToProps)(Newsletter);
 
