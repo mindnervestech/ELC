@@ -531,12 +531,11 @@ class SignUp extends Component {
                               <div className="row pad40L instructionCss pad">
                                 <span><FormattedMessage id="Form.PasswordConventions" defaultMessage="Password must be at least 8 characters long and contain an uppercase letter, a lowercase letter and a number."></FormattedMessage></span>
                               </div>
-
                               <div className="padding row">
                                 <div className="rmPadding col col-12 apex-col-auto">
                                   <div className="row block" id="P1001_PWD_CONTAINER"><div className="rmTopPadding rmPadding t-Form-labelContainer">
                                     <label htmlFor="P1001_PWD" id="P1001_PWD_LABEL" className="bolt t-Form-label">
-                                      <FormattedMessage id="Form.Password" defaultMessage="password" />
+                                      <FormattedMessage id="Form.Password" defaultMessage="Password *" />
                                       <span className="u-VisuallyHidden">(Value Required)</span></label>
                                   </div>
                                     <div className="contents row">
@@ -553,7 +552,7 @@ class SignUp extends Component {
                                 <div className="rmPadding col col-12 apex-col-auto">
                                   <div className="row block" id="P1001_RPWD_CONTAINER"><div className="rmTopPadding rmPadding t-Form-labelContainer">
                                     <label htmlFor="P1001_RPWD" id="P1001_RPWD_LABEL" className="bolt t-Form-label">
-                                      <FormattedMessage id="Form.ConfirmPassword" defaultMessage="Confirm Password" /><span className="u-VisuallyHidden">(Value Required)</span></label>
+                                      <FormattedMessage id="Form.ConfirmPassword" defaultMessage="Confirm Password *" /><span className="u-VisuallyHidden">(Value Required)</span></label>
                                   </div>
                                     <div className="contents row ">
                                       {confirmPasswordInputField}

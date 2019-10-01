@@ -422,7 +422,7 @@ class Login extends Component {
                                             onBlur={(e) => this.divOnBlure(e)} */}
                                           <div className="row collapse-a " id="P1000_PASSWORD_CONTAINER"><div className="rmTopPadding rmPadding t-Form-labelContainer">
                                             <label htmlFor="P1000_PASSWORD" id="P1000_PASSWORD_LABEL" className="t-Form-label bolt">
-                                              <FormattedMessage id="password" defaultMessage="password" /></label>
+                                              <FormattedMessage id="password" defaultMessage="Password *" /></label>
                                           </div>
                                             <div className="row contents ">
                                               {passwordField}

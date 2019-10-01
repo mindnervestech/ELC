@@ -4822,10 +4822,6 @@ html[dir="rtl"] .click-collect3 {
     }
 }
 
-
-
-
-
 @media only screen and (max-width:767px)
 {
     .select-div
@@ -4837,6 +4833,15 @@ html[dir="rtl"] .click-collect3 {
     {
         width:100% !important;
     }
+}
+
+.divNotShowOnIpad{
+    display: block;
+}
+
+.webAvalebalText{
+    padding: 45px 20px 5px;
+    font-weight: bold;
 }
 
 @media only screen and (min-width:768px) and (max-width:1024px)
@@ -4875,6 +4880,10 @@ html[dir="rtl"] .click-collect3 {
 
     .divShowOnWeb{
         padding-left: 0px !important;
+    }
+
+    .divNotShowOnIpad{
+        display: none;
     }
 
     .badyCloubLink{
@@ -4918,5 +4927,25 @@ html[dir="rtl"] .click-collect3 {
     html[dir="rtl"] #add_to_basket .pdoductImageSpasing {
         padding-right: 20px;
         padding-left: 0px;
+    }
+
+    .webOutOfStockTetx{
+        padding: 20px 20px 5px;
+    }
+
+    .webAvalebalText{
+        padding: 20px 20px 5px;
+    }
+
+    html[dir="rtl"] .webAvalebalText{
+        padding: 40px 20px 5px;
+    }
+
+    html[dir="rtl"] .webOutOfStockTetx {
+        padding: 5px 20px 5px;
+    }
+
+    .header .row-2 .lable-count{
+        padding: 2px 0px 0px 0px;
     }
 }

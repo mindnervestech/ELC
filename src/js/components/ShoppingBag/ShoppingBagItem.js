@@ -240,7 +240,7 @@ class ShoppingBagItem extends Component {
                         </div>
                         <div className="displayDivOnWeb">
                             <Row className="row-5 changeRow">
-                                <Col xs="6">
+                                <Col xs="6" lg="6" md="8">
                                     <div className="blackTitle" style={{ fontSize: 22, textAlign: 'start', color: "#4f4f4f" }}>
                                         <FormattedMessage id="SelectDelivery" defaultMessage="Select Delivery" />
                                     </div>
@@ -253,7 +253,7 @@ class ShoppingBagItem extends Component {
                                                 <div className="blockTextColor">
                                                     <span><FormattedMessage id="delivery-details.HomeDelivery.Title" defaultMessage="Home Delivery" /></span>
                                                 </div>
-                                                <div style={{ padding: '45px 20px 5px', fontWeight: 'bold' }}>
+                                                <div className="webAvalebalText">
                                                     <span>
                                                         <FormattedMessage id="available" defaultMessage="Available" />
                                                     </span>
@@ -273,8 +273,8 @@ class ShoppingBagItem extends Component {
                                         </div>
                                     </div>
                                 </Col>
-                                <Col xs="3"></Col>
-                                <Col xs="3" style={{ textAlign: 'end' }}>
+                                <Col xs="3" lg="3" md="0" className="divNotShowOnIpad"></Col>
+                                <Col xs="3" lg="3" md="4" style={{ textAlign: 'end' }}>
                                     <div>
                                         <div className="blackTitle" style={{ fontSize: 22, color: "#4f4f4f" }}>
                                             <span>{productCount}&nbsp; <FormattedMessage id="Item.text" defaultMessage="Item" /> &nbsp; | &nbsp;{myCartItem.currency}&nbsp;{myCartItem.grand_total}</span>
