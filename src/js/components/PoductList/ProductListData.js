@@ -314,6 +314,7 @@ class ProductListData extends Component {
 	}
 
 	_callFilters = () => {
+		changeFilterData = true
 		this.setState({ showFilterOnMobile: true })
 	};
 
@@ -339,6 +340,7 @@ class ProductListData extends Component {
 	}
 
 	opensortByOnMobile = () => {
+		changeFilterData = true
 		if (this.state.sortByShowOption) {
 			this.setState({ sortByShowOption: false })
 		} else {
