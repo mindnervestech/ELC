@@ -6,7 +6,6 @@ import { withRouter } from 'react-router-dom';
 
 class PageTitle extends Component {
     constructor(props) {
-        console.log(props)
         super(props);
         this.myIntl = props.intl
         this.state = {
