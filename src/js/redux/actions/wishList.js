@@ -1,6 +1,6 @@
 import * as actionType from './actionTypes';
 import { API } from '../../api/api';
-
+import { loadingSpinner } from './globals';
 
 /////////////////////////////////GET WISHLIST////////////////////////////////////
 
@@ -30,6 +30,7 @@ export const getWishlist = (payload) => {
             type: actionType.WISH_LIST_LOADER,
             payload: { wishLoader: true}
         });
+        dispatch(loadingSpinner({ loading: true }))
         let cb = {
             success: (res) => {
                 dispatch({
@@ -40,10 +41,10 @@ export const getWishlist = (payload) => {
 
                     if (res.data !== null) {
                         dispatch(callActionGetWishlist({ products: [...res.data] }))
-
+                        dispatch(loadingSpinner({ loading: false }))
                     } else {
                         dispatch(callActionGetWishlist({ products: [] }))
-
+                        dispatch(loadingSpinner({ loading: false }))
                     }
 
                 }
@@ -54,6 +55,7 @@ export const getWishlist = (payload) => {
                     type: actionType.WISH_LIST_LOADER,
                     payload: { wishLoader: false}
                 });
+                dispatch(loadingSpinner({ loading: true }));
             }
         }
 

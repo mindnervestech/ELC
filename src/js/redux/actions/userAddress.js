@@ -20,16 +20,19 @@ export const getUserAddress = (payload) => {
         }
        
         dispatch(callActionOnEditAddress({ addressResp: {} }))
+        dispatch(loadingSpinner({loading : true}))
         let cb = {
             success: (res) => {
                 if (res.status === true && res.code === 200) {
                     dispatch(callActionGetUserAddress({ addressBook: res.addressData, isAddBookRec: true }))
+                    dispatch(loadingSpinner({loading : false}))
                 } else {
                     dispatch(callActionGetUserAddress({ addressBook: res.addressData, isAddBookRec: true }))
+                    dispatch(loadingSpinner({loading : false}))
                 }
             },
             error: (err) => {
-                console.log(err);
+                dispatch(loadingSpinner({loading : false}))
             }
         }
 

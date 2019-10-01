@@ -23,6 +23,7 @@ let editingRow = 0
 class BirthDayClub extends Component {
   constructor(props) {
     super(props);
+    console.log(props)
    
     this.state = {
       sortByText: "",
@@ -92,74 +93,10 @@ class BirthDayClub extends Component {
     }
 
   }
-  
-  handleValidation = () => {
-    let fields = this.state.fields;
-
-    let errors = {};
-    let formIsValid = true;
-
-    if (this.state.lang == '') {
-      langerror = true
-    }
-    if (!fields["parentFirstName"]) {
-      formIsValid = false;
-      errors["parentFirstName"] = <FormattedMessage id="Signup.validation.firstName.empty" defaultMessage="First name cannot be empty" />;
-    }
-
-    if (!fields["parentLastName"]) {
-      formIsValid = false;
-      errors["parentLastName"] = <FormattedMessage id="Signup.validation.lastName.empty" defaultMessage="Last name cannot be empty" />;
-    }
-
-    if (typeof fields["parentFirstName"] !== "undefined") {
-      if (!fields["parentFirstName"].match(/^[a-zA-Z]+$/) && fields["parentFirstName"].length > 0) {
-        formIsValid = false;
-        errors["parentFirstName"] = <FormattedMessage id="Signup.validation.firstName.onlyletters" defaultMessage="Please enter only letters" />;
-      }
-    }
-
-    if (typeof fields["parentLastName"] !== "undefined") {
-      if (!fields["parentLastName"].match(/^[a-zA-Z]+$/) && fields["parentLastName"].length > 0) {
-        formIsValid = false;
-        errors["parentLastName"] = <FormattedMessage id="Signup.validation.lastName.onlyletters" defaultMessage="Please enter only letters" />;
-      }
-    }
-
-    //Email
-    if (typeof fields["email"] !== "undefined") {
-
-      if (fields["email"].length === 0) {
-        formIsValid = false;
-        errors["email"] = <FormattedMessage id="Signup.validation.email.empty" defaultMessage="Please enter email" />;
-      }
-
-      if (fields["email"].length > 0) {
-        let lastAtPos = fields["email"].lastIndexOf('@');
-        let lastDotPos = fields["email"].lastIndexOf('.');
-        if (!(lastAtPos < lastDotPos && lastAtPos > 0 && fields["email"].indexOf('@@') == -1 && lastDotPos > 2 && (fields["email"].length - lastDotPos) > 2 && !fields["email"].includes(' '))) {
-          formIsValid = false;
-          errors["email"] = <FormattedMessage id="Signup.validation.email.invalid" defaultMessage="Please enter email in valid format" />;
-        }
-      }
-    }
-    if (!(this.state.isPhoneValid)) {
-
-      formIsValid = false;
-      errors["contactNumber"] = <FormattedMessage id="Signup.validation.contactNumber.empty" defaultMessage="Enter Valid Contact Number" />;
-
-    }
-    this.setState({ errors: errors });
-    return formIsValid;
-  }
 
   signUpSubmit = (e) => {
     e.preventDefault();
-    
-      if (this.handleValidation()) {
-        this.register();
-      }
-     
+        this.register(); 
   }
   handleChange
     = (field, e) => {
@@ -251,26 +188,21 @@ class BirthDayClub extends Component {
       ...this.state,
       fields:
       {
-        parentFirstName: '',
-        parentLastName: '',
-        carriercode: '',
-        contactNumber: '',
-        email: '',
+      
         name: '',
         gender: '',
         dob: ''
       }
     })
-    this.setState({errors:{}})
-    langerror=false;
-    this.state.lang='';
+    //this.setState({fields{}  :''})
+   
  
   }
 
  
 
   register = () => {
-    if (ChildrenDate[ChildrenDate.length - 1] == '' || ChildrenName[ChildrenName.length - 1] == '' || ChildrenGender[ChildrenGender.length - 1] == '' || this.state.lang=='') {
+    if (ChildrenDate[ChildrenDate.length - 1] == '' || ChildrenName[ChildrenName.length - 1] == '' || ChildrenGender[ChildrenGender.length - 1] == '') {
       this.setState({ error: true })
     } else {
       moreinfoData = ''
@@ -278,13 +210,13 @@ class BirthDayClub extends Component {
         moreinfoData = moreinfoData + ChildrenName[i] + ':' + ChildrenGender[i] + ':' + ChildrenDate[i].getDate() + '' + (ChildrenDate[i].getMonth() + 1) + '' + ChildrenDate[i].getFullYear() + ';'
       }
       const data = {
-        firstname: this.state.fields.parentFirstName,
-        lastname: this.state.fields.parentLastName,
-        phoneNumber: parseInt((this.state.fields.contactNumber).replace(/\s/g,'')),
-        email: this.state.fields.email,
-        countryCode: this.state.fields.carrierCode,
+        firstname: this.props.customer_details.customer_details.firstname,
+        lastname: this.props.customer_details.customer_details.lastname,
+        phoneNumber: '8390972941',
+        email:this.props.customer_details.customer_details.email,
+        countryCode: '91',
         storeid: this.props.globals.currentStore,
-        language: this.state.lang,
+        language: '',
         moreinfo: moreinfoData
       }
      
@@ -297,6 +229,7 @@ class BirthDayClub extends Component {
   }
 
   render() {
+    let store_locale=this.props.globals.store_locale
     let respo_message = null;
     if(!this.props.isUserLoggedIn)
     {
@@ -324,95 +257,6 @@ class BirthDayClub extends Component {
       </div></span>;
     }
 
-    let store_locale = this.props.globals.store_locale;
-    const errorsObj = this.state.errors;
-    let phoneNumberClassName = null;
-    phoneNumberClassName = "t-Form-inputContainer PhoneNumberBClub";
-    let parentFirstNameField = <div>
-      <div>
-        <FormattedMessage id="addnewchild.parentfirstname" defaultMessage="Parent First Name">
-          {(message) =>
-            <input name="first_name" className="input-field" placeholder={message} onChange={this.handleChange.bind(this, "parentFirstName")} value={this.state.fields['parentFirstName']}></input>}
-        </FormattedMessage>
-      </div>
-      <span id="P1000_USERNAME_error_placeholder" className="a-Form-error" data-template-id="33609965712469734_ET"></span>
-    </div>;
-    let parentLastNameField = <div>
-      <div>
-        <FormattedMessage id="addnewchild.parentlastname" defaultMessage="Parent Last Name">
-          {(message) =>
-            <input name="first_name" className="input-field" placeholder={message} onChange={this.handleChange.bind(this, "parentLastName")} value={this.state.fields['parentLastName']}></input>}
-        </FormattedMessage>
-      </div>
-      <span id="P1000_USERNAME_error_placeholder" className="a-Form-error" data-template-id="33609965712469734_ET"></span>
-    </div>;
-
-
-    let emailInputField = <div><div>
-      <FormattedMessage id="ContactUs.Email" defaultMessage="Email">
-        {(message) =>
-          <input type="email" placeholder={message} className="input-field" style={{ borderRadius: 0 }} id="P1001_EMAIL" value={this.state.fields['email']} name="P1001_EMAIL" onChange={this.handleChange.bind(this, "email")} size={30} />}
-      </FormattedMessage>
-    </div></div>
-
-    if ('contactNumber' in errorsObj) {
-      phoneNumberClassName = "t-Form-inputContainer PhoneNumberBClub";
-      contactNumberInputField = <span id="P1001_PHONE_error_placeholder" className="a-Form-error u-visible" data-template-id="33610259035469734_ET"><span className="t-Form-error">
-        <div id="P1001_PHONE_error">{errorsObj["contactNumber"]}</div></span></span>
-
-    }
-
-    let spanerrorlangmessage = null
-    if (langerror) {
-      spanerrorlangmessage = <div><span className="a-Form-error u-visible" style={{ color: 'red' }}><FormattedMessage id="select.langauge" defaultMessage="Select Language"></FormattedMessage></span></div>
-    }
-
-    let arLangRadioField = <div><div>
-      <FormattedMessage id="ContactUs.Email" defaultMessage="Email">
-        {(message) =>
-          <input type="radio" id="P1001_EMAIL" name="P1001_EMAIL" value={this.state.fieldsCustomer["email"]} size={30} />}
-      </FormattedMessage>
-    </div></div>
-
-    let contactNumberInputField = null
-
-
-
-
-
-
-    if ('parentFirstName' in errorsObj) {
-      parentFirstNameField = <div>
-        <div>
-          <FormattedMessage id="addnewchild.parentfirstname" defaultMessage="Parent First Name">
-            {(message) =>
-              <input name="first_name" className="input-field" placeholder={message} onChange={this.handleChange.bind(this, "parentFirstName")} value={this.state.fields['parentFirstName']}></input>}
-          </FormattedMessage>
-        </div><span id="P1001_FNAME_error_placeholder" className="a-Form-error u-visible" data-template-id="33609965712469734_ET"><span className="t-Form-error"><div id="P1001_FNAME_error">{errorsObj["parentFirstName"]}</div></span></span></div>
-    }
-
-
-
-    if ('parentLastName' in errorsObj) {
-      parentLastNameField = <div>
-        <div>
-          <FormattedMessage id="addnewchild.parentlastname" defaultMessage="Parent Last Name">
-            {(message) =>
-              <input name="first_name" className="input-field" placeholder={message} onChange={this.handleChange.bind(this, "parentLastName")} value={this.state.fields['parentLastName']}></input>}
-          </FormattedMessage>
-        </div><span id="P1001_FNAME_error_placeholder" className="a-Form-error u-visible" data-template-id="33609965712469734_ET"><span className="t-Form-error"><div id="P1001_FNAME_error">{errorsObj["parentLastName"]}</div></span></span></div>
-    }
-
-
-    if ('email' in errorsObj) {
-      emailInputField = <div>
-        <div>
-          <FormattedMessage id="ContactUs.Email" defaultMessage="Email">
-            {(message) =>
-              <input type="email" placeholder={message} className="input-field" style={{ borderRadius: 0 }} id="P1001_EMAIL" value={this.state.fields['email']} name="P1001_EMAIL" onChange={this.handleChange.bind(this, "email")} size={30} />}
-          </FormattedMessage>
-        </div><span id="P1001_FNAME_error_placeholder" className="a-Form-error u-visible" data-template-id="33609965712469734_ET"><span className="t-Form-error"><div id="P1001_FNAME_error">{errorsObj["email"]}</div></span></span></div>
-    }
 
     return (
 
@@ -431,120 +275,9 @@ class BirthDayClub extends Component {
           </Col>
           <Col xs={1} lg={1} md={1} className="divShowOnMobile"></Col>
           <Col xs={10} lg={6} md={6} className="paddingRemove">
-            <Row className="divShowOnWeb">
-              <Col xs={12} lg={6} md={12} className="alignStart">
-                <div style={{ marginTop: 15 }}>
-                  <span style={{ color: 'red' }}>*&nbsp;</span><span className="blackTitle1"><FormattedMessage id="addnewchild.parentfirstname" defaultMessage="Parent First Name " /></span>
-                </div>
-                <div>
-                  {parentFirstNameField}
-                  {/* <input className={"input-field"} value={this.state.fields['parentFirstName']} onChange={this.handleChange.bind(this, "parentFirstName")}></input> */}
-                </div>
-                <div style={{ marginTop: 15 }}>
-                  <span style={{ color: 'red' }}>*&nbsp;</span><span className="blackTitle1"><FormattedMessage id="ContactUs.Email" defaultMessage="Email Address " /></span>
-                </div>
-                <div>
-                  {emailInputField}
-                  {/* <input className={"input-field"} value={this.state.fields['email']} onChange={this.handleChange.bind(this, "email")}></input> */}
-                </div>
-              </Col>
-              <Col xs={12} lg={6} md={12} className="alignStart">
-                <div style={{ marginTop: 15 }}>
-                  <span style={{ color: 'red' }}>*&nbsp;</span><span className="blackTitle1"><FormattedMessage id="addnewchild.parentlastname" defaultMessage="Parent Last Name " /></span>
-                </div>
-                <div>
-                  {parentLastNameField}
-                </div>
-                <div style={{ marginTop: 15 }}>
-                  <span style={{ color: 'red' }}>*&nbsp;</span><span className="blackTitle1"><FormattedMessage id="addchild.PhoneNumber" defaultMessage="Contact Number" /></span>
-                </div>
-                <div className="paddingLeft" style={{ marginTop: 5 }}>
-                  <div style={{ textAlign: "start" }} >
-                    <div className="padding row">
-                      <div className=" col-12 apex-col-auto" style={{ padding: 0 }}>
-
-                        <div style={{ padding: 0 }} className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel is-required apex-item-wrapper plugin-intltelinput-www.jqueryscript.net js-show-label" id="P1001_PHONE_CONTAINER">
-
-                          <div style={{ width: '100%' }} id="PhoneNumber" className={phoneNumberClassName} >
-                            <PhoneNumber changed={this.contactNumber} />
-                            <span id="PHONE_error_placeholder" className="a-Form-error" data-template-id="33610259035469734_ET" style={{ color: 'red' }}>
-                              {errorsObj["contactNumber"]}
-                            </span>
-                            {contactNumberInputField}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-              </Col>
-            </Row>
-
-            <Row className="divShowOnMobile">
-              <Col xs={12} lg={6} md={12} className="alignStart divShowOnMobile">
-                <div style={{ marginTop: 15 }}>
-                  <span style={{ color: 'red' }}>*&nbsp;</span><span className="blackTitle1"><FormattedMessage id="addnewchild.parentfirstname" defaultMessage="Parent First Name " /></span>
-                </div>
-                <div>
-                  {parentFirstNameField}
-                  {/* <input className={"input-field"} value={this.state.fields['parentFirstName']} onChange={this.handleChange.bind(this, "parentFirstName")}></input> */}
-                </div>
-                <div style={{ marginTop: 15 }}>
-                  <span style={{ color: 'red' }}>*&nbsp;</span><span className="blackTitle1"><FormattedMessage id="addnewchild.parentlastname" defaultMessage="Parent Last Name " /></span>
-                </div>
-                <div>
-                  {parentLastNameField}
-                </div>
-              </Col>
-              <Col xs={12} lg={6} md={12} className="alignStart divShowOnMobile">
-
-                <div style={{ marginTop: 15 }}>
-                  <span style={{ color: 'red' }}>*&nbsp;</span><span className="blackTitle1"><FormattedMessage id="ContactUs.Email" defaultMessage="Email Address " /></span>
-                </div>
-                <div>
-                  {emailInputField}
-                  {/* <input className={"input-field"} value={this.state.fields['email']} onChange={this.handleChange.bind(this, "email")}></input> */}
-                </div>
-
-                <div style={{ marginTop: 15 }}>
-                  <span style={{ color: 'red' }}>*&nbsp;</span><span className="blackTitle1"><FormattedMessage id="addnewchild.parentfirstname" defaultMessage="Parent First Name" /></span>
-                </div>
-                <div className="paddingLeft" style={{ marginTop: 5 }}>
-                  <div style={{ textAlign: "start" }} >
-                    <div className="padding row">
-                      <div className=" col-12 apex-col-auto" style={{ padding: 0 }}>
-
-                        <div style={{ padding: 0 }} className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel is-required apex-item-wrapper plugin-intltelinput-www.jqueryscript.net js-show-label" id="P1001_PHONE_CONTAINER">
-
-                          <div style={{ width: '100%' }} id="PhoneNumber" className={phoneNumberClassName} >
-                            <PhoneNumber changed={this.contactNumber} />
-                            {/* <span id="PHONE_error_placeholder" className="a-Form-error" data-template-id="33610259035469734_ET" style={{ color: 'red' }}>
-                              {errorsObj["contactNumber"]}
-                            </span> */}
-                            {contactNumberInputField}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-              </Col>
-            </Row>
+           
 
             <Row>
-              <Col xs={12} lg={12} md={12} className="alignStart">
-                <div style={{ marginTop: 15 }}>
-                  <span style={{ color: 'red' }}>*&nbsp;</span>  <span className="blackTitle1"><FormattedMessage id="PreferedLanguage" defaultMessage="Prefered Language" /></span>
-                </div>
-                <div style={{ display: 'inline-flex' }}>
-                  <input className="RadioButton" type="radio" name="gender" value="arabic" name="P1001_EMAIL" onChange={() => this.state.lang = 'ar'} /> <span className="radioButtonText"><FormattedMessage id="header.Arabic" defaultMessage="Arabic" /></span>
-                  <input className="radioButton RadioButton" type="radio" name="gender" value="english" name="P1001_EMAIL" onChange={() => this.state.lang = 'en'} /> <span className="radioButtonText"><FormattedMessage id="header.English" defaultMessage="English" /></span>
-
-                </div>
-                {spanerrorlangmessage}
-              </Col>
             </Row>
             <div className="errorMessageDiv" style={this.state.error ? { display: 'block' } : { display: 'none' }}>
               <div className="errorMessage">
@@ -628,8 +361,6 @@ class BirthDayClub extends Component {
             <Row style={{ textAlign: 'center', paddingTop: 10 }}>
               <Col>
                 <button class="addChildrenRegisterButton" onClick={this.signUpSubmit}><FormattedMessage id="Form.Register" defaultMessage="Register" /></button>
-
-
               </Col>
             </Row>
           </Col>
@@ -647,6 +378,7 @@ const mapStateToProps = state => {
     spinnerProduct: state.spinner.loadingProduct,
     globals: state.global,
     bclubDetails: state.birthdayclubData.registerBClubUserDetails,
+    customer_details:state.login
   }
 }
 

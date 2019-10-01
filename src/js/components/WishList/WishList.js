@@ -4,10 +4,9 @@ import Product from './Product';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../../redux/actions/index';
-import Spinner from '../Spinner/Spinner2';
 import { FormattedMessage } from 'react-intl';
 import { Container, Row, Col, Button } from 'reactstrap';
-
+import Spinner from '../Spinner/Spinner';
 import percentage from '../../../assets/images/product-details/percentage.png';
 import save from '../../../assets/images/product-details/save.png';
 import logo1 from '../../../assets/images/you_may_also_like_1.png'
@@ -308,7 +307,7 @@ class WishList extends Component {
         // })
         
 
-        return (
+        return (<Spinner>
             <div className="t-Body-contentInner homePage">
                 {basketPopupFlag ? <div>
                     <Modal modalId="add_to_basket"  open={basketPopupFlag} onClose={this.onCloseAddCartModal}>
@@ -480,6 +479,7 @@ class WishList extends Component {
                     </div> */}
                 </div>
             </div>
+            </Spinner>
         );
     }
 }

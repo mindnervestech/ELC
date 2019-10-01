@@ -8,7 +8,7 @@ import ChangePass from './ChangePass';
 import Modal from 'react-responsive-modal';
 import AlertBox from '../Common/AlertBox/AlertBox';
 import styles from './Modal.css';
-
+import Spinner from '../Spinner/Spinner';
 import { connect } from 'react-redux';
 import * as actions from '../../redux/actions/index';
 import { Container, Row, Col, Button } from 'reactstrap';
@@ -170,7 +170,7 @@ class Profile extends Component {
                     </Modal>
 
                 </div>
-
+                <Spinner>
                 <div className="t-Body-contentInner">
                     <div className="padding-right-ar padding-breadcrumb" style={{ textAlign: 'start' }}>
                         <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
@@ -314,7 +314,7 @@ class Profile extends Component {
 
 
                     </div>
-                </div>
+                </div></Spinner>
             </div>
         );
     }
