@@ -32,6 +32,7 @@ class Payment extends Component {
                 message: '',
             }
         }
+        Ptype = "CC";
     }
 
     goToDeliveryDetails = () => {
