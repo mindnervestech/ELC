@@ -343,12 +343,6 @@ class Address extends Component {
         }
 
         let postcodeInputField =
-            // <div className="t-Form-inputContainer">
-            //         <div className="t-Form-itemWrapper">
-            //             <input type="text" id="P25_RADD1" name="P25_RADD1" className="text_field apex-item-text" size={30} maxLength={100} onChange={this.handleChange.bind(this, "postcode")} value={this.state.AddressFields["postcode"]} />
-            //         </div>
-            //         <span id="P25_RADD1_error_placeholder" className="a-Form-error" data-template-id="33610259035469734_ET" />
-            //     </div>
 
             <div className="t-Form-inputContainer">
                 <div className="t-Form-itemWrapper">

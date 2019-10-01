@@ -131,7 +131,10 @@ class AddressForm extends Component {
             errors["contactNumber"] = "Enter valid Phone number";
         }
 
-
+        if (!fields["postcode"]) {
+            formIsValid = false;
+            errors["postcode"] = <FormattedMessage id="Postcode.Validate" defaultMessage="Please enter Post code" />;
+        }
 
         this.setState({ errors: errors });
         //console.log('error',this.state);
@@ -403,6 +406,30 @@ class AddressForm extends Component {
             contactNumberInputField = <span id="P7_PHONE_error_placeholder" className="a-Form-error u-visible" data-template-id="33610259035469734_ET"><span className="t-Form-error"><div id="P7_PHONE_error"> <FormattedMessage id="Amirah.PhoneNumber" defaultMessage="Please enter phone number" /></div></span></span>
         }
 
+        let postcodeInputField =
+
+            <div className="t-Form-inputContainer">
+                <div className="t-Form-itemWrapper">
+                    <input type="text" id="P25_RADD3" name="P25_RADD3" className="text_field apex-item-text" size={30} maxLength={100} onChange={this.handleChange.bind(this, "postcode")} value={this.state.AddressFields["postcode"]} size={30} maxLength />
+                </div>
+                <span id="P25_RADD3_error_placeholder" className="a-Form-error" data-template-id="33609965712469734_ET" />
+            </div>
+        if ('postcode' in errorsObj) {
+            postcodeInputField =
+                <div className="t-Form-inputContainer">
+                    <div className="t-Form-itemWrapper">
+                        <input type="text" id="P25_RADD3" name="P25_RADD3" className="text_field apex-item-text apex-page-item-error" value size={30} onChange={this.handleChange.bind(this, "postcode")} value={this.state.AddressFields["postcode"]} aria-describedby="P25_RADD1_error" aria-invalid="true" />
+                    </div>
+                    <span id="P25_RADD1_error_placeholder" className="a-Form-error u-visible" data-template-id="33610259035469734_ET">
+                        <span className="t-Form-error">
+                            <div id="P25_RADD1_error">
+                                <FormattedMessage id="Postcode.Validate" defaultMessage="Please enter Post Code" />
+                            </div>
+                        </span>
+                    </span>
+                </div>;
+        }
+
 
         return (
             <form >
@@ -539,12 +566,13 @@ class AddressForm extends Component {
                                                                     onBlur={(e) => this.divOnBlure(e)} id="P25_RADD3_CONTAINER"><div className="t-Form-labelContainer">
                                                                         <label htmlFor="P25_RADD3" id="P25_RADD3_LABEL" className="t-Form-label"><FormattedMessage id="Postcode.Text" defaultMessage="Post Code*" /></label>
                                                                     </div>
-                                                                    <div className="t-Form-inputContainer">
+                                                                    {/* <div className="t-Form-inputContainer">
                                                                         <div className="t-Form-itemWrapper">
                                                                             <input type="text" id="P25_RADD3" name="P25_RADD3" className="text_field apex-item-text" size={30} maxLength={100} onChange={this.handleChange.bind(this, "postcode")} value={this.state.AddressFields["postcode"]} size={30} maxLength />
                                                                         </div>
                                                                         <span id="P25_RADD3_error_placeholder" className="a-Form-error" data-template-id="33609965712469734_ET" />
-                                                                    </div>
+                                                                    </div> */}
+                                                                    {postcodeInputField}
                                                                 </div>
                                                             </Col>
                                                             <Col xs="12" lg="6" md="6" className="editAddresspopupPadding">

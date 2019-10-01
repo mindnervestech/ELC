@@ -737,7 +737,8 @@
     "PageTitle.swimming-and-beach":"Swimming And Beach",
     "PageTitle.swings-slides-and-climbing-frames":"Swings, Slides And Climbing Frames",
     "PageTitle.trampolines":"Trampolines",
-    "PageTitle.trikes-bikes-and-scooters":"Trikes, Bikes And Scooters"
+    "PageTitle.trikes-bikes-and-scooters":"Trikes, Bikes And Scooters",
+    "PleaseWait": "Please wait......."
 
     },
     "ar": {
@@ -1438,6 +1439,7 @@
         "Profile.EditAddress":"تعديل العنوان ",
         "Instoresoronline":"في المحل أو أونلاين ",
         "Onanyorder":"على أي طلب ",
-        "WhenyouspendAED250":"عند شرائك بقيمة 250 ريال "
+        "WhenyouspendAED250":"عند شرائك بقيمة 250 ريال ",
+        "PleaseWait": "Please wait......."
     }
 }
