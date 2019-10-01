@@ -6,7 +6,7 @@ import { createStore, compose, combineReducers, applyMiddleware } from 'redux';
 import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2'
-
+import cookie from 'react-cookies'
 import myCartReducer from '../reducers/myCartReducer';
 import loginReducer from '../reducers/loginAndMyAccountReducer';
 import invalidLoginReducer from '../reducers/invalidLoginReducer';
@@ -50,6 +50,7 @@ const rootReducer = (state, action) => {
     if (action.type === 'LOGOUT_USER') {
         storage.removeItem('persist:root')
         state = undefined;
+        cookie.save('myCartItem', {});
     }
     return AppRootReducer(state, action);
 };

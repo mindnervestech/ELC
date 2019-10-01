@@ -803,6 +803,7 @@ const mapStateToProps = state => {
 		user_details: state.login,
 		cart_details: state.myCart,
 		addToCardLoader: state.productDetails.addToCardLoader,
+		guest_user: state.guest_user,
 	};
 }
 

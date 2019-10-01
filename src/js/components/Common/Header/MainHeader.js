@@ -270,6 +270,12 @@ class MainHeader extends Component {
             </li>
 
         }
+        let product = [];
+        let myCartItem = {};
+        if(cookie.load('myCartItem') !== undefined){
+            myCartItem = cookie.load('myCartItem');
+            product = myCartItem.products;
+        }
 
         return (
             <>
@@ -493,7 +499,7 @@ class MainHeader extends Component {
                                             </li>
 
                                             <li style={{ paddingTop: 8 }}>
-                                                <label className="lable-count">{this.props.cart_details.products ? this.props.cart_details.products.length : 0}</label>
+                                                <label className="lable-count">{product ? product.length : 0}</label>
                                             </li>
                                         </ul>
                                     </Link>
@@ -597,7 +603,7 @@ class MainHeader extends Component {
                                     <img src={storeFinderMobile} className="mobileHomePageIcon hide-mob"></img></Link>
                                 <Link className="basket-icon" to={`/${store_locale}/cart`} style={{ textDecoration: 'none' }}>
                                     <img src={bagLogo} className="mobileHomePageIcon" style={{ height: 25, width: 25 }} />
-                                    <label className="lable-count">{this.props.cart_details.products ? this.props.cart_details.products.length : 0}</label>
+                                    <label className="lable-count">{product ? product.length : 0}</label>
                                 </Link>
                             </div>
                             <div className="divShowOnMobile" style={{ padding: "0px 10px", marginTop: 10 }}>

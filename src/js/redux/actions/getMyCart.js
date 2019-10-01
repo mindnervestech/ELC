@@ -1,7 +1,7 @@
 import * as actionType from './actionTypes';
 import { API } from '../../api/api';
 import { loadingSpinner } from './globals';
-
+import cookie from 'react-cookies';
 import * as action from './index';
 /////////////////////////////////////////GET CART//////////////////////////////////////////////////
 export const callActionForMyCart = (payload) => {
@@ -46,10 +46,12 @@ export const getMyCart = (payload) => {
                         ...res.data,
                         is_cart_details_rec: true,
                     }
+                    cookie.save('myCartItem', newState);
                     dispatch(callActionForMyCart(newState))
 
                 } else if ((res.status) && (res.code == 200) && (!('data' in res))) {
                     // dispatch(clearCartItem())
+                    cookie.save('myCartItem', {});
                 }else if(!res.status && res.code === 400){
                     if (res.new_quote_id !== "") {
                         let newQuoteId = {

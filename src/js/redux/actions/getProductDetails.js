@@ -1,6 +1,7 @@
 import * as actionTypes from './actionTypes';
 import { API } from '../../api/api';
 import { getMyCart } from '../actions/index';
+import cookie from 'react-cookies'
 import { loadingSpinner, loadingSpinnerForProduct } from './globals';
 
 export const callActionAddToWishlist = payload => {
@@ -472,7 +473,7 @@ export const getPlaceOrder = payload => {
 					type: actionTypes.GET_PLACE_ORDER,
 					payload: { payfort_data: res.payfort_data }
 				})
-				
+				cookie.save('myCartItem', {});
 				if (res.order_data.new_quote_id !== "") {
 					let newQuoteId = {
 						...getState().login.customer_details,

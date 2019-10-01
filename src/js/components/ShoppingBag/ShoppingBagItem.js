@@ -13,6 +13,7 @@ import NumericInput from 'react-numeric-input';
 import Popup from 'react-popup';
 import Spinner from '../Spinner/Spinner2';
 import Alert from './AlertMsg';
+import cookie from 'react-cookies';
 
 let successFlag = false;
 let stockSortageFlag = false;
@@ -136,9 +137,17 @@ class ShoppingBagItem extends Component {
     }
 
     render() {
-        const product = this.props.cart_details.products;
+        // const product = this.props.cart_details.products;
         const store_locale = this.props.globals.store_locale;
-
+        let product = [];
+        let myCartItem = {};
+        if(cookie.load('myCartItem') !== undefined){
+            myCartItem = cookie.load('myCartItem');
+            product = myCartItem.products;
+        }
+        
+        // console.log(cookie.load('myCartItem'));
+        // console.log("this.props.cart_details this.props.cart_details",this.props.cart_details);
         let cartProductPrice;
         // if (product.special_price !== null) {
         //    cartProductPrice = (
@@ -164,7 +173,9 @@ class ShoppingBagItem extends Component {
         //             </td>
         //          )
         // }
-        productCount = product.length
+        if(product > 0){
+            productCount = product.length
+        }
         let visible_on_store = true;
         for (var i in product) {
             if (product[i].visible_on_store === false) {
@@ -190,7 +201,7 @@ class ShoppingBagItem extends Component {
                 {this.props.updateLoader && <Spinner />}
                 <Popup />
                 {outOfStockAlert}
-                {!this.props.updateLoader && this.props.cart_details.products.length != 0 ?
+                {!this.props.updateLoader && product && product.length != 0 ?
                     <div>
                         <div className="cart-breadcrumb">
                             <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
@@ -266,7 +277,7 @@ class ShoppingBagItem extends Component {
                                 <Col xs="3" style={{ textAlign: 'end' }}>
                                     <div>
                                         <div className="blackTitle" style={{ fontSize: 22, color: "#4f4f4f" }}>
-                                            <span>{productCount}&nbsp; <FormattedMessage id="Item.text" defaultMessage="Item" /> &nbsp; | &nbsp;{this.props.cart_details.currency}&nbsp;{this.props.cart_details.grand_total}</span>
+                                            <span>{productCount}&nbsp; <FormattedMessage id="Item.text" defaultMessage="Item" /> &nbsp; | &nbsp;{myCartItem.currency}&nbsp;{myCartItem.grand_total}</span>
                                         </div>
                                         <div>
                                             <button disabled={!visible_on_store || OutOfStockFlag} className="alsoLikeCardButton" onClick={() => this.checkOut()}><FormattedMessage id="Cart.CheckOut.Title" defaultMessage="Check out" /></button>
@@ -385,11 +396,11 @@ class ShoppingBagItem extends Component {
                                     <div className="row-4" style={{ textAlign: 'start' }}>
                                         <div className="cart-subtotal">
                                             <span><FormattedMessage id="delivery-details.Subtotal.Title" defaultMessage="Subtotal" />:</span>
-                                            <span className="floatRight">{this.props.cart_details.currency}&nbsp;{this.props.cart_details.subtotal}</span>
+                                            <span className="floatRight">{myCartItem.currency}&nbsp;{myCartItem.subtotal}</span>
                                         </div>
                                         <div style={{ backgroundColor: '#eef8f2', padding: '15px 25px' }}>
                                             <span><FormattedMessage id="profile.OrderTotal.Title" defaultMessage="Order Total" /></span>
-                                            <span className="floatRight">{this.props.cart_details.currency}&nbsp;{this.props.cart_details.grand_total}</span>
+                                            <span className="floatRight">{myCartItem.currency}&nbsp;{myCartItem.grand_total}</span>
                                         </div>
                                     </div>
                                 </Col>
@@ -407,7 +418,7 @@ class ShoppingBagItem extends Component {
                         </div>
                         <div className="hideDivOnMobile">
                             <div className="blackTitle" style={{ fontSize: 18, padding: '10px 0px', color: "#4f4f4f" }}>
-                                <span><FormattedMessage id="SelectDelivery" defaultMessage="Select Delivery" /></span><span className="floatRight">{productCount}&nbsp; <FormattedMessage id="Item.text" defaultMessage="Item" /> &nbsp;|&nbsp;{this.props.cart_details.currency}&nbsp;{this.props.cart_details.grand_total}</span>
+                                <span><FormattedMessage id="SelectDelivery" defaultMessage="Select Delivery" /></span><span className="floatRight">{productCount}&nbsp; <FormattedMessage id="Item.text" defaultMessage="Item" /> &nbsp;|&nbsp;{myCartItem.currency}&nbsp;{myCartItem.grand_total}</span>
                             </div>
                             <div className="prod-color" style={{ color: "#4f4f4f" }}>
                                 <div>
@@ -502,11 +513,11 @@ class ShoppingBagItem extends Component {
                             <div className="row-4" style={{ textAlign: 'start' }}>
                                 <div style={{ padding: '10px 10px', fontFamily: 'VAG Rounded ELC Light', fontSize: 18, color: '#4f4f4f' }}>
                                     <span><FormattedMessage id="delivery-details.Subtotal.Title" defaultMessage="Subtotal" />:</span>
-                                    <span className="floatRight">{this.props.cart_details.currency}&nbsp;{this.props.cart_details.subtotal}</span>
+                                    <span className="floatRight">{myCartItem.currency}&nbsp;{myCartItem.subtotal}</span>
                                 </div>
                                 <div style={{ backgroundColor: '#eef8f2', padding: '10px 10px', fontSize: 24 }}>
                                     <span><FormattedMessage id="profile.OrderTotal.Title" defaultMessage="Order Total" /></span>
-                                    <span className="floatRight">{this.props.cart_details.currency}&nbsp;{this.props.cart_details.grand_total}</span>
+                                    <span className="floatRight">{myCartItem.currency}&nbsp;{myCartItem.grand_total}</span>
                                 </div>
                             </div>
                             <div >
