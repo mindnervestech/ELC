@@ -351,17 +351,21 @@ class WishList extends Component {
                                             {/* <span className="percentage-text">30</span>
                                                 <span className="save-text" style={{ display: 'none' }}>5</span>
                                                 <img src={save} className="save" style={{ display: 'none' }}/> */}
-                                            <img src={this.props.products[item].image[0]} className="cardImage" style={{ height: 'auto' }} />
+                                                <Link to={`/${store_locale}/products-details/${this.props.products[item].url_key}`}>
+
+                                            <img src={this.props.products[item].image[0]} className="cardImage" style={{ height: 'auto' }} /></Link>
                                             {/* <img src={percentage} className="percentage"/> */}
+                                            <Link to={`/${store_locale}/products-details/${this.props.products[item].url_key}`}>
                                             <div style={{ marginTop: 10, height: 50 }}>
                                                 <label className="text-color">{this.props.products[item].name}</label>
-                                            </div>
+                                            </div></Link>
                                             <div>
                                                 {this.props.products[item].offers && this.props.products[item].offers.status == 1 ?
                                                     this.showDiscountPrise(this.props.products[item].offers.data, this.props.products[item].price, "AED")
-                                                    : <div>
+                                                    :  <Link to={`/${store_locale}/products-details/${this.props.products[item].url_key}`}><div>
                                                         <span style={{ fontSize: 14, color: "#0D943F", fontWeight: "bold" }}>AED {this.props.products[item].price}</span>
-                                                    </div>}
+                                                    </div></Link>
+                                                }
                                             </div>
                                             {/* <div style={{ paddingTop: 10 }}>
                                                 <StarRatings
