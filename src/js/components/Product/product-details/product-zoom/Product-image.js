@@ -135,7 +135,7 @@ class ProductImage extends Component {
 		if(item){
 			return (
 				<a data-slide-id="zoom" data-zoom-id="zoom-v" href={item} data-image={item} color-id={`${color}_${index}`} name="zoom-images-lg" onClick={(e) => this._handleThumbImgClick(e, 'img')}>
-					<img style={{height:90,width: 90, visibility:'visible', marginLeft: '30px'}} srcSet={item} src={item} alt="" />
+					<img className="productDetailPopupImage" srcSet={item} src={item} alt="" />
 				</a>
 			);
 		}
