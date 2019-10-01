@@ -65,7 +65,7 @@ class PageTitle extends Component {
             country = 'KSA'
         }
     
-        let mainTitle = title !== 'NA' ? intl.formatMessage({ id: `PageTitle.${title}`,defaultMessage: 'Do you think {subject} should be informed?' }) : intl.formatMessage({ id: `PageTitle.Home` });
+        let mainTitle = title !== 'NA' ? intl.formatMessage({ id: `PageTitle.${title}`,defaultMessage: 'ELC Home ' }) : intl.formatMessage({ id: `PageTitle.Home` });
     
         return mainTitle + " | " + intl.formatMessage({ id: `PageTitle.nayomi.${country}` })
     }

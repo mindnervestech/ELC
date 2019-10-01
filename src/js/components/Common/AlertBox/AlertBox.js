@@ -22,7 +22,7 @@ class AlertBox extends Component {
         let alertBoxReact = null;
         if (this.state.showAlertBoxReact) {
             alertBoxReact = <div className="alertify"><div className="dialog"><div>
-                <p className="msg">{this.props.message}</p><nav><button className="ok" tabIndex={1} onClick={this.closeErrorBox}>{this.myIntl.formatMessage({ id: 'alertBoxText.Ok' })}</button></nav></div></div></div>
+                <p className="msg">{this.props.message}</p><nav><button className="ok" tabIndex={1} onClick={this.closeErrorBox}>{this.myIntl.formatMessage({ id: 'alertBoxText.Ok',defaultMessage:'OK' })}</button></nav></div></div></div>
 
         }
         return (

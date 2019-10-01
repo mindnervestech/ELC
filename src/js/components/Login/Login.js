@@ -446,7 +446,7 @@ class Login extends Component {
                                           </div>
                                         </div>
                                         <div className="forgotPass" style={{ textAlign: 'right'}} >
-                                          <a className="forget-password-link link" style={{width: "100%"}} onClick={this.onOpenSecondModal}><FormattedMessage id="forget.password" defaultMessage="Forget Password" /></a>
+                                          <a className="forget-password-link link" style={{width: "100%",fontWeight:'800 !important'}} onClick={this.onOpenSecondModal}><FormattedMessage id="forget.password" defaultMessage="Forget Password" /></a>
 
                                           <span id="P1000_FP_error_placeholder" className="a-Form-error" data-template-id="33609641515469732_ET"></span>
 

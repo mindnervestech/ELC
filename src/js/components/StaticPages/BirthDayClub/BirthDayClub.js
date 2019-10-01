@@ -212,9 +212,9 @@ class BirthDayClub extends Component {
       const data = {
         firstname: this.props.customer_details.customer_details.firstname,
         lastname: this.props.customer_details.customer_details.lastname,
-        phoneNumber: '8390972941',
+        phoneNumber: this.props.customer_details.phone_number,
         email:this.props.customer_details.customer_details.email,
-        countryCode: '91',
+        countryCode: this.props.customer_details.carrier_code,
         storeid: this.props.globals.currentStore,
         language: '',
         moreinfo: moreinfoData

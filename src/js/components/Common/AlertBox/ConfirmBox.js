@@ -34,7 +34,7 @@ class ConfirmBox extends Component {
                     <p className="msg">{this.myIntl.formatMessage({ id: 'confirmBox.Warning' })}</p>
                     <nav>
                         <button className="ok" tabIndex={1} onClick={this.CancelClicked}>{this.myIntl.formatMessage({ id: 'alertBoxText.Cancel' })}</button>
-                        <button className="ok" tabIndex={1} onClick={this.OkClicked}>{this.myIntl.formatMessage({ id: 'alertBoxText.Ok' })}</button>
+                        <button className="ok" tabIndex={1} onClick={this.OkClicked}>{this.myIntl.formatMessage({ id: 'alertBoxText.Ok',defaultMessage:'OK' })}</button>
                     </nav>
                 </div>
                 </div>
