@@ -93,7 +93,7 @@ class DeliveryDetails extends Component {
                         })
                     }
                 } else {
-                    this.props.history.push(`/${this.props.globals.store_locale}/login`);
+                    this.props.history.push(`/${this.props.globals.store_locale}/sign-in-register`);
                 }
             }
         } else {

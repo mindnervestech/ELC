@@ -84,7 +84,7 @@ class Profile extends Component {
         const { openFirstModal } = this.state;
         if (!(this.props.user_details.isUserLoggedIn)) {
             return <Redirect to={{
-                pathname: `/${store_locale}/login`,
+                pathname: `/${store_locale}/sign-in-register`,
             }} />;
         }
 

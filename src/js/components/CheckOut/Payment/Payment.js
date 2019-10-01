@@ -64,7 +64,7 @@ class Payment extends Component {
                         }
                     }
                 } else {
-                    this.props.history.push(`/${this.props.global.store_locale}/login`);
+                    this.props.history.push(`/${this.props.global.store_locale}/sign-in-register`);
                 }
 
 

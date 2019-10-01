@@ -131,7 +131,7 @@ class Login extends Component {
       this.setState((prevState) => ({
         errorMessage: {
           ...prevState.errorMessage,
-          email: <FormattedMessage id="Login.username" defaultMessage="" />
+          email: <FormattedMessage id="Login.username" defaultMessage="Please Enter Valid Email Address" />
         }
       }))
       formIsValid = false;
@@ -141,7 +141,7 @@ class Login extends Component {
       this.setState((prevState) => ({
         errorMessage: {
           ...prevState.errorMessage,
-          password: <FormattedMessage id="Login.password" defaultMessage="" />
+          password: <FormattedMessage id="Login.password" defaultMessage="Please Enter Valid password" />
         }
 
       }))
@@ -225,18 +225,18 @@ class Login extends Component {
       }} />;
     }
 
-    // if (login_details.forgotPasswordDetails.status &&
-    //   login_details.forgotPasswordDetails.message) {
-    //   if (this.state.openSecondModal) {
-    //     this.onCloseSecondModal();
-    //   }
+    if (login_details.forgotPasswordDetails.status &&
+      login_details.forgotPasswordDetails.message) {
+      if (this.state.openSecondModal) {
+        this.onCloseSecondModal();
+      }
 
-    // } else if (!(login_details.forgotPasswordDetails.status) &&
-    //   login_details.forgotPasswordDetails.message) {
-    //   if (this.state.openSecondModal) {
-    //     this.onCloseSecondModal();
-    //   }
-    // }
+    } else if (!(login_details.forgotPasswordDetails.status) &&
+      login_details.forgotPasswordDetails.message) {
+      if (this.state.openSecondModal) {
+        this.onCloseSecondModal();
+      }
+    }
 
 
     let emailField = <div>
@@ -445,12 +445,12 @@ class Login extends Component {
                                           </div>
                                           </div>
                                         </div>
-                                        {/* <div className="forgotPass" style={{width: "99%", textAlign: 'right'}} >
+                                        <div className="forgotPass" style={{ textAlign: 'right'}} >
                                           <a className="forget-password-link link" style={{width: "100%"}} onClick={this.onOpenSecondModal}><FormattedMessage id="forget.password" defaultMessage="Forget Password" /></a>
 
                                           <span id="P1000_FP_error_placeholder" className="a-Form-error" data-template-id="33609641515469732_ET"></span>
 
-                                        </div> */}
+                                        </div>
                                       </div>
                                       {/* <div >
                                           <div className="t-Form-fieldContainer rel-col  apex-item-wrapper apex-item-wrapper--checkbox " id="P1000_REMEMBER_CONTAINER">

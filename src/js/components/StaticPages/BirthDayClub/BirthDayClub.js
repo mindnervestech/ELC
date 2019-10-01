@@ -233,7 +233,7 @@ class BirthDayClub extends Component {
     let respo_message = null;
     if(!this.props.isUserLoggedIn)
     {
-      this.props.history.push(`/${this.props.globals.store_locale}/Login`); 
+      this.props.history.push(`/${this.props.globals.store_locale}/sign-in-register`); 
     }
    
     if (this.state.showAlert) {

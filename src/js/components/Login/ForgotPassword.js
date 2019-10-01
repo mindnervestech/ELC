@@ -84,15 +84,15 @@ class ForGotPassword extends Component {
       }
     }
 
-    if (!fields["contactNumber"]) {
-      formIsValid = false;
-      errors["contactNumber"] = <FormattedMessage id="ForgotPassword.validation.password.invalid" defaultMessage="First Name cannot be empty" />;
-    }
+    // if (!fields["contactNumber"]) {
+    //   formIsValid = false;
+    //   errors["contactNumber"] = <FormattedMessage id="ForgotPassword.validation.password.invalid" defaultMessage="First Name cannot be empty" />;
+    // }
 
-    if (!(this.state.isPhoneValid)) {
-      formIsValid = false;
-      errors["contactNumber"] = <FormattedMessage id="ForgotPassword.validation.password.invalid" defaultMessage="First Name cannot be empty" />;
-    }
+    // if (!(this.state.isPhoneValid)) {
+    //   formIsValid = false;
+    //   errors["contactNumber"] = <FormattedMessage id="ForgotPassword.validation.password.invalid" defaultMessage="First Name cannot be empty" />;
+    // }
 
 
 
@@ -118,12 +118,11 @@ class ForGotPassword extends Component {
 
 
   resetPassword = () => {
-
+ alert("Call in ")
     const data = {
-      contact_number: this.state.fields.contactNumber,
-      carrier_code: this.state.fields.carrierCode,
+      
       email: this.state.fields.email,
-      store_id: this.props.globals.currentStore
+     
     }
 
     this.props.onForgotPassword(data);
@@ -153,7 +152,7 @@ class ForGotPassword extends Component {
       this.props.onClearForgotPass();
       this.props.closeModal();
     })
-    console.log('Close alert Box Parent');
+   
   }
   render() {
     let alertBox = null;
@@ -261,9 +260,9 @@ class ForGotPassword extends Component {
                             </div>
 
                             <div className="row padTop20">
-                              <div className="col col-12">
+                              <div className="col col-12 paddingRemoveLetfAndRight">
 
-                                <button onClick={this.signUpSubmit} className="button3" style={{width:"103%"}} type="button" id="B29665481101883473"><span className="t-Button-label"><FormattedMessage id="Form.Send" defaultMessage="Send" /></span></button>
+                                <button onClick={this.signUpSubmit} className="button3" style={{width:"100%",height:72}} type="button" id="B29665481101883473"><span className="t-Button-label"><FormattedMessage id="Form.Send" defaultMessage="Send" /></span></button>
 
                                 <input type="hidden" id="P1003_TIME_CHECK" name="P1003_TIME_CHECK" /><input type="hidden" data-for="P1003_TIME_CHECK" defaultValue="VV6vUFJ6aze616Fc52zoGghCgvqIcdqu8W4pO4K7v-IzcYs8bdYxniLX61inY2s3Uuj3p0GeS0Z9wGHKrMQodg" /><input type="hidden" id="P1003_TIME" name="P1003_TIME" />
                               </div>

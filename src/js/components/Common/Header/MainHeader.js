@@ -132,7 +132,7 @@ class MainHeader extends Component {
     logOut = () => {
         this.props.onLogoutUser();
         this.props.onGetMenuNav(this.props.globals);
-        this.props.history.push(`/${this.props.globals.store_locale}/Login`);
+        this.props.history.push(`/${this.props.globals.store_locale}/sign-in-register`);
     }
 
     getStore = () => {
@@ -410,7 +410,7 @@ class MainHeader extends Component {
                                         </Link>
                                     </li>
                                     <li className="titleHover" style={this.state.userLogin ? { display: 'none' } : { display: 'inline-block'}}>
-                                        <Link to={`/${store_locale}/Login`} style={{ textDecoration: 'none' }}>
+                                        <Link to={`/${store_locale}/sign-in-register`} style={{ textDecoration: 'none' }}>
                                             <img src={profile} className="image-ion" style={{ marginTop: 6 }}></img>
                                             <label className="iconLeble text-color changeLinkText"><FormattedMessage id="Header.SignInOrRegister" defaultMessage="Sign in / Register" /></label>
                                         </Link>
@@ -420,7 +420,7 @@ class MainHeader extends Component {
                                         <label className="iconLeble text-color"><span><FormattedMessage id="header.Hello" defaultMessage="Hello" />,&nbsp; {this.props.user_details.customer_details.firstname} </span></label>
                                     </li>
                                     <li style={this.state.userLogin ? { display: 'inline-block' } : { display: 'none' }}>
-                                        <Link to={`/${store_locale}/Login`} style={{ textDecoration: 'none' }}>
+                                        <Link to={`/${store_locale}/profile`} style={{ textDecoration: 'none' }}>
                                             <label className="iconLeble text-color changeLinkText"><FormattedMessage id="header.MyAccount" defaultMessage="My Account" /></label>
                                         </Link>
                                     </li>

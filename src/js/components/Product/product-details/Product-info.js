@@ -310,7 +310,7 @@ class ProductInfo extends Component {
 
 	addToWishList = (data) => {
 		if ((this.props.customerDetails && this.props.customerDetails.customer_id === undefined) || !this.props.customerDetails) {
-			return (<Link to={`/${this.props.globals.store_locale}/Login`}><span className="wishlist-span-1 mr-10-wishlist" style={{ margin: 10 }}>
+			return (<Link to={`/${this.props.globals.store_locale}/sign-in-register`}><span className="wishlist-span-1 mr-10-wishlist" style={{ margin: 10 }}>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -464,7 +464,7 @@ class ProductInfo extends Component {
 
 		if (this.state.islogged) {
 			return <Redirect to={{
-				pathname: `/${this.props.globals.store_locale}/login`,
+				pathname: `/${this.props.globals.store_locale}/sign-in-register`,
 			}} />;
 		}
 

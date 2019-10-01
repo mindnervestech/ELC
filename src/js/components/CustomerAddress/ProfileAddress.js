@@ -169,7 +169,7 @@ class ProfileAddress extends Component {
         const store_locale = this.props.globals.store_locale;
         if (!(this.props.user_details.isUserLoggedIn)) {
             return <Redirect to={{
-              pathname: `/${store_locale}/login`,
+              pathname: `/${store_locale}/sign-in-register`,
             }} />;
         }
 

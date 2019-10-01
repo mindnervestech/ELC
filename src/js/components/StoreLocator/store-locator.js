@@ -261,8 +261,13 @@ class StoreLocator extends Component {
 
                 <div style={{ margin: 10, textAlign: 'start' }} className="padding-right-ar">
                   <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
-                    <span className="titleHover" style={{ fontSize: 15 }}><FormattedMessage id="Checkout.Home" defaultMessage /></span><span>&nbsp;\&nbsp;&nbsp;</span>
-                  </Link>
+                  <span className="titleHover" style={{ fontSize: 15 }}><FormattedMessage id="Checkout.Home" defaultMessage="Home" />
+                    { this.props.globals.language=='en'?
+                     <> <span>&nbsp;\&nbsp;&nbsp;</span> </>:
+                     <> <span>&nbsp;/&nbsp;&nbsp;</span></>
+                    }
+                    </span>
+                </Link>
                   <span style={{ fontSize: 15, fontWeight: 'bold' }}><FormattedMessage id="Header.StoreFinder" defaultMessage="Store Finder" /></span>
                 </div>
                 <div className="t-BreadcrumbRegion-title">

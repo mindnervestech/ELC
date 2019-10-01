@@ -316,7 +316,7 @@ class App extends Component {
                                         <Route exact path="/" component={Home} />
                                         <Route exact path="/:locale" component={Home} />
                                         <Route exact path="/:locale/home" component={Home} />
-                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/Login" component={Login} />
+                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/sign-in-register" component={Login} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/profile" component={MyProfile} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/order-history" component={Order} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/view-voucher" component={OredrDetails} />

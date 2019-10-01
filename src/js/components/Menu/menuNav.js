@@ -33,7 +33,7 @@ class menuNav extends Component {
  logOut = () => {
   this.props.onGetMenuNav(this.props.globals);
   this.props.onLogoutUser();
-  this.props.history.push(`/${this.props.globals.store_locale}/Login`);
+  this.props.history.push(`/${this.props.globals.store_locale}/sign-in-register`);
   this.closeHBMenu();
 }
   closeHBMenu = () => {
@@ -56,9 +56,9 @@ class menuNav extends Component {
         <div className="profile">
           <figure className=""><i className="icon-user"></i></figure>
           <div className="">
-            <Link to={`/${store_locale}/login`} onClick={this.closeHBMenu}>
+            <Link to={`/${store_locale}/sign-in-register`} onClick={this.closeHBMenu}>
     {this.props.user_details.isUserLoggedIn ? <span><FormattedMessage id="header.Hello" defaultMessage="Hello" />,&nbsp;&nbsp;{this.props.user_details.customer_details.firstname}</span> :<FormattedMessage id="Header.SignInOrRegister" defaultMessage="Sign in / Register" />}</Link>
-            <Link to={`/${store_locale}/login`} className="hide"><FormattedMessage id="header.logoutName" defaultMessage="logout" /></Link>
+            <Link to={`/${store_locale}/sign-in-register`} className="hide"><FormattedMessage id="header.logoutName" defaultMessage="logout" /></Link>
           </div>
         </div>
         {this.renderRedirect()}

@@ -279,7 +279,7 @@ class WishList extends Component {
 
         if (!(this.props.isUserLoggedIn)) {
             return <Redirect to={{
-                pathname: `/${store_locale}/login`,
+                pathname: `/${store_locale}/sign-in-register`,
             }} />;
         }
 

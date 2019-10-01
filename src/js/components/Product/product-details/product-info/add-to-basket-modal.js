@@ -202,7 +202,7 @@ class AddToBasketModal extends Component {
 
 		if (this.state.islogged) {
 			return <Redirect to={{
-				pathname: `/${this.props.globals.store_locale}/login`,
+				pathname: `/${this.props.globals.store_locale}/sign-in-register`,
 			}} />;
 		}
 
