@@ -333,7 +333,7 @@ class Product extends Component {
 
 	getCatagoryName = (value) => {
 		let replesUrl = value
-		replesUrl = replesUrl.replace(/uae-ar|uae-en/gi,"")
+		replesUrl = replesUrl.replace(/uae-ar|uae-en|saudi-en|saudi-ar/gi,"")
 		let url = replesUrl.split('/');
 		for(let data in url){
 			if(url[data] == ""){

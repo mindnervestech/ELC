@@ -376,7 +376,7 @@ class MainHeader extends Component {
                                     </li> */}
                                     <li className="badyCloubLink">
                                         <Link to={`/${store_locale}/birth-day-club`} style={{ textDecoration: 'none' }}>
-                                            <button className="secondButton text-color"><FormattedMessage id="header.TheBirthdayclub" defaultMessage="Birthday Club" /></button>
+                                            <button style={{paddingTop: 5}} className="secondButton text-color"><FormattedMessage id="header.TheBirthdayclub" defaultMessage="Birthday Club" /></button>
                                         </Link>
                                     </li>
 
