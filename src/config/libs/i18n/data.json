@@ -739,7 +739,19 @@
     "PageTitle.trampolines":"Trampolines",
     "PageTitle.trikes-bikes-and-scooters":"Trikes, Bikes And Scooters",
     "PleaseWait": "Please wait......."
-
+    "PageTitle.trikes-bikes-and-scooters.keyword":"Trikes, Bikes And Scooters",
+    "PageTitle.wooden-toys.keyword":"learning, education, building blocks",
+    "PageTitle.wooden-toys.description":"Shop our full range of building blocks",
+    "PageTitle.cars-trains-planes.keyword":"vehicle, car, truck, digger, crane",
+    "PageTitle.cars-trains-planes.description":"Shop our full range of cars, trucks and diggers",
+    "PageTitle.electronic-educational-toys.keyword":"learning, education, cameras",
+    "PageTitle.electronic-educational-toys.description":"Shop our full range of cameras",
+    "PageTitle.bouncy-castles-pools-ball-pits.keyword":"Outdoor, bouncy castles, pools, ball pits",
+    "PageTitle.bouncy-castles-pools-ball-pits.description":"Shop our full range of bouncy castles, pools & ball pits",
+    "PageTitle.garden-toys-games.keyword":"Outdoor, garden toys, games",
+    "PageTitle.garden-toys-games.description":"Shop our full range of garden toys & games",
+    "PageTitle.play-houses-and-kids-garden-furniture.keyword":"Outdoor, play houses, kids garden furniture",
+    "PageTitle.play-houses-and-kids-garden-furniture.description":"Shop our full range of play houses and kids garden furniture"
     },
     "ar": {
       "PageTitle.play-tents-and-mats":"خيمات وحصائر لعب",
@@ -1440,6 +1452,17 @@
         "Instoresoronline":"في المحل أو أونلاين ",
         "Onanyorder":"على أي طلب ",
         "WhenyouspendAED250":"عند شرائك بقيمة 250 ريال ",
-        "PleaseWait": "Please wait......."
+    	"PleaseWait": "Please wait......."
+        "PageTitle.trikes-bikes-and-scooters.keyword":"",
+        "PageTitle.wooden-toys.keyword":"تعلم، تعليم، مكعبات بناء",
+        "PageTitle.wooden-toys.description":"تسوّق تشكيلتنا الكاملة من ألعاب مكعبات البناء",
+        "PageTitle.cars-trains-planes.keyword":"مركبة، سيارة، شاحنة، حفارة، رافعة",
+        "PageTitle.cars-trains-planes.description":"تسوّق تشكيلتنا الكاملة من السيارات والشاحنات والحفارات",
+        "PageTitle.electronic-educational-toys.keyword":"ألعاب تعلم، تعليم، كاميرات",
+        "PageTitle.electronic-educational-toys.description":"تسوّق تشكيلتنا الكاملة من الكاميرات",
+        "PageTitle.bouncy-castles-pools-ball-pits.keyword":"ألعاب خارج المنزل، قلعة قفز، برك، بركة كرات",
+        "PageTitle.bouncy-castles-pools-ball-pits.description": "تسوّق تشكيلتنا الكاملة من قلاع القفز والبرك وبرك الكرات",
+        "PageTitle.garden-toys-games.keyword":"ألعاب خارج المنزل، ألعاب حدائق، ألعاب",
+        "PageTitle.garden-toys-games.description": "تسوّق تشكيلتنا الكاملة من ألعاب الحدائق"
     }
 }

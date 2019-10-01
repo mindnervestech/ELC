@@ -9,7 +9,9 @@ class PageTitle extends Component {
         super(props);
         this.myIntl = props.intl
         this.state = {
-            title: 'ELC'
+            title: 'ELC',
+            keyword: 'ELC',
+            description: 'ELC'
         }
     }
 
@@ -22,14 +24,19 @@ class PageTitle extends Component {
         {
             setTimeout(() => {
                 this.setState({
-                    title:this.getTital('NA')
+                    title:this.getTital('NA'),
+                    keyword: this.getKeyword('NA'),
+                    description: this.getDescription('NA')
                 }) 
             }, 100);
         }
         else{
             setTimeout(() => {
                 this.setState({
-                    title: this.getTital(pathname[pathname.length - 1])
+                    title: this.getTital(pathname[pathname.length - 1]),
+                    keyword: this.getKeyword(pathname[pathname.length - 1]),
+                    description: this.getDescription(pathname[pathname.length - 1])
+
                 }) 
             }, 100);
         }
@@ -43,14 +50,18 @@ class PageTitle extends Component {
          
             setTimeout(() => {
                 this.setState({
-                    title:this.getTital('NA')
+                    title:this.getTital('NA'),
+                    keyword: this.getKeyword('NA'),
+                    description: this.getDescription('NA')
                 }) 
             }, 100);
         }
         else if (this.props.location.pathname !== prevProps.location.pathname) {
             const pathname=this.props.location.pathname.split('/');
             this.setState({
-                title: this.getTital(pathname[pathname.length - 1])
+                title: this.getTital(pathname[pathname.length - 1]),
+                keyword: this.getKeyword(pathname[pathname.length - 1]),
+                description: this.getDescription(pathname[pathname.length - 1])
             })
         }
     }
@@ -65,8 +76,38 @@ class PageTitle extends Component {
             country = 'KSA'
         }
     
-        let mainTitle = title !== 'NA' ? intl.formatMessage({ id: `PageTitle.${title}`,defaultMessage: 'ELC Home ' }) : intl.formatMessage({ id: `PageTitle.Home` });
+        let mainTitle = title !== 'NA' ? intl.formatMessage({ id: `PageTitle.${title}`,defaultMessage: 'ELC' }) : intl.formatMessage({ id: `PageTitle.Home` });
     
+        return mainTitle + " | " + intl.formatMessage({ id: `PageTitle.nayomi.${country}` })
+    }
+
+    getKeyword = (keyword) => {
+
+        const { intl } = this.props;
+        let country = this.props.globals.country;
+        if(country === 'uae'){
+            country = 'UAE';
+        }else if(country === 'ksa'){
+            country = 'KSA'
+        }
+    
+        let mainTitle = keyword !== 'NA' ? intl.formatMessage({ id: `PageTitle.${keyword}.keyword`,defaultMessage: 'ELC' }) : intl.formatMessage({ id: `PageTitle.Home` });
+        console.log('keyword---',mainTitle);
+        return mainTitle + " | " + intl.formatMessage({ id: `PageTitle.nayomi.${country}` })
+    }
+
+    getDescription = (description) => {
+
+        const { intl } = this.props;
+        let country = this.props.globals.country;
+        if(country === 'uae'){
+            country = 'UAE';
+        }else if(country === 'ksa'){
+            country = 'KSA'
+        }
+    
+        let mainTitle = description !== 'NA' ? intl.formatMessage({ id: `PageTitle.${description}.description`,defaultMessage: 'ELC' }) : intl.formatMessage({ id: `PageTitle.Home` });
+
         return mainTitle + " | " + intl.formatMessage({ id: `PageTitle.nayomi.${country}` })
     }
 
@@ -75,6 +116,8 @@ class PageTitle extends Component {
         return (<>
             <Helmet>
                 <title>{this.state.title}</title>
+                <meta name="keywords" content={this.state.keyword} />
+                <meta name="description" content={this.state.description} />
             </Helmet>
         </>)
     }
