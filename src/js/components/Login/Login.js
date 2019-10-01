@@ -332,7 +332,7 @@ class Login extends Component {
                         <input type="hidden" id="P1000_PAGE_TITLE" name="P1000_PAGE_TITLE" value="Sign in - Sign in to Your Nayomi Account" />
                         <input type="hidden" id="P1000_PAGE_DESC" name="P1000_PAGE_DESC" value="Sign in - Sign in to your account to shop with exciting offers" />
                         <div className="container backWhite" style={{height: 'auto', overflow: 'hidden'}}>
-                          <div className="row alignCenter" style={{paddingTop:"6px"}}><FormattedMessage id="Register.SignInText" defaultMessage="sign in or register" /></div>
+                          <div className="row alignCenter" style={{paddingTop:"6px"}}><FormattedMessage id="Register.SignInText" defaultMessage="Sign in or Register" /></div>
                           <div className="row">
                             <div className="col col-1  paddingNull" style={{ flex: "0 0 7.333333%", maxWidth: "7.333333%" }}>
                               <span className="apex-grid-nbsp">&nbsp;</span>
