@@ -3,7 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import * as actions from '../../redux/actions/index';
-import { Row, Col} from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 import placeholder from '../../../assets/images/placeholder.png'
 
 import SideManu from './SideManu';
@@ -72,46 +72,46 @@ class ProductListData extends Component {
 		basketPopupFlag = false;
 	}
 
-    onCloseAddCartModal = () => {
-		this.setState({ basketPopupFlag: false})
+	onCloseAddCartModal = () => {
+		this.setState({ basketPopupFlag: false })
 		basketPopupFlag = false;
-        setTimeout(() => {
-            if (this.props.user_details.isUserLoggedIn) {
-                this.props.OngetMyCart({
-                    quote_id: this.props.user_details.customer_details.quote_id,
-                    store_id: this.props.globals.currentStore
-                })
-            } else {
-                this.props.OngetMyCart({
-                    quote_id: this.props.guest_user.new_quote_id,
-                    store_id: this.props.globals.currentStore
-                })
+		setTimeout(() => {
+			if (this.props.user_details.isUserLoggedIn) {
+				this.props.OngetMyCart({
+					quote_id: this.props.user_details.customer_details.quote_id,
+					store_id: this.props.globals.currentStore
+				})
+			} else {
+				this.props.OngetMyCart({
+					quote_id: this.props.guest_user.new_quote_id,
+					store_id: this.props.globals.currentStore
+				})
 
-            }
+			}
 		}, 1000);
 	}
 
-	componentDidUpdate(prevProps){
+	componentDidUpdate(prevProps) {
 		if (prevProps.addToCardLoader !== this.props.addToCardLoader) {
-            if (!this.state.cartModelFlag || !cartModelFlag) {
-                this.setState({
-                    addToCartModal: true,
-                    cartModelFlag: true
+			if (!this.state.cartModelFlag || !cartModelFlag) {
+				this.setState({
+					addToCartModal: true,
+					cartModelFlag: true
 				})
 				addToCartModal = true;
-            	cartModelFlag = true;
-            }
+				cartModelFlag = true;
+			}
 		}
 	}
 
-	openAddTOBasketModal = (url) =>{
-        this.setState({
-            basketPopupFlag: true,
-            url_key:url_key
+	openAddTOBasketModal = (url) => {
+		this.setState({
+			basketPopupFlag: true,
+			url_key: url_key
 		})
 		basketPopupFlag = true;
 		url_key = url;
-    }
+	}
 
 	changeThePagenationData() {
 		let totalPages = 1
@@ -164,8 +164,8 @@ class ProductListData extends Component {
 			}
 			count++
 		}
-		if(this.state.sortByText !== ""){
-			this.filter(this.state.sortByOptionValue,this.state.sortByText)
+		if (this.state.sortByText !== "") {
+			this.filter(this.state.sortByOptionValue, this.state.sortByText)
 		}
 		let totalPages = 1
 		if (count % pagenationCount === 0) {
@@ -343,7 +343,7 @@ class ProductListData extends Component {
 		this.setState({ changeFilterData: true })
 	}
 
-	closeBuyAndMore(index){
+	closeBuyAndMore(index) {
 		showPopupIndex = -1
 		this.setState({ changeFilterData: true })
 	}
@@ -374,7 +374,7 @@ class ProductListData extends Component {
 		}
 	}
 
-	showDiscountPrise(offerData , orignalPrise, currency){
+	showDiscountPrise(offerData, orignalPrise, currency) {
 		if (Object.keys(offerData).length === 1) {
 			for (let value in offerData) {
 				if (value === '1') {
@@ -427,7 +427,7 @@ class ProductListData extends Component {
 			let showOffer = []
 			let count = 0
 			for (let value in offer) {
-				if(count < 2){
+				if (count < 2) {
 					showOffer.push(value)
 					showOffer.push(offer[value])
 				}
@@ -444,7 +444,7 @@ class ProductListData extends Component {
 							<span>{showOffer[0]}&nbsp;<FormattedMessage id="For.Text" defaultMessage="For" />&nbsp;{currency}&nbsp;{showOffer[1]}</span>
 						</div>
 						<div className="buyAndMoreOffer">
-						<span>{showOffer[2]}&nbsp;<FormattedMessage id="For.Text" defaultMessage="For" />&nbsp;{currency}&nbsp;{showOffer[3]}</span>
+							<span>{showOffer[2]}&nbsp;<FormattedMessage id="For.Text" defaultMessage="For" />&nbsp;{currency}&nbsp;{showOffer[3]}</span>
 						</div>
 					</div>
 				</div>
@@ -466,9 +466,9 @@ class ProductListData extends Component {
 			}
 			list = this.state.list1
 		}
-		
+
 		return (
-			<Row>
+			<Row className="PLPRowMargin">
 				<Col xs="3" lg="3" md="3" className="divShowOnWeb">
 					<SideManu action={this.handler}></SideManu>
 				</Col>
@@ -502,18 +502,34 @@ class ProductListData extends Component {
 											</div>
 										}
 									</FormattedMessage>
-									<div className="sortByOptionText" onClick={() => this.filter("a-z", "Name (A-Z)")}>
-										<span><FormattedMessage id="NameAtoZ" defaultMessage="Name (A-Z)" /></span>
-									</div>
-									<div className="sortByOptionText" onClick={() => this.filter("z-a", "Name (Z-A)")}>
-										<span><FormattedMessage id="NameZtoA" defaultMessage="Name (Z-A)" /></span>
-									</div>
-									<div className="sortByOptionText" onClick={() => this.filter("price_asc", "Price (lowest first)")}>
-										<span><FormattedMessage id="PriceLowtoHigh" defaultMessage="Price (lowest first)" /></span>
-									</div>
-									<div className="sortByOptionText" onClick={() => this.filter("price_desc", "Price (highest first)")}>
-										<span><FormattedMessage id="PriceHightoLow" defaultMessage="Price (highest first)" /></span>
-									</div>
+									<FormattedMessage id="NameAtoZ" defaultMessage="Name (A-Z)">
+										{(message2) =>
+											<div className="sortByOptionText" onClick={() => this.filter("a-z", message2)}>
+												<span><FormattedMessage id="NameAtoZ" defaultMessage="Name (A-Z)" /></span>
+											</div>
+										}
+									</FormattedMessage>
+									<FormattedMessage id="NameZtoA" defaultMessage="Name (Z-A)">
+										{(message3) =>
+											<div className="sortByOptionText" onClick={() => this.filter("z-a", message3)}>
+												<span><FormattedMessage id="NameZtoA" defaultMessage="Name (Z-A)" /></span>
+											</div>
+										}
+									</FormattedMessage>
+									<FormattedMessage id="PriceLowtoHigh" defaultMessage="Price (lowest first)">
+										{(message4) =>
+											<div className="sortByOptionText" onClick={() => this.filter("price_asc", message4)}>
+												<span><FormattedMessage id="PriceLowtoHigh" defaultMessage="Price (lowest first)" /></span>
+											</div>
+										}
+									</FormattedMessage>
+									<FormattedMessage id="PriceHightoLow" defaultMessage="Price (highest first)">
+										{(message5) =>
+											<div className="sortByOptionText" onClick={() => this.filter("price_desc", message5)}>
+												<span><FormattedMessage id="PriceHightoLow" defaultMessage="Price (highest first)" /></span>
+											</div>
+										}
+									</FormattedMessage>
 								</div>
 							</div>
 						</div>
@@ -589,18 +605,34 @@ class ProductListData extends Component {
 																</div>
 															}
 														</FormattedMessage>
-														<div className="sortByOptionText" onClick={() => this.filter("a-z", "Name (A-Z)")}>
-															<span><FormattedMessage id="NameAtoZ" defaultMessage="Name (A-Z)" /></span>
-														</div>
-														<div className="sortByOptionText" onClick={() => this.filter("z-a", "Name (Z-A)")}>
-															<span><FormattedMessage id="NameZtoA" defaultMessage="Name (Z-A)" /></span>
-														</div>
-														<div className="sortByOptionText" onClick={() => this.filter("price_asc", "Price (lowest first)")}>
-															<span><FormattedMessage id="PriceLowtoHigh" defaultMessage="Price (lowest first)" /></span>
-														</div>
-														<div className="sortByOptionText" onClick={() => this.filter("price_desc", "Price (highest first)")}>
-															<span><FormattedMessage id="PriceHightoLow" defaultMessage="Price (highest first)" /></span>
-														</div>
+														<FormattedMessage id="NameAtoZ" defaultMessage="Name (A-Z)">
+															{(message2) =>
+																<div className="sortByOptionText" onClick={() => this.filter("a-z", message2)}>
+																	<span><FormattedMessage id="NameAtoZ" defaultMessage="Name (A-Z)" /></span>
+																</div>
+															}
+														</FormattedMessage>
+														<FormattedMessage id="NameZtoA" defaultMessage="Name (Z-A)">
+															{(message3) =>
+																<div className="sortByOptionText" onClick={() => this.filter("z-a", message3)}>
+																	<span><FormattedMessage id="NameZtoA" defaultMessage="Name (Z-A)" /></span>
+																</div>
+															}
+														</FormattedMessage>
+														<FormattedMessage id="PriceLowtoHigh" defaultMessage="Price (lowest first)">
+															{(message4) =>
+																<div className="sortByOptionText" onClick={() => this.filter("price_asc", message4)}>
+																	<span><FormattedMessage id="PriceLowtoHigh" defaultMessage="Price (lowest first)" /></span>
+																</div>
+															}
+														</FormattedMessage>
+														<FormattedMessage id="PriceHightoLow" defaultMessage="Price (highest first)">
+															{(message5) =>
+																<div className="sortByOptionText" onClick={() => this.filter("price_desc", message5)}>
+																	<span><FormattedMessage id="PriceHightoLow" defaultMessage="Price (highest first)" /></span>
+																</div>
+															}
+														</FormattedMessage>
 													</div>
 												</div>
 											</Col>
@@ -653,11 +685,11 @@ class ProductListData extends Component {
 							</div>
 						</div>
 						{basketPopupFlag ? <div>
-							<Modal modalId="add_to_basket"  open={basketPopupFlag} onClose={this.onCloseAddCartModal}>
-								<AddToBasketModal url_key={url_key} onCloseAddCartModal={this.onCloseAddCartModal}/>
+							<Modal modalId="add_to_basket" open={basketPopupFlag} onClose={this.onCloseAddCartModal}>
+								<AddToBasketModal url_key={url_key} onCloseAddCartModal={this.onCloseAddCartModal} />
 							</Modal>
 						</div> : ''}
-                		{addToCartModal && this.props.cart_details.similar_products && !window.location.href.includes('products-details') ? <div>
+						{addToCartModal && this.props.cart_details.similar_products && !window.location.href.includes('products-details') ? <div>
 							<Modal modalId="addToCartPopupID" open={addToCartModal} onClose={this.onCloseCartModal}>
 								<AddToCartModal onCloseCartModal={this.onCloseCartModal} />
 							</Modal>
@@ -672,17 +704,17 @@ class ProductListData extends Component {
 													{/* <span className="percentage-text" style={{ display: 'none' }}>30</span>
 									<span className="save-text">5</span>
 									<img src={save} className="save" /> */}
-													<img src={(list[keyName].json.imageUrl) ? list[keyName].json.imageUrl.primaryimage : placeholder} className="cardImage" alt=""/>
+													<img src={(list[keyName].json.imageUrl) ? list[keyName].json.imageUrl.primaryimage : placeholder} className="cardImage" alt="" />
 													{/* <img src={percentage} className="percentage" style={{ display: 'none' }} /> */}
 													<div style={{ marginTop: 10, height: 50 }}>
 														<label className="text-color">{list[keyName].json.name}</label>
 													</div>
 													{list[keyName].json.offers && list[keyName].json.offers.status === 1 ?
-														this.showDiscountPrise(list[keyName].json.offers.data,list[keyName].price,list[keyName].currency)
-													:<div>
-														<span style={{ fontSize: 14, color: "#0D943F", fontWeight: "bold" }}>{list[keyName].currency} {list[keyName].price}.00</span>
-														{/* <span style={{ color: "gray", textDecorationLine: 'line-through', fontSize: 14, marginLeft: 10 }}>AED 14.50</span> */}
-													</div>}
+														this.showDiscountPrise(list[keyName].json.offers.data, list[keyName].price, list[keyName].currency)
+														: <div>
+															<span style={{ fontSize: 14, color: "#0D943F", fontWeight: "bold" }}>{list[keyName].currency} {list[keyName].price}.00</span>
+															{/* <span style={{ color: "gray", textDecorationLine: 'line-through', fontSize: 14, marginLeft: 10 }}>AED 14.50</span> */}
+														</div>}
 													<div style={{ paddingTop: 10 }}>
 														{/* <StarRatings
 											rating={3}
@@ -707,7 +739,7 @@ class ProductListData extends Component {
 												</div>
 											</Link>
 											<div>
-												<button className="alsoLikeCardButton" onClick={() => this.openAddTOBasketModal(list[keyName].json.url_key)} style={{width:'100%',borderRadius:'4px', marginBottom:'10px'}}>
+												<button className="alsoLikeCardButton" onClick={() => this.openAddTOBasketModal(list[keyName].json.url_key)} style={{ width: '100%', borderRadius: '4px', marginBottom: '10px' }}>
 													<FormattedMessage id="Product.Detail.addToBasket" defaultMessage="Add to basket" />
 												</button>
 											</div>
