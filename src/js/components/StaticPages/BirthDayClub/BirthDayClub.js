@@ -338,15 +338,29 @@ class BirthDayClub extends Component {
                     </div>
                     <div>
                       <div className="sortByOption select-div width-select-div" style={sortByShowOption[index] ? { display: 'block' } : { display: 'none' }}>
-                        <div className="sortByOptionText" onClick={() => this.onClickGender("Male", index)}>
-                          <span><FormattedMessage id="addChildren.male" defaultMessage="Male" /></span>
-                        </div>
-                        <div className="sortByOptionText" onClick={() => this.onClickGender("Female", index)}>
-                          <span><FormattedMessage id="addChildren.female" defaultMessage="Female" /></span>
-                        </div>
-                        <div className="sortByOptionText" onClick={() => this.onClickGender("Other", index)}>
-                          <span><FormattedMessage id="addChildren.Other" defaultMessage="Other" /></span>
-                        </div>
+                      <FormattedMessage id="addChildren.male" defaultMessage="Male">
+                      {(message) =>
+                        <div className="sortByOptionText" onClick={() => this.onClickGender(message, index)}>
+                          <span>{message}</span>
+                        </div>}
+                        </FormattedMessage>
+                      
+
+                        <FormattedMessage id="addChildren.female" defaultMessage="Female">
+                      {(message) =>
+                        <div className="sortByOptionText" onClick={() => this.onClickGender(message, index)}>
+                          <span>{message}</span>
+                        </div>}
+                        </FormattedMessage>
+
+                        <FormattedMessage id="addChildren.Other" defaultMessage="Other">
+                      {(message) =>
+                        <div className="sortByOptionText" onClick={() => this.onClickGender(message, index)}>
+                          <span>{message}</span>
+                        </div>}
+                        </FormattedMessage>
+
+                        
                       </div>
                     </div>
                   </div>
