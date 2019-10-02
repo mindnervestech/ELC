@@ -29,6 +29,7 @@ class BirthDayClub extends Component {
       sortByText: "",
       startDate: new Date(),
       ChildrenCountNumber: 1,
+      checkCondition:true,
       update: true,
       error: false,
       childName: '',
@@ -61,24 +62,28 @@ class BirthDayClub extends Component {
 
     if (nextprops.bclubDetails && !nextprops.bclubDetails.status) {
       let message = nextprops.bclubDetails.message
+        if(this.state.checkCondition)
+        {
 
+        
       setTimeout(() => {
-        this.setState({ sucesss_message: message, ischeckremove: false, showAlert: true });
+        this.setState({ sucesss_message: message, ischeckremove: false, showAlert: true ,checkCondition:false});
         
       }, 100);
 
       setTimeout(() => {
         this.closeAlert();
       }, 6000);
-
+        }
     }
     else if(nextprops.bclubDetails && nextprops.bclubDetails.status)
     {
        
       let message = nextprops.bclubDetails.message
-
+      if(this.state.checkCondition)
+      {
       setTimeout(() => {
-        this.setState({ sucesss_message: message, ischeckremove: false, showAlert: true });
+        this.setState({ sucesss_message: message, ischeckremove: false, showAlert: true ,checkCondition:false});
         
       }, 100);
 
@@ -86,6 +91,7 @@ class BirthDayClub extends Component {
         this.closeAlert();
       }, 3000);
 
+    }
     }
     else
     { 
@@ -212,9 +218,9 @@ class BirthDayClub extends Component {
       const data = {
         firstname: this.props.customer_details.customer_details.firstname,
         lastname: this.props.customer_details.customer_details.lastname,
-        phoneNumber: this.props.customer_details.phone_number,
+        phoneNumber: '91',
         email:this.props.customer_details.customer_details.email,
-        countryCode: this.props.customer_details.carrier_code,
+        countryCode:'9090909090',
         storeid: this.props.globals.currentStore,
         language: '',
         moreinfo: moreinfoData

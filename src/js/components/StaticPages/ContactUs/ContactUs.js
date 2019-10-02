@@ -141,7 +141,7 @@ class ContactUs extends Component {
             let data = {
                 name: this.state.contact_fields['name'],
                 email: this.state.contact_fields['email'],
-                phoneNumber: this.state.contact_fields['phone'],
+                phoneNumber: parseInt(this.state.contact_fields['phone']),
                 carrier_code: this.state.contact_fields['carrierCode'],
                 purpose: this.state.contact_fields['purpose'],
                 comment: this.state.contact_fields['comment'],

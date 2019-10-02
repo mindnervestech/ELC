@@ -150,7 +150,7 @@ class DeliveryDetails extends Component {
                         city: this.state.city_details.name,
                         street: `${this.state.AddressFields.addressOne},${this.state.AddressFields.addressTwo}, ${this.state.AddressFields.addressThree}`,
                         carrier_code: this.state.ContactFields.carrierCode,
-                        telephone: this.state.ContactFields.contactNumber,
+                        telephone: parseInt(this.state.ContactFields.contactNumber),
                         customer_address_type: this.state.AddressFields.addressType,
                         postcode: this.state.AddressFields.postcode,
                     };
