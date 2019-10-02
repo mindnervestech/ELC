@@ -174,12 +174,6 @@ class Product extends Component {
 
 	render() {
 		let pathName = this.props.location.pathname
-		let searchQuery = values.query;
-		let filterKey = {}
-		Object.keys(this.props.productDetails.filters).map((item, index)=> {
-			filterKey[item] = this.props.productDetails.filters[item][0].code;
-		});
-
 		let meta_tag = null;
 		if (this.props.productDetails.metainfo.meta_title && this.props.productDetails.metainfo.meta_keywords && this.props.productDetails.metainfo.meta_description) {
 			
