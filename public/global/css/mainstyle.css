@@ -6828,15 +6828,15 @@ html[dir="rtl"] .webOutOfStockTetx{
 
 .productDetailPopupImage{
     height: 90px;
-    width: 90px;
-    visibility: visible;
+    width: 90px !important;
+    visibility: visible !important;
     margin-left: 30px;
 }
 
 html[dir="rtl"] .productDetailPopupImage{
     height: 90px;
-    width: 90px;
-    visibility: visible;
+    width: 90px !important;
+    visibility: visible !important;
     margin-right: 30px;
     margin-left: 0px;
 }
@@ -6916,15 +6916,15 @@ html[dir="rtl"] .t-Button--pillStart{
 @media (max-width:767px){
     .productDetailPopupImage{
         height: 90px;
-        width: 90px;
-        visibility: visible;
+        width: 90px !important;
+        visibility: visible !important;
         margin-left: 0px;
     }
     
     html[dir="rtl"] .productDetailPopupImage{
         height: 90px;
-        width: 90px;
-        visibility: visible;
+        width: 90px !important;
+        visibility: visible !important;
         margin-right: 0px;
         margin-left: 0px;
     }

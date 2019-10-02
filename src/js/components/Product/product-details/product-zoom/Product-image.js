@@ -11,7 +11,8 @@ class ProductImage extends Component {
 		this.state = {
 			data: [],
 			guestUser: false,
-			displayThumbnails: true
+			displayThumbnails: false,
+			indexThumbImg: 0
 		};
 	}
 
@@ -134,8 +135,8 @@ class ProductImage extends Component {
 		let color = 'img';
 		if(item){
 			return (
-				<a data-slide-id="zoom" data-zoom-id="zoom-v" href={item} data-image={item} color-id={`${color}_${index}`} name="zoom-images-lg" onClick={(e) => this._handleThumbImgClick(e, 'img')}>
-					<img className="productDetailPopupImage" srcSet={item} src={item} alt="" />
+				<a data-slide-id="zoom" data-zoom-id="zoom-v" data-image={item} color-id={`${color}_${index}`} name="zoom-images-lg" onClick={(e) => this._handleThumbImgClick(item, index)}>
+					<img className="productDetailPopupImage" style={{ filter: this.state.indexThumbImg == index ?'brightness(60%)' : '' }} srcSet={item} src={item} alt="" />
 				</a>
 			);
 		}
@@ -188,17 +189,28 @@ class ProductImage extends Component {
 		}
 	};
 
-	_handleThumbImgClick = (e, thumbType) => {
+	_handleThumbImgClick = (img, index) => {
+		// e.preventDefault();
+		// if (thumbType === 'img') {
+		// 	window.jQuery('.zoom-gallery .zoom-gallery-slide').addClass('active');
+		// 	window.jQuery('.zoom-gallery .video-slide').removeClass('active');
+		// } else {
+		// 	window.jQuery('.zoom-gallery .zoom-gallery-slide').removeClass('active');
+		// 	window.jQuery('.zoom-gallery .video-slide').addClass('active');
+		// }
+		this.setState({
+			displayThumbnails : true,
+			thumbnailImage: img,
+			indexThumbImg: index
+		})
+	}
 
-		e.preventDefault();
-
-		if (thumbType === 'img') {
-			window.jQuery('.zoom-gallery .zoom-gallery-slide').addClass('active');
-			window.jQuery('.zoom-gallery .video-slide').removeClass('active');
-		} else {
-			window.jQuery('.zoom-gallery .zoom-gallery-slide').removeClass('active');
-			window.jQuery('.zoom-gallery .video-slide').addClass('active');
-		}
+	_getDisplayThumbnails = () =>{
+		return (
+			<span className="MagicZoom" id="zoom-v" data-options="hint:false; zoomMode: off; expand: off;">
+				<img className="zoom-img-width" src={this.state.thumbnailImage} alt="" />
+			</span>
+		);
 	}
 
 
@@ -257,7 +269,9 @@ class ProductImage extends Component {
 
 									})
 									}
-									{this._getImageData(productZoomDetails.imageUrl)}
+									{ !this.state.displayThumbnails ? this._getImageData(productZoomDetails.imageUrl)
+										: this._getDisplayThumbnails()
+									}
 								</div>
 								{
 									(productZoomDetails.mediaVideoUrl && productZoomDetails.mediaVideoUrl.length > 0) ?

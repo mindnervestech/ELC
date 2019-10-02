@@ -165,7 +165,7 @@ class AddressForm extends Component {
             WebsiteId: 1,
             countryCode: this.state.country_details.id,
             carrier_code: this.state.AddressFields.carrierCode,
-            UserTelephone: this.state.AddressFields.contactNumber,
+            UserTelephone: parseInt(this.state.AddressFields.contactNumber),
             UserStreet: this.createStreet(),
             UserCity: this.state.city_details.name,
             UserRegionId: this.state.city_details.id,

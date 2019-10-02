@@ -203,7 +203,7 @@ class SignUp extends Component {
     const data = {
       firstname: this.state.fields.firstName,
       lastname: this.state.fields.lastName,
-      contact_number:this.state.fields.contactNumber,
+      contact_number:parseInt(this.state.fields.contactNumber),
       email: this.state.fields.email,
       carrier_code:this.state.fields.carrierCode,
       password: this.state.fields.password,
