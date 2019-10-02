@@ -9,7 +9,7 @@ import Spinner from '../../Spinner/Spinner';
 import Spinner2 from '../../Spinner/Spinner2';
 import * as actions from '../../../redux/actions/index';
 import { FormattedMessage } from 'react-intl';
-import { Container, Row, Col } from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 
 const wait = require('../../../../assets/images/wait.gif');
 
@@ -75,7 +75,7 @@ class Confirmation extends Component {
         if (!((Object.entries(obj).length === 0) && (obj.constructor === Object))) {
             const values = queryString.parse(this.props.location.search);
             let payment_type = values.payment_type;
-            if (payment_type == "CC") {
+            if (payment_type === "CC") {
                 await this.props.getPlaceOrder({
                     quote_id: this.props.cart_details.quote_id,
                     store_id: this.props.global.currentStore
@@ -89,8 +89,6 @@ class Confirmation extends Component {
 
 
     gotoProductScreen = (item) => {
-        const store_locale = this.props.global.store_locale;
-
         const data = {
             customerid: typeof this.props.user_details.customer_id !== 'undefined' ? parseInt(this.props.user_details.customer_id) : " ",
             store: this.props.global.currentStore,
@@ -133,13 +131,13 @@ class Confirmation extends Component {
                         <p> <FormattedMessage id="Item.Qty" defaultMessage="Qty" /> {product.qty}</p>
                     </span>
 
-                    {product.is_in_stock.status == 0 ?<span style={{ fontSize:'18px', color: '#ee0E19' }}>
+                    {product.is_in_stock.status === 0 ?<span style={{ fontSize:'18px', color: '#ee0E19' }}>
                             <FormattedMessage id="PDP.OutOfStock" defaultMessage="Out of Stock" />
                         </span> :''}
 
                 </td>
             )
-        } else if (parseInt(product.price) == 0) {
+        } else if (parseInt(product.price) === 0) {
             cartProductPrice = (
                 <td className="price">
                     <FormattedMessage id="Free.text" defaultMessage="Free" /><br />
@@ -150,7 +148,7 @@ class Confirmation extends Component {
                 <td className="price">
                     <span className="p-currency">{product.currency}</span> {parseInt(product.price * product.qty)}<br />
                     <p> <FormattedMessage id="Item.Qty" defaultMessage="Qty" /> {product.qty}</p>
-                    {product.is_in_stock.status == 0 ?<span style={{ fontSize:'18px', color: '#ee0E19' }}>
+                    {product.is_in_stock.status === 0 ?<span style={{ fontSize:'18px', color: '#ee0E19' }}>
                         <FormattedMessage id="PDP.OutOfStock" defaultMessage="Out of Stock" />
                     </span> :''}
                 </td>
@@ -198,7 +196,7 @@ class Confirmation extends Component {
         let OutOfStockFlag = false;
         if(obj.cart_details){
             for(var i in obj.cart_details.products){
-                if(obj.cart_details.products[i].is_in_stock.status == 0){
+                if(obj.cart_details.products[i].is_in_stock.status === 0){
                     OutOfStockFlag = true;
                 }
             }
@@ -509,7 +507,7 @@ class Confirmation extends Component {
                                                                             <div className="col col-12 apex-col-auto">
                                                                                 {isClickOnPlaceOrder ?
                                                                                     <button className="t-Button t-Button--hot t-Button--stretch t-Button--gapTop" type="button" disabled={true}>
-                                                                                        <img src={wait} style={{ width: 25, height: 25, marginTop: -4 }} />
+                                                                                        <img src={wait} style={{ width: 25, height: 25, marginTop: -4 }} alt=""/>
                                                                                         <span className="t-Button-label"><FormattedMessage id="PleaseWait" defaultMessage="Please wait......." /></span>
                                                                                     </button> :
                                                                                     <button disabled={OutOfStockFlag} onClick={this.placeOrder} className="t-Button t-Button--hot t-Button--stretch t-Button--gapTop" type="button" id="COD_D">

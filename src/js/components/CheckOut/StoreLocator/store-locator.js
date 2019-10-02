@@ -9,7 +9,6 @@ import * as actions from '../../../redux/actions/index';
 
 let selectedMarker = {};
 let overId = null;
-let reload = true;
 const google = window.google
 class StoreLocator extends Component {
   constructor(props) {

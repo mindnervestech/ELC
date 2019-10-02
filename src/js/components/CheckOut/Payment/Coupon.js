@@ -12,9 +12,9 @@ class CouponCode extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (prevProps.cart_details.voucher != this.props.cart_details.voucher) {
+        if (prevProps.cart_details.voucher !== this.props.cart_details.voucher) {
             this.setState({ voucode: this.props.cart_details.voucher });
-        } else if (this.props.cart_details.removevouher && prevProps.cart_details.voucher == this.props.cart_details.voucher && this.state.voucode != this.props.cart_details.voucher) {
+        } else if (this.props.cart_details.removevouher && prevProps.cart_details.voucher === this.props.cart_details.voucher && this.state.voucode !== this.props.cart_details.voucher) {
             this.setState({ voucode: this.props.cart_details.voucher });
         }
     }

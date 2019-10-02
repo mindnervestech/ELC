@@ -1,15 +1,10 @@
 import React, { Component } from 'react';
 import './WishList.css';
-import Product from './Product';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../../redux/actions/index';
 import { FormattedMessage } from 'react-intl';
-import { Container, Row, Col, Button } from 'reactstrap';
 import Spinner from '../Spinner/Spinner';
-import percentage from '../../../assets/images/product-details/percentage.png';
-import save from '../../../assets/images/product-details/save.png';
-import logo1 from '../../../assets/images/you_may_also_like_1.png'
 import StarRatings from 'react-star-ratings';
 import AddToBasketModal from '../Product/product-details/product-info/add-to-basket-modal';
 import Modal from 'react-responsive-modal';

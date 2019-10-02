@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { FormattedMessage } from 'react-intl';
-import { injectIntl, intlShape } from 'react-intl';
-import Bimg from '../../../assets/images/menu/bra-sar-en.jpg';
 import Spinner from '../Spinner/Spinner';
 import { connect } from 'react-redux';
-import * as actions from '../../redux/actions/index';
+
 class menuList extends Component {
 	constructor(props) {
 		super(props);

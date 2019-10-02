@@ -1,17 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../redux/actions/index';
-import Collapsible from 'react-collapsible';
-import { Container, Row, Col, Button, Input } from 'reactstrap';
-import logo1 from '../../../assets/images/you_may_also_like_1.png'
-import payPalImg from '../../../assets/images/social/paypal.svg';
-import masterCardImg from '../../../assets/images/social/masterCard.svg';
-import CardPayment from './CardPayment'
-import CardGift from './CardGift'
-import DeliverySpeed from './DeliverySpeed'
+import { Row, Col} from 'reactstrap';
 import DeliveryLocation from './DeliveryLocation';
-import Contact from '../CheckOut/DeliveryDetails/ContactInformation';
-import Address from '../CheckOut/DeliveryDetails/AddressInformation';
 import * as utility from '../utility/utility';
 import { Redirect, withRouter } from 'react-router-dom';
 import { FormattedMessage, injectIntl } from 'react-intl';
@@ -73,12 +64,6 @@ class CheckOut extends Component {
 
             // this.submitContact.current.signUpSubmitContact();
             // this.submitAddress.current.signUpSubmitAddress();
-
-            let UserID = " ";
-            if (!(this.props.guest_checkout.startGuestCheckout)) {
-                UserID = this.props.user_details.customer_details.customer_id;
-            }
-
 
             setTimeout(() => {
                 if (this.state.isContactValid && this.state.isAddressValid) {
@@ -263,7 +248,7 @@ class CheckOut extends Component {
                                     <div className="block5">
                                         <Row>
                                             <Col xs="3">
-                                                <img src={item.image[0]} className="image"></img>
+                                                <img src={item.image[0]} className="image" alt=""></img>
                                             </Col>
                                             <Col xs="6" style={{ padding: 0 }}>
                                                 <div>

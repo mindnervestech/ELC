@@ -30,10 +30,10 @@ class ProductImage extends Component {
 
 	componentDidUpdate(prevProps, prevState, snapshot) {
 
-		if (prevProps.productDetails.selectedColor != this.props.productDetails.selectedColor) {
+		if (prevProps.productDetails.selectedColor !== this.props.productDetails.selectedColor) {
 			this.changeColor(this.props.productDetails.selectedColor);
 		}
-		if (prevProps.productWishDetail.wishlist_itemid != this.props.productWishDetail.wishlist_itemid) {
+		if (prevProps.productWishDetail.wishlist_itemid !== this.props.productWishDetail.wishlist_itemid) {
 		}
 	}
 
@@ -136,7 +136,7 @@ class ProductImage extends Component {
 		if(item){
 			return (
 				<a data-slide-id="zoom" data-zoom-id="zoom-v" data-image={item} color-id={`${color}_${index}`} name="zoom-images-lg" onClick={(e) => this._handleThumbImgClick(item, index)}>
-					<img className="productDetailPopupImage" style={{ filter: this.state.indexThumbImg == index ?'brightness(60%)' : '' }} srcSet={item} src={item} alt="" />
+					<img className="productDetailPopupImage" style={{ filter: this.state.indexThumbImg === index ?'brightness(60%)' : '' }} srcSet={item} src={item} alt="" />
 				</a>
 			);
 		}
@@ -246,7 +246,7 @@ class ProductImage extends Component {
 		let image_array = {
 		};
 
-		if (newImageArray.length == 0) {
+		if (newImageArray.length === 0) {
 			if (this.props.productZoomDetails.imageUrl)
 				image_array['default'] = this.props.productZoomDetails.imageUrl;
 		}

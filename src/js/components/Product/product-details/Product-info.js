@@ -1,28 +1,16 @@
 import React, { Component } from 'react';
-import glam from '../../../../assets/images/product-details/nay-sp19-glam-table-bra.jpg';
-
-import dblpushup from '../../../../assets/images/product-details/double-pushup-bra.jpg';
-import ReactImageMagnify from 'react-image-magnify';
 import ProductZoom from './product-zoom/Product-zoom';
-import ProductInformation from './product-info/product-info';
-import ProductSocial from './product-social/product-social';
-import { Carousel } from 'react-responsive-carousel';
 import freeDelivery from '../../../../assets/images/header/Truck1.svg';
 import freeCollect from '../../../../assets/images/header/Mouse.svg';
-import home from '../../../../assets/images/social/Hero.png';
-import favoriteImg from '../../../../assets/images/header/favorite.svg'
 import Modal from 'react-responsive-modal';
 import { Helmet } from 'react-helmet';
 import { Link, Redirect } from 'react-router-dom';
 import ShareUrl from '../product-details/product-info/product-size';
 import Popup from 'react-popup';
 import { connect } from 'react-redux';
-import { compose } from 'redux';
 import * as actions from '../../../redux/actions/index';
-import { Container, Row, Col, Button, Form, FormGroup } from 'reactstrap';
+import { Row, Col} from 'reactstrap';
 import { FormattedMessage } from 'react-intl';
-
-const mediaVideo = 'https://storage.googleapis.com/nay/videos/product/au19/nay-au19-casual-nightwear-mainrange-nicoline-pajamaset-212884961.mp4';
 
 class ProductInfo extends Component {
 	constructor(props) {
@@ -42,7 +30,7 @@ class ProductInfo extends Component {
 
 
 	componentDidMount() {
-		if (this.props.customerDetails.customer_id != undefined) {
+		if (this.props.customerDetails.customer_id !== undefined) {
 			this.props.onGetWishListItem({ customerid: this.props.customerDetails.customer_id, store_id: this.props.globals.currentStore })
 		}
 
@@ -107,7 +95,7 @@ class ProductInfo extends Component {
 			addQty = this.state.defaultQty;
 		}
 		if (isUserLoggedIn) {
-			if (data.type == 'simple') {
+			if (data.type === 'simple') {
 				prodData = {
 					"quote_id": customerDetails.quote_id,
 					"product_type": data.type,
@@ -137,7 +125,7 @@ class ProductInfo extends Component {
 			}
 			this.props.onAddToCart(prodData);
 		} else {
-			if (data.type == 'simple') {
+			if (data.type === 'simple') {
 				prodData = {
 					"quote_id": guest_user.temp_quote_id,
 					"product_type": data.type,
@@ -180,7 +168,7 @@ class ProductInfo extends Component {
 			let popupMessage = null;
 			let currentStore = this.props.currentStore;
 
-			if (currentStore == 1 || currentStore == 3 || currentStore == 5) {
+			if (currentStore === 1 || currentStore === 3 || currentStore === 5) {
 				popupMessage = Popup.register({
 					title: 'محزر',
 					content: `الحد الأقصى لكمية الطلب من هذا المنتج هي ${parseInt(totalQty)} يرجى تغيير الكمية المحددة لتكون ضمن هذا العدد. لطلب كمية أكثر من ${parseInt(totalQty)} يرجى اللاتصال بنا.`,
@@ -216,7 +204,7 @@ class ProductInfo extends Component {
 
 	handleChange(e) {
 		let totalQty = this.props.data.type === 'simple' ? parseInt(this.props.data.simpleqty) : this.props.data.simpleproducts[0].qty;
-		if (e.target.value.match("^[0-9]*$") != null) {
+		if (e.target.value.match("^[0-9]*$") !== null) {
 			this.setState({ defaultQty: e.target.value });
 		}
 	}
@@ -303,7 +291,7 @@ class ProductInfo extends Component {
 		let checkData = value.replace(/\s/g, '')
 		return (
 			<div style={{ display: 'inline-block' }}>
-				{checkData != '' ? <img src={'/images/' + checkData + '.png'} /> : null}
+				{checkData !== '' ? <img src={'/images/' + checkData + '.png'} /> : null}
 			</div>
 		);
 	}
@@ -365,9 +353,9 @@ class ProductInfo extends Component {
 	}
 
 	checkBuyAndMore(offer, currency) {
-		if (Object.keys(offer).length == 1) {
+		if (Object.keys(offer).length === 1) {
 			for (let value in offer) {
-				if (value == '1') {
+				if (value === '1') {
 					return (
 						<div></div>
 					);
@@ -409,9 +397,9 @@ class ProductInfo extends Component {
 	}
 
 	showDiscountPrise(offerData , orignalPrise, currency){
-		if (Object.keys(offerData).length == 1) {
+		if (Object.keys(offerData).length === 1) {
 			for (let value in offerData) {
-				if (value == '1') {
+				if (value === '1') {
 					return (
 						<div>
 							<span className="product-price">{currency}&nbsp;{offerData[value]}</span>
@@ -488,7 +476,7 @@ class ProductInfo extends Component {
 		let image_array = {
 		};
 
-		if (newImageArray.length == 0) {
+		if (newImageArray.length === 0) {
 			if (this.props.data.imageUrl)
 				image_array['default'] = this.props.data.imageUrl;
 		}
@@ -560,7 +548,7 @@ class ProductInfo extends Component {
 											</div> */}
 
 											<div className="prod-price">
-												{data.offers && data.offers.status == 1 ?
+												{data.offers && data.offers.status === 1 ?
 													this.showDiscountPrise(data.offers.data,data.price,data.currency)
 													:
 													<span className="product-price">{data.currency}&nbsp;{Number(data.price).toFixed(2)}</span>}
@@ -593,7 +581,7 @@ class ProductInfo extends Component {
 																<FormattedMessage id="delivery-details.HomeDelivery.Title" defaultMessage="Home Delivery" />
 															</span>
 															<span style={{ margin: '10px', color: '#ee0E19' }}>
-																{data.simplestatus == 1 || (newImageArray[0] && newImageArray[0].stock == 1) ?
+																{data.simplestatus === 1 || (newImageArray[0] && newImageArray[0].stock === 1) ?
 																	<span className="in-stock" style={{ color: '#0D943F' }}>
 																		<FormattedMessage id="PDP.InStock" defaultMessage="In Stock" />
 																	</span> :
@@ -620,7 +608,7 @@ class ProductInfo extends Component {
 															This product includes free UK delivery
 														</div> */}
 												</div> : ''}
-											{data.offers && data.offers.status == 1 &&
+											{data.offers && data.offers.status === 1 &&
 												this.checkBuyAndMore(data.offers.data, data.currency)
 											}
 											{data.visible_on_store ?
@@ -660,7 +648,7 @@ class ProductInfo extends Component {
 												: ''}
 											{data.visible_on_store ?
 												<div style={{ width: '100%', marginBottom: 20 }}>
-													{data.simplestatus == 1 || (newImageArray[0] && newImageArray[0].stock == 1) ?
+													{data.simplestatus === 1 || (newImageArray[0] && newImageArray[0].stock == 1) ?
 														<span className="in-stock" style={{ color: '#0D943F' }}>
 															<FormattedMessage id="PDP.InStock" defaultMessage="In Stock" />
 														</span> :
@@ -673,7 +661,7 @@ class ProductInfo extends Component {
 											{data.visible_on_store ?
 												<div className="alsoLikeCard add-cart">
 													<div className="homePage">
-														<button disabled={(data.simplestatus === 0 || (newImageArray[0] && newImageArray[0].stock == 0)) || this.state.defaultQty == 0} onClick={this.addToCart} className="alsoLikeCardButton" style={{ marginTop: 0 }}>
+														<button disabled={(data.simplestatus === 0 || (newImageArray[0] && newImageArray[0].stock == 0)) || this.state.defaultQty === 0} onClick={this.addToCart} className="alsoLikeCardButton" style={{ marginTop: 0 }}>
 															<FormattedMessage id="Product.Detail.addToBasket" defaultMessage="Add to basket" /></button>
 													</div>
 												</div>
@@ -730,7 +718,7 @@ class ProductInfo extends Component {
 													<span><FormattedMessage id="LearningSkills" defaultMessage="Learning skills" />:</span>
 												</div> : <div />}
 											<div className="learn-skill-img">
-												{data.learningSkills != undefined ?
+												{data.learningSkills !== undefined ?
 													<div>
 														{Object.values(data.learningSkills).map((item, i) =>
 															this.learningSkills2(item)

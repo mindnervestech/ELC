@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import { FormattedMessage } from 'react-intl';
 import StarRatings from 'react-star-ratings';
-import favoriteImg from '../../../../../assets/images/header/favorite.svg';
 import checked from '../../../../../assets/images/other/checked.png';
 import thumbUp from '../../../../../assets/images/social/Fill 1.svg';
 import thumbDown from '../../../../../assets/images/social/Fill 1 Copy 4.svg';
@@ -185,7 +183,7 @@ class SizeGuide extends Component {
                                 </p>
                             </div>
                             <div className="recommend">
-                                <img style={{height: '13px',width: '13px'}} src={checked} />
+                                <img style={{height: '13px',width: '13px'}} src={checked} alt="" />
                                 <span style={{fontFamily: "VAG Rounded ELC Bold",color: '#0D943F',fontWeight: '700'}}>&nbsp;Yes, I recommend this product.</span>
                             </div>
                             <div className="row detail-info" style={{marginLeft:'0px'}}>
@@ -194,19 +192,19 @@ class SizeGuide extends Component {
                                     url={'http://nayomijsuat.iksulalive.com/en'}
                                     quote={'ELC'}
                                     className="Demo__some-network__share-button">
-                                    <img className="share-icon-fb" style={{height: '25px',width: '25px'}} src={facebook} />
+                                    <img className="share-icon-fb" style={{height: '25px',width: '25px'}} alt="" src={facebook} />
                                 </FacebookShareButton>
                                 <TwitterShareButton
                                     url={'http://nayomijsuat.iksulalive.com/en'}
                                     title={'ELC'}
                                     className="Demo__some-network__share-button">
-                                    <img className="share-icon-twitter" src={twitter} />
+                                    <img className="share-icon-twitter" src={twitter} alt=""/>
                                 </TwitterShareButton>
                                 
                                 
                                 <div className="like-icon" style={{fontSize: '1.2rem', lineHeight: '2.4rem'}}>
                                     <img className="thumb-up" src={thumbUp} />&nbsp; 0
-                                    <img className="thumb-down" src={thumbDown} />
+                                    <img className="thumb-down" src={thumbDown} alt=""/>
                                     &nbsp; 0
                                 </div>
                             </div>

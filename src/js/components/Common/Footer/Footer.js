@@ -3,22 +3,6 @@ import { FormattedMessage } from 'react-intl';
 import { Link, withRouter } from 'react-router-dom';
 
 import { connect } from 'react-redux';
-import * as actions from '../../../redux/actions/index';
-import { initialize, pageview } from '../../utility/googleAnalytis';
-import { initializeF, pageViewF } from '../../utility/facebookPixel';
-import { initializeGTM, dataLayerGTM } from '../../utility/googleTagManager';
-import { live } from '../../../api/globals';
-import parse from 'html-react-parser';
-import ShowMore from 'react-show-more';
-import $ from 'jquery';
-import { Container, Row, Col, Button } from 'reactstrap';
-import * as util from '../../utility/utility';
-import payPalImg from '../../../../assets/images/social/paypal.svg';
-import masterCardImg from '../../../../assets/images/social/masterCard.svg';
-
-import paymentImgEN from '../../../../assets/images/social/paymentmethod-en.png';
-import VISAImg from '../../../../assets/images/social/visa.svg';
-import verisignSecureImg from '../../../../assets/images/social/verisign-secure.svg';
 import Axios from 'axios';
 import facebook from '../../../../assets/images/social/Facebook.svg';
 import instagram from '../../../../assets/images/social/instagram.svg';
@@ -27,7 +11,6 @@ import twitter from '../../../../assets/images/social/twitter.svg';
 import Collapsible from 'react-collapsible';
 import { BASE_URL, API_TOKEN } from '../../../api/globals';
 
-import ScrollToTop from 'react-scroll-up';
 const style = {
     visibility: 'visible',
     opacity: 0.5,
@@ -291,10 +274,10 @@ class Footer extends Component {
                                 <FormattedMessage id="footer.followUsOn" defaultMessage="follow us on" />
                             </div>
                             <div>
-                                <a href="https://www.facebook.com/elctoys" target="_blank"><img src={facebook} className="icon"></img></a>
-                                <a href="https://www.twitter.com/elctoysme" target="_blank"><img src={twitter} className="icon"></img></a>
-                                <a href="https://www.instagram.com/elctoys" target="_blank"> <img src={instagram} className="icon"></img></a>
-                                <a href="https://www.youtube.com/elctoysme" target="_blank"><img src={youtube} className="icon"></img></a>
+                                <a href="https://www.facebook.com/elctoys" target="_blank"><img src={facebook} className="icon" alt=""></img></a>
+                                <a href="https://www.twitter.com/elctoysme" target="_blank"><img src={twitter} className="icon" alt=""></img></a>
+                                <a href="https://www.instagram.com/elctoys" target="_blank"> <img src={instagram} className="icon" alt=""></img></a>
+                                <a href="https://www.youtube.com/elctoysme" target="_blank"><img src={youtube} className="icon" alt=""></img></a>
                             </div>
                             <div className="footer-title" style={{ marginTop: 60, marginBottom: 7 }}>
 
@@ -334,10 +317,10 @@ class Footer extends Component {
                                 </div>
                                 {this.props.globals.language == 'en' ?
                                     <div className="col col-6">
-                                        <img className="bottom-imagePaypal" src={'/images/logoEn.png'} />
+                                        <img className="bottom-imagePaypal" src={'/images/logoEn.png'} alt=""/>
                                     </div>
                                     : <div className="col col-6">
-                                        <img className="bottom-imagePaypal" src={'/images/logoAr.png'} />
+                                        <img className="bottom-imagePaypal" src={'/images/logoAr.png'} alt=""/>
                                     </div>}
                                 {/* <div className="col col-3">
                                 <img className="bottom-imagePaypal" src={VISAImg}/>
@@ -428,10 +411,10 @@ class Footer extends Component {
                                 <FormattedMessage id="footer.followUsOn" defaultMessage="follow us on" />
                             </div>
                             <div id="remove-line">
-                                <a href="https://www.facebook.com/elctoys" target="_blank"><img src={facebook} className="icon"></img></a>
-                                <a href="https://www.twitter.com/elctoysme" target="_blank"><img src={twitter} className="icon"></img></a>
-                                <a href="https://www.instagram.com/elctoys" target="_blank"> <img src={instagram} className="icon"></img></a>
-                                <a href="https://www.youtube.com/elctoysme" target="_blank"><img src={youtube} className="icon"></img></a>
+                                <a href="https://www.facebook.com/elctoys" target="_blank"><img src={facebook} className="icon" alt=""></img></a>
+                                <a href="https://www.twitter.com/elctoysme" target="_blank"><img src={twitter} className="icon" alt=""></img></a>
+                                <a href="https://www.instagram.com/elctoys" target="_blank"> <img src={instagram} className="icon" alt=""></img></a>
+                                <a href="https://www.youtube.com/elctoysme" target="_blank"><img src={youtube} className="icon" alt=""></img></a>
                             </div>
                         </div>
                     </div>
@@ -440,12 +423,11 @@ class Footer extends Component {
                             <FormattedMessage id="footer.text" defaultMessage="© Website is operated by Kamal Osman Jamjoom LLC, trading as Early Learning Centre" />
                         </div>
                         <div style={{ paddingTop: 20, paddingBottom: 30 }}>
-                            {/* <img className="bottom-imagePaypal-mobile" src={masterCardImg}/>
-                    <img className="bottom-imagePaypal-mobile" src={VISAImg}/> */}
+                            
                             {this.props.globals.language == 'en' ?
-                                <img className="bottom-imagePaypal-mobile" src={'/images/logoEn.png'} />
+                                <img className="bottom-imagePaypal-mobile" src={'/images/logoEn.png'} alt=""/>
                                 :
-                                <img className="bottom-imagePaypal-mobile" src={'/images/logoAr.png'} />
+                                <img className="bottom-imagePaypal-mobile" src={'/images/logoAr.png'} alt=""/>
                             }
                         </div>
                     </div>

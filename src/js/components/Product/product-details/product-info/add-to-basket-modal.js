@@ -8,10 +8,8 @@ import { Helmet } from 'react-helmet';
 import ProductImage from '../product-zoom/Product-image';
 import freeDelivery from '../../../../../assets/images/header/Truck1.svg';
 import freeCollect from '../../../../../assets/images/header/Mouse.svg';
-import ShareUrl from '../product-info/product-size';
 import Popup from 'react-popup';
-import { Link, Redirect } from 'react-router-dom';
-import Modal from 'react-responsive-modal';
+import {Redirect } from 'react-router-dom';
 import Spinner from '../../../../components/Spinner/Spinner2';
 
 class AddToBasketModal extends Component {
@@ -65,7 +63,7 @@ class AddToBasketModal extends Component {
 			addQty = this.state.defaultQty;
 		}
 		if (isUserLoggedIn) {
-			if (data.type == 'simple') {
+			if (data.type === 'simple') {
 				prodData = {
 					"quote_id": customerDetails.quote_id,
 					"product_type": data.type,
@@ -95,7 +93,7 @@ class AddToBasketModal extends Component {
 			}
 			this.props.onAddToCart(prodData);
 		} else {
-			if (data.type == 'simple') {
+			if (data.type === 'simple') {
 				prodData = {
 					"quote_id": guest_user.temp_quote_id,
 					"product_type": data.type,
@@ -150,7 +148,7 @@ class AddToBasketModal extends Component {
 		if (currQty >= totalQty) {
 			let popupMessage = null;
 			let currentStore = this.props.globals.currentStore;
-			if (currentStore == 1 || currentStore == 3 || currentStore == 5) {
+			if (currentStore === 1 || currentStore === 3 || currentStore === 5) {
 				popupMessage = Popup.register({
 					title: 'محزر',
 					content: `الحد الأقصى لكمية الطلب من هذا المنتج هي ${parseInt(totalQty)} يرجى تغيير الكمية المحددة لتكون ضمن هذا العدد. لطلب كمية أكثر من ${parseInt(totalQty)} يرجى اللاتصال بنا.`,
@@ -185,18 +183,13 @@ class AddToBasketModal extends Component {
 	};
 
 	handleChange(e) {
-		let totalQty = this.props.data.type === 'simple' ? parseInt(this.props.data.simpleqty) : this.props.data.simpleproducts[0].qty;
 		if (e.target.value.match("^[0-9]*$") != null) {
 			this.setState({ defaultQty: e.target.value });
 		}
 	}
 
 	render() {
-
-		// const store_locale=this.props.globals.store_locale
-		let data = this.props.data;		
-		// const { data } = this.props;
-		const store_locale = this.props.globals.store_locale;
+		let data = this.props.data;	
 
 		let newImageArray = [];
 
@@ -207,7 +200,6 @@ class AddToBasketModal extends Component {
 		}
 
 		if (data.simpleproducts) {
-			let arr = [];
 			let imageArray = [];
 			Object.keys(data.simpleproducts).map((item, index) => {
 				let img = {
@@ -225,7 +217,7 @@ class AddToBasketModal extends Component {
 
 		let image_array = {
 		};
-		if (newImageArray.length == 0) {
+		if (newImageArray.length === 0) {
 			if (data.imageUrl)
 				image_array['default'] = data.imageUrl;
 		}
@@ -278,12 +270,12 @@ class AddToBasketModal extends Component {
 														</div>
 														<div className="row del-options">
 															<div className="row home-deli">
-																<img src={freeDelivery} />
+																<img src={freeDelivery} alt=""/>
 																<span style={{ fontSize: '15px', fontWeight: 'bold' }}>
 																	<FormattedMessage id="delivery-details.HomeDelivery.Title" defaultMessage="Home Delivery" />
 																</span>
 																<span style={{ margin: '10px', color: '#ee0E19' }}>
-																	{data.simplestatus == 1 || (newImageArray[0] && newImageArray[0].stock == 1) ?
+																	{data.simplestatus === 1 || (newImageArray[0] && newImageArray[0].stock === 1) ?
 																		<span className="in-stock" style={{ color: '#0D943F' }}>
 																			<FormattedMessage id="PDP.InStock" defaultMessage="In Stock" />
 																		</span> :
@@ -293,7 +285,7 @@ class AddToBasketModal extends Component {
 																</span>
 															</div>
 															<div className="row click-collect">
-																<img src={freeCollect} />
+																<img src={freeCollect} alt=""/>
 																<span style={{ marginTop: '15px', fontSize: '15px' }}>
 																	<FormattedMessage id="delivery-details.Click&Collect.Title" defaultMessage="Click&Collect" />
 																</span>
@@ -341,7 +333,7 @@ class AddToBasketModal extends Component {
 													: ''}
 												{data && data.visible_on_store ?
 													<div style={{ width: '100%', marginBottom: 20 }}>
-														{data.simplestatus == 1 || (newImageArray[0] && newImageArray[0].stock == 1) ?
+														{data.simplestatus === 1 || (newImageArray[0] && newImageArray[0].stock === 1) ?
 															<span className="in-stock" style={{ color: '#0D943F' }}>
 																<FormattedMessage id="PDP.InStock" defaultMessage="In Stock" />
 															</span> :
@@ -353,7 +345,7 @@ class AddToBasketModal extends Component {
 												{data && data.visible_on_store ?
 													<div className="alsoLikeCard add-cart">
 														<div className="homePage">
-															<button disabled={(data.simplestatus === 0 || (newImageArray[0] && newImageArray[0].stock == 0)) || this.state.defaultQty == 0} onClick={() => this.addToCart()} className="alsoLikeCardButton" style={{ marginTop: 0 }}>
+															<button disabled={(data.simplestatus === 0 || (newImageArray[0] && newImageArray[0].stock === 0)) || this.state.defaultQty === 0} onClick={() => this.addToCart()} className="alsoLikeCardButton" style={{ marginTop: 0 }}>
 																<FormattedMessage id="Product.Detail.addToBasket" defaultMessage="Add to basket" /></button>
 														</div>
 													</div>

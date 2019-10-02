@@ -1,12 +1,10 @@
 import React, { Component, useState } from 'react';
-import ZeroItem from './Instagram';
 import Slider from "react-slick";
 import { connect } from 'react-redux';
 import * as actions from '../../redux/actions/index';
-import { FormattedMessage } from 'react-intl';
 import placeholder from '../../../assets/images/placeholder.png'
 import ProductSlider from '../Product/product-details/Product-slider'
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 class HomePageComponent extends Component {
     constructor(props) {
@@ -70,7 +68,7 @@ class HomePageComponent extends Component {
                                         {homeData && homeData.banners.map((item, index) => (
                                             <Link to={`/` + store_locale + `/products` + item.BLOCK_URL + ``}>
                                                 <div>
-                                                    <img src={item.BLOCK_BANNER} className="banner-image-hight" />
+                                                    <img src={item.BLOCK_BANNER} className="banner-image-hight" alt=""/>
                                                 </div>
                                             </Link>
                                         ))}
@@ -81,7 +79,7 @@ class HomePageComponent extends Component {
                                         {homeData && homeData.banners.map((item, index) => (
                                             <Link to={`/` + store_locale + `/products` + item.BLOCK_URL + ``}>
                                                 <div>
-                                                    <img src={item.BLOCK_MOBILE_BANNER} className="banner-image-hight" />
+                                                    <img src={item.BLOCK_MOBILE_BANNER} className="banner-image-hight" alt=""/>
                                                 </div>
                                             </Link>
                                         ))}
@@ -99,7 +97,7 @@ class HomePageComponent extends Component {
                                                                     <div>
                                                                         <Link to={`/` + store_locale + `/products/ ` + item.BLOCK_URL + ``}>
                                                                             <a href={''} target="_blank">
-                                                                                <img src={item.BLOCK_BANNER != null ? item.BLOCK_BANNER : placeholder} />
+                                                                                <img src={item.BLOCK_BANNER !== null ? item.BLOCK_BANNER : placeholder} alt=""/>
                                                                             </a>
                                                                             <div className="cardDetail">
                                                                                 <span className="cardDetailText">{item.TITLE}</span>

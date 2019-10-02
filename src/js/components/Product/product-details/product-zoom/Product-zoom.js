@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import glam from '../../../../../assets/images/product-details/nay-sp19-glam-table-bra.jpg';
 import { connect } from 'react-redux';
 import * as actions from '../../../../redux/actions/index';
 import { Redirect } from 'react-router-dom';
@@ -106,13 +105,7 @@ class ProductZoom extends Component {
 
 	_getImageData = data => {
 		if (data) {
-			// console.log('In Zoom Image',data);
-
-			// return (
-			// 	<a href={data.zoomimage} className="MagicZoom" id="zoom-v">
-			// 		<img src={data.zoomimage} alt="" />
-			// 	</a>
-			// );
+			
 			let thumbnails, zoomimages;
 
 			if (data.thumbnail) {
@@ -136,10 +129,6 @@ class ProductZoom extends Component {
 				);
 			}
 
-			// <a href={data[1]} className="MagicZoom" id="Zoom-1">
-			// 	<img src={data[0]} alt="" />
-			// </a>
-
 		}
 	};
 
@@ -147,8 +136,6 @@ class ProductZoom extends Component {
 
 	_getVideoData = data => {
 		if ((data) && (data.length > 0)) {
-			// console.log('videodata',data);
-			// console.log('videodata',data[0]);
 
 			return (
 				<video controls autoplay="autoplay" loop muted preload style={{ width: '100%' }}>
@@ -160,20 +147,7 @@ class ProductZoom extends Component {
 
 
 	_checkSingleImage = (imageUrl, color, index) => {
-		// console.log(imageUrl);
-		// if ( (imageUrl) && (imageUrl.thumbnail) ) {
-		// 	// console.log('imageUrl',imageUrl);
-
-		// 	if (imageUrl.thumbnail.length >= 1) {
-		// 		return (
-		// 			this._checkDataExist(imageUrl, color, index)
-		// 		);
-
-		// 	}
-		// }
-		// return (
-		// 	this._checkDataExist(imageUrl.zoomimage, color, index)
-		// );
+		
 
 	}
 
@@ -183,11 +157,6 @@ class ProductZoom extends Component {
 				const asdf = data.thumbnail.map((item, index) => this._renderData(item, index, color));				// 	const asdf = data.map((item, index) => this._renderData(item, index,color));
 				return asdf;				// 	return asdf;
 			}
-			// return (
-			// 	<a data-slide-id="zoom" data-zoom-id="zoom-v" href={data} data-image={data} color-id={`${color}_${index}`} name="zoom-images-lg" onClick={(e)=> this._handleThumbImgClick(e,'img')}>
-			// 		<img srcSet={data} src={data} alt="" />
-			// 	</a>
-			// );
 		}
 	};
 
@@ -201,7 +170,6 @@ class ProductZoom extends Component {
 	};
 
 	_checkVideoDataExist = data => {
-		// console.log(' _checkVideoDataExist data', data);
 		if (data) {
 			const videos = data.map(this._renderVideoData);
 			return videos;
@@ -209,9 +177,7 @@ class ProductZoom extends Component {
 	};
 
 	_renderVideoData = (item, index) => {
-		// console.log('item _renderVideoData', item);
-		// console.log('this.props.productZoomDetails.imageUrl.thumbnail', this.props.productZoomDetails.imageUrl.thumbnail);
-
+		
 		let thumbnails;
 
 		if (this.props.productZoomDetails.imageUrl.thumbnail) {
@@ -314,11 +280,7 @@ class ProductZoom extends Component {
 		for (let i = 0; i < newImageArray.length; i++) {
 			image_array[newImageArray[i].text] = newImageArray[i].image;
 		}
-
-		// console.log("image_array------------", image_array);
-
-		// console.log('this.props.productZoomDetails.imageUrl', this.props.productZoomDetails.imageUrl);
-
+		
 		return (
 			<div className="zoom-gallery">
 				<Helmet>

@@ -7,7 +7,7 @@ import * as actions from '../../../redux/actions/index';
 import { FormattedMessage } from 'react-intl';
 import { initializeF, trackF } from '../../utility/facebookPixel';
 import { live } from '../../../api/globals';
-import { Row, Col, Button } from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 let Cryptr = require('cryptr');
 let cryptr = null;
 
@@ -31,7 +31,7 @@ class OrderSummary extends Component {
     componentDidMount() {
         const query = new URLSearchParams(this.props.location.search);
         cryptr = new Cryptr(query.get('order_id'));
-        if (query.get('paytype') == 'COD') {
+        if (query.get('paytype') === 'COD') {
             this.props.orderJson({
                 order_id: query.get('order_id')
             });
@@ -52,7 +52,7 @@ class OrderSummary extends Component {
             let string = window.location.href
             let data = string.split('=')
             orderNumber = data[2].split('&')[0]
-            if (success == 'true') {
+            if (success === 'true') {
                 this.props.orderJson({
                     order_id: query.get('order_id')
                 });
@@ -104,14 +104,14 @@ class OrderSummary extends Component {
                                             <div className="t-Region-buttons-right" />
                                         </div>
                                         <div className="t-Region-body">
-                                            {success == 'true' ? 
+                                            {success === 'true' ? 
                                                 <p style={{ fontSize: '22px', letterSpacing: '0.04em', fontWeight: 500, padding: '20px 16px 10px' }}> 
                                                     <FormattedMessage id="Thankyou.Text" defaultMessage="Thankyou" /> 
                                                 </p> : 
                                                 <p style={{ fontSize: '22px', letterSpacing: '0.04em', fontWeight: 500, padding: '20px 16px 10px' }}>
                                                     <FormattedMessage id="Sorry.Text" defaultMessage="Sorry" />
                                                 </p>}
-                                            {success == 'true' ? <p style={{ padding: '0 16px 10px', fontSize: '15px' }}><FormattedMessage id="Thankyou.Content" defaultMessage="We have received your order, you'll receive a confirmation mail soon.." /></p> : <p style={{ padding: '0 16px 10px', fontSize: '15px' }}><FormattedMessage id="Sorry.Content" defaultMessage="Unable to process your order.You can try again or contact to our customer service agent for more information.." /></p>}
+                                            {success === 'true' ? <p style={{ padding: '0 16px 10px', fontSize: '15px' }}><FormattedMessage id="Thankyou.Content" defaultMessage="We have received your order, you'll receive a confirmation mail soon.." /></p> : <p style={{ padding: '0 16px 10px', fontSize: '15px' }}><FormattedMessage id="Sorry.Content" defaultMessage="Unable to process your order.You can try again or contact to our customer service agent for more information.." /></p>}
 
                                             <div className="container">
                                                 <div className="row">

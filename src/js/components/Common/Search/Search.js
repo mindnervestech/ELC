@@ -3,7 +3,6 @@ import { Link, Redirect, withRouter } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import searchLogo from '../../../../assets/images/header/search.svg';
 import { Container, Row, Col } from 'reactstrap';
-import logo1 from '../../../../assets/images/you_may_also_like_1.png';
 import { connect } from 'react-redux';
 import * as actions from '../../../redux/actions/index';
 import $ from 'jquery';

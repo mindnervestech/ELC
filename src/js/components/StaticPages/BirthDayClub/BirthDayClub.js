@@ -2,12 +2,10 @@ import React, { Component } from "react";
 import "./BirthDayClub.css";
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
-import { Row, Col, Image, Form, FormGroup } from "react-bootstrap";
-import { Link, Redirect } from 'react-router-dom';
+import { Row, Col} from "react-bootstrap";
+import { Link } from 'react-router-dom';
 import * as actions from '../../../redux/actions/index';
 import BirthDayClubImage from '../../../../assets/images/BirthDayClub/birthday-club.png';
-import AddNewChild from './AddNewChild';
-import PhoneNumber from '../../Login/IntlTelePhone'
 
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -19,8 +17,6 @@ let ChildrenName = ['']
 let ChildrenGender = ['']
 let sortByShowOption = [false]
 let moreinfoData = ''
-let langerror = false
-let editingRow = 0
 class BirthDayClub extends Component {
   constructor(props) {
     super(props);
@@ -154,7 +150,7 @@ class BirthDayClub extends Component {
   }
 
   addChild() {
-    if (ChildrenDate[ChildrenDate.length - 1] == '' || ChildrenName[ChildrenName.length - 1] == '' || ChildrenGender[ChildrenGender.length - 1] == '') {
+    if (ChildrenDate[ChildrenDate.length - 1] === '' || ChildrenName[ChildrenName.length - 1] === '' || ChildrenGender[ChildrenGender.length - 1] === '') {
     
       this.setState({ error: true })
     } else {
@@ -174,7 +170,7 @@ class BirthDayClub extends Component {
   }
 
   removeChild = (index) => {
-    if (index != 0) {
+    if (index !== 0) {
       ChildrenDate.splice(index, 1);
       ChildrenName.splice(index, 1);
       ChildrenGender.splice(index, 1);
@@ -209,7 +205,7 @@ class BirthDayClub extends Component {
  
 
   register = () => {
-    if (ChildrenDate[ChildrenDate.length - 1] == '' || ChildrenName[ChildrenName.length - 1] == '' || ChildrenGender[ChildrenGender.length - 1] == '') {
+    if (ChildrenDate[ChildrenDate.length - 1] === '' || ChildrenName[ChildrenName.length - 1] === '' || ChildrenGender[ChildrenGender.length - 1] === '') {
       this.setState({ error: true })
     } else {
       moreinfoData = ''
@@ -219,9 +215,9 @@ class BirthDayClub extends Component {
       const data = {
         firstname: this.props.customer_details.customer_details.firstname,
         lastname: this.props.customer_details.customer_details.lastname,
-        phoneNumber: '91',
+        phoneNumber: this.props.customer_details.phone_number,
         email:this.props.customer_details.customer_details.email,
-        countryCode:'9090909090',
+        countryCode: this.props.customer_details.carrier_code,
         storeid: this.props.globals.currentStore,
         language: '',
         moreinfo: moreinfoData
@@ -301,7 +297,7 @@ class BirthDayClub extends Component {
         </div>
         <Row style={{ marginBottom: "40px", marginTop: "100px" }} className="check-out removeRow">
           <Col xs={12} lg={5} md={5} >
-            <img className="badyCloubImage" src={BirthDayClubImage}></img>
+            <img className="badyCloubImage" src={BirthDayClubImage} alt=""></img>
           </Col>
           <Col xs={1} lg={1} md={1} className="divShowOnMobile"></Col>
           <Col xs={10} lg={6} md={6} className="paddingRemove">
@@ -337,7 +333,7 @@ class BirthDayClub extends Component {
                   </div>
                   <div style={{ position: 'relative', marginTop: 5 }}>
                     <div className={sortByShowOption[index] ? "sortBySelectedText2 open genderPadding" : "sortBySelectedText2 genderPadding"} onClick={() => this.showGenderOption(index)} style={{ border: 'solid 1px #b1b1b1' }}>
-                      <span>{ChildrenGender[index] != "" ? ChildrenGender[index] : <FormattedMessage id="select.gender" defaultMessage="Select Gender"/>}</span>
+                      <span>{ChildrenGender[index] !== "" ? ChildrenGender[index] : <FormattedMessage id="select.gender" defaultMessage="Select Gender"/>}</span>
                       <i className="icon-down sortBySelectedTextIcon2" ></i>
                     </div>
                     <div>
@@ -369,7 +365,7 @@ class BirthDayClub extends Component {
 <FormattedMessage id="addchild.Clicktoaselectdate" defaultMessage="Click to a select date">
 {(message) =>
 <DatePicker
-       selected={ChildrenDate[index] != "" ? ChildrenDate[index] : ""}
+       selected={ChildrenDate[index] !== "" ? ChildrenDate[index] : ""}
        onChange={this.handleChangeDOB.bind(this, index)}
        style={{ width: "100%" }}
      placeholderText={message}
@@ -378,7 +374,7 @@ class BirthDayClub extends Component {
     />}</FormattedMessage>
                   </div>
                 </Col>
-                {index != 0 ?
+                {index !== 0 ?
                   <i style={{ position: 'absolute' }} className="close fa fa-times crossIcon" aria-hidden="true" onClick={() => this.removeChild(index)} /> : <div />}
               </Row>
             )}

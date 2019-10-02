@@ -11,7 +11,6 @@ import * as utility from '../../utility/utility';
 import { connect } from 'react-redux';
 import * as actions from '../../../redux/actions/index';
 import cookie from 'react-cookies';
-import amirahclub from '../../../../assets/images/amirahclub_mobile.png';
 import { Helmet } from 'react-helmet';
 import { WEB_URL } from '../../../api/globals';
 import { Container, Row, Col, Button } from 'reactstrap';

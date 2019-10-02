@@ -11,7 +11,7 @@ import styles from './Modal.css';
 import Spinner from '../Spinner/Spinner';
 import { connect } from 'react-redux';
 import * as actions from '../../redux/actions/index';
-import { Container, Row, Col, Button } from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 
 class Profile extends Component {
     constructor(props) {
@@ -39,7 +39,7 @@ class Profile extends Component {
             this.props.onGetUserAddress({ customerid: this.customer_details.customer_id })
         }
 
-        if (this.props.countryList.length == 0) {
+        if (this.props.countryList.length === 0) {
             this.props.onGetCountryList();
         }
 
@@ -131,7 +131,7 @@ class Profile extends Component {
 
             }
 
-        } else if (this.props.change_pass.status == false) {
+        } else if (this.props.change_pass.status === false) {
             // alert(this.props.change_pass.message);
             // this.setState({ AlertBox: true });
             this.setState({

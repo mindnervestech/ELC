@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Login.css';
+
 import Modal from 'react-responsive-modal';
 import SignUp from './SignUp';
 import ForgotPassword from './ForgotPassword';
@@ -9,6 +10,7 @@ import Spinner from '../Spinner/Spinner';
 import { EmailValidator } from '../../api/Validators';
 import GuestCheckout from '../CheckOut/Login/GuestCheckout';
 import { withRouter } from 'react-router-dom'
+
 import { connect } from 'react-redux';
 import * as actions from '.././../redux/actions/index';
 import queryString from 'query-string';

@@ -14,7 +14,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../../redux/actions/index';
 import { initializeF, trackF } from '../../utility/facebookPixel';
 import { live } from '../../../api/globals';
-import { Container, Row, Col } from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 
 let Ptype = "CC";
 class Payment extends Component {
@@ -197,8 +197,6 @@ class Payment extends Component {
     }
 
     gotoProductScreen = (item) => {
-        const store_locale = this.props.global.store_locale;
-
         const data = {
             customerid: typeof this.props.user_details.customer_id !== 'undefined' ? parseInt(this.props.user_details.customer_id) : " ",
             store: this.props.global.currentStore,

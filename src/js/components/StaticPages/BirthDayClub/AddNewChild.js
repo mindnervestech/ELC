@@ -1,14 +1,8 @@
 import React, { Component } from "react";
-import { Row, Col, Image, Form, FormGroup } from "react-bootstrap";
+import { Row, Col, Form, FormGroup } from "react-bootstrap";
 import "./AddNewChild.css";
-//import BirthDayClubImage from '../../../../assets/images/BirthDayClub/birthday-club.png'
-//import BirthDayClubImage from '../../../assets/images/BirthDayClub/birthday-club.png'
-import { Link, Redirect } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
-import AlertBox from '../../Common/AlertBox/AlertBox';
 import { connect } from 'react-redux';
-import * as actions from '../../../redux/actions/index';
-import BirthDayClub from './BirthDayClub';
 import BirthDayClubImage from '../../../../assets/images/BirthDayClub/birthday-club.png';
 
 
