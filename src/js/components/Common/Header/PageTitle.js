@@ -78,7 +78,7 @@ class PageTitle extends Component {
     
         let mainTitle = title !== 'NA' ? intl.formatMessage({ id: `PageTitle.${title}`,defaultMessage: 'ELC' }) : intl.formatMessage({ id: `PageTitle.Home` });
     
-        return mainTitle + " | " + intl.formatMessage({ id: `PageTitle.nayomi.${country}` })
+        return mainTitle + " | " + intl.formatMessage({ id: `PageTitle.elc.${country}` })
     }
 
     getKeyword = (keyword) => {
@@ -93,7 +93,7 @@ class PageTitle extends Component {
     
         let mainTitle = keyword !== 'NA' ? intl.formatMessage({ id: `PageTitle.${keyword}.keyword`,defaultMessage: 'ELC' }) : intl.formatMessage({ id: `PageTitle.Home` });
         console.log('keyword---',mainTitle);
-        return mainTitle + " | " + intl.formatMessage({ id: `PageTitle.nayomi.${country}` })
+        return mainTitle + " | " + intl.formatMessage({ id: `PageTitle.elc.${country}` })
     }
 
     getDescription = (description) => {
@@ -108,7 +108,7 @@ class PageTitle extends Component {
     
         let mainTitle = description !== 'NA' ? intl.formatMessage({ id: `PageTitle.${description}.description`,defaultMessage: 'ELC' }) : intl.formatMessage({ id: `PageTitle.Home` });
 
-        return mainTitle + " | " + intl.formatMessage({ id: `PageTitle.nayomi.${country}` })
+        return mainTitle + " | " + intl.formatMessage({ id: `PageTitle.elc.${country}` })
     }
 
 
