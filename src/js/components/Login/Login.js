@@ -24,7 +24,7 @@ class Login extends Component {
     let startGuestCheckout = this.props.startGuestCheckout ? true : true;
 
     //console.log(this.props)
-    
+
     this.state = {
       email: '',
       password: '',
@@ -78,7 +78,7 @@ class Login extends Component {
 
   onCloseSecondModal = () => {
     this.setState({ openSecondModal: false });
-  }  
+  }
 
   login = () => {
     if (this.validateForm()) {
@@ -175,7 +175,7 @@ class Login extends Component {
     //console.log('this.state.isGuest', this.props.login_details.isLoginSuccess && this.state.isGuest)
     const language = localStorage.getItem('templang');
     const { openFirstModal, openSecondModal } = this.state;
-    const forgetPassword = <ForgotPassword   closeModal={this.closeModal} />;
+    const forgetPassword = <ForgotPassword closeModal={this.closeModal} />;
     const errorMessage = this.state.errorMessage;
     let guest = null;
     let newStyle = null;
@@ -184,20 +184,20 @@ class Login extends Component {
     const invalidLogin = this.invalidLogin(login_error);
     const store_locale = this.props.globals.store_locale;
     const signUp = <SignUp store_locale={store_locale} />;
-    
+
     let title = "Your account | ELC UAE Online store";
     let description = "Shop online for baby toys, dolls houses, wooden toys and more at ELC. Choose from big brands including LeapFrog, VTech, Smart Trike and more.";
     let keywords = "ELC, Early Learning Center, Early Learning Centre, Toys, Baby Toys, Wooden Toys, Educational Toys";
     if (language == 'ar') {
-        title = "حسابك |  متجر مركز التعليم المبكر على الإنترنت في السعودية";
-        description = "تسوّق ألعاب الرضّع ومنازل الدمى والألعاب الخشبية وغيرها الكثير على الإنترنت من مركز التعليم المبكر. اختر من العلامات التجارية الكبيرة بمن فيها ليب فروع وفي تيك وسمارت تريك وغيرها.";
-        keywords = "إي إل سي، مركز التعليم المبكر، مركز التعليم المبكر، ألعاب، ألعاب رضّع، ألعاب خشبية، ألعاب تعليمية"; 
+      title = "حسابك |  متجر مركز التعليم المبكر على الإنترنت في السعودية";
+      description = "تسوّق ألعاب الرضّع ومنازل الدمى والألعاب الخشبية وغيرها الكثير على الإنترنت من مركز التعليم المبكر. اختر من العلامات التجارية الكبيرة بمن فيها ليب فروع وفي تيك وسمارت تريك وغيرها.";
+      keywords = "إي إل سي، مركز التعليم المبكر، مركز التعليم المبكر، ألعاب، ألعاب رضّع، ألعاب خشبية، ألعاب تعليمية";
     }
 
-    let meta_tag  = <><Helmet>
-        <meta name="tital" content={title} />
-        <meta name="keywords" content={keywords} />
-        <meta name="description" content={description} />
+    let meta_tag = <><Helmet>
+      <meta name="tital" content={title} />
+      <meta name="keywords" content={keywords} />
+      <meta name="description" content={description} />
     </Helmet></>;
     if (this.state.isGuest) {
       guest = <GuestCheckout />;
@@ -274,7 +274,7 @@ class Login extends Component {
 
             </Modal>
 
-            <Modal  modalId="forgotpassword" className="modalStyleClass" open={openSecondModal} onClose={this.onCloseSecondModal} center>
+            <Modal modalId="forgotpassword" className="modalStyleClass" open={openSecondModal} onClose={this.onCloseSecondModal} center>
               <h3><FormattedMessage id="PassReset.Text" defaultMessage="Password reset" /></h3>
               {forgetPassword}
             </Modal>
@@ -284,7 +284,7 @@ class Login extends Component {
 
             <div className="container">
               <div className="row">
-                <div className="t-Body-title" id="t_Body_title" style={{ top: '294px',zIndex:"0", borderBottom: "0px" }}>
+                <div className="t-Body-title" id="t_Body_title" style={{ top: '294px', zIndex: "0", borderBottom: "0px" }}>
 
 
                   {breadCrumb}
@@ -326,8 +326,8 @@ class Login extends Component {
                       <div className="t-Region-body">
                         <input type="hidden" id="P1000_PAGE_TITLE" name="P1000_PAGE_TITLE" value="Sign in - Sign in to Your Nayomi Account" />
                         <input type="hidden" id="P1000_PAGE_DESC" name="P1000_PAGE_DESC" value="Sign in - Sign in to your account to shop with exciting offers" />
-                        <div className="container backWhite" style={{height: 'auto', overflow: 'hidden'}}>
-                          <div className="row alignCenter" style={{paddingTop:"6px"}}><FormattedMessage id="Register.SignInText" defaultMessage="Sign in or Register" /></div>
+                        <div className="container backWhite" style={{ height: 'auto', overflow: 'hidden' }}>
+                          <div className="row alignCenter" style={{ paddingTop: "6px" }}><FormattedMessage id="Register.SignInText" defaultMessage="Sign in or Register" /></div>
                           <div className="row">
                             <div className="col col-1  paddingNull" style={{ flex: "0 0 7.333333%", maxWidth: "7.333333%" }}>
                               <span className="apex-grid-nbsp">&nbsp;</span>
@@ -338,9 +338,9 @@ class Login extends Component {
                               {guest}
                               <div className="t-Region t-Region--textContent t-Region--scrollBody" id="R38202006049236304">
                                 <div className="t-Region-header">
-                                  <div className="t-Region-headerItems t-Region-headerItems--title headerBottom" style={{textAlign: 'center'}}>
+                                  <div className="t-Region-headerItems t-Region-headerItems--title headerBottom" style={{ textAlign: 'center' }}>
                                     <span className="t-Region-headerIcon"><span className="t-Icon " aria-hidden="true"></span></span>
-                                    <h2 className="block-title" style={{width: '100%', fontSize: 16}} id="R38202006049236304_heading"><FormattedMessage id="account.Creation" defaultMessage="Account Creation" /></h2>
+                                    <h2 className="block-title" style={{ width: '100%', fontSize: 16 }} id="R38202006049236304_heading"><FormattedMessage id="account.Creation" defaultMessage="Account Creation" /></h2>
                                   </div>
 
                                   <div className="t-Region-headerItems t-Region-headerItems--buttons">
@@ -348,9 +348,9 @@ class Login extends Component {
                                     <span className="js-maximizeButtonContainer"></span></div>
                                 </div>
                                 <div className="t-Region-bodyWrap">
-                                  <div style={{fontSize: 11}}><FormattedMessage id="register.header.text" defaultMessage="Fields marked * are required" /></div>
+                                  <div style={{ fontSize: 11 }}><FormattedMessage id="register.header.text" defaultMessage="Fields marked * are required" /></div>
                                   <div>
-                                  <p className="" style={{
+                                    <p className="" style={{
                                       fontSize: 11,
                                       lineHeight: '17px',
                                       letterSpacing: .04,
@@ -381,9 +381,9 @@ class Login extends Component {
                               <div className=" t-Region t-Region--textContent t-Region--scrollBody" id="R37391169766147740"
                               >
                                 <div className="t-Region-header">
-                                  <div className="t-Region-headerItems bottomPadding t-Region-headerItems--title" style={{textAlign: 'center'}}>
+                                  <div className="t-Region-headerItems bottomPadding t-Region-headerItems--title" style={{ textAlign: 'center' }}>
                                     <span className="t-Region-headerIcon"><span className="t-Icon " aria-hidden="true"></span></span>
-                                    <h2 className="block-title" style={{width: '100%', fontSize: 16}} id="R37391169766147740_heading"><FormattedMessage id="registered.user.title" defaultMessage="Existing Customers" /></h2>
+                                    <h2 className="block-title" style={{ width: '100%', fontSize: 16 }} id="R37391169766147740_heading"><FormattedMessage id="registered.user.title" defaultMessage="Existing Customers" /></h2>
                                   </div>
                                   <div className="t-Region-headerItems t-Region-headerItems--buttons"><span className="js-maximizeButtonContainer"></span></div>
                                 </div>
@@ -394,7 +394,7 @@ class Login extends Component {
                                     <div className="t-Region-buttons-right"></div>
                                   </div>
                                   <div className="t-Region-body">
-                                  {/* borderBottom */}
+                                    {/* borderBottom */}
                                     <div className="container">
                                       <div className="padding row">
                                         <div className="rmPadding col col-12 apex-col-auto">
@@ -429,22 +429,10 @@ class Login extends Component {
                                         </div>
 
                                       </div>
-                                      <div className="row forgetPassword">
-                                        <div className="col col-8">
-                                          <div className="" id="P1000_FP_CONTAINER"><div className="t-Form-labelContainer t-Form-labelContainer--hiddenLabel col col-0">
-                                            <label htmlFor="P1000_FP" id="P1000_FP_LABEL" className="t-Form-label u-VisuallyHidden">Fp</label>
-                                          </div>
-                                          </div>
-                                          <div className=" row"><div>
-
-                                          </div>
-                                          </div>
-                                        </div>
-                                        <div className="forgotPass" style={{ textAlign: 'right'}} >
-                                          <a className="forget-password-link link" style={{width: "100%",fontWeight:'800 !important'}} onClick={this.onOpenSecondModal}><FormattedMessage id="forget.password" defaultMessage="Forget Password" /></a>
-
+                                      <div className="row">
+                                        <div className="forgotPass">
+                                          <a className="forget-password-link link" style={{ width: "100%", fontWeight: '800 !important' }} onClick={this.onOpenSecondModal}><FormattedMessage id="forget.password" defaultMessage="Forget Password" /></a>
                                           <span id="P1000_FP_error_placeholder" className="a-Form-error" data-template-id="33609641515469732_ET"></span>
-
                                         </div>
                                       </div>
                                       {/* <div >
@@ -454,9 +442,9 @@ class Login extends Component {
                                             </div>
                                           </div>
                                         </div> */}
-                                      <div className="row" style={{marginTop: 10}}>
+                                      <div className="row" style={{ marginTop: 10 }}>
                                         <div className="col col-12 apex-col-auto loginButtonOnLoginPage">
-                                          <button onClick={this.login} className="button-add-to-basket right " style={{fontWeight: 'bold', backgroundColor: '#ee0e19', borderColor: '#ee0e19'}}><FormattedMessage id="secure.signintext" defaultMessage="Sign In" /></button>
+                                          <button onClick={this.login} className="button-add-to-basket right " style={{ fontWeight: 'bold', backgroundColor: '#ee0e19', borderColor: '#ee0e19' }}><FormattedMessage id="secure.signintext" defaultMessage="Sign In" /></button>
                                           {/* <div onClick={this.login} className="button-add-to-basket right " type="button" id="B28810467415678867"><span className="t-Button-label"><FormattedMessage id="secure.signin" defaultMessage="Secure Sign In" /></span></div><input type="hidden" id="COND" name="COND" value="" /><input type="hidden" id="ITEM" name="ITEM" value="" /> */}
                                         </div>
                                       </div>

@@ -1175,9 +1175,14 @@ html[dir="rtl"] .nay {
 }
 
 .forgotPass {
-    float: right !important;
+    text-align: end;
+    width: 100%;
 }
 
+html[dir="rtl"] .forgotPass {
+    text-align: start;
+    width: 100%;
+}
 
 /* strock query in button 4 */
 
