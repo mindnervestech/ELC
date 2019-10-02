@@ -6468,7 +6468,9 @@ html[dir="rtl"] .header .navTrigger {
 html[dir="rtl"] .commingSoonText{
     font-size: 15px;
     margin-left: 0px;
-    margin-right: 20px
+    margin-right: 20px;
+    display: block;
+    width: 100%;
 }
 
 .pagenation{}
