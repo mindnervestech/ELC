@@ -16,6 +16,7 @@ import * as utility from '../utility/utility';
 import { Redirect, withRouter } from 'react-router-dom';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import SavedAddressList from '../CheckOut/DeliveryDetails/SavedAddressList';
+import { Helmet } from 'react-helmet';
 
 var _ = require('lodash');
 
@@ -141,6 +142,7 @@ class CheckOut extends Component {
     }
 
     render() {
+        const language = localStorage.getItem('templang');
         let { cart_details, user_details } = this.props;
         const { customer_details } = user_details;
         const { products } = cart_details;
@@ -150,6 +152,21 @@ class CheckOut extends Component {
         return <Redirect to={`/${this.props.globals.store_locale}/checkout-payment`} />
         }
 
+        let title = "Checkout | ELC UAE Online store";
+        let description = "Shop online for baby toys, dolls houses, wooden toys and more at ELC. Choose from big brands including LeapFrog, VTech, Smart Trike and more.";
+        let keywords = "ELC, Early Learning Center, Early Learning Centre, Toys, Baby Toys, Wooden Toys, Educational Toys";
+        if (language == 'ar') {
+            title = "تسجيل الخروج  | متجر مركز التعليم المبكر على الإنترنت في السعودية";
+            description = "تسوّق ألعاب الرضّع ومنازل الدمى والألعاب الخشبية وغيرها الكثير على الإنترنت من مركز التعليم المبكر. اختر من العلامات التجارية الكبيرة بمن فيها ليب فروع وفي تيك وسمارت تريك وغيرها.";
+            keywords = "إي إل سي، مركز التعليم المبكر، مركز التعليم المبكر، ألعاب، ألعاب رضّع، ألعاب خشبية، ألعاب تعليمية"; 
+        }
+
+		let meta_tag  = <><Helmet>
+            <meta name="tital" content={title} />
+            <meta name="keywords" content={keywords} />
+            <meta name="description" content={description} />
+        </Helmet></>;
+        
         let addressContainer = null;
         if (!this.props.cart_details.available_address || this.props.addressBook) {
             addressContainer = <SavedAddressList
@@ -167,6 +184,7 @@ class CheckOut extends Component {
         }
         return (
             <div>
+                 {meta_tag}
                 <ul className="check-out">
                     <li className="spasing-width"></li>
                     <li>

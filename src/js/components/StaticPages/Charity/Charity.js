@@ -7,6 +7,7 @@ import { Link, Redirect } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import { STATIC_PAGES_URL, API_TOKEN } from '../../../api/globals';
 import Spinner from '../../Spinner/Spinner.js'
+import { Helmet } from 'react-helmet';
 class Charity extends Component {
 	constructor(props) {
 		super(props);
@@ -52,7 +53,23 @@ class Charity extends Component {
 	}
 
 	render() {
+        const language = localStorage.getItem('templang');
 		let store_locale=this.props.globals.store_locale
+		let title = "Charity | ELC UAE Online store";
+		let description = "Shop online for baby toys, dolls houses, wooden toys and more at ELC. Choose from big brands including LeapFrog, VTech, Smart Trike and more.";
+		let keywords = "ELC, Early Learning Center, Early Learning Centre, Toys, Baby Toys, Wooden Toys, Educational Toys";
+		if (language == 'ar') {
+			title = "الأعمال الخيرية  |  متجر مركز التعليم المبكر على الإنترنت في السعودية";
+			description = "تسوّق ألعاب الرضّع ومنازل الدمى والألعاب الخشبية وغيرها الكثير على الإنترنت من مركز التعليم المبكر. اختر من العلامات التجارية الكبيرة بمن فيها ليب فروع وفي تيك وسمارت تريك وغيرها.";
+			keywords = "إي إل سي، مركز التعليم المبكر، مركز التعليم المبكر، ألعاب، ألعاب رضّع، ألعاب خشبية، ألعاب تعليمية"; 
+		}
+	
+		let meta_tag  = <><Helmet>
+			<meta name="tital" content={title} />
+			<meta name="keywords" content={keywords} />
+			<meta name="description" content={description} />
+		</Helmet></>;
+	
 		return (
 			<>
 			 { this.state.spinner ? <Spinner loading={this.state.spinner}/> :
@@ -64,6 +81,7 @@ class Charity extends Component {
 			 <span  style={{fontSize:15, fontWeight: 'bold'}}>{this.state.data.title}</span>
 		   </div>
 				<div className="container">
+					{meta_tag}
 					<div className="row">
 						<div className="col col-12 apex-col-auto">
 							<div

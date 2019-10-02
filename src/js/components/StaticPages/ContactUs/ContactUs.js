@@ -13,6 +13,7 @@ import facebook from '../../../../assets/images/social/Facebook.svg';
 import instagram from '../../../../assets/images/social/instagram.svg';
 import youtube from '../../../../assets/images/social/youtube.svg';
 import twitter from '../../../../assets/images/social/twitter.svg';
+import { Helmet } from 'react-helmet';
 
 class ContactUs extends Component {
     constructor(props) {
@@ -164,7 +165,24 @@ class ContactUs extends Component {
     }
 
     render() {
+        const language = localStorage.getItem('templang');
         let store_locale = this.props.globals.store_locale
+
+        let title = "Contact us | ELC UAE Online store";
+        let description = "Shop online for baby toys, dolls houses, wooden toys and more at ELC. Choose from big brands including LeapFrog, VTech, Smart Trike and more.";
+        let keywords = "ELC, Early Learning Center, Early Learning Centre, Toys, Baby Toys, Wooden Toys, Educational Toys";
+        if (language == 'ar') {
+            title = "إتصل بنا  |  متجر مركز التعليم المبكر على الإنترنت في السعودية";
+            description = "تسوّق ألعاب الرضّع ومنازل الدمى والألعاب الخشبية وغيرها الكثير على الإنترنت من مركز التعليم المبكر. اختر من العلامات التجارية الكبيرة بمن فيها ليب فروع وفي تيك وسمارت تريك وغيرها.";
+            keywords = "إي إل سي، مركز التعليم المبكر، مركز التعليم المبكر، ألعاب، ألعاب رضّع، ألعاب خشبية، ألعاب تعليمية"; 
+        }
+    
+        let meta_tag  = <><Helmet>
+            <meta name="tital" content={title} />
+            <meta name="keywords" content={keywords} />
+            <meta name="description" content={description} />
+        </Helmet></>;
+    
         const errorsObj = this.state.errors;
         let errorBox = null;
         if (this.state.search && this.state.showErrorBox) {
@@ -209,6 +227,7 @@ class ContactUs extends Component {
             <>
                 {errorBox}
                 <div className="t-Body">
+                    {meta_tag}
                     <div className="t-Body-main" style={{ marginTop: '0px !important' }}>
                         <div className="t-Body-title" id="t_Body_title" style={{ top: '294px' }}>
                         </div>

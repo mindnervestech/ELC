@@ -25,6 +25,7 @@ import { trackF, initializeF } from '../utility/facebookPixel';
 
 import { live } from '../../api/globals';
 import Popup from 'react-popup';
+import { Helmet } from 'react-helmet';
 
 class ShoppingBag extends Component {
 
@@ -209,6 +210,9 @@ class ShoppingBag extends Component {
         tesNode.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }
     render() {
+
+        const language = localStorage.getItem('templang');
+
         if (this.state.redirectToDeliveryDetails) {
             if (live) {
                 trackF('InitiateCheckout');
@@ -216,6 +220,21 @@ class ShoppingBag extends Component {
             return <Redirect to={`/${this.props.globals.store_locale}/delivery-details`} />
         }
 
+        let title = "Your cart | ELC UAE Online store";
+        let description = "Shop online for baby toys, dolls houses, wooden toys and more at ELC. Choose from big brands including LeapFrog, VTech, Smart Trike and more.";
+        let keywords = "ELC, Early Learning Center, Early Learning Centre, Toys, Baby Toys, Wooden Toys, Educational Toys";
+        if (language == 'ar') {
+            title = "عربة تسوقك |  متجر مركز التعليم المبكر على الإنترنت في السعودية";
+            description = "تسوّق ألعاب الرضّع ومنازل الدمى والألعاب الخشبية وغيرها الكثير على الإنترنت من مركز التعليم المبكر. اختر من العلامات التجارية الكبيرة بمن فيها ليب فروع وفي تيك وسمارت تريك وغيرها.";
+            keywords = "إي إل سي، مركز التعليم المبكر، مركز التعليم المبكر، ألعاب، ألعاب رضّع، ألعاب خشبية، ألعاب تعليمية"; 
+        }
+
+		let meta_tag  = <><Helmet>
+            <meta name="tital" content={title} />
+            <meta name="keywords" content={keywords} />
+            <meta name="description" content={description} />
+        </Helmet></>;
+        
         const itemList = this.props.cart_details.products;
         const quote_id = this.props.cart_details.quote_id;
         let shoppingItem = null;
@@ -282,6 +301,7 @@ class ShoppingBag extends Component {
                     {outOfStockAlert}
                     {alertBox}
                     <div className="Cart t-Body-contentInner">
+                        {meta_tag}
                         <Popup />
                         <div className="container">
                             {this.props.updateLoader && <Spinner />}

@@ -14,6 +14,7 @@ import StarRatings from 'react-star-ratings';
 import AddToBasketModal from '../Product/product-details/product-info/add-to-basket-modal';
 import Modal from 'react-responsive-modal';
 import AddToCartModal from '../Product/product-details/product-info/product-basic';
+import { Helmet } from 'react-helmet';
 
 let basketPopupFlag = false;
 let addToCartModal = false
@@ -255,7 +256,23 @@ class WishList extends Component {
     }
 
     render() {
+        const language = localStorage.getItem('templang');
         const store_locale = this.props.globals.store_locale;
+        let title = "Your account | ELC UAE Online store";
+		let description = "Shop online for baby toys, dolls houses, wooden toys and more at ELC. Choose from big brands including LeapFrog, VTech, Smart Trike and more.";
+		let keywords = "ELC, Early Learning Center, Early Learning Centre, Toys, Baby Toys, Wooden Toys, Educational Toys";
+		if (language == 'ar') {
+			title = "حسابك |  متجر مركز التعليم المبكر على الإنترنت في السعودية";
+			description = "تسوّق ألعاب الرضّع ومنازل الدمى والألعاب الخشبية وغيرها الكثير على الإنترنت من مركز التعليم المبكر. اختر من العلامات التجارية الكبيرة بمن فيها ليب فروع وفي تيك وسمارت تريك وغيرها.";
+			keywords = "إي إل سي، مركز التعليم المبكر، مركز التعليم المبكر، ألعاب، ألعاب رضّع، ألعاب خشبية، ألعاب تعليمية"; 
+		}
+	
+		let meta_tag  = <><Helmet>
+			<meta name="tital" content={title} />
+			<meta name="keywords" content={keywords} />
+			<meta name="description" content={description} />
+		</Helmet></>;
+	
         let respo_message = null;
         if (this.state.showAlert) {
             respo_message = <span id="APEX_SUCCESS_MESSAGE" data-template-id="126769709897686936_S" className="apex-page-success u-visible"><div className="t-Body-alert">
@@ -285,6 +302,7 @@ class WishList extends Component {
 
         return (<Spinner>
             <div className="t-Body-contentInner homePage">
+                {meta_tag}
                 {basketPopupFlag ?
                     <div>
                         <Modal modalId="add_to_basket" open={basketPopupFlag} onClose={this.onCloseAddCartModal}>

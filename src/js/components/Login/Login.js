@@ -15,7 +15,7 @@ import { connect } from 'react-redux';
 import * as actions from '.././../redux/actions/index';
 import queryString from 'query-string';
 import Breadcrumb from '../Breadcrumb/Breadcrumb';
-
+import { Helmet } from 'react-helmet';
 class Login extends Component {
 
   constructor(props) {
@@ -179,7 +179,7 @@ class Login extends Component {
   render() {
 
     //console.log('this.state.isGuest', this.props.login_details.isLoginSuccess && this.state.isGuest)
-
+    const language = localStorage.getItem('templang');
     const { openFirstModal, openSecondModal } = this.state;
     const forgetPassword = <ForgotPassword closeModal={this.closeModal} />;
     const errorMessage = this.state.errorMessage;
@@ -190,7 +190,21 @@ class Login extends Component {
     const invalidLogin = this.invalidLogin(login_error);
     const store_locale = this.props.globals.store_locale;
     const signUp = <SignUp store_locale={store_locale} />;
+    
+    let title = "Your account | ELC UAE Online store";
+    let description = "Shop online for baby toys, dolls houses, wooden toys and more at ELC. Choose from big brands including LeapFrog, VTech, Smart Trike and more.";
+    let keywords = "ELC, Early Learning Center, Early Learning Centre, Toys, Baby Toys, Wooden Toys, Educational Toys";
+    if (language == 'ar') {
+        title = "حسابك |  متجر مركز التعليم المبكر على الإنترنت في السعودية";
+        description = "تسوّق ألعاب الرضّع ومنازل الدمى والألعاب الخشبية وغيرها الكثير على الإنترنت من مركز التعليم المبكر. اختر من العلامات التجارية الكبيرة بمن فيها ليب فروع وفي تيك وسمارت تريك وغيرها.";
+        keywords = "إي إل سي، مركز التعليم المبكر، مركز التعليم المبكر، ألعاب، ألعاب رضّع، ألعاب خشبية، ألعاب تعليمية"; 
+    }
 
+    let meta_tag  = <><Helmet>
+        <meta name="tital" content={title} />
+        <meta name="keywords" content={keywords} />
+        <meta name="description" content={description} />
+    </Helmet></>;
     if (this.state.isGuest) {
       guest = <GuestCheckout />;
       newStyle = { marginBottom: 90 }
@@ -271,6 +285,7 @@ class Login extends Component {
     return (
       <Spinner>
         <div>
+          {meta_tag}
           <div style={{ width: '525.9584px' }}>
             <Modal modalId="CreateAccount" open={openFirstModal} onClose={this.onCloseFirstModal} center style={{ width: '425.9584px' }}>
 

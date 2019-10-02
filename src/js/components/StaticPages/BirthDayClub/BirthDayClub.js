@@ -11,6 +11,7 @@ import PhoneNumber from '../../Login/IntlTelePhone'
 
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { Helmet } from 'react-helmet';
 
 let ChildrenCount = ['1']
 let ChildrenDate = ['']
@@ -229,8 +230,26 @@ class BirthDayClub extends Component {
   }
 
   render() {
+    const language = localStorage.getItem('templang');
     let store_locale=this.props.globals.store_locale
     let respo_message = null;
+
+
+    let title = "Birthday Club | ELC UAE Online store";
+    let description = "Shop online for baby toys, dolls houses, wooden toys and more at ELC. Choose from big brands including LeapFrog, VTech, Smart Trike and more.";
+    let keywords = "ELC, Early Learning Center, Early Learning Centre, Toys, Baby Toys, Wooden Toys, Educational Toys";
+    if (language == 'ar') {
+        title = "نادي عيد الميلاد |  متجر مركز التعليم المبكر على الإنترنت في السعودية";
+        description = "تسوّق ألعاب الرضّع ومنازل الدمى والألعاب الخشبية وغيرها الكثير على الإنترنت من مركز التعليم المبكر. اختر من العلامات التجارية الكبيرة بمن فيها ليب فروع وفي تيك وسمارت تريك وغيرها.";
+        keywords = "إي إل سي، مركز التعليم المبكر، مركز التعليم المبكر، ألعاب، ألعاب رضّع، ألعاب خشبية، ألعاب تعليمية"; 
+    }
+
+    let meta_tag  = <><Helmet>
+        <meta name="tital" content={title} />
+        <meta name="keywords" content={keywords} />
+        <meta name="description" content={description} />
+    </Helmet></>;
+
     if(!this.props.isUserLoggedIn)
     {
       this.props.history.push(`/${this.props.globals.store_locale}/sign-in-register`); 
@@ -263,6 +282,7 @@ class BirthDayClub extends Component {
 
       <div>
         {respo_message}
+        {meta_tag}
         <div className="padding-breadcrumb" style={{ textAlign: 'start' }}>
           <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
             <span className="titleHover" style={{ fontSize: 15 }}><FormattedMessage id="Checkout.Home" defaultMessage="Home" /></span><span>&nbsp;\&nbsp;&nbsp;</span>
