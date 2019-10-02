@@ -7072,6 +7072,11 @@ html[dir="rtl"] .t-Button--pillStart{
             display: inline-block !important;
             position: relative !important;
             left: 5px !important;
-            }
+        }
+
+        .button-model {
+            width: 49%!important;
+            padding: 0!important;
+        }
     }
 }

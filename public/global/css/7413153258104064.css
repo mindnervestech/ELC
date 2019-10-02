@@ -6907,13 +6907,6 @@ body .ui-state-default.ui-priority-primary {
 }
 
 @media only screen and (max-width: 640px) {
-  .t-BreadcrumbRegion {
-    padding: 5px 10px;
-    width: 100% !important;
-  }
-}
-
-@media only screen and (max-width: 640px) {
   .t-BreadcrumbRegion-body {
     padding: 0;
   }

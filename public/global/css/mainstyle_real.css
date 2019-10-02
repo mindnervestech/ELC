@@ -4372,6 +4372,12 @@ html[dir="rtl"] #AddAddress .intl-tel-input .country-list {
     font-size: 1.1rem;
 }
 
+html[dir="rtl"] .Delivery-Details-Form .t-Form-fieldContainer--floatingLabel .t-Form-label {
+    position: absolute;
+    top: 1px;
+    font-size: 1.1rem;
+}
+
 @media only screen and (min-width: 769px) {
     .mobile-filter {
         display: none !important;
@@ -4844,6 +4850,8 @@ html[dir="rtl"] .click-collect3 {
     font-weight: bold;
 }
 
+.PLPRowMargin{}
+
 @media only screen and (min-width:768px) and (max-width:1024px)
 {
     .select-div
@@ -4951,5 +4959,10 @@ html[dir="rtl"] .click-collect3 {
 
     .homePage .alsoLikeCardButton{
         width: 100%;
+    }
+
+    .PLPRowMargin{
+        margin-right: 0px !important;
+        margin-left: 15px !important;
     }
 }

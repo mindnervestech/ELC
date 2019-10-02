@@ -1,53 +1,17 @@
 import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import * as actions from '../../../redux/actions/index';
 import ProductListData from '../../PoductList/ProductListData';
-import SideManu from '../../PoductList/SideManu';
-
-import { Container, Row, Col, Button } from 'reactstrap';
 
 class ProductData extends Component {
 	constructor(props, context) {
 		super(props, context);
-		this.state = {
-			selectedProduct: ''
-		};
 	}
 
 	componentWillMount() {
 		if (this.props.productDetails) {
 			this.props.onClearProductDetails(this.props.productDetails);
-		}
-	}
-
-	handleClick(el) {
-		this.setState({ selectedProduct: el });
-	}
-
-	hidepromopopup(el) {
-		document.getElementById(el).style.display = 'none';
-	}
-
-	handleProductClick = item => {
-		const data = {
-			customerid: 2,
-			store: 2,
-			url_key: item.url_key,
-		};
-		this.props.onGetProductDetails(data);
-	};
-
-	_checkOfferPrice = (item, itemOfferPrice) => {
-
-		if (parseInt(item.price.price) !== parseInt(itemOfferPrice)) {
-			return (
-				<span style={{ fontWeight: "normal" }}>
-					<del>{item.currency} {item.price.price}</del>
-					&nbsp;
-					</span>
-			);
 		}
 	}
 
@@ -66,10 +30,7 @@ class ProductData extends Component {
 
 						}}
 					>
-						<div className="divShowOnWeb">
-							<ProductListData list={Data} />
-						</div>
-						<div className="divShowOnMobile">
+						<div>
 							<ProductListData list={Data} />
 						</div>
 					</ul>)}
@@ -80,8 +41,6 @@ class ProductData extends Component {
 }
 
 const mapStateToProps = state => {
-	// console.log('pdpstate', state);
-
 	return {
 		globals: state.global,
 		menu: state.menu.menuNavData,

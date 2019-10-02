@@ -6,22 +6,22 @@ class ProductMobFilter extends Component {
 		this.state = {};
 	}
 
-	openAndClose(id) {
-		if(document.getElementById(id).getAttribute('style')) {
-			if(document.getElementById(id).getAttribute('style') === "display:none")
-				document.getElementById(id).setAttribute('style','display:block');
-			else
-				document.getElementById(id).setAttribute('style','display:none');
-		} else {
-			document.getElementById(id).setAttribute('style','display:block')
-		}
-	}
+	// openAndClose(id) {
+	// 	if(document.getElementById(id).getAttribute('style')) {
+	// 		if(document.getElementById(id).getAttribute('style') === "display:none")
+	// 			document.getElementById(id).setAttribute('style','display:block');
+	// 		else
+	// 			document.getElementById(id).setAttribute('style','display:none');
+	// 	} else {
+	// 		document.getElementById(id).setAttribute('style','display:block')
+	// 	}
+	// }
 
 	render() {
 		const { productFilters } = this.props;
 		return (
 			<div className="t-Region-body">
-				{Object.keys(productFilters).map((item, index) => {
+				{/* {Object.keys(productFilters).map((item, index) => {
 					return (
 						<div className="set" id={`MOB-${item}-COL1`}>
 							<a onClick={() => this.openAndClose(`MOB-${item}-COL`)}>
@@ -98,7 +98,7 @@ class ProductMobFilter extends Component {
 							</div>
 						</div>
 					);
-				})}
+				})} */}
 			</div>
 		);
 	}

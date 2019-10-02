@@ -478,7 +478,7 @@ class ProductListData extends Component {
 		}
 		
 		return (
-			<Row>
+			<Row className="PLPRowMargin">
 				<Col xs="3" lg="3" md="3" className="divShowOnWeb">
 					<SideManu action={this.handler}></SideManu>
 				</Col>
