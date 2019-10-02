@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './Login.css';
-
 import Modal from 'react-responsive-modal';
 import SignUp from './SignUp';
 import ForgotPassword from './ForgotPassword';
@@ -10,7 +9,6 @@ import Spinner from '../Spinner/Spinner';
 import { EmailValidator } from '../../api/Validators';
 import GuestCheckout from '../CheckOut/Login/GuestCheckout';
 import { withRouter } from 'react-router-dom'
-
 import { connect } from 'react-redux';
 import * as actions from '.././../redux/actions/index';
 import queryString from 'query-string';
@@ -64,12 +62,6 @@ class Login extends Component {
     this.props.onGetMenuNav(this.props.globals);
   }
 
-
-  // componentDidUpdate(prevProps, prevState, snapshot) {
-  //   this.invalidLogin();
-  // }
-
-
   onOpenFirstModal = () => {
     this.setState({ openFirstModal: true });
   };
@@ -80,12 +72,17 @@ class Login extends Component {
 
   onOpenSecondModal = () => {
     this.setState({ openSecondModal: true });
+    
   };
 
   onCloseSecondModal = () => {
-    this.setState({ openSecondModal: false });
-  };
+  
+          this.setState({ openSecondModal: false });
+    
+  }
+ 
 
+  
 
   login = () => {
     if (this.validateForm()) {
@@ -172,8 +169,9 @@ class Login extends Component {
 
   }
   closeModal = () => {
-    this.onCloseSecondModal();
+
     this.props.onClearForgotPass();
+    this.onCloseSecondModal();
   }
 
   render() {
@@ -181,7 +179,7 @@ class Login extends Component {
     //console.log('this.state.isGuest', this.props.login_details.isLoginSuccess && this.state.isGuest)
     const language = localStorage.getItem('templang');
     const { openFirstModal, openSecondModal } = this.state;
-    const forgetPassword = <ForgotPassword closeModal={this.closeModal} />;
+    const forgetPassword = <ForgotPassword   closeModal={this.closeModal} />;
     const errorMessage = this.state.errorMessage;
     let guest = null;
     let newStyle = null;
@@ -460,12 +458,12 @@ class Login extends Component {
                                           </div>
                                           </div>
                                         </div>
-                                        {/* <div className="forgotPass" style={{ textAlign: 'right'}} >
+                                        <div className="forgotPass" style={{ textAlign: 'right'}} >
                                           <a className="forget-password-link link" style={{width: "100%",fontWeight:'800 !important'}} onClick={this.onOpenSecondModal}><FormattedMessage id="forget.password" defaultMessage="Forget Password" /></a>
 
                                           <span id="P1000_FP_error_placeholder" className="a-Form-error" data-template-id="33609641515469732_ET"></span>
 
-                                        </div> */}
+                                        </div>
                                       </div>
                                       {/* <div >
                                           <div className="t-Form-fieldContainer rel-col  apex-item-wrapper apex-item-wrapper--checkbox " id="P1000_REMEMBER_CONTAINER">
