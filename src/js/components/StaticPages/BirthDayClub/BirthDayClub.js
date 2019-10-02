@@ -291,7 +291,11 @@ class BirthDayClub extends Component {
         {meta_tag}
         <div className="padding-breadcrumb" style={{ textAlign: 'start' }}>
           <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
-            <span className="titleHover" style={{ fontSize: 15 }}><FormattedMessage id="Checkout.Home" defaultMessage="Home" /></span><span>&nbsp;\&nbsp;&nbsp;</span>
+            <span className="titleHover" style={{ fontSize: 15 }}><FormattedMessage id="Checkout.Home" defaultMessage="Home" /></span> 
+            { this.props.globals.language=='en'?
+                     <> <span>&nbsp;\&nbsp;&nbsp;</span> </>:
+                     <> <span>&nbsp;/&nbsp;&nbsp;</span></>
+                    }
           </Link>
           <span style={{ fontSize: 15, fontWeight: 'bold' }}><FormattedMessage id="birthdayclub.header" defaultMessage="Birthday Club" /></span>
         </div>

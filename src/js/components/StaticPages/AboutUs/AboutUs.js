@@ -44,7 +44,13 @@ class AboutUs extends Component {
 			<div className="t-Body-contentInner ">
 			<div  className="padding-right-ar padding-breadcrumb">  
             <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
-              <span className="titleHover" style={{fontSize:15}}><FormattedMessage id="Checkout.Home" defaultMessage/></span><span>&nbsp;\&nbsp;&nbsp;</span>
+              <span className="titleHover" style={{fontSize:15}}><FormattedMessage id="Checkout.Home" defaultMessage/>
+			
+			  { this.props.globals.language=='en'?
+                     <> <span>&nbsp;\&nbsp;&nbsp;</span> </>:
+                     <> <span>&nbsp;/&nbsp;&nbsp;</span></>
+                    }
+			  </span>
             </Link>
             <span  style={{fontSize:15, fontWeight: 'bold'}}>{this.props.aboutUs.title}</span>
           </div>
