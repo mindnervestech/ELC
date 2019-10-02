@@ -72,17 +72,11 @@ class Login extends Component {
 
   onOpenSecondModal = () => {
     this.setState({ openSecondModal: true });
-    
   };
 
   onCloseSecondModal = () => {
-  
-          this.setState({ openSecondModal: false });
-    
-  }
- 
-
-  
+    this.setState({ openSecondModal: false });
+  }  
 
   login = () => {
     if (this.validateForm()) {
@@ -237,20 +231,6 @@ class Login extends Component {
       }} />;
     }
 
-    if (login_details.forgotPasswordDetails.status &&
-      login_details.forgotPasswordDetails.message) {
-      if (this.state.openSecondModal) {
-        this.onCloseSecondModal();
-      }
-
-    } else if (!(login_details.forgotPasswordDetails.status) &&
-      login_details.forgotPasswordDetails.message) {
-      if (this.state.openSecondModal) {
-        this.onCloseSecondModal();
-      }
-    }
-
-
     let emailField = <div>
       <div>
         <input type="email" id="P1000_USERNAME" name="email" value={this.state.email} size="40" maxLength="100" onChange={this.onChangeCredintials} />
@@ -292,7 +272,7 @@ class Login extends Component {
 
             </Modal>
 
-            <Modal  className="modalStyleClass" open={openSecondModal} onClose={this.onCloseSecondModal} center>
+            <Modal  modalId="forgotpassword" className="modalStyleClass" open={openSecondModal} onClose={this.onCloseSecondModal} center>
               <h3><FormattedMessage id="PassReset.Text" defaultMessage="Password reset" /></h3>
               {forgetPassword}
             </Modal>

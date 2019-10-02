@@ -264,9 +264,9 @@ class ForGotPassword extends Component {
                             <div className="row">
                               <div className="col col-12 apex-col-auto">
                                 <div className="row block" id="P1003_PHONE_CONTAINER">
-                                  <div >
+                                  <div style={{paddingTop:10}}>
                                     <label htmlFor="P1003_PHONE" id="P1003_PHONE_LABEL" className="t-Form-label">
-                                      <FormattedMessage id="Form.Phone" defaultMessage="Phone Number *" />
+                                      <FormattedMessage id="Form.PhoneNumber" defaultMessage="Contact Number *" />
                                       <span className="u-VisuallyHidden">(Value Required)</span></label>
 
 
