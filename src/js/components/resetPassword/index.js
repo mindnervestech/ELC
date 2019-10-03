@@ -17,7 +17,10 @@ class ResetPassword extends Component {
 					},
 					newPasswordError: false,
 					confirmError: false,
-					passwordNotMatch: false
+					passwordNotMatch: false,
+					showAlert: false,
+					res_message: '',
+					ischeckremove: true,
         }
 		}
 
@@ -64,7 +67,31 @@ class ResetPassword extends Component {
 			}
 		}
 		
+		closeAlert = () => {
+			this.setState({ showAlert: false });
+		}
 
+		componentWillReceiveProps(nextProps){
+			if(this.state.checkCondition){
+				if(nextProps.resetpasswordSucess.status ){
+      
+					this.setState({res_message:nextProps.resetpasswordSucess.message, showAlert:true,checkCondition:false})
+				    setTimeout(() => {
+						this.closeAlert();
+					}, 5000);
+				
+				}else{
+					setTimeout(() => {
+						this.closeAlert();
+					}, 5000);
+				
+						this.setState({res_message:nextProps.resetpasswordSucess.message, showAlert:true,checkCondition:false})
+					  
+					
+				}
+			}
+			
+		}
 		handleChange = (field, e) => {
 
 			let fields = this.state.fields;
@@ -112,10 +139,34 @@ class ResetPassword extends Component {
 		}
 
     render() {
+		let respo_message = null;
+        if (this.state.showAlert) {
+            respo_message = <span id="APEX_SUCCESS_MESSAGE" data-template-id="126769709897686936_S" className="apex-page-success u-visible"><div className="t-Body-alert">
+                <div className="t-Alert t-Alert--defaultIcons t-Alert--success t-Alert--horizontal t-Alert--page t-Alert--colorBG" id="t_Alert_Success" role="alert">
+                    <div className="t-Alert-wrap">
+                        <div className="t-Alert-icon">
+                            <span className="t-Icon" />
+                        </div>
+                        <div className="t-Alert-content">
+                            <div className="t-Alert-header">
+                                <h2 className="t-Alert-title">{this.state.res_message}</h2>
+                            </div>
+                        </div>
+                        <div className="t-Alert-buttons">
+                            <button className="t-Button t-Button--noUI t-Button--icon t-Button--closeAlert" type="button" title="Close Notification" onClick={this.closeAlert} ><span className="t-Icon icon-close" /></button>
+                        </div>
+                    </div>
+                </div>
+            </div></span>;
+        }
 
 			
         return (
+			
+			
             <div className="t-Body-contentInner">
+				
+				{respo_message}
                 <div className="container">
 									{!this.props.resetpasswordLoader &&(<>
                     {!this.props.resetpasswordSucess && !this.props.resetpasswordToken && (<div className="row">
