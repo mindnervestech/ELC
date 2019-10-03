@@ -6634,11 +6634,6 @@ html[dir="rtl"] .commingSoonText{
 }
 
 .likeAInputName {
-    /* position: absolute;
-    top: -1px;
-    padding-left: 15px; */
-
-       
         top: -1px;
         padding-left: 15px;
         display: inline-block;
@@ -6939,6 +6934,20 @@ html[dir="rtl"] .t-Button--pillStart{
 }
 
 @media (max-width:767px){
+
+    .likeAInputName {
+        top: -1px;
+        padding-left: 15px;
+        display: inline-block;
+        width: 90%;
+}
+
+html[dir="rtl"] .likeAInputName {
+    position: absolute;
+    top: -1px;
+    padding-left: 0px;
+    padding-right: 15px;
+}
     .productDetailPopupImage{
         height: 90px;
         width: 90px !important;
