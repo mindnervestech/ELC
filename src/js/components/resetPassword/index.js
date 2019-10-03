@@ -71,27 +71,7 @@ class ResetPassword extends Component {
 			this.setState({ showAlert: false });
 		}
 
-		componentWillReceiveProps(nextProps){
-			if(this.state.checkCondition){
-				if(nextProps.resetpasswordSucess.status ){
-      
-					this.setState({res_message:nextProps.resetpasswordSucess.message, showAlert:true,checkCondition:false})
-				    setTimeout(() => {
-						this.closeAlert();
-					}, 5000);
-				
-				}else{
-					setTimeout(() => {
-						this.closeAlert();
-					}, 5000);
-				
-						this.setState({res_message:nextProps.resetpasswordSucess.message, showAlert:true,checkCondition:false})
-					  
-					
-				}
-			}
-			
-		}
+	
 		handleChange = (field, e) => {
 
 			let fields = this.state.fields;
@@ -339,6 +319,37 @@ class ResetPassword extends Component {
 													</div>
 												</div>
 										</div>)}
+
+
+										
+
+										{ !this.props.resetpasswordSucess && (<div className="row">
+												<div className="col col-12 apex-col-auto">
+												  <div className="t-Region centered-content  t-Region--removeHeader t-Region--noBorder t-Region--scrollBody margin-bottom-lg margin-top-lg">
+													  <div className="t-Region-bodyWrap">
+															<div className="t-Region-buttons t-Region-buttons--top">
+																<div className="t-Region-buttons-left"></div>
+																<div className="t-Region-buttons-right"></div>
+															</div>
+															<div className="t-Region-body">
+																<center>
+																	<h1 style={{font: "30px/1 Arial,sans-serif",color: "#000000",fontFamily: "elc_bold"}}>
+																		<FormattedMessage id="ResetPassword.success.Text" defaultMessage="Reset your password" />
+																	</h1>
+																	<h3 style={{ margin: "0 0 1.2rem", fontWeight:500, lineHeight: 1.5 }}>
+																		<FormattedMessage id="ResetPassword.PasswordChangedfail.Text" defaultMessage="Password change failed " />
+																	</h3>
+																	<p>
+																		<FormattedMessage id="ResetPassword.fail.Text1" defaultMessage="Password change failed try again !!!" />	
+															    </p>
+																</center>
+															</div>		
+														</div>
+													</div>
+												</div>
+										</div>)}
+
+
 									</>)}
 									{this.props.resetpasswordLoader && (<Spinner />)}
                 </div>
