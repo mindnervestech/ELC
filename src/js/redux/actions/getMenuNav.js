@@ -9,6 +9,8 @@ const callActionGetMenuNav = (payload) => {
     }
 }
 
+let check = true
+
 export const getMenuNav = (payload) => {
     return dispatch => {
         const data = {
@@ -19,6 +21,7 @@ export const getMenuNav = (payload) => {
             success: (res) => {
                 if(res.status && res.code ===200) {
                     let newState = {...res.data}
+                    check = false
                     dispatch(loadingSpinner({ loading: false }))
                     dispatch(callActionGetMenuNav({menuNavData : newState, OfferMessage : res.OfferMessage}))
                 }
@@ -29,6 +32,10 @@ export const getMenuNav = (payload) => {
                 }
             },
             error: (err) => {
+                if(check){
+                    check = false
+                    API.getMenuNav(data, cb);
+                }
                 dispatch(loadingSpinner({ loading: false }))
             }
         }
