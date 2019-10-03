@@ -43,14 +43,14 @@ class ContactUs extends Component {
         let formIsValid = true;
         if (!fields["name"]) {
             formIsValid = false;
-            errors["name"] = <FormattedMessage id="Signup.validation.firstName.empty" defaultMessage=" Name cannot be empty" />;
+            errors["name"] = <FormattedMessage id="Signup.validation.firstName.empty" defaultMessage="Please enter first name." />;
         }
         //Email
         if (typeof fields["email"] !== "undefined") {
 
             if (fields["email"].length === 0) {
                 formIsValid = false;
-                errors["email"] = <FormattedMessage id="Signup.validation.email.empty" defaultMessage="First Name cannot be empty" />;
+                errors["email"] = <FormattedMessage id="Signup.validation.email.empty" defaultMessage="Please enter email" />;
             }
 
             if (fields["email"].length > 0) {
@@ -58,14 +58,14 @@ class ContactUs extends Component {
                 let lastDotPos = fields["email"].lastIndexOf('.');
                 if (!(lastAtPos < lastDotPos && lastAtPos > 0 && fields["email"].indexOf('@@') == -1 && lastDotPos > 2 && (fields["email"].length - lastDotPos) > 2) || (fields["email"].includes(' '))) {
                     formIsValid = false;
-                    errors["email"] = <FormattedMessage id="Signup.validation.email.invalid" defaultMessage="First Name cannot be empty" />;
+                    errors["email"] = <FormattedMessage id="Signup.validation.email.invalid" defaultMessage="Please enter email in valid format" />;
                 }
             }
         }
         if (!(this.state.isPhoneValid)) {
             if (fields["phone"].length === 0) {
                 formIsValid = false;
-                errors["phone"] = <FormattedMessage id="Signup.validation.contactNumber.empty" defaultMessage="Enter Valid phone number" />;
+                errors["phone"] = <FormattedMessage id="Signup.validation.contactNumber.empty" defaultMessage="Please enter contact number" />;
             }
         }
         this.setState({ errors: errors });
@@ -188,8 +188,8 @@ class ContactUs extends Component {
         if (this.state.search && this.state.showErrorBox) {
             let searchWord = this.props.searchWord;
             errorBox = <div className="alertify"><div className="dialog"><div>
-                <p className="msg"><FormattedMessage id="help.searchtext1" defaultMessage="Sorry couldn't search" />;  {searchWord} .
-            <FormattedMessage id="help.searchtext2" defaultMessage="Submit your search!!" />.!!</p><nav><button className="ok" tabIndex={1} onClick={this.closeErrorBox}><FormattedMessage id="Ok.text" defaultMessage="Ok" /></button></nav></div></div></div>
+                <p className="msg"><FormattedMessage id="help.searchtext1" defaultMessage="Sorry, We couldn’t find any result Matching with" />;  {searchWord} .
+            <FormattedMessage id="help.searchtext2" defaultMessage="You can submit your Question and Our Customer Service Team will contact you soon.!!" /></p><nav><button className="ok" tabIndex={1} onClick={this.closeErrorBox}><FormattedMessage id="Ok.text" defaultMessage="Ok" /></button></nav></div></div></div>
         }
         let contact_number = this.props.contact_data.page_data.contactnumber_ksa;
         if (this.props.country === 'KSA') {
@@ -211,7 +211,7 @@ class ContactUs extends Component {
                             </div>
                             <div className="t-Alert-content">
                                 <div className="t-Alert-header">
-                                    <h2 className="t-Alert-title"><FormattedMessage id="ContactUs.Content" defaultMessage="Thank you!" /></h2>
+                                    <h2 className="t-Alert-title"><FormattedMessage id="ContactUs.Content" defaultMessage="Thank you for contacting us. appropriate action will be taken by our customer care representative." /></h2>
                                 </div>
                             </div>
                             <div className="t-Alert-buttons">
@@ -275,7 +275,7 @@ class ContactUs extends Component {
                                                                         <div className="t-Region-header">
                                                                             <div className="t-Region-headerItems t-Region-headerItems--title">
                                                                                 <span className="t-Region-headerIcon"><span className="t-Icon " aria-hidden="true" /></span>
-                                                                                <h2 className="t-Region-title" id="R715189021347792744_heading"><span className="paddingStyle"><FormattedMessage id="Wite.Text" defaultMessage="Wite to us" /></span></h2>
+                                                                                <h2 className="t-Region-title" id="R715189021347792744_heading"><span className="paddingStyle"><FormattedMessage id="Wite.Text" defaultMessage="WRITE TO US" /></span></h2>
                                                                             </div>
                                                                             <div className="t-Region-headerItems t-Region-headerItems--buttons"><span className="js-maximizeButtonContainer" /></div>
                                                                         </div>
@@ -290,7 +290,7 @@ class ContactUs extends Component {
                                                                                         <div className="col col-12 apex-col-auto">
                                                                                             <div id="R715189986681792754" >
                                                                                                 <div style={{ paddingLeft: 15 }} className="paddingRight-ar"> <br />
-                                                                                                    <h2 className="t-Region-title"> <FormattedMessage id="Wite.Text" defaultMessage="Wite to us" /></h2>
+                                                                                                    <h2 className="t-Region-title"> <FormattedMessage id="Wite.Text" defaultMessage="WRITE TO US" /></h2>
                                                                                                 </div>
                                                                                                 <br />
                                                                                             </div>
@@ -302,7 +302,7 @@ class ContactUs extends Component {
                                                                                                 <div className="t-Region-header">
                                                                                                     <div className="t-Region-headerItems t-Region-headerItems--title">
                                                                                                         <span className="t-Region-headerIcon"><span className="t-Icon " aria-hidden="true" /></span>
-                                                                                                        <h2 className="t-Region-title" id="R1009415282768434614_heading"><FormattedMessage id="Wite.Text" defaultMessage="Wite to us" /></h2>
+                                                                                                        <h2 className="t-Region-title" id="R1009415282768434614_heading"><FormattedMessage id="Wite.Text" defaultMessage="WRITE TO US" /></h2>
                                                                                                     </div>
                                                                                                     <div className="t-Region-headerItems t-Region-headerItems--buttons"><span className="js-maximizeButtonContainer" /></div>
                                                                                                 </div>
@@ -318,7 +318,7 @@ class ContactUs extends Component {
                                                                                                                     <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel is-required apex-item-wrapper apex-item-wrapper--text-field"
                                                                                                                         id="P14_NAME_CONTAINER" onFocus={(e) => this.divOnFocus(e)} onBlur={(e) => this.divOnBlure(e)}>
                                                                                                                         <div className="t-Form-labelContainer">
-                                                                                                                            <label htmlFor="P14_NAME" id="P14_NAME_LABEL" className="t-Form-label"><FormattedMessage id="ContactUs.Name" defaultMessage="Name" /><span className="u-VisuallyHidden">(Value Required)</span></label>
+                                                                                                                            <label htmlFor="P14_NAME" id="P14_NAME_LABEL" className="t-Form-label"><FormattedMessage id="ContactUs.Name" defaultMessage="Your Name" /><span className="u-VisuallyHidden">(Value Required)</span></label>
                                                                                                                         </div>
                                                                                                                         <div className="t-Form-inputContainer">
                                                                                                                             <div className="t-Form-itemWrapper">
@@ -400,7 +400,7 @@ class ContactUs extends Component {
                                                                                                                         <div className="t-Form-inputContainer">
                                                                                                                             <div className="t-Form-itemWrapper">
                                                                                                                                 <div className="apex-item-group apex-item-group--textarea" role="group" aria-labelledby="P14_COMMENT_LABEL" tabIndex={-1}>
-                                                                                                                                    <FormattedMessage id="ContactUs.comment">{(message) => <textarea name="P14_COMMENT" rows={5} cols={2000} maxLength={2000} wrap="virtual" id="P14_COMMENT" placeholder={message} className="textarea apex-item-textarea" style={{ resize: 'both', color: 'rgb(0, 0, 0)', backgroundColor: '#fff', border: "solid 1px #b1b1b1" }} onChange={this.handleChange.bind(this, "comment")} value={this.state.contact_fields["comment"]} />}</FormattedMessage>
+                                                                                                                                    <FormattedMessage id="ContactUs.comment" defaultMessage="Your comment">{(message) => <textarea name="P14_COMMENT" rows={5} cols={2000} maxLength={2000} wrap="virtual" id="P14_COMMENT" placeholder={message} className="textarea apex-item-textarea" style={{ resize: 'both', color: 'rgb(0, 0, 0)', backgroundColor: '#fff', border: "solid 1px #b1b1b1" }} onChange={this.handleChange.bind(this, "comment")} value={this.state.contact_fields["comment"]} />}</FormattedMessage>
                                                                                                                                     <div id="P14_COMMENT_CHAR_COUNT" style={{ color: 'rgb(0, 0, 0)', display: 'none' }} className="apex-item-textarea-counter"><span id="P14_COMMENT_CHAR_COUNTER" className="apex-item-textarea-counter--length">{this.state.comment_count}</span> of
                                                                                                                                         <span className="apex-item-textarea-counter--size">2000</span>
                                                                                                                                     </div>
@@ -445,7 +445,7 @@ class ContactUs extends Component {
                                                                                         <div className="t-Region-header">
                                                                                             <div className="t-Region-headerItems t-Region-headerItems--title">
                                                                                                 <span className="t-Region-headerIcon"><span className="t-Icon " aria-hidden="true" /></span>
-                                                                                                <h2 className="t-Region-title" id="R715189275227792747_heading"><FormattedMessage id="ContactUs.DirectText" defaultMessage="Direct Contact" />
+                                                                                                <h2 className="t-Region-title" id="R715189275227792747_heading"><FormattedMessage id="ContactUs.DirectText" defaultMessage="DIRECT CONTACT" />
                                                                                                 </h2>
                                                                                             </div>
                                                                                             <div className="t-Region-headerItems t-Region-headerItems--buttons"><span className="js-maximizeButtonContainer" /></div>
@@ -478,7 +478,7 @@ class ContactUs extends Component {
                                                                                         <div className="t-Region-header">
                                                                                             <div className="t-Region-headerItems t-Region-headerItems--title">
                                                                                                 <span className="t-Region-headerIcon"><span className="t-Icon " aria-hidden="true" /></span>
-                                                                                                <h2 className="t-Region-title" id="R715189380040792748_heading"><FormattedMessage id="ContactUs.SocialMedia" defaultMessage="SocialMedia" />
+                                                                                                <h2 className="t-Region-title" id="R715189380040792748_heading"><FormattedMessage id="ContactUs.SocialMedia" defaultMessage="SOCIAL MEDIA" />
                                                                                                 </h2>
                                                                                             </div>
                                                                                             <div className="t-Region-headerItems t-Region-headerItems--buttons"><span className="js-maximizeButtonContainer" /></div>
