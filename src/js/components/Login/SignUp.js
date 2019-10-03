@@ -18,7 +18,7 @@ class SignUp extends Component {
     super(props);
 
     this.state = {
-      subscribe_to_newsletter: 0,
+      subscribe_to_newsletter: 1,
       fields: {
         firstName: '',
         lastName: '',
@@ -566,7 +566,7 @@ class SignUp extends Component {
                               </div>
                               <div className="row pad40L padTop20 backWhite" style={{ textAline: "start" }}>
                                 <label class="checkBox"><FormattedMessage id="Form.RecieveEmail" defaultMessage="I'd like to receive emails from ELC about special offers, new toys and voucher codes."></FormattedMessage>
-                                  <input checked={this.state.subscribe_to_newsletter == 0 ? "checked" : ""} onClick={this.subscribe_to_newsletter} type="checkbox"  ></input>
+                                  <input checked={this.state.subscribe_to_newsletter == 1 ? "checked" : ""} onClick={this.subscribe_to_newsletter} type="checkbox"  ></input>
                                   <span class="checkmark"></span>
                                 </label>
                               </div>
