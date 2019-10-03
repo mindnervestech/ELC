@@ -3435,6 +3435,31 @@ html[dir="rtl"] .Collapsible__trigger:after{
     transition: transform 300ms;
 }
 
+.mobileFilterByButton{
+    color: #ffffff;
+    background-color: #0d943f;
+    border: solid 1px #0d943f;
+    border-radius: 4px;
+    height: 45px;
+    width: 90%;
+    font-family: "VAG Rounded ELC Bold";
+}
+
+.fa-list-ul:before{
+    content: "\f0ca";
+}
+
+.threeLineIcon{
+    margin-right: 10px;
+    margin-top: 1px;
+    font-weight: bold !important;
+}
+
+html[dir="rtl"] .threeLineIcon{
+    margin-right: 0px;
+    margin-left: 10px;
+}
+
 @media (max-width: 360px) {
     @supports (-webkit-overflow-scrolling: touch) { 
         .product-list li {
@@ -3478,24 +3503,22 @@ html[dir="rtl"] .Collapsible__trigger:after{
     }
 
     .sortByOption{
-        padding: 0px 15px;
+        padding: 0px;
         border: solid 1px #b1b1b1;
         border-top: none;
         position: absolute;
-        width: 46.5% !important;
-        right: 16px;
+        width: 99.5% !important;
         background-color: #fff;
         z-index: 99;
     }
     
     html[dir="rtl"] .sortByOption{
-        padding: 0px 15px;
+        padding: 0px;
         border: solid 1px #b1b1b1;
         border-top: none;
         position: absolute;
-        left: 15px;
         right: auto;
-        width: 44% !important;
+        width: 99% !important;
         background-color: #fff;
         z-index: 99;
     }

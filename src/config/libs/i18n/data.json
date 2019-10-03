@@ -875,7 +875,8 @@
     "PageTitle.lego-construction-toys.description":"Shop our full range of lego & construction toys",
     "PageTitle.outdoor-toys.keyword":"Outdoor, bouncy castles, pool, ball pits, garden, sand, water, swings, trampoline, play house",
     "PageTitle.outdoor-toys.description":"Shop our full range of outdoor toys",
-    "InvalidLoginOrPassoword":"Invalid login  or passoword"
+    "InvalidLoginOrPassoword":"Invalid login  or passoword",
+    "Product.Refine":"Refine"
     },
     "ar": {
       "InvalidLoginOrPassoword":"معلومات الدخول خاطئة او كلمة المرور خاطئة",
@@ -1713,6 +1714,7 @@
         "PageTitle.lego-construction-toys.keyword":"ليغو، ألعاب بناء، مكعبات",
         "PageTitle.lego-construction-toys.description":"تسوّق تشكيلتنا الكاملة من الليغو وألعاب البناء",
         "PageTitle.outdoor-toys.keyword":"ألعاب خارج المنزل، قلعة قفز، بركة، بركة كرات، ألعاب للحديقة، ألعاب بالرمال، ألعاب مائية، أراجيك، ترامبولين، لعبة منزل",
-        "PageTitle.outdoor-toys.description":"تسوّق تشكيلتنا الكاملة من ألعاب خارج المنزل"
+        "PageTitle.outdoor-toys.description":"تسوّق تشكيلتنا الكاملة من ألعاب خارج المنزل",
+        "Product.Refine":"Refine"
     }
 }
