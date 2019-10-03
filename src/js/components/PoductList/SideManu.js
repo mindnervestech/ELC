@@ -6,6 +6,7 @@ import * as actions from '../../redux/actions/index';
 import Collapsible from 'react-collapsible';
 import { Link, Redirect, withRouter } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
+import Spinner from '../Spinner/Spinner';
 
 var _ = require('lodash');
 
@@ -37,6 +38,7 @@ class SideManu extends Component {
 			filterOptionCheck: true,
 			narrowResult: [],
 			clearAllOption: false,
+			loader: false,
 		};
 
 	}
@@ -211,6 +213,7 @@ class SideManu extends Component {
 				if(afterFilterShowOptionListCheck){
 					afterFilterShowOptionList = filterOptionArrayForCheckValidate
 				}
+				this.setState.loader = false
 				this.setState({ list: filterList });
 		}
 	}
@@ -228,6 +231,7 @@ class SideManu extends Component {
 	}
 
 	applyFilter = (value, check) => {
+		this.setState({loader: true})
 		onClickFilterOptionToApplyFilter = true
 		let find = true
 		let remove = -1
@@ -253,6 +257,7 @@ class SideManu extends Component {
 			filterOptionArrayForCheckValidate = filterOptionArrayForCheckValidateBackup
 			afterFilterShowOptionList = filterOptionArrayForCheckValidateBackup
 			afterFilterShowOptionListCheck = true
+			this.setState.loader = false
 			this.setState({ list: filterList });
 		} else {
 			this.setState({clearAllOption: true });
@@ -457,6 +462,7 @@ class SideManu extends Component {
 		}
 		return (
 			<div>
+				<Spinner loading={this.state.loader}>
 				<div>
 					<div className="row-2" style={{ paddingTop: 21, borderBottom: 'solid 1px #b1b1b1', textAlign: 'start' }}>
 						<span className="blackTitle"> <FormattedMessage id="NarrowyourResults" defaultMessage="Narrow your Results" /></span>
@@ -485,6 +491,7 @@ class SideManu extends Component {
 						)}
 					</div>
 				</div>
+				</Spinner>
 			</div>
 		);
 	}

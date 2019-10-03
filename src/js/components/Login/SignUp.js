@@ -219,12 +219,13 @@ class SignUp extends Component {
 
   subscribe_to_newsletter() {
     if (this.state.subscribe_to_newsletter == 0) {
-      this.state.subscribe_to_newsletter = 1;
+      //this.state.subscribe_to_newsletter = 1;
+      this.setState({subscribe_to_newsletter: 1})
     }
     else {
-      this.state.subscribe_to_newsletter = 0;
+      //this.state.subscribe_to_newsletter = 0;
+      this.setState({subscribe_to_newsletter: 0})
     }
-    console.log("ee", this.state.subscribe_to_newsletter);
   }
 
   contactNumber = (status, value, countryData, number, id) => {
@@ -565,7 +566,7 @@ class SignUp extends Component {
                               </div>
                               <div className="row pad40L padTop20 backWhite" style={{ textAline: "start" }}>
                                 <label class="checkBox"><FormattedMessage id="Form.RecieveEmail" defaultMessage="I'd like to receive emails from ELC about special offers, new toys and voucher codes."></FormattedMessage>
-                                  <input onClick={this.subscribe_to_newsletter} type="checkbox"  ></input>
+                                  <input checked={this.state.subscribe_to_newsletter == 0 ? "checked" : ""} onClick={this.subscribe_to_newsletter} type="checkbox"  ></input>
                                   <span class="checkmark"></span>
                                 </label>
                               </div>
