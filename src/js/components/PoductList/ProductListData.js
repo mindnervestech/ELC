@@ -472,12 +472,6 @@ class ProductListData extends Component {
 							style={{ paddingBottom: 0 }}>
 							<div className="t-BreadcrumbRegion-body">
 								<div className="t-BreadcrumbRegion-breadcrumb" style={{padding: "0px 25px", lineHeight: '1.45'}}>
-									{/* <ul className="mobile-filter" style={{ borderBottom: 'solid 1px #b1b1b1', borderTop: 'solid 1px #b1b1b1' }}>
-										<li id="cd-cart-trigger" onClick={this._callFilters} style={{ borderRight: 'solid 1px #b1b1b1' }}>
-											<FormattedMessage id="Product.Listing.FilterBy" defaultMessage="Filter by" />
-										</li>
-										<li onClick={() => this.opensortByOnMobile()}> */}
-									{/* <div><FormattedMessage id="Product.Listing.SortBy" defaultMessage="Sort by" /></div> */}
 									<div style={{display: 'inline-block', width: '50%',position: 'relative'}}>
 										<div className={this.state.sortByShowOption ? "sortBySelectedText open" : "sortBySelectedText"} onClick={() => this.showSortByOption()}>
 											<span>{this.state.sortByText !== "" ? this.state.sortByText : <FormattedMessage id="Product.Listing.Relevance" defaultMessage="Relevance"></FormattedMessage>}</span>
@@ -529,54 +523,10 @@ class ProductListData extends Component {
 											<FormattedMessage id="Product.Refine" defaultMessage="Refine" />
 										</button>
 									</div>
-									{/* </li>
-									</ul> */}
 								</div>
 							</div>
 							<div className="t-BreadcrumbRegion-buttons" />
 						</div>
-						<div className="sortDroupDownOnMobile">
-							{/* <div>
-								<div className="sortByOption" style={this.state.sortByShowOption ? { display: 'block' } : { display: 'none' }}>
-									<FormattedMessage id="Product.Listing.Relevance" defaultMessage="Relevance">
-										{(message) =>
-											<div className="sortByOptionText" onClick={() => this.filter("relevance", message)}>
-												<span>{message}</span>
-											</div>
-										}
-									</FormattedMessage>
-									<FormattedMessage id="NameAtoZ" defaultMessage="Name (A-Z)">
-										{(message2) =>
-											<div className="sortByOptionText" onClick={() => this.filter("a-z", message2)}>
-												<span><FormattedMessage id="NameAtoZ" defaultMessage="Name (A-Z)" /></span>
-											</div>
-										}
-									</FormattedMessage>
-									<FormattedMessage id="NameZtoA" defaultMessage="Name (Z-A)">
-										{(message3) =>
-											<div className="sortByOptionText" onClick={() => this.filter("z-a", message3)}>
-												<span><FormattedMessage id="NameZtoA" defaultMessage="Name (Z-A)" /></span>
-											</div>
-										}
-									</FormattedMessage>
-									<FormattedMessage id="PriceLowtoHigh" defaultMessage="Price (lowest first)">
-										{(message4) =>
-											<div className="sortByOptionText" onClick={() => this.filter("price_asc", message4)}>
-												<span><FormattedMessage id="PriceLowtoHigh" defaultMessage="Price (lowest first)" /></span>
-											</div>
-										}
-									</FormattedMessage>
-									<FormattedMessage id="PriceHightoLow" defaultMessage="Price (highest first)">
-										{(message5) =>
-											<div className="sortByOptionText" onClick={() => this.filter("price_desc", message5)}>
-												<span><FormattedMessage id="PriceHightoLow" defaultMessage="Price (highest first)" /></span>
-											</div>
-										}
-									</FormattedMessage>
-								</div>
-							</div> */}
-						</div>
-
 						<div className="row">
 							<div className="col col-12 apex-col-auto">
 								<div className="t-Region h-hidden-desktop  t-Region--noPadding t-Region--scrollBody"
