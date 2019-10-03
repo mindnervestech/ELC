@@ -382,7 +382,7 @@ html[dir="rtl"] .paddingForEnglish {
 }
 
 .banner-image-hight {
-    height: 550px;
+    height: auto;
 }
 
 .slick-dots li.slick-active button:before {
@@ -3636,7 +3636,7 @@ html[dir="rtl"] .threeLineIcon{
     }
 
     .banner-image-hight {
-        height: 420px;
+        height: auto;
     }
 
     html[dir="rtl"] .data .slick-prev {
