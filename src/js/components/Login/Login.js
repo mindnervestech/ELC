@@ -46,8 +46,8 @@ class Login extends Component {
         //alert(login_error.errorMessage)
         this.setState({
           errorMessage: {
-            password: login_error.errorMessage,
-            email: login_error.errorMessage,
+            password: <FormattedMessage id="InvalidLoginOrPassoword" defaultMessage="Invalid login or password"/>,
+            email: <FormattedMessage id="InvalidLoginOrPassoword" defaultMessage="Invalid login or password"/>,
           },
           counter: this.state.counter + 1
         })

@@ -76,9 +76,9 @@ class PageTitle extends Component {
             country = 'KSA'
         }
     
-        let mainTitle = title !== 'NA' ? intl.formatMessage({ id: `PageTitle.${title}`,defaultMessage: 'ELC' }) : intl.formatMessage({ id: `PageTitle.Home` });
+        let mainTitle = title !== 'NA' ? intl.formatMessage({ id: `PageTitle.${title}`,defaultMessage: 'ELC' }) : intl.formatMessage({ id: `PageTitle.Home`,defaultMessage:"elctoys.com | ELC Online store | Official Website | Early Learning Centre" });
     
-        return mainTitle + " | " + intl.formatMessage({ id: `PageTitle.elc.${country}` })
+        return mainTitle + " | " + intl.formatMessage({ id: `PageTitle.elc.${country}`,defaultMessage:"elctoys.com | ELC Online store | Official Website | Early Learning Centre"  })
     }
 
     getKeyword = (keyword) => {
