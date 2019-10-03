@@ -854,6 +854,20 @@ html[dir="rtl"] .intl-tel-input .country-list {
     overflow-y: scroll;
 }
 
+.gift-wrap{
+    margin-left: 0px !important; 
+}
+
+.gift-wrap-label{
+    padding-left: 35px !important;
+    margin-bottom: 0px !important;
+    color:#3b3b3b !important;
+}
+
+html[dir="rtl"] .gift-wrap{
+    margin-right: 0px !important; 
+}
+
 @media only screen and (max-width: 1199px) and (min-width: 768px) {
     .intl-tel-input {
     width: 100% !important;

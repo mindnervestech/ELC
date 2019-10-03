@@ -316,7 +316,7 @@
         "Address1.Text": "Address 1*",
         "Address2.Text": "Address 2",
         "Address3.Text": "Address 3",
-        "Postcode.Text": "Post code*",
+        "Postcode.Text": "Post code",
         "Postcode.Validate": "Please enter Post code",
         "Address.Validate": "Please enter address",
         "CashOnDelivery.Text": "Cash On Delivery",
@@ -876,7 +876,8 @@
     "PageTitle.outdoor-toys.keyword":"Outdoor, bouncy castles, pool, ball pits, garden, sand, water, swings, trampoline, play house",
     "PageTitle.outdoor-toys.description":"Shop our full range of outdoor toys",
     "InvalidLoginOrPassoword":"Invalid login  or passoword",
-    "Product.Refine":"Refine"
+    "Product.Refine":"Refine",
+    "Giftwraprequired": "Gift wrap required"
     },
     "ar": {
       "InvalidLoginOrPassoword":"معلومات الدخول خاطئة او كلمة المرور خاطئة",
@@ -1379,7 +1380,7 @@
         "Address1.Text": "العنوان 1*",
         "Address2.Text": "العنوان 2",
         "Address3.Text": "العنوان 3",
-        "Postcode.Text": "الرمز البريدي*",
+        "Postcode.Text": "الرمز البريدي",
         "Postcode.Validate": "يرجى إدخال رمزك البريدي",
         "Address.Validate": "من فضلك ادخل العنوان  ",
         "saved.add.text": "لا يمكن استخدام هذا العنوان للبلد المحدد",
@@ -1715,6 +1716,7 @@
         "PageTitle.lego-construction-toys.description":"تسوّق تشكيلتنا الكاملة من الليغو وألعاب البناء",
         "PageTitle.outdoor-toys.keyword":"ألعاب خارج المنزل، قلعة قفز، بركة، بركة كرات، ألعاب للحديقة، ألعاب بالرمال، ألعاب مائية، أراجيك، ترامبولين، لعبة منزل",
         "PageTitle.outdoor-toys.description":"تسوّق تشكيلتنا الكاملة من ألعاب خارج المنزل",
-        "Product.Refine":"Refine"
+        "Product.Refine":"Refine",
+        "Giftwraprequired": "Gift wrap required"
     }
 }
