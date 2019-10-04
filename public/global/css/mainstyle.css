@@ -6861,6 +6861,8 @@ html[dir="rtl"] .productDetailPopupImage{
     margin-left: 0px;
 }
 
+#manuCollapsible{}
+
 @media only screen and (min-width:768px) and (max-width:1024px)
 {
     .width-autoSearch
@@ -6940,6 +6942,19 @@ html[dir="rtl"] .t-Button--pillStart{
         padding-left: 15px;
         display: inline-block;
         width: 90%;
+}
+
+#manuCollapsible .Collapsible__trigger{
+    color: #0D943F;
+}
+
+#manuCollapsible .Collapsible__trigger:after{
+    content: '\25BE';
+}
+
+#manuCollapsible .Collapsible__trigger.is-open:after{
+    content: '\25BE' !important;
+    transform: rotate(180deg);
 }
 
 html[dir="rtl"] .likeAInputName {

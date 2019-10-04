@@ -4839,6 +4839,10 @@ html[dir="rtl"] .click-collect3 {
     {
         width:100% !important;
     }
+
+    .header{
+        padding-top: 90px;
+    }
 }
 
 .divNotShowOnIpad{

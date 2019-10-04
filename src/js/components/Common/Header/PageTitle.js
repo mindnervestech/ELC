@@ -20,7 +20,6 @@ class PageTitle extends Component {
     componentDidMount() {
       
         let pathname = this.props.location.pathname.split('/');
-        
         if(pathname[pathname.length -1]=='')
         {
             setTimeout(() => {

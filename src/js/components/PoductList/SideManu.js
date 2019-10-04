@@ -441,8 +441,8 @@ class SideManu extends Component {
 					checkManu = 1
 					
 					return (
-						<div className="bottomBorder" style={{ paddingTop: 10 }}>
-							<Collapsible trigger={value} >
+						<div className="bottomBorder" style={{ paddingTop: 10 }} id="manuCollapsible">
+							<Collapsible trigger={value}>
 								<div style={{ textAlign: 'start' }}>{this.checkSubCategaryValue(this.state.list[value])}</div>
 							</Collapsible>
 						</div>

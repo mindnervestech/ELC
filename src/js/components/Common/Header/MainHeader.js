@@ -288,7 +288,7 @@ class MainHeader extends Component {
                 </Helmet>
 
                 <header className="header" id="t_Header">
-                    <div className="t-Header-branding">
+                    <div className="t-Header-branding divShowOnWeb">
                         <div className="row-1">
                             <div className="containers-main">
                                 <ul className="leftLink" style={{ paddingTop: 7 }}>

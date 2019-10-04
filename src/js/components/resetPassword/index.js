@@ -114,9 +114,6 @@ class ResetPassword extends Component {
 				this.setState({ confirmError : false });
 			}
 
-
-
-
 			if( this.state.fields.newPassword != this.state.fields.confirmPassword){
 				this.setState({ passwordNotMatch: true });
 				validate = false;
