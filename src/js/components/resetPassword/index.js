@@ -86,19 +86,19 @@ class ResetPassword extends Component {
 		let validate = true;
 		var regularExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
 
-		if (this.state.fields.newPassword != undefined && !this.state.fields.newPassword.match(regularExpression)) {
-			this.setState({ newPasswordErrorInvalid: true });
-			validate = false;
-		} else {
-			this.setState({ newPasswordErrorInvalid: false });
-		}
+			if( !this.state.fields.newPassword.match(regularExpression)){
+					this.setState({ newPasswordErrorInvalid : true });
+					validate = false;	
+				}else{
+					this.setState({ newPasswordErrorInvalid : false });
+				}
 
-		if (this.state.fields.confirmPassword != undefined && !this.state.fields.confirmPassword.match(regularExpression)) {
-			this.setState({ confirmErrorInvalid: true });
-			validate = false;
-		} else {
-			this.setState({ confirmErrorInvalid: false });
-		}
+				if(!this.state.fields.confirmPassword.match(regularExpression)){
+					this.setState({ confirmErrorInvalid: true });
+					validate = false;	
+				}else{
+					this.setState({ confirmErrorInvalid : false });
+				}
 
 		if (this.state.fields.newPassword == undefined || this.state.fields.newPassword == '') {
 			this.setState({ newPasswordError: true });
@@ -220,7 +220,7 @@ class ResetPassword extends Component {
 																			<FormattedMessage id="ResetPassword.newpassword.error" defaultMessage="Please enter the your new password" />
 																		</div>
 																	</span>
-																	<br />
+																
 																</span>)}
 																{this.state.newPasswordErrorInvalid && (<span className="a-Form-error u-visible">
 																	<span className="t-Form-error">
