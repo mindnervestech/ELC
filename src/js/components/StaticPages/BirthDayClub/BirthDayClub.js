@@ -18,6 +18,26 @@ let ChildrenGender = ['']
 let ChildrenNewGender=['']
 let sortByShowOption = [false]
 let moreinfoData = ''
+//const [startDate, setStartDate] = useState(new Date());
+const years = [];
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ];
+let d = new Date();
+let currentYear = d.getFullYear();
+let previousyear = currentYear - 15
+
 class BirthDayClub extends Component {
   constructor(props) {
     super(props);
@@ -48,7 +68,6 @@ class BirthDayClub extends Component {
       sucesss_message: '',
       errors: {},
       isPhoneValid: false,
-
     }
   }
 
@@ -210,9 +229,7 @@ class BirthDayClub extends Component {
         dob: ''
       }
     })
-    //this.setState({fields{}  :''})
-   
- 
+
   }
 
  
@@ -289,6 +306,10 @@ class BirthDayClub extends Component {
           </div>
         </div>
       </div></span>;
+    }
+
+    for (let currentyy = currentYear; currentyy >= previousyear; currentyy--) {
+      years.push(currentyy);
     }
 
 
@@ -389,16 +410,75 @@ class BirthDayClub extends Component {
                     
                     /> */}
 
-<FormattedMessage id="addchild.Clicktoaselectdate" defaultMessage="Click to a select date">
-{(message) =>
-<DatePicker
-       selected={ChildrenDate[index] !== "" ? ChildrenDate[index] : ""}
-       onChange={this.handleChangeDOB.bind(this, index)}
-       style={{ width: "100%" }}
-     placeholderText={message}
-      maxDate={new Date()}
+                <FormattedMessage id="addchild.Clicktoaselectdate" defaultMessage="Click to a select date">
+                {(message) =>
+                // <DatePicker
+                //       selected={ChildrenDate[index] !== "" ? ChildrenDate[index] : ""}
+                //       onChange={this.handleChangeDOB.bind(this, index)}
+                //       style={{ width: "100%" }}
+                //     placeholderText={message}
+                //       maxDate={new Date()}
+                //       showDisabledMonthNavigation
+                //       isClearable
+                //     />
+
+                <DatePicker
+      renderCustomHeader={({
+        date,
+        changeYear,
+        changeMonth,
+        decreaseMonth,
+        increaseMonth,
+        prevMonthButtonDisabled,
+        nextMonthButtonDisabled
+      }) => (
+        <div
+          style={{
+            margin: 10,
+            display: "flex",
+            justifyContent: "center"
+          }}
+        >
+          <button onClick={decreaseMonth} disabled={prevMonthButtonDisabled}>
+            {"<"}
+          </button>
+          <select
+            value={date.getFullYear()}
+            onChange={({ target: { value } }) => changeYear(value)}
+          >
+            {years.map(option => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+
+          <select
+            value={months[date.getMonth()]}
+            onChange={({ target: { value } }) =>
+              changeMonth(months.indexOf(value))
+            }
+          >
+            {months.map(option => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+
+          <button onClick={increaseMonth} disabled={nextMonthButtonDisabled}>
+            {">"}
+          </button>
+        </div>
+      )}
+      selected={ChildrenDate[index] !== "" ? ChildrenDate[index] : ""}
+      onChange={this.handleChangeDOB.bind(this, index)}
+      style={{ width: "100%" }}
+      placeholderText={message}
       showDisabledMonthNavigation
-    />}</FormattedMessage>
+      maxDate={new Date()}
+    />
+                    }</FormattedMessage>
                   </div>
                 </Col>
                 {index !== 0 ?
