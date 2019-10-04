@@ -465,67 +465,59 @@ class ProductListData extends Component {
 					<SideManu action={this.handler}></SideManu>
 				</Col>
 				<Col xs="12" lg="9" md="9" style={{ padding: 0 }}>
-					<div className="divShowOnMobile" style={{ width: '100%', position: 'absolute', top: '-0.5%' }}>
-						<div
-							id="R29005156978427060"
-							className="t-BreadcrumbRegion h-hidden-desktop t-BreadcrumbRegion--showBreadcrumb t-BreadcrumbRegion--useBreadcrumbTitle"
-							style={{ paddingBottom: 0 }}>
-							<div className="t-BreadcrumbRegion-body">
-								<div className="t-BreadcrumbRegion-breadcrumb" style={{padding: "0px 25px", lineHeight: '1.45'}}>
-									<div style={{display: 'inline-block', width: '50%',position: 'relative'}}>
-										<div className={this.state.sortByShowOption ? "sortBySelectedText open" : "sortBySelectedText"} onClick={() => this.showSortByOption()}>
-											<span>{this.state.sortByText !== "" ? this.state.sortByText : <FormattedMessage id="Product.Listing.Relevance" defaultMessage="Relevance"></FormattedMessage>}</span>
-											<i className="icon-down sortBySelectedTextIcon" ></i>
-										</div>
-										<div>
-											<div className="sortByOption" style={this.state.sortByShowOption ? { display: 'block' } : { display: 'none' }}>
-												<FormattedMessage id="Product.Listing.Relevance" defaultMessage="Relevance">
-													{(message) =>
-														<div className="sortByOptionText" onClick={() => this.filter("relevance", message)}>
-															<span>{message}</span>
-														</div>
-													}
-												</FormattedMessage>
-												<FormattedMessage id="NameAtoZ" defaultMessage="Name (A-Z)">
-													{(message2) =>
-														<div className="sortByOptionText" onClick={() => this.filter("a-z", message2)}>
-															<span><FormattedMessage id="NameAtoZ" defaultMessage="Name (A-Z)" /></span>
-														</div>
-													}
-												</FormattedMessage>
-												<FormattedMessage id="NameZtoA" defaultMessage="Name (Z-A)">
-													{(message3) =>
-														<div className="sortByOptionText" onClick={() => this.filter("z-a", message3)}>
-															<span><FormattedMessage id="NameZtoA" defaultMessage="Name (Z-A)" /></span>
-														</div>
-													}
-												</FormattedMessage>
-												<FormattedMessage id="PriceLowtoHigh" defaultMessage="Price (lowest first)">
-													{(message4) =>
-														<div className="sortByOptionText" onClick={() => this.filter("price_asc", message4)}>
-															<span><FormattedMessage id="PriceLowtoHigh" defaultMessage="Price (lowest first)" /></span>
-														</div>
-													}
-												</FormattedMessage>
-												<FormattedMessage id="PriceHightoLow" defaultMessage="Price (highest first)">
-													{(message5) =>
-														<div className="sortByOptionText" onClick={() => this.filter("price_desc", message5)}>
-															<span><FormattedMessage id="PriceHightoLow" defaultMessage="Price (highest first)" /></span>
-														</div>
-													}
-												</FormattedMessage>
-											</div>
-										</div>
-									</div>
-									<div style={{display: 'inline-block', width: '50%', textAlign: 'center'}}>
-										<button className="mobileFilterByButton" onClick={this._callFilters}>
-											<i class="fa fa-list-ul threeLineIcon" aria-hidden="true"></i>
-											<FormattedMessage id="Product.Refine" defaultMessage="Refine" />
-										</button>
+					<div className="divShowOnMobile" style={{ width: '100%'}}>
+						<div className="divShowOnMobile" style={{ padding: "0px 25px", lineHeight: '1.45' }}>
+							<div style={{ display: 'inline-block', width: '50%', position: 'relative' }}>
+								<div className={this.state.sortByShowOption ? "sortBySelectedText open" : "sortBySelectedText"} onClick={() => this.showSortByOption()}>
+									<span>{this.state.sortByText !== "" ? this.state.sortByText : <FormattedMessage id="Product.Listing.Relevance" defaultMessage="Relevance"></FormattedMessage>}</span>
+									<i className="icon-down sortBySelectedTextIcon" ></i>
+								</div>
+								<div>
+									<div className="sortByOption" style={this.state.sortByShowOption ? { display: 'block' } : { display: 'none' }}>
+										<FormattedMessage id="Product.Listing.Relevance" defaultMessage="Relevance">
+											{(message) =>
+												<div className="sortByOptionText" onClick={() => this.filter("relevance", message)}>
+													<span>{message}</span>
+												</div>
+											}
+										</FormattedMessage>
+										<FormattedMessage id="NameAtoZ" defaultMessage="Name (A-Z)">
+											{(message2) =>
+												<div className="sortByOptionText" onClick={() => this.filter("a-z", message2)}>
+													<span><FormattedMessage id="NameAtoZ" defaultMessage="Name (A-Z)" /></span>
+												</div>
+											}
+										</FormattedMessage>
+										<FormattedMessage id="NameZtoA" defaultMessage="Name (Z-A)">
+											{(message3) =>
+												<div className="sortByOptionText" onClick={() => this.filter("z-a", message3)}>
+													<span><FormattedMessage id="NameZtoA" defaultMessage="Name (Z-A)" /></span>
+												</div>
+											}
+										</FormattedMessage>
+										<FormattedMessage id="PriceLowtoHigh" defaultMessage="Price (lowest first)">
+											{(message4) =>
+												<div className="sortByOptionText" onClick={() => this.filter("price_asc", message4)}>
+													<span><FormattedMessage id="PriceLowtoHigh" defaultMessage="Price (lowest first)" /></span>
+												</div>
+											}
+										</FormattedMessage>
+										<FormattedMessage id="PriceHightoLow" defaultMessage="Price (highest first)">
+											{(message5) =>
+												<div className="sortByOptionText" onClick={() => this.filter("price_desc", message5)}>
+													<span><FormattedMessage id="PriceHightoLow" defaultMessage="Price (highest first)" /></span>
+												</div>
+											}
+										</FormattedMessage>
 									</div>
 								</div>
 							</div>
-							<div className="t-BreadcrumbRegion-buttons" />
+							<div style={{ display: 'inline-block', width: '50%', textAlign: 'center' }}>
+								<button className="mobileFilterByButton" onClick={this._callFilters}>
+									<i class="fa fa-list-ul threeLineIcon" aria-hidden="true"></i>
+									<FormattedMessage id="Product.Refine" defaultMessage="Refine" />
+								</button>
+							</div>
 						</div>
 						<div className="row">
 							<div className="col col-12 apex-col-auto">
