@@ -138,11 +138,12 @@ class Product extends Component {
 
 	getCatagoryName = (value) => {
 		let replesUrl = value
-		replesUrl = replesUrl.replace(/uae-ar|uae-en|saudi-en|saudi-ar/gi,"")
-		let url = replesUrl.split('/');
-		for(let data in url){
-			if(url[data] == ""){
-				url.splice(data, 1);
+		let url = []
+		replesUrl = replesUrl.replace(/uae-ar|uae-en|saudi-en|saudi-ar|%20/gi,"")
+		let index = replesUrl.split('/');
+		for(let data in index){
+			if(index[data] !== "" && index[data] !== " "){
+				url.push(index[data])
 			}
 		}
 		let bradCome = ""

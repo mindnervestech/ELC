@@ -241,7 +241,11 @@ class SavedAddressList extends Component {
                                                         <div className="col col-12 apex-col-auto">
                                                             <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel is-required apex-item-wrapper apex-item-wrapper--select-list js-show-label" id="P7_R_CITY_CONTAINER"><div className="t-Form-labelContainer">
                                                                 <label htmlFor="P7_R_CITY" id="P7_R_CITY_LABEL" className="t-Form-label"><FormattedMessage id="Checkout.City" defaultMessage="City" /> <span className="u-VisuallyHidden">(Value Required)</span></label>
-                                                            </div><div className="t-Form-inputContainer"><div className="t-Form-itemWrapper"><select id="P7_R_CITY" name="P7_R_CITY" className="selectlist apex-item-select" size={1}><option value>--Select City--</option>
+                                                            </div><div className="t-Form-inputContainer"><div className="t-Form-itemWrapper"><select id="P7_R_CITY" name="P7_R_CITY" className="selectlist apex-item-select" size={1}>
+                                                            <FormattedMessage id="SelectCity.Text" defaultMessage="Select City">
+                                                            {(message) =>
+                                                                <option value={'NA'} selected="selected">{message}</option>
+                                                            }</FormattedMessage>
                                                             </select></div><span id="P7_R_CITY_error_placeholder" className="a-Form-error" data-template-id="33610259035469734_ET" /></div></div>
                                                         </div>
                                                     </div><div className="row">

@@ -304,7 +304,10 @@ class Address extends Component {
         const errorsObj = this.state.errors;
 
         let locationWithErrorSpan = <div className="t-Form-inputContainer"><div className="t-Form-itemWrapper"><select id="P7_R_COUNTRY" name="P7_R_COUNTRY" className="selectlist apex-item-select" size={1} onChange={this.handleChange.bind(this, "location")} value={this.state.AddressFields["location"]} >
-            <option value={'NA'} selected="selected">--Select Country--</option>
+            <FormattedMessage id="SelectCountry.Text" defaultMessage="Select Country">
+                {(message) =>
+                    <option value={'NA'} selected="selected">{message}</option>
+                }</FormattedMessage>
             {country_select_list}
         </select></div><span id="P7_R_COUNTRY_error_placeholder" className="a-Form-error u-hidden" data-template-id="126609057202360425_ET" /></div>
             ;
@@ -312,7 +315,10 @@ class Address extends Component {
         let citsWithErrorSpan = <div className="t-Form-inputContainer">
             <div className="t-Form-itemWrapper">
                 <select id="P7_R_CITY" name="P7_R_CITY" className="selectlist apex-item-select" size={1} onChange={this.handleChange.bind(this, "city")} value={this.state.AddressFields["city"]}>
-                    <option value={'NA'} selected="selected">--Select City--</option>
+                <FormattedMessage id="SelectCity.Text" defaultMessage="Select City">
+                {(message) =>
+                    <option value={'NA'} selected="selected">{message}</option>
+                }</FormattedMessage>
                     {city_select_list}
                 </select></div>
             <span id="P7_R_CITY_error_placeholder" className="a-Form-error" data-template-id="33610259035469734_ET" />
@@ -328,7 +334,10 @@ class Address extends Component {
         if ('location' in errorsObj) {
 
             locationWithErrorSpan = <div className="t-Form-inputContainer"><div className="t-Form-itemWrapper"><select id="P7_R_COUNTRY" name="P7_R_COUNTRY" className="selectlist apex-item-select apex-page-item-error" onChange={this.handleChange.bind(this, "location")} value={this.state.AddressFields["location"]} aria-describedby="P25_R_COUNTRY_error" aria-invalid="true">
-                <option value={'NA'} selected="selected">--Select Country--</option>
+                <FormattedMessage id="SelectCountry.Text" defaultMessage="Select Country">
+                {(message) =>
+                    <option value={'NA'} selected="selected">{message}</option>
+                }</FormattedMessage>
                 {country_select_list}
             </select></div><span id="P7_R_COUNTRY_error_placeholder" className="a-Form-error u-visible" data-template-id="33610259035469734_ET"><span className="t-Form-error"><div id="P7_R_COUNTRY_error"><FormattedMessage id="SelectCountry.Validate" defaultMessage="Select Country" /></div></span></span></div>;
         }
@@ -336,7 +345,10 @@ class Address extends Component {
         if ('city' in errorsObj) {
 
             citsWithErrorSpan = <div className="t-Form-inputContainer"><div className="t-Form-itemWrapper"><select id="P7_R_CITY" name="P7_R_CITY" className="selectlist apex-item-select apex-page-item-error" size={1} onChange={this.handleChange.bind(this, "city")} value={this.state.AddressFields["city"]} aria-describedby="P7_R_CITY_error" aria-invalid="true">
-                <option value={'NA'} selected="selected">--Select City--</option>
+                <FormattedMessage id="SelectCity.Text" defaultMessage="Select City">
+                {(message) =>
+                    <option value={'NA'} selected="selected">{message}</option>
+                }</FormattedMessage>
                 {city_select_list}
             </select></div><span id="P7_R_CITY_error_placeholder" className="a-Form-error u-visible" data-template-id="33610259035469734_ET"><span className="t-Form-error">
                 <div id="P7_R_CITY_error">{this.state.errors.city}</div></span></span></div>;
