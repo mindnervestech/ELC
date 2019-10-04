@@ -10,7 +10,6 @@ class ResetPassword extends Component {
 
 	constructor(props) {
 		super(props);
-
 		this.state = {
 			fields: {
 				newPassword: '',
@@ -36,20 +35,19 @@ class ResetPassword extends Component {
 					resetpasswordToken: false
 				});
 			}
-
 			if (values.status == 'false') {
 				this.props.resetFlag({
 					resetpasswordSucess: false,
 					resetpasswordToken: true
 				});
 			}
-
 		} else {
 			this.props.history.push(`/${this.props.globals.store_locale}`);
 		}
 	}
 
 	componentDidUpdate(prevProps) {
+		console.log(this.props.resetpasswordSucess)
 		if (prevProps.newLink != this.props.newLink) {
 			if (this.props.newLink) {
 				this.props.history.push(`/${this.props.globals.store_locale}/password-rest?status=${this.props.resetpasswordSucess ? true : false}`);
@@ -73,41 +71,38 @@ class ResetPassword extends Component {
 		this.setState({ showAlert: false });
 	}
 
-
 	handleChange = (field, e) => {
-
 		let fields = this.state.fields;
 		fields[field] = e.target.value;
 		this.setState({ fields });
-
 	}
 
 	applyBtn = () => {
 		let validate = true;
 		var regularExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
-
-			if( !this.state.fields.newPassword.match(regularExpression)){
-					this.setState({ newPasswordErrorInvalid : true });
-					validate = false;	
-				}else{
-					this.setState({ newPasswordErrorInvalid : false });
-				}
-
-				if(!this.state.fields.confirmPassword.match(regularExpression)){
-					this.setState({ confirmErrorInvalid: true });
-					validate = false;	
-				}else{
-					this.setState({ confirmErrorInvalid : false });
-				}
-
-		if (this.state.fields.newPassword == undefined || this.state.fields.newPassword == '') {
+		if(this.state.fields.newPassword !== "" && this.state.fields.confirmPassword !== ""){
+			if (!this.state.fields.newPassword.match(regularExpression)) {
+				this.setState({ newPasswordErrorInvalid: true });
+				validate = false;
+			} else {
+				this.setState({ newPasswordErrorInvalid: false });
+			}
+	
+			if (!this.state.fields.confirmPassword.match(regularExpression)) {
+				this.setState({ confirmErrorInvalid: true });
+				validate = false;
+			} else {
+				this.setState({ confirmErrorInvalid: false });
+			}
+		}
+		if (this.state.fields.newPassword === undefined || this.state.fields.newPassword === '') {
 			this.setState({ newPasswordError: true });
 			validate = false;
 		} else {
 			this.setState({ newPasswordError: false });
 		}
 
-		if (this.state.fields.confirmPassword == undefined || this.state.fields.confirmPassword == '') {
+		if (this.state.fields.confirmPassword === undefined || this.state.fields.confirmPassword === '') {
 			this.setState({ confirmError: true });
 			validate = false;
 		} else {
@@ -133,7 +128,6 @@ class ResetPassword extends Component {
 			resetPasswordToken: values.token,
 			store_id: this.props.globals.currentStore
 		})
-
 	}
 
 	render() {
@@ -157,17 +151,43 @@ class ResetPassword extends Component {
 				</div>
 			</div></span>;
 		}
-
+		console.log(this.props.resetpasswordSucess)
 		if (this.props.resetpasswordSucess == false) {
 			status = true;
 		} else {
 			status = false;
 		}
+		console.log(status)
 
 		return (
 			<div className="t-Body-contentInner">
 				{respo_message}
 				<div className="container">
+					{status && (<div className="row">
+						<div className="col col-12 apex-col-auto">
+							<div className="t-Region centered-content  t-Region--removeHeader t-Region--noBorder t-Region--scrollBody margin-bottom-lg margin-top-lg">
+								<div className="t-Region-bodyWrap">
+									<div className="t-Region-buttons t-Region-buttons--top">
+										<div className="t-Region-buttons-left"></div>
+										<div className="t-Region-buttons-right"></div>
+									</div>
+									<div className="t-Region-body">
+										<center>
+											<h1 style={{ font: "30px/1 Arial,sans-serif", color: "#000000", fontFamily: "elc_bold" }}>
+												<FormattedMessage id="ResetPassword.success.Text" defaultMessage="Reset your password" />
+											</h1>
+											<h3 style={{ margin: "0 0 1.2rem", fontWeight: 500, lineHeight: 1.5 }}>
+												<FormattedMessage id="ResetPassword.PasswordChanged.Text" defaultMessage="Password changed" />
+											</h3>
+											<p>
+												<FormattedMessage id="ResetPassword.Success.Text1" defaultMessage="Success! You have created a new password for your account." />
+											</p>
+										</center>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>)}
 					{!this.props.resetpasswordLoader && (<>
 						{!this.props.resetpasswordSucess && !this.props.resetpasswordToken && (<div className="row">
 							<div className="col col-12 apex-col-auto">
@@ -220,7 +240,7 @@ class ResetPassword extends Component {
 																			<FormattedMessage id="ResetPassword.newpassword.error" defaultMessage="Please enter the your new password" />
 																		</div>
 																	</span>
-																
+																	<br />
 																</span>)}
 																{this.state.newPasswordErrorInvalid && (<span className="a-Form-error u-visible">
 																	<span className="t-Form-error">
@@ -228,7 +248,7 @@ class ResetPassword extends Component {
 																			<FormattedMessage id="ResetPassword.newpasswordinvalid.error" defaultMessage="Password Should Contain Lower Case, Upper Case, Digits, Special Characters" />
 																		</div>
 																	</span>
-																	<br/>
+																	<br />
 																</span>)}
 															</div>
 														</div>
@@ -329,31 +349,7 @@ class ResetPassword extends Component {
 								</div>
 							</div>
 						</div>)}
-						{this.props.resetpasswordSucess && status && (<div className="row">
-							<div className="col col-12 apex-col-auto">
-								<div className="t-Region centered-content  t-Region--removeHeader t-Region--noBorder t-Region--scrollBody margin-bottom-lg margin-top-lg">
-									<div className="t-Region-bodyWrap">
-										<div className="t-Region-buttons t-Region-buttons--top">
-											<div className="t-Region-buttons-left"></div>
-											<div className="t-Region-buttons-right"></div>
-										</div>
-										<div className="t-Region-body">
-											<center>
-												<h1 style={{ font: "30px/1 Arial,sans-serif", color: "#000000", fontFamily: "elc_bold" }}>
-													<FormattedMessage id="ResetPassword.success.Text" defaultMessage="Reset your password" />
-												</h1>
-												<h3 style={{ margin: "0 0 1.2rem", fontWeight: 500, lineHeight: 1.5 }}>
-													<FormattedMessage id="ResetPassword.PasswordChanged.Text" defaultMessage="Password changed" />
-												</h3>
-												<p>
-													<FormattedMessage id="ResetPassword.Success.Text1" defaultMessage="Success! You have created a new password for your account." />
-												</p>
-											</center>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>)}
+
 						{!this.props.resetpasswordSucess && (<div className="row">
 							<div className="col col-12 apex-col-auto">
 								<div className="t-Region centered-content  t-Region--removeHeader t-Region--noBorder t-Region--scrollBody margin-bottom-lg margin-top-lg">
@@ -385,7 +381,6 @@ class ResetPassword extends Component {
 			</div>
 		);
 	}
-
 }
 
 const mapStateToProps = state => {
