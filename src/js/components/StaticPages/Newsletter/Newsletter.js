@@ -62,7 +62,7 @@ class Newsletter extends Component {
 			
 						  <div style={{margin:10}} className="padding-right-ar">
             <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
-              <span className="titleHover" style={{fontSize:12}}><FormattedMessage id="Checkout.Home" defaultMessage/></span><span>&nbsp;\&nbsp;&nbsp;</span>
+              <span className="titleHover" style={{fontSize:12}}><FormattedMessage id="Checkout.Home" defaultMessage="Home"/></span><span>&nbsp;\&nbsp;&nbsp;</span>
             </Link>
             <span  style={{fontSize:12}}>{this.state.data.title}</span>
           </div>

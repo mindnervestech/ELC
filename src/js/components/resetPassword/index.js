@@ -4,7 +4,7 @@ import queryString from 'query-string';
 import { connect } from 'react-redux';
 import * as actions from '../../redux/actions/index';
 import Spinner from '../Spinner/Spinner2';
-
+let status=false;
 class ResetPassword extends Component {
 
     constructor(props) {
@@ -17,6 +17,8 @@ class ResetPassword extends Component {
 					},
 					newPasswordError: false,
 					confirmError: false,
+					newPasswordErrorInvalid: false,
+					confirmErrorInvalid: false,
 					passwordNotMatch: false,
 					showAlert: false,
 					res_message: '',
@@ -82,6 +84,22 @@ class ResetPassword extends Component {
 
 		applyBtn = () => {
 			let validate = true;
+			var regularExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+
+			if(this.state.fields.newPassword!=undefined && !this.state.fields.newPassword.match(regularExpression)){
+					this.setState({ newPasswordErrorInvalid : true });
+					validate = false;	
+				}else{
+					this.setState({ newPasswordErrorInvalid : false });
+				}
+
+				if(this.state.fields.confirmPassword!=undefined && !this.state.fields.confirmPassword.match(regularExpression)){
+					this.setState({ confirmErrorInvalid: true });
+					validate = false;	
+				}else{
+					this.setState({ confirmErrorInvalid : false });
+				}
+
 			if(this.state.fields.newPassword == undefined ||this.state.fields.newPassword == '') {
 				this.setState({ newPasswordError : true });
 				validate = false;
@@ -95,6 +113,9 @@ class ResetPassword extends Component {
 			} else {
 				this.setState({ confirmError : false });
 			}
+
+
+
 
 			if( this.state.fields.newPassword != this.state.fields.confirmPassword){
 				this.setState({ passwordNotMatch: true });
@@ -138,7 +159,13 @@ class ResetPassword extends Component {
                     </div>
                 </div>
             </div></span>;
-        }
+		}
+		
+		if(this.props.resetpasswordSucess==false){
+			status=true;
+		}else{
+			status=false;
+		}
 
 			
         return (
@@ -173,10 +200,10 @@ class ResetPassword extends Component {
                                     <div className="t-Region-body">
                                         <div className="container" style={{overflow:'hidden'}}>
                                             <div className="row">
-                                                <div className="col col-4">
+                                                <div className="col col-4 col-xs-2 col-sm-2">
                                                     <span className="apex-grid-nbsp">&nbsp;</span>
                                                 </div>
-                                                <div className="col col-4">
+                                                <div className="col col-4 ">
                                                     <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel is-required apex-item-wrapper apex-item-wrapper--password apex-item-wrapper--has-icon js-show-label" id="P1002_NEW_PASSWORD_CONTAINER">
                                                         <div className="t-Form-labelContainer">
                                                             <label className="t-Form-label" for="P1002_NEW_PASSWORD" id="P1002_NEW_PASSWORD_LABEL">
@@ -200,6 +227,19 @@ class ResetPassword extends Component {
 																																		<FormattedMessage id="ResetPassword.newpassword.error" defaultMessage="Please enter the your new password" />
 																																	</div>
 																																</span>
+																																<br/>
+																																
+
+																														</span>)}
+																														{this.state.newPasswordErrorInvalid && (<span className="a-Form-error u-visible">
+																																<span className="t-Form-error">
+																																	<div>
+																																		<FormattedMessage id="ResetPassword.newpasswordinvalid.error" defaultMessage="Password Should Contain Lower Case, Upper Case, Digits, Special Characters" />
+																																	</div>
+																																</span>
+																																<br/>
+																																
+
 																														</span>)}
                                                         </div>
                                                     </div>
@@ -234,6 +274,17 @@ class ResetPassword extends Component {
 																																	</div>
 																																</span>
 																														</span>)}
+																														{this.state.confirmErrorInvalid && (<span className="a-Form-error u-visible">
+																																<span className="t-Form-error">
+																																	<div>
+																																		<FormattedMessage id="ResetPassword.newpasswordinvalid.error" defaultMessage="Password Should Contain Lower Case, Upper Case, Digits, Special Characters" />
+																																	</div>
+																																</span>
+																																<br/>
+																																
+
+																														</span>)}
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -294,7 +345,7 @@ class ResetPassword extends Component {
                         </div>
                     </div>)}
 
-										{this.props.resetpasswordSucess && (<div className="row">
+										{this.props.resetpasswordSucess &&  status && (<div className="row">
 												<div className="col col-12 apex-col-auto">
 												  <div className="t-Region centered-content  t-Region--removeHeader t-Region--noBorder t-Region--scrollBody margin-bottom-lg margin-top-lg">
 													  <div className="t-Region-bodyWrap">
