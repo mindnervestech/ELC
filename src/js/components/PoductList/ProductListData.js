@@ -445,6 +445,10 @@ class ProductListData extends Component {
 		}
 	}
 
+	filterOptionPopup = () => {
+		this.setState({ showFilterOnMobile: false })
+	}
+
 	render() {
 		let list = this.state.list1
 		const store_locale = this.props.globals.store_locale
@@ -466,7 +470,7 @@ class ProductListData extends Component {
 					<SideManu action={this.handler}></SideManu>
 				</Col>
 				<Col xs="12" lg="9" md="9" style={{ padding: 0 }}>
-					<div className="divShowOnMobile" style={{ width: '100%'}}>
+					<div className="divShowOnMobile" style={{ width: '100%' }}>
 						<div className="divShowOnMobile" style={{ padding: "0px 25px", lineHeight: '1.45' }}>
 							<div style={{ display: 'inline-block', width: '50%', position: 'relative' }}>
 								<div className={this.state.sortByShowOption ? "sortBySelectedText open" : "sortBySelectedText"} onClick={() => this.showSortByOption()}>
@@ -521,7 +525,7 @@ class ProductListData extends Component {
 							</div>
 						</div>
 						<div className="row">
-							<div className="col col-12 apex-col-auto">
+							{/* <div className="col col-12 apex-col-auto">
 								<div className="t-Region h-hidden-desktop  t-Region--noPadding t-Region--scrollBody"
 									id="cd-cart" style={this.state.showFilterOnMobile ? { right: 0 } : { right: '-100%' }}>
 									<div className="t-Region-header">
@@ -531,6 +535,7 @@ class ProductListData extends Component {
 											</span>
 											<h5 className="t-Region-title" id="cd-cart_heading">
 												<FormattedMessage id="Product.Listing.Filter" defaultMessage="Filters" />
+												
 											</h5>
 										</div>
 										<div className="t-Region-headerItems t-Region-headerItems--buttons">
@@ -559,7 +564,19 @@ class ProductListData extends Component {
 										</div>
 									</div>
 								</div>
-							</div>
+							</div> */}
+							<Modal modalId="mobileFilterManu" open={this.state.showFilterOnMobile} onClose={this.filterOptionPopup}>
+								<div>
+									<div>
+										<h5 className="mobileFilterManuPopupHeading">
+											<FormattedMessage id="Product.Listing.FilterPopupTitle" defaultMessage="Select Refinements" />
+										</h5>
+									</div>
+									<div style={{height: 380, overflow: 'scroll', marginTop: 20}}>
+										<SideManu action={this.handler}></SideManu>
+									</div>
+								</div>
+							</Modal>
 						</div>
 					</div>
 					<div className="homePage">

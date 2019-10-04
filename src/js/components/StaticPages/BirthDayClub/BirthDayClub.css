@@ -235,6 +235,17 @@ html[dir="rtl"] .genderPadding{
     border-radius: 4px;
 }
 
+html[dir="rtl"] .sortBySelectedTextIcon2{
+    position: absolute;
+    right: auto;
+    top: 0px;
+    background-color: #b3b3b3;
+    height: 40px;
+    width: 40px;
+    border-radius: 4px;
+    left: 0px;
+}
+
 @media (max-width:767px){
     .crossIcon {
         position: absolute !important;
@@ -262,7 +273,7 @@ html[dir="rtl"] .genderPadding{
     }
 
     html[dir="rtl"] .genderPadding{
-        padding: 9px 17% 5px 15px;
+        padding: 9px 4% 5px 14%;
     }
 
     .addChildrenButton{

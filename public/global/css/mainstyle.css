@@ -556,7 +556,7 @@ html[dir="rtl"] .cardPage .submit-button {
 
 .bottomBorder {
     border-bottom: solid 1px #b1b1b1;
-    margin-top: 2px;
+    margin-top: 3px;
 }
 
 .Collapsible__trigger {
@@ -6438,6 +6438,7 @@ html[dir="rtl"] .header .navTrigger {
     padding: 9px 15px 5px;
     border-radius: 4px;
     height: 45px;
+    text-align: start;
 }
 
 .sortBySelectedTextIcon{
@@ -6448,6 +6449,17 @@ html[dir="rtl"] .header .navTrigger {
     height: 45px;
     width: 40px;
     border-radius: 4px;
+}
+
+html[dir="rtl"] .sortBySelectedTextIcon{
+    position: absolute;
+    right: auto;
+    top: 0px;
+    background-color: #b3b3b3;
+    height: 45px;
+    width: 40px;
+    border-radius: 4px;
+    left: 0px;
 }
 
 .sortBySelectedText .searchLogo{
@@ -6468,6 +6480,7 @@ html[dir="rtl"] .header .navTrigger {
     background-color: #fff;
     z-index: 99;
     border-radius: 0px 0px 4px 4px;
+    text-align: start;
 }
 
 .sortByOptionText{
@@ -6523,6 +6536,69 @@ html[dir="rtl"] .commingSoonText{
     font-family: "VAG Rounded ELC Bold";
     padding: 8px;
     font-size: 17px;
+}
+
+.react-datepicker__day-name, .react-datepicker__day, .react-datepicker__time-name{
+    color: #000;
+    display: inline-block;
+    width: 1.7rem;
+    line-height: 1.7rem;
+    text-align: center;
+    margin: 0.166rem;
+    font-weight: bold;
+}
+.react-datepicker__header{
+
+}
+
+.react-datepicker__header button:not(:disabled), [type="button"]:not(:disabled), [type="reset"]:not(:disabled), [type="submit"]:not(:disabled){
+    color: #fff;
+    background-color: green;
+    border: solid 1px green;
+    font-weight: bold;
+    font-size: 13px;
+    text-align: center;
+    height: 26px;
+    border-radius: 2px;
+}
+
+.react-datepicker__header .apex_disabled, button[disabled]{
+    cursor: default;
+    pointer-events: none;
+    color: #fff;
+    background-color: green;
+    border: solid 1px green;
+    font-weight: bold;
+    font-size: 13px;
+    text-align: center;
+    height: 26px;
+    border-radius: 2px;
+}
+
+.react-datepicker__header .react-datepicker__day-name, .react-datepicker__day, .react-datepicker__time-name{
+    font-size: 12px !important;
+    margin: 0.3rem !important;
+}
+
+.react-datepicker__day--disabled, .react-datepicker__month-text--disabled{
+    color: gray !important;
+}
+
+.react-datepicker__header select{
+    width: 38%;
+    color: gray;
+    font-weight: bold;
+    font-size: 10px;
+    margin: 0px 2px;
+    background-color: #fff;
+}
+
+.react-datepicker{
+    width: 205px;
+}
+
+.react-datepicker__month-container{
+    width: 100%;
 }
 
 @media (max-width:767px){
@@ -6862,6 +6938,18 @@ html[dir="rtl"] .productDetailPopupImage{
 }
 
 #manuCollapsible{}
+
+#mobileFilterManu{
+    width: 100% !important;
+    height: 450px !important;
+    padding: 10px 15px !important;
+}
+
+.mobileFilterManuPopupHeading{
+    font-size: 24px;
+    line-height: 24px;
+    text-align: start;
+}
 
 @media only screen and (min-width:768px) and (max-width:1024px)
 {

@@ -332,7 +332,7 @@ class ShoppingBagItem extends Component {
                                             {item.special_price ?
                                                 <div>
                                                     <span>{item.currency}&nbsp;{item.special_price}</span>
-                                                    <span style={{ "text-decoration-line": "line-through", color: '#b3b3b3' }}>{item.currency}&nbsp;{item.price}</span>
+                                                    <div style={{ "text-decoration-line": "line-through", color: '#b3b3b3' }}>{item.currency}&nbsp;{item.price}</div>
                                                 </div>
                                                 :
                                                 <span>{item.currency}&nbsp;{item.price}</span>
