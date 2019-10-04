@@ -6551,7 +6551,7 @@ html[dir="rtl"] .commingSoonText{
 
 }
 
-.react-datepicker__header button:not(:disabled), [type="button"]:not(:disabled), [type="reset"]:not(:disabled), [type="submit"]:not(:disabled){
+/* #badyClubDate .react-datepicker__header button:not(:disabled), [type="button"]:not(:disabled), [type="reset"]:not(:disabled), [type="submit"]:not(:disabled){
     color: #fff;
     background-color: green;
     border: solid 1px green;
@@ -6562,7 +6562,7 @@ html[dir="rtl"] .commingSoonText{
     border-radius: 2px;
 }
 
-.react-datepicker__header .apex_disabled, button[disabled]{
+#badyClubDate .react-datepicker__header .apex_disabled, button[disabled]{
     cursor: default;
     pointer-events: none;
     color: #fff;
@@ -6573,14 +6573,14 @@ html[dir="rtl"] .commingSoonText{
     text-align: center;
     height: 26px;
     border-radius: 2px;
-}
+} */
 
 .react-datepicker__header .react-datepicker__day-name, .react-datepicker__day, .react-datepicker__time-name{
     font-size: 12px !important;
     margin: 0.3rem !important;
 }
 
-.react-datepicker__day--disabled, .react-datepicker__month-text--disabled{
+.react-datepicker__header .react-datepicker__day--disabled, .react-datepicker__month-text--disabled{
     color: gray !important;
 }
 
@@ -6593,11 +6593,11 @@ html[dir="rtl"] .commingSoonText{
     background-color: #fff;
 }
 
-.react-datepicker{
+.react-datepicker__header .react-datepicker{
     width: 205px;
 }
 
-.react-datepicker__month-container{
+.react-datepicker__header.react-datepicker__month-container{
     width: 100%;
 }
 
@@ -6605,6 +6605,17 @@ html[dir="rtl"] .commingSoonText{
     .pagenation li{
         margin: 0px !important;
         width: 13% !important;
+    }
+
+    .close-icon-sort{
+        margin-top: -6px !important;
+        color: #ee0e19 !important;
+        cursor: pointer;
+    }
+
+    .sort-storage-qty-msg{
+        padding: 15px 15px 15px 15px !important;
+        padding-right: 15px !important;
     }
 
     .pagenation .number{
