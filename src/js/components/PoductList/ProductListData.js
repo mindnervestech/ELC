@@ -92,15 +92,16 @@ class ProductListData extends Component {
 	}
 
 	componentDidUpdate(prevProps) {
-		if (prevProps.addToCardLoader !== this.props.addToCardLoader) {
-			if (!this.state.cartModelFlag || !cartModelFlag) {
+				if (prevProps.addToCardLoader !== this.props.addToCardLoader && this.props.item_added.item_added && this.props.item_added.add_cart_open_popUp && (!this.state.cartModelFlag || !cartModelFlag)) {
+			if (!this.props.item_added.add_cart_error) {
+                this.onCloseAddCartModal();
 				this.setState({
 					addToCartModal: true,
 					cartModelFlag: true
 				})
 				addToCartModal = true;
 				cartModelFlag = true;
-			}
+			} 
 		}
 	}
 
@@ -811,6 +812,7 @@ const mapStateToProps = state => {
 		cart_details: state.myCart,
 		addToCardLoader: state.productDetails.addToCardLoader,
 		guest_user: state.guest_user,
+		item_added: state.item_added,
 	};
 }
 

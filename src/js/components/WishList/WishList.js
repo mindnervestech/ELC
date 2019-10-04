@@ -83,16 +83,18 @@ class WishList extends Component {
                 }, 5000);
             }
         }
-        if (prevProps.addToCardLoader !== this.props.addToCardLoader) {
-            if (!this.state.cartModelFlag) {
-                this.setState({
-                    addToCartModal: true,
-                    cartModelFlag: true
-                })
-            }
-            addToCartModal = true;
-            cartModelFlag = true;
-        }
+
+        if (prevProps.addToCardLoader !== this.props.addToCardLoader && this.props.item_added.item_added && this.props.item_added.add_cart_open_popUp && (!this.state.cartModelFlag || !cartModelFlag)) {
+			if (!this.props.item_added.add_cart_error) {
+                this.onCloseAddCartModal();
+				this.setState({
+					addToCartModal: true,
+					cartModelFlag: true
+				})
+				addToCartModal = true;
+				cartModelFlag = true;
+			} 
+		}
     }
 
     wishlistToggle = (index, wishlist_id) => {
@@ -450,6 +452,7 @@ const mapStateToProps = state => {
         cart_details: state.myCart,
         guest_user: state.guest_user,
         addToCardLoader: state.productDetails.addToCardLoader,
+        item_added: state.item_added,
     }
 }
 

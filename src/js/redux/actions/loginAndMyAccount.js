@@ -5,7 +5,6 @@ import cookie from 'react-cookies';
 import { getMyCart } from './getMyCart';
 
 const callActionLoginUser = (payload) => {
-    // console.log(payload);
     return {
         type: actionType.LOGIN,
         payload: payload
@@ -13,7 +12,6 @@ const callActionLoginUser = (payload) => {
 };
 
 const callActionInvalidLoginUser = (payload) => {
-    // console.log(payload);
     return {
         type: actionType.INVALID_LOGIN,
         payload: payload
@@ -29,7 +27,6 @@ export const loginUser = (payload) => {
         }
         dispatch(loadingSpinner({ loading: true }))
 
-        //console.log(data);
         let cb = {
             success: (res) => {
                 dispatch(loadingSpinner({ loading: false, text: 'login true' }))
@@ -117,7 +114,6 @@ export const registerUser = (payload) => {
                 dispatch(loadingSpinner({ loading: false }))
             },
             error: (err) => {
-                // console.log(err);
                 dispatch(loadingSpinner({ loading: false }))
             }
         }

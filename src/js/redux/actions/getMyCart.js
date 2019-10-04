@@ -20,12 +20,10 @@ const CallActionForUpdateNewQuoteId = (payload) => {
 };
 
 export const getMyCart = (payload) => {
-    //console.log('get my cart : ', payload)
     return (dispatch, getState) => {
-
         const data = {
-            quote_id: payload.quote_id,
-            store_id: payload.store_id,
+            quote_id: payload !== undefined ? payload.quote_id : getState().login.customer_details.quote_id,
+            store_id: payload !== undefined ? payload.store_id : getState().global.currentStore,
         }
 
         dispatch({
@@ -188,7 +186,6 @@ export const changeQty = (payload) => {
 ////////////////////////////////////////REMOVE PRODUCT CART/////////////////////////////////////////
 
 export const removeProductState = (payload) => {
-    //console.log(payload);
     return {
         type: actionType.REMOVE_ITEM,
         payload: payload
@@ -210,7 +207,6 @@ export const removeProduct = (payload) => {
         dispatch(loadingSpinner({ loading: true }))
         let cb = {
             success: (res) => {
-                //console.log(res);
                 if (res.status) {
                     prodArray.splice(payload.index, 1)
 
@@ -280,7 +276,6 @@ export const setOrderSummary = (payload) => {
 ////////////////////////////////////////REMOVE PRODUCT Out OF STOACK/////////////////////////////////////////
 
 export const removeOutOfStockProduct = (payload) => {
-    //console.log(payload);
     return {
         type: actionType.REMOVE_OUT_OF_STOCK_ITEM,
         payload: payload
@@ -299,14 +294,12 @@ export const removeAllOutOfStockProduct = (payload) => {
         dispatch(loadingSpinner({ loading: true }))
         let cb = {
             success: (res) => {
-                //console.log(res);
                 if (res.status) {
                     dispatch(getMyCart({
                         quote_id: getState().myCart.quote_id,
                         store_id: getState().global.currentStore,
                     }));
                 } else {
-                    console.log('Error');
                     dispatch(loadingSpinner({ loading: false }))
                 }
 
@@ -518,7 +511,6 @@ export const applyVoucode = (payload) => {
  }
 
  export const getMyCartAfterVoucher = (payload) => {
-    //console.log('get my cart : ', payload)
     return (dispatch, getState) => {
  
         const data = {
@@ -528,7 +520,6 @@ export const applyVoucode = (payload) => {
     
         let cb = {
             success: (res) => {
-                // console.log('LOCAL getMyCart res', res);
                 const payload = getState().myCart;
                 if ((res.status) && (res.code == 200) && ('data' in res)) {
                     let newState = {

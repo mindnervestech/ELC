@@ -63,14 +63,16 @@ class ProductSlider extends Component {
     }
     
     componentDidUpdate(prevProps){
-        if (prevProps.addToCardLoader !== this.props.addToCardLoader) {
-            if (!this.state.cartModelFlag) {
-                this.setState({
+        
+        if (this.props.item_added.item_added && this.props.item_added.add_cart_open_popUp && !this.state.cartModelFlag) {
+			if (!this.props.item_added.add_cart_error) {
+                this.onCloseAddCartModal();
+				this.setState({
                     addToCartModal: true,
                     cartModelFlag: true
                 })
-            }
-        }
+			} 
+		}
     }
 
     // componentWillMount() {
@@ -233,7 +235,8 @@ const mapStateToProps = state => {
 		addToCardLoader: state.productDetails.addToCardLoader,
 		cart_details: state.myCart,
 		user_details: state.login,
-		guest_user: state.guest_user,
+        guest_user: state.guest_user,
+        item_added: state.item_added,
 	};
 };
 

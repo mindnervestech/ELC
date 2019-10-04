@@ -17,6 +17,9 @@ class AddToBasketModal extends Component {
 		super(props);
 		this.state = {
 			defaultQty: 1,
+			showAlert: false,
+			item_added_message: '',
+			cartModelFlag: false,
 		};
 
 	}
@@ -42,7 +45,21 @@ class AddToBasketModal extends Component {
 	};
 
 	componentDidUpdate(prevProps){
-		
+		if (this.props.item_added.item_added && this.props.item_added.add_cart_open_popUp && !this.state.cartModelFlag) {
+			if (this.props.item_added.add_cart_error) {
+				if(!this.props.item_added.item_added.message.includes('Cannot read property')){
+					this.setState({
+						item_added_message: this.props.item_added.item_added.message ? this.props.item_added.item_added.message : 'added',
+						cartModelFlag: true
+					});
+					if (this.state.showAlert) {
+						setTimeout(() => {
+							this.closeAlert();
+						}, 5000);
+					}
+				}
+			}
+		}
 	}
 	
 	componentWillMount() {
@@ -57,6 +74,7 @@ class AddToBasketModal extends Component {
 		let prodData = {};
 		let totalQty = this.props.data.type === 'simple' ? parseInt(this.props.data.simpleqty) : this.props.data.simpleproducts[0].qty;
 		let addQty = 0;
+		this.setState({showAlert: true, cartModelFlag: false})
 		if (totalQty < this.state.defaultQty) {
 			addQty = totalQty;
 		} else {
@@ -127,7 +145,7 @@ class AddToBasketModal extends Component {
 			};
 			this.props.onGuestAddToCart(prodData, myCart);
 		}
-		this.props.onCloseAddCartModal();
+		// this.props.onCloseAddCartModal();
 	}
 
 	decrement = totalQty => {
@@ -188,6 +206,10 @@ class AddToBasketModal extends Component {
 		}
 	}
 
+	closeAlert = () => {
+		this.setState({ showAlert: false });
+	}
+
 	render() {
 		let data = this.props.data;	
 
@@ -225,6 +247,31 @@ class AddToBasketModal extends Component {
 		for (let i = 0; i < newImageArray.length; i++) {
 			image_array[newImageArray[i].text] = newImageArray[i].image;
 		}
+		let respo_message = null;
+		if (this.state.showAlert && this.props.item_added.item_added && this.props.item_added.add_cart_open_popUp && this.props.item_added.add_cart_error) {
+			respo_message = <span id="APEX_SUCCESS_MESSAGE" data-template-id="126769709897686936_S" className="apex-page-success u-visible"><div className="t-Body-alert">
+				<div className="t-Alert t-Alert--defaultIcons t-Alert--success t-Alert--horizontal t-Alert--page t-Alert--colorBG" id="t_Alert_Success" role="alert">
+					<div className="t-Alert-wrap">
+						<div className="t-Alert-icon">
+							<span className="t-Icon" />
+						</div>
+						<div className="t-Alert-content">
+							{this.state.item_added_message !== 'added' ? <div className="t-Alert-header">
+								<h2 className="t-Alert-title">{this.state.item_added_message}</h2>
+							</div> :
+							<div className="t-Alert-header">
+								<h2 className="t-Alert-title">
+								<FormattedMessage id="Addedtoyourbasket" defaultMessage="Added to your basket" />
+								</h2>
+							</div> }
+						</div>
+						<div className="t-Alert-buttons">
+							<button className="t-Button t-Button--noUI t-Button--icon t-Button--closeAlert" type="button" title="Close Notification" onClick={this.closeAlert} ><span className="t-Icon icon-close" /></button>
+						</div>
+					</div>
+				</div>
+			</div></span>;
+		}
 
 		return (
 			<div>
@@ -232,6 +279,7 @@ class AddToBasketModal extends Component {
 					<script src="/global/css/magiczoomplus/magiczoomplus.js"></script>
 					<script src="/global/css/magicscroll/magicscroll.js"></script>
 				</Helmet>
+				{respo_message}
 				{data.name ?
 				<div>
 					<Popup />

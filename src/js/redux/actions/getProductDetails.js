@@ -76,8 +76,6 @@ export const getProductSearchList = payload => {
 				dispatch(loadingSpinnerForProduct({ loadingProduct: false }))
 				if (res.status && res.code === 200 && res.data) {
 
-					//console.log("sucesss", res.status);
-
 					if (Object.keys(payload.filters).length !== 0 && payload.filters.constructor === Object) {
 						Object.keys(res.data.product_data).map(key => {
 							product_data.push(res.data.product_data[key]);
@@ -226,7 +224,6 @@ export const getProductList = payload => {
 
 // Guest Add to cart Start
 export const callActionForGuestAddToCart = payload => {
-	//console.log('callActionForGuestAddToCart', payload);
 	return {
 		type: actionTypes.GUEST_ADD_TO_CART,
 		payload: payload,
@@ -234,25 +231,24 @@ export const callActionForGuestAddToCart = payload => {
 };
 
 export const guestAddToCart = (payload, myCart) => {
-	// console.log("GUEST ADD2CART:", payload);
 	return dispatch => {
 		const data = {
 			cart_item: payload,
 		};
 		dispatch({
 			type: actionTypes.ADD_TO_CARD_LOADER,
-			payload: { addToCardLoader: true}
+			payload: { addToCardLoader: true, add_cart_open_popUp: false}
 		});
 		let cb = {
 			success: res => {
-				// console.log('guestAddToCart myCart:', myCart);
-				// console.log('guestAddToCart res:', res);
 
 				myCart.quote_id = res.quote_id;
+				// res['item_added_res'] = true;
 				// myCart.quote_id = parseInt(res.quote_id);
 
 				// if (res.status && res.code === 200) {
 				//     let newState = { ...res.product[0] }
+				dispatch(callActionitem_added({ item_added: res, add_cart_error : false, add_cart_open_popUp: true}));
 				dispatch(getMyCart(myCart));
 				// }
 				// else {
@@ -265,6 +261,7 @@ export const guestAddToCart = (payload, myCart) => {
 
 			},
 			error: err => { 
+				dispatch(callActionitem_added({ item_added: err, add_cart_error : true, add_cart_open_popUp: true}));
 				dispatch({
 					type: actionTypes.ADD_TO_CARD_LOADER,
 					payload: { addToCardLoader: false}
@@ -286,13 +283,14 @@ export const callActionForMyCart = payload => {
 };
 
 export const addToCart = (payload, myCart) => {
+	
 	return dispatch => {
 		const data = {
 			cart_item: payload,
 		};
 		dispatch({
 			type: actionTypes.ADD_TO_CARD_LOADER,
-			payload: { addToCardLoader: true}
+			payload: { addToCardLoader: true, add_cart_open_popUp: false}
 		});
 		let cb = {
 			success: res => {
@@ -300,8 +298,8 @@ export const addToCart = (payload, myCart) => {
 
 				// if (res.status && res.code === 200) {
 				//     let newState = { ...res.product[0] }
-				dispatch(callActionitem_added({ item_added: res}));
 				dispatch(getMyCart(myCart));
+				dispatch(callActionitem_added({ item_added: res, add_cart_error : false, add_cart_open_popUp: true}));
 				// }
 				// else {
 				//     let newState = { ...res.product[0] }
@@ -309,6 +307,7 @@ export const addToCart = (payload, myCart) => {
 				// }
 			},
 			error: err => {
+				dispatch(callActionitem_added({ item_added: err, add_cart_error : true, add_cart_open_popUp: true}));
 				dispatch({
 					type: actionTypes.ADD_TO_CARD_LOADER,
 					payload: { addToCardLoader: false}
@@ -423,7 +422,6 @@ const callActionClearProductDetails = payload => {
 export const clearProductDetails = payload => {
 	return dispatch => {
 		const data = {};
-		//console.log('clearproductdata');
 
 		dispatch(callActionClearProductDetails({ productData: [] }));
 	};
@@ -439,7 +437,6 @@ export const getProductDetails = payload => {
 		dispatch(callProductDetailLoader({ productDetailLoader: true }))
 		let cb = {
 			success: res => {
-				//console.log('pdp res', res.product[0]);
 				dispatch(callProductDetailLoader({ productDetailLoader: false }))
 				if (res.status && res.code === 200) {
 					let newState = { ...res.product[0] };

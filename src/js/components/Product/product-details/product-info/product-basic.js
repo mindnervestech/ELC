@@ -31,16 +31,29 @@ class ProductBasic extends Component {
 	
 				}
 			}, 2000);
-			if (!this.state.cartModelFlag) {
-				console.log(this.props.item_added);
-				this.setState({ 
-					item_added_message: this.props.item_added.message ? this.props.item_added.message : 'added', 
-					cartModelFlag: true 
-				});
-				if(this.state.showAlert){
-					setTimeout(() => {
-						this.closeAlert();
-					}, 5000);
+
+
+			if (this.props.item_added.item_added && this.props.item_added.add_cart_open_popUp && !this.state.cartModelFlag) {
+				if (this.props.item_added.add_cart_error) {
+					this.setState({
+						item_added_message: this.props.item_added.item_added.message ? this.props.item_added.item_added.message : 'added',
+						cartModelFlag: true
+					});
+					if (this.state.showAlert) {
+						setTimeout(() => {
+							this.closeAlert();
+						}, 5000);
+					}
+				} else {
+					this.setState({
+						cartModelFlag: true,
+						item_added_message: '',
+					})
+					if (this.state.showAlert) {
+						setTimeout(() => {
+							this.closeAlert();
+						}, 4000);
+					}
 				}
 			}
 		}
@@ -133,9 +146,7 @@ class ProductBasic extends Component {
 		const store_locale=this.props.globals.store_locale;
 		
 		let respo_message = null;
-		console.log(this.props.item_added);
-		console.log(this.state.showAlert);
-		if (this.state.showAlert) {
+		if (this.state.showAlert && this.props.item_added.item_added && this.props.item_added.add_cart_open_popUp && this.props.item_added.add_cart_error) {
 			respo_message = <span id="APEX_SUCCESS_MESSAGE" data-template-id="126769709897686936_S" className="apex-page-success u-visible"><div className="t-Body-alert">
 				<div className="t-Alert t-Alert--defaultIcons t-Alert--success t-Alert--horizontal t-Alert--page t-Alert--colorBG" id="t_Alert_Success" role="alert">
 					<div className="t-Alert-wrap">

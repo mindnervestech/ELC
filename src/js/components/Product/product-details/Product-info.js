@@ -24,6 +24,7 @@ class ProductInfo extends Component {
 			ischeckremove: true,
 			ischeckadd: true,
 			showLearning: false,
+			cartModelFlag: false,
 		};
 		this.addToCart = this.addToCart.bind(this);
 	}
@@ -52,7 +53,7 @@ class ProductInfo extends Component {
 	}
 
 
-	componentDidUpdate() {
+	componentDidUpdate(prevProps) {
 		if (this.props.productWishDetail.wishlist_success !== undefined) {
 			if (this.state.ischeckadd) {
 				this.setState({ wishlist_message: this.props.productWishDetail.wishlist_success, showAlert: true, ischeckadd: false });
@@ -70,6 +71,7 @@ class ProductInfo extends Component {
 				}, 5000);
 			}
 		}
+		
 	}
 
 	decrement = totalQty => {
@@ -89,6 +91,8 @@ class ProductInfo extends Component {
 		let prodData = {};
 		let totalQty = this.props.data.type === 'simple' ? parseInt(this.props.data.simpleqty) : this.props.data.simpleproducts[0].qty;
 		let addQty = 0;
+		this.props.alertFlag();
+		this.setState({showForAddCartAlert: true, cartModelFlag: false})
 		if (totalQty < this.state.defaultQty) {
 			addQty = totalQty;
 		} else {
@@ -798,6 +802,7 @@ const mapStateToProps = state => {
 		addToCardLoader: state.productDetails.addToCardLoader,
 		cart_details: state.myCart,
 		guest_user: state.guest_user,
+		item_added: state.item_added
 	};
 };
 

@@ -28,6 +28,8 @@ class ProductDetails extends Component {
 			productDetailTab: 'Product Information',
 			addToCartModal: false,
 			cartModelFlag: false,
+			showForAddCartAlert: false,
+			item_added_message: '',
 		};
 	}
 
@@ -38,7 +40,6 @@ class ProductDetails extends Component {
 	}
 
 	componentDidMount() {
-		//console.log('params', this.props.match);
 
 		const {
 			match: { params },
@@ -49,14 +50,14 @@ class ProductDetails extends Component {
 			url_key: params.category,
 			// url_key:'elc18-1'
 		};
-		
+
 		this.props.onGetProductDetails(data);
 		// this.props.getSizeChart({
 		// 	store_id: this.props.globals.currentStore,
 		// });
 		if (this.props.guest_user.temp_quote_id == null) {
-            this.props.onGetGuestCartId();
-        }
+			this.props.onGetGuestCartId();
+		}
 	}
 
 	componentDidUpdate(prevProps, prevState) {
@@ -99,28 +100,56 @@ class ProductDetails extends Component {
 						quote_id: this.props.guest_user.new_quote_id,
 						store_id: this.props.globals.currentStore
 					})
-	
+
 				}
 			}, 2000);
-			
 		}
-		if (this.props.addToCardLoader) {
-			if (!this.state.cartModelFlag) {
+
+		if (this.props.item_added.item_added && this.props.item_added.add_cart_open_popUp && !this.state.cartModelFlag) {
+			if (this.props.item_added.add_cart_error) {
+				this.setState({
+					item_added_message: this.props.item_added.item_added.message ? this.props.item_added.item_added.message : 'added',
+					cartModelFlag: true
+				});
+				if (this.state.showForAddCartAlert) {
+					setTimeout(() => {
+						this.closeForAddCartAlert();
+					}, 5000);
+				}
+			} else {
 				this.setState({
 					addToCartModal: true,
-					cartModelFlag: true
+					cartModelFlag: true,
+					item_added_message: '',
 				})
+				if (this.state.showForAddCartAlert) {
+					setTimeout(() => {
+						this.closeForAddCartAlert();
+					}, 4000);
+				}
 			}
 		}
 	}
 
 	onCloseCartModal = () => {
-		this.setState({ addToCartModal: false, cartModelFlag: false })
+		this.setState({ addToCartModal: false })
+	}
+
+
+	closeForAddCartAlert = () => {
+		this.setState({ showForAddCartAlert: false});
 	}
 
 	getProductInfoDetail(type) {
 		this.setState({ productDetailTab: type });
 
+	}
+
+	alertFlag = () => {
+		this.setState({
+			showForAddCartAlert: true,
+			cartModelFlag: false
+		})
 	}
 
 	render() {
@@ -135,13 +164,37 @@ class ProductDetails extends Component {
 				<meta name="description" content={this.props.productDetails.meta_description} />
 			</Helmet></>;
 		}
-		// if(document.getElementsByClassName("styles_modal__gNwvD")[0]){
-		// 	document.getElementsByClassName("styles_modal__gNwvD")[0].style.cssText="height: auto !important; width:450px !important"
-		// }
+
+		let respo_ForAddCartAlertmessage = null;
+		if (this.state.showForAddCartAlert && this.props.item_added.item_added && this.props.item_added.add_cart_open_popUp) {
+			respo_ForAddCartAlertmessage = <span id="APEX_SUCCESS_MESSAGE" data-template-id="126769709897686936_S" className="apex-page-success u-visible"><div className="t-Body-alert">
+				<div className="t-Alert t-Alert--defaultIcons t-Alert--success t-Alert--horizontal t-Alert--page t-Alert--colorBG" id="t_Alert_Success" role="alert">
+					<div className="t-Alert-wrap">
+						<div className="t-Alert-icon">
+							<span className="t-Icon" />
+						</div>
+						<div className="t-Alert-content">
+							{this.state.item_added_message !== '' ? <div className="t-Alert-header">
+								<h2 className="t-Alert-title">{this.state.item_added_message}</h2>
+							</div> :
+								<div className="t-Alert-header">
+									<h2 className="t-Alert-title">
+										<FormattedMessage id="Addedtoyourbasket" defaultMessage="Added to your basket" />
+									</h2>
+								</div>}
+						</div>
+						<div className="t-Alert-buttons">
+							<button className="t-Button t-Button--noUI t-Button--icon t-Button--closeAlert" type="button" title="Close Notification" onClick={this.closeAlert} ><span className="t-Icon icon-close" /></button>
+						</div>
+					</div>
+				</div>
+			</div></span>;
+		}
 
 		return (
 			<div className="t-Body">
 				{meta_tag}
+				{respo_ForAddCartAlertmessage}
 				<div className="t-Body-main" style={{ marginTop: '0px !important' }}>
 					<div className="t-Body-title" id="t_Body_title" style={{ top: '294px' }}>
 						{this.props.productDetails.name && (<Breadcrumb name={`${this.props.productDetails.category_names && this.props.productDetails.category_names.length > 0
@@ -151,7 +204,7 @@ class ProductDetails extends Component {
 						<div id="t_Body_content_offset" style={{ height: '85px' }} />
 						<div className="t-Body-contentInner">
 							{this.props.productDetailLoader || this.props.addToCardLoader ? <Spinner /> : (<div className="container" style={{ maxWidth: '85%' }}>
-								<ProductInfo data={this.props.productDetails} currentStore={this.props.globals.currentStore} />
+								<ProductInfo alertFlag={this.alertFlag} data={this.props.productDetails} currentStore={this.props.globals.currentStore} />
 
 								{/* {this.props.productDetails.similar_products && (
 									<ProductSlider currency={this.props.productDetails.currency} store_name={this.props.globals.store_locale} similar_product={this.props.productDetails.similar_products} />
@@ -165,7 +218,7 @@ class ProductDetails extends Component {
 									<li style={{ width: 184, marginRight: 25 }} className={this.state.productDetailTab == "Product Information" ? "active-tab" : ''}>
 										<a onClick={() => this.getProductInfoDetail('Product Information')} className="product-des"><FormattedMessage id="Product.Details.ProductInfo" defaultMessage="Product Information" /></a>
 									</li>
-									 <li style={{width:184, marginRight:25}} className={this.state.productDetailTab == "Shipping" ? "active-tab" : ''}>
+									<li style={{ width: 184, marginRight: 25 }} className={this.state.productDetailTab == "Shipping" ? "active-tab" : ''}>
 										<a onClick={() => this.getProductInfoDetail('Shipping')} className="product-des">
 											<FormattedMessage id="Checkout.Shipping" defaultMessage="Shipping" />
 										</a>
@@ -216,6 +269,7 @@ const mapStateToProps = state => {
 		cart_details: state.myCart,
 		user_details: state.login,
 		guest_user: state.guest_user,
+		item_added: state.item_added
 	};
 };
 
