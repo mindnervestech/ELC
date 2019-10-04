@@ -228,9 +228,9 @@ class BirthDayClub extends Component {
       const data = {
         firstname: this.props.customer_details.customer_details.firstname,
         lastname: this.props.customer_details.customer_details.lastname,
-        phoneNumber: this.props.customer_details.phone_number,
+        phoneNumber: this.props.customer_details.customer_details.phone_number,
         email:this.props.customer_details.customer_details.email,
-        countryCode:this.props.customer_details.carrier_code,
+        countryCode:this.props.customer_details.customer_details.carrier_code,
         storeid: this.props.globals.currentStore,
         language: '',
         moreinfo: moreinfoData
