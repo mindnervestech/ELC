@@ -15,6 +15,7 @@ let ChildrenCount = ['1']
 let ChildrenDate = ['']
 let ChildrenName = ['']
 let ChildrenGender = ['']
+let ChildrenNewGender=['']
 let sortByShowOption = [false]
 let moreinfoData = ''
 class BirthDayClub extends Component {
@@ -120,8 +121,20 @@ class BirthDayClub extends Component {
     }
   }
 
-  onClickGender = (gender, index) => {
+  onClickGender = (gender,newGender, index) => {
     ChildrenGender[index] = gender
+    if(newGender=='Male'){
+        ChildrenNewGender[index] = newGender
+    }  else if(newGender='Female'){
+        ChildrenNewGender[index] = newGender
+    }else if(newGender="Other")
+    {  ChildrenNewGender[index] = newGender
+    }
+    else
+    {
+
+    }
+
     sortByShowOption[index] = false
     this.setState({ update: true })
   }
@@ -205,19 +218,19 @@ class BirthDayClub extends Component {
  
 
   register = () => {
-    if (ChildrenDate[ChildrenDate.length - 1] === '' || ChildrenName[ChildrenName.length - 1] === '' || ChildrenGender[ChildrenGender.length - 1] === '') {
+    if (ChildrenDate[ChildrenDate.length - 1] === '' || ChildrenName[ChildrenName.length - 1] === '' || ChildrenNewGender[ChildrenNewGender.length - 1] === '') {
       this.setState({ error: true })
     } else {
       moreinfoData = ''
       for (let i = 0; i < ChildrenName.length; i++) {
-        moreinfoData = moreinfoData + ChildrenName[i] + ':' + ChildrenGender[i] + ':' + ChildrenDate[i].getDate() + '' + (ChildrenDate[i].getMonth() + 1) + '' + ChildrenDate[i].getFullYear() + ';'
+        moreinfoData = moreinfoData + ChildrenName[i] + ':' + ChildrenNewGender[i] + ':' + ChildrenDate[i].getDate() + '' + (ChildrenDate[i].getMonth() + 1) + '' + ChildrenDate[i].getFullYear() + ';'
       }
       const data = {
         firstname: this.props.customer_details.customer_details.firstname,
         lastname: this.props.customer_details.customer_details.lastname,
         phoneNumber: this.props.customer_details.phone_number,
         email:this.props.customer_details.customer_details.email,
-        countryCode: this.props.customer_details.carrier_code,
+        countryCode:this.props.customer_details.carrier_code,
         storeid: this.props.globals.currentStore,
         language: '',
         moreinfo: moreinfoData
@@ -340,7 +353,7 @@ class BirthDayClub extends Component {
                       <div className="sortByOption select-div width-select-div" style={sortByShowOption[index] ? { display: 'block' } : { display: 'none' }}>
                       <FormattedMessage id="addChildren.male" defaultMessage="Male">
                       {(message) =>
-                        <div className="sortByOptionText" onClick={() => this.onClickGender(message, index)}>
+                        <div className="sortByOptionText" onClick={() => this.onClickGender(message,"Male", index)}>
                           <span>{message}</span>
                         </div>}
                         </FormattedMessage>
@@ -348,14 +361,14 @@ class BirthDayClub extends Component {
 
                         <FormattedMessage id="addChildren.female" defaultMessage="Female">
                       {(message) =>
-                        <div className="sortByOptionText" onClick={() => this.onClickGender(message, index)}>
+                        <div className="sortByOptionText" onClick={() => this.onClickGender(message,"Female",index)}>
                           <span>{message}</span>
                         </div>}
                         </FormattedMessage>
 
                         <FormattedMessage id="addChildren.Other" defaultMessage="Other">
                       {(message) =>
-                        <div className="sortByOptionText" onClick={() => this.onClickGender(message, index)}>
+                        <div className="sortByOptionText" onClick={() => this.onClickGender(message,"Other", index)}>
                           <span>{message}</span>
                         </div>}
                         </FormattedMessage>

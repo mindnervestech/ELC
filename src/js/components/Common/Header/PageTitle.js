@@ -20,6 +20,7 @@ class PageTitle extends Component {
     componentDidMount() {
       
         let pathname = this.props.location.pathname.split('/');
+        
         if(pathname[pathname.length -1]=='')
         {
             setTimeout(() => {
@@ -45,25 +46,28 @@ class PageTitle extends Component {
 
     componentDidUpdate(prevProps) {
         let pathname = this.props.location.pathname.split('/');
-        if(pathname[pathname.length - 1]=='')
-        { 
-         
-            setTimeout(() => {
+        if (this.props.location.pathname !== prevProps.location.pathname){
+            if(pathname[pathname.length - 1]=='')
+            { 
+             
+                setTimeout(() => {
+                    this.setState({
+                        title:this.getTital('NA'),
+                        keyword: this.getKeyword('NA'),
+                        description: this.getDescription('NA')
+                    }) 
+                }, 100);
+            }
+            else if (this.props.location.pathname !== prevProps.location.pathname) {
+                const pathname=this.props.location.pathname.split('/');
                 this.setState({
-                    title:this.getTital('NA'),
-                    keyword: this.getKeyword('NA'),
-                    description: this.getDescription('NA')
-                }) 
-            }, 100);
+                    title: this.getTital(pathname[pathname.length - 1]),
+                    keyword: this.getKeyword(pathname[pathname.length - 1]),
+                    description: this.getDescription(pathname[pathname.length - 1])
+                })
+            }
         }
-        else if (this.props.location.pathname !== prevProps.location.pathname) {
-            const pathname=this.props.location.pathname.split('/');
-            this.setState({
-                title: this.getTital(pathname[pathname.length - 1]),
-                keyword: this.getKeyword(pathname[pathname.length - 1]),
-                description: this.getDescription(pathname[pathname.length - 1])
-            })
-        }
+       
     }
 
 
@@ -92,7 +96,7 @@ class PageTitle extends Component {
         }
     
         let mainTitle = keyword !== 'NA' ? intl.formatMessage({ id: `PageTitle.${keyword}.keyword`,defaultMessage: 'ELC' }) : intl.formatMessage({ id: `PageTitle.Home` });
-        console.log('keyword---',mainTitle);
+      
         return mainTitle + " | " + intl.formatMessage({ id: `PageTitle.elc.${country}` })
     }
 
