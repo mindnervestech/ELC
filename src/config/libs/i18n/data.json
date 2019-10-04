@@ -877,9 +877,11 @@
     "PageTitle.outdoor-toys.description":"Shop our full range of outdoor toys",
     "InvalidLoginOrPassoword":"Invalid login  or passoword",
     "Product.Refine":"Refine",
-    "Giftwraprequired": "Gift wrap required"
+    "Giftwraprequired": "Gift wrap required",
+    "ResetPassword.newpasswordinvalid.error":"Password must be at least 8 characters long and contain an uppercase letter, a lowercase letter , a number and  special characters."
     },
     "ar": {
+      "ResetPassword.newpasswordinvalid.error":"Password must be at least 8 characters long and contain an uppercase letter, a lowercase letter , a number and  special characters.",
       "InvalidLoginOrPassoword":"معلومات الدخول خاطئة او كلمة المرور خاطئة",
       "PageTitle.play-tents-and-mats":"خيمات وحصائر لعب",
     "PageTitle.ride-ons":"عربات قابلة للركوب",

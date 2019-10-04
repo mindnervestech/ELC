@@ -79,7 +79,7 @@ class ResetPassword extends Component {
 
 	applyBtn = () => {
 		let validate = true;
-		var regularExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+		var regularExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8}$/;
 		if(this.state.fields.newPassword !== "" && this.state.fields.confirmPassword !== ""){
 			this.state.newPasswordError = false
 			this.state.confirmError = false
@@ -224,7 +224,7 @@ class ResetPassword extends Component {
 							</div>
 						</div>)}
 
-						{/* {!this.props.resetpasswordSucess && (<div className="row">
+						{!this.props.resetpasswordSucess && this.props.resetPassWordFail==='status' && (<div className="row">
 							<div className="col col-12 apex-col-auto">
 								<div className="t-Region centered-content  t-Region--removeHeader t-Region--noBorder t-Region--scrollBody margin-bottom-lg margin-top-lg">
 									<div className="t-Region-bodyWrap">
@@ -248,7 +248,7 @@ class ResetPassword extends Component {
 									</div>
 								</div>
 							</div>
-						</div>)} */}
+						</div>)}
 					{!this.props.resetpasswordLoader && (<>
 						{!this.props.resetpasswordSucess && !this.props.resetpasswordToken && (<div className="row">
 							<div className="col col-12 apex-col-auto">
@@ -306,7 +306,7 @@ class ResetPassword extends Component {
 																{this.state.newPasswordErrorInvalid && (<span className="a-Form-error u-visible">
 																	<span className="t-Form-error">
 																		<div>
-																			<FormattedMessage id="ResetPassword.newpasswordinvalid.error" defaultMessage="Password Should Contain Lower Case, Upper Case, Digits, Special Characters" />
+																			<FormattedMessage id="ResetPassword.newpasswordinvalid.error" defaultMessage="Password must be at least 8 characters long and contain an uppercase letter, a lowercase letter , a number and  special characters." />
 																		</div>
 																	</span>
 																	<br />
@@ -347,7 +347,7 @@ class ResetPassword extends Component {
 																{this.state.confirmErrorInvalid && (<span className="a-Form-error u-visible">
 																	<span className="t-Form-error">
 																		<div>
-																			<FormattedMessage id="ResetPassword.newpasswordinvalid.error" defaultMessage="Password Should Contain Lower Case, Upper Case, Digits, Special Characters" />
+																			<FormattedMessage id="ResetPassword.newpasswordinvalid.error" defaultMessage="Password must be at least 8 characters long and contain an uppercase letter, a lowercase letter , a number and  special characters." />
 																		</div>
 																	</span>
 																	<br />
