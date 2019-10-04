@@ -65,7 +65,8 @@ class DeliveryDetails extends Component {
             alertBoxDetails: {
                 status: false,
                 message: '',
-            }
+            },
+            gift_wrap_required : false
         }
         this.submitContact = React.createRef();
         this.submitAddress = React.createRef();
@@ -103,6 +104,13 @@ class DeliveryDetails extends Component {
             initializeF()
             trackF('DeliveryDetails');
         }
+    }
+
+    gift_wrap_required = (gift_wrap) =>{
+        console.log("hererre",gift_wrap);
+        this.setState({
+            gift_wrap_required: gift_wrap
+        })
     }
 
 
@@ -481,7 +489,7 @@ class DeliveryDetails extends Component {
                                                     {addressContainer}
                                                 </Col>
                                                 <Col xs="12" lg="4" md="12">
-                                                    <DeliveryProductList cart_details={this.props.cart_details} store_locale={this.props.globals.store_locale} gotoProductScreen={this.gotoProductScreen} />
+                                                    <DeliveryProductList gift_wrap_required={this.gift_wrap_required} cart_details={this.props.cart_details} store_locale={this.props.globals.store_locale} gotoProductScreen={this.gotoProductScreen} />
                                                 </Col>
                                             </Row>
                                             <div className="row">

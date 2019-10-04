@@ -11,8 +11,10 @@ class DeliveryProductList extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            redirectToCart: false
+            redirectToCart: false,
+            subscribe_to_newsletter: 0,
         }
+        this.subscribe_to_newsletter = this.subscribe_to_newsletter.bind(this);
     }
 
     redirectToCart = () => {
@@ -58,22 +60,32 @@ class DeliveryProductList extends Component {
 
     applyVoucode = (voucode) => {
         if (voucode == '') {
-          return;
+            return;
         }
         this.props.onApplyVoucode({
-          store: this.props.global.currentStore,
-          voucode: voucode,
-          quoteid: this.props.cart_details.quote_id,
+            store: this.props.global.currentStore,
+            voucode: voucode,
+            quoteid: this.props.cart_details.quote_id,
         });
-      }
-     
-      removeVoucode = (voucode) => {
+    }
+
+    removeVoucode = (voucode) => {
         this.props.onRemoveVoucode({
-          store: this.props.global.currentStore,
-          voucode: voucode,
-          quoteid: this.props.cart_details.quote_id,
+            store: this.props.global.currentStore,
+            voucode: voucode,
+            quoteid: this.props.cart_details.quote_id,
         });
-      }
+    }
+
+    subscribe_to_newsletter() {
+        if (this.state.subscribe_to_newsletter === 0) {
+            this.state.subscribe_to_newsletter = 1;
+        }
+        else {
+            this.state.subscribe_to_newsletter = 0;
+        }
+        this.props.gift_wrap_required(this.state.subscribe_to_newsletter);
+    }
 
     render() {
         let coupan_code = null;
@@ -123,6 +135,19 @@ class DeliveryProductList extends Component {
         return (<>
             <ShippingSpinner>
                 <div className="t-Region t-Region--noPadding t-Region--scrollBody margin-bottom-sm" id="PRDBASKET">
+                    {/* <div className="t-Region-header">
+                        <div className="t-Region-headerItems t-Region-headerItems--title">
+
+                            <div className="row backWhite gift-wrap" >
+                                <label class="checkBox gift-wrap-label">
+                                    <FormattedMessage id="Giftwraprequired" defaultMessage="Gift wrap required" />
+                                    <input onClick={this.subscribe_to_newsletter} type="checkbox"  ></input>
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                    </div> */}
                     <div className="t-Region-header">
                         <div className="t-Region-headerItems t-Region-headerItems--title">
                             <span className="t-Region-headerIcon"><span className="t-Icon " aria-hidden="true" /></span>
@@ -213,30 +238,30 @@ class DeliveryProductList extends Component {
                                                                                 <td className="t-Report-cell" headers="TYPE"><FormattedMessage id="delivery-details.Subtotal.Title" defaultMessage="Subtotal" /></td>
                                                                                 <td className="t-Report-cell" align="right" headers="PRICE">{this.props.cart_details.currency} <span>{this.props.cart_details.subtotal}</span></td>
                                                                             </tr>
-                                                                            {this.props.cart_details.cart_data && this.props.cart_details.cart_data.discount_amount !== 0?
-                                                                            <tr>
-                                                                                <td class="t-Report-cell" headers="TYPE"><FormattedMessage id="Savings.title" defaultMessage="Savings" /></td>
-                                                                                <td class="t-Report-cell" align="right" headers="PRICE"><span class="p-price">{this.props.cart_details.currency} { this.props.cart_details.cart_data.discount_amount}</span></td>
-                                                                            </tr> : ''}
-                                                                            {this.props.cart_details.cart_data && this.props.cart_details.cart_data.voucher_discount !== 0?
-                                                                            <tr>
-                                                                                <td class="t-Report-cell" headers="TYPE"><FormattedMessage id="voucherdiscount" defaultMessage="voucher discount" /></td>
-                                                                                <td class="t-Report-cell" align="right" headers="PRICE"><span class="p-price">{this.props.cart_details.currency} { this.props.cart_details.cart_data.voucher_discount}</span></td>
-                                                                            </tr> : ''}
-                                                                            {this.props.cart_details.cart_data && this.props.cart_details.cart_data.shipping_amount !== 0?
-                                                                            <tr>
-                                                                                <td className="t-Report-cell" headers="TYPE"><FormattedMessage id="delivery-details.Shipping.Title" defaultMessage="Shipping" /></td>
-                                                                                <td className="t-Report-cell" align="right" headers="PRICE">{this.props.cart_details.currency} <span>{this.props.cart_details.cart_data.shipping_amount}</span></td>
-                                                                            </tr> : ''}
+                                                                            {this.props.cart_details.cart_data && this.props.cart_details.cart_data.discount_amount !== 0 ?
+                                                                                <tr>
+                                                                                    <td class="t-Report-cell" headers="TYPE"><FormattedMessage id="Savings.title" defaultMessage="Savings" /></td>
+                                                                                    <td class="t-Report-cell" align="right" headers="PRICE"><span class="p-price">{this.props.cart_details.currency} {this.props.cart_details.cart_data.discount_amount}</span></td>
+                                                                                </tr> : ''}
+                                                                            {this.props.cart_details.cart_data && this.props.cart_details.cart_data.voucher_discount !== 0 ?
+                                                                                <tr>
+                                                                                    <td class="t-Report-cell" headers="TYPE"><FormattedMessage id="voucherdiscount" defaultMessage="voucher discount" /></td>
+                                                                                    <td class="t-Report-cell" align="right" headers="PRICE"><span class="p-price">{this.props.cart_details.currency} {this.props.cart_details.cart_data.voucher_discount}</span></td>
+                                                                                </tr> : ''}
+                                                                            {this.props.cart_details.cart_data && this.props.cart_details.cart_data.shipping_amount !== 0 ?
+                                                                                <tr>
+                                                                                    <td className="t-Report-cell" headers="TYPE"><FormattedMessage id="delivery-details.Shipping.Title" defaultMessage="Shipping" /></td>
+                                                                                    <td className="t-Report-cell" align="right" headers="PRICE">{this.props.cart_details.currency} <span>{this.props.cart_details.cart_data.shipping_amount}</span></td>
+                                                                                </tr> : ''}
                                                                             <tr>
                                                                                 <td className="t-Report-cell" headers="TYPE"><span className="order-total"><FormattedMessage id="delivery-details.Total.Title" defaultMessage="Total" /></span></td>
                                                                                 <td className="t-Report-cell" align="right" headers="PRICE"><span className="order-total">{this.props.cart_details.currency}</span> <span className="order-total">{this.props.cart_details.grand_total}</span></td>
                                                                             </tr>
-                                                                            {this.props.cart_details.cart_data && this.props.cart_details.cart_data.tax_amount !== 0?
-                                                                            <tr>
-                                                                                <td className="t-Report-cell" headers="TYPE"><FormattedMessage id="VAT.Message" defaultMessage="VAT Message" /></td>
-                                                                                <td className="t-Report-cell" align="right" headers="PRICE">{this.props.cart_details.currency} <span>{this.props.cart_details.cart_data.tax_amount}</span></td>
-                                                                            </tr> : ''}
+                                                                            {this.props.cart_details.cart_data && this.props.cart_details.cart_data.tax_amount !== 0 ?
+                                                                                <tr>
+                                                                                    <td className="t-Report-cell" headers="TYPE"><FormattedMessage id="VAT.Message" defaultMessage="VAT Message" /></td>
+                                                                                    <td className="t-Report-cell" align="right" headers="PRICE">{this.props.cart_details.currency} <span>{this.props.cart_details.cart_data.tax_amount}</span></td>
+                                                                                </tr> : ''}
                                                                         </tbody>
                                                                     </table>
                                                                 </div>

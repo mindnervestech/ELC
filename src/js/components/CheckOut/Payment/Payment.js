@@ -330,7 +330,12 @@ class Payment extends Component {
                                                                             <FormattedMessage id="PaybyCard.Text" defaultMessage="Pay by Card" />
                                                                         </h3>
                                                                         <span className="method-description h-hidden-mobile">
-                                                                            <FormattedMessage id="PaybyCard.Content" defaultMessage="You will be directed to master/visa to complete payment and then returned to ELC" /></span>
+                                                                            <FormattedMessage id="PaybyCard.Content" defaultMessage="You will be directed to master/visa to complete payment and then returned to ELC" />
+                                                                        </span>
+                                                                        <span className="method-description divShowOnMobile">
+                                                                            <FormattedMessage id="PaybyCard.CardType" defaultMessage="mada/credit/debit" />
+                                                                        
+                                                                        </span>
                                                                     </li>
                                                                     <li onClick={() => this.handleClick("COD")} id="DA" className="tab del-add2 ">
                                                                         <h3 className="method"><FormattedMessage id="CashOnDelivery.Text" defaultMessage="Cash On Delivery" /></h3>

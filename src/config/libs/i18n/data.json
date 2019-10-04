@@ -325,6 +325,7 @@
         "FreeClickCollect.Text": "Free Click & Collect",
         "DeliveryDays.Text": "3 to 5 Days Delivery",
         "PaybyCard.Text": "Pay by card",
+        "PaybyCard.CardType": "mada/credit/debit",
         "PaybyCard.Content": "You will be directed to master/visa to complete payment and then returned to ELC",
         "CashOnDelivery.Content": "Pay cash on delivery. An additional amount will be charged.",
         "Checkout.Payment.Msg1": "By placing your order, you agree to our",
@@ -1811,6 +1812,7 @@
         "PageTitle.blasters-and-water-pistols.keyword": "قاذفة، مسدسات مائية، إكس شوت، بندقية",
         "PageTitle.blasters-and-water-pistols.description": "تسوّق تشكيلتنا الكاملة من القاذفات ومسدسات ماء",
         "Product.Refine":"Refine",
-        "Giftwraprequired": "Gift wrap required"
+        "Giftwraprequired": "Gift wrap required",
+        "PaybyCard.CardType": "mada/credit/debit"
     }
 }
