@@ -281,6 +281,7 @@ export const resetPassword = (payload) => {
                         type: actionType.RESET_PASSWORD_SUCCESS,
                         payload: { resetpasswordSucess: false,
                                    resetpasswordToken: true,
+                                   resetPasswordFalseStatus:'status',
                                     newLink: true}
                     })
                 }
