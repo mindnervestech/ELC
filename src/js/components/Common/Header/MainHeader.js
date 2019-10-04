@@ -339,12 +339,12 @@ class MainHeader extends Component {
                                     </li>
                                     <li className="ll" className="paddingForEnglish">
                                         <div className="lang" style={{ fontSize: '1.3rem' }}>
-                                            <a href="javascript:void(0);" onClick={(e) => this.translate('en', 'ltr')} className="active" >English</a></div>
+                                            <a href="javascript:void(0);" style={this.props.globals.language=='en' ?{fontFamily:'VAG Rounded ELC Bold'} : {}} onClick={(e) => this.translate('en', 'ltr')} className="active" >English</a></div>
                                     </li>
                                     <li className="paddingForDash"> - </li>
                                     <li className="ll" style={{ padding: 0, marginTop: -3 }}>
                                         <div className="lang" style={{ paddingLeft: 8, fontSize: '1.3rem' }}>
-                                            <a href="javascript:void(0);" onClick={(e) => this.translate('ar', 'rtl')} >العربية</a></div>
+                                            <a  style={this.props.globals.language=='ar' ? {fontFamily:'VAG Rounded ELC Bold'} : {}}  href="javascript:void(0);" onClick={(e) => this.translate('ar', 'rtl')} >العربية</a></div>
                                     </li>
                                     {/* <li>
                                         <div className="language">
@@ -570,13 +570,13 @@ class MainHeader extends Component {
                                 </div>
                                 <div className="ll enghishTextPadding" style={{ display: 'inline-block' }}>
                                     <div className="lang" style={{ fontSize: '1.2rem' }}>
-                                        <a href="javascript:void(0);" onClick={(e) => this.translate('en', 'ltr')} className="active" >English</a>
+                                        <a href="javascript:void(0);" style={this.props.globals.language=='en' ?{fontFamily:'VAG Rounded ELC Bold'} : {}} onClick={(e) => this.translate('en', 'ltr')} className="active" >English</a>
                                     </div>
                                 </div>
                                 <div style={{ paddingLeft: 8, display: 'inline-block' }}> - </div>
                                 <div className="ll" style={{ padding: 0, display: 'inline-block' }}>
                                     <div className="lang" style={{ paddingLeft: 8, fontSize: '1.2rem' }}>
-                                        <a href="javascript:void(0);" onClick={(e) => this.translate('ar', 'rtl')} >العربية</a>
+                                        <a style={this.props.globals.language=='ar' ?{fontFamily:'VAG Rounded ELC Bold'} : {}} href="javascript:void(0);" onClick={(e) => this.translate('ar', 'rtl')} >العربية</a>
                                     </div>
                                 </div>
                                 <div className="floatRight" style={{ display: 'inline-block' }}>

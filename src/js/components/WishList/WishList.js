@@ -16,6 +16,7 @@ let addToCartModal = false
 let cartModelFlag = false;
 let url_key = '';
 let showPopupIndex = -1
+let currencyCountry=''
 class WishList extends Component {
 
     constructor(props) {
@@ -188,7 +189,7 @@ class WishList extends Component {
                                 <FormattedMessage id="BuyMoreBtn.Message" defaultMessage="Buy More, Save More!" />
                             </div>
                             <div className="buyAndMoreOffer">
-                                <span>{value}&nbsp;<FormattedMessage id="For.Text" defaultMessage="For" />&nbsp;{currency}&nbsp;{offer[value]}</span>
+                                <span>{value}&nbsp;<FormattedMessage id="For.Text" defaultMessage="For" />&nbsp;{currencyCountry}&nbsp;{offer[value]}</span>
                             </div>
                         </div>
                     );
@@ -253,6 +254,12 @@ class WishList extends Component {
     render() {
         const language = localStorage.getItem('templang');
         const store_locale = this.props.globals.store_locale;
+        
+        if(this.props.globals.country=='UAE'){
+            currencyCountry='AED'
+        }else{
+            currencyCountry='SAR'
+        }
         let title = "Your account | ELC UAE Online store";
 		let description = "Shop online for baby toys, dolls houses, wooden toys and more at ELC. Choose from big brands including LeapFrog, VTech, Smart Trike and more.";
 		let keywords = "ELC, Early Learning Center, Early Learning Centre, Toys, Baby Toys, Wooden Toys, Educational Toys";
@@ -376,7 +383,7 @@ class WishList extends Component {
                                                 {this.props.products[item].offers && this.props.products[item].offers.status == 1 ?
                                                     this.showDiscountPrise(this.props.products[item].offers.data, this.props.products[item].price, "AED")
                                                     :  <Link to={`/${store_locale}/products-details/${this.props.products[item].url_key}`}><div>
-                                                        <span style={{ fontSize: 14, color: "#0D943F", fontWeight: "bold" }}>AED {this.props.products[item].price}</span>
+                                                        <span style={{ fontSize: 14, color: "#0D943F", fontWeight: "bold" }}>{currencyCountry}&nbsp;&nbsp;{this.props.products[item].price}</span>
                                                     </div></Link>
                                                 }
                                             </div>

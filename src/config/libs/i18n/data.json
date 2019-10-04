@@ -878,9 +878,13 @@
     "InvalidLoginOrPassoword":"Invalid login  or passoword",
     "Product.Refine":"Refine",
     "Giftwraprequired": "Gift wrap required",
+    "ResetPassword.PasswordChangedfail.Text":"Password change failed",
+    "ResetPassword.fail.Text1":"Password change failed try again !!!",
     "ResetPassword.newpasswordinvalid.error":"Password must be at least 8 characters long and contain an uppercase letter, a lowercase letter , a number and  special characters."
     },
     "ar": {
+      "ResetPassword.PasswordChangedfail.Text":"Password change failed",
+      "ResetPassword.fail.Text1":"Password change failed try again !!!",
       "ResetPassword.newpasswordinvalid.error":"Password must be at least 8 characters long and contain an uppercase letter, a lowercase letter , a number and  special characters.",
       "InvalidLoginOrPassoword":"معلومات الدخول خاطئة او كلمة المرور خاطئة",
       "PageTitle.play-tents-and-mats":"خيمات وحصائر لعب",
