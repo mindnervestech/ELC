@@ -144,7 +144,9 @@ class ShoppingBagItem extends Component {
         
         if(localStorage.getItem('myCartItem') !== ''){
             myCartItem = JSON.parse(localStorage.getItem('myCartItem'));
-            product = myCartItem.products;
+            if(myCartItem){
+                product = myCartItem.products;
+            }
         }
         
         // console.log(cookie.load('myCartItem'));

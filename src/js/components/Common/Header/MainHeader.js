@@ -273,7 +273,9 @@ class MainHeader extends Component {
         let myCartItem = {};
         if(localStorage.getItem('myCartItem') !== ''){
             myCartItem = JSON.parse(localStorage.getItem('myCartItem'));
-            product = myCartItem.products;
+            if(myCartItem){
+                product = myCartItem.products;
+            }
         }
 
         return (
