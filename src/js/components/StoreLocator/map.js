@@ -35,7 +35,8 @@ export class MapContainer extends Component {
         <Map
           google={this.props.google}
           zoom={zoom}
-          style={mapStyles}
+          //style={MapCss}
+          className="MapCss"
           center={{
             lat: lat,
             lng: long

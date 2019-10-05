@@ -6616,11 +6616,22 @@ html[dir="rtl"] .productCategaryNamePadding{
     -webkit-overflow-scrolling: touch;
 }
 
+.MapCss{
+    width: 70% !important;
+    height: 100% !important;
+    left: 30%;
+}
 
 @media (max-width:767px){
     .pagenation li{
         margin: 0px !important;
         width: 13% !important;
+    }
+
+    .MapCss{
+        width: 100% !important;
+        height: 100% !important;
+        left: 0%;
     }
 
     .close-icon-sort{
