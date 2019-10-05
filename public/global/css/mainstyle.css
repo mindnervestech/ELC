@@ -6612,6 +6612,10 @@ html[dir="rtl"] .productCategaryNamePadding{
     padding-left: 15px;
 }
 
+.hideBackPageScroll{
+    -webkit-overflow-scrolling: touch;
+}
+
 
 @media (max-width:767px){
     .pagenation li{

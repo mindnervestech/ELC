@@ -985,6 +985,7 @@ table .qty td input{
 #mobile-buttons button {
     margin: 0 !important;
     border-radius:0;
+    font-weight: bold;
 }
 
 
