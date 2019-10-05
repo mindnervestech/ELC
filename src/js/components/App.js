@@ -194,7 +194,6 @@ class App extends Component {
     }
 
     handleLanguageSelection = (language) => {
-
         let country;
         //country = (cookie.load('country') === null) ? 'KSA' : cookie.load('country');
 

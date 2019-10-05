@@ -63,7 +63,28 @@ class MainHeader extends Component {
             showCart: !this.state.showCart
         })
     }
+componentWillMount() {
 
+    let string = window.location.href;
+    debugger;
+    if (string.includes("password-rest") 
+        && localStorage.getItem("ispasswordreset") === "false") {
+        localStorage.setItem("ispasswordreset", true);
+        let url = string.split("/")
+        let key = url[3].split('-')
+        console.log(">>>>>>>>>",key[1])
+        if(key[1] === 'en'){
+            this.props.handleLanguageSelection(key[1]);
+        }else{
+            this.props.handleLanguageSelection(key[1]);
+        }
+        this.setState({ showMenu: false });
+    } else {
+        localStorage.setItem("ispasswordreset", false);
+    }
+    
+        
+}
     componentDidMount() {
         this.props.onGetStoreIds();
         //console.log('In componentDidMount before onGetMenuNav', this.props.global);
