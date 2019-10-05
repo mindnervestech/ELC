@@ -79,12 +79,8 @@ class BirthDayClub extends Component {
 
     if (nextprops.bclubDetails && !nextprops.bclubDetails.status) {
       let message = nextprops.bclubDetails.message
-        if(this.state.checkCondition)
-        {
-
-        
       setTimeout(() => {
-        this.setState({ sucesss_message: message, ischeckremove: false, showAlert: true ,checkCondition:false});
+        this.setState({ sucesss_message: message, ischeckremove: false, showAlert: true ,});
         
       }, 100);
 
@@ -92,23 +88,16 @@ class BirthDayClub extends Component {
         this.closeAlert();
       }, 6000);
         }
-    }
+    
     else if(nextprops.bclubDetails && nextprops.bclubDetails.status)
     {
-       
       let message = nextprops.bclubDetails.message
-      if(this.state.checkCondition)
-      {
       setTimeout(() => {
-        this.setState({ sucesss_message: message, ischeckremove: false, showAlert: true ,checkCondition:false});
-        
+        this.setState({ sucesss_message: message, ischeckremove: false, showAlert: true ,});
       }, 100);
-
       setTimeout(() => {
         this.closeAlert();
       }, 3000);
-
-    }
     }
     else
     { 
