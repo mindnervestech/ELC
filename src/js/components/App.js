@@ -271,10 +271,14 @@ class App extends Component {
     }
 
     componentDidMount() {
-        let changedLang = localStorage.getItem('tempstoreid');
-        if (changedLang) {
+        let _storeId = localStorage.getItem('tempstoreid');
+        if (_storeId) {
             let templang = localStorage.getItem('templang');
-            this.setState({ store_id: changedLang, language: templang, changeData: true });
+            this.setState({ store_id: _storeId, language: templang, changeData: true });
+        } else {
+            let _storeId = localStorage.setItem('tempstoreid', 4);
+            let templang = localStorage.setItem('templang', 'en');
+            this.setState({ store_id: _storeId, language: templang, changeData: true });
         }
     }
 
