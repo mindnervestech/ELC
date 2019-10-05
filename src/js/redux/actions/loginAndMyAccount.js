@@ -40,7 +40,8 @@ export const loginUser = (payload) => {
                         isUserLoggedIn: res.status,
                         loginMessage: res.message
                     }
-                    cookie.save('myCartItem', {});
+                    // cookie.save('myCartItem', {});
+                    localStorage.setItem('myCartItem', '');
                     dispatch(callActionLoginUser({ ...newState }))
 
                 } else {

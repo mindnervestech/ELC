@@ -271,8 +271,8 @@ class MainHeader extends Component {
         }
         let product = [];
         let myCartItem = {};
-        if(cookie.load('myCartItem') !== undefined){
-            myCartItem = cookie.load('myCartItem');
+        if(localStorage.getItem('myCartItem') !== ''){
+            myCartItem = JSON.parse(localStorage.getItem('myCartItem'));
             product = myCartItem.products;
         }
 
@@ -301,7 +301,12 @@ class MainHeader extends Component {
                                                         <img style={{ height: '20px', width: '30px' }} src={UAEImage}></img>
                                                         : <img style={{ height: '20px', width: '30px' }} src={KSAImage}></img>
                                                     }
-                                                    <label className="text-color" style={{ fontSize: '1.3rem' }}>&nbsp;{this.state.country_name.toUpperCase()} </label>
+                                                    <label className="text-color" style={{ fontSize: '1.3rem' }}>
+                                                        &nbsp;{this.state.country_name.toUpperCase() == 'UAE' ?
+                                                        <FormattedMessage id="header.uae" defaultMessage="UAE" />
+                                                        : <FormattedMessage id="header.ksa" defaultMessage="KSA" />
+                                                        } 
+                                                    </label>
                                                     <span className="selected">
                                                         <FormattedMessage id="header.defaultCountry" defaultMessage="Select Your Country" />
 
@@ -530,11 +535,16 @@ class MainHeader extends Component {
                                 <div className="changecountry">
                                     <div className="country">
                                         <div onClick={this.showCountries} className={this.state.showCountries ? "activeCountry open divShowOnMobile" : "activeCountry divShowOnMobile"}>
-                                            {this.state.country_name == 'UAE' ?
+                                            {this.state.country_name.toUpperCase() == 'UAE' ?
                                                 <img style={{ height: '20px', width: '30px' }} src={UAEImage}></img>
                                                 : <img style={{ height: '20px', width: '30px' }} src={KSAImage}></img>
                                             }
-                                            <label className="text-color">&nbsp;{this.state.country_name} </label>
+                                            <label className="text-color">
+                                            &nbsp;{this.state.country_name.toUpperCase() == 'UAE' ?
+                                                <FormattedMessage id="header.uae" defaultMessage="UAE" />
+                                                : <FormattedMessage id="header.ksa" defaultMessage="KSA" />
+                                                } 
+                                             </label>
                                             <span className="selected">
                                                 <FormattedMessage id="header.defaultCountry" defaultMessage="Select Your Country" />
                                             </span>

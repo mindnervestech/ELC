@@ -44,12 +44,14 @@ export const getMyCart = (payload) => {
                         ...res.data,
                         is_cart_details_rec: true,
                     }
-                    cookie.save('myCartItem', newState);
+                    // cookie.save('myCartItem', newState);
+                    localStorage.setItem('myCartItem', JSON.stringify(newState));
                     dispatch(callActionForMyCart(newState))
 
                 } else if ((res.status) && (res.code == 200) && (!('data' in res))) {
                     // dispatch(clearCartItem())
-                    cookie.save('myCartItem', {});
+                    // cookie.save('myCartItem', {});
+                    localStorage.setItem('myCartItem', '');
                 }else if(!res.status && res.code === 400){
                     if (res.new_quote_id !== "") {
                         let newQuoteId = {

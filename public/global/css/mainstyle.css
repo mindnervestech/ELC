@@ -6195,7 +6195,7 @@ html[dir="rtl"] .header .changecountry .country .list {
 }
 html[dir="rtl"] .header .changecountry {
     border: none !important;
-    width: 26% !important;
+    width: 30% !important;
     display: inline-block !important;
     position: relative !important;
     left: 5px !important;

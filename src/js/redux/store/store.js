@@ -50,7 +50,8 @@ const rootReducer = (state, action) => {
     if (action.type === 'LOGOUT_USER') {
         storage.removeItem('persist:root')
         state = undefined;
-        cookie.save('myCartItem', {});
+        // cookie.save('myCartItem', {});
+        localStorage.setItem('myCartItem', '');
     }
     return AppRootReducer(state, action);
 };

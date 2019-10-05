@@ -470,7 +470,8 @@ export const getPlaceOrder = payload => {
 					type: actionTypes.GET_PLACE_ORDER,
 					payload: { payfort_data: res.payfort_data }
 				})
-				cookie.save('myCartItem', {});
+				// cookie.save('myCartItem', {});
+				localStorage.setItem('myCartItem', '');
 				if (res.order_data.new_quote_id !== "") {
 					let newQuoteId = {
 						...getState().login.customer_details,

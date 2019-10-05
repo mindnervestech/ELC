@@ -141,8 +141,9 @@ class ShoppingBagItem extends Component {
         const store_locale = this.props.globals.store_locale;
         let product = [];
         let myCartItem = {};
-        if(cookie.load('myCartItem') !== undefined){
-            myCartItem = cookie.load('myCartItem');
+        
+        if(localStorage.getItem('myCartItem') !== ''){
+            myCartItem = JSON.parse(localStorage.getItem('myCartItem'));
             product = myCartItem.products;
         }
         
