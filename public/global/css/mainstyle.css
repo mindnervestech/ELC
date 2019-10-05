@@ -7261,5 +7261,15 @@ html[dir="rtl"] .likeAInputName {
             width: 49%!important;
             padding: 0!important;
         }
+
+        .slick-next, .slick-prev{
+            height: 30px !important;
+            width: 30px !important;
+        }
+
+        .header-slider .slick-next{
+            z-index: 1;
+            right: -15px !important;
+        }
     }
 }

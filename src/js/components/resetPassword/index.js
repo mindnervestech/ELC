@@ -24,9 +24,6 @@ class ResetPassword extends Component {
 			res_message: '',
 			ischeckremove: true,
 		}
-	}
-
-	componentWillMount() {
 		let string = window.location.href
         let url = string.split("/")
 		let key = url[3].split('-')
@@ -36,7 +33,9 @@ class ResetPassword extends Component {
 		}else{
 			this.props.handleLanguageSelection(key, 'rtl');
 		}
-		
+	}
+
+	componentWillMount() {
 		const values = queryString.parse(this.props.location.search);
 		if (values.status || (values.id && values.token)) {
 			if (values.status == 'true') {
