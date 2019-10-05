@@ -82,7 +82,10 @@ class Footer extends Component {
 
 
         if (this.handleValidation()) {
-            const data = this.state.email;
+            const data = {
+                email:this.state.email,
+            store_id:this.props.globals.currentStore
+            }
             if (this.state.email) {
 
                 const API = Axios.create({
@@ -90,7 +93,7 @@ class Footer extends Component {
                     headers: { Authorization: `Bearer ${API_TOKEN}`, 'Content-Type': 'application/json' },
                 });
 
-                API.post(`subscribetonewsletter`, { 'email': data }).then(res => {
+                API.post(`subscribetonewsletter`, { 'email': data.email,'store_id':data.store_id }).then(res => {
 
                     this.setState({ email: '', success: res.data.message, showAlert: true });
                     setTimeout(() => {
