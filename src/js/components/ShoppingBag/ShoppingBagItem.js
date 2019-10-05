@@ -214,22 +214,22 @@ class ShoppingBagItem extends Component {
                         <div className="modal-cart-update">
                             {successFlag ?
                                 <div className="updated-qty-msg">
+                                <i className="close fa fa-times close-icon-update" aria-hidden="true" onClick={() => this.closeModal("stockSortageFlag")} />
                                     <FormattedMessage id="Productquantityhasbeenupdated" defaultMessage="Product quantity has been updated." />
-                                    <i className="close fa fa-times close-icon-update" aria-hidden="true" onClick={() => this.closeModal("stockSortageFlag")} />
                                 </div>
                                 : ''}
                             {stockSortageFlag ?
                                 <div className="sort-storage-qty-msg">
                                     <FormattedMessage id="StockShortage1" defaultMessage="STOCK SHORTAGE - we have added " />
                                     {stockSortageQTY}
-                                    <FormattedMessage id="StockShortage2" defaultMessage=" units to your basket because we do not have enough stock." />
                                     <i className="close fa fa-times close-icon-sort" aria-hidden="true" onClick={() => this.closeModal("successFlag")} />
+                                    <FormattedMessage id="StockShortage2" defaultMessage=" units to your basket because we do not have enough stock." />
                                 </div>
                                 : ''}
                             {invalidValue ?
                                 <div className="sort-storage-qty-msg">
+                                <i className="close fa fa-times close-icon-sort" aria-hidden="true" onClick={() => this.closeModal("invalidValue")} />
                                     <FormattedMessage id="InvalidvalueQty" defaultMessage="Please provide a positive number to update the quantity of an item." />
-                                    <i className="close fa fa-times close-icon-sort" aria-hidden="true" onClick={() => this.closeModal("invalidValue")} />
                                 </div>
                                 : ''}
                         </div>
