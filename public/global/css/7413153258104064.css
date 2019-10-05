@@ -6906,9 +6906,9 @@ body .ui-state-default.ui-priority-primary {
   font-size: 11px;
 }
 
-@media only screen and (max-width: 640px) {
+@media only screen and (max-width: 767px) {
   .t-BreadcrumbRegion-body {
-    padding: 0;
+    padding: 0px 10px;
   }
 }
 

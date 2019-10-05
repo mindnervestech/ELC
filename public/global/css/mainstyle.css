@@ -6308,7 +6308,7 @@ html[dir="rtl"] .header .navTrigger {
     }
 
     html[dir="rtl"] .slick-next:before{
-        content: '\203A' !important;
+        content: url(chevron_right.svg)!important;
         font-size: 80px !important;
         line-height: 0 !important;
         position: relative;
@@ -7034,6 +7034,10 @@ html[dir="rtl"] .t-Button--pillStart{
     font-family: "VAG Rounded ELC bold" !important;
 }
 
+.mobilePopupImagePadding{
+    padding-top: 15px;
+}
+
 @media (max-width:767px){
 
     .likeAInputName {
@@ -7041,6 +7045,10 @@ html[dir="rtl"] .t-Button--pillStart{
         padding-left: 15px;
         display: inline-block;
         width: 90%;
+}
+
+.mobilePopupImagePadding{
+    padding-top: 0px;
 }
 
 #manuCollapsible .Collapsible__trigger{

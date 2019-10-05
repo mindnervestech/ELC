@@ -2134,6 +2134,15 @@ html[dir="rtl"] .styles_modal__gNwvD div{
             font-size: 20px;
             text-align: center;
         }
+
+        .button-model {
+            width: 49%!important;
+            padding: 0!important;
+        }
+
+        .click-collect{
+            margin-left: 20px!important;
+        }
     }
 }
 

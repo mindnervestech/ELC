@@ -284,7 +284,7 @@ class ProductImage extends Component {
 						</tr>
 					</tbody>
 				</table>
-				<div style={{paddingTop: 15, textAlign:'center', textAlign: '-webkit-center'}}>
+				<div className="mobilePopupImagePadding" style={{textAlign:'center', textAlign: '-webkit-center'}}>
 					<div
 						className="MagicScroll MagicScroll-arrows-inside"
 						data-options="items: 4; orientation: horizontal; loop: off; arrows: inside; draggable: true;"
