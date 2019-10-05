@@ -24,19 +24,29 @@ class ResetPassword extends Component {
 			res_message: '',
 			ischeckremove: true,
 		}
-		let string = window.location.href
-        let url = string.split("/")
-		let key = url[3].split('-')
-		console.log(">>>>>>>>>",key[1])
-		if(key == 'en'){
-			this.props.handleLanguageSelection(key[1], 'ltr');
-		}else{
-			this.props.handleLanguageSelection(key[1], 'rtl');
-		}
+		// let string = window.location.href
+        // let url = string.split("/")
+		// let key = url[3].split('-')
+		// console.log(">>>>>>>>>",key[1])
+		// if(key[1] === 'en'){
+		// 	this.props.handleLanguageSelection(key[1]);
+		// }else{
+		// 	this.props.handleLanguageSelection(key[1]);
+		// }
 	}
 
 	componentWillMount() {
 		const values = queryString.parse(this.props.location.search);
+
+		let string = window.location.href
+        let url = string.split("/")
+		let key = url[3].split('-')
+		console.log(">>>>>>>>>",key[1])
+		if(key[1] === 'en'){
+			this.props.handleLanguageSelection(key[1]);
+		}else{
+			this.props.handleLanguageSelection(key[1]);
+		}
 		if (values.status || (values.id && values.token)) {
 			if (values.status == 'true') {
 				this.props.resetFlag({
