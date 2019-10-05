@@ -6327,7 +6327,7 @@ html[dir="rtl"] .header .navTrigger {
     }
 
     .slick-next:before{
-        content: '\203A' !important;
+        content: url(chevron_right.svg)!important;
         font-size: 80px !important;
         line-height: 0 !important;
         position: relative;
