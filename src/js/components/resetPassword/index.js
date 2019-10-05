@@ -27,11 +27,11 @@ class ResetPassword extends Component {
 		let string = window.location.href
         let url = string.split("/")
 		let key = url[3].split('-')
-		console.log(">>>>>>>>>",key)
+		console.log(">>>>>>>>>",key[1])
 		if(key == 'en'){
-			this.props.handleLanguageSelection(key, 'ltr');
+			this.props.handleLanguageSelection(key[1], 'ltr');
 		}else{
-			this.props.handleLanguageSelection(key, 'rtl');
+			this.props.handleLanguageSelection(key[1], 'rtl');
 		}
 	}
 
