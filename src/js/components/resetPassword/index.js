@@ -27,6 +27,10 @@ class ResetPassword extends Component {
 	}
 
 	componentWillMount() {
+		let string =  window.location.href
+        let url = string.split("/")
+        let key = url[3].split('-')
+		this.props.handleCountrySelection(key);
 		const values = queryString.parse(this.props.location.search);
 		if (values.status || (values.id && values.token)) {
 			if (values.status == 'true') {
@@ -47,7 +51,6 @@ class ResetPassword extends Component {
 	}
 
 	componentDidUpdate(prevProps) {
-		console.log(this.props.resetpasswordSucess)
 		if (prevProps.newLink != this.props.newLink) {
 			if (this.props.newLink) {
 				this.props.history.push(`/${this.props.globals.store_locale}/password-rest?status=${this.props.resetpasswordSucess ? true : false}`);
@@ -158,13 +161,11 @@ class ResetPassword extends Component {
 				</div>
 			</div></span>;
 		}
-		console.log(this.props.resetpasswordSucess)
 		if (this.props.resetpasswordSucess == false){
 			status = true;
 		} else {
 			status = false;
 		}
-		console.log(status)
 
 		return (
 			<div className="t-Body-contentInner">
