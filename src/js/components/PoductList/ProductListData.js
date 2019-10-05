@@ -581,7 +581,7 @@ class ProductListData extends Component {
 					</div>
 					<div className="homePage">
 						<div className="start3">
-							<div>
+							<div className="productCategaryNamePadding">
 								<span className="PLPCategaryName">{this.props.list.category_name}</span>
 							</div>
 							<div style={{ height: 32 }}>

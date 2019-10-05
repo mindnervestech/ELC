@@ -6601,6 +6601,18 @@ html[dir="rtl"] .commingSoonText{
     width: 100%;
 }
 
+.productCategaryNamePadding{
+    text-align: start;
+    padding-left: 0px;
+}
+
+html[dir="rtl"] .productCategaryNamePadding{
+    text-align: start;
+    padding-left: 0px;
+    padding-left: 15px;
+}
+
+
 @media (max-width:767px){
     .pagenation li{
         margin: 0px !important;
