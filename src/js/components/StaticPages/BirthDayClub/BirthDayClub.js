@@ -142,12 +142,12 @@ class BirthDayClub extends Component {
 
   onClickGender = (gender,newGender, index) => {
     ChildrenGender[index] = gender
-    if(newGender=='Male'){
+    if(newGender==='Male'){
         ChildrenNewGender[index] = newGender
-    }  else if(newGender='Female'){
+    }  else if(newGender==='Female'){
         ChildrenNewGender[index] = newGender
-    }else if(newGender="Other")
-    {  ChildrenNewGender[index] = newGender
+    } else if(newGender==='Other'){
+        ChildrenNewGender[index] = newGender
     }
     else
     {
