@@ -302,6 +302,7 @@ class ProductInfo extends Component {
 
 	addToWishList = (data) => {
 		if ((this.props.customerDetails && this.props.customerDetails.customer_id === undefined) || !this.props.customerDetails) {
+			localStorage.setItem('productId-towishlist', this.props.productZoomDetails.id)
 			return (<Link to={`/${this.props.globals.store_locale}/sign-in-register`}><span className="wishlist-span-1 mr-10-wishlist" style={{ margin: 10 }}>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"

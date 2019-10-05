@@ -2,7 +2,7 @@ import TagManager from 'react-gtm-module';
 
 export const initializeGTM = () => {
     TagManager.initialize({
-        gtmId: 'GTM-MSV9DZV'
+        gtmId: 'GTM-NC6Z64G'
     });
 };
 

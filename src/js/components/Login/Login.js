@@ -98,8 +98,7 @@ class Login extends Component {
   }
 
   onAddToWishList = () => {
-
-    if (this.props.location.search != undefined) {
+    if (this.props.location.search != undefined && this.props.location.search != '') {
       const values = queryString.parse(this.props.location.search);
       const itemId = values.item;
       if (itemId) {
@@ -109,6 +108,17 @@ class Login extends Component {
         }
         this.props.onAddToWishList(data);
       }
+    }else{
+      var itemId = localStorage.getItem('productId-towishlist');
+      if(itemId){
+        const data = {
+          customer_id: this.props.login_details.customer_details.customer_id,
+          product_id: itemId,
+        }
+        this.props.onAddToWishList(data);
+        localStorage.setItem('productId-towishlist', '');
+      }
+      
     }
 
   }
