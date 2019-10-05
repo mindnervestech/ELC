@@ -137,8 +137,8 @@ class ProductBasic extends Component {
 		this.setState({ showAlert: false });
 	}
 
-    checkOut() {
-        this.props.onCloseCartModal();
+    checkOut = () => {
+		this.props.onCloseCartModal();
     }
 
     render() {

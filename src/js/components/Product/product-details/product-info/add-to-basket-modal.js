@@ -145,7 +145,6 @@ class AddToBasketModal extends Component {
 			};
 			this.props.onGuestAddToCart(prodData, myCart);
 		}
-		// this.props.onCloseAddCartModal();
 	}
 
 	decrement = totalQty => {

@@ -1,7 +1,6 @@
 import * as actionType from './actionTypes';
 import { API } from '../../api/api';
 
-
 /////////////////////////////////GET STORE ID////////////////////////////////////
 
 const callActionGetStoreIds = (payload) => {
@@ -125,11 +124,15 @@ export const getHomePageData = (payload = {}) => {
             ...payload,
         }
 
+        dispatch({
+			type: actionType.ADD_TO_CARD_LOADER,
+			payload: { addToCardLoader: true, add_cart_open_popUp: false}
+		});
         if (!navigator.onLine) {
             // console.log('restore From LocalStorage');
             const home_page_data_res = JSON.parse(localStorage.getItem('HomePageData'));
             if (home_page_data_res) {
-                dispatch(callActionForGetHomePageData({ home_page_data: home_page_data_res }))
+                dispatch(callActionForGetHomePageData({ home_page_data: home_page_data_res}))
             }
         }
         
@@ -140,7 +143,7 @@ export const getHomePageData = (payload = {}) => {
                 localStorage.setItem('HomePageData', JSON.stringify(res));
 
                 if (res.status === true && res.code === 200) {
-                    dispatch(callActionForGetHomePageData({ home_page_data: res }))
+                    dispatch(callActionForGetHomePageData({ home_page_data: res}))
 
                 } else {
 

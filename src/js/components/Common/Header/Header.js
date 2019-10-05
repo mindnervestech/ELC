@@ -55,18 +55,18 @@ class Header extends Component {
 
     isCartcheck = (path) => {
         switch (path) {
-            // case 'checkout-login':
-            //   return true
-            //   break;
-            // case 'checkout-payment':
-            //   return true
-            //   break;
-            // case 'order-confirm':
-            //   return true
-            //   break;
-            // case 'delivery-details':
-            //   return true
-            //   break;
+            case 'checkout-login':
+              return true
+              break;
+            case 'checkout-payment':
+              return true
+              break;
+            case 'order-confirm':
+              return true
+              break;
+            case 'delivery-details':
+              return true
+              break;
             default:
                 return false
         }

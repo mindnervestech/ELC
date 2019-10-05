@@ -17,6 +17,10 @@ export const getMenuNav = (payload) => {
             store : payload.currentStore
         }
         dispatch(loadingSpinner({ loading: true }))
+        dispatch({
+			type: actionTypes.ADD_TO_CARD_LOADER,
+			payload: { addToCardLoader: true, add_cart_open_popUp: false}
+		});
         let cb = {
             success: (res) => {
                 if(res.status && res.code ===200) {
