@@ -6926,11 +6926,11 @@ html[dir="rtl"] #add_to_basket .pdoductDetailSpasing{
 }
 
 .webOutOfStockTetx{
-    padding: 29px 20px 5px;
+    padding: 15px 20px 5px;
 }
 
 html[dir="rtl"] .webOutOfStockTetx{
-    padding: 11px 20px 5px;
+    padding: 0px 20px 5px;
 }
 
 .productDetailPopupImage{

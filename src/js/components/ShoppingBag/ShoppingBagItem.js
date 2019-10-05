@@ -261,7 +261,7 @@ class ShoppingBagItem extends Component {
                                             </div>
                                             <div className="click-collect3">
                                                 <div className="blockImage">
-                                                    <img src={freeCollect} style={{ height: 60 }} />
+                                                    <img src={freeCollect} style={{ height: 60,verticalAlign: 'middle' }} />
                                                 </div>
                                                 <div className="blockTextColor" style={{ color: 'gray' }}>
                                                     <span><FormattedMessage id="ClickCollectatselectedELCStore" defaultMessage="Click & Collect at selected ELC Store" /></span>

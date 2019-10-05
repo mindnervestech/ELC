@@ -79,7 +79,7 @@ class ResetPassword extends Component {
 
 	applyBtn = () => {
 		let validate = true;
-		var regularExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8}$/;
+		var regularExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,30}$/;
 		if(this.state.fields.newPassword !== "" && this.state.fields.confirmPassword !== ""){
 			this.state.newPasswordError = false
 			this.state.confirmError = false

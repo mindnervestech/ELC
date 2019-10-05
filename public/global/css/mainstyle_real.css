@@ -4655,7 +4655,7 @@ html[dir="rtl"] .header .navTrigger {
     width: 45%;
     margin-left: 0px!important;
     border-radius: 5px;
-    height: 160px;
+    height: 120px;
 }
 
 .blockTextColor{
@@ -4681,7 +4681,7 @@ html[dir="rtl"] .header .navTrigger {
     width: 45%;
     margin-left: 25px;
     border-radius: 5px;
-    height: 160px;
+    height: 120px;
 }
 
 html[dir="rtl"] .click-collect3 {
@@ -4691,7 +4691,7 @@ html[dir="rtl"] .click-collect3 {
     margin-right: 25px!important;
     margin-left: 0px!important;
     border-radius: 5px;
-    height: 160px;
+    height: 120px;
 }
 
 .badyCloubLink{
@@ -4850,7 +4850,7 @@ html[dir="rtl"] .click-collect3 {
 }
 
 .webAvalebalText{
-    padding: 45px 20px 5px;
+    padding: 15px 20px 5px;
     font-weight: bold;
 }
 
@@ -4942,7 +4942,7 @@ html[dir="rtl"] .click-collect3 {
     }
 
     .webOutOfStockTetx{
-        padding: 30px 20px 5px;
+        padding: 20px 20px 5px;
     }
 
     .webAvalebalText{
@@ -4950,7 +4950,7 @@ html[dir="rtl"] .click-collect3 {
     }
 
     html[dir="rtl"] .webAvalebalText{
-        padding: 45px 20px 5px;
+        padding: 15px 20px 5px;
     }
 
     html[dir="rtl"] .webOutOfStockTetx {
