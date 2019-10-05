@@ -36,18 +36,18 @@ class ProductSlider extends Component {
     onCloseAddCartModal = () => {
         this.setState({ basketPopupFlag: false})
         setTimeout(() => {
-            if (this.props.user_details.isUserLoggedIn) {
-                this.props.OngetMyCart({
-                    quote_id: this.props.user_details.customer_details.quote_id,
-                    store_id: this.props.globals.currentStore
-                })
-            } else {
-                this.props.OngetMyCart({
-                    quote_id: this.props.guest_user.new_quote_id,
-                    store_id: this.props.globals.currentStore
-                })
+            // if (this.props.user_details.isUserLoggedIn) {
+            //     this.props.OngetMyCart({
+            //         quote_id: this.props.user_details.customer_details.quote_id,
+            //         store_id: this.props.globals.currentStore
+            //     })
+            // } else {
+            //     this.props.OngetMyCart({
+            //         quote_id: this.props.guest_user.new_quote_id,
+            //         store_id: this.props.globals.currentStore
+            //     })
 
-            }
+            // }
             if(window.location.href.includes('products-details')){
                 
                 let data = {

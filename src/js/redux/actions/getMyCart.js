@@ -47,7 +47,10 @@ export const getMyCart = (payload) => {
                     // cookie.save('myCartItem', newState);
                     localStorage.setItem('myCartItem', JSON.stringify(newState));
                     dispatch(callActionForMyCart(newState))
-
+                    dispatch(action.getPaymentDetails({
+                        quote_id: payload !== undefined ? payload.quote_id : getState().login.customer_details.quote_id,
+                        store_id: payload !== undefined ? payload.store_id : getState().global.currentStore,
+                    }));
                 } else if ((res.status) && (res.code == 200) && (!('data' in res))) {
                     // dispatch(clearCartItem())
                     // cookie.save('myCartItem', {});

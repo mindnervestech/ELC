@@ -66,7 +66,6 @@ class MainHeader extends Component {
 componentWillMount() {
 
     let string = window.location.href;
-    debugger;
     if (string.includes("password-rest") 
         && localStorage.getItem("ispasswordreset") === "false") {
         localStorage.setItem("ispasswordreset", true);
