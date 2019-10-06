@@ -19,7 +19,7 @@ export const getMenuNav = (payload) => {
         dispatch(loadingSpinner({ loading: true }))
         dispatch({
 			type: actionTypes.ADD_TO_CARD_LOADER,
-			payload: { addToCardLoader: true, add_cart_open_popUp: false}
+			payload: { add_cart_open_popUp: false}
 		});
         let cb = {
             success: (res) => {

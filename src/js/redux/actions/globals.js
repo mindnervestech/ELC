@@ -126,7 +126,7 @@ export const getHomePageData = (payload = {}) => {
 
         dispatch({
 			type: actionType.ADD_TO_CARD_LOADER,
-			payload: { addToCardLoader: false, add_cart_open_popUp: false}
+			payload: { add_cart_open_popUp: false}
 		});
         if (!navigator.onLine) {
             // console.log('restore From LocalStorage');
