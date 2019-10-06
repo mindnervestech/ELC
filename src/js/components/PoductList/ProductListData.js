@@ -260,11 +260,13 @@ class ProductListData extends Component {
 		changeFilterData = true
 		this.setState({ pageNumber: value });
 		if (this.state.check) {
-			let value = pagenationCount * this.state.pageNumber + 1
-			this.pagenation(value, value + pagenationCount - 1)
+			let _value = (pagenationCount * value)
+			let value2 = (pagenationCount * (value - 1)) + 1
+			this.pagenation(value2, _value)
 		} else {
-			let value = pagenationCount * this.state.pageNumber
-			this.pagenation(value, value + pagenationCount - 1)
+			let _value = pagenationCount * value
+			let value2 = pagenationCount * (value - 1)
+			this.pagenation(value2, _value)
 		}
 	}
 
