@@ -65,9 +65,29 @@
 
 
  <!-- Start of elctoys Zendesk Widget script --> 
-    <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=0cd0ee1a-565a-49ae-82b5-1f259972bd41"> </script> 
-    <script type="text/javascript"> zE('webWidget', 'setLocale', 'ar OR en'); </script> 
+    <!-- <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=0cd0ee1a-565a-49ae-82b5-1f259972bd41"> </script> 
+    <script type="text/javascript"> zE('webWidget', 'setLocale', 'ar OR en'); </script>  -->
     <!-- End of nayomi Zendesk Widget script -->
+
+<!-- Start of elctoys Zendesk Widget script -->
+
+    <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=0cd0ee1a-565a-49ae-82b5-1f259972bd41"> </script>
+    <script type="text/javascript"> console.log("hererr") 
+    if(window.location.href){
+      var country = window.location.href.split('/');
+      if(country[3].includes('ar')){
+        zE('webWidget', 'setLocale', 'ar');
+      } else if(country[3].includes('en')){
+        zE('webWidget', 'setLocale', 'en');
+      } else {
+        zE('webWidget', 'setLocale', 'en'); 
+      }
+    }
+    // zE('webWidget', 'setLocale', 'ar OR en');
+    </script>  
+
+<!-- End of nayomi Zendesk Widget script -->
+
    
     <script>(function (w, d, s, l, i) {
         w[l] = w[l] || []; w[l].push({
