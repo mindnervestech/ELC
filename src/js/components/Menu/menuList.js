@@ -145,8 +145,8 @@ class menuList extends Component {
 
 		return (
 			<>
-				<li key={index} className="borderForMobileManu">
-					<Link to={'/' + this.state.store_locale + '/products/' + item.url_path} style={{ textDecoration: 'none' ,padding: "15px 10px"}} onClick={() => document.getElementById("closeNav").click()} className={item.children[0].length > 0 ? '' : "removeWhite"}>
+				<li key={index} className="borderForMobileManu"> 
+					<Link to={'/' + this.state.store_locale + '/products/' + item.url_path} style={{ textDecoration: 'none' ,padding: "15px 8px"}} onClick={() => document.getElementById("closeNav").click()} className={item.children[0].length > 0 ? '' : "removeWhite"}>
 						{item.name}
 						{item.children[0].length > 0 ?
 							<i className="fa fa-caret-down downMenu divShowOnWeb" aria-hidden="true"></i>
