@@ -226,6 +226,20 @@ componentWillMount() {
         document.querySelector("html").classList.remove("menuOpen");
     }
 
+    gotoCheckOutPage = () =>{
+		if (this.props.isUserLoggedIn) {
+			this.props.onGetMyCart({
+				quote_id: this.props.user_details.customer_details.quote_id,
+				store_id: this.props.globals.currentStore
+			})
+		} else {
+			this.props.onGetMyCart({
+				quote_id: this.props.guest_user.new_quote_id,
+				store_id: this.props.globals.currentStore
+			})
+		}
+	}
+
     render() {
 
         const settings = {
@@ -490,7 +504,7 @@ componentWillMount() {
                                 <Col xs="5" style={{ padding: 6 }}><Search store_locale={store_locale} /></Col>
                                 <Col xs="1" className="col-remove"></Col>
                                 <Col xs="2" className="width-custom" style={{ paddingTop: 15, paddingLeft: 5, paddingRight: 5 }}>
-                                    <Link to={`/${store_locale}/cart`} style={{ textDecoration: 'none' }}>
+                                    <Link to={`/${store_locale}/cart`} onClick={() => this.gotoCheckOutPage()} style={{ textDecoration: 'none' }}>
                                         <ul className="cta">
                                             {/* <li>
                                         <div className="changecountry">
@@ -632,7 +646,7 @@ componentWillMount() {
                                 </Link>
                                 <Link to={`/${store_locale}/store-locator`} style={{ textDecoration: 'none' }}>
                                     <img src={storeFinderMobile} className="mobileHomePageIcon hide-mob"></img></Link>
-                                <Link className="basket-icon" to={`/${store_locale}/cart`} style={{ textDecoration: 'none' }}>
+                                <Link className="basket-icon" to={`/${store_locale}/cart`} onClick={() => this.gotoCheckOutPage()} style={{ textDecoration: 'none' }}>
                                     <img src={bagLogo} className="mobileHomePageIcon" style={{ height: 25, width: 25 }} />
                                     <label className="lable-count">{product ? product.length : 0}</label>
                                 </Link>
@@ -841,6 +855,7 @@ const mapStateToProps = state => {
         guest_user: state.guest_user,
         menu: state.menu.menuNavData,
         OfferMessage: state.menu.OfferMessage,
+        isUserLoggedIn: state.login.isUserLoggedIn,
 
     }
 }

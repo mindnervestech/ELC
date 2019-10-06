@@ -139,7 +139,22 @@ class ProductBasic extends Component {
 
     checkOut = () => {
 		this.props.onCloseCartModal();
-    }
+	}
+	
+	gotoCheckOutPage = () =>{
+		if (this.props.isUserLoggedIn) {
+			this.props.OngetMyCart({
+				quote_id: this.props.user_details.quote_id,
+				store_id: this.props.globals.currentStore
+			})
+		} else {
+			this.props.OngetMyCart({
+				quote_id: this.props.guest_user.new_quote_id,
+				store_id: this.props.globals.currentStore
+			})
+		}
+		this.props.onCloseCartModal();
+	}
 
     render() {
 
@@ -185,7 +200,7 @@ class ProductBasic extends Component {
                         <button className="contunue-shopping-btn"><FormattedMessage id="Cart.ContinueShopping.Title" defaultMessage="Continue Shopping" /></button>
                     </div>
 
-                    <div className="button-model" onClick={() => this.checkOut()}>
+                    <div className="button-model" onClick={() => this.gotoCheckOutPage()}>
                         <Link to={`/${this.props.globals.store_locale}/cart`}>
                             <button className="alsoLikeCardButton"><FormattedMessage id="Cart.CheckOut.Title" defaultMessage="Check out" /></button>
                         </Link>
@@ -210,7 +225,7 @@ class ProductBasic extends Component {
                                 <div className="productDetailDiv" >
                                     <div className="related-title">
                                          <Link to={`/${store_locale}/products-details/${this.props.cart_details.similar_products[index].url_key}`}>
-                                        <span onClick={() => this.checkOut()}>{this.props.cart_details.similar_products[index].name}</span>
+                                        <span onClick={() => this.gotoCheckOutPage()}>{this.props.cart_details.similar_products[index].name}</span>
                                          </Link> 
                                     </div>
                                     <div className="related-title">
