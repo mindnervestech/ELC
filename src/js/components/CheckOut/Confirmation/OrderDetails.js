@@ -48,7 +48,7 @@ class OrderDetails extends Component {
         return (<>
 
             <Col xs="12" lg="4" md="12">
-                <div className="t-Region confirmation-info-header  t-Region--noBorder t-Region--hiddenOverflow margin-bottom-none" id="R1261007701091374327">
+                <div className="t-Region confirmation-info-header2  t-Region--noBorder t-Region--hiddenOverflow margin-bottom-none" id="R1261007701091374327">
                     <div className="t-Region-header">
                         <div className="t-Region-headerItems t-Region-headerItems--title">
                             <span className="t-Region-headerIcon"><span className="t-Icon " aria-hidden="true" /></span>
@@ -85,7 +85,7 @@ class OrderDetails extends Component {
 
 
             <Col xs="12" lg="4" md="12">
-                <div className="t-Region confirmation-info-header  t-Region--noBorder t-Region--hiddenOverflow margin-bottom-none" id="R42440037778375838">
+                <div className="t-Region confirmation-info-header2  t-Region--noBorder t-Region--hiddenOverflow margin-bottom-none" id="R42440037778375838">
                     <div className="t-Region-header">
                         <div className="t-Region-headerItems t-Region-headerItems--title">
                             <span className="t-Region-headerIcon"><span className="t-Icon " aria-hidden="true" /></span>
@@ -118,7 +118,7 @@ class OrderDetails extends Component {
 
 
             <Col xs="12" lg="4" md="12">
-                <div className="t-Region confirmation-info-header-last  t-Region--noBorder t-Region--hiddenOverflow" id="R42440193724375840">
+                <div className="t-Region confirmation-info-header-last confirmation-info-header2 t-Region--noBorder t-Region--hiddenOverflow" id="R42440193724375840">
                     <div className="t-Region-header">
                         <div className="t-Region-headerItems t-Region-headerItems--title">
                             <span className="t-Region-headerIcon"><span className="t-Icon " aria-hidden="true" />

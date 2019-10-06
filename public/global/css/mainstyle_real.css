@@ -4134,6 +4134,11 @@ img.block3_banner1.hideInMobile {
     margin-right: 5px;
 }
 
+.confirmation-info-header2{
+    height: 180px;
+    min-height: 20px !important;
+}
+
 @media only screen and (max-width: 1200px) {
     .SectionHeightBra {
         height: 550px;
@@ -4729,6 +4734,13 @@ html[dir="rtl"] .click-collect3 {
     {
        margin-right: 35px!important;
        margin-bottom: 13px!important; 
+    }
+
+    .confirmation-info-header2{
+        height: auto;
+        min-height: 20px !important;
+        padding-bottom: 5px;
+        padding-top: 10px;
     }
 
     html[dir="rtl"] .icon-class

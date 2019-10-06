@@ -442,9 +442,12 @@ class SideManu extends Component {
 
 					return (
 						<div className="bottomBorder" style={{ paddingTop: 10 }} id="manuCollapsible">
-							<Collapsible trigger={value}>
+						<FormattedMessage id={"filter.categary.title." + value.replace(" ", '-')} defaultMessage={value}>
+							{(message) =>
+							<Collapsible trigger={message}>
 								<div style={{ textAlign: 'start' }}>{this.checkSubCategaryValue(this.state.list[value])}</div>
 							</Collapsible>
+						}</FormattedMessage>
 						</div>
 					);
 				}

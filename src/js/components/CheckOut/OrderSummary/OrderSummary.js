@@ -134,7 +134,7 @@ class OrderSummary extends Component {
                                                                     <div className="container paddingRemove">
                                                                         <Row className="row">
                                                                             <Col xs="12" lg="3" md="3">
-                                                                                <div className="t-Region confirmation-info-header  t-Region--noBorder t-Region--hiddenOverflow margin-bottom-none" id="R35739985666996314">
+                                                                                <div className="t-Region confirmation-info-header2  t-Region--noBorder t-Region--hiddenOverflow margin-bottom-none" id="R35739985666996314">
                                                                                     <div className="t-Region-header">
                                                                                         <div className="t-Region-headerItems t-Region-headerItems--title">
                                                                                             <span className="t-Region-headerIcon"><span className="t-Icon " aria-hidden="true" /></span>
@@ -160,7 +160,7 @@ class OrderSummary extends Component {
                                                                                 </div>
                                                                             </Col>
                                                                             <Col xs="12" lg="3" md="3">
-                                                                                <div className="t-Region confirmation-info-header  t-Region--noBorder t-Region--hiddenOverflow margin-bottom-none" id="R1268865277649446800">
+                                                                                <div className="t-Region confirmation-info-header2  t-Region--noBorder t-Region--hiddenOverflow margin-bottom-none" id="R1268865277649446800">
                                                                                     <div className="t-Region-header">
                                                                                         <div className="t-Region-headerItems t-Region-headerItems--title">
                                                                                             <span className="t-Region-headerIcon"><span className="t-Icon " aria-hidden="true" /></span>
@@ -198,7 +198,7 @@ class OrderSummary extends Component {
                                                                                 </div>
                                                                             </Col>
                                                                             <Col xs="12" lg="3" md="3">
-                                                                                <div className="t-Region confirmation-info-header  t-Region--noBorder t-Region--hiddenOverflow margin-bottom-none" id="R50297614336448311">
+                                                                                <div className="t-Region confirmation-info-header2  t-Region--noBorder t-Region--hiddenOverflow margin-bottom-none" id="R50297614336448311">
                                                                                     <div className="t-Region-header">
                                                                                         <div className="t-Region-headerItems t-Region-headerItems--title">
                                                                                             <span className="t-Region-headerIcon"><span className="t-Icon " aria-hidden="true" /></span>
@@ -224,7 +224,7 @@ class OrderSummary extends Component {
                                                                                 </div>
                                                                             </Col>
                                                                             <Col xs="12" lg="3" md="3">
-                                                                                <div className="t-Region confirmation-info-header-last  t-Region--noBorder t-Region--hiddenOverflow margin-bottom-none" id="R50297770282448313">
+                                                                                <div className="t-Region confirmation-info-header-last confirmation-info-header2 t-Region--noBorder t-Region--hiddenOverflow margin-bottom-none" id="R50297770282448313">
                                                                                     <div className="t-Region-header">
                                                                                         <div className="t-Region-headerItems t-Region-headerItems--title">
                                                                                             <span className="t-Region-headerIcon"><span className="t-Icon " aria-hidden="true" /></span>

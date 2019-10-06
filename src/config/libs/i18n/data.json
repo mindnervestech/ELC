@@ -925,9 +925,19 @@
     "ResetPassword.fail.Text1":"Password change failed try again !!!",
     "ResetPassword.newpasswordinvalid.error":"Password must be at least 8 characters long and contain an uppercase letter, a lowercase letter , a number and  special characters.",
     "Product.Listing.FilterPopupTitle": "Select Refinements",
-    "product.listing.selectedText": "You've selected"
+    "product.listing.selectedText": "You've selected",
+    "filter.categary.title.Age": "Age",
+    "filter.categary.title.Brand": "Brand",
+    "filter.categary.title.Gender": "Gender",
+    "filter.categary.title.Sub-Category": "Sub Category",
+    "filter.categary.title.Color": "Color"
     },
     "ar": {
+      "filter.categary.title.Age": "عمر",
+    "filter.categary.title.Brand": "علامة تجارية",
+    "filter.categary.title.Gender": "جنس",
+    "filter.categary.title.Sub-Category": "تصنيف فرعي",
+    "filter.categary.title.Color": "اللون",
       "ResetPassword.PasswordChangedfail.Text":"Password change failed",
       "ResetPassword.fail.Text1":"Password change failed try again !!!",
       "product.listing.selectedText": "You've selected",
