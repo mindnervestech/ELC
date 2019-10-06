@@ -222,7 +222,7 @@ class ShoppingBagItem extends Component {
                                 </div>
                                 : ''}
                             {stockSortageFlag ?
-                                <div className="sort-storage-qty-msg">
+                                <div className="sort-storage-qty-msg" style={{position: 'relative'}}>
                                     <FormattedMessage id="StockShortage1" defaultMessage="STOCK SHORTAGE - we have added " />
                                     {stockSortageQTY}
                                     <i className="close fa fa-times close-icon-sort" aria-hidden="true" onClick={() => this.closeModal("successFlag")} />

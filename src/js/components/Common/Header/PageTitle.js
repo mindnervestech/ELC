@@ -72,7 +72,6 @@ class PageTitle extends Component {
 
     getTital = (title) => {
         const { intl } = this.props;
-        console.log("Title",title)
         let country = this.props.globals.country;
         if(country === 'uae'){
             country = 'UAE';
@@ -81,7 +80,7 @@ class PageTitle extends Component {
         }
     
         let mainTitle = title !== 'NA' ? intl.formatMessage({ id: `PageTitle.${title}`,defaultMessage: 'ELC' }) : intl.formatMessage({ id: `PageTitle.Home`,defaultMessage:"elctoys.com | ELC Online store | Official Website | Early Learning Centre" });
-    console.log("Main Title",mainTitle)
+    
         return mainTitle + " | " + intl.formatMessage({ id: `PageTitle.elc.${country}`,defaultMessage:"elctoys.com | ELC Online store | Official Website | Early Learning Centre"  })
     }
 

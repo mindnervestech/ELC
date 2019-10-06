@@ -1031,6 +1031,34 @@ font-size: 1em !important;
     }
 }
 
+@media only screen and (max-width: 767px){
+    .close-icon-sort{
+        margin-top: 3px;
+        color: #ee0e19 !important;
+        cursor: pointer;
+        position: absolute !important;
+        right: 5px !important;
+        top: 13%;
+    }
+    
+    html[dir="rtl"] .close-icon-sort{
+        margin-top: 3px;
+        color: #ee0e19 !important;
+        cursor: pointer;
+        position: absolute !important;
+        right: auto !important;
+        left: 5px !important;
+        top: 13%;
+    }
+
+    .modal-cart-update{
+        width: 100%;
+        padding: 0px !important;
+    }
+}
+
+
+
 .increse-item-qty{
     font-family: "VAG Rounded Std Bold";
     font-weight: normal;
@@ -1096,7 +1124,19 @@ font-size: 1em !important;
     margin-top: 3px;
     color: #ee0e19 !important;
     cursor: pointer;
+    position: absolute;
+    right: 15px;
 }
+
+html[dir="rtl"] .close-icon-sort{
+    margin-top: 3px;
+    color: #ee0e19 !important;
+    cursor: pointer;
+    position: absolute;
+    right: auto;
+    left: 15px;
+}
+
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
     -webkit-appearance: none;
