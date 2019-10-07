@@ -404,7 +404,21 @@ class SideManu extends Component {
 	}
 
 	assignFilterdata(name, code) {
-		let Checked = 0
+		let Checked = 0;
+		if(this.props.globals.language == 'ar'){
+			if(code === 'brand'){
+				code = 'الماركة'
+			}else if(code === 'age'){
+				code = 'عمر'
+			}else if(code === 'color'){
+				code = 'اللون'
+			}else if(code === 'gender'){
+				code = 'جنس'
+			}else if(code === 'sub_category'){
+				code = 'تصنيف فرعي'
+			}
+		}
+		
 		// return (Object.keys(data).map((keyName, index) => {
 		for (let item in this.state.narrowResult) {
 			if (this.state.narrowResult[item] == code + "/" + name) {
@@ -472,7 +486,7 @@ class SideManu extends Component {
 						<div className="divShowOnWeb">
 							<div className="row-2" style={{ paddingTop: 21, borderBottom: 'solid 1px #b1b1b1', textAlign: 'start' }}>
 								<span className="blackTitle"> <FormattedMessage id="NarrowyourResults" defaultMessage="Narrow your Results" /></span>
-								<span className="clearAll floatRight" style={this.state.clearAllOption ? { display: 'block' } : { display: 'none' }} onClick={() => this.clearFilter()}>Clear All</span>
+								<span className="clearAll floatRight" style={this.state.clearAllOption ? { display: 'block' } : { display: 'none' }} onClick={() => this.clearFilter()}><FormattedMessage id="ClearAll.Text" defaultMessage="Clear All" /></span>
 							</div>
 							<div style={{ height: 55, overflow: 'auto' }}>
 								<ul className="filter" id="PRDSEL-CAT" style={{ textAlign: "start" }}>

@@ -108,6 +108,8 @@ class Confirmation extends Component {
         const { payfort_data } = this.props;
 
         fetch("https://sbcheckout.payfort.com/FortAPI/paymentPage", {
+        // fetch("https://checkout.payfort.com/FortAPI/paymentPage", {
+            
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
@@ -333,6 +335,7 @@ class Confirmation extends Component {
                         <form
                             id="main-login"
                             onSubmit={() => this.payFortPayment}
+                            // action= "https://checkout.payfort.com/FortAPI/paymentPage"
                             action="https://sbcheckout.payfort.com/FortAPI/paymentPage"
                             method='post'>
                             <div style={{ display: 'none' }}>

@@ -225,6 +225,7 @@ class Payment extends Component {
         const shipping_type = this.props.cart_details.shipping_details.shipping_code;
         const selected_country = this.props.global.country;
         let obj = this.props.cart_details.payment_details;
+        console.log("obj obj =-=-=-=",obj);
         let payment_type = null;
         if (!(utility.emptyObj(obj))) {
             if (obj.redirectToOrderConfirmation && (obj.payment_code !== null)) {

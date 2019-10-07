@@ -38,6 +38,12 @@ class WishList extends Component {
         this.props.onGetWishListItem({ customerid: this.props.user_details.customer_id, store_id: this.props.globals.currentStore })
     }
 
+    componentWillMount(){
+        if (this.props.guest_user.temp_quote_id == null) {
+			this.props.onGetGuestCartId();
+		}
+    }
+
     openAddTOBasketModal = (url) => {
         this.setState({
             basketPopupFlag: true,
@@ -464,6 +470,7 @@ const mapDispatchToProps = dispatch => {
         // getSizeChart: payload => dispatch(actions.getSizeChart(payload)),
         OngetMyCart: (quoteId) => dispatch(actions.getMyCart(quoteId)),
         onRemoveProductFromWishList: (payload) => dispatch(actions.removeWishList(payload)),
+        onGetGuestCartId: () => dispatch(actions.getGuestCartId()),
     }
 }
 

@@ -2,6 +2,7 @@ import * as actionType from './actionTypes';
 import { API } from '../../api/api';
 import { loadingSpinner } from './globals';
 import { getMyCart } from './getMyCart';
+import * as action from './index';
 /////////////////////////////// GET ADDRESS /////////////////////////////
 
 export const callActiongetAddressFromShippingDetails = (payload) => {
@@ -26,6 +27,11 @@ export const getAddressFromShippingDetails = (payload) => {
                     quote_id: getState().login.customer_details.quote_id,
                     store_id: getState().global.currentStore
                 }))
+            }else{
+                dispatch(getMyCart({
+                    quote_id: getState().login.customer_details.quote_id !== undefined ? getState().login.customer_details.quote_id : getState().guest_user.new_quote_id,
+                    store_id: getState().global.currentStore
+                }))
             }
         }
         let cb = {
@@ -38,7 +44,6 @@ export const getAddressFromShippingDetails = (payload) => {
                         is_shipping_details_rec: true,
                         active_shipping_methods: res.active_shipping_methods,
                     }
-
                     dispatch(callActiongetAddressFromShippingDetails(newState))
                 }
 

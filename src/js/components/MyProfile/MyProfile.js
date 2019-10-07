@@ -273,7 +273,8 @@ class Profile extends Component {
                                                             </ul>
                                                             <div className="profile-password">
                                                                 <p style={{ fontSize: '11px', lineHeight: '17px', letterSpacing: '.04em', textTransform: 'inherit', fontWeight: 'normal', paddingBottom: 0 }}><FormattedMessage id="profile.PhoneNumber.Title" defaultMessage="PhoneNumber" /></p>
-                                                                <p style={{ fontSize: '11px', lineHeight: '17px', letterSpacing: '.04em', textTransform: 'inherit', fontWeight: 'normal', paddingBottom: '20px' }}>{this.customer_details.carrier_code ? `${this.customer_details.carrier_code == '91' && '+'}${this.customer_details.carrier_code}${this.customer_details.phone_number}` : this.customer_details.phone_number}<br />
+                                                                <p style={{ fontSize: '11px', lineHeight: '17px', letterSpacing: '.04em', textTransform: 'inherit', fontWeight: 'normal', paddingBottom: '20px' }}>
+                                                                    {this.customer_details.carrier_code ? `${this.customer_details.carrier_code && '+'}${this.customer_details.carrier_code}${this.customer_details.phone_number}` : this.customer_details.phone_number}<br />
                                                                 </p>
                                                             </div>
                                                         </div>

@@ -61,6 +61,12 @@ class ProductSlider extends Component {
             }
         }, 500);
     }
+
+    componentDidMount(){
+        if (this.props.guest_user.temp_quote_id == null) {
+			this.props.onGetGuestCartId();
+		}
+    }
     
     componentDidUpdate(prevProps){
         if (this.props.item_added.item_added && this.props.item_added.add_cart_open_popUp && !this.state.cartModelFlag) {
@@ -245,7 +251,7 @@ const mapDispatchToProps = dispatch => {
 		onGetProductDetails: payload => dispatch(actions.getProductDetails(payload)),
 		// getSizeChart: payload => dispatch(actions.getSizeChart(payload)),
 		OngetMyCart: (quoteId) => dispatch(actions.getMyCart(quoteId)),
-		// onGetGuestCartId: () => dispatch(actions.getGuestCartId()),
+		onGetGuestCartId: () => dispatch(actions.getGuestCartId()),
 	};
 };
 
