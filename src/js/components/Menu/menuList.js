@@ -23,11 +23,16 @@ class menuList extends Component {
 		const category = item.url_path.split('/');
 		// let menu_item = 'menu.' + item.name.toUpperCase();
 		return (
+		    
 			<li key={index}>
+				<div className="tooltipcss">
+				<span className="tooltiptextcss">{item.name}</span>
+				
 				<Link to={'/' + this.state.store_locale + '/products/' + item.url_path} onClick={() => document.getElementById("closeNav").click()}>
 					{item.name}
-				</Link>
-			</li>)
+				</Link></div>
+			</li>
+			)
 	};
 
 	_renderSubMenuList = (data, item_name, item_url_keys) => {
@@ -114,7 +119,8 @@ class menuList extends Component {
 			let default_message = 'SHOW ALL ' + item.url_key.toLowerCase();
 
 			return (
-				<div className="submenu" style={item.children[0].length > 0 ? {backgroundColor: '#fff', textAlign: 'center'} : {display: 'none'}}>
+				
+				<div className="submenu" style={item.children[0].length > 0 ? {backgroundColor: '#fff', textAlign: 'center',marginTop:15} : {display: 'none'}}>
 					{
 						item.children.map(
 							(x) => this._renderSubMenuList(x, item.name, item.url_path)
@@ -135,6 +141,7 @@ class menuList extends Component {
 						</div>
 					</div> */}
 				</div>
+				
 			);
 		} else {
 		}
@@ -145,15 +152,20 @@ class menuList extends Component {
 
 		return (
 			<>
-				<li key={index} className="borderForMobileManu"> 
+				<li key={index} className="borderForMobileManu" style={{marginTop: 0}}> 
+				<div className="tooltipcss tooltip-height-76">
+				<span className="tooltiptextcss">{item.name}</span>
 					<Link to={'/' + this.state.store_locale + '/products/' + item.url_path} style={{ textDecoration: 'none' ,padding: "15px 7px"}} onClick={() => document.getElementById("closeNav").click()} className={item.children[0].length > 0 ? '' : "removeWhite"}>
 						{item.name}
 						{item.children[0].length > 0 ?
 							<i className="fa fa-caret-down downMenu divShowOnWeb" aria-hidden="true"></i>
 						: <span  />}
-					</Link>
+					</Link>	
+					</div>
+					
 					{item.children[0].length > 0 ?<i className="subMenuTrigger" /> : <span />}
 					{this._checkSubMenu(item)}
+				
 				</li>
 			</>
 		);
