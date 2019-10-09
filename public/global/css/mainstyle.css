@@ -7078,6 +7078,13 @@ html[dir="rtl"] .t-Button--pillStart{
         display: inline-block;
         width: 90%;
 }
+.ProductSilderImageHight{
+    height: 135px;
+}
+
+.buyAndSaveMorePopup{
+    height: 415px;
+}
 
 .mobilePopupImagePadding{
     padding-top: 0px;
