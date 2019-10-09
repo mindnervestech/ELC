@@ -65,7 +65,7 @@ class OrderDetails extends Component {
                         </div>
                         <div className="t-Region-body">
                             <div id="caddress">
-                                <p><span><strong><FormattedMessage id="DeliverTo.Text" defaultMessage="Deliver To" /></strong>
+                                <p><span><strong><FormattedMessage id="DeliverTo.Text" defaultMessage="Deliver To:" />&nbsp;</strong>
                                     {this.shipping_address.name}<br />
                                     {this.shipping_address.street}<br />
                                     {this.shipping_address.city},{this.shipping_address.region}<br />

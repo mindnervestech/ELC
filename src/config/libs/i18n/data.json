@@ -937,14 +937,14 @@
     "filter.categary.title.color": "Color"
     },
     "ar": {
-      "filter.categary.title.Age": "عمر",
+      "filter.categary.title.Age": "العمر",
     "filter.categary.title.Brand": "الماركة",
-    "filter.categary.title.Gender": "جنس",
+    "filter.categary.title.Gender": "النوع",
     "filter.categary.title.Sub-Category": "تصنيف فرعي",
     "filter.categary.title.Color": "اللون",
-    "filter.categary.title.age": "عمر",
+    "filter.categary.title.age": "العمر",
     "filter.categary.title.brand": "الماركة",
-    "filter.categary.title.gender": "جنس",
+    "filter.categary.title.gender": "النوع",
     "filter.categary.title.sub-category": "تصنيف فرعي",
     "filter.categary.title.color": "اللون",
       "ResetPassword.PasswordChangedfail.Text":"فشل تغيير كلمة المرور",

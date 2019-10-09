@@ -190,7 +190,9 @@ class ProductSlider extends Component {
                                                 
                                                     <div className="alsoLikeCard">
                                                     <Link to={`/${store_name ? store_name :store_locale}/products-details/${item.url_key}`}>
-                                                        <img src={item.productImageUrl[0]} />
+                                                        <div className="ProductSilderImageHight">
+                                                            <img src={item.productImageUrl[0]} />
+                                                        </div>
                                                         <div className="marginTop25">
                                                             <label className="text-color">{item.name}</label>
                                                         </div>
