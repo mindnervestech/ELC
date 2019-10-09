@@ -20,6 +20,8 @@ import { initializeF, trackF } from '../../utility/facebookPixel';
 import { live } from '../../../api/globals';
 import { Container, Row, Col } from 'reactstrap';
 
+const wait = require('../../../../assets/images/wait.gif');
+
 let Eventcount = 0;
 class DeliveryDetails extends Component {
     constructor(props) {
@@ -516,9 +518,17 @@ class DeliveryDetails extends Component {
                                                                                     <FormattedMessage id="Cart.ContinueShopping.Title" defaultMessage="Continue Shopping" />
                                                                                 </span></button>
                                                                         </div>
+                                                                        {this.state.isContactValid && this.state.isAddressValid ?
+                                                                        <div className="col col-6 apex-col-auto">
+                                                                            <button className="t-Button t-Button--hot t-Button--pillEnd t-Button--stretch" type="button" disabled={true}>
+                                                                                <img src={wait} style={{ width: 25, height: 25, marginTop: -4 }} alt=""/>
+                                                                                <span className="t-Button-label"><FormattedMessage id="PleaseWait" defaultMessage="Please wait......." /></span>
+                                                                            </button>
+                                                                        </div> :
                                                                         <div className="col col-6 apex-col-auto">
                                                                             <button onClick={this.submitForm} className="t-Button t-Button--hot t-Button--pillEnd t-Button--stretch" type="button" id="B34928536452907743"><span className="t-Button-label"><FormattedMessage id="Checkout.Proceed" defaultMessage="Proceed" /></span></button><input type="hidden" id="P7_ADDR_EXIST" name="P7_ADDR_EXIST" defaultValue="N" />
                                                                         </div>
+                                                                        }
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -555,7 +565,12 @@ class DeliveryDetails extends Component {
                                                     <button onClick={this.goToCartDetails} className="t-Button t-Button--noLabel t-Button--icon t-Button--large t-Button--pillStart t-Button--stretch t-Button--padLeft t-Button--padRight t-Button--padTop t-Button--padBottom" type="button" id="B29280522081851518" title="Continue Shopping" aria-label="Continue Shopping"><span className="t-Icon fa fa-angle-left" aria-hidden="true" /></button>
                                                 </Col>
                                                 <Col xs="9" lg="9" md="9" style={{padding: 0}}>
-                                                    <button onClick={this.submitForm} className="t-Button t-Button--hot t-Button--large t-Button--pillEnd t-Button--stretch t-Button--padLeft t-Button--padRight t-Button--padTop t-Button--padBottom" type="button" id="B29280091835851517"><span className="t-Button-label"><FormattedMessage id="Checkout.Proceed" defaultMessage="Proceed" /></span></button>
+                                                    <button disabled={this.state.isContactValid && this.state.isAddressValid} onClick={this.submitForm} className="t-Button t-Button--hot t-Button--large t-Button--pillEnd t-Button--stretch t-Button--padLeft t-Button--padRight t-Button--padTop t-Button--padBottom" type="button" id="B29280091835851517">
+                                                        {this.state.isContactValid && this.state.isAddressValid ?
+                                                            <span className="t-Button-label"><FormattedMessage id="PleaseWait" defaultMessage="Please wait......." /></span>
+                                                            :<span className="t-Button-label"><FormattedMessage id="Checkout.Proceed" defaultMessage="Proceed" /></span>
+                                                        }
+                                                    </button>
                                                 </Col>
                                             </Row>
                                         </div>

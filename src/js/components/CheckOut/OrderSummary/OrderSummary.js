@@ -83,6 +83,7 @@ class OrderSummary extends Component {
                 />
             });
         }
+        let country = this.props.globals.country;
 
         return (<>
             <Spinner>
@@ -338,12 +339,13 @@ class OrderSummary extends Component {
                                                                                                                     <td className="t-Report-cell" align="right" headers="PRICE">{this.props.order_summary.currency} <span>{this.props.order_summary.shipping && Math.round(this.props.order_summary.shipping)}</span>
                                                                                                                     </td>
                                                                                                                 </tr>
+                                                                                                                {country !== 'UAE' &&  this.props.payment_method === 'Cash On Delivery' ?
                                                                                                                 <tr>
                                                                                                                     <td className="t-Report-cell" headers="TYPE"><FormattedMessage id="Checkout.COD" defaultMessage="COD" />
                                                                                                                     </td>
                                                                                                                     <td className="t-Report-cell" align="right" headers="PRICE">{this.props.order_summary.currency} <span>{this.props.order_summary.COD && Math.round(this.props.order_summary.COD)}</span>
                                                                                                                     </td>
-                                                                                                                </tr>
+                                                                                                                </tr>  : ''}
                                                                                                                 <tr>
                                                                                                                     <td className="t-Report-cell" headers="TYPE"><span className="order-total"><FormattedMessage id="delivery-details.Total.Title" defaultMessage="Total" /></span>
                                                                                                                     </td>

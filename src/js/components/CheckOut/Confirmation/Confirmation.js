@@ -497,12 +497,13 @@ class Confirmation extends Component {
                                                                     <div className="t-Region-buttons-right" />
                                                                 </div>
                                                                 <div className="t-Region-body">
-                                                                    <hr />
+                                                                    {/* <hr />
                                                                     <h4 style={{ fontSize: '14px', lineHeight: '18px', letterSpacing: '.04em', textTransform: 'inherit', fontWeight: 'normal' }}>
                                                                         <FormattedMessage id="Customs.Text" defaultMessage="Customs Title" /></h4>
                                                                     <p style={{ fontSize: '11px', lineHeight: '17px', letterSpacing: '.04em', textTransform: 'inherit', fontWeight: 'normal' }}>
                                                                         <FormattedMessage id="Customs.content" defaultMessage="By placing your order, you acknowledge: your order may be subject to import duties and taxes, which are levied once your package reaches your country; ELC does not collect duties and taxes and cannot predict what your particular charges may be; and in the event you incur these additional charges, they must be rendered in order for your package to clear customs. For more information regarding your country's custom policies, please contact your local customs office." /></p>
-                                                                    <hr /><div className="container">
+                                                                    <hr /> */}
+                                                                    <div className="container">
                                                                         <div className="row">
 
 

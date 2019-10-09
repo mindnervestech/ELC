@@ -25,6 +25,8 @@ class CashOnDelivery extends Component {
     render() {
         let store_locale = this.props.globals.store_locale;
         let cashondelivery = this.props.cashondelivery;
+        let country = this.props.globals.country;
+        
         return (
 
             <div className={this.state.className} id="CODI">
@@ -44,7 +46,9 @@ class CashOnDelivery extends Component {
                     <div className="t-Region-body">
                         <div className="b-price_total" style={{ padding: '10px', borderBottom: '1px solid #d6d6d6', marginBottom: '10px' }}>
                             <span className="m-label"><FormattedMessage id="delivery-details.Total.Title" defaultMessage="Total" /></span>
-                            <span className="m-value js-remaining-balance" data-value={cashondelivery.total}> {cashondelivery.currency} {cashondelivery.total}</span> <p><FormattedMessage id="CashOnDelivery.Text" defaultMessage="Cash On Delivery" /> {cashondelivery.currency} {cashondelivery.charges} <FormattedMessage id="included.text" defaultMessage="included" /></p>
+                            <span className="m-value js-remaining-balance" data-value={cashondelivery.total}> {cashondelivery.currency} {cashondelivery.total}</span> 
+                            {country !== 'UAE' ?<p><FormattedMessage id="CashOnDelivery.Text" defaultMessage="Cash On Delivery" /> {cashondelivery.currency} {cashondelivery.charges} <FormattedMessage id="included.text" defaultMessage="included" /></p>
+                            :''}
                         </div>
 
                         <div className="col-lg-6" style={{ padding: '5px' }}>
