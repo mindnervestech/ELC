@@ -92,16 +92,16 @@ class ProductListData extends Component {
 	}
 
 	componentDidUpdate(prevProps) {
-				if (prevProps.addToCardLoader !== this.props.addToCardLoader && this.props.item_added.item_added && this.props.item_added.add_cart_open_popUp && (!this.state.cartModelFlag || !cartModelFlag)) {
+		if (prevProps.addToCardLoader !== this.props.addToCardLoader && this.props.item_added.item_added && this.props.item_added.add_cart_open_popUp && (!this.state.cartModelFlag || !cartModelFlag)) {
 			if (!this.props.item_added.add_cart_error) {
-                this.onCloseAddCartModal();
+				this.onCloseAddCartModal();
 				this.setState({
 					addToCartModal: true,
 					cartModelFlag: true
 				})
 				addToCartModal = true;
 				cartModelFlag = true;
-			} 
+			}
 		}
 	}
 
@@ -193,7 +193,7 @@ class ProductListData extends Component {
 		end = 5
 	}
 
-	componentDidMount(){
+	componentDidMount() {
 		if (this.props.guest_user.temp_quote_id == null) {
 			this.props.onGetGuestCartId();
 		}
@@ -580,7 +580,7 @@ class ProductListData extends Component {
 											<FormattedMessage id="Product.Listing.FilterPopupTitle" defaultMessage="Select Refinements" />
 										</h5>
 									</div>
-									<div style={{height: 380, overflow: 'scroll', marginTop: 20}}>
+									<div style={{ height: 380, overflow: 'scroll', marginTop: 20 }}>
 										<SideManu action={this.handler}></SideManu>
 									</div>
 								</div>
@@ -712,12 +712,14 @@ class ProductListData extends Component {
 										<li key={index} style={{ position: 'relative' }}>
 											<Link to={`/${store_locale}/products-details/${list[keyName].json.url_key}`}>
 												<div className="alsoLikeCard">
-													{/* <span className="percentage-text" style={{ display: 'none' }}>30</span>
-									<span className="save-text">5</span>
-									<img src={save} className="save" /> */}
-													<img src={(list[keyName].json.imageUrl) ? list[keyName].json.imageUrl.primaryimage : placeholder} className="cardImage" alt="" />
-													{/* <img src={percentage} className="percentage" style={{ display: 'none' }} /> */}
-													<div style={{ marginTop: 10, height: 50 }}>
+													<div className="ProductSilderImageHight">
+														{/* <span className="percentage-text" style={{ display: 'none' }}>30</span>
+														<span className="save-text">5</span>
+														<img src={save} className="save" /> */}
+														<img src={(list[keyName].json.imageUrl) ? list[keyName].json.imageUrl.primaryimage : placeholder} className="cardImage" alt="" />
+														{/* <img src={percentage} className="percentage" style={{ display: 'none' }} /> */}
+													</div>
+													<div style={{ marginTop: 10, height: 45, overflow: 'hidden' }}>
 														<label className="text-color">{list[keyName].json.name}</label>
 													</div>
 													{list[keyName].json.offers && list[keyName].json.offers.status === 1 ?

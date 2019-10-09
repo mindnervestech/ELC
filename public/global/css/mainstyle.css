@@ -6851,7 +6851,7 @@ html[dir="rtl"] #mobile-click-colect{
 
 .buyAndSaveMorePopup{
     background-color: rgb(13, 148, 63,.92);
-    height: 415px;
+    height: 435px;
     position: absolute;
     width: 100%;
     top: 0;
@@ -7066,6 +7066,10 @@ html[dir="rtl"] .t-Button--pillStart{
     padding-top: 15px;
 }
 
+.ProductSilderImageHight{
+    height: 188px;
+}
+
 @media (max-width:767px){
 
     .likeAInputName {
@@ -7090,10 +7094,6 @@ html[dir="rtl"] .t-Button--pillStart{
 #manuCollapsible .Collapsible__trigger.is-open:after{
     content: '\25BE' !important;
     transform: rotate(180deg);
-}
-
-.ProductSilderImageHight{
-    height: 188px;
 }
 
 html[dir="rtl"] .likeAInputName {

@@ -16,7 +16,7 @@ let addToCartModal = false
 let cartModelFlag = false;
 let url_key = '';
 let showPopupIndex = -1
-let currencyCountry=''
+let currencyCountry = ''
 class WishList extends Component {
 
     constructor(props) {
@@ -38,10 +38,10 @@ class WishList extends Component {
         this.props.onGetWishListItem({ customerid: this.props.user_details.customer_id, store_id: this.props.globals.currentStore })
     }
 
-    componentWillMount(){
+    componentWillMount() {
         if (this.props.guest_user.temp_quote_id == null) {
-			this.props.onGetGuestCartId();
-		}
+            this.props.onGetGuestCartId();
+        }
     }
 
     openAddTOBasketModal = (url) => {
@@ -91,16 +91,16 @@ class WishList extends Component {
         }
 
         if (prevProps.addToCardLoader !== this.props.addToCardLoader && this.props.item_added.item_added && this.props.item_added.add_cart_open_popUp && (!this.state.cartModelFlag || !cartModelFlag)) {
-			if (!this.props.item_added.add_cart_error) {
+            if (!this.props.item_added.add_cart_error) {
                 this.onCloseAddCartModal();
-				this.setState({
-					addToCartModal: true,
-					cartModelFlag: true
-				})
-				addToCartModal = true;
-				cartModelFlag = true;
-			} 
-		}
+                this.setState({
+                    addToCartModal: true,
+                    cartModelFlag: true
+                })
+                addToCartModal = true;
+                cartModelFlag = true;
+            }
+        }
     }
 
     wishlistToggle = (index, wishlist_id) => {
@@ -262,27 +262,27 @@ class WishList extends Component {
     render() {
         const language = localStorage.getItem('templang');
         const store_locale = this.props.globals.store_locale;
-        
-        if(this.props.globals.country=='UAE'){
-            currencyCountry='AED'
-        }else{
-            currencyCountry='SAR'
+
+        if (this.props.globals.country == 'UAE') {
+            currencyCountry = 'AED'
+        } else {
+            currencyCountry = 'SAR'
         }
         let title = "Your account | ELC UAE Online store";
-		let description = "Shop online for baby toys, dolls houses, wooden toys and more at ELC. Choose from big brands including LeapFrog, VTech, Smart Trike and more.";
-		let keywords = "ELC, Early Learning Center, Early Learning Centre, Toys, Baby Toys, Wooden Toys, Educational Toys";
-		if (language == 'ar') {
-			title = "حسابك |  متجر مركز التعليم المبكر على الإنترنت في السعودية";
-			description = "تسوّق ألعاب الرضّع ومنازل الدمى والألعاب الخشبية وغيرها الكثير على الإنترنت من مركز التعليم المبكر. اختر من العلامات التجارية الكبيرة بمن فيها ليب فروع وفي تيك وسمارت تريك وغيرها.";
-			keywords = "إي إل سي، مركز التعليم المبكر، مركز التعليم المبكر، ألعاب، ألعاب رضّع، ألعاب خشبية، ألعاب تعليمية"; 
-		}
-	
-		let meta_tag  = <><Helmet>
-			<meta name="tital" content={title} />
-			<meta name="keywords" content={keywords} />
-			<meta name="description" content={description} />
-		</Helmet></>;
-	
+        let description = "Shop online for baby toys, dolls houses, wooden toys and more at ELC. Choose from big brands including LeapFrog, VTech, Smart Trike and more.";
+        let keywords = "ELC, Early Learning Center, Early Learning Centre, Toys, Baby Toys, Wooden Toys, Educational Toys";
+        if (language == 'ar') {
+            title = "حسابك |  متجر مركز التعليم المبكر على الإنترنت في السعودية";
+            description = "تسوّق ألعاب الرضّع ومنازل الدمى والألعاب الخشبية وغيرها الكثير على الإنترنت من مركز التعليم المبكر. اختر من العلامات التجارية الكبيرة بمن فيها ليب فروع وفي تيك وسمارت تريك وغيرها.";
+            keywords = "إي إل سي، مركز التعليم المبكر، مركز التعليم المبكر، ألعاب، ألعاب رضّع، ألعاب خشبية، ألعاب تعليمية";
+        }
+
+        let meta_tag = <><Helmet>
+            <meta name="tital" content={title} />
+            <meta name="keywords" content={keywords} />
+            <meta name="description" content={description} />
+        </Helmet></>;
+
         let respo_message = null;
         if (this.state.showAlert) {
             respo_message = <span id="APEX_SUCCESS_MESSAGE" data-template-id="126769709897686936_S" className="apex-page-success u-visible"><div className="t-Body-alert">
@@ -376,21 +376,23 @@ class WishList extends Component {
                                 (
                                     <li key={index}>
                                         <div className="alsoLikeCard">
-                                            {/* <span className="percentage-text">30</span>
+                                            <div className="ProductSilderImageHight">
+                                                {/* <span className="percentage-text">30</span>
                                                 <span className="save-text" style={{ display: 'none' }}>5</span>
                                                 <img src={save} className="save" style={{ display: 'none' }}/> */}
                                                 <Link to={`/${store_locale}/products-details/${this.props.products[item].url_key}`}>
 
-                                            <img src={this.props.products[item].image[0]} className="cardImage" style={{ height: 'auto' }} /></Link>
-                                            {/* <img src={percentage} className="percentage"/> */}
+                                                    <img src={this.props.products[item].image[0]} className="cardImage" style={{ height: 'auto' }} /></Link>
+                                                {/* <img src={percentage} className="percentage"/> */}
+                                            </div>
                                             <Link to={`/${store_locale}/products-details/${this.props.products[item].url_key}`}>
-                                            <div style={{ marginTop: 10, height: 50 }}>
-                                                <label className="text-color">{this.props.products[item].name}</label>
-                                            </div></Link>
+                                                <div style={{ marginTop: 10, height: 45, overflow: 'hidden' }}>
+                                                    <label className="text-color">{this.props.products[item].name}</label>
+                                                </div></Link>
                                             <div>
                                                 {this.props.products[item].offers && this.props.products[item].offers.status == 1 ?
                                                     this.showDiscountPrise(this.props.products[item].offers.data, this.props.products[item].price, "AED")
-                                                    :  <Link to={`/${store_locale}/products-details/${this.props.products[item].url_key}`}><div>
+                                                    : <Link to={`/${store_locale}/products-details/${this.props.products[item].url_key}`}><div>
                                                         <span style={{ fontSize: 14, color: "#0D943F", fontWeight: "bold" }}>{currencyCountry}&nbsp;&nbsp;{this.props.products[item].price}</span>
                                                     </div></Link>
                                                 }
@@ -441,7 +443,7 @@ class WishList extends Component {
                         : <div style={{ marginBottom: 50, marginTop: 15, textAlign: 'start' }}><span style={{ fontSize: "24px", padding: "20px 0px" }}><FormattedMessage id="PageTitle.Wishlist.Empty" defaultMessage="Wishlist is empty" /></span></div>}
                 </div>
             </div>
-            </Spinner>
+        </Spinner>
         );
     }
 }
