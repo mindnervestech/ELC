@@ -1,6 +1,6 @@
 import * as actionTypes from './actionTypes';
 import { API } from '../../api/api';
-import { getMyCart } from '../actions/index';
+import { getMyCart ,getGuestCartId} from '../actions/index';
 import cookie from 'react-cookies'
 import { loadingSpinner, loadingSpinnerForProduct } from './globals';
 
@@ -123,7 +123,7 @@ export const callActionGetProductList = payload => {
 };
 
 export const getYouMayAlsoLikeData = (payload) => {
-	return dispatch => {
+	return (dispatch, getState) => {
 	const data = {
 		currentStore: payload.currentStore,
 	};
@@ -133,6 +133,9 @@ export const getYouMayAlsoLikeData = (payload) => {
 			if (res.status && res.code === 200) {
 				dispatch(callProductDetailLoader({ productDetailLoader: false }))
 				dispatch(callActionYouMayAlsoLikeDetails({ YouMayAlsoLike: res.product }));
+				if (getState().guest_user.temp_quote_id == null) {
+					dispatch(getGuestCartId());
+				}
 			}else{
 				dispatch(callProductDetailLoader({ productDetailLoader: false }))
 			}

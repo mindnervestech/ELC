@@ -104,9 +104,9 @@ componentWillMount() {
             country_id: '',
             city: ''
         });
-        if (this.props.guest_user.temp_quote_id == null) {
-            this.props.onGetGuestCartId();
-        }
+        // if (this.props.guest_user.temp_quote_id == null) {
+        //     this.props.onGetGuestCartId();
+        // }
     }
 
     componentDidUpdate(prevProps, prevState) {
