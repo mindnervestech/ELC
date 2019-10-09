@@ -510,11 +510,11 @@ class Confirmation extends Component {
 
                                                                             <div className="col col-12 apex-col-auto">
                                                                                 {isClickOnPlaceOrder ?
-                                                                                    <button className="t-Button t-Button--hot t-Button--stretch t-Button--gapTop" type="button" disabled={true}>
+                                                                                    <button style={{marginBottom: '1.2rem'}} className="t-Button t-Button--hot t-Button--stretch t-Button--gapTop" type="button" disabled={true}>
                                                                                         <img src={wait} style={{ width: 25, height: 25, marginTop: -4 }} alt=""/>
                                                                                         <span className="t-Button-label"><FormattedMessage id="PleaseWait" defaultMessage="Please wait......." /></span>
                                                                                     </button> :
-                                                                                    <button disabled={OutOfStockFlag} onClick={this.placeOrder} className="t-Button t-Button--hot t-Button--stretch t-Button--gapTop" type="button" id="COD_D">
+                                                                                    <button style={{marginBottom: '1.2rem'}} disabled={OutOfStockFlag} onClick={this.placeOrder} className="t-Button t-Button--hot t-Button--stretch t-Button--gapTop" type="button" id="COD_D">
                                                                                         <span className="t-Button-label"><FormattedMessage id="Place.Order.Text" defaultMessage="Place Order" /></span>
                                                                                     </button>
                                                                                 }

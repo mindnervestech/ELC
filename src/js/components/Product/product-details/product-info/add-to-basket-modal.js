@@ -12,6 +12,8 @@ import Popup from 'react-popup';
 import {Redirect } from 'react-router-dom';
 import Spinner from '../../../../components/Spinner/Spinner2';
 
+const wait = require('../../../../../assets/images/wait.gif');
+
 class AddToBasketModal extends Component {
 	constructor(props) {
 		super(props);
@@ -20,6 +22,7 @@ class AddToBasketModal extends Component {
 			showAlert: false,
 			item_added_message: '',
 			cartModelFlag: false,
+			disabledFlag: false
 		};
 
 	}
@@ -50,7 +53,8 @@ class AddToBasketModal extends Component {
 				if(!this.props.item_added.item_added.message.includes('Cannot read property')){
 					this.setState({
 						item_added_message: this.props.item_added.item_added.message ? this.props.item_added.item_added.message : 'added',
-						cartModelFlag: true
+						cartModelFlag: true,
+						disabledFlag: false
 					});
 					if (this.state.showAlert) {
 						setTimeout(() => {
@@ -74,7 +78,7 @@ class AddToBasketModal extends Component {
 		let prodData = {};
 		let totalQty = this.props.data.type === 'simple' ? parseInt(this.props.data.simpleqty) : this.props.data.simpleproducts[0].qty;
 		let addQty = 0;
-		this.setState({showAlert: true, cartModelFlag: false})
+		this.setState({showAlert: true, cartModelFlag: false, disabledFlag: true})
 		if (totalQty < this.state.defaultQty) {
 			addQty = totalQty;
 		} else {
@@ -392,8 +396,14 @@ class AddToBasketModal extends Component {
 												{data && data.visible_on_store ?
 													<div className="alsoLikeCard add-cart">
 														<div className="homePage">
+														{this.state.disabledFlag ?
+															<button className="alsoLikeCardButton" style={{ marginTop: 0 }} type="button" disabled={true}>
+																<img src={wait} style={{ width: 25, height: 25, marginTop: -4 }} alt=""/>
+																<span className="t-Button-label"><FormattedMessage id="PleaseWait" defaultMessage="Please wait......." /></span>
+															</button> :
 															<button disabled={(data.simplestatus === 0 || (newImageArray[0] && newImageArray[0].stock === 0)) || this.state.defaultQty === 0} onClick={() => this.addToCart()} className="alsoLikeCardButton" style={{ marginTop: 0 }}>
-																<FormattedMessage id="Product.Detail.addToBasket" defaultMessage="Add to basket" /></button>
+															<FormattedMessage id="Product.Detail.addToBasket" defaultMessage="Add to basket" />
+														</button>}
 														</div>
 													</div>
 													:

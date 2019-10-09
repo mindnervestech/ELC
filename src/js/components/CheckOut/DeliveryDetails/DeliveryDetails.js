@@ -16,7 +16,7 @@ import DeliveryProductList from './DeliveryDetailsProductList';
 import { connect } from 'react-redux';
 import * as actions from '../../../redux/actions/index';
 import SavedAddressList from './SavedAddressList';
-import { initializeF, trackF } from '../../utility/facebookPixel';
+// import { initializeF, trackF } from '../../utility/facebookPixel';
 import { live } from '../../../api/globals';
 import { Container, Row, Col } from 'reactstrap';
 
@@ -102,10 +102,10 @@ class DeliveryDetails extends Component {
         } else {
             this.props.history.push(`/${this.props.globals.store_locale}/cart`);
         }
-        if (live) {
-            initializeF()
-            trackF('DeliveryDetails');
-        }
+        // if (live) {
+        //     initializeF()
+        //     trackF('DeliveryDetails');
+        // }
     }
 
     gift_wrap_required = (gift_wrap) =>{

@@ -24,30 +24,18 @@ class ProductSlider extends Component {
 
     openAddTOBasketModal = (url_key) =>{
         this.setState({
-            basketPopupFlag: true,
-            url_key:url_key
-        })
+			basketPopupFlag: true,
+			url_key: url_key
+		})
     }
 
     onCloseCartModal = () => {
-		this.setState({ addToCartModal: false })
+        this.setState({ addToCartModal: false, cartModelFlag: false })
 	}
 
     onCloseAddCartModal = () => {
         this.setState({ basketPopupFlag: false})
         setTimeout(() => {
-            // if (this.props.user_details.isUserLoggedIn) {
-            //     this.props.OngetMyCart({
-            //         quote_id: this.props.user_details.customer_details.quote_id,
-            //         store_id: this.props.globals.currentStore
-            //     })
-            // } else {
-            //     this.props.OngetMyCart({
-            //         quote_id: this.props.guest_user.new_quote_id,
-            //         store_id: this.props.globals.currentStore
-            //     })
-
-            // }
             if(window.location.href.includes('products-details')){
                 
                 let data = {
@@ -63,22 +51,17 @@ class ProductSlider extends Component {
     }
     
     componentDidUpdate(prevProps){
-        if (this.props.item_added.item_added && this.props.item_added.add_cart_open_popUp && !this.state.cartModelFlag) {
+        
+        if (prevProps.addToCardLoader !== this.props.addToCardLoader && this.props.item_added.item_added && this.props.item_added.add_cart_open_popUp && (!this.state.cartModelFlag)) {
 			if (!this.props.item_added.add_cart_error) {
-                this.onCloseAddCartModal();
+				this.onCloseAddCartModal();
 				this.setState({
-                    addToCartModal: true,
-                    cartModelFlag: true
-                })
-			} 
+					addToCartModal: true,
+					cartModelFlag: true
+				})
+			}
 		}
     }
-
-    // componentWillMount() {
-	// 	if (this.props.productDetails) {
-	// 		this.props.onClearProductDetails(this.props.productDetails);
-	// 	}
-	// }
 
     render() {
         const {store_locale, store_name, currency, similar_product} = this.props;
@@ -119,6 +102,12 @@ class ProductSlider extends Component {
             this.state.spnner = false
         }
 
+        let url = window.location.href.split('products-details');
+        // if(url){
+            let item = url[1].split('/');
+            console.log(item);
+        // }
+        
         // if(this.state.addToCartModal && this.props.cart_details.similar_products && document.getElementsByClassName("styles_modal__gNwvD")[0]){
 		// 	document.getElementsByClassName("styles_modal__gNwvD")[0].style.cssText="height: auto !important; width:450px !important"
         // }
@@ -130,7 +119,7 @@ class ProductSlider extends Component {
                         <AddToBasketModal url_key={this.state.url_key} onCloseAddCartModal={this.onCloseAddCartModal}/>
                     </Modal>
                 </div> : ''}
-                {this.state.addToCartModal && this.props.cart_details.similar_products && !window.location.href.includes('products-details') ? <div>
+                {this.state.addToCartModal && this.props.cart_details.similar_products && (this.state.url_key !== '' && item[1] !== this.state.url_key) ? <div>
                         <Modal modalId="addToCartPopupID" open={this.state.addToCartModal} onClose={this.onCloseCartModal}>
                             <AddToCartModal onCloseCartModal={this.onCloseCartModal} />
                         </Modal>

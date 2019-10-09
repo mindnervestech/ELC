@@ -21,7 +21,7 @@ import OwlItem from './OwlItem';
 import { array } from 'prop-types';
 import Spinner from '../Spinner/Spinner2';
 import SpinnerOne from '../Spinner/Spinner';
-import { trackF, initializeF } from '../utility/facebookPixel';
+// import { trackF, initializeF } from '../utility/facebookPixel';
 
 import { live } from '../../api/globals';
 import Popup from 'react-popup';
@@ -214,9 +214,9 @@ class ShoppingBag extends Component {
         const language = localStorage.getItem('templang');
 
         if (this.state.redirectToDeliveryDetails) {
-            if (live) {
-                trackF('InitiateCheckout');
-            }
+            // if (live) {
+            //     trackF('InitiateCheckout');
+            // }
             return <Redirect to={`/${this.props.globals.store_locale}/delivery-details`} />
         }
 
