@@ -405,19 +405,19 @@ class SideManu extends Component {
 
 	assignFilterdata(name, code) {
 		let Checked = 0;
-		if(this.props.globals.language == 'ar'){
-			if(code === 'brand'){
-				code = 'الماركة'
-			}else if(code === 'age'){
-				code = 'عمر'
-			}else if(code === 'color'){
-				code = 'اللون'
-			}else if(code === 'gender'){
-				code = 'جنس'
-			}else if(code === 'sub_category'){
-				code = 'تصنيف فرعي'
-			}
-		}
+		// if(this.props.globals.language == 'ar'){
+		// 	if(code === 'brand'){
+		// 		code = 'الماركة'
+		// 	}else if(code === 'age'){
+		// 		code = 'عمر'
+		// 	}else if(code === 'color'){
+		// 		code = 'اللون'
+		// 	}else if(code === 'gender'){
+		// 		code = 'جنس'
+		// 	}else if(code === 'sub_category'){
+		// 		code = 'تصنيف فرعي'
+		// 	}
+		// }
 		
 		// return (Object.keys(data).map((keyName, index) => {
 		for (let item in this.state.narrowResult) {
@@ -469,6 +469,15 @@ class SideManu extends Component {
 		}
 	}
 
+	getNarrowYourResultText(keyName){
+		let url = keyName.split('/')
+		let name = url[1]
+		let code = url[0]
+		return(
+			<span><FormattedMessage id={"filter.categary.title." + code} defaultMessage={code}></FormattedMessage>&nbsp;/&nbsp;{name}</span>
+		);
+	}
+
 	render() {
 		const list = this.props.productDetails.filters;
 		if (onClickFilterOptionToApplyFilter == false) {
@@ -493,7 +502,8 @@ class SideManu extends Component {
 									{this.state.narrowResult.map((keyName) =>
 										<li style={{ width: 'auto', margin: '0px 10px 0px 0px' }}>
 											<div className="chip">
-												{keyName}
+												{/* {keyName} */}
+												{this.getNarrowYourResultText(keyName)}
 												<i className="close fa fa-times" aria-hidden="true" onClick={() => this.applyFilter(keyName, "")} />
 											</div>
 										</li>

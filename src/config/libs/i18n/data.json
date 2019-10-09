@@ -929,7 +929,12 @@
     "filter.categary.title.Brand": "Brand",
     "filter.categary.title.Gender": "Gender",
     "filter.categary.title.Sub-Category": "Sub Category",
-    "filter.categary.title.Color": "Color"
+    "filter.categary.title.Color": "Color",
+    "filter.categary.title.age": "Age",
+    "filter.categary.title.brand": "Brand",
+    "filter.categary.title.gender": "Gender",
+    "filter.categary.title.sub-category": "Sub Category",
+    "filter.categary.title.color": "Color"
     },
     "ar": {
       "filter.categary.title.Age": "عمر",
@@ -937,6 +942,11 @@
     "filter.categary.title.Gender": "جنس",
     "filter.categary.title.Sub-Category": "تصنيف فرعي",
     "filter.categary.title.Color": "اللون",
+    "filter.categary.title.age": "عمر",
+    "filter.categary.title.brand": "الماركة",
+    "filter.categary.title.gender": "جنس",
+    "filter.categary.title.sub-category": "تصنيف فرعي",
+    "filter.categary.title.color": "اللون",
       "ResetPassword.PasswordChangedfail.Text":"فشل تغيير كلمة المرور",
       "ResetPassword.fail.Text1":"فشل تغيير كلمة المرور، يرجى المحاولة مجدداً !!!",
       "product.listing.selectedText": "لقد إخترت",
