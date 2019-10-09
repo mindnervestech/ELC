@@ -937,8 +937,8 @@
     "filter.categary.title.color": "Color"
     },
     "ar": {
-      "filter.categary.title.Age": "العمر",
-    "filter.categary.title.Brand": "الماركة",
+      "filter.categary.title.Age":"العمر",
+    "filter.categary.title.Brand":"لماركة",
     "filter.categary.title.Gender": "النوع",
     "filter.categary.title.Sub-Category": "تصنيف فرعي",
     "filter.categary.title.Color": "اللون",
