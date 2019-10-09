@@ -317,7 +317,7 @@ class Confirmation extends Component {
                     </tr>
 
                     <tr>
-                        <td className="t-Report-cell" headers="TYPE"><FormattedMessage id="VAT.Message" defaultMessage="VAT Message" /></td>
+                        <td className="t-Report-cell" headers="TYPE"><FormattedMessage id="VAT.Message" defaultMessage="VAT" /></td>
                         <td className="t-Report-cell" align="right" headers="PRICE">{obj.cart_price.currency} <span>{obj.cart_price.VAT}</span>
                         </td>
                     </tr>

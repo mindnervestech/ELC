@@ -351,7 +351,7 @@ class OrderSummary extends Component {
                                                                                                                     </td>
                                                                                                                 </tr>
                                                                                                                 <tr>
-                                                                                                                    <td className="t-Report-cell" headers="TYPE"><FormattedMessage id="VAT.Message" defaultMessage="VAT Message" />
+                                                                                                                    <td className="t-Report-cell" headers="TYPE"><FormattedMessage id="VAT.Message" defaultMessage="VAT" />
                                                                                                                     </td>
                                                                                                                     <td className="t-Report-cell" align="right" headers="PRICE">{this.props.order_summary.currency} <span>{this.props.order_summary.vat}</span>
                                                                                                                     </td>
