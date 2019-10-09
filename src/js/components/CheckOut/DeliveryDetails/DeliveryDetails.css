@@ -1038,7 +1038,7 @@ input#p_P7_PHONE {
 #mobile-buttons button {
     margin: 0 !important;
     border-radius:0;
-    font-weight: bold;
+    font-family: "VAG Rounded ELC Bold" !important;
 }
 
 
