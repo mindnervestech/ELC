@@ -134,8 +134,7 @@ class Order extends Component {
                                 <div id="report_28337577127179591_catch"><div className="t-Report t-Report--stretch t-Report--staticRowColors t-Report--rowHighlightOff t-Report--horizontalBorders" id="report_R28337577127179591" data-region-id="R28337577127179591">
                                     <div className="t-Report-wrap">
                                         <table className="t-Report-pagination" role="presentation"><tbody><tr><td /></tr></tbody></table>
-                                        <div className="t-Report-tableWrap">
-
+                                        <div className="t-Report-tableWrap" style={{marginBottom: 20}}>
                                             {this.props.orderHistory.length > 0 ?
                                                 <table className="t-Report-report" summary="Order History">
                                                     <thead>

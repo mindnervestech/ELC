@@ -253,7 +253,7 @@ class SideManu extends Component {
 			this.setState({ clearAllOption: false });
 			productList = productListingData;
 			filterData = [];
-			this.props.action(productListingData);
+			this.props.action(productListingData,false);
 			filterOptionArrayForCheckValidate = filterOptionArrayForCheckValidateBackup
 			afterFilterShowOptionList = filterOptionArrayForCheckValidateBackup
 			afterFilterShowOptionListCheck = true
@@ -356,7 +356,7 @@ class SideManu extends Component {
 			if (Object.keys(uniqueNames2).length != 0) {
 				productList = uniqueNames2
 			}
-			this.props.action(filterData)
+			this.props.action(filterData,false)
 			updateHideOption = true
 			this.hideFilterOtionThoseNotInProduct()
 		}
@@ -364,7 +364,7 @@ class SideManu extends Component {
 
 	clearFilter = () => {
 		onClickFilterOptionToApplyFilter = true
-		this.props.action(productListingData)
+		this.props.action(productListingData, false)
 		this.setState({ narrowResult: [], clearAllOption: false })
 		filterOptionArray = []
 		filterData = []
@@ -373,6 +373,15 @@ class SideManu extends Component {
 		afterFilterShowOptionList = filterOptionArrayForCheckValidateBackup
 		afterFilterShowOptionListCheck = true
 		this.setState({ list: filterList });
+	}
+
+	appleFilterForMobile = () => {
+		console.log("in")
+		if(filterData.length == 0){
+			this.props.action(productListingData, true)
+		}else{
+			this.props.action(filterData,true)
+		}
 	}
 
 	checkFilterIsAvailable = (value, code) => {
@@ -418,7 +427,7 @@ class SideManu extends Component {
 		// 		code = 'تصنيف فرعي'
 		// 	}
 		// }
-		
+
 		// return (Object.keys(data).map((keyName, index) => {
 		for (let item in this.state.narrowResult) {
 			if (this.state.narrowResult[item] == code + "/" + name) {
@@ -456,12 +465,12 @@ class SideManu extends Component {
 
 					return (
 						<div className="bottomBorder" style={{ paddingTop: 10 }} id="manuCollapsible">
-						<FormattedMessage id={"filter.categary.title." + value.replace(" ", '-')} defaultMessage={value}>
-							{(message) =>
-							<Collapsible trigger={message}>
-								<div style={{ textAlign: 'start' }}>{this.checkSubCategaryValue(this.state.list[value])}</div>
-							</Collapsible>
-						}</FormattedMessage>
+							<FormattedMessage id={"filter.categary.title." + value.replace(" ", '-')} defaultMessage={value}>
+								{(message) =>
+									<Collapsible trigger={message}>
+										<div style={{ textAlign: 'start' }}>{this.checkSubCategaryValue(this.state.list[value])}</div>
+									</Collapsible>
+								}</FormattedMessage>
 						</div>
 					);
 				}
@@ -469,11 +478,11 @@ class SideManu extends Component {
 		}
 	}
 
-	getNarrowYourResultText(keyName){
+	getNarrowYourResultText(keyName) {
 		let url = keyName.split('/')
 		let name = url[1]
 		let code = url[0]
-		return(
+		return (
 			<span><FormattedMessage id={"filter.categary.title." + code} defaultMessage={code}></FormattedMessage>&nbsp;/&nbsp;{name}</span>
 		);
 	}
@@ -492,55 +501,61 @@ class SideManu extends Component {
 					<Spinner2 loading={this.state.loader}>	</Spinner2>
 					:
 					<div>
-						<div className="divShowOnWeb">
-							<div className="row-2" style={{ paddingTop: 21, borderBottom: 'solid 1px #b1b1b1', textAlign: 'start' }}>
-								<span className="blackTitle"> <FormattedMessage id="NarrowyourResults" defaultMessage="Narrow your Results" /></span>
-								<span className="clearAll floatRight" style={this.state.clearAllOption ? { display: 'block' } : { display: 'none' }} onClick={() => this.clearFilter()}><FormattedMessage id="ClearAll.Text" defaultMessage="Clear All" /></span>
-							</div>
-							<div style={{ height: 55, overflow: 'auto' }}>
-								<ul className="filter" id="PRDSEL-CAT" style={{ textAlign: "start" }}>
-									{this.state.narrowResult.map((keyName) =>
-										<li style={{ width: 'auto', margin: '0px 10px 0px 0px' }}>
-											<div className="chip">
-												{/* {keyName} */}
-												{this.getNarrowYourResultText(keyName)}
-												<i className="close fa fa-times" aria-hidden="true" onClick={() => this.applyFilter(keyName, "")} />
-											</div>
-										</li>
-									)}
-								</ul>
-							</div>
-						</div>
-						<div className="divShowOnMobile">
-						{this.state.narrowResult.length > 0 ?
-							<div className="bottomBorder" style={{ paddingTop: 10 }} id="manuCollapsible">
-							<FormattedMessage id="product.listing.selectedText" defaultMessage="You've selected">
-                {(Title) =>
-								<Collapsible trigger={Title}>
+						<div className="applyPopupHightOnMobile">
+							<div className="divShowOnWeb">
+								<div className="row-2" style={{ paddingTop: 21, borderBottom: 'solid 1px #b1b1b1', textAlign: 'start' }}>
+									<span className="blackTitle"> <FormattedMessage id="NarrowyourResults" defaultMessage="Narrow your Results" /></span>
+									<span className="clearAll floatRight" style={this.state.clearAllOption ? { display: 'block' } : { display: 'none' }} onClick={() => this.clearFilter()}><FormattedMessage id="ClearAll.Text" defaultMessage="Clear All" /></span>
+								</div>
+								<div style={{ height: 55, overflow: 'auto' }}>
 									<ul className="filter" id="PRDSEL-CAT" style={{ textAlign: "start" }}>
 										{this.state.narrowResult.map((keyName) =>
 											<li style={{ width: 'auto', margin: '0px 10px 0px 0px' }}>
 												<div className="chip">
-													{keyName}
+													{/* {keyName} */}
+													{this.getNarrowYourResultText(keyName)}
 													<i className="close fa fa-times" aria-hidden="true" onClick={() => this.applyFilter(keyName, "")} />
 												</div>
 											</li>
 										)}
 									</ul>
-								</Collapsible>
-								}</FormattedMessage>
+								</div>
 							</div>
-						: "" }
+							<div className="divShowOnMobile">
+								{this.state.narrowResult.length > 0 ?
+									<div className="bottomBorder" style={{ paddingTop: 10 }} id="manuCollapsible">
+										<FormattedMessage id="product.listing.selectedText" defaultMessage="You've selected">
+											{(Title) =>
+												<Collapsible trigger={Title}>
+													<ul className="filter" id="PRDSEL-CAT" style={{ textAlign: "start" }}>
+														{this.state.narrowResult.map((keyName) =>
+															<li style={{ width: 'auto', margin: '0px 10px 0px 0px' }}>
+																<div className="chip">
+																	{keyName}
+																	<i className="close fa fa-times" aria-hidden="true" onClick={() => this.applyFilter(keyName, "")} />
+																</div>
+															</li>
+														)}
+													</ul>
+												</Collapsible>
+											}</FormattedMessage>
+									</div>
+									: ""}
+							</div>
+							<div>
+								{Object.keys(this.state.list).map((keyName) =>
+									this.checkMainFilterName(keyName)
+									// <div className="bottomBorder" style={{ paddingTop: 10 }}>
+									// 	<Collapsible trigger={keyName} >
+									// 		<div style={{ textAlign: 'start' }}> {this.assignFilterdata(list[keyName])} </div>
+									// 	</Collapsible>
+									// </div>
+								)}
+							</div>
 						</div>
-						<div>
-							{Object.keys(this.state.list).map((keyName) =>
-								this.checkMainFilterName(keyName)
-								// <div className="bottomBorder" style={{ paddingTop: 10 }}>
-								// 	<Collapsible trigger={keyName} >
-								// 		<div style={{ textAlign: 'start' }}> {this.assignFilterdata(list[keyName])} </div>
-								// 	</Collapsible>
-								// </div>
-							)}
+						<div style={{ height: 40 }} className="divShowOnMobile">
+							<button className="applyFilterButtonOnMobile applyFilterButtonOnMobileSpasing" onClick={() => this.appleFilterForMobile()}>Apply Filters</button>
+							<button className="applyFilterButtonOnMobile" onClick={() => this.clearFilter()}>Clear Filters</button>
 						</div>
 					</div>
 				}

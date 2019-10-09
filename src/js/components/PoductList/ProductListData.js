@@ -150,7 +150,10 @@ class ProductListData extends Component {
 		};
 	}
 
-	handler(id) {
+	handler(id,mobilePopupClose) {
+		if(mobilePopupClose){
+			this.state.showFilterOnMobile = false
+		}
 		changeFilterData = true
 		productList = id;
 		start = 1
@@ -580,7 +583,7 @@ class ProductListData extends Component {
 											<FormattedMessage id="Product.Listing.FilterPopupTitle" defaultMessage="Select Refinements" />
 										</h5>
 									</div>
-									<div style={{ height: 380, overflow: 'scroll', marginTop: 20 }}>
+									<div style={{ marginTop: 20 }}>
 										<SideManu action={this.handler}></SideManu>
 									</div>
 								</div>

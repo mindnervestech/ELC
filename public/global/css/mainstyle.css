@@ -7070,6 +7070,29 @@ html[dir="rtl"] .t-Button--pillStart{
     height: 188px;
 }
 
+.applyFilterButtonOnMobile{
+    color: #fff;
+    background-color: #0D943F;
+    border: solid 1px #0D943F;
+    border-radius: 20px;
+    margin-top: 10px;
+    height: 100%;
+    width: 49%;
+    cursor: pointer;
+    font-family: "VAG Rounded ELC bold" !important;
+}
+
+.applyFilterButtonOnMobileSpasing{
+    margin-right: 2%;
+}
+
+html[dir="rtl"] .applyFilterButtonOnMobileSpasing{
+    margin-right: 0%;
+    margin-left: 2%;
+}
+
+.applyPopupHightOnMobile{}
+
 @media (max-width:767px){
 
     .likeAInputName {
@@ -7080,6 +7103,11 @@ html[dir="rtl"] .t-Button--pillStart{
 }
 .ProductSilderImageHight{
     height: 135px;
+}
+
+.applyPopupHightOnMobile{
+    height: 340px;
+    overflow: scroll;
 }
 
 .buyAndSaveMorePopup{

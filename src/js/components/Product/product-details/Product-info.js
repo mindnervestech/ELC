@@ -513,7 +513,7 @@ class ProductInfo extends Component {
 							</span>
 							<span> | </span> */}
 							{data.age ? <span className="age-sec">
-								Age: {data.age}
+							<FormattedMessage id="Age" defaultMessage="Age" />:&nbsp;{data.age} 
 							</span> : <span />}
 						</div>
 						<div>
