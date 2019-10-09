@@ -438,6 +438,10 @@ export const getProductDetails = payload => {
 			url_key: payload.url_key,
 		};
 		dispatch(callProductDetailLoader({ productDetailLoader: true }))
+		dispatch({
+			type: actionTypes.ADD_TO_CARD_LOADER,
+			payload: { add_cart_open_popUp: false}
+		});
 		let cb = {
 			success: res => {
 				dispatch(callProductDetailLoader({ productDetailLoader: false }))
