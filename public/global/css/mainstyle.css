@@ -2120,6 +2120,45 @@ html[dir="rtl"] .header .link>li .subMenuTrigger {
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%)
 }
+.tooltipcss{
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    display: table-cell !important;
+  }
+
+  .tooltip-height-76{
+   height:76px 
+  }
+
+
+  .tooltipcss:hover{
+   background-color: #fff;   
+  }
+
+
+  .tooltipcss .tooltiptextcss {
+    top: 40px !important;
+    left: 50%;
+    margin-left: -60px;
+    visibility: hidden !important;
+    width: auto !important;
+    font-weight: normal !important;
+    border:1px solid black !important;
+     font-size: 10px !important;
+    font-style: normal !important;
+    background-color:#FFFF99;
+    color: #000000;
+    text-align: center;
+    border-radius:0px;
+    padding: 5px 5px;
+    position: absolute;
+    z-index: 12;
+  }
+  
+  .tooltipcss:hover .tooltiptextcss {
+    visibility: visible !important;
+  }
 
 .header .link>li>a {
     display: block;
@@ -2128,11 +2167,12 @@ html[dir="rtl"] .header .link>li .subMenuTrigger {
     transition: color .5s
 }
 
-html.no-touch .header .link>li>a:hover {
-    background: #fff;
+html.no-touch .header  .link>li>a .tooltipcss:hover .tooltiptextcss{
+    background-color: #fff!important;
+    visibility: visible !important;
 }
 
-html.no-touch .header .link>li>a:focus {
+html.no-touch .header .tooltipcss .link>li>a:focus {
     background: #fff !important;
 }
 
@@ -6068,7 +6108,7 @@ a:hover {
 }
 
 .apex-icons-fontapex .downMenu {
-    top: 14px !important;
+    top: 0px !important;
 }
 @media (max-width:600px){
     html[dir="rtl"] .mobileHomeLogo {

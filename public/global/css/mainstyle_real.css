@@ -1383,6 +1383,7 @@ html[dir="rtl"] .header .search .textInput {
     .header .link>li {
         margin-right: 16px;
         font-weight: bold;
+        margin-top: 25px;
     }
 
     html[dir="rtl"] .header .link>li {
@@ -1489,7 +1490,7 @@ html[dir="rtl"] .header .link>li>a {
     text-align: right;
 }
 
-html.no-touch .header .link>li>a:hover {
+html.no-touch .header .tooltipcss .link>li>a:hover {
     color: #f599ba
 }
 
