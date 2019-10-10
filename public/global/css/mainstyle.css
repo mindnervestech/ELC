@@ -2140,9 +2140,9 @@ html[dir="rtl"] .header .link>li .subMenuTrigger {
   .tooltipcss .tooltiptextcss {
     top: 40px !important;
     left: 50%;
-    margin-left: -60px;
+   
     visibility: hidden !important;
-    width: auto !important;
+    width: 140px !important;
     font-weight: normal !important;
     border:1px solid black !important;
      font-size: 10px !important;
