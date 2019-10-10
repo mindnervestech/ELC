@@ -19,7 +19,7 @@ class SavedAddressList extends Component {
 
                 if (item.country_id != 'SA' && item.country_id != 'AE') {
                     return (<div className="apex-item-option" key={index}>
-                        <input type="radio" id={item_id} name="ADDRESSES" Value={item.Id}
+                        <input type="radio" id={item_id} name="ADDRESSES" value={item.Id}
                             onClick={() => this.radioClick(item)} />
 
                         <label htmlFor={item_id}>
@@ -56,7 +56,7 @@ class SavedAddressList extends Component {
 
                 // if (item.country_id === 'SA') {
                 return (<div className="apex-item-option" key={index}>
-                    <input type="radio" id={item_id} name="ADDRESSES" Value={item.Id}
+                    <input type="radio" id={item_id} name="ADDRESSES" value={item.Id}
                         onClick={() => this.radioClick(item)} />
 
                     <label htmlFor={item_id}>
@@ -91,7 +91,7 @@ class SavedAddressList extends Component {
 
                 // if (item.country_id === 'AE') {
                 return (<div className="apex-item-option" style={{ display: 'block' }} key={index}>
-                    <input type="radio" id={item_id} name="ADDRESSES" Value={item.Id}
+                    <input type="radio" id={item_id} name="ADDRESSES" value={item.Id}
                         onClick={() => this.radioClick(item)} />
 
                     <label htmlFor={item_id}>

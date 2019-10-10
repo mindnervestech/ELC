@@ -118,7 +118,7 @@ class ProductDetails extends Component {
 				}
 			} else {
 				this.setState({
-					addToCartModal: true,
+					// addToCartModal: true,
 					cartModelFlag: true,
 					item_added_message: '',
 				})

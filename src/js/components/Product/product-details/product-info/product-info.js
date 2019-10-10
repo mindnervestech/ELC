@@ -206,6 +206,10 @@ class ProductInformation extends Component {
 							{data.brand || data.age || data.assembly_req || data.battery_inc || data.battery_req ?
 								<h3 className="specification-title" style={{ textAlign: 'start' }}>
 									<FormattedMessage id="Specifications" defaultMessage="Specifications" /></h3> : <div />}
+							{data.sku ? <div className="row specification-item-content">
+								<span class="specification-item-key"><FormattedMessage id="product.sku" defaultMessage="Product code" /></span>
+								<span className="specification-item-value">{data.sku}</span>
+							</div> : <div />}
 							{data.age ? <div className="row specification-item-content">
 								<span class="specification-item-key"><FormattedMessage id="Age" defaultMessage="Age" />:</span>
 								<span className="specification-item-value">{data.age}</span>

@@ -133,7 +133,7 @@ class DeliveryProductList extends Component {
         })
 
         return (<>
-            <ShippingSpinner>
+                {!this.props.cart_details.cart_data ? <ShippingSpinner />:
                 <div className="t-Region t-Region--noPadding t-Region--scrollBody margin-bottom-sm" id="PRDBASKET">
                     {/* <div className="t-Region-header">
                         <div className="t-Region-headerItems t-Region-headerItems--title">
@@ -286,8 +286,7 @@ class DeliveryProductList extends Component {
                             <div className="t-Region-buttons-right" />
                         </div>
                     </div>
-                </div>
-            </ShippingSpinner>
+                </div>}
         </>);
     }
 }

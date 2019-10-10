@@ -124,9 +124,13 @@ class ProductImage extends Component {
 
 	_checkDataExist = (data) => {
 		if (data) {
-			if ((data.thumbnail) && (data.thumbnail.length >= 1)) {				// if (data) {
+			if ((data.thumbnail) && (data.thumbnail.length > 1)) {				// if (data) {
 				const asdf = data.thumbnail.map((item, index) => this._renderData(item, index));				// 	const asdf = data.map((item, index) => this._renderData(item, index,color));
 				return asdf;				// 	return asdf;
+			} else if((data.thumbnail) && (data.thumbnail.length === 1)){
+				return (<a data-slide-id="zoom" data-image={data.thumbnail[0]} name="zoom-images-lg">
+					<img className="productDetailPopupImage" style={{ filter: this.state.indexThumbImg === 0 ?'brightness(60%)' : ''}} srcSet={data.thumbnail[0]} src={data.thumbnail[0]} alt="" />
+				</a> )
 			}
 		}
 	};

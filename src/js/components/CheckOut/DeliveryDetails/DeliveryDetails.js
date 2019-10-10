@@ -398,9 +398,11 @@ class DeliveryDetails extends Component {
                 closeBox={this.closeErrorBox} />
         }
 
-        return (<> <ShippingSpinner>
-            {alertBox}
+        return (<> 
+            {!addressContainer ?<ShippingSpinner /> :
+           
             <div className="t-Body-contentInner">
+             {alertBox}
                 <div className="DeliveryDetails container">
                     <div className="row">
                         <div className="col col-12 apex-col-auto">
@@ -584,7 +586,7 @@ class DeliveryDetails extends Component {
                         </div>
                     </div>
                 </div>
-            </div></ShippingSpinner>
+            </div>}
         </>);
     }
 }

@@ -18,15 +18,15 @@ class ProductSlider extends Component {
             basketPopupFlag: false,
             url_key: '',
             addToCartModal: false,
-			cartModelFlag: false,
+            cartModelFlag: false,
         }
     }
 
     openAddTOBasketModal = (url_key) =>{
         this.setState({
-			basketPopupFlag: true,
-			url_key: url_key
-		})
+            basketPopupFlag: true,
+            url_key:url_key
+        })
     }
 
     onCloseCartModal = () => {
@@ -37,7 +37,6 @@ class ProductSlider extends Component {
         this.setState({ basketPopupFlag: false})
         setTimeout(() => {
             if(window.location.href.includes('products-details')){
-                
                 let data = {
                     customerid: typeof this.props.customer_details.customer_id !== 'undefined' ? parseInt(this.props.customer_details.customer_id) : " ",
                     store: this.props.globals.currentStore,
@@ -52,7 +51,9 @@ class ProductSlider extends Component {
     
     componentDidUpdate(prevProps){
         
-        if (prevProps.addToCardLoader !== this.props.addToCardLoader && this.props.item_added.item_added && this.props.item_added.add_cart_open_popUp && (!this.state.cartModelFlag)) {
+        if (prevProps.addToCardLoader !== this.props.addToCardLoader && 
+            this.props.item_added.item_added && this.props.item_added.add_cart_open_popUp && 
+            (!this.state.cartModelFlag)) {
 			if (!this.props.item_added.add_cart_error) {
 				this.onCloseAddCartModal();
 				this.setState({
@@ -100,14 +101,7 @@ class ProductSlider extends Component {
         }
         if(similar_product != undefined){
             this.state.spnner = false
-        }
-
-        let url = window.location.href.split('products-details');
-        // if(url){
-            let item = url[1].split('/');
-            console.log(item);
-        // }
-        
+        }        
         // if(this.state.addToCartModal && this.props.cart_details.similar_products && document.getElementsByClassName("styles_modal__gNwvD")[0]){
 		// 	document.getElementsByClassName("styles_modal__gNwvD")[0].style.cssText="height: auto !important; width:450px !important"
         // }
@@ -119,7 +113,7 @@ class ProductSlider extends Component {
                         <AddToBasketModal url_key={this.state.url_key} onCloseAddCartModal={this.onCloseAddCartModal}/>
                     </Modal>
                 </div> : ''}
-                {this.state.addToCartModal && this.props.cart_details.similar_products && (this.state.url_key !== '' && item[1] !== this.state.url_key) ? <div>
+                {this.state.addToCartModal && this.props.cart_details.similar_products? <div>
                         <Modal modalId="addToCartPopupID" open={this.state.addToCartModal} onClose={this.onCloseCartModal}>
                             <AddToCartModal onCloseCartModal={this.onCloseCartModal} />
                         </Modal>

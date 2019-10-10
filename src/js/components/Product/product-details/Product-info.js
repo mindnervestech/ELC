@@ -18,7 +18,6 @@ class ProductInfo extends Component {
 		super(props);
 		this.state = {
 			defaultQty: 1,
-			check_is_in_wishlist:true,
 			openShareModel: false,
 			showAlert: false,
 			is_in_wishlist_item: false,
@@ -41,7 +40,6 @@ class ProductInfo extends Component {
 
 
 	componentWillReceiveProps(nextProps) {
-		console.log("NextProps NextProps NextProps",nextProps)
 		let i = 0;
 		for (i = 0; i < this.props.wishlistItem.products.length; i++) {
 		
@@ -49,7 +47,6 @@ class ProductInfo extends Component {
 					
 					document.getElementById('Capa_1').setAttribute('class', 'naylove-icon active');
 					this.setState({ is_in_wishlist_item: true })
-					this.setState({ check_is_in_wishlist: false })
 				}
 				
 			}
