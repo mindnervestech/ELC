@@ -11,12 +11,14 @@ import { connect } from 'react-redux';
 import * as actions from '../../../redux/actions/index';
 import { Row, Col} from 'reactstrap';
 import { FormattedMessage } from 'react-intl';
+import { isThisSecond } from 'date-fns/esm';
 
 class ProductInfo extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			defaultQty: 1,
+			check_is_in_wishlist:true,
 			openShareModel: false,
 			showAlert: false,
 			is_in_wishlist_item: false,
@@ -39,40 +41,44 @@ class ProductInfo extends Component {
 
 
 	componentWillReceiveProps(nextProps) {
+		console.log("NextProps NextProps NextProps",nextProps)
 		let i = 0;
 		for (i = 0; i < this.props.wishlistItem.products.length; i++) {
-			if (this.props.productZoomDetails.id === this.props.wishlistItem.products[i].product_id) {
-				document.getElementById('Capa_1').setAttribute('class', 'naylove-icon active');
-				this.setState({ is_in_wishlist_item: true })
+		
+				if (this.props.productZoomDetails.id === this.props.wishlistItem.products[i].product_id) {
+					
+					document.getElementById('Capa_1').setAttribute('class', 'naylove-icon active');
+					this.setState({ is_in_wishlist_item: true })
+					this.setState({ check_is_in_wishlist: false })
+				}
+				
 			}
-			else {
-				document.getElementById('Capa_1').setAttribute('class', 'naylove-icon ');
-				this.setState({ is_in_wishlist_item: false })
-			}
-		}
-	}
+			
+		
 
 
-	componentDidUpdate(prevProps) {
-		if (this.props.productWishDetail.wishlist_success !== undefined) {
+     
+		if (nextProps.productWishDetailPDP.wishlist_success !=="" && nextProps.productWishDetailPDP.wishlist_success!=undefined) {
+			
 			if (this.state.ischeckadd) {
-				this.setState({ wishlist_message: this.props.productWishDetail.wishlist_success, showAlert: true, ischeckadd: false });
+				this.setState({ wishlist_message:nextProps.productWishDetailPDP.wishlist_success, showAlert: true, ischeckadd: false });
 				setTimeout(() => {
 					this.closeAlert();
-				}, 5000);
+				}, 3000);
 			}
 		}
-		if (this.props.removeWishListDetail.remove_wishlist_success) {
+		if (nextProps.productWishDetailPDP.remove_wishlist_success !== "" && nextProps.productWishDetailPDP.wishlist_success!=undefined) {
 			if (this.state.ischeckremove) {
-				this.setState({ wishlist_message: this.props.removeWishListDetail.remove_wishlist_success, showAlert: true, ischeckremove: false });
+				this.setState({ wishlist_message:nextProps.productWishDetailPDP.wishlist_success, showAlert: true, ischeckremove: false });
 
 				setTimeout(() => {
 					this.closeAlert();
-				}, 5000);
+				}, 3000);
 			}
 		}
 		
 	}
+
 
 	decrement = totalQty => {
 		let currQty = this.state.defaultQty;
@@ -225,13 +231,10 @@ class ProductInfo extends Component {
 	_handleClick = async () => {
 		if (document.getElementById('Capa_1').getAttribute('class').includes('active')) {
 			document.getElementById('Capa_1').setAttribute('class', 'naylove-icon');
-			if (this.props.productWishDetail.wishlist_itemid) {
+			if (this.props.productWishDetailPDP.wishlist_itemid!==undefined) {
 
 				this.setState({ is_in_wishlist_item: false, ischeckremove: true })
-				this.props.onRemoveWishList({
-					index: null,
-					wishlist_id: this.props.productWishDetail.wishlist_itemid
-				})
+				
 
 			}
 		} else {
@@ -245,37 +248,6 @@ class ProductInfo extends Component {
 			};
 			this.props.onAddToWishList(data);
 		}
-
-		// if(this.props.productWishDetail.wishlist_success !== undefined)
-		// {   
-
-		// 	if(this.state.ischeck)
-		// 	{
-		// 		console.log("Add Wishlist",this.props.productWishDetail.wishlist_success)
-
-		// 			this.setState({wishlist_message:this.props.productWishDetail.wishlist_success,showAlert:true,ischeck:false});
-
-		// 			setTimeout(() => {
-		// 				this.closeAlert();
-		// 			}, 5000);	
-		// 	}
-
-		// }
-
-		//  if (this.props.removeWishListDetail.remove_wishlist_success)
-		// {
-
-		// 	if(this.state.ischeck)
-		// 	{
-		// 		console.log("Remove Wishlist",this.props.removeWishListDetail.remove_wishlist_success)
-		// 			this.setState({wishlist_message:this.props.removeWishListDetail.remove_wishlist_success,showAlert:true,ischeck:false});
-
-		// 			setTimeout(() => {
-		// 				this.closeAlert();
-		// 			}, 5000);	
-		// 	}
-
-		// }
 
 	};
 
@@ -326,7 +298,7 @@ class ProductInfo extends Component {
 						/>
 					</g>
 				</svg>
-				{!this.state.is_in_wishlist_item ? <span style={{ margingRight: "35px" }} className="mr-10-wishlist" ><FormattedMessage id="PageTitle.add-wishlist" defaultMessage="Add to wishlist" /></span> : <span style={{ margingRight: "35px" }} className="mr-10-wishlist" ><FormattedMessage id="PageTitle.removewishlist" defaultMessage="Remove to wishlist" /></span>}
+				{this.state.is_in_wishlist_item ? <span style={{ margingRight: "35px" }} className="mr-10-wishlist" ><FormattedMessage id="PageTitle.add-wishlist" defaultMessage="Add to wishlist" /></span> : <span style={{ margingRight: "35px" }} className="mr-10-wishlist" ><FormattedMessage id="PageTitle.add-wishlist" defaultMessage="Add to wishlist" /></span>}
 			</span>
 			</Link>);
 		} else {
@@ -352,7 +324,7 @@ class ProductInfo extends Component {
 					/>
 				</g>{' '}
 			</svg>
-				{!this.state.is_in_wishlist_item ? <span style={{ margingRight: "35px" }}><FormattedMessage id="PageTitle.add-wishlist" defaultMessage="Add to wishlist" /></span> : <span style={{ margingRight: "35px" }}><FormattedMessage id="PageTitle.removewishlist" defaultMessage="Remove to wishlist" /></span>}
+				{this.state.is_in_wishlist_item ? <span style={{ margingRight: "35px" }}><FormattedMessage id="PageTitle.add-wishlist" defaultMessage="Add to wishlist" /></span> : <span style={{ margingRight: "35px" }}><FormattedMessage id="PageTitle.add-wishlist" defaultMessage="Add to wishlist" /></span>}
 			</span>);
 		}
 	}
@@ -795,8 +767,8 @@ const mapStateToProps = state => {
 		user_details: state.login.customer_details,
 		productZoomDetails: state.productDetails.productData,
 		customerDetails: state.login.customer_details,
-		productWishDetail: state.productDetails.productWishDetail,
-		removeWishListDetail: state.productDetails.productWishDetail,
+		productWishDetailPDP: state.productDetails.productWishDetail,
+		removeWishListDetailPDP: state.productDetails.productWishDetail,
 		productDetails: state.productDetails.productColor,
 		wishlistItem: state.wishList,
 		productDetailLoader: state.productDetails.productDetailLoader,

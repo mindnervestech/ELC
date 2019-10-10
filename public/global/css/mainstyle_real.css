@@ -1493,7 +1493,7 @@ html[dir="rtl"] .header .link>li>a {
     text-align: right;
 }
 
-html.no-touch .header .tooltipcss .link>li>a:hover {
+html.no-touch .header  .link>li>a:hover {
     color: #f599ba
 }
 

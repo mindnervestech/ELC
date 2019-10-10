@@ -78,17 +78,23 @@ class WishList extends Component {
         }, 500);
     }
 
+    componentWillReceiveProps(nextProps){
+        
+        // if (nextProps.removeWishListDetailPDP.remove_wishlist_success!=undefined && nextProps.removeWishListDetailPDP.remove_wishlist_success=="") {
+        //     console.log("come here wishlist page")
+        //     if (this.state.ischeckremove) {
+        //         this.setState({ wishlist_message: nextProps.removeWishListDetailPDP.remove_wishlist_success, showAlert: true, ischeckremove: false });
+
+        //         setTimeout(() => {
+        //             this.closeAlert();
+        //         }, 5000);
+        //     }
+        // }
+    }
+
     componentDidUpdate(prevProps) {
 
-        if (this.props.removeWishListDetail.remove_wishlist_success) {
-            if (this.state.ischeckremove) {
-                this.setState({ wishlist_message: this.props.removeWishListDetail.remove_wishlist_success, showAlert: true, ischeckremove: false });
-
-                setTimeout(() => {
-                    this.closeAlert();
-                }, 5000);
-            }
-        }
+        
 
         if (prevProps.addToCardLoader !== this.props.addToCardLoader && this.props.item_added.item_added && this.props.item_added.add_cart_open_popUp && (!this.state.cartModelFlag || !cartModelFlag)) {
             if (!this.props.item_added.add_cart_error) {
@@ -105,17 +111,19 @@ class WishList extends Component {
 
     wishlistToggle = (index, wishlist_id) => {
         this.props.onRemoveProductFromWishList({ index: index, wishlist_id: wishlist_id })
-        if (this.props.removeWishListDetail.remove_wishlist_success) {
+        this.props.onGetWishListItem({ customerid: this.props.user_details.customer_id, store_id: this.props.globals.currentStore })
 
-            if (this.state.ischeckremove) {
-                this.setState({ wishlist_message: this.props.removeWishListDetail.remove_wishlist_success, showAlert: true, ischeckremove: false });
+        // if (this.props.removeWishListDetail.remove_wishlist_success!=undefined) {
 
-                setTimeout(() => {
-                    this.closeAlert();
-                }, 5000);
-            }
+        //     if (this.state.ischeckremove) {
+        //         this.setState({ wishlist_message: this.props.removeWishListDetail.remove_wishlist_success, showAlert: true, ischeckremove: false });
 
-        }
+        //         setTimeout(() => {
+        //             this.closeAlert();
+        //         }, 5000);
+        //     }
+
+        // }
     }
 
     logOut = () => {
@@ -455,7 +463,7 @@ const mapStateToProps = state => {
         products: state.wishList.products,
         orderHistory: state.orders.orders_history,
         globals: state.global,
-        removeWishListDetail: state.productDetails.productWishDetail,
+        removeWishListDetailPDP: state.productDetails.productWishDetail,
         wishLoader: state.wishList.wishLoader,
         cart_details: state.myCart,
         guest_user: state.guest_user,

@@ -79,9 +79,9 @@ class PageTitle extends Component {
             country = 'KSA'
         }
     
-        let mainTitle = title !== 'NA' ? intl.formatMessage({ id: `PageTitle.${title}`,defaultMessage: 'ELC' }) : intl.formatMessage({ id: `PageTitle.Home`,defaultMessage:"elctoys.com | ELC Online store | Official Website | Early Learning Centre" });
+        let mainTitle = title !== 'NA' ? intl.formatMessage({ id: `PageTitle.${title}`,defaultMessage: 'ELC' }) : intl.formatMessage({ id: `PageTitle.Home`,defaultMessage:"elctoys.com | ELC Online store | Official Website | Early Learning Center" });
     
-        return mainTitle + " | " + intl.formatMessage({ id: `PageTitle.elc.${country}`,defaultMessage:"elctoys.com | ELC Online store | Official Website | Early Learning Centre"  })
+        return mainTitle + " | " + intl.formatMessage({ id: `PageTitle.elc.${country}`,defaultMessage:"elctoys.com | ELC Online store | Official Website | Early Learning Center"  })
     }
 
     getKeyword = (keyword) => {
@@ -94,9 +94,9 @@ class PageTitle extends Component {
             country = 'KSA'
         }
     
-        let mainTitle = keyword !== 'NA' ? intl.formatMessage({ id: `PageTitle.${keyword}.keyword`,defaultMessage: 'ELC' }) : intl.formatMessage({ id: `PageTitle.Home` });
+        let mainTitle = keyword !== 'NA' ? intl.formatMessage({ id: `PageTitle.${keyword}.keyword`,defaultMessage: 'ELC' }) : intl.formatMessage({ id: `PageTitle.Home`,defaultMessage:"elctoys.com | ELC Online store | Official Website | Early Learning Center" });
       
-        return mainTitle + " | " + intl.formatMessage({ id: `PageTitle.elc.${country}` })
+        return mainTitle + " | " + intl.formatMessage({ id: `PageTitle.elc.${country}` ,defaultMessage:"elctoys.com | ELC Online store | Official Website | Early Learning Center"})
     }
 
     getDescription = (description) => {
@@ -109,9 +109,9 @@ class PageTitle extends Component {
             country = 'KSA'
         }
     
-        let mainTitle = description !== 'NA' ? intl.formatMessage({ id: `PageTitle.${description}.description`,defaultMessage: 'ELC' }) : intl.formatMessage({ id: `PageTitle.Home` });
+        let mainTitle = description !== 'NA' ? intl.formatMessage({ id: `PageTitle.${description}.description`,defaultMessage: 'ELC' }) : intl.formatMessage({ id: `PageTitle.Home`,defaultMessage:"elctoys.com | ELC Online store | Official Website | Early Learning Center" });
 
-        return mainTitle + " | " + intl.formatMessage({ id: `PageTitle.elc.${country}` })
+        return mainTitle + " | " + intl.formatMessage({ id: `PageTitle.elc.${country}` ,defaultMessage:"elctoys.com | ELC Online store | Official Website | Early Learning Center"})
     }
 
 
