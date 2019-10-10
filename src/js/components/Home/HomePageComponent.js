@@ -2,7 +2,7 @@ import React, { Component, useState } from 'react';
 import Slider from "react-slick";
 import { connect } from 'react-redux';
 import * as actions from '../../redux/actions/index';
-import placeholder from '../../../assets/images/placeholder.png'
+// import placeholder from '../../../assets/images/placeholder.png'
 import ProductSlider from '../Product/product-details/Product-slider'
 import { Link } from 'react-router-dom';
 
@@ -97,7 +97,7 @@ class HomePageComponent extends Component {
                                                                     <div>
                                                                         <Link to={`/` + store_locale + `/products/ ` + item.BLOCK_URL + ``}>
                                                                             <a href={''} target="_blank">
-                                                                                <img src={item.BLOCK_BANNER !== null ? item.BLOCK_BANNER : placeholder} alt=""/>
+                                                                                <img src={item.BLOCK_BANNER !== null ? item.BLOCK_BANNER : ''} alt=""/>
                                                                             </a>
                                                                             <div className="cardDetail">
                                                                                 <span className="cardDetailText">{item.TITLE}</span>

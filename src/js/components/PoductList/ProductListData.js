@@ -4,7 +4,7 @@ import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import * as actions from '../../redux/actions/index';
 import { Row, Col } from 'reactstrap';
-import placeholder from '../../../assets/images/placeholder.png'
+// import placeholder from '../../../assets/images/placeholder.png'
 
 import SideManu from './SideManu';
 import AddToBasketModal from '../Product/product-details/product-info/add-to-basket-modal';
@@ -700,15 +700,15 @@ class ProductListData extends Component {
 									{Object.keys(list).map((keyName, index) =>
 										<li key={index} style={{ position: 'relative' }}>
 											<Link to={`/${store_locale}/products-details/${list[keyName].json.url_key}`}>
-												<div className="alsoLikeCard">
+												<div className="alsoLikeCard" style={{height: list[keyName].json.imageUrl ? 'auto' : 307}}>
 													<div className="ProductSilderImageHight">
-														{/* <span className="percentage-text" style={{ display: 'none' }}>30</span>
-														<span className="save-text">5</span>
-														<img src={save} className="save" /> */}
-														<img src={(list[keyName].json.imageUrl) ? list[keyName].json.imageUrl.primaryimage : placeholder} className="cardImage" alt="" />
-														{/* <img src={percentage} className="percentage" style={{ display: 'none' }} /> */}
+													{/* <span className="percentage-text" style={{ display: 'none' }}>30</span>
+									<span className="save-text">5</span>
+									<img src={save} className="save" /> */}
+													<img src={(list[keyName].json.imageUrl) ? list[keyName].json.imageUrl.primaryimage : ''} className="cardImage" alt="" />
+													{/* <img src={percentage} className="percentage" style={{ display: 'none' }} /> */}
 													</div>
-													<div style={{ marginTop: 10, height: 45, overflow: 'hidden' }}>
+													<div style={{height: list[keyName].json.imageUrl ? 50 : 195,  marginTop: 10, overflow: 'hidden'}}>
 														<label className="text-color">{list[keyName].json.name}</label>
 													</div>
 													{list[keyName].json.offers && list[keyName].json.offers.status === 1 ?
@@ -741,7 +741,7 @@ class ProductListData extends Component {
 												</div>
 											</Link>
 											<div>
-												<button className="alsoLikeCardButton" onClick={() => this.openAddTOBasketModal(list[keyName].json.url_key)} style={{ width: '100%', borderRadius: '4px', marginBottom: '10px' }}>
+												<button disabled={!list[keyName].json.url_key} className="alsoLikeCardButton" onClick={() => this.openAddTOBasketModal(list[keyName].json.url_key)} style={{ width: '100%', borderRadius: '4px', marginBottom: '10px' }}>
 													<FormattedMessage id="Product.Detail.addToBasket" defaultMessage="Add to basket" />
 												</button>
 											</div>
