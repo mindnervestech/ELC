@@ -4613,6 +4613,7 @@ html[dir="rtl"] .header .navTrigger {
     .header .link>li>a{
         color: #0D943F !important;
         font-weight: bold;
+        padding: 15px 7px;
     }
 
     .header .link .subLink li a{

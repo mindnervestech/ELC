@@ -1,3 +1,53 @@
+@media only screen and (min-width:767px){
+    .removeWhite{
+        padding: 15px 7px;
+       }
+}
+
+@media only screen and (min-width:768px) and (max-width:1024px){
+    .removeWhite{
+        padding: 15px 7px;
+       }
+}
+.tooltipcss{
+    position: relative;
+    vertical-align: middle;
+    display: table-cell !important;
+  }
+
+  .tooltip-height-76{
+   height:76px 
+  }
+
+
+  .tooltipcss:hover{
+   background-color: #fff;   
+  }
+
+
+  .tooltipcss .tooltiptextcss {
+    top: 40px !important;
+    left: 50%;
+   
+    visibility: hidden !important;
+    width: 140px !important;
+    font-weight: normal !important;
+    border:1px solid black !important;
+     font-size: 10px !important;
+    font-style: normal !important;
+    background-color:#FFFF99;
+    color: #000000;
+    text-align: center;
+    border-radius:0px;
+    padding: 5px 5px;
+    position: absolute;
+    z-index: 12;
+  }
+  
+  .tooltipcss:hover .tooltiptextcss {
+    visibility: visible !important;
+  }
+
 .textStartShippingTab .Collapsible__contentInner
 {
     text-align: start !important
@@ -58,6 +108,10 @@ text-transform: none!important;
 
 @media only screen and (max-width:767px)
 {
+
+  .tooltip-height-76{
+    height:0px 
+   }
     .textStartShippingTab .Collapsible__contentInner
 {
     text-align: start !important
@@ -119,6 +173,10 @@ text-transform: none!important;
 
 @media only screen  and (min-width:768px) and (max-width:1024px)
 {
+
+    .tooltip-height-76{
+        height:0px 
+       }
 
     .textStartShippingTab .Collapsible__contentInner
 {
@@ -333,7 +391,9 @@ html[dir="rtl"] .paddingForEnglish {
     color: #4f4f4f;
    }
 
-   .removeWhite{}
+   .removeWhite{
+    padding: 15px 7px;
+   }
 
    .removeWhite:hover{
        background-color: transparent!important;
@@ -2084,6 +2144,8 @@ html[dir="rtl"] .header .link>li .subMenuTrigger {
     .header .link>li .subMenuTrigger {
         display: none
     }
+
+  
 }
 
 @media only screen and (max-width: 1279px) {
@@ -2120,45 +2182,7 @@ html[dir="rtl"] .header .link>li .subMenuTrigger {
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%)
 }
-.tooltipcss{
-    position: relative;
-    display: inline-block;
-    vertical-align: middle;
-    display: table-cell !important;
-  }
 
-  .tooltip-height-76{
-   height:76px 
-  }
-
-
-  .tooltipcss:hover{
-   background-color: #fff;   
-  }
-
-
-  .tooltipcss .tooltiptextcss {
-    top: 40px !important;
-    left: 50%;
-   
-    visibility: hidden !important;
-    width: 140px !important;
-    font-weight: normal !important;
-    border:1px solid black !important;
-     font-size: 10px !important;
-    font-style: normal !important;
-    background-color:#FFFF99;
-    color: #000000;
-    text-align: center;
-    border-radius:0px;
-    padding: 5px 5px;
-    position: absolute;
-    z-index: 12;
-  }
-  
-  .tooltipcss:hover .tooltiptextcss {
-    visibility: visible !important;
-  }
 
 .header .link>li>a {
     display: block;
