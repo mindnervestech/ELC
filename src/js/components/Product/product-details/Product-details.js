@@ -55,9 +55,9 @@ class ProductDetails extends Component {
 		// this.props.getSizeChart({
 		// 	store_id: this.props.globals.currentStore,
 		// });
-		if (this.props.guest_user.temp_quote_id == null) {
-			this.props.onGetGuestCartId();
-		}
+		// if (this.props.guest_user.temp_quote_id == null) {
+		// 	this.props.onGetGuestCartId();
+		// }
 	}
 
 	componentDidUpdate(prevProps, prevState) {
@@ -279,7 +279,7 @@ const mapDispatchToProps = dispatch => {
 		onGetProductDetails: payload => dispatch(actions.getProductDetails(payload)),
 		// getSizeChart: payload => dispatch(actions.getSizeChart(payload)),
 		OngetMyCart: (quoteId) => dispatch(actions.getMyCart(quoteId)),
-		onGetGuestCartId: () => dispatch(actions.getGuestCartId()),
+		// onGetGuestCartId: () => dispatch(actions.getGuestCartId()),
 	};
 };
 

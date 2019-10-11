@@ -37,9 +37,6 @@ class ProductInfo extends Component {
 		if (this.props.customerDetails.customer_id !== undefined) {
 			this.props.onGetWishListItem({ customerid: this.props.customerDetails.customer_id, store_id: this.props.globals.currentStore })
 		}
-		if (this.props.guest_user.temp_quote_id == null) {
-			this.props.onGetGuestCartId();
-		}
 	}
 
 
