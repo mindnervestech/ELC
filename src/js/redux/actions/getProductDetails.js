@@ -431,7 +431,7 @@ export const clearProductDetails = payload => {
 };
 
 export const getProductDetails = payload => {
-	return dispatch => {
+	return (dispatch, getState) => {
 		const data = {
 			customerid: payload.customerid,
 			store: payload.store,
