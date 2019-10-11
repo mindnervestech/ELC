@@ -1347,14 +1347,14 @@ html[dir="rtl"] .mr-6-span{
 }
 
 .learn-skill-img img{
-    width: 150px;
-    height:150px;
+    width: 130px;
+    height:130px;
     /* margin-right: 25px; */
 }
 
 html[dir="rtl"] .learn-skill-img img{
-    width: 150px;
-    height:150px;
+    width: 130px;
+    height:130px;
     /* margin-left: 25px; */
     margin-right: 0px;
 }
@@ -1529,13 +1529,13 @@ html[dir="rtl"] .write-review .write-a-re i{
     }
 
     .learn-skill-img img{
-        width: 110px;
-        height:110px;
+        width: 100px;
+        height:100px;
     }
     
     html[dir="rtl"] .learn-skill-img img{
-        width: 110px;
-        height:110px;
+        width: 100px;
+        height:100px;
         margin-right: 0px;
     }
 }
