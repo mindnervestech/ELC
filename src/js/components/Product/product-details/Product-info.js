@@ -25,6 +25,7 @@ class ProductInfo extends Component {
 			wishlist_message: '',
 			ischeckremove: true,
 			ischeckadd: true,
+			alreadyWishList:false,
 			showLearning: false,
 			cartModelFlag: false,
 		};
@@ -213,6 +214,7 @@ class ProductInfo extends Component {
 
 	closeAlert = () => {
 		this.setState({ showAlert: false });
+		this.setState({alreadyWishList:false})
 		
 	}
 
@@ -226,7 +228,7 @@ class ProductInfo extends Component {
 
 			// }
 		} else {
-
+			
 			document.getElementById('Capa_1').setAttribute('class', 'naylove-icon active');
             setTimeout(() => {
 				_this.setState({ is_in_wishlist_item:true, ischeckadd: true })	
@@ -242,6 +244,15 @@ class ProductInfo extends Component {
 
 	};
 
+
+	showAlreadyWishListAlert=()=>{
+
+		this.setState({alreadyWishList:true})
+		setTimeout(() => {
+			this.closeAlert();
+		}, 3000);
+	}
+	
 
 	_getUnique = (arr, comp) => {
 		const unique = arr
@@ -322,7 +333,7 @@ class ProductInfo extends Component {
 			</span>:
 
 
-                <span  className="wishlist-span-1 mr-10-wishlist"><svg
+                <span  onClick={()=>this.showAlreadyWishListAlert()}className="wishlist-span-1 mr-10-wishlist"><svg
 				xmlns="http://www.w3.org/2000/svg"
 				xmlnsXlink="http://www.w3.org/1999/xlink"
 				version="1.1"
@@ -427,6 +438,29 @@ class ProductInfo extends Component {
 	}
 
 	render() {
+
+		let alreadyWishListMessage=null;
+		
+		if(this.state.alreadyWishList )
+		{   
+			alreadyWishListMessage = <span id="APEX_SUCCESS_MESSAGE" data-template-id="126769709897686936_S" className="apex-page-success u-visible"><div className="t-Body-alert">
+			<div className="t-Alert t-Alert--defaultIcons t-Alert--success t-Alert--horizontal t-Alert--page t-Alert--colorBG" id="t_Alert_Success" role="alert">
+				<div className="t-Alert-wrap">
+					<div className="t-Alert-icon">
+						<span className="t-Icon" />
+					</div>
+					<div className="t-Alert-content">
+						<div className="t-Alert-header">
+							<h2 className="t-Alert-title"><FormattedMessage id="Productisalreadyinthewishlist" defaultMessage="Product is already in the wishlist"/></h2>
+						</div>
+					</div>
+					<div className="t-Alert-buttons">
+						<button onClick={()=>this.closeAlert()}className="t-Button t-Button--noUI t-Button--icon t-Button--closeAlert" type="button" title="Close Notification" onClick={this.closeAlert} ><span className="t-Icon icon-close" /></button>
+					</div>
+				</div>
+			</div>
+		</div></span>;
+		}
 		let respo_message = null;
 
 		if (this.state.showAlert) {
@@ -495,6 +529,7 @@ class ProductInfo extends Component {
 
 			<div className="row">
 				{respo_message}
+				{alreadyWishListMessage}
 				<Helmet>
 					<script src="/global/css/magiczoomplus/magiczoomplus.js"></script>
 					<script src="/global/css/magicscroll/magicscroll.js"></script>
@@ -815,7 +850,6 @@ const mapDispatchToProps = dispatch => {
 		onRemoveWishList: (payload) => dispatch(actions.removeWishList(payload)),
 		onAddToCart: payload => dispatch(actions.addToCart(payload)),
 		onGuestAddToCart: (payload, myCart) => dispatch(actions.guestAddToCart(payload, myCart)),
-		onGetGuestCartId: () => dispatch(actions.getGuestCartId()),
 	};
 };
 

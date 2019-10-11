@@ -934,9 +934,11 @@
     "filter.categary.title.brand": "Brand",
     "filter.categary.title.gender": "Gender",
     "filter.categary.title.sub-category": "Sub Category",
-    "filter.categary.title.color": "Color"
+    "filter.categary.title.color": "Color",
+    "Productisalreadyinthewishlist":"Product is already in the wishlist"
     },
     "ar": {
+      "Productisalreadyinthewishlist":"Product is already in the wishlist",
       "filter.categary.title.Age":"العمر",
     "filter.categary.title.Brand":"لماركة",
     "filter.categary.title.Gender": " الجنس",
