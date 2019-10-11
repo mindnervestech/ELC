@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../../redux/actions/index';
 import { Row, Col} from 'reactstrap';
 import { FormattedMessage } from 'react-intl';
-import { isThisSecond } from 'date-fns/esm';
+
 let _this;
 class ProductInfo extends Component {
 	constructor(props) {
@@ -36,7 +36,9 @@ class ProductInfo extends Component {
 		if (this.props.customerDetails.customer_id !== undefined) {
 			this.props.onGetWishListItem({ customerid: this.props.customerDetails.customer_id, store_id: this.props.globals.currentStore })
 		}
-
+		if (this.props.guest_user.temp_quote_id == null) {
+			this.props.onGetGuestCartId();
+		}
 	}
 
 
@@ -236,8 +238,6 @@ class ProductInfo extends Component {
 				product_id: this.props.productZoomDetails.id
 			};
 			this.props.onAddToWishList(data);
-
-
 		}
 
 	};
@@ -815,6 +815,7 @@ const mapDispatchToProps = dispatch => {
 		onRemoveWishList: (payload) => dispatch(actions.removeWishList(payload)),
 		onAddToCart: payload => dispatch(actions.addToCart(payload)),
 		onGuestAddToCart: (payload, myCart) => dispatch(actions.guestAddToCart(payload, myCart)),
+		onGetGuestCartId: () => dispatch(actions.getGuestCartId()),
 	};
 };
 

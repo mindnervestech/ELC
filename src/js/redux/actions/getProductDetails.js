@@ -133,7 +133,7 @@ export const getYouMayAlsoLikeData = (payload) => {
 			if (res.status && res.code === 200) {
 				dispatch(callProductDetailLoader({ productDetailLoader: false }))
 				dispatch(callActionYouMayAlsoLikeDetails({ YouMayAlsoLike: res.product }));
-				if (getState().guest_user.temp_quote_id == null) {
+				if (getState().guest_user.temp_quote_id === null) {
 					dispatch(getGuestCartId());
 				}
 			}else{
@@ -451,6 +451,9 @@ export const getProductDetails = payload => {
 					let newState = { ...res.product[0] };
 					dispatch(callProductWishDetail({ productWishDetail: { is_in_wishlist: res.product[0].is_in_wishlist, wishlist_itemid: res.product[0].wishlist_itemid } }))
 					dispatch(callActionGetProductDetails({ productData: newState, redirect: true }));
+					if (getState().guest_user.temp_quote_id === null) {
+						dispatch(getGuestCartId());
+					}
 				} else {
 					let newState = { ...res.product[0] };
 					dispatch(callActionGetProductDetails({ productData: newState, redirect: true }));
