@@ -126,7 +126,7 @@ class menuList extends Component {
 
 			return (
 				
-				<div className="submenu" style={item.children[0].length > 0 ? {backgroundColor: '#fff', textAlign: 'center',marginTop:15} : {display: 'none'}}>
+				<div className="submenu" style={item.children[0].length > 0 ? {backgroundColor: '#fff', textAlign: 'center'} : {display: 'none'}}>
 					{
 						item.children.map(
 							(x) => this._renderSubMenuList(x, item.name, item.url_path)
