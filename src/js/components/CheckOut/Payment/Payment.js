@@ -79,22 +79,24 @@ class Payment extends Component {
         }
         let cardPay = document.getElementById("CC");
         let cod = document.getElementById("DA");
-        if(this.props.cart_details.payment_details.payment_code === 'cashondelivery'){
-            Ptype = 'COD';
-            cod.classList.add('selected');
-            cardPay.classList.remove('selected')
-            this.setState({
-                isActive: 'COD',
-                payment_code: 'cashondelivery',
-            })
-        }else if(this.props.cart_details.payment_details.payment_code === 'payfort_fort_cc'){
-            Ptype = 'CC';
-            cardPay.classList.add('selected');
-            cod.classList.remove('selected')
-            this.setState({
-                isActive: 'CC',
-                payment_code: 'payfort_fort_cc',
-            })
+        if(cod && cardPay){
+            if(this.props.cart_details.payment_details.payment_code === 'cashondelivery'){
+                Ptype = 'COD';
+                cod.classList.add('selected');
+                cardPay.classList.remove('selected')
+                this.setState({
+                    isActive: 'COD',
+                    payment_code: 'cashondelivery',
+                })
+            }else if(this.props.cart_details.payment_details.payment_code === 'payfort_fort_cc'){
+                Ptype = 'CC';
+                cardPay.classList.add('selected');
+                cod.classList.remove('selected')
+                this.setState({
+                    isActive: 'CC',
+                    payment_code: 'payfort_fort_cc',
+                })
+            }
         }
     }
 
