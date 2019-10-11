@@ -12,15 +12,16 @@ import * as actions from '../../../redux/actions/index';
 import { Row, Col} from 'reactstrap';
 import { FormattedMessage } from 'react-intl';
 import { isThisSecond } from 'date-fns/esm';
-
+let _this;
 class ProductInfo extends Component {
 	constructor(props) {
 		super(props);
+		_this=this;
 		this.state = {
 			defaultQty: 1,
 			openShareModel: false,
 			showAlert: false,
-			is_in_wishlist_item: false,
+			is_in_wishlist_item:false,
 			wishlist_message: '',
 			ischeckremove: true,
 			ischeckadd: true,
@@ -39,40 +40,27 @@ class ProductInfo extends Component {
 	}
 
 
-	componentWillReceiveProps(nextProps) {
+	componentWillReceiveProps(nextProps,prevProps) {
 		let i = 0;
 		for (i = 0; i < this.props.wishlistItem.products.length; i++) {
 		
 				if (this.props.productZoomDetails.id === this.props.wishlistItem.products[i].product_id) {
-					
 					document.getElementById('Capa_1').setAttribute('class', 'naylove-icon active');
 					this.setState({ is_in_wishlist_item: true })
+					
 				}
-				
 			}
-			
+			if (!nextProps.spinnerProduct.statusAlert && nextProps.productWishDetailPDP.wishlist_success!==undefined ) {
 		
-
-
-     
-		if (nextProps.productWishDetailPDP.wishlist_success !=="" && nextProps.productWishDetailPDP.wishlist_success!=undefined) {
-			
-			if (this.state.ischeckadd) {
-				this.setState({ wishlist_message:nextProps.productWishDetailPDP.wishlist_success, showAlert: true, ischeckadd: false });
-				setTimeout(() => {
-					this.closeAlert();
-				}, 3000);
+				if (this.state.ischeckadd) {
+				
+					this.setState({ wishlist_message:nextProps.productWishDetailPDP.wishlist_success, showAlert: true, ischeckadd: false });
+					setTimeout(() => {
+						this.closeAlert();
+					}, 3000);
+					
+				}
 			}
-		}
-		if (nextProps.productWishDetailPDP.remove_wishlist_success !== "" && nextProps.productWishDetailPDP.wishlist_success!=undefined) {
-			if (this.state.ischeckremove) {
-				this.setState({ wishlist_message:nextProps.productWishDetailPDP.wishlist_success, showAlert: true, ischeckremove: false });
-
-				setTimeout(() => {
-					this.closeAlert();
-				}, 3000);
-			}
-		}
 		
 	}
 
@@ -223,27 +211,33 @@ class ProductInfo extends Component {
 
 	closeAlert = () => {
 		this.setState({ showAlert: false });
+		
 	}
 
 	_handleClick = async () => {
 		if (document.getElementById('Capa_1').getAttribute('class').includes('active')) {
 			document.getElementById('Capa_1').setAttribute('class', 'naylove-icon');
-			if (this.props.productWishDetailPDP.wishlist_itemid!==undefined) {
+			// if (this.props.productWishDetailPDP.wishlist_itemid!==undefined) {
 
-				this.setState({ is_in_wishlist_item: false, ischeckremove: true })
+			// 	this.setState({ is_in_wishlist_item: false, ischeckremove: true })
 				
 
-			}
+			// }
 		} else {
 
 			document.getElementById('Capa_1').setAttribute('class', 'naylove-icon active');
-
-			this.setState({ is_in_wishlist_item: true, ischeckadd: true })
+            setTimeout(() => {
+				_this.setState({ is_in_wishlist_item:true, ischeckadd: true })	
+			}, 100);
+			
+		
 			const data = {
 				customer_id: this.props.customerDetails.customer_id,
 				product_id: this.props.productZoomDetails.id
 			};
 			this.props.onAddToWishList(data);
+
+
 		}
 
 	};
@@ -285,6 +279,7 @@ class ProductInfo extends Component {
 					xmlSpace="preserve"
 					width="20px"
 					height="20px"
+				
 					className={"naylove-icon  " + (this.state.is_in_wishlist_item ? 'active' : '')}
 
 				>
@@ -295,11 +290,11 @@ class ProductInfo extends Component {
 						/>
 					</g>
 				</svg>
-				{this.state.is_in_wishlist_item ? <span style={{ margingRight: "35px" }} className="mr-10-wishlist" ><FormattedMessage id="PageTitle.add-wishlist" defaultMessage="Add to wishlist" /></span> : <span style={{ margingRight: "35px" }} className="mr-10-wishlist" ><FormattedMessage id="PageTitle.add-wishlist" defaultMessage="Add to wishlist" /></span>}
+				{!this.state.is_in_wishlist_item ? <span style={{ margingRight: "35px" }} disabled="disabled" className="mr-10-wishlist" ><FormattedMessage id="PageTitle.add-wishlist" defaultMessage="Add to wishlist" /></span> : <span style={{ margingRight: "35px" }} disabled={this.state.is_in_wishlist_item} className="mr-10-wishlist" ><FormattedMessage id="PageTitle.add-wishlist" defaultMessage="Add to wishlist" /></span>}
 			</span>
 			</Link>);
 		} else {
-			return (<span onClick={this._handleClick} className="wishlist-span-1 mr-10-wishlist"><svg
+			return (<span onClick={()=>this._handleClick()}  className="wishlist-span-1 mr-10-wishlist"><svg
 				xmlns="http://www.w3.org/2000/svg"
 				xmlnsXlink="http://www.w3.org/1999/xlink"
 				version="1.1"
@@ -311,6 +306,7 @@ class ProductInfo extends Component {
 				xmlSpace="preserve"
 				width="20px"
 				height="20px"
+				disabled="disabled"
 				className={"naylove-icon " + (this.state.is_in_wishlist_item ? 'active' : '')}
 
 			>
@@ -321,7 +317,7 @@ class ProductInfo extends Component {
 					/>
 				</g>{' '}
 			</svg>
-				{this.state.is_in_wishlist_item ? <span style={{ margingRight: "35px" }}><FormattedMessage id="PageTitle.add-wishlist" defaultMessage="Add to wishlist" /></span> : <span style={{ margingRight: "35px" }}><FormattedMessage id="PageTitle.add-wishlist" defaultMessage="Add to wishlist" /></span>}
+				{this.state.is_in_wishlist_item ? <span style={{ margingRight: "35px" }} disabled="disabled"><FormattedMessage id="PageTitle.add-wishlist" defaultMessage="Add to wishlist" /></span> : <span disabled="disabled" style={{ margingRight: "35px" }}><FormattedMessage id="PageTitle.add-wishlist" defaultMessage="Add to wishlist" /></span>}
 			</span>);
 		}
 	}
@@ -413,7 +409,7 @@ class ProductInfo extends Component {
 							</div>
 						</div>
 						<div className="t-Alert-buttons">
-							<button className="t-Button t-Button--noUI t-Button--icon t-Button--closeAlert" type="button" title="Close Notification" onClick={this.closeAlert} ><span className="t-Icon icon-close" /></button>
+							<button onClick={()=>this.closeAlert()}className="t-Button t-Button--noUI t-Button--icon t-Button--closeAlert" type="button" title="Close Notification" onClick={this.closeAlert} ><span className="t-Icon icon-close" /></button>
 						</div>
 					</div>
 				</div>
@@ -759,6 +755,7 @@ class ProductInfo extends Component {
 
 const mapStateToProps = state => {
 	return {
+		spinnerProduct:state.spinner,
 		isUserLoggedIn: state.login.isUserLoggedIn,
 		globals: state.global,
 		user_details: state.login.customer_details,

@@ -32,13 +32,13 @@ export const addToWishlist = payload => {
 			customer_id: payload.customer_id,
 			product_id: payload.product_id,
 		};
-		dispatch(loadingSpinnerForProduct({ loadingProduct: true }))
+		dispatch(loadingSpinnerForProduct({ loadingProduct: true,statusAlert:true }))
 		let cb = {
 			success: res => {
-				dispatch(loadingSpinnerForProduct({ loadingProduct: false }))
+				dispatch(loadingSpinnerForProduct({ loadingProduct: false,statusAlert:false }))
 
 				if (res.status && res.code === 200) {
-					dispatch(callProductWishDetail({ productWishDetail: { is_in_wishlist: res.is_in_wishlist, wishlist_itemid: res.wishlist_itemid ,wishlist_success:res.message} }))
+					dispatch(callProductWishDetail({ productWishDetail: { is_in_wishlist: res.is_in_wishlist, wishlist_itemid: res.wishlist_itemid ,wishlist_success:res.message,} }))
 				} else {
 				}
 			},
@@ -442,6 +442,8 @@ export const getProductDetails = payload => {
 			type: actionTypes.ADD_TO_CARD_LOADER,
 			payload: { add_cart_open_popUp: false}
 		});
+		dispatch(loadingSpinnerForProduct({statusAlert:true }))
+
 		let cb = {
 			success: res => {
 				dispatch(callProductDetailLoader({ productDetailLoader: false }))
