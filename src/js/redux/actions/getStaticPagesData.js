@@ -3,6 +3,126 @@ import { API } from "../../api/api";
 
 import { loadingSpinner, loadingSpinnerForProduct } from './globals';
 
+
+export const CallActionDeliveryPolicyData=payload=>{
+  return{
+    type:actionTypes.DELIVERY_POLICY_DATA,
+    payload:payload
+  }
+}
+
+
+
+
+export const getDeliveyPolicyAPIData =() =>{
+  return (dispatch, getState) => {
+  const data = {
+   
+    storeId: getState().global.currentStore
+  };
+ 
+  dispatch(loadingSpinner({ loading: true }));
+  let cb = {
+    success: res => {
+      console.log("API Data for getDeliveyPolicyAPIData Page",res)
+      if (res) {
+        console.log("API Data for getDeliveyPolicyAPIData Page",res)
+        dispatch(CallActionDeliveryPolicyData({ deliverypolicydata: { ...res } }));
+        dispatch(loadingSpinner({ loading: false }));
+       
+      } else {
+        //console.log(res.message);
+        dispatch(loadingSpinner({ loading: false }));
+      }
+    },
+
+    error: err => {
+      dispatch(loadingSpinner({ loading: false }));
+    }
+  };
+  API.getDeliveryPolicyData(data, cb);
+};
+};
+
+
+
+export const CallActionForPrivacyPolicyData=payload=>{
+  return{
+    type:actionTypes.PRIVACY_POLICY_DATA,
+    payload:payload
+  }
+}
+
+export const CallActionCharityData=payload=>{
+  return{
+    type:actionTypes.CHARITY_DATA,
+    payload:payload
+  }
+}
+
+
+
+
+export const getCharityAPIData =() =>{
+  return (dispatch, getState) => {
+  const data = {
+   
+    storeId: getState().global.currentStore
+  };
+ 
+  dispatch(loadingSpinner({ loading: true }));
+  let cb = {
+    success: res => {
+     // console.log("API Data for privacy policy Page",res)
+      if (res) {
+        dispatch(CallActionCharityData({ charity: { ...res } }));
+        dispatch(loadingSpinner({ loading: false }));
+       
+      } else {
+        //console.log(res.message);
+        dispatch(loadingSpinner({ loading: false }));
+      }
+    },
+
+    error: err => {
+      dispatch(loadingSpinner({ loading: false }));
+    }
+  };
+  API.getCharityData(data, cb);
+};
+};
+
+
+export const getPrivacyPolicyAPIData =() =>{
+  return (dispatch, getState) => {
+  const data = {
+   
+    storeId: getState().global.currentStore
+  };
+ 
+  dispatch(loadingSpinner({ loading: true }));
+  let cb = {
+    success: res => {
+     // console.log("API Data for privacy policy Page",res)
+      if (res) {
+        dispatch(CallActionForPrivacyPolicyData({ privacyPolicy: { ...res } }));
+        dispatch(loadingSpinner({ loading: false }));
+        
+      } else {
+        //console.log(res.message);
+        dispatch(loadingSpinner({ loading: false }));
+      }
+    },
+
+    error: err => {
+      dispatch(loadingSpinner({ loading: false }));
+    }
+  };
+  API.getPrivacyPolicyData(data, cb);
+};
+};
+
+
 export const CallActionForFaqData = payload => {
   return {
     type: actionTypes.GET_FAQ_DATA,

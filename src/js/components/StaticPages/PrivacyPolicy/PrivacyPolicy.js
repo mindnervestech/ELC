@@ -8,53 +8,60 @@ import { connect } from 'react-redux';
 import { STATIC_PAGES_URL, API_TOKEN } from '../../../api/globals';
 import Spinner from '../../Spinner/Spinner.js'
 import { Helmet } from 'react-helmet';
+import * as actions from '../../../redux/actions/index';
 class PrivacyPolicy extends Component {
 	constructor(props) {
 		super(props);
+		console.log(props)
 		this.state = {
 			storeId: '',
 			data: [],
 			spinner:true
 		};
 	}
-	static getDerivedStateFromProps = (props, state) => { };
-	getStoreInfo = () => {
+
+
+	componentDidMount() {
+		this.props.onGetPrivacyPolicyData({ storeId: this.props.globals.currentStore});
+}
+	// static getDerivedStateFromProps = (props, state) => { };
+	// getStoreInfo = () => {
 		
-		if (this.state.storeId) {
-			const API = Axios.create({
-				baseURL: STATIC_PAGES_URL,
-				headers: { Authorization: `Bearer ${API_TOKEN}`, 'Content-Type': 'application/json' },
-			});
+	// 	if (this.state.storeId) {
+	// 		const API = Axios.create({
+	// 			baseURL: STATIC_PAGES_URL,
+	// 			headers: { Authorization: `Bearer ${API_TOKEN}`, 'Content-Type': 'application/json' },
+	// 		});
 
-			API.get('privacy-policy/storeId/' + this.state.storeId).then(res => {
-				this.setState({ data: res.data ,spinner:!this.state.spinner});
-			});
-		}
+	// 		API.get('privacy-policy/storeId/' + this.state.storeId).then(res => {
+	// 			this.setState({ data: res.data ,spinner:!this.state.spinner});
+	// 		});
+	// 	}
 
-	}
+	// }
 
-	componentDidMount(prevProps, prevState) {
-		let changedLang = localStorage.getItem('tempstoreid');
-		if (changedLang) {
-			this.setState({ storeId: changedLang, data: [] }, () => {
-				this.getStoreInfo();
-			});
-		} else {
-			this.setState({ storeId: cookie.load('storeid'), data: [] }, () => {
-				this.getStoreInfo();
-			});
-		}
-	}
+	// componentDidMount(prevProps, prevState) {
+	// 	let changedLang = localStorage.getItem('tempstoreid');
+	// 	if (changedLang) {
+	// 		this.setState({ storeId: changedLang, data: [] }, () => {
+	// 			this.getStoreInfo();
+	// 		});
+	// 	} else {
+	// 		this.setState({ storeId: cookie.load('storeid'), data: [] }, () => {
+	// 			this.getStoreInfo();
+	// 		});
+	// 	}
+	// }
 
-	componentDidUpdate(prevProps, prevState) {
+	// componentDidUpdate(prevProps, prevState) {
 		
-		let changedLang = localStorage.getItem('tempstoreid');
-		if (this.state.storeId !== changedLang) {
-			this.setState({ storeId: changedLang, data: [] }, () => {
-				this.getStoreInfo();
-			});
-		}
-	}
+	// 	let changedLang = localStorage.getItem('tempstoreid');
+	// 	if (this.state.storeId !== changedLang) {
+	// 		this.setState({ storeId: changedLang, data: [] }, () => {
+	// 			this.getStoreInfo();
+	// 		});
+	// 	}
+	// }
 
 	render() {
         const language = localStorage.getItem('templang');
@@ -76,7 +83,7 @@ class PrivacyPolicy extends Component {
 	
 		return (
 			<>
-				{this.state.spinner ? <Spinner loding={this.state.spinner}/> :
+				 <Spinner loding={this.props.spinnerProduct}> 
 				<div className="t-Body-contentInner">
 				<div  className="padding-right-ar padding-breadcrumb">
 				<Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
@@ -86,7 +93,7 @@ class PrivacyPolicy extends Component {
                      <> <span>&nbsp;/&nbsp;&nbsp;</span></>
                     }
 				</Link>
-				<span  style={{fontSize:15, fontWeight: 'bold'}}>{this.state.data.title}</span>
+				<span  style={{fontSize:15, fontWeight: 'bold'}}>{this.props.privacyPolicyData.title}</span>
 			  </div>
 				<div className="container">
 					{meta_tag}
@@ -137,11 +144,11 @@ class PrivacyPolicy extends Component {
 										/>
 										<div id="MiscContent">
 											<p style={{ textAlign: 'center' }}>
-											<h1 className="t-page-titles static-page-style">{this.state.data.title}</h1>
+											<h1 className="t-page-titles static-page-style">{this.props.privacyPolicyData.title}</h1>
 											</p>
 											<div
 												className="staticPagesText"
-												dangerouslySetInnerHTML={{ __html: this.state.data.content }}
+												dangerouslySetInnerHTML={{ __html: this.props.privacyPolicyData.content }}
 											/>
 											<p>&nbsp;</p>
 										</div>
@@ -155,8 +162,8 @@ class PrivacyPolicy extends Component {
 						</div>
 					</div>
 					</div>
-				</div>
-				}
+				</div></Spinner>
+				
 		</>
 		);
 	}
@@ -164,12 +171,16 @@ class PrivacyPolicy extends Component {
 
 const mapStateToProps = state => {
 	return {
-		help : state.static.help,
+		privacyPolicyData : state.static.privacyPolicy,
 		spinnerProduct: state.spinner.loadingProduct,
 		globals:state.global
  	}
 }
-
-export default connect(mapStateToProps)(PrivacyPolicy);
+const mapDispatchToProps = dispatch => {
+	return {
+		onGetPrivacyPolicyData: (payload) => dispatch(actions.getPrivacyPolicyAPIData(payload)),
+	}
+}
+export default connect(mapStateToProps,mapDispatchToProps)(PrivacyPolicy);
 
 

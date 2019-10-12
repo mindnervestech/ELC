@@ -59,7 +59,8 @@ const GET_CONTACT_US_DATA = { type: 'GET', url: BASE_URL + 'contactus' }
 const SAVE_CONTACT_US_DATA = { type: 'POST', url: BASE_URL + 'setContactUsData' }
 
 const GET_SIZE_CHART = { type: 'POST', url: BASE_URL + 'sizechart' }
-
+const GET_DELIVERY_POLICY_DATA={ type: 'GET', url: STATIC_PAGES_URL + 'delivery-policy/storeId', dynamic: true };
+const GET_CHARITY_DATA={ type: 'GET', url: STATIC_PAGES_URL + 'charity/storeId', dynamic: true };
 const RESET_PASSWORD ={ type: 'POST', url: BASE_URL + 'resetpassword'}
 const GET_CAREERS_PAGE = { type: 'GET', url: STATIC_PAGES_URL }
 const GET_AFFILIATE_DATA = { type: 'GET', url: STATIC_PAGES_URL + 'affiliates/storeId', dynamic: true };
@@ -74,7 +75,7 @@ const GET_TERMS_AND_CONDITIONS_DATA = { type: 'GET', url: STATIC_PAGES_URL + 'te
 const GET_HELP_DATA = { type: 'GET', url: STATIC_PAGES_URL + 'help-and-faqs/storeId', dynamic: true };
 const GET_RETURN_AND_EXCHANGES_DATA = { type: 'GET', url: STATIC_PAGES_URL + 'return-and-exchanges/storeId', dynamic: true };
 const GET_PROMOTION_TERMS_AND_CONDITION_DATA = { type: 'GET', url: STATIC_PAGES_URL + 'promotion-terms-and-condition/storeId', dynamic: true };
-
+const GET_PRIVACYPOLICY_DATA = { type: 'GET', url: STATIC_PAGES_URL + 'privacy-policy/storeId', dynamic: true };
 const SET_VOU_CODE = { type: 'POST', url: BASE_URL + 'checkvoucher' }
 
 const REMOVE_VOU_CODE = { type: 'POST', url: BASE_URL + 'removevoucher' }
@@ -90,6 +91,8 @@ const SAVE_BIRTHDAYCLUB_DATA={type:'POST' ,url:BASE_URL +'birthdayclub'};
 
 
 export const API = {
+	getCharityData:(data,cb)=> request(data,cb,GET_CHARITY_DATA),
+	getDeliveryPolicyData:(data,cb)=>request(data,cb,GET_DELIVERY_POLICY_DATA),
 	getToken: (data, cb) => request(data, cb, GET_TOKEN),
 	getMyCartApi: (data, cb) => request(data, cb, GET_MY_CART_API),
 	updateCart: (data, cb) => request(data, cb, UPDATE_CART),
@@ -184,6 +187,7 @@ export const API = {
 	},
 	getAffiliatePageData: (data, cb) => request(data, cb, GET_AFFILIATE_DATA),
 	getAboutUsPageData: (data, cb) => request(data, cb, GET_ABOUTUS_DATA),
+	getPrivacyPolicyData:(data,cb)=>request(data,cb,GET_PRIVACYPOLICY_DATA),
 	getFranchisingPageData: (data, cb) => request(data, cb, GET_FRANCHISING_DATA),
 	getBusinessPageData: (data, cb) => request(data, cb, GET_BUSINESS_DATA),
 	getCorporateResponsibilityPageData: (data, cb) => request(data, cb, GET_CORPORATE_RESPONSIBILITY_DATA),

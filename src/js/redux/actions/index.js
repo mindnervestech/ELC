@@ -61,7 +61,10 @@ export {
 export { getGuestCartId, getGuestCart, startGuestCheckout } from './guestUser';
 
 export {
+	  getDeliveyPolicyAPIData,
+	    getCharityAPIData,
 		getFaqPageData,
+		getPrivacyPolicyAPIData,
 		getHelpFAQPageData,
 		getCareersPageData,
 		getAffiliatePageData,

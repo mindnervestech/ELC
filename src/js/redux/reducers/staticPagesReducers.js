@@ -6,7 +6,10 @@ const initialState = {
     help: {},
     careers:{},
     aboutUs :{},
+    privacyPolicy:{},
     affiliate: {},
+    charity:{},
+    deliverypolicydata:{},
     franchising: {},
     business: {},
     corporateResponsibility: {},
@@ -20,6 +23,14 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
+        case actionType.DELIVERY_POLICY_DATA:
+            return updateObject(state,action.payload)
+
+        case actionType.CHARITY_DATA:
+        return updateObject(state,action.payload)
+        
+        case actionType.PRIVACY_POLICY_DATA:
+            return updateObject(state,action.payload)
 
         case actionType.GET_FAQ_DATA:
             return updateObject(state, action.payload)

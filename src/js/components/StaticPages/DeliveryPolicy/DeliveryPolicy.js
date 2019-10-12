@@ -6,9 +6,11 @@ import { FormattedMessage } from 'react-intl';
 import cookie from 'react-cookies';
 import { connect } from 'react-redux';
 import { STATIC_PAGES_URL, API_TOKEN } from '../../../api/globals';
-import Spinner from '../../Spinner/Spinner2';
+import Spinner from '../../Spinner/Spinner.js';
+import * as actions from '../../../redux/actions/index';
 class DeliveryPolicy extends Component {
     constructor(props) {
+        console.log(props)
         super(props);
         this.state = {
             storeId: '',
@@ -17,46 +19,51 @@ class DeliveryPolicy extends Component {
         };
     }
 
-    static getDerivedStateFromProps = (props, state) => { };
-    getDeliveyPolicyData = () => {
-        if (this.props.globals) {
-            const API = Axios.create({
-                baseURL: STATIC_PAGES_URL,
-                headers: { Authorization: `Bearer ${API_TOKEN}`, 'Content-Type': 'application/json' },
-            });
-            API.get('delivery-policy/storeId/' + this.props.globals.currentStore).then(res => {
-                this.setState({ data: res.data, spinner: false });
-            });
-        }
-    }
 
-    componentDidMount(prevProps, prevState) {
-        let changedLang = localStorage.getItem('tempstoreid');
-        if (changedLang) {
-            this.setState({ storeId: changedLang, data: [] }, () => {
-                this.getDeliveyPolicyData();
-            });
-        } else {
-            this.setState({ storeId: cookie.load('storeid'), data: [] }, () => {
-                this.getDeliveyPolicyData();
-            });
-        }
-    }
+	componentDidMount() {
+		this.props.onGetDeliveryPolicyData({ storeId: this.props.globals.currentStore});
+}
 
-    componentDidUpdate(prevProps, prevState) {
-        let changedLang = localStorage.getItem('tempstoreid');
-        if (this.state.storeId !== changedLang) {
-            this.setState({ storeId: changedLang, data: [] }, () => {
-                this.getDeliveyPolicyData();
-            });
-        }
-    }
+    // static getDerivedStateFromProps = (props, state) => { };
+    // getDeliveyPolicyData = () => {
+    //     if (this.props.globals) {
+    //         const API = Axios.create({
+    //             baseURL: STATIC_PAGES_URL,
+    //             headers: { Authorization: `Bearer ${API_TOKEN}`, 'Content-Type': 'application/json' },
+    //         });
+    //         API.get('delivery-policy/storeId/' + this.props.globals.currentStore).then(res => {
+    //             this.setState({ data: res.data, spinner: false });
+    //         });
+    //     }
+    // }
+
+    // componentDidMount(prevProps, prevState) {
+    //     let changedLang = localStorage.getItem('tempstoreid');
+    //     if (changedLang) {
+    //         this.setState({ storeId: changedLang, data: [] }, () => {
+    //             this.getDeliveyPolicyData();
+    //         });
+    //     } else {
+    //         this.setState({ storeId: cookie.load('storeid'), data: [] }, () => {
+    //             this.getDeliveyPolicyData();
+    //         });
+    //     }
+    // }
+
+    // componentDidUpdate(prevProps, prevState) {
+    //     let changedLang = localStorage.getItem('tempstoreid');
+    //     if (this.state.storeId !== changedLang) {
+    //         this.setState({ storeId: changedLang, data: [] }, () => {
+    //             this.getDeliveyPolicyData();
+    //         });
+    //     }
+    // }
 
     render() {
         let store_locale = this.props.globals.store_locale
         return (
             <>
-                {this.state.spinner ? <Spinner /> :
+                <Spinner loading={this.props.spinnerProduct}>
                     <div className="t-Body-contentInner">
                         <div className="padding-right-ar padding-breadcrumb" style={{textAlign:'start'}}>
                             <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
@@ -66,7 +73,7 @@ class DeliveryPolicy extends Component {
                                 <span>&nbsp;/&nbsp;&nbsp;</span>
                                 }
                             </Link>
-                            <span style={{ fontSize: 15, fontWeight: 'bold' }}>{this.state.data.title}</span>
+                            <span style={{ fontSize: 15, fontWeight: 'bold' }}>{this.props.deliveryPolicy.title}</span>
                         </div>
                         <div className="container">
                             <div className="row">
@@ -116,11 +123,11 @@ class DeliveryPolicy extends Component {
                                                 />
                                                 <div id="MiscContent">
                                                     <p style={{ textAlign: 'center' }}>
-                                                        <h1 className="t-page-titles static-page-style">{this.state.data.title}</h1>
+                                                        <h1 className="t-page-titles static-page-style">{this.props.deliveryPolicy.title}</h1>
                                                     </p>
                                                     <div
                                                         className="staticPagesText"
-                                                        dangerouslySetInnerHTML={{ __html: this.state.data.content }}
+                                                        dangerouslySetInnerHTML={{ __html: this.props.deliveryPolicy.content }}
                                                     />
                                                     <p>&nbsp;</p>
                                                 </div>
@@ -134,18 +141,26 @@ class DeliveryPolicy extends Component {
                                 </div>
                             </div>
                         </div>
-                    </div>
-                }
+                    </div></Spinner>
+                
             </>
         );
     }
 }
 
 const mapStateToProps = state => {
+    console.log("State",state)
     return {
-        globals: state.global,
+        deliveryPolicy : state.static.deliverypolicydata,
+		spinnerProduct: state.spinner.loadingProduct,
+		globals:state.global
     };
 }
+const mapDispatchToProps = dispatch => {
+	return {
+		onGetDeliveryPolicyData: (payload) => dispatch(actions.getDeliveyPolicyAPIData(payload)),
+	}
+}
 
-export default connect(mapStateToProps)(DeliveryPolicy);
+export default connect(mapStateToProps,mapDispatchToProps)(DeliveryPolicy);
 
