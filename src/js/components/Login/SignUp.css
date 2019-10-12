@@ -1913,7 +1913,7 @@ input[type=text] {
     margin: 0px;
     color: #4f4f4f;
     border: 1px solid #b1b1b1;
-    border-radius: 4px;
+    border-radius: 0px;
     background-color: #fff;
 }
 
