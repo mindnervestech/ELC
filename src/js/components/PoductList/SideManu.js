@@ -233,7 +233,6 @@ class SideManu extends Component {
 
 	applyFilter = (value, check) => {
 		let filt = value.split('/');
-		selectedFilter.push(filt[1]);
 		this.setState({ loader: true })
 		onClickFilterOptionToApplyFilter = true
 		let find = true;
@@ -245,11 +244,19 @@ class SideManu extends Component {
 			}
 		}
 		if (find) {
-			filterOptionArray.push(value)
+			filterOptionArray.push(value);
+			selectedFilter.push(filt[1]);
 		}
 		if (remove != -1) {
 			filterOptionArray.splice(remove, 1);
-			remove = -1
+			remove = -1;
+			for(var i in selectedFilter){
+				if(filt[1] == selectedFilter[i]){
+					selectedFilter.splice(i, 1)
+				}
+			}
+			
+			
 		}
 		this.setState({ narrowResult: filterOptionArray })
 		if (filterOptionArray.length == 0) {
