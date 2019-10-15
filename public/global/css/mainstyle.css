@@ -20,15 +20,24 @@
   }
 
 
+  .tooltipMainMenu{
+    top:100px!important;
+  }
+  
+  .tooltipSubMainMenu{
+    top:20px!important;
+  }
+
+
   .tooltipcss:hover{
    background-color: #fff;   
   }
 
 
-  .tooltipcss .tooltiptextcss {
-    top: 40px !important;
-    left: 50%;
+  .tooltipcss .tooltiptextcss{
+     
    
+    left: 50%;
     visibility: hidden !important;
     width: 140px !important;
     font-weight: normal !important;
@@ -43,6 +52,19 @@
     position: absolute;
     z-index: 12;
   }
+
+  .tooltipcss .tooltiptextcss .tooltipMainMenu{
+      top:100px !important;
+  }
+
+  .tooltipcss .tooltiptextcss .tooltipSubMainMenu{
+    top:50px !important;
+}
+
+
+
+
+  
   
   .tooltipcss:hover .tooltiptextcss {
     visibility: visible !important;
