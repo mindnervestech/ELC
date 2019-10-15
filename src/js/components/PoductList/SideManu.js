@@ -26,6 +26,7 @@ let updateHideOption = true
 let afterFilterShowOptionListCheck = true
 let onClickFilterOptionToApplyFilter = false
 
+let selectedFilter = [];
 class SideManu extends Component {
 	constructor(props) {
 		super(props);
@@ -231,9 +232,11 @@ class SideManu extends Component {
 	}
 
 	applyFilter = (value, check) => {
+		let filt = value.split('/');
+		selectedFilter.push(filt[1]);
 		this.setState({ loader: true })
 		onClickFilterOptionToApplyFilter = true
-		let find = true
+		let find = true;
 		let remove = -1
 		for (let data in filterOptionArray) {
 			if (filterOptionArray[data] == value) {
@@ -376,7 +379,6 @@ class SideManu extends Component {
 	}
 
 	appleFilterForMobile = () => {
-		console.log("in")
 		if(filterData.length == 0){
 			this.props.action(productListingData, true)
 		}else{
@@ -414,19 +416,6 @@ class SideManu extends Component {
 
 	assignFilterdata(name, code) {
 		let Checked = 0;
-		// if(this.props.globals.language == 'ar'){
-		// 	if(code === 'brand'){
-		// 		code = 'الماركة'
-		// 	}else if(code === 'age'){
-		// 		code = 'عمر'
-		// 	}else if(code === 'color'){
-		// 		code = 'اللون'
-		// 	}else if(code === 'gender'){
-		// 		code = 'جنس'
-		// 	}else if(code === 'sub_category'){
-		// 		code = 'تصنيف فرعي'
-		// 	}
-		// }
 
 		// return (Object.keys(data).map((keyName, index) => {
 		for (let item in this.state.narrowResult) {
@@ -434,6 +423,13 @@ class SideManu extends Component {
 				Checked++;
 			}
 		}
+
+		for(var i in selectedFilter){
+			if(name == selectedFilter[i]){
+				Checked++;
+			}
+		}
+		
 		if (Checked == 0) {
 			return (
 				<div style={{ position: 'relative' }}>
