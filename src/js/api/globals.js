@@ -22,6 +22,12 @@ export const WEB_URL_ALL = {
     live: 'https://cms.elctoys.com/'
 }
 
+export const PAY_FORT_URL_ALL = {
+    dev: `https://sbcheckout.payfort.com/FortAPI/paymentPage`,
+    uat: `https://sbcheckout.payfort.com/FortAPI/paymentPage`,
+    live: 'https://checkout.payfort.com/FortAPI/paymentPage'
+}
+
 
 
 let store_locale=cookie.load('store_locale');
@@ -34,6 +40,8 @@ if(store_locale){
 
 export const WEB_URL = WEB_URL_ALL[active_server];
 
+
+export const PAY_FORT_URL = PAY_FORT_URL_ALL[active_server];
 export const API_URL = ROOT_URL[active_server];
 export const CLONE_BASE_URL = `${ROOT_URL[active_server]}rest/V1/app/`;
 

@@ -11,6 +11,8 @@ import * as actions from '../../../redux/actions/index';
 import { FormattedMessage } from 'react-intl';
 import { Row, Col } from 'reactstrap';
 
+import { PAY_FORT_URL } from '../../../api/globals';
+
 const wait = require('../../../../assets/images/wait.gif');
 
 let isClickOnPlaceOrder = false;
@@ -107,7 +109,7 @@ class Confirmation extends Component {
 
         const { payfort_data } = this.props;
 
-        fetch("https://sbcheckout.payfort.com/FortAPI/paymentPage", {
+        fetch( PAY_FORT_URL, {
         // fetch("https://checkout.payfort.com/FortAPI/paymentPage", {
             
             headers: {
@@ -336,7 +338,7 @@ class Confirmation extends Component {
                             id="main-login"
                             onSubmit={() => this.payFortPayment}
                             // action= "https://checkout.payfort.com/FortAPI/paymentPage"
-                            action="https://sbcheckout.payfort.com/FortAPI/paymentPage"
+                            action={PAY_FORT_URL}
                             method='post'>
                             <div style={{ display: 'none' }}>
                                 {paymentData}

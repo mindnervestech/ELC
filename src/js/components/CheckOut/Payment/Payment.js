@@ -341,9 +341,9 @@ class Payment extends Component {
                                                                     </li>
                                                                     <li onClick={() => this.handleClick("COD")} id="DA" className="tab del-add2 ">
                                                                         <h3 className="method"><FormattedMessage id="CashOnDelivery.Text" defaultMessage="Cash On Delivery" /></h3>
-                                                                        <span className="method-description h-hidden-mobile">
+                                                                        {/* <span className="method-description h-hidden-mobile">
                                                                             <FormattedMessage id="CashOnDelivery.Content" defaultMessage="Cash On Delivery" />
-                                                                        </span>
+                                                                        </span> */}
                                                                     </li>
                                                                 </ul>
                                                             </div>

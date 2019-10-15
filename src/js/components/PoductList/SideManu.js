@@ -553,9 +553,13 @@ class SideManu extends Component {
 								)}
 							</div>
 						</div>
-						<div style={{ height: 40 }} className="divShowOnMobile">
-							<button className="applyFilterButtonOnMobile applyFilterButtonOnMobileSpasing" onClick={() => this.appleFilterForMobile()}>Apply Filters</button>
-							<button className="applyFilterButtonOnMobile" onClick={() => this.clearFilter()}>Clear Filters</button>
+						<div className="divShowOnMobile filter-button">
+							<button className="applyFilterButtonOnMobile applyFilterButtonOnMobileSpasing" onClick={() => this.appleFilterForMobile()}>
+								<FormattedMessage id="ApplyFilter" defaultMessage="Apply" />
+							</button>
+							<button className="applyFilterButtonOnMobile" onClick={() => this.clearFilter()}>
+								<FormattedMessage id="ClearFilter" defaultMessage="Clear" />
+							</button>
 						</div>
 					</div>
 				}
