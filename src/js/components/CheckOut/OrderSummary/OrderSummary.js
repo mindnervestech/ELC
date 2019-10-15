@@ -24,7 +24,7 @@ class OrderSummary extends Component {
 
     componentWillUnmount() {
 
-        this.props.onClearCartItem();
+        // this.props.onClearCartItem();
         //this.props.onClearCartItem();
     }
 

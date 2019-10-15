@@ -40,6 +40,14 @@ class Payment extends Component {
         this.props.history.push(`/${this.props.global.store_locale}/delivery-details`);
     }
 
+    goToLoginForGuest = () => {
+        this.props.onRedirectToDelivery();
+        this.props.history.push({
+            pathname: '/' + this.props.global.store_locale + '/checkout-login',
+            state: { isGuest: true }
+        })
+    }
+
     componentDidMount() {
         if (this.props.cart_details.is_shipping_details_rec) {
             let obj = this.props.user_details.customer_details;
@@ -268,12 +276,12 @@ class Payment extends Component {
                                         <div className="u-Table-fill t-Wizard-steps">
                                             <h2 className="u-VisuallyHidden">Current Progress</h2>
                                             <ul className="t-WizardSteps " id={34894189712949009}>
-                                                <li className="t-WizardSteps-step is-complete" id="L34894440806949010">
+                                                <li className="t-WizardSteps-step is-complete" id="L34894440806949010" onClick={this.goToLoginForGuest}>
                                                     <div className="t-WizardSteps-wrap"><span className="t-WizardSteps-marker">
                                                         <span className="t-Icon a-Icon icon-check" /></span>
                                                         <span className="t-WizardSteps-label"><FormattedMessage id="login.SignIn.Title" defaultMessage="Sign In" /><span className="t-WizardSteps-labelState">
                                                             (Completed)</span></span></div></li>
-                                                <li className="t-WizardSteps-step is-complete" id="L34894862176949011">
+                                                <li className="t-WizardSteps-step is-complete" id="L34894862176949011" onClick={this.goToDeliveryDetails}>
                                                     <div className="t-WizardSteps-wrap"><span className="t-WizardSteps-marker">
                                                         <span className="t-Icon a-Icon icon-check" />
                                                     </span><span className="t-WizardSteps-label"><FormattedMessage id="delivery-details.Delivery.Title" defaultMessage="Delivery" />

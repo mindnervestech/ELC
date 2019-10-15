@@ -206,6 +206,14 @@ class DeliveryDetails extends Component {
         this.props.history.push(`/${this.props.globals.store_locale}/cart`);
     }
 
+    goToLoginForGuest = () => {
+        this.props.onRedirectToDelivery();
+        this.props.history.push({
+          pathname: '/' + this.props.globals.store_locale + '/checkout-login',
+          state: { isGuest: true }
+        })
+    }
+
     AddressRadioClick = (addressId) => {
         this.setState({
             isOldAddressSelcted: true,
@@ -414,17 +422,46 @@ class DeliveryDetails extends Component {
                                         <div className="u-Table-fill t-Wizard-steps">
                                             <h2 className="u-VisuallyHidden">Current Progress</h2>
                                             <ul className="t-WizardSteps t-WizardSteps--displayLabels" id={34894189712949009}>
-                                                <li className="t-WizardSteps-step is-complete" id="L34894440806949010">
-                                                    <div className="t-WizardSteps-wrap"><span className="t-WizardSteps-marker"><span className="t-Icon a-Icon icon-check" /></span><span className="t-WizardSteps-label"><FormattedMessage id="login.SignIn.Title" defaultMessage="Sign In" /><span className="t-WizardSteps-labelState">(Completed)</span></span></div>
+                                                <li className="t-WizardSteps-step is-complete" id="L34894440806949010" onClick={this.goToLoginForGuest}>
+                                                    <div className="t-WizardSteps-wrap">
+                                                        <span className="t-WizardSteps-marker">
+                                                            <span className="t-Icon a-Icon icon-check" /></span>
+                                                            <span className="t-WizardSteps-label">
+                                                                <FormattedMessage id="login.SignIn.Title" defaultMessage="Sign In" />
+                                                            <span className="t-WizardSteps-labelState">(Completed)</span>
+                                                        </span>
+                                                    </div>
                                                 </li>
                                                 <li className="t-WizardSteps-step is-active" id="L34894862176949011">
-                                                    <div className="t-WizardSteps-wrap"><span className="t-WizardSteps-marker" /><span className="t-WizardSteps-label"><FormattedMessage id="delivery-details.Delivery.Title" defaultMessage="Delivery" /> <span className="t-WizardSteps-labelState">(Active)</span></span></div>
+                                                    <div className="t-WizardSteps-wrap">
+                                                        <span className="t-WizardSteps-marker" />
+                                                        <span className="t-WizardSteps-label">
+                                                            <FormattedMessage id="delivery-details.Delivery.Title" defaultMessage="Delivery" /> 
+                                                            <span className="t-WizardSteps-labelState">(Active)</span>
+                                                        </span>
+                                                    </div>
                                                 </li>
                                                 <li className="t-WizardSteps-step" id="L34895210921949011">
-                                                    <div className="t-WizardSteps-wrap"><span className="t-WizardSteps-marker"><span className="t-Icon a-Icon icon-check" /></span><span className="t-WizardSteps-label"><FormattedMessage id="login.Payment.Title" defaultMessage="Payment" /> <span className="t-WizardSteps-labelState" /></span></div>
+                                                    <div className="t-WizardSteps-wrap">
+                                                        <span className="t-WizardSteps-marker">
+                                                            <span className="t-Icon a-Icon icon-check" />
+                                                        </span>
+                                                        <span className="t-WizardSteps-label">
+                                                            <FormattedMessage id="login.Payment.Title" defaultMessage="Payment" /> 
+                                                            <span className="t-WizardSteps-labelState" />
+                                                        </span>
+                                                    </div>
                                                 </li>
                                                 <li className="t-WizardSteps-step" id="L34895615146949011">
-                                                    <div className="t-WizardSteps-wrap"><span className="t-WizardSteps-marker"><span className="t-Icon a-Icon icon-check" /></span><span className="t-WizardSteps-label"><FormattedMessage id="login.Confirmation.Title" defaultMessage="Confirmation" /> <span className="t-WizardSteps-labelState" /></span></div>
+                                                    <div className="t-WizardSteps-wrap">
+                                                        <span className="t-WizardSteps-marker">
+                                                            <span className="t-Icon a-Icon icon-check" />
+                                                        </span>
+                                                        <span className="t-WizardSteps-label">
+                                                            <FormattedMessage id="login.Confirmation.Title" defaultMessage="Confirmation" /> 
+                                                            <span className="t-WizardSteps-labelState" />
+                                                        </span>
+                                                    </div>
                                                 </li>
                                             </ul>
                                             <input type="hidden" id="P7_ADDR_METHOD" name="P7_ADDR_METHOD" defaultValue /><input type="hidden" id="P7_DELIVERY_METHOD" name="P7_DELIVERY_METHOD" defaultValue="DA" /><input type="hidden" id="P7_ADDR_IDS" name="P7_ADDR_IDS" defaultValue />

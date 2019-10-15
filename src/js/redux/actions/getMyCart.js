@@ -241,7 +241,7 @@ export const clearCartItem = () => {
     return {
         type: actionType.CLEAR_CART_ITEM,
         payload: {
-            new_quote_id: null,
+            // new_quote_id: null,
             startGuestCheckout: false,
             temp_quote_id: null,
         }
@@ -250,7 +250,7 @@ export const clearCartItem = () => {
 
 
 export const setOrderSummary = (payload) => {
-    return dispatch => {
+    return (dispatch, getState) => {
         const data = {
             store_id: payload.store_id,
             order_id: payload.order_id
@@ -262,6 +262,13 @@ export const setOrderSummary = (payload) => {
                     type: actionType.SET_ORDER_SUMMARY,
                     payload: { order_summary: { order_data: res.order_data } }
                 })
+
+                if(getState().guest_user.startGuestCheckout){
+                    dispatch(getMyCart({
+                        quote_id: getState().myCart.quote_id,
+                        store_id: getState().global.currentStore,
+                    }));
+                }
                 dispatch({
                     type: actionType.SET_ORDER_SUMMARY_DATA,
                     payload: { order_summary: { order_data: res.order_data } }
