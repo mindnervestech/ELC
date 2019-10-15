@@ -1562,7 +1562,7 @@ html[dir="rtl"] .header .link .submenu {
 
 @media only screen and (min-width: 1280px) {
     .header .link .submenu {
-        padding: 15px 45px 25px 92px
+        padding: 30px 45px 25px 92px
     }
 
     html[dir="rtl"] .header .link .submenu {
