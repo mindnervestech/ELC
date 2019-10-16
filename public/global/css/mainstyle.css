@@ -6154,7 +6154,7 @@ a:hover {
 }
 
 .apex-icons-fontapex .downMenu {
-    top: 0px !important;
+    top: 13px !important;
 }
 @media (max-width:600px){
     html[dir="rtl"] .mobileHomeLogo {

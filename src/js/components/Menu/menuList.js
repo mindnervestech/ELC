@@ -28,15 +28,12 @@ class menuList extends Component {
 		    
 			<li key={index}>
 			
-				{!isMobile ? <div className="tooltipcss divShowOnWeb">
-				<span className="tooltiptextcss tooltipSubMainMenu">{item.name}</span>
+				
 				
 				<Link to={'/' + this.state.store_locale + '/products/' + item.url_path} onClick={() => document.getElementById("closeNav").click()}>
 					{item.name}
 				</Link>
-				</div>: <Link to={'/' + this.state.store_locale + '/products/' + item.url_path} onClick={() => document.getElementById("closeNav").click()}>
-					{item.name}
-				</Link>}
+				
 			</li>
 			)
 	};
@@ -159,18 +156,16 @@ class menuList extends Component {
 		return (
 			<>
 				<li key={index} className="borderForMobileManu" style={{marginTop: 0}}> 
-				{!isMobile ? 
-				<div className="tooltipcss tooltip-height-76 ">
-				<span className="tooltiptextcss tooltipMainMenu">{item.name}</span>
+				
+							
+				{item.url==='shop-by-brand'}
 					<Link to={'/' + this.state.store_locale + '/products/' + item.url_path} style={{ textDecoration: 'none' ,padding: "15px 7px"}} onClick={() => document.getElementById("closeNav").click()} className={item.children[0].length > 0 ? '' : "removeWhite"}>
 						{item.name}
 						{item.children[0].length > 0 ?
 							<i className="fa fa-caret-down downMenu divShowOnWeb" aria-hidden="true"></i>
 						: <span  />}
 					</Link>
-					</div>: <Link to={'/' + this.state.store_locale + '/products/' + item.url_path} onClick={() => document.getElementById("closeNav").click()}>
-					{item.name}
-				</Link> }
+				
 					{item.children[0].length > 0 ?<i className="subMenuTrigger" /> : <span />}
 					{this._checkSubMenu(item)}
 				
