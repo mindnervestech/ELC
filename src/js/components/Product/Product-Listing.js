@@ -2,24 +2,12 @@ import React, { Component } from 'react';
 import '../../../styles/product/productlist.css';
 import '../../../styles/product/productlist-filters.css';
 import ProductData from './product-list/product-list';
-import ProductFilter from './product-filter/product-filter';
-import Axios from 'axios';
 import Breadcrumb from '../Breadcrumb/Breadcrumb';
 import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
 import * as actions from '../../redux/actions/index';
 import queryString from 'query-string';
-import ProductMobFilter from './product-filter/product-mobfilter';
 import Spinner from '../Spinner/Spinner2';
-import * as utility from '../utility/utility';
-import SideManu from '../PoductList/SideManu';
-import {
-	BrowserView,
-	MobileView,
-	isBrowser,
-	isMobile
-} from "react-device-detect";
-import { FormattedMessage } from 'react-intl';
 var _ = require('lodash');
 let filters = {};
 let sortbyv = 'relevance';
@@ -58,7 +46,7 @@ class Product extends Component {
 		await this.props.onGetProductSearchList(data);
 		setTimeout(() => {
 			this.setState({ loading: false });
-		}, 9000)
+		}, 2000)
 	};
 
 	_fetchProducts = async (filters = {}) => {
@@ -95,7 +83,7 @@ class Product extends Component {
 
 		setTimeout(() => {
 			this.setState({ loading: false });
-		}, 9000)
+		}, 2000)
 
 	};
 
