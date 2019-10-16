@@ -373,15 +373,16 @@ class SideManu extends Component {
 	}
 
 	clearFilter = () => {
-		onClickFilterOptionToApplyFilter = true
-		this.props.action(productListingData, false)
-		this.setState({ narrowResult: [], clearAllOption: false })
-		filterOptionArray = []
-		filterData = []
+		onClickFilterOptionToApplyFilter = true;
+		this.props.action(productListingData, false);
+		this.setState({ narrowResult: [], clearAllOption: false });
+		filterOptionArray = [];
+		filterData = [];
+		selectedFilter = [];
 		productList = productListingData;
-		filterOptionArrayForCheckValidate = filterOptionArrayForCheckValidateBackup
-		afterFilterShowOptionList = filterOptionArrayForCheckValidateBackup
-		afterFilterShowOptionListCheck = true
+		filterOptionArrayForCheckValidate = filterOptionArrayForCheckValidateBackup;
+		afterFilterShowOptionList = filterOptionArrayForCheckValidateBackup;
+		afterFilterShowOptionListCheck = true;
 		this.setState({ list: filterList });
 	}
 

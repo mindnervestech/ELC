@@ -4,6 +4,12 @@ import App from './js/components/App';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 
+//polyfill
+import 'react-app-polyfill/ie11';
+import 'core-js/features/array/find';
+import 'core-js/features/array/includes';
+import 'core-js/features/number/is-nan';
+import 'core-js/es/object';
 //redux
 import { Provider } from 'react-redux';
 import { createStore, compose, combineReducers, applyMiddleware } from 'redux';
@@ -24,7 +30,7 @@ let persistor = persistStore(store);
 const app = (
     <Provider store={store}>
         <PersistGate loading={<Spinner2 />} persistor={persistor}>
-            <App  />
+            <App />
         </PersistGate>
     </Provider>
 

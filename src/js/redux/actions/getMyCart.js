@@ -362,18 +362,18 @@ export const redirectToDelivery = () => {
         const payload = getState().myCart;
         const payment = getState().myCart.payment_details;
         dispatch({
-            type: actionType.REDIRECT_TO_PAYMENT,
+            type: actionType.REDIRECT_TO_DELIVERY,
             payload: {
                 ...payload,
                 shipping_details: {
                 },
 
                 payment_details: {
-                    ...payment,
-                    redirectToOrderConfirmation: false
+
                 },
 
                 is_order_conf_details_rec: false,
+                is_payment_details_rec: false,
                 order_details: {
 
                 }

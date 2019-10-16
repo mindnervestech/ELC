@@ -377,7 +377,7 @@ class ProductInfo extends Component {
 								<span><FormattedMessage id="BuyMore.Text" defaultMessage="BUY MORE SAVE MORE" /></span>
 							</div>
 							<div>
-								<span>{value}&nbsp;<FormattedMessage id="For.Text" defaultMessage="For" />&nbsp;currency}&nbsp;{offer[value]}</span>
+								<span>{value}&nbsp;<FormattedMessage id="For.Text" defaultMessage="For" />&nbsp;{currency}&nbsp;{offer[value]}</span>
 							</div>
 						</div>
 					);
