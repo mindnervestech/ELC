@@ -795,6 +795,7 @@
         "PageTitle.learning-to-talk.keyword": "learning, talk",
         "PageTitle.learning-to-talk.description": "Shop toys that help learning how to talk",
         "PageTitle.learning-to-write.keyword": "learning, write",
+    "PageTitle.Home.description":"Shop online for baby toys, dolls houses, wooden toys and more at ELC. Choose from big brands including LeapFrog, VTech, Smart Trike and more.",
         "PageTitle.learning-to-write.description": "Shop toys that help learning how to write",
         "PageTitle.physical-development.keyword": "learning, sport, physical development",
         "PageTitle.physical-development.description": "Shop toys that help with physical development",
@@ -928,6 +929,7 @@
     },
     "ar": {
         "Productisalreadyinthewishlist": "Product is already in the wishlist",
+      "PageTitle.Home.description":"تسوّق ألعاب الرضّع ومنازل الدمى والألعاب الخشبية وغيرها الكثير على الإنترنت من مركز التعليم المبكر. اختر من العلامات التجارية الكبيرة بمن فيها ليب فروع وفي تيك وسمارت تريك وغيرها.",
         "filter.categary.title.Age": "العمر",
         "filter.categary.title.Brand": "لماركة",
         "filter.categary.title.Gender": " الجنس",

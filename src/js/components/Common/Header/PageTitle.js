@@ -109,7 +109,7 @@ class PageTitle extends Component {
             country = 'KSA'
         }
     
-        let mainTitle = description !== 'NA' ? intl.formatMessage({ id: `PageTitle.${description}.description`,defaultMessage: 'ELC' }) : intl.formatMessage({ id: `PageTitle.Home`,defaultMessage:"elctoys.com | ELC Online store | Official Website | Early Learning Center" });
+        let mainTitle = description !== 'NA' ? intl.formatMessage({ id: `PageTitle.${description}.description`,defaultMessage: 'ELC' }) : intl.formatMessage({ id: `PageTitle.Home.description`,defaultMessage:"Shop online for baby toys, dolls houses, wooden toys and more at ELC. Choose from big brands including LeapFrog, VTech, Smart Trike and more." });
 
         return mainTitle + " | " + intl.formatMessage({ id: `PageTitle.elc.${country}` ,defaultMessage:"elctoys.com | ELC Online store | Official Website | Early Learning Center"})
     }
