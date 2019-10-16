@@ -330,7 +330,7 @@ class ShoppingBagItem extends Component {
                                             <span style={{ fontSize: 14, color: '#4f4f4f' }}>{item.sku}</span>
                                         </div>
                                     </Col>
-                                    {item.visible_on_store ?
+                                    {item.visible_on_store && item.is_in_stock.status == 1  ?
                                         <Col xs="1" className="row-3" style={{ fontSize: 16, color: "#4f4f4f" }}>
                                             {item.special_price ?
                                                 <div>
