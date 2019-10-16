@@ -94,7 +94,7 @@ class PageTitle extends Component {
             country = 'KSA'
         }
     
-        let mainTitle = keyword !== 'NA' ? intl.formatMessage({ id: `PageTitle.${keyword}.keyword`,defaultMessage: 'ELC' }) : intl.formatMessage({ id: `PageTitle.Home`,defaultMessage:"elctoys.com | ELC Online store | Official Website | Early Learning Center" });
+        let mainTitle = keyword !== 'NA' ? intl.formatMessage({ id: `PageTitle.${keyword}.keyword`,defaultMessage: 'ELC' }) : intl.formatMessage({ id: `PageTitle.Home.keyword`,defaultMessage:"ELC, Early Learning Center, Early Learning Centre, Toys, Baby Toys, Wooden Toys, Educational Toys" });
       
         return mainTitle + " | " + intl.formatMessage({ id: `PageTitle.elc.${country}` ,defaultMessage:"elctoys.com | ELC Online store | Official Website | Early Learning Center"})
     }

@@ -926,9 +926,12 @@
         "Productisalreadyinthewishlist": "Product is already in the wishlist",
         "ApplyFilter": "Apply",
         "ClearFilter": "Clear"
+	"PageTitle.Home.keyword":"ELC, Early Learning Center, Early Learning Centre, Toys, Baby Toys, Wooden Toys, Educational Toys"
+
     },
     "ar": {
-        "Productisalreadyinthewishlist": "Product is already in the wishlist",
+      "Productisalreadyinthewishlist":"Product is already in the wishlist",
+      "PageTitle.Home.keword":"إي إل سي، مركز التعليم المبكر، مركز التعليم المبكر، ألعاب، ألعاب رضّع، ألعاب خشبية، ألعاب تعليمية",
       "PageTitle.Home.description":"تسوّق ألعاب الرضّع ومنازل الدمى والألعاب الخشبية وغيرها الكثير على الإنترنت من مركز التعليم المبكر. اختر من العلامات التجارية الكبيرة بمن فيها ليب فروع وفي تيك وسمارت تريك وغيرها.",
         "filter.categary.title.Age": "العمر",
         "filter.categary.title.Brand": "لماركة",
