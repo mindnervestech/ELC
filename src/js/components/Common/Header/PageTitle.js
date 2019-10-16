@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
-import { injectIntl, formatMessage,FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
+//import { injectIntl, formatMessage,FormattedMessage } from 'react-intl';
 import { withRouter } from 'react-router-dom';
 
 class PageTitle extends Component {
@@ -9,9 +10,9 @@ class PageTitle extends Component {
         super(props);
         this.myIntl = props.intl
         this.state = {
-            title: 'ELC',
-            keyword: 'ELC',
-            description: 'ELC'
+            title: '',
+            keyword: '',
+            description: ''
         }
     }
 
@@ -80,8 +81,14 @@ class PageTitle extends Component {
         }
     
         let mainTitle = title !== 'NA' ? intl.formatMessage({ id: `PageTitle.${title}`,defaultMessage: 'ELC' }) : intl.formatMessage({ id: `PageTitle.Home`,defaultMessage:"elctoys.com | ELC Online store | Official Website | Early Learning Center" });
-    
         return mainTitle + " | " + intl.formatMessage({ id: `PageTitle.elc.${country}`,defaultMessage:"elctoys.com | ELC Online store | Official Website | Early Learning Center"  })
+       
+
+    //     let mainTitle = title !== 'NA' ? <FormattedMessage id={`PageTitle.${title}`} defaultMessage="ELC"/>: 
+    //     intl.formatMessage({ id: 'PageTitle.Home',defaultMessage:"elctoys.com | ELC Online store | Official Website | Early Learning Center"});
+    // console.log("PageTitle",<FormattedMessage id={`PageTitle.${title}`} defaultMessage="ELC"/>)
+    //     return mainTitle + " | " + <FormattedMessage id={`PageTitle.elc.${country}`} defaultMessage="elctoys.com | ELC Online store | Official Website | Early Learning Center"/>
+
     }
 
     getKeyword = (keyword) => {
@@ -94,9 +101,9 @@ class PageTitle extends Component {
             country = 'KSA'
         }
     
-        let mainTitle = keyword !== 'NA' ? intl.formatMessage({ id: `PageTitle.${keyword}.keyword`,defaultMessage: 'ELC' }) : intl.formatMessage({ id: `PageTitle.Home.keyword`,defaultMessage:"ELC, Early Learning Center, Early Learning Centre, Toys, Baby Toys, Wooden Toys, Educational Toys" });
+        let mainTitle = keyword !== 'NA' ? intl.formatMessage({ id: `PageTitle.${keyword}.keyword`,defaultMessage: 'ELC' }) : intl.formatMessage({ id: 'PageTitle.Home.keyword',defaultMessage:"ELC, Early Learning Center, Early Learning Centre, Toys, Baby Toys, Wooden Toys, Educational Toys" });
       
-        return mainTitle + " | " + intl.formatMessage({ id: `PageTitle.elc.${country}` ,defaultMessage:"elctoys.com | ELC Online store | Official Website | Early Learning Center"})
+        return mainTitle //+ " | " + intl.formatMessage({ id: `PageTitle.elc.${country}` ,defaultMessage:"elctoys.com | ELC Online store | Official Website | Early Learning Center"})
     }
 
     getDescription = (description) => {
@@ -109,9 +116,9 @@ class PageTitle extends Component {
             country = 'KSA'
         }
     
-        let mainTitle = description !== 'NA' ? intl.formatMessage({ id: `PageTitle.${description}.description`,defaultMessage: 'ELC' }) : intl.formatMessage({ id: `PageTitle.Home.description`,defaultMessage:"Shop online for baby toys, dolls houses, wooden toys and more at ELC. Choose from big brands including LeapFrog, VTech, Smart Trike and more." });
+        let mainTitle = description !== 'NA' ? intl.formatMessage({ id: `PageTitle.${description}.description`,defaultMessage: 'ELC' }) : intl.formatMessage({ id: 'PageTitle.Home.description',defaultMessage:"Shop online for baby toys, dolls houses, wooden toys and more at ELC. Choose from big brands including LeapFrog, VTech, Smart Trike and more." });
 
-        return mainTitle + " | " + intl.formatMessage({ id: `PageTitle.elc.${country}` ,defaultMessage:"elctoys.com | ELC Online store | Official Website | Early Learning Center"})
+        return mainTitle //+ " | " + intl.formatMessage({ id: `PageTitle.elc.${country}` ,defaultMessage:"elctoys.com | ELC Online store | Official Website | Early Learning Center"})
     }
 
 
