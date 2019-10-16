@@ -1435,7 +1435,9 @@ html[dir="rtl"] .header .link>li .subMenuTrigger {
 
 @media only screen and (min-width: 1280px) {
     .header .link>li .subMenuTrigger {
-        display: none
+        display: none;
+        position: relative;
+        line-height: 43px;
     }
 }
 
@@ -1491,7 +1493,7 @@ html[dir="rtl"] .header .link>li>a {
 }
 
 html.no-touch .header  .link>li>a:hover {
-    color: #f599ba
+   background-color: #fff;
 }
 
 @media only screen and (min-width: 1280px) {
