@@ -196,7 +196,7 @@ class ProductDetails extends Component {
 				{meta_tag}
 				{respo_ForAddCartAlertmessage}
 				<div className="t-Body-main" style={{ marginTop: '0px !important' }}>
-					<div className="t-Body-title" id="t_Body_title" style={{ top: '294px' }}>
+					<div className="t-Body-title" id="t_Body_title" style={{ top: '0px' }}>
 						{this.props.productDetails.name && (<Breadcrumb name={`${this.props.productDetails.category_names && this.props.productDetails.category_names.length > 0
 							? this.props.productDetails.category_names : localStorage.getItem('current-categogy-name')}--${this.props.productDetails.short_description}`} />)}
 					</div>
@@ -230,13 +230,14 @@ class ProductDetails extends Component {
 							</div>
 						</div>
 						{this.state.productDetailTab !== '' ?
-							<div className="col col-12">
+							<div className="col col-12 ie-issue-ui">
 								<div className="product-info">
 									<ProductInformation data={this.props.productDetails} type={this.state.productDetailTab} currentStore={this.props.currentStore} />
 								</div>
 							</div>
 							: ''}
-						{this.state.addToCartModal && this.props.cart_details.similar_products ? <div>
+						{this.state.addToCartModal && this.props.cart_details.similar_products ? 
+						<div>
 							<Modal modalId="addToCartPopupID" open={this.state.addToCartModal} onClose={this.onCloseCartModal}>
 								<AddToCartModal onCloseCartModal={this.onCloseCartModal} />
 							</Modal>

@@ -86,7 +86,7 @@ class OrderSummary extends Component {
         let country = this.props.globals.country;
 
         return (<>
-            <Spinner>
+            {this.props.spinnerProduct ? <Spinner /> :
                 <div className="t-Body-contentInner">
                     <div className="container">
                         <div className="row">
@@ -497,7 +497,7 @@ class OrderSummary extends Component {
                         </div>
                     </div>
                 </div>
-            </Spinner>
+            }
         </>)
     }
 }
@@ -513,6 +513,7 @@ const mapStateToProps = state => {
         shipping_type: state.orders.order_summary.order_data.delivery_type,
         shipping_address: state.orders.order_summary.order_data.address,
         globals: state.global,
+        spinnerProduct: state.spinner.loading
 
     }
 }

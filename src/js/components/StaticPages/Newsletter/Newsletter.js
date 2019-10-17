@@ -56,7 +56,7 @@ class Newsletter extends Component {
 		let store_locale=this.props.globals.store_locale
 		return (
 			<div className="t-Body-contentInner">
-			 { this.state.spinner ? <Spinner loading={this.state.spinner}/> :
+			 { this.state.spinner ? <Spinner /> :
 				<div className="container">
 					<div className="row">
 			

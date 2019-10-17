@@ -66,75 +66,38 @@
 
 
 
-    <!-- Start of elctoys Zendesk Widget script -->
+ <!-- Start of elctoys Zendesk Widget script --> 
     <!-- <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=0cd0ee1a-565a-49ae-82b5-1f259972bd41"> </script> 
     <script type="text/javascript"> zE('webWidget', 'setLocale', 'ar OR en'); </script>  -->
     <!-- End of nayomi Zendesk Widget script -->
 
-    <!-- Start of elctoys Zendesk Widget script -->
+<!-- Start of elctoys Zendesk Widget script -->
 
-    <!-- <script id="ze-snippet"
-        src="https://static.zdassets.com/ekr/snippet.js?key=0cd0ee1a-565a-49ae-82b5-1f259972bd41"> </script>
-    <script type="text/javascript">
-        if (window.location.href) {
-            var country = window.location.href.split('/');
-            if (country[3].includes('ar')) {
-                zE('webWidget', 'setLocale', 'ar');
-            } else if (country[3].includes('en')) {
-                zE('webWidget', 'setLocale', 'en');
-            } else {
-                zE('webWidget', 'setLocale', 'en');
-            }
-        }
-    </script> -->
+    <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=0cd0ee1a-565a-49ae-82b5-1f259972bd41"> </script>
+    <script type="text/javascript"> console.log("hererr") 
+    if(window.location.href){
+      var country = window.location.href.split('/');
+      if(country[3].includes('ar')){
+        zE('webWidget', 'setLocale', 'ar');
+      } else if(country[3].includes('en')){
+        zE('webWidget', 'setLocale', 'en');
+      } else {
+        zE('webWidget', 'setLocale', 'en'); 
+      }
+    }
+    // zE('webWidget', 'setLocale', 'ar OR en');
+    </script>  
 
-    <!-- End of nayomi Zendesk Widget script -->
+<!-- End of nayomi Zendesk Widget script -->
 
-    <!-- Start of ELC Zendesk Widget script -->
-
-    <script id="ze-snippet"
-        src="https://static.zdassets.com/ekr/snippet.js?key=0cd0ee1a-565a-49ae-82b5-1f259972bd41"> </script>
-    <script type="text/javascript">
-        if (window.location.href) {
-            var country = window.location.href.split('/');
-            if (country[3].includes('ar')) {
-                zE('webWidget', 'setLocale', 'ar');
-            } else if (country[3].includes('en')) {
-                zE('webWidget', 'setLocale', 'en');
-            } else {
-                zE('webWidget', 'setLocale', 'en');
-            }
-        }    
-    </script>
-
-    <!--Notice: Yello Highlighted should be changing based on the language or the website either ar or en.-->
-
-    <script>
-        zE(function () {
-            $zopim(function () {
-                $zopim.livechat.departments.setVisitorDepartment('ELC');
-                $zopim.livechat.departments.filter('');
-                $zopim.livechat.setOnStatus(function (e) {
-                    if (e === 'offline') return;
-                    var dep = $zopim.livechat.departments.getDepartment('ELC');
-                    if (dep.status == "offline") {
-                        $zopim.livechat.setStatus('offline');
-                    }
-                });
-            });
-        });
-    </script>
-
-    <!-- End of ELC Zendesk Widget script -->
-
-
+   
     <script>(function (w, d, s, l, i) {
-            w[l] = w[l] || []; w[l].push({
-                'gtm.start':
-                    new Date().getTime(), event: 'gtm.js'
-            }); var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        w[l] = w[l] || []; w[l].push({
+            'gtm.start':
+                new Date().getTime(), event: 'gtm.js'
+        }); var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
         })(window, document, 'script', 'dataLayer', 'GTM-NC6Z64G');</script>
 
 </head>

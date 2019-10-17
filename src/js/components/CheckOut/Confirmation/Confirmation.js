@@ -338,7 +338,8 @@ class Confirmation extends Component {
 
         }
 
-        return (<><Spinner>
+        return (<>
+            {this.props.spinnerProduct ? <Spinner /> :
             <div className="t-Body-contentInner">
                 {!this.props.orderDetailLoader && (<div className="Confirmation container">
                     <div className="row">
@@ -608,7 +609,7 @@ class Confirmation extends Component {
                 </div>)}
                 {this.props.orderDetailLoader && <Spinner2 />}
             </div>
-        </Spinner>
+        }
         </>);
     }
 }
@@ -621,7 +622,8 @@ const mapStateToProps = state => {
         global: state.global,
         order_summary: state.myCart.order_summary,
         payfort_data: state.productDetails.payfort_data,
-        orderDetailLoader: state.myCart.orderDetailLoader
+        orderDetailLoader: state.myCart.orderDetailLoader,
+        spinnerProduct: state.spinner.loading,
     };
 }
 

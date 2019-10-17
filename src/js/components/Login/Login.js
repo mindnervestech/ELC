@@ -273,7 +273,7 @@ class Login extends Component {
 
 
     return (
-      <Spinner>
+      // <Spinner>
         <div>
           {meta_tag}
           <div style={{ width: '525.9584px' }}>
@@ -294,7 +294,7 @@ class Login extends Component {
 
             <div className="container">
               <div className="row">
-                <div className="t-Body-title" id="t_Body_title" style={{ top: '294px', zIndex: "0", borderBottom: "0px" }}>
+                <div className="t-Body-title" id="t_Body_title" style={{ top: '0px', zIndex: "1", borderBottom: "0px" }}>
 
 
                   {breadCrumb}
@@ -409,12 +409,13 @@ class Login extends Component {
                                       <div className="padding row">
                                         <div className="rmPadding col col-12 apex-col-auto">
                                           {/* on blur eon focus */}
-                                          <div className="row collapse-a" id="P1000_USERNAME_CONTAINER" ><div className="rmPadding rmTopPadding t-Form-labelContainer">
+                                          <div className="row collapse-a" id="P1000_USERNAME_CONTAINER" >
+                                          <div className="col-12 rmPadding rmTopPadding t-Form-labelContainer">
                                             <label htmlFor="P1000_USERNAME" id="P1000_USERNAME_LABEL" className="t-Form-label bolt">
                                               <FormattedMessage id="ContactUs.Email" defaultMessage="Email Address" /> *
                                             </label>
                                           </div>
-                                            <div className="row contents">
+                                            <div className="col-12" style={{padding: 0}}>
                                               {emailField}
                                             </div>
                                           </div>
@@ -425,11 +426,12 @@ class Login extends Component {
                                         <div className=" rmPadding col col-12 apex-col-auto">
                                           {/* onFocus={(e) => this.divOnFocus(e)}
                                             onBlur={(e) => this.divOnBlure(e)} */}
-                                          <div className="row collapse-a " id="P1000_PASSWORD_CONTAINER"><div className="rmTopPadding rmPadding t-Form-labelContainer">
+                                          <div className="row collapse-a " id="P1000_PASSWORD_CONTAINER">
+                                          <div className="col-12 rmTopPadding rmPadding t-Form-labelContainer">
                                             <label htmlFor="P1000_PASSWORD" id="P1000_PASSWORD_LABEL" className="t-Form-label bolt">
                                               <FormattedMessage id="password" defaultMessage="Password *" /></label>
                                           </div>
-                                            <div className="row contents ">
+                                            <div className="col-12" style={{padding: 0}}>
                                               {passwordField}
                                             </div>
                                           </div>
@@ -501,7 +503,7 @@ class Login extends Component {
           </div>
 
         </div>
-      </Spinner >
+      // {/* </Spinner > */}
     );
   }
 }

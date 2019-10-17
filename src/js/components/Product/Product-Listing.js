@@ -177,7 +177,7 @@ class Product extends Component {
 			<div className="t-Body">
 				{meta_tag}
 				<div className="t-Body-main" style={{ marginTop: '0px !important' }}>
-					<div className="t-Body-title" id="t_Body_title" style={{ top: '294px' }}>
+					<div className="t-Body-title" id="t_Body_title" style={{ top: '0px' }}>
 						<Breadcrumb name={this.getCatagoryName(pathName)} />
 					</div>
 					<div className="t-Body-content" id="t_Body_content">

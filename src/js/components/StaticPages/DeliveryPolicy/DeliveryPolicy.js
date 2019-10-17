@@ -63,7 +63,7 @@ class DeliveryPolicy extends Component {
         let store_locale = this.props.globals.store_locale
         return (
             <>
-                <Spinner loading={this.props.spinnerProduct}>
+                {this.props.spinnerProduct ? <Spinner /> :
                     <div className="t-Body-contentInner">
                         <div className="padding-right-ar padding-breadcrumb" style={{textAlign:'start'}}>
                             <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
@@ -141,7 +141,7 @@ class DeliveryPolicy extends Component {
                                 </div>
                             </div>
                         </div>
-                    </div></Spinner>
+                    </div>}
                 
             </>
         );
@@ -149,10 +149,10 @@ class DeliveryPolicy extends Component {
 }
 
 const mapStateToProps = state => {
-    console.log("State",state)
+    console.log("State",state.spinner)
     return {
         deliveryPolicy : state.static.deliverypolicydata,
-		spinnerProduct: state.spinner.loadingProduct,
+		spinnerProduct: state.spinner.loading,
 		globals:state.global
     };
 }

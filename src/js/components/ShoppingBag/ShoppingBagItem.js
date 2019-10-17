@@ -314,7 +314,7 @@ class ShoppingBagItem extends Component {
                             </Row>
                             {product && product.map((item, index) => (
                                 <Row className="row-2 changeRow" style={{ textAlign: 'start' }}>
-                                    <Col xs="3">
+                                    <Col xs="3" style={{textAlign:'center'}}>
                                         <Link to={`/${store_locale}/products-details/${item.url_key}`}>
                                             <img src={item.image[0]} className="cardImage"></img>
                                         </Link>

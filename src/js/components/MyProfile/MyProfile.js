@@ -170,7 +170,7 @@ class Profile extends Component {
                     </Modal>
 
                 </div>
-                <Spinner>
+                {this.props.spinnerProduct ? <Spinner /> :
                 <div className="t-Body-contentInner">
                     <div className="padding-right-ar padding-breadcrumb" style={{ textAlign: 'start' }}>
                         <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
@@ -315,7 +315,8 @@ class Profile extends Component {
 
 
                     </div>
-                </div></Spinner>
+                </div>}
+                {/* </Spinner> */}
             </div>
         );
     }
@@ -330,7 +331,8 @@ const mapStateToProps = state => {
         addressResp: state.address.addressResp,
         isAddBookRec: state.address.isAddBookRec,
         globals: state.global,
-        menu: state.menu.menuNavData
+        menu: state.menu.menuNavData,
+        spinnerProduct: state.spinner.loading,
     }
 }
 

@@ -3035,9 +3035,9 @@ html[dir="rtl"] .header .changecountry .country .list a:before {
 }
 
 .homePage .cardImage {
-    width: 100%;
+    width: auto;
     height: 165px;
-    object-fit: contain;
+    /* object-fit: contain; */
 }
 
 .homePage .percentage {
@@ -7402,5 +7402,36 @@ html[dir="rtl"] .likeAInputName {
             z-index: 1;
             right: -15px !important;
         }
+    }
+}
+
+.carpusel-dots{
+    display: inline-flex;
+    width: 100%;
+}
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    .ie-issue-ui{
+        margin-bottom: 500px;
+        margin-top: 50px;
+        border-top: 0.1rem solid #0D943F;
+    }
+    .product-tab {
+        border-color: transparent !important;
+    }
+
+    .t-Form-inputContainer .t-Form-itemWrapper .input-qty{
+        margin-top: 0px !important;
+    }
+       
+    .t-Form-inputContainer .t-Form-itemWrapper input[type=text]{
+        padding: 7px 10px;
+    }
+
+    .blackTitle input[type=text] {
+        padding: 0px 15px;
+    }
+
+    .webAvalebalText, .webOutOfStockTetx {
+        margin-top: -10px;
     }
 }

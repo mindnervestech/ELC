@@ -318,7 +318,9 @@ class WishList extends Component {
             }} />;
         }
 
-        return (<Spinner>
+        return (
+            <>
+            {this.props.spinnerProduct ? <Spinner /> :
             <div className="t-Body-contentInner homePage">
                 {meta_tag}
                 {basketPopupFlag ?
@@ -450,8 +452,8 @@ class WishList extends Component {
                         </ul>
                         : <div style={{ marginBottom: 50, marginTop: 15, textAlign: 'start' }}><span style={{ fontSize: "24px", padding: "20px 0px" }}><FormattedMessage id="PageTitle.Wishlist.Empty" defaultMessage="Wishlist is empty" /></span></div>}
                 </div>
-            </div>
-        </Spinner>
+            </div>}
+        </>
         );
     }
 }
@@ -469,6 +471,7 @@ const mapStateToProps = state => {
         guest_user: state.guest_user,
         addToCardLoader: state.productDetails.addToCardLoader,
         item_added: state.item_added,
+        spinnerProduct: state.spinner.loading,
     }
 }
 

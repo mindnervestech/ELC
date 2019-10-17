@@ -210,7 +210,7 @@ class ProductBasic extends Component {
                     <h2 />
                 </div>
 
-                <div className="col" style={{ padding: 0, overflow: 'scroll', maxHeight: 300 }}>
+                <div className="col" style={{ padding: 0, overflow: 'auto', maxHeight: 300 }}>
                     <div className="button-model on-mobile">
                         <span className="related-title"><FormattedMessage id="RelatedProducts" defaultMessage="Related Products" /></span>
                     </div>

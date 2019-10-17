@@ -465,10 +465,11 @@ class SignUp extends Component {
                               </div> */}
                               <div className=" padding row">
                                 <div className="rmPadding col col-12 apex-col-auto">
-                                  <div className="row block" id="P1001_FNAME_CONTAINER"><div className="rmPadding t-Form-labelContainer">
-                                    <label htmlFor="P1001_FNAME" id="P1001_FNAME_LABEL" className="t-Form-label bolt"><FormattedMessage id="Form.FirstName" defaultMessage="First Name" /><span className="u-VisuallyHidden">(Value Required)</span></label>
-                                  </div>
-                                    <div className="contents row">
+                                  <div className="row block" id="P1001_FNAME_CONTAINER">
+                                    <div className="col-12 rmPadding t-Form-labelContainer">
+                                      <label htmlFor="P1001_FNAME" id="P1001_FNAME_LABEL" className="t-Form-label bolt"><FormattedMessage id="Form.FirstName" defaultMessage="First Name" /><span className="u-VisuallyHidden">(Value Required)</span></label>
+                                    </div>
+                                    <div className="col-12" style={{padding: 0}}>
                                       {firstNameInputField}
                                     </div>
                                   </div>
@@ -476,10 +477,11 @@ class SignUp extends Component {
                               </div>
                               <div className="padding row">
                                 <div className="rmPadding col col-12 apex-col-auto">
-                                  <div className="row block" id="P1001_LNAME_CONTAINER"><div className="rmPadding rmTopPadding t-Form-labelContainer">
+                                  <div className="row block" id="P1001_LNAME_CONTAINER">
+                                    <div className="col-12 rmPadding rmTopPadding t-Form-labelContainer">
                                     <label htmlFor="P1001_LNAME" id="P1001_LNAME_LABEL" className="t-Form-label bolt"><FormattedMessage id="Form.LastName" defaultMessage="Last Name" /></label>
                                   </div>
-                                    <div className="contents row">
+                                    <div className="col-12" style={{padding: 0}}>
                                       {LastNameInputField}
                                     </div>
                                   </div>
@@ -503,12 +505,13 @@ class SignUp extends Component {
                               
                               <div className="padding row">
                                 <div className="rmPadding col col-12 apex-col-auto">
-                                  <div className="block row" id="P1001_EMAIL_CONTAINER"><div className="rmTopPadding rmPadding t-Form-labelContainer">
+                                  <div className="block row" id="P1001_EMAIL_CONTAINER">
+                                  <div className="col-12 rmTopPadding rmPadding t-Form-labelContainer">
                                     <label htmlFor="P1001_EMAIL" id="P1001_EMAIL_LABEL" className="bolt t-Form-label">
                                       <FormattedMessage id="ContactUs.Email" defaultMessage="Email" /> *
                                       <span className="u-VisuallyHidden">(Value Required)</span></label>
                                   </div>
-                                    <div className="contents row">
+                                    <div className="col-12" style={{padding: 0}}>
                                       {emailInputField}
                                     </div>
                                   </div>
@@ -517,12 +520,13 @@ class SignUp extends Component {
 
                               <div className="padding row">
                                 <div className="rmPadding col col-12 apex-col-auto">
-                                  <div className="block row" id="P1001_EMAIL_CONTAINER"><div className="rmTopPadding rmPadding t-Form-labelContainer">
+                                  <div className="block row" id="P1001_EMAIL_CONTAINER">
+                                  <div className="col-12 rmTopPadding rmPadding t-Form-labelContainer">
                                     <label htmlFor="P1001_ConfirmEMAIL" id="P1001_ConfirmEMAIL_LABEL" className="bolt t-Form-label">
                                       <FormattedMessage id="Form.ConfirmEmail" defaultMessage="Confirm Email" />
                                       <span className="u-VisuallyHidden">(Value Required)</span></label>
                                   </div>
-                                    <div className="contents row">
+                                    <div className="col-12" style={{padding: 0}}>
                                       {confirmEmailInputField}
                                     </div>
                                   </div>
@@ -534,12 +538,13 @@ class SignUp extends Component {
                               </div>
                               <div className="padding row">
                                 <div className="rmPadding col col-12 apex-col-auto">
-                                  <div className="row block" id="P1001_PWD_CONTAINER"><div className="rmTopPadding rmPadding t-Form-labelContainer">
+                                  <div className="row block" id="P1001_PWD_CONTAINER">
+                                  <div className="col-12 rmTopPadding rmPadding t-Form-labelContainer">
                                     <label htmlFor="P1001_PWD" id="P1001_PWD_LABEL" className="bolt t-Form-label">
                                       <FormattedMessage id="Form.Password" defaultMessage="Password *" />
                                       <span className="u-VisuallyHidden">(Value Required)</span></label>
                                   </div>
-                                    <div className="contents row">
+                                    <div className="col-12" style={{padding: 0}}>
                                       {passwordInputField}
                                     </div>
                                   </div>
@@ -551,11 +556,12 @@ class SignUp extends Component {
 
                               <div className="padding row">
                                 <div className="rmPadding col col-12 apex-col-auto">
-                                  <div className="row block" id="P1001_RPWD_CONTAINER"><div className="rmTopPadding rmPadding t-Form-labelContainer">
+                                  <div className="row block" id="P1001_RPWD_CONTAINER">
+                                  <div className="col-12 rmTopPadding rmPadding t-Form-labelContainer">
                                     <label htmlFor="P1001_RPWD" id="P1001_RPWD_LABEL" className="bolt t-Form-label">
                                       <FormattedMessage id="Form.ConfirmPassword" defaultMessage="Confirm Password *" /><span className="u-VisuallyHidden">(Value Required)</span></label>
                                   </div>
-                                    <div className="contents row ">
+                                    <div className="col-12" style={{padding: 0}}>
                                       {confirmPasswordInputField}
                                     </div>
                                   </div>

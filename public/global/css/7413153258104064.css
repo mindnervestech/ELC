@@ -6795,7 +6795,8 @@ body .ui-dialog .ui-dialog-buttonpane {
 
 @media (min-width: 641px) {
   .t-Body-title {
-    position: initial;
+    position: relative;
+    z-index: 1;
   }
 }
 
@@ -6828,7 +6829,9 @@ body .ui-dialog .ui-dialog-buttonpane {
 }
 
 .t-WizardSteps-step.is-active .t-WizardSteps-marker {
-  background-color: #24c760ba;
+  /* background-color: #24c760ba; */
+  background-color: #24c760;
+  opacity: 0.6;
 }
 
 .t-Wizard .t-Wizard-header {

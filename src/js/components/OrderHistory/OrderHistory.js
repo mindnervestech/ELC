@@ -65,7 +65,10 @@ class Order extends Component {
         });
 
 
-        return (<Spinner><div className="t-Body-contentInner">
+        return (
+            <>
+            {this.props.spinnerProduct ? <Spinner /> :
+            <div className="t-Body-contentInner">
 
             <div className="padding-right-ar padding-breadcrumb" style={{ textAlign: 'start' }}>
                 <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
@@ -162,8 +165,9 @@ class Order extends Component {
                 </div>
 
             </div>
-        </div>
-        </Spinner>
+        </div>}
+        </>
+        // </Spinner>
         );
     }
 }
@@ -175,6 +179,7 @@ const mapStateToProps = state => {
         orderHistory: state.orders.orders_history,
         is_order_history_rec: state.orders.is_order_history_rec,
         globals: state.global,
+        spinnerProduct: state.spinner.loading,
     }
 }
 

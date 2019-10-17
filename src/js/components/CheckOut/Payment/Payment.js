@@ -261,8 +261,11 @@ class Payment extends Component {
                 alertBoxStatus={this.state.alertBoxDetails.status}
                 closeBox={this.closeErrorBox} />
         }
-        return (<Spinner>
+        return (
+            <>
             {alertBox}
+            {this.props.spinnerProduct ? <Spinner /> :
+            
             <div className="t-Body-contentInner">
                 <div className="Payment container">
                     <div className="row">
@@ -400,7 +403,9 @@ class Payment extends Component {
                         </div>
                     </div>
                 </div>
-            </div></Spinner>);
+            </div>}
+            </>
+        );
     }
 }
 
@@ -409,7 +414,8 @@ const mapStateToProps = state => {
         guest_checkout: state.guest_user,
         user_details: state.login,
         cart_details: state.myCart,
-        global: state.global
+        global: state.global,
+        spinnerProduct: state.spinner.loading,
     };
 }
 
