@@ -309,7 +309,7 @@ class BirthDayClub extends Component {
             <div>
                 {respo_message}
                 {meta_tag}
-                <div className="padding-breadcrumb" style={{ textAlign: 'start' }}>
+                <div className="padding-breadcrumb" >
                     <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
                         <span className="titleHover" style={{ fontSize: 15 }}><FormattedMessage id="Checkout.Home" defaultMessage="Home" /></span>
                         {this.props.globals.language == 'en' ?

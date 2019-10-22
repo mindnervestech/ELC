@@ -472,7 +472,7 @@ class SideManu extends Component {
 							<FormattedMessage id={"filter.categary.title." + value.replace(" ", '-')} defaultMessage={value}>
 								{(message) =>
 									<Collapsible trigger={message}>
-										<div style={{ textAlign: 'start' }}>{this.checkSubCategaryValue(this.state.list[value])}</div>
+										<div className="text-align-rtl">{this.checkSubCategaryValue(this.state.list[value])}</div>
 									</Collapsible>
 								}</FormattedMessage>
 						</div>
@@ -507,7 +507,7 @@ class SideManu extends Component {
 					<div>
 						<div className="applyPopupHightOnMobile">
 							<div className="divShowOnWeb">
-								<div className="row-2" style={{ paddingTop: 21, borderBottom: 'solid 1px #b1b1b1', textAlign: 'start' }}>
+								<div className="row-2 text-align-rtl" style={{ paddingTop: 21, borderBottom: 'solid 1px #b1b1b1'}}>
 									<span className="blackTitle"> <FormattedMessage id="NarrowyourResults" defaultMessage="Narrow your Results" /></span>
 									<span className="clearAll floatRight" style={this.state.clearAllOption ? { display: 'block' } : { display: 'none' }} onClick={() => this.clearFilter()}><FormattedMessage id="ClearAll.Text" defaultMessage="Clear All" /></span>
 								</div>

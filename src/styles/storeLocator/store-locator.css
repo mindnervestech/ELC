@@ -109,10 +109,27 @@
 }
 
 .storeLocator-storeActions a {
-    margin-right: 10px;
+    margin-right: 0px;
     text-decoration: none;
     color: #999;
-    transition: color .2s ease
+    transition: color .2s ease;
+    display: inline-flex;
+}
+
+.margin-for-store{
+    margin-right: -20px !important;
+}
+
+html[dir="rtl"] .margin-for-store{
+    margin-right: 0px !important;
+}
+
+.margin-for-store1{
+    margin-right: 0px !important;
+}
+
+html[dir="rtl"] .margin-for-store1{
+    margin-right: -20px !important;
 }
 
 .storeLocator-storeActions a:hover {

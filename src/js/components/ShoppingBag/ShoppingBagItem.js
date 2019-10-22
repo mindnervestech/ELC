@@ -244,7 +244,7 @@ class ShoppingBagItem extends Component {
                         <div className="displayDivOnWeb">
                             <Row className="row-5 changeRow">
                                 <Col xs="6" lg="6" md="8">
-                                    <div className="blackTitle" style={{ fontSize: 22, textAlign: 'start', color: "#4f4f4f" }}>
+                                    <div className="blackTitle text-align-rtl" style={{ fontSize: 22, color: "#4f4f4f" }}>
                                         <FormattedMessage id="SelectDelivery" defaultMessage="Select Delivery" />
                                     </div>
                                     <div className="prod-color">
@@ -288,7 +288,7 @@ class ShoppingBagItem extends Component {
                                     </div>
                                 </Col>
                             </Row>
-                            <Row className="row-1 changeRow" style={{ textAlign: 'start', color: "#4f4f4f", fontSize: 14 }}>
+                            <Row className="row-1 changeRow text-align-rtl" style={{ color: "#4f4f4f", fontSize: 14 }}>
                                 <Col xs="3"></Col>
                                 <Col xs="4">
                                     <span className="blackTitle">
@@ -399,7 +399,7 @@ class ShoppingBagItem extends Component {
                                     </div> */}
                                 </Col>
                                 <Col xs="6">
-                                    <div className="row-4" style={{ textAlign: 'start' }}>
+                                    <div className="row-4 text-align-rtl">
                                         <div className="cart-subtotal">
                                             <span><FormattedMessage id="delivery-details.Subtotal.Title" defaultMessage="Subtotal" />:</span>
                                             <span className="floatRight">{myCartItem.currency}&nbsp;{myCartItem.subtotal}</span>
@@ -532,7 +532,7 @@ class ShoppingBagItem extends Component {
                         </div>
                     </div> :
                     !this.props.updateLoader ?
-                        <div style={{ fontSize: 24, marginLeft: '5%', color: "#4f4f4f" }}>
+                        <div className="text-align-rtl" style={{ fontSize: 24, marginLeft: '5%', color: "#4f4f4f" }}>
                             <FormattedMessage id="Cart.YBE" defaultMessage="Your basket is empty." />
                         </div> : <div />}
             </div>

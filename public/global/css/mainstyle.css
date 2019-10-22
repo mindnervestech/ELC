@@ -19,7 +19,6 @@
    height:74px 
   }
 
-
   .tooltipMainMenu{
     top:70px!important;
   }
@@ -28,15 +27,11 @@
     top:20px!important;
   }
 
-
   .tooltipcss:hover{
    background-color: #fff;   
   }
 
-
   .tooltipcss .tooltiptextcss{
-     
-   
     left: 50%;
     visibility: hidden !important;
     width: 140px !important;
@@ -60,11 +55,6 @@
   .tooltipcss .tooltiptextcss .tooltipSubMainMenu{
     top:50px !important;
 }
-
-
-
-
-  
   
   .tooltipcss:hover .tooltiptextcss {
     visibility: visible !important;
@@ -74,43 +64,56 @@
 {
     text-align: start !important
 }
-.shipping-tab-h1
-{
- color: #0d943f !important;
- font-size: 2em !important;
- line-height: 1 !important; 
- text-align: center !important;
- padding-bottom:10px !important;
- text-transform: none!important;
-
-}
-
-.shipping-tab-h2
-{
+.shipping-tab-h1{
  color: #0d943f;
- font-size: 2em !important;
- line-height: 1 !important; 
- text-align: start !important;
- text-transform: none!important;
-
+ font-size: 2em ;
+ line-height: 1; 
+ text-align: center;
+ padding-bottom:10px;
+ text-transform: none;
 }
 
-.shipping-tab-h3{
-line-height: 34px !important;
-color: #0d943f !important;
-font-size: 15pt !important;
-text-transform: none!important;
+.shipping-tab-h2{
+ color: #0d943f;
+ font-size: 2em;
+ line-height: 1 ; 
+ text-align: start;
+ text-transform: none;
 }
+
+html[dir="rtl"]  .shipping-tab-h2{
+    text-align: right;
+}
+
+.ksa .shipping-tab-h3, .uae .shipping-tab-h3{
+    line-height: 34px ;
+    color: #0d943f;
+    font-size: 15pt;
+    text-transform: none;
+    text-align: start;
+}
+
+html[dir="rtl"] .ksa .shipping-tab-h3, .uae .shipping-tab-h3{
+    text-align: right;
+    padding: 0px !important;
+}
+
 .shipping-tab-ul
 {   
-    display: block !important;
-    list-style-type: disc !important;
-    margin-block-start: 1em !important;
-    margin-block-end: 1em !important;
-    margin-inline-start: 0px !important;
-    margin-inline-end: 0px !important;
-    padding-inline-start: 40px!important;
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em ;
+    margin-block-end: 1em;
+    margin-inline-start: 0px ;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+    text-align: start;
 }
+
+html[dir="rtl"] .shipping-tab-ul{
+    text-align: right;
+}
+
 .shipping-tab-li
 {
     
@@ -165,16 +168,7 @@ color: #0d943f !important;
 font-size: 15px !important;
 text-transform: none!important;
 }
-.shipping-tab-ul
-{   
-    display: block !important;
-    list-style-type: disc !important;
-    margin-block-start: 1em !important;
-    margin-block-end: 1em !important;
-    margin-inline-start: 0px !important;
-    margin-inline-end: 0px !important;
-    padding-inline-start: 40px!important;
-}
+
 .shipping-tab-li
 {
     
@@ -233,16 +227,7 @@ font-size: 15px !important;
 text-transform: none!important;
 
 }
-.shipping-tab-ul
-{   
-    display: block !important;
-    list-style-type: disc !important;
-    margin-block-start: 1em !important;
-    margin-block-end: 1em !important;
-    margin-inline-start: 0px !important;
-    margin-inline-end: 0px !important;
-    padding-inline-start: 40px!important;
-}
+
 .shipping-tab-li
 {
     
@@ -3499,7 +3484,7 @@ html[dir="rtl"] .sortDroupDownOnMobile{
 }
 
 html[dir="rtl"] .Collapsible__trigger{
-    text-align: start;
+    text-align: right;
     display: block;
     text-decoration: none;
     position: relative;
@@ -3737,7 +3722,7 @@ html[dir="rtl"] .threeLineIcon{
     }
 
     html[dir="rtl"] .Collapsible__trigger{
-        text-align: start;
+        text-align: right;
         display: block;
         text-decoration: none;
         position: relative;
@@ -6531,6 +6516,10 @@ html[dir="rtl"] .header .navTrigger {
     text-align: start;
 }
 
+html[dir="rtl"] .sortBySelectedText{
+    text-align: right;
+}
+
 .sortBySelectedTextIcon{
      position: absolute;
     right: 0px;
@@ -6571,6 +6560,10 @@ html[dir="rtl"] .sortBySelectedTextIcon{
     z-index: 99;
     border-radius: 0px 0px 4px 4px;
     text-align: start;
+}
+
+html[dir="rtl"] .sortByOption{
+    text-align: right;
 }
 
 .sortByOptionText{
@@ -6697,7 +6690,7 @@ html[dir="rtl"] .commingSoonText{
 }
 
 html[dir="rtl"] .productCategaryNamePadding{
-    text-align: start;
+    text-align: right;
     padding-left: 0px;
     padding-left: 15px;
 }
@@ -7028,6 +7021,14 @@ html[dir="rtl"] #add_to_basket .pdoductDetailSpasing{
     text-align: start;
 }
 
+html[dir="rtl"] #add_to_basket .product-title2{
+    text-align: right;
+}
+
+html[dir="rtl"] .text-align-rtl{
+    text-align: right;
+}
+
 #add_to_basket .qantityNumberDiv{
     width: 35%;
 }
@@ -7040,6 +7041,10 @@ html[dir="rtl"] #add_to_basket .pdoductDetailSpasing{
 .headerSlideTextAlign{
     text-align: start;
     padding-top: 10px;
+}
+
+html[dir="rtl"] .headerSlideTextAlign{
+    text-align: right;
 }
 
 .webOutOfStockTetx{
@@ -7083,7 +7088,7 @@ html[dir="rtl"] .productDetailPopupImage{
 {
     .width-autoSearch
     {
-        width:100%
+        width:100%;
     }
 }
 
@@ -7095,11 +7100,13 @@ html[dir="rtl"] .productDetailPopupImage{
     position: absolute;
     background-color: #fff;
     -webkit-box-shadow: 0 2000vh 0 2000vh rgba(0, 0, 0, 0.3);
-   -moz-box-shadow: 0 2000vh 0 2000vh rgba(0, 0, 0, 0.3);
-   box-shadow: 0 2000vh 0 2000vh rgba(0, 0, 0, 0.3);
-   border-radius: 4px;
-   overflow: scroll;
+    -moz-box-shadow: 0 2000vh 0 2000vh rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2000vh 0 2000vh rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    overflow: scroll;
     max-height: 490px;
+    left: 0px;
+    right: 0px;
 }
 
 .autoSearch .images{
@@ -7310,6 +7317,8 @@ html[dir="rtl"] .likeAInputName {
         -moz-box-shadow: 0 2000vh 0 2000vh rgba(0, 0, 0, 0.3);
         box-shadow: 0 2000vh 0 2000vh rgba(0, 0, 0, 0.3);
         border-radius: 4px;
+        left: 0px;
+        right: 0px;
     }
 
     .editAddresspopupPadding{
@@ -7437,4 +7446,16 @@ html[dir="rtl"] .likeAInputName {
     .webAvalebalText, .webOutOfStockTetx {
         margin-top: -10px;
     }
+}
+
+.text-align-rtl{
+    text-align: start;
+}
+
+html[dir="rtl"] .text-align-rtl{
+    text-align: right;
+}
+
+.styles_overlay__CLSq-{
+    display: block !important;
 }

@@ -208,7 +208,7 @@ class ProfileAddress extends Component {
             </Modal>
 
             <div className="t-Body-contentInner">
-                <div className="padding-right-ar padding-breadcrumb" style={{ textAlign: 'start' }}>
+                <div className="padding-right-ar padding-breadcrumb">
                     <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
                         <span className="titleHover" style={{ fontSize: 15 }}><FormattedMessage id="Checkout.Home" defaultMessage="Home" /></span>
                         {this.props.globals.language === 'en' ?

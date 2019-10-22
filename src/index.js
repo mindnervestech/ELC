@@ -10,6 +10,7 @@ import 'core-js/features/array/find';
 import 'core-js/features/array/includes';
 import 'core-js/features/number/is-nan';
 import 'core-js/es/object';
+import 'core-js/features/url-search-params';
 //redux
 import { Provider } from 'react-redux';
 import { createStore, compose, combineReducers, applyMiddleware } from 'redux';

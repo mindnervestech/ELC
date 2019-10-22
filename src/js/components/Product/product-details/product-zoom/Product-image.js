@@ -139,7 +139,7 @@ class ProductImage extends Component {
 		let color = 'img';
 		if(item){
 			return (
-				<a data-slide-id="zoom" data-zoom-id="zoom-v" data-image={item} color-id={`${color}_${index}`} name="zoom-images-lg" onClick={(e) => this._handleThumbImgClick(item, index)}>
+				<a data-slide-id="zoom" style={{background:'transparent'}} data-zoom-id="zoom-v" data-image={item} color-id={`${color}_${index}`} name="zoom-images-lg" onClick={(e) => this._handleThumbImgClick(item, index)}>
 					<img className="productDetailPopupImage" style={{ filter: this.state.indexThumbImg === index ?'brightness(60%)' : '' }} srcSet={item} src={item} alt="" />
 				</a>
 			);

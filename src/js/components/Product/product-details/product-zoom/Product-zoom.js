@@ -163,7 +163,7 @@ class ProductZoom extends Component {
 	_renderData = (item, index, color) => {
 		// console.log('item', item);
 		return (
-			<a data-slide-id="zoom" data-zoom-id="zoom-v" href={item} data-image={item} color-id={`${color}_${index}`} name="zoom-images-lg" onClick={(e) => this._handleThumbImgClick(e, 'img')}>
+			<a data-slide-id="zoom" style={{background:'transparent'}} data-zoom-id="zoom-v" href={item} data-image={item} color-id={`${color}_${index}`} name="zoom-images-lg" onClick={(e) => this._handleThumbImgClick(e, 'img')}>
 				<img srcSet={item} src={item} alt="" />
 			</a>
 		);

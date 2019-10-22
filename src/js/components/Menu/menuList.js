@@ -78,32 +78,32 @@ class menuList extends Component {
 
 			<>
 			{data1.length > 0 &&
-				<ul className="subLink" style={{textAlign: 'start'}}>
+				<ul className="subLink text-align-rtl">
 					{data1.map(this._renderSubMenuItem)}
 				</ul>
 			}
 			{data2.length > 0 &&
-				<ul className="subLink" style={{textAlign: 'start'}}>
+				<ul className="subLink text-align-rtl">
 					{data2.map(this._renderSubMenuItem)}
 				</ul>
 			}
 			{data3.length > 0 &&
-				<ul className="subLink" style={{textAlign: 'start'}}>
+				<ul className="subLink text-align-rtl">
 					{data3.map(this._renderSubMenuItem)}
 				</ul>
 			}
 			{data4.length > 0 &&
-				<ul className="subLink" style={{textAlign: 'start'}}>
+				<ul className="subLink text-align-rtl">
 					{data4.map(this._renderSubMenuItem)}
 				</ul>
 			}
 			{data5.length > 0 &&
-				<ul className="subLink" style={{textAlign: 'start'}}>
+				<ul className="subLink text-align-rtl">
 					{data5.map(this._renderSubMenuItem)}
 				</ul>
 			}
 			{data6.length > 0 &&
-				<ul className="subLink" style={{textAlign: 'start'}}>
+				<ul className="subLink text-align-rtl">
 					{data6.map(this._renderSubMenuItem)}
 				</ul>
 			}

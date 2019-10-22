@@ -249,7 +249,7 @@ class StoreLocator extends Component {
     return (
       <div className="t-Body">
         <div className="t-Body-main" style={{ marginTop: '0px !important' }}>
-          <div className="t-Body-title" id="t_Body_title" style={{ top: '294px' }}>
+          <div className="t-Body-title" id="t_Body_title">
             <div id="R55451813294588531" className="t-BreadcrumbRegion containers t-BreadcrumbRegion--showBreadcrumb t-BreadcrumbRegion--useBreadcrumbTitle">
               <div className="t-BreadcrumbRegion-body">
                 {/* <div style={{margin:10}} className="padding-right-ar">  
@@ -259,7 +259,7 @@ class StoreLocator extends Component {
             <span  style={{fontSize:15, fontWeight: 'bold'}}>{this.props.aboutUs.title}</span>
           </div> */}
 
-                <div style={{ margin: 10, textAlign: 'start' }} className="padding-right-ar">
+                <div style={{ margin: 10}} className="text-align-rtl">
                   <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
                   <span className="titleHover" style={{ fontSize: 15 }}><FormattedMessage id="Checkout.Home" defaultMessage="Home" />
                     { this.props.globals.language=='en'?

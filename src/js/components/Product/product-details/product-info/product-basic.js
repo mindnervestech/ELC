@@ -188,7 +188,7 @@ class ProductBasic extends Component {
         return (
             <div className="col addToCardPopup">
 				{respo_message}
-                <div style={{marginBottom:15, textAlign: 'start'}}>
+                <div className="text-align-rtl" style={{marginBottom:15}}>
                     <span>
                         <i className="fa fa-check cbox-icon-success right-icon-fa">
                             <span><FormattedMessage id="Addedtoyourbasket" defaultMessage="Added to your basket" />  </span>

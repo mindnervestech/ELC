@@ -256,12 +256,12 @@ class ForGotPassword extends Component {
                                                         <div className="row">
                                                             <div className="col col-12 apex-col-auto">
                                                                 <div className="row block" id="P1003_EMAIL_ADDRESS_CONTAINER">
-                                                                    <div className="t-Form-labelContainer">
+                                                                    <div className="col-12 t-Form-labelContainer">
                                                                         <label htmlFor="P1003_EMAIL_ADDRESS" id="P1003_EMAIL_ADDRESS_LABEL" className="t-Form-label">
                                                                             <FormattedMessage id="Form.Email" defaultMessage="Email" />
                                                                             <span className="u-VisuallyHidden">(Value Required)</span></label>
                                                                     </div>
-                                                                    <div className="row contents">
+                                                                    <div className="col-12" style={{padding: 0}}>
                                                                         {emailInputField}
                                                                     </div>
                                                                 </div>
@@ -271,7 +271,7 @@ class ForGotPassword extends Component {
                                                         <div className="row">
                                                             <div className="col col-12 apex-col-auto">
                                                                 <div className="row block" id="P1003_PHONE_CONTAINER">
-                                                                    <div style={{ paddingTop: 10 }}>
+                                                                    <div style={{ paddingTop: 10 }} className="col-12 t-Form-labelContainer">
                                                                         <label htmlFor="P1003_PHONE" id="P1003_PHONE_LABEL" className="t-Form-label">
                                                                             <FormattedMessage id="Form.PhoneNumber" defaultMessage="Contact Number *" />
                                                                             <span className="u-VisuallyHidden">(Value Required)</span></label>
@@ -279,7 +279,7 @@ class ForGotPassword extends Component {
 
 
 
-                                                                        <div className="row contents">
+                                                                        <div className="col-12" style={{padding: 0}}>
                                                                             <PhoneNumber changed={this.contactNumber} />
                                                                             {contactNumberInputField}
                                                                         </div>

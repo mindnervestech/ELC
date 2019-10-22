@@ -213,6 +213,33 @@ class AddToBasketModal extends Component {
 		this.setState({ showAlert: false });
 	}
 
+	showDiscountPrise(offerData , orignalPrise, currency){
+		if (Object.keys(offerData).length === 1) {
+			for (let value in offerData) {
+				if (value === '1') {
+					return (
+						<div>
+							<span className="product-price">{currency}&nbsp;{offerData[value]}</span>
+							<span className="product-price-line">{currency}&nbsp;{Number(orignalPrise).toFixed(2)}</span>
+						</div>
+					);
+				} else {
+					return (
+						<div>
+							<span className="product-price">{currency}&nbsp;{Number(orignalPrise).toFixed(2)}</span>
+						</div>
+					);
+				}
+			}
+		} else {
+			return (
+				<div>
+					<span className="product-price">{currency}&nbsp;{Number(orignalPrise).toFixed(2)}</span>
+				</div>
+			);
+		}
+	}
+
 	render() {
 		let data = this.props.data;	
 
@@ -306,13 +333,12 @@ class AddToBasketModal extends Component {
 									<div className="t-Region-body">
 										<div className="container" style={{ overflow: 'hidden' }}>
 											<div className="row details-body">
+												
 												<div className="prod-price">
-													{data.special_price ?
-														<div>
-															<span className="product-price">{data.currency}&nbsp;{data.special_price}</span>
-															<span className="product-price-line">{data.currency}&nbsp;{Number(data.price).toFixed(2)}</span>
-														</div> :
-														<span className="product-price">{data.currency}&nbsp;{Number(data.price).toFixed(2)}</span>}
+												{data.offers && data.offers.status === 1 ?
+													this.showDiscountPrise(data.offers.data,data.price,data.currency)
+													:
+													<span className="product-price">{data.currency}&nbsp;{Number(data.price).toFixed(2)}</span>}
 												</div>
 												{data && data.visible_on_store ?
 													<div style={{ width: '100%' }}>

@@ -59,9 +59,9 @@ class ProductInformation extends Component {
 				<div className="show-web">
 					{type == 'Product Information' ? <div style={{ marginBottom: '5rem', marginTop: 40 }}>
 						
-						<p className="detail-info" style={{ textAlign: 'start' }}>{data.description}</p>
+						<p className="detail-info text-align-rtl">{data.description}</p>
 						{data.brand || data.age || data.assembly_req || data.battery_inc || data.battery_req ?
-							<h3 className="specification-title" style={{ textAlign: 'start' }}>
+							<h3 className="specification-title text-align-rtl">
 								<FormattedMessage id="Specifications" defaultMessage="Specifications" /></h3> : <div />}
 						{data.sku ? <div className="row specification-item-content">
 							<span class="specification-item-key"><FormattedMessage id="product.sku" defaultMessage="Product code" /></span>

@@ -279,7 +279,7 @@ class Login extends Component {
           <div style={{ width: '525.9584px' }}>
             <Modal modalId="CreateAccount" open={openFirstModal} onClose={this.onCloseFirstModal} center style={{ width: '425.9584px' }}>
 
-              <h3><FormattedMessage id="account.Creation" defaultMessage="Account Creation" /></h3>
+              <h3><FormattedMessage id="account.Creation" defaultMessage="Create an Account" /></h3>
               <div>{signUp}</div>
 
             </Modal>

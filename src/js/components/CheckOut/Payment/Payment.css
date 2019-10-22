@@ -90,10 +90,10 @@ html[dir="rtl"] h3 {
     font-variant: normal;
     font-size: 20px;
     line-height: 16px;
-        letter-spacing: unset;
+    letter-spacing: unset;
     text-transform: uppercase;
     font-weight: normal;
-    text-align: start;
+    text-align: right;
     padding-right: 56px!important;
 }
 
