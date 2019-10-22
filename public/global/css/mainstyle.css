@@ -6194,6 +6194,9 @@ a:hover {
         font-family: "VAG Rounded ELC Light";
         color: #0D943F;
     }
+    .searchLogoClickCollect{
+        height: 24px;
+    }
 
     .searchLogo{
         height: 24px;

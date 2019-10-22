@@ -1,4 +1,77 @@
+html[dir="rtl"] #product_review h3 {
+   
+   padding-right: 0px !important;
+   font-size:15px !important;
+}
+.textAlignStart {
+   
+   text-align: start !important;
+}
 /*! normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */
+.ratingValueInString{
+    padding-left: 10px;
+    font-size: 14px;
+    display: inline-flex;
+    font-weight: 100;
+}
+.terms-condition-review-link{
+    padding-top: 10px;
+    margin-left: 10px;
+    margin-right:10px;
+    text-decoration: underline
+}
+.review-guideliness-review-link{
+    padding-top: 10px;
+    margin-left: 10px;
+    margin-right:10px;
+    text-decoration: underline
+}
+.write-review-submit{
+    font-weight: 800;
+    color: #fff;
+    font-size: 13px;
+    height: 45px;
+    border-radius: 6px;
+    background-color: #ee0e19 !important;
+    border-color: #ee0e19;
+    margin-bottom: 5px;
+    line-height: 27px;
+    margin-right: 0;
+    width: 150px !important;
+}
+.input-review-title{
+    border: 1px solid #d6d6d6 !important;
+    padding: 9px;
+    border-radius: 6px !important;
+    color: #4f4f4f;
+    height:10%;
+}
+
+.smaill-title-best-purchase-ever{
+    color: #4f4f4f !important;
+    font-size: 13px!important;
+    margin-top: 5px
+}
+
+.input-review-title:hover{
+    border: 1px solid #0d943f !important;
+    background: #ffffff;
+}
+.header-write-review-product-rationgs{
+    text-align: start;
+    font-size: 20px;
+    color: #0d943f;
+    font-family: "VAG Rounded Std Bold", "Arial", "Helvetica", sans-serif;
+    font-weight: 800;
+}
+.header-write-review-product-rating{
+    font-size: 18px;
+    text-transform: none !important;
+    color: #0d943f;
+    font-family: "VAG Rounded Std Bold", "Arial", "Helvetica", sans-serif;
+    font-weight: 800;
+}
+
 
 @font-face {
     font-family: "VAG Rounded ELC Light";

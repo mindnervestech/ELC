@@ -1,0 +1,203 @@
+
+.storelist-li{
+
+}
+
+.tabs{
+    border-bottom: 1px solid green;
+    /* border-top: 1px solid green; */
+    border-left: 1px solid green;
+    /* height: 1000px; */
+    border-left: 1px 0px 1px 0px solid;
+    height: 360px;
+    border-right: 1px solid;
+    overflow: scroll;
+}
+
+.clickandcollecttabs-ul{
+    position: relative;
+    top: -1px;
+    margin-top: 1px;
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style: none;
+    border-bottom: 1px solid #0d943f;
+    display: table;
+    margin: 0 auto;
+    border: 0;
+
+}
+.clickandcollecttabs-li{
+    position: relative;
+    top: -1px;
+    margin-top: 1px;
+}
+
+.tabs-div{
+    min-height: 325px;
+    width: 100%;
+    /* border: 1px solid #0d943f;
+    border-radius: 2px; */
+    padding: 20px 25px;
+    margin-top: -3px;
+    float: left;
+    width: 60%;
+    position: relative;
+    background: #fff;
+    overflow: hidden;
+}
+.searchButton-click-and-collect{
+    border: 0;
+    top: 47px;
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    /* left: 85%; */
+    right: 2%
+}
+.icon{
+    width: 16px;
+    height: 21px;
+    padding:5px;
+    background-size: cover;
+}
+.button-store-find-near-me{
+    border: 1px solid #0d943f!important;
+    border-radius: 4px;
+    background-color: #0d943f;
+    width: 200px;
+    height: 50px !important;
+    margin-bottom: 18px;
+    padding-left: 18px;
+    color: #fff;
+    font-weight: 800;
+    font-size:15px;
+    line-height: 10px;
+}
+.button-div-store-near{
+  margin-top: 10%;
+  display: block;
+  text-align: right;
+}
+.click-and-collect-container{
+    margin-top:1%;
+    margin-left:1%;
+    margin-right:1%;
+    height:auto;
+    width:100% !important;
+}
+.main-header-ChooseastoreforClickCollect{
+    color: #0d943f;
+    font-size: 24px;
+    line-height: 24px;
+    width: 100%;
+    vertical-align: middle;
+    margin-bottom: 0;
+}
+.search-button-find-store-near-me{
+    width:100% !important;
+    margin-top: 10%!important;
+    border: 1px solid #0d943f!important;
+    border-radius: 4px;
+    height: 44px;
+    padding-left: 20px;
+    padding-right: 60px;
+    font-size: 14px;
+    line-height: 16px;
+    color: #4f4f4f;}
+
+    @media only screen and (max-width:767px){
+        .button-store-find-near-me{
+            border: 1px solid #0d943f!important;
+            border-radius: 4px;
+            background-color: #0d943f;
+            width: 200px;
+            height: 40px !important;
+            margin-bottom: 18px;
+            padding-left: 18px;
+            color: #fff;
+            font-weight: 800;
+            font-size:15px;
+            line-height: 10px;
+        }
+        .mb-flex-basic-none{
+            flex-basis:unset !important
+        }
+        .search-button-find-store-near-me{
+            width:100% !important;
+            margin-top: 10%!important;
+            border: 1px solid #0d943f!important;
+            border-radius: 4px;
+            height: 33px;
+            padding-left: 20px;
+            padding-right: 60px;
+            font-size: 14px;
+            line-height: 16px;
+            color: #4f4f4f;}
+            .searchButton-click-and-collect{
+                border: 0;
+                top: 42px;
+                background-color: rgb(255, 255, 255);
+                position: absolute;
+                /* left: 85%; */
+                right: 2%
+            }
+            .tabs{
+                border-bottom: 1px solid green;
+                /* border-top: 1px solid green; */
+                border-left: 1px solid green;
+                /* height: 1000px; */
+                border-left: 1px 0px 1px 0px solid;
+                height: 240px;
+                border-right: 1px solid;
+                overflow: scroll;
+            }
+    }
+    @media only screen and (min-width:767px) and (max-width:1024px){
+        .tabs{
+            border-bottom: 1px solid green;
+            /* border-top: 1px solid green; */
+            border-left: 1px solid green;
+            /* height: 1000px; */
+            border-left: 1px 0px 1px 0px solid;
+            height: 240px;
+            border-right: 1px solid;
+            overflow: scroll;
+        }
+        .mb-flex-basic-none{
+            flex-basis:unset !important
+        }
+        .button-store-find-near-me{
+            border: 1px solid #0d943f!important;
+            border-radius: 4px;
+            background-color: #0d943f;
+            width: 200px;
+            height: 40px !important;
+            margin-bottom: 18px;
+            padding-left: 18px;
+            color: #fff;
+            font-weight: 800;
+            font-size:15px;
+            line-height: 10px;
+        }
+        .searchButton-click-and-collect{
+            border: 0;
+            top: 52px;
+            background-color: rgb(255, 255, 255);
+            position: absolute;
+            /* left: 85%; */
+            right: 2%
+        }
+        .search-button-find-store-near-me{
+            width:100% !important;
+            margin-top: 10%!important;
+            border: 1px solid #0d943f!important;
+            border-radius: 4px;
+            height:33px;
+            padding-left: 20px;
+            padding-right: 60px;
+            font-size: 14px;
+            line-height: 16px;
+            color: #4f4f4f;}
+
+    }
+   

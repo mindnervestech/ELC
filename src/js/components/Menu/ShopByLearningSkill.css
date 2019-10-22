@@ -1,0 +1,165 @@
+.container-shop-by-learn-skills{
+    display: flex;
+    flex-wrap: unset !important;
+    margin-right:0px !important;
+    margin-left: 0px !important;;
+} 
+
+.podText {
+    padding: 0px 5px 0px 5px !important;
+    text-align: center !important;
+    display: inline !important;
+    vertical-align: middle !important;
+    text-align: center !important;
+   
+}
+.podSect{
+    text-align: center;
+    position: relative;
+    z-index: 50;
+}
+.catPod{
+    border: 2px solid white;
+    background: #1da34e;
+    text-align: center;
+    margin-right: 2%;
+    cursor: pointer;
+    color: white !important;
+    display: inline-block;
+    padding-top: 1%;
+    margin-bottom: 4%;
+    padding-bottom: 1%;
+    width: 100%;
+    font-family: "VAG Rounded Std Bold", "Tahoma Bold", sans-serif;
+    font-size: 14pt;
+}
+.header-shop-by-learning-skill{
+    text-align: center !important;
+    color: #1da34e;
+    font-size: 18pt;
+    margin-bottom: 2%;
+    padding-bottom: 0%;
+    margin-top: 2%;
+    font-weight: 800;
+}
+
+
+.main-container-shop-by-learning{
+    margin: 5% !important;
+}
+
+/* @media only screen and (min-width:768px) and (max-width:1024px){
+    .container-shop-by-learn-skills{
+        display: flex;
+        flex-wrap: unset !important;
+        margin-right:0px !important;
+        margin-left: 0px !important;;
+    } 
+}
+
+
+@media only screen and (min-width:375px) and (max-width:812px){
+    .container-shop-by-learn-skills{
+        display: flex;
+        flex-wrap: unset !important;
+        margin-right:0px !important;
+        margin-left: 0px !important;
+    } 
+} */
+
+
+@media only screen and (max-width:640px){
+    .container-shop-by-learn-skills {
+        display: flex;
+        flex-wrap:unset !important;
+        margin-right: 0px !important;
+        margin-left: 0px !important;
+    }
+    .podText {
+        padding: 20px 5px 20px 5px !important;
+        text-align: center;
+        display: table-cell !important;
+        vertical-align: middle !important;
+        text-align: center !important;
+       
+    }
+    .catPod{
+       
+        border:none;
+        background: #1da34e;
+        text-align: center;
+        margin-right: 2%;
+        cursor: pointer;
+        color: white !important;
+        display: inline-block;
+        padding-top: 1%;
+        margin-bottom: 4%;
+        padding-bottom: 1%;
+        width: 100%;
+        font-family: "VAG Rounded Std Bold", "Tahoma Bold", sans-serif;
+        font-size: 14pt;
+    }
+}
+@media only screen and (max-width:767px){
+    .container-shop-by-learn-skills{
+        display: flex;
+        /* flex-wrap: unset !important; */
+        margin-right:0px !important;
+        margin-left: 0px !important;;
+    }  
+    .podText {
+        padding: 20px 5px 20px 5px;
+        text-align: center;
+        display: table-cell ;
+        vertical-align: middle !important;
+        text-align: center !important;
+       
+    }
+    .catPod{
+        border:none;
+        background: #1da34e;
+        text-align: center;
+        margin-right: 2%;
+        cursor: pointer;
+        color: white !important;
+        display: inline-block;
+        padding-top: 1%;
+        margin-bottom: 4%;
+        padding-bottom: 1%;
+        width: 100%;
+        font-family: "VAG Rounded Std Bold", "Tahoma Bold", sans-serif;
+        font-size: 14pt;
+    } 
+}
+@media only screen and (min-width:768px) and (max-width:1024px){
+    .container-shop-by-learn-skills{
+        display: flex;
+        /* flex-wrap: unset !important; */
+        margin-right:0px !important;
+        margin-left: 0px !important;;
+    }
+    .podText {
+        padding: 20px 5px 20px 5px;
+        text-align: center;
+        display: table-cell;
+        vertical-align: middle !important;
+        text-align: center !important;
+       
+    }
+    
+    .catPod{
+        border:none;
+        background: #1da34e;
+        text-align: center;
+        margin-right: 2%;
+        cursor: pointer;
+        color: white !important;
+        display: inline-block;
+        padding-top: 1%;
+        margin-bottom: 4%;
+        padding-bottom: 1%;
+        width: 100%;
+        font-family: "VAG Rounded Std Bold", "Tahoma Bold", sans-serif;
+        font-size: 14pt;
+    }
+}

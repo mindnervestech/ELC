@@ -1,0 +1,105 @@
+
+@media only screen and (max-width:767px){
+    .main-container{
+        margin-left: 0px !important;
+        margin-right:0px !important;
+    }
+}
+@media only screen and (min-width:768px) and (max-width:1024px){
+    .main-container{
+        margin-left: 0px !important;
+        margin-right:0px !important;
+    }
+}
+.padding-brand{
+   
+    padding-bottom: 5% !important;
+    display: inline-block !important;
+    
+
+}
+.brands-alpha-show-ul{
+ display: block ;
+}
+
+.list-alpha-show-2{
+    margin: 0px 0px 13px 0px;
+    width: 100% !important;
+    text-transform: capitalize;
+    font-size:20px !important;
+    border-bottom: 1px solid #d6d6d6;
+    color: #4f4f4f;
+    display: block !important;
+    font-size: 20px;
+    text-decoration: none;
+    padding: 10px 0px !important;
+    border-radius: 15px 15px 0 0; 
+    /* border-bottom: #d6d6d6; */
+}
+.list-alpha{
+    text-transform: capitalize;
+    font-size:20px !important;
+    border-right: 1px solid #d6d6d6;
+    border-left: 1px solid #d6d6d6;
+    color: #4f4f4f;
+    display: block;
+    float: left;
+    font-size: 20px;
+    text-decoration: none;
+    padding: 10px 0;
+    width: 35px;
+    text-align: center;
+
+}
+.brands-alpha-ul{
+        border-right: 1px solid #d6d6d6;
+        float: left;
+        margin-left: 0px;
+        overflow: hidden;
+        padding-left: 0;
+        margin-bottom: 0;
+    
+}
+.brands-alpha{
+    margin-right: 15% !important;
+    margin-top: 20px;
+    float: left;
+    width: 100%;
+    background: #ffffff;
+    border: 1px solid #d6d6d6;
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    
+}
+.main-container{
+
+    margin-top:5% !important;
+
+}
+.header-browser-all-brands{
+    font-family: 'VAG Rounded Std Regular', 'Arial', 'Helvetica', sans-serif;
+    font-size: 70px;
+    line-height: 90px;
+    color: #0d943f;
+}
+
+
+
+@media only screen and (max-width:767px){
+    .header-browser-all-brands{
+        font-family: 'VAG Rounded Std Regular', 'Arial', 'Helvetica', sans-serif;
+        font-size: 25px;
+        line-height: 40px;
+        color: #0d943f;
+    }
+}
+
+@media only screen and (min-width:768px) and (max-width:1024px){
+    .header-browser-all-brands{
+        font-family: 'VAG Rounded Std Regular', 'Arial', 'Helvetica', sans-serif;
+        font-size: 40px;
+        line-height: 90px;
+        color: #0d943f;
+    }
+}

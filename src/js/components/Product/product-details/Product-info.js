@@ -537,11 +537,11 @@ class ProductInfo extends Component {
 							{data.name}
 						</h2>
 						<div className="write-review" style={{ marginBottom: 20 }}>
-							{/* <span className="write-a-re">
+							<span className="write-a-re">
 								<i className="fa fa-pencil"></i>
 								Write a review
 							</span>
-							<span> | </span> */}
+							<span> | </span>
 							{data.age ? <span className="age-sec">
 							<FormattedMessage id="Age" defaultMessage="Age" />:&nbsp;{data.age} 
 							</span> : <span />}

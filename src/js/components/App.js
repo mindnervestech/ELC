@@ -21,7 +21,7 @@ import PrivacyPolicy from './StaticPages/PrivacyPolicy/PrivacyPolicy';
 import TermConditions from './StaticPages/TermsConditions/TermsConditions';
 
 import ProfileAddress from './CustomerAddress/ProfileAddress';
-
+import BithdayClubAccountTab from './StaticPages/BirthDayClub/BithdayClubAccountTab'
 import BirthDayClub from './StaticPages/BirthDayClub/BirthDayClub'
 import AddNewBirthDayClubChild from './StaticPages/BirthDayClub/AddNewChild';
 import Login from './Login/Login';
@@ -40,7 +40,7 @@ import ProductDetails from './Product/product-details/Product-details';
 import WishList from './WishList/WishList';
 import Order from './OrderHistory/OrderHistory';
 import OredrDetails from './OrderHistory/viewVoucher';
-
+import BrowseAllBrand from './Menu/BrowseAllBrand';
 import ResetPassword from './resetPassword';
 import StoreLocator from './StoreLocator/store-locator';
 import { BrowserRouter } from 'react-router-dom';
@@ -60,7 +60,11 @@ import localeData from '../../config/libs/i18n/data.json'
 import ProductList from '../components/PoductList/ProductListing'
 import NewCheckOut from '../components/NewCheckOut/CheckOut'
 import PresentFinder from '../components/PresentFinder/PresentFinder';
+import ShopByLearningSkill from './Menu/ShopByLearningSkill';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
+import ClickAndCollect from '../../js/components/CheckOut/DeliveryDetails/CilckAndCollect/ClickAndCollectModal'
 addLocaleData([...en, ...ar]);
+
 
 //const language = 'en';
 
@@ -325,6 +329,10 @@ class App extends Component {
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/view-voucher" component={OredrDetails} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/wish-list" component={WishList} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/birth-day-club" component={BirthDayClub} />
+                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/browse-all-brand" component={BrowseAllBrand} />
+                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/shop-by-learning-skill" component={ShopByLearningSkill} />
+
+                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/birthday-club-account" component={BithdayClubAccountTab} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/add-new-birth-day-club-child" component={AddNewBirthDayClubChild} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/about-us" component={AboutUs} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/contact-us" component={ContactUs} />
@@ -349,6 +357,7 @@ class App extends Component {
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/order-confirm" component={Confirmation} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/delivery-details" component={DeliveryDetails} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/order-summary" component={OrderSummary} />
+                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/click-and-collect" component={ClickAndCollect}/>
 
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/profile-address" component={ProfileAddress} />
                                         {/* <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/add-wishlist" component={Login} /> */}
