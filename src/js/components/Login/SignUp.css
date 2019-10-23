@@ -1,3 +1,97 @@
+.CWPP_large {
+    max-width: 312px;
+    width: 100%;
+}
+.CWPP_large {
+    padding: 15px 27px;
+    max-width: 367px;
+    font-size: 16px;
+    vertical-align: middle;
+    text-align: center;
+}
+.item_paypal{
+    display: block!important;
+    width: 100%!important;
+    text-align: center;
+    padding-bottom: 4%;
+}
+
+.PPBlue_V2 {
+    background-image: -webkit-linear-gradient(#0070BA 20%, #0070BA) !important;
+    background-image: linear-gradient(#0070BA 20%, #0070BA) !important;
+    background-repeat: no-repeat !important;
+    border-color: #0070BA;
+    margin: 0;
+    position: relative;
+    min-width: 4rem;
+    white-space: nowrap;
+}
+
+.LIwPP_V2, .LIwPP_V2 b, .LIwPP_V2 i {
+    cursor: pointer;
+    color: #fff;
+    display: inline-block;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
+}
+.or-border h2{
+width:auto;
+}
+.CWPP_pill {
+    border-radius: 50px;
+}
+
+.item{
+    width:100%;
+}
+.connect-with-paypal-text:hover{
+    text-decoration: underline !important;
+}
+
+#cwppButton .PPBlue_V2:hover {
+    text-decoration: underline;
+    background-color: #012169;
+    background-image: -webkit-linear-gradient(#012169 20%, #012169) !important;
+    background-image: linear-gradient(#012169 20%, #012169) !important;
+    background-repeat: no-repeat !important;
+    border-color: #012169;
+    margin: 0;
+    position: relative;
+    min-width: 4rem;
+    white-space: nowrap;
+   }
+.amazon{
+
+}
+#LIwPPundefined .PPBlue_V2:hover {
+ text-decoration: underline;
+ background-color: #169662;
+ background-image: -webkit-linear-gradient(#169662 20%, #169662) !important;
+ background-image: linear-gradient(#169662 20%, #169662) !important;
+ background-repeat: no-repeat !important;
+ border-color: #0070BA;
+ margin: 0;
+ position: relative;
+ min-width: 4rem;
+ white-space: nowrap;
+}
+.item_content{
+
+}
+.item_content:hover{
+    text-decoration: underline;
+}
+.login-divider{  
+    position: relative;
+    display: block;
+    width: 100%;
+    margin: 30px 0;
+    text-align: center;
+    font-size: 16px;
+    color: #4f4f4f;
+}
 html[dir="rtl"] .intl-tel-input .selected-flag {
     z-index: 1;
     position: relative;

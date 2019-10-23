@@ -6,12 +6,17 @@ import "react-tabs/style/react-tabs.css";
 import Spinner from '../../../Spinner/Spinner';
 import { connect } from 'react-redux';
 import * as actions from '../../../../redux/actions/index';
+import MapContainer from '../../StoreLocator/map'
 let productListData = {}
 let storeList = {}
 let pagenationCount = 5
 let start = 1
 let end = 5
 let list1 = {}
+let selectedMarker = {};
+let overId = null;
+let reload = true;
+const google = window.google
 class ClickAndCollect extends Component {
     constructor(props) {
         super(props);
@@ -25,6 +30,16 @@ class ClickAndCollect extends Component {
             start: 1,
             end: pagenationCount,
             check: true,
+            selectedLoc: {},
+            lat: null,
+            long: null,
+            zoom: 3,
+            isDisplay: false,
+            activeMarker: {},
+            showingInfoWindow: false,
+            selectedPlace: {},
+            showError: false,
+            selectedMarker: {},
         }
     }
 
@@ -206,20 +221,46 @@ class ClickAndCollect extends Component {
 
                         </div>
                         <div className="col col-md-8 col-xs-8 tabs-div" style={{ marginTop: 13 }}>
-                            <Tabs className="tabs">
-                                <TabList >
-                                    <Tab style={{ color: 'green', borderRadius: 0 }}>Store Deatils</Tab>
-                                    <Tab style={{ color: 'green', borderRadius: 0 }}>Map</Tab>
-                                    <Tab style={{ color: 'green', borderRadius: 0 }}>Opening Hours</Tab>
-                                </TabList>
+                            <Tabs className="tabs-main">
+                                <TabList style={{ color: '#4f4f4f', }} >
+                                    <Tab style={{ color: '#0d943f', borderRadius: 0, fontWeight: 800 }}>Store Deatils</Tab>
+                                    <Tab style={{ color: '#4f4f4f', backgroundColor: '#f8f8f8', borderRadius: 0, fontWeight: 800 }}>Map</Tab>
+                                    <Tab style={{ color: '#4f4f4f', backgroundColor: '#f8f8f8', borderRadius: 0, fontWeight: 800 }}>Opening Hours</Tab>
 
-                                <TabPanel>
-                                    <h2>Any content 1</h2>
-                                </TabPanel>
-                                <TabPanel>
-                                    <h2>Any content 2</h2>
-                                </TabPanel>
+                                </TabList>
+                                <div className="border-div-2">
+                                    <TabPanel style={{ marging: '5%' }}>
+                                        <h2>Store Deatils</h2>
+                                    </TabPanel>
+                                    <TabPanel style={{ marging: '5%' }}>
+                                        <h2>MAP</h2>
+                                    {/* <MapContainer
+                                                  onMouseoverMarker={this.onMouseoverMarker}
+                                                  onMarkerClick={this.onMarkerClick}
+                                                  markars={this.state.storeList}
+                                                  lat={this.state.lat}
+                                                  long={this.state.long}
+                                                  zoom={this.state.zoom}
+                                                  activeMarker={this.state.activeMarker}
+                                                  selectedPlace={this.state.selectedPlace}
+                                                  selectedMarker={selectedMarker}
+                                                  showingInfoWindow={this.state.showingInfoWindow}
+                                                  language={this.props.language} />)} */}
+                                    </TabPanel>
+                                    <TabPanel style={{ marging: '5%' }}>
+                                        <h2>Opening Hours</h2>
+                                    </TabPanel>
+                                </div>
+
                             </Tabs>
+                            <div style={{ marginTop: '5%', marginBottom: '5%', display: 'flex' }}>
+
+                                <div className="button-addtobasket-store">
+                                    <button className="alsoLikeCardButton" style={{width:'50%'}}><span>Add to basket</span></button>
+                                </div>
+
+                            </div>
+
                         </div>
                     </div>
 
@@ -234,7 +275,7 @@ class ClickAndCollect extends Component {
                     <div>
                         <h2 className="main-header-ChooseastoreforClickCollect">Choose a store for Click & Collect</h2>
                     </div>
-                    <div style={{marginLeft:'1%',marginRight:'1%'}}>
+                    <div style={{ marginLeft: '1%', marginRight: '1%' }}>
                         <div className="mb-flex-basic-none">
                             <div style={{ position: 'relative' }}>
                                 <input type="search " className="search-button-find-store-near-me" name="locationQuery" placeholder="Find stores near me" id="locationForSearch">
@@ -261,26 +302,48 @@ class ClickAndCollect extends Component {
                             </div>
                         </div>
                     </div>
-                    <div className="col col-md-8 col-xs-8 tabs-div" style={{ marginTop: 13 }}>
-                            <Tabs className="tabs">
-                                <TabList >
-                                    <Tab style={{ color: 'green', borderRadius: 0 }}>Store Deatils</Tab>
-                                    <Tab style={{ color: 'green', borderRadius: 0 }}>Map</Tab>
-                                    <Tab style={{ color: 'green', borderRadius: 0 }}>Opening Hours</Tab>
-                                </TabList>
+                    <div className="col col-md-8 col-xs-8" style={{ marginTop: 13 }}>
+                        <Tabs className="tabs-main">
+                            <TabList style={{ color: '#4f4f4f' }} >
+                                <Tab style={{ color: '#0d943f', borderRadius: 0, fontWeight: 800 }}>Store Deatils</Tab>
+                                <Tab style={{ color: '#4f4f4f', backgroundColor: '#f8f8f8', borderRadius: 0, fontWeight: 800 }}>Map</Tab>
+                                <Tab style={{ color: '#4f4f4f', backgroundColor: '#f8f8f8', borderRadius: 0, fontWeight: 800 }}>Opening Hours</Tab>
 
-                                <TabPanel>
-                                    <h2>Any content 1</h2>
+                            </TabList>
+                            <div className="border-div-2">
+                                <TabPanel style={{ marging: '5%' }}>
+                                    <h2>Store Deatils</h2>
                                 </TabPanel>
-                                <TabPanel>
-                                    <h2>Any content 2</h2>
+                                <TabPanel style={{ marging: '5%' }}>
+                                    <h2>MAP</h2>
                                 </TabPanel>
-                            </Tabs>
-                            <div style={{display:'inline-flex'}}>
-                            <button class="alsoLikeCardButton"><span>Back to store list</span></button>
-                            <button class="alsoLikeCardButton"><span>Add to basket</span></button>
+                                <TabPanel style={{ marging: '5%' }}>
+                                    <h2>Opening Hours</h2>
+                                </TabPanel>
                             </div>
+                        </Tabs>
+                        {/* <TabPanel >
+                                    <h2>Store Deatils</h2>
+                                </TabPanel>
+                                <TabPanel>
+                                    <h2>MAP</h2>
+                                </TabPanel>
+                                <TabPanel >
+                                    <h2>Opening Hours</h2>
+                                </TabPanel> */}
+
+                        <div style={{ marginTop: '5%', marginBottom: '5%', display: 'flex' }}>
+
+                            <div className="button-backto-store">
+                                <button className="addChildrenRegisterButton"><span>Back to store list</span></button>
+                            </div>
+
+                            <div className="button-addtobasket-store">
+                                <button className="alsoLikeCardButton"><span>Add to basket</span></button>
+                            </div>
+
                         </div>
+                    </div>
                 </div>
             </div>
         </>);

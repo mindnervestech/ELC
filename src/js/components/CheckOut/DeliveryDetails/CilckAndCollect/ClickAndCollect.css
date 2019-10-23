@@ -1,17 +1,124 @@
+.border-div-2{
+    border:1px solid green;
+    height:100%;
+    width: 100%;
+    border-top:none !important;
+}
+.tabs-list-2{
+    border-bottom: #0d943f
+}
+.tabs-list-2:hover{
+    border-bottom: #fff 
+}
+.tabs-main{
+ height:300px; 
+}
+.react-tabs__tab-list {
+    border-bottom: 1px solid #0d943f !important;
+    margin-bottom: 0px !important;
+    padding: 0;
+}
+.react-tabs__tab {
+    border-bottom: 1px solid #0d943f !important;
+    background-color: #dddddd;;
+    display: inline-block;
+    border-color: #0d943f !important;
+    border: 1px solid #0d943f;
+    bottom: -1px;
+    position: relative;
+    list-style: none;
+    margin-right: 0px;
+    margin-left: 25px;
+    padding: 8px 50px !important;
+    cursor: pointer;
+    /* border-bottom: #0d943f ; */
+}
+.react-tabs__tab--selected {
+    background: #fff;
+    border-color: #0d943f !important; 
+    color: black;
+    border-radius: 0px 0px 0 0;
+    border-bottom: 1px solid #fff !important;
+}
 
+.react-tabs__tab:hover {
+    background: #fff !important;
+    border-bottom: 1px solid #fff !important; 
+    color: #0d943f;
+    border-radius: 0px 0px 0 0;
+    border-bottom: #fff;
+}
+.button-backto-store{
+    display:block;
+    width:50% !important;
+    text-align: left;
+    background-color: #0d943f !important;
+    border: solid 1px #0d943f;
+    border-radius:.4rem;
+}
+
+.button-addtobasket-store{
+    display:block;
+    width:50% !important;
+    text-align: right;
+    margin-left: auto;
+}
 .storelist-li{
 
 }
 
-.tabs{
-    border-bottom: 1px solid green;
-    /* border-top: 1px solid green; */
-    border-left: 1px solid green;
-    /* height: 1000px; */
-    border-left: 1px 0px 1px 0px solid;
-    height: 360px;
-    border-right: 1px solid;
-    overflow: scroll;
+
+    .tabs {
+        margin: 0;
+        clear: both;
+    
+}
+.store-tabs{
+    position: relative;
+}
+.tabs .tabs-list {
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style: none;
+    border-bottom: 1px solid #dddddd;
+    display: table;
+    margin: 0 auto;
+    border: 0;
+}
+.tabs-list {
+    position: relative;
+    top: -1px;
+    margin-top: 1px;
+}
+.tabs .tabs-list li a {
+    color: #4f4f4f;
+    padding: 10px 30px;
+    border: 0;
+    font-size: 15px;
+}
+.tabs .tabs-list > li > a {
+    margin-right: 2px;
+    line-height: 1.42857143;
+    border: 1px solid transparent;
+    border-radius: 0 0 0 0;
+}
+.tabhead {
+    height: auto;
+}
+.tabs .tabs-list li {
+    border: 1px solid #0d943f;
+    border-radius: 2px 2px 0 0;
+    background-color: #f8f8f8;
+    margin-right: 20px;
+    margin-bottom: 1px;
+    outline: 0;
+}
+.tabs .tabs-list li.active {
+    border-bottom: 1px solid #ffffff;
+}
+.tabs .tabs-list > li {
+    position: relative;
+    display: block;
 }
 
 .clickandcollecttabs-ul{
@@ -64,13 +171,13 @@
     border: 1px solid #0d943f!important;
     border-radius: 4px;
     background-color: #0d943f;
-    width: 200px;
+    width: 150px;
     height: 50px !important;
     margin-bottom: 18px;
     padding-left: 18px;
     color: #fff;
     font-weight: 800;
-    font-size:15px;
+    font-size:12px;
     line-height: 10px;
 }
 .button-div-store-near{
@@ -106,6 +213,21 @@
     color: #4f4f4f;}
 
     @media only screen and (max-width:767px){
+        .react-tabs__tab {
+            border-bottom: 1px solid #0d943f !important;
+            background-color: #dddddd;;
+            display: inline-block;
+            border-color: #0d943f !important;
+            border: 1px solid #0d943f;
+            bottom: -1px;
+            position: relative;
+            list-style: none;
+            margin-right: 0px;
+            margin-left: 25px;
+            padding: 5px 5px 0px 5px !important;
+            cursor: pointer;
+            /* border-bottom: #0d943f ; */
+        }
         .button-store-find-near-me{
             border: 1px solid #0d943f!important;
             border-radius: 4px;
@@ -153,6 +275,21 @@
             }
     }
     @media only screen and (min-width:767px) and (max-width:1024px){
+        .react-tabs__tab {
+            border-bottom: 1px solid #0d943f !important;
+            background-color: #dddddd;;
+            display: inline-block;
+            border-color: #0d943f !important;
+            border: 1px solid #0d943f;
+            bottom: -1px;
+            position: relative;
+            list-style: none;
+            margin-right: 0px;
+            margin-left: 25px;
+            padding: 8px 20px !important;
+            cursor: pointer;
+            /* border-bottom: #0d943f ; */
+        }
         .tabs{
             border-bottom: 1px solid green;
             /* border-top: 1px solid green; */

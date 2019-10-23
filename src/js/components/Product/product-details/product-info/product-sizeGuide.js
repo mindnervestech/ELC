@@ -7,6 +7,7 @@ import thumbDown from '../../../../../assets/images/social/Fill 1 Copy 4.svg';
 import facebook from '../../../../../assets/images/social/facebook.png';
 import twitter from '../../../../../assets/images/social/twitter.png';
 import $ from 'jquery';
+import { FormattedMessage } from 'react-intl'
 
 import {
     FacebookShareButton,
@@ -22,10 +23,103 @@ class SizeGuide extends Component {
         self = this;
         this.state = {
             rating: 1,
-            checkboxStatus: true
+            checkboxStatus: true,
+            fields: {
+                ratingValue: 1,
+                reviewTitle: '',
+                review: '',
+                email: '',
+                name: '',
+                ageofchild: '',
+
+
+            },
+            reviewImage: {},
+            errors: {},
+            divEmailShow:true,
         };
     }
 
+    onChangeHandler = event => {
+        console.log(event.target.files[0])
+    }
+    handleChange = (field, e) => {
+
+        let fields = this.state.fields;
+        fields[field] = e.target.value;
+        this.setState({ fields });
+    }
+
+
+
+    handleValidation = () => {
+        let fields = this.state.fields;
+
+        let errors = {};
+        let formIsValid = true;
+
+        //Name
+        if (!fields["reviewTitle"]) {
+            formIsValid = false;
+            errors["reviewTitle"] = <FormattedMessage id="Signup.validation.firstName.empty" defaultMessage="Review Title is empty" />;
+        }
+
+        if (!fields["review"]) {
+            formIsValid = false;
+            errors["review"] = <FormattedMessage id="Signup.validation.lastName.empty" defaultMessage="Review is empty" />;
+        }
+
+        if (!(fields["review"].length > 50)) {
+            formIsValid = false;
+            errors["review"] = <FormattedMessage id="Signup.validation.lastName.empty" defaultMessage="Review text should be at least 50 characters." />;
+        }
+
+        if (!fields["name"]) {
+            formIsValid = false;
+            errors["name"] = <FormattedMessage id="Signup.validation.lastName.empty" defaultMessage="Your name  is empty" />;
+        }
+
+        if (typeof fields["name"] !== "undefined") {
+            if (!fields["name"].match(/^[a-zA-Z]+$/) && fields["firstName"].length > 0) {
+                formIsValid = false;
+                errors["name"] = <FormattedMessage id="Signup.validation.firstName.onlyletters" defaultMessage="Please enter only letters" />;
+            }
+        }
+
+        if (!fields["ageofchild"]) {
+            formIsValid = false;
+            errors["ageofchild"] = <FormattedMessage id="Signup.validation.lastName.empty" defaultMessage="Age is empty" />;
+        }
+
+
+        //Email
+        if (typeof fields["email"] !== "undefined") {
+
+            if (fields["email"].length === 0) {
+                formIsValid = false;
+                errors["email"] = <FormattedMessage id="Signup.validation.email.empty" defaultMessage="Please enter email" />;
+            }
+
+            if (fields["email"].length > 0) {
+                let lastAtPos = fields["email"].lastIndexOf('@');
+                let lastDotPos = fields["email"].lastIndexOf('.');
+                if (!(lastAtPos < lastDotPos && lastAtPos > 0 && fields["email"].indexOf('@@') == -1 && lastDotPos > 2 && (fields["email"].length - lastDotPos) > 2 && !fields["email"].includes(' '))) {
+                    formIsValid = false;
+                    errors["email"] = <FormattedMessage id="Signup.validation.email.invalid" defaultMessage="Please enter email in valid format" />;
+                }
+            }
+        }
+
+        this.setState({ errors: errors });
+        return formIsValid;
+    }
+
+    signUpSubmit = (e) => {
+        e.preventDefault();
+        if (this.handleValidation()) {
+            this.submitReview();
+        }
+    }
 
 
     showHideDiveWriteReivew = (str) => {
@@ -36,12 +130,40 @@ class SizeGuide extends Component {
     }
 
     divHideShowCheckBox = () => {
-       
-        if (document.getElementById("checkBoxStatus").checked = true) {
-            document.getElementById("emailCheckBox").style.display = "block";
+
+        // if (document.getElementById("checkBoxStatus").checked = true) {
+        //     document.getElementById("emailCheckBox").style.display = "block";
+        // }
+        // else {
+        //     document.getElementById("emailCheckBox").style.display = "none";
+        // }
+        if (this.state.checkboxStatus == false) {
+            //this.state.subscribe_to_newsletter = 1;
+            this.setState({ checkboxStatus: true,divEmailShow: true })
+            // document.getElementById("emailCheckBox").style.display = "none";
         }
         else {
-            document.getElementById("emailCheckBox").style.display = "none";
+            //this.state.subscribe_to_newsletter = 0;
+            this.setState({ checkboxStatus: false,divEmailShow: false })
+            // document.getElementById("emailCheckBox").style.display = "block";
+        }
+    }
+
+    validate = (event) => {
+        var theEvent = event || window.event;
+
+        // Handle paste
+        if (theEvent.type === 'paste') {
+            key = event.clipboardData.getData('text/plain');
+        } else {
+            // Handle key press
+            var key = theEvent.keyCode || theEvent.which;
+            key = String.fromCharCode(key);
+        }
+        var regex = /[0-9]|\./;
+        if (!regex.test(key)) {
+            theEvent.returnValue = false;
+            if (theEvent.preventDefault) theEvent.preventDefault();
         }
     }
 
@@ -62,18 +184,128 @@ class SizeGuide extends Component {
     }
 
     render() {
-        let ratingValueInString=''
-        if(this.state.rating==1){
-            ratingValueInString='Poor'
-        }else if(this.state.rating==2){
-            ratingValueInString='Fair' 
-        }else if(this.state.rating==3){
-            ratingValueInString='Average'
-        }else if(this.state.rating==4){
-            ratingValueInString='Good'
-        }else {
-            ratingValueInString='Excellent'
+        let ratingValueInString = ''
+        if (this.state.rating == 1) {
+            ratingValueInString = 'Poor'
+        } else if (this.state.rating == 2) {
+            ratingValueInString = 'Fair'
+        } else if (this.state.rating == 3) {
+            ratingValueInString = 'Average'
+        } else if (this.state.rating == 4) {
+            ratingValueInString = 'Good'
+        } else {
+            ratingValueInString = 'Excellent'
         }
+        const errorsObj = this.state.errors;
+
+        let reviewTitle = <div className="form-group">
+
+            <input onChange={this.handleChange.bind(this, 'reviewTitle')} type="text" style={{ height: '10%' }} className="form-control input-review-title" />
+            <small id="emailHelp" className=" textAlignStart smaill-title-best-purchase-ever form-text text-muted">
+                Example: Best Purchase Ever</small>
+
+        </div>
+
+        let reviewText = <div className="form-group">
+
+            <textarea onChange={this.handleChange.bind(this, 'review')} value={this.state.fields['review']} row="100" col="50" className="input-review-title" />
+            <small id="emailHelp" className="  textAlignStart smaill-title-best-purchase-ever form-text text-muted">
+                If you write review text, it should be at least 50 characters.</small><br /><br />
+        </div>
+
+        let reviewImageFile = <div className="file-loading">
+            <input className="input-group-lg" id="input-b6" name="input-b6[]" data-allowed-file-extensions='["png", "jpeg","jpg"]' type="file" multiple />
+            <small id="emailHelp" className=" textAlignStart smaill-title-best-purchase-ever form-text text-muted">
+                (2 Images only max. 5 Mb per max)</small><br /><br />
+        </div>
+
+        let emailInputField = <div id="emailCheckBox">
+            <h3 className="header-write-review-product-rating">Email<span style={{ color: 'red', fontSize: 12 }}>*</span></h3>
+            <div id="emailCheckBox" className="form-group">
+
+                <input type="email" onChange={this.handleChange.bind(this, 'email')} value={this.state.fields['email']} style={{ height: '10%' }} className="form-control input-review-title" />
+                <small id="emailHelp" className=" textAlignStart smaill-title-best-purchase-ever form-text text-muted">
+                    We will ONLY use your email to notify you in regards to your submission.</small>
+            </div></div>
+
+        let nameInputField = <div class="form-group">
+
+            <input type="text" onChange={this.handleChange.bind(this, 'name')} value={this.state.fields['name']} style={{ height: '10%' }} className="form-control input-review-title" />
+            <small id="emailHelp" className=" textAlignStart smaill-title-best-purchase-ever form-text text-muted">
+                This will be used as your display name.</small>
+        </div>
+        let ageInputField = <div class="form-group">
+
+            <input type="text" onKeyPress={this.validate} onChange={this.handleChange.bind(this, 'ageofchild')} value={this.state.fields['ageofchild']} style={{ height: '10%', width: '25%' }} className="form-control input-review-title" />
+
+        </div>
+        if ('ageofchild' in errorsObj) {
+            ageInputField = <div class="form-group">
+
+                <input type="text" onKeyPress={this.validate} onChange={this.handleChange.bind(this, 'ageofchild')} value={this.state.fields['ageofchild']} style={{ height: '10%', width: '25%' }} className="form-control input-review-title" />
+                <span>{errorsObj['ageofchild']}</span>
+            </div>
+        }
+
+        if ('name' in errorsObj) {
+            nameInputField = <div class="form-group">
+
+                <input type="text" onChange={this.handleChange.bind(this, 'name')} value={this.state.fields['name']} style={{ height: '10%' }} className="form-control input-review-title" />
+                <small id="emailHelp" className=" textAlignStart smaill-title-best-purchase-ever form-text text-muted">
+                    This will be used as your display name.</small>
+            </div>
+        }
+
+        if ('email' in emailInputField) {
+            emailInputField = <div id="emailCheckBox"><h3 className="header-write-review-product-rating">Email<span style={{ color: 'red', fontSize: 12 }}>*</span></h3>
+                <div className="form-group">
+
+                    <input type="email" onChange={this.handleChange.bind(this, 'email')} value={this.state.fields['email']} style={{ height: '10%' }} className="form-control input-review-title" />
+                    <small id="emailHelp" className=" textAlignStart smaill-title-best-purchase-ever form-text text-muted">
+                        We will ONLY use your email to notify you in regards to your submission.</small>
+                    <span>{errorsObj['email']}</span>
+                </div></div>
+
+        }
+
+        if ('reviewImage' in errorsObj) {
+            reviewImageFile = <div className="file-loading">
+                <input type="file" className="input-group-lg" id="input-b6" name="input-b6[]" data-allowed-file-extensions='["png", "jpeg","jpg"]' type="file" multiple />
+                <small id="emailHelp" className=" textAlignStart smaill-title-best-purchase-ever form-text text-muted">
+                    (2 Images only max. 5 Mb per max)</small>
+                <span>{errorsObj['reviewImage']}</span>
+                <br /><br />
+            </div>
+        }
+
+
+        if ('reviewTitle' in errorsObj) {
+            reviewTitle = <div className="form-group">
+
+                <input onChange={this.handleChange.bind(this, "reviewTitle")} value={this.state.fields["reviewTitle"]} type="text" style={{ height: '10%' }} className="form-control input-review-title" />
+                <small id="emailHelp" className=" textAlignStart smaill-title-best-purchase-ever form-text text-muted">
+                    Example: Best Purchase Ever</small>
+                <span> {errorsObj['reviewTitle']}</span>
+            </div>
+        }
+
+        if ('review' in errorsObj) {
+            reviewText = <div className="form-group">
+
+                <textarea onChange={this.handleChange.bind(this, 'review')} value={this.state.review} row="100" col="50" className="input-review-title" />
+                <small id="emailHelp" className="  textAlignStart smaill-title-best-purchase-ever form-text text-muted">
+                    If you write review text, it should be at least 50 characters.</small>
+                <span>{errorsObj['review']}</span>
+                <br /><br />
+            </div>
+
+        }
+
+
+
+
+
+
 
         // const {productSizeChart} = this.props;
         return (<>
@@ -154,7 +386,7 @@ class SizeGuide extends Component {
                             <h2 className="review-text" style={{ width: '40%' }} />
                         </div>
 
-                        <div  id="product_review" className="product-review">
+                        <div id="product_review" className="product-review">
                             <form>
                                 <div id="review-show-hide-div" style={{ display: 'none' }}>
                                     <h2 className="header-write-review-product-rationgs">Product Review <span style={{ color: 'red', fontSize: 12 }}>*(required) </span></h2>
@@ -168,57 +400,87 @@ class SizeGuide extends Component {
                                         starDimension='35px'
                                         starSpacing='2px'
                                     /><span className="ratingValueInString">{ratingValueInString}</span>
-                                    </h3><br />
+                                    </h3>
+                                    <span style={{ color: 'red' }}>Add ratings for this product</span>
+                                    <br />
                                     <h3 className="header-write-review-product-rating">Review title<span style={{ color: 'red', fontSize: 12 }}>*</span></h3>
-                                    <div class="form-group">
+                                    {/* <div class="form-group">
 
                                         <input type="text" style={{ height: '10%' }} className="form-control input-review-title" />
                                         <small id="emailHelp" className=" textAlignStart smaill-title-best-purchase-ever form-text text-muted">
                                             Example: Best Purchase Ever</small>
-                                    </div>
+                                    </div> */}
+                                    <div>  {reviewTitle}</div>
+
                                     <h3 className="header-write-review-product-rating">Review<span style={{ color: 'red', fontSize: 12 }}>*</span></h3>
-                                    <div class="form-group">
+                                    <div>{reviewText}</div>
+                                    {/* <div class="form-group">
 
                                         <textarea row="100" col="50" className="input-review-title" />
                                         <small id="emailHelp" className="  textAlignStart smaill-title-best-purchase-ever form-text text-muted">
                                             If you write review text, it should be at least 50 characters.</small><br /><br />
+                                    </div> */}
+
+                                    <div class="form-group">
                                         <h3 className="header-write-review-product-rating">Pictures speak a thousand words: add an image</h3>
-                                        <div className="file-loading">
+                                        {reviewImageFile}
+                                        {/* <div className="file-loading">
                                             <input className="input-group-lg" id="input-b6" name="input-b6[]" data-allowed-file-extensions='["png", "jpeg","jpg"]' type="file" multiple />
                                             <small id="emailHelp" className=" textAlignStart smaill-title-best-purchase-ever form-text text-muted">
                                                 (2 Images only max. 5 Mb per max)</small><br /><br />
-                                        </div>
-                                        <div className="form-group">
-                                            <input type="checkbox"  value={this.state.checkboxStatus} id="checkBoxStatus" onChange={this.divHideShowCheckBox} />
-                                            <h3 className="header-write-review-product-rating">Please send me an email when my review is posted.</h3>
-                                            <h3 className="header-write-review-product-rating">Email<span style={{ color: 'red', fontSize: 12 }}>*</span></h3>
-                                            <div id="emailCheckBox" class="form-group">
-
-                                                <input type="text" style={{ height: '10%' }} className="form-control input-review-title" />
-                                                <small id="emailHelp" className=" textAlignStart smaill-title-best-purchase-ever form-text text-muted">
-                                                    We will ONLY use your email to notify you in regards to your submission.</small>
-                                            </div><br />
-                                            <h3 className="header-write-review-product-rating">Your Name</h3>
-                                            <div class="form-group">
-
-                                                <input type="text" style={{ height: '10%' }} className="form-control input-review-title" />
-                                                <small id="emailHelp" className=" textAlignStart smaill-title-best-purchase-ever form-text text-muted">
-                                                    This will be used as your display name.</small>
-                                            </div><br />
-                                            <h3 className="header-write-review-product-rating">Age Of Child</h3>
-                                            <div class="form-group">
-
-                                                <input type="text" style={{ height: '10%', width: '25%' }} className="form-control input-review-title" />
-
-                                            </div><br />
-                                            <div style={{ marginLeft: 'auto', display: 'inline-flex' }}>
-
-                                                <button className="write-review-submit">Submit</button>
-                                                <a href="#" target="_blank" className="terms-condition-review-link" title="Terms &amp; Conditions">Terms &amp; Conditions</a>
-                                                <a href="#" target="_blank" className="review-guideliness-review-link" title="Review Guidelines">Review Guidelines</a></div>
-                                        </div>
+                                        </div> */}
                                     </div>
-                                </div></form>
+
+                                    <div className="form-group">
+                                        <div style={{ display: 'inline-flex' }}>
+                                            <input type="checkbox" checked={this.state.checkboxStatus ? "checked" : ""} value={this.state.checkboxStatus} id="checkBoxStatus" onChange={this.divHideShowCheckBox} /> &nbsp;&nbsp;
+                                        <h3 className="header-write-review-product-rating">Please send me an email when my review is posted.</h3>
+                                        </div>
+
+
+                                    </div>
+
+                                    {/* <div id="emailCheckBox" class="form-group">
+
+                                        <input type="email" style={{ height: '10%' }} className="form-control input-review-title" />
+                                        <small id="emailHelp" className=" textAlignStart smaill-title-best-purchase-ever form-text text-muted">
+                                            We will ONLY use your email to notify you in regards to your submission.</small>
+                                    </div> */}
+                                    {this.state.divEmailShow ?<div>
+                                        {emailInputField}
+                                    </div>: ''}
+                                    <br />
+
+                                    <h3 className="header-write-review-product-rating">Your Name</h3>
+                                    {/* <div class="form-group">
+
+                                        <input type="text" style={{ height: '10%' }} className="form-control input-review-title" />
+                                        <small id="emailHelp" className=" textAlignStart smaill-title-best-purchase-ever form-text text-muted">
+                                            This will be used as your display name.</small>
+                                    </div> */}
+                                    <div>{nameInputField}</div>
+                                    <br />
+
+                                    <h3 className="header-write-review-product-rating">Age Of Child</h3>
+                                    {/* <div class="form-group">
+
+                                        <input type="text" onKeyPress={this.validate} onChange={this.handleChange.bind(this,'ageofchild')} value={this.state.fields['ageofchild']} style={{ height: '10%', width: '25%' }} className="form-control input-review-title" />
+
+                                    </div> */}
+                                    <div>
+                                        {ageInputField}
+                                    </div>
+                                    <br />
+
+                                    <div style={{ marginLeft: 'auto', display: 'inline-flex' }}>
+
+                                        <button className="write-review-submit">Submit</button>
+                                        <a href="#" target="_blank" className="terms-condition-review-link" title="Terms &amp; Conditions">Terms &amp; Conditions</a>
+                                        <a href="#" target="_blank" className="terms-condition-review-link" title="Terms &amp; Conditions">Terms &amp; Conditions</a>
+                                    </div>
+
+                                </div>
+                            </form>
 
 
 
@@ -313,7 +575,7 @@ class SizeGuide extends Component {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div >
         </>
         )
     }
