@@ -177,7 +177,10 @@ class ProductSlider extends Component {
                                                             <img src={item.productImageUrl[0]} />
                                                         </div>
                                                         <div className="marginTop25">
-                                                            <label className="text-color">{item.name}</label>
+                                                            {(item.name).length >100 ?
+                                                            <label title={item.name} className="text-color">{`${item.name.substring(0,60)}...`}</label>:
+                                                            <label title={item.name} className="text-color">{item.name}</label>
+                                                            }
                                                         </div>
                                                         <div>
                                                             <span style={{ fontSize: 14, color: "#0D943F", fontWeight: "bold" }}>{item.currency ? item.currency : currency} &nbsp;{item.price}</span>

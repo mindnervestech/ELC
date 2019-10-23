@@ -709,7 +709,11 @@ class ProductListData extends Component {
 													{/* <img src={percentage} className="percentage" style={{ display: 'none' }} /> */}
 													</div>
 													<div style={{height: list[keyName].json.imageUrl ? 50 : 195,  marginTop: 10, overflow: 'hidden'}}>
-														<label className="text-color">{list[keyName].json.name}</label>
+													
+														{ (list[keyName].json.name).length> 20 ?
+														 <label  title={list[keyName].json.name} className="text-color">{`${list[keyName].json.name.substring(0,40)}....`}</label>:
+														 <label title={list[keyName].json.name}  className="text-color">{list[keyName].json.name}</label>
+													 }
 													</div>
 													{list[keyName].json.offers && list[keyName].json.offers.status === 1 ?
 														this.showDiscountPrise(list[keyName].json.offers.data, list[keyName].price, list[keyName].currency)
