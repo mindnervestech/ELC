@@ -1,6 +1,7 @@
 import * as actionType from './actionTypes';
 import { API } from '../../api/api';
-import { loadingSpinner } from './globals';
+import { loadingSpinner,loadingSpinnerForProduct } from './globals';
+
 
 /////////////////////////////////GET WISHLIST////////////////////////////////////
 
@@ -89,12 +90,14 @@ export const removeWishList = (payload) => {
             type: actionType.WISH_LIST_LOADER,
             payload: { wishLoader: true}
         });
-        let cb = {
+dispatch(loadingSpinnerForProduct({ statusAlertRemove: true,statusAlert:true }))
+        let cb = {        
             success: (res) => {
                 dispatch({
                     type: actionType.WISH_LIST_LOADER,
                     payload: { wishLoader: false}
-                });
+                }); 
+                dispatch(loadingSpinnerForProduct({ statusAlertRemove: false,statusAlert:false }))
                 if (res.status === true && res.code === 200) {
                     if (payload.index != -1) {
                         prodArray.splice(payload.index, 1);

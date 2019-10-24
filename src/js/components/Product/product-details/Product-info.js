@@ -9,23 +9,30 @@ import ShareUrl from '../product-details/product-info/product-size';
 import Popup from 'react-popup';
 import { connect } from 'react-redux';
 import * as actions from '../../../redux/actions/index';
-import { Row, Col} from 'reactstrap';
+import { Row, Col } from 'reactstrap';
+import ClickAndCollect from '../../CheckOut/DeliveryDetails/CilckAndCollect/ClickAndCollectModal'
 import { FormattedMessage } from 'react-intl';
-
+let is_in_wishlist_item=false;
 let _this;
 class ProductInfo extends Component {
 	constructor(props) {
 		super(props);
-		_this=this;
+		
+		_this = this;
 		this.state = {
+			openClickAndCollectModalStatus: false,
 			defaultQty: 1,
 			openShareModel: false,
 			showAlert: false,
-			is_in_wishlist_item:false,
+			is_in_wishlist_item: false,
+			showAlertForAdd: false,
+			showAlertForRemove: false,
 			wishlist_message: '',
+			add_wishlist_message: '',
+			remove_wishlist_message: '',
 			ischeckremove: true,
 			ischeckadd: true,
-			alreadyWishList:false,
+			alreadyWishList: false,
 			showLearning: false,
 			cartModelFlag: false,
 		};
@@ -39,29 +46,56 @@ class ProductInfo extends Component {
 		}
 	}
 
+	closeAlertAddWishList = () => {
+		_this.setState({ showAlertForAdd: false })
+	}
 
-	componentWillReceiveProps(nextProps,prevProps) {
-		let i = 0;
-		for (i = 0; i < this.props.wishlistItem.products.length; i++) {
+	closeAlertRemoveWishList = () => {
+		_this.setState({ showAlertForRemove: false })
+	}
+
+	componentWillReceiveProps(nextProps, prevProps) {
 		
+		let i = 0;
+		if(nextProps.productZoomDetails!==undefined){
+			for (i = 0; i < this.props.wishlistItem.products.length; i++) {
 				if (this.props.productZoomDetails.id === this.props.wishlistItem.products[i].product_id) {
 					document.getElementById('Capa_1').setAttribute('class', 'naylove-icon active');
 					this.setState({ is_in_wishlist_item: true })
-					
 				}
-			}
-			if (!nextProps.spinnerProduct.statusAlert && nextProps.productWishDetailPDP.wishlist_success!==undefined ) {
-		
-				if (this.state.ischeckadd) {
-				
-					this.setState({ wishlist_message:nextProps.productWishDetailPDP.wishlist_success, showAlert: true, ischeckadd: false });
-					setTimeout(() => {
-						this.closeAlert();
-					}, 3000);
-					
+				else {
+					document.getElementById('Capa_1').setAttribute('class', 'naylove-icon ');
+					this.setState({ is_in_wishlist_item: false })
 				}
-			}
+			
+		}
+		}
 		
+		if (!nextProps.spinnerProduct.statusAlert && nextProps.productWishDetailPDP.wishlist_success !== undefined) {
+         //  console.log(" add nextProps.spinnerProduct.statusAlert",nextProps.spinnerProduct.statusAlert)
+			if (this.state.ischeckadd) {
+
+				this.setState({ add_wishlist_message: nextProps.productWishDetailPDP.wishlist_success, showAlertForAdd: true, ischeckadd: false });
+				setTimeout(() => {
+					this.closeAlertAddWishList();
+				}, 3000);
+
+			}
+		}
+
+
+		if (nextProps.productWishDetailPDP.remove_wishlist_success !== undefined) {
+			
+			if (this.state.ischeckadd) {
+
+				this.setState({ remove_wishlist_message: nextProps.productWishDetailPDP.remove_wishlist_success, showAlertForRemove: true, ischeckadd: false });
+				setTimeout(() => {
+					this.closeAlertRemoveWishList();
+				}, 3000);
+
+			}
+		}
+
 	}
 
 
@@ -83,7 +117,7 @@ class ProductInfo extends Component {
 		let totalQty = this.props.data.type === 'simple' ? parseInt(this.props.data.simpleqty) : this.props.data.simpleproducts[0].qty;
 		let addQty = 0;
 		this.props.alertFlag();
-		this.setState({showForAddCartAlert: true, cartModelFlag: false})
+		this.setState({ showForAddCartAlert: true, cartModelFlag: false })
 		if (totalQty < this.state.defaultQty) {
 			addQty = totalQty;
 		} else {
@@ -211,45 +245,60 @@ class ProductInfo extends Component {
 
 	closeAlert = () => {
 		this.setState({ showAlert: false });
-		this.setState({alreadyWishList:false})
-		
+		this.setState({ alreadyWishList: false })
+
 	}
 
 	_handleClick = async () => {
-		if (document.getElementById('Capa_1').getAttribute('class').includes('active')) {
+		if (document.getElementById('Capa_1').getAttribute('class').includes("active")) {
 			document.getElementById('Capa_1').setAttribute('class', 'naylove-icon');
-			// if (this.props.productWishDetailPDP.wishlist_itemid!==undefined) {
-
-			// 	this.setState({ is_in_wishlist_item: false, ischeckremove: true })
-				
-
-			// }
-		} else {
-			
-			document.getElementById('Capa_1').setAttribute('class', 'naylove-icon active');
-            setTimeout(() => {
-				_this.setState({ is_in_wishlist_item:true, ischeckadd: true })	
+			setTimeout(() => {
+				this.setState({ is_in_wishlist_item: false, ischeckremove: true })	
 			}, 100);
 			
+			if (this.props.productWishDetailPDP.wishlist_itemid !== undefined) {
+				//console.log( " this.props.productWishDetailPDP.wishlist_itemid",this.props.productWishDetailPDP.wishlist_itemid)
+				this.props.onRemoveWishList({
+					index: null,
+					wishlist_id: this.props.productWishDetailPDP.wishlist_itemid
+				})
+				
+				is_in_wishlist_item=false
+				
+				
+
+			}
+		} else {
 		
 			const data = {
 				customer_id: this.props.customerDetails.customer_id,
 				product_id: this.props.productZoomDetails.id
 			};
 			this.props.onAddToWishList(data);
+			document.getElementById('Capa_1').setAttribute('class', 'naylove-icon active');
+			setTimeout(() => {
+				_this.setState({ is_in_wishlist_item: true, ischeckadd: true })
+			}, 100);
+			is_in_wishlist_item=true;
+			console.log("is_in_wishlist_item  add",is_in_wishlist_item)
 		}
 
 	};
+	openClickAndCollectModal = () => {
+		this.setState({ openClickAndCollectModalStatus: true })
+	}
+	onCloseClickAndCollectModal = () => {
+		this.setState({ openClickAndCollectModalStatus: false })
+	}
 
+	showAlreadyWishListAlert = () => {
 
-	showAlreadyWishListAlert=()=>{
-
-		this.setState({alreadyWishList:true})
+		this.setState({ alreadyWishList: true })
 		setTimeout(() => {
 			this.closeAlert();
 		}, 3000);
 	}
-	
+
 
 	_getUnique = (arr, comp) => {
 		const unique = arr
@@ -287,8 +336,36 @@ class ProductInfo extends Component {
 					xmlSpace="preserve"
 					width="20px"
 					height="20px"
-				
-					className={"naylove-icon  " + (this.state.is_in_wishlist_item ? 'active' : '')}
+
+					className={"naylove-icon  " + ( is_in_wishlist_item ? 'active' : '')}
+
+				>
+					<g transform="matrix(0.94148 0 0 0.94148 1.46299 1.46299)">
+						<path fill='green'
+							d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543  c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503  c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"
+							className="naylove"
+						/>
+					</g>
+				</svg>
+				{ is_in_wishlist_item ? <span style={{ margingRight: "35px" }}  className="mr-10-wishlist" ><FormattedMessage id="PageTitle.add-wishlist" defaultMessage="Add to wishlist" /></span> : <span style={{ margingRight: "35px" }} disabled={this.state.is_in_wishlist_item} className="mr-10-wishlist" ><FormattedMessage id="PageTitle.removewishlist" defaultMessage="Remove from wishlist" /></span>}
+			</span>
+			</Link>);
+		} else {
+			return (
+				<span onClick={() => this._handleClick()} className="wishlist-span-1 mr-10-wishlist"><svg
+					xmlns="http://www.w3.org/2000/svg"
+					xmlnsXlink="http://www.w3.org/1999/xlink"
+					version="1.1"
+					id="Capa_1"
+					x="0px"
+					y="0px"
+					viewBox="0 0 50 50"
+					style={{ enableBackground: 'new 0 0 50 50', marginRight: 10 }}
+					xmlSpace="preserve"
+					width="20px"
+					height="20px"
+					disabled="disabled"
+					className={"naylove-icon " + ( this.state.is_in_wishlist_item ? 'active' : '')}
 
 				>
 					<g transform="matrix(0.94148 0 0 0.94148 1.46299 1.46299)">
@@ -296,70 +373,11 @@ class ProductInfo extends Component {
 							d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543  c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503  c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"
 							className="naylove"
 						/>
-					</g>
+					</g>{' '}
 				</svg>
-				{!this.state.is_in_wishlist_item ? <span style={{ margingRight: "35px" }} disabled="disabled" className="mr-10-wishlist" ><FormattedMessage id="PageTitle.add-wishlist" defaultMessage="Add to wishlist" /></span> : <span style={{ margingRight: "35px" }} disabled={this.state.is_in_wishlist_item} className="mr-10-wishlist" ><FormattedMessage id="PageTitle.add-wishlist" defaultMessage="Add to wishlist" /></span>}
-			</span>
-			</Link>);
-		} else {
-			return ( !this.state.is_in_wishlist_item ?
-			<span onClick={()=>this._handleClick()}  className="wishlist-span-1 mr-10-wishlist"><svg
-				xmlns="http://www.w3.org/2000/svg"
-				xmlnsXlink="http://www.w3.org/1999/xlink"
-				version="1.1"
-				id="Capa_1"
-				x="0px"
-				y="0px"
-				viewBox="0 0 50 50"
-				style={{ enableBackground: 'new 0 0 50 50', marginRight: 10 }}
-				xmlSpace="preserve"
-				width="20px"
-				height="20px"
-				disabled="disabled"
-				className={"naylove-icon " + (this.state.is_in_wishlist_item ? 'active' : '')}
-
-			>
-				<g transform="matrix(0.94148 0 0 0.94148 1.46299 1.46299)">
-					<path
-						d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543  c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503  c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"
-						className="naylove"
-					/>
-				</g>{' '}
-			</svg>
-				{this.state.is_in_wishlist_item ? <span style={{ margingRight: "35px" }} disabled="disabled"><FormattedMessage id="PageTitle.add-wishlist" defaultMessage="Add to wishlist" /></span> : <span disabled="disabled" style={{ margingRight: "35px" }}><FormattedMessage id="PageTitle.add-wishlist" defaultMessage="Add to wishlist" /></span>}
-			</span>:
-
-
-                <span  onClick={()=>this.showAlreadyWishListAlert()}className="wishlist-span-1 mr-10-wishlist"><svg
-				xmlns="http://www.w3.org/2000/svg"
-				xmlnsXlink="http://www.w3.org/1999/xlink"
-				version="1.1"
-				id="Capa_1"
-				x="0px"
-				y="0px"
-				viewBox="0 0 50 50"
-				style={{ enableBackground: 'new 0 0 50 50', marginRight: 10 }}
-				xmlSpace="preserve"
-				width="20px"
-				height="20px"
-				disabled="disabled"
-				className={"naylove-icon " + (this.state.is_in_wishlist_item ? 'active' : '')}
-
-			>
-				<g transform="matrix(0.94148 0 0 0.94148 1.46299 1.46299)">
-					<path
-						d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543  c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503  c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"
-						className="naylove"
-					/>
-				</g>{' '}
-			</svg>
-				{this.state.is_in_wishlist_item ? <span style={{ margingRight: "35px" }} disabled="disabled"><FormattedMessage id="PageTitle.add-wishlist" defaultMessage="Add to wishlist" /></span> : <span disabled="disabled" style={{ margingRight: "35px" }}><FormattedMessage id="PageTitle.add-wishlist" defaultMessage="Add to wishlist" /></span>}
-			</span>
-			
-			
+					{ !this.state.is_in_wishlist_item ? <span style={{ margingRight: "35px" }} ><FormattedMessage id="PageTitle.add-wishlist" defaultMessage="Add to wishlist" /></span> : <span  style={{ margingRight: "35px" }}><FormattedMessage id="PageTitle.removewishlist" defaultMessage="Remove from wishlist" /></span>}
+				</span>
 			);
-
-			
 		}
 	}
 
@@ -372,7 +390,7 @@ class ProductInfo extends Component {
 					);
 				} else {
 					return (
-						<div style={{width: '100%', paddingBottom: 10}}>
+						<div style={{ width: '100%', paddingBottom: 10 }}>
 							<div className="buyAndSaveMOreText">
 								<span><FormattedMessage id="BuyMore.Text" defaultMessage="BUY MORE SAVE MORE" /></span>
 							</div>
@@ -387,7 +405,7 @@ class ProductInfo extends Component {
 			let showOffer = []
 			let count = 0
 			for (let value in offer) {
-				if(count < 2){
+				if (count < 2) {
 					showOffer.push(value)
 					showOffer.push(offer[value])
 				}
@@ -395,7 +413,7 @@ class ProductInfo extends Component {
 			}
 			count = 0
 			return (
-				<div style={{width: '100%', paddingBottom: 10}}>
+				<div style={{ width: '100%', paddingBottom: 10 }}>
 					<div className="buyAndSaveMOreText">
 						<span><FormattedMessage id="BuyMore.Text" defaultMessage="BUY MORE SAVE MORE" /></span>
 					</div>
@@ -407,7 +425,7 @@ class ProductInfo extends Component {
 		}
 	}
 
-	showDiscountPrise(offerData , orignalPrise, currency){
+	showDiscountPrise(offerData, orignalPrise, currency) {
 		if (Object.keys(offerData).length === 1) {
 			for (let value in offerData) {
 				if (value === '1') {
@@ -434,33 +452,42 @@ class ProductInfo extends Component {
 		}
 	}
 
+	closeModal = () => {
+
+		//this.props.onClearForgotPass();
+		this.onCloseClickAndCollectModal();
+	}
+
 	render() {
 
-		let alreadyWishListMessage=null;
-		
-		if(this.state.alreadyWishList )
-		{   
-			alreadyWishListMessage = <span id="APEX_SUCCESS_MESSAGE" data-template-id="126769709897686936_S" className="apex-page-success u-visible"><div className="t-Body-alert">
-			<div className="t-Alert t-Alert--defaultIcons t-Alert--success t-Alert--horizontal t-Alert--page t-Alert--colorBG" id="t_Alert_Success" role="alert">
-				<div className="t-Alert-wrap">
-					<div className="t-Alert-icon">
-						<span className="t-Icon" />
-					</div>
-					<div className="t-Alert-content">
-						<div className="t-Alert-header">
-							<h2 className="t-Alert-title"><FormattedMessage id="Productisalreadyinthewishlist" defaultMessage="Product is already in the wishlist"/></h2>
+
+		const CilckAndCollectModal = <ClickAndCollect closeModal={this.closeModal} />;
+		const { openClickAndCollectModalStatus } = this.state;
+
+		let removeWishListMessage = null;
+
+		if (this.state.showAlertForRemove) {
+			removeWishListMessage = <span id="APEX_SUCCESS_MESSAGE" data-template-id="126769709897686936_S" className="apex-page-success u-visible"><div className="t-Body-alert">
+				<div className="t-Alert t-Alert--defaultIcons t-Alert--success t-Alert--horizontal t-Alert--page t-Alert--colorBG" id="t_Alert_Success" role="alert">
+					<div className="t-Alert-wrap">
+						<div className="t-Alert-icon">
+							<span className="t-Icon" />
+						</div>
+						<div className="t-Alert-content">
+							<div className="t-Alert-header">
+								<h2 className="t-Alert-title">{this.state.remove_wishlist_message}</h2>
+							</div>
+						</div>
+						<div className="t-Alert-buttons">
+							<button onClick={() => this.closeAlert()} className="t-Button t-Button--noUI t-Button--icon t-Button--closeAlert" type="button" title="Close Notification" onClick={this.closeAlert} ><span className="t-Icon icon-close" /></button>
 						</div>
 					</div>
-					<div className="t-Alert-buttons">
-						<button onClick={()=>this.closeAlert()}className="t-Button t-Button--noUI t-Button--icon t-Button--closeAlert" type="button" title="Close Notification" onClick={this.closeAlert} ><span className="t-Icon icon-close" /></button>
-					</div>
 				</div>
-			</div>
-		</div></span>;
+			</div></span>;
 		}
 		let respo_message = null;
 
-		if (this.state.showAlert) {
+		if (this.state.showAlertForAdd) {
 			respo_message = <span id="APEX_SUCCESS_MESSAGE" data-template-id="126769709897686936_S" className="apex-page-success u-visible"><div className="t-Body-alert">
 				<div className="t-Alert t-Alert--defaultIcons t-Alert--success t-Alert--horizontal t-Alert--page t-Alert--colorBG" id="t_Alert_Success" role="alert">
 					<div className="t-Alert-wrap">
@@ -469,11 +496,11 @@ class ProductInfo extends Component {
 						</div>
 						<div className="t-Alert-content">
 							<div className="t-Alert-header">
-								<h2 className="t-Alert-title">{this.state.wishlist_message}</h2>
+								<h2 className="t-Alert-title">{this.state.add_wishlist_message}</h2>
 							</div>
 						</div>
 						<div className="t-Alert-buttons">
-							<button onClick={()=>this.closeAlert()}className="t-Button t-Button--noUI t-Button--icon t-Button--closeAlert" type="button" title="Close Notification" onClick={this.closeAlert} ><span className="t-Icon icon-close" /></button>
+							<button onClick={() => this.closeAlert()} className="t-Button t-Button--noUI t-Button--icon t-Button--closeAlert" type="button" title="Close Notification" onClick={this.closeAlert} ><span className="t-Icon icon-close" /></button>
 						</div>
 					</div>
 				</div>
@@ -525,8 +552,14 @@ class ProductInfo extends Component {
 		return (
 
 			<div className="row">
+				<Modal modalId="ClickAndCollectModal" open={openClickAndCollectModalStatus} onClose={this.closeModal} center style={{ width: '100%', height: '100%' }}>
+
+
+					<div>{CilckAndCollectModal}</div>
+
+				</Modal>
 				{respo_message}
-				{alreadyWishListMessage}
+				{removeWishListMessage}
 				<Helmet>
 					<script src="/global/css/magiczoomplus/magiczoomplus.js"></script>
 					<script src="/global/css/magicscroll/magicscroll.js"></script>
@@ -543,7 +576,7 @@ class ProductInfo extends Component {
 							</span>
 							<span> | </span>
 							{data.age ? <span className="age-sec">
-							<FormattedMessage id="Age" defaultMessage="Age" />:&nbsp;{data.age} 
+								<FormattedMessage id="Age" defaultMessage="Age" />:&nbsp;{data.age}
 							</span> : <span />}
 						</div>
 						<div>
@@ -584,7 +617,7 @@ class ProductInfo extends Component {
 
 											<div className="prod-price">
 												{data.offers && data.offers.status === 1 ?
-													this.showDiscountPrise(data.offers.data,data.price,data.currency)
+													this.showDiscountPrise(data.offers.data, data.price, data.currency)
 													:
 													<span className="product-price">{data.currency}&nbsp;{Number(data.price).toFixed(2)}</span>}
 											</div>
@@ -625,7 +658,7 @@ class ProductInfo extends Component {
 																	</span>}
 															</span>
 														</div>
-														<div className="row click-collect">
+														<div className="row click-collect" >
 															<img src={freeCollect} />
 															<span style={{ marginTop: '15px', fontSize: '15px' }}>
 																<FormattedMessage id="delivery-details.Click&Collect.Title" defaultMessage="Click&Collect" />
@@ -820,7 +853,7 @@ class ProductInfo extends Component {
 
 const mapStateToProps = state => {
 	return {
-		spinnerProduct:state.spinner,
+		spinnerProduct: state.spinner,
 		isUserLoggedIn: state.login.isUserLoggedIn,
 		globals: state.global,
 		user_details: state.login.customer_details,
