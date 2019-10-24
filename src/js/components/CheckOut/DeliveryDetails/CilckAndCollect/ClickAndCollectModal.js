@@ -9,10 +9,10 @@ import * as actions from '../../../../redux/actions/index';
 import MapContainer from '../../StoreLocator/map'
 let productListData = {}
 let storeList = {}
-let pagenationCount = 5
+let pagenationCount = 4
 let start = 1
-let end = 5
-let list1 = {}
+let end = 3
+let list1 = []
 let selectedMarker = {};
 let overId = null;
 let reload = true;
@@ -76,9 +76,7 @@ class ClickAndCollect extends Component {
 
     }
 
-    componentWillReceiveProps(nextProps) {
-        console.log("NextProps NextProps", nextProps)
-    }
+
 
     pagenation = (start, end) => {
 
@@ -142,13 +140,7 @@ class ClickAndCollect extends Component {
             }
         }
     }
-    onNextClick = () => {
 
-    }
-
-    OnPreviousClick = () => {
-
-    }
     _renderStoreList = () => {
 
         let storeList = this.props.storeList;
@@ -187,7 +179,7 @@ class ClickAndCollect extends Component {
         console.log("Render Store List", list1)
         let modal = null;
         return (<>
-            <div className="click-and-collect-container divShowOnWeb">
+            <div style={{ overflow: 'scroll', height: 200 }} className="click-and-collect-container divShowOnWeb">
                 <div>
                     <div>
                         <h2 className="main-header-ChooseastoreforClickCollect">Choose a store for Click & Collect</h2>
@@ -204,19 +196,39 @@ class ClickAndCollect extends Component {
                                 <button name="find" className="button-store-find-near-me"><span className="icon icon-finder"><img src={location} style={{ width: 16 }} /></span>Find stores near me</button>
                             </div>
                             <div>
-                                {/* <ul>{storeList !== undefined && this.state.list1 && list1.map((item, index) =>
+                                <ul className="pickup-store-list">{storeList !== undefined && this.state.list1 && this.state.list1.map((item, index) =>
 
                                     (
 
-                                        <li className="storelist-li">
-                                            <span>{item.name}</span>
-                                            <span>{item.address}</span>
-                                            <span>{item.country}</span>
+                                        <li className=" pickup-store-list-entry pre-selected storelist-li">
+                                            <label for="pickup-entry-0" className="js-select-store-label">
+                                                <span className="pickup-store-info">
+                                                    <span className="pickup-store-list-entry-address">{item.name}</span><br />
+                                                    <span className="pickup-store-list-entry-city">{item.address}</span><br />
+                                                </span>
+                                                <span className="store-availability">
+                                                    <span className="available">{item.country}<br />
+
+                                                    </span></span>
+                                            </label>
+
                                         </li>
                                     )
                                 )}
-                                </ul> */}
+                                </ul>
                             </div>
+
+                            <div className="store-navigation-pager" style={{display:'block'}}>
+                                <a className="prev js-pickup-store-pager-prev" href="#" title="Previous" style={{ display: 'block' }}>
+                                    <span className="fa fa-chevron-left"></span></a>
+                                <a className="next js-pickup-store-pager-next" href="#" title="Next">
+                                    <span className="fa fa-chevron-right"></span></a>
+                                <div className="position">
+                                    <span className="js-pickup-store-pager-item-from">13</span>-<span class="js-pickup-store-pager-item-to">16</span> from&nbsp;<span class="js-pickup-store-pager-item-all">100</span> &nbsp;stores found</div>
+                            </div>
+
+
+
 
 
                         </div>
@@ -234,7 +246,7 @@ class ClickAndCollect extends Component {
                                     </TabPanel>
                                     <TabPanel style={{ marging: '5%' }}>
                                         <h2>MAP</h2>
-                                    {/* <MapContainer
+                                        {/* <MapContainer
                                                   onMouseoverMarker={this.onMouseoverMarker}
                                                   onMarkerClick={this.onMarkerClick}
                                                   markars={this.state.storeList}
@@ -253,10 +265,10 @@ class ClickAndCollect extends Component {
                                 </div>
 
                             </Tabs>
-                            <div style={{ marginTop: '5%', marginBottom: '5%', display: 'flex' }}>
+                            <div style={{ marginTop: '10%', marginBottom: '5%', display: 'flex' }}>
 
                                 <div className="button-addtobasket-store">
-                                    <button className="alsoLikeCardButton" style={{width:'50%'}}><span>Add to basket</span></button>
+                                    <button className="alsoLikeCardButton" style={{ width: '50%' }}><span>Add to basket</span></button>
                                 </div>
 
                             </div>
@@ -287,22 +299,30 @@ class ClickAndCollect extends Component {
                                 <button name="find" className="button-store-find-near-me"><span className="icon icon-finder"><img src={location} style={{ width: 16 }} /></span>Find stores near me</button>
                             </div>
                             <div>
-                                {/* <ul>{storeList !== undefined && this.state.list1 && list1.map((item, index) =>
+                                <ul className="pickup-store-list">{storeList !== undefined && this.state.list1 && this.state.list1.map((item, index) =>
 
                                     (
 
-                                        <li className="storelist-li">
-                                            <span>{item.name}</span>
-                                            <span>{item.address}</span>
-                                            <span>{item.country}</span>
+                                        <li className=" pickup-store-list-entry pre-selected storelist-li">
+                                            <label for="pickup-entry-0" className="js-select-store-label">
+                                                <span className="pickup-store-info">
+                                                    <span className="pickup-store-list-entry-address">{item.name}</span><br />
+                                                    <span className="pickup-store-list-entry-city">{item.address}</span><br />
+                                                </span>
+                                                <span className="store-availability">
+                                                    <span className="available">{item.country}<br />
+
+                                                    </span></span>
+                                            </label>
+
                                         </li>
                                     )
                                 )}
-                                </ul> */}
+                                </ul>
                             </div>
                         </div>
                     </div>
-                    <div className="col col-md-8 col-xs-8" style={{ marginTop: 13 }}>
+                    <div className="col col-md-8 col-xs-8 display-mb" style={{ marginTop: 13 }}>
                         <Tabs className="tabs-main">
                             <TabList style={{ color: '#4f4f4f' }} >
                                 <Tab style={{ color: '#0d943f', borderRadius: 0, fontWeight: 800 }}>Store Deatils</Tab>
