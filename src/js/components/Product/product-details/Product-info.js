@@ -12,12 +12,13 @@ import * as actions from '../../../redux/actions/index';
 import { Row, Col } from 'reactstrap';
 import ClickAndCollect from '../../CheckOut/DeliveryDetails/CilckAndCollect/ClickAndCollectModal'
 import { FormattedMessage } from 'react-intl';
-let is_in_wishlist_item=false;
+import { async } from 'q';
+
 let _this;
+let in_wishlist = false;
 class ProductInfo extends Component {
 	constructor(props) {
 		super(props);
-		
 		_this = this;
 		this.state = {
 			openClickAndCollectModalStatus: false,
@@ -35,6 +36,7 @@ class ProductInfo extends Component {
 			alreadyWishList: false,
 			showLearning: false,
 			cartModelFlag: false,
+			checkForProductInWishList: true
 		};
 		this.addToCart = this.addToCart.bind(this);
 	}
@@ -46,58 +48,71 @@ class ProductInfo extends Component {
 		}
 	}
 
+
 	closeAlertAddWishList = () => {
-		_this.setState({ showAlertForAdd: false })
+		this.setState({ showAlertForAdd: false })
 	}
 
 	closeAlertRemoveWishList = () => {
-		_this.setState({ showAlertForRemove: false })
+		this.setState({ showAlertForRemove: false })
 	}
 
 	componentWillReceiveProps(nextProps, prevProps) {
-		
+
 		let i = 0;
-		if(nextProps.productZoomDetails!==undefined){
-			for (i = 0; i < this.props.wishlistItem.products.length; i++) {
-				if (this.props.productZoomDetails.id === this.props.wishlistItem.products[i].product_id) {
-					document.getElementById('Capa_1').setAttribute('class', 'naylove-icon active');
-					this.setState({ is_in_wishlist_item: true })
+		if (this.state.checkForProductInWishList) {
+			if (nextProps.productZoomDetails !== undefined) {
+				for (i = 0; i < this.props.wishlistItem.products.length; i++) {
+					if (nextProps.productZoomDetails.id === this.props.wishlistItem.products[i].product_id) {
+						document.getElementById('Capa_1').setAttribute('class', 'naylove-icon active');
+						this.setState({ is_in_wishlist_item: true })
+					}
 				}
-				else {
-					document.getElementById('Capa_1').setAttribute('class', 'naylove-icon ');
-					this.setState({ is_in_wishlist_item: false })
-				}
-			
+			}
+
 		}
-		}
-		
+
 		if (!nextProps.spinnerProduct.statusAlert && nextProps.productWishDetailPDP.wishlist_success !== undefined) {
-         //  console.log(" add nextProps.spinnerProduct.statusAlert",nextProps.spinnerProduct.statusAlert)
-			if (this.state.ischeckadd) {
 
-				this.setState({ add_wishlist_message: nextProps.productWishDetailPDP.wishlist_success, showAlertForAdd: true, ischeckadd: false });
-				setTimeout(() => {
-					this.closeAlertAddWishList();
-				}, 3000);
-
+			if (this.props.customerDetails.customer_id !== undefined) {
+				this.props.onGetWishListItem({ customerid: this.props.customerDetails.customer_id, store_id: this.props.globals.currentStore })
 			}
-		}
-
-
-		if (nextProps.productWishDetailPDP.remove_wishlist_success !== undefined) {
+			document.getElementById('Capa_1').setAttribute('class', 'naylove-icon active');
 			
-			if (this.state.ischeckadd) {
-
-				this.setState({ remove_wishlist_message: nextProps.productWishDetailPDP.remove_wishlist_success, showAlertForRemove: true, ischeckadd: false });
-				setTimeout(() => {
-					this.closeAlertRemoveWishList();
-				}, 3000);
-
+			this.setState({ is_in_wishlist_item: true },()=>{
+				
 			}
+			
+			)
+			
+			this.setState({ add_wishlist_message: nextProps.productWishDetailPDP.wishlist_success, showAlertForAdd: true, ischeckadd: !this.state.ischeckadd });
+			setTimeout(() => {
+				this.closeAlertAddWishList();
+			}, 1000);
+			
+			this.props.onClearProductWishDetail();
+		}
+		if (!nextProps.productWishDetailPDP.statusAlertRemove && nextProps.productWishDetailPDP.remove_wishlist_success !== undefined) {
+				
+			if (this.props.customerDetails.customer_id !== undefined) {
+				this.props.onGetWishListItem({ customerid: this.props.customerDetails.customer_id, store_id: this.props.globals.currentStore })
+			}
+             
+			document.getElementById('Capa_1').setAttribute('class', 'naylove-icon');
+			this.setState({ is_in_wishlist_item: false },()=>{
+			
+			})
+			this.setState({ remove_wishlist_message: nextProps.productWishDetailPDP.remove_wishlist_success, showAlertForRemove: true, ischeckremove: !this.state.ischeckremove });
+			setTimeout(() => {
+				this.closeAlertRemoveWishList();
+			}, 1000);
+			this.props.onClearProductWishDetail()
+			
+			//this.props.onClearProductWishDetail();
+			//document.getElementById('Capa_1').setAttribute('class', 'naylove-icon');
 		}
 
 	}
-
 
 	decrement = totalQty => {
 		let currQty = this.state.defaultQty;
@@ -250,39 +265,38 @@ class ProductInfo extends Component {
 	}
 
 	_handleClick = async () => {
+		var wishlist_id = 0;
+		let i = 0;
 		if (document.getElementById('Capa_1').getAttribute('class').includes("active")) {
-			document.getElementById('Capa_1').setAttribute('class', 'naylove-icon');
-			setTimeout(() => {
-				this.setState({ is_in_wishlist_item: false, ischeckremove: true })	
-			}, 100);
-			
-			if (this.props.productWishDetailPDP.wishlist_itemid !== undefined) {
-				//console.log( " this.props.productWishDetailPDP.wishlist_itemid",this.props.productWishDetailPDP.wishlist_itemid)
+			if (this.props.productWishDetailPDP.wishlist_itemid !== undefined || this.props.productWishDetailPDP.wishlist_itemid !== "") {
+				for (i = 0; i < this.props.wishlistItem.products.length; i++) {
+					if (this.props.productZoomDetails.id === this.props.wishlistItem.products[i].product_id) {
+
+						wishlist_id = this.props.wishlistItem.products[i].wishlist_id;
+					}
+				}
 				this.props.onRemoveWishList({
 					index: null,
-					wishlist_id: this.props.productWishDetailPDP.wishlist_itemid
+					wishlist_id: wishlist_id
 				})
-				
-				is_in_wishlist_item=false
-				
-				
+			
 
+				// if (this.props.customerDetails.customer_id !== undefined) {
+				// 	this.props.onGetWishListItem({ customerid: this.props.customerDetails.customer_id, store_id: this.props.globals.currentStore })
+				// }
+				 
 			}
-		} else {
-		
+		}
+		else {
 			const data = {
 				customer_id: this.props.customerDetails.customer_id,
 				product_id: this.props.productZoomDetails.id
 			};
 			this.props.onAddToWishList(data);
-			document.getElementById('Capa_1').setAttribute('class', 'naylove-icon active');
-			setTimeout(() => {
-				_this.setState({ is_in_wishlist_item: true, ischeckadd: true })
-			}, 100);
-			is_in_wishlist_item=true;
-			console.log("is_in_wishlist_item  add",is_in_wishlist_item)
+			// if (this.props.customerDetails.customer_id !== undefined) {
+			// 	this.props.onGetWishListItem({ customerid: this.props.customerDetails.customer_id, store_id: this.props.globals.currentStore })
+			// }
 		}
-
 	};
 	openClickAndCollectModal = () => {
 		this.setState({ openClickAndCollectModalStatus: true })
@@ -298,8 +312,6 @@ class ProductInfo extends Component {
 			this.closeAlert();
 		}, 3000);
 	}
-
-
 	_getUnique = (arr, comp) => {
 		const unique = arr
 			.map(e => e[comp])
@@ -336,8 +348,7 @@ class ProductInfo extends Component {
 					xmlSpace="preserve"
 					width="20px"
 					height="20px"
-
-					className={"naylove-icon  " + ( is_in_wishlist_item ? 'active' : '')}
+					className={"naylove-icon  " + (this.state.is_in_wishlist_item ? 'active' : '')}
 
 				>
 					<g transform="matrix(0.94148 0 0 0.94148 1.46299 1.46299)">
@@ -347,12 +358,13 @@ class ProductInfo extends Component {
 						/>
 					</g>
 				</svg>
-				{ is_in_wishlist_item ? <span style={{ margingRight: "35px" }}  className="mr-10-wishlist" ><FormattedMessage id="PageTitle.add-wishlist" defaultMessage="Add to wishlist" /></span> : <span style={{ margingRight: "35px" }} disabled={this.state.is_in_wishlist_item} className="mr-10-wishlist" ><FormattedMessage id="PageTitle.removewishlist" defaultMessage="Remove from wishlist" /></span>}
+				{!this.state.is_in_wishlist_item ? <span style={{ margingRight: "35px" }} className="mr-10-wishlist" ><FormattedMessage id="PageTitle.add-wishlist" defaultMessage="Add to wishlist" /></span> : <span style={{ margingRight: "35px" }} disabled={this.state.is_in_wishlist_item} className="mr-10-wishlist" ><FormattedMessage id="PageTitle.removewishlist" defaultMessage="Remove from wishlist" /></span>}
 			</span>
 			</Link>);
 		} else {
 			return (
-				<span onClick={() => this._handleClick()} className="wishlist-span-1 mr-10-wishlist"><svg
+
+				<span onClick={() => this._handleClick(this.props.productZoomDetails.id)} className="wishlist-span-1 mr-10-wishlist"><svg
 					xmlns="http://www.w3.org/2000/svg"
 					xmlnsXlink="http://www.w3.org/1999/xlink"
 					version="1.1"
@@ -365,7 +377,7 @@ class ProductInfo extends Component {
 					width="20px"
 					height="20px"
 					disabled="disabled"
-					className={"naylove-icon " + ( this.state.is_in_wishlist_item ? 'active' : '')}
+					className={"naylove-icon " + (this.state.is_in_wishlist_item ? 'active' : '')}
 
 				>
 					<g transform="matrix(0.94148 0 0 0.94148 1.46299 1.46299)">
@@ -374,8 +386,9 @@ class ProductInfo extends Component {
 							className="naylove"
 						/>
 					</g>{' '}
+
 				</svg>
-					{ !this.state.is_in_wishlist_item ? <span style={{ margingRight: "35px" }} ><FormattedMessage id="PageTitle.add-wishlist" defaultMessage="Add to wishlist" /></span> : <span  style={{ margingRight: "35px" }}><FormattedMessage id="PageTitle.removewishlist" defaultMessage="Remove from wishlist" /></span>}
+					{!this.state.is_in_wishlist_item ? <span style={{ margingRight: "35px" }} ><FormattedMessage id="PageTitle.add-wishlist" defaultMessage="Add to wishlist" /></span> : <span style={{ margingRight: "35px" }}><FormattedMessage id="PageTitle.removewishlist" defaultMessage="Remove from wishlist" /></span>}
 				</span>
 			);
 		}
@@ -479,7 +492,7 @@ class ProductInfo extends Component {
 							</div>
 						</div>
 						<div className="t-Alert-buttons">
-							<button onClick={() => this.closeAlert()} className="t-Button t-Button--noUI t-Button--icon t-Button--closeAlert" type="button" title="Close Notification" onClick={this.closeAlert} ><span className="t-Icon icon-close" /></button>
+							<button onClick={() => this.closeAlertRemoveWishList()} className="t-Button t-Button--noUI t-Button--icon t-Button--closeAlert" type="button" title="Close Notification" onClick={this.closeAlert} ><span className="t-Icon icon-close" /></button>
 						</div>
 					</div>
 				</div>
@@ -500,7 +513,7 @@ class ProductInfo extends Component {
 							</div>
 						</div>
 						<div className="t-Alert-buttons">
-							<button onClick={() => this.closeAlert()} className="t-Button t-Button--noUI t-Button--icon t-Button--closeAlert" type="button" title="Close Notification" onClick={this.closeAlert} ><span className="t-Icon icon-close" /></button>
+							<button onClick={() => this.closeAlertAddWishList()} className="t-Button t-Button--noUI t-Button--icon t-Button--closeAlert" type="button" title="Close Notification" onClick={this.closeAlert} ><span className="t-Icon icon-close" /></button>
 						</div>
 					</div>
 				</div>
@@ -860,7 +873,6 @@ const mapStateToProps = state => {
 		productZoomDetails: state.productDetails.productData,
 		customerDetails: state.login.customer_details,
 		productWishDetailPDP: state.productDetails.productWishDetail,
-		removeWishListDetailPDP: state.productDetails.productWishDetail,
 		productDetails: state.productDetails.productColor,
 		wishlistItem: state.wishList,
 		productDetailLoader: state.productDetails.productDetailLoader,
@@ -875,6 +887,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
 	return {
+		onClearProductWishDetail: () => dispatch(actions.clearProductWishDetail()),
 		onAddToWishList: payload => dispatch(actions.addToWishlist(payload)),
 		onGetWishListItem: (payload) => dispatch(actions.getWishlist(payload)),
 		onRemoveWishList: (payload) => dispatch(actions.removeWishList(payload)),
