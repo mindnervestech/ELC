@@ -90,20 +90,20 @@ export const removeWishList = (payload) => {
             type: actionType.WISH_LIST_LOADER,
             payload: { wishLoader: true}
         });
-dispatch(loadingSpinnerForProduct({ statusAlertRemove: true,statusAlert:true }))
+dispatch(callProductWishDetail({ statusAlertRemove: true }))
         let cb = {        
             success: (res) => {
                 dispatch({
                     type: actionType.WISH_LIST_LOADER,
                     payload: { wishLoader: false}
                 }); 
-                dispatch(loadingSpinnerForProduct({ statusAlertRemove: false,statusAlert:false }))
+                
                 if (res.status === true && res.code === 200) {
                     if (payload.index != -1) {
                         prodArray.splice(payload.index, 1);
                         dispatch(callActionForRemoveWishlist({ products: [...prodArray] }))
                     }
-                    dispatch(callProductWishDetail({ productWishDetail: { is_in_wishlist: false, wishlist_itemid: null,remove_wishlist_success:res.message } }))
+                    dispatch(callProductWishDetail({ productWishDetail: { statusAlertRemove: false,is_in_wishlist: false, wishlist_itemid: null,remove_wishlist_success:res.message } }))
 
                 }
             },
