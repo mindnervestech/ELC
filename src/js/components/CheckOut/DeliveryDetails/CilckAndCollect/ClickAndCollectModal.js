@@ -10,8 +10,8 @@ import MapContainer from '../../StoreLocator/map'
 let productListData = {}
 let storeList = {}
 let pagenationCount = 4
-let start = 1
-let end = 3
+let startValue= 0
+let endValue = 0
 let list1 = []
 let selectedMarker = {};
 let overId = null;
@@ -20,9 +20,9 @@ const google = window.google
 class ClickAndCollect extends Component {
     constructor(props) {
         super(props);
-
-
         this.state = {
+            startValue:0,
+            endValue:3,
             openModal: false,
             totalPages: 1,
             pageNumber: 1,
@@ -52,35 +52,34 @@ class ClickAndCollect extends Component {
 
 
 
-        //   if(this.props.storeList!==undefined){
-        //     storeList = this.props.list.storeList;
-        // }
-        // let totalPages = 1
-        // let count = 0
-        // let pageNumber = 1
-        // let start = 1 * pageNumber
-        // let end = pagenationCount * pageNumber
-        // let list1 = {}
-        // for (var element in storeList) {
-        // 	if (element >= start && element <= end) {
-        // 		list1[element] = storeList[element]
-        // 	}
-        // 	count = count + 1
-        // }
-        // if (count % pagenationCount === 0) {
-        // 	totalPages = count / pagenationCount
-        // } else {
-        // 	totalPages = Math.floor(count / pagenationCount) + 1
-        // }
+        //       if(this.props.storeList!==undefined){
+        //         storeList = this.props.list.storeList;
+        //     }
+        //     let totalPages = 1
+        //     let count = 0
+        //     let pageNumber = 1
+        //     let start = 1 * pageNumber
+        //     let end = pagenationCount * pageNumber
+        //     let list1 = {}
+        //     for (var element in storeList) {
+        //     	if (element >= start && element <= end) {
+        //     		list1[element] = storeList[element]
+        //     	}
+        //     	count = count + 1
+        //     }
+        //     if (count % pagenationCount === 0) {
+        //     	totalPages = count / pagenationCount
+        //     } else {
+        //     	totalPages = Math.floor(count / pagenationCount) + 1
+        //     }
 
 
+        // }
     }
 
-
-
     pagenation = (start, end) => {
-
-        this.state.list1 = {}
+       console.log("Value of start and end",start,end)
+        this.state.list1 = []
         for (var element in storeList) {
             if (element >= start && element <= end) {
                 this.state.list1[element] = storeList[element]
@@ -89,56 +88,51 @@ class ClickAndCollect extends Component {
         this.setState({ list1: this.state.list1 })
     }
 
-
-
     prevButton = () => {
 
-        if (this.state.pageNumber !== 1 && this.state.pageNumber !== 0) {
-            this.setState({ pageNumber: this.state.pageNumber - 1 })
-            if (this.state.totalPages <= 5) {
-
-            } else {
-                let startChange = start - 1
-                let endChange = end - 1
-                if (startChange >= 1) {
-                    start = startChange
-                    end = endChange
-                }
-            }
-            setTimeout(() => {
-                if (this.state.check) {
-                    let value = pagenationCount * (this.state.pageNumber - 1) + 1
-                    this.pagenation(value, value + pagenationCount - 1)
-                } else {
-                    let value = pagenationCount * (this.state.pageNumber - 1)
-                    this.pagenation(value, value + pagenationCount - 1)
-                }
-            }, 500);
+       console.log("Call in Prev")
+        if(this.state.startValue===0){
+           // this.setState({pageNumber:this.state.pageNumber+1})
+           
+            // let startValue=this.state.startValue;
+            // let endValue=this.state.endValue;
+            // this.pagenation(startValue,endValue)
+        }else{
+            this.setState({startValue:this.state.endValue-3})
+            this.setState({endValue:this.state.startValue})    
+            startValue=this.state.startValue;
+            endValue=this.state.endValue;
+            this.pagenation(startValue,endValue)
         }
+        
     }
 
     nextButton = () => {
+        console.log("Call in next")
+        //this.setState({pageNumber:this.state.pageNumber+1})
+        console.log("Start Value",this.state.startValue)
+        if(this.state.startValue===0){
+           // this.setState({pageNumber:this.state.pageNumber+1})
+           this.setState({startValue:this.state.startValue});
+           this.setState({endValue:this.state.startValue+3})
+             startValue=this.state.startValue;
+             endValue=this.state.endValue
+            this.setState({startValue:this.state.endValue})
+            this.pagenation(startValue,endValue)
 
-        if (this.state.pageNumber !== this.state.totalPages) {
-            this.setState({ pageNumber: this.state.pageNumber + 1 })
-            if (this.state.check) {
-                let value = pagenationCount * this.state.pageNumber + 1
-                this.pagenation(value, value + pagenationCount - 1)
-            } else {
-                let value = pagenationCount * this.state.pageNumber
-                this.pagenation(value, value + pagenationCount - 1)
-            }
-            if (this.state.totalPages <= 5) {
-
-            } else {
-                let startChange = start + 1
-                let endChange = end + 1
-                if (endChange <= this.state.totalPages) {
-                    start = startChange
-                    end = endChange
-                }
-            }
-        }
+        }else{
+            
+            this.setState({startValue:this.state.endValue})
+            setTimeout(() => {
+            this.setState({endValue:this.state.startValue+3})    
+            }, 100);
+           
+            let startValue=this.state.startValue;
+            let endValue=this.state.endValue
+            this.pagenation(startValue,endValue);
+           
+           }
+          
     }
 
     _renderStoreList = () => {
@@ -158,25 +152,20 @@ class ClickAndCollect extends Component {
         if (this.props.storeList !== undefined) {
             storeList = this.props.storeList;
         }
-        let totalPages = 1
-        let count = 0
-        let pageNumber = 1
-        let start = 1 * pageNumber
-        let end = pagenationCount * pageNumber
+
+        let start=this.state.startValue;
+        let end=this.state.endValue;
+       
         for (var element in storeList) {
             if (element >= start && element <= end) {
                 list1[element] = storeList[element]
             }
-            count = count + 1
+           
         }
-        if (count % pagenationCount === 0) {
-            totalPages = count / pagenationCount
-        } else {
-            totalPages = Math.floor(count / pagenationCount) + 1
-        }
+       
 
 
-        console.log("Render Store List", list1)
+
         let modal = null;
         return (<>
             <div style={{ overflow: 'scroll', height: 200 }} className="click-and-collect-container divShowOnWeb">
@@ -218,13 +207,15 @@ class ClickAndCollect extends Component {
                                 </ul>
                             </div>
 
-                            <div className="store-navigation-pager" style={{display:'block'}}>
-                                <a className="prev js-pickup-store-pager-prev" href="#" title="Previous" style={{ display: 'block' }}>
-                                    <span className="fa fa-chevron-left"></span></a>
-                                <a className="next js-pickup-store-pager-next" href="#" title="Next">
-                                    <span className="fa fa-chevron-right"></span></a>
-                                <div className="position">
-                                    <span className="js-pickup-store-pager-item-from">13</span>-<span class="js-pickup-store-pager-item-to">16</span> from&nbsp;<span class="js-pickup-store-pager-item-all">100</span> &nbsp;stores found</div>
+                            <div style={{ display: 'block' }}>
+                                <ul class="pagenation" style={{ display: 'flex' }}>
+                                    {this.state.startValue!==0 ?
+                                    <li class="PagenationLeftArrow" onClick={this.prevButton} style={{ opacity: '0.5' }}></li>:<li></li>}
+                                    <div className="position">
+                                        <span className="js-pickup-store-pager-item-from">13</span>-<span class="js-pickup-store-pager-item-to">16</span> from&nbsp;<span class="js-pickup-store-pager-item-all">100</span> &nbsp;stores found</div>
+
+                                    <li class="PagenationRightArrow" onClick={this.nextButton} style={{ opacity: '0.5' }}></li></ul>
+
                             </div>
 
 

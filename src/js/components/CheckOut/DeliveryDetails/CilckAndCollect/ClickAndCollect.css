@@ -282,6 +282,13 @@
             cursor: pointer;
             /* border-bottom: #0d943f ; */
         }
+        .click-and-collect-container{
+            margin-top:1%;
+            margin-left:0%;
+            margin-right:0%;
+            height:100% !important;
+            width:100% !important;
+        }
         .button-store-find-near-me{
             border: 1px solid #0d943f!important;
             border-radius: 4px;
@@ -342,7 +349,15 @@
             margin-left: 25px;
             padding: 8px 20px !important;
             cursor: pointer;
-            /* border-bottom: #0d943f ; */
+           
+         /* border-bottom: #0d943f ; */
+        }
+        .click-and-collect-container{
+            margin-top:1%;
+            margin-left:0%;
+            margin-right:0%;
+            height:100% !important;
+            width:100% !important;
         }
         .tabs{
             border-bottom: 1px solid green;
