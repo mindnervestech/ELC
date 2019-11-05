@@ -6262,7 +6262,7 @@ html[dir="rtl"] .language {
 .header .changecountry .country {
     position: relative;
     font-size: 13px;
-    padding: 0px 5px !important;
+    padding: 0px 5px 0px 0px !important;
 }
 html[dir="rtl"] .header .changecountry .country .list {
       right: 5px !important;
@@ -6789,7 +6789,7 @@ html[dir="rtl"] .productCategaryNamePadding{
 
     html[dir="rtl"] .header .changecountry {
         border: none !important;
-        width: 30% !important;
+        width: 32% !important;
         display: inline-block !important;
         position: relative !important;
         left: 5px !important;
@@ -6932,7 +6932,8 @@ html[dir="rtl"] #mobile-click-colect{
 }
 
 .buyAndSaveMorePopup{
-    background-color: rgb(13, 148, 63,.92);
+    /* background-color: #0d943feb; */
+    background-color: rgba(13, 150, 63, 0.9215686274509803);
     height: 435px;
     position: absolute;
     width: 100%;
@@ -7035,7 +7036,8 @@ html[dir="rtl"] .text-align-rtl{
 
 #addToCartPopupID{
     height: auto !important; 
-    width:450px !important
+    width:450px !important;
+    top: 100px;
 }
 
 .headerSlideTextAlign{
@@ -7201,43 +7203,43 @@ html[dir="rtl"] .applyFilterButtonOnMobileSpasing{
         padding-left: 15px;
         display: inline-block;
         width: 90%;
-}
-.ProductSilderImageHight{
-    height: 135px;
-}
+    }
+    .ProductSilderImageHight{
+        height: 135px;
+    }
 
-.applyPopupHightOnMobile{
-    height: 340px;
-    overflow: scroll;
-}
+    .applyPopupHightOnMobile{
+        height: 340px;
+        overflow: scroll;
+    }
 
-.buyAndSaveMorePopup{
-    height: 415px;
-}
+    .buyAndSaveMorePopup{
+        height: 415px;
+    }
 
-.mobilePopupImagePadding{
-    padding-top: 0px;
-}
+    .mobilePopupImagePadding{
+        padding-top: 0px;
+    }
 
-#manuCollapsible .Collapsible__trigger{
-    color: #0D943F;
-}
+    #manuCollapsible .Collapsible__trigger{
+        color: #0D943F;
+    }
 
-#manuCollapsible .Collapsible__trigger:after{
-    content: '\25BE';
-}
+    #manuCollapsible .Collapsible__trigger:after{
+        content: '\25BE';
+    }
 
-#manuCollapsible .Collapsible__trigger.is-open:after{
-    content: '\25BE' !important;
-    transform: rotate(180deg);
-}
+    #manuCollapsible .Collapsible__trigger.is-open:after{
+        content: '\25BE' !important;
+        transform: rotate(180deg);
+    }
 
-html[dir="rtl"] .likeAInputName {
-    position: absolute;
-    top: -1px;
-    padding-left: 0px;
-    padding-right: 15px;
-}
+    html[dir="rtl"] .likeAInputName {
+        position: absolute;
+        top: -1px;
+        padding-left: 0px;
+        padding-right: 15px;
+    }
     .productDetailPopupImage{
         height: 90px;
         width: 90px !important;
@@ -7256,6 +7258,10 @@ html[dir="rtl"] .likeAInputName {
     .headerSlideTextAlign{
         text-align: center;
         padding-top: 10px;
+    }
+
+    html[dir="rtl"] .headerSlideTextAlign{
+        text-align: center;
     }
 
     .headerSlider2{
@@ -7382,7 +7388,7 @@ html[dir="rtl"] .likeAInputName {
 @media (max-width:360px){
     html[dir="rtl"] .header .changecountry {
         border: none !important;
-        width: 26% !important;
+        width: 38% !important;
         display: inline-block !important;
         position: relative !important;
         left: 5px !important;
@@ -7421,7 +7427,13 @@ html[dir="rtl"] .likeAInputName {
     display: inline-flex;
     width: 100%;
 }
+
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+
+    .headerSlider2 .slick-track .slick-slide{
+        padding-top: 10px;
+    }
+    
     .ie-issue-ui{
         margin-bottom: 500px;
         margin-top: 50px;
@@ -7446,6 +7458,17 @@ html[dir="rtl"] .likeAInputName {
     .webAvalebalText, .webOutOfStockTetx {
         margin-top: -10px;
     }
+
+    input[type=text]::-ms-clear { 
+        display: none; 
+    }
+    .someinput::-ms-clear {
+        display: none;
+    }
+
+    ::-ms-clear {
+        display: none;
+    }
 }
 
 .text-align-rtl{
@@ -7458,4 +7481,9 @@ html[dir="rtl"] .text-align-rtl{
 
 .styles_overlay__CLSq-{
     display: block !important;
+}
+
+.banner_PLP_img{
+    width: 922px;
+    height: 140px;
 }
