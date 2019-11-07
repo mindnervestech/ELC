@@ -10,6 +10,7 @@ import youtube from '../../../../assets/images/social/youtube.svg';
 import twitter from '../../../../assets/images/social/twitter.svg';
 import Collapsible from 'react-collapsible';
 import { BASE_URL, API_TOKEN } from '../../../api/globals';
+const wait = require('../../../../assets/images/wait.gif');
 
 const style = {
     visibility: 'visible',
@@ -22,7 +23,8 @@ class Footer extends Component {
             email: "",
             success: '',
             showAlert: false,
-            errorMessage: {}
+            errorMessage: {},
+            loaderState:false
         };
     }
 
@@ -71,7 +73,7 @@ class Footer extends Component {
         return formIsValid;
     };
     closeAlert = () => {
-        this.setState({ showAlert: false });
+        this.setState({ showAlert: false,loaderState:false });
     }
 
     handleChange = (event) => {
@@ -82,20 +84,23 @@ class Footer extends Component {
 
 
         if (this.handleValidation()) {
+            this.setState({loaderState:true})
+            
             const data = {
-                email:this.state.email,
-            store_id:this.props.globals.currentStore
+                email: this.state.email,
+                store_id: this.props.globals.currentStore
             }
             if (this.state.email) {
-
+               
+              
                 const API = Axios.create({
                     baseURL: BASE_URL,
                     headers: { Authorization: `Bearer ${API_TOKEN}`, 'Content-Type': 'application/json' },
                 });
 
-                API.post(`subscribetonewsletter`, { 'email': data.email,'store_id':data.store_id }).then(res => {
+                API.post(`subscribetonewsletter`, { 'email': data.email, 'store_id': data.store_id }).then(res => {
 
-                    this.setState({ email: '', success: res.data.message, showAlert: true });
+                    this.setState({ email: '', success: res.data.message, showAlert: true,loaderState:false });
                     setTimeout(() => {
                         this.closeAlert()
                     }, 5000);
@@ -208,17 +213,17 @@ class Footer extends Component {
                                         />
                                     </Link>
                                 </li>
-                <li>
-                  <Link
-                    to={`/${store_locale}/birth-day-club`}
-                    style={{ textDecoration: "none" }}
-                  >
-                    <FormattedMessage
-                      id="footer.BirthdayClub"
-                      defaultMessage="Birthday Club"
-                    />
-                  </Link>
-                </li>
+                                <li>
+                                    <Link
+                                        to={`/${store_locale}/birth-day-club`}
+                                        style={{ textDecoration: "none" }}
+                                    >
+                                        <FormattedMessage
+                                            id="footer.BirthdayClub"
+                                            defaultMessage="Birthday Club"
+                                        />
+                                    </Link>
+                                </li>
                                 <li>
                                     <a>
                                         <FormattedMessage
@@ -287,7 +292,7 @@ class Footer extends Component {
                                 <FormattedMessage id="footer.signUpAd" defaultMessage="sign up for our latest news and offers" />
 
                             </div>
-                            <div>
+                            <div style={{display:'flex'}}>
                                 {emailInputField}
                                 {/* <input
                   type="text"
@@ -295,12 +300,17 @@ class Footer extends Component {
                   className="email-field"
                   value={this.state.email}
                   onChange={this.handleChange}
-                ></input> */}
+                ></input> */}  
+                 { this.state.loaderState ?<button className="submit-button" disabled={true}>
+                                    <img src={wait} style={{ width: 25, height: 25, marginTop: -4 }} alt="" />
+                                    <span className="t-Button-label"></span>
+                                </button>:
                                 <button className="submit-button" onClick={() => this.submitNewsLetter()}>
                                     <FormattedMessage id="Submit.Text" defaultMessage="Submit" />
-                                </button>
-                                {emailInputErrorField}
+                                </button>}
+
                             </div>
+                            <span>{emailInputErrorField}</span>
                         </div>
 
                     </div>
@@ -320,10 +330,10 @@ class Footer extends Component {
                                 </div>
                                 {this.props.globals.language == 'en' ?
                                     <div className="col col-6">
-                                        <img className="bottom-imagePaypal" src={'/images/logoEn.png'} alt=""/>
+                                        <img className="bottom-imagePaypal" src={'/images/logoEn.png'} alt="" />
                                     </div>
                                     : <div className="col col-6">
-                                        <img className="bottom-imagePaypal" src={'/images/logoAr.png'} alt=""/>
+                                        <img className="bottom-imagePaypal" src={'/images/logoAr.png'} alt="" />
                                     </div>}
                                 {/* <div className="col col-3">
                                 <img className="bottom-imagePaypal" src={VISAImg}/>
@@ -336,22 +346,25 @@ class Footer extends Component {
                         <div className="footer-title" style={{ textAlign: 'center', marginBottom: 7 }}>
                             <FormattedMessage id="footer.signUpAd" defaultMessage="sign up for our latest news and offers" />
                         </div>
-                        <div>
-                            {/* <input
-                type="text"
-                placeholder="enter your e-mail address"
-                value={this.state.email}
-                onChange={this.handleChange}
-                className="email-field"
-                style={{ borderRadius: 0 }}
-              ></input> */}
-                            {emailInputField}
-                            <button className="submit-button" onClick={() => this.submitNewsLetter()}>
-                                <FormattedMessage id="Submit.Text" defaultMessage="Submit" />
-                            </button>
-
-                            {emailInputErrorField}
-                        </div>
+                        <div style={{display:'flex'}}>
+                                {emailInputField}
+                                {/* <input
+                  type="text"
+                  placeholder="enter your e-mail address"
+                  className="email-field"
+                  value={this.state.email}
+                  onChange={this.handleChange}
+                ></input> */}  
+                 { this.state.loaderState ?<button className="submit-button" disabled={true}>
+                                    <img src={wait} style={{ width: 25, height: 25, marginTop: -4 }} alt="" />
+                                    <span className="t-Button-label"></span>
+                                </button>:
+                                <button className="submit-button" onClick={() => this.submitNewsLetter()}>
+                                    <FormattedMessage id="Submit.Text" defaultMessage="Submit" />
+                                </button>}
+                              
+                            </div>
+                            <span>{emailInputErrorField}</span>
                         <div className="mobile-manu">
                             <Collapsible trigger={<FormattedMessage id="footer.AboutELC" defaultMessage="About ELC" />}>
                                 <div>
@@ -371,11 +384,11 @@ class Footer extends Component {
                                                 <FormattedMessage id="footer.contactUs" defaultMessage="Contact Us" />
                                             </Link>
                                         </li>
-                            <li>
-                            <Link to={`/${store_locale}/birth-day-club`} style={{ textDecoration: 'none' }}>
-                                <FormattedMessage id="footer.BirthdayClub" defaultMessage="Birthday Club" />
-                            </Link>
-                            </li>
+                                        <li>
+                                            <Link to={`/${store_locale}/birth-day-club`} style={{ textDecoration: 'none' }}>
+                                                <FormattedMessage id="footer.BirthdayClub" defaultMessage="Birthday Club" />
+                                            </Link>
+                                        </li>
                                         <li>
                                             <a><FormattedMessage id="footer.Newsletter" defaultMessage="Newsletter" /></a>
                                         </li>
@@ -400,10 +413,10 @@ class Footer extends Component {
                                             </Link>
                                         </li>
                                         <li>
-                                            {this.props.globals.store_locale === 'uae-en'?
-                                            <Link to={`/${store_locale}/consumer-rights`} style={{ textDecoration: 'none' }}>
-                                                <a><FormattedMessage id="footer.ConsumerRights" defaultMessage="Consumer Rights" /></a>
-                                            </Link>:<div></div>}
+                                            {this.props.globals.store_locale === 'uae-en' ?
+                                                <Link to={`/${store_locale}/consumer-rights`} style={{ textDecoration: 'none' }}>
+                                                    <a><FormattedMessage id="footer.ConsumerRights" defaultMessage="Consumer Rights" /></a>
+                                                </Link> : <div></div>}
                                         </li>
                                     </ul>
                                 </div>
@@ -426,11 +439,11 @@ class Footer extends Component {
                             <FormattedMessage id="footer.text" defaultMessage="© Website is operated by Kamal Osman Jamjoom LLC, trading as Early Learning Centre" />
                         </div>
                         <div style={{ paddingTop: 20, paddingBottom: 30 }}>
-                            
+
                             {this.props.globals.language == 'en' ?
-                                <img className="bottom-imagePaypal-mobile" src={'/images/logoEn.png'} alt=""/>
+                                <img className="bottom-imagePaypal-mobile" src={'/images/logoEn.png'} alt="" />
                                 :
-                                <img className="bottom-imagePaypal-mobile" src={'/images/logoAr.png'} alt=""/>
+                                <img className="bottom-imagePaypal-mobile" src={'/images/logoAr.png'} alt="" />
                             }
                         </div>
                     </div>
