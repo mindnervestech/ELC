@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../redux/actions/index';
 import { Row, Col } from 'reactstrap';
 // import placeholder from '../../../assets/images/placeholder.png'
-
+import parse from 'html-react-parser';
 import SideManu from './SideManu';
 import AddToBasketModal from '../Product/product-details/product-info/add-to-basket-modal';
 import Modal from 'react-responsive-modal';
@@ -24,6 +24,8 @@ let basketPopupFlag = false;
 let url_key = '';
 let addToCartModal = false;
 let cartModelFlag = false;
+let showMoreLessFlag = false;
+
 class ProductListData extends Component {
 	constructor(props) {
 		super(props);
@@ -36,6 +38,7 @@ class ProductListData extends Component {
 		let start = 1 * pageNumber
 		let end = pagenationCount * pageNumber
 		let list1 = {}
+		showPopupIndex = -1
 		for (var element in productList) {
 			if (element >= start && element <= end) {
 				list1[element] = productList[element]
@@ -63,6 +66,7 @@ class ProductListData extends Component {
 			cartModelFlag: false,
 			url_key: '',
 			sortByOptionValue: '',
+			showMoreLessFlag: false
 		};
 	}
 
@@ -446,6 +450,11 @@ class ProductListData extends Component {
 		this.setState({ showFilterOnMobile: false })
 	}
 
+	showMoreLess = () => {
+		showMoreLessFlag = !showMoreLessFlag;
+        this.setState({ showMoreLessFlag: !this.state.showMoreLessFlag });
+    }
+
 	render() {
 		let list = this.state.list1
 		const store_locale = this.props.globals.store_locale
@@ -459,6 +468,14 @@ class ProductListData extends Component {
 				}
 			}
 			list = this.state.list1
+		}
+		var description = '';
+		var desText = '';
+		var decLength = '';
+		if(this.props.list.category_description2){
+			description = parse(this.props.list.category_description2);
+			desText = description.props.children;
+			decLength = description.props.children.length;
 		}
 
 		return (
@@ -578,12 +595,45 @@ class ProductListData extends Component {
 					</div>
 					<div className="homePage">
 						<div className="start3">
+							<div className="divShowOnWeb">
+								<img src={this.props.list.category_Image ? this.props.list.category_Image : ''} className="banner_PLP_img" alt="" />
+								{/* <img src="https://d2elnqqmhxhwlt.cloudfront.net/pub/media/banners/default/HeroBanners1_Desktop_EN_1.jpg" alt=""/> */}
+							</div>
+							{this.props.list.category_description2 ?
+								<div className="text-align-rtl" style={{ marginTop: 10 }}>
+								{/* <div
+									className="staticPagesText"
+									dangerouslySetInnerHTML={{ __html: this.props.list.category_description2 }}
+								/> */}
+								
+								{/* {!showMoreLessFlag && decLength >= 150 ?
+								<div className="staticPagesText">
+									<span>{desText.substring(0, 150)}...
+										<span className="showLessMore" onClick={() => this.showMoreLess()}>
+											<FormattedMessage id="ReadMore.Text" defaultMessage="Read More"/>
+										</span>
+									</span>
+								</div>
+								: <span />}
+								{showMoreLessFlag ?
+									<span>{desText}...
+										<span className="showLessMore" onClick={() => this.showMoreLess()}>
+											<FormattedMessage id="ReadLess.Text" defaultMessage="Read Less"/>
+										</span>
+									</span>
+								 : <span />} */}
+								 {/* {decLength < 150 ? */}
+								<span>{desText} </span>
+									{/* </span> : <span />} */}
+							</div> : ''}
 							<div className="productCategaryNamePadding">
 								<span className="PLPCategaryName">{this.props.list.category_name}</span>
 							</div>
-							<div style={{ height: 32 }}>
+							{/* <div style={{ height: 32 }}>
 								<span>{this.props.list.category_description}</span>
-							</div>
+							</div> */}
+
+
 							<div style={{ paddingTop: 29 }}>
 								<Row className="divShowOnWeb">
 									<Col xs="4" lg="4" md="5">
@@ -705,15 +755,14 @@ class ProductListData extends Component {
 													{/* <span className="percentage-text" style={{ display: 'none' }}>30</span>
 									<span className="save-text">5</span>
 									<img src={save} className="save" /> */}
-													<img src={(list[keyName].json.imageUrl) ? list[keyName].json.imageUrl.primaryimage : ''} className="cardImage" alt="" />
-													{/* <img src={percentage} className="percentage" style={{ display: 'none' }} /> */}
+														<img src={(list[keyName].json.imageUrl) ? list[keyName].json.imageUrl.primaryimage : ''} className="cardImage" alt="" />
+														{/* <img src={percentage} className="percentage" style={{ display: 'none' }} /> */}
 													</div>
-													<div style={{height: list[keyName].json.imageUrl ? 50 : 195,  marginTop: 10, overflow: 'hidden'}}>
-													
-														{ (list[keyName].json.name).length> 20 ?
-														 <label  title={list[keyName].json.name} className="text-color">{`${list[keyName].json.name.substring(0,40)}....`}</label>:
-														 <label title={list[keyName].json.name}  className="text-color">{list[keyName].json.name}</label>
-													 }
+													<div style={{ height: list[keyName].json.imageUrl ? 50 : 195, marginTop: 10, overflow: 'hidden' }}>
+													{ list[keyName].json.name.length > 45 ?
+                                                         <label className="text-color">{list[keyName].json.name.substring(0,45)+"...."}</label>:
+                                                         <label className="text-color">{list[keyName].json.name}</label>
+                                                     }
 													</div>
 													{list[keyName].json.offers && list[keyName].json.offers.status === 1 ?
 														this.showDiscountPrise(list[keyName].json.offers.data, list[keyName].price, list[keyName].currency)

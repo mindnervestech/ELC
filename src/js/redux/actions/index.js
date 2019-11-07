@@ -45,6 +45,7 @@ export {
 	addToCart,
 	guestAddToCart,
 	clearProductDetails,
+  clearProductWishDetail,
 	getProductList,
 	getProductSearchList,
 	addToWishlist,

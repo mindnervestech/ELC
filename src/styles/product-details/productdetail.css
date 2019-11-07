@@ -820,9 +820,8 @@ span#P3_STOCK_DISPLAY {
        }
        .zoom-gallery .video-slide {
        position: relative;
-      
-       /* padding-top: 30px; */
-       /* height: 0; */
+       padding-top: 30px !important;
+       height: 100%;
        overflow: hidden;
        }
        .zoom-gallery .video-slide iframe, 
@@ -1860,6 +1859,7 @@ html[dir="rtl"] .styles_modal__gNwvD div{
 
 .addToCardPopup{
     padding: 25px;
+    background: #fff;
 }
 
 .addToCardPopup .productImageDiv{
@@ -1970,6 +1970,7 @@ html[dir="rtl"] .styles_modal__gNwvD div{
     }
     .home-deli span{
         margin: 0 auto !important;
+        text-align: center;
     }
     .home-deli img {
         margin: 0 auto !important;

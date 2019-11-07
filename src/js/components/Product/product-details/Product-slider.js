@@ -177,9 +177,10 @@ class ProductSlider extends Component {
                                                             <img src={item.productImageUrl[0]} />
                                                         </div>
                                                         <div className="marginTop25">
-                                                            {(item.name).length >100 ?
-                                                            <label title={item.name} className="text-color">{`${item.name.substring(0,60)}...`}</label>:
-                                                            <label title={item.name} className="text-color">{item.name}</label>
+                                                            {/* <label className="text-color">{item.name}</label> */}
+                                                            { item.name.length >45?
+                                                            <label className="text-color">{item.name.substring(0,45)+"..."}</label>:
+                                                            <label className="text-color">{item.name}</label>
                                                             }
                                                         </div>
                                                         <div>

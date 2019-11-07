@@ -34,6 +34,7 @@ class ProductInfo extends Component {
 			ischeckremove: true,
 			ischeckadd: true,
 			alreadyWishList: false,
+			is_in_wishlist_item_check: false,
 			showLearning: false,
 			cartModelFlag: false,
 			checkForProductInWishList: true
@@ -58,58 +59,65 @@ class ProductInfo extends Component {
 	}
 
 	componentWillReceiveProps(nextProps, prevProps) {
+	
 
 		let i = 0;
-		if (this.state.checkForProductInWishList) {
-			if (nextProps.productZoomDetails !== undefined) {
-				for (i = 0; i < this.props.wishlistItem.products.length; i++) {
-					if (nextProps.productZoomDetails.id === this.props.wishlistItem.products[i].product_id) {
+		var isCheck = false;
+		
+			if (nextProps.productZoomDetails !== undefined ) {
+				for (i = 0; i < nextProps.wishlistItem.products.length; i++) {
+					
+					if (nextProps.productZoomDetails.id === nextProps.wishlistItem.products[i].product_id) {
+						
+						isCheck = true;
 						document.getElementById('Capa_1').setAttribute('class', 'naylove-icon active');
-						this.setState({ is_in_wishlist_item: true })
-					}
+						this.setState({ is_in_wishlist_item: true, is_in_wishlist_item_check: true }, () => {
+							const { is_in_wishlist_item } = this.state;
+						})
+						break;
+					}		
 				}
 			}
-
-		}
-
-		if (!nextProps.spinnerProduct.statusAlert && nextProps.productWishDetailPDP.wishlist_success !== undefined) {
+			if(!isCheck) {
+				this.setState({ is_in_wishlist_item: false });
+			}
+		
+		if (nextProps.productWishDetailPDP.wishlist_success !== undefined) {
 
 			if (this.props.customerDetails.customer_id !== undefined) {
 				this.props.onGetWishListItem({ customerid: this.props.customerDetails.customer_id, store_id: this.props.globals.currentStore })
 			}
-			document.getElementById('Capa_1').setAttribute('class', 'naylove-icon active');
-			
-			this.setState({ is_in_wishlist_item: true },()=>{
-				
-			}
-			
-			)
-			
+			//document.getElementById('Capa_1').setAttribute('class', 'naylove-icon active');
+
+			// this.setState({ is_in_wishlist_item: true }, () => {
+			// })
+			// console.log("In Add Wishlist",this.state.is_in_wishlist_item)
+
 			this.setState({ add_wishlist_message: nextProps.productWishDetailPDP.wishlist_success, showAlertForAdd: true, ischeckadd: !this.state.ischeckadd });
 			setTimeout(() => {
 				this.closeAlertAddWishList();
 			}, 1000);
-			
+
 			this.props.onClearProductWishDetail();
 		}
 		if (!nextProps.productWishDetailPDP.statusAlertRemove && nextProps.productWishDetailPDP.remove_wishlist_success !== undefined) {
+
+
+
+			//document.getElementById('Capa_1').setAttribute('class', 'naylove-icon');
+			// this.setState({ is_in_wishlist_item: false }, () => {
 				
-			if (this.props.customerDetails.customer_id !== undefined) {
-				this.props.onGetWishListItem({ customerid: this.props.customerDetails.customer_id, store_id: this.props.globals.currentStore })
-			}
-             
-			document.getElementById('Capa_1').setAttribute('class', 'naylove-icon');
-			this.setState({ is_in_wishlist_item: false },()=>{
-			
-			})
+			// })
+			// console.log("In Remove Wishlist",this.state.is_in_wishlist_item)
+
 			this.setState({ remove_wishlist_message: nextProps.productWishDetailPDP.remove_wishlist_success, showAlertForRemove: true, ischeckremove: !this.state.ischeckremove });
 			setTimeout(() => {
 				this.closeAlertRemoveWishList();
 			}, 1000);
-			this.props.onClearProductWishDetail()
-			
-			//this.props.onClearProductWishDetail();
-			//document.getElementById('Capa_1').setAttribute('class', 'naylove-icon');
+			if (this.props.customerDetails.customer_id !== undefined) {
+				this.props.onGetWishListItem({ customerid: this.props.customerDetails.customer_id, store_id: this.props.globals.currentStore })
+			}
+			this.props.onClearProductWishDetail();
 		}
 
 	}
@@ -279,12 +287,12 @@ class ProductInfo extends Component {
 					index: null,
 					wishlist_id: wishlist_id
 				})
-			
+
 
 				// if (this.props.customerDetails.customer_id !== undefined) {
 				// 	this.props.onGetWishListItem({ customerid: this.props.customerDetails.customer_id, store_id: this.props.globals.currentStore })
 				// }
-				 
+
 			}
 		}
 		else {
@@ -352,7 +360,7 @@ class ProductInfo extends Component {
 
 				>
 					<g transform="matrix(0.94148 0 0 0.94148 1.46299 1.46299)">
-						<path fill='green'
+						<path 
 							d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543  c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503  c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"
 							className="naylove"
 						/>

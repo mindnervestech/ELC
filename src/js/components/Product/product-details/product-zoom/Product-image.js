@@ -12,7 +12,9 @@ class ProductImage extends Component {
 			data: [],
 			guestUser: false,
 			displayThumbnails: false,
-			indexThumbImg: 0
+			indexThumbImg: 0,
+			mediaVideoUrl: '',
+			displayVideo: false
 		};
 	}
 
@@ -108,12 +110,25 @@ class ProductImage extends Component {
 
 
 	_getVideoData = data => {
+		
 		if ((data) && (data.length > 0)) {
+			
 			return (
 				<video controls autoplay="autoplay" loop muted preload style={{ width: '100%' }}>
 					<source src={data[0]} type="video/mp4" />
 				</video>
 			);
+
+			// return data.map((item, index) => {
+			// 	console.log(item);
+			// 	return (<>
+			// 		<div data-slide-id={`video-${index}`} class="zoom-gallery-slide video-slide" id={`video-active-${index}`}>
+			// 			<video controls autoplay="autoplay" loop muted preload style={{ width: '50%' }}>
+			// 				<source src={item} type="video/mp4" />
+			// 			</video>
+			// 		</div>
+			// 	</>)
+			// })
 		}
 	}
 
@@ -126,7 +141,7 @@ class ProductImage extends Component {
 		if (data) {
 			if ((data.thumbnail) && (data.thumbnail.length > 1)) {				// if (data) {
 				const asdf = data.thumbnail.map((item, index) => this._renderData(item, index));				// 	const asdf = data.map((item, index) => this._renderData(item, index,color));
-				return asdf;				// 	return asdf;
+				return asdf;
 			} else if((data.thumbnail) && (data.thumbnail.length === 1)){
 				return (<a data-slide-id="zoom" data-image={data.thumbnail[0]} name="zoom-images-lg">
 					<img className="productDetailPopupImage" style={{ filter: this.state.indexThumbImg === 0 ?'brightness(60%)' : ''}} srcSet={data.thumbnail[0]} src={data.thumbnail[0]} alt="" />
@@ -148,6 +163,7 @@ class ProductImage extends Component {
 
 	_checkVideoDataExist = data => {
 		if (data) {
+			//data[0] = "https://nayomi-videos.s3.ap-south-1.amazonaws.com/nayomi_videos/nay-win19-glamour-nightwear-mainranges-amina-babydoll-213455668.mp4";
 			const videos = data.map(this._renderVideoData);
 			return videos;
 		}
@@ -159,9 +175,13 @@ class ProductImage extends Component {
 			thumbnails = this.props.productZoomDetails.imageUrl.thumbnail;
 		}
 		return (
-			<a data-slide-id="video-1" href="#" data-load={thumbnails[0]} data-poster={thumbnails[0]} onClick={(e) => this._handleThumbImgClick(e, 'vid')} >
+			<a data-slide-id={`video-${index}`} href="javascript:void(0);" data-load={thumbnails[0]} data-poster={thumbnails[0]}
+				onClick={(e) => this._handleThumbImgClick(item,index)}
+				onTouchStart={(e) => this._handleThumbImgClick(item,index)}
+				style={{display: 'block'}}
+			>
 				<img src={thumbnails[0]} alt="" />
-				<span className="fa fa-play-circle">&nbsp;</span>
+				<span className="fa fa-play-circle mcs-caption">&nbsp;</span>
 			</a>
 		);
 	};
@@ -202,11 +222,23 @@ class ProductImage extends Component {
 		// 	window.jQuery('.zoom-gallery .zoom-gallery-slide').removeClass('active');
 		// 	window.jQuery('.zoom-gallery .video-slide').addClass('active');
 		// }
-		this.setState({
-			displayThumbnails : true,
-			thumbnailImage: img,
-			indexThumbImg: index
-		})
+
+		if(!img.includes('.mp4')){
+			this.setState({
+				displayThumbnails : true,
+				thumbnailImage: img,
+				indexThumbImg: index,
+				displayVideo : false,
+			})
+		}else{
+			this.setState({
+				displayVideo : true,
+				displayThumbnails : false,
+				mediaVideoUrl: img,
+				indexThumbImg: index
+			})
+		}
+		
 	}
 
 	_getDisplayThumbnails = () =>{
@@ -269,18 +301,20 @@ class ProductImage extends Component {
 						<tr>
 							<td style={{ width: '30%' }}>
 								<div data-slide-id="zoom" className="zoom-gallery-slide active">
-									{image_array && Object.keys(image_array).map((color, index) => {
+									{/* {image_array && Object.keys(image_array).map((color, index) => {
 
-									})
+									}) */}
+									{/* } */}
+									{ !this.state.displayThumbnails && !this.state.displayVideo ? this._getImageData(productZoomDetails.imageUrl)
+										: !this.state.displayVideo ? this._getDisplayThumbnails() : ''
 									}
-									{ !this.state.displayThumbnails ? this._getImageData(productZoomDetails.imageUrl)
-										: this._getDisplayThumbnails()
+									{ this.state.displayVideo && this._getVideoData(productZoomDetails.mediaVideoUrl)
 									}
 								</div>
 								{
 									(productZoomDetails.mediaVideoUrl && productZoomDetails.mediaVideoUrl.length > 0) ?
 										<div data-slide-id="video-1" class="zoom-gallery-slide video-slide">
-											{this._getVideoData(productZoomDetails.mediaVideoUrl)}
+											{ this._getVideoData(productZoomDetails.mediaVideoUrl)}
 										</div>
 										: ''
 								}
@@ -290,7 +324,7 @@ class ProductImage extends Component {
 				</table>
 				<div className="mobilePopupImagePadding" style={{textAlign:'center', textAlign: '-webkit-center'}}>
 					<div
-						className="MagicScroll MagicScroll-arrows-inside"
+						className="MagicScroll MagicScroll-arrows-inside height-video-size"
 						data-options="items: 4; orientation: horizontal; loop: off; arrows: inside; draggable: true;"
 						data-mode="scroll"
 						id="MagicScroll-1479315243536"
@@ -298,12 +332,12 @@ class ProductImage extends Component {
 							visibility: 'visible',
 							display: 'inline-block',
 							width: '100%',
-							height: '100px',
+		                    
 							overflow: 'visible',
 						}}
 					>
 						{this._checkDataExist(this.props.productZoomDetails.imageUrl)}
-						{this._checkDataExist(this.props.productZoomDetails.mediaVideoUrl)}
+						{this._checkVideoDataExist(this.props.productZoomDetails.mediaVideoUrl)}
 					</div>
 				</div>
 			</div>

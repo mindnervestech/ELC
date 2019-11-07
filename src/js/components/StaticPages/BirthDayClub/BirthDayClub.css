@@ -172,7 +172,11 @@ html[dir="rtl"] .crossIcon{
 }
 
 .alignStart{
-    text-align: start
+    text-align: start;
+}
+
+html[dir="rtl"] .alignStart{
+    text-align: right;
 }
 
 .RadioButton{

@@ -139,7 +139,9 @@ class SideManu extends Component {
 				}
 			}
 			filterOptionArrayForCheckValidateBackup = filterOptionArrayForCheckValidate
-			afterFilterShowOptionList = filterOptionArrayForCheckValidate
+			afterFilterShowOptionList = filterOptionArrayForCheckValidate;
+
+			selectedFilter = [];
 			this.setState({ list: filterList });
 		}
 	}

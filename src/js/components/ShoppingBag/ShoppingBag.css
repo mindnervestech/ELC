@@ -1134,7 +1134,7 @@ html[dir="rtl"] .close-icon-sort{
     cursor: pointer;
     position: absolute;
     right: auto;
-    left: 15px;
+    left: 30px;
 }
 
 input[type=number]::-webkit-inner-spin-button, 

@@ -1,8 +1,25 @@
+
+
+.height-video-size{
+    height: 97px;
+}
+
+@media only screen and (max-width:767px){
+    .height-video-size{
+        height: 60px;
+    } 
+}
+
+@media only screen and (min-width:768px) and (max-width:1024px){
+    .height-video-size{
+        height: 60px;
+    } 
+}
 a[data-zoom-id], .mz-thumb, .mz-thumb:focus {
     display: inline-block;
     line-height: 0;
     outline: none;
-    display: table-cell !important;
+   
     vertical-align: top;
 }
     .cfg-btn {

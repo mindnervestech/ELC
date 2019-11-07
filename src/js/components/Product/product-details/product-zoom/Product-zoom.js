@@ -135,13 +135,24 @@ class ProductZoom extends Component {
 
 
 	_getVideoData = data => {
+	
 		if ((data) && (data.length > 0)) {
+			
+			// return (
+			// 	<video controls autoplay="autoplay" loop muted preload style={{ width: '100%' }}>
+			// 		<source src={data[0]} type="video/mp4" />
+			// 	</video>
+			// );
 
-			return (
-				<video controls autoplay="autoplay" loop muted preload style={{ width: '100%' }}>
-					<source src={data[0]} type="video/mp4" />
-				</video>
-			);
+			return data.map((item, index) => {
+				return (<>
+					<div data-slide-id={`video-${index}`} class="zoom-gallery-slide video-slide" id={`video-active-${index}`}>
+						<video controls autoplay="autoplay" loop muted preload style={{ width: '100%' }}>
+							<source src={item} type="video/mp4" />
+						</video>
+					</div>
+				</>)
+			})
 		}
 	}
 
@@ -152,6 +163,10 @@ class ProductZoom extends Component {
 	}
 
 	_checkDataExist = (data, color, index) => {
+	
+		// if(data && data[0]){
+		// 	data[0] = "https://nayomi-videos.s3.ap-south-1.amazonaws.com/nayomi_videos/nay-win19-glamour-nightwear-mainranges-amina-babydoll-213455668.mp4";
+		// }
 		if (data) {
 			if ((data.thumbnail) && (data.thumbnail.length >= 1)) {				// if (data) {
 				const asdf = data.thumbnail.map((item, index) => this._renderData(item, index, color));				// 	const asdf = data.map((item, index) => this._renderData(item, index,color));
@@ -170,7 +185,9 @@ class ProductZoom extends Component {
 	};
 
 	_checkVideoDataExist = data => {
+
 		if (data) {
+			//data[0] = "https://nayomi-videos.s3.ap-south-1.amazonaws.com/nayomi_videos/nay-win19-glamour-nightwear-mainranges-amina-babydoll-213455668.mp4";
 			const videos = data.map(this._renderVideoData);
 			return videos;
 		}
@@ -184,10 +201,20 @@ class ProductZoom extends Component {
 			thumbnails = this.props.productZoomDetails.imageUrl.thumbnail;
 		}
 
+		// return (
+		// 	<a data-slide-id="video-1" href="#" data-load={thumbnails[0]} data-poster={thumbnails[0]} onClick={(e) => this._handleThumbImgClick(e, 'vid')} >
+		// 		<img src={thumbnails[0]} alt="" />
+		// 		<span className="fa fa-play-circle">&nbsp;</span>
+		// 	</a>
+		// );
+
 		return (
-			<a data-slide-id="video-1" href="#" data-load={thumbnails[0]} data-poster={thumbnails[0]} onClick={(e) => this._handleThumbImgClick(e, 'vid')} >
+			<a data-slide-id={`video-${index}`} href="javascript:void(0);" data-load={thumbnails[0]} data-poster={thumbnails[0]}
+				onClick={(e) => this._handleThumbImgClick(e, 'vid', index)}
+				onTouchStart={(e) => this._handleThumbImgClick(e, 'vid', index)}
+			>
 				<img src={thumbnails[0]} alt="" />
-				<span className="fa fa-play-circle">&nbsp;</span>
+				<span className="fa fa-play-circle mcs-caption">&nbsp;</span>
 			</a>
 		);
 	};
@@ -387,6 +414,7 @@ class ProductZoom extends Component {
 									(productZoomDetails.mediaVideoUrl && productZoomDetails.mediaVideoUrl.length > 0) ?
 
 										<div data-slide-id="video-1" class="zoom-gallery-slide video-slide">
+											{/* {this._checkVideoDataExist(productZoomDetails.mediaVideoUrl)} */}
 											{this._getVideoData(productZoomDetails.mediaVideoUrl)}
 										</div>
 										: ''
@@ -397,7 +425,7 @@ class ProductZoom extends Component {
 				</table>
 				<div style={{paddingTop: 15}}>
 					<div
-						className="MagicScroll MagicScroll-arrows-inside"
+						className="MagicScroll MagicScroll-arrows-inside height-video-size"
 						data-options="items: 4; orientation: horizontal; loop: off; arrows: inside; draggable: true;"
 						data-mode="scroll"
 						id="MagicScroll-1479315243536"
@@ -405,12 +433,12 @@ class ProductZoom extends Component {
 							visibility: 'visible',
 							display: 'inline-block',
 							width: '100%',
-							height: '100px',
+							
 							overflow: 'visible',
 						}}
 					>
 						{this._checkDataExist(this.props.productZoomDetails.imageUrl)}
-						{this._checkDataExist(this.props.productZoomDetails.mediaVideoUrl)}
+						{this._checkVideoDataExist(productZoomDetails.mediaVideoUrl)}
 					</div>
 				</div>
 			</div>

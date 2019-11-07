@@ -6,8 +6,10 @@ import { connect } from 'react-redux';
 import * as actions from '../../../redux/actions/index';
 import { FormattedMessage } from 'react-intl';
 // import { initializeF, trackF } from '../../utility/facebookPixel';
+import { initializeGTMWithEvent } from '../../utility/googleTagManager';
 import { live } from '../../../api/globals';
 import { Row, Col } from 'reactstrap';
+import cookie from 'react-cookies';
 let Cryptr = require('cryptr');
 let cryptr = null;
 
@@ -28,6 +30,57 @@ class OrderSummary extends Component {
         //this.props.onClearCartItem();
     }
 
+    componentDidUpdate(prevProps) {
+        const query = new URLSearchParams(this.props.location.search);
+        cryptr = new Cryptr(query.get('order_id'));
+        if (prevProps.order_number != this.props.order_number) {
+            let item = this.props.items_ordered;
+            let ecomArray = [];
+            for (let i = 0; i < item.length; i++) {
+                console.log(item);
+                ecomArray.push({
+                    content_type: 'product',
+                    sku: item[i].sku,
+                    name: item[i].product_name ? item[i].product_name : 'Not set',
+                    // category: this.props.facebook_catnames.length >= i ? this.props.facebook_catnames[i] : '',
+                    price: parseInt(item[i].special_price) && (parseInt(item[i].special_price) !== parseInt(item[i].price)) ? parseFloat(item[i].special_price) : (parseInt(item[i].price)),
+                    quantity: parseInt(item[i].qty_orderded)
+                });
+            }
+
+            if (cookie.load('orderId') != this.props.order_number) {
+                if (live) {
+                    cookie.save('orderId', this.props.order_number, { path: '/' })
+                    if (query.get('paytype') == 'COD') {
+                        initializeGTMWithEvent({
+                            event: 'ecom_transaction_completed',
+                            transactionShipping: this.props.order_summary.shipping,
+                            transactionTotal: this.props.order_summary.total,
+                            transactionTax: this.props.order_summary.vat,
+                            transactionCurrency: this.props.order_summary.currency,
+                            transactionId: this.props.order_number,
+                            transactionAffiliation: '',
+                              transactionProducts: ecomArray
+                        })
+                    } else {
+                        success = cryptr.decrypt(query.get('status'));
+                        if (success == 'true') {
+                            initializeGTMWithEvent({
+                                event: 'ecom_transaction_completed',
+                                transactionShipping: this.props.order_summary.shipping,
+                                transactionTotal: this.props.order_summary.total,
+                                transactionTax: this.props.order_summary.vat,
+                                transactionCurrency: this.props.order_summary.currency,
+                                transactionId: this.props.order_number,
+                                transactionAffiliation: '',
+                                transactionProducts: ecomArray
+                            })
+                        }
+                    }
+                }
+            }
+        }
+    }
     componentDidMount() {
         const query = new URLSearchParams(this.props.location.search);
         cryptr = new Cryptr(query.get('order_id'));
@@ -41,7 +94,7 @@ class OrderSummary extends Component {
             });
             let string = window.location.href
             let data = string.split('=')
-            orderNumber = data[data.length -1];
+            orderNumber = data[data.length - 1];
             // if (live) {
             //     initializeF()
             //     trackF('Purchase');
@@ -105,10 +158,10 @@ class OrderSummary extends Component {
                                             <div className="t-Region-buttons-right" />
                                         </div>
                                         <div className="t-Region-body">
-                                            {success === 'true' ? 
-                                                <p style={{ fontSize: '22px', letterSpacing: '0.04em', fontWeight: 500, padding: '20px 16px 10px' }}> 
-                                                    <FormattedMessage id="Thankyou.Text" defaultMessage="Thankyou" /> 
-                                                </p> : 
+                                            {success === 'true' ?
+                                                <p style={{ fontSize: '22px', letterSpacing: '0.04em', fontWeight: 500, padding: '20px 16px 10px' }}>
+                                                    <FormattedMessage id="Thankyou.Text" defaultMessage="Thankyou" />
+                                                </p> :
                                                 <p style={{ fontSize: '22px', letterSpacing: '0.04em', fontWeight: 500, padding: '20px 16px 10px' }}>
                                                     <FormattedMessage id="Sorry.Text" defaultMessage="Sorry" />
                                                 </p>}
@@ -339,13 +392,13 @@ class OrderSummary extends Component {
                                                                                                                     <td className="t-Report-cell" align="right" headers="PRICE">{this.props.order_summary.currency} <span>{this.props.order_summary.shipping && Math.round(this.props.order_summary.shipping)}</span>
                                                                                                                     </td>
                                                                                                                 </tr>
-                                                                                                                {country !== 'UAE' &&  this.props.payment_method === 'Cash On Delivery' ?
-                                                                                                                <tr>
-                                                                                                                    <td className="t-Report-cell" headers="TYPE"><FormattedMessage id="Checkout.COD" defaultMessage="COD" />
-                                                                                                                    </td>
-                                                                                                                    <td className="t-Report-cell" align="right" headers="PRICE">{this.props.order_summary.currency} <span>{this.props.order_summary.COD && Math.round(this.props.order_summary.COD)}</span>
-                                                                                                                    </td>
-                                                                                                                </tr>  : ''}
+                                                                                                                {country !== 'UAE' && this.props.payment_method === 'Cash On Delivery' ?
+                                                                                                                    <tr>
+                                                                                                                        <td className="t-Report-cell" headers="TYPE"><FormattedMessage id="Checkout.COD" defaultMessage="COD" />
+                                                                                                                        </td>
+                                                                                                                        <td className="t-Report-cell" align="right" headers="PRICE">{this.props.order_summary.currency} <span>{this.props.order_summary.COD && Math.round(this.props.order_summary.COD)}</span>
+                                                                                                                        </td>
+                                                                                                                    </tr> : ''}
                                                                                                                 <tr>
                                                                                                                     <td className="t-Report-cell" headers="TYPE"><span className="order-total"><FormattedMessage id="delivery-details.Total.Title" defaultMessage="Total" /></span>
                                                                                                                     </td>

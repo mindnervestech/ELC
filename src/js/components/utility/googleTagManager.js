@@ -11,3 +11,8 @@ export const dataLayerGTM = (payload) => {
         page_url: window.location.pathname + window.location.search 
     })
 };
+
+export const initializeGTMWithEvent = (event) => {
+  window.dataLayer = window.dataLayer || [] ;
+  window.dataLayer.push(event);
+};

@@ -219,8 +219,12 @@ class AddToBasketModal extends Component {
 				if (value === '1') {
 					return (
 						<div>
-							<span className="product-price">{currency}&nbsp;{offerData[value]}</span>
-							<span className="product-price-line">{currency}&nbsp;{Number(orignalPrise).toFixed(2)}</span>
+							
+							<span  className="product-price" >{currency}&nbsp;{offerData[value]}</span>
+							<span className="product-price-line" >{currency}&nbsp;{orignalPrise}.00</span>
+						
+							{/* <span className="product-price">{currency}&nbsp;{offerData[value]}</span>
+							<span className="product-price-line">{currency}&nbsp;{currency}&nbsp;{orignalPrise}.00</span> */}
 						</div>
 					);
 				} else {
@@ -235,6 +239,50 @@ class AddToBasketModal extends Component {
 			return (
 				<div>
 					<span className="product-price">{currency}&nbsp;{Number(orignalPrise).toFixed(2)}</span>
+				</div>
+			);
+		}
+	}
+
+	checkBuyAndMore(offer, currency) {
+		if (Object.keys(offer).length === 1) {
+			for (let value in offer) {
+				if (value === '1') {
+					return (
+						<div />
+					);
+				} else {
+					return (
+						<div style={{width: '100%', paddingBottom: 10}}>
+							<div className="buyAndSaveMOreText">
+								<span><FormattedMessage id="BuyMore.Text" defaultMessage="BUY MORE SAVE MORE" /></span>
+							</div>
+							<div>
+								<span>{value}&nbsp;<FormattedMessage id="For.Text" defaultMessage="For" />&nbsp;{currency}&nbsp;{offer[value]}</span>
+							</div>
+						</div>
+					);
+				}
+			}
+		} else {
+			let showOffer = []
+			let count = 0
+			for (let value in offer) {
+				if(count < 2){
+					showOffer.push(value)
+					showOffer.push(offer[value])
+				}
+				count++
+			}
+			count = 0
+			return (
+				<div style={{width: '100%', paddingBottom: 10}}>
+					<div className="buyAndSaveMOreText">
+						<span><FormattedMessage id="BuyMore.Text" defaultMessage="BUY MORE SAVE MORE" /></span>
+					</div>
+					<div>
+						<span>{showOffer[0]}&nbsp;<FormattedMessage id="For.Text" defaultMessage="For" />&nbsp;{currency}&nbsp;{showOffer[1]} | {showOffer[2]}&nbsp;<FormattedMessage id="For.Text" defaultMessage="For" />&nbsp;{currency}&nbsp;{showOffer[3]}</span>
+					</div>
 				</div>
 			);
 		}
@@ -373,6 +421,9 @@ class AddToBasketModal extends Component {
 															</div>
 														</div>
 													</div> : ''}
+													{data.offers && data.offers.status === 1 &&
+														this.checkBuyAndMore(data.offers.data, data.currency)
+													}
 												{data && data.visible_on_store ?
 													<div className="t-Form-inputContainer qantityNumberDiv row quantity-mob" style={{ marginBottom: 20, marginLeft: 0, padding: 0 }}>
 														<div className="t-Form-itemWrapper" style={{ border: '0.1rem solid #EAEAEA', borderRadius: '0.2rem' }}>

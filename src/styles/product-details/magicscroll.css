@@ -313,7 +313,7 @@ body.mcs-dragging button.mcs-button.mcs-horizontal.mcs-button-arrow {
 .MagicScroll[data-mode="animation"] .mcs-item .mcs-caption {
     left: 0;
     width: 100%;
-    bottom: 0;
+    bottom: 10px;
     -webkit-transition: -webkit-transform .25s;
             transition: transform .25s;
     -webkit-transform: translateY(150%);
@@ -1209,7 +1209,7 @@ body.mcs-dragging button.mcs-button.mcs-horizontal.mcs-button-arrow {
 }
 
 .MagicScroll.MagicScroll-arrows-inside .mcs-button-arrow {
-    width: 24px;
+    width: 0px;
     height: 24px;
     border-radius: 3px;
     background: rgba(255, 255, 255, .75);
@@ -1568,8 +1568,24 @@ body.mcs-dragging button.mcs-button.mcs-horizontal.mcs-button-arrow {
     a[data-zoom-id] img, .mz-thumb img{
         width: 100% !important;
     }
+    .mcs-item .mcs-caption {
+        color: white;
+        padding: 0px 0;
+        font: normal 9pt/1.2em 'Helvetica Neue', Helvetica, 'Lucida Grande', 'Lucida Sans Unicode', Verdana, Arial, sans-serif;
+        text-rendering: geometricPrecision;
+    }
 
     .MagicScroll-horizontal .mcs-item{
         padding-left: 7%;
+    }
+}
+
+
+@media only screen and (min-width:768px) and (max-width:1024px){
+    .mcs-item .mcs-caption {
+        color: white;
+        padding: 0px 0;
+        font: normal 9pt/1.2em 'Helvetica Neue', Helvetica, 'Lucida Grande', 'Lucida Sans Unicode', Verdana, Arial, sans-serif;
+        text-rendering: geometricPrecision;
     }
 }

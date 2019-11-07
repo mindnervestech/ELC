@@ -153,7 +153,7 @@ class DeliveryDetails extends Component {
                         UserID: this.props.user_details.customer_details.customer_id,
                         userFirstName: this.state.ContactFields.firstName,
                         userLastName: this.state.ContactFields.lastName,
-                        customer_email: this.state.ContactFields.email,
+                        customer_email: this.state.ContactFields.email.replace(/\s/g, ""),
                         country_id: this.state.country_details.id,
                         state: this.state.country_details.full_name_english,
                         region_id: this.state.city_details.id,
@@ -510,13 +510,13 @@ class DeliveryDetails extends Component {
                                                                 <ul className="shipping-tabs" onClick={this.changeDeliveryType}>
 
                                                                     <li style={{ cursor: 'unset' }} id="CC" className="tab click-collect2">
-                                                                        <h3 className="method text-align-rtl"><FormattedMessage id="delivery-details.Click&Collect.Title" defaultMessage="Click&Collect" /></h3>
+                                                                        <h3 className="method"><FormattedMessage id="delivery-details.Click&Collect.Title" defaultMessage="Click&Collect" /></h3>
                                                                         {/* <span className="method-description h-hidden-mobile"><FormattedMessage id="delivery-details.Click&Collect.Message" defaultMessage="Click&Collect Message" /></span> */}
                                                                         <span className="method"><FormattedMessage id="Comingsoon" defaultMessage="Coming soon" /></span>
                                                                     </li>
 
                                                                     <li id="DA" className="tab del-add2 selected">
-                                                                        <h3 className="method text-align-rtl"><FormattedMessage id="delivery-details.HomeDelivery.Title" defaultMessage="Home Delivery" /></h3>
+                                                                        <h3 className="method"><FormattedMessage id="delivery-details.HomeDelivery.Title" defaultMessage="Home Delivery" /></h3>
                                                                         <span className="method-description h-hidden-mobile"><FormattedMessage id="delivery-details.HomeDelivery.Message" defaultMessage="Home Delivery Message" /></span>
                                                                     </li>
                                                                 </ul>

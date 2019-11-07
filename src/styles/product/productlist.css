@@ -569,3 +569,9 @@ html[dir="rtl"] div#mobile-sort-by-content-div{
   .d-price {
       color: red;
   }
+
+
+  .showLessMore{
+    font-weight: bold;
+    cursor: pointer;
+  }
