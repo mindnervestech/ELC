@@ -13,9 +13,12 @@ import { Row, Col } from 'reactstrap';
 import ClickAndCollect from '../../CheckOut/DeliveryDetails/CilckAndCollect/ClickAndCollectModal'
 import { FormattedMessage } from 'react-intl';
 import { async } from 'q';
+const wait = require('../../../../assets/images/wait.gif');
+
 
 let _this;
 let in_wishlist = false;
+let disableHeartIcon=false;
 class ProductInfo extends Component {
 	constructor(props) {
 		super(props);
@@ -37,7 +40,8 @@ class ProductInfo extends Component {
 			is_in_wishlist_item_check: false,
 			showLearning: false,
 			cartModelFlag: false,
-			checkForProductInWishList: true
+			checkForProductInWishList: true,
+			disableHeartIcon:false
 		};
 		this.addToCart = this.addToCart.bind(this);
 	}
@@ -59,7 +63,7 @@ class ProductInfo extends Component {
 	}
 
 	componentWillReceiveProps(nextProps, prevProps) {
-	
+		
 
 		let i = 0;
 		var isCheck = false;
@@ -68,18 +72,23 @@ class ProductInfo extends Component {
 				for (i = 0; i < nextProps.wishlistItem.products.length; i++) {
 					
 					if (nextProps.productZoomDetails.id === nextProps.wishlistItem.products[i].product_id) {
-						
+					
 						isCheck = true;
-						document.getElementById('Capa_1').setAttribute('class', 'naylove-icon active');
+						//document.getElementById('Capa_1').setAttribute('class', 'naylove-icon active');
 						this.setState({ is_in_wishlist_item: true, is_in_wishlist_item_check: true }, () => {
 							const { is_in_wishlist_item } = this.state;
 						})
+						
 						break;
 					}		
 				}
+				 
 			}
+
 			if(!isCheck) {
 				this.setState({ is_in_wishlist_item: false });
+			
+			
 			}
 		
 		if (nextProps.productWishDetailPDP.wishlist_success !== undefined) {
@@ -97,12 +106,13 @@ class ProductInfo extends Component {
 			setTimeout(() => {
 				this.closeAlertAddWishList();
 			}, 1000);
+			disableHeartIcon=false;
 
 			this.props.onClearProductWishDetail();
 		}
 		if (!nextProps.productWishDetailPDP.statusAlertRemove && nextProps.productWishDetailPDP.remove_wishlist_success !== undefined) {
 
-
+			
 
 			//document.getElementById('Capa_1').setAttribute('class', 'naylove-icon');
 			// this.setState({ is_in_wishlist_item: false }, () => {
@@ -114,6 +124,7 @@ class ProductInfo extends Component {
 			setTimeout(() => {
 				this.closeAlertRemoveWishList();
 			}, 1000);
+			disableHeartIcon=false;
 			if (this.props.customerDetails.customer_id !== undefined) {
 				this.props.onGetWishListItem({ customerid: this.props.customerDetails.customer_id, store_id: this.props.globals.currentStore })
 			}
@@ -275,7 +286,10 @@ class ProductInfo extends Component {
 	_handleClick = async () => {
 		var wishlist_id = 0;
 		let i = 0;
-		if (document.getElementById('Capa_1').getAttribute('class').includes("active")) {
+		disableHeartIcon=true;
+		
+		if (this.state.is_in_wishlist_item) {
+			
 			if (this.props.productWishDetailPDP.wishlist_itemid !== undefined || this.props.productWishDetailPDP.wishlist_itemid !== "") {
 				for (i = 0; i < this.props.wishlistItem.products.length; i++) {
 					if (this.props.productZoomDetails.id === this.props.wishlistItem.products[i].product_id) {
@@ -371,8 +385,9 @@ class ProductInfo extends Component {
 			</Link>);
 		} else {
 			return (
-
-				<span onClick={() => this._handleClick(this.props.productZoomDetails.id)} className="wishlist-span-1 mr-10-wishlist"><svg
+                
+				<span onClick={() => this._handleClick(this.props.productZoomDetails.id)} className="wishlist-span-1 mr-10-wishlist">
+					{!disableHeartIcon ?<svg
 					xmlns="http://www.w3.org/2000/svg"
 					xmlnsXlink="http://www.w3.org/1999/xlink"
 					version="1.1"
@@ -384,7 +399,6 @@ class ProductInfo extends Component {
 					xmlSpace="preserve"
 					width="20px"
 					height="20px"
-					disabled="disabled"
 					className={"naylove-icon " + (this.state.is_in_wishlist_item ? 'active' : '')}
 
 				>
@@ -395,7 +409,7 @@ class ProductInfo extends Component {
 						/>
 					</g>{' '}
 
-				</svg>
+				</svg>: <img src={wait} style={{ width: 25, height: 25, marginTop: -4 }} alt=""/>}
 					{!this.state.is_in_wishlist_item ? <span style={{ margingRight: "35px" }} ><FormattedMessage id="PageTitle.add-wishlist" defaultMessage="Add to wishlist" /></span> : <span style={{ margingRight: "35px" }}><FormattedMessage id="PageTitle.removewishlist" defaultMessage="Remove from wishlist" /></span>}
 				</span>
 			);
