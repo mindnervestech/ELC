@@ -353,8 +353,7 @@ class AddressForm extends Component {
                 }</FormattedMessage>
                     <option value={'SA'}>{'Saudi Arabia'}</option>
                     <option value={'AE'}>{'United Arab Emirates'}</option>
-                    {country_select_list}
-
+                  
 
                 </select></div><span id="P25_R_COUNTRY_error_placeholder" className="a-Form-error" data-template-id="33610259035469734_ET" /></div>;
 
