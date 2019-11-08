@@ -20,7 +20,13 @@ let selectedMarker = {};
 let overId = null;
 let reload = true;
 const google = window.google
-const mapStyles = {
+const mapStylesForWeb = {
+    width: '80%',
+    height: '40%',
+    margin: '2%'
+};
+
+const mapStylesForMobile= {
     width: '80%',
     height: '40%',
     margin: '2%'
@@ -48,9 +54,10 @@ class ClickAndCollect extends Component {
             selectedPlace: {},
             showError: false,
             selectedMarker: {},
+            divMobileOfContainer:false,
+            divMobileOfContainerTop:false
         }
     }
-
 
     componentDidMount() {
 
@@ -120,16 +127,21 @@ class ClickAndCollect extends Component {
                 let startValue = this.state.startValue;
                 let endValue = this.state.endValue
                 this.pagenation(startValue, endValue);
-            }, 100);
-
-
+            }, 100)
 
         }
 
     }
+
+    onClickOnBackToStore=()=>{
+        this.setState({ divMobileOfContainer:false,divMobileOfContainerTop:false}, () => { })
+       
+    
+    }
     renderMarker = (latValue, langValue) => {
-        this.setState({ lat: latValue, lang: langValue }, () => { })
-        console.log("I am in the renderMarker method", this.state.lat, this.state.lang)
+        this.setState({ lat: latValue, lang: langValue ,divMobileOfContainer:true,divMobileOfContainerTop:true}, () => { })
+        console.log("Value of divMobile",this.state.divMobileOfContainer)
+    
 
     }
 
@@ -244,7 +256,7 @@ class ClickAndCollect extends Component {
                                         {this.state.lang && this.state.lat && (<Map
                                             google={this.props.google}
                                             zoom={8}
-                                            style={mapStyles}
+                                            style={mapStylesForWeb}
                                             lat={this.state.lat}
                                             lang={this.state.lang}
                                             initialCenter={{ lat: parseFloat(this.state.lat), lng: parseFloat(this.state.lang) }}
@@ -299,7 +311,7 @@ class ClickAndCollect extends Component {
                     <div>
                         <h2 className="main-header-ChooseastoreforClickCollect">Choose a store for Click & Collect</h2>
                     </div>
-                    <div style={{ marginLeft: '1%', marginRight: '1%' }}>
+                    <div style={{ marginLeft: '1%', marginRight: '1%' }} className={(this.state.divMobileOfContainerTop ? 'divOfMobileContainerNone':'divOfMobileContainerBlock')}>
                         <div className="mb-flex-basic-none">
                             <div style={{ position: 'relative' }}>
                                 <input type="search " className="search-button-find-store-near-me" name="locationQuery" placeholder="Find stores near me" id="locationForSearch">
@@ -315,7 +327,7 @@ class ClickAndCollect extends Component {
 
                                     (
 
-                                        <li className=" pickup-store-list-entry pre-selected storelist-li">
+                                        <li key={index} onClick={() => this.renderMarker(item.lattitude, item.longitude)}  className=" pickup-store-list-entry pre-selected storelist-li">
                                             <label for="pickup-entry-0" className="js-select-store-label">
                                                 <span className="pickup-store-info">
                                                     <span className="pickup-store-list-entry-address">{item.name}</span><br />
@@ -346,7 +358,7 @@ class ClickAndCollect extends Component {
                             </div>
                         </div>
                     </div>
-                    <div className="col col-md-8 col-xs-8 display-mb" style={{ marginTop: 13 }}>
+                    <div className={(this.state.divMobileOfContainer ? 'divOfMobileContainerBlock' : 'divOfMobileContainerNone') +" col col-md-8 col-xs-8 "} >
                         <Tabs className="tabs-main">
                             <TabList style={{ color: '#4f4f4f' }} >
                                 <Tab style={{ color: '#0d943f', borderRadius: 0, fontWeight: 800 }}>Store Deatils</Tab>
@@ -359,27 +371,31 @@ class ClickAndCollect extends Component {
                                     <h2>Store Deatils</h2>
                                 </TabPanel>
                                 <TabPanel style={{ marging: '5%' }}>
-                                    <h2>MAP</h2>
+                                {this.state.lang && this.state.lat && (<Map
+                                            google={this.props.google}
+                                            zoom={8}
+                                            style={mapStylesForMobile}
+                                            lat={this.state.lat}
+                                            lang={this.state.lang}
+                                            initialCenter={{ lat: parseFloat(this.state.lat), lng: parseFloat(this.state.lang) }}
+                                            zoom={this.state.zoom}
+                                            onMarkerClick={this.onMarkerClick}
+                                            activeMarker={this.state.activeMarker}
+                                            selectedPlace={this.state.selectedPlace}
+                                            selectedMarker={selectedMarker}
+                                            showingInfoWindow={this.state.showingInfoWindow}
+                                        />)}
                                 </TabPanel>
                                 <TabPanel style={{ marging: '5%' }}>
                                     <h2>Opening Hours</h2>
                                 </TabPanel>
                             </div>
                         </Tabs>
-                        {/* <TabPanel >
-                                    <h2>Store Deatils</h2>
-                                </TabPanel>
-                                <TabPanel>
-                                    <h2>MAP</h2>
-                                </TabPanel>
-                                <TabPanel >
-                                    <h2>Opening Hours</h2>
-                                </TabPanel> */}
-
+                
                         <div style={{ marginTop: '5%', marginBottom: '5%', display: 'flex' }}>
 
                             <div className="button-backto-store">
-                                <button className="addChildrenRegisterButton"><span>Back to store list</span></button>
+                                <button onClick={this.onClickOnBackToStore} className="addChildrenRegisterButton"><span>Back to store list</span></button>
                             </div>
 
                             <div className="button-addtobasket-store">

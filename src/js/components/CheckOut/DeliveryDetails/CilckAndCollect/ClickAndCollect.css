@@ -1,3 +1,9 @@
+.divOfMobileContainerBlock{
+    display: block !important;
+}
+.divOfMobileContainerNone{
+    display: none !important;
+}
 .store-navigation-pager{
     height: 42px;
     line-height: 38px;

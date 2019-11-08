@@ -385,9 +385,9 @@ class ProductInfo extends Component {
 			</Link>);
 		} else {
 			return (
-                
+                (!disableHeartIcon ? 
 				<span onClick={() => this._handleClick(this.props.productZoomDetails.id)} className="wishlist-span-1 mr-10-wishlist">
-					{!disableHeartIcon ?<svg
+					<svg
 					xmlns="http://www.w3.org/2000/svg"
 					xmlnsXlink="http://www.w3.org/1999/xlink"
 					version="1.1"
@@ -409,9 +409,10 @@ class ProductInfo extends Component {
 						/>
 					</g>{' '}
 
-				</svg>: <img src={wait} style={{ width: 25, height: 25, marginTop: -4 }} alt=""/>}
+				</svg> 
 					{!this.state.is_in_wishlist_item ? <span style={{ margingRight: "35px" }} ><FormattedMessage id="PageTitle.add-wishlist" defaultMessage="Add to wishlist" /></span> : <span style={{ margingRight: "35px" }}><FormattedMessage id="PageTitle.removewishlist" defaultMessage="Remove from wishlist" /></span>}
-				</span>
+				</span>:<><img src={wait} style={{ width: 25, height: 25 }} alt=""/>
+				{!this.state.is_in_wishlist_item ? <span style={{ margingRight: "35px" }} disabled={true}><FormattedMessage id="PageTitle.add-wishlist" defaultMessage="Add to wishlist" /></span> : <span disabled={true} style={{ margingRight: "35px" }}><FormattedMessage id="PageTitle.removewishlist" defaultMessage="Remove from wishlist" /></span>}</>)
 			);
 		}
 	}
