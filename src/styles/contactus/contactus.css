@@ -449,11 +449,19 @@
       }
 
       .phoneNumber-type .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-4 input[type=tel]{
-        width: 92.2% !important;
+        width: 100% !important;
+      }
+
+      #xmas-ph .phoneNumber-type .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-4 input[type=tel]{
+        width: 100% !important;
       }
 
       @media (max-width:767px){ 
         .phoneNumber-type .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-4 input[type=tel]{
+          width: 100% !important;
+        }
+
+        #xmas-ph .phoneNumber-type .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-4 input[type=tel]{
           width: 90% !important;
         }
 

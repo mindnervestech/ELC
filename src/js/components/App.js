@@ -63,6 +63,7 @@ import PresentFinder from '../components/PresentFinder/PresentFinder';
 import ShopByLearningSkill from './Menu/ShopByLearningSkill';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import ClickAndCollect from '../../js/components/CheckOut/DeliveryDetails/CilckAndCollect/ClickAndCollectModal'
+import Xmas from '../../js/components/Xmas/Xmas';
 addLocaleData([...en, ...ar]);
 
 
@@ -323,6 +324,7 @@ class App extends Component {
                                         <Route exact path="/" component={Home} />
                                         <Route exact path="/:locale" component={Home} />
                                         <Route exact path="/:locale/home" component={Home} />
+                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/xmas" component={Xmas}/>
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/sign-in-register" component={Login} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/profile" component={MyProfile} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/order-history" component={Order} />
