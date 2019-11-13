@@ -313,7 +313,7 @@ body.mcs-dragging button.mcs-button.mcs-horizontal.mcs-button-arrow {
 .MagicScroll[data-mode="animation"] .mcs-item .mcs-caption {
     left: 0;
     width: 100%;
-    bottom: 10px;
+    bottom: 35%;
     -webkit-transition: -webkit-transform .25s;
             transition: transform .25s;
     -webkit-transform: translateY(150%);

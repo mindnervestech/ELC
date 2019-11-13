@@ -9,3 +9,24 @@
     height:53px !important;
  
 }
+
+.xmasImage{
+    width: 1024px;
+    height: 140px;
+    margin: 2%;
+}
+
+@media only screen and (max-width:767px){
+    .xmasImage{
+        width: auto;
+        margin: 0%;
+       
+    }  
+}
+@media only screen and (min-width:767px) and ( max-width:1024px){
+    .xmasImage{
+        width: auto;
+        margin: 0%;
+       
+    }  
+}
