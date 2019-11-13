@@ -1305,8 +1305,8 @@ body.mcs-dragging button.mcs-button.mcs-horizontal.mcs-button-arrow {
 }
 .MagicScroll[data-mode="scroll"] .mcs-item .mcs-caption,
 .MagicScroll[data-mode="animation"] .mcs-item .mcs-caption {
-    background-color: #31333D;
-    background-color: rgba(49,51,61,0.7);
+    /* background-color: #31333D;
+    background-color: rgba(49,51,61,0.7); */
 }
 .lt-ie9-magic .MagicScroll[data-mode="scroll"] .mcs-item .mcs-caption,
 .lt-ie9-magic .MagicScroll[data-mode="animation"] .mcs-item .mcs-caption {

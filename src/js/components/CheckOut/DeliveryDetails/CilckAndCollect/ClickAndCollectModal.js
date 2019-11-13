@@ -140,7 +140,7 @@ class ClickAndCollect extends Component {
     }
     renderMarker = (latValue, langValue) => {
         this.setState({ lat: latValue, lang: langValue ,divMobileOfContainer:true,divMobileOfContainerTop:true}, () => { })
-        console.log("Value of divMobile",this.state.divMobileOfContainer)
+      
     
 
     }

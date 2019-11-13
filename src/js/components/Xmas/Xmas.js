@@ -413,8 +413,8 @@ class Xmas extends Component {
                                                                                                                                     <label htmlFor="PHONE" id="PHONE_LABEL" className="t-Form-label">
                                                                                                                                         <span className="u-VisuallyHidden">(Value Required)</span></label>
                                                                                                                                 </div>
-                                                                                                                                <div className="t-Form-inputContainer phoneNumber-type">
-                                                                                                                                    <PhoneNumber id="xmas-ph" changed={this.contactNumber} />
+                                                                                                                                <div  id="xmas-ph" className="t-Form-inputContainer phoneNumber-type" style={{overflow:'visible'}}>
+                                                                                                                                    <PhoneNumber  changed={this.contactNumber} />
                                                                                                                                     <span id="PHONE_error_placeholder" className="a-Form-error" data-template-id="33610259035469734_ET" style={{ color: 'red' }}>
                                                                                                                                         {errorsObj["phone"]}
                                                                                                                                     </span>
