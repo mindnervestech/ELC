@@ -331,11 +331,11 @@ body.mcs-dragging button.mcs-button.mcs-horizontal.mcs-button-arrow {
     left: 0;
     width: 100%;
     bottom: 0;
-    -webkit-transition: -webkit-transform .25s;
+    -webkit-transition:none !important;
             transition: transform .25s;
-    -webkit-transform: translateY(150%);
-            -ms-transform: translate(0, 150%);
-            transform: translateY(150%);
+    -webkit-transform: none !important;
+            -ms-transform:none !important;
+            transform: none !important;
 }
 
 .MagicScroll[data-mode="scroll"] .mcs-item:hover .mcs-caption,
@@ -1322,8 +1322,7 @@ body.mcs-dragging button.mcs-button.mcs-horizontal.mcs-button-arrow {
 }
 .MagicScroll[data-mode="scroll"] .mcs-item .mcs-caption,
 .MagicScroll[data-mode="animation"] .mcs-item .mcs-caption {
-    background-color: #31333D;
-    background-color: rgba(49,51,61,0.7);
+   
 }
 .lt-ie9-magic .MagicScroll[data-mode="scroll"] .mcs-item .mcs-caption,
 .lt-ie9-magic .MagicScroll[data-mode="animation"] .mcs-item .mcs-caption {

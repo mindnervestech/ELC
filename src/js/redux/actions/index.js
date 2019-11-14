@@ -36,6 +36,8 @@ export { getStoreIds, loadingSpinner, storeRegion, setChangeStore, getHomePageDa
 
 export { getMenuNav } from './getMenuNav';
 
+export { setXmasPageData,clearXmasResponse} from './setXmas';
+
 export {
 	getProductDetails,
 	getColor,

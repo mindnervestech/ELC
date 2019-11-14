@@ -23,7 +23,7 @@ import vipRegReducer from '../reducers/vipRegReducer';
 import contactUsReducer from '../reducers/contactReducer';
 import birthdayclubReducer from '../reducers/birthdayclubReducer';
 import productSuggestionSearchReducer from  '../reducers/productSuggestionSearchReducer';
-
+import xmasPageReducer from '../reducers/xmasPageReducer';
 import thunk from 'redux-thunk';
 
 const AppRootReducer = combineReducers({
@@ -44,6 +44,7 @@ const AppRootReducer = combineReducers({
     birthdayclubData:birthdayclubReducer,
     autoSerachProduct:productSuggestionSearchReducer,
     item_added:productDetailReducer,
+    xmas:xmasPageReducer
 })
 
 const rootReducer = (state, action) => {

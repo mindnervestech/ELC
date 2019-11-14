@@ -88,9 +88,12 @@ const GET_AUTO_SUGG_DATA={type:'GET',url:'',dynamic:true}
 
 
 const SAVE_BIRTHDAYCLUB_DATA={type:'POST' ,url:BASE_URL +'birthdayclub'};
+const SAVE_XMAS_DATA={type:'POST',url:BASE_URL +'xmascampaign'};
+
 
 
 export const API = {
+    saveXmasData:(data,cb)=>request(data,cb,SAVE_XMAS_DATA),
 	getCharityData:(data,cb)=> request(data,cb,GET_CHARITY_DATA),
 	getDeliveryPolicyData:(data,cb)=>request(data,cb,GET_DELIVERY_POLICY_DATA),
 	getToken: (data, cb) => request(data, cb, GET_TOKEN),

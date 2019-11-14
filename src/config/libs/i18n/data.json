@@ -947,10 +947,12 @@
         "review.emailnotifytext":"We will ONLY use your email to notify you in regards to your submission.",
         "review.displaynametext":"This will be used as your display name.",
         "review.plasesendmeemailtext":"Please send me email when my review is posted",
-        "review.ageofchild":"Age Of Child"
+        "review.ageofchild":"Age Of Child",
+        "transaction_no.empty":"Please enter transaction number"
 
     },
     "ar": {
+        "transaction_no.empty":"Please enter transaction number",
         "review.ageofchild":"عمر الطفل",
         "review.plasesendmeemailtext":"يرجى إرسال بريد إلكتروني عند نشر تقيمي",
         "review.emailnotifytext":"سنستخدم بريدك الإلكتروني فقط لتنبيهك بخصوص تقديمك.",
