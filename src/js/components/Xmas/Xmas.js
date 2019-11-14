@@ -18,6 +18,8 @@ import youtube from '../../../assets/images/social/youtube.svg'
 import { Helmet } from 'react-helmet';
 import XmasImage from '../../../assets/images/Xmas/Xmas.jpg';
 
+
+const wait = require('../../../assets/images/wait.gif');
 class Xmas extends Component {
     constructor(props) {
         super(props);
@@ -29,10 +31,11 @@ class Xmas extends Component {
                 email: '',
                 phone: '',
                 carrierCode: '',
-                showAlert:false
-               
+                showAlert: false
+
             },
-            xmas_message:'',
+            resFlag: false,
+            xmas_message: '',
             isPhoneValid: false,
             invalidPhone: '',
             comment_count: 0,
@@ -105,7 +108,7 @@ class Xmas extends Component {
 
     }
 
-   
+
 
     closeErrorBox = () => {
         this.setState({
@@ -122,19 +125,19 @@ class Xmas extends Component {
                 email: '',
                 phone: '',
                 carrierCode: '',
-                 
+
             }
         })
-        
+
     }
     changeCustomerServiceNumber = () => {
         const currentStore = this.props.store_id;
         const country = this.props.country;
-        if(country === 'UAE' || country === 'uae'){
+        if (country === 'UAE' || country === 'uae') {
             this.setState({
                 customerService: '8005654',
             })
-        } else if(country === 'KSA' || country === 'ksa'){
+        } else if (country === 'KSA' || country === 'ksa') {
             this.setState({
                 customerService: '8001180009',
             })
@@ -153,20 +156,20 @@ class Xmas extends Component {
         }
     }
 
-    componentWillReceiveProps(nextProps){
-    
-        if(nextProps.xmasRes.xmas_page_response){
-         
-           this.setState({showAlert:true})
+    componentWillReceiveProps(nextProps) {
+
+        if (nextProps.xmasRes.xmas_page_response) {
+
+            this.setState({ showAlert: true })
             setTimeout(() => {
                 this.closeAlert()
             }, 2000);
         }
 
-        
+
     }
     closeAlert = () => {
-        this.setState({ showAlert: false });
+        this.setState({ showAlert: false, resFlag: false });
         this.clearXmasDataState();
         this.props.onClearXmasResponse();
     }
@@ -184,13 +187,14 @@ class Xmas extends Component {
     }
 
     handleFormSubmit = () => {
-      
-        if (this.handleValidation()) { 
+
+        if (this.handleValidation()) {
+            this.setState({ resFlag: true })
             let data = {
-                firstName:this.state.xmas_fields['firstname'],
-                lastName:this.state.xmas_fields['lastname'],
+                firstName: this.state.xmas_fields['firstname'],
+                lastName: this.state.xmas_fields['lastname'],
                 email: this.state.xmas_fields['email'],
-                carrierCode:this.state.xmas_fields['carrierCode'],
+                carrierCode: this.state.xmas_fields['carrierCode'],
                 phoneNumber: parseInt(this.state.xmas_fields['phone']),
                 transactionId: this.state.xmas_fields['transaction_no'],
                 store_id: this.props.globals.currentStore
@@ -216,7 +220,7 @@ class Xmas extends Component {
     render() {
         let store_locale = this.props.globals.store_locale
         const errorsObj = this.state.errors;
-      
+
         // let errorBox = null;
         // if (this.state.search && this.state.showErrorBox) {
         //     let searchWord = this.props.searchWord;
@@ -233,37 +237,37 @@ class Xmas extends Component {
             contact_number = this.props.contact_data.page_data.contactnumber_int;
         }
 
-    //     if (this.props.xmasRes.xmas_page_response.message!=undefined && this.props.xmasRes.message=="") {
-    //         this.setState({ xmas_message: this.props.xmasRes.message, showAlert: true, })
-    //         setTimeout(() => {
-    //             this.closeAlert();
-    //         }, 5000);
-    // }
-    let respo_message = null;
-    let success_check = this.props.xmasRes.xmas_page_response;
-   
-    if (!util.emptyObj(success_check)) {
-    
+        //     if (this.props.xmasRes.xmas_page_response.message!=undefined && this.props.xmasRes.message=="") {
+        //         this.setState({ xmas_message: this.props.xmasRes.message, showAlert: true, })
+        //         setTimeout(() => {
+        //             this.closeAlert();
+        //         }, 5000);
+        // }
+        let respo_message = null;
+        let success_check = this.props.xmasRes.xmas_page_response;
+
+        if (!util.emptyObj(success_check)) {
+
 
             if (this.props.xmasRes.xmas_page_response) {
-                if(this.state.showAlert){
-                respo_message = <span id="APEX_SUCCESS_MESSAGE" data-template-id="126769709897686936_S" className="apex-page-success u-visible"><div className="t-Body-alert">
-                    <div className="t-Alert t-Alert--defaultIcons t-Alert--success t-Alert--horizontal t-Alert--page t-Alert--colorBG" id="t_Alert_Success" role="alert">
-                        <div className="t-Alert-wrap">
-                            <div className="t-Alert-icon">
-                                <span className="t-Icon" />
-                            </div>
-                            <div className="t-Alert-content">
-                                <div className="t-Alert-header">
-                                    <h2 className="t-Alert-title">{this.props.xmasRes.xmas_page_response.message}</h2>
+                if (this.state.showAlert) {
+                    respo_message = <span id="APEX_SUCCESS_MESSAGE" data-template-id="126769709897686936_S" className="apex-page-success u-visible"><div className="t-Body-alert">
+                        <div className="t-Alert t-Alert--defaultIcons t-Alert--success t-Alert--horizontal t-Alert--page t-Alert--colorBG" id="t_Alert_Success" role="alert">
+                            <div className="t-Alert-wrap">
+                                <div className="t-Alert-icon">
+                                    <span className="t-Icon" />
+                                </div>
+                                <div className="t-Alert-content">
+                                    <div className="t-Alert-header">
+                                        <h2 className="t-Alert-title">{this.props.xmasRes.xmas_page_response.message}</h2>
+                                    </div>
+                                </div>
+                                <div className="t-Alert-buttons">
+                                    <button className="t-Button t-Button--noUI t-Button--icon t-Button--closeAlert" type="button" title="Close Notification" onClick={() => this.closeAlert()}><span className="t-Icon icon-close" /></button>
                                 </div>
                             </div>
-                            <div className="t-Alert-buttons">
-                                <button className="t-Button t-Button--noUI t-Button--icon t-Button--closeAlert" type="button" title="Close Notification" onClick={()=>this.closeAlert()}><span className="t-Icon icon-close" /></button>
-                            </div>
                         </div>
-                    </div>
-                </div></span>;
+                    </div></span>;
                 }
             }
         }
@@ -356,7 +360,7 @@ class Xmas extends Component {
                                                                             </div> */}
                                                                                                 <div className="row">
                                                                                                     <div className="col col-12 apex-col-auto">
-                                                                                                        <div  style={{border:'none'}} className="t-Region t-Region--noPadding t-Region--removeHeader t-Region--stacked t-Region--hiddenOverflow t-Form--slimPadding t-Form--large t-Form--stretchInputs t-Form--labelsAbove" id="R1009415282768434614">
+                                                                                                        <div style={{ border: 'none' }} className="t-Region t-Region--noPadding t-Region--removeHeader t-Region--stacked t-Region--hiddenOverflow t-Form--slimPadding t-Form--large t-Form--stretchInputs t-Form--labelsAbove" id="R1009415282768434614">
                                                                                                             <div className="t-Region-header">
                                                                                                                 <div className="t-Region-headerItems t-Region-headerItems--title">
                                                                                                                     <span className="t-Region-headerIcon"><span className="t-Icon " aria-hidden="true" /></span>
@@ -443,7 +447,7 @@ class Xmas extends Component {
                                                                                                                                 </div><input type="hidden" id="P14_RESPONSE" name="P14_RESPONSE" defaultValue />
                                                                                                                             </div>
                                                                                                                         </div>
-                                                                                                                        <div className="row" style={{ paddingBottom: 100 }}>
+                                                                                                                        <div className="row">
                                                                                                                             <div className="col col-12 apex-col-auto">
                                                                                                                                 <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel is-required apex-item-wrapper js-show-label marginForContactDroupDown" id="PHONE_CONTAINER">
                                                                                                                                     <div className="t-Form-labelContainer">
@@ -464,9 +468,15 @@ class Xmas extends Component {
 
                                                                                                                         <div className="row">
                                                                                                                             <div className="col col-12 apex-col-auto">
-                                                                                                                                <button onClick={this.handleFormSubmit} className="t-Button t-Button--hot t-Button--stretch" type="button" id="B28610916249643373">
-                                                                                                                                    <span className="t-Button-label"><FormattedMessage id="Submit.Text" defaultMessage="Submit" /></span>
-                                                                                                                                </button>
+                                                                                                                                {this.state.resFlag ?
+                                                                                                                                    <button className="t-Button t-Button--hot t-Button--stretch"  type="button" disabled={true}>
+                                                                                                                                        <img src={wait} style={{ width: 25, height: 20, marginTop: -4 }} alt="" />
+                                                                                                                                        <span className="t-Button-label"><FormattedMessage id="PleaseWait" defaultMessage="Please wait......." /></span>
+                                                                                                                                    </button> :
+
+                                                                                                                                    <button onClick={this.handleFormSubmit} className="t-Button t-Button--hot t-Button--stretch" type="button" id="B28610916249643373">
+                                                                                                                                        <span className="t-Button-label"><FormattedMessage id="Submit.Text" defaultMessage="Submit" /></span>
+                                                                                                                                    </button>}
                                                                                                                             </div>
                                                                                                                         </div>
                                                                                                                     </div>
@@ -597,7 +607,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         onGetContactUsData: (payload) => dispatch(actions.getContactUsData(payload)),
-        onSaveXmasPageData:(payload)=>dispatch(actions.setXmasPageData(payload)),
+        onSaveXmasPageData: (payload) => dispatch(actions.setXmasPageData(payload)),
         onClearXmasResponse: () => dispatch(actions.clearXmasResponse()),
     }
 }
