@@ -1,3 +1,9 @@
+.select-ageofchild{
+    width: 200px !important;
+    height: 40px !important;
+    border-radius: 4px !important;
+
+}
 html[dir="rtl"] #product_review h3 {
    
    padding-right: 0px !important;

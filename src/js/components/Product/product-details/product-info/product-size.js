@@ -143,7 +143,7 @@ class ProductSize extends Component {
                 <div className="Demo__some-network share-icon">
                     <a href="https://www.instagram.com/elctoys" target="_blank" alt="">
                         <img style={{ height: 42, width: 42 }} src={instagram} className="icon" />
-                        <span>Insragram</span>
+                        <span>Instagram</span>
                     </a>
 
                 </div>

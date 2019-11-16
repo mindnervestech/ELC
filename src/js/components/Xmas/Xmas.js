@@ -18,7 +18,6 @@ import youtube from '../../../assets/images/social/youtube.svg'
 import { Helmet } from 'react-helmet';
 import XmasImage from '../../../assets/images/Xmas/Xmas.jpg';
 
-
 const wait = require('../../../assets/images/wait.gif');
 class Xmas extends Component {
     constructor(props) {
@@ -74,6 +73,8 @@ class Xmas extends Component {
             formIsValid = false;
             errors["transaction_no"] = <FormattedMessage id="transaction_no.empty" defaultMessage="Please enter transaction number" />;
         }
+
+        
         //Email
         if (typeof fields["email"] !== "undefined") {
 
@@ -101,7 +102,18 @@ class Xmas extends Component {
         return formIsValid;
     }
 
+
+     alpha=(e)=> {
+        
+
+        var valid = (e.which >= 48 && e.which <= 57) || e.which==45 ||e.which==95 || (e.which >= 65 && e.which <= 90) || (e.which >= 97 && e.which <= 122);
+        if (!valid) {
+            e.preventDefault();
+        }
+    }
+
     handleChange = (field, e) => {
+       
         let fields = this.state.xmas_fields;
         fields[field] = e.target.value;
         this.setState({ fields });
@@ -135,13 +147,19 @@ class Xmas extends Component {
         const country = this.props.country;
         if (country === 'UAE' || country === 'uae') {
             this.setState({
-                customerService: '8005654',
+                customerService: this.props.contact_data.page_data.contactnumber_uae,
             })
         } else if (country === 'KSA' || country === 'ksa') {
             this.setState({
-                customerService: '8001180009',
+                customerService:  this.props.contact_data.page_data.contactnumber_ksa,
             })
         }
+        else{
+            this.setState({
+                customerService:  this.props.contact_data.page_data.contactnumber_int,
+            }) 
+        }
+//console.log("In customerService method",this.state.customerService)
     }
 
     componentDidMount() {
@@ -169,9 +187,11 @@ class Xmas extends Component {
 
     }
     closeAlert = () => {
-        this.setState({ showAlert: false, resFlag: false });
+        this.setState({ showAlert: false, resFlag: false,phone:'' });
+       
         this.clearXmasDataState();
         this.props.onClearXmasResponse();
+       
     }
 
     contactNumber = (status, value, countryData, number, id) => {
@@ -220,7 +240,7 @@ class Xmas extends Component {
     render() {
         let store_locale = this.props.globals.store_locale
         const errorsObj = this.state.errors;
-
+        
         // let errorBox = null;
         // if (this.state.search && this.state.showErrorBox) {
         //     let searchWord = this.props.searchWord;
@@ -228,6 +248,7 @@ class Xmas extends Component {
         //         <p className="msg"><FormattedMessage id="help.searchtext1" defaultMessage="Sorry, We couldn’t find any result Matching with" />;  {searchWord} .
         //     <FormattedMessage id="help.searchtext2" defaultMessage="You can submit your Question and Our Customer Service Team will contact you soon.!!" /></p><nav><button className="ok" tabIndex={1} onClick={this.closeErrorBox}><FormattedMessage id="Ok.text" defaultMessage="Ok" /></button></nav></div></div></div>
         // }
+       
         let contact_number = this.props.contact_data.page_data.contactnumber_ksa;
         if (this.props.country === 'KSA') {
             contact_number = this.props.contact_data.page_data.contactnumber_ksa;
@@ -236,7 +257,7 @@ class Xmas extends Component {
         } else if (this.props.country === 'International') {
             contact_number = this.props.contact_data.page_data.contactnumber_int;
         }
-
+        
         //     if (this.props.xmasRes.xmas_page_response.message!=undefined && this.props.xmasRes.message=="") {
         //         this.setState({ xmas_message: this.props.xmasRes.message, showAlert: true, })
         //         setTimeout(() => {
@@ -420,7 +441,7 @@ class Xmas extends Component {
                                                                                                                                     </div>
                                                                                                                                     <div className="t-Form-inputContainer">
                                                                                                                                         <div className="t-Form-itemWrapper">
-                                                                                                                                            <input type="text" id="P14_NAME" name="P14_NAME" className="text_field apex-item-text" size={30} onChange={this.handleChange.bind(this, "transaction_no")} value={this.state.xmas_fields["transaction_no"]} />
+                                                                                                                                            <input type="text" id="P14_NAME" name="P14_NAME" className="text_field apex-item-text" onKeyPress={(e)=>this.alpha(e)} size={30} onChange={this.handleChange.bind(this, "transaction_no")} value={this.state.xmas_fields["transaction_no"]} />
                                                                                                                                         </div>
                                                                                                                                         <span id="P14_NAME_error_placeholder" className="a-Form-error" data-template-id="33610259035469734_ET" style={{ color: 'red' }}>
                                                                                                                                             {errorsObj["transaction_no"]}
@@ -447,9 +468,9 @@ class Xmas extends Component {
                                                                                                                                 </div><input type="hidden" id="P14_RESPONSE" name="P14_RESPONSE" defaultValue />
                                                                                                                             </div>
                                                                                                                         </div>
-                                                                                                                        <div className="row">
+                                                                                                                        <div className="row" style={{paddingBottom:100}}>
                                                                                                                             <div className="col col-12 apex-col-auto">
-                                                                                                                                <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel is-required apex-item-wrapper js-show-label marginForContactDroupDown" id="PHONE_CONTAINER">
+                                                                                                                                <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel is-required apex-item-wrapper js-show-label" id="PHONE_CONTAINER">
                                                                                                                                     <div className="t-Form-labelContainer">
 
                                                                                                                                         <label htmlFor="PHONE" id="PHONE_LABEL" className="t-Form-label">

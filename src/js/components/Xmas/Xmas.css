@@ -10,13 +10,36 @@
  
 }
 
+
+ #xmas-ph.phoneNumber-type .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-4 input[type=tel] {
+    width: 100% !important;}
+
+
+
 .xmasImage{
     width: 1024px;
     height: 140px;
     margin: 2%;
 }
-
+html[dir="rtl"] .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-4 input[type=tel] {
+    padding-right: 50%;
+    width: 100%;
+    padding-left: 0px !important;
+    padding-top: 0px!important;
+}
 @media only screen and (max-width:767px){
+    html[dir="rtl"] #xmas-ph.intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-4 input .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-4 input[type=text], .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-4 input[type=tel] {
+         padding-left: 0px !important;
+    }
+  #xmas-ph.intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-4 input .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-4 input[type=text], .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-4 input[type=tel] {
+        padding-left: 92px !important ;
+   }
+
+    html[dir="rtl"] #xmas-ph.intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-4 input[type=tel] {
+     padding-right: 50% !important;
+        width: 100%;
+        padding-top: 0px!important;
+    }
     .xmasImage{
         width: auto;
         margin: 0%;
@@ -24,6 +47,17 @@
     }  
 }
 @media only screen and (min-width:767px) and ( max-width:1024px){
+    html[dir="rtl"] #xmas-ph .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-4 input .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-4 input[type=text], .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-4 input[type=tel] {
+        padding-left: 0px !important;
+   }
+   #xmas-ph.intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-4 input .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-4 input[type=text], .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-4 input[type=tel] {
+    padding-left: 92px !important ;
+}
+  html[dir="rtl"] #xmas-ph .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-4 input[type=tel] {
+    padding-right: 0% !important;
+       width: 100%;
+       padding-top: 0px!important;
+   }
     .xmasImage{
         width: auto;
         margin: 0%;
