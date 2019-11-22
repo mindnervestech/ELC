@@ -3,13 +3,13 @@ import { updateObject } from '../utility/utility';
 
 const initialState = {
     page_data: {
-        instagram: "https://www.instagram.com/nayomimena/",
-        facebook: "https://www.facebook.com/NayomiMENA/",
-        youtube: "https://www.youtube.com/NayomiMENA",
-        whatsapp: "https://api.whatsapp.com/send?phone=971565069237",
-        contactnumber_uae: "8005654",
-        contactnumber_ksa: "8001180009",
-        contactnumber_int: "97143974173",
+        instagram: "",
+        facebook: "",
+        youtube: "",
+        whatsapp: "",
+        contactnumber_uae: "",
+        contactnumber_ksa: "",
+        contactnumber_int: "",
     },
     save_responce: {},
 }

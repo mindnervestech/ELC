@@ -4,18 +4,13 @@ import { getMyCart ,getGuestCartId} from '../actions/index';
 import cookie from 'react-cookies'
 import { loadingSpinner, loadingSpinnerForProduct } from './globals';
 
-export const callActionAddToWishlist = payload => {
-	return {
-		type: actionTypes.ADD_TO_WISHLIST,
-		payload: payload,
-	};
-};
-export const clearProductWishDetail = payload => {
-    return dispatch=> {
-		dispatch(callProductWishDetail({ productWishDetail: {} }))   
-    };
-}
-
+// export const callActionAddToWishlist = payload => {
+// 	return {
+// 		type: actionTypes.ADD_TO_WISHLIST,
+// 		payload: payload,
+// 	};
+// };
+ 
 
 export const callProductWishDetail = payload => {
 	return ({
@@ -24,6 +19,11 @@ export const callProductWishDetail = payload => {
 	})
 }
 
+export const clearProductWishDetail = payload => {
+    return dispatch=> {
+		dispatch(callProductWishDetail({ productWishDetail: {} }))   
+    };
+}
 const CallActionForUpdateNewQuoteId = (payload) => {
     return {
         type: actionTypes.UPDATE_NEW_QUOTE_ID,
@@ -170,7 +170,7 @@ export const getProductList = payload => {
 			storeid: payload.storeid,
 			filters: payload.filters,
 		};
-		dispatch(loadingSpinnerForProduct({ loadingProduct: true }))
+		
 		dispatch(
 			callActionGetProductSearchList({
 				category_name: null
@@ -179,7 +179,7 @@ export const getProductList = payload => {
 		let cb = {
 			success: res => {
 				let product_data = [];
-				dispatch(loadingSpinnerForProduct({ loadingProduct: false }))
+				
 				if (res.status && res.code === 200) {
 					let newState = { ...res.data };
 					// if (Object.keys(payload.filters).length !== 0 && payload.filters.constructor === Object) {

@@ -93,7 +93,7 @@ class SignUp extends Component {
       formIsValid = false;
       errors["lastName"] = <FormattedMessage id="Signup.validation.lastName.empty" defaultMessage="Last name cannot be empty" />;
     }
-
+    if(this.props.globals.langauge==='en'){
     if (typeof fields["firstName"] !== "undefined") {
       if (!fields["firstName"].match(/^[a-zA-Z]+$/) && fields["firstName"].length > 0) {
         formIsValid = false;
@@ -107,8 +107,25 @@ class SignUp extends Component {
         errors["lastName"] = <FormattedMessage id="Signup.validation.lastName.onlyletters" defaultMessage="Please enter only letters" />;
       }
     }
+  }else{
+    
+    if (typeof fields["firstName"] !== "undefined") {  
+      if (fields["firstName"].match(/[\u0660-\u0669\u06F0-\u06F9]/)  && fields["firstName"].length > 0) {
+        formIsValid = false;
+        errors["firstName"] = <FormattedMessage id="Signup.validation.firstName.onlyletters" defaultMessage="Please enter only letters" />;
+      }
+    }
+
+    if (typeof fields["lastName"] !== "undefined") {
+      if (fields["lastName"].match(/[\u0660-\u0669\u06F0-\u06F9]/) && fields["lastName"].length > 0) {
+        formIsValid = false;
+        errors["lastName"] = <FormattedMessage id="Signup.validation.lastName.onlyletters" defaultMessage="Please enter only letters" />;
+      }
+    }
+  }
 
     //Email
+  
     if (typeof fields["email"] !== "undefined") {
 
       if (fields["email"].length === 0) {
@@ -125,6 +142,24 @@ class SignUp extends Component {
         }
       }
     }
+
+    if(this.props.globals.langauge==='ar'){
+
+      if (fields["email"].length === 0) {
+        formIsValid = false;
+        errors["email"] = <FormattedMessage id="Signup.validation.email.empty" defaultMessage="Please enter email" />;
+      }
+      if (fields["email"].length > 0) {
+       if(!fields["email"].match('[\u0621-\u064A\u0660-\u0669\+\.\_\%\-\+]{1,256}\@[\u0621-\u064A\u0660-\u0669a][\u0621-\u064A\u0660-\u0669\-]{0,64}(\.[\u0621-\u064A\u0660-\u0669][\u0621-\u064A\u0660-\u0669\-]{0,25})+'))
+       
+          formIsValid = false;
+          errors["email"] = <FormattedMessage id="Signup.validation.email.invalid" defaultMessage="Please enter email in valid format" />;
+        
+      }
+
+      
+    }
+  
     // if (typeof fields["confirmEmail"] !== "undefined") {
 
     //   if (fields["confirmEmail"].length === 0) {
@@ -168,9 +203,26 @@ class SignUp extends Component {
         errors["password"] = <FormattedMessage id="Form.PasswordLength" defaultMessage="Minimum length is 8 characters" />;
       }else if (!fields["password"].match(pattern)){
         formIsValid = false;
-        errors["password"] = <FormattedMessage id="Form.PasswordConventions" defaultMessage="First Name cannot be emptyPassword must be at least 8 characters long and contain an uppercase letter, a lowercase letter and a number." />;
+        errors["password"] = <FormattedMessage id="Form.PasswordConventions" defaultMessage="Password must be at least 8 characters long and contain an uppercase letter, a lowercase letter and a number." />;
       }
     }
+    if(this.props.globals.langauge==='ar'){
+      
+      let pattern = '[\u0621-\u064A]';
+      if (fields["password"].length === 0) {
+        formIsValid = false;
+        errors["password"] = <FormattedMessage id="Signup.validation.password.empty" defaultMessage="Please enter password" />;
+      }else if (fields["password"].length < 8) {
+        formIsValid = false;
+        errors["password"] = <FormattedMessage id="Form.PasswordLength" defaultMessage="Minimum length is 8 characters" />;
+      }else if (!fields["password"].match(pattern)){
+        formIsValid = false;
+        errors["password"] = <FormattedMessage id="Form.PasswordConventions" defaultMessage="Password must be at least 8 characters long and contain an uppercase letter, a lowercase letter and a number." />;
+      }
+    }
+    // }
+
+
 
     if (!fields["confirmPassword"]) {
       formIsValid = false;

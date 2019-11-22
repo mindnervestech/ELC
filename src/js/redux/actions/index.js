@@ -47,13 +47,13 @@ export {
 	addToCart,
 	guestAddToCart,
 	clearProductDetails,
-  clearProductWishDetail,
 	getProductList,
 	getProductSearchList,
 	addToWishlist,
 	getPlaceOrder,
 	getSizeChart,
 	getYouMayAlsoLikeData,
+	clearProductWishDetail
 } from './getProductDetails';
 
 

@@ -18,7 +18,7 @@ const wait = require('../../../../assets/images/wait.gif');
 
 let _this;
 let in_wishlist = false;
-let disableHeartIcon=false;
+let disableHeartIcon = false;
 class ProductInfo extends Component {
 	constructor(props) {
 		super(props);
@@ -34,7 +34,7 @@ class ProductInfo extends Component {
 			wishlist_message: '',
 			add_wishlist_message: '',
 			remove_wishlist_message: '',
-			statusRemoveCall:false,
+			statusRemoveCall: false,
 			ischeckremove: true,
 			ischeckadd: true,
 			alreadyWishList: false,
@@ -42,7 +42,7 @@ class ProductInfo extends Component {
 			showLearning: false,
 			cartModelFlag: false,
 			checkForProductInWishList: true,
-			disableHeartIcon:false
+			disableHeartIcon: false
 		};
 		this.addToCart = this.addToCart.bind(this);
 	}
@@ -66,33 +66,33 @@ class ProductInfo extends Component {
 	}
 
 	componentWillReceiveProps(nextProps, prevProps) {
-		
+
 
 		let i = 0;
 		var isCheck = false;
-		
-			if (nextProps.productZoomDetails !== undefined ) {
-				for (i = 0; i < nextProps.wishlistItem.products.length; i++) {
-					
-					if (nextProps.productZoomDetails.id === nextProps.wishlistItem.products[i].product_id) {
-					
-						isCheck = true;
-						//document.getElementById('Capa_1').setAttribute('class', 'naylove-icon active');
-						this.setState({ is_in_wishlist_item: true, is_in_wishlist_item_check: true }, () => {
-							const { is_in_wishlist_item } = this.state;
-						})
-						
-						break;
-					}		
+
+		if (nextProps.productZoomDetails !== undefined) {
+			for (i = 0; i < nextProps.wishlistItem.products.length; i++) {
+
+				if (nextProps.productZoomDetails.id === nextProps.wishlistItem.products[i].product_id) {
+
+					isCheck = true;
+					//document.getElementById('Capa_1').setAttribute('class', 'naylove-icon active');
+					this.setState({ is_in_wishlist_item: true, is_in_wishlist_item_check: true }, () => {
+						const { is_in_wishlist_item } = this.state;
+					})
+
+					break;
 				}
-				 
 			}
 
-			if(!isCheck) {
-				this.setState({ is_in_wishlist_item: false });
-			
-			}
-		
+		}
+
+		if (!isCheck) {
+			this.setState({ is_in_wishlist_item: false });
+
+		}
+
 		if (nextProps.productWishDetailPDP.wishlist_success !== undefined) {
 
 			if (this.props.customerDetails.customer_id !== undefined) {
@@ -103,11 +103,11 @@ class ProductInfo extends Component {
 				this.closeAlertAddWishList();
 			}, 1000);
 			this.props.onClearProductWishDetail();
-			disableHeartIcon=false;
+			disableHeartIcon = false;
 
 			this.props.onClearProductWishDetail();
 		}
-		if  (this.state.statusRemoveCall && !nextProps.productWishDetailPDP.statusAlertRemove && nextProps.productWishDetailPDP.remove_wishlist_success !== undefined) {
+		if (this.state.statusRemoveCall && !nextProps.productWishDetailPDP.statusAlertRemove && nextProps.productWishDetailPDP.remove_wishlist_success !== undefined) {
 
 
 			this.setState({ remove_wishlist_message: nextProps.productWishDetailPDP.remove_wishlist_success, showAlertForRemove: true, ischeckremove: !this.state.ischeckremove });
@@ -115,7 +115,7 @@ class ProductInfo extends Component {
 				this.closeAlertRemoveWishList();
 			}, 1000);
 			this.props.onClearProductWishDetail();
-			disableHeartIcon=false;
+			disableHeartIcon = false;
 			if (this.props.customerDetails.customer_id !== undefined) {
 				this.props.onGetWishListItem({ customerid: this.props.customerDetails.customer_id, store_id: this.props.globals.currentStore })
 			}
@@ -274,37 +274,40 @@ class ProductInfo extends Component {
 
 	}
 
-	_handleClick = async () => {
-		var wishlist_id = 0;
-		let i = 0;
-		disableHeartIcon=true;
-		
-		if (this.state.is_in_wishlist_item) {
-			
-			if (this.props.productWishDetailPDP.wishlist_itemid !== undefined || this.props.productWishDetailPDP.wishlist_itemid !== "") {
-				for (i = 0; i < this.props.wishlistItem.products.length; i++) {
-					if (this.props.productZoomDetails.id === this.props.wishlistItem.products[i].product_id) {
+	_handleClick = async (id, text) => {
+		if (text === 'true') {
+			console.log("Handle Click Called")
+			var wishlist_id = 0;
+			let i = 0;
+			disableHeartIcon = true;
 
-						wishlist_id = this.props.wishlistItem.products[i].wishlist_id;
+			if (this.state.is_in_wishlist_item) {
+
+				if (this.props.productWishDetailPDP.wishlist_itemid !== undefined || this.props.productWishDetailPDP.wishlist_itemid !== "") {
+					for (i = 0; i < this.props.wishlistItem.products.length; i++) {
+						if (this.props.productZoomDetails.id === this.props.wishlistItem.products[i].product_id) {
+
+							wishlist_id = this.props.wishlistItem.products[i].wishlist_id;
+						}
 					}
-				}
-				this.props.onRemoveWishList({
-					index: null,
-					wishlist_id: wishlist_id
-				})
-				this.setState({statusRemoveCall:true});
+					this.props.onRemoveWishList({
+						index: null,
+						wishlist_id: wishlist_id
+					})
+					this.setState({ statusRemoveCall: true });
 
+				}
 			}
-		}
-		else {
-			const data = {
-				customer_id: this.props.customerDetails.customer_id,
-				product_id: this.props.productZoomDetails.id
-			};
-			this.props.onAddToWishList(data);
-			// if (this.props.customerDetails.customer_id !== undefined) {
-			// 	this.props.onGetWishListItem({ customerid: this.props.customerDetails.customer_id, store_id: this.props.globals.currentStore })
-			// }
+			else {
+				const data = {
+					customer_id: this.props.customerDetails.customer_id,
+					product_id: this.props.productZoomDetails.id
+				};
+				this.props.onAddToWishList(data);
+				// if (this.props.customerDetails.customer_id !== undefined) {
+				// 	this.props.onGetWishListItem({ customerid: this.props.customerDetails.customer_id, store_id: this.props.globals.currentStore })
+				// }
+			}
 		}
 	};
 	openClickAndCollectModal = () => {
@@ -342,7 +345,7 @@ class ProductInfo extends Component {
 	}
 
 	addToWishList = (data) => {
-		if ((this.props.customerDetails && this.props.customerDetails.customer_id === undefined) || !this.props.customerDetails) {
+		if (this.props.isUserLoggedIn===false) {
 			localStorage.setItem('productId-towishlist', this.props.productZoomDetails.id)
 			return (<Link to={`/${this.props.globals.store_locale}/sign-in-register`}><span className="wishlist-span-1 mr-10-wishlist" style={{ margin: 10 }}>
 				<svg
@@ -372,34 +375,34 @@ class ProductInfo extends Component {
 			</Link>);
 		} else {
 			return (
-                (!disableHeartIcon ? 
-				<span onClick={() => this._handleClick(this.props.productZoomDetails.id)} className="wishlist-span-1 mr-10-wishlist">
-					<svg
-					xmlns="http://www.w3.org/2000/svg"
-					xmlnsXlink="http://www.w3.org/1999/xlink"
-					version="1.1"
-					id="Capa_1"
-					x="0px"
-					y="0px"
-					viewBox="0 0 50 50"
-					style={{ enableBackground: 'new 0 0 50 50', marginRight: 10 }}
-					xmlSpace="preserve"
-					width="20px"
-					height="20px"
-					className={"naylove-icon " + (this.state.is_in_wishlist_item ? 'active' : '')}
+				(!disableHeartIcon ?
+					<span onClick={() => this._handleClick(this.props.productZoomDetails.id, "true")} className="wishlist-span-1 mr-10-wishlist">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							xmlnsXlink="http://www.w3.org/1999/xlink"
+							version="1.1"
+							id="Capa_1"
+							x="0px"
+							y="0px"
+							viewBox="0 0 50 50"
+							style={{ enableBackground: 'new 0 0 50 50', marginRight: 10 }}
+							xmlSpace="preserve"
+							width="20px"
+							height="20px"
+							className={"naylove-icon " + (this.state.is_in_wishlist_item ? 'active' : '')}
 
-				>
-					<g transform="matrix(0.94148 0 0 0.94148 1.46299 1.46299)">
-						<path
-							d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543  c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503  c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"
-							className="naylove"
-						/>
-					</g>{' '}
+						>
+							<g transform="matrix(0.94148 0 0 0.94148 1.46299 1.46299)">
+								<path
+									d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543  c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503  c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"
+									className="naylove"
+								/>
+							</g>{' '}
 
-				</svg> 
-					{!this.state.is_in_wishlist_item ? <span style={{ margingRight: "35px" }} ><FormattedMessage id="PageTitle.add-wishlist" defaultMessage="Add to wishlist" /></span> : <span style={{ margingRight: "35px" }}><FormattedMessage id="PageTitle.removewishlist" defaultMessage="Remove from wishlist" /></span>}
-				</span>:<><img src={wait} style={{ width: 25, height: 25 }} alt=""/>
-				{!this.state.is_in_wishlist_item ? <span style={{ margingRight: "35px" }} disabled={true}><FormattedMessage id="PageTitle.add-wishlist" defaultMessage="Add to wishlist" /></span> : <span disabled={true} style={{ margingRight: "35px" }}><FormattedMessage id="PageTitle.removewishlist" defaultMessage="Remove from wishlist" /></span>}</>)
+						</svg>
+						{!this.state.is_in_wishlist_item ? <span style={{ margingRight: "35px" }} ><FormattedMessage id="PageTitle.add-wishlist" defaultMessage="Add to wishlist" /></span> : <span style={{ margingRight: "35px" }}><FormattedMessage id="PageTitle.removewishlist" defaultMessage="Remove from wishlist" /></span>}
+					</span> : <><img src={wait} style={{ width: 25, height: 25 }} alt="" />
+						{!this.state.is_in_wishlist_item ? <span style={{ margingRight: "35px" }} disabled={true}><FormattedMessage id="PageTitle.add-wishlist" defaultMessage="Add to wishlist" /></span> : <span disabled={true} style={{ margingRight: "35px" }}><FormattedMessage id="PageTitle.removewishlist" defaultMessage="Remove from wishlist" /></span>}</>)
 			);
 		}
 	}

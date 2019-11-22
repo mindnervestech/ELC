@@ -37,6 +37,7 @@
     /* border-bottom: #d6d6d6; */
 }
 .list-alpha{
+    cursor: pointer;
     text-transform: capitalize;
     font-size:20px !important;
     border-right: 1px solid #d6d6d6;

@@ -40,7 +40,7 @@ class PresentFinder extends Component {
 	}
 
 	showSortByOption = () => {
-
+console.log("In showSortByOption ")
 		if (this.state.sortByShowOption) {
 			this.setState({ sortByShowOption: false })
 		} else {
@@ -49,10 +49,10 @@ class PresentFinder extends Component {
 
 	}
 	showSelectedMonths=(value,text)=>{
-		
 		this.state.sortByText=value;
-		this.state.showSortByOption=false;
+		this.setState({sortByShowOption:false})
 		this.forceUpdate()
+		
 	}
 
 	render() {

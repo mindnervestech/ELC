@@ -948,11 +948,15 @@
         "review.displaynametext":"This will be used as your display name.",
         "review.plasesendmeemailtext":"Please send me email when my review is posted",
         "review.ageofchild":"Age Of Child",
-        "transaction_no.empty":"Please enter transaction number"
+        "transaction_no.empty":"Please enter transaction number",
+        "browseallbrands":"Browse All Brands",
+        "XmasSantaSack.Title":"Xmas Santa Sack"
 
     },
     "ar": {
-        "transaction_no.empty":"Please enter transaction number",
+        "XmasSantaSack.Title":"مفاجآت سانتا",
+        "browseallbrands":"تصفح جميع الماركات",
+        "transaction_no.empty":"يرجى إدخال رقم التحويل",
         "review.ageofchild":"عمر الطفل",
         "review.plasesendmeemailtext":"يرجى إرسال بريد إلكتروني عند نشر تقيمي",
         "review.emailnotifytext":"سنستخدم بريدك الإلكتروني فقط لتنبيهك بخصوص تقديمك.",
@@ -973,7 +977,7 @@
         "rating":"التقييم",
         "Xmas.FirtsName":"ألاسم الاول",
         "Xmas.LastName":"اسم العائلة ",
-        "Xmas.TransactionNo":"Transaction Number",
+        "Xmas.TransactionNo":"رقم التحويل",
         "Productisalreadyinthewishlist": "Product is already in the wishlist",
         "PageTitle.Home.keword": "إي إل سي، مركز التعليم المبكر، مركز التعليم المبكر، ألعاب، ألعاب رضّع، ألعاب خشبية، ألعاب تعليمية",
         "PageTitle.Home.description": "تسوّق ألعاب الرضّع ومنازل الدمى والألعاب الخشبية وغيرها الكثير على الإنترنت من مركز التعليم المبكر. اختر من العلامات التجارية الكبيرة بمن فيها ليب فروع وفي تيك وسمارت تريك وغيرها.",

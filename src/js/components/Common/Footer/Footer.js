@@ -11,7 +11,8 @@ import twitter from '../../../../assets/images/social/twitter.svg';
 import Collapsible from 'react-collapsible';
 import { BASE_URL, API_TOKEN } from '../../../api/globals';
 const wait = require('../../../../assets/images/wait.gif');
-
+let   insiderCount = 0;
+let count=0;
 const style = {
     visibility: 'visible',
     opacity: 0.5,
@@ -26,7 +27,65 @@ class Footer extends Component {
             errorMessage: {},
             loaderState:false
         };
+      
     }
+    insiderObject = () => {
+        const currentStore = this.props.globals.currentStore;
+        let language = 'en';
+        if(currentStore == 1 || currentStore == 3){
+            language= 'ar';
+        }
+       
+        if(this.props.user_details.customer_details.customer_id) {
+            window.insider_object = {
+                user: {
+                    user:this.props.user_details.customer_details.customer_id,
+                    
+                    name: this.props.user_details.customer_details.firstname,
+                    surname: this.props.user_details.customer_details.lastname,
+                    email: this.props.user_details.customer_details.email,
+                    email_optin: this.props.user_details.customer_details.email ? true: false,
+                    phone_number: this.props.user_details.customer_details.phone_number,
+                    sms_optin: this.props.user_details.customer_details.phone_number ? true: false,
+                    gdpr_optin: true,
+                    language: language
+                }
+               
+            }
+          
+        } else {
+            window.insider_object = {
+                user: {
+                    gdpr_optin: false,
+                    language: language,
+                }
+            }
+        }
+    }
+
+
+    componentDidUpdate(prevProps) {
+    
+        if(this.props.location.pathname != prevProps.location.pathname) {
+            
+            this.insiderObject();
+            insiderCount = 1;
+          
+        }
+
+        if(prevProps.location.pathname ==  prevProps.location.pathname && count == 0) {
+           
+            if(insiderCount === 0){
+                this.insiderObject();
+                insiderCount = 1;
+
+            }
+          
+        }
+    }
+
+
+
 
     handleValidation = () => {
         let email = this.state.email;
@@ -458,6 +517,7 @@ class Footer extends Component {
 
 const mapStateToProps = state => {
     return {
+        user_details: state.login,
         globals: state.global,
         productDetails: state.productDetails,
     }

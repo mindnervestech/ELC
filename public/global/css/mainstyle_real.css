@@ -1,3 +1,12 @@
+
+.account-section-modal{
+    background: #ffffff;
+    width: 100%;
+    height: 50%;
+    text-align: right;
+}
+
+
 .select-ageofchild{
     width: 200px !important;
     height: 40px !important;

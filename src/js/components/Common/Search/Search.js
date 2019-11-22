@@ -19,8 +19,19 @@ class Search extends Component {
       showAutoSuggestion: false,
       checkLoop: true,
       open: false,
-      popupVisible: false
+      popupVisible: false,
+      searchInput:''
     }
+  }
+
+  handleKeyPressOnMobile = (e) => {
+    const store_locale = this.props.store_locale;
+      $("#autoSuagestion").hide();
+      check = false
+      this.setState({ redirect: true, searchText: this.state.searchInput});
+      this.props.history.push(`/${store_locale}/products/search?query=` + this.state.searchInput);
+      
+    
   }
 
   handleKeyPress = (e) => {
@@ -39,9 +50,14 @@ class Search extends Component {
       //return <Redirect to={`/${store_locale}/products/search?query=`+this.state.searchText} />
     }
   }
+  handleChange=(e)=>{
+    this.setState({searchInput:e.target.value})
 
+  }
   autoSearchText = (e) => {
+    
     if (e.keyCode != 13) {
+
       this.state.searchText = e.target.value
       if (e.target.value.length >= 3) {
         const data = {
@@ -53,6 +69,7 @@ class Search extends Component {
         this.props.onGetProductSuggestionData(data);
         this.setState({ checkLoop: true })
       } else {
+        $("#autoSuagestion").hide();
         check = false
         this.setState({ showAutoSuggestion: false })
       }
@@ -67,26 +84,43 @@ class Search extends Component {
 
 
   render() {
-   $(document).click(function(e) {
-    if( e.target.id != 'check' && e.target.id != 'searchnay') {
-      $("#autoSuagestion").hide();
-      check = false
+  
+   
+      
+    if(this.state.showAutoSuggestion){
+
+      $(document).ready((e) => {
+        $(document).on(' click ', (e) => {
+         if (e.target.id != 'check' && e.target.id !== 'searchnay') {
+          document.getElementById("searchnay").value = ""
+          //this.setState({searchText:""})
+           $("#autoSuagestion").hide();
+           check = false
+           this.setState({ showAutoSuggestion: false})
+         }
+       });
+     });
     }
-  });
-  if(check){
-    if (Object.keys(this.props.autoSearchSuggestionData).length > 0 && this.props.autoSearchSuggestionData.autoSerachsuggestionData != undefined) {
-      productData = this.props.autoSearchSuggestionData.autoSerachsuggestionData.product_data
-      this.state.showAutoSuggestion = true
+
+
+    
+
+      
+    
+    if (check) {
+      if (Object.keys(this.props.autoSearchSuggestionData).length > 0 && this.props.autoSearchSuggestionData.autoSerachsuggestionData != undefined) {
+        productData = this.props.autoSearchSuggestionData.autoSerachsuggestionData.product_data
+        this.state.showAutoSuggestion = true
+      }
     }
-  }
     return (
       <div className="search" id="check">
         {this.renderRedirect()}
         <FormattedMessage id="SearchText" defaultMessage="search...">
           {(message) =>
-            <input type="text" autoComplete="off" id="searchnay" className="textInput" onKeyUp={this.autoSearchText} placeholder={message} onKeyDown={this.handleKeyPress} />}
+            <input type="text" onChange={ (e)=>this.handleChange(e) } autoComplete="off" id="searchnay"   className="textInput" onKeyUp={this.autoSearchText} placeholder={message} onKeyDown={this.handleKeyPress} />}
         </FormattedMessage>
-        <button className="searchButton" style={{ backgroundColor: '#fff' }}>
+        <button className="searchButton" onClick={(e)=>{this.handleKeyPressOnMobile(e)}}  onTouchStart={(e)=>{this.handleKeyPressOnMobile(e)}}  style={{ backgroundColor: '#fff' }}>
           <img src={searchLogo} className="searchLogo"></img>
         </button>
 

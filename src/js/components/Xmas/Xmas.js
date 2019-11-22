@@ -488,14 +488,14 @@ class Xmas extends Component {
                                                                                                                         </div>
 
                                                                                                                         <div className="row">
-                                                                                                                            <div className="col col-12 apex-col-auto">
+                                                                                                                            <div style={{paddingLeft:0,paddingRight:0}} className="col col-12 apex-col-auto">
                                                                                                                                 {this.state.resFlag ?
-                                                                                                                                    <button className="t-Button t-Button--hot t-Button--stretch"  type="button" disabled={true}>
+                                                                                                                                    <button  style={{height:50}} className="t-Button t-Button--hot t-Button--stretch"  type="button" disabled={true}>
                                                                                                                                         <img src={wait} style={{ width: 25, height: 20, marginTop: -4 }} alt="" />
                                                                                                                                         <span className="t-Button-label"><FormattedMessage id="PleaseWait" defaultMessage="Please wait......." /></span>
                                                                                                                                     </button> :
 
-                                                                                                                                    <button onClick={this.handleFormSubmit} className="t-Button t-Button--hot t-Button--stretch" type="button" id="B28610916249643373">
+                                                                                                                                    <button  style={{height:50}}  onClick={this.handleFormSubmit} className="t-Button t-Button--hot t-Button--stretch" type="button" id="B28610916249643373">
                                                                                                                                         <span className="t-Button-label"><FormattedMessage id="Submit.Text" defaultMessage="Submit" /></span>
                                                                                                                                     </button>}
                                                                                                                             </div>

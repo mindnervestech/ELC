@@ -34,6 +34,7 @@ export const setBirthDayClubData = payload => {
         }
           dispatch(
             callActionForSaveBirthDayClubData({
+              checkAlertStatus:true,
               page_data: { ...res },registerBClubUserDetails: { ...registerBClubUserDetails }
             })
           );
@@ -44,10 +45,10 @@ export const setBirthDayClubData = payload => {
         }
         dispatch(
           callActionForSaveBirthDayClubData({
-            page_data: { ...res },registerBClubUserDetails: { ...registerBClubUserDetails }
+            checkAlertStatus:true,page_data: { ...res },registerBClubUserDetails: { ...registerBClubUserDetails }
           })
         );
-          // console.log(">>>>>>>>>>>>>>>>>>Bclub Res",registerBClubUserDetails)
+         
          
         }
       },

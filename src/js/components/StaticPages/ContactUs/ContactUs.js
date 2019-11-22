@@ -27,7 +27,7 @@ class ContactUs extends Component {
                 carrierCode: '',
                 comment: '',
             },
-            customerService: '8001244443',
+            customerService: '',
             isPhoneValid: false,
             invalidPhone: '',
             comment_count: 0,
@@ -81,15 +81,15 @@ class ContactUs extends Component {
     changeCustomerServiceNumber = () => {
         const currentStore = this.props.store_id;
         const country = this.props.country;
-        if(country === 'UAE' || country === 'uae'){
-            this.setState({
-                customerService: '8005654',
-            })
-        } else if(country === 'KSA' || country === 'ksa'){
-            this.setState({
-                customerService: '8001180009',
-            })
-        }
+        // if(country === 'UAE' || country === 'uae'){
+        //     this.setState({
+        //         customerService: '8005654',
+        //     })
+        // } else if(country === 'KSA' || country === 'ksa'){
+        //     this.setState({
+        //         customerService: '8001180009',
+        //     })
+        // }
     }
 
     closeErrorBox = () => {
@@ -113,18 +113,37 @@ class ContactUs extends Component {
         })
     }
 
-    componentDidMount() {
+    componentWillMount() {
         this.props.onGetContactUsData({ storeId: this.props.store_id });
-        this.changeCustomerServiceNumber();
+       
     }
 
     componentDidUpdate(prevProps) {
         if (this.props.store_id !== prevProps.store_id) {
             this.props.onGetContactUsData({ storeId: this.props.store_id });
-            this.changeCustomerServiceNumber();
+           
         }
     }
 
+    componentWillReceiveProps(nextProps){
+        if (nextProps.country === 'UAE' || nextProps.country === 'uae' && nextProps.contact_data.page_data.contactnumber_uae !== undefined) {
+
+
+            this.setState({
+                customerService: nextProps.contact_data.page_data.contactnumber_uae,
+            })
+        } else if (nextProps.country === 'KSA' || nextProps.country === 'ksa' && nextProps.contact_data.page_data.contactnumber_ksa !== undefined) {
+
+            this.setState({
+                customerService: nextProps.contact_data.page_data.contactnumber_ksa,
+            })
+        }
+        else {
+            this.setState({
+                customerService: nextProps.contact_data.page_data.contactnumber_int,
+            })
+        }
+    }
     contactNumber = (status, value, countryData, number, id) => {
 
         if (status) {
@@ -235,7 +254,7 @@ class ContactUs extends Component {
                             <div id="t_Body_content_offset" style={{ height: '1px' }} />
                             {respo_message}
                             <div className="t-Body-contentInner">
-                                <div className="padding-right-ar padding-breadcrumb" >
+                                <div className="padding-right-ar padding-breadcrumb" style={{textAlign:'start'}}>
                                     <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
                                         <span className="titleHover" style={{ fontSize: 15 }}><FormattedMessage id="Checkout.Home" defaultMessage="Home" /></span>
                                         {this.props.globals.language === 'en' ?

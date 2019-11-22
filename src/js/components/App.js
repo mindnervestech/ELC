@@ -10,6 +10,9 @@ import { store } from '../redux/store/store'
 import '../../styles/App.css';
 
 
+// GTM
+import { initialize } from './utility/googleAnalytis';
+import { initializeGTM } from './utility/googleTagManager';
 import AboutUs from './StaticPages/AboutUs/AboutUs';
 import NewsLetter from './StaticPages/Newsletter/Newsletter'
 import Charity from './StaticPages/Charity/Charity'
@@ -19,7 +22,7 @@ import ConsumerRights from './StaticPages/ConsumerRights/ConsumerRights'
 import HelpFAQ from './StaticPages/HelpFAQ/HelpFAQ';
 import PrivacyPolicy from './StaticPages/PrivacyPolicy/PrivacyPolicy';
 import TermConditions from './StaticPages/TermsConditions/TermsConditions';
-
+import ReactGA from 'react-ga';
 import ProfileAddress from './CustomerAddress/ProfileAddress';
 import BithdayClubAccountTab from './StaticPages/BirthDayClub/BithdayClubAccountTab'
 import BirthDayClub from './StaticPages/BirthDayClub/BirthDayClub'
@@ -64,6 +67,8 @@ import ShopByLearningSkill from './Menu/ShopByLearningSkill';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import ClickAndCollect from '../../js/components/CheckOut/DeliveryDetails/CilckAndCollect/ClickAndCollectModal'
 import Xmas from '../../js/components/Xmas/Xmas';
+import MyAccount from '../../js/components/AccountSection/AccountMain';
+import Address from '../../js/components/AccountSection/AddressInformation/AddressInformation';
 addLocaleData([...en, ...ar]);
 
 
@@ -80,6 +85,8 @@ class App extends Component {
             toHome: false,
             selectedStore: ''
         }
+      initialize();
+      initializeGTM();
     }
 
 
@@ -119,6 +126,10 @@ class App extends Component {
             this._redirectWithLocale(store_locale);   //Change URL Location based on new Locale
         })
 
+    }
+     initializeReactGA=()=> {
+        ReactGA.initialize('UA-123791717-1');
+        ReactGA.pageview('http://localhost:3000/');
     }
 
     getStoreId = (country, lang) => {
@@ -325,6 +336,7 @@ class App extends Component {
                                         <Route exact path="/:locale" component={Home} />
                                         <Route exact path="/:locale/home" component={Home} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/xmas" component={Xmas}/>
+                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/myaccount" component={MyAccount}/>
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/sign-in-register" component={Login} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/profile" component={MyProfile} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/order-history" component={Order} />
@@ -333,7 +345,8 @@ class App extends Component {
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/birth-day-club" component={BirthDayClub} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/browse-all-brand" component={BrowseAllBrand} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/shop-by-learning-skill" component={ShopByLearningSkill} />
-
+                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/address-book" component={Address} />
+                                    
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/birthday-club-account" component={BithdayClubAccountTab} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/add-new-birth-day-club-child" component={AddNewBirthDayClubChild} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/about-us" component={AboutUs} />

@@ -1,0 +1,113 @@
+.myaccount-header{
+    text-align: center;
+    font-size:70px;
+    line-height: 90px;
+    color: #0d943f;
+    padding-bottom: 10px;
+
+}
+
+.account-section-container{
+    margin:0 auto;
+    width: 100%;
+
+}
+
+.accountmenyu-list ul{
+    padding-left: 0;
+    list-style: none;
+    margin-bottom: 0;
+    float: left;
+    width: 50%;
+}
+.accountmenyu-list ul li {
+    display: block;
+    margin: 0 2px 5px
+}
+
+.account-block{
+    margin-right: 5px;
+    margin-bottom: 5px;
+    display: inline-block;
+    height: 70px;
+    width: 48%;
+    line-height: 50px !important;
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 1px solid #d6d6d6;
+}
+
+.account-block:hover{
+        border-color: #4f4f4f; 
+        outline: 0;
+}
+
+
+@media only screen and (max-width:767px){
+    .account-section-container{
+        margin:0 auto;
+        width: 80%;
+    
+    }
+    .myaccount-header{
+        text-align: center;
+        font-size:32px;
+        line-height: 42px;
+        color: #0d943f;
+        padding-bottom: 10px;
+    
+    }
+    .account-block{
+        margin-right: 5px;
+        margin-bottom: 5px;
+        display: inline-block;
+        height: 70px;
+        width: 100%;
+        line-height: 50px !important;
+        text-decoration: none;
+        text-align: center;
+        font-weight: bold;
+        padding: 10px 15px;
+        font-size: 16px;
+        border-radius: 10px;
+        border: 1px solid #d6d6d6;
+    }
+
+}
+
+@media only screen and (min-width:768px) and (max-width:1024px){
+    .myaccount-header{
+        text-align: center;
+        font-size:70px;
+        line-height: 90px;
+        color: #0d943f;
+        padding-bottom: 10px;
+    
+    }
+    .account-section-container{
+        margin:0 auto;
+        width:85%;
+    
+    }
+
+    .account-block{
+        margin-right: 5px;
+        margin-bottom: 5px;
+        display: inline-block;
+        height: 70px;
+        width: 48%;
+        line-height: 50px !important;
+        text-decoration: none;
+        text-align: center;
+        font-weight: bold;
+        padding: 10px 15px;
+        font-size: 16px;
+        border-radius: 10px;
+        border: 1px solid #d6d6d6;
+    }
+
+}

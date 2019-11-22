@@ -450,10 +450,10 @@ class ProductListData extends Component {
 		this.setState({ showFilterOnMobile: false })
 	}
 
-	showMoreLess = () => {
-		showMoreLessFlag = !showMoreLessFlag;
-        this.setState({ showMoreLessFlag: !this.state.showMoreLessFlag });
-    }
+	// showMoreLess = () => {
+	// 	showMoreLessFlag = !showMoreLessFlag;
+    //     this.setState({ showMoreLessFlag: !this.state.showMoreLessFlag });
+    // }
 
 	render() {
 		let list = this.state.list1
