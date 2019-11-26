@@ -69,6 +69,10 @@ import ClickAndCollect from '../../js/components/CheckOut/DeliveryDetails/CilckA
 import Xmas from '../../js/components/Xmas/Xmas';
 import MyAccount from '../../js/components/AccountSection/AccountMain';
 import Address from '../../js/components/AccountSection/AddressInformation/AddressInformation';
+import AddAddress from '../../js/components/AccountSection/AddressInformation/AddressForm.js';
+import { live } from '../api/globals';
+import UpadatePassword from '../../js/components/AccountSection/ChangePassword/UpdatePassword'
+
 addLocaleData([...en, ...ar]);
 
 
@@ -85,8 +89,18 @@ class App extends Component {
             toHome: false,
             selectedStore: ''
         }
-      initialize();
-      initializeGTM();
+        let active_server = 'dev';
+        if(window.location.href.includes('elcjsuat')){
+            active_server = 'uat';
+        } else if(window.location.href.includes('elctoys.com')){
+            active_server = 'live';
+        }
+        if (active_server==='live') {
+            console.log("In true",active_server)
+            initialize();
+            initializeGTM();
+        }
+
     }
 
 
@@ -346,7 +360,8 @@ class App extends Component {
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/browse-all-brand" component={BrowseAllBrand} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/shop-by-learning-skill" component={ShopByLearningSkill} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/address-book" component={Address} />
-                                    
+                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/add-address" component={AddAddress} />
+
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/birthday-club-account" component={BithdayClubAccountTab} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/add-new-birth-day-club-child" component={AddNewBirthDayClubChild} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/about-us" component={AboutUs} />
@@ -360,6 +375,7 @@ class App extends Component {
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/consumer-rights" component={ConsumerRights} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/privacy-policy" component={PrivacyPolicy} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/terms-and-conditions" component={TermConditions} />
+                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/update-password" component={UpadatePassword} />
 
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/products/:category_path" component={Product} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/products-details/:category" component={ProductDetails} />

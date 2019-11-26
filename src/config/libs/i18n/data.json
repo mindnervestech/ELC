@@ -413,7 +413,7 @@
         "Signup.validation.password.empty": "Please enter password",
         "Signup.validation.password.same": "Password and Confirm password must be same",
         "Signup.validation.password.length": "Password must be atleast 1 character long",
-        "Signup.validation.confirmPassword.empty": "Please enter password again",
+        "Signup.validation.confirmPassword.empty": "Please enter confirm password",
         "CheckoutForm.FirstName.Lengthtwo.Text": "Only letters, minimum length 2",
         "CheckoutForm.LastName.Lengthtwo.Text": "Only letters, minimum length 2",
         "ChangePassword.Validate": "Enter Valid Password and Confirm Password",
@@ -950,7 +950,7 @@
         "review.ageofchild":"Age Of Child",
         "transaction_no.empty":"Please enter transaction number",
         "browseallbrands":"Browse All Brands",
-        "XmasSantaSack.Title":"Xmas Santa Sack"
+        "XmasSantaSack.Title":"Christmas Santa’s Sack"
 
     },
     "ar": {

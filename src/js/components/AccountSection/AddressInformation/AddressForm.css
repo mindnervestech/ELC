@@ -1,0 +1,24 @@
+.address-main-container{
+    margin:0 auto;
+    margin-top:10%;
+    margin-bottom: 10%;
+   
+}
+
+.address-add-new{
+    left:10%;
+
+}
+
+.input-field{
+    height: 50px !important;
+}
+
+.address-add-new-header{
+    display: inline-block;
+    color: #4f4f4f;
+    font-size: 28px;
+    line-height: 36px;
+    margin: 0;
+    padding: 20px 0;
+}
