@@ -9,6 +9,7 @@ import { Link, Redirect } from 'react-router-dom';
 import cookie from 'react-cookies';
 import Spinner from '../../Spinner/Spinner.js';
 import { Row, Col } from "react-bootstrap";
+const wait = require('../../../../assets/images/wait.gif');
 
 class UpadatePassword extends Component {
     constructor(props) {
@@ -21,7 +22,8 @@ class UpadatePassword extends Component {
             },
             errors: {},
             goToMyProfile: false,
-            showPasswordAlert: false
+            showPasswordAlert: false,
+            showPleaseWait: false
 
         }
     }
@@ -38,8 +40,40 @@ class UpadatePassword extends Component {
         this.props.onChangePassword(data);
 
     }
+    closeAlert = () => {
+        this.setState({ showPasswordAlert: false })
+        this.props.onClearChangePass();
+        this.onClearFormData();
+        this.setState({ showPleaseWait: false })
+    }
     componentWillReceiveProps(nextProps) {
+        if (nextProps.change_pass.status == true) {
+            this.setState({ showPasswordAlert: true })
+            setTimeout(() => {
+                this.closeAlert();
+            }, 2000);
+
+        }
+        if (nextProps.change_pass.status == false) {
+            this.setState({ showPasswordAlert: true });
+            setTimeout(() => {
+                this.closeAlert();
+            }, 2000);
+        }
+
+
         console.log("Netx props", nextProps)
+    }
+
+
+    onClearFormData = () => {
+        this.setState({
+            ...this.state,
+            fields: {
+                password: '',
+                confirmPassword: '',
+            }
+        })
     }
 
     handleValidation = () => {
@@ -64,7 +98,7 @@ class UpadatePassword extends Component {
             if (!fields['password'].match(regularExpression)) {
                 formIsValid = false;
                 errors["password"] = <FormattedMessage id="Signup.validation.password.invalid" defaultMessage="Password is not valid" />;
-              
+
             }
             if (!fields['confirmPassword'].match(regularExpression)) {
                 formIsValid = false;
@@ -91,6 +125,7 @@ class UpadatePassword extends Component {
     }
     submitData = () => {
         if (this.handleValidation()) {
+            this.setState({ showPleaseWait: true })
             this.changePassword();
         }
     }
@@ -145,8 +180,31 @@ class UpadatePassword extends Component {
 
     render() {
         if (this.state.goToMyProfile) {
-            this.props.history.push(`/${this.props.globals.store_locale}/sign-in-register`);
+            this.props.history.push(`/${this.props.globals.store_locale}/myaccount`);
         }
+        let respo_message = null;
+        if (this.state.showPasswordAlert) {
+            respo_message = <span id="APEX_SUCCESS_MESSAGE" data-template-id="126769709897686936_S" className="apex-page-success u-visible"><div className="t-Body-alert">
+                <div className="t-Alert t-Alert--defaultIcons t-Alert--success t-Alert--horizontal t-Alert--page t-Alert--colorBG" id="t_Alert_Success" role="alert">
+                    <div className="t-Alert-wrap">
+                        <div className="t-Alert-icon">
+                            <span className="t-Icon" />
+                        </div>
+                        <div className="t-Alert-content">
+                            <div className="t-Alert-header">
+                                <h2 className="t-Alert-title">{this.props.change_pass.message}</h2>
+                            </div>
+                        </div>
+                        <div className="t-Alert-buttons">
+                            <button className="t-Button t-Button--noUI t-Button--icon t-Button--closeAlert" type="button" title="Close Notification" onClick={() => this.closeAlert()}><span className="t-Icon icon-close" /></button>
+                        </div>
+                    </div>
+                </div>
+            </div></span>;
+        }
+
+
+
         let passwordField = null;
         passwordField = <div className="form-group">
             <label className="control-label " htmlFor="currentPassword">
@@ -197,6 +255,7 @@ class UpadatePassword extends Component {
                         }
                     </Link>
                     <span style={{ fontSize: 15, fontWeight: 'bold' }}>Update Password</span>
+                    {respo_message}
                 </div>
                 <Row>
                     <Col xs={12} lg={12} md={12}>
@@ -219,7 +278,12 @@ class UpadatePassword extends Component {
                         </div>
                         <div style={{ display: 'flex' }}>
                             <button className="alsoLikeCardButton cancel-button" onClick={this.goToMyProfile} style={{ marginTop: 10, marginRight: 40 }}><span>Cancel</span></button>
-                            <button className="alsoLikeCardButton save-button" onClick={this.submitData} style={{ marginTop: 10 }}><span>Save</span></button>
+                            {this.state.showPleaseWait ?
+                                <button style={{ height: 50 }} className="alsoLikeCardButton save-button" type="button" disabled={true}>
+                                    <img src={wait} style={{ width: 25, height: 20, marginTop: -4 }} alt="" />
+                                    <span className="t-Button-label"><FormattedMessage id="PleaseWait" defaultMessage="Please wait......." /></span>
+                                </button> :
+                                <button className="alsoLikeCardButton save-button" onClick={this.submitData} style={{ marginTop: 10 }}><span>Save</span></button>}
                         </div>
                     </Col>
                     <Col xs={1} lg={3} md={2}>&nbsp;</Col>
