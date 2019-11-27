@@ -16,6 +16,9 @@ const reducer = (state = initialState, action) => {
         case actionType.GET_ADDRESS_BOOK:
         return updateObject(state, action.payload)
 
+        case actionType.CLEAR_ADDRESS_RESPONSE:
+            return updateObject(state, action.payload)
+
         case actionType.GET_COUNTRIES:
         return updateObject(state, action.payload)
 

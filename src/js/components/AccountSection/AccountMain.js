@@ -27,7 +27,7 @@ class AccountMain extends Component {
                     <Col lg={7}>
                         <div className="account-section-container">
                             <div>
-                                <h1 className="myaccount-header">My Account</h1>
+                                <h1 className="myaccount-header"><FormattedMessage id="header.MyAccount" defaultMessage="My Account"/></h1>
                             </div>
 
                             <div className="accountmenu-list">

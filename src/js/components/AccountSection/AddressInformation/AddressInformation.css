@@ -8,7 +8,13 @@
 }
 
 .addnew-text{
-    
+   float: right;
+   color: #0d943f; 
+}
+html[dir="rtl"] .addnew-text{
+    float: left;
    
-
+}
+.borderBottomAddNew{
+    border-bottom: 1px black !important;
 }

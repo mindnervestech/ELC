@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../../CustomerAddress/ProfileAddress.css';
 import Modal from 'react-responsive-modal';
 import AddressForm from '../../CustomerAddress/AddressForm';
-import AddressCard from '../../CustomerAddress/AddressCard';
+import AddressCard from '../AddressInformation/AddressCard';
 import { Link, Redirect } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
@@ -17,6 +17,7 @@ class AddressInformation extends Component {
         super(props);
         this.state = {
             openFirstModal: false,
+            openDeleteModal:false,
             addressForEdit: {},
             modalType: 'Edit',
             alertBoxDetails: {
@@ -209,7 +210,7 @@ class AddressInformation extends Component {
             </Modal>
 
             <div className="t-Body-contentInner">
-                <div className="padding-right-ar padding-breadcrumb">
+                <div className="padding-right-ar padding-breadcrumb borderBottomAddNew" style={{ borderBottom: '1px black' }}>
                     <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
                         <span className="titleHover" style={{ fontSize: 15 }}><FormattedMessage id="Checkout.Home" defaultMessage="Home" /></span>
                         {this.props.globals.language === 'en' ?
@@ -219,14 +220,15 @@ class AddressInformation extends Component {
                     </Link>
                     <span style={{ fontSize: 15, fontWeight: 'bold' }}><FormattedMessage id="profile.Account.Title" defaultMessage="Account" /></span>
                     <h1 className="address-header">Addresses</h1>
-                    <div>
-                        <span className="addnew-text">Add New</span>
+                    <Link to={`/${store_locale}/add-address`} style={{ textDecoration: 'none' }}>
+                    <span className="addnew-text">Add New</span>
+                    </Link>
+                    
 
-                    </div>
-
-                    <hr />
                 </div>
+
                 <div className="container">
+
                     <div className="row">
                         <div className="col col-12 apex-col-auto">
                             <div className="t-ButtonRegion t-Form--floatLeft containers t-ButtonRegion--noPadding t-ButtonRegion--noUI apex-tabs-region js-apex-region" id="R28512406002220865">
@@ -271,48 +273,42 @@ class AddressInformation extends Component {
 
                                         <div className="t-ButtonRegion-buttons" />
                                     </div>
-                                    <div className="t-ButtonRegion-col t-ButtonRegion-col--right"><div className="t-ButtonRegion-buttons"><button onClick={this.logOut} className="t-Button t-Button--hot t-Button--gapTop" type="button" id="B28512592134220867"><span className="t-Button-label"><FormattedMessage id="header.SignOut" defaultMessage="Sign Out" /></span></button></div></div>
+                                    {/* <div className="t-ButtonRegion-col t-ButtonRegion-col--right"><div className="t-ButtonRegion-buttons"><button onClick={this.logOut} className="t-Button t-Button--hot t-Button--gapTop" type="button" id="B28512592134220867"><span className="t-Button-label"><FormattedMessage id="header.SignOut" defaultMessage="Sign Out" /></span></button></div></div> */}
                                 </div>
                             </div>
                         </div>
-                    </div><div className="row">
-                        <div className="AddressDetail col col-12 apex-col-auto">
-                            <div className="t-Region containers  t-Region--scrollBody" id="caddress" aria-live="polite">
-                                <div className="t-Region-header">
+                    </div>
+                    <div className="row" style={{ marginTop: '5%', marginBottom: '5' }}>
+                        <div className="col col-12 apex-col-auto borderBottomAddNew">
+
+                            {/* <div className="t-Region-header">
                                     <div className="t-Region-headerItems t-Region-headerItems--title">
                                         <span className="t-Region-headerIcon"><span className="t-Icon " aria-hidden="true" /></span>
                                         <h2 className="t-Region-title" id="caddress_heading"><FormattedMessage id="Addresses.Text" defaultMessage="Addresses" /></h2>
                                     </div>
                                     <div className="t-Region-headerItems t-Region-headerItems--buttons"><button onClick={this.openAddAddressModal} className="t-Button t-Button--hot " type="button" id="B28610426425643368"><span className="t-Button-label"><FormattedMessage id="AddNewAddress.Text" defaultMessage="Add New Address" /></span></button><span className="js-maximizeButtonContainer" /></div>
-                                </div>
+                                </div> */}
 
-                                <div className="t-Region-bodyWrap">
-                                    <div className="t-Region-buttons t-Region-buttons--top">
-                                        <div className="t-Region-buttons-left" />
-                                        <div className="t-Region-buttons-right" />
-                                    </div>
-                                    <div className="t-Region-body">
-                                        <div id="report_28515432958220895_catch">
+                            <div>
+                                {/* <ul class="pull-left account-address">
+                                    <li>
+                                        <strong><span>Mr.</span> <span>Akshay</span> <span>Akshay</span>
 
-                                            <ul className="t-Cards t-Cards--animColorFill t-Cards--3cols t-Cards--basic" id="caddress_cards" data-region-id="caddress">
-
-                                                {addressCard}
-
-
-                                            </ul>
-                                            <table className="t-Report-pagination" role="presentation" /></div>
-                                    </div>
-
-
-                                    <div className="t-Region-buttons t-Region-buttons--bottom">
-                                        <div className="t-Region-buttons-left" />
-                                        <div className="t-Region-buttons-right" />
-                                    </div>
-                                </div>
-
-
+                                            (Default)
+									</strong>
+                                    </li>
+                                    <li>test</li>
+                                    <li>test</li>
+                                    <li>testcity</li>
+                                    <li><span>Australia</span> <span>1022</span></li>
+                                    <li>8956177495</li>
+                                </ul> */}
+                                {addressCard}
                             </div>
+
+
                         </div>
+
                     </div>
                 </div>
             </div>

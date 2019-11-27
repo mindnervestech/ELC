@@ -4,7 +4,30 @@
     margin-bottom: 10%;
    
 }
+.color-add-address-back{
+    background-color:#fff !important;
+    overflow: hidden !important;
+    width:100% !important;
+}
 
+.addnew-header{
+    padding-left: 25%;
+    display: inline-block;
+    color: #4f4f4f;
+    font-size: 28px;
+    line-height: 36px;
+    margin: 0;
+ 
+}
+html[dir="rtl"] .addnew-header{
+    padding-right: 26%;
+    display: inline-block;
+    color: #4f4f4f;
+    font-size: 28px;
+    line-height: 36px;
+    margin: 0;
+
+}
 .address-add-new{
     left:10%;
 

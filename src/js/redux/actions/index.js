@@ -26,7 +26,7 @@ export {
 	resetPassword
 } from './loginAndMyAccount';
 
-export { getUserAddress, addNewAddress, deleteAddress, editAddress, getCountryList, getStoreList } from './userAddress';
+export { getUserAddress,clearAddressResponse ,addNewAddress, deleteAddress, editAddress, getCountryList, getStoreList } from './userAddress';
 
 export { getOrderHistory, viewOrderDetails, clearState, orderJson } from './ordersHistoryAndDetails';
 

@@ -11,6 +11,14 @@ const callActionGetUserAddress = (payload) => {
         payload: payload
     };
 }
+export const clearAddressResponse = () => {
+    return {
+        type: actionType.CLEAR_ADDRESS_RESPONSE,
+        payload: {
+            addressResp: {}
+        }
+    };
+}
 
 export const getUserAddress = (payload) => {
 

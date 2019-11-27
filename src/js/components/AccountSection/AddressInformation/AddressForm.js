@@ -33,15 +33,16 @@ class AddressForm extends Component {
                                 }
                             </Link>
                             <span style={{ fontSize: 15, fontWeight: 'bold' }}><FormattedMessage id="profile.Account.Title" defaultMessage="Account" /></span>
-
-                            <hr />
+                            
                         </div>
+                        <span className="addnew-header">Add New</span>
+                            <hr />
                     </div>
                 </Row>
 
                 <Row>
-                    <Col xs={12} lg={3} md={3}>&nbsp;</Col>
-                    <Col lg={6} md={6} xs={12}>
+                    <Col xs={1} lg={2} md={2}>&nbsp;</Col>
+                    <Col lg={8} md={8} xs={10}>
                         {/* <div className="address-main-container">
                             <div className="address-add-new">
                                 <span className="glyphicon glyphicon-chevron-left"></span>
@@ -72,7 +73,7 @@ class AddressForm extends Component {
                         <Address/>
                        
                     </Col>
-                    <Col xs={12} lg={3} md={3}>&nbsp;</Col>
+                    <Col xs={1} lg={2} md={2}>&nbsp;</Col>
                 </Row>
 
 

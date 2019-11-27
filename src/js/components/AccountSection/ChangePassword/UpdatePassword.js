@@ -245,7 +245,7 @@ class UpadatePassword extends Component {
 
         let store_locale = this.props.globals.store_locale;
         return (
-            <div className="t-Body-contentInner">
+            <div className="t-Body-contentInner" style={{textAlign:'start'}}>
                 <div className="padding-right-ar padding-breadcrumb" style={{ textAlign: 'start' }}>
                     <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
                         <span className="titleHover" style={{ fontSize: 15 }}><FormattedMessage id="Checkout.Home" defaultMessage="Home" /></span>
@@ -277,13 +277,13 @@ class UpadatePassword extends Component {
                             {confirmPasswordField}
                         </div>
                         <div style={{ display: 'flex' }}>
-                            <button className="alsoLikeCardButton cancel-button" onClick={this.goToMyProfile} style={{ marginTop: 10, marginRight: 40 }}><span>Cancel</span></button>
+                            <button className="alsoLikeCardButton cancel-button" onClick={this.goToMyProfile} ><span>Cancel</span></button>
                             {this.state.showPleaseWait ?
                                 <button style={{ height: 50 }} className="alsoLikeCardButton save-button" type="button" disabled={true}>
                                     <img src={wait} style={{ width: 25, height: 20, marginTop: -4 }} alt="" />
                                     <span className="t-Button-label"><FormattedMessage id="PleaseWait" defaultMessage="Please wait......." /></span>
                                 </button> :
-                                <button className="alsoLikeCardButton save-button" onClick={this.submitData} style={{ marginTop: 10 }}><span>Save</span></button>}
+                                <button className="alsoLikeCardButton save-button" onClick={this.submitData} ><span>Save</span></button>}
                         </div>
                     </Col>
                     <Col xs={1} lg={3} md={2}>&nbsp;</Col>
