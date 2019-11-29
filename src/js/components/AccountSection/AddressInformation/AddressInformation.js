@@ -33,7 +33,6 @@ class AddressInformation extends Component {
         }
         this.customer_details = this.props.user_details.customer_details;
     }
-
     componentDidMount() {
         let obj = this.customer_details;
         if (!((Object.entries(obj).length === 0) && (obj.constructor === Object))) {
@@ -43,9 +42,7 @@ class AddressInformation extends Component {
         if (this.props.countryList.length == 0) {
             this.props.onGetCountryList();
         }
-
     }
-
     componentDidUpdate(prevProps) {
         if (!(utility.isEquivalent(prevProps.addressResp, this.props.addressResp))) {
 
@@ -58,10 +55,7 @@ class AddressInformation extends Component {
                     this.onCloseFirstModal();
                 }
                 this.props.onGetUserAddress({ customerid: this.props.user_details.customer_details.customer_id });
-
             } else if (this.props.addressResp.status == false) {
-                //alert(this.props.addressResp.message);
-
                 this.setState({
                     ...this.state,
                     alertBoxDetails: {
@@ -69,7 +63,6 @@ class AddressInformation extends Component {
                         message: this.props.addressResp.message,
                     }
                 })
-
             }
         }
     }

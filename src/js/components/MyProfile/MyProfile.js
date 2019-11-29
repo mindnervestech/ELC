@@ -206,95 +206,103 @@ class Profile extends Component {
                                                         role="tab" aria-controls="R28337577127179591" aria-selected="false" tabIndex={-1} >
                                                         <span className="FormattedMessage"><FormattedMessage id="profile.OrderHistory.Title" defaultMessage="Order History" /></span></Link>
 
-                                                </li><li className="apex-rds-item apex-rds-last apex-rds-after" role="presentation" id="USERWISHLIST_tab">
+                                                    </li><li className="apex-rds-item apex-rds-last apex-rds-after" role="presentation" id="USERWISHLIST_tab">
 
-                                                    <Link to={{
-                                                        pathname: `/${store_locale}/wish-list`,
-                                                        state: { ...this.state }
-                                                    }}
-                                                        role="tab" aria-controls="USERWISHLIST" aria-selected="false" tabIndex={-1}>
-                                                        <span className="FormattedMessage"><FormattedMessage id="profile.Wishlist.Title" defaultMessage="Wishlist" /></span></Link></li>
-                                                <button onClick={this.logOut} className="t-Button t-Button--hot t-Button--gapTop divShowOnMobile floatRight" type="button" id="B28512592134220867"><span className="t-Button-label"><FormattedMessage id="header.SignOut" defaultMessage="Sign Out" /></span></button>
-                                            </ul></div>
+                                                        <Link to={{
+                                                            pathname: `/${store_locale}/wish-list`,
+                                                            state: { ...this.state }
+                                                        }}
+                                                            role="tab" aria-controls="USERWISHLIST" aria-selected="false" tabIndex={-1}>
+                                                            <span className="FormattedMessage"><FormattedMessage id="profile.Wishlist.Title" defaultMessage="Wishlist" /></span></Link></li>
+                                                    <li className="apex-rds-item apex-rds-last apex-rds-after" role="presentation" id="R28337577127179591_tab">
+                                                        <Link to={{
+                                                            pathname: `/${store_locale}/birthday-club-account`,
+                                                            state: { ...this.state }
+                                                        }}
+                                                            role="tab" aria-controls="USERWISHLIST" aria-selected="false" tabIndex={-1}>
+                                                            <span className="FormattedMessage"><FormattedMessage id="profile.bcluAccountTab.Title" defaultMessage="Birthday Club" /></span></Link>
+                                                    </li>
+                                                    <button onClick={this.logOut} className="t-Button t-Button--hot t-Button--gapTop divShowOnMobile floatRight" type="button" id="B28512592134220867"><span className="t-Button-label"><FormattedMessage id="header.SignOut" defaultMessage="Sign Out" /></span></button>
+                                                </ul></div>
 
-                                            <div className="t-ButtonRegion-buttons" />
+                                                <div className="t-ButtonRegion-buttons" />
+                                            </div>
+                                            <div className="t-ButtonRegion-col t-ButtonRegion-col--right"><div className="t-ButtonRegion-buttons"><button onClick={this.logOut} className="t-Button t-Button--hot t-Button--gapTop divShowOnWeb" type="button" id="B28512592134220867"><span className="t-Button-label"><FormattedMessage id="header.SignOut" defaultMessage="Sign Out" /></span></button></div></div>
                                         </div>
-                                        <div className="t-ButtonRegion-col t-ButtonRegion-col--right"><div className="t-ButtonRegion-buttons"><button onClick={this.logOut} className="t-Button t-Button--hot t-Button--gapTop divShowOnWeb" type="button" id="B28512592134220867"><span className="t-Button-label"><FormattedMessage id="header.SignOut" defaultMessage="Sign Out" /></span></button></div></div>
                                     </div>
                                 </div>
-                            </div>
-                        </div><div className="row">
-                            <div className="col col-12 apex-col-auto">
+                            </div><div className="row">
+                                <div className="col col-12 apex-col-auto">
 
 
-                                <div className="t-ContentBlock containers t-ContentBlock--padded t-ContentBlock--h3 t-ContentBlock--shadowBG margin-top-lg a-Tabs-panel apex-rds-before apex-rds-element-selected" id="R28333887549179555" role="tabpanel" aria-labelledby="R28333887549179555_tab" aria-hidden="false" style={{}}>
-                                    <div className="t-ContentBlock-header"><h1 className="t-ContentBlock-title"><FormattedMessage id="profile.Account.Title" defaultMessage="Account" /></h1></div>
-                                    <div className="t-ContentBlock-body"><div className="container">
-                                        <Row className="row">
-                                            <Col xs="12" lg="5" md="12">
-                                                <div className="t-Region t-Region--noUI t-Region--hiddenOverflow" id="R28334177511179557" style={{ borderRight: '1px solid #e1e1e1' }}>
-                                                    <div className="t-Region-header">
-                                                        <div className="t-Region-headerItems t-Region-headerItems--title">
-                                                            <span className="t-Region-headerIcon"><span className="t-Icon " aria-hidden="true" /></span>
-                                                            <h2 className="t-Region-title" id="R28334177511179557_heading">
-                                                                <FormattedMessage id="profile.Profile.Title" defaultMessage="Profile" />
-                                                            </h2>
+                                    <div className="t-ContentBlock containers t-ContentBlock--padded t-ContentBlock--h3 t-ContentBlock--shadowBG margin-top-lg a-Tabs-panel apex-rds-before apex-rds-element-selected" id="R28333887549179555" role="tabpanel" aria-labelledby="R28333887549179555_tab" aria-hidden="false" style={{}}>
+                                        <div className="t-ContentBlock-header"><h1 className="t-ContentBlock-title"><FormattedMessage id="profile.Account.Title" defaultMessage="Account" /></h1></div>
+                                        <div className="t-ContentBlock-body"><div className="container">
+                                            <Row className="row">
+                                                <Col xs="12" lg="5" md="12">
+                                                    <div className="t-Region t-Region--noUI t-Region--hiddenOverflow" id="R28334177511179557" style={{ borderRight: '1px solid #e1e1e1' }}>
+                                                        <div className="t-Region-header">
+                                                            <div className="t-Region-headerItems t-Region-headerItems--title">
+                                                                <span className="t-Region-headerIcon"><span className="t-Icon " aria-hidden="true" /></span>
+                                                                <h2 className="t-Region-title" id="R28334177511179557_heading">
+                                                                    <FormattedMessage id="profile.Profile.Title" defaultMessage="Profile" />
+                                                                </h2>
+                                                            </div>
+                                                            <div className="t-Region-headerItems t-Region-headerItems--buttons"><span className="js-maximizeButtonContainer" /></div>
                                                         </div>
-                                                        <div className="t-Region-headerItems t-Region-headerItems--buttons"><span className="js-maximizeButtonContainer" /></div>
-                                                    </div>
-                                                    <div className="t-Region-bodyWrap">
-                                                        <div className="t-Region-buttons t-Region-buttons--top">
-                                                            <div className="t-Region-buttons-left" />
-                                                            <div className="t-Region-buttons-right" />
-                                                        </div>
-                                                        <div className="t-Region-body">
-                                                            <ul style={{ display: '-webkit-box' }}>
-                                                                <li style={{ marginRight: '20px' }}>
-                                                                    <div className="profile-email">
-                                                                        <p style={{ fontSize: '11px', lineHeight: '17px', letterSpacing: '.04em', textTransform: 'inherit', fontWeight: 'normal', paddingBottom: 0 }}><FormattedMessage id="profile.Email.Title" defaultMessage="Email" /></p>
-                                                                        <p style={{ fontSize: '11px', lineHeight: '17px', letterSpacing: '.04em', textTransform: 'inherit', fontWeight: 'normal', paddingBottom: '20px' }}>{this.customer_details.email}
-                                                                            <br />
-                                                                            {/*<a href="javascript:void();" id="email_edit">Edit <i class="fas fa-chevron-right"></i></a>*/}
+                                                        <div className="t-Region-bodyWrap">
+                                                            <div className="t-Region-buttons t-Region-buttons--top">
+                                                                <div className="t-Region-buttons-left" />
+                                                                <div className="t-Region-buttons-right" />
+                                                            </div>
+                                                            <div className="t-Region-body">
+                                                                <ul style={{ display: '-webkit-box' }}>
+                                                                    <li style={{ marginRight: '20px' }}>
+                                                                        <div className="profile-email">
+                                                                            <p style={{ fontSize: '11px', lineHeight: '17px', letterSpacing: '.04em', textTransform: 'inherit', fontWeight: 'normal', paddingBottom: 0 }}><FormattedMessage id="profile.Email.Title" defaultMessage="Email" /></p>
+                                                                            <p style={{ fontSize: '11px', lineHeight: '17px', letterSpacing: '.04em', textTransform: 'inherit', fontWeight: 'normal', paddingBottom: '20px' }}>{this.customer_details.email}
+                                                                                <br />
+                                                                                {/*<a href="javascript:void();" id="email_edit">Edit <i class="fas fa-chevron-right"></i></a>*/}
+                                                                                <a>
+                                                                                </a>
+                                                                            </p>
                                                                             <a>
                                                                             </a>
-                                                                        </p>
-                                                                        <a>
-                                                                        </a>
-                                                                    </div>
-                                                                </li>
-                                                                <li>
-                                                                    <div className="profile-password">
-                                                                        <p style={{ fontSize: '11px', lineHeight: '17px', letterSpacing: '.04em', textTransform: 'inherit', fontWeight: 'normal', paddingBottom: 0 }}><FormattedMessage id="profile.Password.Title" defaultMessage="Password" /></p>
-                                                                        <p style={{ fontSize: '11px', lineHeight: '17px', letterSpacing: '.04em', textTransform: 'inherit', fontWeight: 'normal', paddingBottom: '20px' }}>********<br />
-                                                                            <span onClick={this.onOpenFirstModal} id="password_edit"><FormattedMessage id="profile.ChangePassword.Title" defaultMessage="Change Password" /><i className="fa fa-chevron-right" /></span>
-                                                                        </p>
-                                                                    </div>
-                                                                </li>
-                                                            </ul>
-                                                            <div className="profile-password">
-                                                                <p style={{ fontSize: '11px', lineHeight: '17px', letterSpacing: '.04em', textTransform: 'inherit', fontWeight: 'normal', paddingBottom: 0 }}><FormattedMessage id="profile.PhoneNumber.Title" defaultMessage="PhoneNumber" /></p>
-                                                                <p style={{ fontSize: '11px', lineHeight: '17px', letterSpacing: '.04em', textTransform: 'inherit', fontWeight: 'normal', paddingBottom: '20px' }}>
-                                                                    {this.customer_details.carrier_code ? `${this.customer_details.carrier_code && '+'}${this.customer_details.carrier_code}${this.customer_details.phone_number}` : this.customer_details.phone_number}<br />
-                                                                </p>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li>
+                                                                        <div className="profile-password">
+                                                                            <p style={{ fontSize: '11px', lineHeight: '17px', letterSpacing: '.04em', textTransform: 'inherit', fontWeight: 'normal', paddingBottom: 0 }}><FormattedMessage id="profile.Password.Title" defaultMessage="Password" /></p>
+                                                                            <p style={{ fontSize: '11px', lineHeight: '17px', letterSpacing: '.04em', textTransform: 'inherit', fontWeight: 'normal', paddingBottom: '20px' }}>********<br />
+                                                                                <span onClick={this.onOpenFirstModal} id="password_edit"><FormattedMessage id="profile.ChangePassword.Title" defaultMessage="Change Password" /><i className="fa fa-chevron-right" /></span>
+                                                                            </p>
+                                                                        </div>
+                                                                    </li>
+                                                                </ul>
+                                                                <div className="profile-password">
+                                                                    <p style={{ fontSize: '11px', lineHeight: '17px', letterSpacing: '.04em', textTransform: 'inherit', fontWeight: 'normal', paddingBottom: 0 }}><FormattedMessage id="profile.PhoneNumber.Title" defaultMessage="PhoneNumber" /></p>
+                                                                    <p style={{ fontSize: '11px', lineHeight: '17px', letterSpacing: '.04em', textTransform: 'inherit', fontWeight: 'normal', paddingBottom: '20px' }}>
+                                                                        {this.customer_details.carrier_code ? `${this.customer_details.carrier_code && '+'}${this.customer_details.carrier_code}${this.customer_details.phone_number}` : this.customer_details.phone_number}<br />
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                            <div className="t-Region-buttons t-Region-buttons--bottom">
+                                                                <div className="t-Region-buttons-left" />
+                                                                <div className="t-Region-buttons-right" />
                                                             </div>
                                                         </div>
-                                                        <div className="t-Region-buttons t-Region-buttons--bottom">
-                                                            <div className="t-Region-buttons-left" />
-                                                            <div className="t-Region-buttons-right" />
-                                                        </div>
                                                     </div>
-                                                </div>
-                                            </Col>
-                                            <Col xs="12" lg="7" md="12">
-                                                <div className="t-Region t-Region--noUI t-Region--hiddenOverflow" id="caddress" aria-live="polite">
-                                                    <div className="t-Region-header">
-                                                        <div className="t-Region-headerItems t-Region-headerItems--title">
-                                                            <span className="t-Region-headerIcon"><span className="t-Icon " aria-hidden="true" /></span>
-                                                            <h2 className="t-Region-title" id="caddress_heading"><FormattedMessage id="profile.AddressBook.Title" defaultMessage="Address Book" /></h2>
-                                                        </div>
-                                                        <div className="t-Region-headerItems t-Region-headerItems--buttons">
-                                                            <button onClick={this.redirectToAddressBook} className="t-Button t-Button--link" type="button" id="P21_VIEW_ALL">
-                                                                <span className="t-Button-label"><FormattedMessage id="profile.ViewAll.Title" defaultMessage="ViewAll" /></span></button><span className="js-maximizeButtonContainer" /></div>
+                                                </Col>
+                                                <Col xs="12" lg="7" md="12">
+                                                    <div className="t-Region t-Region--noUI t-Region--hiddenOverflow" id="caddress" aria-live="polite">
+                                                        <div className="t-Region-header">
+                                                            <div className="t-Region-headerItems t-Region-headerItems--title">
+                                                                <span className="t-Region-headerIcon"><span className="t-Icon " aria-hidden="true" /></span>
+                                                                <h2 className="t-Region-title" id="caddress_heading"><FormattedMessage id="profile.AddressBook.Title" defaultMessage="Address Book" /></h2>
+                                                            </div>
+                                                            <div className="t-Region-headerItems t-Region-headerItems--buttons">
+                                                                <button onClick={this.redirectToAddressBook} className="t-Button t-Button--link" type="button" id="P21_VIEW_ALL">
+                                                                    <span className="t-Button-label"><FormattedMessage id="profile.ViewAll.Title" defaultMessage="ViewAll" /></span></button><span className="js-maximizeButtonContainer" /></div>
 
 
                                                     </div>

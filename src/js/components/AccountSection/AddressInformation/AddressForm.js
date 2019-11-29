@@ -23,7 +23,7 @@ class AddressForm extends Component {
         return (
             <>
                 <Row>
-                    <div className="t-Body-contentInner">
+                    <div className="t-Body-contentInner" style={{padding:'auto !important'}}>
                         <div className="padding-right-ar padding-breadcrumb">
                             <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
                                 <span className="titleHover" style={{ fontSize: 15 }}><FormattedMessage id="Checkout.Home" defaultMessage="Home" /></span>

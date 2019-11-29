@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Link, withRouter } from 'react-router-dom';
-
+import $ from 'jquery'
 import { connect } from 'react-redux';
 import Axios from 'axios';
 import facebook from '../../../../assets/images/social/Facebook.svg';
 import instagram from '../../../../assets/images/social/instagram.svg';
 import youtube from '../../../../assets/images/social/youtube.svg';
 import twitter from '../../../../assets/images/social/twitter.svg';
+import whatsapp from '../../../../assets/images/social/whatsapp.png';
 import Collapsible from 'react-collapsible';
 import { BASE_URL, API_TOKEN } from '../../../api/globals';
+import { isMobile } from 'react-device-detect';
 const wait = require('../../../../assets/images/wait.gif');
-let   insiderCount = 0;
-let count=0;
+
+let insiderCount = 0;
+let count = 0;
 const style = {
     visibility: 'visible',
     opacity: 0.5,
@@ -22,37 +25,39 @@ class Footer extends Component {
         super(props);
         this.state = {
             email: "",
+            showWhatsappOnWeb: true,
+            showWhatsappOnMobile: false,
             success: '',
             showAlert: false,
             errorMessage: {},
-            loaderState:false
+            loaderState: false
         };
-      
+
     }
     insiderObject = () => {
         const currentStore = this.props.globals.currentStore;
         let language = 'en';
-        if(currentStore == 1 || currentStore == 3){
-            language= 'ar';
+        if (currentStore == 1 || currentStore == 3) {
+            language = 'ar';
         }
-       
-        if(this.props.user_details.customer_details.customer_id) {
+
+        if (this.props.user_details.customer_details.customer_id) {
             window.insider_object = {
                 user: {
-                    user:this.props.user_details.customer_details.customer_id,
-                    
+                    user: this.props.user_details.customer_details.customer_id,
+
                     name: this.props.user_details.customer_details.firstname,
                     surname: this.props.user_details.customer_details.lastname,
                     email: this.props.user_details.customer_details.email,
-                    email_optin: this.props.user_details.customer_details.email ? true: false,
+                    email_optin: this.props.user_details.customer_details.email ? true : false,
                     phone_number: this.props.user_details.customer_details.phone_number,
-                    sms_optin: this.props.user_details.customer_details.phone_number ? true: false,
+                    sms_optin: this.props.user_details.customer_details.phone_number ? true : false,
                     gdpr_optin: true,
                     language: language
                 }
-               
+
             }
-          
+
         } else {
             window.insider_object = {
                 user: {
@@ -65,28 +70,50 @@ class Footer extends Component {
 
 
     componentDidUpdate(prevProps) {
-    
-        if(this.props.location.pathname != prevProps.location.pathname) {
-            
+
+        if (this.props.location.pathname != prevProps.location.pathname) {
+
             this.insiderObject();
             insiderCount = 1;
-          
+
         }
 
-        if(prevProps.location.pathname ==  prevProps.location.pathname && count == 0) {
-           
-            if(insiderCount === 0){
+        if (prevProps.location.pathname == prevProps.location.pathname && count == 0) {
+
+            if (insiderCount === 0) {
                 this.insiderObject();
                 insiderCount = 1;
 
             }
-          
+
         }
     }
 
+    componentDidMount() {
+        const webWhatsapp = document.createElement('script');
+        webWhatsapp.type = 'text/javascript';
 
+        webWhatsapp.src = "https://cdn.smooch.io/whatsapp/message-us-btn.min.js"
+        const mobileWhatsapp = document.createElement('script');
+        mobileWhatsapp.type = 'text/javascript';
 
+        mobileWhatsapp.src = "https://cdn.smooch.io/whatsapp/message-us-btn.min.js"
+        document.getElementById("webWhatsapp").appendChild(webWhatsapp);
+       
 
+        if (document.getElementById('webWhatsapp').className === "wa-message-us") {
+
+        }
+
+        // if (isMobile) {
+        //     document.getElementById("mobileWhatsapp").appendChild(mobileWhatsapp);
+        //     if (document.getElementById('mobileWhatsapp').className === "wa-message-us") {
+
+        //     }
+
+        // }
+
+    }
     handleValidation = () => {
         let email = this.state.email;
 
@@ -132,7 +159,7 @@ class Footer extends Component {
         return formIsValid;
     };
     closeAlert = () => {
-        this.setState({ showAlert: false,loaderState:false });
+        this.setState({ showAlert: false, loaderState: false });
     }
 
     handleChange = (event) => {
@@ -143,15 +170,15 @@ class Footer extends Component {
 
 
         if (this.handleValidation()) {
-            this.setState({loaderState:true})
-            
+            this.setState({ loaderState: true })
+
             const data = {
                 email: this.state.email,
                 store_id: this.props.globals.currentStore
             }
             if (this.state.email) {
-               
-              
+
+
                 const API = Axios.create({
                     baseURL: BASE_URL,
                     headers: { Authorization: `Bearer ${API_TOKEN}`, 'Content-Type': 'application/json' },
@@ -159,7 +186,7 @@ class Footer extends Component {
 
                 API.post(`subscribetonewsletter`, { 'email': data.email, 'store_id': data.store_id }).then(res => {
 
-                    this.setState({ email: '', success: res.data.message, showAlert: true,loaderState:false });
+                    this.setState({ email: '', success: res.data.message, showAlert: true, loaderState: false });
                     setTimeout(() => {
                         this.closeAlert()
                     }, 5000);
@@ -173,6 +200,8 @@ class Footer extends Component {
 
 
     render() {
+
+
         let errorObj = this.state.errors;
         let store_locale = this.props.globals.store_locale;
 
@@ -346,12 +375,20 @@ class Footer extends Component {
                                 <a href="https://www.instagram.com/elctoys" target="_blank"> <img src={instagram} className="icon" alt=""></img></a>
                                 <a href="https://www.youtube.com/elctoysme" target="_blank"><img src={youtube} className="icon" alt=""></img></a>
                             </div>
+                            <div id="webWhatsapp" className="wa-message-us whatsapp"
+                                number="971543055373"
+                                label="Message us on WhatsApp"
+                                color="green"
+                                size="compact"
+                                border_radius="15px">
+
+                            </div>
                             <div className="footer-title" style={{ marginTop: 60, marginBottom: 7 }}>
 
                                 <FormattedMessage id="footer.signUpAd" defaultMessage="sign up for our latest news and offers" />
 
                             </div>
-                            <div style={{display:'flex'}}>
+                            <div style={{ display: 'flex' }}>
                                 {emailInputField}
                                 {/* <input
                   type="text"
@@ -359,14 +396,14 @@ class Footer extends Component {
                   className="email-field"
                   value={this.state.email}
                   onChange={this.handleChange}
-                ></input> */}  
-                 { this.state.loaderState ?<button className="submit-button" disabled={true}>
+                ></input> */}
+                                {this.state.loaderState ? <button className="submit-button" disabled={true}>
                                     <img src={wait} style={{ width: 25, height: 25, marginTop: -4 }} alt="" />
                                     <span className="t-Button-label"></span>
-                                </button>:
-                                <button className="submit-button" onClick={() => this.submitNewsLetter()}>
-                                    <FormattedMessage id="Submit.Text" defaultMessage="Submit" />
-                                </button>}
+                                </button> :
+                                    <button className="submit-button" onClick={() => this.submitNewsLetter()}>
+                                        <FormattedMessage id="Submit.Text" defaultMessage="Submit" />
+                                    </button>}
 
                             </div>
                             <span>{emailInputErrorField}</span>
@@ -405,25 +442,25 @@ class Footer extends Component {
                         <div className="footer-title" style={{ textAlign: 'center', marginBottom: 7 }}>
                             <FormattedMessage id="footer.signUpAd" defaultMessage="sign up for our latest news and offers" />
                         </div>
-                        <div style={{display:'flex'}}>
-                                {emailInputField}
-                                {/* <input
+                        <div style={{ display: 'flex' }}>
+                            {emailInputField}
+                            {/* <input
                   type="text"
                   placeholder="enter your e-mail address"
                   className="email-field"
                   value={this.state.email}
                   onChange={this.handleChange}
-                ></input> */}  
-                 { this.state.loaderState ?<button className="submit-button" disabled={true}>
-                                    <img src={wait} style={{ width: 25, height: 25, marginTop: -4 }} alt="" />
-                                    <span className="t-Button-label"></span>
-                                </button>:
+                ></input> */}
+                            {this.state.loaderState ? <button className="submit-button" disabled={true}>
+                                <img src={wait} style={{ width: 25, height: 25, marginTop: -4 }} alt="" />
+                                <span className="t-Button-label"></span>
+                            </button> :
                                 <button className="submit-button" onClick={() => this.submitNewsLetter()}>
                                     <FormattedMessage id="Submit.Text" defaultMessage="Submit" />
                                 </button>}
-                              
-                            </div>
-                            <span>{emailInputErrorField}</span>
+
+                        </div>
+                        <span>{emailInputErrorField}</span>
                         <div className="mobile-manu">
                             <Collapsible trigger={<FormattedMessage id="footer.AboutELC" defaultMessage="About ELC" />}>
                                 <div>
@@ -490,7 +527,20 @@ class Footer extends Component {
                                 <a href="https://www.twitter.com/elctoysme" target="_blank"><img src={twitter} className="icon" alt=""></img></a>
                                 <a href="https://www.instagram.com/elctoys" target="_blank"> <img src={instagram} className="icon" alt=""></img></a>
                                 <a href="https://www.youtube.com/elctoysme" target="_blank"><img src={youtube} className="icon" alt=""></img></a>
+                               <a  href="https://wa.me/971543055373" target="_blank">
+                                <img src={whatsapp} style={{width:40,height:40}} className="icon" alt=""/> 
+                                </a>
+
                             </div>
+                            {/* {isMobile ? <div id="mobileWhatsapp" className="whatsapp wa-message-us  "
+                                number="971543055373"
+                                label="Message us on WhatsApp"
+                                color="green"
+                                size="compact"
+                                border_radius="15px">
+
+                            </div> : <div />} */}
+
                         </div>
                     </div>
                     <div className="footer-bottom footer-show-mobile" style={{ textAlign: 'center' }}>

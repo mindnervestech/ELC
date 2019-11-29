@@ -21,7 +21,8 @@ render(){
   
     return(
 
-        <> <div className="main-container-shop-by-learning">
+        <> 
+        <div className="main-container-shop-by-learning">
             <div className="header-shop-by-learning-skill">
                 <strong>Shop by learning skill</strong>
             </div>

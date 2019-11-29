@@ -71,6 +71,7 @@ import MyAccount from '../../js/components/AccountSection/AccountMain';
 import Address from '../../js/components/AccountSection/AddressInformation/AddressInformation';
 import AddAddress from '../../js/components/AccountSection/AddressInformation/AddressForm.js';
 import { live } from '../api/globals';
+import axios from 'axios'
 import UpadatePassword from '../../js/components/AccountSection/ChangePassword/UpdatePassword'
 
 addLocaleData([...en, ...ar]);
@@ -87,7 +88,9 @@ class App extends Component {
             changeData: false,
             store_id: '',
             toHome: false,
-            selectedStore: ''
+            selectedStore:'',
+            countryCode:'',
+            countryName:''
         }
         let active_server = 'dev';
         if(window.location.href.includes('elcjsuat')){

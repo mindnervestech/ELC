@@ -9,25 +9,86 @@
     height:53px !important;
  
 }
+#regid .t-Form-fieldContainer {
+    margin-right: -2.8rem !important;
+    margin-left: -.8rem;
+}
+
+.xmas-submit-text{
+    font-size:23px !important;
+    font-weight: 800 !important
+}
+
+
+.padding-zero-desk{
+ padding-left:0px !important;
+ padding-right: 0px !important;
+}
+
 
 
  #xmas-ph.phoneNumber-type .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-4 input[type=tel] {
     width: 100% !important;}
-
-
+   
 
 .xmasImage{
     width: 1024px;
-    height: 140px;
+    height: 200px;
     margin: 2%;
 }
 html[dir="rtl"] .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-4 input[type=tel] {
-    padding-right: 50%;
+    padding-right: 30%;
     width: 100%;
     padding-left: 0px !important;
     padding-top: 0px!important;
 }
+
+html[dir="rtl"] .xmas-submit-text{
+  
+        font-size: 30px !important;
+        font-weight: 800 !important;
+}
+.xmas-submit-border{
+    border-radius:4px !important;
+}
+
+
 @media only screen and (max-width:767px){
+    .b-main_carousel,
+    .g-wrapper-main_content,
+    .ui-dialog.m-cookie_privacy {
+        min-width: 100% !important;
+        max-width: 767px;
+        padding: 0px 10px;
+    }
+    .container-padding{
+        width: 100%;
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+      
+
+    }
+    .xmas-padding-mobzero{
+        padding-right: 0px !important;
+        padding-right: 0px !important;}
+
+    html[dir="rtl"] .xmas-padding-mobzero{
+        padding-right: 0px !important;
+        padding-right: 0px !important;
+    
+    }
+    .xmas-submit-text{
+        font-size:19px !important;
+        font-weight: 800 !important;
+    }
+    html[dir="rtl"] .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-4 input[type=tel] {
+        padding-right: 50%;
+        width: 100%;
+        padding-left: 0px !important;
+        padding-top: 0px!important;
+    }
+    
+  
     html[dir="rtl"] #xmas-ph.intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-4 input .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-4 input[type=text], .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-4 input[type=tel] {
          padding-left: 0px !important;
     }
@@ -47,6 +108,39 @@ html[dir="rtl"] .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-4 inpu
     }  
 }
 @media only screen and (min-width:767px) and ( max-width:1024px){
+    .xmas-submit-text{
+        font-size:19px;
+        font-weight: 800
+    }
+    .xmas-padding-mobzero{
+        padding-right: 0px !important;
+        padding-right: 0px !important;}
+        
+    .b-main_carousel,
+    .g-wrapper-main_content,
+    .ui-dialog.m-cookie_privacy {
+        min-width: 100% !important;
+        max-width: 767px;
+        padding: 0px 10px;
+    }
+    .container-padding{
+        width: 100%;
+        padding-right: 0px !important;
+        padding-left: 0px !important;
+      
+
+    }
+    html[dir="rtl"] .xmas-padding-mobzero{
+        padding-right: 0px !important;
+        padding-right: 0px !important;
+    
+    }
+    html[dir="rtl"] .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-4 input[type=tel] {
+        padding-right: 50%;
+        width: 100%;
+        padding-left: 0px !important;
+        padding-top: 0px!important;
+    }
     html[dir="rtl"] #xmas-ph .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-4 input .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-4 input[type=text], .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-4 input[type=tel] {
         padding-left: 0px !important;
    }
@@ -54,12 +148,12 @@ html[dir="rtl"] .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-4 inpu
     padding-left: 92px !important ;
 }
   html[dir="rtl"] #xmas-ph .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-4 input[type=tel] {
-    padding-right: 0% !important;
+    padding-right: 20% !important;
        width: 100%;
        padding-top: 0px!important;
    }
     .xmasImage{
-        width: auto;
+        width: 1024px;
         margin: 0%;
        
     }  

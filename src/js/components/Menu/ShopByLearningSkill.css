@@ -32,6 +32,8 @@
     width: 100%;
     font-family: "VAG Rounded Std Bold", "Tahoma Bold", sans-serif;
     font-size: 14pt;
+    height:55px;
+    font-weight: 800;
 }
 .header-shop-by-learning-skill{
     text-align: center !important;

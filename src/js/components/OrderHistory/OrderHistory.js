@@ -34,19 +34,19 @@ class Order extends Component {
         const language = localStorage.getItem('templang');
         const store_locale = this.props.globals.store_locale;
         let title = "Your account | ELC UAE Online store";
-		let description = "Shop online for baby toys, dolls houses, wooden toys and more at ELC. Choose from big brands including LeapFrog, VTech, Smart Trike and more.";
-		let keywords = "ELC, Early Learning Center, Early Learning Centre, Toys, Baby Toys, Wooden Toys, Educational Toys";
-		if (language == 'ar') {
-			title = "حسابك |  متجر مركز التعليم المبكر على الإنترنت في السعودية";
-			description = "تسوّق ألعاب الرضّع ومنازل الدمى والألعاب الخشبية وغيرها الكثير على الإنترنت من مركز التعليم المبكر. اختر من العلامات التجارية الكبيرة بمن فيها ليب فروع وفي تيك وسمارت تريك وغيرها.";
-			keywords = "إي إل سي، مركز التعليم المبكر، مركز التعليم المبكر، ألعاب، ألعاب رضّع، ألعاب خشبية، ألعاب تعليمية"; 
-		}
-	
-		let meta_tag  = <><Helmet>
-			<meta name="tital" content={title} />
-			<meta name="keywords" content={keywords} />
-			<meta name="description" content={description} />
-		</Helmet></>;
+        let description = "Shop online for baby toys, dolls houses, wooden toys and more at ELC. Choose from big brands including LeapFrog, VTech, Smart Trike and more.";
+        let keywords = "ELC, Early Learning Center, Early Learning Centre, Toys, Baby Toys, Wooden Toys, Educational Toys";
+        if (language == 'ar') {
+            title = "حسابك |  متجر مركز التعليم المبكر على الإنترنت في السعودية";
+            description = "تسوّق ألعاب الرضّع ومنازل الدمى والألعاب الخشبية وغيرها الكثير على الإنترنت من مركز التعليم المبكر. اختر من العلامات التجارية الكبيرة بمن فيها ليب فروع وفي تيك وسمارت تريك وغيرها.";
+            keywords = "إي إل سي، مركز التعليم المبكر، مركز التعليم المبكر، ألعاب، ألعاب رضّع، ألعاب خشبية، ألعاب تعليمية";
+        }
+
+        let meta_tag = <><Helmet>
+            <meta name="tital" content={title} />
+            <meta name="keywords" content={keywords} />
+            <meta name="description" content={description} />
+        </Helmet></>;
 
         if (!(this.props.isUserLoggedIn)) {
             return <Redirect to={{
@@ -65,12 +65,9 @@ class Order extends Component {
         });
 
 
-        return (
-            <>
-            {this.props.spinnerProduct ? <Spinner /> :
-            <div className="t-Body-contentInner">
+        return (<Spinner><div className="t-Body-contentInner">
 
-            <div className="padding-right-ar padding-breadcrumb">
+            <div className="padding-right-ar padding-breadcrumb" style={{ textAlign: 'start' }}>
                 <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
                     <span className="titleHover" style={{ fontSize: 15 }}><FormattedMessage id="Checkout.Home" defaultMessage="Home" /></span>
                     {this.props.globals.language === 'en' ?
@@ -104,13 +101,30 @@ class Order extends Component {
                                             }} role="tab" aria-controls="R28337577127179591" aria-selected="true">
                                                 <span className="FormattedMessage"><FormattedMessage id="profile.OrderHistory.Title" defaultMessage="Order History" /></span></Link>
 
-                                        </li><li className="apex-rds-item apex-rds-last apex-rds-after" role="presentation" id="USERWISHLIST_tab">
+                                        </li>
+                                        <li className="apex-rds-item apex-rds-last apex-rds-after" role="presentation" id="USERWISHLIST_tab">
 
                                             <Link to={{
                                                 pathname: `/${store_locale}/wish-list`
                                             }} role="tab" aria-controls="USERWISHLIST" aria-selected="false" tabIndex={-1}>
                                                 <span className="FormattedMessage"><FormattedMessage id="profile.Wishlist.Title" defaultMessage="Wishlist" /></span>
-                                            </Link></li>
+                                            </Link>
+                                            {/* <Link to={{
+                                                        pathname: `/${store_locale}/birthday-club-account`,
+                                                        state: { ...this.state }
+                                                    }}
+                                                        role="tab" aria-controls="USERWISHLIST" aria-selected="false" tabIndex={-1}>
+                                                        <span className="FormattedMessage"><FormattedMessage id="profile.bcluAccountTab.Title" defaultMessage="Birthday Club" /></span></Link> */}
+                                        </li>
+
+                                        <li className="apex-rds-item apex-rds-last apex-rds-after" role="presentation" id="R28337577127179591_tab">
+                                            <Link to={{
+                                                pathname: `/${store_locale}/birthday-club-account`,
+                                                state: { ...this.state }
+                                            }}
+                                                role="tab" aria-controls="USERWISHLIST" aria-selected="false" tabIndex={-1}>
+                                                <span className="FormattedMessage"><FormattedMessage id="profile.bcluAccountTab.Title" defaultMessage="Birthday Club" /></span></Link>
+                                        </li>
                                         <button onClick={this.logOut} className="t-Button t-Button--hot t-Button--gapTop divShowOnMobile floatRight" type="button" id="B28512592134220867"><span className="t-Button-label"><FormattedMessage id="header.SignOut" defaultMessage="Sign Out" /></span></button>
 
                                     </ul></div>
@@ -137,7 +151,7 @@ class Order extends Component {
                                 <div id="report_28337577127179591_catch"><div className="t-Report t-Report--stretch t-Report--staticRowColors t-Report--rowHighlightOff t-Report--horizontalBorders" id="report_R28337577127179591" data-region-id="R28337577127179591">
                                     <div className="t-Report-wrap">
                                         <table className="t-Report-pagination" role="presentation"><tbody><tr><td /></tr></tbody></table>
-                                        <div className="t-Report-tableWrap" style={{marginBottom: 20}}>
+                                        <div className="t-Report-tableWrap" style={{ marginBottom: 20 }}>
                                             {this.props.orderHistory.length > 0 ?
                                                 <table className="t-Report-report" summary="Order History">
                                                     <thead>
@@ -165,9 +179,8 @@ class Order extends Component {
                 </div>
 
             </div>
-        </div>}
-        </>
-        // </Spinner>
+        </div>
+        </Spinner>
         );
     }
 }
@@ -179,7 +192,6 @@ const mapStateToProps = state => {
         orderHistory: state.orders.orders_history,
         is_order_history_rec: state.orders.is_order_history_rec,
         globals: state.global,
-        spinnerProduct: state.spinner.loading,
     }
 }
 

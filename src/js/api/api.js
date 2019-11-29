@@ -30,7 +30,7 @@ const GET_MENU_NAVIGATION = { type: 'GET', url: BASE_URL + 'menu' };
 const GET_PRODUCT_DETAILS = { type: 'POST', url: BASE_URL + 'productbyid/' };
 const ADD_TO_CART = { type: 'POST', url: CART_URL + 'items/' };
 const GUEST_ADD_TO_CART = { type: 'POST', url: GUEST_CART_URL + 'guest-carts/' };
-
+const GET_BIRTHDAYCLUB_DATA={type:'GET',url:BASE_URL + 'birthdayclubdata'};
 const GET_PRODUCT_LIST = { type: 'POST', url: BASE_URL + 'productlisting/' };
 //const GET_PRODUCT_SEARCH_LIST = { type: 'POST', url: BASE_URL + 'searchresult/' };
 
@@ -138,6 +138,7 @@ export const API = {
 
 	
 	setBirthdayClubData:(data,cb)=>request(data, cb,SAVE_BIRTHDAYCLUB_DATA),
+	getBirthdayClubData:(data,cb)=>request(data,cb,GET_BIRTHDAYCLUB_DATA),
 
 	getOrderHistory: (data, cb) => request(data, cb, GET_ORDER_HISTORY),
 	getOrderDetailsInProfile: (data, cb) => request(data, cb, GET_ORDER_DETAILS_IN_PROFILE),

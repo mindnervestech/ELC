@@ -11,7 +11,7 @@ export { getPaymentDetails, setPaymentDetails } from './getAndSetPayment';
 
 export { getOrderDetails, placeOrder } from './getAndSetOrder';
 
-export {setBirthDayClubData,clearBirthdayClubRegisterError} from './getAndSetBirthdayclub';
+export {setBirthDayClubData,getBirthDayClubInfo,clearBirthdayClubRegisterError} from './getAndSetBirthdayclub';
 
 export {
 	loginUser,
