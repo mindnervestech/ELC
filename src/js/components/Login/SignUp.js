@@ -9,6 +9,8 @@ import { connect } from 'react-redux';
 import * as actions from '.././../redux/actions/index';
 //import { Dropdown } from "react-bootstrap";
 //import { DropdownButton } from 'react-bootstrap';
+let templang='en';
+templang=localStorage.getItem("templang");
 
 
 
@@ -16,6 +18,7 @@ class SignUp extends Component {
 
   constructor(props) {
     super(props);
+  
 
     this.state = {
       subscribe_to_newsletter: 1,
@@ -79,7 +82,7 @@ class SignUp extends Component {
 
   handleValidation = () => {
     let fields = this.state.fields;
-    
+
     let errors = {};
     let formIsValid = true;
 
@@ -93,39 +96,39 @@ class SignUp extends Component {
       formIsValid = false;
       errors["lastName"] = <FormattedMessage id="Signup.validation.lastName.empty" defaultMessage="Last name cannot be empty" />;
     }
-    if(this.props.globals.langauge==='en'){
-    if (typeof fields["firstName"] !== "undefined") {
-      if (!fields["firstName"].match(/^[a-zA-Z]+$/) && fields["firstName"].length > 0) {
-        formIsValid = false;
-        errors["firstName"] = <FormattedMessage id="Signup.validation.firstName.onlyletters" defaultMessage="Please enter only letters" />;
+    if (templang === 'en') {
+      if (typeof fields["firstName"] !== "undefined") {
+        if (!fields["firstName"].match(/^[a-zA-Z]+$/) && fields["firstName"].length > 0) {
+          formIsValid = false;
+          errors["firstName"] = <FormattedMessage id="Signup.validation.firstName.onlyletters" defaultMessage="Please enter only letters" />;
+        }
       }
-    }
 
-    if (typeof fields["lastName"] !== "undefined") {
-      if (!fields["lastName"].match(/^[a-zA-Z]+$/) && fields["lastName"].length > 0) {
-        formIsValid = false;
-        errors["lastName"] = <FormattedMessage id="Signup.validation.lastName.onlyletters" defaultMessage="Please enter only letters" />;
+      if (typeof fields["lastName"] !== "undefined") {
+        if (!fields["lastName"].match(/^[a-zA-Z]+$/) && fields["lastName"].length > 0) {
+          formIsValid = false;
+          errors["lastName"] = <FormattedMessage id="Signup.validation.lastName.onlyletters" defaultMessage="Please enter only letters" />;
+        }
       }
-    }
-  }else{
-    
-    if (typeof fields["firstName"] !== "undefined") {  
-      if (fields["firstName"].match(/[\u0660-\u0669\u06F0-\u06F9]/)  && fields["firstName"].length > 0) {
-        formIsValid = false;
-        errors["firstName"] = <FormattedMessage id="Signup.validation.firstName.onlyletters" defaultMessage="Please enter only letters" />;
-      }
-    }
+    } else {
 
-    if (typeof fields["lastName"] !== "undefined") {
-      if (fields["lastName"].match(/[\u0660-\u0669\u06F0-\u06F9]/) && fields["lastName"].length > 0) {
-        formIsValid = false;
-        errors["lastName"] = <FormattedMessage id="Signup.validation.lastName.onlyletters" defaultMessage="Please enter only letters" />;
+      if (typeof fields["firstName"] !== "undefined") {
+        if (fields["firstName"].match(/[\u0660-\u0669\u06F0-\u06F9]/) && fields["firstName"].length > 0) {
+          formIsValid = false;
+          errors["firstName"] = <FormattedMessage id="Signup.validation.firstName.onlyletters" defaultMessage="Please enter only letters" />;
+        }
+      }
+
+      if (typeof fields["lastName"] !== "undefined") {
+        if (fields["lastName"].match(/[\u0660-\u0669\u06F0-\u06F9]/) && fields["lastName"].length > 0) {
+          formIsValid = false;
+          errors["lastName"] = <FormattedMessage id="Signup.validation.lastName.onlyletters" defaultMessage="Please enter only letters" />;
+        }
       }
     }
-  }
 
     //Email
-  
+
     if (typeof fields["email"] !== "undefined") {
 
       if (fields["email"].length === 0) {
@@ -143,23 +146,23 @@ class SignUp extends Component {
       }
     }
 
-    if(this.props.globals.langauge==='ar'){
+    // if(this.props.globals.langauge==='ar'){
 
-      if (fields["email"].length === 0) {
-        formIsValid = false;
-        errors["email"] = <FormattedMessage id="Signup.validation.email.empty" defaultMessage="Please enter email" />;
-      }
-      if (fields["email"].length > 0) {
-       if(!fields["email"].match('[\u0621-\u064A\u0660-\u0669\+\.\_\%\-\+]{1,256}\@[\u0621-\u064A\u0660-\u0669a][\u0621-\u064A\u0660-\u0669\-]{0,64}(\.[\u0621-\u064A\u0660-\u0669][\u0621-\u064A\u0660-\u0669\-]{0,25})+'))
-       
-          formIsValid = false;
-          errors["email"] = <FormattedMessage id="Signup.validation.email.invalid" defaultMessage="Please enter email in valid format" />;
-        
-      }
+    //   if (fields["email"].length === 0) {
+    //     formIsValid = false;
+    //     errors["email"] = <FormattedMessage id="Signup.validation.email.empty" defaultMessage="Please enter email" />;
+    //   }
+    //   if (fields["email"].length > 0) {
+    //    if(!fields["email"].match('[\u0621-\u064A\u0660-\u0669\+\.\_\%\-\+]{1,256}\@[\u0621-\u064A\u0660-\u0669a][\u0621-\u064A\u0660-\u0669\-]{0,64}(\.[\u0621-\u064A\u0660-\u0669][\u0621-\u064A\u0660-\u0669\-]{0,25})+'))
 
-      
-    }
-  
+    //       formIsValid = false;
+    //       errors["email"] = <FormattedMessage id="Signup.validation.email.invalid" defaultMessage="Please enter email in valid format" />;
+
+    //   }
+
+
+    // }
+
     // if (typeof fields["confirmEmail"] !== "undefined") {
 
     //   if (fields["confirmEmail"].length === 0) {
@@ -193,32 +196,37 @@ class SignUp extends Component {
     }
 
     //Password
-    if (typeof fields["password"] !== "undefined") {
-      let pattern = '^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d^a-zA-Z0-9].{7,50}$'
-      if (fields["password"].length === 0) {
-        formIsValid = false;
-        errors["password"] = <FormattedMessage id="Signup.validation.password.empty" defaultMessage="Please enter password" />;
-      }else if (fields["password"].length < 8) {
-        formIsValid = false;
-        errors["password"] = <FormattedMessage id="Form.PasswordLength" defaultMessage="Minimum length is 8 characters" />;
-      }else if (!fields["password"].match(pattern)){
-        formIsValid = false;
-        errors["password"] = <FormattedMessage id="Form.PasswordConventions" defaultMessage="Password must be at least 8 characters long and contain an uppercase letter, a lowercase letter and a number." />;
+    if (templang === 'en') {
+      if (typeof fields["password"] !== "undefined") {
+        let pattern = '^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d^a-zA-Z0-9].{7,50}$'
+        if (fields["password"].length === 0) {
+          formIsValid = false;
+          errors["password"] = <FormattedMessage id="Signup.validation.password.empty" defaultMessage="Please enter password" />;
+        } else if (fields["password"].length < 8) {
+          formIsValid = false;
+          errors["password"] = <FormattedMessage id="Form.PasswordLength" defaultMessage="Minimum length is 8 characters" />;
+        } else if (!fields["password"].match(pattern)) {
+          formIsValid = false;
+          errors["password"] = <FormattedMessage id="Form.PasswordConventions" defaultMessage="Password must be at least 8 characters long and contain an uppercase letter, a lowercase letter and a number." />;
+
+
+        }
       }
     }
-    if(this.props.globals.langauge==='ar'){
-      
-      let pattern = '[\u0621-\u064A]';
+    if (templang === 'ar') {
+ 
+      let pattern = '/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])([\u0621-\u064A])([0-9\u0660-\u0669]).{8,20}$/';
       if (fields["password"].length === 0) {
         formIsValid = false;
         errors["password"] = <FormattedMessage id="Signup.validation.password.empty" defaultMessage="Please enter password" />;
-      }else if (fields["password"].length < 8) {
+      } else if (fields["password"].length < 8) {
         formIsValid = false;
         errors["password"] = <FormattedMessage id="Form.PasswordLength" defaultMessage="Minimum length is 8 characters" />;
-      }else if (!fields["password"].match(pattern)){
-        formIsValid = false;
-        errors["password"] = <FormattedMessage id="Form.PasswordConventions" defaultMessage="Password must be at least 8 characters long and contain an uppercase letter, a lowercase letter and a number." />;
       }
+      // else if (!fields["password"].match(pattern)){
+      //   formIsValid = false;
+      //   errors["password"] = <FormattedMessage id="Form.PasswordConventions" defaultMessage="Password must be at least 8 characters long and contain an uppercase letter, a lowercase letter and a number." />;
+      // }
     }
     // }
 
@@ -245,7 +253,7 @@ class SignUp extends Component {
   }
 
   handleChange = (field, e) => {
-    
+
     let fields = this.state.fields;
     fields[field] = e.target.value;
     this.setState({ fields });
@@ -255,9 +263,9 @@ class SignUp extends Component {
     const data = {
       firstname: this.state.fields.firstName,
       lastname: this.state.fields.lastName,
-      contact_number:parseInt(this.state.fields.contactNumber),
+      contact_number: parseInt(this.state.fields.contactNumber),
       email: this.state.fields.email,
-      carrier_code:this.state.fields.carrierCode,
+      carrier_code: this.state.fields.carrierCode,
       password: this.state.fields.password,
       confirmpassword: this.state.fields.confirmPassword,
       store_id: this.props.globals.currentStore,
@@ -272,11 +280,11 @@ class SignUp extends Component {
   subscribe_to_newsletter() {
     if (this.state.subscribe_to_newsletter == 0) {
       //this.state.subscribe_to_newsletter = 1;
-      this.setState({subscribe_to_newsletter: 1})
+      this.setState({ subscribe_to_newsletter: 1 })
     }
     else {
       //this.state.subscribe_to_newsletter = 0;
-      this.setState({subscribe_to_newsletter: 0})
+      this.setState({ subscribe_to_newsletter: 0 })
     }
   }
 
@@ -301,10 +309,12 @@ class SignUp extends Component {
         message: ''
       }
     })
-    console.log('Close alert Box Parent');
+   
   }
 
   render() {
+    //let templang = localStorage.getItem('templang');
+   
     let alertBox = null;
 
     if (this.state.alertBoxDetails.status) {
@@ -351,7 +361,7 @@ class SignUp extends Component {
     let emailInputField = <div><div>
       <FormattedMessage id="ContactUs.Email" defaultMessage="Email">
         {(message) =>
-          <input type="email" id="P1001_EMAIL" name="P1001_EMAIL"  onChange={this.handleChange.bind(this, "email")} value={this.state.fields["email"]} size={30} />}
+          <input type="email" id="P1001_EMAIL" name="P1001_EMAIL" onChange={this.handleChange.bind(this, "email")} value={this.state.fields["email"]} size={30} />}
       </FormattedMessage>
     </div></div>
 
@@ -359,7 +369,7 @@ class SignUp extends Component {
     let confirmEmailInputField = <div><div>
       <FormattedMessage id="ContactUs.ConfirmEmail" defaultMessage="Confirm Email">
         {(message) =>
-          <input type="email" id="P1001_ConfirmEMAIL" name="P1001_ConfirmEMAIL"  onChange={this.handleChange.bind(this, "confirmEmail")} value={this.state.fields["confirmEmail"]} size={30} />}
+          <input type="email" id="P1001_ConfirmEMAIL" name="P1001_ConfirmEMAIL" onChange={this.handleChange.bind(this, "confirmEmail")} value={this.state.fields["confirmEmail"]} size={30} />}
       </FormattedMessage>
 
     </div><span id="P1001_ConfirmEMAIL_error_placeholder" className="a-Form-error" data-template-id="33610259035469734_ET"></span></div>
@@ -370,13 +380,13 @@ class SignUp extends Component {
     let passwordInputField = <div><div>
       <FormattedMessage id="password" defaultMessage="Password">
         {(message) =>
-          <input type="password" name="P1001_PWD" size="30" onChange={this.handleChange.bind(this, "password")} value={this.state.fields["password"]} id="P1001_PWD"  aria-autocomplete="list" />}
+          <input className="arabic-bold" type="text" name="P1001_PWD" size="30" onChange={this.handleChange.bind(this, "password")} value={this.state.fields["password"]} id="P1001_PWD" aria-autocomplete="list" />}
       </FormattedMessage>
     </div></div>
     let confirmPasswordInputField = <div ><div >
       <FormattedMessage id="profile.Confirm.Password" defaultMessage="Confirm Password">
         {(message) =>
-          <input type="password" name="P1001_RPWD" size="30" onChange={this.handleChange.bind(this, "confirmPassword")} value={this.state.fields["confirmPassword"]} id="P1001_RPWD" />}
+          <input type="text" className="arabic-bold" name="P1001_RPWD" size="30" onChange={this.handleChange.bind(this, "confirmPassword")} value={this.state.fields["confirmPassword"]} id="P1001_RPWD" />}
       </FormattedMessage>
     </div><span id="P1001_RPWD_error_placeholder" className="a-Form-error" data-template-id="33610259035469734_ET"></span></div>;
 
@@ -384,43 +394,43 @@ class SignUp extends Component {
     if ('firstName' in errorsObj) {
       firstNameInputField = <div>
         <div>
-        <FormattedMessage id="Form.FirstName" defaultMessage="First Name">
-        {(message) =>
-          <input type="text" required={true}  id="P1001_FNAME" name="P1001_FNAME" onChange={this.handleChange.bind(this, "firstName")} value={this.state.fields["firstName"]} size={30} />}
-      </FormattedMessage>
+          <FormattedMessage id="Form.FirstName" defaultMessage="First Name">
+            {(message) =>
+              <input type="text" required={true} id="P1001_FNAME" name="P1001_FNAME" onChange={this.handleChange.bind(this, "firstName")} value={this.state.fields["firstName"]} size={30} />}
+          </FormattedMessage>
         </div><span id="P1001_FNAME_error_placeholder" className="a-Form-error u-visible" data-template-id="33609965712469734_ET"><span className="t-Form-error"><div id="P1001_FNAME_error">{errorsObj["firstName"]}</div></span></span></div>
     }
 
     if ('lastName' in errorsObj) {
       LastNameInputField = <div ><div>
         <FormattedMessage id="Form.LastName" defaultMessage="Last Name">
-        {(message) =>
-          <input type="text" id="P1001_LNAME" name="P1001_LNAME"  onChange={this.handleChange.bind(this, "lastName")} value={this.state.fields["lastName"]} size={30} />}
-      </FormattedMessage>
-        </div>
+          {(message) =>
+            <input type="text" id="P1001_LNAME" name="P1001_LNAME" onChange={this.handleChange.bind(this, "lastName")} value={this.state.fields["lastName"]} size={30} />}
+        </FormattedMessage>
+      </div>
         <span id="P1001_FNAME_error_placeholder" className="a-Form-error u-visible" data-template-id="33609965712469734_ET"><span className="t-Form-error"><div id="P1001_FNAME_error">
           {errorsObj["lastName"]}</div></span></span></div>
     }
     if ('email' in errorsObj) {
       emailInputField = <div><div>
         <FormattedMessage id="ContactUs.Email" defaultMessage="Email">
-        {(message) =>
-          <input type="email" id="P1001_EMAIL" name="P1001_EMAIL" onChange={this.handleChange.bind(this, "email")} value={this.state.fields["email"]} size={30} />}
-      </FormattedMessage>
-        </div>
+          {(message) =>
+            <input type="email" id="P1001_EMAIL" name="P1001_EMAIL" onChange={this.handleChange.bind(this, "email")} value={this.state.fields["email"]} size={30} />}
+        </FormattedMessage>
+      </div>
         <span id="P1001_EMAIL_error_placeholder" className="a-Form-error u-visible" data-template-id="33609965712469734_ET"><span className="t-Form-error"><div id="P1001_EMAIL_error">
           {errorsObj["email"]}</div></span></span></div>
     }
 
     if ('confirmEmail' in errorsObj) {
-    
+
       confirmEmailInputField = <div><div>
 
-<FormattedMessage id="ContactUs.ConfirmEmail" defaultMessage="Confirm Email">
-        {(message) =>
-          <input type="email" id="P1001_ConfirmEMAIL" name="P1001_ConfirmEMAIL"  onChange={this.handleChange.bind(this, "confirmEmail")} value={this.state.fields["confirmEmail"]} size={30} />}
-      </FormattedMessage>
-       </div>
+        <FormattedMessage id="ContactUs.ConfirmEmail" defaultMessage="Confirm Email">
+          {(message) =>
+            <input type="email" id="P1001_ConfirmEMAIL" name="P1001_ConfirmEMAIL" onChange={this.handleChange.bind(this, "confirmEmail")} value={this.state.fields["confirmEmail"]} size={30} />}
+        </FormattedMessage>
+      </div>
         <span id="P1001_ConfirmEMAIL_error_placeholder" className="a-Form-error u-visible" data-template-id="33609965712469734_ET"><span className="t-Form-error"><div id="P1001_ConfirmEMAIL_error">
           {errorsObj["confirmEmail"]}</div></span></span></div>
     }
@@ -442,19 +452,19 @@ class SignUp extends Component {
     if ('password' in errorsObj) {
       passwordInputField = <div><div >
         <FormattedMessage id="password" defaultMessage="Password">
-        {(message) =>
-          <input type="password" name="P1001_PWD" size="30" onChange={this.handleChange.bind(this, "password")} value={this.state.fields["password"]} id="P1001_PWD"  aria-autocomplete="list" />}
-      </FormattedMessage>
+          {(message) =>
+            <input type="text" className="arabic-bold" name="P1001_PWD" size="30" onChange={this.handleChange.bind(this, "password")} value={this.state.fields["password"]} id="P1001_PWD" aria-autocomplete="list" />}
+        </FormattedMessage>
       </div>
         <span id="P1001_PWD_error_placeholder" className="a-Form-error u-visible" data-template-id="33610259035469734_ET"><span className="t-Form-error"><div id="P1001_PWD_error">{errorsObj["password"]}</div></span></span></div>;
     }
 
     if ('confirmPassword' in errorsObj) {
       confirmPasswordInputField = <div><div>
-         <FormattedMessage id="profile.Confirm.Password" defaultMessage="Confirm Password">
-        {(message) =>
-          <input type="password" name="P1001_RPWD" size="30" onChange={this.handleChange.bind(this, "confirmPassword")} value={this.state.fields["confirmPassword"]} id="P1001_RPWD" />}
-      </FormattedMessage>
+        <FormattedMessage id="profile.Confirm.Password" defaultMessage="Confirm Password">
+          {(message) =>
+            <input type="text" className="arabic-bold" name="P1001_RPWD" size="30" onChange={this.handleChange.bind(this, "confirmPassword")} value={this.state.fields["confirmPassword"]} id="P1001_RPWD" />}
+        </FormattedMessage>
       </div>
         <span id="P1001_RPWD_error_placeholder" className="a-Form-error u-visible" data-template-id="33610259035469734_ET">
           <span className="t-Form-error"><div id="P1001_RPWD_error">{errorsObj["confirmPassword"]}</div></span></span></div>;
@@ -475,7 +485,7 @@ class SignUp extends Component {
           <input type="hidden" value="137581352146482158347459965137747212594" id="pSalt" />
 
 
-          <div className="t-Dialog " role="dialog" aria-label="Create an Account" style={{height: 'auto'}}>
+          <div className="t-Dialog " role="dialog" aria-label="Create an Account" style={{ height: 'auto' }}>
             <div className="t-Dialog-header"></div>
             <div className="">
               <div className="overFlowVisible  backWhite"><div className="">
@@ -521,7 +531,7 @@ class SignUp extends Component {
                                     <div className="col-12 rmPadding t-Form-labelContainer">
                                       <label htmlFor="P1001_FNAME" id="P1001_FNAME_LABEL" className="t-Form-label bolt"><FormattedMessage id="Form.FirstName" defaultMessage="First Name" /><span className="u-VisuallyHidden">(Value Required)</span></label>
                                     </div>
-                                    <div className="col-12" style={{padding: 0}}>
+                                    <div className="col-12" style={{ padding: 0 }}>
                                       {firstNameInputField}
                                     </div>
                                   </div>
@@ -531,39 +541,39 @@ class SignUp extends Component {
                                 <div className="rmPadding col col-12 apex-col-auto">
                                   <div className="row block" id="P1001_LNAME_CONTAINER">
                                     <div className="col-12 rmPadding rmTopPadding t-Form-labelContainer">
-                                    <label htmlFor="P1001_LNAME" id="P1001_LNAME_LABEL" className="t-Form-label bolt"><FormattedMessage id="Form.LastName" defaultMessage="Last Name" /></label>
-                                  </div>
-                                    <div className="col-12" style={{padding: 0}}>
+                                      <label htmlFor="P1001_LNAME" id="P1001_LNAME_LABEL" className="t-Form-label bolt"><FormattedMessage id="Form.LastName" defaultMessage="Last Name" /></label>
+                                    </div>
+                                    <div className="col-12" style={{ padding: 0 }}>
                                       {LastNameInputField}
                                     </div>
                                   </div>
                                 </div>
                               </div>
-                               <div className="padding row">
-                                <div className=" col-12 apex-col-auto" style={{padding: 0}}>
-                                <div className="row block" id="P1001_LNAME_CONTAINER" style={{paddingLeft:0}}><div className="rmPadding rmTopPadding t-Form-labelContainer">
+                              <div className="padding row">
+                                <div className=" col-12 apex-col-auto" style={{ padding: 0 }}>
+                                  <div className="row block" id="P1001_LNAME_CONTAINER" style={{ paddingLeft: 0 }}><div className="rmPadding rmTopPadding t-Form-labelContainer">
                                     <label htmlFor="P1001_LNAME" id="P1001_LNAME_LABEL" className="t-Form-label bolt"><FormattedMessage id="Form.PhoneNumber" defaultMessage="Contact Number *" /></label></div>
                                   </div>
-                                  <div style={{padding: 0}} className="row t-Form-fieldContainer t-Form-fieldContainer--floatingLabel is-required apex-item-wrapper plugin-intltelinput-www.jqueryscript.net js-show-label" id="P1001_PHONE_CONTAINER">
-                              
-                                    <div style={{width: '100%'}} id="PhoneNumber" className={phoneNumberClassName} >
+                                  <div style={{ padding: 0 }} className="row t-Form-fieldContainer t-Form-fieldContainer--floatingLabel is-required apex-item-wrapper plugin-intltelinput-www.jqueryscript.net js-show-label" id="P1001_PHONE_CONTAINER">
+
+                                    <div style={{ width: '100%' }} id="PhoneNumber" className={phoneNumberClassName} >
                                       <PhoneNumber changed={this.contactNumber} />
                                       {contactNumberInputField}
                                     </div>
                                   </div>
                                 </div>
-                              </div> 
+                              </div>
 
-                              
+
                               <div className="padding row">
                                 <div className="rmPadding col col-12 apex-col-auto">
                                   <div className="block row" id="P1001_EMAIL_CONTAINER">
-                                  <div className="col-12 rmTopPadding rmPadding t-Form-labelContainer">
-                                    <label htmlFor="P1001_EMAIL" id="P1001_EMAIL_LABEL" className="bolt t-Form-label">
-                                      <FormattedMessage id="ContactUs.Email" defaultMessage="Email" /> *
+                                    <div className="col-12 rmTopPadding rmPadding t-Form-labelContainer">
+                                      <label htmlFor="P1001_EMAIL" id="P1001_EMAIL_LABEL" className="bolt t-Form-label">
+                                        <FormattedMessage id="ContactUs.Email" defaultMessage="Email" /> *
                                       <span className="u-VisuallyHidden">(Value Required)</span></label>
-                                  </div>
-                                    <div className="col-12" style={{padding: 0}}>
+                                    </div>
+                                    <div className="col-12" style={{ padding: 0 }}>
                                       {emailInputField}
                                     </div>
                                   </div>
@@ -573,12 +583,12 @@ class SignUp extends Component {
                               <div className="padding row">
                                 <div className="rmPadding col col-12 apex-col-auto">
                                   <div className="block row" id="P1001_EMAIL_CONTAINER">
-                                  <div className="col-12 rmTopPadding rmPadding t-Form-labelContainer">
-                                    <label htmlFor="P1001_ConfirmEMAIL" id="P1001_ConfirmEMAIL_LABEL" className="bolt t-Form-label">
-                                      <FormattedMessage id="Form.ConfirmEmail" defaultMessage="Confirm Email" />
-                                      <span className="u-VisuallyHidden">(Value Required)</span></label>
-                                  </div>
-                                    <div className="col-12" style={{padding: 0}}>
+                                    <div className="col-12 rmTopPadding rmPadding t-Form-labelContainer">
+                                      <label htmlFor="P1001_ConfirmEMAIL" id="P1001_ConfirmEMAIL_LABEL" className="bolt t-Form-label">
+                                        <FormattedMessage id="Form.ConfirmEmail" defaultMessage="Confirm Email" />
+                                        <span className="u-VisuallyHidden">(Value Required)</span></label>
+                                    </div>
+                                    <div className="col-12" style={{ padding: 0 }}>
                                       {confirmEmailInputField}
                                     </div>
                                   </div>
@@ -591,12 +601,12 @@ class SignUp extends Component {
                               <div className="padding row">
                                 <div className="rmPadding col col-12 apex-col-auto">
                                   <div className="row block" id="P1001_PWD_CONTAINER">
-                                  <div className="col-12 rmTopPadding rmPadding t-Form-labelContainer">
-                                    <label htmlFor="P1001_PWD" id="P1001_PWD_LABEL" className="bolt t-Form-label">
-                                      <FormattedMessage id="Form.Password" defaultMessage="Password *" />
-                                      <span className="u-VisuallyHidden">(Value Required)</span></label>
-                                  </div>
-                                    <div className="col-12" style={{padding: 0}}>
+                                    <div className="col-12 rmTopPadding rmPadding t-Form-labelContainer">
+                                      <label htmlFor="P1001_PWD" id="P1001_PWD_LABEL" className="bolt t-Form-label">
+                                        <FormattedMessage id="Form.Password" defaultMessage="Password *" />
+                                        <span className="u-VisuallyHidden">(Value Required)</span></label>
+                                    </div>
+                                    <div className="col-12" style={{ padding: 0 }}>
                                       {passwordInputField}
                                     </div>
                                   </div>
@@ -609,18 +619,18 @@ class SignUp extends Component {
                               <div className="padding row">
                                 <div className="rmPadding col col-12 apex-col-auto">
                                   <div className="row block" id="P1001_RPWD_CONTAINER">
-                                  <div className="col-12 rmTopPadding rmPadding t-Form-labelContainer">
-                                    <label htmlFor="P1001_RPWD" id="P1001_RPWD_LABEL" className="bolt t-Form-label">
-                                      <FormattedMessage id="Form.ConfirmPassword" defaultMessage="Confirm Password *" /><span className="u-VisuallyHidden">(Value Required)</span></label>
-                                  </div>
-                                    <div className="col-12" style={{padding: 0}}>
+                                    <div className="col-12 rmTopPadding rmPadding t-Form-labelContainer">
+                                      <label htmlFor="P1001_RPWD" id="P1001_RPWD_LABEL" className="bolt t-Form-label">
+                                        <FormattedMessage id="Form.ConfirmPassword" defaultMessage="Confirm Password *" /><span className="u-VisuallyHidden">(Value Required)</span></label>
+                                    </div>
+                                    <div className="col-12" style={{ padding: 0 }}>
                                       {confirmPasswordInputField}
                                     </div>
                                   </div>
                                 </div>
                               </div>
-                               <div className="row">
-                              <div className="bot-bottom mar-letf"></div>
+                              <div className="row">
+                                <div className="bot-bottom mar-letf"></div>
                               </div>
                               <div className="row pad40L padTop20 backWhite" style={{ textAline: "start" }}>
                                 <label class="checkBox"><FormattedMessage id="Form.RecieveEmail" defaultMessage="I'd like to receive emails from ELC about special offers, new toys and voucher codes."></FormattedMessage>
@@ -637,7 +647,7 @@ class SignUp extends Component {
 
                               <div className="row backWhite">
                                 <div className="rmPadding col col-12 apex-col-auto">
-                                  <div className="button-add-to-basket right" type="button" id="B35835076185290944" onClick={this.signUpSubmit}><span className="t-Button-label bolt" style={{color: '#fff'}}><FormattedMessage id="login.SignUp.Title" defaultMessage="Register" /></span></div>
+                                  <div className="button-add-to-basket right" type="button" id="B35835076185290944" onClick={this.signUpSubmit}><span className="t-Button-label bolt" style={{ color: '#fff' }}><FormattedMessage id="login.SignUp.Title" defaultMessage="Register" /></span></div>
                                 </div>
                               </div>
 

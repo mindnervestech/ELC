@@ -7,7 +7,7 @@ const mapStyles = {
   height: '100%',
   left: '30%',
 };
-export class MapContainer extends Component {
+class MapContainer extends Component {
 
   state = {
     showingInfoWindow: false,

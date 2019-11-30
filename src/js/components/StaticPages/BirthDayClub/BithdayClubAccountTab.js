@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../../WishList/WishList.css';
-
+import Table from 'react-bootstrap/Table'
 // import OrderRow from './OrderRow';
 import { Link, Redirect } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
@@ -8,12 +8,11 @@ import { connect } from 'react-redux';
 import * as actions from '../../../redux/actions/index';
 import Spinner from '../../Spinner/Spinner';
 import { Helmet } from 'react-helmet';
-
+let birthdayclubdata = [];
 class BithdayClubAccountTab extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
             data: '',
         }
     }
@@ -22,9 +21,9 @@ class BithdayClubAccountTab extends Component {
         if (!this.props.is_order_history_rec) {
             this.props.onGetOrderHistory({ Customerid: this.props.user_details.customer_id })
         }
-        if(this.props.isUserLoggedIn===true){
-            const data={
-                customer_id:this.props.user_details.customer_id
+        if (this.props.isUserLoggedIn === true) {
+            const data = {
+                customer_id: this.props.user_details.customer_id
             }
             this.props.onGetBirthdayClubInfo(data);
         }
@@ -34,7 +33,15 @@ class BithdayClubAccountTab extends Component {
         this.props.onLogoutUser();
     }
 
+    componentWillReceiveProps(nextProps) {
+       
+        birthdayclubdata = nextProps.birthday_club_data.birthdayclub_page_data;
+      
+    }
+
     render() {
+     
+
         const language = localStorage.getItem('templang');
         const store_locale = this.props.globals.store_locale;
         // let title = "Your account | ELC UAE Online store";
@@ -136,31 +143,63 @@ class BithdayClubAccountTab extends Component {
                 </div><div className="row">
                     <div className="col col-12 apex-col-auto">
                         <div className="t-ContentBlock containers t-ContentBlock--h3 margin-top-lg a-Tabs-panel apex-rds-element-selected" id="R28337577127179591" role="tabpanel" aria-labelledby="R28337577127179591_tab" aria-live="polite" aria-hidden="false">
-                            {this.props.orderHistory > 0 ?
+                            {/* {this.props.orderHistory > 0 ?
                                 <div className="t-ContentBlock-header">
                                     <h1 className="t-ContentBlock-title">
                                         <span className="FormattedMessage"><FormattedMessage id="profile.OrderHistory.Title" defaultMessage="Order History" /></span>
                                     </h1></div>
-                                : ""}
+                                : ""} */}
                             <div className="t-ContentBlock-body">
 
                                 <div id="report_28337577127179591_catch"><div className="t-Report t-Report--stretch t-Report--staticRowColors t-Report--rowHighlightOff t-Report--horizontalBorders" id="report_R28337577127179591" data-region-id="R28337577127179591">
                                     <div className="t-Report-wrap">
-                                        <table className="t-Report-pagination" role="presentation"><tbody><tr><td /></tr></tbody></table>
-                                        <div className="t-Report-tableWrap" style={{ marginBottom: 20 }}>
-                                            {this.props.orderHistory.length > 0 ?
-                                                <table className="t-Report-report" summary="Order History">
-                                                    <thead>
-                                                        <tr>
-                                                            <th className="t-Report-colHead" align="left" id="ORDERED_ON"><FormattedMessage id="birthdayclub.childname" defaultMessage="Child Name" /></th>
-                                                            <th className="t-Report-colHead" align="left" id="ORDER_ID"><FormattedMessage id="birthdayclub.childname" defaultMessage="Gender" /></th>
-                                                            <th className="t-Report-colHead" align="left" id="CODE_DESC"><FormattedMessage id="birthdayclub.childname" defaultMessage="Date of Birth" /></th>
 
-                                                        </tr></thead>
+                                        <div className="t-Report-tableWrap" style={{ marginBottom: 20 }}>
+                                            {birthdayclubdata  ?
+                                                // <table className="t-Report-report" summary="Order History">
+                                                //     <thead>
+                                                //         <tr className="textAlign">
+                                                //             <th className="t-Report-colHead" id="ORDERED_ON"><FormattedMessage id="birthdayclub.childname" defaultMessage="Child Name" /></th>
+                                                //             <th className="t-Report-colHead" align="left" id="CODE_DESC"><FormattedMessage id="birthdayclub.childname" defaultMessage="Date of Birth" /></th>
+                                                //             <th className="t-Report-colHead" align="left" id="ORDER_ID"><FormattedMessage id="birthdayclub.childname" defaultMessage="Gender" /></th>
+
+                                                //         </tr></thead>
+                                                //     <tbody>
+
+                                                //         {birthdayclubdata && Object.keys(birthdayclubdata).map((item, index) => {
+                                                //             return (
+                                                //                 <tr style={{ textAlign: 'center' }} key={index}>
+                                                //                     <td>{birthdayclubdata[item].name}</td>
+                                                //                     <td>{birthdayclubdata[item].dob}</td>
+                                                //                     <td>{birthdayclubdata[item].gender}</td>
+                                                //                 </tr>
+                                                //             );
+
+                                                //         })}
+
+                                                //     </tbody>
+                                                // </table> :
+                                                <Table striped bordered hover>
+                                                    <thead>
+                                                        <tr style={{ textAlign: 'center' }}>
+                                                            <th  id="ORDERED_ON"><FormattedMessage id="addchild.ChildName" defaultMessage="Child Name" /></th>
+                                                            <th><FormattedMessage id="addnewchild.dateofbirth" defaultMessage="Date of Birth" /></th>
+                                                            <th><FormattedMessage id="addnewchild.Gender" defaultMessage="Gender" /></th>
+                                                        </tr>
+                                                    </thead>
                                                     <tbody>
-                                                        {orderList}
+                                                        {birthdayclubdata && Object.keys(birthdayclubdata).map((item, index) => {
+                                                            return (
+                                                                <tr style={{ textAlign: 'center' }} key={index}>
+                                                                    <td>{birthdayclubdata[item].name}</td>
+                                                                    <td>{birthdayclubdata[item].dob}</td>
+                                                                    <td>{birthdayclubdata[item].gender}</td>
+                                                                </tr>
+                                                            );
+
+                                                        })}
                                                     </tbody>
-                                                </table> :
+                                                </Table>:
                                                 <div style={{ marginBottom: 50 }}><span style={{ fontSize: "24px" }}><FormattedMessage id="PageTitle.birthdayclubhistory.Empty" defaultMessage="Birthday club data is not available for this account" /></span></div>
                                             }
                                         </div>
@@ -189,7 +228,7 @@ const mapStateToProps = state => {
         orderHistory: state.orders.orders_history,
         is_order_history_rec: state.orders.is_order_history_rec,
         globals: state.global,
-        birthday_club_data:state.birthdayclubData
+        birthday_club_data: state.birthdayclubData
     }
 }
 
