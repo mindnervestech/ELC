@@ -4,11 +4,14 @@ import { connect } from 'react-redux';
 import * as actions from '../../../redux/actions/index';
 import { FormattedMessage } from 'react-intl';
 import { Container, Row, Col, Button } from 'reactstrap';
+import ShoppingBag from '../../ShoppingBag/ShoppingBag'
+let same_day_delivery = false;
 
 class Address extends Component {
 
     constructor(props) {
         super(props);
+       
         this.state = {
             AddressFields: {
                 WebsiteId: 1,
@@ -28,6 +31,7 @@ class Address extends Component {
             data: {},
             cities: [],
             country_details: {},
+            available_for_same_day_delivery: false
         }
     }
 
@@ -137,10 +141,10 @@ class Address extends Component {
         }*/
 
         let obj = this.state.city_details;
-        if ((Object.entries(obj).length === 0) && (obj.constructor === Object)) {
-            formIsValid = false;
-            errors["city"] = <FormattedMessage id="SelectState.Validate" defaultMessage="Please Select State/City" />;
-        }
+        // if ((Object.entries(obj).length === 0) && (obj.constructor === Object)) {
+        //     formIsValid = false;
+        //     errors["city"] = <FormattedMessage id="SelectState.Validate" defaultMessage="Please Select State/City" />;
+        // }
         this.setState({ errors: errors });
         return formIsValid;
     }
@@ -172,8 +176,39 @@ class Address extends Component {
                 }
             })
             this.defineCities(e.target.value);
-        } else if (field === 'city') {
+        } if (field === 'city') {
+
             this.setCitydetails(e.target.value);
+
+            if (e.target.value === 'Dubai' && this.props.globals.country === 'UAE') {
+
+                this.setState({ available_for_same_day_delivery: true })
+                setTimeout(() => {
+                    this.props.available_for_same_day_delivery(this.state.available_for_same_day_delivery)
+                }, 100);
+
+            } if (e.target.value !== 'Dubai' && this.props.globals.country === 'UAE') {
+                this.setState({ available_for_same_day_delivery: false })
+                setTimeout(() => {
+                    this.props.available_for_same_day_delivery(this.state.available_for_same_day_delivery)
+                }, 100);
+            }
+            if (e.target.value === 'Jeddah' && this.props.globals.country === 'KSA') {
+                this.setState({ available_for_same_day_delivery: true })
+                setTimeout(() => {
+                    this.props.available_for_same_day_delivery(this.state.available_for_same_day_delivery)
+                }, 100);
+
+            }
+            if (e.target.value !== 'Dubai' && this.props.globals.country === 'KSA') {
+                this.setState({ available_for_same_day_delivery: false })
+                setTimeout(() => {
+                    this.props.available_for_same_day_delivery(this.state.available_for_same_day_delivery)
+                }, 100);
+
+            }
+
+
         }
     }
 
@@ -282,8 +317,9 @@ class Address extends Component {
 
         if (city_list.length !== 0) {
             city_select_list = city_list.map((item) => {
+
                 return (
-                    <option value={item.id}>{item.name}</option>
+                    <option value={item.name}>{item.name}</option>
                 );
             })
         }
@@ -566,6 +602,17 @@ class Address extends Component {
                                                                     <span id="P7_PRIMARY_ADDR_error_placeholder" className="a-Form-error" data-template-id="33609965712469734_ET" />
                                                                 </div>
                                                             </div>
+                                                        </Col>
+                                                        <Col xs="12" lg="6" md="6">
+                                                            {same_day_delivery === true ? <div>
+                                                                <div className="t-Form-labelContainer">
+                                                                    <label style={{ fontWeight: 800 }} htmlFor="P7_ADDR_TYPE" id="P7_ADDR_TYPE_LABEL" className="t-Form-label"><FormattedMessage id="Checkout.shippingmethods" defaultMessage="Shipping Methods" /></label>
+                                                                </div>
+                                                                <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel  apex-item-wrapper apex-item-wrapper--radiogroup " id="P7_ADDR_TYPE_CONTAINER">
+
+                                                                    <div className="t-Form-itemWrapper"><div tabindex="-1" id="P7_SHIPPING_METHOD" aria-labelledby="P7_SHIPPING_METHOD_LABEL" className="radio_group apex-item-group apex-item-group--rc apex-item-radio" role="group"><div className="apex-item-grid radio_group"><div><div className="shopping-div"><input type="radio" id="P7_SHIPPING_METHOD_0" name="P7_SHIPPING_METHOD" value="samedaydelivery_shipping_samedaydelivery_shipping" /><label for="P7_SHIPPING_METHOD_0" className="shopping-method-text"><span>Same Day Delivery</span><span class="shopping-price">25&nbsp;AED</span></label><div className="shopping-sub-text-div"><label for="P7_SHIPPING_METHOD_0" className="shopping-sub-text"><span>For Orders Placed Before 4:00 PM From Sunday to Thursday</span></label></div></div><div className="shopping-div"><input type="radio" id="P7_SHIPPING_METHOD_1" name="P7_SHIPPING_METHOD" value="express_shipping_express_shipping" checked="" /><label for="P7_SHIPPING_METHOD_1" className="shopping-method-text"><span>Express Delivery</span><span className="shopping-price">18&nbsp;AED</span></label><div class="shopping-sub-text-div"><label for="P7_SHIPPING_METHOD_1" class="shopping-sub-text"><span>From 1-3 Working Days</span></label></div></div></div></div></div></div>
+                                                                </div>
+                                                            </div> : <div />}
                                                         </Col>
                                                     </Row>
                                                     {cancelButton}

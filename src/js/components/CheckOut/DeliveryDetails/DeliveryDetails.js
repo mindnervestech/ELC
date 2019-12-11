@@ -16,7 +16,7 @@ import DeliveryProductList from './DeliveryDetailsProductList';
 import { connect } from 'react-redux';
 import * as actions from '../../../redux/actions/index';
 import SavedAddressList from './SavedAddressList';
-// import { initializeF, trackF } from '../../utility/facebookPixel';
+import { initializeF, trackF } from '../../utility/facebookPixel';
 import { live } from '../../../api/globals';
 import { Container, Row, Col } from 'reactstrap';
 
@@ -35,6 +35,7 @@ class DeliveryDetails extends Component {
                 contactNumber: '',
                 countryCode: ''
             },
+            gift_wrap_delivery_notes:'',
             AddressFields: {
                 location: '',
                 city: '',
@@ -50,7 +51,7 @@ class DeliveryDetails extends Component {
 
             city_details: null,
             country_details: null,
-
+            same_day_delivery:false,
             isContactValid: false,
             isAddressValid: false,
             isStoreValid: false,
@@ -102,16 +103,31 @@ class DeliveryDetails extends Component {
         } else {
             this.props.history.push(`/${this.props.globals.store_locale}/cart`);
         }
-        // if (live) {
-        //     initializeF()
-        //     trackF('DeliveryDetails');
-        // }
+        if (live) {
+            initializeF()
+            trackF('DeliveryDetails');
+        }
     }
-
+  
     gift_wrap_required = (gift_wrap) =>{
-        console.log("hererre",gift_wrap);
+        console.log("gift wrap flag value",gift_wrap);
         this.setState({
             gift_wrap_required: gift_wrap
+        })
+    }
+
+    gift_wrap_delivery_notes=(notes)=>{
+        console.log("notes",notes);
+        this.setState({
+            gift_wrap_delivery_notes: notes
+        })  
+    }
+
+
+    available_for_same_day_delivery=(same_day_delivery)=>
+    {  console.log("hererre innn",same_day_delivery);
+        this.setState({
+            same_day_delivery: same_day_delivery
         })
     }
 
@@ -163,13 +179,24 @@ class DeliveryDetails extends Component {
                         telephone: parseInt(this.state.ContactFields.contactNumber),
                         customer_address_type: this.state.AddressFields.addressType,
                         postcode: this.state.AddressFields.postcode,
+                        message:this.state.gift_wrap_delivery_notes,
+                        gift_wrap_flag:this.state.gift_wrap_required
                     };
                     this.props.OnaddNewAddressAndRedirectToCheckout(payload)
                 }
             }, 5000)
 
         } else if (this.state.isOldAddressSelcted && (!(this.state.isCollectFromStore))) {
-            this.props.OnaddOldAddressAndRedirectToCheckout(this.state.oldAddressValue);
+            this.setState({
+        
+                oldAddressValue:{
+                    message:this.state.gift_wrap_delivery_notes,
+                    gift_wrap_flag:this.state.gift_wrap_required
+                }
+                
+            })
+            console.log("Old address",this.state.oldAddressValue)
+            //this.props.OnaddOldAddressAndRedirectToCheckout(this.state.oldAddressValue);
         } else if (this.state.isCollectFromStore) {
             this.submitContact.current.signUpSubmitContact();
             this.submitStore.current.signUpSubmitStore();
@@ -217,7 +244,9 @@ class DeliveryDetails extends Component {
     AddressRadioClick = (addressId) => {
         this.setState({
             isOldAddressSelcted: true,
-            oldAddressValue: addressId
+            oldAddressValue:{
+                id: addressId
+            }
         })
     }
 
@@ -369,7 +398,7 @@ class DeliveryDetails extends Component {
             } else if (!(this.props.cart_details.available_address)) {
                 addressContainer = <>
                     <Contact ref={this.submitContact} changed={this.getContactInfo} />
-                    <Address ref={this.submitAddress} changed={this.getAddressInfo}
+                    <Address available_for_same_day_delivery={this.available_for_same_day_delivery} ref={this.submitAddress} changed={this.getAddressInfo}
                         cancelButtonShow={false} selected_country={this.props.globals.country} />
                 </>
             }
@@ -377,7 +406,7 @@ class DeliveryDetails extends Component {
             if (this.state.addNewAddress) {
                 addressContainer = <>
                     <Contact ref={this.submitContact} changed={this.getContactInfo} />
-                    <Address ref={this.submitAddress} changed={this.getAddressInfo}
+                    <Address available_for_same_day_delivery={this.available_for_same_day_delivery}  ref={this.submitAddress} changed={this.getAddressInfo}
                         cancelAddNewAddress={this.cancelAddNewAddress}
                         cancelButtonShow={true}
                         selected_country={this.props.globals.country} />
@@ -530,7 +559,7 @@ class DeliveryDetails extends Component {
                                                     {addressContainer}
                                                 </Col>
                                                 <Col xs="12" lg="4" md="12">
-                                                    <DeliveryProductList gift_wrap_required={this.gift_wrap_required} cart_details={this.props.cart_details} store_locale={this.props.globals.store_locale} gotoProductScreen={this.gotoProductScreen} />
+                                                    <DeliveryProductList same_day_delivery={this.state.same_day_delivery} gift_wrap_required={this.gift_wrap_required} gift_wrap_delivery_notes={this.gift_wrap_delivery_notes} cart_details={this.props.cart_details} store_locale={this.props.globals.store_locale} gotoProductScreen={this.gotoProductScreen} />
                                                 </Col>
                                             </Row>
                                             <div className="row">

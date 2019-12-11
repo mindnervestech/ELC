@@ -13,6 +13,7 @@ class DeliveryProductList extends Component {
         this.state = {
             redirectToCart: false,
             subscribe_to_newsletter: 0,
+            gift_wrap_delivery_notes: ''
         }
         this.subscribe_to_newsletter = this.subscribe_to_newsletter.bind(this);
     }
@@ -79,12 +80,26 @@ class DeliveryProductList extends Component {
 
     subscribe_to_newsletter() {
         if (this.state.subscribe_to_newsletter === 0) {
-            this.state.subscribe_to_newsletter = 1;
+            this.setState({ subscribe_to_newsletter: 1 })
+            setTimeout(() => {
+                this.props.gift_wrap_required(this.state.subscribe_to_newsletter);
+            }, 100);
+           
         }
         else {
-            this.state.subscribe_to_newsletter = 0;
+            this.setState({ subscribe_to_newsletter: 0 })
+            setTimeout(() => {
+                this.props.gift_wrap_required(this.state.subscribe_to_newsletter);
+            }, 100);
         }
-        this.props.gift_wrap_required(this.state.subscribe_to_newsletter);
+        
+    }
+
+    handleGiftWrapText = (e) => {
+            this.setState({ gift_wrap_delivery_notes:e.target.value })
+            if(this.state.gift_wrap_delivery_notes!==' ' && this.state.gift_wrap_delivery_notes!==undefined){
+                this.props.gift_wrap_delivery_notes(this.state.gift_wrap_delivery_notes)
+            }
     }
 
     render() {
@@ -135,19 +150,19 @@ class DeliveryProductList extends Component {
         return (<>
                 {!this.props.cart_details.cart_data ? <ShippingSpinner />:
                 <div className="t-Region t-Region--noPadding t-Region--scrollBody margin-bottom-sm" id="PRDBASKET">
-                    {/* <div className="t-Region-header">
+                    <div className="t-Region-header">
                         <div className="t-Region-headerItems t-Region-headerItems--title">
 
-                            <div className="row backWhite gift-wrap" >
+                            {/* <div className="row backWhite gift-wrap" >
                                 <label class="checkBox gift-wrap-label">
                                     <FormattedMessage id="Giftwraprequired" defaultMessage="Gift wrap required" />
-                                    <input onClick={this.subscribe_to_newsletter} type="checkbox"  ></input>
+                                    <input type="checkbox" onClick={this.subscribe_to_newsletter}  ></input>
                                     <span class="checkmark"></span>
                                 </label>
-                            </div>
+                            </div> */}
                         </div>
 
-                    </div> */}
+                    </div>
                     <div className="t-Region-header">
                         <div className="t-Region-headerItems t-Region-headerItems--title">
                             <span className="t-Region-headerIcon"><span className="t-Icon " aria-hidden="true" /></span>
@@ -286,7 +301,58 @@ class DeliveryProductList extends Component {
                             <div className="t-Region-buttons-right" />
                         </div>
                     </div>
+
+
+
                 </div>}
+            <div style={{ marginTop: 10, marginBottom: 10 }}>
+                <div className="row backWhite gift-wrap border-box" >
+                    <label className=" t-Form-label checkBox gift-wrap-label" >
+                        <FormattedMessage id="Giftwraprequired" defaultMessage="Gift wrap required" />
+                        <input type="checkbox" onClick={this.subscribe_to_newsletter}  ></input>
+                        <span class="checkmark"></span>
+                    </label>
+                    {this.state.subscribe_to_newsletter === 1 ? <div>
+                        <label className=" t-Form-label checkBox gift-wrap-label" >
+                            <FormattedMessage id="deliverynotes" defaultMessage="Delivery Notes" />
+                            <textarea onChange={(e)=>this.handleGiftWrapText(e)} >
+
+                            </textarea>
+
+                        </label>
+
+                    </div> : <div />}
+
+
+                </div>
+            </div>
+
+            <div>
+                <div>
+
+
+                    <div className="t-Form-labelContainer">
+                        <label style={{ fontWeight: 800 }} htmlFor="P7_ADDR_TYPE" id="P7_ADDR_TYPE_LABEL" className="t-Form-label"><FormattedMessage id="Checkout.shippingmethods" defaultMessage="Shipping Methods" /></label>
+                    </div>
+                    <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel  apex-item-wrapper apex-item-wrapper--radiogroup " id="P7_ADDR_TYPE_CONTAINER">
+
+                        {this.props.global.country === 'UAE' ? <div className="t-Form-itemWrapper"><div tabindex="-1" id="P7_SHIPPING_METHOD" aria-labelledby="P7_SHIPPING_METHOD_LABEL" className="radio_group apex-item-group apex-item-group--rc apex-item-radio" role="group"><div className="apex-item-grid radio_group"><div>
+                            {this.props.same_day_delivery === true ? <div className="shopping-div">
+                                <input type="radio" id="P7_SHIPPING_METHOD_0" name="P7_SHIPPING_METHOD" value="samedaydelivery_shipping_samedaydelivery_shipping" /><label for="P7_SHIPPING_METHOD_0" className="shopping-method-text"><span>Same Day Delivery</span><span class="shopping-price">&nbsp;&nbsp;&nbsp; {this.props.cart_details.grand_total > 299 ? 0 : 25}&nbsp;&nbsp;&nbsp; {this.props.cart_details.currency}</span>
+                                </label><div className="shopping-sub-text-div"><label for="P7_SHIPPING_METHOD_0" className="shopping-sub-text"><span>For Orders Placed Before 4:00 PM From Sunday to Thursday</span></label></div></div> : <div />}
+                            <div className="shopping-div"><input type="radio" id="P7_SHIPPING_METHOD_1" name="P7_SHIPPING_METHOD" value="express_shipping_express_shipping" checked="" /><label for="P7_SHIPPING_METHOD_1" className="shopping-method-text"><span>Express Delivery</span><span className="shopping-price">&nbsp;&nbsp;&nbsp; {this.props.cart_details.grand_total > 299 ? 0 : 18}&nbsp;&nbsp;&nbsp; {this.props.cart_details.currency}</span></label><div class="shopping-sub-text-div"><label for="P7_SHIPPING_METHOD_1" class="shopping-sub-text"><span>From 1-3 Working Days</span></label>
+                            </div></div></div></div></div></div> :
+                            <div className="t-Form-itemWrapper"><div tabindex="-1" id="P7_SHIPPING_METHOD" aria-labelledby="P7_SHIPPING_METHOD_LABEL" className="radio_group apex-item-group apex-item-group--rc apex-item-radio" role="group"><div className="apex-item-grid radio_group"><div>
+                                {this.props.same_day_delivery === true ? <div className="shopping-div">
+                                    <input type="radio" id="P7_SHIPPING_METHOD_0" name="P7_SHIPPING_METHOD" value="samedaydelivery_shipping_samedaydelivery_shipping" /><label for="P7_SHIPPING_METHOD_0" className="shopping-method-text"><span>Same Day Delivery</span><span class="shopping-price">&nbsp;&nbsp;&nbsp; {this.props.cart_details.grand_total > 299 ? 0 : 122}&nbsp;&nbsp;&nbsp; {this.props.cart_details.currency}</span>
+                                    </label><div className="shopping-sub-text-div"><label for="P7_SHIPPING_METHOD_0" className="shopping-sub-text"><span>For Orders Placed Before 4:00 PM From Sunday to Thursday</span></label></div></div> : <div />}
+                                <div className="shopping-div"><input type="radio" id="P7_SHIPPING_METHOD_1" name="P7_SHIPPING_METHOD" value="express_shipping_express_shipping" checked="" /><label for="P7_SHIPPING_METHOD_1" className="shopping-method-text"><span>Express Delivery</span><span className="shopping-price">&nbsp;&nbsp;&nbsp; {this.props.cart_details.grand_total > 299 ? 0 : 108}&nbsp;&nbsp;&nbsp; {this.props.cart_details.currency}</span></label><div class="shopping-sub-text-div"><label for="P7_SHIPPING_METHOD_1" class="shopping-sub-text"><span>From 1-3 Working Days</span></label>
+                                </div></div></div></div></div></div>}
+                    </div>
+                </div>
+            </div>
+
+
         </>);
     }
 }
