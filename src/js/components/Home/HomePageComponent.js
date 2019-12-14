@@ -66,18 +66,20 @@ class HomePageComponent extends Component {
                                 <div style={{ padding: "0px 0px" }} className="divShowOnWeb webBanner">
                                     <Slider {...settings3} id="webBanner">
                                         {homeData && homeData.banners.map((item, index) => (
-                                            <Link to={`/` + store_locale + `/products` + item.BLOCK_URL + ``}>
+                                          
+                                            <Link to={item.BLOCK_URL}>
                                                 <div>
                                                     <img src={item.BLOCK_BANNER} className="banner-image-hight" alt=""/>
                                                 </div>
                                             </Link>
+                                            
                                         ))}
                                     </Slider>
                                 </div>
                                 <div style={{ padding: "0px 0px" }} className="divShowOnMobile">
                                     <Slider {...settings3}>
                                         {homeData && homeData.banners.map((item, index) => (
-                                            <Link to={`/` + store_locale + `/products` + item.BLOCK_URL + ``}>
+                                            <Link to={item.BLOCK_URL}>
                                                 <div>
                                                     <img src={item.BLOCK_MOBILE_BANNER} className="banner-image-hight" alt=""/>
                                                 </div>

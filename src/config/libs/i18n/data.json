@@ -950,10 +950,12 @@
         "review.ageofchild":"Age Of Child",
         "transaction_no.empty":"Please enter transaction number",
         "browseallbrands":"Browse All Brands",
-        "XmasSantaSack.Title":"Christmas Santa’s Sack"
+        "XmasSantaSack.Title":"Christmas Santa’s Sack",
+        "deliverynotes":"Delivery Notes"
 
     },
     "ar": {
+        "deliverynotes":"Delivery Notes",
         "XmasSantaSack.Title":"مفاجآت سانتا",
         "browseallbrands":"تصفح جميع الماركات",
         "transaction_no.empty":"يرجى إدخال رقم التحويل",

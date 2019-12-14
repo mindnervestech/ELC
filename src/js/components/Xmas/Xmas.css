@@ -25,6 +25,14 @@
  padding-right: 0px !important;
 }
 
+.para-xmas-des{
+    padding: 0;
+    margin:auto;
+    text-align: start;
+  
+}
+
+
 
 
  #xmas-ph.phoneNumber-type .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-4 input[type=tel] {
@@ -32,9 +40,9 @@
    
 
 .xmasImage{
-    width: 1024px;
-    height: 200px;
-    margin: 2%;
+   
+    margin-top: 2%;
+    margin-bottom:2%;
 }
 html[dir="rtl"] .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-4 input[type=tel] {
     padding-right: 30%;
@@ -68,6 +76,17 @@ html[dir="rtl"] .xmas-submit-text{
       
 
     }
+
+.para-xmas-des{
+    padding: 0;
+    margin:auto;
+    margin-top: 10px;
+    width: auto !important;
+    text-align: start;
+}
+
+
+
     .xmas-padding-mobzero{
         padding-right: 0px !important;
         padding-right: 0px !important;}
@@ -103,7 +122,8 @@ html[dir="rtl"] .xmas-submit-text{
     }
     .xmasImage{
         width: auto;
-        margin: 0%;
+        margin-top: 2%;
+        margin-bottom: 2%;
        
     }  
 }
@@ -111,6 +131,13 @@ html[dir="rtl"] .xmas-submit-text{
     .xmas-submit-text{
         font-size:19px;
         font-weight: 800
+    }
+    .para-xmas-des{
+        padding: 0;
+        margin:auto;
+        margin-top: 10px;
+        width: auto !important;
+	text-align: start;
     }
     .xmas-padding-mobzero{
         padding-right: 0px !important;
@@ -153,8 +180,9 @@ html[dir="rtl"] .xmas-submit-text{
        padding-top: 0px!important;
    }
     .xmasImage{
-        width: 1024px;
-        margin: 0%;
+        width: auto;
+        margin-top: 2%;
+        margin-bottom: 2%;
        
     }  
 }

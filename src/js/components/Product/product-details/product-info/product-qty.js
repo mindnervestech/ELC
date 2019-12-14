@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../../../redux/actions/index';
 import { FormattedMessage } from 'react-intl';
-// import { trackF, initializeF } from '../../../utility/facebookPixel';
+import { trackF, initializeF } from '../../../utility/facebookPixel';
 import { live } from '../../../../api/globals';
 import { Link, Redirect } from 'react-router-dom';
 import Popup from 'react-popup';

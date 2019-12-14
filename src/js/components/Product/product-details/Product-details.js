@@ -14,7 +14,7 @@ import Spinner from '../../Spinner/Spinner2';
 import ProductInformation from './product-info/product-info';
 import ProductReview from '../product-details/product-info/product-sizeGuide';
 import AddToCartModal from '../product-details/product-info/product-basic';
-// import { trackF, initializeF } from '../../utility/facebookPixel';
+ import { trackF, initializeF } from '../../utility/facebookPixel';
 import { live } from '../../../api/globals';
 import Modal from 'react-responsive-modal';
 import ProductRecentlyViewed from '../product-details/product-info/product-color';
@@ -62,10 +62,10 @@ class ProductDetails extends Component {
 
 	componentDidUpdate(prevProps, prevState) {
 		if (prevProps.productDetails.id !== this.props.productDetails.id) {
-			// if (live) {
-			// 	initializeF();
-			// 	trackF('ViewContent', this.props.productDetails);
-			// }
+			if (live) {
+				initializeF();
+				trackF('ViewContent', this.props.productDetails);
+			}
 		}
 
 		if (prevProps.globals.currentStore !== this.props.globals.currentStore) {

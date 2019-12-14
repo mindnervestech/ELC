@@ -4,14 +4,15 @@ import { connect } from 'react-redux';
 import * as actions from '../../../redux/actions/index';
 import { FormattedMessage } from 'react-intl';
 import { Container, Row, Col, Button } from 'reactstrap';
-import ShoppingBag from '../../ShoppingBag/ShoppingBag'
+
 let same_day_delivery = false;
 
 class Address extends Component {
 
     constructor(props) {
         super(props);
-       
+      
+
         this.state = {
             AddressFields: {
                 WebsiteId: 1,
@@ -37,7 +38,7 @@ class Address extends Component {
 
     componentDidMount() {
         const selected_country = this.props.globals.country;
-        if(this.props.country_list.length == 0){
+        if (this.props.country_list.length == 0) {
             this.props.onGetCountryList();
         }
         if (selected_country === 'KSA' || selected_country === 'ksa') {
@@ -103,6 +104,10 @@ class Address extends Component {
 
     cancelAddNewAddress = () => {
         this.props.cancelAddNewAddress();
+        setTimeout(() => {
+            this.props.oncancleClick(true)  
+        }, 100);
+      
     }
 
     handleValidation = () => {
@@ -141,10 +146,10 @@ class Address extends Component {
         }*/
 
         let obj = this.state.city_details;
-        // if ((Object.entries(obj).length === 0) && (obj.constructor === Object)) {
-        //     formIsValid = false;
-        //     errors["city"] = <FormattedMessage id="SelectState.Validate" defaultMessage="Please Select State/City" />;
-        // }
+        if ((Object.entries(obj).length === 0) && (obj.constructor === Object)) {
+            formIsValid = false;
+            errors["city"] = <FormattedMessage id="SelectState.Validate" defaultMessage="Please Select State/City" />;
+        }
         this.setState({ errors: errors });
         return formIsValid;
     }
@@ -157,7 +162,10 @@ class Address extends Component {
     }
 
     addInfo = () => {
-        this.props.changed(this.state);
+        setTimeout(() => {
+            this.props.changed(this.state);
+        }, 100);
+
     }
 
     handleChange = (field, e) => {
@@ -177,39 +185,46 @@ class Address extends Component {
             })
             this.defineCities(e.target.value);
         } if (field === 'city') {
-
             this.setCitydetails(e.target.value);
+            let available_city = [];
+            let city_list=this.state.cities
+            let city='';
+            
+            this.props.citywise_shipping_methods.map((item, index) => {
+                available_city.push(item.cities)
+            })
 
-            if (e.target.value === 'Dubai' && this.props.globals.country === 'UAE') {
+            city_list.map((item,index)=>{
+                if(item.id===e.target.value){
+                    city=item.name;
+                }
+            })
+            let status=false;
+            available_city.map((item, index) => { 
+                if (city === item.split(',')[index] ) {
+                 
+                    status=true;
+                    this.setState({ available_for_same_day_delivery: status })
+                    setTimeout(() => {
+                        this.props.available_for_same_day_delivery(this.state.available_for_same_day_delivery)
+                    }, 100);
+                
+                } 
+                else {
+                 
+                    this.setState({ available_for_same_day_delivery: status })
+                    setTimeout(() => {
+                        this.props.available_for_same_day_delivery(this.state.available_for_same_day_delivery)
+                    }, 100);
 
-                this.setState({ available_for_same_day_delivery: true })
-                setTimeout(() => {
-                    this.props.available_for_same_day_delivery(this.state.available_for_same_day_delivery)
-                }, 100);
+                }
 
-            } if (e.target.value !== 'Dubai' && this.props.globals.country === 'UAE') {
-                this.setState({ available_for_same_day_delivery: false })
-                setTimeout(() => {
-                    this.props.available_for_same_day_delivery(this.state.available_for_same_day_delivery)
-                }, 100);
-            }
-            if (e.target.value === 'Jeddah' && this.props.globals.country === 'KSA') {
-                this.setState({ available_for_same_day_delivery: true })
-                setTimeout(() => {
-                    this.props.available_for_same_day_delivery(this.state.available_for_same_day_delivery)
-                }, 100);
-
-            }
-            if (e.target.value !== 'Dubai' && this.props.globals.country === 'KSA') {
-                this.setState({ available_for_same_day_delivery: false })
-                setTimeout(() => {
-                    this.props.available_for_same_day_delivery(this.state.available_for_same_day_delivery)
-                }, 100);
-
-            }
+         
+            })
 
 
         }
+
     }
 
     defineCities = (location) => {
@@ -220,13 +235,13 @@ class Address extends Component {
                 return obj.id === location
             })
 
-            if(result[0]){
+            if (result[0]) {
                 this.setState({
                     country_details: result[0],
                     cities: result[0].available_regions
                 })
             }
-            
+
         } else if (location === 'NA') {
             this.setState({
                 cities: [],
@@ -239,8 +254,10 @@ class Address extends Component {
     }
 
     setCitydetails = (city) => {
+        let cityList={}
         if ((city !== null) && (city !== 'NA')) {
-            const cityList = this.state.cities;
+            cityList = this.state.cities;
+       
             let result = cityList.filter(obj => {
                 return obj.id === city
             })
@@ -250,6 +267,10 @@ class Address extends Component {
                 });
             }
         }
+
+        cityList.map((items, index) => {
+           
+        })
     }
 
     setAddressType = (event) => {
@@ -279,12 +300,15 @@ class Address extends Component {
     }
 
     render() {
+       
+
         let cancelButton = null;
         const selected_country = this.props.globals.country;
         const country_list = this.props.country_list;
         const city_list = this.state.cities;
         let country_select_list = null;
         let city_select_list = null;
+
         if (country_list.length > 0) {
             if (selected_country === 'International') {
                 country_select_list = country_list.filter((item) => {
@@ -319,7 +343,7 @@ class Address extends Component {
             city_select_list = city_list.map((item) => {
 
                 return (
-                    <option value={item.name}>{item.name}</option>
+                    <option key={item.name} value={item.id}>{item.name}</option>
                 );
             })
         }
@@ -351,10 +375,10 @@ class Address extends Component {
         let citsWithErrorSpan = <div className="t-Form-inputContainer">
             <div className="t-Form-itemWrapper">
                 <select id="P7_R_CITY" name="P7_R_CITY" className="selectlist apex-item-select" size={1} onChange={this.handleChange.bind(this, "city")} value={this.state.AddressFields["city"]}>
-                <FormattedMessage id="SelectCity.Text" defaultMessage="Select City">
-                {(message) =>
-                    <option value={'NA'} selected="selected">{message}</option>
-                }</FormattedMessage>
+                    <FormattedMessage id="SelectCity.Text" defaultMessage="Select City">
+                        {(message) =>
+                            <option value={'NA'} selected="selected">{message}</option>
+                        }</FormattedMessage>
                     {city_select_list}
                 </select></div>
             <span id="P7_R_CITY_error_placeholder" className="a-Form-error" data-template-id="33610259035469734_ET" />
@@ -371,9 +395,9 @@ class Address extends Component {
 
             locationWithErrorSpan = <div className="t-Form-inputContainer"><div className="t-Form-itemWrapper"><select id="P7_R_COUNTRY" name="P7_R_COUNTRY" className="selectlist apex-item-select apex-page-item-error" onChange={this.handleChange.bind(this, "location")} value={this.state.AddressFields["location"]} aria-describedby="P25_R_COUNTRY_error" aria-invalid="true">
                 <FormattedMessage id="SelectCountry.Text" defaultMessage="Select Country">
-                {(message) =>
-                    <option value={'NA'} selected="selected">{message}</option>
-                }</FormattedMessage>
+                    {(message) =>
+                        <option value={'NA'} selected="selected">{message}</option>
+                    }</FormattedMessage>
                 {country_select_list}
             </select></div><span id="P7_R_COUNTRY_error_placeholder" className="a-Form-error u-visible" data-template-id="33610259035469734_ET"><span className="t-Form-error"><div id="P7_R_COUNTRY_error"><FormattedMessage id="SelectCountry.Validate" defaultMessage="Select Country" /></div></span></span></div>;
         }
@@ -382,9 +406,9 @@ class Address extends Component {
 
             citsWithErrorSpan = <div className="t-Form-inputContainer"><div className="t-Form-itemWrapper"><select id="P7_R_CITY" name="P7_R_CITY" className="selectlist apex-item-select apex-page-item-error" size={1} onChange={this.handleChange.bind(this, "city")} value={this.state.AddressFields["city"]} aria-describedby="P7_R_CITY_error" aria-invalid="true">
                 <FormattedMessage id="SelectCity.Text" defaultMessage="Select City">
-                {(message) =>
-                    <option value={'NA'} selected="selected">{message}</option>
-                }</FormattedMessage>
+                    {(message) =>
+                        <option value={'NA'} selected="selected">{message}</option>
+                    }</FormattedMessage>
                 {city_select_list}
             </select></div><span id="P7_R_CITY_error_placeholder" className="a-Form-error u-visible" data-template-id="33610259035469734_ET"><span className="t-Form-error">
                 <div id="P7_R_CITY_error">{this.state.errors.city}</div></span></span></div>;
@@ -466,7 +490,7 @@ class Address extends Component {
                                         </div>
                                     </div>
                                 </Col>
-                                <Col xs="12" lg="9" md="12" style={{paddingLeft: 0, paddingRight: 0}}>
+                                <Col xs="12" lg="9" md="12" style={{ paddingLeft: 0, paddingRight: 0 }}>
                                     <div className="t-Region t-Region--noPadding t-Region--removeHeader t-Region--noUI t-Region--hiddenOverflow t-Form--slimPadding t-Form--stretchInputs t-Form--labelsAbove margin-top-none margin-bottom-none" id="R631680584527102694">
                                         <div className="t-Region-header">
                                             <div className="t-Region-headerItems t-Region-headerItems--title">
@@ -482,12 +506,12 @@ class Address extends Component {
                                             </div>
                                             <div className="t-Region-body">
                                                 <p style={{ fontSize: '11px', marginBottom: '20px' }}>
-                                                     <FormattedMessage id="delivery-details.addressContent" defaultMessage="Address Information content" /></p>
-                                                <div className="container" style={{paddingLeft: 0, paddingRight: 0}}>
+                                                    <FormattedMessage id="delivery-details.addressContent" defaultMessage="Address Information content" /></p>
+                                                <div className="container" style={{ paddingLeft: 0, paddingRight: 0 }}>
                                                     {/* <i className="fa fa-exclamation-circle" style={{ color: '#f599ba', fontSize: '22px' }} /> */}
-                                                     <FormattedMessage id="delivery-details.addressContent" defaultMessage="Address Information content" />
-                                                     </div>
-                                                <div className="container" style={{paddingLeft: 0, paddingRight: 0}}>
+                                                    <FormattedMessage id="delivery-details.addressContent" defaultMessage="Address Information content" />
+                                                </div>
+                                                <div className="container" style={{ paddingLeft: 0, paddingRight: 0 }}>
                                                     <div className="row">
                                                         <div className="col col-12 apex-col-auto">
                                                             <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel is-required apex-item-wrapper apex-item-wrapper--select-list js-show-label" id="P7_R_COUNTRY_CONTAINER"><div className="t-Form-labelContainer">
@@ -642,6 +666,7 @@ const mapStateToProps = state => {
     return {
         cart_details: state.myCart,
         user_details: state.login,
+        citywise_shipping_methods: state.myCart.citywise_shipping_methods,
         change_pass: state.login.changePasswordDetails,
         addressBook: state.address.addressBook,
         country_list: state.address.countryList,

@@ -1,5 +1,7 @@
 
-
+.padd-delivery-notes{
+    padding-left: 0px !important;
+}
 .border-box{
     border:1px black solid;
   
@@ -868,8 +870,7 @@ html[dir="rtl"] .intl-tel-input .country-list {
 }
 
 .gift-wrap-label{
-    padding-left: 35px !important;
-    margin-bottom: 0px !important;
+  
     color:#3b3b3b !important;
 }
 

@@ -532,15 +532,6 @@ class Footer extends Component {
                                 </a>
 
                             </div>
-                            {/* {isMobile ? <div id="mobileWhatsapp" className="whatsapp wa-message-us  "
-                                number="971543055373"
-                                label="Message us on WhatsApp"
-                                color="green"
-                                size="compact"
-                                border_radius="15px">
-
-                            </div> : <div />} */}
-
                         </div>
                     </div>
                     <div className="footer-bottom footer-show-mobile" style={{ textAlign: 'center' }}>

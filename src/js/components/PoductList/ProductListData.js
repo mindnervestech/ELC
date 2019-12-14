@@ -10,6 +10,9 @@ import SideManu from './SideManu';
 import AddToBasketModal from '../Product/product-details/product-info/add-to-basket-modal';
 import Modal from 'react-responsive-modal';
 import AddToCartModal from '../Product/product-details/product-info/product-basic';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
+
 
 var _ = require('lodash');
 
@@ -752,17 +755,21 @@ class ProductListData extends Component {
 											<Link to={`/${store_locale}/products-details/${list[keyName].json.url_key}`}>
 												<div className="alsoLikeCard" style={{height: list[keyName].json.imageUrl ? 'auto' : 307}}>
 													<div className="ProductSilderImageHight">
-													{/* <span className="percentage-text" style={{ display: 'none' }}>30</span>
+														{/* <span className="percentage-text" style={{ display: 'none' }}>30</span>
 									<span className="save-text">5</span>
 									<img src={save} className="save" /> */}
-														<img src={(list[keyName].json.imageUrl) ? list[keyName].json.imageUrl.primaryimage : ''} className="cardImage" alt="" />
+														<LazyLoadImage
+
+															src={(list[keyName].json.imageUrl) ? list[keyName].json.imageUrl.primaryimage : ''}// use normal <img> attributes as props
+															effect="blur" className="cardImage" alt="">
+														</LazyLoadImage>
 														{/* <img src={percentage} className="percentage" style={{ display: 'none' }} /> */}
 													</div>
 													<div style={{ height: list[keyName].json.imageUrl ? 50 : 195, marginTop: 10, overflow: 'hidden' }}>
-													{ list[keyName].json.name.length > 45 ?
-                                                         <label className="text-color">{list[keyName].json.name.substring(0,45)+"...."}</label>:
-                                                         <label className="text-color">{list[keyName].json.name}</label>
-                                                     }
+														{list[keyName].json.name.length > 45 ?
+															<label className="text-color">{list[keyName].json.name.substring(0, 45) + "...."}</label> :
+															<label className="text-color">{list[keyName].json.name}</label>
+														}
 													</div>
 													{list[keyName].json.offers && list[keyName].json.offers.status === 1 ?
 														this.showDiscountPrise(list[keyName].json.offers.data, list[keyName].price, list[keyName].currency)

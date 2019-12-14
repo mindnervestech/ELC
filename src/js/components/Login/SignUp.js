@@ -380,13 +380,13 @@ class SignUp extends Component {
     let passwordInputField = <div><div>
       <FormattedMessage id="password" defaultMessage="Password">
         {(message) =>
-          <input className="arabic-bold" type="text" name="P1001_PWD" size="30" onChange={this.handleChange.bind(this, "password")} value={this.state.fields["password"]} id="P1001_PWD" aria-autocomplete="list" />}
+          <input type="password" name="P1001_PWD" size="30" onChange={this.handleChange.bind(this, "password")} value={this.state.fields["password"]} id="P1001_PWD"  aria-autocomplete="list" />}
       </FormattedMessage>
     </div></div>
     let confirmPasswordInputField = <div ><div >
       <FormattedMessage id="profile.Confirm.Password" defaultMessage="Confirm Password">
         {(message) =>
-          <input type="text" className="arabic-bold" name="P1001_RPWD" size="30" onChange={this.handleChange.bind(this, "confirmPassword")} value={this.state.fields["confirmPassword"]} id="P1001_RPWD" />}
+          <input type="password" name="P1001_RPWD" size="30" onChange={this.handleChange.bind(this, "confirmPassword")} value={this.state.fields["confirmPassword"]} id="P1001_RPWD" />}
       </FormattedMessage>
     </div><span id="P1001_RPWD_error_placeholder" className="a-Form-error" data-template-id="33610259035469734_ET"></span></div>;
 

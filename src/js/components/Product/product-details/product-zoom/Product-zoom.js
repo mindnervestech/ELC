@@ -117,13 +117,13 @@ class ProductZoom extends Component {
 
 			if (data.thumbnail.length > 1) {
 				return (
-					<a href={zoomimages[0]} className="MagicZoom" id="zoom-v" data-options="hint:false; zoomMode: off; expand: off;">
+					<a  onClick={(e) => this._handleThumbImgClick(e, 'img')} href={zoomimages[0]} className="MagicZoom" id="zoom-v" data-options="hint:false; zoomMode: off; expand: off;">
 						<img src={thumbnails[0]} alt="" />
 					</a>
 				);
 			} else {
 				return (
-					<a href={zoomimages[0]} className="MagicZoom" id="zoom-v" data-options="hint:false; zoomMode: off; expand: off;">
+					<a onClick={(e) => this._handleThumbImgClick(e, 'img')}  href={zoomimages[0]} className="MagicZoom" id="zoom-v" data-options="hint:false; zoomMode: off; expand: off;">
 						<img src={zoomimages[0]} alt="" />
 					</a>
 				);
@@ -147,8 +147,8 @@ class ProductZoom extends Component {
 			return data.map((item, index) => {
 				return (<>
 					<div data-slide-id={`video-${index}`} class="zoom-gallery-slide video-slide" id={`video-active-${index}`}>
-						<video controls autoplay="autoplay" loop muted preload style={{ width: '100%' }}>
-							<source src={item} type="video/mp4" />
+						<video controls autoplay="autoplay"  loop muted preload style={{ width: '100%' }}>
+							<source src={item} />
 						</video>
 					</div>
 				</>)
@@ -178,7 +178,7 @@ class ProductZoom extends Component {
 	_renderData = (item, index, color) => {
 		// console.log('item', item);
 		return (
-			<a data-slide-id="zoom" style={{background:'transparent'}} data-zoom-id="zoom-v" href={item} data-image={item} color-id={`${color}_${index}`} name="zoom-images-lg" onClick={(e) => this._handleThumbImgClick(e, 'img')}>
+			<a data-slide-id="zoom" style={{background:'transparent'}} data-zoom-id="zoom-v" href={item} data-image={item} color-id={`${color}_${index}`} name="zoom-images-lg" onTouchStart={(e) => this._handleThumbImgClick(e, 'img')}  onClick={(e) => this._handleThumbImgClick(e, 'img')}>
 				<img srcSet={item} src={item} alt="" />
 			</a>
 		);
@@ -210,11 +210,11 @@ class ProductZoom extends Component {
 
 		return (
 			<a data-slide-id={`video-${index}`} href="javascript:void(0);" data-load={thumbnails[0]} data-poster={thumbnails[0]}
-				onClick={(e) => this._handleThumbImgClick(e, 'vid', index)}
-				onTouchStart={(e) => this._handleThumbImgClick(e, 'vid', index)}
+				onClick={(e) => this._handleThumbImgClick(e, 'vid')}
+			
 			>
-				<img src={thumbnails[0]} alt="" />
-				<span className="fa fa-play-circle mcs-caption">&nbsp;</span>
+				<img src={thumbnails[0]} alt=""  style={{height:'100%'}}/>
+				<span  className="fa fa-play-circle  mcs-caption">&nbsp;</span>
 			</a>
 		);
 	};
@@ -246,8 +246,8 @@ class ProductZoom extends Component {
 		}
 	};
 
-	_handleThumbImgClick = (e, thumbType = 'img') => {
-
+	_handleThumbImgClick = (e, thumbType) => {
+		
 		e.preventDefault();
 
 		if (thumbType === 'img') {

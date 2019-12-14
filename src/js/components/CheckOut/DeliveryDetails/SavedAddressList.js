@@ -2,12 +2,64 @@ import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Route, Link, Switch, Redirect } from 'react-router-dom'
 import { Container, Row, Col } from 'reactstrap';
+import { connect } from 'react-redux';
+
 
 class SavedAddressList extends Component {
 
-    radioClick = (id) => {
-        this.props.radioClick(id);
+    constructor(props) {
+        super(props)
+        this.state = {
+            available_for_same_day_delivery: false
+        }
     }
+
+    radioClick = (value) => {
+        let available_city = [];
+        this.props.citywise_shipping_methods.map((item, index) => {
+            available_city.push(item.cities)
+        })
+  
+        let status = false;
+        available_city.map((item, index) => {
+
+            if (this.props.globals.country === 'UAE') {
+                if (value.city === item.split(',')[index]) {
+               
+                    status = true;
+                    setTimeout(() => {
+                        this.setState({ available_for_same_day_delivery: status })
+                    }, 100);
+                }
+                else {
+                    setTimeout(() => {
+                        this.setState({ available_for_same_day_delivery: status })
+                    }, 100);
+                }
+            }
+            if (this.props.globals.country === 'KSA') {
+                if (value.city === item.split(',')[index]) {
+
+                    status = true;
+                    setTimeout(() => {
+                        this.setState({ available_for_same_day_delivery: status })
+                    }, 100);
+                }
+                else {
+                    setTimeout(() => {
+                        this.setState({ available_for_same_day_delivery: status })
+                    }, 100);
+                }
+            }
+
+        })
+
+        setTimeout(() => {
+            this.props.radioClick(value, this.state.available_for_same_day_delivery);
+        }, 200);
+    }
+
+
     render() {
         const selected_country = this.props.selected_country;
         let country_code = null;
@@ -242,10 +294,10 @@ class SavedAddressList extends Component {
                                                             <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel is-required apex-item-wrapper apex-item-wrapper--select-list js-show-label" id="P7_R_CITY_CONTAINER"><div className="t-Form-labelContainer">
                                                                 <label htmlFor="P7_R_CITY" id="P7_R_CITY_LABEL" className="t-Form-label"><FormattedMessage id="Checkout.City" defaultMessage="City" /> <span className="u-VisuallyHidden">(Value Required)</span></label>
                                                             </div><div className="t-Form-inputContainer"><div className="t-Form-itemWrapper"><select id="P7_R_CITY" name="P7_R_CITY" className="selectlist apex-item-select" size={1}>
-                                                            <FormattedMessage id="SelectCity.Text" defaultMessage="Select City">
-                                                            {(message) =>
-                                                                <option value={'NA'} selected="selected">{message}</option>
-                                                            }</FormattedMessage>
+                                                                <FormattedMessage id="SelectCity.Text" defaultMessage="Select City">
+                                                                    {(message) =>
+                                                                        <option value={'NA'} selected="selected">{message}</option>
+                                                                    }</FormattedMessage>
                                                             </select></div><span id="P7_R_CITY_error_placeholder" className="a-Form-error" data-template-id="33610259035469734_ET" /></div></div>
                                                         </div>
                                                     </div><div className="row">
@@ -314,4 +366,15 @@ class SavedAddressList extends Component {
     }
 }
 
-export default SavedAddressList;
+const mapStateToProps = state => {
+    return {
+
+        globals: state.global,
+        citywise_shipping_methods: state.myCart.citywise_shipping_methods,
+    };
+}
+
+export default connect(
+    mapStateToProps,
+
+)(SavedAddressList);

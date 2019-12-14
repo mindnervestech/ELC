@@ -73,6 +73,7 @@ import AddAddress from '../../js/components/AccountSection/AddressInformation/Ad
 import { live } from '../api/globals';
 import axios from 'axios'
 import UpadatePassword from '../../js/components/AccountSection/ChangePassword/UpdatePassword'
+import UpadateProfile from '../../js/components/AccountSection/MyProfile/UpdateProfile';
 
 addLocaleData([...en, ...ar]);
 
@@ -379,7 +380,7 @@ class App extends Component {
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/privacy-policy" component={PrivacyPolicy} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/terms-and-conditions" component={TermConditions} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/update-password" component={UpadatePassword} />
-
+                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/update-profile" component={UpadateProfile}/>
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/products/:category_path" component={Product} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/products-details/:category" component={ProductDetails} />
 

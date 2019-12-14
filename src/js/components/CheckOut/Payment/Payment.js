@@ -12,7 +12,7 @@ import * as utility from '../../utility/utility';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
 import * as actions from '../../../redux/actions/index';
-// import { initializeF, trackF } from '../../utility/facebookPixel';
+import { initializeF, trackF } from '../../utility/facebookPixel';
 import { live } from '../../../api/globals';
 import { Row, Col } from 'reactstrap';
 
@@ -78,10 +78,10 @@ class Payment extends Component {
 
 
             }
-            // if (live) {
-            //     initializeF()
-            //     trackF('AddPaymentInfo');
-            // }
+            if (live) {
+                initializeF()
+                trackF('AddPaymentInfo');
+            }
         } else {
             this.props.history.push(`/${this.props.global.store_locale}/cart`);
         }
