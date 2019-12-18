@@ -94,7 +94,7 @@ class AddNewChild extends Component {
     let ddArray = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31'];
 
     let mmArray = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    console.log("Date Array",ddArray)
+    
 
     let renderddArray = ddArray.map = (data, index) =>
       (
@@ -121,7 +121,7 @@ class AddNewChild extends Component {
       // currentYear=null;
     }
 
-    console.log("Array of Year", yyArray)
+ 
     let emailInputField =
       <FormattedMessage id="enteryouremailaddress" defaultMessage="enter your email address">
         {(message) =>

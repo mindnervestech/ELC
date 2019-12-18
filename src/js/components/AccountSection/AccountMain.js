@@ -27,21 +27,20 @@ class AccountMain extends Component {
                     <Col lg={7}>
                         <div className="account-section-container">
                             <div>
-                                <h1 className="myaccount-header"><FormattedMessage id="header.MyAccount" defaultMessage="My Account"/></h1>
+                                <h1 className="myaccount-header"><FormattedMessage id="header.MyAccount" defaultMessage="My Account" /></h1>
                             </div>
 
                             <div className="accountmenu-list">
                                 <ul>
-                                    <li className="account-block">Personal Details</li>
-                                    <li className="account-block">Wishlist</li>
-                                    <li className="account-block">Address Book</li>
-                                    <li className="account-block">Order Summary</li>
-                                    <li className="account-block">Personal Details</li>
+                                    <Link to={`/${store_locale}/address-book`}> <li className="account-block"><FormattedMessage id="addressBook" defaultMessage="Personal Details" /></li></Link>
+                                    <Link to={`/${store_locale}/update-password`}> <li className="account-block"><FormattedMessage id="change.password" defaultMessage="Change Password" /></li></Link>
+                                    <Link to={`/${store_locale}/address-book`}>  <li className="account-block"><FormattedMessage id="addressBook" defaultMessage="Address Book" /></li></Link>
+                                    <Link to={`/${store_locale}/order-history`}>  <li className="account-block"><FormattedMessage id="profile.OrderHistory.Title" defaultMessage="Order Summary" /></li></Link>
+                                    <Link to={`/${store_locale}/birthday-club-account`}>    <li className="account-block"><FormattedMessage id="birthdayclub.header" defaultMessage="Birthday Club" /></li></Link>
                                     <Link to={`/${store_locale}/wish-list`} style={{ textDecoration: 'none' }}>
-                                        <li className="account-block">Wishlist</li></Link>
+                                        <li className="account-block"><FormattedMessage id="header.Wishlist" defaultMessage="Wishlist" /></li></Link>
 
-                                    <li className="account-block">Address Book</li>
-                                    <li className="account-block">Order Summary</li>
+
                                 </ul>
                             </div>
                         </div>

@@ -10,11 +10,20 @@ import { loadingSpinner, loadingSpinnerForProduct } from './globals';
 // 		payload: payload,
 // 	};
 // };
- 
+
+
+
 
 export const callProductWishDetail = payload => {
 	return ({
 		type: actionTypes.PRODUCT_WISH_DETAIL,
+		payload: payload
+	})
+}
+
+export const callProductDataByBrand = payload => {
+	return ({
+		type: actionTypes.GET_PRODUCT_DATA_SHOP_BY_BRAND,
 		payload: payload
 	})
 }
@@ -229,6 +238,63 @@ export const getProductList = payload => {
 		API.getProductList(data, cb);
 	};
 };
+
+
+
+export const getProductListOfBrands = payload => {
+
+	return dispatch => {
+		console.log(payload)
+		const data = {
+
+			url_key: payload.url_key,//"dressing-up-role-play",
+			storeid: payload.storeid,
+
+		};
+
+
+		let cb = {
+			success: res => {
+				let product_data = [];
+
+				if (res.status && res.code === 200) {
+					let newState = { ...res.data };
+
+
+					dispatch(
+						callProductDataByBrand({
+
+							brands: newState.filters
+						})
+					);
+					// }
+
+				} else {
+
+					dispatch(
+						callProductDataByBrand({
+							brands: {},
+							products: [],
+							category_name: null
+						})
+					);
+				}
+			},
+			error: err => {
+				dispatch(loadingSpinnerForProduct({ loadingProduct: false }))
+				dispatch(
+					callProductDataByBrand({
+						brands: {},
+						products: [],
+						category_name: null
+					})
+				);
+			},
+		};
+		API.getProductList(data, cb);
+	};
+};
+
 
 // Guest Add to cart Start
 export const callActionForGuestAddToCart = payload => {

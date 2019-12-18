@@ -86,7 +86,7 @@ export const AddNewAddressAndRedirectToCheckout = (payload) => {
         if(payload.payload_shipping_type==="samedaydelivery_shipping_samedaydelivery_shipping")
         {
             payload_shipping_type= getState().myCart.active_shipping_methods[0].code;
-        }else if(payload.payload_shipping_type="express_shipping_express_shipping"){
+        }else if(payload.payload_shipping_type==="express_shipping_express_shipping"){
              payload_shipping_type= getState().myCart.active_shipping_methods[1].code;
         }
         else{
@@ -157,7 +157,7 @@ let payload_shipping_type=''
         if(payload.payload_shipping_type==="samedaydelivery_shipping_samedaydelivery_shipping")
         {
             payload_shipping_type= getState().myCart.active_shipping_methods[0].code;
-        }else if(payload.payload_shipping_type="express_shipping_express_shipping"){
+        }else if(payload.payload_shipping_type==="express_shipping_express_shipping"){
              payload_shipping_type= getState().myCart.active_shipping_methods[1].code;
         }
         else{

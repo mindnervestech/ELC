@@ -191,13 +191,17 @@ class DeliveryDetails extends Component {
             }
 
             setTimeout(() => {
+               
                 if (this.state.isContactValid && this.state.isAddressValid) {
                     let payload_shipping_type = ''
-                    if (this.state.shipping_type === "samedaydelivery_shipping_samedaydelivery_shipping") {
-                        payload_shipping_type = this.state.shipping_type;
-                    } else if (this.state.shipping_type = "express_shipping_express_shipping") {
-                        payload_shipping_type = this.state.shipping_type;
-                    }
+                    // if (this.state.shipping_type ==="samedaydelivery_shipping_samedaydelivery_shipping") {
+                    //     payload_shipping_type = this.state.shipping_type;
+                    // } else if (this.state.shipping_type ==="express_shipping_express_shipping") {
+                    //     payload_shipping_type = this.state.shipping_type;
+                    // }
+                    // else{
+                    //     payload_shipping_type = this.state.shipping_type;
+                    // }
                     let payload = {
                         addressId: '',
                         UserID: this.props.user_details.customer_details.customer_id,
@@ -215,7 +219,7 @@ class DeliveryDetails extends Component {
                         postcode: this.state.AddressFields.postcode,
                         message: this.state.gift_wrap_delivery_notes,
                         gift_wrap_flag: this.state.gift_wrap_required,
-                        payload_shipping_type: payload_shipping_type
+                        payload_shipping_type: this.state.shipping_type
                     };
 
                     this.props.OnaddNewAddressAndRedirectToCheckout(payload)
@@ -223,12 +227,14 @@ class DeliveryDetails extends Component {
             }, 5000)
 
         } else if (this.state.isOldAddressSelcted && (!(this.state.isCollectFromStore))) {
+            let payload_shipping_type='';
             this.setState({
 
                 oldAddressValue: {
                     address_id: this.state.oldAddressID,
                     message: this.state.gift_wrap_delivery_notes,
-                    gift_wrap_flag: this.state.gift_wrap_required
+                    gift_wrap_flag: this.state.gift_wrap_required,
+                    payload_shipping_type: this.state.shipping_type
                 }
 
             })
@@ -316,10 +322,19 @@ class DeliveryDetails extends Component {
     addNewAddress = () => {
         this.setState({
             addNewAddress: true,
-            isOldAddressSelcted: false
+            isOldAddressSelcted: false,
+            same_day_delivery_allow:false,
+            same_day_delivery:false
         })
     }
 
+    cancelAddress=()=>{
+        this.setState({
+           
+            same_day_delivery_allow:false,
+            same_day_delivery:false
+        })  
+    }
     changeDeliveryType = (e) => {
         const selected_country = this.props.globals.country;
         if (e.target.tagName === 'H3' || e.target.tagName == 'SPAN') {
@@ -425,7 +440,7 @@ class DeliveryDetails extends Component {
 
 
     render() {
-       console.log("Addreess cancel",this.state.same_day_delivery)
+     
 
         const selected_country = this.props.globals.country;
         let obj = this.props.cart_details.shipping_details;
@@ -444,7 +459,7 @@ class DeliveryDetails extends Component {
             } else if (!(this.props.cart_details.available_address)) {
                 addressContainer = <>
                     <Contact ref={this.submitContact} changed={this.getContactInfo} />
-                    <Address  oncancleClick={this.clearpropsOnCancelButton}
+                    <Address  oncancleClick={this.cancelAddress}
                      available_for_same_day_delivery={this.available_for_same_day_delivery} ref={this.submitAddress} changed={this.getAddressInfo}
                         cancelButtonShow={false} selected_country={this.props.globals.country} />
                 </>
@@ -454,7 +469,8 @@ class DeliveryDetails extends Component {
                 addressContainer = <>
                     <Contact ref={this.submitContact} changed={this.getContactInfo} />
                     <Address  oncancleClick={this.clearpropsOnCancelButton}
-                       available_for_same_day_delivery={this.available_for_same_day_delivery} ref={this.submitAddress} changed={this.getAddressInfo}
+                       available_for_same_day_delivery={this.available_for_same_day_delivery}
+                        ref={this.submitAddress} changed={this.getAddressInfo}
                         cancelAddNewAddress={this.cancelAddNewAddress}
                         cancelButtonShow={true}
                         selected_country={this.props.globals.country} />

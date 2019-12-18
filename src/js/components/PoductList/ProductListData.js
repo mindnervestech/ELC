@@ -10,6 +10,8 @@ import SideManu from './SideManu';
 import AddToBasketModal from '../Product/product-details/product-info/add-to-basket-modal';
 import Modal from 'react-responsive-modal';
 import AddToCartModal from '../Product/product-details/product-info/product-basic';
+import { initializeF, trackF } from '../utility/facebookPixel';
+import { live } from '../../api/globals';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
@@ -459,6 +461,14 @@ class ProductListData extends Component {
     // }
 
 	render() {
+		
+		if(window.location.href.split('/')[6]==='lego'){
+			if (live) {
+                initializeF()
+                trackF('Purchase');
+            }
+
+		}
 		let list = this.state.list1
 		const store_locale = this.props.globals.store_locale
 		if (changeFilterData === false) {

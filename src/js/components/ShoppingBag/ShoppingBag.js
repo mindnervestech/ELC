@@ -202,7 +202,7 @@ class ShoppingBag extends Component {
                 message: ''
             }
         })
-        console.log('Close alert Box Parent');
+      
     }
 
     closedAlertScroll = () => {

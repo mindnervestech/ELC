@@ -5,7 +5,7 @@ import Spinner from '../../Spinner/Spinner';
 import { connect } from 'react-redux';
 import * as actions from '../../../redux/actions/index';
 import { FormattedMessage } from 'react-intl';
-// import { initializeF, trackF } from '../../utility/facebookPixel';
+ import { initializeF, trackF } from '../../utility/facebookPixel';
 import { initializeGTMWithEvent } from '../../utility/googleTagManager';
 import { live } from '../../../api/globals';
 import { Row, Col } from 'reactstrap';
@@ -95,10 +95,10 @@ class OrderSummary extends Component {
             let string = window.location.href
             let data = string.split('=')
             orderNumber = data[data.length - 1];
-            // if (live) {
-            //     initializeF()
-            //     trackF('Purchase');
-            // }
+            if (live) {
+                initializeF()
+                trackF('Purchase');
+            }
         } else {
             //   success = query.get('status');
             success = cryptr.decrypt(query.get('status'));
@@ -109,10 +109,10 @@ class OrderSummary extends Component {
                 this.props.orderJson({
                     order_id: query.get('order_id')
                 });
-                // if (live) {
-                //     initializeF()
-                //     trackF('Purchase');
-                // }
+                if (live) {
+                    initializeF()
+                    trackF('Purchase');
+                }
             }
             if (query.get('order_id') && query.get('store_id')) {
                 // success = query.get('status');

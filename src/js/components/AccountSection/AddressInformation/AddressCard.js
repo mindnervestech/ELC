@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl'
+import { Link, Redirect,withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import './AddressCard.css';
 class AddressCard extends Component {
     constructor(props) {
         super(props);
     }
     render() {
+        const store_locale = this.props.globals.store_locale;
         return (<>
 
 
@@ -20,7 +23,7 @@ class AddressCard extends Component {
                         <a href={"tel:" + this.props.address.telephone}>{this.props.address.carrier_code ? `${this.props.address.carrier_code == '91' ? '+' : ''}${this.props.address.carrier_code}${this.props.address.telephone}` : this.props.address.telephone}</a>
                         <br />
                         <div className="div-displayflex">
-                            <a onClick={() => this.props.openFirstModal(this.props.addressKey)} className="btn-edit-address"><FormattedMessage id="profile.Edit.Title" defaultMessage="Edit" /></a>
+                            <Link to={{pathname:`/${store_locale}/add-address`,addressProps:this.props.address,addressKey:this.props.addressKey}}  className="btn-edit-address"><FormattedMessage id="profile.Edit.Title" defaultMessage="Edit" /></Link>
                             <a onClick={() => this.props.deleteAddress(this.props.addressKey)} className="btn-delete-address"><FormattedMessage id="profile.Delete.Title" defaultMessage="Delete" /></a>
                         </div>
                     </span></p>
@@ -30,5 +33,12 @@ class AddressCard extends Component {
         </>);
     }
 }
+const mapStateToProps = state => {
+    return {
+      globals: state.global,
+      menu: state.menu.menuNavData,
+      user_details: state.login,
+    };
+  }
 
-export default AddressCard;
+export default withRouter(connect(mapStateToProps, null)(AddressCard));

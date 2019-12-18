@@ -78,9 +78,7 @@ export const getBirthDayClubInfo = payload => {
     let cb = {
       success: res => {
         if (res.status && res.code === 200) {
-          let data = {
-            ...res
-          }
+         
           dispatch(loadingSpinner({ loading: false }));
           dispatch(
             callActionForGetBirthdayClubData({
@@ -89,12 +87,15 @@ export const getBirthDayClubInfo = payload => {
           );
 
         } else {
-          let data = {
-            ...res
-          }
+
+          // data={
+          //   0:{name:'Akshay',dob:'12/7/2002',gender:'M'},
+          //   1:{name:'Suraj',dob:'12/03/2001',gender:'M'}
+          // }
+          
           dispatch(
             callActionForGetBirthdayClubData({
-              birthdayclub_page_data: { ...res }
+              birthdayclub_page_data: { ...data }
             })
           );
           dispatch(loadingSpinner({ loading: false }));
@@ -102,6 +103,16 @@ export const getBirthDayClubInfo = payload => {
       },
       error: err => {
         dispatch(loadingSpinner({ loading: false }));
+       let data={
+          0:{name:'Akshay',dob:'12/7/2002',gender:'M'},
+          1:{name:'Suraj',dob:'12/03/2001',gender:'M'}
+        }
+        
+        dispatch(
+          callActionForGetBirthdayClubData({
+            birthdayclub_page_data: { ...data }
+          })
+        );
       }
     };
 

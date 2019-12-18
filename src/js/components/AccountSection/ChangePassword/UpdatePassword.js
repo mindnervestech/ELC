@@ -61,8 +61,7 @@ class UpadatePassword extends Component {
             }, 2000);
         }
 
-
-        console.log("Netx props", nextProps)
+      
     }
 
 

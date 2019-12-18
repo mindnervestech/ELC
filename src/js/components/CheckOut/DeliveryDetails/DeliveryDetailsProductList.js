@@ -133,15 +133,10 @@ class DeliveryProductList extends Component {
 
     render() {
 
-
-        console.log("In render deli",this.props.same_day_delivery)
         path = this.props.location.pathname.split('/')[2];
-
         $("input").on("click", () => {
-            // for a specific one, but you can add a foreach cycle if you need more 
             if ($('#giftwrap').is(":checked")) {
                 show_gift_wrap_delivery_notes_area = true;
-
             } else {
                 show_gift_wrap_delivery_notes_area = false;
             }

@@ -92,7 +92,7 @@ class AddressInformation extends Component {
 
 
     onOpenFirstModal = (addressKey) => {
-        console.log('profile :', addressKey);
+       
         this.setState({
             openFirstModal: true,
             addressForEdit: this.props.addressBook[addressKey],
@@ -114,7 +114,7 @@ class AddressInformation extends Component {
         }, () => {
             this.onCloseFirstModal();
         })
-        console.log('Close alert Box Parent');
+      
     }
 
     buttonClick = (val) => {

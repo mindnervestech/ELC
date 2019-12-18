@@ -4,7 +4,7 @@ import PhoneNumber from '../Login/IntlTelePhone';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import * as actions from '../../redux/actions/index';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, Redirect,withRouter } from 'react-router-dom';
 import { Row, Col, Button } from 'reactstrap';
 const wait = require('../../../assets/images/wait.gif');
 
@@ -43,6 +43,7 @@ class AddressForm extends Component {
         }
       
     }
+  
 
     componentDidUpdate(prevProps, prevState) {
         if (prevState.cities.length !== this.state.cities.length) {
@@ -102,45 +103,82 @@ class AddressForm extends Component {
     }
 
     componentDidMount() {
+
+        if(this.props.location.addressProps!==undefined){
+           
+         // this.state.AddressFields=this.props.addressProps;   
+          this.defineCities(this.props.location.addressProps.country_id);
+            this.setCitydetails(this.props.location.addressProps.region_id);
+
+            let addStrig = this.props.location.addressProps.street.split(',');
+            setTimeout(() => {
+                this.setState({
+                    AddressFields: {
+                        ...this.state.AddressFields,
+                        WebsiteId: 1,
+                        firstName: this.props.location.addressProps.userFirstName,
+                        lastName: this.props.location.addressProps.userLastName,
+                        location: this.props.location.addressProps.country_id,
+                        city: this.props.location.addressProps.region_id,
+                        addressOne: addStrig[0],
+                        addressTwo: addStrig[1],
+                        addressThree: addStrig[2],
+                        primaryAddress: 0,
+                        postcode: this.props.location.addressProps.postcode,
+                        carrierCode: this.props.location.addressProps.carrier_code,
+                       UserCity: this.state.city_details.name,
+                       UserRegionId: this.state.city_details.id,
+
+                       
+                    },
+                    addressId: this.props.location.addressProps.Id,
+                    isdefaultPhone: true,
+                })
+                
+            }, 100);
+         
+        }else{
+            this.setState({AddressFields:{}});
+        }
         // console.log('Address for Edit : ', this.props);
         if (this.props.country_list.length <= 0) {
             this.props.onGetCountryList();
         }
 
-        if (this.props.Actype === 'Edit') {
-            this.defineCities(this.props.addressForEdit.country_id);
-            this.setCitydetails(this.props.addressForEdit.region_id);
+        // if (this.props.Actype === 'Edit') {
+        //     this.defineCities(this.props.addressForEdit.country_id);
+        //     this.setCitydetails(this.props.addressForEdit.region_id);
 
-            let addStrig = this.props.addressForEdit.street.split(',');
-            this.setState({
-                AddressFields: {
-                    ...this.state.AddressFields,
-                    WebsiteId: 1,
-                    firstName: this.props.addressForEdit.userFirstName,
-                    lastName: this.props.addressForEdit.userLastName,
-                    location: this.props.addressForEdit.country_id,
-                    city: this.props.addressForEdit.region_id,
-                    addressOne: addStrig[0],
-                    addressTwo: addStrig[1],
-                    addressThree: addStrig[2],
-                    primaryAddress: 0,
-                    postcode: this.props.addressForEdit.postcode,
-                    carrierCode: this.props.addressForEdit.carrier_code,
-                    carrier_code: this.props.addressForEdit.carrier_code,
-                },
-                addressId: this.props.addressForEdit.Id,
-                isdefaultPhone: true,
-            })
+        //     let addStrig = this.props.addressForEdit.street.split(',');
+        //     this.setState({
+        //         AddressFields: {
+        //             ...this.state.AddressFields,
+        //             WebsiteId: 1,
+        //             firstName: this.props.addressForEdit.userFirstName,
+        //             lastName: this.props.addressForEdit.userLastName,
+        //             location: this.props.addressForEdit.country_id,
+        //             city: this.props.addressForEdit.region_id,
+        //             addressOne: addStrig[0],
+        //             addressTwo: addStrig[1],
+        //             addressThree: addStrig[2],
+        //             primaryAddress: 0,
+        //             postcode: this.props.addressForEdit.postcode,
+        //             carrierCode: this.props.addressForEdit.carrier_code,
+        //             carrier_code: this.props.addressForEdit.carrier_code,
+        //         },
+        //         addressId: this.props.addressForEdit.Id,
+        //         isdefaultPhone: true,
+        //     })
 
 
-        }
+        // }
     }
 
     saveAddress = (e) => {
         //console.log(this.state);
         e.preventDefault();
-        if (this.handleValidation()) {
-            this.setState({showPleaseWait:true})
+        if (this.handleValidation() && this.state.city_details.name && this.state.city_details.id) {
+            this.setState({ showPleaseWait: true })
             this.saveAddressAPI();
         }
     }
@@ -408,8 +446,8 @@ class AddressForm extends Component {
         if (this.state.isdefaultPhone) {
             defaultPhoneNumber = {
                 ...defaultPhoneNumber,
-                carrier_code: this.props.addressForEdit.carrier_code,
-                contactNumber: this.props.addressForEdit.telephone,
+                carrier_code: this.props.location.addressProps.carrier_code,
+                contactNumber: this.props.location.addressProps.telephone,
             }
         }
 
@@ -728,6 +766,18 @@ class AddressForm extends Component {
 
                                                                 </div>
                                                             </div>
+                                                            <div className="col col-12 apex-col-auto ">
+                                                                <div style={{ display: 'flex' }}>
+                                                                    <button className="alsoLikeCardButton cancel-button" style={{ marginRight: 10, marginBottom: 30, marginTop: 10 }} onClick={(e) => this.goToAddressBook(e)} ><span><FormattedMessage id="Cancel.Btn" defaultMessage="Cancel"/></span></button>
+
+                                                                    {this.state.showPleaseWait ?
+                                                                        <button style={{ height: 50, marginRight: 10, marginBottom: 30, marginTop: 10 }} className="alsoLikeCardButton save-button" type="button" disabled={true}>
+                                                                            <img src={wait} style={{ width: 25, height: 20, marginTop: -4 }} alt="" />
+                                                                            <span className="t-Button-label"><FormattedMessage id="PleaseWait" defaultMessage="Please wait......." /></span>
+                                                                        </button> :
+                                                                        <button className="alsoLikeCardButton save-button" style={{ marginRight: 10, marginBottom: 30, marginTop: 10 }} onClick={(e) => this.saveAddress(e)} ><span><FormattedMessage id="Save.text" defaultMessage="Save"/></span></button>}
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -742,17 +792,8 @@ class AddressForm extends Component {
                             </div>
                         </div></div>
                     </div>
-                    <div style={{ display: 'flex' }}>
-                            <button className="alsoLikeCardButton cancel-button" style={{marginRight:10,marginBottom:30,marginTop:10}} onClick={(e)=>this.goToAddressBook(e)} ><span>Cancel</span></button>
-                           
-                            {this.state.showPleaseWait ?
-                                <button style={{ height: 50 ,marginRight:10,marginBottom:30,marginTop:10}} className="alsoLikeCardButton save-button" type="button" disabled={true}>
-                                    <img src={wait} style={{ width: 25, height: 20, marginTop: -4 }} alt="" />
-                                    <span className="t-Button-label"><FormattedMessage id="PleaseWait" defaultMessage="Please wait......." /></span>
-                                </button> :
-                                <button className="alsoLikeCardButton save-button"  style={{marginRight:10,marginBottom:30,marginTop:10}} onClick={(e)=>this.saveAddress(e)} ><span>Save</span></button>}
-                        </div>
-                    
+
+
                 </div> <input type="hidden" id="pPageItemsRowVersion" /> <input type="hidden" id="pPageItemsProtected" value="k64SkfqFSNPggSJxRRzy-w" /></form >
 
         );

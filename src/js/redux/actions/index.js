@@ -53,7 +53,8 @@ export {
 	getPlaceOrder,
 	getSizeChart,
 	getYouMayAlsoLikeData,
-	clearProductWishDetail
+	clearProductWishDetail,
+	getProductListOfBrands
 } from './getProductDetails';
 
 

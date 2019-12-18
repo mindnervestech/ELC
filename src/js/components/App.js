@@ -24,11 +24,12 @@ import PrivacyPolicy from './StaticPages/PrivacyPolicy/PrivacyPolicy';
 import TermConditions from './StaticPages/TermsConditions/TermsConditions';
 import ReactGA from 'react-ga';
 import ProfileAddress from './CustomerAddress/ProfileAddress';
-import BithdayClubAccountTab from './StaticPages/BirthDayClub/BithdayClubAccountTab'
+// import BithdayClubAccountTab from './StaticPages/BirthDayClub/BithdayClubAccountTab'
+import BithdayClubAccountTab from '../../js/components/AccountSection/BirthhdayClubHistory/BirthdayClubSummary';
 import BirthDayClub from './StaticPages/BirthDayClub/BirthDayClub'
 import AddNewBirthDayClubChild from './StaticPages/BirthDayClub/AddNewChild';
 import Login from './Login/Login';
-
+import FacebookLogin from '../components/Login/FacebookLoginComponent';
 import MyProfile from './MyProfile/MyProfile';
 import ShoppingBag from './ShoppingBag/ShoppingBag';
 import CheckOutLoginWelcome from './CheckOut/Login/CheckOutLoginWelcome';
@@ -40,8 +41,9 @@ import { Route, Link, Switch } from 'react-router-dom'
 import Home from './Home/Home';
 import Product from './Product/Product-Listing';
 import ProductDetails from './Product/product-details/Product-details';
-import WishList from './WishList/WishList';
-import Order from './OrderHistory/OrderHistory';
+// import WishList from './WishList/WishList';
+import WishList from '../../js/components/AccountSection/WishList/Wishlist';
+import Order from '../../js/components/AccountSection/OrderHistory/OrderHistory';
 import OredrDetails from './OrderHistory/viewVoucher';
 import BrowseAllBrand from './Menu/BrowseAllBrand';
 import ResetPassword from './resetPassword';
@@ -69,7 +71,7 @@ import ClickAndCollect from '../../js/components/CheckOut/DeliveryDetails/CilckA
 import Xmas from '../../js/components/Xmas/Xmas';
 import MyAccount from '../../js/components/AccountSection/AccountMain';
 import Address from '../../js/components/AccountSection/AddressInformation/AddressInformation';
-import AddAddress from '../../js/components/AccountSection/AddressInformation/AddressForm.js';
+import AddAddress from '../../js/components/AccountSection/AddressInformation/AddressFormAccount.js';
 import { live } from '../api/globals';
 import axios from 'axios'
 import UpadatePassword from '../../js/components/AccountSection/ChangePassword/UpdatePassword'
@@ -100,7 +102,7 @@ class App extends Component {
             active_server = 'live';
         }
         if (active_server==='live') {
-            console.log("In true",active_server)
+           
             initialize();
             initializeGTM();
         }
@@ -353,6 +355,7 @@ class App extends Component {
                                         <Route exact path="/" component={Home} />
                                         <Route exact path="/:locale" component={Home} />
                                         <Route exact path="/:locale/home" component={Home} />
+                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/facebook-login" component={FacebookLogin}/>
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/xmas" component={Xmas}/>
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/myaccount" component={MyAccount}/>
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/sign-in-register" component={Login} />
