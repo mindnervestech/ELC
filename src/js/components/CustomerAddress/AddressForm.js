@@ -4,10 +4,10 @@ import PhoneNumber from '../Login/IntlTelePhone';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import * as actions from '../../redux/actions/index';
-import { Link, Redirect,withRouter } from 'react-router-dom';
+import { Link, Redirect, withRouter } from 'react-router-dom';
 import { Row, Col, Button } from 'reactstrap';
 const wait = require('../../../assets/images/wait.gif');
-
+let store_locale = null;
 class AddressForm extends Component {
 
     constructor(props) {
@@ -134,11 +134,12 @@ class AddressForm extends Component {
                     addressId: this.props.location.addressProps.Id,
                     isdefaultPhone: true,
                 })
-                
+
             }, 100);
-         
-        }else{
-            this.setState({AddressFields:{}});
+
+        }
+        else {
+            this.setState({ AddressFields: {} });
         }
         // console.log('Address for Edit : ', this.props);
         if (this.props.country_list.length <= 0) {
@@ -269,7 +270,7 @@ class AddressForm extends Component {
             AddressType: this.state.AddressFields.addressType,
             postcode: this.state.AddressFields.postcode,
         };
-        console.log(payload)
+
         if (this.state.addressId !== '') {
             this.props.onAddNewAddress(payload);
         } else {
@@ -383,8 +384,42 @@ class AddressForm extends Component {
 
 
     render() {
-        //console.log(this.state.addressId);
-        //console.log(this.state);
+        let language = this.props.globals.language;
+
+        let addAddressText = null;
+        let updateAddressText = null;
+        addAddressText =
+
+            <div className="padding-right-ar padding-breadcrumb">
+                <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
+                    <span className="titleHover" style={{ fontSize: 15 }}><FormattedMessage id="Checkout.Home" defaultMessage="Home" /></span>
+                    {language === 'en' ?
+                        <span>&nbsp;\&nbsp;&nbsp;</span> :
+                        <span>&nbsp;/&nbsp;&nbsp;</span>
+                    }
+                </Link>
+                <Link to={`/${store_locale}/address-book`} style={{ fontSize: 15, fontWeight: 'bold' }}><FormattedMessage id="Addresses.Text" defaultMessage="Addresses" /></Link>
+                <div className="address-add-new">
+                    <span className="glyphicon glyphicon-chevron-left"></span>
+                    <span className="addnew-header">Add New</span></div>
+            </div>
+
+
+        updateAddressText = <div className="padding-right-ar padding-breadcrumb">
+            <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
+                <span className="titleHover" style={{ fontSize: 15 }}><FormattedMessage id="Checkout.Home" defaultMessage="Home" /></span>
+                {language === 'en' ?
+                    <span>&nbsp;\&nbsp;&nbsp;</span> :
+                    <span>&nbsp;/&nbsp;&nbsp;</span>
+                }
+            </Link>
+            <Link to={`/${store_locale}/address-book`} style={{ fontSize: 15, fontWeight: 'bold' }}><FormattedMessage id="Addresses.Text" defaultMessage="Addresses" /></Link>
+            <div className="address-add-new">
+                <span className="glyphicon glyphicon-chevron-left"></span>
+                <span className="addnew-header">Update Address</span></div>
+        </div>
+
+
 
         let respo_message = null;
         if (this.state.showAddressAddAlert) {
@@ -409,8 +444,8 @@ class AddressForm extends Component {
 
 
 
-        let store_locale=this.props.globals.store_locale;
-        if(this.state.goToAddressBook===true){
+        store_locale = this.props.globals.store_locale
+        if (this.state.goToAddressBook === true) {
             return <Redirect to={{
                 pathname: `/${store_locale}/address-book`,
             }} />;
@@ -568,40 +603,45 @@ class AddressForm extends Component {
         }*/
 
 
-        return (
-            <form >
-                <input type="hidden" name="p_flow_id" value={2019} id="pFlowId" /><input type="hidden" name="p_flow_step_id" value={25} id="pFlowStepId" /><input type="hidden" name="p_instance" value={20414079679035} id="pInstance" /><input type="hidden" name="p_page_submission_id" value={292881855944229881009133032913601640089} id="pPageSubmissionId" /><input type="hidden" name="p_request" value id="pRequest" /><input type="hidden" name="p_reload_on_submit" value="S" id="pReloadOnSubmit" /><input type="hidden" value={292881855944229881009133032913601640089} id="pSalt" /><div className="t-Dialog color-add-address-back" role="dialog" aria-label="Add Address">
-                    <div className="t-Dialog-header " style={{color:'#fff !important'}} />
-                    {respo_message }
-                    <div className="t-Dialog-bodyWrapperOut" >
-                        <div className="t-Dialog-bodyWrapperIn color-add-address-back"><div className="t-Dialog-body">
-                            <span id="APEX_SUCCESS_MESSAGE" data-template-id="33515671899469661_S" className="apex-page-success u-hidden" /><span id="APEX_ERROR_MESSAGE" data-template-id="33515671899469661_E" className="apex-page-error u-hidden" />
-                            <div className="container">
-                                <div className="row">
-                                    <div className="col col-12 apex-col-auto" style={{ height: 'auto' }}>
-                                        <div className="t-Region t-Region--noPadding t-Region--removeHeader t-Region--noUI t-Region--hiddenOverflow t-Form--slimPadding t-Form--stretchInputs t-Form--labelsAbove margin-top-none margin-bottom-none" id="DTA">
-                                            <div className="t-Region-header">
-                                                <div className="t-Region-headerItems t-Region-headerItems--title">
-                                                    <span className="t-Region-headerIcon"><span className="t-Icon " aria-hidden="true" /></span>
-                                                    <h2 className="t-Region-title" id="DTA_heading">Address information</h2>
+        return (<>
+          
+           
+            <div>
+            { this.props.location.addAddressRedirect ? addAddressText:null }
+            { this.props.location.updateAddressRedirect  ? updateAddressText:null }
+                <form>
+                    <input type="hidden" name="p_flow_id" value={2019} id="pFlowId" /><input type="hidden" name="p_flow_step_id" value={25} id="pFlowStepId" /><input type="hidden" name="p_instance" value={20414079679035} id="pInstance" /><input type="hidden" name="p_page_submission_id" value={292881855944229881009133032913601640089} id="pPageSubmissionId" /><input type="hidden" name="p_request" value id="pRequest" /><input type="hidden" name="p_reload_on_submit" value="S" id="pReloadOnSubmit" /><input type="hidden" value={292881855944229881009133032913601640089} id="pSalt" /><div className="t-Dialog color-add-address-back" style={{ height: '850px', backgroundColor: '#fff' }} role="dialog" aria-label="Add Address">
+                        <div className="t-Dialog-header " style={{ color: '#fff !important' }} />
+                        {respo_message}
+                        <div className="t-Dialog-bodyWrapperOut" >
+                            <div className="t-Dialog-bodyWrapperIn color-add-address-back" style={{ overflow: 'unset' }}><div className="t-Dialog-body">
+                                <span id="APEX_SUCCESS_MESSAGE" data-template-id="33515671899469661_S" className="apex-page-success u-hidden" /><span id="APEX_ERROR_MESSAGE" data-template-id="33515671899469661_E" className="apex-page-error u-hidden" />
+                                <div className="container">
+                                    <div className="row">
+                                        <div className="col col-12 apex-col-auto" style={{ height: 'auto' }}>
+                                            <div className="t-Region t-Region--noPadding t-Region--removeHeader t-Region--noUI t-Region--hiddenOverflow t-Form--slimPadding t-Form--stretchInputs t-Form--labelsAbove margin-top-none margin-bottom-none" id="DTA">
+                                                <div className="t-Region-header">
+                                                    <div className="t-Region-headerItems t-Region-headerItems--title">
+                                                        <span className="t-Region-headerIcon"><span className="t-Icon " aria-hidden="true" /></span>
+                                                        <h2 className="t-Region-title" id="DTA_heading">Address information</h2>
+                                                    </div>
+                                                    <div className="t-Region-headerItems t-Region-headerItems--buttons"><span className="js-maximizeButtonContainer" /></div>
                                                 </div>
-                                                <div className="t-Region-headerItems t-Region-headerItems--buttons"><span className="js-maximizeButtonContainer" /></div>
-                                            </div>
-                                            <div className="t-Region-bodyWrap">
-                                                <div className="t-Region-buttons t-Region-buttons--top">
-                                                    <div className="t-Region-buttons-left" />
-                                                    <div className="t-Region-buttons-right" />
-                                                </div>
-                                                <div className="t-Region-body">
-                                                    <div className="container">
-                                                        <div className="row">
-                                                            <div className="col col-6 apex-col-auto">
-                                                                <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel is-required apex-item-wrapper apex-item-wrapper--text-field " onFocus={(e) => this.divOnFocus(e)}
-                                                                    onBlur={(e) => this.divOnBlure(e)} id="P25_FIRST_NAME_CONTAINER"><div className="t-Form-labelContainer">
-                                                                        <label htmlFor="P25_FIRST_NAME" id="P25_FIRST_NAME_LABEL" className="t-Form-label">
-                                                                            <FormattedMessage id="Form.FirstName" defaultMessage="First Name*" />
-                                                                            <span className="u-VisuallyHidden">(Value Required)</span></label>
-                                                                    </div>
+                                                <div className="t-Region-bodyWrap">
+                                                    <div className="t-Region-buttons t-Region-buttons--top">
+                                                        <div className="t-Region-buttons-left" />
+                                                        <div className="t-Region-buttons-right" />
+                                                    </div>
+                                                    <div className="t-Region-body">
+                                                        <div className="container">
+                                                            <div className="row">
+                                                                <div className="col col-6 apex-col-auto">
+                                                                    <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel is-required apex-item-wrapper apex-item-wrapper--text-field " onFocus={(e) => this.divOnFocus(e)}
+                                                                        onBlur={(e) => this.divOnBlure(e)} id="P25_FIRST_NAME_CONTAINER"><div className="t-Form-labelContainer">
+                                                                            <label htmlFor="P25_FIRST_NAME" id="P25_FIRST_NAME_LABEL" className="t-Form-label">
+                                                                                <FormattedMessage id="Form.FirstName" defaultMessage="First Name*" />
+                                                                                <span className="u-VisuallyHidden">(Value Required)</span></label>
+                                                                        </div>
 
 
                                                                     {firstNameInputField}
@@ -794,8 +834,8 @@ class AddressForm extends Component {
                     </div>
 
 
-                </div> <input type="hidden" id="pPageItemsRowVersion" /> <input type="hidden" id="pPageItemsProtected" value="k64SkfqFSNPggSJxRRzy-w" /></form >
-
+                </div> <input type="hidden" id="pPageItemsRowVersion" /> <input type="hidden" id="pPageItemsProtected" value="k64SkfqFSNPggSJxRRzy-w" /></form ></div>
+                </>
         );
     }
 }

@@ -1,3 +1,84 @@
+.height-add-address-book{
+    height: 100vh !important;
+}
+.ul-myaccount{
+display:flex !important;
+margin:7% !important ;
+width: 100%;
+padding: 0px;
+z-index: 200;
+}
+html[dir="rtl"] .ul-myaccount{
+    display:flex !important;
+    margin:7% !important ;
+    width: 100%;
+    padding: 0px;
+    z-index: 200;
+    }
+
+.li-my-account-tab{
+color: #0d943f !important;
+list-style: none;
+font-size: 14px;
+line-height: 23px;
+font-weight: 800;
+padding-top: 20px;
+padding-bottom: 15px;
+padding-left: 20px;
+
+}
+
+html[dir="rtl"] .li-my-account-tab{
+    color: #0d943f !important;
+    list-style: none;
+    font-size: 14px;
+    line-height: 23px;
+    font-weight: 800;
+    padding-top: 20px;
+    padding-bottom: 15px;
+    padding-left: 15%;
+    
+    }
+
+
+#ShareModule .styles_modal__gNwvD {
+        width: 490px !important;
+        height: 150px !important;
+    }
+
+
+    .modal-my-account{
+        width:60%;
+        height: 250px;
+        background-color:#fff;
+        position: absolute;
+        top:0;
+        right:10px !important;
+        align-content:left !important;
+        z-index:9
+    }
+
+html[dir="rtl"] .modal-my-account{
+    width:60%;
+    height: 250px;
+    background-color:#fff;
+    position: absolute;
+    top:0px;
+    right: unset !important;
+    left: 10px;
+    align-content:right;
+    z-index:9
+}
+
+
+.share-icon-width{
+    width:121px !important;
+}
+
+
+html[dir="rtl"] .arabic-bold{
+    font-family: GESS-Bold !important;
+  }
 .whatsapp{
     margin-top:5% !important;
 }
@@ -2967,8 +3048,8 @@ html[dir="rtl"] .header .changecountry .country .list a:before {
 }
 
 .homePage .alsoLikeCardButton:hover {
-    background-color: #dF0C00;
-    border: solid 1px #dF0C00;
+    background-color: #dF0C00 !important;
+    border: solid 1px #dF0C00 !important;
 }
 
 .homePage .start {

@@ -213,8 +213,8 @@ class AddressInformation extends Component {
                     </Link>
                     <span style={{ fontSize: 15, fontWeight: 'bold' }}><FormattedMessage id="profile.Account.Title" defaultMessage="Account" /></span>
                     <h1 className="address-header">Addresses</h1>
-                    <Link to={`/${store_locale}/add-address`} style={{ textDecoration: 'none' }}>
-                    <span className="addnew-text">Add New</span>
+                    <Link className="addnew-text floatAddtext" to={{ pathname:`/${store_locale}/add-address`,addAddressRedirect:true}} style={{ textDecoration: 'none' }}>Add New
+                    
                     </Link>
                     
 

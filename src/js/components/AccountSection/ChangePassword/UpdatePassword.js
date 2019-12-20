@@ -275,7 +275,7 @@ class UpadatePassword extends Component {
                         <div className="form-group">
                             {confirmPasswordField}
                         </div>
-                        <div style={{ display: 'flex' }}>
+                        <div style={{ display: 'flex',marginTop:50 }}>
                             <button className="alsoLikeCardButton cancel-button" onClick={this.goToMyProfile} ><span>Cancel</span></button>
                             {this.state.showPleaseWait ?
                                 <button style={{ height: 50 }} className="alsoLikeCardButton save-button" type="button" disabled={true}>

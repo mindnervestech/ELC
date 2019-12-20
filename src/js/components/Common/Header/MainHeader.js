@@ -45,6 +45,7 @@ class MainHeader extends Component {
         this.state = {
             goToMyAccount: false,
             showCountries: false,
+            isGeoIPCalled: true,
             country_flag: '',
             country_name: 'UAE',
             showCart: false,
@@ -54,7 +55,8 @@ class MainHeader extends Component {
             userLogin: login,
             openAccountModal: false,
             countryCode: '',
-            countryName: ''
+            countryName: '',
+            countryChangeCalled:false
         }
     }
 
@@ -66,13 +68,19 @@ class MainHeader extends Component {
         }
     }
 
+    onAccountMeunClick = (status) => {
+        if (status === true) {
+            this.setState({ goToMyAccount: false })
+        }
+    }
+
     showCart = () => {
         this.setState({
             showCart: !this.state.showCart
         })
     }
     componentWillMount() {
-        this.getGeoInfo();
+
         let string = window.location.href;
         if (string.includes("password-rest")
             && localStorage.getItem("ispasswordreset") === "false") {
@@ -91,32 +99,18 @@ class MainHeader extends Component {
         }
 
     }
-    getGeoInfo = () => {
-        axios.get('https://ipapi.co/json/').then((response) => {
-            let data = response.data;
-
-            country_name = data.country_name;
-            country_code = data.country_calling_code
-
-
-        }).catch((error) => {
-            console.log(error);
-        });
-    };
 
     componentDidMount() {
         this.props.onGetStoreIds();
-        //console.log('In componentDidMount before onGetMenuNav', this.props.global);
-        //this.props.onGetMenuNav(this.props.globals);
-        // if (this.props.globals.currentStore) {
-        //     this.props.onGetMenuNav(this.props.globals);
-        // }
-
+        if (!cookie.load('countCallOfIP')) {
+            setTimeout(() => {
+                this.onChangeCountry('UAE');
+            }, 100);
+        }
+      
         if (this.props.countryList.length === 0) {
             this.props.onGetCountryList();
         }
-
-
         let country = (cookie.load('country') === null) ? 'KSA' : cookie.load('country');
         this.setState({ country_flag: this.props.globals.country, country_name: this.props.globals.country });
         this.getStore();
@@ -224,8 +218,9 @@ class MainHeader extends Component {
     }
 
     onChangeCountry = (country) => {
+    
         this.props.handleCountrySelection(country);
-        this.setState({ country_flag: this.getFlagName(country), country_name: country });
+        this.setState({ country_flag: this.getFlagName(country), country_name: country,countryChangeCalled:true });
         this.showCountries();
         this.closeHBMenu();
     }
@@ -711,12 +706,12 @@ class MainHeader extends Component {
                     </div>
                     {this.state.goToMyAccount ? <div className="modal-my-account showOnWeb">
                         <ul className="row ul-myaccount">
-                            <li className="li-my-account-tab col-md-4"><Link  className="li-my-account-tab" to={`/${store_locale}/address-book`}><FormattedMessage id="addressBook" defaultMessage="Address Book"/></Link></li>
-                            <li className="li-my-account-tab col-md-4"><Link  className="li-my-account-tab" to={`/${store_locale}/order-history`}><FormattedMessage id="profile.OrderHistory.Title" defaultMessage="Order History"/></Link></li>
-                            <li className="li-my-account-tab col-md-4"><Link  className="li-my-account-tab" to={`/${store_locale}/update-password`}><FormattedMessage id="change.password" defaultMessage="Change Password"/></Link></li>
-                            <li className="li-my-account-tab col-md-4"><Link  className="li-my-account-tab" to={`/${store_locale}/birthday-club-account`}><FormattedMessage id="birthdayclub.header" defaultMessage="Birthday Club"/></Link></li>
-                            <li className="li-my-account-tab col-md-4"><Link  className="li-my-account-tab" to={`/${store_locale}/address-book`}><FormattedMessage id="addressBook" defaultMessage="Personal Details"/></Link></li>
-                            <li className="li-my-account-tab col-md-4"><Link  className="li-my-account-tab" to={`/${store_locale}/wish-list`}><FormattedMessage id="header.Wishlist" defaultMessage="Wishlist"/></Link></li>
+                            <li onClick={() => this.onAccountMeunClick(true)} className="li-my-account-tab col-md-4"><Link className="li-my-account-tab" to={`/${store_locale}/address-book`}><FormattedMessage id="addressBook" defaultMessage="Address Book" /></Link></li>
+                            <li onClick={() => this.onAccountMeunClick(true)} className="li-my-account-tab col-md-4"><Link className="li-my-account-tab" to={`/${store_locale}/order-history`}><FormattedMessage id="profile.OrderHistory.Title" defaultMessage="Order History" /></Link></li>
+                            <li onClick={() => this.onAccountMeunClick(true)} className="li-my-account-tab col-md-4"><Link className="li-my-account-tab" to={`/${store_locale}/update-password`}><FormattedMessage id="change.password" defaultMessage="Change Password" /></Link></li>
+                            <li onClick={() => this.onAccountMeunClick(true)} className="li-my-account-tab col-md-4"><Link className="li-my-account-tab" to={`/${store_locale}/birthday-club-account`}><FormattedMessage id="birthdayclub.header" defaultMessage="Birthday Club" /></Link></li>
+                            <li onClick={() => this.onAccountMeunClick(true)} className="li-my-account-tab col-md-4"><Link className="li-my-account-tab" to={`/${store_locale}/address-book`}><FormattedMessage id="addressBook" defaultMessage="Personal Details" /></Link></li>
+                            <li onClick={() => this.onAccountMeunClick(true)} className="li-my-account-tab col-md-4"><Link className="li-my-account-tab" to={`/${store_locale}/wish-list`}><FormattedMessage id="header.Wishlist" defaultMessage="Wishlist" /></Link></li>
                         </ul>
 
                     </div> : <div />}
