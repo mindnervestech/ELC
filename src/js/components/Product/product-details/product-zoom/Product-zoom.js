@@ -148,7 +148,7 @@ class ProductZoom extends Component {
 				return (<>
 					<div data-slide-id={`video-${index}`} class="zoom-gallery-slide video-slide" id={`video-active-${index}`}>
 						<video controls autoplay="autoplay"  loop muted preload style={{ width: '100%' }}>
-							<source src={item} />
+							<source src={item} type="video/mp4" />
 						</video>
 					</div>
 				</>)

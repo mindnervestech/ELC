@@ -27,7 +27,7 @@ export const getAddressFromShippingDetails = (payload) => {
                     quote_id: getState().login.customer_details.quote_id,
                     store_id: getState().global.currentStore
                 }))
-            }else{
+            } else {
                 dispatch(getMyCart({
                     quote_id: getState().login.customer_details.quote_id !== undefined ? getState().login.customer_details.quote_id : getState().guest_user.new_quote_id,
                     store_id: getState().global.currentStore
@@ -42,7 +42,6 @@ export const getAddressFromShippingDetails = (payload) => {
                     let newState = {
                         available_address: res.addressData.length > 0,
                         addressData: res.addressData,
-                        citywise_shipping_methods:res.citywise_shipping_methods,
                         is_shipping_details_rec: true,
                         active_shipping_methods: res.active_shipping_methods,
                     }
@@ -80,31 +79,16 @@ export const callActionForAddNewAddressAndRedirectToCheckout = (payload) => {
 
 
 export const AddNewAddressAndRedirectToCheckout = (payload) => {
-    let payload_shipping_type=''
-   
+
     return (dispatch, getState) => {
-        if(payload.payload_shipping_type==="samedaydelivery_shipping_samedaydelivery_shipping")
-        {
-            payload_shipping_type= getState().myCart.active_shipping_methods[0].code;
-        }else if(payload.payload_shipping_type==="express_shipping_express_shipping"){
-             payload_shipping_type= getState().myCart.active_shipping_methods[1].code;
-        }
-        else{
-             payload_shipping_type= getState().myCart.active_shipping_methods[2].code;
-        }
-    
+
         const data = {
             store_id: getState().global.currentStore,
             quote_id: getState().myCart.quote_id,
             address_id: '',
-            shipping_code:payload_shipping_type,
+            shipping_code: getState().myCart.active_shipping_methods[0].code,
             nayomi_store_id: '',
-            address_object: {
-                addressId: payload.addressId, UserID: payload.UserID, userFirstName: payload.userFirstName, userLastName: payload.userLastName
-                , customer_email: payload.customer_email, country_id: payload.country_id, state: payload.state, region_id: payload.region_id, city: payload.city,
-                street: payload.street, carrier_code: payload.carrier_code, telephone: payload.telephone, customer_address_type: payload.customer_address_type,
-                postcode: payload.postcode
-            },
+            address_object: { ...payload },
             fname: '',
             lname: '',
             cnumber: '',
@@ -152,25 +136,17 @@ export const callActionForAddOldAddressAndRedirectToCheckout = (payload) => {
 }
 
 export const AddOldAddressAndRedirectToCheckout = (payload) => {
-let payload_shipping_type=''
+
     return (dispatch, getState) => {
-        if(payload.payload_shipping_type==="samedaydelivery_shipping_samedaydelivery_shipping")
-        {
-            payload_shipping_type= getState().myCart.active_shipping_methods[0].code;
-        }else if(payload.payload_shipping_type==="express_shipping_express_shipping"){
-             payload_shipping_type= getState().myCart.active_shipping_methods[1].code;
-        }
-        else{
-             payload_shipping_type= getState().myCart.active_shipping_methods[2].code;
-        }
-  
+
+
         const data = {
             store_id: getState().global.currentStore,
             quote_id: getState().myCart.quote_id,
             address_id: payload.address_id.Id,
-            address_object:{},
-            shipping_code: payload_shipping_type,
+            shipping_code: getState().myCart.active_shipping_methods[0].code,
             nayomi_store_id: '',
+            address_object: {},
             fname: '',
             lname: '',
             cnumber: '',
@@ -218,7 +194,7 @@ const callActionForClickAndCollect = (payload) => {
 }
 
 export const clickAndCollect = (payload) => {
-    //console.log('>>payload :', payload);
+  
     return (dispatch, getState) => {
 
         const data = {

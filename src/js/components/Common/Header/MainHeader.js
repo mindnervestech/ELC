@@ -14,12 +14,13 @@ import cookie from 'react-cookies';
 import { Helmet } from 'react-helmet';
 import { WEB_URL } from '../../../api/globals';
 import { Container, Row, Col, Button } from 'reactstrap';
-import axios from 'axios'
+
 import deliveryBy from '../../../../assets/images/header/Truck1.svg';
 import freeDelivery from '../../../../assets/images/elc_icon_03.png';
 import freeCollect from '../../../../assets/images/elc_icon_05.png';
 import logoGroup from '../../../../assets/images/social/Logo Group.svg';
 import bagLogo from '../../../../assets/images/header/basket_w.svg';
+
 import location from '../../../../assets/images/header/location.svg';
 import help from '../../../../assets/images/header/help.svg';
 import profile from '../../../../assets/images/header/profile.png';
@@ -27,11 +28,6 @@ import Slider from "react-slick";
 import storeFinderMobile from '../../../../assets/images/header/storeFinder.svg';
 import UAEImage from '../../../../assets/images/header/ae.svg';
 import KSAImage from '../../../../assets/images/header/sa.svg';
-import { timeout } from 'q';
-let country_name = "";
-let country_code = 0;
-
-
 
 class MainHeader extends Component {
     constructor(props) {
@@ -43,9 +39,7 @@ class MainHeader extends Component {
             login = false
         }
         this.state = {
-            goToMyAccount: false,
             showCountries: false,
-            isGeoIPCalled: true,
             country_flag: '',
             country_name: 'UAE',
             showCart: false,
@@ -53,10 +47,6 @@ class MainHeader extends Component {
             showMenu: false,
             selectedLang: '',
             userLogin: login,
-            openAccountModal: false,
-            countryCode: '',
-            countryName: '',
-            countryChangeCalled:false
         }
     }
 
@@ -68,49 +58,45 @@ class MainHeader extends Component {
         }
     }
 
-    onAccountMeunClick = (status) => {
-        if (status === true) {
-            this.setState({ goToMyAccount: false })
-        }
-    }
-
     showCart = () => {
         this.setState({
             showCart: !this.state.showCart
         })
     }
-    componentWillMount() {
+componentWillMount() {
 
-        let string = window.location.href;
-        if (string.includes("password-rest")
-            && localStorage.getItem("ispasswordreset") === "false") {
-            localStorage.setItem("ispasswordreset", true);
-            let url = string.split("/")
-            let key = url[3].split('-')
-            console.log(">>>>>>>>>", key[1])
-            if (key[1] === 'en') {
-                this.props.handleLanguageSelection(key[1]);
-            } else {
-                this.props.handleLanguageSelection(key[1]);
-            }
-            this.setState({ showMenu: false });
-        } else {
-            localStorage.setItem("ispasswordreset", false);
+    let string = window.location.href;
+    if (string.includes("password-rest") 
+        && localStorage.getItem("ispasswordreset") === "false") {
+        localStorage.setItem("ispasswordreset", true);
+        let url = string.split("/")
+        let key = url[3].split('-')
+        console.log(">>>>>>>>>",key[1])
+        if(key[1] === 'en'){
+            this.props.handleLanguageSelection(key[1]);
+        }else{
+            this.props.handleLanguageSelection(key[1]);
         }
-
+        this.setState({ showMenu: false });
+    } else {
+        localStorage.setItem("ispasswordreset", false);
     }
-
+    
+        
+}
     componentDidMount() {
         this.props.onGetStoreIds();
-        if (!cookie.load('countCallOfIP')) {
-            setTimeout(() => {
-                this.onChangeCountry('UAE');
-            }, 100);
-        }
-      
+        //console.log('In componentDidMount before onGetMenuNav', this.props.global);
+        //this.props.onGetMenuNav(this.props.globals);
+        // if (this.props.globals.currentStore) {
+        //     this.props.onGetMenuNav(this.props.globals);
+        // }
+
         if (this.props.countryList.length === 0) {
             this.props.onGetCountryList();
         }
+
+
         let country = (cookie.load('country') === null) ? 'KSA' : cookie.load('country');
         this.setState({ country_flag: this.props.globals.country, country_name: this.props.globals.country });
         this.getStore();
@@ -121,15 +107,6 @@ class MainHeader extends Component {
         // if (this.props.guest_user.temp_quote_id == null) {
         //     this.props.onGetGuestCartId();
         // }
-    }
-
-    openAccountSectionModal = () => {
-        if (this.state.openAccountModal === true) {
-            this.setState({ openAccountModal: false })
-        } else {
-            this.setState({ openAccountModal: true })
-        }
-
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -164,20 +141,10 @@ class MainHeader extends Component {
 
     componentWillReceiveProps(nextProps) {
 
-        // console.log("Country name", country_name)
-        // if (country_name === 'India') {
-        //     console.log("Inside check")
-        //     setTimeout(() => {
-        //         this.onChangeCountry('KSA');
-        //     }, 100);
-        // }
-    }
-    goToMyAccount = () => {
-        if (this.state.goToMyAccount === true) {
-            this.setState({ goToMyAccount: false })
-        } else {
-            this.setState({ goToMyAccount: true })
-        }
+        // console.log("Basket Props",nextProps)
+        // setTimeout(() => {
+        //     this.getStore();
+        // }, 1000);
     }
 
 
@@ -218,9 +185,8 @@ class MainHeader extends Component {
     }
 
     onChangeCountry = (country) => {
-    
         this.props.handleCountrySelection(country);
-        this.setState({ country_flag: this.getFlagName(country), country_name: country,countryChangeCalled:true });
+        this.setState({ country_flag: this.getFlagName(country), country_name: country });
         this.showCountries();
         this.closeHBMenu();
     }
@@ -493,10 +459,10 @@ class MainHeader extends Component {
                                         <img src={profile} className="image-ion" style={{ marginTop: 2, height: 16, width: 16 }}></img>
                                         <label className="iconLeble text-color"><span><FormattedMessage id="header.Hello" defaultMessage="Hello" />,&nbsp; {this.props.user_details.customer_details.firstname} </span></label>
                                     </li>
-                                    <li onClick={() => this.goToMyAccount()} style={this.state.userLogin ? { display: 'inline-block' } : { display: 'none' }}>
-                                       
+                                    <li style={this.state.userLogin ? { display: 'inline-block' } : { display: 'none' }}>
+                                        <Link to={`/${store_locale}/profile`} style={{ textDecoration: 'none' }}>
                                             <label className="iconLeble text-color changeLinkText"><FormattedMessage id="header.MyAccount" defaultMessage="My Account" /></label>
-                                       
+                                        </Link>
                                     </li>
 
                                     <li style={this.state.userLogin ? { display: 'inline-block' } : { display: 'none' }}>
@@ -703,18 +669,7 @@ class MainHeader extends Component {
                             </ul> */}
                             {/* <figure className="logo"><Link to={`/${store_locale}/`}></Link></figure> */}
                         </div>
-                    </div>
-                    {this.state.goToMyAccount ? <div className="modal-my-account showOnWeb">
-                        <ul className="row ul-myaccount">
-                            <li onClick={() => this.onAccountMeunClick(true)} className="li-my-account-tab col-md-4"><Link className="li-my-account-tab" to={`/${store_locale}/address-book`}><FormattedMessage id="addressBook" defaultMessage="Address Book" /></Link></li>
-                            <li onClick={() => this.onAccountMeunClick(true)} className="li-my-account-tab col-md-4"><Link className="li-my-account-tab" to={`/${store_locale}/order-history`}><FormattedMessage id="profile.OrderHistory.Title" defaultMessage="Order History" /></Link></li>
-                            <li onClick={() => this.onAccountMeunClick(true)} className="li-my-account-tab col-md-4"><Link className="li-my-account-tab" to={`/${store_locale}/update-password`}><FormattedMessage id="change.password" defaultMessage="Change Password" /></Link></li>
-                            <li onClick={() => this.onAccountMeunClick(true)} className="li-my-account-tab col-md-4"><Link className="li-my-account-tab" to={`/${store_locale}/birthday-club-account`}><FormattedMessage id="birthdayclub.header" defaultMessage="Birthday Club" /></Link></li>
-                            <li onClick={() => this.onAccountMeunClick(true)} className="li-my-account-tab col-md-4"><Link className="li-my-account-tab" to={`/${store_locale}/address-book`}><FormattedMessage id="addressBook" defaultMessage="Personal Details" /></Link></li>
-                            <li onClick={() => this.onAccountMeunClick(true)} className="li-my-account-tab col-md-4"><Link className="li-my-account-tab" to={`/${store_locale}/wish-list`}><FormattedMessage id="header.Wishlist" defaultMessage="Wishlist" /></Link></li>
-                        </ul>
-
-                    </div> : <div />}
+                    </div >
 
                     <div id="R33786937309169806" className="menuOverlay"> </div>
                     <div id="R33786847982169805" className="row-3 hideBackPageScroll">

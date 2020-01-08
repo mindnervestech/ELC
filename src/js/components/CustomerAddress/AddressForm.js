@@ -4,10 +4,8 @@ import PhoneNumber from '../Login/IntlTelePhone';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import * as actions from '../../redux/actions/index';
-import { Link, Redirect, withRouter } from 'react-router-dom';
 import { Row, Col, Button } from 'reactstrap';
-const wait = require('../../../assets/images/wait.gif');
-let store_locale = null;
+
 class AddressForm extends Component {
 
     constructor(props) {
@@ -29,7 +27,6 @@ class AddressForm extends Component {
                 primaryAddress: 0,
                 postcode: '',
             },
-            goToAddressBook:false,
             addressId: "",
             cities: [],
             country_details: {},
@@ -37,13 +34,10 @@ class AddressForm extends Component {
             errors: {},
             isPhoneValid: false,
             isdefaultPhone: false,
-            showAddressAddAlert:false,
-            showPleaseWait:false
 
         }
-      
+        console.log(this.props);
     }
-  
 
     componentDidUpdate(prevProps, prevState) {
         if (prevState.cities.length !== this.state.cities.length) {
@@ -52,134 +46,45 @@ class AddressForm extends Component {
             }
         }
     }
-    componentWillReceiveProps(nextProps){
-        console.log("NextProps from add address",nextProps)
-        if (nextProps.addressResp.status == true) {
-            this.setState({ showAddressAddAlert: true })
-            setTimeout(() => {
-                this.closeAlert();
-            }, 2000);
-
-        }
-        if (nextProps.addressResp.status == false) {
-            this.setState({ showAddressAddAlert: true });
-            setTimeout(() => {
-                this.closeAlert();
-            }, 2000);
-        }
-
-    }
-    goToAddressBook=(e)=>{
-        e.preventDefault();
-        this.setState({goToAddressBook:true});
-    }
-    onClearFormData = () => {
-        this.setState({
-            ...this.state,
-            AddressFields: {
-                WebsiteId: 1,
-                firstName: '',
-                lastName: '',
-                location: '',
-                countryCode: '',
-                city: '',
-                carrierCode: '',
-                contactNumber: '',
-                addressOne: '',
-                addressTwo: '',
-                addressThree: '',
-                addressType: 'Home',
-                primaryAddress: 0,
-                postcode: '',
-            }
-        })
-    }
-    closeAlert = () => {
-        this.setState({ showAddressAddAlert: false })
-        this.props.onClearAddressResponse();
-        this.onClearFormData();
-        this.setState({ showPleaseWait: false })
-        document.location.reload();
-    }
 
     componentDidMount() {
-
-        if(this.props.location.addressProps!==undefined){
-           
-         // this.state.AddressFields=this.props.addressProps;   
-          this.defineCities(this.props.location.addressProps.country_id);
-            this.setCitydetails(this.props.location.addressProps.region_id);
-
-            let addStrig = this.props.location.addressProps.street.split(',');
-            setTimeout(() => {
-                this.setState({
-                    AddressFields: {
-                        ...this.state.AddressFields,
-                        WebsiteId: 1,
-                        firstName: this.props.location.addressProps.userFirstName,
-                        lastName: this.props.location.addressProps.userLastName,
-                        location: this.props.location.addressProps.country_id,
-                        city: this.props.location.addressProps.region_id,
-                        addressOne: addStrig[0],
-                        addressTwo: addStrig[1],
-                        addressThree: addStrig[2],
-                        primaryAddress: 0,
-                        postcode: this.props.location.addressProps.postcode,
-                        carrierCode: this.props.location.addressProps.carrier_code,
-                       UserCity: this.state.city_details.name,
-                       UserRegionId: this.state.city_details.id,
-
-                       
-                    },
-                    addressId: this.props.location.addressProps.Id,
-                    isdefaultPhone: true,
-                })
-
-            }, 100);
-
-        }
-        else {
-            this.setState({ AddressFields: {} });
-        }
         // console.log('Address for Edit : ', this.props);
         if (this.props.country_list.length <= 0) {
             this.props.onGetCountryList();
         }
 
-        // if (this.props.Actype === 'Edit') {
-        //     this.defineCities(this.props.addressForEdit.country_id);
-        //     this.setCitydetails(this.props.addressForEdit.region_id);
+        if (this.props.Actype === 'Edit') {
+            this.defineCities(this.props.addressForEdit.country_id);
+            this.setCitydetails(this.props.addressForEdit.region_id);
 
-        //     let addStrig = this.props.addressForEdit.street.split(',');
-        //     this.setState({
-        //         AddressFields: {
-        //             ...this.state.AddressFields,
-        //             WebsiteId: 1,
-        //             firstName: this.props.addressForEdit.userFirstName,
-        //             lastName: this.props.addressForEdit.userLastName,
-        //             location: this.props.addressForEdit.country_id,
-        //             city: this.props.addressForEdit.region_id,
-        //             addressOne: addStrig[0],
-        //             addressTwo: addStrig[1],
-        //             addressThree: addStrig[2],
-        //             primaryAddress: 0,
-        //             postcode: this.props.addressForEdit.postcode,
-        //             carrierCode: this.props.addressForEdit.carrier_code,
-        //             carrier_code: this.props.addressForEdit.carrier_code,
-        //         },
-        //         addressId: this.props.addressForEdit.Id,
-        //         isdefaultPhone: true,
-        //     })
+            let addStrig = this.props.addressForEdit.street.split(',');
+            this.setState({
+                AddressFields: {
+                    ...this.state.AddressFields,
+                    WebsiteId: 1,
+                    firstName: this.props.addressForEdit.userFirstName,
+                    lastName: this.props.addressForEdit.userLastName,
+                    location: this.props.addressForEdit.country_id,
+                    city: this.props.addressForEdit.region_id,
+                    addressOne: addStrig[0],
+                    addressTwo: addStrig[1],
+                    addressThree: addStrig[2],
+                    primaryAddress: 0,
+                    postcode: this.props.addressForEdit.postcode,
+                    carrierCode: this.props.addressForEdit.carrier_code,
+                    carrier_code: this.props.addressForEdit.carrier_code,
+                },
+                addressId: this.props.addressForEdit.Id,
+                isdefaultPhone: true,
+            })
 
 
-        // }
+        }
     }
 
-    saveAddress = (e) => {
+    saveAddress = () => {
         //console.log(this.state);
-        e.preventDefault();
-        if (this.handleValidation() && this.state.city_details.name && this.state.city_details.id) {
-            this.setState({ showPleaseWait: true })
+        if (this.handleValidation()) {
             this.saveAddressAPI();
         }
     }
@@ -270,7 +175,7 @@ class AddressForm extends Component {
             AddressType: this.state.AddressFields.addressType,
             postcode: this.state.AddressFields.postcode,
         };
-
+        console.log(payload)
         if (this.state.addressId !== '') {
             this.props.onAddNewAddress(payload);
         } else {
@@ -384,72 +289,8 @@ class AddressForm extends Component {
 
 
     render() {
-        let language = this.props.globals.language;
-
-        let addAddressText = null;
-        let updateAddressText = null;
-        addAddressText =
-
-            <div className="padding-right-ar padding-breadcrumb">
-                <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
-                    <span className="titleHover" style={{ fontSize: 15 }}><FormattedMessage id="Checkout.Home" defaultMessage="Home" /></span>
-                    {language === 'en' ?
-                        <span>&nbsp;\&nbsp;&nbsp;</span> :
-                        <span>&nbsp;/&nbsp;&nbsp;</span>
-                    }
-                </Link>
-                <Link to={`/${store_locale}/address-book`} style={{ fontSize: 15, fontWeight: 'bold' }}><FormattedMessage id="Addresses.Text" defaultMessage="Addresses" /></Link>
-                <div className="address-add-new">
-                    <span className="glyphicon glyphicon-chevron-left"></span>
-                    <span className="addnew-header">Add New</span></div>
-            </div>
-
-
-        updateAddressText = <div className="padding-right-ar padding-breadcrumb">
-            <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
-                <span className="titleHover" style={{ fontSize: 15 }}><FormattedMessage id="Checkout.Home" defaultMessage="Home" /></span>
-                {language === 'en' ?
-                    <span>&nbsp;\&nbsp;&nbsp;</span> :
-                    <span>&nbsp;/&nbsp;&nbsp;</span>
-                }
-            </Link>
-            <Link to={`/${store_locale}/address-book`} style={{ fontSize: 15, fontWeight: 'bold' }}><FormattedMessage id="Addresses.Text" defaultMessage="Addresses" /></Link>
-            <div className="address-add-new">
-                <span className="glyphicon glyphicon-chevron-left"></span>
-                <span className="addnew-header">Update Address</span></div>
-        </div>
-
-
-
-        let respo_message = null;
-        if (this.state.showAddressAddAlert) {
-            respo_message = <span id="APEX_SUCCESS_MESSAGE" data-template-id="126769709897686936_S" className="apex-page-success u-visible"><div className="t-Body-alert">
-                <div className="t-Alert t-Alert--defaultIcons t-Alert--success t-Alert--horizontal t-Alert--page t-Alert--colorBG" id="t_Alert_Success" role="alert">
-                    <div className="t-Alert-wrap">
-                        <div className="t-Alert-icon">
-                            <span className="t-Icon" />
-                        </div>
-                        <div className="t-Alert-content">
-                            <div className="t-Alert-header">
-                                <h2 className="t-Alert-title">{this.props.addressResp.message}</h2>
-                            </div>
-                        </div>
-                        <div className="t-Alert-buttons">
-                            <button className="t-Button t-Button--noUI t-Button--icon t-Button--closeAlert" type="button" title="Close Notification" onClick={() => this.closeAlert()}><span className="t-Icon icon-close" /></button>
-                        </div>
-                    </div>
-                </div>
-            </div></span>;
-        }
-
-
-
-        store_locale = this.props.globals.store_locale
-        if (this.state.goToAddressBook === true) {
-            return <Redirect to={{
-                pathname: `/${store_locale}/address-book`,
-            }} />;
-        }
+        //console.log(this.state.addressId);
+        //console.log(this.state);
         const country_list = this.props.country_list;
         const city_list = this.state.cities;
         let country_select_list = <option value=''>Select Country</option>;
@@ -481,8 +322,8 @@ class AddressForm extends Component {
         if (this.state.isdefaultPhone) {
             defaultPhoneNumber = {
                 ...defaultPhoneNumber,
-                carrier_code: this.props.location.addressProps.carrier_code,
-                contactNumber: this.props.location.addressProps.telephone,
+                carrier_code: this.props.addressForEdit.carrier_code,
+                contactNumber: this.props.addressForEdit.telephone,
             }
         }
 
@@ -603,45 +444,39 @@ class AddressForm extends Component {
         }*/
 
 
-        return (<>
-          
-           
-            <div>
-            { this.props.location.addAddressRedirect ? addAddressText:null }
-            { this.props.location.updateAddressRedirect  ? updateAddressText:null }
-                <form>
-                    <input type="hidden" name="p_flow_id" value={2019} id="pFlowId" /><input type="hidden" name="p_flow_step_id" value={25} id="pFlowStepId" /><input type="hidden" name="p_instance" value={20414079679035} id="pInstance" /><input type="hidden" name="p_page_submission_id" value={292881855944229881009133032913601640089} id="pPageSubmissionId" /><input type="hidden" name="p_request" value id="pRequest" /><input type="hidden" name="p_reload_on_submit" value="S" id="pReloadOnSubmit" /><input type="hidden" value={292881855944229881009133032913601640089} id="pSalt" /><div className="t-Dialog color-add-address-back" style={{ height: '850px', backgroundColor: '#fff' }} role="dialog" aria-label="Add Address">
-                        <div className="t-Dialog-header " style={{ color: '#fff !important' }} />
-                        {respo_message}
-                        <div className="t-Dialog-bodyWrapperOut" >
-                            <div className="t-Dialog-bodyWrapperIn color-add-address-back" style={{ overflow: 'unset' }}><div className="t-Dialog-body">
-                                <span id="APEX_SUCCESS_MESSAGE" data-template-id="33515671899469661_S" className="apex-page-success u-hidden" /><span id="APEX_ERROR_MESSAGE" data-template-id="33515671899469661_E" className="apex-page-error u-hidden" />
-                                <div className="container">
-                                    <div className="row">
-                                        <div className="col col-12 apex-col-auto" style={{ height: 'auto' }}>
-                                            <div className="t-Region t-Region--noPadding t-Region--removeHeader t-Region--noUI t-Region--hiddenOverflow t-Form--slimPadding t-Form--stretchInputs t-Form--labelsAbove margin-top-none margin-bottom-none" id="DTA">
-                                                <div className="t-Region-header">
-                                                    <div className="t-Region-headerItems t-Region-headerItems--title">
-                                                        <span className="t-Region-headerIcon"><span className="t-Icon " aria-hidden="true" /></span>
-                                                        <h2 className="t-Region-title" id="DTA_heading">Address information</h2>
-                                                    </div>
-                                                    <div className="t-Region-headerItems t-Region-headerItems--buttons"><span className="js-maximizeButtonContainer" /></div>
+        return (
+            <form >
+                <input type="hidden" name="p_flow_id" value={2019} id="pFlowId" /><input type="hidden" name="p_flow_step_id" value={25} id="pFlowStepId" /><input type="hidden" name="p_instance" value={20414079679035} id="pInstance" /><input type="hidden" name="p_page_submission_id" value={292881855944229881009133032913601640089} id="pPageSubmissionId" /><input type="hidden" name="p_request" value id="pRequest" /><input type="hidden" name="p_reload_on_submit" value="S" id="pReloadOnSubmit" /><input type="hidden" value={292881855944229881009133032913601640089} id="pSalt" /><div className="t-Dialog" role="dialog" aria-label="Add Address">
+                    <div className="t-Dialog-header" />
+                    <div className="t-Dialog-bodyWrapperOut">
+                        <div className="t-Dialog-bodyWrapperIn"><div className="t-Dialog-body">
+                            <span id="APEX_SUCCESS_MESSAGE" data-template-id="33515671899469661_S" className="apex-page-success u-hidden" /><span id="APEX_ERROR_MESSAGE" data-template-id="33515671899469661_E" className="apex-page-error u-hidden" />
+                            <div className="container">
+                                <div className="row">
+                                    <div className="col col-12 apex-col-auto" style={{ height: 'auto' }}>
+                                        <div className="t-Region t-Region--noPadding t-Region--removeHeader t-Region--noUI t-Region--hiddenOverflow t-Form--slimPadding t-Form--stretchInputs t-Form--labelsAbove margin-top-none margin-bottom-none" id="DTA">
+                                            <div className="t-Region-header">
+                                                <div className="t-Region-headerItems t-Region-headerItems--title">
+                                                    <span className="t-Region-headerIcon"><span className="t-Icon " aria-hidden="true" /></span>
+                                                    <h2 className="t-Region-title" id="DTA_heading">Address information</h2>
                                                 </div>
-                                                <div className="t-Region-bodyWrap">
-                                                    <div className="t-Region-buttons t-Region-buttons--top">
-                                                        <div className="t-Region-buttons-left" />
-                                                        <div className="t-Region-buttons-right" />
-                                                    </div>
-                                                    <div className="t-Region-body">
-                                                        <div className="container">
-                                                            <div className="row">
-                                                                <div className="col col-6 apex-col-auto">
-                                                                    <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel is-required apex-item-wrapper apex-item-wrapper--text-field " onFocus={(e) => this.divOnFocus(e)}
-                                                                        onBlur={(e) => this.divOnBlure(e)} id="P25_FIRST_NAME_CONTAINER"><div className="t-Form-labelContainer">
-                                                                            <label htmlFor="P25_FIRST_NAME" id="P25_FIRST_NAME_LABEL" className="t-Form-label">
-                                                                                <FormattedMessage id="Form.FirstName" defaultMessage="First Name*" />
-                                                                                <span className="u-VisuallyHidden">(Value Required)</span></label>
-                                                                        </div>
+                                                <div className="t-Region-headerItems t-Region-headerItems--buttons"><span className="js-maximizeButtonContainer" /></div>
+                                            </div>
+                                            <div className="t-Region-bodyWrap">
+                                                <div className="t-Region-buttons t-Region-buttons--top">
+                                                    <div className="t-Region-buttons-left" />
+                                                    <div className="t-Region-buttons-right" />
+                                                </div>
+                                                <div className="t-Region-body">
+                                                    <div className="container">
+                                                        <div className="row">
+                                                            <div className="col col-6 apex-col-auto">
+                                                                <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel is-required apex-item-wrapper apex-item-wrapper--text-field " onFocus={(e) => this.divOnFocus(e)}
+                                                                    onBlur={(e) => this.divOnBlure(e)} id="P25_FIRST_NAME_CONTAINER"><div className="t-Form-labelContainer">
+                                                                        <label htmlFor="P25_FIRST_NAME" id="P25_FIRST_NAME_LABEL" className="t-Form-label">
+                                                                            <FormattedMessage id="Form.FirstName" defaultMessage="First Name*" />
+                                                                            <span className="u-VisuallyHidden">(Value Required)</span></label>
+                                                                    </div>
 
 
                                                                     {firstNameInputField}
@@ -804,27 +639,15 @@ class AddressForm extends Component {
                                                                     </div><span id="P25_PRIMARY_ADDR_error_placeholder" className="a-Form-error" data-template-id="33609965712469734_ET" /></div>
 
 
-                                                                </div>
-                                                            </div>
-                                                            <div className="col col-12 apex-col-auto ">
-                                                                <div style={{ display: 'flex' }}>
-                                                                    <button className="alsoLikeCardButton cancel-button" style={{ marginRight: 10, marginBottom: 30, marginTop: 10 }} onClick={(e) => this.goToAddressBook(e)} ><span><FormattedMessage id="Cancel.Btn" defaultMessage="Cancel"/></span></button>
-
-                                                                    {this.state.showPleaseWait ?
-                                                                        <button style={{ height: 50, marginRight: 10, marginBottom: 30, marginTop: 10 }} className="alsoLikeCardButton save-button" type="button" disabled={true}>
-                                                                            <img src={wait} style={{ width: 25, height: 20, marginTop: -4 }} alt="" />
-                                                                            <span className="t-Button-label"><FormattedMessage id="PleaseWait" defaultMessage="Please wait......." /></span>
-                                                                        </button> :
-                                                                        <button className="alsoLikeCardButton save-button" style={{ marginRight: 10, marginBottom: 30, marginTop: 10 }} onClick={(e) => this.saveAddress(e)} ><span><FormattedMessage id="Save.text" defaultMessage="Save"/></span></button>}
-                                                                </div>
+                                                                </div><input type="hidden" id="P25_ADDR_ID" name="P25_ADDR_ID" value /><input type="hidden" id="P25_CUS_COUNTRY" name="P25_CUS_COUNTRY" value /><input type="hidden" id="P25_CUS_CITY" name="P25_CUS_CITY" value />
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                {/* <div className="t-Region-buttons t-Region-buttons--bottom">
+                                                <div className="t-Region-buttons t-Region-buttons--bottom">
                                                     <div className="t-Region-buttons-left" />
                                                     <div className="t-Region-buttons-right" />
-                                                </div> */}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -832,10 +655,20 @@ class AddressForm extends Component {
                             </div>
                         </div></div>
                     </div>
+                    <div className="t-Dialog-footer"><div className="t-ButtonRegion t-Form--floatLeft " id="R28609198427643356">
+                        <div className="t-ButtonRegion-wrap">
+                            <div className="t-ButtonRegion-col t-ButtonRegion-col--left"><div className="t-ButtonRegion-buttons" /></div>
+                            <div className="t-ButtonRegion-col t-ButtonRegion-col--content">
+                                <h2 className="t-ButtonRegion-title" id="R28609198427643356_heading">Buttons</h2>
+                                <div className="t-ButtonRegion-buttons" />
+                            </div>
+                            <div className="t-ButtonRegion-col t-ButtonRegion-col--right"><div className="t-ButtonRegion-buttons"><button onClick={this.props.closeModal} className="t-Button " type="button" id="B28609463169643358">
+                                <span className="t-Button-label">
+                                    <FormattedMessage id="Cancel.Btn" defaultMessage="Cancel" /></span></button><button onClick={this.saveAddress} className="t-Button t-Button--hot " type="button" id="B28609333203643357"><span className="t-Button-label"><FormattedMessage id="SaveAddress.Btn" defaultMessage="Save Address" /></span></button></div></div>
+                        </div>
+                    </div></div>
+                </div> <input type="hidden" id="pPageItemsRowVersion" /> <input type="hidden" id="pPageItemsProtected" value="k64SkfqFSNPggSJxRRzy-w" /></form >
 
-
-                </div> <input type="hidden" id="pPageItemsRowVersion" /> <input type="hidden" id="pPageItemsProtected" value="k64SkfqFSNPggSJxRRzy-w" /></form ></div>
-                </>
         );
     }
 }
@@ -844,8 +677,6 @@ const mapStateToProps = state => {
     return {
         customer_details: state.login.customer_details,
         country_list: state.address.countryList,
-        addressResp:state.address.addressResp,
-        globals:state.global
     }
 }
 
@@ -854,7 +685,6 @@ const mapDispatchToProps = dispatch => {
         onAddNewAddress: (payload) => dispatch(actions.addNewAddress(payload)),
         onGetCountryList: () => dispatch(actions.getCountryList()),
         onEditAddress: (payload) => dispatch(actions.editAddress(payload)),
-        onClearAddressResponse:(payload)=>dispatch(actions.clearAddressResponse(payload))
 
     }
 

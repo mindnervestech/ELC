@@ -22,14 +22,13 @@ import ConsumerRights from './StaticPages/ConsumerRights/ConsumerRights'
 import HelpFAQ from './StaticPages/HelpFAQ/HelpFAQ';
 import PrivacyPolicy from './StaticPages/PrivacyPolicy/PrivacyPolicy';
 import TermConditions from './StaticPages/TermsConditions/TermsConditions';
-import ReactGA from 'react-ga';
+
 import ProfileAddress from './CustomerAddress/ProfileAddress';
-// import BithdayClubAccountTab from './StaticPages/BirthDayClub/BithdayClubAccountTab'
-import BithdayClubAccountTab from '../../js/components/AccountSection/BirthhdayClubHistory/BirthdayClubSummary';
+
 import BirthDayClub from './StaticPages/BirthDayClub/BirthDayClub'
 import AddNewBirthDayClubChild from './StaticPages/BirthDayClub/AddNewChild';
 import Login from './Login/Login';
-import FacebookLogin from '../components/Login/FacebookLoginComponent';
+
 import MyProfile from './MyProfile/MyProfile';
 import ShoppingBag from './ShoppingBag/ShoppingBag';
 import CheckOutLoginWelcome from './CheckOut/Login/CheckOutLoginWelcome';
@@ -41,11 +40,10 @@ import { Route, Link, Switch } from 'react-router-dom'
 import Home from './Home/Home';
 import Product from './Product/Product-Listing';
 import ProductDetails from './Product/product-details/Product-details';
-// import WishList from './WishList/WishList';
-import WishList from '../../js/components/AccountSection/WishList/Wishlist';
-import Order from '../../js/components/AccountSection/OrderHistory/OrderHistory';
+import WishList from './WishList/WishList';
+import Order from './OrderHistory/OrderHistory';
 import OredrDetails from './OrderHistory/viewVoucher';
-import BrowseAllBrand from './Menu/BrowseAllBrand';
+
 import ResetPassword from './resetPassword';
 import StoreLocator from './StoreLocator/store-locator';
 import { BrowserRouter } from 'react-router-dom';
@@ -65,20 +63,9 @@ import localeData from '../../config/libs/i18n/data.json'
 import ProductList from '../components/PoductList/ProductListing'
 import NewCheckOut from '../components/NewCheckOut/CheckOut'
 import PresentFinder from '../components/PresentFinder/PresentFinder';
-import ShopByLearningSkill from './Menu/ShopByLearningSkill';
-import { Helmet, HelmetProvider } from 'react-helmet-async';
-import ClickAndCollect from '../../js/components/CheckOut/DeliveryDetails/CilckAndCollect/ClickAndCollectModal'
 import Xmas from '../../js/components/Xmas/Xmas';
-import MyAccount from '../../js/components/AccountSection/AccountMain';
-import Address from '../../js/components/AccountSection/AddressInformation/AddressInformation';
-import AddAddress from '../../js/components/AccountSection/AddressInformation/AddressFormAccount.js';
 import { live } from '../api/globals';
-import axios from 'axios'
-import UpadatePassword from '../../js/components/AccountSection/ChangePassword/UpdatePassword'
-import UpadateProfile from '../../js/components/AccountSection/MyProfile/UpdateProfile';
-
 addLocaleData([...en, ...ar]);
-
 
 //const language = 'en';
 
@@ -91,22 +78,10 @@ class App extends Component {
             changeData: false,
             store_id: '',
             toHome: false,
-            selectedStore:'',
-            countryCode:'',
-            countryName:''
+            selectedStore: ''
         }
-        let active_server = 'dev';
-        if(window.location.href.includes('elcjsuat')){
-            active_server = 'uat';
-        } else if(window.location.href.includes('elctoys.com')){
-            active_server = 'live';
-        }
-        if (active_server==='live') {
-           
-            initialize();
-            initializeGTM();
-        }
-
+      initialize();
+      initializeGTM();
     }
 
 
@@ -146,10 +121,6 @@ class App extends Component {
             this._redirectWithLocale(store_locale);   //Change URL Location based on new Locale
         })
 
-    }
-     initializeReactGA=()=> {
-        ReactGA.initialize('UA-123791717-1');
-        ReactGA.pageview('http://localhost:3000/');
     }
 
     getStoreId = (country, lang) => {
@@ -355,21 +326,13 @@ class App extends Component {
                                         <Route exact path="/" component={Home} />
                                         <Route exact path="/:locale" component={Home} />
                                         <Route exact path="/:locale/home" component={Home} />
-                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/facebook-login" component={FacebookLogin}/>
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/xmas" component={Xmas}/>
-                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/myaccount" component={MyAccount}/>
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/sign-in-register" component={Login} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/profile" component={MyProfile} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/order-history" component={Order} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/view-voucher" component={OredrDetails} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/wish-list" component={WishList} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/birth-day-club" component={BirthDayClub} />
-                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/browse-all-brand" component={BrowseAllBrand} />
-                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/shop-by-learning-skill" component={ShopByLearningSkill} />
-                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/address-book" component={Address} />
-                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/add-address" component={AddAddress} />
-
-                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/birthday-club-account" component={BithdayClubAccountTab} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/add-new-birth-day-club-child" component={AddNewBirthDayClubChild} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/about-us" component={AboutUs} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/contact-us" component={ContactUs} />
@@ -382,8 +345,7 @@ class App extends Component {
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/consumer-rights" component={ConsumerRights} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/privacy-policy" component={PrivacyPolicy} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/terms-and-conditions" component={TermConditions} />
-                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/update-password" component={UpadatePassword} />
-                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/update-profile" component={UpadateProfile}/>
+
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/products/:category_path" component={Product} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/products-details/:category" component={ProductDetails} />
 
@@ -395,7 +357,6 @@ class App extends Component {
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/order-confirm" component={Confirmation} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/delivery-details" component={DeliveryDetails} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/order-summary" component={OrderSummary} />
-                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/click-and-collect" component={ClickAndCollect}/>
 
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/profile-address" component={ProfileAddress} />
                                         {/* <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/add-wishlist" component={Login} /> */}

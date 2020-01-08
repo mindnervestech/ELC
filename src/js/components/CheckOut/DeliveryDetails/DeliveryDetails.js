@@ -138,7 +138,7 @@ class DeliveryDetails extends Component {
 
     clearpropsOnCancelButton=(value)=>{
         this.setState({clickedonCancel:value})
-        console.log("Called cancel button",this.state.clickedonCancel)
+     
 
     }
 

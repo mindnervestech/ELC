@@ -24,9 +24,9 @@ export const getDeliveyPolicyAPIData =() =>{
   dispatch(loadingSpinner({ loading: true }));
   let cb = {
     success: res => {
-  
+      console.log("API Data for getDeliveyPolicyAPIData Page",res)
       if (res) {
-      
+        console.log("API Data for getDeliveyPolicyAPIData Page",res)
         dispatch(CallActionDeliveryPolicyData({ deliverypolicydata: { ...res } }));
         dispatch(loadingSpinner({ loading: false }));
        

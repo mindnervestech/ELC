@@ -33,11 +33,10 @@ class OrderSummary extends Component {
     componentDidUpdate(prevProps) {
         const query = new URLSearchParams(this.props.location.search);
         cryptr = new Cryptr(query.get('order_id'));
-        if (prevProps.order_number != this.props.order_number) {
+        if (prevProps.order_number !== orderNumber && this.props.order_summary.total) {
             let item = this.props.items_ordered;
             let ecomArray = [];
             for (let i = 0; i < item.length; i++) {
-                console.log(item);
                 ecomArray.push({
                     content_type: 'product',
                     sku: item[i].sku,
@@ -47,37 +46,41 @@ class OrderSummary extends Component {
                     quantity: parseInt(item[i].qty_orderded)
                 });
             }
-
-            if (cookie.load('orderId') != this.props.order_number) {
-                if (live) {
-                    cookie.save('orderId', this.props.order_number, { path: '/' })
+            console.log(cookie.load('orderId'), orderNumber, this.props.order_number)
+            if (cookie.load('orderId') != orderNumber) {
+                // if (live) {
+                    cookie.save('orderId', orderNumber, { path: '/' })
                     if (query.get('paytype') == 'COD') {
-                        initializeGTMWithEvent({
-                            event: 'ecom_transaction_completed',
-                            transactionShipping: this.props.order_summary.shipping,
-                            transactionTotal: this.props.order_summary.total,
-                            transactionTax: this.props.order_summary.vat,
-                            transactionCurrency: this.props.order_summary.currency,
-                            transactionId: this.props.order_number,
-                            transactionAffiliation: '',
-                              transactionProducts: ecomArray
-                        })
-                    } else {
-                        success = cryptr.decrypt(query.get('status'));
-                        if (success == 'true') {
+                        if(this.props.order_summary.total){
                             initializeGTMWithEvent({
-                                event: 'ecom_transaction_completed',
+                                event: 'ecomm_event',
                                 transactionShipping: this.props.order_summary.shipping,
                                 transactionTotal: this.props.order_summary.total,
                                 transactionTax: this.props.order_summary.vat,
                                 transactionCurrency: this.props.order_summary.currency,
-                                transactionId: this.props.order_number,
+                                transactionId: orderNumber ? orderNumber : this.props.order_number,
                                 transactionAffiliation: '',
                                 transactionProducts: ecomArray
                             })
                         }
+                    } else {
+                        success = cryptr.decrypt(query.get('status'));
+                        if (success == 'true') {
+                            if(this.props.order_summary.total){
+                                initializeGTMWithEvent({
+                                    event: 'ecomm_event',
+                                    transactionShipping: this.props.order_summary.shipping,
+                                    transactionTotal: this.props.order_summary.total,
+                                    transactionTax: this.props.order_summary.vat,
+                                    transactionCurrency: this.props.order_summary.currency,
+                                    transactionId: orderNumber ? orderNumber : this.props.order_number,
+                                    transactionAffiliation: '',
+                                    transactionProducts: ecomArray
+                                })
+                            }
+                        }
                     }
-                }
+                // }
             }
         }
     }

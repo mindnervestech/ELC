@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import * as actions from '../../../../redux/actions/index';
 import { connect } from 'react-redux';
-import { Route, Link, Switch, Redirect, withRouter } from 'react-router-dom'
 import facebook from '../../../../../assets/images/social/Facebook.svg';
 import instagram from '../../../../../assets/images/social/instagram.svg';
 import youtube from '../../../../../assets/images/social/youtube.svg';
-import email  from '../../../../../assets/images/social/emailshare.png';
 import twitter from '../../../../../assets/images/social/twitter.svg';
 
 class ProductSize extends Component {

@@ -162,10 +162,7 @@ class Address extends Component {
     }
 
     addInfo = () => {
-        setTimeout(() => {
-            this.props.changed(this.state);
-        }, 100);
-
+        this.props.changed(this.state);
     }
 
     handleChange = (field, e) => {
@@ -184,45 +181,8 @@ class Address extends Component {
                 }
             })
             this.defineCities(e.target.value);
-        } if (field === 'city') {
+        } else if (field === 'city') {
             this.setCitydetails(e.target.value);
-            let available_city = [];
-            let city_list=this.state.cities
-            let city='';
-            
-            this.props.citywise_shipping_methods.map((item, index) => {
-                available_city.push(item.cities)
-            })
-
-            city_list.map((item,index)=>{
-                if(item.id===e.target.value){
-                    city=item.name;
-                }
-            })
-            let status=false;
-            available_city.map((item, index) => { 
-                if (city === item.split(',')[index] ) {
-                 
-                    status=true;
-                    this.setState({ available_for_same_day_delivery: status })
-                    setTimeout(() => {
-                        this.props.available_for_same_day_delivery(this.state.available_for_same_day_delivery)
-                    }, 100);
-                
-                } 
-                else {
-                 
-                    this.setState({ available_for_same_day_delivery: status })
-                    setTimeout(() => {
-                        this.props.available_for_same_day_delivery(this.state.available_for_same_day_delivery)
-                    }, 100);
-
-                }
-
-         
-            })
-
-
         }
 
     }
@@ -254,10 +214,8 @@ class Address extends Component {
     }
 
     setCitydetails = (city) => {
-        let cityList={}
         if ((city !== null) && (city !== 'NA')) {
-            cityList = this.state.cities;
-       
+            const cityList = this.state.cities;
             let result = cityList.filter(obj => {
                 return obj.id === city
             })
@@ -267,10 +225,6 @@ class Address extends Component {
                 });
             }
         }
-
-        cityList.map((items, index) => {
-           
-        })
     }
 
     setAddressType = (event) => {
@@ -341,9 +295,8 @@ class Address extends Component {
 
         if (city_list.length !== 0) {
             city_select_list = city_list.map((item) => {
-
                 return (
-                    <option key={item.name} value={item.id}>{item.name}</option>
+                    <option value={item.id}>{item.name}</option>
                 );
             })
         }

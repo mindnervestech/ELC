@@ -19,8 +19,9 @@ class DeliveryProductList extends Component {
             redirectToCart: false,
             subscribe_to_newsletter: 0,
             gift_wrap_delivery_notes: '',
-            is_same_day_delivery: false,
-            is_express_delivery: false,
+            // is_same_day_delivery: false,
+            // is_express_delivery: false,
+            showTextAreaDiv:false
 
 
         }
@@ -33,17 +34,17 @@ class DeliveryProductList extends Component {
         })
     }
 
-    delivery_type = (value) => {
+    // delivery_type = (value) => {
 
-        setTimeout(() => {
-            this.props.shipping_type(value)
-        }, 100);
+    //     setTimeout(() => {
+    //         this.props.shipping_type(value)
+    //     }, 100);
 
-    }
+    // }
 
-    expreess_day_delivery = (e) => {
+    // expreess_day_delivery = (e) => {
 
-    }
+    // }
 
     priceView = (product) => {
         let cartProductPrice = null;
@@ -101,7 +102,7 @@ class DeliveryProductList extends Component {
 
     subscribe_to_newsletter() {
         if (this.state.subscribe_to_newsletter === 0) {
-            this.setState({ subscribe_to_newsletter: 1 })
+            this.setState({ subscribe_to_newsletter: 1,showTextAreaDiv:true })
 
             setTimeout(() => {
                 this.props.gift_wrap_required(this.state.subscribe_to_newsletter);
@@ -110,7 +111,7 @@ class DeliveryProductList extends Component {
 
         }
         else {
-            this.setState({ subscribe_to_newsletter: 0 })
+            this.setState({ subscribe_to_newsletter: 0,showTextAreaDiv:false })
 
             setTimeout(() => {
                 this.props.gift_wrap_required(this.state.subscribe_to_newsletter);
@@ -133,14 +134,17 @@ class DeliveryProductList extends Component {
 
     render() {
 
-        path = this.props.location.pathname.split('/')[2];
+       let  pathname = this.props.location.pathname.split('/');
+       path=pathname[pathname.length-1];
+        $(document).ready(()=>{
         $("input").on("click", () => {
             if ($('#giftwrap').is(":checked")) {
                 show_gift_wrap_delivery_notes_area = true;
             } else {
                 show_gift_wrap_delivery_notes_area = false;
             }
-        });
+        })
+    });
 
         let coupan_code = null;
         if (this.state.redirectToCart) {
@@ -351,13 +355,15 @@ class DeliveryProductList extends Component {
                 </div>}
             {path === 'delivery-details' ? <div>
                 <div style={{ marginTop: 10, marginBottom: 10 }}>
-                    <div className="backWhite gift-wrap border-box" >
-                        <label className=" t-Form-label checkBox gift-wrap-label" >
-                            <FormattedMessage id="Giftwraprequired" defaultMessage="Gift wrap required" />
-                            <input id="giftwrap" type="checkbox" onClick={this.subscribe_to_newsletter}  ></input>
-                            <span class="checkmark"></span>
+                    <div className="row backWhite gift-wrap border-box" >
+                  
+                            <input id="giftwrap"  className="gift-box-checkmark checkBox gift-wrap-label" type="checkbox"  onClick={()=>this.subscribe_to_newsletter()}  ></input>
+                            {/* <span className="checkmark"></span> */}
+                        <label style={{top:1}} className="t-Form-label checkBox gift-wrap-label" >
+                        <FormattedMessage id="Giftwraprequired" defaultMessage="Gift wrap required" />  
                         </label>
-                        <div>
+                        
+                        { this.state.showTextAreaDiv ? <div>
                             <label style={{ paddingBottom: 10, paddingLeft: 0 }} className="padd-delivery-notes t-Form-label  gift-wrap-label" >
                                 <FormattedMessage id="deliverynotes" defaultMessage="Delivery Notes" />
                             </label>
@@ -365,14 +371,14 @@ class DeliveryProductList extends Component {
 
                             </textarea>
 
-                        </div>
+                        </div>:<div></div>}
 
 
                     </div>
                 </div>
 
                 <div>
-                    <div>
+                {/* {this.props.same_day_delivery_allow === true || this.props.same_day_delivery === true ? <div>
 
 
                         <div className="t-Form-labelContainer">
@@ -381,34 +387,24 @@ class DeliveryProductList extends Component {
                         <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel  apex-item-wrapper apex-item-wrapper--radiogroup " id="P7_ADDR_TYPE_CONTAINER">
 
                             <div className="t-Form-itemWrapper"><div tabindex="-1" id="P7_SHIPPING_METHOD" aria-labelledby="P7_SHIPPING_METHOD_LABEL" className="radio_group apex-item-group apex-item-group--rc apex-item-radio" role="group"><div className="apex-item-grid radio_group"><div>
-                                {this.props.same_day_delivery_allow === true || this.props.same_day_delivery === true ? <div className="shopping-div">
+                               <div> <div className="shopping-div">
                                     <input type="radio" id="P7_SHIPPING_METHOD_0" name="P7_SHIPPING_METHOD" onClick={() => this.delivery_type("samedaydelivery_shipping_samedaydelivery_shipping")} /><label for="P7_SHIPPING_METHOD_0" className="shopping-method-text"><span>{this.props.data_shipping_methods_deliveryProductList[0].name}</span><span class="shopping-price">&nbsp;&nbsp;&nbsp;  {this.props.data_shipping_methods_deliveryProductList[0].charges} &nbsp;&nbsp;&nbsp; {this.props.cart_details.currency}</span>
                                     </label>
                                     <div className="shopping-sub-text-div">
-                                        <label for="P7_SHIPPING_METHOD_0" className="shopping-sub-text"><span>{this.props.data_shipping_methods_deliveryProductList[0].description}</span></label></div></div> : <div />}
+                                        <label for="P7_SHIPPING_METHOD_0" className="shopping-sub-text"><span>{this.props.data_shipping_methods_deliveryProductList[0].description}</span></label></div></div> 
                                 <div className="shopping-div">
                                     <input type="radio" id="P7_SHIPPING_METHOD_1" name="P7_SHIPPING_METHOD" onClick={() => this.delivery_type("express_shipping_express_shipping")} />
                                     <label for="P7_SHIPPING_METHOD_1" className="shopping-method-text"><span>{this.props.data_shipping_methods_deliveryProductList[1].name}</span>
                                         <span className="shopping-price">&nbsp;&nbsp;&nbsp;  {this.props.data_shipping_methods_deliveryProductList[1].charges} &nbsp;&nbsp;&nbsp; {this.props.cart_details.currency}</span></label><div class="shopping-sub-text-div"><label for="P7_SHIPPING_METHOD_1" class="shopping-sub-text"><span>{this.props.data_shipping_methods_deliveryProductList[1].description}</span></label>
                                     </div>
-                                </div>
+                                </div></div>
                             </div>
                             </div>
                             </div></div>
-                            {/* <div className="t-Form-itemWrapper"><div tabindex="-1" id="P7_SHIPPING_METHOD" aria-labelledby="P7_SHIPPING_METHOD_LABEL" className="radio_group apex-item-group apex-item-group--rc apex-item-radio" role="group"><div className="apex-item-grid radio_group"><div>
-                                    {this.props.same_day_delivery_allow === true || this.props.same_day_delivery === true ?
-                                        <div className="shopping-div">
-                                            <input type="radio" value="express_shipping_express_shipping" id="P7_SHIPPING_METHOD_0" name="P7_SHIPPING_METHOD" onChange={(e) => this.delivery_type(e)} />
-                                            <label for="P7_SHIPPING_METHOD_0" className="shopping-method-text"><span>{this.props.data_shipping_methods_deliveryProductList[0].name}</span><span class="shopping-price">&nbsp;&nbsp;&nbsp; {this.props.data_shipping_methods_deliveryProductList[0].charges} &nbsp;&nbsp;&nbsp; {this.props.cart_details.currency}</span>
-                                            </label>
-                                            <div className="shopping-sub-text-div">
-                                                <label for="P7_SHIPPING_METHOD_0" className="shopping-sub-text"><span>{this.props.data_shipping_methods_deliveryProductList[0].description}</span></label></div></div> : <div />}
-                                    <div className="shopping-div">
-                                        <input type="radio" id="P7_SHIPPING_METHOD_1" onChange={(e) => this.delivery_type(e)} name="P7_SHIPPING_METHOD" /><label for="P7_SHIPPING_METHOD_1" className="shopping-method-text"><span>{this.props.data_shipping_methods_deliveryProductList[1].name}</span>
-                                            <span className="shopping-price">&nbsp;&nbsp;&nbsp; {this.props.data_shipping_methods_deliveryProductList[1].charges} &nbsp;&nbsp;&nbsp; {this.props.cart_details.currency}</span></label><div class="shopping-sub-text-div"><label for="P7_SHIPPING_METHOD_1" class="shopping-sub-text"><span>{this.props.data_shipping_methods_deliveryProductList[1].description}</span></label>
-                                        </div></div></div></div></div></div>} */}
+                           
                         </div>
-                    </div>
+                    </div>:<div></div>}
+                </div> */}
                 </div>
             </div> : <div />}
 

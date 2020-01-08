@@ -413,7 +413,7 @@
         "Signup.validation.password.empty": "Please enter password",
         "Signup.validation.password.same": "Password and Confirm password must be same",
         "Signup.validation.password.length": "Password must be atleast 1 character long",
-        "Signup.validation.confirmPassword.empty": "Please enter confirm password",
+        "Signup.validation.confirmPassword.empty": "Please enter password again",
         "CheckoutForm.FirstName.Lengthtwo.Text": "Only letters, minimum length 2",
         "CheckoutForm.LastName.Lengthtwo.Text": "Only letters, minimum length 2",
         "ChangePassword.Validate": "Enter Valid Password and Confirm Password",
@@ -950,12 +950,10 @@
         "review.ageofchild":"Age Of Child",
         "transaction_no.empty":"Please enter transaction number",
         "browseallbrands":"Browse All Brands",
-        "XmasSantaSack.Title":"Christmas Santa’s Sack",
-        "deliverynotes":"Delivery Notes"
+        "XmasSantaSack.Title":"Christmas Santa’s Sack"
 
     },
     "ar": {
-        "deliverynotes":"Delivery Notes",
         "XmasSantaSack.Title":"مفاجآت سانتا",
         "browseallbrands":"تصفح جميع الماركات",
         "transaction_no.empty":"يرجى إدخال رقم التحويل",

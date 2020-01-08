@@ -11,7 +11,7 @@ export { getPaymentDetails, setPaymentDetails } from './getAndSetPayment';
 
 export { getOrderDetails, placeOrder } from './getAndSetOrder';
 
-export {setBirthDayClubData,getBirthDayClubInfo,clearBirthdayClubRegisterError} from './getAndSetBirthdayclub';
+export {setBirthDayClubData,clearBirthdayClubRegisterError} from './getAndSetBirthdayclub';
 
 export {
 	loginUser,
@@ -47,14 +47,13 @@ export {
 	addToCart,
 	guestAddToCart,
 	clearProductDetails,
+  clearProductWishDetail,
 	getProductList,
 	getProductSearchList,
 	addToWishlist,
 	getPlaceOrder,
 	getSizeChart,
 	getYouMayAlsoLikeData,
-	clearProductWishDetail,
-	getProductListOfBrands
 } from './getProductDetails';
 
 

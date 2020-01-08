@@ -176,12 +176,12 @@ class ProductImage extends Component {
 		}
 		return (
 			<a data-slide-id={`video-${index}`} href="javascript:void(0);" data-load={thumbnails[0]} data-poster={thumbnails[0]}
-				onClick={(e) => this._handleThumbImgClick(e,'vid',index)}
-				onTouchStart={(e) => this._handleThumbImgClick(e,'vid',index)}
+				onClick={(e) => this._handleThumbImgClick(item,index)}
+				onTouchStart={(e) => this._handleThumbImgClick(item,index)}
 				style={{display: 'block'}}
 			>
 				<img src={thumbnails[0]} alt="" />
-				<span className="fa fa-play-circle padding-video-play  mcs-caption">&nbsp;</span>
+				<span className="fa fa-play-circle mcs-caption">&nbsp;</span>
 			</a>
 		);
 	};

@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Spinner from '../Spinner/Spinner';
 import { connect } from 'react-redux';
-import BrowseAllBrands from '../Menu/BrowseAllBrand'
-
 import {
 	isMobile
 } from "react-device-detect";
@@ -157,21 +155,16 @@ class menuList extends Component {
 
 		return (
 			<>
-		
 				<li key={index} className="borderForMobileManu" style={{marginTop: 0}}> 
-			
-				{item.url_path === 'shop-by-brand' ? <Link to={'/' + this.state.store_locale + '/browse-all-brand' } style={{ textDecoration: 'none' ,padding: "15px 7px"}} onClick={() => document.getElementById("closeNav").click()} className={item.children[0].length > 0 ? '' : "removeWhite"}>
+				
+							
+				{item.url==='shop-by-brand'}
+					<Link to={'/' + this.state.store_locale + '/products/' + item.url_path} style={{ textDecoration: 'none' ,padding: "15px 7px"}} onClick={() => document.getElementById("closeNav").click()} className={item.children[0].length > 0 ? '' : "removeWhite"}>
 						{item.name}
 						{item.children[0].length > 0 ?
 							<i className="fa fa-caret-down downMenu divShowOnWeb" aria-hidden="true"></i>
 						: <span  />}
-					</Link>:
-					<Link to={'/' + this.state.store_locale + '/products/' + item.url_path} style={{ textDecoration: 'none' ,padding: "15px 7px"}} onClick={() => document.getElementById("closeNav").click()} className={item.children[0].length > 0 ? '' : "removeWhite"}>
-					{item.name}
-					{item.children[0].length > 0 ?
-						<i className="fa fa-caret-down downMenu divShowOnWeb" aria-hidden="true"></i>
-					: <span  />}
-				</Link>}
+					</Link>
 				
 					{item.children[0].length > 0 ?<i className="subMenuTrigger" /> : <span />}
 					{this._checkSubMenu(item)}

@@ -4,59 +4,10 @@ import { Route, Link, Switch, Redirect } from 'react-router-dom'
 import { Container, Row, Col } from 'reactstrap';
 import { connect } from 'react-redux';
 
-
 class SavedAddressList extends Component {
 
-    constructor(props) {
-        super(props)
-        this.state = {
-            available_for_same_day_delivery: false
-        }
-    }
-
-    radioClick = (value) => {
-        let available_city = [];
-        this.props.citywise_shipping_methods.map((item, index) => {
-            available_city.push(item.cities)
-        })
-  
-        let status = false;
-        available_city.map((item, index) => {
-
-            if (this.props.globals.country === 'UAE') {
-                if (value.city === item.split(',')[index]) {
-               
-                    status = true;
-                    setTimeout(() => {
-                        this.setState({ available_for_same_day_delivery: status })
-                    }, 100);
-                }
-                else {
-                    setTimeout(() => {
-                        this.setState({ available_for_same_day_delivery: status })
-                    }, 100);
-                }
-            }
-            if (this.props.globals.country === 'KSA') {
-                if (value.city === item.split(',')[index]) {
-
-                    status = true;
-                    setTimeout(() => {
-                        this.setState({ available_for_same_day_delivery: status })
-                    }, 100);
-                }
-                else {
-                    setTimeout(() => {
-                        this.setState({ available_for_same_day_delivery: status })
-                    }, 100);
-                }
-            }
-
-        })
-
-        setTimeout(() => {
-            this.props.radioClick(value, this.state.available_for_same_day_delivery);
-        }, 200);
+    radioClick = (id) => {
+        this.props.radioClick(id);
     }
 
 
@@ -96,7 +47,7 @@ class SavedAddressList extends Component {
                             <br />
                             {item.state}<br />
                             {item.country_id}<br />
-                            {item.telephone}
+                            {item.telephone}<br />
                             <span style={{ background: '#c7c7c7', color: '#000' }}>
                                 <FormattedMessage id="saved.add.text" defaultMessage="Selected country" />.</span></label>
                     </div>)
@@ -366,15 +317,4 @@ class SavedAddressList extends Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-
-        globals: state.global,
-        citywise_shipping_methods: state.myCart.citywise_shipping_methods,
-    };
-}
-
-export default connect(
-    mapStateToProps,
-
-)(SavedAddressList);
+export default SavedAddressList;

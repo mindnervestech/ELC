@@ -4,14 +4,17 @@ import { getMyCart ,getGuestCartId} from '../actions/index';
 import cookie from 'react-cookies'
 import { loadingSpinner, loadingSpinnerForProduct } from './globals';
 
-// export const callActionAddToWishlist = payload => {
-// 	return {
-// 		type: actionTypes.ADD_TO_WISHLIST,
-// 		payload: payload,
-// 	};
-// };
-
-
+export const callActionAddToWishlist = payload => {
+	return {
+		type: actionTypes.ADD_TO_WISHLIST,
+		payload: payload,
+	};
+};
+export const clearProductWishDetail = payload => {
+    return dispatch=> {
+		dispatch(callProductWishDetail({ productWishDetail: {} }))   
+    };
+}
 
 
 export const callProductWishDetail = payload => {
@@ -21,18 +24,6 @@ export const callProductWishDetail = payload => {
 	})
 }
 
-export const callProductDataByBrand = payload => {
-	return ({
-		type: actionTypes.GET_PRODUCT_DATA_SHOP_BY_BRAND,
-		payload: payload
-	})
-}
-
-export const clearProductWishDetail = payload => {
-    return dispatch=> {
-		dispatch(callProductWishDetail({ productWishDetail: {} }))   
-    };
-}
 const CallActionForUpdateNewQuoteId = (payload) => {
     return {
         type: actionTypes.UPDATE_NEW_QUOTE_ID,
@@ -179,7 +170,7 @@ export const getProductList = payload => {
 			storeid: payload.storeid,
 			filters: payload.filters,
 		};
-		
+		dispatch(loadingSpinnerForProduct({ loadingProduct: true }))
 		dispatch(
 			callActionGetProductSearchList({
 				category_name: null
@@ -188,7 +179,7 @@ export const getProductList = payload => {
 		let cb = {
 			success: res => {
 				let product_data = [];
-				
+				dispatch(loadingSpinnerForProduct({ loadingProduct: false }))
 				if (res.status && res.code === 200) {
 					let newState = { ...res.data };
 					// if (Object.keys(payload.filters).length !== 0 && payload.filters.constructor === Object) {
@@ -238,63 +229,6 @@ export const getProductList = payload => {
 		API.getProductList(data, cb);
 	};
 };
-
-
-
-export const getProductListOfBrands = payload => {
-
-	return dispatch => {
-		console.log(payload)
-		const data = {
-
-			url_key: payload.url_key,//"dressing-up-role-play",
-			storeid: payload.storeid,
-
-		};
-
-
-		let cb = {
-			success: res => {
-				let product_data = [];
-
-				if (res.status && res.code === 200) {
-					let newState = { ...res.data };
-
-
-					dispatch(
-						callProductDataByBrand({
-
-							brands: newState.filters
-						})
-					);
-					// }
-
-				} else {
-
-					dispatch(
-						callProductDataByBrand({
-							brands: {},
-							products: [],
-							category_name: null
-						})
-					);
-				}
-			},
-			error: err => {
-				dispatch(loadingSpinnerForProduct({ loadingProduct: false }))
-				dispatch(
-					callProductDataByBrand({
-						brands: {},
-						products: [],
-						category_name: null
-					})
-				);
-			},
-		};
-		API.getProductList(data, cb);
-	};
-};
-
 
 // Guest Add to cart Start
 export const callActionForGuestAddToCart = payload => {

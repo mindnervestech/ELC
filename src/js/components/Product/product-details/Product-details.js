@@ -245,10 +245,10 @@ class ProductDetails extends Component {
 						{/* You may also like */}
 						<ProductSlider currency={this.props.productDetails.currency} store_name={this.props.globals.store_locale} similar_product={this.props.productDetails.similar_products} />
 
-						{/* Product Review  */}
+						{/* Product Review */}
 
-						<ProductReview />
-{/* 
+						{/* <ProductReview /> */}
+
 						{/* recentely Viewed */}
 						{/* <ProductRecentlyViewed productColor={data} /> */}
 					</div>
