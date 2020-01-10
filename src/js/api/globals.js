@@ -19,7 +19,7 @@ export const ROOT_URL = {
 export const WEB_URL_ALL = {
     dev: `http://elcm2.iksulalive.com/`,
     uat: `https://elcm2uat.iksulalive.com/`,
-    live: 'https://cms.elctoys.com/'
+    live: 'https://www.elctoys.com/'
 }
 
 export const PAY_FORT_URL_ALL = {

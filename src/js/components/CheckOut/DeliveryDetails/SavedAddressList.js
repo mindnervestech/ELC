@@ -57,70 +57,70 @@ class SavedAddressList extends Component {
             addressItem = this.props.addressData.map((item, index) => {
                 let item_id = 'P7_ADDRESSES_' + item.Id
 
-                // if (item.country_id === 'SA') {
-                return (<div className="apex-item-option" key={index}>
-                    <input type="radio" id={item_id} name="ADDRESSES" value={item.Id}
-                        onClick={() => this.radioClick(item)} />
+                if (item.country_id === 'SA') {
+                    return (<div className="apex-item-option" key={index}>
+                        <input type="radio" id={item_id} name="ADDRESSES" value={item.Id}
+                            onClick={() => this.radioClick(item)} />
 
-                    <label htmlFor={item_id}>
-                        Address: {item.address_type} {item.country_id}<br />
-                        {item.userFirstName} {item.userLastName}<br />
-                        {/* {item.city}, */}
-                        {item.street},
+                        <label htmlFor={item_id}>
+                            Address: {item.address_type} {item.country_id}<br />
+                            {item.userFirstName} {item.userLastName}<br />
+                            {/* {item.city}, */}
+                            {item.street},
               {/* {item.state} */}
-                        <br />
-                        {item.state}<br />
-                        {item.country_id}<br />
-                        {item.telephone}</label></div>)
-                // } else {
-                //   return (<div className="apex-item-option apex_disabled" >
-                //     <input type="radio" id={item_id} name="P7_ADDRESSES" />
-                //     <label htmlFor={item_id}>
-                //       Address: {item.address_type}<br />
-                //       {item.userFirstName} {item.userLastName}<br />
-                //       {item.city}, {item.street}, {item.state}<br />
-                //       {item.state}<br />
-                //       {item.country_id}<br />
-                //       {item.telephone}
-                //       <span style={{ background: '#c7c7c7', color: '#000' }}>
-                //         <FormattedMessage id="saved.add.text" defaultMessage="Selected country" />.</span></label>
-                //   </div>)
-                // }
+                            <br />
+                            {item.state}<br />
+                            {item.country_id}<br />
+                            {item.telephone}</label></div>)
+                } else {
+                    return (<div className="apex-item-option apex_disabled" >
+                        <input type="radio" id={item_id} name="P7_ADDRESSES" />
+                        <label htmlFor={item_id}>
+                            Address: {item.address_type}<br />
+                            {item.userFirstName} {item.userLastName}<br />
+                            {item.city}, {item.street}, {item.state}<br />
+                            {item.state}<br />
+                            {item.country_id}<br />
+                            {item.telephone}<br/>
+                            <span style={{ background: '#c7c7c7', color: '#000' }}>
+                                <FormattedMessage id="saved.add.text" defaultMessage="Selected country" />.</span></label>
+                    </div>)
+                }
 
             })
         } else if (selected_country === 'UAE' || selected_country === 'uae') {
             addressItem = this.props.addressData.map((item, index) => {
                 let item_id = 'P7_ADDRESSES_' + item.Id
 
-                // if (item.country_id === 'AE') {
-                return (<div className="apex-item-option" style={{ display: 'block' }} key={index}>
-                    <input type="radio" id={item_id} name="ADDRESSES" value={item.Id}
-                        onClick={() => this.radioClick(item)} />
+                if (item.country_id === 'AE') {
+                    return (<div className="apex-item-option" style={{ display: 'block' }} key={index}>
+                        <input type="radio" id={item_id} name="ADDRESSES" value={item.Id}
+                            onClick={() => this.radioClick(item)} />
 
-                    <label htmlFor={item_id}>
-                        Address: {item.address_type} {item.country_id}<br />
-                        {item.userFirstName} {item.userLastName}<br />
-                        {/* {item.city}, */}
-                        {item.street},
+                        <label htmlFor={item_id}>
+                            Address: {item.address_type} {item.country_id}<br />
+                            {item.userFirstName} {item.userLastName}<br />
+                            {/* {item.city}, */}
+                            {item.street},
               {/* {item.state} */}
-                        <br />
-                        {item.state}<br />
-                        {item.country_id}<br />
-                        {item.telephone}</label></div>)
-                // } else {
-                //   return (<div className="apex-item-option apex_disabled" >
-                //     <input type="radio" id={item_id} name="P7_ADDRESSES" />
-                //     <label htmlFor={item_id}>
-                //       Address: {item.address_type}<br />
-                //       {item.userFirstName} {item.userLastName}<br />
-                //       {item.city}, {item.street}, {item.state}<br />
-                //       {item.state}<br />
-                //       {item.country_id}<br />
-                //       {item.telephone}
-                //       <span style={{ background: '#c7c7c7', color: '#000' }}>
-                //         <FormattedMessage id="saved.add.text" defaultMessage="Selected country" />.</span></label>
-                //   </div>)
-                // }
+                            <br />
+                            {item.state}<br />
+                            {item.country_id}<br />
+                            {item.telephone}</label></div>)
+                } else {
+                    return (<div className="apex-item-option apex_disabled" >
+                        <input type="radio" id={item_id} name="P7_ADDRESSES" />
+                        <label htmlFor={item_id}>
+                            Address: {item.address_type}<br />
+                            {item.userFirstName} {item.userLastName}<br />
+                            {item.city}, {item.street}, {item.state}<br />
+                            {item.state}<br />
+                            {item.country_id}<br />
+                            {item.telephone}<br/>
+                            <span style={{ background: '#c7c7c7', color: '#000' }}>
+                                <FormattedMessage id="saved.add.text" defaultMessage="Selected country" />.</span></label>
+                    </div>)
+                }
 
             })
         }

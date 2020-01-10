@@ -90,42 +90,20 @@ class Footer extends Component {
     }
 
     componentDidMount() {
-        // const webWhatsapp = document.createElement('script');
-        // webWhatsapp.type = 'text/javascript';
-
-        // webWhatsapp.src = "https://cdn.smooch.io/whatsapp/message-us-btn.min.js"
-        // const mobileWhatsapp = document.createElement('script');
-        // mobileWhatsapp.type = 'text/javascript';
-
-        // mobileWhatsapp.src = "https://cdn.smooch.io/whatsapp/message-us-btn.min.js"
-        // document.getElementById("webWhatsapp").appendChild(webWhatsapp);
-       
-
-        // if (document.getElementById('webWhatsapp').className === "wa-message-us") {
-
-        // }
         const webWhatsapp = document.createElement('script');
-        // webWhatsapp.type = 'text/javascript';
+        webWhatsapp.type = 'text/javascript';
 
-        // webWhatsapp.src = "https://cdn.smooch.io/whatsapp/message-us-btn.min.js"
-        // const mobileWhatsapp = document.createElement('script');
-        // mobileWhatsapp.type = 'text/javascript';
+        webWhatsapp.src = "https://cdn.smooch.io/whatsapp/message-us-btn.min.js"
+        const mobileWhatsapp = document.createElement('script');
+        mobileWhatsapp.type = 'text/javascript';
 
-        // mobileWhatsapp.src = "https://cdn.smooch.io/whatsapp/message-us-btn.min.js"
-        // document.getElementById("webWhatsapp").appendChild(webWhatsapp);
+        mobileWhatsapp.src = "https://cdn.smooch.io/whatsapp/message-us-btn.min.js"
+        document.getElementById("webWhatsapp").appendChild(webWhatsapp);
        
 
-        // if (document.getElementById('webWhatsapp').className === "wa-message-us") {
+        if (document.getElementById('webWhatsapp').className === "wa-message-us") {
 
-        // }
-
-        // if (isMobile) {
-        //     document.getElementById("mobileWhatsapp").appendChild(mobileWhatsapp);
-        //     if (document.getElementById('mobileWhatsapp').className === "wa-message-us") {
-
-        //     }
-
-        // }
+        }
 
     }
     handleValidation = () => {
@@ -389,14 +367,14 @@ class Footer extends Component {
                                 <a href="https://www.instagram.com/elctoys" target="_blank"> <img src={instagram} className="icon" alt=""></img></a>
                                 <a href="https://www.youtube.com/elctoysme" target="_blank"><img src={youtube} className="icon" alt=""></img></a>
                             </div>
-                            {/* <div id="webWhatsapp" className="wa-message-us whatsapp"
+                            <div id="webWhatsapp" className="wa-message-us whatsapp"
                                 number="971543055373"
                                 label="Message us on WhatsApp"
                                 color="green"
                                 size="compact"
                                 border_radius="15px">
 
-                            </div> */}
+                            </div>
                             <div className="footer-title" style={{ marginTop: 60, marginBottom: 7 }}>
 
                                 <FormattedMessage id="footer.signUpAd" defaultMessage="sign up for our latest news and offers" />
@@ -541,9 +519,9 @@ class Footer extends Component {
                                 <a href="https://www.twitter.com/elctoysme" target="_blank"><img src={twitter} className="icon" alt=""></img></a>
                                 <a href="https://www.instagram.com/elctoys" target="_blank"> <img src={instagram} className="icon" alt=""></img></a>
                                 <a href="https://www.youtube.com/elctoysme" target="_blank"><img src={youtube} className="icon" alt=""></img></a>
-                               {/* <a  href="https://wa.me/971543055373" target="_blank">
+                               <a  href="https://wa.me/971543055373" target="_blank">
                                 <img src={whatsapp} style={{width:40,height:40}} className="icon" alt=""/> 
-                                </a> */}
+                                </a>
 
                             </div>
                         </div>

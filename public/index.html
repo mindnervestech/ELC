@@ -77,21 +77,37 @@
 
 <!-- Start of elctoys Zendesk Widget script -->
 
-    <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=0cd0ee1a-565a-49ae-82b5-1f259972bd41"> </script>
-    <script type="text/javascript"> 
-    if(window.location.href){
+  <script id="ze-snippet"
+    src="https://static.zdassets.com/ekr/snippet.js?key=0cd0ee1a-565a-49ae-82b5-1f259972bd41"> </script>
+  <script type="text/javascript">
+    if (window.location.href) {
       var country = window.location.href.split('/');
-      if(country[3].includes('ar')){
+      if (country[3].includes('ar')) {
         zE('webWidget', 'setLocale', 'ar');
-      } else if(country[3].includes('en')){
+      } else if (country[3].includes('en')) {
         zE('webWidget', 'setLocale', 'en');
       } else {
-        zE('webWidget', 'setLocale', 'en'); 
+        zE('webWidget', 'setLocale', 'en');
       }
-    }
-    // zE('webWidget', 'setLocale', 'ar OR en');
-    </script>  
-    <script async src="//elctoys.api.useinsider.com/ins.js?id=10003621"></script>
+    };</script>
+  <script>
+    zE(function () {
+      $zopim(function () {
+        $zopim.livechat.departments.setVisitorDepartment('ELC');
+        $zopim.livechat.departments.filter('');
+        $zopim.livechat.setOnStatus(function (e) {
+          if (e === 'offline') return;
+          var dep = $zopim.livechat.departments.getDepartment('ELC');
+          if (dep.status == "offline") {
+            $zopim.livechat.setStatus('offline');
+          }
+        });
+      });
+    });
+  </script>
+
+  <!-- End of ELC Zendesk Widget script -->
+  <script async src="//elctoys.api.useinsider.com/ins.js?id=10003621"></script>
 
 <!-- End of nayomi Zendesk Widget script -->
 
