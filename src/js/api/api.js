@@ -89,18 +89,21 @@ const GET_AUTO_SUGG_DATA={type:'GET',url:'',dynamic:true}
 
 const SAVE_BIRTHDAYCLUB_DATA={type:'POST' ,url:BASE_URL +'birthdayclub'};
 const SAVE_XMAS_DATA={type:'POST',url:BASE_URL +'xmascampaign'};
-
 const GET_BRANDS_SHOP_BY_BRAND={type:'GET',url: BASE_URL + 'brandfilter/' }
+const GET_PRESENT_FINDER_PRODUCTS={type:'POST',url:BASE_URL+'presentfinder'}
 
 
 export const API = {
-
+	getPresentFinderProducts:(data,cb)=>request(data,cb, GET_PRESENT_FINDER_PRODUCTS),
+	getPresentFinderInfo:(data,cb)=>{
+		let GET_PRESENT_FINDER_INFO=`${BASE_URL}presentfinder/getage?storeid=${data.storeid}`;
+		request({}, cb, { type: 'GET', url: GET_PRESENT_FINDER_INFO });	
+	},
 	getProductsByBrand:(data,cb)=>{
-		let GET_PRODUCTS_BY_BRANDS=`${BASE_URL}getproductbybrand?store_id=${data.storeid}&attribute_id=${data.attribute_id}`;
+		let GET_PRODUCTS_BY_BRANDS=`${BASE_URL}getproductbybrand?storeid=${data.store_id}&attribute_id=${data.attribute_id}`;
 		request({}, cb, { type: 'GET', url: GET_PRODUCTS_BY_BRANDS });	
 	},
 	getAllBrands: (data, cb) =>{
-		
 		let GET_BRAND_DETAILS = `${BASE_URL}brandfilter?storeid=${data.storeid}`;
 		request({}, cb, { type: 'GET', url: GET_BRAND_DETAILS });		
 	} ,

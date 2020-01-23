@@ -26,9 +26,11 @@ import productSuggestionSearchReducer from  '../reducers/productSuggestionSearch
 import xmasPageReducer from '../reducers/xmasPageReducer';
 import thunk from 'redux-thunk';
 import shopbybrandReducer from '../reducers/shopbybrandReducer'
+import presentfinder from '../reducers/presentfinderReducer'
 
 const AppRootReducer = combineReducers({
     myCart: myCartReducer,
+    presentfinder:presentfinder,
     login: loginReducer,
     invalidLogin: invalidLoginReducer,
     address: addressReducer,

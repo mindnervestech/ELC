@@ -51,7 +51,8 @@ export const getProductsByBrands = payload => {
     return (dispatch, getState) => {
 		
 		const data = {
-            storeid: payload.storeid,	
+			storeid: payload.storeid,
+			attribute_id: payload.attribute_id
 		};
 	
 		dispatch(loadingSpinner({ loadingSpinner: true }))
@@ -64,10 +65,10 @@ export const getProductsByBrands = payload => {
                     dispatch(loadingSpinner({ loadingSpinner: true }))
 				} else {
 					dispatch(loadingSpinner({ loadingSpinner: true }))
-				}
+				} 
 			},
 			error: err => {
-				dispatch(loadingSpinner({ loadingSpinner: true }))
+				dispatch(loadingSpinner({ loadingSpinner: false }))
 			},
 		};
 
