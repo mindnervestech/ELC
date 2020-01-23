@@ -25,6 +25,7 @@ import birthdayclubReducer from '../reducers/birthdayclubReducer';
 import productSuggestionSearchReducer from  '../reducers/productSuggestionSearchReducer';
 import xmasPageReducer from '../reducers/xmasPageReducer';
 import thunk from 'redux-thunk';
+import shopbybrandReducer from '../reducers/shopbybrandReducer'
 
 const AppRootReducer = combineReducers({
     myCart: myCartReducer,
@@ -34,6 +35,7 @@ const AppRootReducer = combineReducers({
     orders: orderHistoryReducer,
     wishList: wishListReducer,
     global: globalReducer,
+    availabe_brand:shopbybrandReducer,
     menu: menuNavigationReducer,
     productDetails: productDetailReducer,
     spinner: SpinnerReducer,

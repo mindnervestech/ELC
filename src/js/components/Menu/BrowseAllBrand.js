@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, Redirect, withRouter } from 'react-router-dom';
 import Spinner from '../Spinner/Spinner';
 import { connect } from 'react-redux';
 import * as actions from '../../redux/actions/index';
@@ -10,21 +10,23 @@ import './BrowseAllBrand.css';
 let id = 0;
 let brandData = {}
 let brandlistData
-let  brandNameArray = [];
-let count=0;
-let checkLoaderState=true;
+let brandNameArray = [];
+let count = 0;
+
+let allbrands = {};
+
 class BrowseAllBrand extends Component {
     constructor(props) {
         super(props);
-        
+
         this.state = {
             brandData: {},
-            checkLoaderState:true,
-            checkData:true
+            checkLoaderState: true,
+            checkData: true
         }
         this.myRef = [];
         this.main = React.createRef();
-        
+
 
     }
     jumpOnSameAlphaCharacter = (item, index, event) => {
@@ -32,83 +34,72 @@ class BrowseAllBrand extends Component {
         let element = document.getElementById('#idbrand.' + index);
         element.scrollIntoView()
     }
-    componentWillMount() {
-        
-        console.log("Path",this.props.location.pathname)
-       
-        if(this.props.location.pathname === this.props.location.pathname) {
-            
-            const data = {
-                url_key: 'shop-by-brand',//category_path[category_path.length - 1].trim(),//newCat ? newCat : mainCat[0],
-                storeid: this.props.globals.currentStore,
-    
-            };
-            this.props.onGetProductList(data)
-          
-        }
-       
-    }
-   componentDidMount(){
-      
-   }
-    shouldComponentUpdate(){
-      
-        if(count==0){
-            return true;
-        }else{
-            return false;
+
+    componentDidUpdate(prevProps) {
+        if (this.props.location.pathname !== prevProps.location.pathname) {
+            let storeid = this.props.globals.currentStore
+            this.props.onGetAllAvailableBrand(storeid);
         }
     }
+    componentDidMount() {
+        let storeid = this.props.globals.currentStore
+        this.props.onGetAllAvailableBrand(storeid);
+    }
+    componentWillReceiveProps(nextProps) {
+        let obj = nextProps.getAvailabeBrands;
+        if (nextProps.getAvailabeBrands.brand) {
+            allbrands = nextProps.getAvailabeBrands.brand;
+        }
+    }
+
+    getProductByBrands=(value)=>{
+      const data={
+          storeid:this.props.globals.currentStore,
+          attribute_id:value
+      }
+
+      console.log("post",data)
+
+      //this.props.onGetProductListByBrands(data);
+    }
+
     _getUniqueBrand = (item) => {
-        console.log("Render",count)
-       
-     
-        let uniqueBrandNameList = null;
-        let temparr = []
-        if(count==0){
-            if (brandNameArray) {
-                for (let i = 0; i < brandNameArray.length; i++) {
-                    if (brandNameArray[i].charAt(0) === item) {
-                        temparr.push(brandNameArray[i])
-                    }  
-                }
-              
-              
-                return (
-                    temparr.map((item, index) => (
-                        <> <span key={index} className="padding-brand" style={{ paddingLeft: '2%', paddingBottom: '5%', display: 'inline-block' }} >
-                            <Link to={'/' + this.props.globals.store_locale + '/products/shop-by-brand-' + item.toLowerCase()}> <span>{item}</span></Link>
-                        </span></>)))
-            }
-           
-        }
+        let uniqueBrandNameList = [];
         
-      
+        let listData = allbrands && Object.values(allbrands).map((item, index) =>
+
+            ( 
+                uniqueBrandNameList.push(item)
+            ))
+        let temparr = []
+        console.log("uniqueBrandNameList",uniqueBrandNameList)
+        if (allbrands) {
+            for (let i = 0; i < uniqueBrandNameList.length; i++) {
+                if (uniqueBrandNameList[i].charAt(0) === item) {
+                    temparr.push(uniqueBrandNameList[i])
+                }
+            }
+            return (
+                temparr.map((item, index) => (
+                    <> <span key={index} className="padding-brand" style={{ cursor:'pointer', paddingLeft: '2%', paddingBottom: '5%', display: 'inline-block' }} >
+                        <span onClick={()=>this.getProductByBrands(index)}>{item}</span>
+                    </span></>)))
+        }
+
     }
 
     render() {
-        if(this.props.location.pathname ==='/uae-en/browse-all-brand') {
-            count=0;
-            brandNameArray=[];
-            
-        }
-       
-      
-        console.log("loader state",this.state.checkLoaderState)
-        let data = [];
-        if (this.props.productDetails !== undefined) {
-            data = this.props.productDetails;
-        }
+
         let characterArrayOfBrand = [];
-        let listData = data && data.filters && data.filters.Brand.map((item, index) =>
+        let listData = allbrands && Object.values(allbrands).map((item, index) =>
             (
-                characterArrayOfBrand.push(item.name.charAt(0))
+                characterArrayOfBrand.push(item.charAt(0))
             ))
-        brandlistData = data && data.filters && data.filters.Brand.map((item, index) =>
+        brandlistData = allbrands & Object.values(allbrands).map((item, index) =>
             (
                 brandNameArray.push(item.name)
             ))
-            
+
         let uniqueBrand = [];
         characterArrayOfBrand.map(item => {
             if (uniqueBrand.indexOf(item) === -1) {
@@ -116,10 +107,10 @@ class BrowseAllBrand extends Component {
             }
 
         });
-        console.log("Check Loader State",checkLoaderState)
+
         return (
 
-            <> <Spinner loading={checkLoaderState}>
+            <> <Spinner>
 
                 <div className=" row main-container t-Body-contentInner" >
                     <div className="col-md-2 col-xs-2">&nbsp;</div>
@@ -153,7 +144,7 @@ class BrowseAllBrand extends Component {
                     <div className="col-md-2 col-xs-2">&nbsp;</div>
 
                 </div>
-                </Spinner>
+            </Spinner>
             </>
         );
     }
@@ -165,12 +156,13 @@ class BrowseAllBrand extends Component {
 
 
 const mapStateToProps = state => {
-    console.log("state",state)
+
     return {
         globals: state.global,
         productDetails: state.productDetails.products,
         customer_details: state.login.customer_details,
-        category_name: state.productDetails.category_name
+        category_name: state.productDetails.category_name,
+        getAvailabeBrands: state.availabe_brand
     };
 };
 
@@ -179,6 +171,8 @@ const mapDispatchToProps = dispatch => {
 
         onGetProductList: payload => dispatch(actions.getProductList(payload)),
         onGetProductSearchList: payload => dispatch(actions.getProductSearchList(payload)),
+        onGetAllAvailableBrand: payload => dispatch(actions.getAvailabeBrands(payload)),
+        onGetProductListByBrands:payload=>dispatch(actions.getProductsByBrands(payload))
     };
 };
 
