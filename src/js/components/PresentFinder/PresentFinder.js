@@ -8,11 +8,16 @@ import * as actions from '../../redux/actions/index';
 import Spinner from '../Spinner/Spinner';
 import { store } from '../../redux/store/store'
 import { getPresentFinderData } from '../../redux/actions/getAndSetPresentfinder';
+import ProductListData from '../PoductList/ProductListData'
 let checkBoxSelection = [];
-
-let priceArray = ['£0 - £14.99', '£15 - £29.99', '£30 - £44.99', '£45 - £59.99', '£60 - £74.99', '£75+']
+let productData = {}
+let total_count = 0;
+let priceArray = {}
 let present_finder_age_array = {};
-
+let arrayForPriceRangeCheck = [];
+let productDataSendToPfRedirect = {};
+var last_element = ''
+const wait = require('../../../assets/images/wait.gif');
 class PresentFinder extends Component {
 
 	constructor(props) {
@@ -21,9 +26,11 @@ class PresentFinder extends Component {
 			sortByShowOption: false,
 			showCheckBoxSelected: false,
 			sortByText: '',
-			age:0,
-			priceTo:0,
-			priceFrom:0,
+			age: 0,
+			priceTo: 0,
+			priceFrom: 0,
+			isClickedOnSubmit: false,
+			resFlag: false
 
 		}
 
@@ -36,30 +43,95 @@ class PresentFinder extends Component {
 		this.props.OnGetPresentFinderData(data)
 	}
 	componentWillReceiveProps(nextProps) {
+		if (total_count === 0) {
+
+			this.setState({ resFlag: false })
+		}
 		if (nextProps.present_finder_age_data.present_finder_data) {
 			present_finder_age_array = nextProps.present_finder_age_data.present_finder_data
 		}
+		let obj = nextProps.present_finder_product_data.productData;
+		if (obj) {
+			productData = obj;
+			// Object.entries(productData).map((item,index)=>{
 
+			// 	productDataSendToPfRedirect.push(item.json.filtersdata);
+			// })
+		}
 	}
 
 	setPriceRange = (item, index) => {
+		let temp = arrayForPriceRangeCheck
+		let flag = false;
+		for (var i = 0; i < (temp.length || 1); i++) {
 
-		for (let i = 0; i < priceArray.length; i++) {
+			if (arrayForPriceRangeCheck[i] === item) {
+				flag = true;
+			}
+		}
+		if (flag) {
+			arrayForPriceRangeCheck.pop(item)
+		}
+		else {
+			arrayForPriceRangeCheck.push(item);
+		}
+		last_element = arrayForPriceRangeCheck[arrayForPriceRangeCheck.length - 1];
+		if (last_element !== undefined) {
+			var split = last_element.split(" ")
+			if (arrayForPriceRangeCheck.length === 5) {
+				this.setState({ priceFrom: 0, priceTo: split[1] })
+			} else {
+				this.setState({ priceFrom: 0, priceTo: split[4] })
+			}
+
+		} else {
+			this.setState({ priceFrom: 0, priceTo: 0 })
+		}
+		var totalLength = Object.keys(priceArray).reduce(function (total, key) {
+			return total += priceArray[key].length;
+		}, 0);
+		for (let i = 0; i < totalLength; i++) {
 			if (i === index) {
-
 				if (checkBoxSelection[index] === true) {
+					flag = true
 					checkBoxSelection[index] = false;
 				} else {
 					checkBoxSelection[index] = true;
 				}
 			}
 		}
+		var priceTo = parseInt(this.state.priceTo)
+		const data = {
+			storeid: this.props.globals.currentStore,
+			age: this.state.age,
+			priceFrom: this.state.priceFrom,
+			priceTo: priceTo
+
+		}
+		if (data) {
+			this.props.OnGetPresentFinderProducts(data)
+		}
 		this.forceUpdate();
 	}
-
-	// showDataOnMonthSelection = () => {
-	// 	this.setState({ sortByShowOption: true })
-	// }
+	callforgetProductsData = () => {
+	    setTimeout(() => {
+			var priceTo = parseInt(this.state.priceTo)
+			const data = {
+				storeid: this.props.globals.currentStore,
+				age: this.state.age,
+				priceFrom: this.state.priceFrom,
+				priceTo: priceTo
+			}
+			this.props.OnGetPresentFinderProducts(data)
+			console.log("in mail call",data)
+			this.setState({ isClickedOnSubmit: true, resFlag: true });
+			// setTimeout(() => {
+				
+			// }, 1000);
+		
+		}, 1000);
+		
+	}
 
 	showSortByOption = () => {
 
@@ -68,18 +140,32 @@ class PresentFinder extends Component {
 		} else {
 			this.setState({ sortByShowOption: true })
 		}
-		// this.forceUpdate();
+		this.forceUpdate();
 	}
 	showSelectedMonths = (value) => {
-		let present_finder_age=store.getState().presentfinder.present_finder_data
-		let id=0
-		Object.entries(present_finder_age).map((item,index)=>{
-			if(item[1]===value){ 
-                id=item[0];
-            }
-		})
-		this.state.sortByText =value;
+		let present_finder_age = store.getState().presentfinder.present_finder_data
+		let id = 0
+		this.state.sortByText = value;
+
 		this.setState({ sortByShowOption: false })
+		Object.entries(present_finder_age).map((item, index) => {
+			if (item[1] === value) {
+				id = item[0];
+			}
+		})
+		this.setState({ age: id })
+
+		const data = {
+			storeid: this.props.globals.currentStore,
+			age: this.state.age,
+			priceFrom: 0,
+			priceTo: 0
+		}
+
+		if (data) {
+			this.props.OnGetPresentFinderProducts(data)
+		}
+
 		this.forceUpdate()
 	}
 
@@ -88,16 +174,45 @@ class PresentFinder extends Component {
 
 	}
 	render() {
+		console.log("Product Data filter array", productData)
+		let country = this.props.globals.country
+		let currency = ''
+		if (country === 'KSA') {
+			currency = 'SAR'
+		} else {
+			currency = 'AED'
+		}
+		priceArray = {
+			"0-49": `${currency} 0 - ${currency} 49`,
+			"50-99": `${currency} 55 - ${currency} 99`,
+			"100-249": `${currency} 100 - ${currency} 249`,
+			"250-349": `${currency} 250 - ${currency} 349`,
+			"350-449": `${currency} 350 - ${currency} 449`,
+			"450-450": `${currency} 450 +`
+		}
+
 		let store_locale = this.props.globals.store_locale
+		if (productData) {
+			if (productData.data !== undefined) {
+				total_count = productData.data.total_count
+
+
+			}
+		}
+		console.log("count count", total_count)
+		if (productData.data !== undefined && this.state.isClickedOnSubmit) {
+			this.setState({ resFlag: false })
+			return <Redirect to={{ pathname: `/${store_locale}/products/category_path`, state: { productdatafromPF: productData.data, reDirect: true } }} />
+		}
 
 		let _renderAgeArray = present_finder_age_array && Object.values(present_finder_age_array).map((item, index) => (
-			<div style={{ cursor: 'pointer' }} className="sortByOptionText" >
-				<span onClick={() => this.showSelectedMonths(item)}>{item}</span>
+			<div onClick={() => this.showSelectedMonths(item)} style={{ cursor: 'pointer' }} className="sortByOptionText" >
+				<span >{item}</span>
 			</div>
 		));
 
 
-		let _renderPriceArray = priceArray.map((item, index) => (
+		let _renderPriceArray = Object.values(priceArray).map((item, index) => (
 
 			<li>
 				<div className="checkbox">
@@ -110,6 +225,7 @@ class PresentFinder extends Component {
 			</li>
 
 		));
+
 		return (
 			<Spinner>
 				<Row>
@@ -140,29 +256,7 @@ class PresentFinder extends Component {
 										<div >
 											<div className="sortByOption" style={this.state.sortByShowOption ? { display: 'block', overflow: 'scroll' } : { display: 'none' }}>
 												{_renderAgeArray}
-												{/* <div className="sortByOptionText" >
-													<span></span>
-												</div>
 
-
-												<div style={{ cursor: 'pointer' }} className="sortByOptionText" >
-													<span onClick={() => this.showSelectedMonths('0-3 months', '0-3 months')}>3-6 months</span>
-												</div>
-												<div style={{ cursor: 'pointer' }} className="sortByOptionText" >
-													<span onClick={() => this.showSelectedMonths('0-3 months', '0-3 months')}>6-12 months</span>
-												</div>
-												<div style={{ cursor: 'pointer' }} className="sortByOptionText" >
-													<span onClick={() => this.showSelectedMonths('0-3 months', '0-3 months')}>1-2 years</span>
-												</div>
-												<div style={{ cursor: 'pointer' }} className="sortByOptionText" >
-													<span onClick={() => this.showSelectedMonths('0-3 months', '0-3 months')}>2-3 years</span>
-												</div>
-												<div style={{ cursor: 'pointer' }} className="sortByOptionText" >
-													<span onClick={() => this.showSelectedMonths('0-3 months', '0-3 months')}>3-4 years</span>
-												</div>
-												<div style={{ cursor: 'pointer' }} className="sortByOptionText" >
-													<span onClick={() => this.showSelectedMonths('0-3 months', '0-3 months')}>4+ years</span>
-												</div> */}
 											</div>
 										</div>
 									</div>
@@ -172,76 +266,27 @@ class PresentFinder extends Component {
 									<div>
 										<ul>
 											{_renderPriceArray}
-											{/* <li>
-												<div className="checkbox">
-													<div style={{ position: 'relative' }}>
-														<div onClick={() => this.getCheckedCheckboxesFor('check-1')} className={(checkBoxSelection[0] ? "likeAInputSelected" : "likeAInputNotSelected")}>
-															<div class="likeAInput"></div></div>
-														<div class="likeAInputName"><label className="lable-class" forName="present_finder2_gender2_0">£0 - £14.99</label></div></div>
-													<br />
-												</div>
-											</li>
 
-											<li>
-												<div className="checkbox">
-													<div style={{ position: 'relative' }}>
-														<div onClick={() => this.getCheckedCheckboxesFor('check-2')} className={(checkBoxSelection[1] ? "likeAInputSelected" : "likeAInputNotSelected")}>
-															<div class="likeAInput"></div></div>
-														<div class="likeAInputName"><label className="lable-class" forName="present_finder2_gender2_2">£30 - £44.99</label></div></div>
-													<br />
-												</div>
-											</li>
-
-											<li>
-												<div className="checkbox">
-													<div style={{ position: 'relative' }}>
-														<div onClick={() => this.getCheckedCheckboxesFor('check-3')} className={(checkBoxSelection[2] ? "likeAInputSelected" : "likeAInputNotSelected")}>
-															<div class="likeAInput"></div></div>
-														<div class="likeAInputName"><label className="lable-class" forName="present_finder2_gender2_3">£45 - £59.99</label></div></div>
-													<br />
-												</div>
-											</li>
-											<li>
-												<div className="checkbox">
-													<div style={{ position: 'relative' }}>
-														<div onClick={() => this.getCheckedCheckboxesFor('check-4')} className={(checkBoxSelection[3] ? "likeAInputSelected" : "likeAInputNotSelected")}>
-															<div class="likeAInput"></div></div>
-														<div class="likeAInputName"><label className="lable-class" forName="present_finder2_gender2_4">£60 - £74.99</label></div></div>
-													<br />
-												</div>
-											</li>
-											<li>
-												<div className="checkbox">
-													<div style={{ position: 'relative' }}>
-														<div onClick={() => this.getCheckedCheckboxesFor('check-5')} className={(checkBoxSelection[4]? "likeAInputSelected" : "likeAInputNotSelected")}>
-															<div class="likeAInput"></div></div>
-														<div class="likeAInputName"><label className="lable-class" forName="present_finder2_gender2_1">£15 - £29.99</label></div></div>
-													<br />
-												</div>
-											</li>
-											<li>
-												<div className="checkbox">
-													<div style={{ position: 'relative' }}>
-														<div onClick={() => this.getCheckedCheckboxesFor('check-6')} className={(checkBoxSelection[5] ? "likeAInputSelected" : "likeAInputNotSelected")}>
-															<div class="likeAInput"></div></div>
-														<div class="likeAInputName"><label className="lable-class" forName="present_finder2_gender2_5">£75+</label></div></div>
-													<br />
-												</div>
-											</li> */}
 
 										</ul>
 									</div>
 									<div>
 										<div className="borderLine"></div>
 										<div class="multi_holder button_holder results">
-											<p><span>0</span>&nbsp;results found</p>
-											<button className="findPresentButton">Find Presents</button>
+											<p>{total_count !== 0  ? <span>&nbsp;{productData.data.total_count} results found</span> : <span style={{ color: 'red' }}>Zero data found</span>}</p>
+											{this.state.resFlag ?
+												<button className="findPresentButton"><span>Find Presents</span>
+													<img src={wait} style={{ width: 25, height: 20, marginTop: -4 }} alt="" /> </button>
+												:
+												<button onClick={() => this.callforgetProductsData()} className="findPresentButton">Find Presents</button>}
 										</div>
 
 									</div>
 								</div>
 							</div>
 						</div>
+
+						{/* {productData.data&& <ProductListData list={productData.data}/>} */}
 					</Col>
 					<Col xs={1} lg={4} md={2}></Col>
 				</Row>
@@ -255,12 +300,14 @@ class PresentFinder extends Component {
 const mapStateToProps = state => {
 	return {
 		globals: state.global,
-		present_finder_age_data: state.presentfinder
+		present_finder_age_data: state.presentfinder,
+		present_finder_product_data: state.presentfinder
 	}
 }
 const mapDispatchToProps = dispatch => {
 	return {
-		OnGetPresentFinderData: payload => dispatch(actions.getPresentFinderData(payload))
+		OnGetPresentFinderData: payload => dispatch(actions.getPresentFinderData(payload)),
+		OnGetPresentFinderProducts: payload => dispatch(actions.getAndSetPresentFinderProducts(payload))
 	}
 }
 

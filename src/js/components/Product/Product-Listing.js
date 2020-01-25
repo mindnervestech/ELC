@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+ import React, { Component } from 'react';
 import '../../../styles/product/productlist.css';
 import '../../../styles/product/productlist-filters.css';
 import ProductData from './product-list/product-list';
@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../redux/actions/index';
 import queryString from 'query-string';
 import Spinner from '../Spinner/Spinner2';
+import { Link, Redirect, withRouter } from 'react-router-dom';
 var _ = require('lodash');
 let filters = {};
 let sortbyv = 'relevance';
@@ -22,7 +23,9 @@ class Product extends Component {
 			products: [],
 			filters: {},
 			loading: true,
-			filterKey: {}
+			filterKey: {},
+			reDirectedFromPF: false,
+			reDirectedFromBrowseAllBrand: false
 		};
 
 		filters = {};
@@ -79,15 +82,29 @@ class Product extends Component {
 			filters: filters,
 		};
 		this.setState({ loading: true });
-		await this.props.onGetProductList(data);
-
+		let pathName = this.props.location.pathname
+		if(category_path[category_path.length - 1]!=='category_path' &&  category_path[category_path.length - 1]!=='brand' ){
+			this.setState({reDirectedFromPF:false,reDirectedFromBrowseAllBrand:false})
+			await this.props.onGetProductList(data);
+		 }
+		
 		setTimeout(() => {
 			this.setState({ loading: false });
 		}, 2000)
 
 	};
+	componentWillMount(){
+		this.props.onClearBrandProductDetails(this.props.productDetails)
+		this.setState({reDirectedFromBrowseAllBrand:false,reDirectedFromPF:false})
+		this.forceUpdate();
+	}
 
 	componentDidUpdate(prevProps, prevState) {
+	
+		if(this.props.location.pathname !== prevProps.location.pathname){
+			this.props.onClearBrandProductDetails(this.props.productDetails)
+			
+		}
 		const values = queryString.parse(this.props.location.search);
 		let searchQuery = values.query;
 		if (searchQuery && searchValue !== searchQuery) {
@@ -111,6 +128,16 @@ class Product extends Component {
 	}
 
 	componentDidMount() {
+		let pathname = this.props.location.pathname.split('/');
+
+		if (pathname[pathname.length - 1] === 'category_path') {
+			this.setState({ reDirectedFromPF: true })
+			this.forceUpdate();
+		}
+		if (pathname[pathname.length - 1] === 'brand') {
+			this.setState({ reDirectedFromBrowseAllBrand: true })
+			this.forceUpdate();
+		}
 		if (count == 0)
 			this._fetchProducts();
 		count++;
@@ -162,7 +189,13 @@ class Product extends Component {
 	}
 
 	render() {
+		let store_locale = this.props.globals.store_locale
 		let pathName = this.props.location.pathname
+		// if(pathName [pathName.length-1]==='category_path' && !this.props.location.state.reDirect){
+		//    return <Redirect to={`/${store_locale}/presentfinder`} />
+		// }
+
+
 		let meta_tag = null;
 		if (this.props.productDetails.metainfo.meta_title && this.props.productDetails.metainfo.meta_keywords && this.props.productDetails.metainfo.meta_description) {
 			
@@ -184,6 +217,9 @@ class Product extends Component {
 						<div id="t_Body_content_offset" style={{ height: '139px' }} />
 						<div className="t-Body-contentInner">
 							<div>
+
+							   {this.state.reDirectedFromBrowseAllBrand && this.props.location.state!==undefined? <ProductData Data={this.props.location.state.filteredProductData} loading1={this.props.spinnerProduct} /> : ''}
+								 {this.state.reDirectedFromPF &&  this.props.location.state!==undefined ? <ProductData Data={this.props.location.state.productdatafromPF} loading1={this.props.spinnerProduct} /> :''}
 								{this.props.spinnerProduct ? <Spinner /> : <ProductData Data={this.props.productDetails.products} loading1={this.props.spinnerProduct} />}
 							</div>
 						</div>
@@ -208,6 +244,8 @@ const mapDispatchToProps = dispatch => {
 	return {
 		onGetProductList: payload => dispatch(actions.getProductList(payload)),
 		onGetProductSearchList: payload => dispatch(actions.getProductSearchList(payload)),
+		OnClearFilterProductOfBrowseAllBrands:() => dispatch(actions.callForClearAllBrandsProducts()),
+		onClearBrandProductDetails: payload => dispatch(actions.clearProductDetailsBrands(payload)),
 	};
 };
 

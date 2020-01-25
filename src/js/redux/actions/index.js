@@ -1,5 +1,5 @@
 export {getPresentFinderData,getAndSetPresentFinderProducts} from './getAndSetPresentfinder'
-export {getAvailabeBrands,getProductsByBrands} from './getAllBrand'
+export {getAvailabeBrands,getProductsByBrands,callForClearAllBrandsProducts,clearProductDetailsBrands} from './getAllBrand'
 export { getMyCart, changeQty, removeProduct, clearCartItem, setOrderSummary, removeAllOutOfStockProduct, redirectToPayment, redirectToDelivery, redirectToCart,applyVoucode, removeVoucode, getMyCartAfterVoucher} from './getMyCart';
 
 export {

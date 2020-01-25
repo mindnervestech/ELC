@@ -6,15 +6,19 @@ import { connect } from 'react-redux';
 import * as actions from '../../redux/actions/index';
 import { Row, Col } from 'reactstrap';
 import { FormattedMessage } from 'react-intl';
+import { store } from '../../redux/store/store'
+import { getAvailabeBrands } from '../../redux/actions/getAllBrand';
 import './BrowseAllBrand.css';
 let id = 0;
 let brandData = {}
 let brandlistData
 let brandNameArray = [];
 let count = 0;
-
-let allbrands = {};
-
+let filteredProductData = {};
+let allbrands = [];
+let productDataSendToPfRedirect=[];
+let newArray=[]
+let obj2={};
 class BrowseAllBrand extends Component {
     constructor(props) {
         super(props);
@@ -30,7 +34,6 @@ class BrowseAllBrand extends Component {
 
     }
     jumpOnSameAlphaCharacter = (item, index, event) => {
-
         let element = document.getElementById('#idbrand.' + index);
         element.scrollIntoView()
     }
@@ -42,37 +45,72 @@ class BrowseAllBrand extends Component {
         }
     }
     componentDidMount() {
-        let storeid = this.props.globals.currentStore
-        this.props.onGetAllAvailableBrand(storeid);
+        let storeid = this.props.globals.currentStore!==undefined && this.props.globals.currentStore
+      
+        let data = { storeid: storeid }
+
+        this.props.onGetAllAvailableBrand(data);
     }
     componentWillReceiveProps(nextProps) {
+      
         let obj = nextProps.getAvailabeBrands;
         if (nextProps.getAvailabeBrands.brand) {
             allbrands = nextProps.getAvailabeBrands.brand;
         }
+        
+        if(nextProps.getAvailabeBrands.productData){
+
+            filteredProductData=nextProps.getAvailabeBrands.productData
+            if(filteredProductData.data!==undefined){
+                
+                Object.values(filteredProductData.data.product_data).map((item,index)=>{
+                    productDataSendToPfRedirect.push(item.json.filtersdata);
+                })
+                var key = 'filters'
+               // productDataSendToPfRedirect[key]
+
+                obj2=Object.assign(filteredProductData, productDataSendToPfRedirect[key])
+
+            }
+         
+           
+        }
+
+       // console.log("nsdjasdhjhasdg", productDataSendToPfRedirect)
     }
 
-    getProductByBrands=(value)=>{
-      const data={
-          storeid:this.props.globals.currentStore,
-          attribute_id:value
-      }
-
-      console.log("post",data)
-
-      //this.props.onGetProductListByBrands(data);
+    getProductByBrands = (value) => {
+        let brand = store.getState().availabe_brand.brand
+        let id = 0;
+        Object.entries(brand).map((item, index) => {
+            if (item[1] === value) {
+                id = item[0];
+            }
+        })
+        let data = {};
+        let storeid = this.props.globals.currentStore!==undefined && this.props.globals.currentStore
+        if (id != 0) {
+            data = {
+                storeid: storeid,
+                attribute_id: id
+            }
+        }
+        this.props.onGetProductListByBrands(data);
     }
 
     _getUniqueBrand = (item) => {
         let uniqueBrandNameList = [];
-        
+
+        let obj = {}
+        let temparr = []
+
         let listData = allbrands && Object.values(allbrands).map((item, index) =>
 
-            ( 
+            (
                 uniqueBrandNameList.push(item)
             ))
-        let temparr = []
-        console.log("uniqueBrandNameList",uniqueBrandNameList)
+
+
         if (allbrands) {
             for (let i = 0; i < uniqueBrandNameList.length; i++) {
                 if (uniqueBrandNameList[i].charAt(0) === item) {
@@ -81,14 +119,21 @@ class BrowseAllBrand extends Component {
             }
             return (
                 temparr.map((item, index) => (
-                    <> <span key={index} className="padding-brand" style={{ cursor:'pointer', paddingLeft: '2%', paddingBottom: '5%', display: 'inline-block' }} >
-                        <span onClick={()=>this.getProductByBrands(index)}>{item}</span>
+                    <> <span key={index} className="padding-brand" style={{ cursor: 'pointer', paddingLeft: '2%', paddingBottom: '5%', display: 'inline-block' }} >
+                        <span onClick={() => this.getProductByBrands(item)}>{item}</span>
                     </span></>)))
         }
 
     }
 
     render() {
+
+        
+        let store_locale=this.props.globals.store_locale
+        if (filteredProductData.data!== undefined) {
+           
+			return <Redirect to={{ pathname: `/${store_locale}/products/brand`, state: { filteredProductData: filteredProductData.data, reDirectFromBrowseAllBrand: true } }} />
+		}
 
         let characterArrayOfBrand = [];
         let listData = allbrands && Object.values(allbrands).map((item, index) =>
@@ -162,7 +207,8 @@ const mapStateToProps = state => {
         productDetails: state.productDetails.products,
         customer_details: state.login.customer_details,
         category_name: state.productDetails.category_name,
-        getAvailabeBrands: state.availabe_brand
+        getAvailabeBrands: state.availabe_brand,
+        
     };
 };
 
@@ -172,7 +218,7 @@ const mapDispatchToProps = dispatch => {
         onGetProductList: payload => dispatch(actions.getProductList(payload)),
         onGetProductSearchList: payload => dispatch(actions.getProductSearchList(payload)),
         onGetAllAvailableBrand: payload => dispatch(actions.getAvailabeBrands(payload)),
-        onGetProductListByBrands:payload=>dispatch(actions.getProductsByBrands(payload))
+        onGetProductListByBrands: payload => dispatch(actions.getProductsByBrands(payload))
     };
 };
 

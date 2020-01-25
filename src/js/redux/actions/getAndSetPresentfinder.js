@@ -39,7 +39,7 @@ export const getPresentFinderData = payload => {
 
 export const callForSetPresentFinderData = (payload) => {
 	return {
-		type: actionTypes.GET_PRODUCTS_BY_BRANDS,
+		type: actionTypes.GET_PRESENT_FINDER_PRODUCTS,
 		payload: payload
 	}
 }
@@ -51,8 +51,10 @@ export const getAndSetPresentFinderProducts = payload => {
 	return (dispatch, getState) => {
 
 		const data = {
-			storeid: payload.storeid,
-			attribute_id: payload.attribute_id
+			storeid:payload.storeid,
+			age: payload.age,
+			priceFrom:payload.priceFrom,
+			priceTo:payload.priceTo
 		};
 	
 
@@ -62,7 +64,7 @@ export const getAndSetPresentFinderProducts = payload => {
 			success: res => {
 
 				if (true) {
-					console.log("data brands", res)
+					//console.log("data brands", res)
 					dispatch(callForSetPresentFinderData({ productData: res }))
 					dispatch(loadingSpinner({ loadingSpinner: true }))
 				} 

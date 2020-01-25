@@ -2,6 +2,23 @@ import * as actionTypes from './actionTypes';
 import { API } from '../../api/api';
 import { loadingSpinner, loadingSpinnerForProduct } from './globals';
 
+
+//Clear Products
+export const callForClearAllBrandsProducts=(payload)=>{
+	return {
+		type:actionTypes.CLEAR_BROWSE_BRAND_PRODUCTS,
+	    payload:payload
+	}
+}
+
+export const clearProductDetailsBrands = payload => {
+	return dispatch => {
+		const data = {};
+
+		dispatch(callForClearAllBrandsProducts({ brand: [] }));
+	};
+};
+
 ///-------------------------------- GET AVAILABLE BRANDS ----------------------------------------///
 export const callForGetAllBrabds = (payload) => {
     return {

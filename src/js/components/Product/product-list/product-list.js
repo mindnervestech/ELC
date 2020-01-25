@@ -12,6 +12,7 @@ class ProductData extends Component {
 	componentWillMount() {
 		if (this.props.productDetails) {
 			this.props.onClearProductDetails(this.props.productDetails);
+			this.props.onClearBrandProductDetails(this.props.productDetails)
 		}
 	}
 
@@ -52,6 +53,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
 	return {
 		onClearProductDetails: payload => dispatch(actions.clearProductDetails(payload)),
+		onClearBrandProductDetails: payload => dispatch(actions.clearProductDetailsBrands(payload)),
 		onGetProductDetails: payload => dispatch(actions.getProductDetails(payload))
 	};
 };
