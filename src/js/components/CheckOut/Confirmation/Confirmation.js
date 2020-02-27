@@ -29,8 +29,7 @@ class Confirmation extends Component {
         if (this.props.cart_details.is_payment_details_rec) {
             let obj = this.props.user_details.customer_details;
             if (!((Object.entries(obj).length === 0) && (obj.constructor === Object))) {
-                if (this.props.cart_details.is_payment_details_rec &&
-                    (this.props.cart_details.is_order_conf_details_rec === false)) {
+                if (this.props.cart_details.is_payment_details_rec) {
                     this.props.OnGetOrderDetails({
                         quote_id: this.props.cart_details.quote_id,
                         store_id: this.props.global.currentStore
@@ -38,8 +37,7 @@ class Confirmation extends Component {
                 }
             } else {
                 if (this.props.guest_checkout.startGuestCheckout) {
-                    if (this.props.cart_details.is_payment_details_rec &&
-                        (this.props.cart_details.is_order_conf_details_rec === false)) {
+                    if (this.props.cart_details.is_payment_details_rec) {
                         this.props.OnGetOrderDetails({
                             quote_id: this.props.cart_details.quote_id,
                             store_id: this.props.global.currentStore

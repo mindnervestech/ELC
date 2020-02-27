@@ -46,6 +46,11 @@ class OrderSummary extends Component {
                     quantity: parseInt(item[i].qty_orderded)
                 });
             }
+            if (this.props.order_summary && this.props.order_summary.subtotal !== 0) {
+                initializeF()
+                let valuePrice = this.props.order_summary.total && this.props.order_summary.total.toFixed(2)
+                trackF('Purchase', { content_type: 'product', currency: this.props.order_summary.currency, content_ids: ecomArray, value: valuePrice });
+            }
             console.log(cookie.load('orderId'), orderNumber, this.props.order_number)
             if (cookie.load('orderId') != orderNumber) {
                 // if (live) {
@@ -98,10 +103,21 @@ class OrderSummary extends Component {
             let string = window.location.href
             let data = string.split('=')
             orderNumber = data[data.length - 1];
-            if (live) {
-                initializeF()
-                trackF('Purchase');
-            }
+            // let content_ids = []
+            // let item = this.props.items_ordered.map((item) => {
+            //     let obj = {
+            //         id: item.sku,
+            //         quantity: item.qty_orderded
+            //     }
+            //     content_ids.push(obj)
+            // })
+            // console.log("content ids",content_ids)
+            // if(this.props.order_summary !==undefined){
+            //     initializeF()
+            // let valuePrice = this.props.order_summary.total && this.props.order_summary.total.toFixed(2)
+            // trackF('Purchase', { content_type: 'product', currency:this.props.order_summary.currency,content_ids: content_ids, value: valuePrice });
+            // }
+
         } else {
             //   success = query.get('status');
             success = cryptr.decrypt(query.get('status'));
@@ -112,10 +128,22 @@ class OrderSummary extends Component {
                 this.props.orderJson({
                     order_id: query.get('order_id')
                 });
-                if (live) {
-                    initializeF()
-                    trackF('Purchase');
-                }
+                // let content_ids = []
+                // let item = this.props.items_ordered.map((item) => {
+                //     let obj = {
+                //         id: item.sku,
+                //         quantity: item.qty_orderded
+                //     }
+                //     content_ids.push(obj)
+
+                // })
+                // console.log("content ids",content_ids)
+                // if(this.props.order_summary !==undefined){
+                // initializeF()
+                // let valuePrice = this.props.order_summary.total && this.props.order_summary.total.toFixed(2)
+                // trackF('Purchase', { content_type: 'product', currency:this.props.order_summary.currency,content_ids: content_ids, value: valuePrice });
+                // }
+
             }
             if (query.get('order_id') && query.get('store_id')) {
                 // success = query.get('status');

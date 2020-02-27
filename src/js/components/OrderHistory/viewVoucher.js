@@ -17,12 +17,13 @@ class OrderDetails extends Component {
     }
 
     componentDidMount() {
-        if (!this.props.is_order_details_rec) {
-            this.props.onGetOrderDetails({ 
+        this.props.onGetOrderDetails({ 
                 orderEntityid: this.state.order_id,
                 store_id: this.props.globals.currentStore
             });
-        }
+//        if (this.props.is_order_details_rec) {
+//            
+//        }
     }
 
     componentWillUnmount() {

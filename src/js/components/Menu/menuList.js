@@ -157,8 +157,6 @@ class menuList extends Component {
 			<>
 				<li key={index} className="borderForMobileManu" style={{marginTop: 0}}> 
 				
-							
-				{item.url==='shop-by-brand'}
 					<Link to={'/' + this.state.store_locale + '/products/' + item.url_path} style={{ textDecoration: 'none' ,padding: "15px 7px"}} onClick={() => document.getElementById("closeNav").click()} className={item.children[0].length > 0 ? '' : "removeWhite"}>
 						{item.name}
 						{item.children[0].length > 0 ?

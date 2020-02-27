@@ -43,6 +43,7 @@ class DeliveryDetails extends Component {
             shipping_type: '',
             oldAddressID: 0,
             gift_wrap_delivery_notes: '',
+            isclickedonProceed:false,
             AddressFields: {
                 location: '',
                 city: '',
@@ -178,6 +179,7 @@ class DeliveryDetails extends Component {
     }
 
     submitForm = () => {
+        this.setState({isclickedonProceed:true})
         if (((this.state.addNewAddress)
             || (!(this.props.cart_details.available_address)))
             && (!(this.state.isCollectFromStore))) {
@@ -224,7 +226,8 @@ class DeliveryDetails extends Component {
 
                     this.props.OnaddNewAddressAndRedirectToCheckout(payload)
                 }
-            }, 5000)
+            }, 10)
+           
 
         } else if (this.state.isOldAddressSelcted && (!(this.state.isCollectFromStore))) {
             let payload_shipping_type='';
@@ -240,7 +243,8 @@ class DeliveryDetails extends Component {
             })
             setTimeout(() => {
                 this.props.OnaddOldAddressAndRedirectToCheckout(this.state.oldAddressValue);
-            }, 200);
+            }, 10);
+            
 
         } else if (this.state.isCollectFromStore) {
             this.submitContact.current.signUpSubmitContact();
@@ -421,6 +425,9 @@ class DeliveryDetails extends Component {
         })
 
     }
+    componentWillUnmount(){
+        this.setState({isclickedonProceed:false})
+    }
 
     gotoProductScreen = (item) => {
         const store_locale = this.props.globals.store_locale;
@@ -444,7 +451,7 @@ class DeliveryDetails extends Component {
 
         const selected_country = this.props.globals.country;
         let obj = this.props.cart_details.shipping_details;
-        if (!(utility.emptyObj(obj))) {
+        if (!(utility.emptyObj(obj)) && this.state.isclickedonProceed) {          
             return <Redirect to={`/${this.props.globals.store_locale}/checkout-payment`} />
         }
         let addressContainer = null;
@@ -755,6 +762,7 @@ const mapDispatchToProps = dispatch => {
         onRedirectToCart: () => dispatch(actions.redirectToCart()),
         onGetProductDetails: payload => dispatch(actions.getProductDetails(payload)),
         getSizeChart: payload => dispatch(actions.getSizeChart(payload)),
+        onGetPaymentDetails: (payload) => dispatch(actions.getPaymentDetails(payload)),
     }
 
 }

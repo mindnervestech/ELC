@@ -12,6 +12,7 @@ import Modal from 'react-responsive-modal';
 import AddToCartModal from '../Product/product-details/product-info/product-basic';
 import { initializeF, trackF } from '../utility/facebookPixel';
 import { live } from '../../api/globals';
+import $ from 'jquery'
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
@@ -211,6 +212,8 @@ class ProductListData extends Component {
 
 
 	prevButton = () => {
+		
+		window.scrollTo(0,300)
 		changeFilterData = true
 		if (this.state.pageNumber !== 1 && this.state.pageNumber !== 0) {
 			this.setState({ pageNumber: this.state.pageNumber - 1 })
@@ -237,6 +240,10 @@ class ProductListData extends Component {
 	}
 
 	nextButton = () => {
+		// document.getElementById('prevButton').scrollIntoView({
+		// 	behavior: 'smooth'
+		//   });
+		window.scrollTo(0,300)
 		changeFilterData = true
 		if (this.state.pageNumber !== this.state.totalPages) {
 			this.setState({ pageNumber: this.state.pageNumber + 1 })
@@ -261,6 +268,10 @@ class ProductListData extends Component {
 	}
 
 	ApplyPagenation = (value) => {
+		// document.getElementById('prevButton').scrollIntoView({
+		// 	behavior: 'smooth'
+		//   });
+		window.scrollTo(0,300)
 		changeFilterData = true
 		this.setState({ pageNumber: value });
 		if (this.state.check) {
@@ -461,14 +472,19 @@ class ProductListData extends Component {
     // }
 
 	render() {
-		
-		if(window.location.href.split('/')[6]==='lego'){
-			if (live) {
-                initializeF()
-                trackF('Lego');
-            }
 
-		}
+		let pathname = this.props.location.pathname.split('/');
+		if (pathname[pathname.length - 1] === 'lego') {
+			initializeF()
+			trackF('Lego');
+			}
+
+		// if (window.location.href.split('/')[6] === 'lego') {
+		// 	if (live) {
+
+		// 	}
+
+		// }
 		let list = this.state.list1
 		const store_locale = this.props.globals.store_locale
 		if (changeFilterData === false) {
@@ -613,7 +629,7 @@ class ProductListData extends Component {
 								{/* <img src="https://d2elnqqmhxhwlt.cloudfront.net/pub/media/banners/default/HeroBanners1_Desktop_EN_1.jpg" alt=""/> */}
 							</div>
 							{this.props.list.category_description2 ?
-								<div className="text-align-rtl" style={{ marginTop: 10 }}>
+								<div className="text-align-rtl" style={{ marginTop: 30 }}>
 								{/* <div
 									className="staticPagesText"
 									dangerouslySetInnerHTML={{ __html: this.props.list.category_description2 }}
@@ -775,7 +791,7 @@ class ProductListData extends Component {
 														</LazyLoadImage>
 														{/* <img src={percentage} className="percentage" style={{ display: 'none' }} /> */}
 													</div>
-													<div style={{ height: list[keyName].json.imageUrl ? 50 : 195, marginTop: 10, overflow: 'hidden' }}>
+													<div style={{ height: list[keyName].json.imageUrl ? 50 : 195, marginTop: 30, overflow: 'hidden' }}>
 													{ list[keyName].json.name.length > 45 ?
                                                          <label className="text-color">{list[keyName].json.name.substring(0,45)+"...."}</label>:
                                                          <label className="text-color">{list[keyName].json.name}</label>

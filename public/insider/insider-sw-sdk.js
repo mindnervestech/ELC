@@ -1,1 +1,1 @@
-"function"===typeof import Scripts && import Scripts("https://api.useinsider.com/sw.js");
+"function"===typeof importScripts&&importScripts("https://api.useinsider.com/sw.js");

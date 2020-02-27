@@ -2,6 +2,7 @@ import * as actionType from './actionTypes';
 import { API } from '../../api/api';
 import { loadingSpinner } from './globals';
 import { getMyCart } from './getMyCart';
+import { getPaymentDetails, setPaymentDetails } from './getAndSetPayment';
 import * as action from './index';
 /////////////////////////////// GET ADDRESS /////////////////////////////
 
@@ -109,7 +110,11 @@ export const AddNewAddressAndRedirectToCheckout = (payload) => {
                         delivery_type: 'delivery_on_address_new',
                         payload: { ...payload }
                     }
-                    dispatch(callActionForAddNewAddressAndRedirectToCheckout({ shipping_details: { ...newState } }))
+                    dispatch(callActionForAddNewAddressAndRedirectToCheckout({shipping_details: { ...newState } }))
+                    dispatch(getPaymentDetails({
+                        quote_id: getState().myCart.quote_id,
+                        store_id: getState().global.currentStore,
+                    }));
                 }
                 dispatch(loadingSpinner({ shippingLoader: false }))
             },
@@ -167,6 +172,10 @@ export const AddOldAddressAndRedirectToCheckout = (payload) => {
                         payload: { ...payload }
                     }
                     dispatch(callActionForAddOldAddressAndRedirectToCheckout({ shipping_details: { ...newState } }))
+                    dispatch(getPaymentDetails({
+                        quote_id: getState().myCart.quote_id,
+                        store_id: getState().global.currentStore,
+                    }));
                 }
                 dispatch(loadingSpinner({ shippingLoader: false }))
             },

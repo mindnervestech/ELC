@@ -298,7 +298,7 @@ class DeliveryProductList extends Component {
                                                                         <tbody>
                                                                             <tr>
                                                                                 <td className="t-Report-cell" headers="TYPE"><FormattedMessage id="delivery-details.Subtotal.Title" defaultMessage="Subtotal" /></td>
-                                                                                <td className="t-Report-cell" align="right" headers="PRICE">{this.props.cart_details.currency} <span>{this.props.cart_details.subtotal}</span></td>
+                                                                                <td className="t-Report-cell" align="right" headers="PRICE">{this.props.cart_details.currency} <span>{this.props.cart_details.cart_data.subtotal}</span></td>
                                                                             </tr>
                                                                             {this.props.cart_details.cart_data && this.props.cart_details.cart_data.discount_amount !== 0 ?
                                                                                 <tr>
@@ -310,15 +310,20 @@ class DeliveryProductList extends Component {
                                                                                     <td class="t-Report-cell" headers="TYPE"><FormattedMessage id="voucherdiscount" defaultMessage="voucher discount" /></td>
                                                                                     <td class="t-Report-cell" align="right" headers="PRICE"><span class="p-price">{this.props.cart_details.currency} {this.props.cart_details.cart_data.voucher_discount}</span></td>
                                                                                 </tr> : ''}
-                                                                            {this.props.cart_details.cart_data && this.props.cart_details.cart_data.shipping_amount !== 0 ?
+                                                                             { path === 'checkout-payment' && this.props.cart_details.cart_data.shipping_amount !=0 ?
                                                                                 <tr>
                                                                                     <td className="t-Report-cell" headers="TYPE"><FormattedMessage id="delivery-details.Shipping.Title" defaultMessage="Shipping" /></td>
                                                                                     <td className="t-Report-cell" align="right" headers="PRICE">{this.props.cart_details.currency} <span>{this.props.cart_details.cart_data.shipping_amount}</span></td>
+                                                                                </tr> : ''} 
+                                                                            {path === 'delivery-details' ?
+                                                                                <tr>
+                                                                                    <td className="t-Report-cell" headers="TYPE"><span className="order-total"><FormattedMessage id="delivery-details.Total.Title" defaultMessage="Total" /></span></td>
+                                                                                    <td className="t-Report-cell" align="right" headers="PRICE"><span className="order-total">{this.props.cart_details.currency}</span> <span className="order-total">{this.props.cart_details.cart_data.grand_total_without_shipping_and_cod}</span></td>
                                                                                 </tr> : ''}
-                                                                            <tr>
+                                                                            {path === 'checkout-payment' ? <tr>
                                                                                 <td className="t-Report-cell" headers="TYPE"><span className="order-total"><FormattedMessage id="delivery-details.Total.Title" defaultMessage="Total" /></span></td>
-                                                                                <td className="t-Report-cell" align="right" headers="PRICE"><span className="order-total">{this.props.cart_details.currency}</span> <span className="order-total">{this.props.cart_details.grand_total}</span></td>
-                                                                            </tr>
+                                                                                <td className="t-Report-cell" align="right" headers="PRICE"><span className="order-total">{this.props.cart_details.currency}</span> <span className="order-total">{this.props.cart_details.cart_data.grand_total_with_shipping}</span></td>
+                                                                            </tr> : ''}
                                                                             {this.props.cart_details.cart_data && this.props.cart_details.cart_data.tax_amount !== 0 ?
                                                                                 <tr>
                                                                                     <td className="t-Report-cell" headers="TYPE"><FormattedMessage id="VAT.Message" defaultMessage="VAT Message" /></td>

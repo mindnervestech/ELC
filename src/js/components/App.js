@@ -80,8 +80,19 @@ class App extends Component {
             toHome: false,
             selectedStore: ''
         }
-      initialize();
-      initializeGTM();
+      let active_server = 'dev';
+        if (window.location.href.includes('elcjsuat')) {
+            active_server = 'uat';
+        } else if (window.location.href.includes('elctoys.com')) {
+            active_server = 'live';
+        }
+       // this.getGeoInfo();
+
+        if (active_server==='live') {
+            initialize();
+            initializeGTM();
+        }
+        console.log("active_server value",active_server)
     }
 
 
