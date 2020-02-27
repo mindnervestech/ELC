@@ -1,4 +1,4 @@
- import React, { Component } from 'react';
+import React, { Component } from 'react';
 import '../../../styles/product/productlist.css';
 import '../../../styles/product/productlist-filters.css';
 import ProductData from './product-list/product-list';
@@ -7,14 +7,16 @@ import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
 import * as actions from '../../redux/actions/index';
 import queryString from 'query-string';
+import { ProductSearchEvent,ProductListEvent,initializeGTMWithEvent } from '../../components/utility/googleTagManager';
 import Spinner from '../Spinner/Spinner2';
-import { Link, Redirect, withRouter } from 'react-router-dom';
+
 var _ = require('lodash');
 let filters = {};
 let sortbyv = 'relevance';
 let searchValue = null;
 let count = 0;
 let mobileFilter = {};
+let listForGTM = ''
 class Product extends Component {
 	constructor(props, context) {
 		super(props, context);
@@ -23,9 +25,7 @@ class Product extends Component {
 			products: [],
 			filters: {},
 			loading: true,
-			filterKey: {},
-			reDirectedFromPF: false,
-			reDirectedFromBrowseAllBrand: false
+			filterKey: {}
 		};
 
 		filters = {};
@@ -33,6 +33,10 @@ class Product extends Component {
 		searchValue = null;
 		count = 0;
 		mobileFilter = {};
+
+
+
+
 	}
 
 	_fetchSearchedProducts = async (query, filters = {}) => {
@@ -59,18 +63,18 @@ class Product extends Component {
 		if (params.category_path === "search") {
 			return;
 		}
-		
+
 		let category_path = this.props.location.pathname.split('/')
 		let url = ''
-		if(category_path[category_path.length - 2] == "products"){
+		if (category_path[category_path.length - 2] == "products") {
 			url = category_path[category_path.length - 1]
-		}else{
-			if(category_path[category_path.length - 2] !== 'uae-en' &&
+		} else {
+			if (category_path[category_path.length - 2] !== 'uae-en' &&
 				category_path[category_path.length - 2] !== 'uae-ar' &&
 				category_path[category_path.length - 2] !== 'saudi-en' &&
-				category_path[category_path.length - 2] !== 'saudi-ar'){
-					url = category_path[category_path.length - 2] + '-' +category_path[category_path.length - 1]
-			}else{
+				category_path[category_path.length - 2] !== 'saudi-ar') {
+				url = category_path[category_path.length - 2] + '-' + category_path[category_path.length - 1]
+			} else {
 				url = category_path[category_path.length - 1]
 			}
 		}
@@ -82,29 +86,39 @@ class Product extends Component {
 			filters: filters,
 		};
 		this.setState({ loading: true });
-		let pathName = this.props.location.pathname
-		if(category_path[category_path.length - 1]!=='category_path' &&  category_path[category_path.length - 1]!=='brand' ){
-			this.setState({reDirectedFromPF:false,reDirectedFromBrowseAllBrand:false})
-			await this.props.onGetProductList(data);
-		 }
-		
+		await this.props.onGetProductList(data);
+
 		setTimeout(() => {
 			this.setState({ loading: false });
 		}, 2000)
 
 	};
-	componentWillMount(){
-		this.props.onClearBrandProductDetails(this.props.productDetails)
-		this.setState({reDirectedFromBrowseAllBrand:false,reDirectedFromPF:false})
-		this.forceUpdate();
-	}
 
 	componentDidUpdate(prevProps, prevState) {
 	
-		if(this.props.location.pathname !== prevProps.location.pathname){
-			this.props.onClearBrandProductDetails(this.props.productDetails)
+		let window_path = this.props.location.pathname.split('/')
+		if (this.props.location.pathname !== prevProps.location.pathname) {
+
+			if (window_path[window_path.length - 2] === 'products' && window_path[window_path.length - 1] === 'search') {
+				listForGTM = "Search Results"
+			} else if (window_path[window_path.length - 2] === 'products') {
+				listForGTM = "List Results"
+			}
+			
 			
 		}
+		// let obj=this.props.productDetails.products;
+		// if(obj){
+		// 	if(listForGTM==='Search Results'){
+		// 		ProductSearchEvent(obj)
+		// 	}if(listForGTM==='List Results'){
+		// 		ProductListEvent(obj)
+		// 	}
+		// }
+			
+		
+	
+	
 		const values = queryString.parse(this.props.location.search);
 		let searchQuery = values.query;
 		if (searchQuery && searchValue !== searchQuery) {
@@ -128,16 +142,17 @@ class Product extends Component {
 	}
 
 	componentDidMount() {
-		let pathname = this.props.location.pathname.split('/');
+		
+		let window_path = this.props.location.pathname.split('/')
+		if (window_path[window_path.length - 2] === 'products' && window_path[window_path.length-1] === 'search') {
+			listForGTM = 'Search Results'
+		} else if (window_path[window_path.length - 2] === 'products') {
+			listForGTM = "List Results"
+		}
+		// let obj=this.props.productDetails.products;
+		// console.log("gdProductSearchEvent",obj)
+		// ProductSearchEvent(obj,listForGTM)
 
-		if (pathname[pathname.length - 1] === 'category_path') {
-			this.setState({ reDirectedFromPF: true })
-			this.forceUpdate();
-		}
-		if (pathname[pathname.length - 1] === 'brand') {
-			this.setState({ reDirectedFromBrowseAllBrand: true })
-			this.forceUpdate();
-		}
 		if (count == 0)
 			this._fetchProducts();
 		count++;
@@ -154,22 +169,22 @@ class Product extends Component {
 	getCatagoryName = (value) => {
 		let replesUrl = value
 		let url = []
-		replesUrl = replesUrl.replace(/uae-ar|uae-en|saudi-en|saudi-ar|%20/gi,"")
+		replesUrl = replesUrl.replace(/uae-ar|uae-en|saudi-en|saudi-ar|%20/gi, "")
 		let index = replesUrl.split('/');
-		for(let data in index){
-			if(index[data] !== "" && index[data] !== " "){
+		for (let data in index) {
+			if (index[data] !== "" && index[data] !== " ") {
 				url.push(index[data])
 			}
 		}
 		let bradCome = ""
-		if(this.props.category_name != undefined){
-			if(url[url.length-2] == "products"){
+		if (this.props.category_name != undefined) {
+			if (url[url.length - 2] == "products") {
 				bradCome = this.props.category_name //url[url.length-1]
-			}else{
-				bradCome = url[url.length-2] + "--" + this.props.category_name
+			} else {
+				bradCome = url[url.length - 2] + "--" + this.props.category_name
 			}
 			return bradCome
-		}else{
+		} else {
 			return bradCome
 		}
 		// let catName = category_name.split(' ');
@@ -189,16 +204,11 @@ class Product extends Component {
 	}
 
 	render() {
-		let store_locale = this.props.globals.store_locale
+		//console.log("product listing ",this.props)
 		let pathName = this.props.location.pathname
-		// if(pathName [pathName.length-1]==='category_path' && !this.props.location.state.reDirect){
-		//    return <Redirect to={`/${store_locale}/presentfinder`} />
-		// }
-
-
 		let meta_tag = null;
 		if (this.props.productDetails.metainfo.meta_title && this.props.productDetails.metainfo.meta_keywords && this.props.productDetails.metainfo.meta_description) {
-			
+
 			meta_tag = <><Helmet>
 				<meta name="tital" content={this.props.productDetails.metainfo.meta_title} />
 				<title>{this.props.productDetails.metainfo.meta_title}</title>
@@ -217,10 +227,7 @@ class Product extends Component {
 						<div id="t_Body_content_offset" style={{ height: '139px' }} />
 						<div className="t-Body-contentInner">
 							<div>
-
-							   {this.state.reDirectedFromBrowseAllBrand && this.props.location.state!==undefined? <ProductData Data={this.props.location.state.filteredProductData} loading1={this.props.spinnerProduct} /> : ''}
-								 {this.state.reDirectedFromPF &&  this.props.location.state!==undefined ? <ProductData Data={this.props.location.state.productdatafromPF} loading1={this.props.spinnerProduct} /> :''}
-								{this.props.spinnerProduct ? <Spinner /> : <ProductData Data={this.props.productDetails.products} loading1={this.props.spinnerProduct} />}
+								{this.props.spinnerProduct ? <Spinner /> : <ProductData listForGTM={listForGTM} Data={this.props.productDetails.products} loading1={this.props.spinnerProduct} />}
 							</div>
 						</div>
 					</div>
@@ -244,8 +251,6 @@ const mapDispatchToProps = dispatch => {
 	return {
 		onGetProductList: payload => dispatch(actions.getProductList(payload)),
 		onGetProductSearchList: payload => dispatch(actions.getProductSearchList(payload)),
-		OnClearFilterProductOfBrowseAllBrands:() => dispatch(actions.callForClearAllBrandsProducts()),
-		onClearBrandProductDetails: payload => dispatch(actions.clearProductDetailsBrands(payload)),
 	};
 };
 

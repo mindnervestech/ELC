@@ -25,7 +25,7 @@ class PageTitle extends Component {
         {
             setTimeout(() => {
                 this.setState({
-                    title:this.getTital('NA'),
+                    title:this.getTitle('NA'),
                     keyword: this.getKeyword('NA'),
                     description: this.getDescription('NA')
                 }) 
@@ -34,7 +34,7 @@ class PageTitle extends Component {
         else{
             setTimeout(() => {
                 this.setState({
-                    title: this.getTital(pathname[pathname.length - 1]),
+                    title: this.getTitle(pathname[pathname.length - 1]),
                     keyword: this.getKeyword(pathname[pathname.length - 1]),
                     description: this.getDescription(pathname[pathname.length - 1])
 
@@ -52,7 +52,7 @@ class PageTitle extends Component {
              
                 setTimeout(() => {
                     this.setState({
-                        title:this.getTital('NA'),
+                        title:this.getTitle('NA'),
                         keyword: this.getKeyword('NA'),
                         description: this.getDescription('NA')
                     }) 
@@ -61,7 +61,7 @@ class PageTitle extends Component {
             else if (this.props.location.pathname !== prevProps.location.pathname) {
                 const pathname=this.props.location.pathname.split('/');
                 this.setState({
-                    title: this.getTital(pathname[pathname.length - 1]),
+                    title: this.getTitle(pathname[pathname.length - 1]),
                     keyword: this.getKeyword(pathname[pathname.length - 1]),
                     description: this.getDescription(pathname[pathname.length - 1])
                 })
@@ -71,7 +71,7 @@ class PageTitle extends Component {
     }
 
 
-    getTital = (title) => {
+    getTitle = (title) => {
         const { intl } = this.props;
         let country = this.props.globals.country;
         if(country === 'uae'){

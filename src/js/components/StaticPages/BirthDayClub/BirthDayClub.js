@@ -46,7 +46,6 @@ let previousyear = currentYear - 15
 class BirthDayClub extends Component {
     constructor(props) {
         super(props);
-        console.log(props)
 
         this.state = {
             sortByText: "",

@@ -37,10 +37,6 @@ html[dir="rtl"] .width-full .intl-tel-input{
 html[dir="rtl"] .marginForContactDroupDown{
     right: 13px
 }
-
-html[dir="rtl"] .marginForContactDroupDown {
-    right: 0px !important;
-}
 @media only screen and (max-width:767px)
 {
     .t-Form-inputContainer{

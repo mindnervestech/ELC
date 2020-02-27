@@ -4,8 +4,6 @@ import { updateObject } from '../utility/utility';
 const initialState = {
 	products: [],
 	filters: [],
-	filterdata:[],
-	brands:{},
 	productData: {},
 	loading: false,
 	totalQty: 0,
@@ -36,10 +34,6 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
 	switch (action.type) {
-		case actionTypes.STORE_FILTER_DATA:
-			return updateObject(state,action.payload);
-		case actionTypes.GET_PRODUCT_DATA_SHOP_BY_BRAND:
-			return updateObject(state,action.payload)
 		case actionTypes.GET_PRODUCT_SEARCH_LIST:
 			return updateObject(state, action.payload);
 		case actionTypes.GET_PRODUCT_LIST:

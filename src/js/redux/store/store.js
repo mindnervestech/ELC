@@ -25,19 +25,15 @@ import birthdayclubReducer from '../reducers/birthdayclubReducer';
 import productSuggestionSearchReducer from  '../reducers/productSuggestionSearchReducer';
 import xmasPageReducer from '../reducers/xmasPageReducer';
 import thunk from 'redux-thunk';
-import shopbybrandReducer from '../reducers/shopbybrandReducer'
-import presentfinder from '../reducers/presentfinderReducer'
 
 const AppRootReducer = combineReducers({
     myCart: myCartReducer,
-    presentfinder:presentfinder,
     login: loginReducer,
     invalidLogin: invalidLoginReducer,
     address: addressReducer,
     orders: orderHistoryReducer,
     wishList: wishListReducer,
     global: globalReducer,
-    availabe_brand:shopbybrandReducer,
     menu: menuNavigationReducer,
     productDetails: productDetailReducer,
     spinner: SpinnerReducer,

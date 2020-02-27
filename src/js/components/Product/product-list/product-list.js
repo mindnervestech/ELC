@@ -12,7 +12,6 @@ class ProductData extends Component {
 	componentWillMount() {
 		if (this.props.productDetails) {
 			this.props.onClearProductDetails(this.props.productDetails);
-			this.props.onClearBrandProductDetails(this.props.productDetails)
 		}
 	}
 
@@ -32,7 +31,7 @@ class ProductData extends Component {
 						}}
 					>
 						<div>
-							<ProductListData list={Data} />
+							<ProductListData listForGTM={this.props.listForGTM} list={Data} />
 						</div>
 					</ul>)}
 				{ Data.length === 0 && !loading1 && (<p style={{ fontSize: '22px', letterSpacing: '0.04em', fontWeight: 500, padding: '20px 16px 10px' }}><FormattedMessage id="NoData.Text" defaultMessage="No Data available." />{loading1}</p>)}
@@ -53,7 +52,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
 	return {
 		onClearProductDetails: payload => dispatch(actions.clearProductDetails(payload)),
-		onClearBrandProductDetails: payload => dispatch(actions.clearProductDetailsBrands(payload)),
 		onGetProductDetails: payload => dispatch(actions.getProductDetails(payload))
 	};
 };

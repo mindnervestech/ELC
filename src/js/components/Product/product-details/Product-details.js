@@ -62,10 +62,17 @@ class ProductDetails extends Component {
 
 	componentDidUpdate(prevProps, prevState) {
 		if (prevProps.productDetails.id !== this.props.productDetails.id) {
-			if (live) {
-				initializeF();
-				trackF('ViewContent', this.props.productDetails);
-			}
+			let currency = '';
+		if (this.props.globals.country === 'KSA' || this.props.globals.country === 'ksa') {
+			currency = 'SAR';
+		} else {
+			currency = 'AED';
+		}
+			let priceValue=this.props.productDetails.price && this.props.productDetails.price.toFixed(2);
+				// initializeF();
+		
+				// trackF('ViewContent',{'content_category':this.props.productDetails.category_names,'content_name':this.props.productDetails.name,'content_ids':this.props.productDetails.sku,'currency':currency,'content_type':'product',value:priceValue});
+			
 		}
 
 		if (prevProps.globals.currentStore !== this.props.globals.currentStore) {
@@ -245,10 +252,10 @@ class ProductDetails extends Component {
 						{/* You may also like */}
 						<ProductSlider currency={this.props.productDetails.currency} store_name={this.props.globals.store_locale} similar_product={this.props.productDetails.similar_products} />
 
-						{/* Product Review  */}
+						{/* Product Review */}
 
-						<ProductReview />
-{/* 
+						{/* <ProductReview /> */}
+
 						{/* recentely Viewed */}
 						{/* <ProductRecentlyViewed productColor={data} /> */}
 					</div>

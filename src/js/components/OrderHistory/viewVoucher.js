@@ -17,12 +17,13 @@ class OrderDetails extends Component {
     }
 
     componentDidMount() {
-        if (!this.props.is_order_details_rec) {
-            this.props.onGetOrderDetails({ 
+        this.props.onGetOrderDetails({ 
                 orderEntityid: this.state.order_id,
                 store_id: this.props.globals.currentStore
             });
-        }
+//        if (this.props.is_order_details_rec) {
+//            
+//        }
     }
 
     componentWillUnmount() {
@@ -48,7 +49,7 @@ class OrderDetails extends Component {
 
 
     render() {
-        //console.log('render : ', this.state);
+       
         const ordered_item = this.props.items_ordered.map((c, index) => {
             return <OrderedItem
                 item={c}
@@ -395,7 +396,11 @@ class OrderDetails extends Component {
                                                                                 <div id="R35741415174996328" style={{ background: '#f4f4f4' }} className>
                                                                                     <input type="hidden" id="P10_ORD_SUM" name="P10_ORD_SUM" defaultValue="Y" />
                                                                                     <input type="hidden" data-for="P10_ORD_SUM" defaultValue="nNoXU_RWfdB-3xSaCI0b-EAj3b4rULax4TLbcPIz5CqX5Ff1XmJiLo_3G9WHVOKBNcbP9Xa247jUDfLupgKjRg" /><p style={{ fontSize: '12px', fontWeight: 200, textAlign: 'center' }}>
-                                                                                        <FormattedMessage id="Customer.Service.text" defaultMessage="Customer Service" />
+                                                                                      { this.props.order_summary.currency==="AED" ?
+                                                                                        <FormattedMessage id="Customer.Service.text-uae" defaultMessage="Should you have any queries, contact our customer service by calling us at +8005654 or e-mail us to help@elctoys.com" />:
+                                                                                        <FormattedMessage id="Customer.Service.text-ksa" defaultMessage="Should you have any queries, contact our customer service by calling us at +8001180009 or e-mail us to help@elctoys.com"/>}
+
+
                                                                                     </p>
                                                                                 </div>
                                                                             </div>

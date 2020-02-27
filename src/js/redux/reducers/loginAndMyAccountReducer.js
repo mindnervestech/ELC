@@ -38,9 +38,6 @@ const reducer = (state = initialState, action) => {
         case actionType.CLEAR_CHANGE_PASS:
             return updateObject(state, action.payload)
 
-        case actionType.CLEAR_PRODUCT_WISH_DETAIL:
-            return updateObject(state, action.payload) 
-
         case actionType.CLEAR_FORGOT_PASS:
             return updateObject(state, action.payload)
 

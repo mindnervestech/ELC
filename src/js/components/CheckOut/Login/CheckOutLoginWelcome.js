@@ -2,10 +2,26 @@ import React, { Component } from 'react';
 import '../CheckOut.css';
 import { FormattedMessage } from 'react-intl';
 import Login from '../../Login/Login'
+import { checkoutEvent } from '../../utility/googleTagManager'
 
 import { connect } from 'react-redux';
-
+let stepCountForGTM = 0;
 class CheckOutLoginWelcome extends Component {
+  constructor(props) {
+    super(props)
+  }
+  componentDidMount() {
+    let path = this.props.location.pathname.split("/")
+    if (path[path.length - 1] === 'checkout-login') {
+      stepCountForGTM = 1
+    }
+    if (this.props.location && this.props.location && this.props.location.state && this.props.location.state.data) {
+      checkoutEvent(this.props.location.state.data, stepCountForGTM)
+    }
+  }
+  componentDidUpdate() {
+
+  }
   render() {
 
     return (<><div className="t-Body-contentInner">

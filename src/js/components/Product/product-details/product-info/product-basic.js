@@ -202,7 +202,7 @@ class ProductBasic extends Component {
 
                     <div className="button-model" onClick={() => this.gotoCheckOutPage()}>
                         <Link to={`/${this.props.globals.store_locale}/cart`}>
-                            <button className="alsoLikeCardButton"><FormattedMessage id="Cart.CheckOut.Title" defaultMessage="Check out" /></button>
+                            <button style={{backgroundColor:'#EE0E19 !important',border:'solid 1px #EE0E19 !important'}} className="alsoLikeCardButton"><FormattedMessage id="Cart.CheckOut.Title" defaultMessage="Check out" /></button>
                         </Link>
                     </div>
                 </div>

@@ -3,7 +3,7 @@ import { Route, Link, Switch, Redirect, NavLink, withRouter } from 'react-router
 import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import * as actions from '../../../redux/actions/index';
-
+import {checkoutEvent} from '../../utility/googleTagManager'
 class GuestCheckout extends Component {
     constructor(props) {
         super(props);

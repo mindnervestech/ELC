@@ -248,6 +248,15 @@ export const clearCartItem = () => {
     }
 }
 
+export const clearShippingDetails = () => {
+    return {
+        type: actionType.CLEAR_SHIPPING_DETAILS,
+        payload: {
+           shipping_details:{}
+        }
+    }
+}
+
 
 export const setOrderSummary = (payload) => {
     return (dispatch, getState) => {

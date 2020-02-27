@@ -47,7 +47,7 @@ class CashOnDelivery extends Component {
                         <div className="b-price_total" style={{ padding: '10px', borderBottom: '1px solid #d6d6d6', marginBottom: '10px' }}>
                             <span className="m-label"><FormattedMessage id="delivery-details.Total.Title" defaultMessage="Total" /></span>
                             <span className="m-value js-remaining-balance" data-value={cashondelivery.total}> {cashondelivery.currency} {cashondelivery.total}</span> 
-                            {country !== 'UAE' ?<p><FormattedMessage id="CashOnDelivery.Text" defaultMessage="Cash On Delivery" /> {cashondelivery.currency} {cashondelivery.charges} <FormattedMessage id="included.text" defaultMessage="included" /></p>
+                            {country !== 'UAE' ?<p><FormattedMessage id="CashOnDelivery.Text" defaultMessage="Cash On Delivery" /> {cashondelivery.currency} {cashondelivery.charges} <FormattedMessage id="included.text" defaultMessage="will be included" /></p>
                             :''}
                         </div>
 

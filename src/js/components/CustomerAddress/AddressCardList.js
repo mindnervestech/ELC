@@ -89,7 +89,7 @@ class AddressCardList extends Component {
 
 
   render() {
-    console.log(this.state.confirmBoxDetails.addressKey);
+   
     let alertBox = null;
 
     if (this.state.alertBoxDetails.status) {

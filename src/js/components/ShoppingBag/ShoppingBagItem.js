@@ -14,6 +14,7 @@ import Popup from 'react-popup';
 import Spinner from '../Spinner/Spinner2';
 import Alert from './AlertMsg';
 import cookie from 'react-cookies';
+import {RemoveProductCart,checkoutEvent} from '../../components/utility/googleTagManager'
 
 let successFlag = false;
 let stockSortageFlag = false;
@@ -31,7 +32,8 @@ class ShoppingBagItem extends Component {
             timeout: 0,
         }
     }
-    remove = (index) => {
+    remove = (index,item) => {
+        RemoveProductCart(item)
         //    confirmAlert({
         //   title: 'Confirm to yes',
         //   message: 'Are you sure to remove this product.',
@@ -55,18 +57,55 @@ class ShoppingBagItem extends Component {
     }
 
     checkOut() {
-        if (this.props.isUserLoggedIn) {
+        if (this.props.user_details.isUserLoggedIn) {
             // this.props.history.push(`/${this.props.globals.store_locale}/new-check-out`);
-            this.props.history.push(`/${this.props.globals.store_locale}/delivery-details`);
+            this.props.history.push({
+                pathname:`/${this.props.globals.store_locale}/delivery-details`,
+                state: { data: this.props.cart_details }});
         } else {
-            this.props.history.push(`/${this.props.globals.store_locale}/checkout-login`);
+            this.props.history.push(
+                {
+                    pathname:`/${this.props.globals.store_locale}/checkout-login`,
+                    state: { data: this.props.cart_details }
+                });
         }
     }
 
     componentDidMount() {
+      
         successFlag = false;
         stockSortageFlag = false;
         invalidValue = false;
+        let product = [];
+        let myCartItem = {};
+        let obj={}
+        let eventLabelString=""
+        if(localStorage.getItem('myCartItem') !== ''){
+            myCartItem = JSON.parse(localStorage.getItem('myCartItem'));
+            if(myCartItem){
+                product = myCartItem.products;
+            }
+        }
+        let total=0;
+        for(let i=0;i<product.length;i++){
+            total+=product[i].price*product[i].qty
+        }
+        let arr=[]
+        for(let i=0;i<product.length ;i++){
+            arr.push(product[i].sku)
+        }
+        let str1=arr.join(',')
+        eventLabelString= `${str1}|${total}`
+
+        obj={
+            event:"cartPage-productInfo",
+            eventCatogry:"Cart Page",
+            eventAction:"Cart Product Details",
+            eventLabel:eventLabelString
+        }
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push(obj)
+       
     }
 
     handleChange(item, index, value) {
@@ -148,7 +187,6 @@ class ShoppingBagItem extends Component {
                 product = myCartItem.products;
             }
         }
-        
         // console.log(cookie.load('myCartItem'));
         // console.log("this.props.cart_details this.props.cart_details",this.props.cart_details);
         let cartProductPrice;
@@ -382,7 +420,7 @@ class ShoppingBagItem extends Component {
                                         <Col xs="3" className="row-9"></Col>
                                     }
                                     <Col xs="1" className="row-3 blackTitle" style={{ textAlign: 'end' }}>
-                                        <span className="remove" style={{ fontSize: 14, cursor: 'pointer' }} onClick={() => this.remove(index)}>
+                                        <span className="remove" style={{ fontSize: 14, cursor: 'pointer' }} onClick={() => this.remove(index,item)}>
                                             <FormattedMessage id="Cart.Remove.Title" defaultMessage="Remove" />
                                         </span>
                                     </Col>
@@ -461,7 +499,7 @@ class ShoppingBagItem extends Component {
                                         </Link>
                                     </div>
                                     <div style={{ display: 'inline-block', width: "18%", verticalAlign: 'top' }} >
-                                        <span onClick={() => this.remove(index)} className="remove blackTitle floatRight" style={{ fontSize: 14, lineHeight: 1 }}>
+                                        <span onClick={() => this.remove(index,item)} className="remove blackTitle floatRight" style={{ fontSize: 14, lineHeight: 1 }}>
                                             <FormattedMessage id="Cart.Remove.Title" defaultMessage="Remove" />
                                         </span>
                                     </div>

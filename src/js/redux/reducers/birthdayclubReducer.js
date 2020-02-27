@@ -8,8 +8,6 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionType.SAVE_BIRTHDAY_CLUB_DATA:
       return updateObject(state, action.payload);
-    case actionType.GET_BIRTHDAY_CLUB_DATA:
-      return updateObject(state, action.payload);
 
     default:
       return state;

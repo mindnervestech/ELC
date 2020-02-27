@@ -1,0 +1,324 @@
+.button1{
+    max-height: 40px !important;
+    background: #0D943F;
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    width: fit-content;
+    border-radius: 0px;
+    margin: 0px;
+    padding: 10px 40px 10px 40px;
+    cursor: pointer;
+}
+.button1:hover{
+    background: #20b579;
+}
+.button1:active{
+    background: #1f784d;
+}
+
+
+
+/* //pending padding apply on last size */
+
+.button2{
+    cursor: pointer;
+    max-height: 40px !important;
+    background: #ee0e19;
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    width: fit-content;
+    border-radius: 0px;
+    margin: 0px;
+    padding: 10px 40px 10px 40px;
+}
+.button2:hover{
+    background: #f55f56;
+}
+.button2:active{
+    background: #cd2d23;
+}
+
+/* button type 2 */
+
+.button3{
+    cursor: pointer;
+    max-height: 40px !important;
+    background: #0d943f;
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    width: 100%;
+    border-radius: 0px;
+    margin: 0px;
+    padding: 10px 30px 10px 30px;
+}
+
+
+.button4{
+    max-height: 40px !important;
+    background: #ffffff;
+    text-decoration: none;
+    color: #0d943f;
+    text-align: center;
+    width: 100%;
+    border-radius: 0px;
+    margin: 0px;
+    padding: 10px 30px 10px 30px;
+    cursor: pointer;
+    border: 1px solid;
+    -webkit-text-stroke-width: 1px;
+}
+
+
+/* strock query in button 4 */
+
+.button5{
+    max-height: 40px !important;
+    background: #20b579;
+    text-decoration: none;
+    color: #ffffff;
+    text-align: center;
+    width: fit-content;
+    border-radius: 0px;
+    margin: 0px;
+    padding: 10px 30px 10px 30px;
+    cursor: pointer;
+}
+.button5:hover{
+    background: #22d68e;
+}
+
+.button-add-to-basket{
+    max-height: 40px !important;
+    background: #ee0e19;
+    text-decoration: none;
+    color: #ffffff;
+    text-align: center;
+    width: 154px;
+    border-radius: 0px;
+    margin: 0px;
+    padding: 10px 0px 10px 0px;
+    cursor: pointer;
+}
+
+.button-pre-order{
+    max-height: 40px !important;
+    background: #20b579;
+    text-decoration: none;
+    color: #ffffff;
+    text-align: center;
+    width: 154px;
+    border-radius: 0px;
+    margin: 0px;
+    padding: 10px 0px 10px 0px;
+    cursor: pointer;
+}
+
+.button-pre-order:active{
+    background: #169662;
+}
+
+input[type=text] {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 15px 12px 15px;
+    margin: 0px;
+    color: #4f4f4f;
+    border: 1px solid #b1b1b1;
+    background-color: #fff;
+ }
+
+  input:focus{
+      border: 1px solid #1f784d;
+  }
+
+
+
+  /* error message should be check */
+.error{
+      border : 1px solid #e20035;
+  }
+
+
+  /* SELECT bOX */
+.countSelect{
+    display: inline-block;
+    padding: 12px 22px 29px 14px;
+    border: 1px solid #999999;
+    max-height: 40px;
+    color: black;
+    max-width: 40px;
+}
+
+.incrementButton{
+    display: inline-block;
+    font-size: x-large;
+    padding: 0px 10px 0px 0px;
+}
+.incrementButton:hover{
+    color: #0d943f;
+    cursor: pointer;
+    cursor : hand
+}
+
+.decrementButton{
+    display: inline-block;
+    font-size: x-large;
+    padding: 0px 0px 0px 10px;
+}
+.decrementButton:hover{
+    color: #0d943f;
+    cursor: pointer;
+    cursor: hand
+}
+
+textarea {
+    width: 100%;
+    height: 150px;
+    box-sizing: border-box;
+    border: 1px solid #999999;
+    border-radius: 0;
+    background-color: #ffff;
+    font-size: 16px;
+    padding: 0px 15px 0px 15px; 
+  }
+
+  textarea .error{
+    border: 1px solid #e20035;
+  }
+
+  .paddingBottom20{
+      padding-bottom:20px; 
+  }
+
+  /* Check Box */
+
+  /* The container */
+.checkBox {
+    display: block;
+    position: relative;
+    padding-left: 40px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* Hide the browser's default checkbox */
+  .checkBox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #fff;
+    border : 1px solid #333;
+  }
+  
+  /* On mouse-over, add a grey background color 
+  .container:hover input ~ .checkmark {
+    background-color: #333
+  }
+  */
+  .checkBox input:checked ~ .checkmark {
+    background-color: #fff;
+  }
+  
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    /* backgroud-color : #333; */
+  }
+  
+  /* Show the checkmark when checked */
+  .checkBox input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the checkmark/indicator */
+  .checkBox .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid #34a55e;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+  .promoText{
+    font-size: 11px;
+
+    width: fit-content;
+
+    font-style: oblique;
+    border-radius: 17px;
+    font-weight: bold;
+    padding: 0px 9px 0px 9px;
+  }
+
+  .green{
+    color: #53a940;
+    border: 1px solid #53a940;
+  }
+
+  .pink{
+    border: 1px solid #e71294;
+    color: #e71294;
+  }
+
+  /* .promoTextPink{
+    font-size: 11px;
+    border: 1px solid #e71294;
+    width: fit-content;
+    color: #e71294;
+    font-style: oblique;
+    border-radius: 17px;
+    font-weight: bold;
+    padding: 0px 9px 0px 9px;
+  } */
+
+  /* arrow */
+
+  .arrows{
+   width: 33px;
+   height: 33px;
+   border-color: #0d943f;
+   color: #0d943f;
+   position: absolute;
+   top: 50%;
+   margin-top: -31px;
+  }
+
+  .arrows:hover{
+      border-color: #20b579;
+  }
+.prev{
+   border-bottom: 6px solid;
+   border-left: 6px solid;
+   transform: rotate(45deg);
+   left: 10px;
+}
+   
+.next{
+   border-bottom: 6px solid;
+   border-left: 6px solid;
+   transform: rotate(-135deg);
+   right: 10px;
+
+}

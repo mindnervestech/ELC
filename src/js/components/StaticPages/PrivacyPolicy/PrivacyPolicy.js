@@ -12,7 +12,6 @@ import * as actions from '../../../redux/actions/index';
 class PrivacyPolicy extends Component {
     constructor(props) {
         super(props);
-        console.log(props)
         this.state = {
             storeId: '',
             data: [],

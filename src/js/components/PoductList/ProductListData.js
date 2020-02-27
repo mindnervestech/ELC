@@ -12,17 +12,18 @@ import Modal from 'react-responsive-modal';
 import AddToCartModal from '../Product/product-details/product-info/product-basic';
 import { initializeF, trackF } from '../utility/facebookPixel';
 import { live } from '../../api/globals';
+import $ from 'jquery'
+import { productClickEvent, ProductListEvent, ProductSearchEvent, checkoutEvent } from '../../components/utility/googleTagManager'
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
-
-
 var _ = require('lodash');
-
+let productListForGTM = {}
 let productListData = {}
 let productList = {}
 let pagenationCount = 36
 let start = 1
 let end = 5
+let pageChecked = false;
 let changeFilterData = false
 let showPopupIndex = -1
 let basketPopupFlag = false;
@@ -36,7 +37,7 @@ class ProductListData extends Component {
 		super(props);
 		changeFilterData = false
 		productListData = this.props.list.product_data
-		productList = this.props.list.product_data
+		productList=this.props.list.product_data
 		let totalPages = 1
 		let count = 0
 		let pageNumber = 1
@@ -71,7 +72,8 @@ class ProductListData extends Component {
 			cartModelFlag: false,
 			url_key: '',
 			sortByOptionValue: '',
-			showMoreLessFlag: false
+			showMoreLessFlag: false,
+
 		};
 	}
 
@@ -85,8 +87,20 @@ class ProductListData extends Component {
 		this.setState({ basketPopupFlag: false })
 		basketPopupFlag = false;
 	}
+	productOnClickEvent = (item, index) => {
+		productClickEvent(item, index, this.props.listForGTM)
 
-	componentDidUpdate(prevProps) {
+	}
+	componentDidUpdate(prevProps, prevState) {
+		if (this.state.pageNumber !== prevState.pageNumber ) {
+			if (this.props.listForGTM === 'Search Results') {
+				ProductSearchEvent(this.state.list1)
+			} else if (this.props.listForGTM === 'List Results') {
+				ProductListEvent(this.state.list1)
+			} else {
+			}
+			
+		}
 		if (prevProps.addToCardLoader !== this.props.addToCardLoader && this.props.item_added.item_added && this.props.item_added.add_cart_open_popUp && (!this.state.cartModelFlag || !cartModelFlag)) {
 			if (!this.props.item_added.add_cart_error) {
 				this.onCloseAddCartModal();
@@ -145,8 +159,8 @@ class ProductListData extends Component {
 		};
 	}
 
-	handler(id,mobilePopupClose) {
-		if(mobilePopupClose){
+	handler(id, mobilePopupClose) {
+		if (mobilePopupClose) {
 			this.state.showFilterOnMobile = false
 		}
 		changeFilterData = true
@@ -189,12 +203,28 @@ class ProductListData extends Component {
 	componentWillMount() {
 		start = 1
 		end = 5
+		pageChecked=false
+		
+		//this.setState({list1:{}})
+
 	}
+	
 
 	componentDidMount() {
 		if (this.props.guest_user.temp_quote_id == null) {
 			this.props.onGetGuestCartId();
 		}
+		setTimeout(() => {
+			if (this.props.listForGTM === 'Search Results') {
+				ProductSearchEvent(this.state.list1)
+			} else if (this.props.listForGTM === 'List Results') {
+				ProductListEvent(this.state.list1)
+			} else {
+			}	
+		}, 3000);
+			
+		
+		//this.forceUpdate()
 	}
 
 	pagenation = (start, end) => {
@@ -211,6 +241,8 @@ class ProductListData extends Component {
 
 
 	prevButton = () => {
+
+		window.scrollTo(0, 300)
 		changeFilterData = true
 		if (this.state.pageNumber !== 1 && this.state.pageNumber !== 0) {
 			this.setState({ pageNumber: this.state.pageNumber - 1 })
@@ -237,6 +269,10 @@ class ProductListData extends Component {
 	}
 
 	nextButton = () => {
+		// document.getElementById('prevButton').scrollIntoView({
+		// 	behavior: 'smooth'
+		//   });
+		window.scrollTo(0, 300)
 		changeFilterData = true
 		if (this.state.pageNumber !== this.state.totalPages) {
 			this.setState({ pageNumber: this.state.pageNumber + 1 })
@@ -261,6 +297,10 @@ class ProductListData extends Component {
 	}
 
 	ApplyPagenation = (value) => {
+		// document.getElementById('prevButton').scrollIntoView({
+		// 	behavior: 'smooth'
+		//   });
+		window.scrollTo(0, 300)
 		changeFilterData = true
 		this.setState({ pageNumber: value });
 		if (this.state.check) {
@@ -457,18 +497,13 @@ class ProductListData extends Component {
 
 	// showMoreLess = () => {
 	// 	showMoreLessFlag = !showMoreLessFlag;
-    //     this.setState({ showMoreLessFlag: !this.state.showMoreLessFlag });
-    // }
+	//     this.setState({ showMoreLessFlag: !this.state.showMoreLessFlag });
+	// }
 
 	render() {
-		
-		if(window.location.href.split('/')[6]==='lego'){
-			if (live) {
-                initializeF()
-                trackF('Purchase');
-            }
-
-		}
+		let pathname = this.props.location.pathname.split('/');
+	
+		// }
 		let list = this.state.list1
 		const store_locale = this.props.globals.store_locale
 		if (changeFilterData === false) {
@@ -481,11 +516,12 @@ class ProductListData extends Component {
 				}
 			}
 			list = this.state.list1
+			productListForGTM = this.state.list1;
 		}
 		var description = '';
 		var desText = '';
 		var decLength = '';
-		if(this.props.list.category_description2){
+		if (this.props.list.category_description2) {
 			description = parse(this.props.list.category_description2);
 			desText = description.props.children;
 			decLength = description.props.children.length;
@@ -613,13 +649,13 @@ class ProductListData extends Component {
 								{/* <img src="https://d2elnqqmhxhwlt.cloudfront.net/pub/media/banners/default/HeroBanners1_Desktop_EN_1.jpg" alt=""/> */}
 							</div>
 							{this.props.list.category_description2 ?
-								<div className="text-align-rtl" style={{ marginTop: 10 }}>
-								{/* <div
+								<div className="text-align-rtl" style={{ marginTop: 30 }}>
+									{/* <div
 									className="staticPagesText"
 									dangerouslySetInnerHTML={{ __html: this.props.list.category_description2 }}
 								/> */}
-								
-								{/* {!showMoreLessFlag && decLength >= 150 ?
+
+									{/* {!showMoreLessFlag && decLength >= 150 ?
 								<div className="staticPagesText">
 									<span>{desText.substring(0, 150)}...
 										<span className="showLessMore" onClick={() => this.showMoreLess()}>
@@ -635,10 +671,10 @@ class ProductListData extends Component {
 										</span>
 									</span>
 								 : <span />} */}
-								 {/* {decLength < 150 ? */}
-								<span>{desText} </span>
+									{/* {decLength < 150 ? */}
+									<span>{desText} </span>
 									{/* </span> : <span />} */}
-							</div> : ''}
+								</div> : ''}
 							<div className="productCategaryNamePadding">
 								<span className="PLPCategaryName">{this.props.list.category_name}</span>
 							</div>
@@ -763,7 +799,7 @@ class ProductListData extends Component {
 									{Object.keys(list).map((keyName, index) =>
 										<li key={index} style={{ position: 'relative' }}>
 											<Link to={`/${store_locale}/products-details/${list[keyName].json.url_key}`}>
-												<div className="alsoLikeCard" style={{height: list[keyName].json.imageUrl ? 'auto' : 307}}>
+												<div onClick={() => { this.productOnClickEvent(list[keyName], index) }} className="alsoLikeCard" style={{ height: list[keyName].json.imageUrl ? 'auto' : 307 }}>
 													<div className="ProductSilderImageHight">
 														{/* <span className="percentage-text" style={{ display: 'none' }}>30</span>
 									<span className="save-text">5</span>
@@ -775,7 +811,7 @@ class ProductListData extends Component {
 														</LazyLoadImage>
 														{/* <img src={percentage} className="percentage" style={{ display: 'none' }} /> */}
 													</div>
-													<div style={{ height: list[keyName].json.imageUrl ? 50 : 195, marginTop: 10, overflow: 'hidden' }}>
+													<div style={{ height: list[keyName].json.imageUrl ? 50 : 195, marginTop: 30, overflow: 'hidden' }}>
 														{list[keyName].json.name.length > 45 ?
 															<label className="text-color">{list[keyName].json.name.substring(0, 45) + "...."}</label> :
 															<label className="text-color">{list[keyName].json.name}</label>

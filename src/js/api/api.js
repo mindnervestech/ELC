@@ -30,7 +30,7 @@ const GET_MENU_NAVIGATION = { type: 'GET', url: BASE_URL + 'menu' };
 const GET_PRODUCT_DETAILS = { type: 'POST', url: BASE_URL + 'productbyid/' };
 const ADD_TO_CART = { type: 'POST', url: CART_URL + 'items/' };
 const GUEST_ADD_TO_CART = { type: 'POST', url: GUEST_CART_URL + 'guest-carts/' };
-const GET_BIRTHDAYCLUB_DATA={type:'GET',url:BASE_URL + 'birthdayclubdata'};
+
 const GET_PRODUCT_LIST = { type: 'POST', url: BASE_URL + 'productlisting/' };
 //const GET_PRODUCT_SEARCH_LIST = { type: 'POST', url: BASE_URL + 'searchresult/' };
 
@@ -76,8 +76,8 @@ const GET_HELP_DATA = { type: 'GET', url: STATIC_PAGES_URL + 'help-and-faqs/stor
 const GET_RETURN_AND_EXCHANGES_DATA = { type: 'GET', url: STATIC_PAGES_URL + 'return-and-exchanges/storeId', dynamic: true };
 const GET_PROMOTION_TERMS_AND_CONDITION_DATA = { type: 'GET', url: STATIC_PAGES_URL + 'promotion-terms-and-condition/storeId', dynamic: true };
 const GET_PRIVACYPOLICY_DATA = { type: 'GET', url: STATIC_PAGES_URL + 'privacy-policy/storeId', dynamic: true };
+const GET_RETURN_PLICY_DATA={type:'GET',url:STATIC_PAGES_URL+'return-policy/storeId',dynamic:true}
 const SET_VOU_CODE = { type: 'POST', url: BASE_URL + 'checkvoucher' }
-
 const REMOVE_VOU_CODE = { type: 'POST', url: BASE_URL + 'removevoucher' }
 
 //Auto Suggestion API
@@ -89,27 +89,14 @@ const GET_AUTO_SUGG_DATA={type:'GET',url:'',dynamic:true}
 
 const SAVE_BIRTHDAYCLUB_DATA={type:'POST' ,url:BASE_URL +'birthdayclub'};
 const SAVE_XMAS_DATA={type:'POST',url:BASE_URL +'xmascampaign'};
-const GET_BRANDS_SHOP_BY_BRAND={type:'GET',url: BASE_URL + 'brandfilter/' }
-const GET_PRESENT_FINDER_PRODUCTS={type:'POST',url:BASE_URL+'presentfinder'}
+
 
 
 export const API = {
-	getPresentFinderProducts:(data,cb)=>request(data,cb, GET_PRESENT_FINDER_PRODUCTS),
-	getPresentFinderInfo:(data,cb)=>{
-		let GET_PRESENT_FINDER_INFO=`${BASE_URL}presentfinder/getage?storeid=${data.storeid}`;
-		request({}, cb, { type: 'GET', url: GET_PRESENT_FINDER_INFO });	
-	},
-	getProductsByBrand:(data,cb)=>{
-		let GET_PRODUCTS_BY_BRANDS=`${BASE_URL}getproductbybrand?storeid=${data.store_id}&attribute_id=${data.attribute_id}`;
-		request({}, cb, { type: 'GET', url: GET_PRODUCTS_BY_BRANDS });	
-	},
-	getAllBrands: (data, cb) =>{
-		let GET_BRAND_DETAILS = `${BASE_URL}brandfilter?storeid=${data.storeid}`;
-		request({}, cb, { type: 'GET', url: GET_BRAND_DETAILS });		
-	} ,
     saveXmasData:(data,cb)=>request(data,cb,SAVE_XMAS_DATA),
 	getCharityData:(data,cb)=> request(data,cb,GET_CHARITY_DATA),
 	getDeliveryPolicyData:(data,cb)=>request(data,cb,GET_DELIVERY_POLICY_DATA),
+	getReturnPolicyData:(data,cb)=>request(data,cb,GET_RETURN_PLICY_DATA),
 	getToken: (data, cb) => request(data, cb, GET_TOKEN),
 	getMyCartApi: (data, cb) => request(data, cb, GET_MY_CART_API),
 	updateCart: (data, cb) => request(data, cb, UPDATE_CART),
@@ -152,7 +139,6 @@ export const API = {
 
 	
 	setBirthdayClubData:(data,cb)=>request(data, cb,SAVE_BIRTHDAYCLUB_DATA),
-	getBirthdayClubData:(data,cb)=>request(data,cb,GET_BIRTHDAYCLUB_DATA),
 
 	getOrderHistory: (data, cb) => request(data, cb, GET_ORDER_HISTORY),
 	getOrderDetailsInProfile: (data, cb) => request(data, cb, GET_ORDER_DETAILS_IN_PROFILE),

@@ -44,16 +44,16 @@ class ShoppingBag extends Component {
     }
 
     componentDidMount = () => {
+       
 
         let obj = this.props.user_details.customer_details;
         if (!(utility.emptyObj(obj))) {
-            if (!(this.props.cart_details.is_cart_details_rec)) {
-                this.props.OngetMyCart({
-                    quote_id: this.props.user_details.customer_details.quote_id,
-                    store_id: this.props.globals.currentStore
-                })
-            }
+            this.props.OngetMyCart({
+                quote_id: this.props.user_details.customer_details.quote_id,
+                store_id: this.props.globals.currentStore
+            })   
         }
+    
     }
 
     componentDidUpdate(previousProps, previousState) {
@@ -202,7 +202,7 @@ class ShoppingBag extends Component {
                 message: ''
             }
         })
-      
+        console.log('Close alert Box Parent');
     }
 
     closedAlertScroll = () => {

@@ -4,14 +4,15 @@ import freeDelivery from '../../../../assets/images/header/Truck1.svg';
 import freeCollect from '../../../../assets/images/header/Mouse.svg';
 import Modal from 'react-responsive-modal';
 import { Helmet } from 'react-helmet';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, Redirect, withRouter } from 'react-router-dom';
 import ShareUrl from '../product-details/product-info/product-size';
 import Popup from 'react-popup';
 import { connect } from 'react-redux';
 import * as actions from '../../../redux/actions/index';
 import { Row, Col } from 'reactstrap';
-import ClickAndCollect from '../../CheckOut/DeliveryDetails/CilckAndCollect/ClickAndCollectModal'
+import { productDetailsEvent, AddToCartEvent } from '../../utility/googleTagManager'
 import { FormattedMessage } from 'react-intl';
+import { initializeF, trackF } from '../../utility/facebookPixel';
 import { async } from 'q';
 const wait = require('../../../../assets/images/wait.gif');
 
@@ -24,7 +25,6 @@ class ProductInfo extends Component {
 		super(props);
 		_this = this;
 		this.state = {
-			openClickAndCollectModalStatus: false,
 			defaultQty: 1,
 			openShareModel: false,
 			showAlert: false,
@@ -53,7 +53,13 @@ class ProductInfo extends Component {
 			this.props.onGetWishListItem({ customerid: this.props.customerDetails.customer_id, store_id: this.props.globals.currentStore })
 		}
 	}
-
+	componentDidUpdate(prevProps, props) {
+		if (this.props.productZoomDetails !== undefined) {
+			if (this.props.productZoomDetails.id !== prevProps.productZoomDetails.id){
+			productDetailsEvent(this.props.productZoomDetails)
+			}
+		}
+	}
 
 	closeAlertAddWishList = () => {
 		this.setState({ showAlertForAdd: false })
@@ -66,7 +72,9 @@ class ProductInfo extends Component {
 	}
 
 	componentWillReceiveProps(nextProps, prevProps) {
-
+		// if (nextProps.productZoomDetails !== undefined) {
+		// 	productDetailsEvent(nextProps.productZoomDetails)
+		// }
 
 		let i = 0;
 		var isCheck = false;
@@ -148,6 +156,20 @@ class ProductInfo extends Component {
 		} else {
 			addQty = this.state.defaultQty;
 		}
+		let currency = '';
+		if (this.props.globals.country === 'KSA' || this.props.globals.country === 'ksa') {
+			currency = 'SAR';
+		} else {
+			currency = 'AED';
+		}
+		let content_ids = []
+		let obj = {
+			id: data.sku,
+		}
+		content_ids.push(obj);
+		let price = data.price && (data.price.toFixed(2)) * addQty;
+		// initializeF()
+		// trackF('AddToCart', { content_type: 'product', currency: currency, content_ids: content_ids, value: price });
 		if (isUserLoggedIn) {
 			if (data.type === 'simple') {
 				prodData = {
@@ -213,6 +235,8 @@ class ProductInfo extends Component {
 			};
 			this.props.onGuestAddToCart(prodData, myCart);
 		}
+		AddToCartEvent(this.props.data, this.state.defaultQty)
+
 	}
 
 	increment = totalQty => {
@@ -274,48 +298,43 @@ class ProductInfo extends Component {
 
 	}
 
-	_handleClick = async (id, text) => {
-		if (text === 'true') {
-			console.log("Handle Click Called")
-			var wishlist_id = 0;
-			let i = 0;
-			disableHeartIcon = true;
+	_handleClick = async () => {
+		var wishlist_id = 0;
+		let i = 0;
+		disableHeartIcon = true;
 
-			if (this.state.is_in_wishlist_item) {
+		if (this.state.is_in_wishlist_item) {
 
-				if (this.props.productWishDetailPDP.wishlist_itemid !== undefined || this.props.productWishDetailPDP.wishlist_itemid !== "") {
-					for (i = 0; i < this.props.wishlistItem.products.length; i++) {
-						if (this.props.productZoomDetails.id === this.props.wishlistItem.products[i].product_id) {
+			if (this.props.productWishDetailPDP.wishlist_itemid !== undefined || this.props.productWishDetailPDP.wishlist_itemid !== "") {
+				for (i = 0; i < this.props.wishlistItem.products.length; i++) {
+					if (this.props.productZoomDetails.id === this.props.wishlistItem.products[i].product_id) {
 
-							wishlist_id = this.props.wishlistItem.products[i].wishlist_id;
-						}
+						wishlist_id = this.props.wishlistItem.products[i].wishlist_id;
 					}
-					this.props.onRemoveWishList({
-						index: null,
-						wishlist_id: wishlist_id
-					})
-					this.setState({ statusRemoveCall: true });
-
 				}
-			}
-			else {
-				const data = {
-					customer_id: this.props.customerDetails.customer_id,
-					product_id: this.props.productZoomDetails.id
-				};
-				this.props.onAddToWishList(data);
+				this.props.onRemoveWishList({
+					index: null,
+					wishlist_id: wishlist_id
+				})
+				this.setState({ statusRemoveCall: true })
+
+
 				// if (this.props.customerDetails.customer_id !== undefined) {
 				// 	this.props.onGetWishListItem({ customerid: this.props.customerDetails.customer_id, store_id: this.props.globals.currentStore })
 				// }
+
 			}
 		}
+		else {
+			const data = {
+				customer_id: this.props.customerDetails.customer_id,
+				product_id: this.props.productZoomDetails.id
+			};
+			this.props.onAddToWishList(data);
+		}
+
 	};
-	openClickAndCollectModal = () => {
-		this.setState({ openClickAndCollectModalStatus: true })
-	}
-	onCloseClickAndCollectModal = () => {
-		this.setState({ openClickAndCollectModalStatus: false })
-	}
+
 
 	showAlreadyWishListAlert = () => {
 
@@ -324,6 +343,8 @@ class ProductInfo extends Component {
 			this.closeAlert();
 		}, 3000);
 	}
+
+
 	_getUnique = (arr, comp) => {
 		const unique = arr
 			.map(e => e[comp])
@@ -345,7 +366,7 @@ class ProductInfo extends Component {
 	}
 
 	addToWishList = (data) => {
-		if (this.props.isUserLoggedIn===false) {
+		if ((this.props.customerDetails && this.props.customerDetails.customer_id === undefined) || !this.props.customerDetails) {
 			localStorage.setItem('productId-towishlist', this.props.productZoomDetails.id)
 			return (<Link to={`/${this.props.globals.store_locale}/sign-in-register`}><span className="wishlist-span-1 mr-10-wishlist" style={{ margin: 10 }}>
 				<svg
@@ -364,7 +385,7 @@ class ProductInfo extends Component {
 
 				>
 					<g transform="matrix(0.94148 0 0 0.94148 1.46299 1.46299)">
-						<path 
+						<path
 							d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543  c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503  c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"
 							className="naylove"
 						/>
@@ -376,7 +397,7 @@ class ProductInfo extends Component {
 		} else {
 			return (
 				(!disableHeartIcon ?
-					<span onClick={() => this._handleClick(this.props.productZoomDetails.id, "true")} className="wishlist-span-1 mr-10-wishlist">
+					<span onClick={() => this._handleClick(this.props.productZoomDetails.id)} className="wishlist-span-1 mr-10-wishlist">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -478,17 +499,10 @@ class ProductInfo extends Component {
 		}
 	}
 
-	closeModal = () => {
-
-		//this.props.onClearForgotPass();
-		this.onCloseClickAndCollectModal();
-	}
-
 	render() {
 
 
-		const CilckAndCollectModal = <ClickAndCollect closeModal={this.closeModal} />;
-		const { openClickAndCollectModalStatus } = this.state;
+
 
 		let removeWishListMessage = null;
 
@@ -578,12 +592,6 @@ class ProductInfo extends Component {
 		return (
 
 			<div className="row">
-				<Modal modalId="ClickAndCollectModal" open={openClickAndCollectModalStatus} onClose={this.closeModal} center style={{ width: '100%', height: '100%' }}>
-
-
-					<div>{CilckAndCollectModal}</div>
-
-				</Modal>
 				{respo_message}
 				{removeWishListMessage}
 				<Helmet>
@@ -596,11 +604,11 @@ class ProductInfo extends Component {
 							{data.name}
 						</h2>
 						<div className="write-review" style={{ marginBottom: 20 }}>
-							<span className="write-a-re">
+							{/* <span className="write-a-re">
 								<i className="fa fa-pencil"></i>
 								Write a review
 							</span>
-							<span> | </span>
+							<span> | </span> */}
 							{data.age ? <span className="age-sec">
 								<FormattedMessage id="Age" defaultMessage="Age" />:&nbsp;{data.age}
 							</span> : <span />}
@@ -909,5 +917,5 @@ const mapDispatchToProps = dispatch => {
 	};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProductInfo);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ProductInfo));
 
