@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import '../CheckOut.css';
 import './DeliveryDetails.css';
-
+import { store } from '../../../redux/store/store'
 import { Redirect } from 'react-router-dom'
 import Contact from './ContactInformation';
 import Store from './StoreLocator';
 import Address from './AddressInformation';
-
+import { clearShippingDetails } from '../../../redux/actions/getMyCart';
 import AlertBox from '../../Common/AlertBox/AlertBox';
 
 import ShippingSpinner from '../../Spinner/ShippingSpinner';
@@ -40,9 +40,10 @@ class DeliveryDetails extends Component {
                 countryCode: ''
             },
             clickedonCancel:false,
-            shipping_type: '',
+            shipping_type: 'express_shipping_express_shipping',
             oldAddressID: 0,
             gift_wrap_delivery_notes: '',
+            isclickedonProceed:false,
             AddressFields: {
                 location: '',
                 city: '',
@@ -86,6 +87,7 @@ class DeliveryDetails extends Component {
     }
 
     componentDidMount() {
+        this.props.onClearShippingDetails()
        
         //this.props.OnproceedToCheckout({quote_id : 10})
         let shipping_city = {};
@@ -120,6 +122,16 @@ class DeliveryDetails extends Component {
             trackF('DeliveryDetails');
         }
     }
+    getAddressInfo = (params) => {
+        setTimeout(() => {
+            this.setState({
+                AddressFields: params.AddressFields,
+                city_details: params.city_details,
+                country_details: params.country_details,
+                isAddressValid: true,
+            })
+        }, 10);
+    }
 
     gift_wrap_required = (gift_wrap) => {
 
@@ -138,7 +150,7 @@ class DeliveryDetails extends Component {
 
     clearpropsOnCancelButton=(value)=>{
         this.setState({clickedonCancel:value})
-        console.log("Called cancel button",this.state.clickedonCancel)
+     
 
     }
 
@@ -177,75 +189,108 @@ class DeliveryDetails extends Component {
         }
     }
 
+    getContactInfo = (params) => {
+       
+        this.setState({
+            ContactFields: params,
+            isContactValid: true,
+        })
+
+    }
+
+
+    getStoreInfo = (params) => {
+        this.setState({
+            storeInfo: { ...params },
+            isStoreValid: true,
+        })
+    }
+
+    addNewAddress = () => {
+        this.setState({
+            addNewAddress: true,
+            isOldAddressSelcted: false,
+            same_day_delivery_allow: false,
+            same_day_delivery: false
+        })
+    }
+
+    cancelAddress = () => {
+        this.setState({
+
+            same_day_delivery_allow: false,
+            same_day_delivery: false
+        })
+    }
+
+
     submitForm = () => {
-        if (((this.state.addNewAddress)
-            || (!(this.props.cart_details.available_address)))
+        this.setState({ isclickedonProceed: true })
+        if ((this.state.addNewAddress)
+        || (!(this.props.cart_details.available_address))
             && (!(this.state.isCollectFromStore))) {
-
-            this.submitContact.current.signUpSubmitContact();
-            this.submitAddress.current.signUpSubmitAddress();
-
+            // this.submitContact.current.signUpSubmitContact();
+            // this.submAddress.current.signUpSubmitAddress();
             let UserID = " ";
             if (!(this.props.guest_checkout.startGuestCheckout)) {
                 UserID = this.props.user_details.customer_details.customer_id;
             }
 
-            setTimeout(() => {
-               
-                if (this.state.isContactValid && this.state.isAddressValid) {
-                    let payload_shipping_type = ''
-                    // if (this.state.shipping_type ==="samedaydelivery_shipping_samedaydelivery_shipping") {
-                    //     payload_shipping_type = this.state.shipping_type;
-                    // } else if (this.state.shipping_type ==="express_shipping_express_shipping") {
-                    //     payload_shipping_type = this.state.shipping_type;
-                    // }
-                    // else{
-                    //     payload_shipping_type = this.state.shipping_type;
-                    // }
-                    let payload = {
-                        addressId: '',
-                        UserID: this.props.user_details.customer_details.customer_id,
-                        userFirstName: this.state.ContactFields.firstName,
-                        userLastName: this.state.ContactFields.lastName,
-                        customer_email: this.state.ContactFields.email.replace(/\s/g, ""),
-                        country_id: this.state.country_details.id,
-                        state: this.state.country_details.full_name_english,
-                        region_id: this.state.city_details.id,
-                        city: this.state.city_details.name,
-                        street: `${this.state.AddressFields.addressOne},${this.state.AddressFields.addressTwo}, ${this.state.AddressFields.addressThree}`,
-                        carrier_code: this.state.ContactFields.carrierCode,
-                        telephone: parseInt(this.state.ContactFields.contactNumber),
-                        customer_address_type: this.state.AddressFields.addressType,
-                        postcode: this.state.AddressFields.postcode,
-                        message: this.state.gift_wrap_delivery_notes,
-                        gift_wrap_flag: this.state.gift_wrap_required,
-                        payload_shipping_type: this.state.shipping_type
-                    };
 
-                    this.props.OnaddNewAddressAndRedirectToCheckout(payload)
-                }
-            }, 5000)
+            if (this.state.isContactValid && this.state.isAddressValid) {
 
-        } else if (this.state.isOldAddressSelcted && (!(this.state.isCollectFromStore))) {
-            let payload_shipping_type='';
-            this.setState({
-
-                oldAddressValue: {
-                    address_id: this.state.oldAddressID,
+                let payload_shipping_type = ''
+                // if (this.state.shipping_type ==="samedaydelivery_shipping_samedaydelivery_shipping") {
+                //     payload_shipping_type = this.state.shipping_type;
+                // } else if (this.state.shipping_type ==="express_shipping_express_shipping") {
+                //     payload_shipping_type = this.state.shipping_type;
+                // }
+                // else{
+                //     payload_shipping_type = this.state.shipping_type;
+                // }
+                let payload = {
+                    addressId: '',
+                    UserID: this.props.user_details.customer_details.customer_id,
+                    userFirstName: this.state.ContactFields.firstName,
+                    userLastName: this.state.ContactFields.lastName,
+                    customer_email: this.state.ContactFields.email.replace(/\s/g, ""),
+                    country_id: this.state.country_details.id,
+                    state: this.state.country_details.full_name_english,
+                    region_id: this.state.city_details.id,
+                    city: this.state.city_details.name,
+                    street: `${this.state.AddressFields.addressOne},${this.state.AddressFields.addressTwo}, ${this.state.AddressFields.addressThree}`,
+                    carrier_code: this.state.ContactFields.carrierCode,
+                    telephone: parseInt(this.state.ContactFields.contactNumber),
+                    customer_address_type: this.state.AddressFields.addressType,
+                    postcode: this.state.AddressFields.postcode,
                     message: this.state.gift_wrap_delivery_notes,
                     gift_wrap_flag: this.state.gift_wrap_required,
                     payload_shipping_type: this.state.shipping_type
-                }
+                };
 
-            })
-            setTimeout(() => {
-                this.props.OnaddOldAddressAndRedirectToCheckout(this.state.oldAddressValue);
-            }, 200);
+                
+
+                this.props.OnaddNewAddressAndRedirectToCheckout(payload)
+
+            }
+
+
+        } else if (this.state.isOldAddressSelcted && (!(this.state.isCollectFromStore))) {
+
+            let payload_shipping_type = '';
+            let oldAddressValue = {
+                address_id: this.state.oldAddressID,
+                message: this.state.gift_wrap_delivery_notes,
+                gift_wrap_flag: this.state.gift_wrap_required,
+                payload_shipping_type: this.state.shipping_type
+            }
+
+            this.props.OnaddOldAddressAndRedirectToCheckout(oldAddressValue);
 
         } else if (this.state.isCollectFromStore) {
             this.submitContact.current.signUpSubmitContact();
             this.submitStore.current.signUpSubmitStore();
-            setTimeout(() => {
+            
                 if (this.state.isContactValid && this.state.isStoreValid) {
                     let data = {
                         store: { ...this.state.storeInfo },
@@ -261,7 +306,7 @@ class DeliveryDetails extends Component {
                         }
                     })
                 }
-            }, 3000)
+            
         } else {
             this.setState({
                 ...this.state,
@@ -287,54 +332,18 @@ class DeliveryDetails extends Component {
     }
 
     AddressRadioClick = (addressId, value) => {
-        this.setState({
-            same_day_delivery_allow: value,
-            isOldAddressSelcted: true,
-            oldAddressID: addressId,
+        setTimeout(() => {
+            this.setState({
+                same_day_delivery_allow: value,
+                isOldAddressSelcted: true,
+                oldAddressID: addressId.Id,
+            })
+        }, 200);
 
-        })
+
 
     }
 
-    getContactInfo = (params) => {
-        this.setState({
-            ContactFields: params,
-            isContactValid: true,
-        })
-    }
-    getAddressInfo = (params) => {
-
-        this.setState({
-            AddressFields: params.AddressFields,
-            city_details: params.city_details,
-            country_details: params.country_details,
-            isAddressValid: true,
-        })
-    }
-
-    getStoreInfo = (params) => {
-        this.setState({
-            storeInfo: { ...params },
-            isStoreValid: true,
-        })
-    }
-
-    addNewAddress = () => {
-        this.setState({
-            addNewAddress: true,
-            isOldAddressSelcted: false,
-            same_day_delivery_allow:false,
-            same_day_delivery:false
-        })
-    }
-
-    cancelAddress=()=>{
-        this.setState({
-           
-            same_day_delivery_allow:false,
-            same_day_delivery:false
-        })  
-    }
     changeDeliveryType = (e) => {
         const selected_country = this.props.globals.country;
         if (e.target.tagName === 'H3' || e.target.tagName == 'SPAN') {
@@ -421,6 +430,10 @@ class DeliveryDetails extends Component {
         })
 
     }
+    componentWillUnmount(){
+        this.setState({isclickedonProceed:false})
+
+    }
 
     gotoProductScreen = (item) => {
         const store_locale = this.props.globals.store_locale;
@@ -444,13 +457,14 @@ class DeliveryDetails extends Component {
 
         const selected_country = this.props.globals.country;
         let obj = this.props.cart_details.shipping_details;
-        if (!(utility.emptyObj(obj))) {
+        if (!(utility.emptyObj(obj)) && this.state.isclickedonProceed) {          
             return <Redirect to={`/${this.props.globals.store_locale}/checkout-payment`} />
         }
         let addressContainer = null;
         if (this.props.cart_details.is_shipping_details_rec) {
             if (this.props.cart_details.available_address) {
                 addressContainer = <SavedAddressList
+                    shipping_type={this.set_shipping_type}
                     addressData={this.props.cart_details.addressData}
                     addNewAddress={this.addNewAddress}
                     radioClick={this.AddressRadioClick}
@@ -459,8 +473,10 @@ class DeliveryDetails extends Component {
             } else if (!(this.props.cart_details.available_address)) {
                 addressContainer = <>
                     <Contact ref={this.submitContact} changed={this.getContactInfo} />
-                    <Address  oncancleClick={this.cancelAddress}
-                     available_for_same_day_delivery={this.available_for_same_day_delivery} ref={this.submitAddress} changed={this.getAddressInfo}
+                    <Address oncancleClick={this.cancelAddress}
+                     shipping_type={this.set_shipping_type}
+                        available_for_same_day_delivery={this.available_for_same_day_delivery}
+                        ref={this.submitAddress} changed={this.getAddressInfo}
                         cancelButtonShow={false} selected_country={this.props.globals.country} />
                 </>
             }
@@ -468,8 +484,9 @@ class DeliveryDetails extends Component {
             if (this.state.addNewAddress) {
                 addressContainer = <>
                     <Contact ref={this.submitContact} changed={this.getContactInfo} />
-                    <Address  oncancleClick={this.clearpropsOnCancelButton}
-                       available_for_same_day_delivery={this.available_for_same_day_delivery}
+                    <Address oncancleClick={this.clearpropsOnCancelButton}
+                         shipping_type={this.set_shipping_type}
+                        available_for_same_day_delivery={this.available_for_same_day_delivery}
                         ref={this.submitAddress} changed={this.getAddressInfo}
                         cancelAddNewAddress={this.cancelAddNewAddress}
                         cancelButtonShow={true}
@@ -623,7 +640,8 @@ class DeliveryDetails extends Component {
                                                         {addressContainer}
                                                     </Col>
                                                     <Col xs="12" lg="4" md="12">
-                                                        <DeliveryProductList shipping_type={this.set_shipping_type}
+                                                        <DeliveryProductList 
+                                                            shipping_type={this.set_shipping_type}
                                                             data_shipping_methods_deliveryProductList={this.props.citywise_shipping_methods}
                                                             same_day_delivery_allow={this.state.same_day_delivery_allow}
                                                             same_day_delivery={this.state.same_day_delivery} gift_wrap_required={this.gift_wrap_required}
@@ -664,7 +682,24 @@ class DeliveryDetails extends Component {
                                                                                     </button>
                                                                                 </div> :
                                                                                 <div className="col col-6 apex-col-auto">
-                                                                                    <button onClick={this.submitForm} className="t-Button t-Button--hot t-Button--pillEnd t-Button--stretch" type="button" id="B34928536452907743"><span className="t-Button-label"><FormattedMessage id="Checkout.Proceed" defaultMessage="Proceed" /></span></button><input type="hidden" id="P7_ADDR_EXIST" name="P7_ADDR_EXIST" defaultValue="N" />
+                                                                                    <button onClick={() => {
+                                                                                        if (((this.state.addNewAddress)
+                                                                                        || (!(this.props.cart_details.available_address)))
+                                                                                        
+                                                                                            && (!(this.state.isCollectFromStore))) {
+
+                                                                                            this.submitContact.current.signUpSubmitContact();
+                                                                                            this.submitAddress.current.signUpSubmitAddress();
+                                                                                        }
+                                                                                     
+
+                                                                                        setTimeout(() => {
+                                                                                            this.submitForm()
+                                                                                        }, 1000);
+
+
+                                                                                    }
+                                                                                    } className="t-Button t-Button--hot t-Button--pillEnd t-Button--stretch" type="button" id="B34928536452907743"><span className="t-Button-label"><FormattedMessage id="Checkout.Proceed" defaultMessage="Proceed" /></span></button><input type="hidden" id="P7_ADDR_EXIST" name="P7_ADDR_EXIST" defaultValue="N" />
                                                                                 </div>
                                                                             }
                                                                         </div>
@@ -703,7 +738,24 @@ class DeliveryDetails extends Component {
                                                         <button onClick={this.goToCartDetails} className="t-Button t-Button--noLabel t-Button--icon t-Button--large t-Button--pillStart t-Button--stretch t-Button--padLeft t-Button--padRight t-Button--padTop t-Button--padBottom" type="button" id="B29280522081851518" title="Continue Shopping" aria-label="Continue Shopping"><span className="t-Icon fa fa-angle-left" aria-hidden="true" /></button>
                                                     </Col>
                                                     <Col xs="9" lg="9" md="9" style={{ padding: 0 }}>
-                                                        <button disabled={this.state.isContactValid && this.state.isAddressValid} onClick={this.submitForm} className="t-Button t-Button--hot t-Button--large t-Button--pillEnd t-Button--stretch t-Button--padLeft t-Button--padRight t-Button--padTop t-Button--padBottom" type="button" id="B29280091835851517">
+                                                        <button disabled={this.state.isContactValid && this.state.isAddressValid}
+                                                            onClick={() => {
+                                                                if (((this.state.addNewAddress)
+                                                                || (!(this.props.cart_details.available_address)))
+                                                                    && (!(this.state.isCollectFromStore))) {
+
+                                                                    this.submitContact.current.signUpSubmitContact();
+                                                                    this.submitAddress.current.signUpSubmitAddress();
+                                                                }
+                                                               
+                                                                setTimeout(() => {
+                                                                    this.submitForm()
+                                                                }, 1000);
+
+
+                                                            }
+                                                            }
+                                                            className="t-Button t-Button--hot t-Button--large t-Button--pillEnd t-Button--stretch t-Button--padLeft t-Button--padRight t-Button--padTop t-Button--padBottom" type="button" id="B29280091835851517">
                                                             {this.state.isContactValid && this.state.isAddressValid ?
                                                                 <span className="t-Button-label"><FormattedMessage id="PleaseWait" defaultMessage="Please wait......." /></span>
                                                                 : <span className="t-Button-label"><FormattedMessage id="Checkout.Proceed" defaultMessage="Proceed" /></span>
@@ -748,6 +800,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
+        onClearShippingDetails:()=>dispatch(actions.clearShippingDetails()),
         OnGetShippingDetails: (quoteId) => dispatch(actions.getAddressFromShippingDetails(quoteId)),
         OnaddNewAddressAndRedirectToCheckout: (quoteId) => dispatch(actions.AddNewAddressAndRedirectToCheckout(quoteId)),
         OnaddOldAddressAndRedirectToCheckout: (quoteId) => dispatch(actions.AddOldAddressAndRedirectToCheckout(quoteId)),
@@ -755,6 +808,8 @@ const mapDispatchToProps = dispatch => {
         onRedirectToCart: () => dispatch(actions.redirectToCart()),
         onGetProductDetails: payload => dispatch(actions.getProductDetails(payload)),
         getSizeChart: payload => dispatch(actions.getSizeChart(payload)),
+        onGetPaymentDetails: (payload) => dispatch(actions.getPaymentDetails(payload)),
+        onClearShippingDetails:()=>dispatch(actions.clearShippingDetails())
     }
 
 }

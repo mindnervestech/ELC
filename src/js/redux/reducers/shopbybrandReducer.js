@@ -2,7 +2,7 @@ import * as actionTypes from '../actions/actionTypes';
 import { updateObject } from '../utility/utility';
 
 const initialState = {
-    brands:[]
+	brands: []
 }
 
 const reducer = (state = initialState, action) => {
@@ -11,6 +11,8 @@ const reducer = (state = initialState, action) => {
 			return updateObject(state, action.payload);
 		case actionTypes.GET_PRODUCTS_BY_BRANDS:
 			return updateObject(state, action.payload);
+		case actionTypes.CLEAR_BROWSE_BRAND_PRODUCTS:
+				return updateObject(state, action.payload);
 
 		default:
 			return state;

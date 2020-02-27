@@ -12,6 +12,7 @@ const initialState = {
     deliverypolicydata:{},
     franchising: {},
     business: {},
+    returnPolicyPageData:{},
     corporateResponsibility: {},
     termOfUse: {},
     cookiePolicy: {},
@@ -23,6 +24,9 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
+        case actionType.RETURN_POLICY_DATA:
+            return updateObject(state,action.payload)
+            
         case actionType.DELIVERY_POLICY_DATA:
             return updateObject(state,action.payload)
 

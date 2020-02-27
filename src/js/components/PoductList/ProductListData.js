@@ -12,6 +12,7 @@ import Modal from 'react-responsive-modal';
 import AddToCartModal from '../Product/product-details/product-info/product-basic';
 import { initializeF, trackF } from '../utility/facebookPixel';
 import { live } from '../../api/globals';
+import $ from 'jquery'
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
@@ -50,11 +51,13 @@ class ProductListData extends Component {
 			}
 			count = count + 1
 		}
-		if (count % pagenationCount === 0) {
-			totalPages = count / pagenationCount
-		} else {
-			totalPages = Math.floor(count / pagenationCount) + 1
-		}
+		setTimeout(() => {
+			if ((count % pagenationCount) === 0) {
+				totalPages = count / pagenationCount
+			} else {
+				totalPages = Math.floor(count / pagenationCount) + 1
+			}	
+		}, 200);
 		this.handler = this.handler.bind(this);
 		this.state = {
 			totalPages: totalPages,
@@ -167,11 +170,16 @@ class ProductListData extends Component {
 			this.filter(this.state.sortByOptionValue, this.state.sortByText)
 		}
 		let totalPages = 1
-		if (count % pagenationCount === 0) {
-			totalPages = count / pagenationCount
-		} else {
-			totalPages = Math.floor(count / pagenationCount) + 1
-		}
+        setTimeout(() => {
+			if (count % pagenationCount === 0) {
+				totalPages = count / pagenationCount
+			} else {
+				totalPages = Math.floor(count / pagenationCount) + 1
+			}	
+		}, 200);
+		
+
+		console.log("total pages",this.state.totalPages)
 		if (productList.length === 0) {
 			this.setState({ totalPages: totalPages, pageNumber: 0 })
 		} else {
@@ -184,6 +192,7 @@ class ProductListData extends Component {
 			this.state.check = true
 			this.pagenation(1, pagenationCount)
 		}
+		this.forceUpdate();
 	}
 
 	componentWillMount() {
@@ -211,6 +220,8 @@ class ProductListData extends Component {
 
 
 	prevButton = () => {
+		
+		window.scrollTo(0,300)
 		changeFilterData = true
 		if (this.state.pageNumber !== 1 && this.state.pageNumber !== 0) {
 			this.setState({ pageNumber: this.state.pageNumber - 1 })
@@ -237,6 +248,10 @@ class ProductListData extends Component {
 	}
 
 	nextButton = () => {
+		// document.getElementById('prevButton').scrollIntoView({
+		// 	behavior: 'smooth'
+		//   });
+		window.scrollTo(0,300)
 		changeFilterData = true
 		if (this.state.pageNumber !== this.state.totalPages) {
 			this.setState({ pageNumber: this.state.pageNumber + 1 })
@@ -261,6 +276,10 @@ class ProductListData extends Component {
 	}
 
 	ApplyPagenation = (value) => {
+		// document.getElementById('prevButton').scrollIntoView({
+		// 	behavior: 'smooth'
+		//   });
+		window.scrollTo(0,300)
 		changeFilterData = true
 		this.setState({ pageNumber: value });
 		if (this.state.check) {
@@ -461,14 +480,19 @@ class ProductListData extends Component {
     // }
 
 	render() {
-		
-		if(window.location.href.split('/')[6]==='lego'){
-			if (live) {
-                initializeF()
-                trackF('Purchase');
-            }
 
-		}
+		let pathname = this.props.location.pathname.split('/');
+		if (pathname[pathname.length - 1] === 'lego') {
+			initializeF()
+			trackF('Lego');
+			}
+
+		// if (window.location.href.split('/')[6] === 'lego') {
+		// 	if (live) {
+
+		// 	}
+
+		// }
 		let list = this.state.list1
 		const store_locale = this.props.globals.store_locale
 		if (changeFilterData === false) {
@@ -494,7 +518,11 @@ class ProductListData extends Component {
 		return (
 			<Row className="PLPRowMargin">
 				<Col xs="3" lg="3" md="3" className="divShowOnWeb">
-					<SideManu action={this.handler}></SideManu>
+					{this.props.location.state !== undefined && this.props.location.pathname.split("/")[3] === "present_finder"
+						&& this.props.location.state.productdatafromPF ? <SideManu comefrompf={this.props.location.pathname} productDetailFromPf={this.props.list} action={this.handler}></SideManu> :
+						this.props.location.state !== undefined && this.props.location.pathname.split("/")[3] === "brand"
+							&& this.props.location.state.filteredProductData ? <SideManu comefrompf={this.props.location.pathname} productDetailFromSb={this.props.list} action={this.handler}/> :
+							<SideManu comefrompf={this.props.location.pathname} action={this.handler}></SideManu>}
 				</Col>
 				<Col xs="12" lg="9" md="9" style={{ padding: 0 }}>
 					<div className="divShowOnMobile" style={{ width: '100%' }}>
@@ -600,8 +628,12 @@ class ProductListData extends Component {
 										</h5>
 									</div>
 									<div style={{ marginTop: 20 }}>
-										<SideManu action={this.handler}></SideManu>
-									</div>
+										{this.props.location.state !== undefined && this.props.location.pathname.split("/")[3] === "present_finder"
+											&& this.props.location.state.productdatafromPF ? <SideManu comefrompf={this.props.location.pathname} productDetailFromPf={this.props.list} action={this.handler}></SideManu> :
+											this.props.location.state !== undefined && this.props.location.pathname.split("/")[3] === "brand"
+												&& this.props.location.state.filteredProductData ? <SideManu comefrompf={this.props.location.pathname} action={this.handler} productDetailFromSb={this.props.list} /> :
+												<SideManu comefrompf={this.props.location.pathname} action={this.handler}></SideManu>}	
+										</div>
 								</div>
 							</Modal>
 						</div>
@@ -613,7 +645,7 @@ class ProductListData extends Component {
 								{/* <img src="https://d2elnqqmhxhwlt.cloudfront.net/pub/media/banners/default/HeroBanners1_Desktop_EN_1.jpg" alt=""/> */}
 							</div>
 							{this.props.list.category_description2 ?
-								<div className="text-align-rtl" style={{ marginTop: 10 }}>
+								<div className="text-align-rtl" style={{ marginTop: 30 }}>
 								{/* <div
 									className="staticPagesText"
 									dangerouslySetInnerHTML={{ __html: this.props.list.category_description2 }}
@@ -765,7 +797,7 @@ class ProductListData extends Component {
 											<Link to={`/${store_locale}/products-details/${list[keyName].json.url_key}`}>
 												<div className="alsoLikeCard" style={{height: list[keyName].json.imageUrl ? 'auto' : 307}}>
 													<div className="ProductSilderImageHight">
-														{/* <span className="percentage-text" style={{ display: 'none' }}>30</span>
+													{/* <span className="percentage-text" style={{ display: 'none' }}>30</span>
 									<span className="save-text">5</span>
 									<img src={save} className="save" /> */}
 														<LazyLoadImage
@@ -776,10 +808,10 @@ class ProductListData extends Component {
 														{/* <img src={percentage} className="percentage" style={{ display: 'none' }} /> */}
 													</div>
 													<div style={{ height: list[keyName].json.imageUrl ? 50 : 195, marginTop: 10, overflow: 'hidden' }}>
-														{list[keyName].json.name.length > 45 ?
-															<label className="text-color">{list[keyName].json.name.substring(0, 45) + "...."}</label> :
-															<label className="text-color">{list[keyName].json.name}</label>
-														}
+													{ list[keyName].json.name.length > 45 ?
+                                                         <label className="text-color">{list[keyName].json.name.substring(0,45)+"...."}</label>:
+                                                         <label className="text-color">{list[keyName].json.name}</label>
+                                                     }
 													</div>
 													{list[keyName].json.offers && list[keyName].json.offers.status === 1 ?
 														this.showDiscountPrise(list[keyName].json.offers.data, list[keyName].price, list[keyName].currency)

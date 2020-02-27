@@ -33,11 +33,10 @@ class OrderSummary extends Component {
     componentDidUpdate(prevProps) {
         const query = new URLSearchParams(this.props.location.search);
         cryptr = new Cryptr(query.get('order_id'));
-        if (prevProps.order_number != this.props.order_number) {
+        if (prevProps.order_number !== orderNumber && this.props.order_summary.total) {
             let item = this.props.items_ordered;
             let ecomArray = [];
             for (let i = 0; i < item.length; i++) {
-                console.log(item);
                 ecomArray.push({
                     content_type: 'product',
                     sku: item[i].sku,
@@ -47,37 +46,41 @@ class OrderSummary extends Component {
                     quantity: parseInt(item[i].qty_orderded)
                 });
             }
-
-            if (cookie.load('orderId') != this.props.order_number) {
-                if (live) {
-                    cookie.save('orderId', this.props.order_number, { path: '/' })
+            console.log(cookie.load('orderId'), orderNumber, this.props.order_number)
+            if (cookie.load('orderId') != orderNumber) {
+                // if (live) {
+                    cookie.save('orderId', orderNumber, { path: '/' })
                     if (query.get('paytype') == 'COD') {
-                        initializeGTMWithEvent({
-                            event: 'ecom_transaction_completed',
-                            transactionShipping: this.props.order_summary.shipping,
-                            transactionTotal: this.props.order_summary.total,
-                            transactionTax: this.props.order_summary.vat,
-                            transactionCurrency: this.props.order_summary.currency,
-                            transactionId: this.props.order_number,
-                            transactionAffiliation: '',
-                              transactionProducts: ecomArray
-                        })
-                    } else {
-                        success = cryptr.decrypt(query.get('status'));
-                        if (success == 'true') {
+                        if(this.props.order_summary.total){
                             initializeGTMWithEvent({
-                                event: 'ecom_transaction_completed',
+                                event: 'ecomm_event',
                                 transactionShipping: this.props.order_summary.shipping,
                                 transactionTotal: this.props.order_summary.total,
                                 transactionTax: this.props.order_summary.vat,
                                 transactionCurrency: this.props.order_summary.currency,
-                                transactionId: this.props.order_number,
+                                transactionId: orderNumber ? orderNumber : this.props.order_number,
                                 transactionAffiliation: '',
                                 transactionProducts: ecomArray
                             })
                         }
+                    } else {
+                        success = cryptr.decrypt(query.get('status'));
+                        if (success == 'true') {
+                            if(this.props.order_summary.total){
+                                initializeGTMWithEvent({
+                                    event: 'ecomm_event',
+                                    transactionShipping: this.props.order_summary.shipping,
+                                    transactionTotal: this.props.order_summary.total,
+                                    transactionTax: this.props.order_summary.vat,
+                                    transactionCurrency: this.props.order_summary.currency,
+                                    transactionId: orderNumber ? orderNumber : this.props.order_number,
+                                    transactionAffiliation: '',
+                                    transactionProducts: ecomArray
+                                })
+                            }
+                        }
                     }
-                }
+                // }
             }
         }
     }
@@ -95,10 +98,20 @@ class OrderSummary extends Component {
             let string = window.location.href
             let data = string.split('=')
             orderNumber = data[data.length - 1];
-            if (live) {
+            let content_ids = []
+            let item = this.props.items_ordered.map((item) => {
+                let obj = {
+                    id: item.sku,
+                    quantity: item.qty_orderded
+                }
+                content_ids.push(obj)
+            })
+            if(this.props.order_summary !==undefined){
                 initializeF()
-                trackF('Purchase');
+            let valuePrice = this.props.order_summary.total && this.props.order_summary.total.toFixed(2)
+            trackF('Purchase', { content_type: 'product', currency:this.props.order_summary.currency,content_ids: content_ids, value: valuePrice });
             }
+
         } else {
             //   success = query.get('status');
             success = cryptr.decrypt(query.get('status'));
@@ -109,10 +122,21 @@ class OrderSummary extends Component {
                 this.props.orderJson({
                     order_id: query.get('order_id')
                 });
-                if (live) {
-                    initializeF()
-                    trackF('Purchase');
+                let content_ids = []
+                let item = this.props.items_ordered.map((item) => {
+                    let obj = {
+                        id: item.sku,
+                        quantity: item.qty_orderded
+                    }
+                    content_ids.push(obj)
+
+                })
+                if(this.props.order_summary !==undefined){
+                initializeF()
+                let valuePrice = this.props.order_summary.total && this.props.order_summary.total.toFixed(2)
+                trackF('Purchase', { content_type: 'product', currency:this.props.order_summary.currency,content_ids: content_ids, value: valuePrice });
                 }
+
             }
             if (query.get('order_id') && query.get('store_id')) {
                 // success = query.get('status');

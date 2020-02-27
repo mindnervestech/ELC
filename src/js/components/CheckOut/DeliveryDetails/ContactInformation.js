@@ -109,7 +109,10 @@ class Contact extends Component {
     }
 
     addInfo = () => {
+        setTimeout(() => {
         this.props.changed(this.state.ContactFields);
+            
+        }, 100);
     }
 
     divOnFocus = (e) => {

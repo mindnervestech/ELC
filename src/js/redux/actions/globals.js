@@ -1,8 +1,17 @@
 import * as actionType from './actionTypes';
 import { API } from '../../api/api';
+import axios from 'axios'
+import cookie from 'react-cookies'
 
 /////////////////////////////////GET STORE ID////////////////////////////////////
-
+export const updateglobalReducer=(payload)=>{
+    
+    return {
+        type:actionType.UPDATE_GLOBAL_REDUCER,
+        payload:payload
+    }
+}
+ 
 const callActionGetStoreIds = (payload) => {
 
     return {

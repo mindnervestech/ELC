@@ -228,10 +228,7 @@ export const removeProduct = (payload) => {
                 dispatch(loadingSpinner({ loading: false }))
             }
         }
-
-
         API.deleteCart(data, cb);
-
     }
 }
 
@@ -244,6 +241,15 @@ export const clearCartItem = () => {
             // new_quote_id: null,
             startGuestCheckout: false,
             temp_quote_id: null,
+        }
+    }
+}
+
+export const clearShippingDetails = () => {
+    return {
+        type: actionType.CLEAR_SHIPPING_DETAILS,
+        payload: {
+           shipping_details:{}
         }
     }
 }

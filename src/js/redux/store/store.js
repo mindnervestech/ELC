@@ -6,7 +6,6 @@ import { createStore, compose, combineReducers, applyMiddleware } from 'redux';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
-import cookie from 'react-cookies';
 import myCartReducer from '../reducers/myCartReducer';
 import loginReducer from '../reducers/loginAndMyAccountReducer';
 import invalidLoginReducer from '../reducers/invalidLoginReducer';
@@ -27,9 +26,10 @@ import xmasPageReducer from '../reducers/xmasPageReducer';
 import thunk from 'redux-thunk';
 import shopbybrandReducer from '../reducers/shopbybrandReducer'
 import presentfinder from '../reducers/presentfinderReducer'
-
+import productReview from '../reducers/productReviewReducer'
 const AppRootReducer = combineReducers({
     myCart: myCartReducer,
+    productReview:productReview,
     presentfinder:presentfinder,
     login: loginReducer,
     invalidLogin: invalidLoginReducer,
@@ -72,3 +72,4 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 export const store = createStore(persistedReducer, composeEnhancers(applyMiddleware(thunk)));
+export const persistor = persistStore(store)

@@ -17,7 +17,6 @@ class Order extends Component {
             data: '',
         }
 
-
     }
 
     componentDidMount() {
@@ -75,9 +74,16 @@ class Order extends Component {
                         <span>&nbsp;/&nbsp;&nbsp;</span>
                     }
                 </Link>
-                <span style={{ fontSize: 15, fontWeight: 'bold' }}><FormattedMessage id="profile.Account.Title" defaultMessage="Account" /></span>
-                <h1 className="address-header"><FormattedMessage id="profile.OrderHistory.Title" defaultMessage="Order History" /></h1>
-                <hr />
+                <Link to={`/${store_locale}/myaccount`} style={{ textDecoration: 'none' }}>
+                    <span className="titleHover" style={{ fontSize: 15 }}><FormattedMessage id="profile.Account.Title" defaultMessage="Account" /></span>
+                    {language === 'en' ?
+                        <span>&nbsp;\&nbsp;&nbsp;</span> :
+                        <span>&nbsp;/&nbsp;&nbsp;</span>
+                    }
+                </Link>
+                <span style={{ fontSize: 15, fontWeight: 'bold' }}><FormattedMessage id="profile.OrderHistory.Title" defaultMessage="Order History" /></span>
+                                <h1 className="address-header" style={{borderBottom: '1px #e1e1e1 solid'}}><FormattedMessage id="profile.OrderHistory.Title" defaultMessage="Order History" /></h1>
+                {/* <hr /> */}
             </div>
 
             <div className="container">
@@ -133,7 +139,8 @@ class Order extends Component {
                                     </ul></div> */}
                                     <div className="t-ButtonRegion-buttons" />
                                 </div>
-                                <div className="t-ButtonRegion-col t-ButtonRegion-col--right"><div className="t-ButtonRegion-buttons"><button onClick={this.logOut} className="t-Button t-Button--hot t-Button--gapTop divShowOnWeb" type="button" id="B28512592134220867"><span className="t-Button-label"><FormattedMessage id="header.SignOut" defaultMessage="Sign Out" /></span></button></div></div>
+                                {/* <div className="t-ButtonRegion-col t-ButtonRegion-col--right"><div className="t-ButtonRegion-buttons"><button onClick={this.logOut} className="t-Button t-Button--hot t-Button--gapTop divShowOnWeb" type="button" id="B28512592134220867"><span className="t-Button-label"><FormattedMessage id="header.SignOut" defaultMessage="Sign Out" /></span></button></div>
+                                </div> */}
                                 {/* <div className="t-ButtonRegion-col t-ButtonRegion-col--right"><div className="t-ButtonRegion-buttons"><button onClick={this.logOut} className="t-Button t-Button--hot t-Button--gapTop" type="button" id="B28512592134220867"><span className="t-Button-label"><FormattedMessage id="header.logoutName" defaultMessage="Logout" /></span></button></div></div> */}
                             </div>
                         </div>
@@ -154,7 +161,7 @@ class Order extends Component {
                                 <div id="report_28337577127179591_catch"><div className="t-Report t-Report--stretch t-Report--staticRowColors t-Report--rowHighlightOff t-Report--horizontalBorders" id="report_R28337577127179591" data-region-id="R28337577127179591">
                                     <div className="t-Report-wrap">
                                         <table className="t-Report-pagination" role="presentation"><tbody><tr><td /></tr></tbody></table>
-                                        <div className="t-Report-tableWrap" style={{ marginBottom: 20 }}>
+                                        <div  className="t-Report-tableWrap" style={{ marginBottom: 20 ,textAlign:'center'}}>
                                             {this.props.orderHistory.length > 0 ?
                                                 <table className="t-Report-report" summary="Order History">
                                                     <thead>
@@ -169,7 +176,7 @@ class Order extends Component {
                                                         {orderList}
                                                     </tbody>
                                                 </table> :
-                                                <div style={{ marginBottom: 50 }}><span style={{ fontSize: "24px" }}><FormattedMessage id="PageTitle.orderhistory.Empty" defaultMessage="Order history is not available" /></span></div>
+                                                <div style={{ marginBottom: 50 }}><span style={{ fontSize: "24px",textAlign:'center',paddingTop:20,paddingBottom:100 }}><FormattedMessage id="nosavedordersfound.text" defaultMessage="No Orders Found" /></span></div>
                                             }
                                         </div>
                                         <div className="t-Report-links" />

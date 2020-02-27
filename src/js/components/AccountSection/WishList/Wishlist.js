@@ -343,8 +343,15 @@ class WishList extends Component {
                                     <span>&nbsp;/&nbsp;&nbsp;</span>
                                 }
                             </Link>
-                            <span style={{ fontSize: 15, fontWeight: 'bold' }}><FormattedMessage id="profile.Account.Title" defaultMessage="Account" /></span>
-                            <h1 className="address-header"><FormattedMessage id="header.Wishlist" defaultMessage="Wishlist" /></h1>
+                            <Link to={`/${store_locale}/myaccount`} style={{ textDecoration: 'none' }}>
+                                <span className="titleHover" style={{ fontSize: 15 }}><FormattedMessage id="profile.Account.Title" defaultMessage="Account" /></span>
+                                {language === 'en' ?
+                                    <span>&nbsp;\&nbsp;&nbsp;</span> :
+                                    <span>&nbsp;/&nbsp;&nbsp;</span>
+                                }
+                            </Link>
+                            <span style={{ fontSize: 15, fontWeight: 'bold' }}><FormattedMessage id="profile.Wishlist.Title" defaultMessage="Wishlist" /></span>
+                            <h1 className="address-header" style={{borderBottom: '1px #e1e1e1 solid'}}><FormattedMessage id="header.Wishlist" defaultMessage="Wishlist" /></h1>
                             <hr />
                         </div>
                         <div className="container">
@@ -385,7 +392,7 @@ class WishList extends Component {
                                                 </ul></div> */}
                                                 <div className="t-ButtonRegion-buttons" />
                                             </div>
-                                            <div className="t-ButtonRegion-col t-ButtonRegion-col--right"><div className="t-ButtonRegion-buttons"><button onClick={this.logOut} className="t-Button t-Button--hot t-Button--gapTop divShowOnWeb" type="button" id="B28512592134220867"><span className="t-Button-label"><FormattedMessage id="header.SignOut" defaultMessage="Sign Out" /></span></button></div></div>
+                                            {/* <div className="t-ButtonRegion-col t-ButtonRegion-col--right"><div className="t-ButtonRegion-buttons"><button onClick={this.logOut} className="t-Button t-Button--hot t-Button--gapTop divShowOnWeb" type="button" id="B28512592134220867"><span className="t-Button-label"><FormattedMessage id="header.SignOut" defaultMessage="Sign Out" /></span></button></div></div> */}
                                         </div>
                                     </div>
                                 </div>

@@ -15,35 +15,48 @@ export const clearProductDetailsBrands = payload => {
 	return dispatch => {
 		const data = {};
 
-		dispatch(callForClearAllBrandsProducts({ brand: [] }));
+		dispatch(callForClearAllBrandsProducts({ brands: [] }));
 	};
 };
 
 ///-------------------------------- GET AVAILABLE BRANDS ----------------------------------------///
 export const callForGetAllBrabds = (payload) => {
-    return {
-        type: actionTypes.GET_BRANDS_SHOP_BY_BRAND,
-        payload: payload
-    }
+	return {
+		type: actionTypes.GET_BRANDS_SHOP_BY_BRAND,
+		payload:payload
+		
+	}
 }
 
-export const getAvailabeBrands = payload => {
-    return (dispatch, getState) => {
+
+// export const callForClearAllBrandsProducts=(payload)=>{
+// 	return {
+// 		type:actionTypes.CLEAR_BROWSE_BRAND_PRODUCTS,
 		
+// 		payload: {
+// 			brands:{}
+// 		}
+// 	}
+// }
+
+export const getAvailabeBrands = payload => {
+	return (dispatch, getState) => {
+
 		const data = {
-            storeid: payload.storeid,	
+			storeid: payload.storeid,
 		};
-	
+
 		dispatch(loadingSpinner({ loadingSpinner: true }))
 
 		let cb = {
 			success: res => {
-				
+
 				if (true) {
-                    dispatch(callForGetAllBrabds({brand:res}))
-                    dispatch(loadingSpinner({ loadingSpinner: true }))
+					dispatch(callForGetAllBrabds({ brand: res }))
+					dispatch(loadingSpinner({ loadingSpinner: true }))
 				} else {
 					dispatch(loadingSpinner({ loadingSpinner: true }))
+					//dispatch(callForGetAllBrabds({ brand: res }))
 				}
 			},
 			error: err => {
@@ -56,10 +69,10 @@ export const getAvailabeBrands = payload => {
 }
 
 export const callForGetProductsBrabds = (payload) => {
-    return {
-        type: actionTypes.GET_PRODUCTS_BY_BRANDS,
-        payload: payload
-    }
+	return {
+		type: actionTypes.GET_PRODUCTS_BY_BRANDS,
+		payload: payload
+	}
 }
 
 
@@ -77,10 +90,11 @@ export const getProductsByBrands = payload => {
 		let cb = {
 			success: res => {
 				
-				if (true) {
+				if (res.status===true) {
                     dispatch(callForGetProductsBrabds({productData:res}))
                     dispatch(loadingSpinner({ loadingSpinner: true }))
 				} else {
+					dispatch(callForGetProductsBrabds({productData:res}))
 					dispatch(loadingSpinner({ loadingSpinner: true }))
 				} 
 			},

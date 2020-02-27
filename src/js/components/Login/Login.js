@@ -229,7 +229,7 @@ class Login extends Component {
     if (login_details.isUserLoggedIn) {
       this.onAddToWishList();
       return <Redirect to={{
-        pathname: `/${store_locale}/profile`,
+        pathname: `/${store_locale}/myaccount`,
         // pathname: '/profile',
         state: { ...login_details.customer_details }
       }} />;
@@ -238,7 +238,7 @@ class Login extends Component {
     if (login_details.isUserLoggedIn && login_details.status) {
 
       return <Redirect to={{
-        pathname: `/${store_locale}/profile`,
+        pathname: `/${store_locale}/myaccount`,
         state: { ...login_details.customer_details }
       }} />;
     }
@@ -454,42 +454,13 @@ class Login extends Component {
                                             </div>
                                           </div>
                                         </div> */}
-                                    <div className="row" style={{ marginTop: 10 }}>
-                                      <div className="col col-12 apex-col-auto loginButtonOnLoginPage">
-                                        <button onClick={this.login} className="button-add-to-basket right " style={{ fontWeight: 'bold' }}><FormattedMessage id="secure.signintext" defaultMessage="Sign In" /></button>
-                                        {/* <div onClick={this.login} className="button-add-to-basket right " type="button" id="B28810467415678867"><span className="t-Button-label"><FormattedMessage id="secure.signin" defaultMessage="Secure Sign In" /></span></div><input type="hidden" id="COND" name="COND" value="" /><input type="hidden" id="ITEM" name="ITEM" value="" /> */}
-                                      </div>
-                                    </div>
-                                    <div style={{ justifyContent: 'center', width: '100%' }}>
-                                    <div  className="row bestsellers or-border"><h2></h2><label><span style={{fontSize:16}}>Or</span></label><h2></h2></div>
-                                      {/* <div><span class="login-divider">Or</span></div> */}
-                                      <div style={{marginTop:'5%'}} className="item_paypal">
-                                        <div className="item_content">
-                                          <span id="cwppButton">
-                                            <a id="LIwPPundefined" className="LIwPP_V2 PPBlue_V2 CWPP_pill CWPP_large" text="Connect with PayPal">
-                                              <svg id="CWPP_SVG_PPTM" style={{ backgroundColor: '#fff' }} className="PPTM" xmlns="http://www.w3.org/2000/svg" version="1.1" style={{ height: 18, width: 18 }} viewBox="0 0 18 18" focusable="false">
-                                                <path id="Fill-8" class="PPTM-btm" fill="#00FFFFFF" d="M13.6023044,4.67342223 C13.8196336,3.28812419 13.6008532,2.34542498 12.8514484,1.49160831 C12.0263956,0.551629995 10.5359309,0.148937623 8.62894883,0.148937623 L3.09322219,0.148937623 C2.70355347,0.148937623 2.37175455,0.43245482 2.3109822,0.817370681 L0.00598653054,15.4327457 C-0.0395473836,15.7211605 0.183405526,15.9818221 0.475294243,15.9818221 L3.89269613,15.9818221 L3.65686311,17.4774071 C3.61713431,17.7297247 3.81196867,17.957917 4.06739398,17.957917 L6.94782221,17.957917 C7.28887304,17.957917 7.57912907,17.7097715 7.63228221,17.3731061 L7.66058217,17.226722 L8.20317953,13.7860604 L8.23819166,13.5959605 C8.29134479,13.2591138 8.58160082,13.0111496 8.92247024,13.0111496 L9.35331903,13.0111496 C12.1439493,13.0111496 14.329033,11.8774436 14.9674148,8.59894727 C15.2342689,7.22906764 15.0963973,6.08556642 14.3908938,5.28163282 C14.1773742,5.03856625 13.9119713,4.83740146 13.6023044,4.67342223"></path>
-                                                <path id="Fill-9" class="PPTM-top" fill="#003087" d="M13.6023044,4.67384766 C13.8196336,3.28841937 13.6008532,2.34563151 12.8514484,1.49173456 C12.0263956,0.55166786 10.5359309,0.148937623 8.62894883,0.148937623 L3.09322219,0.148937623 C2.70355347,0.148937623 2.37175455,0.432481479 2.3109822,0.817433533 L0.00598653054,15.4341828 C-0.0395473836,15.7226247 0.183405526,15.9833109 0.475294243,15.9833109 L3.89269613,15.9833109 L4.75112833,10.5399219 L4.72446105,10.7106288 C4.78523341,10.3256767 5.11431118,10.0419515 5.50397989,10.0419515 L7.12832518,10.0419515 C10.3182389,10.0419515 12.815892,8.7459583 13.5457045,4.99802736 C13.5672923,4.88718584 13.5857961,4.7796097 13.6023044,4.67384766" fill-opacity="0.699999988079071"></path>
-                                                <path id="Fill-10" class="PPTM-top" fill="#003087" d="M5.67323544,4.69235148 C5.70988026,4.46069089 5.85845507,4.27111742 6.05855031,4.17515152 C6.14961814,4.13161312 6.25120775,4.10730418 6.35769543,4.10730418 L10.6968416,4.10730418 C11.2109576,4.10730418 11.6902429,4.14104644 12.128348,4.21161494 C12.2537024,4.23175145 12.3754285,4.25497193 12.4938892,4.28127638 C12.6121686,4.30739943 12.7271825,4.33678785 12.8383869,4.36944165 C12.8940797,4.38558714 12.9486841,4.40263969 13.0025629,4.42059928 C13.2177152,4.49189341 13.4179919,4.57624907 13.6023044,4.67384766 C13.8196336,3.28841937 13.6008532,2.34563151 12.8514484,1.49173456 C12.0263956,0.55166786 10.5359309,0.148937623 8.62894883,0.148937623 L3.09322219,0.148937623 C2.70355347,0.148937623 2.37175455,0.432481479 2.3109822,0.817433533 L0.00598653054,15.4341828 C-0.0395473836,15.7226247 0.183405526,15.9833109 0.475294243,15.9833109 L3.89269613,15.9833109 L5.67323544,4.69235148"></path></svg>
-                                              <b class="connect-with-paypal-text" style={{ fontWeight: 'bold', paddingLeft: 10 }} aria-label="Connect with PayPal">Connect with PayPal</b></a>
-                                          </span>
-                                          <div id="paypal-connect" className="hidden" data-paypal-app-client-id="AQ9nLbJzmV-uOaeI1cePtRUrIJN6d3ZQCVUwu0-mNrMS6voCeghoFiAjS7hEHO8h6v2hbmrZyfeSkdh1" data-paypal-login-return-url="https://www.elc.co.uk/paypal-identity-service?provider=paypal&amp;state=login" data-paypal-login-authend="production">
-                                          </div>
-                                        </div>
-                                      </div>
-
-                                      <div className="item amazon">
-                                        <div className="item_content">
-
-                                          <div id="AmazonPayButton" data-return-url="/amazon-identity-service?provider=amazon&amp;state=login" data-dont-logout="" data-button-type="LwA" data-button-size="large" data-button-color="Gold" data-seller-id="ASNOF4RZ96XU">
-
-                                            <img className=" amazonpay-button-inner-image" style={{ cursor: 'pointer', maxHeight: 64 }} alt="AmazonPay" id="OffAmazonPaymentsWidgets0" src="https://d23yuld0pofhhw.cloudfront.net/default/uk/live/lwa/gold/large/LwA.png" tabindex="0" /></div>
-
+                                      <div className="row" style={{ marginTop: 10 }}>
+                                        <div className="col col-12 apex-col-auto loginButtonOnLoginPage">
+                                          <button onClick={this.login} className="button-add-to-basket right " style={{ fontWeight: 'bold'}}><FormattedMessage id="secure.signintext" defaultMessage="Sign In" /></button>
+                                          {/* <div onClick={this.login} className="button-add-to-basket right " type="button" id="B28810467415678867"><span className="t-Button-label"><FormattedMessage id="secure.signin" defaultMessage="Secure Sign In" /></span></div><input type="hidden" id="COND" name="COND" value="" /><input type="hidden" id="ITEM" name="ITEM" value="" /> */}
                                         </div>
                                       </div>
                                     </div>
-
-                                  </div>
 
                                   </div>
                                   {/* <div className="t-Region-body">

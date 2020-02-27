@@ -1,4 +1,4 @@
- import React, { Component } from 'react';
+import React, { Component } from 'react';
 import '../../../styles/product/productlist.css';
 import '../../../styles/product/productlist-filters.css';
 import ProductData from './product-list/product-list';
@@ -83,27 +83,36 @@ class Product extends Component {
 		};
 		this.setState({ loading: true });
 		let pathName = this.props.location.pathname
-		if(category_path[category_path.length - 1]!=='category_path' &&  category_path[category_path.length - 1]!=='brand' ){
-			this.setState({reDirectedFromPF:false,reDirectedFromBrowseAllBrand:false})
+		if (category_path[category_path.length - 1] !== "present_finder" && category_path[category_path.length - 2]!== "brand") {
+			this.setState({ reDirectedFromPF: false, reDirectedFromBrowseAllBrand: false })
 			await this.props.onGetProductList(data);
-		 }
-		
+		}
+		// else if (category_path[category_path.length - 1]!== "brand") {
+		// 	this.setState({ reDirectedFromPF: false, reDirectedFromBrowseAllBrand: false })
+		// 	await this.props.onGetProductList(data);
+		// }
+
+
 		setTimeout(() => {
 			this.setState({ loading: false });
 		}, 2000)
 
 	};
-	componentWillMount(){
-		this.props.onClearBrandProductDetails(this.props.productDetails)
-		this.setState({reDirectedFromBrowseAllBrand:false,reDirectedFromPF:false})
-		this.forceUpdate();
+	componentWillMount() {
+		//this.props.onClearBrandProductDetails(this.props.productDetails)
+		// if(this.props.location.state!==undefined){
+		// 	this.props.onClearBrandProductDetails(this.props.location.state.filteredProductData)
+		// }
+
+		this.setState({ reDirectedFromBrowseAllBrand: false, reDirectedFromPF: false })
+
 	}
 
 	componentDidUpdate(prevProps, prevState) {
-	
-		if(this.props.location.pathname !== prevProps.location.pathname){
-			this.props.onClearBrandProductDetails(this.props.productDetails)
-			
+
+		if (this.props.location.pathname !== prevProps.location.pathname) {
+			//	this.props.onClearBrandProductDetails(this.props.location.state.filteredProductData)
+
 		}
 		const values = queryString.parse(this.props.location.search);
 		let searchQuery = values.query;
@@ -130,13 +139,11 @@ class Product extends Component {
 	componentDidMount() {
 		let pathname = this.props.location.pathname.split('/');
 
-		if (pathname[pathname.length - 1] === 'category_path') {
+		if (pathname[pathname.length - 1] === "present_finder") {
 			this.setState({ reDirectedFromPF: true })
-			this.forceUpdate();
 		}
-		if (pathname[pathname.length - 1] === 'brand') {
+		if (pathname[pathname.length - 2] === "brand") {
 			this.setState({ reDirectedFromBrowseAllBrand: true })
-			this.forceUpdate();
 		}
 		if (count == 0)
 			this._fetchProducts();
@@ -191,11 +198,6 @@ class Product extends Component {
 	render() {
 		let store_locale = this.props.globals.store_locale
 		let pathName = this.props.location.pathname
-		// if(pathName [pathName.length-1]==='category_path' && !this.props.location.state.reDirect){
-		//    return <Redirect to={`/${store_locale}/presentfinder`} />
-		// }
-
-
 		let meta_tag = null;
 		if (this.props.productDetails.metainfo.meta_title && this.props.productDetails.metainfo.meta_keywords && this.props.productDetails.metainfo.meta_description) {
 			
@@ -211,16 +213,24 @@ class Product extends Component {
 				{meta_tag}
 				<div className="t-Body-main" style={{ marginTop: '0px !important' }}>
 					<div className="t-Body-title" id="t_Body_title" style={{ top: '0px' }}>
-						<Breadcrumb name={this.getCatagoryName(pathName)} />
+					{this.props.location.pathname.split("/")[3] !== "present_finder" ?	<Breadcrumb name={this.getCatagoryName(pathName)} />:''}
 					</div>
 					<div className="t-Body-content" id="t_Body_content">
 						<div id="t_Body_content_offset" style={{ height: '139px' }} />
 						<div className="t-Body-contentInner">
 							<div>
-
-							   {this.state.reDirectedFromBrowseAllBrand && this.props.location.state!==undefined? <ProductData Data={this.props.location.state.filteredProductData} loading1={this.props.spinnerProduct} /> : ''}
-								 {this.state.reDirectedFromPF &&  this.props.location.state!==undefined ? <ProductData Data={this.props.location.state.productdatafromPF} loading1={this.props.spinnerProduct} /> :''}
-								{this.props.spinnerProduct ? <Spinner /> : <ProductData Data={this.props.productDetails.products} loading1={this.props.spinnerProduct} />}
+							
+								{this.props.location.pathname.split("/")[3] === "present_finder" &&
+								 this.props.location.state !== undefined && this.props.location.state.productdatafromPF ? 
+								 <ProductData Data={this.props.location.state.productdatafromPF} datacomefrompf={true} /> :
+								  this.props.spinnerProduct ? 
+								  <Spinner />  : 
+								  this.props.location.pathname.split("/")[3] === "brand" &&
+								 this.props.location.state !== undefined && this.props.location.state.filteredProductData ? 
+								 <ProductData Data={this.props.location.state.filteredProductData} datacomefrompf={true} />  : 
+								  <ProductData Data={this.props.productDetails.products} loading1={this.props.spinnerProduct} />
+								 }
+								{/* {this.props.spinnerProduct ? <Spinner /> :  } */}
 							</div>
 						</div>
 					</div>
@@ -244,7 +254,6 @@ const mapDispatchToProps = dispatch => {
 	return {
 		onGetProductList: payload => dispatch(actions.getProductList(payload)),
 		onGetProductSearchList: payload => dispatch(actions.getProductSearchList(payload)),
-		OnClearFilterProductOfBrowseAllBrands:() => dispatch(actions.callForClearAllBrandsProducts()),
 		onClearBrandProductDetails: payload => dispatch(actions.clearProductDetailsBrands(payload)),
 	};
 };

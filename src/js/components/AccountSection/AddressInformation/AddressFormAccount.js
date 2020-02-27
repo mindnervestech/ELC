@@ -34,7 +34,7 @@ class AddressFormAccount extends Component {
                             </Link>
                             <Link to={`/${store_locale}/address-book`}style={{ fontSize: 15, fontWeight: 'bold' }}><FormattedMessage id="Addresses.Text" defaultMessage="Addresses" /></Link>
                         </div>
-                        <span className="addnew-header">Add New</span>
+                        <span className="addnew-header"><FormattedMessage id="addnew.txet" defaultMessage="Add New"/></span>
                             <hr />
                     </div>
                 </Row>

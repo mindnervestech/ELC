@@ -44,19 +44,33 @@ class ShoppingBag extends Component {
     }
 
     componentDidMount = () => {
+    
+       let obj = this.props.user_details.customer_details;
+    //    if (!(utility.emptyObj(obj))) {
+           
+    //            this.props.OngetMyCart({
+    //                quote_id: this.props.user_details.customer_details.quote_id,
+    //                store_id: this.props.globals.currentStore
+    //            })
+           
+    //    }
+    
+ if (this.props.user_details.isUserLoggedIn) {
+            this.props.OngetMyCart({
+                quote_id: this.props.user_details.customer_details.quote_id,
+                store_id: this.props.globals.currentStore
+            })
+        } else if(this.props.guest_user.new_quote_id!==null) {
+            this.props.OngetMyCart({
+                quote_id: this.props.guest_user.new_quote_id,
+                store_id: this.props.globals.currentStore
+            })
 
-        let obj = this.props.user_details.customer_details;
-        if (!(utility.emptyObj(obj))) {
-            if (!(this.props.cart_details.is_cart_details_rec)) {
-                this.props.OngetMyCart({
-                    quote_id: this.props.user_details.customer_details.quote_id,
-                    store_id: this.props.globals.currentStore
-                })
-            }
         }
     }
 
     componentDidUpdate(previousProps, previousState) {
+      
         if (previousProps.globals.currentStore !== this.props.globals.currentStore) {
 
             // console.log('quote_id',this.props.user_details.customer_details.quote_id);
@@ -202,7 +216,7 @@ class ShoppingBag extends Component {
                 message: ''
             }
         })
-      
+        console.log('Close alert Box Parent');
     }
 
     closedAlertScroll = () => {

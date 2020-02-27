@@ -23,7 +23,8 @@ class UpadatePassword extends Component {
             errors: {},
             goToMyProfile: false,
             showPasswordAlert: false,
-            showPleaseWait: false
+            showPleaseWait: false,
+            redircetToBack: false
 
         }
     }
@@ -45,6 +46,9 @@ class UpadatePassword extends Component {
         this.props.onClearChangePass();
         this.onClearFormData();
         this.setState({ showPleaseWait: false })
+        setTimeout(() => {
+            this.setState({ redircetToBack: true })
+        }, 2000);
     }
     componentWillReceiveProps(nextProps) {
         if (nextProps.change_pass.status == true) {
@@ -61,7 +65,7 @@ class UpadatePassword extends Component {
             }, 2000);
         }
 
-      
+
     }
 
 
@@ -178,6 +182,12 @@ class UpadatePassword extends Component {
     }
 
     render() {
+        let store_locale = this.props.globals.store_locale;
+        store_locale = this.props.globals.store_locale
+
+        if (this.state.redircetToBack) {
+            return <Redirect to={`/${store_locale}/myaccount`} />
+        }
         if (this.state.goToMyProfile) {
             this.props.history.push(`/${this.props.globals.store_locale}/myaccount`);
         }
@@ -242,7 +252,8 @@ class UpadatePassword extends Component {
         }
 
 
-        let store_locale = this.props.globals.store_locale;
+
+        let language = this.props.globals.language;
         return (
             <div className="t-Body-contentInner" style={{textAlign:'start'}}>
                 <div className="padding-right-ar padding-breadcrumb" style={{ textAlign: 'start' }}>
@@ -253,13 +264,20 @@ class UpadatePassword extends Component {
                             <span>&nbsp;/&nbsp;&nbsp;</span>
                         }
                     </Link>
-                    <span style={{ fontSize: 15, fontWeight: 'bold' }}>Update Password</span>
+                    <Link to={`/${store_locale}/myaccount`} style={{ textDecoration: 'none' }}>
+                    <span className="titleHover" style={{ fontSize: 15 }}><FormattedMessage id="profile.Account.Title" defaultMessage="Account" /></span>
+                    {language === 'en' ?
+                        <span>&nbsp;\&nbsp;&nbsp;</span> :
+                        <span>&nbsp;/&nbsp;&nbsp;</span>
+                    }
+                </Link>
+                    <span style={{ fontSize: 15, fontWeight: 'bold' }}><FormattedMessage id="updatepassword.text" defaultMessage="Update Password"/></span>
                     {respo_message}
                 </div>
                 <Row>
                     <Col xs={12} lg={12} md={12}>
                         <div className="update-password-conatiner">
-                            <h1 className="update-password-header">Update Password</h1>
+                            <h1 className="update-password-header"><FormattedMessage id="updatepassword.text" defaultMessage="Update Password"/></h1>
                         </div>
                     </Col>
                 </Row>
@@ -276,13 +294,13 @@ class UpadatePassword extends Component {
                             {confirmPasswordField}
                         </div>
                         <div style={{ display: 'flex',marginTop:50 }}>
-                            <button className="alsoLikeCardButton cancel-button" onClick={this.goToMyProfile} ><span>Cancel</span></button>
+                            <button className="alsoLikeCardButton cancel-button" onClick={this.goToMyProfile} ><span><FormattedMessage id="cancelButton" defaultMessage="Cancel"/></span></button>
                             {this.state.showPleaseWait ?
                                 <button style={{ height: 50 }} className="alsoLikeCardButton save-button" type="button" disabled={true}>
                                     <img src={wait} style={{ width: 25, height: 20, marginTop: -4 }} alt="" />
                                     <span className="t-Button-label"><FormattedMessage id="PleaseWait" defaultMessage="Please wait......." /></span>
                                 </button> :
-                                <button className="alsoLikeCardButton save-button" onClick={this.submitData} ><span>Save</span></button>}
+                                <button className="alsoLikeCardButton save-button" onClick={this.submitData} ><span><FormattedMessage id="Save.text" defaultMessage="Save"/></span></button>}
                         </div>
                     </Col>
                     <Col xs={1} lg={3} md={2}>&nbsp;</Col>

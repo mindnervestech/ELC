@@ -19,7 +19,7 @@ export const ROOT_URL = {
 export const WEB_URL_ALL = {
     dev: `http://elcm2.iksulalive.com/`,
     uat: `https://elcm2uat.iksulalive.com/`,
-    live: 'https://cms.elctoys.com/'
+    live: 'https://www.elctoys.com/'
 }
 
 export const PAY_FORT_URL_ALL = {
@@ -46,6 +46,7 @@ export const API_URL = ROOT_URL[active_server];
 export const CLONE_BASE_URL = `${ROOT_URL[active_server]}rest/V1/app/`;
 
 export const BASE_URL = `${ROOT_URL[active_server]}index.php/rest/V1/app/`;
+export const BASE_URL_PRODUCT_REVIEW= `${ROOT_URL[active_server]}index.php/rest/V1/`
 export const TOKEN_URL = `${ROOT_URL[active_server]}index.php/rest/V1/integration/admin`;
 export const COUNTRY_URL = `${ROOT_URL[active_server]}index.php/rest/V1/directory/`;
 export const CART_URL = `${ROOT_URL[active_server]}index.php/rest/${replace_store_locale}/V1/carts/mine/`; 
@@ -54,6 +55,7 @@ export const STATIC_PAGES_URL = `${ROOT_URL[active_server]}index.php/rest/V1/cms
 
 export const API_TOKEN = "exn50dak2a5iahy02hawo5il0y6j25ct" //"q7fhtd4w5ysvzbsg8v86ydf6epnyhf2m"
 export const IP_INFO_TOKEN = "69e46a82457d45"
+export const GEO_IP_INFO_TOKEN='604fcf895967a7'
 
 
 

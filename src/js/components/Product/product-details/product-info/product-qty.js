@@ -120,9 +120,7 @@ class ProductQty extends Component {
 
 			//console.log('addtocart', JSON.stringify(cart_item));
 			this.props.onAddToCart(cart_item, myCart);
-			if(live) {
-				trackF('AddtoCard', cart_item);
-			}
+		
 		} else {
 			//console.log('welcome Guest');
 			let configurable_item_options = data.configurable_item_options;
@@ -143,9 +141,7 @@ class ProductQty extends Component {
 				store_id: this.props.globals.currentStore,
 			};
 			this.props.onGuestAddToCart(cart_item, myCart);
-			if(live) {
-				trackF('AddtoCard', cart_item);
-			}
+		
 		}
 	};
 

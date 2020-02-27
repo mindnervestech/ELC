@@ -135,7 +135,7 @@ class Address extends Component {
             errors["city"] = <FormattedMessage id="SelectState.Validate" defaultMessage="Please Select State/City" />;
         }
 
-        if (!fields["addressOne"]) {
+        if (!fields['addressOne']) {
             formIsValid = false;
             errors["addressOne"] = <FormattedMessage id="Address.Validate" defaultMessage="Please enter address" />;
         }
@@ -207,15 +207,18 @@ class Address extends Component {
                     this.setState({ available_for_same_day_delivery: status })
                     setTimeout(() => {
                         this.props.available_for_same_day_delivery(this.state.available_for_same_day_delivery)
-                    }, 100);
+                    }, 10);
                 
                 } 
                 else {
                  
                     this.setState({ available_for_same_day_delivery: status })
+                    let str="express_shipping_express_shipping"
+                    
                     setTimeout(() => {
+                        this.props.shipping_type("express_shipping_express_shipping")
                         this.props.available_for_same_day_delivery(this.state.available_for_same_day_delivery)
-                    }, 100);
+                    }, 10);
 
                 }
 
@@ -254,10 +257,8 @@ class Address extends Component {
     }
 
     setCitydetails = (city) => {
-        let cityList={}
         if ((city !== null) && (city !== 'NA')) {
-            cityList = this.state.cities;
-       
+            const cityList = this.state.cities;
             let result = cityList.filter(obj => {
                 return obj.id === city
             })
@@ -267,10 +268,6 @@ class Address extends Component {
                 });
             }
         }
-
-        cityList.map((items, index) => {
-           
-        })
     }
 
     setAddressType = (event) => {
@@ -441,7 +438,7 @@ class Address extends Component {
         if ('addressOne' in errorsObj) {
             addressOneWithErrorSpan =
                 <div className="t-Form-inputContainer">
-                    <div className="t-Form-itemWrapper"><input type="text" id="P7_RADD1" name="P7_RADD1" className="text_field apex-item-text apex-page-item-error" size={30} maxLength={100} onChange={this.handleChange.bind(this, "addressOne")} value={this.state.AddressFields["addressOne"]} aria-describedby="P7_RADD1_error" aria-invalid="true" /></div>
+                    <div className="t-Form-itemWrapper"><input type="text" id="P7_RADD1" name="P7_RADD1" className="text_field apex-item-text apex-page-item-error" size={30} maxLength={100} onChange={this.handleChange.bind(this, 'addressOne')} value={this.state.AddressFields['addressOne']} aria-describedby="P7_RADD1_error" aria-invalid="true" /></div>
                     <span id="P7_RADD1_error_placeholder" className="a-Form-error u-visible" data-template-id="33610144887469734_ET">
                         <span className="t-Form-error">
                             <div id="P7_RADD1_error">{this.state.errors.addressOne}</div></span></span></div>;

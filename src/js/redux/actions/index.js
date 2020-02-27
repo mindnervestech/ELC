@@ -1,6 +1,7 @@
+export { postReview,getProductReviewBySKU } from './productReview'
 export {getPresentFinderData,getAndSetPresentFinderProducts} from './getAndSetPresentfinder'
 export {getAvailabeBrands,getProductsByBrands,callForClearAllBrandsProducts,clearProductDetailsBrands} from './getAllBrand'
-export { getMyCart, changeQty, removeProduct, clearCartItem, setOrderSummary, removeAllOutOfStockProduct, redirectToPayment, redirectToDelivery, redirectToCart,applyVoucode, removeVoucode, getMyCartAfterVoucher} from './getMyCart';
+export { clearShippingDetails,getMyCart, changeQty, removeProduct, clearCartItem, setOrderSummary, removeAllOutOfStockProduct, redirectToPayment, redirectToDelivery, redirectToCart,applyVoucode, removeVoucode, getMyCartAfterVoucher} from './getMyCart';
 
 export {
 	getAddressFromShippingDetails,
@@ -13,7 +14,7 @@ export { getPaymentDetails, setPaymentDetails } from './getAndSetPayment';
 
 export { getOrderDetails, placeOrder } from './getAndSetOrder';
 
-export {setBirthDayClubData,getBirthDayClubInfo,clearBirthdayClubRegisterError} from './getAndSetBirthdayclub';
+export {setBirthDayClubData,clearBirthdayClubRegisterError} from './getAndSetBirthdayclub';
 
 export {
 	loginUser,
@@ -49,14 +50,13 @@ export {
 	addToCart,
 	guestAddToCart,
 	clearProductDetails,
+  clearProductWishDetail,
 	getProductList,
 	getProductSearchList,
 	addToWishlist,
 	getPlaceOrder,
 	getSizeChart,
 	getYouMayAlsoLikeData,
-	clearProductWishDetail,
-	getProductListOfBrands
 } from './getProductDetails';
 
 
@@ -83,6 +83,7 @@ export {
 		getCorporateInformationPageData,
 		getTermConditionsPageData,
 		getReturnPolicyPageData,
+		getReturnPolicyData,
 		getPromotionTermsAndCondtionPageData
 } from './getStaticPagesData';
 

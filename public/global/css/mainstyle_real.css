@@ -1,3 +1,9 @@
+.span-error-productReview{
+    float: left;
+}
+html[dir="rtl"] .span-error-productReview{
+    float: right;
+}
 
 .account-section-modal{
     background: #ffffff;
@@ -87,7 +93,11 @@ html[dir="rtl"] #product_review h3 {
     font-weight: 800;
 }
 
-
+@font-face {
+    font-family: "Glyphicons Halflings";
+    src: url("font/glyphicons-halflings-regular.eot");
+    src: url("font/glyphicons-halflings-regular.eot?#iefix") format("embedded-opentype"), url("font/glyphicons-halflings-regular.woff2") format("woff2"), url("font/glyphicons-halflings-regular.woff") format("woff"), url("font/glyphicons-halflings-regular.ttf") format("truetype"), url("font/glyphicons-halflings-regular.svg#glyphicons_halflingsregular") format("svg");
+  }
 @font-face {
     font-family: "VAG Rounded ELC Light";
     src: url("font/VAGRoundedELC-Light.eot");

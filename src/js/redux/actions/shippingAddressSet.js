@@ -2,6 +2,7 @@ import * as actionType from './actionTypes';
 import { API } from '../../api/api';
 import { loadingSpinner } from './globals';
 import { getMyCart } from './getMyCart';
+import { getPaymentDetails, setPaymentDetails } from './getAndSetPayment';
 import * as action from './index';
 /////////////////////////////// GET ADDRESS /////////////////////////////
 
@@ -27,7 +28,7 @@ export const getAddressFromShippingDetails = (payload) => {
                     quote_id: getState().login.customer_details.quote_id,
                     store_id: getState().global.currentStore
                 }))
-            }else{
+            } else {
                 dispatch(getMyCart({
                     quote_id: getState().login.customer_details.quote_id !== undefined ? getState().login.customer_details.quote_id : getState().guest_user.new_quote_id,
                     store_id: getState().global.currentStore
@@ -81,7 +82,7 @@ export const callActionForAddNewAddressAndRedirectToCheckout = (payload) => {
 
 export const AddNewAddressAndRedirectToCheckout = (payload) => {
     let payload_shipping_type=''
-   
+
     return (dispatch, getState) => {
         if(payload.payload_shipping_type==="samedaydelivery_shipping_samedaydelivery_shipping")
         {
@@ -90,7 +91,7 @@ export const AddNewAddressAndRedirectToCheckout = (payload) => {
              payload_shipping_type= getState().myCart.active_shipping_methods[1].code;
         }
         else{
-             payload_shipping_type= getState().myCart.active_shipping_methods[2].code;
+             payload_shipping_type= getState().myCart.active_shipping_methods[1].code;
         }
     
         const data = {
@@ -125,7 +126,11 @@ export const AddNewAddressAndRedirectToCheckout = (payload) => {
                         delivery_type: 'delivery_on_address_new',
                         payload: { ...payload }
                     }
-                    dispatch(callActionForAddNewAddressAndRedirectToCheckout({ shipping_details: { ...newState } }))
+                    dispatch(callActionForAddNewAddressAndRedirectToCheckout({shipping_details: { ...newState } }))
+                    dispatch(getPaymentDetails({
+                        quote_id: getState().myCart.quote_id,
+                        store_id: getState().global.currentStore,
+                    }));
                 }
                 dispatch(loadingSpinner({ shippingLoader: false }))
             },
@@ -153,6 +158,7 @@ export const callActionForAddOldAddressAndRedirectToCheckout = (payload) => {
 
 export const AddOldAddressAndRedirectToCheckout = (payload) => {
 let payload_shipping_type=''
+
     return (dispatch, getState) => {
         if(payload.payload_shipping_type==="samedaydelivery_shipping_samedaydelivery_shipping")
         {
@@ -161,13 +167,13 @@ let payload_shipping_type=''
              payload_shipping_type= getState().myCart.active_shipping_methods[1].code;
         }
         else{
-             payload_shipping_type= getState().myCart.active_shipping_methods[2].code;
+             payload_shipping_type= getState().myCart.active_shipping_methods[1].code;
         }
-  
+
         const data = {
             store_id: getState().global.currentStore,
             quote_id: getState().myCart.quote_id,
-            address_id: payload.address_id.Id,
+            address_id: payload.address_id,
             address_object:{},
             shipping_code: payload_shipping_type,
             nayomi_store_id: '',
@@ -191,6 +197,10 @@ let payload_shipping_type=''
                         payload: { ...payload }
                     }
                     dispatch(callActionForAddOldAddressAndRedirectToCheckout({ shipping_details: { ...newState } }))
+                    dispatch(getPaymentDetails({
+                        quote_id: getState().myCart.quote_id,
+                        store_id: getState().global.currentStore,
+                    }));
                 }
                 dispatch(loadingSpinner({ shippingLoader: false }))
             },
@@ -218,7 +228,7 @@ const callActionForClickAndCollect = (payload) => {
 }
 
 export const clickAndCollect = (payload) => {
-    //console.log('>>payload :', payload);
+  
     return (dispatch, getState) => {
 
         const data = {

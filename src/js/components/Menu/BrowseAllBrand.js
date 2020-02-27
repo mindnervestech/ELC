@@ -19,6 +19,8 @@ let allbrands = [];
 let productDataSendToPfRedirect=[];
 let newArray=[]
 let obj2={};
+let message='';
+let brandName=''
 class BrowseAllBrand extends Component {
     constructor(props) {
         super(props);
@@ -26,7 +28,10 @@ class BrowseAllBrand extends Component {
         this.state = {
             brandData: {},
             checkLoaderState: true,
-            checkData: true
+            checkData: true,
+            isClickedOnBrand:false,
+            showAlert:false,
+            getData:false
         }
         this.myRef = [];
         this.main = React.createRef();
@@ -44,6 +49,14 @@ class BrowseAllBrand extends Component {
             this.props.onGetAllAvailableBrand(storeid);
         }
     }
+    componentWillMount(){
+        this.setState({isClickedOnBrand:false})
+        
+    }
+    closeAlert = () => {
+        this.setState({ showAlert: false});
+         
+    }
     componentDidMount() {
         let storeid = this.props.globals.currentStore!==undefined && this.props.globals.currentStore
       
@@ -52,35 +65,55 @@ class BrowseAllBrand extends Component {
         this.props.onGetAllAvailableBrand(data);
     }
     componentWillReceiveProps(nextProps) {
-      
+
         let obj = nextProps.getAvailabeBrands;
         if (nextProps.getAvailabeBrands.brand) {
             allbrands = nextProps.getAvailabeBrands.brand;
         }
+      
+
+		if (this.state.isClickedOnBrand && nextProps.getAvailabeBrands.productData) {
+			this.setState({
+				getData: true
+			});
+        }
+        let obj1=nextProps.getAvailabeBrands.productData;
+        if(obj1){
+            filteredProductData=obj1;
+        }
         
-        if(nextProps.getAvailabeBrands.productData){
+        // if(nextProps.getAvailabeBrands.productData){
 
-            filteredProductData=nextProps.getAvailabeBrands.productData
-            if(filteredProductData.data!==undefined){
+        //     filteredProductData=nextProps.getAvailabeBrands.productData;
+            
+
+        //     if(filteredProductData.data!==undefined){
                 
-                Object.values(filteredProductData.data.product_data).map((item,index)=>{
-                    productDataSendToPfRedirect.push(item.json.filtersdata);
-                })
-                var key = 'filters'
-               // productDataSendToPfRedirect[key]
+        //         Object.values(filteredProductData.data.product_data).map((item,index)=>{
+        //             productDataSendToPfRedirect.push(item.json.filtersdata);
+        //         })
+        //         var key = 'filters'
+        //        // productDataSendToPfRedirect[key]
 
-                obj2=Object.assign(filteredProductData, productDataSendToPfRedirect[key])
+        //         obj2=Object.assign(filteredProductData, productDataSendToPfRedirect[key])
 
-            }
+        //     }
          
            
-        }
-
-       // console.log("nsdjasdhjhasdg", productDataSendToPfRedirect)
+        // }
+        if(nextProps.getAvailabeBrands  && nextProps.getAvailabeBrands.productData && nextProps.getAvailabeBrands.productData.status===false){
+			message=nextProps.getAvailabeBrands.productData.message;
+			this.setState({ showAlert: true })
+			setTimeout(() => {
+				this.closeAlert()
+			}, 2000);
+		}
     }
 
     getProductByBrands = (value) => {
+        this.setState({isClickedOnBrand:true})
         let brand = store.getState().availabe_brand.brand
+        brandName=value
         let id = 0;
         Object.entries(brand).map((item, index) => {
             if (item[1] === value) {
@@ -127,13 +160,36 @@ class BrowseAllBrand extends Component {
     }
 
     render() {
+        let respo_message=null;
 
-        
-        let store_locale=this.props.globals.store_locale
-        if (filteredProductData.data!== undefined) {
-           
-			return <Redirect to={{ pathname: `/${store_locale}/products/brand`, state: { filteredProductData: filteredProductData.data, reDirectFromBrowseAllBrand: true } }} />
+		if (this.state.showAlert) {
+			respo_message = <span id="APEX_SUCCESS_MESSAGE" data-template-id="126769709897686936_S" className="apex-page-success u-visible"><div className="t-Body-alert">
+				<div className="t-Alert t-Alert--defaultIcons t-Alert--success t-Alert--horizontal t-Alert--page t-Alert--colorBG" id="t_Alert_Success" role="alert">
+					<div className="t-Alert-wrap">
+						<div className="t-Alert-icon">
+							<span className="t-Icon" />
+						</div>
+						<div className="t-Alert-content">
+							<div className="t-Alert-header">
+								<h2 className="t-Alert-title">{message}</h2>
+							</div>
+						</div>
+						<div className="t-Alert-buttons">
+							<button className="t-Button t-Button--noUI t-Button--icon t-Button--closeAlert" type="button" title="Close Notification" onClick={() => this.closeAlert()}><span className="t-Icon icon-close" /></button>
+						</div>
+					</div>
+				</div>
+			</div></span>;
 		}
+    
+        let store_locale=this.props.globals.store_locale
+        if (filteredProductData.data !== undefined && this.state.isClickedOnBrand && this.state.getData) {
+            this.setState({isClickedOnBrand:false})
+           
+			return <Redirect to={{ pathname: `/${store_locale}/products/brand/${brandName}`, state: { filteredProductData: filteredProductData.data, reDirectFromBrowseAllBrand: true } }} />
+        }
+        
+        
 
         let characterArrayOfBrand = [];
         let listData = allbrands && Object.values(allbrands).map((item, index) =>
@@ -158,6 +214,7 @@ class BrowseAllBrand extends Component {
             <> <Spinner>
 
                 <div className=" row main-container t-Body-contentInner" >
+                {respo_message}
                     <div className="col-md-2 col-xs-2">&nbsp;</div>
                     <div className="col-md-8 col-xs-8" style={{ textAlign: 'start' }}>
                         <div> <h1 className="header-browser-all-brands"><FormattedMessage id="browseallbrands" defaultMessage="Browse All Brands" /></h1></div>

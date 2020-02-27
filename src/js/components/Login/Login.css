@@ -1,12 +1,3 @@
-.forgotPass {
-    text-align: right;
-    width: 100%;
-}
-
-html[dir="rtl"].forgotPass {
-    text-align: left;
-    width: 100%;
-}
 .styles_overlayCenter__YHoO7 {
     padding: 0 !important;
 }
@@ -29,11 +20,6 @@ html[dir="rtl"].forgotPass {
     width: 420px !important;
     padding: 0 !important;
     height: 100%;
-}
-
-#ClickAndCollectModal{
-    height:auto!important;
-    width: 80% !important;
 }
 
 #CreateAccount {
@@ -1186,6 +1172,11 @@ html[dir="rtl"] .nay {
     cursor: pointer;
     border: 1px solid;
     -webkit-text-stroke-width: 1px;
+}
+
+.forgotPass {
+    text-align: end;
+    width: 99%;
 }
 
 /* strock query in button 4 */

@@ -16,6 +16,10 @@ class AccountMain extends Component {
         }
     }
 
+    componentDidMount(){
+        this.props.onGetMenuNav(this.props.globals);
+    }
+
 
 
     render() {
@@ -32,11 +36,11 @@ class AccountMain extends Component {
 
                             <div className="accountmenu-list">
                                 <ul>
-                                    <Link to={`/${store_locale}/address-book`}> <li className="account-block"><FormattedMessage id="addressBook" defaultMessage="Personal Details" /></li></Link>
+                                    <Link to={`/${store_locale}/my-profile`}> <li className="account-block"><FormattedMessage id="personaldetails.text" defaultMessage="Personal Details" /></li></Link>
+                                    <Link to={`/${store_locale}/address-book`}>  <li className="account-block"><FormattedMessage id="addressbook.text" defaultMessage="Address Book" /></li></Link>
+                                    <Link to={`/${store_locale}/order-history`}>  <li className="account-block"><FormattedMessage id="profile.OrderHistory.Title" defaultMessage="Order History" /></li></Link>
                                     <Link to={`/${store_locale}/update-password`}> <li className="account-block"><FormattedMessage id="change.password" defaultMessage="Change Password" /></li></Link>
-                                    <Link to={`/${store_locale}/address-book`}>  <li className="account-block"><FormattedMessage id="addressBook" defaultMessage="Address Book" /></li></Link>
-                                    <Link to={`/${store_locale}/order-history`}>  <li className="account-block"><FormattedMessage id="profile.OrderHistory.Title" defaultMessage="Order Summary" /></li></Link>
-                                    <Link to={`/${store_locale}/birthday-club-account`}>    <li className="account-block"><FormattedMessage id="birthdayclub.header" defaultMessage="Birthday Club" /></li></Link>
+                                    {/* <Link to={`/${store_locale}/birthday-club-account`}>    <li className="account-block"><FormattedMessage id="birthdayclub.header" defaultMessage="Birthday Club" /></li></Link> */}
                                     <Link to={`/${store_locale}/wish-list`} style={{ textDecoration: 'none' }}>
                                         <li className="account-block"><FormattedMessage id="header.Wishlist" defaultMessage="Wishlist" /></li></Link>
 
@@ -58,13 +62,14 @@ const mapStateToProps = state => {
         addressResp: state.address.addressResp,
         isAddBookRec: state.address.isAddBookRec,
         globals: state.global,
+        menu: state.menu.menuNavData,
         isUserLoggedIn: state.login.isUserLoggedIn,
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-
+        onGetMenuNav: (payload) => dispatch(actions.getMenuNav(payload)),
     }
 
 }

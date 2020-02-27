@@ -21,6 +21,7 @@ class DeliveryProductList extends Component {
             gift_wrap_delivery_notes: '',
             is_same_day_delivery: false,
             is_express_delivery: false,
+            showTextAreaDiv:false
 
 
         }
@@ -34,7 +35,7 @@ class DeliveryProductList extends Component {
     }
 
     delivery_type = (value) => {
-
+   
         setTimeout(() => {
             this.props.shipping_type(value)
         }, 100);
@@ -101,7 +102,7 @@ class DeliveryProductList extends Component {
 
     subscribe_to_newsletter() {
         if (this.state.subscribe_to_newsletter === 0) {
-            this.setState({ subscribe_to_newsletter: 1 })
+            this.setState({ subscribe_to_newsletter: 1, showTextAreaDiv: true })
 
             setTimeout(() => {
                 this.props.gift_wrap_required(this.state.subscribe_to_newsletter);
@@ -110,7 +111,7 @@ class DeliveryProductList extends Component {
 
         }
         else {
-            this.setState({ subscribe_to_newsletter: 0 })
+            this.setState({ subscribe_to_newsletter: 0, showTextAreaDiv: false })
 
             setTimeout(() => {
                 this.props.gift_wrap_required(this.state.subscribe_to_newsletter);
@@ -133,13 +134,16 @@ class DeliveryProductList extends Component {
 
     render() {
 
-        path = this.props.location.pathname.split('/')[2];
-        $("input").on("click", () => {
-            if ($('#giftwrap').is(":checked")) {
-                show_gift_wrap_delivery_notes_area = true;
-            } else {
-                show_gift_wrap_delivery_notes_area = false;
-            }
+        let pathname = this.props.location.pathname.split('/');
+        path = pathname[pathname.length - 1];
+        $(document).ready(() => {
+            $("input").on("click", () => {
+                if ($('#giftwrap').is(":checked")) {
+                    show_gift_wrap_delivery_notes_area = true;
+                } else {
+                    show_gift_wrap_delivery_notes_area = false;
+                }
+            })
         });
 
         let coupan_code = null;
@@ -294,7 +298,7 @@ class DeliveryProductList extends Component {
                                                                         <tbody>
                                                                             <tr>
                                                                                 <td className="t-Report-cell" headers="TYPE"><FormattedMessage id="delivery-details.Subtotal.Title" defaultMessage="Subtotal" /></td>
-                                                                                <td className="t-Report-cell" align="right" headers="PRICE">{this.props.cart_details.currency} <span>{this.props.cart_details.subtotal}</span></td>
+                                                                                <td className="t-Report-cell" align="right" headers="PRICE">{this.props.cart_details.currency} <span>{this.props.cart_details.cart_data.subtotal}</span></td>
                                                                             </tr>
                                                                             {this.props.cart_details.cart_data && this.props.cart_details.cart_data.discount_amount !== 0 ?
                                                                                 <tr>
@@ -306,15 +310,20 @@ class DeliveryProductList extends Component {
                                                                                     <td class="t-Report-cell" headers="TYPE"><FormattedMessage id="voucherdiscount" defaultMessage="voucher discount" /></td>
                                                                                     <td class="t-Report-cell" align="right" headers="PRICE"><span class="p-price">{this.props.cart_details.currency} {this.props.cart_details.cart_data.voucher_discount}</span></td>
                                                                                 </tr> : ''}
-                                                                            {this.props.cart_details.cart_data && this.props.cart_details.cart_data.shipping_amount !== 0 ?
+                                                                             { path === 'checkout-payment' && this.props.cart_details.cart_data.shipping_amount !=0 ?
                                                                                 <tr>
                                                                                     <td className="t-Report-cell" headers="TYPE"><FormattedMessage id="delivery-details.Shipping.Title" defaultMessage="Shipping" /></td>
                                                                                     <td className="t-Report-cell" align="right" headers="PRICE">{this.props.cart_details.currency} <span>{this.props.cart_details.cart_data.shipping_amount}</span></td>
+                                                                                </tr> : ''} 
+                                                                            {path === 'delivery-details' ?
+                                                                                <tr>
+                                                                                    <td className="t-Report-cell" headers="TYPE"><span className="order-total"><FormattedMessage id="delivery-details.Total.Title" defaultMessage="Total" /></span></td>
+                                                                                    <td className="t-Report-cell" align="right" headers="PRICE"><span className="order-total">{this.props.cart_details.currency}</span> <span className="order-total">{this.props.cart_details.cart_data.grand_total_without_shipping_and_cod}</span></td>
                                                                                 </tr> : ''}
-                                                                            <tr>
+                                                                            {path === 'checkout-payment' ? <tr>
                                                                                 <td className="t-Report-cell" headers="TYPE"><span className="order-total"><FormattedMessage id="delivery-details.Total.Title" defaultMessage="Total" /></span></td>
-                                                                                <td className="t-Report-cell" align="right" headers="PRICE"><span className="order-total">{this.props.cart_details.currency}</span> <span className="order-total">{this.props.cart_details.grand_total}</span></td>
-                                                                            </tr>
+                                                                                <td className="t-Report-cell" align="right" headers="PRICE"><span className="order-total">{this.props.cart_details.currency}</span> <span className="order-total">{this.props.cart_details.cart_data.grand_total_with_shipping}</span></td>
+                                                                            </tr> : ''}
                                                                             {this.props.cart_details.cart_data && this.props.cart_details.cart_data.tax_amount !== 0 ?
                                                                                 <tr>
                                                                                     <td className="t-Report-cell" headers="TYPE"><FormattedMessage id="VAT.Message" defaultMessage="VAT Message" /></td>
@@ -351,13 +360,15 @@ class DeliveryProductList extends Component {
                 </div>}
             {path === 'delivery-details' ? <div>
                 <div style={{ marginTop: 10, marginBottom: 10 }}>
-                    <div className="backWhite gift-wrap border-box" >
-                        <label className=" t-Form-label checkBox gift-wrap-label" >
+                    <div className="row backWhite gift-wrap border-box" >
+
+                        <input id="giftwrap" className="gift-box-checkmark checkBox gift-wrap-label" type="checkbox" onClick={() => this.subscribe_to_newsletter()}  ></input>
+                        {/* <span className="checkmark"></span> */}
+                        <label style={{ top: 1 }} className="t-Form-label checkBox gift-wrap-label" >
                             <FormattedMessage id="Giftwraprequired" defaultMessage="Gift wrap required" />
-                            <input id="giftwrap" type="checkbox" onClick={this.subscribe_to_newsletter}  ></input>
-                            <span class="checkmark"></span>
                         </label>
-                        <div>
+
+                        {this.state.showTextAreaDiv ? <div>
                             <label style={{ paddingBottom: 10, paddingLeft: 0 }} className="padd-delivery-notes t-Form-label  gift-wrap-label" >
                                 <FormattedMessage id="deliverynotes" defaultMessage="Delivery Notes" />
                             </label>
@@ -365,50 +376,42 @@ class DeliveryProductList extends Component {
 
                             </textarea>
 
-                        </div>
+                        </div> : <div></div>}
 
 
                     </div>
                 </div>
 
                 <div>
-                    <div>
+                {this.props.same_day_delivery_allow === true || this.props.same_day_delivery === true ? <div>
 
 
                         <div className="t-Form-labelContainer">
-                            <label style={{ fontWeight: 800 }} htmlFor="P7_ADDR_TYPE" id="P7_ADDR_TYPE_LABEL" className="t-Form-label"><FormattedMessage id="Checkout.shippingmethods" defaultMessage="Shipping Methods" /></label>
+                            <label style={{ fontWeight: 800 }} htmlFor="P7_ADDR_TYPE" id="P7_ADDR_TYPE_LABEL" className="t-Form-label"><FormattedMessage id="shippingmethod.text" defaultMessage="Shipping Methods" /></label>
                         </div>
                         <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel  apex-item-wrapper apex-item-wrapper--radiogroup " id="P7_ADDR_TYPE_CONTAINER">
 
                             <div className="t-Form-itemWrapper"><div tabindex="-1" id="P7_SHIPPING_METHOD" aria-labelledby="P7_SHIPPING_METHOD_LABEL" className="radio_group apex-item-group apex-item-group--rc apex-item-radio" role="group"><div className="apex-item-grid radio_group"><div>
-                                {this.props.same_day_delivery_allow === true || this.props.same_day_delivery === true ? <div className="shopping-div">
-                                    <input type="radio" id="P7_SHIPPING_METHOD_0" name="P7_SHIPPING_METHOD" onClick={() => this.delivery_type("samedaydelivery_shipping_samedaydelivery_shipping")} /><label for="P7_SHIPPING_METHOD_0" className="shopping-method-text"><span>{this.props.data_shipping_methods_deliveryProductList[0].name}</span><span class="shopping-price">&nbsp;&nbsp;&nbsp;  {this.props.data_shipping_methods_deliveryProductList[0].charges} &nbsp;&nbsp;&nbsp; {this.props.cart_details.currency}</span>
-                                    </label>
-                                    <div className="shopping-sub-text-div">
-                                        <label for="P7_SHIPPING_METHOD_0" className="shopping-sub-text"><span>{this.props.data_shipping_methods_deliveryProductList[0].description}</span></label></div></div> : <div />}
-                                <div className="shopping-div">
-                                    <input type="radio" id="P7_SHIPPING_METHOD_1" name="P7_SHIPPING_METHOD" onClick={() => this.delivery_type("express_shipping_express_shipping")} />
-                                    <label for="P7_SHIPPING_METHOD_1" className="shopping-method-text"><span>{this.props.data_shipping_methods_deliveryProductList[1].name}</span>
-                                        <span className="shopping-price">&nbsp;&nbsp;&nbsp;  {this.props.data_shipping_methods_deliveryProductList[1].charges} &nbsp;&nbsp;&nbsp; {this.props.cart_details.currency}</span></label><div class="shopping-sub-text-div"><label for="P7_SHIPPING_METHOD_1" class="shopping-sub-text"><span>{this.props.data_shipping_methods_deliveryProductList[1].description}</span></label>
+                               <div>
+                                    <div className="shopping-div">
+                                        <input defaultChecked="defaultChecked" type="radio" id="P7_SHIPPING_METHOD_1" name="P7_SHIPPING_METHOD" onClick={()=>this.delivery_type("express_shipping_express_shipping")} />
+                                        <label for="P7_SHIPPING_METHOD_1" className="shopping-method-text"><span>{this.props.data_shipping_methods_deliveryProductList[1].shipping_frontend_name}</span>
+                                            <span className="shopping-price">&nbsp;&nbsp;&nbsp;  {this.props.cart_details.cart_data.subtotal < this.props.data_shipping_methods_deliveryProductList[1].threshold ? this.props.data_shipping_methods_deliveryProductList[1].charges : 0} &nbsp;&nbsp;&nbsp; {this.props.cart_details.currency}</span></label><div class="shopping-sub-text-div"><label for="P7_SHIPPING_METHOD_1" class="shopping-sub-text"><span>{this.props.data_shipping_methods_deliveryProductList[1].description}</span></label>
+                                        </div>
                                     </div>
+
+                                    <div className="shopping-div">
+                                        <input type="radio" id="P7_SHIPPING_METHOD_0" name="P7_SHIPPING_METHOD" onClick={() => this.delivery_type("samedaydelivery_shipping_samedaydelivery_shipping")} /><label for="P7_SHIPPING_METHOD_0" className="shopping-method-text"><span>{this.props.data_shipping_methods_deliveryProductList[0].shipping_frontend_name}</span><span class="shopping-price">&nbsp;&nbsp;&nbsp;  {this.props.cart_details.cart_data.subtotal < this.props.data_shipping_methods_deliveryProductList[0].threshold ? this.props.data_shipping_methods_deliveryProductList[0].charges : 0} &nbsp;&nbsp;&nbsp; {this.props.cart_details.currency}</span>
+                                        </label>
+                                        <div className="shopping-sub-text-div">
+                                            <label for="P7_SHIPPING_METHOD_0" className="shopping-sub-text"><span>{this.props.data_shipping_methods_deliveryProductList[0].description}</span></label></div></div>
                                 </div>
                             </div>
                             </div>
                             </div></div>
-                            {/* <div className="t-Form-itemWrapper"><div tabindex="-1" id="P7_SHIPPING_METHOD" aria-labelledby="P7_SHIPPING_METHOD_LABEL" className="radio_group apex-item-group apex-item-group--rc apex-item-radio" role="group"><div className="apex-item-grid radio_group"><div>
-                                    {this.props.same_day_delivery_allow === true || this.props.same_day_delivery === true ?
-                                        <div className="shopping-div">
-                                            <input type="radio" value="express_shipping_express_shipping" id="P7_SHIPPING_METHOD_0" name="P7_SHIPPING_METHOD" onChange={(e) => this.delivery_type(e)} />
-                                            <label for="P7_SHIPPING_METHOD_0" className="shopping-method-text"><span>{this.props.data_shipping_methods_deliveryProductList[0].name}</span><span class="shopping-price">&nbsp;&nbsp;&nbsp; {this.props.data_shipping_methods_deliveryProductList[0].charges} &nbsp;&nbsp;&nbsp; {this.props.cart_details.currency}</span>
-                                            </label>
-                                            <div className="shopping-sub-text-div">
-                                                <label for="P7_SHIPPING_METHOD_0" className="shopping-sub-text"><span>{this.props.data_shipping_methods_deliveryProductList[0].description}</span></label></div></div> : <div />}
-                                    <div className="shopping-div">
-                                        <input type="radio" id="P7_SHIPPING_METHOD_1" onChange={(e) => this.delivery_type(e)} name="P7_SHIPPING_METHOD" /><label for="P7_SHIPPING_METHOD_1" className="shopping-method-text"><span>{this.props.data_shipping_methods_deliveryProductList[1].name}</span>
-                                            <span className="shopping-price">&nbsp;&nbsp;&nbsp; {this.props.data_shipping_methods_deliveryProductList[1].charges} &nbsp;&nbsp;&nbsp; {this.props.cart_details.currency}</span></label><div class="shopping-sub-text-div"><label for="P7_SHIPPING_METHOD_1" class="shopping-sub-text"><span>{this.props.data_shipping_methods_deliveryProductList[1].description}</span></label>
-                                        </div></div></div></div></div></div>} */}
+                            
                         </div>
-                    </div>
+                    </div>:<div></div>}
                 </div>
             </div> : <div />}
 

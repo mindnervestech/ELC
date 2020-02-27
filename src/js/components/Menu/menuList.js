@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Spinner from '../Spinner/Spinner';
 import { connect } from 'react-redux';
-import BrowseAllBrands from '../Menu/BrowseAllBrand'
-
 import {
 	isMobile
 } from "react-device-detect";
+import { FormattedMessage } from 'react-intl';
 class menuList extends Component {
 	constructor(props) {
 		super(props);
@@ -28,14 +27,10 @@ class menuList extends Component {
 		// let menu_item = 'menu.' + item.name.toUpperCase();
 		return (
 		    
-			<li key={index}>
-			
-				
-				
+			<li key={index}>	
 				<Link to={'/' + this.state.store_locale + '/products/' + item.url_path} onClick={() => document.getElementById("closeNav").click()}>
 					{item.name}
 				</Link>
-				
 			</li>
 			)
 	};
@@ -116,7 +111,7 @@ class menuList extends Component {
 		this.state.countList++;
 	}
 
-	_checkSubMenu = item => {
+	_checkSubMenu = (item, index) => {
 		if (item.hasOwnProperty('children')) {
 			// Use item.url_key instead of item.name (contains Arabic Text if locale is Arabic)			
 			// let menu_item = 'menu.' + item.name.toUpperCase() + '.SHOW_ALL_' + item.name.toUpperCase();
@@ -124,8 +119,8 @@ class menuList extends Component {
 			let default_message = 'SHOW ALL ' + item.url_key.toLowerCase();
 
 			return (
-				
-				<div className="submenu" style={item.children[0].length > 0 ? {backgroundColor: '#fff', textAlign: 'center'} : {display: 'none'}}>
+
+				<div key={index} className="submenu" style={item.children[0].length > 0 ? { backgroundColor: '#fff', textAlign: 'center' } : { display: 'none' }}>
 					{
 						item.children.map(
 							(x) => this._renderSubMenuList(x, item.name, item.url_path)
@@ -157,20 +152,19 @@ class menuList extends Component {
 
 		return (
 			<>
-		
 				<li key={index} className="borderForMobileManu" style={{marginTop: 0}}> 
 			
-				{item.url_path === 'shop-by-brand' ? <Link to={'/' + this.state.store_locale + '/browse-all-brand' } style={{ textDecoration: 'none' ,padding: "15px 7px"}} onClick={() => document.getElementById("closeNav").click()} className={item.children[0].length > 0 ? '' : "removeWhite"}>
+				{item.url_path === 'shop-by-brand' ? <Link to={'/' + this.props.globals.store_locale + '/browse-all-brand' } style={{ textDecoration: 'none' ,padding: "15px 7px"}} onClick={() => document.getElementById("closeNav").click()} className={item.children[0].length > 0 ? '' : "removeWhite"}>
 						{item.name}
 						{item.children[0].length > 0 ?
 							<i className="fa fa-caret-down downMenu divShowOnWeb" aria-hidden="true"></i>
 						: <span  />}
 					</Link>:
 					<Link to={'/' + this.state.store_locale + '/products/' + item.url_path} style={{ textDecoration: 'none' ,padding: "15px 7px"}} onClick={() => document.getElementById("closeNav").click()} className={item.children[0].length > 0 ? '' : "removeWhite"}>
-					{item.name}
-					{item.children[0].length > 0 ?
-						<i className="fa fa-caret-down downMenu divShowOnWeb" aria-hidden="true"></i>
-					: <span  />}
+						{item.name}
+						{item.children[0].length > 0 ?
+							<i className="fa fa-caret-down downMenu divShowOnWeb" aria-hidden="true"></i>
+						: <span  />}
 				</Link>}
 				
 					{item.children[0].length > 0 ?<i className="subMenuTrigger" /> : <span />}
@@ -192,7 +186,7 @@ class menuList extends Component {
 	render() {
 		const { navData } = this.props;
      
-		return <ul className="link">
+		return <> <ul className="link">
 		<div className="divShowOnMobile">
 		<Spinner loading={this.props.spinnerProduct}></Spinner>
 		</div>
@@ -206,7 +200,9 @@ class menuList extends Component {
 			</li> */}
 			{Object.keys(navData).map(this._renderMenuNavigation)}
 
-		</ul>;
+			<li style={{ float: 'right', margin: -2 }}><Link className="present-finder-buton-div" to={`/${this.props.globals.store_locale}/presentfinder`} style={{ textDecoration: 'none' }}><span style={{ fontSize: 17, textAlign: 'center' }}><FormattedMessage id="presentfinder.text" defalutMessage="Present Finder" /></span></Link></li>
+		</ul>
+		</>;
 	}
 }
 
@@ -214,6 +210,7 @@ const mapStateToProps=state=>
 {
 	return{
 		spinnerProduct: state.spinner.loadingProduct,
+		globals:state.global
 	}
 }
 

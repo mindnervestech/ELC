@@ -93,6 +93,9 @@ class WishList extends Component {
     }
 
     componentDidUpdate(prevProps) {
+
+        
+
         if (prevProps.addToCardLoader !== this.props.addToCardLoader && this.props.item_added.item_added && this.props.item_added.add_cart_open_popUp && (!this.state.cartModelFlag || !cartModelFlag)) {
             if (!this.props.item_added.add_cart_error) {
                 this.onCloseAddCartModal();
@@ -329,10 +332,10 @@ class WishList extends Component {
                 {addToCartModal && this.props.cart_details.similar_products && !window.location.href.includes('products-details') ?
                     <div>
                         <Modal modalId="addToCartPopupID" open={addToCartModal} onClose={this.onCloseCartModal}>
-                            <AddToCartModal url_key={url_key} onCloseCartModal={this.onCloseCartModal} />
+                            <AddToCartModal onCloseCartModal={this.onCloseCartModal} />
                         </Modal>
                     </div> : ''}
-                <div className="padding-right-ar padding-breadcrumb" style={{ textAlign: 'start' }}>
+                <div className="padding-right-ar padding-breadcrumb">
                     <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
                         <span className="titleHover" style={{ fontSize: 15 }}><FormattedMessage id="Checkout.Home" defaultMessage="Home" /></span>
                         {this.props.globals.language === 'en' ?
@@ -341,7 +344,6 @@ class WishList extends Component {
                         }
                     </Link>
                     <span style={{ fontSize: 15, fontWeight: 'bold' }}><FormattedMessage id="profile.Wishlist.Title" defaultMessage="Wishlist" /></span>
-                    <h1 className="my-wishlist-header">My WishList</h1>
                 </div>
                 <div className="container">
                     <div className="row">
@@ -369,14 +371,6 @@ class WishList extends Component {
                                                 }} role="tab" aria-controls="USERWISHLIST" aria-selected="false" tabIndex={-1}>
                                                     <span className="FormattedMessage"><FormattedMessage id="profile.Wishlist.Title" defaultMessage="Wishlist" /></span></Link>
                                             </li>
-                                            <li className="apex-rds-item apex-rds-last apex-rds-after" role="presentation" id="R28337577127179591_tab">
-                                            <Link to={{
-                                                pathname: `/${store_locale}/birthday-club-account`,
-                                                state: { ...this.state }
-                                            }}
-                                                role="tab" aria-controls="USERWISHLIST" aria-selected="false" tabIndex={-1}>
-                                                <span className="FormattedMessage"><FormattedMessage id="profile.bcluAccountTab.Title" defaultMessage="Birthday Club" /></span></Link>
-                                        </li>
                                             <button onClick={this.logOut} className="t-Button t-Button--hot t-Button--gapTop divShowOnMobile floatRight" type="button" id="B28512592134220867"><span className="t-Button-label"><FormattedMessage id="header.SignOut" defaultMessage="Sign Out" /></span></button>
                                         </ul></div>
                                         <div className="t-ButtonRegion-buttons" />

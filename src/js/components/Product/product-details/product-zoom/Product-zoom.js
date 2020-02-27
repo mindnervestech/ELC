@@ -106,7 +106,7 @@ class ProductZoom extends Component {
 	_getImageData = data => {
 		if (data) {
 			
-			let thumbnails, zoomimages;
+			let thumbnails, zoomimages,primaryimage;
 
 			if (data.thumbnail) {
 				thumbnails = data.thumbnail;
@@ -114,20 +114,25 @@ class ProductZoom extends Component {
 			if (data.zoomimage) {
 				zoomimages = data.zoomimage;
 			}
+			if(data.primaryimage)
+			{
+				primaryimage=data.primaryimage;
+			}
 
-			if (data.thumbnail.length > 1) {
+
+			// if (data.thumbnail.length > 1) {
 				return (
 					<a  onClick={(e) => this._handleThumbImgClick(e, 'img')} href={zoomimages[0]} className="MagicZoom" id="zoom-v" data-options="hint:false; zoomMode: off; expand: off;">
-						<img src={thumbnails[0]} alt="" />
+						<img src={primaryimage[0]} alt="" />
 					</a>
 				);
-			} else {
-				return (
-					<a onClick={(e) => this._handleThumbImgClick(e, 'img')}  href={zoomimages[0]} className="MagicZoom" id="zoom-v" data-options="hint:false; zoomMode: off; expand: off;">
-						<img src={zoomimages[0]} alt="" />
-					</a>
-				);
-			}
+			// } else {
+			// 	return (
+			// 		<a onClick={(e) => this._handleThumbImgClick(e, 'img')}  href={zoomimages[0]} className="MagicZoom" id="zoom-v" data-options="hint:false; zoomMode: off; expand: off;">
+			// 			<img src={zoomimages[0]} alt="" />
+			// 		</a>
+			// 	);
+			// }
 
 		}
 	};
@@ -148,7 +153,7 @@ class ProductZoom extends Component {
 				return (<>
 					<div data-slide-id={`video-${index}`} class="zoom-gallery-slide video-slide" id={`video-active-${index}`}>
 						<video controls autoplay="autoplay"  loop muted preload style={{ width: '100%' }}>
-							<source src={item} />
+							<source src={item} type="video/mp4" />
 						</video>
 					</div>
 				</>)

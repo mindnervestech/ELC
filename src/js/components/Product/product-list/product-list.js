@@ -10,8 +10,10 @@ class ProductData extends Component {
 	}
 
 	componentWillMount() {
-		if (this.props.productDetails) {
+		if (this.props.productDetails!==undefined)  {
 			this.props.onClearProductDetails(this.props.productDetails);
+		}
+		if(this.props.productDetailsPF){
 			this.props.onClearBrandProductDetails(this.props.productDetails)
 		}
 	}

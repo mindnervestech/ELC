@@ -86,7 +86,16 @@ class BirthdayClubSummary extends Component {
                         <span>&nbsp;/&nbsp;&nbsp;</span>
                     }
                 </Link>
-                <span style={{ fontSize: 15, fontWeight: 'bold' }}><FormattedMessage id="profile.Account.Title" defaultMessage="Account" /></span>
+                <Link to={`/${store_locale}/myaccount`} style={{ textDecoration: 'none' }}>
+                    <span className="titleHover" style={{ fontSize: 15 }}><FormattedMessage id="Account.text" defaultMessage="Account" /></span>
+                    {language === 'en' ?
+                        <span>&nbsp;\&nbsp;&nbsp;</span> :
+                        <span>&nbsp;/&nbsp;&nbsp;</span>
+                    }
+                </Link>
+
+                <span style={{ fontSize: 15, fontWeight: 'bold' }}><FormattedMessage id="birthdayclub.header" defaultMessage="Birthday Club" /></span>
+
                 <h1 className="address-header"><FormattedMessage id="birthdayclub.header" defaultMessage="Birthday Club" /></h1>
                 <hr />
             </div>
@@ -202,7 +211,7 @@ class BirthdayClubSummary extends Component {
                                                         })}
                                                     </tbody>
                                                 </Table> :
-                                                <div style={{ marginBottom: 50 }}><span style={{ fontSize: "24px" }}><FormattedMessage id="PageTitle.birthdayclubhistory.Empty" defaultMessage="Birthday club data is not available for this account" /></span></div>
+                                                <div style={{ marginBottom: 50 }}><span style={{ fontSize: "24px" }}><FormattedMessage id="birthdayclubhistory.Empty" defaultMessage="Birthday club data is not available for this account" /></span></div>
                                             }
                                         </div>
                                         <div className="t-Report-links" />

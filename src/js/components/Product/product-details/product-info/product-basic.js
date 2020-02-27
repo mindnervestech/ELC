@@ -3,7 +3,7 @@ import * as actions from '../../../../redux/actions/index';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
-
+import { initializeF, trackF } from '../../../utility/facebookPixel';
 class ProductBasic extends Component {
     constructor(props) {
         super(props);
@@ -65,6 +65,21 @@ class ProductBasic extends Component {
         let data = e;
 		let prodData = {};
 		this.setState({showAlert: true, cartModelFlag: false})
+		let currency='';
+		if (this.props.globals.country === 'KSA' || this.props.globals.country === 'ksa') {
+			currency = 'SAR';
+		} else {
+			currency = 'AED';
+		}
+		let content_ids = []
+		let obj = {
+			id: data.sku,
+		}
+		content_ids.push(obj);
+		let price = data.price && (data.price.toFixed(2));
+		initializeF()
+		trackF('AddToCart', { content_type: 'product', currency: currency, content_ids: content_ids, value: price });
+
 		if (isUserLoggedIn) {
 			if (data.type == 'simple') {
 				prodData = {
@@ -202,7 +217,7 @@ class ProductBasic extends Component {
 
                     <div className="button-model" onClick={() => this.gotoCheckOutPage()}>
                         <Link to={`/${this.props.globals.store_locale}/cart`}>
-                            <button className="alsoLikeCardButton"><FormattedMessage id="Cart.CheckOut.Title" defaultMessage="Check out" /></button>
+                            <button style={{backgroundColor:'#EE0E19 !important',border:'solid 1px #EE0E19 !important'}} className="alsoLikeCardButton"><FormattedMessage id="Cart.CheckOut.Title" defaultMessage="Check out" /></button>
                         </Link>
                     </div>
                 </div>

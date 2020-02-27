@@ -105,14 +105,6 @@ class Footer extends Component {
 
         }
 
-        // if (isMobile) {
-        //     document.getElementById("mobileWhatsapp").appendChild(mobileWhatsapp);
-        //     if (document.getElementById('mobileWhatsapp').className === "wa-message-us") {
-
-        //     }
-
-        // }
-
     }
     handleValidation = () => {
         let email = this.state.email;

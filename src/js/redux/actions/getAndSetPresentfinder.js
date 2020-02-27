@@ -2,6 +2,7 @@ import * as actionTypes from './actionTypes';
 import { API } from '../../api/api';
 import { loadingSpinner, loadingSpinnerForProduct } from './globals';
 
+
 ///-------------------------------- GET PRSENT FINDER DATA ----------------------------------------///
 export const callForGetPresentFinderData = (payload) => {
 	return {
@@ -17,7 +18,7 @@ export const getPresentFinderData = payload => {
 		};
 
 		dispatch(loadingSpinner({ loadingSpinner: true }))
-
+ 
 		let cb = {
 			success: res => {
 
@@ -47,7 +48,6 @@ export const callForSetPresentFinderData = (payload) => {
 
 
 export const getAndSetPresentFinderProducts = payload => {
-	console.log(payload,"payload")
 	return (dispatch, getState) => {
 
 		const data = {
@@ -57,17 +57,20 @@ export const getAndSetPresentFinderProducts = payload => {
 			priceTo:payload.priceTo
 		};
 	
-
+		
 		dispatch(loadingSpinner({ loadingSpinner: true }))
-
+		
 		let cb = {
 			success: res => {
 
-				if (true) {
-					//console.log("data brands", res)
+				if (res.status===true) {
 					dispatch(callForSetPresentFinderData({ productData: res }))
 					dispatch(loadingSpinner({ loadingSpinner: true }))
-				} 
+				} else
+				{
+					dispatch(callForSetPresentFinderData({ productData: res }))
+					dispatch(loadingSpinner({ loadingSpinner: false }))
+				}
 			},
 			error: err => {
 				dispatch(loadingSpinner({ loadingSpinner: false }))

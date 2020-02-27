@@ -1,4 +1,17 @@
- 
+
+@media only screen and (max-width:767px){
+    html[dir="rtl"] .removepad{
+        margin-left: 0px!important;
+        margin-right: 0px!important;
+    }
+}
+
+@media only screen and( min-width:768px) and (max-width:1024px){
+    html[dir="rtl"] .removepad{
+        margin-left: 0px!important;
+        margin-right: 0px!important;
+    }   
+}
     .present_finder_header{
         font-size: 70px;
         line-height: 90px;

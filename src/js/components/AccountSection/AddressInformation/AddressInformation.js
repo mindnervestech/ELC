@@ -141,6 +141,10 @@ class AddressInformation extends Component {
 
 
     render() {
+        let obj={
+            textAlign:'center',
+            paddingBottom:45
+        }
 
         let alertBox = null;
 
@@ -172,6 +176,7 @@ class AddressInformation extends Component {
         const add = <AddressForm closeModal={this.onCloseFirstModal} Actype={this.state.modalType} addressForEdit={this.state.addressForEdit} />
         let addressCard = null;
         const addressList = this.props.addressBook;
+        let language = this.props.globals.language;
 
         if (addressList.length > 0) {
             addressCard = addressList.map((address, index) => {
@@ -211,9 +216,16 @@ class AddressInformation extends Component {
                             <span>&nbsp;/&nbsp;&nbsp;</span>
                         }
                     </Link>
-                    <span style={{ fontSize: 15, fontWeight: 'bold' }}><FormattedMessage id="profile.Account.Title" defaultMessage="Account" /></span>
-                    <h1 className="address-header">Addresses</h1>
-                    <Link className="addnew-text floatAddtext" to={{ pathname:`/${store_locale}/add-address`,addAddressRedirect:true}} style={{ textDecoration: 'none' }}>Add New
+                    <Link to={`/${store_locale}/myaccount`} style={{ textDecoration: 'none' }}>
+                    <span className="titleHover" style={{ fontSize: 15 }}><FormattedMessage id="profile.Account.Title" defaultMessage="Account" /></span>
+                    {language === 'en' ?
+                        <span>&nbsp;\&nbsp;&nbsp;</span> :
+                        <span>&nbsp;/&nbsp;&nbsp;</span>
+                    }
+                </Link>
+                    <span style={{ fontSize: 15}}><FormattedMessage id="profile.Address.Title" defaultMessage="Addresses" /></span>
+                    <h1 className="address-header"><FormattedMessage id="profile.Address.Title" defaultMessage="Addresses" /></h1>
+                    <Link className="addnew-text floatAddtext" to={{ pathname:`/${store_locale}/add-address-account`,addAddressRedirect:true}} style={{ textDecoration: 'none' }}><FormattedMessage id="addnew.text" defaultMessage="Add New"/>
                     
                     </Link>
                     

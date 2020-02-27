@@ -1,3 +1,63 @@
+html[dir="rtl"] .review-description{
+    float:right
+}
+.review-description{
+    float:left
+}
+
+
+.present-finder-text-align{
+    text-align: left
+}
+
+html[dir="rtl"] .present-finder-text-align{
+    text-align: right
+}
+
+.present-finder-buton-div{
+    background-color: #ee0e19 !important;
+    color: white !important;
+    width: 177px;
+    height: 77px;
+    margin: 0px !important;
+    line-height: 33px !important;
+    justify-content: center;
+     padding: 24px !important; 
+    margin-top: 0px;
+    right:-12px;
+}
+
+html[dir=rtl] .present-finder-buton-div{
+    background-color: #ee0e19 !important;
+    color: white !important;
+    width: 177px;
+    height: 77px;
+    margin: 0px !important;
+    line-height: 33px !important;
+    justify-content: center;
+     padding: 24px !important; 
+    margin-top: 0px;
+    right:-12px;
+}
+
+.present-finder-buton-div:hover{
+    background-color: #df0c00 !important ;
+}
+.glyphicon {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: "Glyphicons Halflings";
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .glyphicon-chevron-left:before {
+    content: "\e079";
+  }
+
 .height-add-address-book{
     height: 100vh !important;
 }
@@ -49,11 +109,11 @@ html[dir="rtl"] .li-my-account-tab{
 
     .modal-my-account{
         width:60%;
-        height: 250px;
+        height: 200px;
         background-color:#fff;
         position: absolute;
         top:0;
-        right:10px !important;
+        right:0px !important;
         align-content:left !important;
         z-index:9
     }
@@ -72,37 +132,22 @@ html[dir="rtl"] .modal-my-account{
 
 
 .share-icon-width{
-    width:121px !important;
+    width:100px !important;
 }
-
-
-html[dir="rtl"] .arabic-bold{
-    font-family: GESS-Bold !important;
-  }
 .whatsapp{
     margin-top:5% !important;
-}
-.padding-video-play {
-    padding:25px
 }
 @media only screen and (min-width:767px){
     .removeWhite{
         padding: 15px 7px;
        }
-       .padding-video-play {
-        padding:15px  !important;
-    }
 }
 
 @media only screen and (min-width:768px) and (max-width:1024px){
     .removeWhite{
         padding: 15px 7px;
        }
-       .padding-video-play {
-        padding:15px!important;
-    }
 }
-
 .tooltipcss{
     position: relative;
     vertical-align: middle;
@@ -3033,9 +3078,9 @@ html[dir="rtl"] .header .changecountry .country .list a:before {
 }
 
 .homePage .alsoLikeCardButton {
-    background-color: #EE0E19;
+    background-color: #EE0E19 !important;
     color: #fff;
-    border: solid 1px #EE0E19;
+    border: solid 1px #EE0E19 !important;
     border-radius: .4rem;
     font-size: 1.4rem;
     font-weight: bold;
@@ -6364,7 +6409,7 @@ html[dir="rtl"] .header .changecountry .country .list {
 }
 html[dir="rtl"] .header .changecountry {
     border: none !important;
-    width: 33% !important;
+    width: 30% !important;
     display: inline-block !important;
     position: relative !important;
     left: 5px !important;
@@ -6932,7 +6977,7 @@ html[dir="rtl"] .productCategaryNamePadding{
 }
 
 html[dir="rtl"] .likeAInputName {
-    position: absolute;
+ 
     top: -1px;
     padding-left: 0px;
     padding-right: 15px;
@@ -7329,7 +7374,7 @@ html[dir="rtl"] .applyFilterButtonOnMobileSpasing{
     }
 
     html[dir="rtl"] .likeAInputName {
-        position: absolute;
+     
         top: -1px;
         padding-left: 0px;
         padding-right: 15px;

@@ -8,10 +8,14 @@ import { Link, Redirect, withRouter } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import Spinner2 from '../Spinner/Spinner2';
 
+
+
 var _ = require('lodash');
 
 let productListingData = {}
 let productList = {}
+let newFilterArrayFromPF = {}
+let newArrayFromShobByBrand={}
 let filterData = []
 let filterOptionArray = []
 let filterOptionArrayForCheck = []
@@ -25,16 +29,30 @@ let filterFirstOption = ""
 let updateHideOption = true
 let afterFilterShowOptionListCheck = true
 let onClickFilterOptionToApplyFilter = false
-
 let selectedFilter = [];
 class SideManu extends Component {
 	constructor(props) {
 		super(props);
+		
 		onClickFilterOptionToApplyFilter = false
-		productListingData = this.props.productDetails.products.product_data;
-		productList = this.props.productDetails.products.product_data;
-		filterList = this.props.productDetails.filters;
-		this.state = {
+		if (this.props.productDetails  && this.props.comefrompf.split('/')[3] !== "brand" &&  this.props.comefrompf.split('/')[3] !== "present_finder") {
+			productListingData = this.props.productDetails.products.product_data;
+			productList = this.props.productDetails.products.product_data;
+			filterList = this.props.productDetails.filters;
+		}
+		else if (this.props.productDetailFromPf && this.props.comefrompf.split('/')[3] === "present_finder") {
+			productListingData = this.props.productDetailFromPf.product_data;
+			productList = this.props.productDetailFromPf.product_data;
+			newFilterArrayFromPF = this._getUnique_filter(this.props.productDetailFromPf.filters);
+
+			
+
+		}else if(this.props.productDetailFromSb && this.props.comefrompf.split('/')[3] === "brand"){
+			productListingData = this.props.productDetailFromSb.product_data;
+			productList = this.props.productDetailFromSb.product_data;
+			newArrayFromShobByBrand = this._getUnique_filter(this.props.productDetailFromSb.filters);
+		}
+        this.state = {
 			list: {},
 			filterOptionCheck: true,
 			narrowResult: [],
@@ -44,10 +62,73 @@ class SideManu extends Component {
 
 	}
 
-	componentDidUpdate(prevProps, prevState) {
+	_getUnique_filter = (item) => {
+		let FilterArray={}
+		let age={};
+		let brand={};
+		let gender={};
+		let sub_categories={};
+		let Age = item.Age;
+		let Brand = item.Brand
+		let Gender = item.Gender;
+		let Sub_Category=item.Sub_Category
+		if(Age){
+			age = Array.from(new Set(Age.map(x => x.name)))
+			.map(name => {
+				return {
+					name: name,
+					code: Age.find(x => x.name === name).code,
+					value: Age.find(x => x.name === name).value
+				}
+			})	
+		}
+		
+		if(Brand){
+			brand = Array.from(new Set(Brand.map(x => x.name)))
+			.map(name => {
+				return {
+					name: name,
+					code: Brand.find(x => x.name === name).code,
+					value: Brand.find(x => x.name === name).value
+				}
+			})
+		}
+
+		if(Gender){
+			gender = Array.from(new Set(Gender.map(x => x.name)))
+			.map(name => {
+				return {
+					name: name,
+					code: Gender.find(x => x.name === name).code,
+					value: Gender.find(x => x.name === name).value
+				}
+			})
+		}
+		if(Sub_Category){
+			sub_categories= Array.from(new Set(Sub_Category.map(x => x.name)))
+			.map(name => {
+				return {
+					name: name,
+					code: Sub_Category.find(x => x.name === name).code,
+					value:Sub_Category.find(x => x.name === name).value
+				}
+			})
+		}
+		
+		
+
+	
+
+		FilterArray = {
+			Age: age,
+			Brand: brand,
+			Gender: gender,
+			Sub_Category:sub_categories
+		}
+
+		return FilterArray
 
 	}
-
 	changeFilterManu() {
 		this.state = {
 			list: {},
@@ -55,7 +136,7 @@ class SideManu extends Component {
 			narrowResult: [],
 			clearAllOption: false,
 		};
-		if (Object.keys(this.props.productDetails.products).length > 0) {
+		if ( this.props.productDetails && this.props.productDetails.products && (Object.keys(this.props.productDetails.products).length > 0) && this.props.comefrompf.split('/')[3] !== "present_finder" ) {
 			filterOptionArrayForCheck = []
 			filterOptionArraySubCategary = []
 			filterOptionArrayForCheckValidate = []
@@ -97,10 +178,111 @@ class SideManu extends Component {
 			afterFilterShowOptionList = filterOptionArrayForCheckValidate
 			this.state.list = filterList
 		}
+
+
+		////Preset Finder Filter
+		else if (this.props.productDetailFromPf && this.props.productDetailFromPf.product_data &&
+			 (Object.keys(this.props.productDetailFromPf.product_data).length > 0) && this.props.comefrompf.split('/')[3] === "present_finder") {
+			filterOptionArrayForCheck = []
+			filterOptionArraySubCategary = []
+			filterOptionArrayForCheckValidate = []
+			filterOptionCheck = false;
+			const filterOptionList = newFilterArrayFromPF;
+			for (let Categary in filterOptionList) {
+				for (let subCategary in filterOptionList[Categary]) {
+					filterOptionArrayForCheck.push(filterOptionList[Categary][subCategary].code + "/" + filterOptionList[Categary][subCategary].name);
+					filterOptionArraySubCategary.push(filterOptionList[Categary][subCategary].name)
+				}
+			}
+			for (let value in filterOptionArrayForCheck) {
+				let splitValue = filterOptionArrayForCheck[value].split("/");
+				let checkSubmanu = 0
+				let remove = value
+				for (let item in productListingData) {
+					if (splitValue[0] == "color") {
+						if (splitValue[1] == productListingData[item].json.color_english) {
+							if (checkSubmanu == 0) {
+								checkSubmanu = 1
+								filterOptionArrayForCheckValidate.push(filterOptionArrayForCheck[value])
+							}
+						}
+					} else {
+						for (let filter in productListingData[item].json.filtersdata) {
+							for (let age in productListingData[item].json.filtersdata[filter]) {
+								if (checkSubmanu == 0) {
+									if (splitValue[1] == productListingData[item].json.filtersdata[filter][age]) {
+										filterOptionArrayForCheckValidate.push(filterOptionArrayForCheck[value])
+										checkSubmanu = 1
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			filterOptionArrayForCheckValidateBackup = filterOptionArrayForCheckValidate
+			afterFilterShowOptionList = filterOptionArrayForCheckValidate
+			if (this.props.productDetailFromPf && this.props.comefrompf.split('/')[3]==="present_finder") {
+				this.state.list = newFilterArrayFromPF;
+			}else if(this.props.productDetails && this.props.comefrompf.split('/')[3]!=="present_finder"){
+			this.state.list = filterList
+			}
+		}
+		else if (this.props.productDetailFromSb && this.props.productDetailFromSb.product_data &&
+			(Object.keys(this.props.productDetailFromSb.product_data).length > 0) && this.props.comefrompf.split('/')[3] === "brand") {
+			filterOptionArrayForCheck = []
+			filterOptionArraySubCategary = []
+			filterOptionArrayForCheckValidate = []
+			filterOptionCheck = false;
+			const filterOptionList = newArrayFromShobByBrand;
+			for (let Categary in filterOptionList) {
+				for (let subCategary in filterOptionList[Categary]) {
+					filterOptionArrayForCheck.push(filterOptionList[Categary][subCategary].code + "/" + filterOptionList[Categary][subCategary].name);
+					filterOptionArraySubCategary.push(filterOptionList[Categary][subCategary].name)
+				}
+			}
+			for (let value in filterOptionArrayForCheck) {
+				let splitValue = filterOptionArrayForCheck[value].split("/");
+				let checkSubmanu = 0
+				let remove = value
+				for (let item in productListingData) {
+					if (splitValue[0] == "color") {
+						if (splitValue[1] == productListingData[item].json.color_english) {
+							if (checkSubmanu == 0) {
+								checkSubmanu = 1
+								filterOptionArrayForCheckValidate.push(filterOptionArrayForCheck[value])
+							}
+						}
+					} else {
+						for (let filter in productListingData[item].json.filtersdata) {
+							for (let age in productListingData[item].json.filtersdata[filter]) {
+								if (checkSubmanu == 0) {
+									if (splitValue[1] == productListingData[item].json.filtersdata[filter][age]) {
+										filterOptionArrayForCheckValidate.push(filterOptionArrayForCheck[value])
+										checkSubmanu = 1
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			filterOptionArrayForCheckValidateBackup = filterOptionArrayForCheckValidate
+			afterFilterShowOptionList = filterOptionArrayForCheckValidate
+			if (this.props.productDetailFromPf && this.props.comefrompf.split('/')[3]==="present_finder") {
+				this.state.list = newFilterArrayFromPF;
+			}else if(this.props.productDetailFromSb && this.props.comefrompf.split('/')[3]==="brand"){
+			this.state.list = newArrayFromShobByBrand
+			}else if(this.props.productDetails){
+				this.state.list=filterList
+			}
+		}
 	}
 
 	componentWillMount() {
-		if (Object.keys(this.props.productDetails.products).length > 0) {
+	
+		//newFilterArray={}
+		if (this.props.productDetails && this.props.productDetails.products && (Object.keys(this.props.productDetails.products).length > 0) && this.props.comefrompf.split('/')[3] !== "present_finder" ) {
 			filterOptionArrayForCheck = []
 			filterOptionArraySubCategary = []
 			filterOptionArrayForCheckValidate = []
@@ -142,7 +324,105 @@ class SideManu extends Component {
 			afterFilterShowOptionList = filterOptionArrayForCheckValidate;
 
 			selectedFilter = [];
+
 			this.setState({ list: filterList });
+
+		}
+
+
+		//Present Finder Filter New 
+
+
+		else if (this.props.productDetailFromPf && (Object.keys(this.props.productDetailFromPf)) && (Object.keys(this.props.productDetailFromPf.product_data).length > 0) && this.props.comefrompf.split('/')[3] === "present_finder") {
+			filterOptionArrayForCheck = []
+			filterOptionArraySubCategary = []
+			filterOptionArrayForCheckValidate = []
+			filterOptionCheck = false;
+			const filterOptionList = newFilterArrayFromPF;
+			for (let Categary in filterOptionList) {
+				for (let subCategary in filterOptionList[Categary]) {
+					filterOptionArrayForCheck.push(filterOptionList[Categary][subCategary].code + "/" + filterOptionList[Categary][subCategary].name);
+					filterOptionArraySubCategary.push(filterOptionList[Categary][subCategary].name)
+				}
+			}
+			for (let value in filterOptionArrayForCheck) {
+				let splitValue = filterOptionArrayForCheck[value].split("/");
+				let checkSubmanu = 0
+				let remove = value
+				for (let item in productListingData) {
+					if (splitValue[0] == "color") {
+						if (splitValue[1] == productListingData[item].json.color_english) {
+							if (checkSubmanu == 0) {
+								checkSubmanu = 1
+								filterOptionArrayForCheckValidate.push(filterOptionArrayForCheck[value])
+							}
+						}
+					} else {
+						for (let filter in productListingData[item].json.filtersdata) {
+							for (let age in productListingData[item].json.filtersdata[filter]) {
+								if (checkSubmanu == 0) {
+									if (splitValue[1] == productListingData[item].json.filtersdata[filter][age]) {
+										filterOptionArrayForCheckValidate.push(filterOptionArrayForCheck[value])
+										checkSubmanu = 1
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			filterOptionArrayForCheckValidateBackup = filterOptionArrayForCheckValidate
+			afterFilterShowOptionList = filterOptionArrayForCheckValidate;
+
+			selectedFilter = [];
+				this.setState({ list: newFilterArrayFromPF });
+		}
+
+
+
+		else if (this.props.productDetailFromSb && (Object.keys(this.props.productDetailFromSb)) && (Object.keys(this.props.productDetailFromSb.product_data).length > 0) && this.props.comefrompf.split('/')[3] === "brand") {
+			filterOptionArrayForCheck = []
+			filterOptionArraySubCategary = []
+			filterOptionArrayForCheckValidate = []
+			filterOptionCheck = false;
+			const filterOptionList = newArrayFromShobByBrand;
+			for (let Categary in filterOptionList) {
+				for (let subCategary in filterOptionList[Categary]) {
+					filterOptionArrayForCheck.push(filterOptionList[Categary][subCategary].code + "/" + filterOptionList[Categary][subCategary].name);
+					filterOptionArraySubCategary.push(filterOptionList[Categary][subCategary].name)
+				}
+			}
+			for (let value in filterOptionArrayForCheck) {
+				let splitValue = filterOptionArrayForCheck[value].split("/");
+				let checkSubmanu = 0
+				let remove = value
+				for (let item in productListingData) {
+					if (splitValue[0] == "color") {
+						if (splitValue[1] == productListingData[item].json.color_english) {
+							if (checkSubmanu == 0) {
+								checkSubmanu = 1
+								filterOptionArrayForCheckValidate.push(filterOptionArrayForCheck[value])
+							}
+						}
+					} else {
+						for (let filter in productListingData[item].json.filtersdata) {
+							for (let age in productListingData[item].json.filtersdata[filter]) {
+								if (checkSubmanu == 0) {
+									if (splitValue[1] == productListingData[item].json.filtersdata[filter][age]) {
+										filterOptionArrayForCheckValidate.push(filterOptionArrayForCheck[value])
+										checkSubmanu = 1
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			filterOptionArrayForCheckValidateBackup = filterOptionArrayForCheckValidate
+			afterFilterShowOptionList = filterOptionArrayForCheckValidate;
+
+			selectedFilter = [];
+				this.setState({ list: newArrayFromShobByBrand });
 		}
 	}
 
@@ -217,7 +497,13 @@ class SideManu extends Component {
 				afterFilterShowOptionList = filterOptionArrayForCheckValidate
 			}
 			this.setState({ loader: false });
-			this.setState({ list: filterList });
+			if (this.props.productDetailFromPf && this.props.comefrompf.split('/')[3]==="present_finder") {
+				this.state.list = newFilterArrayFromPF;
+			}else if(this.props.productDetailFromSb && this.props.comefrompf.split('/')[3]==="brand"){
+			this.state.list = newArrayFromShobByBrand
+			}else if(this.props.productDetails){
+				this.state.list=filterList
+			}
 		}
 	}
 
@@ -252,25 +538,33 @@ class SideManu extends Component {
 		if (remove != -1) {
 			filterOptionArray.splice(remove, 1);
 			remove = -1;
-			for(var i in selectedFilter){
-				if(filt[1] == selectedFilter[i]){
+			for (var i in selectedFilter) {
+				if (filt[1] == selectedFilter[i]) {
 					selectedFilter.splice(i, 1)
 				}
 			}
-			
-			
+
+
 		}
 		this.setState({ narrowResult: filterOptionArray })
 		if (filterOptionArray.length == 0) {
 			this.setState({ clearAllOption: false });
 			productList = productListingData;
 			filterData = [];
-			this.props.action(productListingData,false);
+			this.props.action(productListingData, false);
 			filterOptionArrayForCheckValidate = filterOptionArrayForCheckValidateBackup
 			afterFilterShowOptionList = filterOptionArrayForCheckValidateBackup
 			afterFilterShowOptionListCheck = true
 			this.setState({ loader: false });
-			this.setState({ list: filterList });
+			//this.setState({ list: filterList });
+			if (this.props.productDetailFromPf &&  this.props.comefrompf.split('/')[3] === "present_finder") {
+				this.setState({ list: newFilterArrayFromPF });
+			}else if(this.props.productDetailFromSb && this.props.comefrompf.split('/')[3]==="brand") {
+				this.setState({ list: newArrayFromShobByBrand });
+			}
+			else if(this.props.productDetails){
+				this.setState({list:filterList})
+			}
 		} else {
 			this.setState({ clearAllOption: true });
 			let checkForMultipalFilter = true
@@ -368,10 +662,11 @@ class SideManu extends Component {
 			if (Object.keys(uniqueNames2).length != 0) {
 				productList = uniqueNames2
 			}
-			this.props.action(filterData,false)
+			this.props.action(filterData, false)
 			updateHideOption = true
 			this.hideFilterOtionThoseNotInProduct()
 		}
+		this.forceUpdate();
 	}
 
 	clearFilter = () => {
@@ -385,7 +680,16 @@ class SideManu extends Component {
 		filterOptionArrayForCheckValidate = filterOptionArrayForCheckValidateBackup;
 		afterFilterShowOptionList = filterOptionArrayForCheckValidateBackup;
 		afterFilterShowOptionListCheck = true;
-		this.setState({ list: filterList });
+		if (this.props.productDetailFromPf &&  this.props.comefrompf.split('/')[3] === "present_finder") {
+			this.setState({ list: newFilterArrayFromPF });
+		}else if(this.props.productDetailFromSb && this.props.comefrompf.split('/')[3]==="brand") {
+			this.setState({ list: newArrayFromShobByBrand });
+		}
+		else if(this.props.productDetails && this.props.comefrompf.split('/')[3] !== "present_finder" && this.props.comefrompf.split('/')[3] !== "brand" ){
+			this.setState({list:filterList})
+		}
+		this.forceUpdate();
+
 	}
 
 	appleFilterForMobile = () => {
@@ -443,7 +747,7 @@ class SideManu extends Component {
 		if (Checked == 0) {
 			return (
 				<div style={{ position: 'relative' }}>
-					<div onClick={() => this.applyFilter(code + "/" + name, "")} class="likeAInputNotSelected"><div class="likeAInput"></div></div>
+					<div onClick={() => this.applyFilter(code + "/" + name, "")} style={{cursor:'pointer'}}  className="likeAInputNotSelected"><div className="likeAInput"></div></div>
 					<div className="likeAInputName" onClick={() => this.applyFilter(code + "/" + name, "")}>{name}</div>
 					{/* <input type="checkbox" checked={false} onClick={() => this.applyFilter(code + "/" + name, "")} value={name} /> {name} */}
 				</div>
@@ -452,8 +756,8 @@ class SideManu extends Component {
 			Checked = 0;
 			return (
 				<div style={{ position: 'relative' }}>
-					<div onClick={() => this.applyFilter(code + "/" + name, "")} class="likeAInputSelected"><div class="likeAInput"></div></div>
-					<div className="likeAInputName" onClick={() => this.applyFilter(code + "/" + name, "")}>{name}</div>
+					<div onClick={() => this.applyFilter(code + "/" + name, "")} style={{cursor:'pointer'}} className="likeAInputSelected"><div className="likeAInput"></div></div>
+					<div className="likeAInputName"  onClick={() => this.applyFilter(code + "/" + name, "")}>{name}</div>
 					{/* <input type="checkbox" checked={true} onClick={() => this.applyFilter(code + "/" + name, "")} value={name} /> {name} */}
 				</div>
 			);
@@ -494,11 +798,35 @@ class SideManu extends Component {
 	}
 
 	render() {
-		const list = this.props.productDetails.filters;
+
+		if (this.props.productDetailFromPf && this.props.comefrompf.split('/')[3] === "present_finder") {
+			const list = newFilterArrayFromPF
+		}
+		 else if(this.props.productDetailFromSb && this.props.comefrompf.split('/')[3]==="brand") {
+			const list = newArrayFromShobByBrand;
+
+		}
+		else if(this.props.productDetails && this.props.comefrompf.split('/')[3] !== "present_finder" && this.props.comefrompf.split('/')[3] !== "brand"){
+          const list=filterList;
+		}
+
+		
 		if (onClickFilterOptionToApplyFilter == false) {
-			productListingData = this.props.productDetails.products.product_data;
-			productList = this.props.productDetails.products.product_data;
-			filterList = this.props.productDetails.filters;
+			if (this.props.productDetails && this.props.comefrompf.split('/')[3] !== "present_finder" && this.props.comefrompf.split('/')[3] !== "brand") {
+				productListingData = this.props.productDetails.products.product_data;
+				productList = this.props.productDetails.products.product_data;
+				filterList = this.props.productDetails.filters;
+			}
+			else if (this.props.productDetailFromPf && this.props.comefrompf.split('/')[3] === "present_finder") {
+				productListingData = this.props.productDetailFromPf.product_data;
+				productList = this.props.productDetailFromPf.product_data;
+				filterList = newFilterArrayFromPF;//this.props.productDetailFromPf.filters;
+			}
+			else if (this.props.productDetailFromSb && this.props.comefrompf.split('/')[3] === "brand"){
+				productListingData = this.props.productDetailFromSb.product_data;
+				productList = this.props.productDetailFromSb.product_data;
+				filterList = newArrayFromShobByBrand
+			}
 			this.changeFilterManu()
 		}
 		return (

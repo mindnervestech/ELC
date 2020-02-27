@@ -45,6 +45,9 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
+        case actionType.CLEAR_SHIPPING_DETAILS:
+             return updateObject(state, action.payload)
+
         case actionType.GET_MY_CART:
             return updateObject(state, action.payload)
 

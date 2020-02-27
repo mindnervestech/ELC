@@ -10,6 +10,7 @@ import freeDelivery from '../../../../../assets/images/header/Truck1.svg';
 import freeCollect from '../../../../../assets/images/header/Mouse.svg';
 import Popup from 'react-popup';
 import {Redirect } from 'react-router-dom';
+import { initializeF, trackF } from '../../../utility/facebookPixel';
 import Spinner from '../../../../components/Spinner/Spinner2';
 
 const wait = require('../../../../../assets/images/wait.gif');
@@ -84,6 +85,21 @@ class AddToBasketModal extends Component {
 		} else {
 			addQty = this.state.defaultQty;
 		}
+		let currency = '';
+		if (this.props.globals.country === 'KSA' || this.props.globals.country === 'ksa') {
+			currency = 'SAR';
+		} else {
+			currency = 'AED';
+		}
+		let content_ids = []
+		let obj = {
+			id: data.sku,
+		}
+		content_ids.push(obj);
+		let price = data.price && (data.price.toFixed(2)) * addQty;
+		initializeF()
+		trackF('AddToCart', { content_type: 'product', currency: currency, content_ids: content_ids, value: price });
+
 		if (isUserLoggedIn) {
 			if (data.type === 'simple') {
 				prodData = {
@@ -219,12 +235,8 @@ class AddToBasketModal extends Component {
 				if (value === '1') {
 					return (
 						<div>
-							
-							<span  className="product-price" >{currency}&nbsp;{offerData[value]}</span>
-							<span className="product-price-line" >{currency}&nbsp;{orignalPrise}.00</span>
-						
-							{/* <span className="product-price">{currency}&nbsp;{offerData[value]}</span>
-							<span className="product-price-line">{currency}&nbsp;{currency}&nbsp;{orignalPrise}.00</span> */}
+							<span className="product-price">{currency}&nbsp;{offerData[value]}</span>
+							<span className="product-price-line">{currency}&nbsp;{Number(orignalPrise).toFixed(2)}</span>
 						</div>
 					);
 				} else {
