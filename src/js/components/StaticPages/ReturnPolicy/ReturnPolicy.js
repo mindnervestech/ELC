@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import '../../../../styles/StaticPages.css';
+import Axios from 'axios';
 import { Link, Redirect } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
-import Axios from 'axios';
 import cookie from 'react-cookies';
 import { connect } from 'react-redux';
 import { STATIC_PAGES_URL, API_TOKEN } from '../../../api/globals';
-import Spinner from '../../Spinner/Spinner.js'
-import { Helmet } from 'react-helmet';
+import Spinner from '../../Spinner/Spinner.js';
 import * as actions from '../../../redux/actions/index';
-class PrivacyPolicy extends Component {
+class ReturnPolicy extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -20,87 +19,33 @@ class PrivacyPolicy extends Component {
     }
 
 
-    componentDidMount() {
-        this.props.onGetPrivacyPolicyData({ storeId: this.props.globals.currentStore });
-    }
-    // static getDerivedStateFromProps = (props, state) => { };
-    // getStoreInfo = () => {
+	componentDidMount() {
+        
+		this.props.onGetReturnPolicyData({ storeId: this.props.globals.currentStore});
+}
 
-    // 	if (this.state.storeId) {
-    // 		const API = Axios.create({
-    // 			baseURL: STATIC_PAGES_URL,
-    // 			headers: { Authorization: `Bearer ${API_TOKEN}`, 'Content-Type': 'application/json' },
-    // 		});
-
-    // 		API.get('privacy-policy/storeId/' + this.state.storeId).then(res => {
-    // 			this.setState({ data: res.data ,spinner:!this.state.spinner});
-    // 		});
-    // 	}
-
-    // }
-
-    // componentDidMount(prevProps, prevState) {
-    // 	let changedLang = localStorage.getItem('tempstoreid');
-    // 	if (changedLang) {
-    // 		this.setState({ storeId: changedLang, data: [] }, () => {
-    // 			this.getStoreInfo();
-    // 		});
-    // 	} else {
-    // 		this.setState({ storeId: cookie.load('storeid'), data: [] }, () => {
-    // 			this.getStoreInfo();
-    // 		});
-    // 	}
-    // }
-
-    // componentDidUpdate(prevProps, prevState) {
-
-    // 	let changedLang = localStorage.getItem('tempstoreid');
-    // 	if (this.state.storeId !== changedLang) {
-    // 		this.setState({ storeId: changedLang, data: [] }, () => {
-    // 			this.getStoreInfo();
-    // 		});
-    // 	}
-    // }
 
     render() {
-        const language = localStorage.getItem('templang');
         let store_locale = this.props.globals.store_locale
-        let title = "Our Privacy Policy | ELC UAE Online store";
-        let description = "Shop online for baby toys, dolls houses, wooden toys and more at ELC. Choose from big brands including LeapFrog, VTech, Smart Trike and more.";
-        let keywords = "ELC, Early Learning Center, Early Learning Centre, Toys, Baby Toys, Wooden Toys, Educational Toys";
-        if (language == 'ar') {
-            title = "الشروط والأحكام  |  متجر مركز التعليم المبكر على الإنترنت في السعودية";
-            description = "تسوّق ألعاب الرضّع ومنازل الدمى والألعاب الخشبية وغيرها الكثير على الإنترنت من مركز التعليم المبكر. اختر من العلامات التجارية الكبيرة بمن فيها ليب فروع وفي تيك وسمارت تريك وغيرها.";
-            keywords = "إي إل سي، مركز التعليم المبكر، مركز التعليم المبكر، ألعاب، ألعاب رضّع، ألعاب خشبية، ألعاب تعليمية";
-        }
-
-        let meta_tag = <><Helmet>
-            <meta name="tital" content={title} />
-            <meta name="keywords" content={keywords} />
-            <meta name="description" content={description} />
-        </Helmet></>;
-
         return (
             <>
-                {this.props.spinnerProduct ?
-                    <Spinner /> :
+                {this.props.spinnerProduct ? <Spinner /> :
                     <div className="t-Body-contentInner">
                         <div className="padding-right-ar padding-breadcrumb">
                             <Link to={`/${store_locale}/`} style={{ textDecoration: 'none' }}>
-                                <span className="titleHover" style={{ fontSize: 15 }}><FormattedMessage id="Checkout.Home" defaultMessage="Home" /></span>
-                                {this.props.globals.language == 'en' ?
-                                    <> <span>&nbsp;\&nbsp;&nbsp;</span> </> :
-                                    <> <span>&nbsp;/&nbsp;&nbsp;</span></>
+                                <span className="titleHover" style={{ fontSize: 15 }}><FormattedMessage id="Checkout.Home" defaultMessage="Home"/></span>
+                                {this.props.globals.language === 'en' ?
+                                <span>&nbsp;\&nbsp;&nbsp;</span>: 
+                                <span>&nbsp;/&nbsp;&nbsp;</span>
                                 }
                             </Link>
-                            <span style={{ fontSize: 15, fontWeight: 'bold' }}>{this.props.privacyPolicyData.title}</span>
+                            <span style={{ fontSize: 15, fontWeight: 'bold' }}>{this.props.returnPolicy.title}</span>
                         </div>
                         <div className="container">
-                            {meta_tag}
                             <div className="row">
                                 <div className="col col-12 apex-col-auto">
                                     <div
-                                        className="t-Region g-wrapper-main_content  t-Region--removeHeader t-Region--noBorder t-Region--scrollBody "
+                                        className="t-Region g-wrapper-main_content  t-Region--removeHeader t-Region--noBorder t-Region--scrollBody"
                                         id="R231982418266982051"
                                     >
                                         <div className="t-Region-header">
@@ -144,11 +89,11 @@ class PrivacyPolicy extends Component {
                                                 />
                                                 <div id="MiscContent">
                                                     <p style={{ textAlign: 'center' }}>
-                                                        <h1 className="t-page-titles static-page-style">{this.props.privacyPolicyData.title}</h1>
+                                                        <h1 className="t-page-titles static-page-style">{this.props.returnPolicy.title}</h1>
                                                     </p>
                                                     <div
                                                         className="staticPagesText"
-                                                        dangerouslySetInnerHTML={{ __html: this.props.privacyPolicyData.content }}
+                                                        dangerouslySetInnerHTML={{ __html: this.props.returnPolicy.content }}
                                                     />
                                                     <p>&nbsp;</p>
                                                 </div>
@@ -163,7 +108,7 @@ class PrivacyPolicy extends Component {
                             </div>
                         </div>
                     </div>}
-
+                
             </>
         );
     }
@@ -171,16 +116,16 @@ class PrivacyPolicy extends Component {
 
 const mapStateToProps = state => {
     return {
-        privacyPolicyData: state.static.privacyPolicy,
-        spinnerProduct: state.spinner.loading,
-        globals: state.global
-    }
+        returnPolicy : state.static.returnPolicyPageData,
+		spinnerProduct: state.spinner.loading,
+		globals:state.global
+    };
 }
 const mapDispatchToProps = dispatch => {
-    return {
-        onGetPrivacyPolicyData: (payload) => dispatch(actions.getPrivacyPolicyAPIData(payload)),
-    }
+	return {
+		onGetReturnPolicyData: (payload) => dispatch(actions.getReturnPolicyData(payload)),
+	}
 }
-export default connect(mapStateToProps, mapDispatchToProps)(PrivacyPolicy);
 
+export default connect(mapStateToProps,mapDispatchToProps)(ReturnPolicy);
 

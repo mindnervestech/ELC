@@ -80,6 +80,7 @@ export {
 		getCorporateInformationPageData,
 		getTermConditionsPageData,
 		getReturnPolicyPageData,
+		getReturnPolicyData,
 		getPromotionTermsAndCondtionPageData
 } from './getStaticPagesData';
 

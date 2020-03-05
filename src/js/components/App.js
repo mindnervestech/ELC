@@ -21,6 +21,7 @@ import DeliveryPolicy from "./StaticPages/DeliveryPolicy/DeliveryPolicy";
 import ConsumerRights from './StaticPages/ConsumerRights/ConsumerRights'
 import HelpFAQ from './StaticPages/HelpFAQ/HelpFAQ';
 import PrivacyPolicy from './StaticPages/PrivacyPolicy/PrivacyPolicy';
+import ReturnPolicy from './StaticPages/ReturnPolicy/ReturnPolicy'
 import TermConditions from './StaticPages/TermsConditions/TermsConditions';
 
 import ProfileAddress from './CustomerAddress/ProfileAddress';
@@ -355,6 +356,7 @@ class App extends Component {
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/help-and-faq" component={HelpFAQ} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/consumer-rights" component={ConsumerRights} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/privacy-policy" component={PrivacyPolicy} />
+                                        <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/return-policy" component={ReturnPolicy} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/terms-and-conditions" component={TermConditions} />
 
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/products/:category_path" component={Product} />

@@ -704,9 +704,9 @@ componentWillMount() {
                         </div>
                     </div>
                     <div className="header-slider headerSlider2">
-                        <Link to={`/${store_locale}/delivery-policy`} style={{ textDecoration: 'none' }}>
                             <Slider {...settings}>
                                 <div>
+                        <Link to={`/${store_locale}/delivery-policy`} style={{ textDecoration: 'none' }}>
                                     <Row className="direction-r">
                                         <Col xs="0" lg="3" md="3" className="col-width"></Col>
                                         <Col xs="0" lg="2" md="2" style={{ paddingLeft: 0 }} className="padd-icon-zero first-imag">
@@ -728,8 +728,10 @@ componentWillMount() {
                                             </ul>
                                         </Col>
                                     </Row>
+                                    </Link>
                                 </div>
                                 <div>
+                                <Link to={`/${store_locale}/delivery-policy`} style={{ textDecoration: 'none' }}>
                                     <Row className="direction-r">
                                         <Col xs="0" lg="3" md="3"></Col>
                                         <Col xs="0" lg="2" md="2" className="padd-icon-zero">
@@ -746,8 +748,10 @@ componentWillMount() {
                                             </ul>
                                         </Col>
                                     </Row>
+                                    </Link>
                                 </div>
                                 <div>
+                                <Link to={`/${store_locale}/return-policy`} style={{ textDecoration: 'none' }}>
                                     <Row className="direction-r">
                                         <Col xs="0" lg="3" md="3"></Col>
                                         <Col xs="0" lg="2" md="2" className="padd-icon-zero">
@@ -764,10 +768,10 @@ componentWillMount() {
                                             </ul>
                                         </Col>
                                     </Row>
+                                    </Link>
                                 </div>
                             </Slider>
-                        </Link>
-
+                      
                         {/* <Row className="row-4">
                             <Col xs="1"></Col>
                             <Col xs="10">

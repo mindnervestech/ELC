@@ -76,8 +76,8 @@ const GET_HELP_DATA = { type: 'GET', url: STATIC_PAGES_URL + 'help-and-faqs/stor
 const GET_RETURN_AND_EXCHANGES_DATA = { type: 'GET', url: STATIC_PAGES_URL + 'return-and-exchanges/storeId', dynamic: true };
 const GET_PROMOTION_TERMS_AND_CONDITION_DATA = { type: 'GET', url: STATIC_PAGES_URL + 'promotion-terms-and-condition/storeId', dynamic: true };
 const GET_PRIVACYPOLICY_DATA = { type: 'GET', url: STATIC_PAGES_URL + 'privacy-policy/storeId', dynamic: true };
+const GET_RETURN_PLICY_DATA={type:'GET',url:STATIC_PAGES_URL+'return-policy/storeId',dynamic:true}
 const SET_VOU_CODE = { type: 'POST', url: BASE_URL + 'checkvoucher' }
-
 const REMOVE_VOU_CODE = { type: 'POST', url: BASE_URL + 'removevoucher' }
 
 //Auto Suggestion API
@@ -96,6 +96,7 @@ export const API = {
     saveXmasData:(data,cb)=>request(data,cb,SAVE_XMAS_DATA),
 	getCharityData:(data,cb)=> request(data,cb,GET_CHARITY_DATA),
 	getDeliveryPolicyData:(data,cb)=>request(data,cb,GET_DELIVERY_POLICY_DATA),
+	getReturnPolicyData:(data,cb)=>request(data,cb,GET_RETURN_PLICY_DATA),
 	getToken: (data, cb) => request(data, cb, GET_TOKEN),
 	getMyCartApi: (data, cb) => request(data, cb, GET_MY_CART_API),
 	updateCart: (data, cb) => request(data, cb, UPDATE_CART),

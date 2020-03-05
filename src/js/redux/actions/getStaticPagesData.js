@@ -10,7 +10,39 @@ export const CallActionDeliveryPolicyData=payload=>{
     payload:payload
   }
 }
-
+export const callActionReturnPolicy=(payload)=>{
+  return {
+    type:actionTypes.RETURN_POLICY_DATA,
+    payload:payload
+  }
+}
+export const getReturnPolicyData=()=>{
+  return (dispatch, getState) => {
+    const data = {
+     
+      storeId: getState().global.currentStore
+    };
+   
+    dispatch(loadingSpinner({ loading: true }));
+    let cb = {
+      success: res => {
+        if (res) {
+          dispatch(callActionReturnPolicy({ returnPolicyPageData: { ...res } }));
+          dispatch(loadingSpinner({ loading: false }));
+         
+        } else {
+          //console.log(res.message);
+          dispatch(loadingSpinner({ loading: false }));
+        }
+      },
+  
+      error: err => {
+        dispatch(loadingSpinner({ loading: false }));
+      }
+    };
+    API.getReturnPolicyData(data, cb);
+  };
+}
 
 
 
