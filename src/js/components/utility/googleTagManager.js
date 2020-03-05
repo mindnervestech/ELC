@@ -19,7 +19,7 @@
 
 import TagManager from 'react-gtm-module';
 //import { GTM_ID } from '../../api/globals';
-let active_server = 'uat';
+let active_server = 'dev';
 if(window.location.href.includes('elcjsuat')){
     active_server = 'uat';
 } else if(window.location.href.includes('elctoys.com')){
@@ -27,7 +27,7 @@ if(window.location.href.includes('elcjsuat')){
 }
 let GTM_ID;
 if(active_server==='uat'){
-    GTM_ID='GTM-NC6Z64G'
+    GTM_ID='GTM-5HWCVSJ'
 }
 if(active_server==='live'){
     GTM_ID='GTM-NC6Z64G'
@@ -63,7 +63,7 @@ export const ProductSearchEvent = (product_data) => {
             currencyCode = item.currency;
             impressionsData.push({
                 name: item && item.json && item.json.name,
-                id: item && item.json && item.json.sku,
+                id: item && item.json && item.json.id,
                 price: item && item.json && item.json.offers ? (item.json.offers.data && item.json.offers.data['1'] ? item.json.offers.data && item.json.offers.data['1'] : item.price) : item.price,
                 category: item && item.json && item.json.category_names,
                 brand: 'Google',
@@ -92,7 +92,7 @@ export const ProductListEvent = (product_data) => {
             currencyCode = item.currency;
             impressionsData.push({
                 name: item && item.json && item.json.name,
-                id: item && item.json && item.json.sku,
+                id: item && item.json && item.json.id,
                 price: item && item.json && item.json.offers ? (item.json.offers.data && item.json.offers.data['1'] ? item.json.offers.data && item.json.offers.data['1'] : item.price) : item.price,
                 category: item && item.json && item.json.category_names,
                 brand: 'Google',
@@ -122,8 +122,8 @@ export const productClickEvent = (data, index, isComeFrom) => {
                     list: isComeFrom
                 },
                 products: [{
-                    name: data.json.name,
-                    id: data.sku,
+                    name: data && data.json && data.json.name,
+                    id: data && data.json && data.json.id,
                     price: data.price,
                     brand: 'Google',
                     category: data.json.category_names,
@@ -138,6 +138,7 @@ export const productClickEvent = (data, index, isComeFrom) => {
 }
 
 export const productDetailsEvent = (data) => {
+
     if (data !== undefined) {
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
@@ -146,7 +147,7 @@ export const productDetailsEvent = (data) => {
                 detail: {
                     products: [{
                         name: data.name,
-                        id: data.sku,
+                        id: data.id,
                         price: data.price,
                         brand: 'Google',
                         category: data.category_names,
@@ -158,14 +159,13 @@ export const productDetailsEvent = (data) => {
 }
 
 export const AddToCartEvent = (data, qty) => {
-
     window.dataLayer = window.dataLayer || [];
     let products = [{
         name: data.name,
-        id: data.sku,
+        id: data.id,
         price: data.price,
         brand: 'Google',
-        category: data.category_names,
+        category:data.category_names,
         quantity: qty
     }]
     window.dataLayer.push({
@@ -180,13 +180,15 @@ export const AddToCartEvent = (data, qty) => {
 }
 
 export const RemoveProductCart = (data) => {
+
     window.dataLayer = window.dataLayer || [];
     let products = [{
         name: data.name,
-        id: data.sku,
+        id: data.id,
         price: data.price,
         brand: 'Google',
         category: data.category_names,
+        quantity:data.qty
 
     }]
     window.dataLayer.push({
@@ -200,6 +202,7 @@ export const RemoveProductCart = (data) => {
 }
 
 export const checkoutEvent = (data, setpCountForGTM) => {
+
     window.dataLayer = window.dataLayer || [];
     let products = []
     if (data && data.products && Object.keys(data.products).length > 0) {
@@ -209,7 +212,7 @@ export const checkoutEvent = (data, setpCountForGTM) => {
             
             products.push({
                 name: item && item.name,
-                id: item && item.sku,
+                id: item && item.id,
                 price: item && item.price,
                 category: item && item.category_names,
                 brand: 'Google',
@@ -234,8 +237,11 @@ export const checkoutEvent = (data, setpCountForGTM) => {
 }
 
 export const purchaseEvent = (product_data,order_summary,order_number) => {
+
+
     let actionField={}
     let productData=[]
+    
     
     if(product_data.length > 0 && order_summary!==undefined && order_number!==undefined){
         actionField={

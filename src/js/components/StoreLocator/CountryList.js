@@ -31,9 +31,12 @@ class CountryList extends Component {
         const { locations } = this.props;
         const filteredDups = this.getUnique(locations, 'country_id')
         //console.log("om sai ram", locations);
-
+        let obj={
+            border:'none !important'
+        }
+        console.log("bfhf",this.props.isComeFrom)
         return (
-            <select id="P12_COUNTRY" name="P12_COUNTRY" className="selectlist apex-item-select js-ignoreChange" size={1} onChange={(e) => this.props.handleCountryChange(e)} >
+            <select   id="P12_COUNTRY" name="P12_COUNTRY" className={(this.props.hasOwnProperty('ComeFrom') ? 'bordernone':'')+'bordernone selectlist apex-item-select js-ignoreChange'} size={1} onChange={(e) => this.props.handleCountryChange(e)} >
                 {filteredDups.map(this.__renderCountryList)}
             </select>
         )

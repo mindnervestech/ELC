@@ -92,6 +92,7 @@ class ProductListData extends Component {
 
 	}
 	componentDidUpdate(prevProps, prevState) {
+		if(this.state.list1){
 		if (this.state.pageNumber !== prevState.pageNumber ) {
 			if (this.props.listForGTM === 'Search Results') {
 				ProductSearchEvent(this.state.list1)
@@ -100,7 +101,8 @@ class ProductListData extends Component {
 			} else {
 			}
 			
-		}
+		}}
+		
 		if (prevProps.addToCardLoader !== this.props.addToCardLoader && this.props.item_added.item_added && this.props.item_added.add_cart_open_popUp && (!this.state.cartModelFlag || !cartModelFlag)) {
 			if (!this.props.item_added.add_cart_error) {
 				this.onCloseAddCartModal();
@@ -204,22 +206,23 @@ class ProductListData extends Component {
 		start = 1
 		end = 5
 		pageChecked=false
-		
-		//this.setState({list1:{}})
+		//this.props.onClearProductDetails(this.props.list.product_data);
+		//this.state.list1={}
 
-	}
-	
+	}	
 
 	componentDidMount() {
 		if (this.props.guest_user.temp_quote_id == null) {
 			this.props.onGetGuestCartId();
-		}
-		setTimeout(() => {
+		}	
+			setTimeout(() => {
+			if(this.state.list1){
 			if (this.props.listForGTM === 'Search Results') {
 				ProductSearchEvent(this.state.list1)
 			} else if (this.props.listForGTM === 'List Results') {
 				ProductListEvent(this.state.list1)
 			} else {
+			}
 			}	
 		}, 3000);
 			
@@ -631,7 +634,7 @@ class ProductListData extends Component {
 							<Modal modalId="mobileFilterManu" open={this.state.showFilterOnMobile} onClose={this.filterOptionPopup}>
 								<div>
 									<div>
-										<h5 className="mobileFilterManuPopupHeading">
+ 										<h5 className="mobileFilterManuPopupHeading">
 											<FormattedMessage id="Product.Listing.FilterPopupTitle" defaultMessage="Select Refinements" />
 										</h5>
 									</div>
@@ -940,6 +943,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
 	return {
+		onClearProductDetails: payload => dispatch(actions.clearProductDetails(payload)),
 		onGetMenuNav: (payload) => dispatch(actions.getMenuNav(payload)),
 		OngetMyCart: (quoteId) => dispatch(actions.getMyCart(quoteId)),
 		onGetGuestCartId: () => dispatch(actions.getGuestCartId()),

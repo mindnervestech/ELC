@@ -256,6 +256,14 @@ export const clearShippingDetails = () => {
         }
     }
 }
+export const clearOrderSummaryDetails=()=>{
+    return {
+        type:actionType.CLEAR_ORDER_SUMMARY_PRODUCTS,
+        payload:{
+            order_summary:{}
+        }
+    }
+}
 
 
 export const setOrderSummary = (payload) => {
@@ -265,6 +273,7 @@ export const setOrderSummary = (payload) => {
             order_id: payload.order_id
         }
         dispatch(loadingSpinner({ loading: true }))
+    //    dispatch(clearOrderSummaryDetails({order_summary:{}}))
         let cb = {
             success: res => {
                 dispatch({

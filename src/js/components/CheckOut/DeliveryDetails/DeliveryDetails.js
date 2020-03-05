@@ -89,8 +89,8 @@ class DeliveryDetails extends Component {
         if (path[path.length - 1] === 'delivery-details') {
             stepCountForGTM = 2
         }
-        if (this.props.location && this.props.location && this.props.location.state && this.props.location.state.data) {
-            checkoutEvent(this.props.location.state.data, stepCountForGTM)
+        if (this.props.cart_details) {
+            checkoutEvent(this.props.cart_details, stepCountForGTM)
         }
         this.props.onClearShippingDetails()
 

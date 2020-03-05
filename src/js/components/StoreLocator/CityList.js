@@ -39,7 +39,7 @@ class CityList extends Component {
 
 
         return (
-            <select id="P12_CITY" name="P12_CITY" className="selectlist apex-item-select js-ignoreChange" size={1} onChange={(e) => this.props.handleCityChange(e)}>
+            <select   id="P12_CITY" name="P12_CITY" className={(this.props.hasOwnProperty('ComeFrom') ? 'bordernone':'')+'bordernone selectlist apex-item-select js-ignoreChange'} size={1} onChange={(e) => this.props.handleCityChange(e)}>
                 <option value={'NA'}>{this.props.selectCitytext}</option>
                 {filteredDups.map(this.__renderCity)}
             </select>

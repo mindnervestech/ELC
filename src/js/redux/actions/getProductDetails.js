@@ -3,7 +3,6 @@ import { API } from '../../api/api';
 import { getMyCart ,getGuestCartId} from '../actions/index';
 import cookie from 'react-cookies'
 import { loadingSpinner, loadingSpinnerForProduct } from './globals';
-import {ProductListEvent,ProductSearchEvent} from '../../components/utility/googleTagManager'
 
 export const callActionAddToWishlist = payload => {
 	return {
@@ -75,13 +74,18 @@ export const getProductSearchList = payload => {
 			storeId: payload.storeid,
 			filters: payload.filters,
 		};
+		dispatch(
+			callActionGetProductSearchList({
+				products: []
+			})
+		);
 		dispatch(loadingSpinnerForProduct({ loadingProduct: true }))
 		let cb = {
 			success: res => {
 				let product_data = [];
 				dispatch(loadingSpinnerForProduct({ loadingProduct: false }))
 				if (res.status && res.code === 200 && res.data) {
-						//ProductSearchEvent(res.data)
+
 					if (Object.keys(payload.filters).length !== 0 && payload.filters.constructor === Object) {
 						Object.keys(res.data.product_data).map(key => {
 							product_data.push(res.data.product_data[key]);
@@ -93,7 +97,6 @@ export const getProductSearchList = payload => {
 								metainfo: { ...res.data }
 							})
 						);
-
 					} else {
 						dispatch(
 							callActionGetProductSearchList({
@@ -207,8 +210,6 @@ export const getProductList = payload => {
 								metainfo: { ...res.data }
 							})
 						);
-					//	ProductListEvent(res.data)
-
 					// }
 
 				} else {
@@ -451,6 +452,7 @@ export const getProductDetails = payload => {
 			type: actionTypes.ADD_TO_CARD_LOADER,
 			payload: { add_cart_open_popUp: false}
 		});
+		dispatch(callActionClearProductDetails({ productData: [] }));
 		dispatch(loadingSpinnerForProduct({statusAlert:true }))
 
 		let cb = {

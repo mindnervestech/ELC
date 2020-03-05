@@ -5,6 +5,7 @@ import freeCollect from '../../../assets/images/header/Mouse.svg';
 import { Row, Col, Button } from 'reactstrap';
 import { connect } from 'react-redux';
 import * as actions from '../../redux/actions/index';
+import { store } from '../../redux/store/store'
 import { Redirect, withRouter } from 'react-router-dom';
 import { FormattedMessage, injectIntl } from 'react-intl';
 //import { confirmAlert } from 'react-confirm-alert'; // Import
@@ -14,13 +15,14 @@ import Popup from 'react-popup';
 import Spinner from '../Spinner/Spinner2';
 import Alert from './AlertMsg';
 import cookie from 'react-cookies';
-import {RemoveProductCart,checkoutEvent} from '../../components/utility/googleTagManager'
+import { RemoveProductCart, checkoutEvent } from '../../components/utility/googleTagManager'
 
 let successFlag = false;
 let stockSortageFlag = false;
 let invalidValue = false
 let stockSortageQTY = 0;
 let productCount = 0
+var _ = require('lodash');
 class ShoppingBagItem extends Component {
 
     constructor(props) {
@@ -32,7 +34,7 @@ class ShoppingBagItem extends Component {
             timeout: 0,
         }
     }
-    remove = (index,item) => {
+    remove = (index, item) => {
         RemoveProductCart(item)
         //    confirmAlert({
         //   title: 'Confirm to yes',
@@ -60,54 +62,61 @@ class ShoppingBagItem extends Component {
         if (this.props.user_details.isUserLoggedIn) {
             // this.props.history.push(`/${this.props.globals.store_locale}/new-check-out`);
             this.props.history.push({
-                pathname:`/${this.props.globals.store_locale}/delivery-details`,
-                state: { data: this.props.cart_details }});
+                pathname: `/${this.props.globals.store_locale}/delivery-details`,
+                state: { data: this.props.cart_details }
+            });
         } else {
             this.props.history.push(
                 {
-                    pathname:`/${this.props.globals.store_locale}/checkout-login`,
+                    pathname: `/${this.props.globals.store_locale}/checkout-login`,
                     state: { data: this.props.cart_details }
                 });
         }
     }
 
     componentDidMount() {
-      
-        successFlag = false;
-        stockSortageFlag = false;
-        invalidValue = false;
-        let product = [];
-        let myCartItem = {};
-        let obj={}
-        let eventLabelString=""
-        if(localStorage.getItem('myCartItem') !== ''){
-            myCartItem = JSON.parse(localStorage.getItem('myCartItem'));
-            if(myCartItem){
-                product = myCartItem.products;
-            }
-        }
-        let total=0;
-        for(let i=0;i<product.length;i++){
-            total+=product[i].price*product[i].qty
-        }
-        let arr=[]
-        for(let i=0;i<product.length ;i++){
-            arr.push(product[i].sku)
-        }
-        let str1=arr.join(',')
-        eventLabelString= `${str1}|${total}`
 
-        obj={
-            event:"cartPage-productInfo",
-            eventCatogry:"Cart Page",
-            eventAction:"Cart Product Details",
-            eventLabel:eventLabelString
-        }
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push(obj)
+        setTimeout(() => {
+            
        
-    }
+        let product = {}
+        let arr = []
+        let productArr = [];
+        let obj = {}
+        let eventLabelString = ""
+        let total = 0;
+        let str1 = '';
+        let data = store.getState().myCart.products;
+        if (data && Object.keys(data).length > 0) {
+            product = data;
+        }
+        if (product && Object.keys(product).length > 0) {
+            _.forEach(product, productData => {
+                arr.push(productData.sku)
+            })
+            _.forEach(product, productData => {
+                productArr.push(productData)
 
+            })
+            for (let i = 0; i < productArr.length; i++) {
+                total += productArr[i].price * productArr[i].qty
+            }
+
+            str1 = arr.join(',')
+            eventLabelString = `${str1}|${total}`
+            obj = {
+                event: "cartPage-productInfo",
+                eventCatogry: "Cart Page",
+                eventAction: "Cart Product Details",
+                eventLabel: eventLabelString
+            }
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push(obj)
+        }
+    }, 3000);
+
+    }
+   
     handleChange(item, index, value) {
         let { user_details, globals } = this.props;
         const { timeout } = this.state
@@ -180,10 +189,10 @@ class ShoppingBagItem extends Component {
         const store_locale = this.props.globals.store_locale;
         let product = [];
         let myCartItem = {};
-        
-        if(localStorage.getItem('myCartItem') !== ''){
+
+        if (localStorage.getItem('myCartItem') !== '') {
             myCartItem = JSON.parse(localStorage.getItem('myCartItem'));
-            if(myCartItem){
+            if (myCartItem) {
                 product = myCartItem.products;
             }
         }
@@ -214,7 +223,7 @@ class ShoppingBagItem extends Component {
         //             </td>
         //          )
         // }
-        if(product){
+        if (product) {
             productCount = product.length
         }
         let visible_on_store = true;
@@ -255,12 +264,12 @@ class ShoppingBagItem extends Component {
                         <div className="modal-cart-update">
                             {successFlag ?
                                 <div className="updated-qty-msg">
-                                <i className="close fa fa-times close-icon-update" aria-hidden="true" onClick={() => this.closeModal("stockSortageFlag")} />
+                                    <i className="close fa fa-times close-icon-update" aria-hidden="true" onClick={() => this.closeModal("stockSortageFlag")} />
                                     <FormattedMessage id="Productquantityhasbeenupdated" defaultMessage="Product quantity has been updated." />
                                 </div>
                                 : ''}
                             {stockSortageFlag ?
-                                <div className="sort-storage-qty-msg" style={{position: 'relative'}}>
+                                <div className="sort-storage-qty-msg" style={{ position: 'relative' }}>
                                     <FormattedMessage id="StockShortage1" defaultMessage="STOCK SHORTAGE - we have added " />
                                     {stockSortageQTY}
                                     <i className="close fa fa-times close-icon-sort" aria-hidden="true" onClick={() => this.closeModal("successFlag")} />
@@ -269,7 +278,7 @@ class ShoppingBagItem extends Component {
                                 : ''}
                             {invalidValue ?
                                 <div className="sort-storage-qty-msg">
-                                <i className="close fa fa-times close-icon-sort" aria-hidden="true" onClick={() => this.closeModal("invalidValue")} />
+                                    <i className="close fa fa-times close-icon-sort" aria-hidden="true" onClick={() => this.closeModal("invalidValue")} />
                                     <FormattedMessage id="InvalidvalueQty" defaultMessage="Please provide a positive number to update the quantity of an item." />
                                 </div>
                                 : ''}
@@ -302,7 +311,7 @@ class ShoppingBagItem extends Component {
                                             </div>
                                             <div className="click-collect3">
                                                 <div className="blockImage">
-                                                    <img src={freeCollect} style={{ height: 60,verticalAlign: 'middle' }} />
+                                                    <img src={freeCollect} style={{ height: 60, verticalAlign: 'middle' }} />
                                                 </div>
                                                 <div className="blockTextColor" style={{ color: 'gray' }}>
                                                     <span><FormattedMessage id="ClickCollectatselectedELCStore" defaultMessage="Click & Collect at selected ELC Store" /></span>
@@ -352,7 +361,7 @@ class ShoppingBagItem extends Component {
                             </Row>
                             {product && product.map((item, index) => (
                                 <Row className="row-2 changeRow" style={{ textAlign: 'start' }}>
-                                    <Col xs="3" style={{textAlign:'center'}}>
+                                    <Col xs="3" style={{ textAlign: 'center' }}>
                                         <Link to={`/${store_locale}/products-details/${item.url_key}`}>
                                             <img src={item.image[0]} className="cardImage"></img>
                                         </Link>
@@ -368,7 +377,7 @@ class ShoppingBagItem extends Component {
                                             <span style={{ fontSize: 14, color: '#4f4f4f' }}>{item.sku}</span>
                                         </div>
                                     </Col>
-                                    {item.visible_on_store && item.is_in_stock.status == 1  ?
+                                    {item.visible_on_store && item.is_in_stock.status == 1 ?
                                         <Col xs="1" className="row-3" style={{ fontSize: 16, color: "#4f4f4f" }}>
                                             {item.special_price ?
                                                 <div>
@@ -400,13 +409,13 @@ class ShoppingBagItem extends Component {
                                         <Col xs="2" className="row-3 blackTitle" style={{ fontSize: 22, marginTop: '4.7%' }}>
                                             {item.special_price ?
                                                 <span>{item.currency}&nbsp;{item.special_price * item.qty}</span>
-                                            :<span>{item.currency}&nbsp;{item.price * item.qty}</span>}
+                                                : <span>{item.currency}&nbsp;{item.price * item.qty}</span>}
                                         </Col>
                                         : ''
                                     }
                                     {!item.visible_on_store ?
                                         <Col xs="3" className="row-9">
-                                            <div style={{ fontSize: '18px', color: 'red',display: 'table-cell', verticalAlign: 'middle',height: 165 }}>
+                                            <div style={{ fontSize: '18px', color: 'red', display: 'table-cell', verticalAlign: 'middle', height: 165 }}>
                                                 <FormattedMessage id="NotAvailableforcurrentstoreDelivery" defaultMessage="Not Available for current store Delivery" />
                                             </div>
                                         </Col> : ''}
@@ -420,7 +429,7 @@ class ShoppingBagItem extends Component {
                                         <Col xs="3" className="row-9"></Col>
                                     }
                                     <Col xs="1" className="row-3 blackTitle" style={{ textAlign: 'end' }}>
-                                        <span className="remove" style={{ fontSize: 14, cursor: 'pointer' }} onClick={() => this.remove(index,item)}>
+                                        <span className="remove" style={{ fontSize: 14, cursor: 'pointer' }} onClick={() => this.remove(index, item)}>
                                             <FormattedMessage id="Cart.Remove.Title" defaultMessage="Remove" />
                                         </span>
                                     </Col>
@@ -499,7 +508,7 @@ class ShoppingBagItem extends Component {
                                         </Link>
                                     </div>
                                     <div style={{ display: 'inline-block', width: "18%", verticalAlign: 'top' }} >
-                                        <span onClick={() => this.remove(index,item)} className="remove blackTitle floatRight" style={{ fontSize: 14, lineHeight: 1 }}>
+                                        <span onClick={() => this.remove(index, item)} className="remove blackTitle floatRight" style={{ fontSize: 14, lineHeight: 1 }}>
                                             <FormattedMessage id="Cart.Remove.Title" defaultMessage="Remove" />
                                         </span>
                                     </div>

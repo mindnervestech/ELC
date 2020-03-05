@@ -1,3 +1,13 @@
+.void .t-Form-inputContainer{
+border-bottom: solid 1px #b1b1b1 !important;
+}
+.bordernone {
+    color: #343434;
+    border:none !important;
+    background-color: #fff;
+    border-bottom: 1px solid  #b1b1b1  !important;
+}
+
 html[dir="rtl"] .review-description{
     float:right
 }

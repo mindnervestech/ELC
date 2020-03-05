@@ -305,32 +305,34 @@ class StoreLocator extends Component {
                         }}>
                           <div className="container">
                             <div className="row">
-                              <div className="col col-1 ">
+                              {/* <div>
                                 <span className="apex-grid-nbsp">&nbsp;</span>
-                              </div><div className="col col-5 storeLocatorRmPadding">
-                                <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel apex-item-wrapper apex-item-wrapper--select-list js-show-label" id="P12_COUNTRY_CONTAINER"><div className="t-Form-labelContainer">
+                              </div> */}
+                              <div className="col-sm-6 storeLocatorRmPadding">
+                                <div style={{border:'none'}} className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel apex-item-wrapper apex-item-wrapper--select-list js-show-label" id="P12_COUNTRY_CONTAINER"><div className="t-Form-labelContainer">
                                   <label htmlFor="P12_COUNTRY" id="P12_COUNTRY_LABEL" className="t-Form-label"><FormattedMessage id="SelectCountrySingle.Text" defaultMessage="Country" /></label>
-                                </div><div className="t-Form-inputContainer"><div className="t-Form-itemWrapper">
+                                </div><div className="t-Form-inputContainer">
+                                  <div className="t-Form-itemWrapper">
 
 
-                                  <CountryList handleCountryChange={this.handleCountryChange} locations={this.props.storeList} selectedCountry={this.state.selectedCountry}></CountryList>
+                                  <CountryList isComeFrom={true} handleCountryChange={this.handleCountryChange} locations={this.props.storeList} selectedCountry={this.state.selectedCountry}></CountryList>
 
 
 
                                 </div><span id="P12_COUNTRY_error_placeholder" className="a-Form-error" data-template-id="33609965712469734_ET" /></div></div>
-                              </div><div className="col col-5 ">
-                                <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel apex-item-wrapper apex-item-wrapper--select-list js-show-label is-active" id="P12_CITY_CONTAINER"><div className="t-Form-labelContainer">
+                              </div><div className="col-sm-6 storeLocatorRmPadding ">
+                                <div style={{border:'none'}} className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel apex-item-wrapper apex-item-wrapper--select-list js-show-label is-active" id="P12_CITY_CONTAINER"><div className="t-Form-labelContainer">
                                   <label htmlFor="P12_CITY" id="P12_CITY_LABEL" className="t-Form-label"><FormattedMessage id="SelectCitySingle.Text" defaultMessage="City" /></label>
-                                </div><div className="t-Form-inputContainer"><div className="t-Form-itemWrapper">
+                                </div><div className="t-Form-inputContainer"><div className="t-Form-itemWrapper" style={{border:'none'}}>
                                   <FormattedMessage id="SelectCity.Text" defaultMessage="Select City">
                                     {(message) =>
-                                      <CityList handleCityChange={this.handleCityChange} selectedCountry={this.state.selectedCountry} locations={this.props.storeList} selectCitytext={message}> </CityList>
+                                      <CityList  isComeFrom={true} handleCityChange={this.handleCityChange} selectedCountry={this.state.selectedCountry} locations={this.props.storeList} selectCitytext={message}> </CityList>
                                     }</FormattedMessage>
                                 </div><span id="P12_CITY_error_placeholder" className="a-Form-error" data-template-id="33609965712469734_ET" /></div></div><input type="hidden" id="MI" name="MI" defaultValue /><input type="hidden" id="P12_PAGE_TITLE" name="P12_PAGE_TITLE" defaultValue="Store Locator UAE - Nayomi UAE" /><input type="hidden" id="P12_PAGE_DESC" name="P12_PAGE_DESC" defaultValue="Store locator UAE - Locate your nearest nayomi store in UAE" />
                               </div>
                             </div>
                             <div className="row">
-                              <div className="col col-12 apex-col-auto">
+                              <div className="col col-12 storeLocatorRmPadding apex-col-auto">
                                 <div className="t-Region containers  t-Region--removeHeader t-Region--noBorder t-Region--scrollBody" id="mapRegion">
                                   <div className="t-Region-header">
                                     <div className="t-Region-headerItems t-Region-headerItems--title">

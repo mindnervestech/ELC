@@ -6825,7 +6825,7 @@ body .ui-dialog .ui-dialog-buttonpane {
   background-color: #fafafa;
   border-color: #0b7e36;
   border: 0px solid #0b7e36;
-  border-bottom: 1px solid #0b7e36;
+  border-bottom: 1px solid  #b1b1b1  !important
 }
 
 .t-WizardSteps-step.is-active .t-WizardSteps-marker {

@@ -1,4 +1,4 @@
-export {clearShippingDetails, getMyCart, changeQty, removeProduct, clearCartItem, setOrderSummary, removeAllOutOfStockProduct, redirectToPayment, redirectToDelivery, redirectToCart,applyVoucode, removeVoucode, getMyCartAfterVoucher} from './getMyCart';
+export {clearShippingDetails, clearOrderSummaryDetails,getMyCart, changeQty, removeProduct, clearCartItem, setOrderSummary, removeAllOutOfStockProduct, redirectToPayment, redirectToDelivery, redirectToCart,applyVoucode, removeVoucode, getMyCartAfterVoucher} from './getMyCart';
 
 export {
 	getAddressFromShippingDetails,
