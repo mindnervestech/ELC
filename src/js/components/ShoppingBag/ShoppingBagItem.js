@@ -5,6 +5,7 @@ import freeCollect from '../../../assets/images/header/Mouse.svg';
 import { Row, Col, Button } from 'reactstrap';
 import { connect } from 'react-redux';
 import * as actions from '../../redux/actions/index';
+import { store } from '../../redux/store/store'
 import { Redirect, withRouter } from 'react-router-dom';
 import { FormattedMessage, injectIntl } from 'react-intl';
 //import { confirmAlert } from 'react-confirm-alert'; // Import
@@ -14,12 +15,14 @@ import Popup from 'react-popup';
 import Spinner from '../Spinner/Spinner2';
 import Alert from './AlertMsg';
 import cookie from 'react-cookies';
+import { RemoveProductCart, checkoutEvent } from '../../components/utility/googleTagManager'
 
 let successFlag = false;
 let stockSortageFlag = false;
 let invalidValue = false
 let stockSortageQTY = 0;
 let productCount = 0
+var _ = require('lodash');
 class ShoppingBagItem extends Component {
 
     constructor(props) {
@@ -31,7 +34,8 @@ class ShoppingBagItem extends Component {
             timeout: 0,
         }
     }
-    remove = (index) => {
+    remove = (index,item) => {
+        RemoveProductCart(item)
         //    confirmAlert({
         //   title: 'Confirm to yes',
         //   message: 'Are you sure to remove this product.',
@@ -55,18 +59,62 @@ class ShoppingBagItem extends Component {
     }
 
     checkOut() {
-        if (this.props.isUserLoggedIn) {
+        if (this.props.user_details.isUserLoggedIn) {
             // this.props.history.push(`/${this.props.globals.store_locale}/new-check-out`);
-            this.props.history.push(`/${this.props.globals.store_locale}/delivery-details`);
+            this.props.history.push({
+                pathname: `/${this.props.globals.store_locale}/delivery-details`,
+                state: { data: this.props.cart_details }
+            });
         } else {
-            this.props.history.push(`/${this.props.globals.store_locale}/checkout-login`);
+            this.props.history.push(
+                {
+                    pathname:`/${this.props.globals.store_locale}/checkout-login`,
+                    state: { data: this.props.cart_details }
+                });
         }
     }
 
     componentDidMount() {
-        successFlag = false;
-        stockSortageFlag = false;
-        invalidValue = false;
+
+        setTimeout(() => {
+            
+       
+        let product = {}
+        let arr = []
+        let productArr = [];
+        let obj = {}
+        let eventLabelString = ""
+        let total = 0;
+        let str1 = '';
+        let data = store.getState().myCart.products;
+        if (data && Object.keys(data).length > 0) {
+            product = data;
+        }
+        if (product && Object.keys(product).length > 0) {
+            _.forEach(product, productData => {
+                arr.push(productData.sku)
+            })
+            _.forEach(product, productData => {
+                productArr.push(productData)
+
+            })
+            for (let i = 0; i < productArr.length; i++) {
+                total += productArr[i].price * productArr[i].qty
+            }
+
+            str1 = arr.join(',')
+            eventLabelString = `${str1}|${total}`
+            obj = {
+                event: "cartPage-productInfo",
+                eventCatogry: "Cart Page",
+                eventAction: "Cart Product Details",
+                eventLabel: eventLabelString
+            }
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push(obj)
+        }
+    }, 3000);
+
     }
 
     handleChange(item, index, value) {
@@ -382,7 +430,7 @@ class ShoppingBagItem extends Component {
                                         <Col xs="3" className="row-9"></Col>
                                     }
                                     <Col xs="1" className="row-3 blackTitle" style={{ textAlign: 'end' }}>
-                                        <span className="remove" style={{ fontSize: 14, cursor: 'pointer' }} onClick={() => this.remove(index)}>
+                                        <span className="remove" style={{ fontSize: 14, cursor: 'pointer' }} onClick={() => this.remove(index,item)}>
                                             <FormattedMessage id="Cart.Remove.Title" defaultMessage="Remove" />
                                         </span>
                                     </Col>
@@ -461,7 +509,7 @@ class ShoppingBagItem extends Component {
                                         </Link>
                                     </div>
                                     <div style={{ display: 'inline-block', width: "18%", verticalAlign: 'top' }} >
-                                        <span onClick={() => this.remove(index)} className="remove blackTitle floatRight" style={{ fontSize: 14, lineHeight: 1 }}>
+                                        <span onClick={() => this.remove(index,item)} className="remove blackTitle floatRight" style={{ fontSize: 14, lineHeight: 1 }}>
                                             <FormattedMessage id="Cart.Remove.Title" defaultMessage="Remove" />
                                         </span>
                                     </div>

@@ -15,7 +15,8 @@ import * as actions from '../../../redux/actions/index';
 import { initializeF, trackF } from '../../utility/facebookPixel';
 import { live } from '../../../api/globals';
 import { Row, Col } from 'reactstrap';
-
+import { checkoutEvent } from '../../utility/googleTagManager'
+let stepCountForGTM = 0
 let Ptype = "CC";
 class Payment extends Component {
     constructor(props) {
@@ -49,6 +50,11 @@ class Payment extends Component {
     }
 
     componentDidMount() {
+        let path = this.props.location.pathname.split("/");
+        if (path[path.length - 1] === "checkout-payment") {
+            stepCountForGTM = 3;
+            checkoutEvent(this.props.cart_details, stepCountForGTM)
+        }
         if (this.props.cart_details.is_shipping_details_rec) {
             let obj = this.props.user_details.customer_details;
             if (!(utility.emptyObj(obj))) {
@@ -78,10 +84,10 @@ class Payment extends Component {
 
 
             }
-            if (live) {
-                initializeF()
-                trackF('AddPaymentInfo');
-            }
+            // if (live) {
+            //     initializeF()
+            //     trackF('AddPaymentInfo');
+            // }
         } else {
             this.props.history.push(`/${this.props.global.store_locale}/cart`);
         }
@@ -203,7 +209,6 @@ class Payment extends Component {
                 message: ''
             }
         })
-        console.log('Close alert Box Parent');
     }
 
     gotoProductScreen = (item) => {

@@ -19,9 +19,9 @@ import SavedAddressList from './SavedAddressList';
 import { initializeF, trackF } from '../../utility/facebookPixel';
 import { live } from '../../../api/globals';
 import { Container, Row, Col } from 'reactstrap';
-
+import {checkoutEvent} from '../../utility/googleTagManager'
 const wait = require('../../../../assets/images/wait.gif');
-
+let stepCountForGTM=0;
 let Eventcount = 0;
 class DeliveryDetails extends Component {
     constructor(props) {
@@ -87,6 +87,13 @@ class DeliveryDetails extends Component {
     }
 
     componentDidMount() {
+        let path = this.props.location.pathname.split("/")
+        if (path[path.length - 1] === 'delivery-details') {
+            stepCountForGTM = 2
+        }
+        if (this.props.cart_details) {
+            checkoutEvent(this.props.cart_details, stepCountForGTM)
+        }
        
         //this.props.OnproceedToCheckout({quote_id : 10})
         let shipping_city = {};
@@ -116,11 +123,12 @@ class DeliveryDetails extends Component {
         } else {
             this.props.history.push(`/${this.props.globals.store_locale}/cart`);
         }
-        if (live) {
-            initializeF()
-            trackF('DeliveryDetails');
+        // if (live) {
+        //     initializeF()
+        //     trackF('DeliveryDetails');
+        // }
         }
-    }
+    
 
     gift_wrap_required = (gift_wrap) => {
 

@@ -7,6 +7,7 @@ import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
 import * as actions from '../../redux/actions/index';
 import queryString from 'query-string';
+import { ProductSearchEvent,ProductListEvent,initializeGTMWithEvent } from '../../components/utility/googleTagManager';
 import Spinner from '../Spinner/Spinner2';
 var _ = require('lodash');
 let filters = {};
@@ -14,6 +15,7 @@ let sortbyv = 'relevance';
 let searchValue = null;
 let count = 0;
 let mobileFilter = {};
+let listForGTM = ''
 class Product extends Component {
 	constructor(props, context) {
 		super(props, context);
@@ -88,6 +90,30 @@ class Product extends Component {
 	};
 
 	componentDidUpdate(prevProps, prevState) {
+	
+		let window_path = this.props.location.pathname.split('/')
+		if (this.props.location.pathname !== prevProps.location.pathname) {
+
+			if (window_path[window_path.length - 2] === 'products' && window_path[window_path.length - 1] === 'search') {
+				listForGTM = "Search Results"
+			} else if (window_path[window_path.length - 2] === 'products') {
+				listForGTM = "List Results"
+			}
+			
+			
+		}
+		// let obj=this.props.productDetails.products;
+		// if(obj){
+		// 	if(listForGTM==='Search Results'){
+		// 		ProductSearchEvent(obj)
+		// 	}if(listForGTM==='List Results'){
+		// 		ProductListEvent(obj)
+		// 	}
+		// }
+			
+		
+	
+	
 		const values = queryString.parse(this.props.location.search);
 		let searchQuery = values.query;
 		if (searchQuery && searchValue !== searchQuery) {
@@ -111,6 +137,17 @@ class Product extends Component {
 	}
 
 	componentDidMount() {
+		
+		let window_path = this.props.location.pathname.split('/')
+		if (window_path[window_path.length - 2] === 'products' && window_path[window_path.length-1] === 'search') {
+			listForGTM = 'Search Results'
+		} else if (window_path[window_path.length - 2] === 'products') {
+			listForGTM = "List Results"
+		}
+		// let obj=this.props.productDetails.products;
+		// console.log("gdProductSearchEvent",obj)
+		// ProductSearchEvent(obj,listForGTM)
+
 		if (count == 0)
 			this._fetchProducts();
 		count++;
@@ -184,7 +221,7 @@ class Product extends Component {
 						<div id="t_Body_content_offset" style={{ height: '139px' }} />
 						<div className="t-Body-contentInner">
 							<div>
-								{this.props.spinnerProduct ? <Spinner /> : <ProductData Data={this.props.productDetails.products} loading1={this.props.spinnerProduct} />}
+								{this.props.spinnerProduct ? <Spinner /> : <ProductData listForGTM={listForGTM} Data={this.props.productDetails.products} loading1={this.props.spinnerProduct} />}
 							</div>
 						</div>
 					</div>

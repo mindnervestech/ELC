@@ -106,7 +106,7 @@ class ProductZoom extends Component {
 	_getImageData = data => {
 		if (data) {
 			
-			let thumbnails, zoomimages;
+			let thumbnails, zoomimages,primaryimage;
 
 			if (data.thumbnail) {
 				thumbnails = data.thumbnail;
@@ -114,20 +114,25 @@ class ProductZoom extends Component {
 			if (data.zoomimage) {
 				zoomimages = data.zoomimage;
 			}
+			if (data.primaryimage) {
+				primaryimage = data.primaryimage;
+			}
 
-			if (data.thumbnail.length > 1) {
+			if (data.primaryimage.length > 0) {
 				return (
-					<a  onClick={(e) => this._handleThumbImgClick(e, 'img')} href={zoomimages[0]} className="MagicZoom" id="zoom-v" data-options="hint:false; zoomMode: off; expand: off;">
-						<img src={thumbnails[0]} alt="" />
-					</a>
-				);
-			} else {
-				return (
-					<a onClick={(e) => this._handleThumbImgClick(e, 'img')}  href={zoomimages[0]} className="MagicZoom" id="zoom-v" data-options="hint:false; zoomMode: off; expand: off;">
-						<img src={zoomimages[0]} alt="" />
+					<a onClick={(e) => this._handleThumbImgClick(e, 'img')} href={zoomimages[0]} className="MagicZoom" id="zoom-v" data-options="hint:false; zoomMode: off; expand: off;">
+						<img src={primaryimage[0]} alt="" />
 					</a>
 				);
 			}
+			return '';
+			// } else {
+			// 	return (
+			// 		<a onClick={(e) => this._handleThumbImgClick(e, 'img')}  href={zoomimages[0]} className="MagicZoom" id="zoom-v" data-options="hint:false; zoomMode: off; expand: off;">
+			// 			<img src={zoomimages[0]} alt="" />
+			// 		</a>
+			// 	);
+			// }
 
 		}
 	};
@@ -143,6 +148,7 @@ class ProductZoom extends Component {
 			// 		<source src={data[0]} type="video/mp4" />
 			// 	</video>
 			// );
+			console.log("video data",data)
 
 			return data.map((item, index) => {
 				return (<>

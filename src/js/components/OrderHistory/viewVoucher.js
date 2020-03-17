@@ -49,7 +49,7 @@ class OrderDetails extends Component {
 
 
     render() {
-        //console.log('render : ', this.state);
+       
         const ordered_item = this.props.items_ordered.map((c, index) => {
             return <OrderedItem
                 item={c}

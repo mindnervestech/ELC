@@ -13,17 +13,17 @@ import AddToCartModal from '../Product/product-details/product-info/product-basi
 import { initializeF, trackF } from '../utility/facebookPixel';
 import { live } from '../../api/globals';
 import $ from 'jquery'
+import { productClickEvent, ProductListEvent, ProductSearchEvent, checkoutEvent } from '../../components/utility/googleTagManager'
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
-
-
 var _ = require('lodash');
-
+let productListForGTM = {}
 let productListData = {}
 let productList = {}
 let pagenationCount = 36
 let start = 1
 let end = 5
+let pageChecked = false;
 let changeFilterData = false
 let showPopupIndex = -1
 let basketPopupFlag = false;
@@ -72,7 +72,8 @@ class ProductListData extends Component {
 			cartModelFlag: false,
 			url_key: '',
 			sortByOptionValue: '',
-			showMoreLessFlag: false
+			showMoreLessFlag: false,
+
 		};
 	}
 
@@ -86,8 +87,22 @@ class ProductListData extends Component {
 		this.setState({ basketPopupFlag: false })
 		basketPopupFlag = false;
 	}
+	productOnClickEvent = (item, index) => {
+		productClickEvent(item, index, this.props.listForGTM)
 
-	componentDidUpdate(prevProps) {
+	}
+	componentDidUpdate(prevProps, prevState) {
+		if(this.state.list1){
+		if (this.state.pageNumber !== prevState.pageNumber ) {
+			if (this.props.listForGTM === 'Search Results') {
+				ProductSearchEvent(this.state.list1)
+			} else if (this.props.listForGTM === 'List Results') {
+				ProductListEvent(this.state.list1)
+			} else {
+			}
+			
+		}}
+		
 		if (prevProps.addToCardLoader !== this.props.addToCardLoader && this.props.item_added.item_added && this.props.item_added.add_cart_open_popUp && (!this.state.cartModelFlag || !cartModelFlag)) {
 			if (!this.props.item_added.add_cart_error) {
 				this.onCloseAddCartModal();
@@ -190,12 +205,30 @@ class ProductListData extends Component {
 	componentWillMount() {
 		start = 1
 		end = 5
+		pageChecked=false
+		
+		//this.setState({list1:{}})
+
 	}
+	
 
 	componentDidMount() {
 		if (this.props.guest_user.temp_quote_id == null) {
 			this.props.onGetGuestCartId();
-		}
+		}	
+			setTimeout(() => {
+			if(this.state.list1){
+			if (this.props.listForGTM === 'Search Results') {
+				ProductSearchEvent(this.state.list1)
+			} else if (this.props.listForGTM === 'List Results') {
+				ProductListEvent(this.state.list1)
+			} else {
+			}
+			}	
+		}, 3000);
+			
+		
+		//this.forceUpdate()
 	}
 
 	pagenation = (start, end) => {
@@ -468,22 +501,12 @@ class ProductListData extends Component {
 
 	// showMoreLess = () => {
 	// 	showMoreLessFlag = !showMoreLessFlag;
-    //     this.setState({ showMoreLessFlag: !this.state.showMoreLessFlag });
-    // }
+	//     this.setState({ showMoreLessFlag: !this.state.showMoreLessFlag });
+	// }
 
 	render() {
-
 		let pathname = this.props.location.pathname.split('/');
-		if (pathname[pathname.length - 1] === 'lego') {
-			initializeF()
-			trackF('Lego');
-			}
-
-		// if (window.location.href.split('/')[6] === 'lego') {
-		// 	if (live) {
-
-		// 	}
-
+	
 		// }
 		let list = this.state.list1
 		const store_locale = this.props.globals.store_locale
@@ -497,11 +520,12 @@ class ProductListData extends Component {
 				}
 			}
 			list = this.state.list1
+			productListForGTM = this.state.list1;
 		}
 		var description = '';
 		var desText = '';
 		var decLength = '';
-		if(this.props.list.category_description2){
+		if (this.props.list.category_description2) {
 			description = parse(this.props.list.category_description2);
 			desText = description.props.children;
 			decLength = description.props.children.length;
@@ -779,7 +803,7 @@ class ProductListData extends Component {
 									{Object.keys(list).map((keyName, index) =>
 										<li key={index} style={{ position: 'relative' }}>
 											<Link to={`/${store_locale}/products-details/${list[keyName].json.url_key}`}>
-												<div className="alsoLikeCard" style={{height: list[keyName].json.imageUrl ? 'auto' : 307}}>
+												<div onClick={() => { this.productOnClickEvent(list[keyName], index) }} className="alsoLikeCard" style={{ height: list[keyName].json.imageUrl ? 'auto' : 307 }}>
 													<div className="ProductSilderImageHight">
 													{/* <span className="percentage-text" style={{ display: 'none' }}>30</span>
 									<span className="save-text">5</span>

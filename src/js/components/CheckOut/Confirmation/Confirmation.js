@@ -10,12 +10,12 @@ import Spinner2 from '../../Spinner/Spinner2';
 import * as actions from '../../../redux/actions/index';
 import { FormattedMessage } from 'react-intl';
 import { Row, Col } from 'reactstrap';
-
+import {checkoutEvent} from '../../utility/googleTagManager'
 import { PAY_FORT_URL } from '../../../api/globals';
-
+let setpCountForGTM=0;
+let isClickOnPlaceOrder = false;
 const wait = require('../../../../assets/images/wait.gif');
 
-let isClickOnPlaceOrder = false;
 class Confirmation extends Component {
 
     constructor(props) {
@@ -26,6 +26,11 @@ class Confirmation extends Component {
     }
 
     componentDidMount() {
+        let path=this.props.location.pathname.split("/");
+        if (path[path.length - 1] ==="order-confirm") {
+            setpCountForGTM = 4
+        }
+       checkoutEvent(this.props.cart_details, setpCountForGTM)
         if (this.props.cart_details.is_payment_details_rec) {
             let obj = this.props.user_details.customer_details;
             if (!((Object.entries(obj).length === 0) && (obj.constructor === Object))) {

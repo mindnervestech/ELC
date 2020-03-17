@@ -22,9 +22,9 @@ class Order extends Component {
 
     componentDidMount() {
             this.props.onGetOrderHistory({ Customerid: this.props.user_details.customer_id })
-        if (!this.props.is_order_history_rec) {
-            this.props.onGetOrderHistory({ Customerid: this.props.user_details.customer_id })
-        }
+        // if (!this.props.is_order_history_rec) {
+        //     this.props.onGetOrderHistory({ Customerid: this.props.user_details.customer_id })
+        // }
     }
 
     logOut = () => {

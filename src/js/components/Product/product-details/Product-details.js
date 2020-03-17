@@ -19,6 +19,7 @@ import { live } from '../../../api/globals';
 import Modal from 'react-responsive-modal';
 import ProductRecentlyViewed from '../product-details/product-info/product-color';
 import { FormattedMessage } from 'react-intl';
+import { productDetailsEvent } from '../../utility/googleTagManager';
 
 class ProductDetails extends Component {
 	constructor(props) {
@@ -37,6 +38,11 @@ class ProductDetails extends Component {
 		if (this.props.productDetails) {
 			this.props.onClearProductDetails(this.props.productDetails);
 		}
+		setTimeout(() => {
+		productDetailsEvent(this.props.productDetails)
+			
+		}, 3000);
+
 	}
 
 	componentDidMount() {
@@ -69,9 +75,9 @@ class ProductDetails extends Component {
 			currency = 'AED';
 		}
 			let priceValue=this.props.productDetails.price && this.props.productDetails.price.toFixed(2);
-				initializeF();
+				// initializeF();
 		
-				trackF('ViewContent',{'content_category':this.props.productDetails.category_names,'content_name':this.props.productDetails.name,'content_ids':this.props.productDetails.sku,'currency':currency,'content_type':'product',value:priceValue});
+				// trackF('ViewContent',{'content_category':this.props.productDetails.category_names,'content_name':this.props.productDetails.name,'content_ids':this.props.productDetails.sku,'currency':currency,'content_type':'product',value:priceValue});
 			
 		}
 

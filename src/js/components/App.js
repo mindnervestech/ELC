@@ -23,13 +23,10 @@ import HelpFAQ from './StaticPages/HelpFAQ/HelpFAQ';
 import PrivacyPolicy from './StaticPages/PrivacyPolicy/PrivacyPolicy';
 import ReturnPolicy from './StaticPages/ReturnPolicy/ReturnPolicy'
 import TermConditions from './StaticPages/TermsConditions/TermsConditions';
-
 import ProfileAddress from './CustomerAddress/ProfileAddress';
-
 import BirthDayClub from './StaticPages/BirthDayClub/BirthDayClub'
 import AddNewBirthDayClubChild from './StaticPages/BirthDayClub/AddNewChild';
 import Login from './Login/Login';
-
 import MyProfile from './MyProfile/MyProfile';
 import ShoppingBag from './ShoppingBag/ShoppingBag';
 import CheckOutLoginWelcome from './CheckOut/Login/CheckOutLoginWelcome';
@@ -44,7 +41,6 @@ import ProductDetails from './Product/product-details/Product-details';
 import WishList from './WishList/WishList';
 import Order from './OrderHistory/OrderHistory';
 import OredrDetails from './OrderHistory/viewVoucher';
-
 import ResetPassword from './resetPassword';
 import StoreLocator from './StoreLocator/store-locator';
 import { BrowserRouter } from 'react-router-dom';
@@ -89,10 +85,10 @@ class App extends Component {
         }
        // this.getGeoInfo();
 
-        if (active_server==='live') {
+         if (active_server==='live') {
             initialize();
             initializeGTM();
-        }
+       }
         console.log("active_server value",active_server)
     }
 

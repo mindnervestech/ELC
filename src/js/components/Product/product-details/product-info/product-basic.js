@@ -3,7 +3,9 @@ import * as actions from '../../../../redux/actions/index';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
-
+import {AddToCartEvent} from '../../../utility/googleTagManager'
+import {store} from '../../../../redux/store/store'
+var _ = require('lodash');
 class ProductBasic extends Component {
     constructor(props) {
         super(props);
@@ -61,9 +63,22 @@ class ProductBasic extends Component {
 
     
 	addToCart(e) {
-        const { customerDetails, guest_user, isUserLoggedIn } = this.props;
+       
+		const { customerDetails, guest_user, isUserLoggedIn } = this.props;
+		let datForGTMTask={}
+		let xyz={}
+		datForGTMTask=store.getState().myCart.products;
+		// if(datForGTMTask && Object.keys(datForGTMTask).length > 0){
+        //    _.forEach(datForGTMTask,product=>{
+		// 	   if(e.sku===product.sku){
+		// 		xyz=product;
+				
+		// 	   }
+		//    })
+		// }
         let data = e;
 		let prodData = {};
+        let qtyForGTM=1
 		this.setState({showAlert: true, cartModelFlag: false})
 		if (isUserLoggedIn) {
 			if (data.type == 'simple') {
@@ -131,6 +146,8 @@ class ProductBasic extends Component {
 			this.props.onGuestAddToCart(prodData, myCart);
 			
 		}
+		AddToCartEvent(data,qtyForGTM)
+
 	}
 
 	closeAlert = () => {

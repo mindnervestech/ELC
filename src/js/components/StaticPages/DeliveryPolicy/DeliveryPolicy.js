@@ -10,7 +10,6 @@ import Spinner from '../../Spinner/Spinner.js';
 import * as actions from '../../../redux/actions/index';
 class DeliveryPolicy extends Component {
     constructor(props) {
-        console.log(props)
         super(props);
         this.state = {
             storeId: '',

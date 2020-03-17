@@ -4,13 +4,13 @@ import freeDelivery from '../../../../assets/images/header/Truck1.svg';
 import freeCollect from '../../../../assets/images/header/Mouse.svg';
 import Modal from 'react-responsive-modal';
 import { Helmet } from 'react-helmet';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, Redirect, withRouter } from 'react-router-dom';
 import ShareUrl from '../product-details/product-info/product-size';
 import Popup from 'react-popup';
 import { connect } from 'react-redux';
 import * as actions from '../../../redux/actions/index';
 import { Row, Col } from 'reactstrap';
-
+import { productDetailsEvent, AddToCartEvent } from '../../utility/googleTagManager'
 import { FormattedMessage } from 'react-intl';
 import { initializeF, trackF } from '../../utility/facebookPixel';
 import { async } from 'q';
@@ -19,11 +19,11 @@ const wait = require('../../../../assets/images/wait.gif');
 
 let _this;
 let in_wishlist = false;
-let disableHeartIcon=false;
+let disableHeartIcon = false;
 class ProductInfo extends Component {
 	constructor(props) {
 		super(props);
-		_this=this;
+		_this = this;
 		this.state = {
 			defaultQty: 1,
 			openShareModel: false,
@@ -53,7 +53,17 @@ class ProductInfo extends Component {
 			this.props.onGetWishListItem({ customerid: this.props.customerDetails.customer_id, store_id: this.props.globals.currentStore })
 		}
 	}
-
+	componentDidUpdate(prevProps, props) {
+		// console.log("this.props",this.props)
+		// console.log("prevProps",prevProps)
+		// 		if(this.props.productZoomDetails && Object.keys(this.props.productZoomDetails).length > 0){
+		// 			if (this.props.productZoomDetails.id !== prevProps.productZoomDetails.id){
+		// 				productDetailsEvent(this.props.data)
+		// 				}
+		// 	}
+		// 	console.log("*******",this.props.productZoomDetails)
+		
+	}
 
 	closeAlertAddWishList = () => {
 		this.setState({ showAlertForAdd: false })
@@ -65,7 +75,7 @@ class ProductInfo extends Component {
 		this.props.onClearProductWishDetail();
 	}
 
-	componentWillReceiveProps(nextProps, prevProps) {
+	componentWillReceiveProps(nextProps, props) {
 		
 
 		let i = 0;
@@ -160,8 +170,8 @@ class ProductInfo extends Component {
 		}
 		content_ids.push(obj);
 		let price = data.price && (data.price.toFixed(2)) * addQty;
-		initializeF()
-		trackF('AddToCart', { content_type: 'product', currency: currency, content_ids: content_ids, value: price });
+		// initializeF()
+		// trackF('AddToCart', { content_type: 'product', currency: currency, content_ids: content_ids, value: price });
 		if (isUserLoggedIn) {
 			if (data.type === 'simple') {
 				prodData = {
@@ -227,6 +237,8 @@ class ProductInfo extends Component {
 			};
 			this.props.onGuestAddToCart(prodData, myCart);
 		}
+		AddToCartEvent(this.props.data, this.state.defaultQty)
+
 	}
 
 	increment = totalQty => {

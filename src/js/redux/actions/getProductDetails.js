@@ -74,6 +74,11 @@ export const getProductSearchList = payload => {
 			storeId: payload.storeid,
 			filters: payload.filters,
 		};
+		dispatch(
+			callActionGetProductSearchList({
+				products: []
+			})
+		);
 		dispatch(loadingSpinnerForProduct({ loadingProduct: true }))
 		let cb = {
 			success: res => {
@@ -447,6 +452,7 @@ export const getProductDetails = payload => {
 			type: actionTypes.ADD_TO_CARD_LOADER,
 			payload: { add_cart_open_popUp: false}
 		});
+		dispatch(callActionClearProductDetails({ productData: [] }));
 		dispatch(loadingSpinnerForProduct({statusAlert:true }))
 
 		let cb = {

@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
-
 import OrderedItem from './orderedItem';
 import Spinner from '../../Spinner/Spinner';
 import { connect } from 'react-redux';
 import * as actions from '../../../redux/actions/index';
 import { FormattedMessage } from 'react-intl';
- import { initializeF, trackF } from '../../utility/facebookPixel';
+import { initializeF, trackF } from '../../utility/facebookPixel';
 import { initializeGTMWithEvent } from '../../utility/googleTagManager';
 import { live } from '../../../api/globals';
 import { Row, Col } from 'reactstrap';
 import cookie from 'react-cookies';
+import { purchaseEvent } from '../../utility/googleTagManager'
 let Cryptr = require('cryptr');
 let cryptr = null;
-
+let setpCoun
 let success = 'true';
 let orderNumber = '';
+var _=require('lodash')
 class OrderSummary extends Component {
 
     constructor(props) {
@@ -24,72 +25,173 @@ class OrderSummary extends Component {
         }
     }
 
-    componentWillUnmount() {
+    // componentWillUnmount() {
 
-        // this.props.onClearCartItem();
-        //this.props.onClearCartItem();
-    }
+    //     // this.props.onClearCartItem();
+    //     //this.props.onClearCartItem();
+    // }
 
     componentDidUpdate(prevProps) {
         const query = new URLSearchParams(this.props.location.search);
         cryptr = new Cryptr(query.get('order_id'));
-        if (prevProps.order_number !== orderNumber && this.props.order_summary.total) {
-            let item = this.props.items_ordered;
-            let ecomArray = [];
-            for (let i = 0; i < item.length; i++) {
-                ecomArray.push({
-                    content_type: 'product',
-                    sku: item[i].sku,
-                    name: item[i].product_name ? item[i].product_name : 'Not set',
-                    // category: this.props.facebook_catnames.length >= i ? this.props.facebook_catnames[i] : '',
-                    price: parseInt(item[i].special_price) && (parseInt(item[i].special_price) !== parseInt(item[i].price)) ? parseFloat(item[i].special_price) : (parseInt(item[i].price)),
-                    quantity: parseInt(item[i].qty_orderded)
-                });
-            }
-            if (this.props.order_summary && this.props.order_summary.subtotal !== 0) {
-                initializeF()
-                let valuePrice = this.props.order_summary.total && this.props.order_summary.total.toFixed(2)
-                trackF('Purchase', { content_type: 'product', currency: this.props.order_summary.currency, content_ids: ecomArray, value: valuePrice });
-            }
-            console.log(cookie.load('orderId'), orderNumber, this.props.order_number)
-            if (cookie.load('orderId') != orderNumber) {
-                // if (live) {
-                    cookie.save('orderId', orderNumber, { path: '/' })
-                    if (query.get('paytype') == 'COD') {
-                        if(this.props.order_summary.total){
-                            initializeGTMWithEvent({
-                                event: 'ecomm_event',
-                                transactionShipping: this.props.order_summary.shipping,
-                                transactionTotal: this.props.order_summary.total,
-                                transactionTax: this.props.order_summary.vat,
-                                transactionCurrency: this.props.order_summary.currency,
-                                transactionId: orderNumber ? orderNumber : this.props.order_number,
-                                transactionAffiliation: '',
-                                transactionProducts: ecomArray
-                            })
-                        }
-                    } else {
-                        success = cryptr.decrypt(query.get('status'));
-                        if (success == 'true') {
-                            if(this.props.order_summary.total){
-                                initializeGTMWithEvent({
-                                    event: 'ecomm_event',
-                                    transactionShipping: this.props.order_summary.shipping,
-                                    transactionTotal: this.props.order_summary.total,
-                                    transactionTax: this.props.order_summary.vat,
-                                    transactionCurrency: this.props.order_summary.currency,
-                                    transactionId: orderNumber ? orderNumber : this.props.order_number,
-                                    transactionAffiliation: '',
-                                    transactionProducts: ecomArray
-                                })
-                            }
-                        }
+        let order_id = query.get('order_id')
+        // if (prevProps.order_number !== orderNumber && this.props.order_summary.total) {
+        //let item = this.props.items_ordered;
+        let product_data = [];
+        let prevPropsid=0;
+        let currentPropsid=0;
+        // if(prevProp.items_ordered){
+        //    _foreach(prevProp.items_ordered ,itemPrev=>{
+        //        prevPropsid=itemPrev[0].id
+        //    })
+        // }
+        // if(this.props.items_ordered){
+        //     _foreach(this.props.items_ordered, itemcurrent=>{
+        //         currentPropsid=itemcurrent[0].id
+        //     })
+        // }
+        // let itemsPrevProps=prevProps.items_ordered;
+        // let itemcurrentProps=this.props.items_ordered;
+        // for(let i=0;i<itemsPrevProps.length;i++){
+        //     prevPropsid=itemsPrevProps[0].id
+        // }
+        // for(let i=0;i<currentPropsid.length;i++){
+        //     currentPropsid=currentPropsid[0].id
+        // }
+        let obj = {};
+        // if (prevProps.items_ordered && this.props.items_ordered) {
+        //    if(prevProps.items_ordered.length > 0)
+        //    {
+        //        prevProps.items_ordered.map(item,index=>{
+        //            prevPropsid=item[0].id
+        //        })
+        //    }
+        //    if(this.props.items_ordered.length > 0){
+        //      this.props.items_ordered.map(item,index=>{
+        //         currentPropsid=item[0].id
+        //     }) 
+           //}
+            // console.log("ghfhfjfj",this.props.items_ordered[0].id)
+        if(prevProps.items_ordered.length === 0 )  {
+            if(this.props.items_ordered.length > 0 ){
+            let items = this.props.items_ordered;
+                for (let i = 0; i < items.length; i++) {
+                    product_data.push({
+                        name: items[i].name ? items[i].name : 'Not set',
+                        id: items[i].sku,
+                        price: parseInt(items[i].special_price) && (parseInt(items[i].special_price) !== parseInt(items[i].price)) ? parseFloat(items[i].special_price) : (parseInt(items[i].price)),
+                        brand: 'Google',
+                        category: items[i].category_names,
+                        currency: this.props.order_summary.currency,
+               quantity: parseInt(items[i].qty_orderded)
+                    });
+                   
+                }
+                if (query.get('paytype') === 'COD' && this.props.order_summary && this.props.order_summary.COD !== 0) {
+
+                    obj = {
+                        content_type: 'product',
+                        sku: 'cod_fee',
+                        name: 'cod_fee',
+                        category: 'cod_fee',
+                        price: this.props.order_summary.COD,
+                        quantity: 1
                     }
-                // }
+                    product_data.push(obj)
+                }
             }
+                
+            
+        } 
+        _.forEach(prevProps.items_ordered ,(itemsPrev,index)=>{
+            _.forEach(this.props.items_ordered, (itemcurrent,key)=>{
+
+            if (this.props && index===0 && key===0 && itemsPrev.id!==itemcurrent.id &&  this.props.items_ordered && Object.keys(this.props.items_ordered).length > 0) {
+                let items = this.props.items_ordered;
+                for (let i = 0; i < items.length; i++) {
+                    product_data.push({
+                        name: items[i].name ? items[i].name : 'Not set',
+                        id: items[i].sku,
+                        price: parseInt(items[i].special_price) && (parseInt(items[i].special_price) !== parseInt(items[i].price)) ? parseFloat(items[i].special_price) : (parseInt(items[i].price)),
+                        brand: 'Google',
+                        category: items[i].category_names,
+                        currency: this.props.order_summary.currency,
+               quantity: parseInt(items[i].qty_orderded)
+                    });
+                    
+                }
+                if (query.get('paytype') === 'COD' && this.props.order_summary && this.props.order_summary.COD !== 0) {
+
+                    obj = {
+                        content_type: 'product',
+                        sku: 'cod_fee',
+                        name: 'cod_fee',
+                        category: 'cod_fee',
+                        price: this.props.order_summary.COD,
+                        quantity: 1
+                    }
+                    product_data.push(obj)
+                }
+
+            }
+        })
+    })
+
+            if (order_id !== undefined && product_data.length > 0 && this.props.order_summary) {
+                if (parseInt(cookie.load('orderIdForGTM')) !== parseInt(order_id)) {
+                    purchaseEvent(product_data, this.props.order_summary, this.props.order_number)
+                    cookie.save('orderIdForGTM', order_id)
+                }
+            }
+       
         }
-    }
-    componentDidMount() {
+
+        // if (this.props.order_summary && this.props.order_summary.subtotal !== 0) {
+        //     initializeF()
+        //     let valuePrice = this.props.order_summary.total && this.props.order_summary.total.toFixed(2)
+        //     trackF('Purchase', { content_type: 'product', currency: this.props.order_summary.currency, content_ids: ecomArray, value: valuePrice });
+        // }
+        //     if (cookie.load('orderId') != orderNumber) {
+        //         // if (live) {
+        //             cookie.save('orderId', orderNumber, { path: '/' })
+        //             if (query.get('paytype') == 'COD') {
+        //                 if(this.props.order_summary.total){
+        //                     initializeGTMWithEvent({
+        //                         event: 'ecomm_event',
+        //                         transactionShipping: this.props.order_summary.shipping,
+        //                         transactionTotal: this.props.order_summary.total,
+        //                         transactionTax: this.props.order_summary.vat,
+        //                         transactionCurrency: this.props.order_summary.currency,
+        //                         transactionId: orderNumber ? orderNumber : this.props.order_number,
+        //                         transactionAffiliation: '',
+        //                         transactionProducts: ecomArray
+        //                     })
+        //                 }
+        //             } else {
+        //                 success = cryptr.decrypt(query.get('status'));
+        //                 if (success == 'true') {
+        //                     if(this.props.order_summary.total){
+        //                         initializeGTMWithEvent({
+        //                             event: 'ecomm_event',
+        //                             transactionShipping: this.props.order_summary.shipping,
+        //                             transactionTotal: this.props.order_summary.total,
+        //                             transactionTax: this.props.order_summary.vat,
+        //                             transactionCurrency: this.props.order_summary.currency,
+        //                             transactionId: orderNumber ? orderNumber : this.props.order_number,
+        //                             transactionAffiliation: '',
+        //                             transactionProducts: ecomArray
+        //                         })
+        //                     }
+        //                 }
+        //             }
+        //         }
+        //     // }
+        // }
+        // }
+
+
+    
+    componentWillMount() {
         const query = new URLSearchParams(this.props.location.search);
         cryptr = new Cryptr(query.get('order_id'));
         if (query.get('paytype') === 'COD') {

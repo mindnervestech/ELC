@@ -12,6 +12,7 @@ import Popup from 'react-popup';
 import {Redirect } from 'react-router-dom';
 import { initializeF, trackF } from '../../../utility/facebookPixel';
 import Spinner from '../../../../components/Spinner/Spinner2';
+import { AddToCartEvent } from "../../../utility/googleTagManager";
 
 const wait = require('../../../../../assets/images/wait.gif');
 
@@ -97,8 +98,8 @@ class AddToBasketModal extends Component {
 		}
 		content_ids.push(obj);
 		let price = data.price && (data.price.toFixed(2)) * addQty;
-		initializeF()
-		trackF('AddToCart', { content_type: 'product', currency: currency, content_ids: content_ids, value: price });
+		// initializeF()
+		// trackF('AddToCart', { content_type: 'product', currency: currency, content_ids: content_ids, value: price });
 
 		if (isUserLoggedIn) {
 			if (data.type === 'simple') {
@@ -165,6 +166,8 @@ class AddToBasketModal extends Component {
 			};
 			this.props.onGuestAddToCart(prodData, myCart);
 		}
+		AddToCartEvent(this.props.data,this.state.defaultQty)
+
 	}
 
 	decrement = totalQty => {
