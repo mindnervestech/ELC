@@ -44,7 +44,7 @@ font-size: 1.4rem;
 overflow: hidden;
 white-space: nowrap;
 text-overflow: ellipsis;
-width: 150px;
+width: 100px;
 }
 
 td .prddesc p{

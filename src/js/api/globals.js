@@ -2,7 +2,7 @@ import cookie from 'react-cookies'
 export const live = true;
 
 //server ['uat','dev','live']
-export let active_server = 'dev';
+export let active_server ='dev';
 if(window.location.href.includes('elcjsuat')){
     active_server = 'uat';
 } else if(window.location.href.includes('elctoys.com')){

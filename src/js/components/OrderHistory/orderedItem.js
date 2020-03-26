@@ -20,7 +20,7 @@ class OrderedItem extends Component {
                         <span className="p-desc"><FormattedMessage id="Now.Text" defaultMessage="Now" /></span>
                         <span className="p-currency">{product.currency}</span> {Math.round(parseFloat(product.special_price * product.qty_ordered))}</span>
                 <br />
-                <del className="p-desc"><FormattedMessage id="Was.Text" defaultMessage="Was" /><strong><span className="p-currency">{product.currency}</span> {parseFloat(product.price *  product.qty_ordered)}</strong></del><br />
+                <del style={{color:'#3b3b3b'}} className="p-desc"><FormattedMessage id="Was.Text" defaultMessage="Was" /><strong><span className="p-currency">{product.currency}</span> {parseFloat(product.price *  product.qty_ordered)}</strong></del><br />
                 <span className="p-price-saving"><span className="p-desc"><FormattedMessage id="Savings.title" defaultMessage="Savings"/></span>
                     <span className="p-currency">{Math.round(( (product.price - product.special_price) / product.price) * 100)} %</span></span>
                     <p><FormattedMessage id="Item.Qty" defaultMessage="Qty" /> {this.props.item.qty_ordered}</p>

@@ -63,7 +63,7 @@ export const ProductSearchEvent = (product_data) => {
             currencyCode = item.currency;
             impressionsData.push({
                 name: item && item.json && item.json.name,
-                id: item && item.json && item.json.id,
+                id: item && item.json && item.json.sku,
                 price: item && item.json && item.json.offers ? (item.json.offers.data && item.json.offers.data['1'] ? item.json.offers.data && item.json.offers.data['1'] : item.price) : item.price,
                 category: item && item.json && item.json.category_names,
                 brand: 'Google',
@@ -92,7 +92,7 @@ export const ProductListEvent = (product_data) => {
             currencyCode = item.currency;
             impressionsData.push({
                 name: item && item.json && item.json.name,
-                id: item && item.json && item.json.id,
+                id: item && item.json && item.json.sku,
                 price: item && item.json && item.json.offers ? (item.json.offers.data && item.json.offers.data['1'] ? item.json.offers.data && item.json.offers.data['1'] : item.price) : item.price,
                 category: item && item.json && item.json.category_names,
                 brand: 'Google',
@@ -123,8 +123,8 @@ export const productClickEvent = (data, index, isComeFrom) => {
                 },
                 products: [{
                     name: data && data.json && data.json.name,
-                    id: data && data.json && data.json.id,
-                    price: data.price,
+                    id: data && data.json && data.json.sku,
+                    price:data && data.json && data.json.offers ? (data.json.offers.data && data.json.offers.data['1'] ? data.json.offers.data && data.json.offers.data['1'] : data.price) : data.price,
                     brand: 'Google',
                     category: data.json.category_names,
                     position: index + 1
@@ -147,8 +147,8 @@ export const productDetailsEvent = (data) => {
                 detail: {
                     products: [{
                         name: data.name,
-                        id: data.id,
-                        price: data.price,
+                        id: data.sku,
+                        price: data && data && data.offers ? (data.offers.data && data.offers.data['1'] ? data.offers.data && data.offers.data['1'] : data.price) : data.price,
                         brand: 'Google',
                         category: data.category_names,
                     }]
@@ -162,8 +162,8 @@ export const AddToCartEvent = (data, qty) => {
     window.dataLayer = window.dataLayer || [];
     let products = [{
         name: data.name,
-        id: data.id,
-        price: data.price,
+        id: data.sku,
+        price: data && data && data.offers ? (data.offers.data && data.offers.data['1'] ? data.offers.data && data.offers.data['1'] : data.price) : data.price,
         brand: 'Google',
         category:data.category_names,
         quantity: qty
@@ -184,8 +184,8 @@ export const RemoveProductCart = (data) => {
     window.dataLayer = window.dataLayer || [];
     let products = [{
         name: data.name,
-        id: data.id,
-        price: data.price,
+        id: data.sku,
+        price: data.special_price && data.price!==data.special_price ? data.special_price:data.price,
         brand: 'Google',
         category: data.category_names,
         quantity:data.qty
@@ -212,8 +212,8 @@ export const checkoutEvent = (data, setpCountForGTM) => {
             
             products.push({
                 name: item && item.name,
-                id: item && item.id,
-                price: item && item.price,
+                id: item && item.sku,
+                price: item && item.special_price && item.price!==item.special_price ?item.special_price:item.price,
                 category: item && item.category_names,
                 brand: 'Google',
                 quantity: item && item.qty

@@ -274,7 +274,7 @@ const mapStateToProps = state => {
 		isUserLoggedIn: state.login.isUserLoggedIn,
 		globals: state.global,
 		user_details: state.login.customer_details,
-		// productZoomDetails: state.productDetails.productData,
+		//productZoomDetails: state.productDetails.productData,
 		customerDetails: state.login.customer_details,
 		// productWishDetail: state.productDetails.productWishDetail,
 		// removeWishListDetail:state.productDetails.productWishDetail,

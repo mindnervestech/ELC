@@ -158,23 +158,32 @@ class WishList extends Component {
             for (let value in offer) {
                 if (value == '1') {
                     return (
+                        // <div>
+                        //     <button onClick={() => this.openShowAndMorePopup(index)} className="bayMoreAndSaveMore"><FormattedMessage id="BuyMoreBtn.Message2" defaultMessage="Sale" /></button>
+                        // </div>
                         <div>
-                            <button onClick={() => this.openShowAndMorePopup(index)} className="bayMoreAndSaveMore"><FormattedMessage id="BuyMoreBtn.Message2" defaultMessage="Sale" /></button>
-                        </div>
+                         <button  className="bayMoreAndSaveMore"><FormattedMessage id="BuyMoreBtn.Message2" defaultMessage="Sale" /></button>
+                         </div>
                     );
                 } else {
                     return (
-                        <div>
-                            <button onClick={() => this.openShowAndMorePopup(index)} className="bayMoreAndSaveMore"><FormattedMessage id="BuyMoreBtn.Message" defaultMessage="Buy More, Save More!" /></button>
-                        </div>
+                        // <div>
+                        //     <button onClick={() => this.openShowAndMorePopup(index)} className="bayMoreAndSaveMore"><FormattedMessage id="BuyMoreBtn.Message" defaultMessage="Buy More, Save More!" /></button>
+                        // </div>
+                         <div>
+                         <button  className="bayMoreAndSaveMore"><FormattedMessage id="BuyMoreBtn.Message" defaultMessage="Buy More, Save More!" /></button>
+                     </div>
                     );
                 }
             }
         } else {
             return (
-                <div>
-                    <button onClick={() => this.openShowAndMorePopup(index)} className="bayMoreAndSaveMore"><FormattedMessage id="BuyMoreBtn.Message" defaultMessage="Buy More, Save More!" /></button>
-                </div>
+                // <div>
+                //     <button onClick={() => this.openShowAndMorePopup(index)} className="bayMoreAndSaveMore"><FormattedMessage id="BuyMoreBtn.Message" defaultMessage="Buy More, Save More!" /></button>
+                // </div>
+                 <div>
+                 <button className="bayMoreAndSaveMore"><FormattedMessage id="BuyMoreBtn.Message" defaultMessage="Buy More, Save More!" /></button>
+             </div>
             );
         }
     }

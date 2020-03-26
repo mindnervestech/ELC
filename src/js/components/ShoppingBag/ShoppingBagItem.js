@@ -77,46 +77,46 @@ class ShoppingBagItem extends Component {
     componentDidMount() {
 
         setTimeout(() => {
-            
-       
-        let product = {}
-        let arr = []
-        let productArr = [];
-        let obj = {}
-        let eventLabelString = ""
-        let total = 0;
-        let str1 = '';
-        let data = store.getState().myCart.products;
-        if (data && Object.keys(data).length > 0) {
-            product = data;
-        }
-        if (product && Object.keys(product).length > 0) {
-            _.forEach(product, productData => {
-                arr.push(productData.sku)
-            })
-            _.forEach(product, productData => {
-                productArr.push(productData)
 
-            })
-            for (let i = 0; i < productArr.length; i++) {
-                total += productArr[i].price * productArr[i].qty
-            }
 
-            str1 = arr.join(',')
-            eventLabelString = `${str1}|${total}`
-            obj = {
-                event: "cartPage-productInfo",
-                eventCatogry: "Cart Page",
-                eventAction: "Cart Product Details",
-                eventLabel: eventLabelString
+            let product = {}
+            let arr = []
+            let productArr = [];
+            let obj = {}
+            let eventLabelString = ""
+            let total = 0;
+            let str1 = '';
+            let data = store.getState().myCart.products;
+            if (data && Object.keys(data).length > 0) {
+                product = data;
             }
-            window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push(obj)
-        }
-    }, 3000);
+            if (product && Object.keys(product).length > 0) {
+                _.forEach(product, productData => {
+                    arr.push(productData.sku)
+                })
+                _.forEach(product, productData => {
+                    productArr.push(productData)
+
+                })
+                for (let i = 0; i < productArr.length; i++) {
+                    total += productArr[i].special_price && productArr[i].price !== productArr[i].special_price ? productArr[i].special_price * productArr[i].qty : productArr[i].price * productArr[i].qty
+                }
+
+                str1 = arr.join(',')
+                eventLabelString = `${str1}|${total}`
+                obj = {
+                    event: "cartPage-productInfo",
+                    eventCatogry: "Cart Page",
+                    eventAction: "Cart Product Details",
+                    eventLabel: eventLabelString
+                }
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push(obj)
+            }
+        }, 3000);
 
     }
-   
+
     handleChange(item, index, value) {
         let { user_details, globals } = this.props;
         const { timeout } = this.state
@@ -196,6 +196,7 @@ class ShoppingBagItem extends Component {
                 product = myCartItem.products;
             }
         }
+
         // console.log(cookie.load('myCartItem'));
         // console.log("this.props.cart_details this.props.cart_details",this.props.cart_details);
         let cartProductPrice;
@@ -382,7 +383,7 @@ class ShoppingBagItem extends Component {
                                             {item.special_price ?
                                                 <div>
                                                     <span>{item.currency}&nbsp;{item.special_price}</span>
-                                                    <div style={{ "text-decoration-line": "line-through", color: '#b3b3b3' }}>{item.currency}&nbsp;{item.price}</div>
+                                                    <div style={{ textDecorationLine: "line-through", color: '#b3b3b3' }}>{item.currency}&nbsp;{item.price}</div>
                                                 </div>
                                                 :
                                                 <span>{item.currency}&nbsp;{item.price}</span>
@@ -409,6 +410,7 @@ class ShoppingBagItem extends Component {
                                         <Col xs="2" className="row-3 blackTitle" style={{ fontSize: 22, marginTop: '4.7%' }}>
                                             {item.special_price ?
                                                 <span>{item.currency}&nbsp;{item.special_price * item.qty}</span>
+
                                                 : <span>{item.currency}&nbsp;{item.price * item.qty}</span>}
                                         </Col>
                                         : ''
@@ -527,8 +529,16 @@ class ShoppingBagItem extends Component {
                                         <FormattedMessage id="PDP.OutOfStock" defaultMessage="Out of Stock" />
                                     </span> : ''}
                                     {item.visible_on_store && item.is_in_stock.status == 1 ?
+
                                         <div className="row-3 blackTitle" style={{ fontSize: 16 }}>
-                                            <span>{item.currency}&nbsp;{item.price}</span>
+                                            {item.special_price ?
+                                                <div>
+                                                    <span>{item.currency}&nbsp;{item.special_price}</span>
+                                                    <div style={{ textDecorationLine: "line-through", color: '#b3b3b3' }}>{item.currency}&nbsp;{item.price}
+                                                    </div>
+                                                </div>
+                                                : <span>{item.currency}&nbsp;{item.price * item.qty}</span>}
+                                            {/* <span>{item.currency}&nbsp;{item.price}</span> */}
                                         </div> : ''}
                                     {item.visible_on_store && item.is_in_stock.status == 1 ?
                                         <div className="row-3 blackTitle" style={{ fontSize: 16, textAlign: 'start', color: "#4f4f4f" }}>
@@ -549,7 +559,10 @@ class ShoppingBagItem extends Component {
                                                 onChange={this.handleChange.bind(this, item, index)}
                                                 className="increse-item-qty"
                                             />
-                                            <span className="floatRight" style={{ fontSize: 22, color: "#0D943F" }}>{item.currency}&nbsp;{item.price * item.qty}</span>
+                                            {item.special_price ?
+                                                <span className="floatRight" style={{ fontSize: 22, color: "#0D943F" }}>{item.currency}&nbsp;{item.special_price * item.qty}</span>
+                                                : <span className="floatRight" style={{ fontSize: 22, color: "#0D943F" }}>{item.currency}&nbsp;{item.price * item.qty}</span>}
+                                            {/* <span className="floatRight" style={{ fontSize: 22, color: "#0D943F" }}>{item.currency}&nbsp;{item.price * item.qty}</span> */}
                                         </div> :
                                         ''
                                     }

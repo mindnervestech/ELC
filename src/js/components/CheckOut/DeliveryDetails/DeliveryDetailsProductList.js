@@ -51,7 +51,7 @@ class DeliveryProductList extends Component {
 
         if (product.special_price !== null) {
             cartProductPrice = (
-                <td className="price"><span className="p-price">
+                <td className="price"><span className="p-price" style={{fontSize:15}}>
                     <span className="p-desc"><FormattedMessage id="Now.Text" defaultMessage="Now" /></span>
                     <span className="p-currency">{product.currency}</span> {Math.round(parseFloat(product.special_price * product.qty))}</span>
                     <br />

@@ -63,7 +63,6 @@ export const callActionGetProductSearchList = payload => {
 };
 
 export const getProductSearchList = payload => {
-
 	return dispatch => {
 		const data = {
 			customerid: payload.customerid,
@@ -101,6 +100,7 @@ export const getProductSearchList = payload => {
 						dispatch(
 							callActionGetProductSearchList({
 								products: res.data,
+								messageForProducts:res.message,
 								filters: res.data.filters,
 								metainfo: { ...res.data }
 							})
@@ -111,7 +111,8 @@ export const getProductSearchList = payload => {
 					let newState = { ...res.data };
 					dispatch(
 						callActionGetProductSearchList({
-							products: []
+							products: [],
+							messageForProducts:res.message
 						})
 					);
 				}
@@ -216,6 +217,7 @@ export const getProductList = payload => {
 
 					dispatch(
 						callActionGetProductSearchList({
+							messageForProducts:res.message,
 							products: [],
 							category_name: null
 						})
@@ -226,7 +228,7 @@ export const getProductList = payload => {
 				dispatch(loadingSpinnerForProduct({ loadingProduct: false }))
 				dispatch(
 					callActionGetProductSearchList({
-						category_name: null
+						category_name: null,
 					})
 				);
 			},

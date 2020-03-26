@@ -79,7 +79,7 @@ class OrderSummary extends Component {
                 for (let i = 0; i < items.length; i++) {
                     product_data.push({
                         name: items[i].name ? items[i].name : 'Not set',
-                        id: items[i].id,
+                        id: items[i].sku,
                         price: parseInt(items[i].special_price) && (parseInt(items[i].special_price) !== parseInt(items[i].price)) ? parseFloat(items[i].special_price) : (parseInt(items[i].price)),
                         brand: 'Google',
                         category: items[i].category_names,
@@ -112,7 +112,7 @@ class OrderSummary extends Component {
                 for (let i = 0; i < items.length; i++) {
                     product_data.push({
                         name: items[i].name ? items[i].name : 'Not set',
-                        id: items[i].id,
+                        id: items[i].sku,
                         price: parseInt(items[i].special_price) && (parseInt(items[i].special_price) !== parseInt(items[i].price)) ? parseFloat(items[i].special_price) : (parseInt(items[i].price)),
                         brand: 'Google',
                         category: items[i].category_names,
@@ -224,6 +224,7 @@ class OrderSummary extends Component {
         } else {
             //   success = query.get('status');
             success = cryptr.decrypt(query.get('status'));
+            console.log("status",success)
             let string = window.location.href
             let data = string.split('=')
             orderNumber = data[2].split('&')[0]
@@ -260,6 +261,7 @@ class OrderSummary extends Component {
     }
 
     render() {
+        console.log("item orderd",this.props)
         let ordered_item = null;
         if (this.props.items_ordered) {
             ordered_item = this.props.items_ordered.map((c, index) => {
@@ -589,12 +591,12 @@ class OrderSummary extends Component {
                                                                                                                 <td className="t-Report-cell" headers="APEX_LANG.LANG('ORDERSTATUS')">
                                                                                                                     <FormattedMessage id="OrderStatus.Text" defaultMessage="Order Status" />
                                                                                                                 </td>
-                                                                                                                {/* {success == true ?  */}
+                                                                                                                {success == 'true' ? 
                                                                                                                 <td className="t-Report-cell" align="right" headers="CODE_DESC">{this.props.order_status}</td>
-                                                                                                                {/*  : <td className="t-Report-cell" align="right" headers="CODE_DESC">
+                                                                                                                  : <td className="t-Report-cell" align="right" headers="CODE_DESC">
                                                                                                                     <FormattedMessage id="Paymentpending" defaultMessage="Payment pending" />
                                                                                                                     </td>
-                                                                                                                 } */}
+                                                                                                                 } 
                                                                                                             </tr>
                                                                                                             </tbody>
                                                                                                         </table>

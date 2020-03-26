@@ -16,7 +16,6 @@ import { initializeF, trackF } from '../../utility/facebookPixel';
 import { async } from 'q';
 const wait = require('../../../../assets/images/wait.gif');
 
-
 let _this;
 let in_wishlist = false;
 let disableHeartIcon = false;
@@ -42,7 +41,7 @@ class ProductInfo extends Component {
 			showLearning: false,
 			cartModelFlag: false,
 			checkForProductInWishList: true,
-			disableHeartIcon: false
+			disableHeartIcon:false
 		};
 		this.addToCart = this.addToCart.bind(this);
 	}
@@ -54,11 +53,15 @@ class ProductInfo extends Component {
 		}
 	}
 	componentDidUpdate(prevProps, props) {
-		if (this.props.productZoomDetails !== undefined) {
-			if (this.props.productZoomDetails.id !== prevProps.productZoomDetails.id){
-			productDetailsEvent(this.props.productZoomDetails)
-			}
-		}
+		// console.log("this.props",this.props)
+		// console.log("prevProps",prevProps)
+		// 		if(this.props.productZoomDetails && Object.keys(this.props.productZoomDetails).length > 0){
+		// 			if (this.props.productZoomDetails.id !== prevProps.productZoomDetails.id){
+		// 				productDetailsEvent(this.props.data)
+		// 				}
+		// 	}
+		// 	console.log("*******",this.props.productZoomDetails)
+		
 	}
 
 	closeAlertAddWishList = () => {
@@ -71,30 +74,28 @@ class ProductInfo extends Component {
 		this.props.onClearProductWishDetail();
 	}
 
-	componentWillReceiveProps(nextProps, prevProps) {
-		// if (nextProps.productZoomDetails !== undefined) {
-		// 	productDetailsEvent(nextProps.productZoomDetails)
-		// }
+	componentWillReceiveProps(nextProps, props) {
+		
 
 		let i = 0;
 		var isCheck = false;
-
-		if (nextProps.productZoomDetails !== undefined) {
-			for (i = 0; i < nextProps.wishlistItem.products.length; i++) {
-
-				if (nextProps.productZoomDetails.id === nextProps.wishlistItem.products[i].product_id) {
-
-					isCheck = true;
-					//document.getElementById('Capa_1').setAttribute('class', 'naylove-icon active');
-					this.setState({ is_in_wishlist_item: true, is_in_wishlist_item_check: true }, () => {
-						const { is_in_wishlist_item } = this.state;
-					})
-
-					break;
+		
+			if (nextProps.productZoomDetails !== undefined ) {
+				for (i = 0; i < nextProps.wishlistItem.products.length; i++) {
+					
+					if (nextProps.productZoomDetails.id === nextProps.wishlistItem.products[i].product_id) {
+					
+						isCheck = true;
+						//document.getElementById('Capa_1').setAttribute('class', 'naylove-icon active');
+						this.setState({ is_in_wishlist_item: true, is_in_wishlist_item_check: true }, () => {
+							const { is_in_wishlist_item } = this.state;
+						})
+						
+						break;
+					}		
 				}
+				 
 			}
-
-		}
 
 		if (!isCheck) {
 			this.setState({ is_in_wishlist_item: false });
@@ -368,7 +369,8 @@ class ProductInfo extends Component {
 	addToWishList = (data) => {
 		if ((this.props.customerDetails && this.props.customerDetails.customer_id === undefined) || !this.props.customerDetails) {
 			localStorage.setItem('productId-towishlist', this.props.productZoomDetails.id)
-			return (<Link to={`/${this.props.globals.store_locale}/sign-in-register`}><span className="wishlist-span-1 mr-10-wishlist" style={{ margin: 10 }}>
+			return (<Link to={`/${this.props.globals.store_locale}/sign-in-register`}>
+				<span className="wishlist-span-1 mr-10-wishlist" style={{ margin: 10 }}>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -801,7 +803,7 @@ class ProductInfo extends Component {
 
 												<span className="wishlist-span-1">
 													<a onClick={() => this.setState({ openShareModel: true })} className="hover-on-favorite">
-														<i className='fa fa-share-alt' style={{ fontSize: 25, marginRight: 13 }}></i>
+														<i className='fa fa-share-alt' style={{ fontSize: 25 }}></i>
 														<span className="mr-10-share" ><FormattedMessage id="Share" defaultMessage="Share" /></span>
 													</a>
 												</span>

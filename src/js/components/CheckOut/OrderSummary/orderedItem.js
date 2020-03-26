@@ -109,7 +109,7 @@ class OrderedItem extends Component {
                                                         </span>
                                                         <br />
 
-                                                        <del className="p-desc">
+                                                        <del className="p-desc" style={{color:'#3b3b3b'}}>
                                                             <span>Was </span>
                                                             <strong><span className="p-currency">{this.props.item.currency} </span> {this.props.item.price}</strong>
                                                         </del>

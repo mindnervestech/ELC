@@ -395,22 +395,31 @@ class ProductListData extends Component {
 			for (let value in offer) {
 				if (value === '1') {
 					return (
+						// <div>
+						// 	<button onClick={() => this.openShowAndMorePopup(index)} className="bayMoreAndSaveMore"><FormattedMessage id="BuyMoreBtn.Message2" defaultMessage="Sale" /></button>
+						// </div>
 						<div>
-							<button onClick={() => this.openShowAndMorePopup(index)} className="bayMoreAndSaveMore"><FormattedMessage id="BuyMoreBtn.Message2" defaultMessage="Sale" /></button>
-						</div>
+						<button  className="bayMoreAndSaveMore"><FormattedMessage id="BuyMoreBtn.Message2" defaultMessage="Sale" /></button>
+					</div>
 					);
 				} else {
 					return (
+						// <div>
+						// 	<button onClick={() => this.openShowAndMorePopup(index)} className="bayMoreAndSaveMore"><FormattedMessage id="BuyMoreBtn.Message" defaultMessage="Buy More, Save More!" /></button>
+						// </div>
 						<div>
-							<button onClick={() => this.openShowAndMorePopup(index)} className="bayMoreAndSaveMore"><FormattedMessage id="BuyMoreBtn.Message" defaultMessage="Buy More, Save More!" /></button>
-						</div>
+						<button  className="bayMoreAndSaveMore"><FormattedMessage id="BuyMoreBtn.Message" defaultMessage="Buy More, Save More!" /></button>
+					</div>
 					);
 				}
 			}
 		} else {
 			return (
+				// <div>
+				// 	<button onClick={() => this.openShowAndMorePopup(index)} className="bayMoreAndSaveMore"><FormattedMessage id="BuyMoreBtn.Message" defaultMessage="Buy More, Save More!" /></button>
+				// </div>
 				<div>
-					<button onClick={() => this.openShowAndMorePopup(index)} className="bayMoreAndSaveMore"><FormattedMessage id="BuyMoreBtn.Message" defaultMessage="Buy More, Save More!" /></button>
+					<button  className="bayMoreAndSaveMore"><FormattedMessage id="BuyMoreBtn.Message" defaultMessage="Buy More, Save More!" /></button>
 				</div>
 			);
 		}
@@ -504,6 +513,7 @@ class ProductListData extends Component {
 	// }
 
 	render() {
+		console.log("this.props",this.props)
 		let pathname = this.props.location.pathname.split('/');
 	
 		// }
@@ -943,7 +953,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
 	return {
-		onClearProductDetails: payload => dispatch(actions.clearProductDetails(payload)),
 		onGetMenuNav: (payload) => dispatch(actions.getMenuNav(payload)),
 		OngetMyCart: (quoteId) => dispatch(actions.getMyCart(quoteId)),
 		onGetGuestCartId: () => dispatch(actions.getGuestCartId()),

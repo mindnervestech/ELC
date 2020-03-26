@@ -9,7 +9,6 @@ import * as actions from '../../redux/actions/index';
 import queryString from 'query-string';
 import { ProductSearchEvent,ProductListEvent,initializeGTMWithEvent } from '../../components/utility/googleTagManager';
 import Spinner from '../Spinner/Spinner2';
-
 var _ = require('lodash');
 let filters = {};
 let sortbyv = 'relevance';
@@ -33,10 +32,6 @@ class Product extends Component {
 		searchValue = null;
 		count = 0;
 		mobileFilter = {};
-
-
-
-
 	}
 
 	_fetchSearchedProducts = async (query, filters = {}) => {
@@ -63,18 +58,18 @@ class Product extends Component {
 		if (params.category_path === "search") {
 			return;
 		}
-
+		
 		let category_path = this.props.location.pathname.split('/')
 		let url = ''
-		if (category_path[category_path.length - 2] == "products") {
+		if(category_path[category_path.length - 2] == "products"){
 			url = category_path[category_path.length - 1]
-		} else {
-			if (category_path[category_path.length - 2] !== 'uae-en' &&
+		}else{
+			if(category_path[category_path.length - 2] !== 'uae-en' &&
 				category_path[category_path.length - 2] !== 'uae-ar' &&
 				category_path[category_path.length - 2] !== 'saudi-en' &&
-				category_path[category_path.length - 2] !== 'saudi-ar') {
-				url = category_path[category_path.length - 2] + '-' + category_path[category_path.length - 1]
-			} else {
+				category_path[category_path.length - 2] !== 'saudi-ar'){
+					url = category_path[category_path.length - 2] + '-' +category_path[category_path.length - 1]
+			}else{
 				url = category_path[category_path.length - 1]
 			}
 		}
@@ -169,22 +164,22 @@ class Product extends Component {
 	getCatagoryName = (value) => {
 		let replesUrl = value
 		let url = []
-		replesUrl = replesUrl.replace(/uae-ar|uae-en|saudi-en|saudi-ar|%20/gi, "")
+		replesUrl = replesUrl.replace(/uae-ar|uae-en|saudi-en|saudi-ar|%20/gi,"")
 		let index = replesUrl.split('/');
-		for (let data in index) {
-			if (index[data] !== "" && index[data] !== " ") {
+		for(let data in index){
+			if(index[data] !== "" && index[data] !== " "){
 				url.push(index[data])
 			}
 		}
 		let bradCome = ""
-		if (this.props.category_name != undefined) {
-			if (url[url.length - 2] == "products") {
+		if(this.props.category_name != undefined){
+			if(url[url.length-2] == "products"){
 				bradCome = this.props.category_name //url[url.length-1]
-			} else {
-				bradCome = url[url.length - 2] + "--" + this.props.category_name
+			}else{
+				bradCome = url[url.length-2] + "--" + this.props.category_name
 			}
 			return bradCome
-		} else {
+		}else{
 			return bradCome
 		}
 		// let catName = category_name.split(' ');
@@ -204,11 +199,11 @@ class Product extends Component {
 	}
 
 	render() {
-		//console.log("product listing ",this.props)
+		console.log("props for serch data",this.props)
 		let pathName = this.props.location.pathname
 		let meta_tag = null;
 		if (this.props.productDetails.metainfo.meta_title && this.props.productDetails.metainfo.meta_keywords && this.props.productDetails.metainfo.meta_description) {
-
+			
 			meta_tag = <><Helmet>
 				<meta name="tital" content={this.props.productDetails.metainfo.meta_title} />
 				<title>{this.props.productDetails.metainfo.meta_title}</title>
@@ -227,7 +222,7 @@ class Product extends Component {
 						<div id="t_Body_content_offset" style={{ height: '139px' }} />
 						<div className="t-Body-contentInner">
 							<div>
-								{this.props.spinnerProduct ? <Spinner /> : <ProductData listForGTM={listForGTM} Data={this.props.productDetails.products} loading1={this.props.spinnerProduct} />}
+								{this.props.spinnerProduct ? <Spinner /> : <ProductData listForGTM={listForGTM} Data={this.props.productDetails.products}  loading1={this.props.spinnerProduct} />}
 							</div>
 						</div>
 					</div>

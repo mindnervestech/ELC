@@ -19,6 +19,7 @@ import { live } from '../../../api/globals';
 import Modal from 'react-responsive-modal';
 import ProductRecentlyViewed from '../product-details/product-info/product-color';
 import { FormattedMessage } from 'react-intl';
+import { productDetailsEvent } from '../../utility/googleTagManager';
 
 class ProductDetails extends Component {
 	constructor(props) {
@@ -37,6 +38,11 @@ class ProductDetails extends Component {
 		if (this.props.productDetails) {
 			this.props.onClearProductDetails(this.props.productDetails);
 		}
+		setTimeout(() => {
+		productDetailsEvent(this.props.productDetails)
+			
+		}, 3000);
+
 	}
 
 	componentDidMount() {
@@ -239,7 +245,7 @@ class ProductDetails extends Component {
 						{this.state.productDetailTab !== '' ?
 							<div className="col col-12 ie-issue-ui">
 								<div className="product-info">
-									<ProductInformation data={this.props.productDetails} type={this.state.productDetailTab} currentStore={this.props.currentStore} />
+								 	<ProductInformation data={this.props.productDetails} type={this.state.productDetailTab} currentStore={this.props.currentStore} /> 
 								</div>
 							</div>
 							: ''}
