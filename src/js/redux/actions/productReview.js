@@ -10,6 +10,14 @@ export const callForPostReviews = (payload) => {
     }
 
 }
+export const clearProductReview=()=>{
+    return{
+        type:actionType.CLEAR_PRODUCT_REVIEW,
+        payload:{
+            post_product_review_response:{}
+        }
+    }
+}
 export const callForGetAllReviews = (payload) => {
     return {
         type: actionType.GET_ALL_REVIEWS,

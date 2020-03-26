@@ -82,7 +82,6 @@ class ProductImage extends Component {
 	};
 
 	_getImageData = data => {
-	console.log("color image",data)
 		if (data) {
 			let thumbnails, zoomimages;
 

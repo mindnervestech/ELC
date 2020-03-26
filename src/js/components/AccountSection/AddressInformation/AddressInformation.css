@@ -8,6 +8,12 @@
 
 }
 
+.mr-remove-remove{
+    margin-right: 20px
+}
+html[dir="rtl"] .mr-remove-remove{
+    margin-right: 0px !important
+}
 .addnew-text{
   float:right;
    color: #0d943f !important;

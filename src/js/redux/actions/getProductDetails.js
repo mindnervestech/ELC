@@ -442,6 +442,7 @@ export const getProductDetails = payload => {
 			store: payload.store,
 			url_key: payload.url_key,
 		};
+		dispatch(callActionClearProductDetails({ productData: [] }));
 		dispatch(callProductDetailLoader({ productDetailLoader: true }))
 		dispatch({
 			type: actionTypes.ADD_TO_CARD_LOADER,

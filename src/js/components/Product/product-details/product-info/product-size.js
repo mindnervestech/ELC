@@ -5,6 +5,31 @@ import facebook from '../../../../../assets/images/social/Facebook.svg';
 import instagram from '../../../../../assets/images/social/instagram.svg';
 import youtube from '../../../../../assets/images/social/youtube.svg';
 import twitter from '../../../../../assets/images/social/twitter.svg';
+import {
+    FacebookIcon,
+    FacebookShareButton,
+    TwitterShareButton,
+    InstapaperShareButton,
+    EmailShareButton,
+    TwitterIcon,
+    TelegramIcon,
+    WhatsappIcon,
+    LinkedinIcon,
+    PinterestIcon,
+    VKIcon,
+    OKIcon,
+    RedditIcon,
+    TumblrIcon,
+    LivejournalIcon,
+    MailruIcon,
+    ViberIcon,
+    WorkplaceIcon,
+    LineIcon,
+    PocketIcon,
+    InstapaperIcon,
+    EmailIcon,
+} from 'react-share';
+
 
 class ProductSize extends Component {
     constructor(props) {
@@ -121,24 +146,25 @@ class ProductSize extends Component {
     render() {
         
         // const shareUrl = window.location.href;
-        // const title = 'ELC'
-
+         const title = 'ELC'
+        const shareUrl = window.location.href;
         return (
             
             <div className="row" style={{ padding: 25 }}>
                 
 
                 <div className="Demo__some-network share-icon">
-                    <a href="https://www.facebook.com/elctoys" target="_blank" alt="">
+
+                    <FacebookShareButton url={shareUrl} style={{ cursor: 'pointer' }}>
                         <img style={{ height: 42, width: 42 }} src={facebook} className="icon" />
                         <span>Facebook</span>
-                    </a>
+                    </FacebookShareButton>
                 </div>
                 <div className="Demo__some-network share-icon">
-                    <a href="https://www.twitter.com/elctoysme" target="_blank" alt="">
+                    <TwitterShareButton url={shareUrl} style={{ cursor: 'pointer' }}>
                         <img style={{ height: 42, width: 42 }} src={twitter} className="icon" />
                         <span>Twitter</span>
-                    </a>
+                    </TwitterShareButton>
                 </div>
                 <div className="Demo__some-network share-icon">
                     <a href="https://www.instagram.com/elctoys" target="_blank" alt="">

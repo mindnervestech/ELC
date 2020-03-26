@@ -118,14 +118,18 @@ class ProductZoom extends Component {
 			{
 				primaryimage=data.primaryimage;
 			}
+			console.log("image data",data)
 
 
-			// if (data.thumbnail.length > 1) {
+			 if (data.primaryimage.length > 0) {
 				return (
 					<a  onClick={(e) => this._handleThumbImgClick(e, 'img')} href={zoomimages[0]} className="MagicZoom" id="zoom-v" data-options="hint:false; zoomMode: off; expand: off;">
 						<img src={primaryimage[0]} alt="" />
 					</a>
 				);
+			}
+			return '';
+
 			// } else {
 			// 	return (
 			// 		<a onClick={(e) => this._handleThumbImgClick(e, 'img')}  href={zoomimages[0]} className="MagicZoom" id="zoom-v" data-options="hint:false; zoomMode: off; expand: off;">

@@ -24,7 +24,7 @@ var self;
 let averageReview;
 let totalCount = 0;
 var lengthOfObject=0;
-
+let checkForPopou=true;
 let ArrayOfAge = [' ', '0-17 months', '18-35months', '3-4 years', '5-7 years', '8 and over'];
 class SizeGuide extends Component {
     constructor(props) {
@@ -59,6 +59,12 @@ class SizeGuide extends Component {
             }
         }
     }
+    componentDidMount(){
+        checkForPopou=true;
+    }
+    componentWillMount(){
+        checkForPopou=true
+    }
 
     clearProductReviewField=()=>{
         this.setState({
@@ -84,13 +90,13 @@ class SizeGuide extends Component {
         if (total && lengthOfObject) {
             averageReview = Math.round(total / lengthOfObject)
         }
-
-        if (nextProps.productReview.post_product_review_response !== undefined) {
+        if (nextProps && checkForPopou===false  && nextProps.productReview && nextProps.productReview.post_product_review_response !== undefined) {
             this.clearProductReviewField();
             this.setState({ showAlert: true, resFlag: false })
             setTimeout(() => {
                 this.closeAlert()
             }, 1000);
+           // this.props.OnClearProductReviewResponse()
         }
 
 
@@ -171,6 +177,7 @@ class SizeGuide extends Component {
         }
 
         this.props.onPostProductReview(data)
+        checkForPopou=false
     }
     showHideDiveWriteReivew = (str) => {
         if (str === 'show') {
@@ -455,8 +462,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         onPostProductReview: payload => dispatch(actions.postReview(payload)),
-        onGetProductReviewBySKu: payload => dispatch(actions.getProductReviewBySKU(payload))
-
+        onGetProductReviewBySKu: payload => dispatch(actions.getProductReviewBySKU(payload)),
+        OnClearProductReviewResponse:()=>dispatch(actions.clearProductReview())
     };
 };
 

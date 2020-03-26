@@ -4,11 +4,9 @@ class CityList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
         }
         //console.log('city', props);
     }
-
     getUnique = (arr, comp) => {
         const unique = arr
             .map(e => e[comp])
@@ -18,8 +16,6 @@ class CityList extends Component {
             .filter(e => arr[e]).map(e => arr[e]);
         return unique;
     }
-
-
     __renderCity = (item, index) => {
         return (
             <option key={item.id} value={item.city}>{item.city}</option>
@@ -28,15 +24,11 @@ class CityList extends Component {
 
 
     render() {
-
         const { locations, selectedCountry } = this.props;
-
         var filtered = locations.filter(function (item) {
             return item.country_id == selectedCountry;
         });
         const filteredDups = this.getUnique(filtered, 'city')
-
-
 
         return (
             <select id="P12_CITY" name="P12_CITY" className="selectlist apex-item-select js-ignoreChange" size={1} onChange={(e) => this.props.handleCityChange(e)}>

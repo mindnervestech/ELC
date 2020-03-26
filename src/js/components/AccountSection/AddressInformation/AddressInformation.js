@@ -8,9 +8,10 @@ import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import * as actions from '../../../redux/actions/index';
 import AlertBox from '../../Common/AlertBox/AlertBox';
-import ConfirmBox from '../../Common/AlertBox/ConfirmBox';
+import ConfirmBox from '../../Common/AlertBox/ConfirmBoxForAccountAddress';
 import * as utility from '../../utility/utility';
 import './AddressInformation.css'
+let objToConfirmBox;
 class AddressInformation extends Component {
 
     constructor(props) {
@@ -69,6 +70,8 @@ class AddressInformation extends Component {
 
 
     deleteAddress = (addressKey) => {
+        
+        objToConfirmBox=this.props.addressBook[addressKey];
 
         this.setState({
             ...this.state,
@@ -141,6 +144,7 @@ class AddressInformation extends Component {
 
 
     render() {
+        console.log("objToConfirmBox",this.state)
         let obj={
             textAlign:'center',
             paddingBottom:45
@@ -159,6 +163,7 @@ class AddressInformation extends Component {
 
         if (this.state.confirmBoxDetails.status) {
             confirmBox = <ConfirmBox
+                data={objToConfirmBox}
                 message={this.state.confirmBoxDetails.message}
                 alertBoxStatus={this.state.confirmBoxDetails.status}
                 buttonClick={(val) => this.buttonClick(val)} />
@@ -294,7 +299,7 @@ class AddressInformation extends Component {
                                     <div className="t-Region-headerItems t-Region-headerItems--buttons"><button onClick={this.openAddAddressModal} className="t-Button t-Button--hot " type="button" id="B28610426425643368"><span className="t-Button-label"><FormattedMessage id="AddNewAddress.Text" defaultMessage="Add New Address" /></span></button><span className="js-maximizeButtonContainer" /></div>
                                 </div> */}
 
-                            <div>
+                            <div className={(addressList.length > 0? '':'address-message-center')}>
                                 {/* <ul class="pull-left account-address">
                                     <li>
                                         <strong><span>Mr.</span> <span>Akshay</span> <span>Akshay</span>
@@ -308,7 +313,7 @@ class AddressInformation extends Component {
                                     <li><span>Australia</span> <span>1022</span></li>
                                     <li>8956177495</li>
                                 </ul> */}
-                                {addressCard}
+                                {addressList.length > 0? addressCard:<span><FormattedMessage id="nosavedaddress.text" defaultMessage="No Saved Addresses Found"/></span>}
                             </div>
 
 

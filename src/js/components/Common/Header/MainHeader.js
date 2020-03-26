@@ -61,7 +61,8 @@ class MainHeader extends Component {
             openAccountModal: false,
             countryCode: '',
             countryName: '',
-            countryChangeCalled: false
+            countryChangeCalled: false,
+            openMobileMenu:false
         }
     }
 
@@ -76,6 +77,9 @@ class MainHeader extends Component {
         if (status === true) {
             this.setState({ goToMyAccount: false })
         }
+    }
+    openMenuMobile=()=>{
+        this.setState({openMobileMenu:true})
     }
 
     showCart = () => {
@@ -136,9 +140,9 @@ componentWillMount() {
             country_id: '',
             city: ''
         });
-        // if (this.props.guest_user.temp_quote_id == null) {
-        //     this.props.onGetGuestCartId();
-        // }
+        if (this.props.guest_user.temp_quote_id == null) {
+            this.props.onGetGuestCartId();
+        }
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -687,7 +691,10 @@ componentWillMount() {
                                 <Search store_locale={store_locale} />
                             </div>
                             {/* </Container> */}
-                            <div id="navTrigger" className="navTrigger"><i></i><i></i><i></i></div>
+                            <div id="navTriggerMenu" className="navTrigger">
+                                <i></i>
+                                <i></i>
+                            <i></i></div>
                             {/* <ul className="cta">
                                 <li className="ll">
                                     <div className="lang">
@@ -713,7 +720,7 @@ componentWillMount() {
                             <li onClick={() => this.onAccountMeunClick(true)} className="li-my-account-tab col-md-4"><Link className="li-my-account-tab" to={`/${store_locale}/wish-list`}><FormattedMessage id="header.Wishlist" defaultMessage="Wishlist" /></Link></li>
                         </ul>
 
-                    </div> : ''}
+                    </div> : <div/>}
 
                     <div id="R33786937309169806" className="menuOverlay"> </div>
                     <div id="R33786847982169805" className="row-3 hideBackPageScroll">

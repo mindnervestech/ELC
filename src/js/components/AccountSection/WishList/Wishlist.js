@@ -351,7 +351,7 @@ class WishList extends Component {
                                 }
                             </Link>
                             <span style={{ fontSize: 15, fontWeight: 'bold' }}><FormattedMessage id="profile.Wishlist.Title" defaultMessage="Wishlist" /></span>
-                            <h1 className="address-header" style={{borderBottom: '1px #e1e1e1 solid'}}><FormattedMessage id="header.Wishlist" defaultMessage="Wishlist" /></h1>
+                            <h1 className="address-header" ><FormattedMessage id="header.Wishlist" defaultMessage="Wishlist" /></h1>
                             <hr />
                         </div>
                         <div className="container">

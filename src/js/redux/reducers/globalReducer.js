@@ -12,7 +12,6 @@ let initialState = {};
 let country_name;
 // const res = await axios.get(`https://ipinfo.io/json?token=${GEO_IP_INFO_TOKEN}`)
 var fetchIPInfo = async () => {
-  
     const res = await axios.get(`https://ipinfo.io/json?token=${GEO_IP_INFO_TOKEN}`)
     //let data = await res.data;
     return  res;
@@ -20,9 +19,10 @@ var fetchIPInfo = async () => {
 // }
 // if(!cookie.load("countryThroughIPFromIndexjs")){
 fetchIPInfo().then(data => {
-
+    console.log("data",data.data)
+   // console.log("ffghjhj",data.data.geoplugin_countryCode)
     country_name = data.data.country;
-    if (country_name !== '') {
+    if (country_name !=='') {
         if (country_name === 'KSA') {
             set_country = 'KSA'
             set_store_id = 2

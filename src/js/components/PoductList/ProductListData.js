@@ -179,7 +179,6 @@ class ProductListData extends Component {
 		}, 200);
 		
 
-		console.log("total pages",this.state.totalPages)
 		if (productList.length === 0) {
 			this.setState({ totalPages: totalPages, pageNumber: 0 })
 		} else {

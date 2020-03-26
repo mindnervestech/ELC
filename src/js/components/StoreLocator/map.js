@@ -29,7 +29,7 @@ export class MapContainer extends Component {
 
   render() {
     const { markars, lat, long, zoom } = this.props;
-
+console.log("this.props in marker",this.props)
     return (
       <div>
         <Map

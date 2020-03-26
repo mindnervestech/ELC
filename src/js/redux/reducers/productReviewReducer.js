@@ -12,6 +12,8 @@ const reducer = (state = initialState, action) => {
 
         case actionTypes.GET_ALL_REVIEWS:
             return updateObject(state, action.payload)
+        case actionTypes.CLEAR_PRODUCT_REVIEW:
+        return updateObject(state,action.payload)
 
 
         default:

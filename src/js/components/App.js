@@ -340,7 +340,7 @@ class App extends Component {
 
         return (
             <>
-            {!abc ? <Spinner2 /> :
+            {!abc ? <Spinner2 style={{top:'50%'}} /> :
                   <CookiesProvider>
                 <IntlProvider locale={language} messages={messages}>
                         <BrowserRouter>
@@ -403,7 +403,7 @@ class App extends Component {
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/password-rest" component={ResetPassword} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/product-list" component={ProductList} />
                                         <Route path="/:locale(en|ar|uae-en|uae-ar|saudi-en|saudi-ar)/new-check-out" component={NewCheckOut} />
-                                    </Switch>}
+                                    </Switch>
                                     <Footer />
 
                                 </>

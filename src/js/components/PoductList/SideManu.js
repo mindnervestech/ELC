@@ -7,11 +7,10 @@ import Collapsible from 'react-collapsible';
 import { Link, Redirect, withRouter } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import Spinner2 from '../Spinner/Spinner2';
-
-
-
+let _categorynamesforfilter=''
 var _ = require('lodash');
-
+let windowpath=''
+let path=""
 let productListingData = {}
 let productList = {}
 let newFilterArrayFromPF = {}
@@ -29,11 +28,19 @@ let filterFirstOption = ""
 let updateHideOption = true
 let afterFilterShowOptionListCheck = true
 let onClickFilterOptionToApplyFilter = false
+let _categorynames=''
 let selectedFilter = [];
 class SideManu extends Component {
 	constructor(props) {
 		super(props);
 		
+		this.state = {
+			list: {},
+			filterOptionCheck: true,
+			narrowResult: [],
+			clearAllOption: false,
+			loader:false
+		};
 		onClickFilterOptionToApplyFilter = false
 		if (this.props.productDetails  && this.props.comefrompf.split('/')[3] !== "brand" &&  this.props.comefrompf.split('/')[3] !== "present_finder") {
 			productListingData = this.props.productDetails.products.product_data;
@@ -52,13 +59,6 @@ class SideManu extends Component {
 			productList = this.props.productDetailFromSb.product_data;
 			newArrayFromShobByBrand = this._getUnique_filter(this.props.productDetailFromSb.filters);
 		}
-        this.state = {
-			list: {},
-			filterOptionCheck: true,
-			narrowResult: [],
-			clearAllOption: false,
-			loader: false,
-		};
 
 	}
 
@@ -136,6 +136,7 @@ class SideManu extends Component {
 			narrowResult: [],
 			clearAllOption: false,
 		};
+		
 		if ( this.props.productDetails && this.props.productDetails.products && (Object.keys(this.props.productDetails.products).length > 0) && this.props.comefrompf.split('/')[3] !== "present_finder" ) {
 			filterOptionArrayForCheck = []
 			filterOptionArraySubCategary = []
@@ -153,9 +154,9 @@ class SideManu extends Component {
 				let checkSubmanu = 0
 				let remove = value
 				for (let item in productListingData) {
-					if (splitValue[0] == "color") {
-						if (splitValue[1] == productListingData[item].json.color_english) {
-							if (checkSubmanu == 0) {
+					if (splitValue[0] === "color") {
+						if (splitValue[1] === productListingData[item].json.color_english) {
+							if (checkSubmanu === 0) {
 								checkSubmanu = 1
 								filterOptionArrayForCheckValidate.push(filterOptionArrayForCheck[value])
 							}
@@ -163,8 +164,8 @@ class SideManu extends Component {
 					} else {
 						for (let filter in productListingData[item].json.filtersdata) {
 							for (let age in productListingData[item].json.filtersdata[filter]) {
-								if (checkSubmanu == 0) {
-									if (splitValue[1] == productListingData[item].json.filtersdata[filter][age]) {
+								if (checkSubmanu === 0) {
+									if (splitValue[1] === productListingData[item].json.filtersdata[filter][age]) {
 										filterOptionArrayForCheckValidate.push(filterOptionArrayForCheck[value])
 										checkSubmanu = 1
 									}
@@ -199,9 +200,9 @@ class SideManu extends Component {
 				let checkSubmanu = 0
 				let remove = value
 				for (let item in productListingData) {
-					if (splitValue[0] == "color") {
-						if (splitValue[1] == productListingData[item].json.color_english) {
-							if (checkSubmanu == 0) {
+					if (splitValue[0] === "color") {
+						if (splitValue[1] === productListingData[item].json.color_english) {
+							if (checkSubmanu === 0) {
 								checkSubmanu = 1
 								filterOptionArrayForCheckValidate.push(filterOptionArrayForCheck[value])
 							}
@@ -209,8 +210,8 @@ class SideManu extends Component {
 					} else {
 						for (let filter in productListingData[item].json.filtersdata) {
 							for (let age in productListingData[item].json.filtersdata[filter]) {
-								if (checkSubmanu == 0) {
-									if (splitValue[1] == productListingData[item].json.filtersdata[filter][age]) {
+								if (checkSubmanu === 0) {
+									if (splitValue[1] === productListingData[item].json.filtersdata[filter][age]) {
 										filterOptionArrayForCheckValidate.push(filterOptionArrayForCheck[value])
 										checkSubmanu = 1
 									}
@@ -246,9 +247,9 @@ class SideManu extends Component {
 				let checkSubmanu = 0
 				let remove = value
 				for (let item in productListingData) {
-					if (splitValue[0] == "color") {
-						if (splitValue[1] == productListingData[item].json.color_english) {
-							if (checkSubmanu == 0) {
+					if (splitValue[0] === "color") {
+						if (splitValue[1] === productListingData[item].json.color_english) {
+							if (checkSubmanu === 0) {
 								checkSubmanu = 1
 								filterOptionArrayForCheckValidate.push(filterOptionArrayForCheck[value])
 							}
@@ -256,8 +257,8 @@ class SideManu extends Component {
 					} else {
 						for (let filter in productListingData[item].json.filtersdata) {
 							for (let age in productListingData[item].json.filtersdata[filter]) {
-								if (checkSubmanu == 0) {
-									if (splitValue[1] == productListingData[item].json.filtersdata[filter][age]) {
+								if (checkSubmanu === 0) {
+									if (splitValue[1] === productListingData[item].json.filtersdata[filter][age]) {
 										filterOptionArrayForCheckValidate.push(filterOptionArrayForCheck[value])
 										checkSubmanu = 1
 									}
@@ -278,11 +279,20 @@ class SideManu extends Component {
 			}
 		}
 	}
-
+   
 	componentWillMount() {
-	
-		//newFilterArray={}
-		if (this.props.productDetails && this.props.productDetails.products && (Object.keys(this.props.productDetails.products).length > 0) && this.props.comefrompf.split('/')[3] !== "present_finder" ) {
+		let currentPath=window.location.href.split('/');
+		let currentCatergory = currentPath[currentPath.length-1]
+		if(currentCatergory !== path){
+			filterOptionArray=[]
+		}
+		if(filterOptionArray && filterOptionArray.length > 0 && currentCatergory === path){
+			setTimeout(() => {
+				this.applyFilter('',false)
+			}, 300);
+		}
+		path = currentCatergory;
+		if (Object.keys(this.props.productDetails.products).length > 0) {
 			filterOptionArrayForCheck = []
 			filterOptionArraySubCategary = []
 			filterOptionArrayForCheckValidate = []
@@ -299,9 +309,9 @@ class SideManu extends Component {
 				let checkSubmanu = 0
 				let remove = value
 				for (let item in productListingData) {
-					if (splitValue[0] == "color") {
-						if (splitValue[1] == productListingData[item].json.color_english) {
-							if (checkSubmanu == 0) {
+					if (splitValue[0] === "color") {
+						if (splitValue[1] === productListingData[item].json.color_english) {
+							if (checkSubmanu === 0) {
 								checkSubmanu = 1
 								filterOptionArrayForCheckValidate.push(filterOptionArrayForCheck[value])
 							}
@@ -309,7 +319,7 @@ class SideManu extends Component {
 					} else {
 						for (let filter in productListingData[item].json.filtersdata) {
 							for (let age in productListingData[item].json.filtersdata[filter]) {
-								if (checkSubmanu == 0) {
+								if (checkSubmanu === 0) {
 									if (splitValue[1] == productListingData[item].json.filtersdata[filter][age]) {
 										filterOptionArrayForCheckValidate.push(filterOptionArrayForCheck[value])
 										checkSubmanu = 1
@@ -350,9 +360,9 @@ class SideManu extends Component {
 				let checkSubmanu = 0
 				let remove = value
 				for (let item in productListingData) {
-					if (splitValue[0] == "color") {
-						if (splitValue[1] == productListingData[item].json.color_english) {
-							if (checkSubmanu == 0) {
+					if (splitValue[0] === "color") {
+						if (splitValue[1] === productListingData[item].json.color_english) {
+							if (checkSubmanu === 0) {
 								checkSubmanu = 1
 								filterOptionArrayForCheckValidate.push(filterOptionArrayForCheck[value])
 							}
@@ -360,8 +370,8 @@ class SideManu extends Component {
 					} else {
 						for (let filter in productListingData[item].json.filtersdata) {
 							for (let age in productListingData[item].json.filtersdata[filter]) {
-								if (checkSubmanu == 0) {
-									if (splitValue[1] == productListingData[item].json.filtersdata[filter][age]) {
+								if (checkSubmanu === 0) {
+									if (splitValue[1] === productListingData[item].json.filtersdata[filter][age]) {
 										filterOptionArrayForCheckValidate.push(filterOptionArrayForCheck[value])
 										checkSubmanu = 1
 									}
@@ -397,9 +407,9 @@ class SideManu extends Component {
 				let checkSubmanu = 0
 				let remove = value
 				for (let item in productListingData) {
-					if (splitValue[0] == "color") {
-						if (splitValue[1] == productListingData[item].json.color_english) {
-							if (checkSubmanu == 0) {
+					if (splitValue[0] === "color") {
+						if (splitValue[1] === productListingData[item].json.color_english) {
+							if (checkSubmanu === 0) {
 								checkSubmanu = 1
 								filterOptionArrayForCheckValidate.push(filterOptionArrayForCheck[value])
 							}
@@ -407,8 +417,8 @@ class SideManu extends Component {
 					} else {
 						for (let filter in productListingData[item].json.filtersdata) {
 							for (let age in productListingData[item].json.filtersdata[filter]) {
-								if (checkSubmanu == 0) {
-									if (splitValue[1] == productListingData[item].json.filtersdata[filter][age]) {
+								if (checkSubmanu === 0) {
+									if (splitValue[1] === productListingData[item].json.filtersdata[filter][age]) {
 										filterOptionArrayForCheckValidate.push(filterOptionArrayForCheck[value])
 										checkSubmanu = 1
 									}
@@ -437,19 +447,19 @@ class SideManu extends Component {
 					let checkSubmanu = 0
 					let remove = value
 					for (let item in productList) {
-						if (splitValue[0] == "color") {
-							if (filterFirstOption == "color") {
+						if (splitValue[0] === "color") {
+							if (filterFirstOption === "color") {
 								for (let item in productListingData) {
-									if (splitValue[1] == productListingData[item].json.color_english) {
-										if (checkSubmanu == 0) {
+									if (splitValue[1] === productListingData[item].json.color_english) {
+										if (checkSubmanu === 0) {
 											checkSubmanu = 1
 											filterOptionArrayForCheckValidate.push(afterFilterShowOptionList[value])
 										}
 									}
 								}
 							} else {
-								if (splitValue[1] == productList[item].json.color_english) {
-									if (checkSubmanu == 0) {
+								if (splitValue[1] === productList[item].json.color_english) {
+									if (checkSubmanu === 0) {
 										checkSubmanu = 1
 										filterOptionArrayForCheckValidate.push(afterFilterShowOptionList[value])
 									}
@@ -458,15 +468,15 @@ class SideManu extends Component {
 						} else {
 							for (let filter in productList[item].json.filtersdata) {
 								for (let age in productList[item].json.filtersdata[filter]) {
-									if (checkSubmanu == 0) {
-										if (filterFirstOption == filter) {
+									if (checkSubmanu === 0) {
+										if (filterFirstOption === filter) {
 											let checkSubmanu2 = 0
 											for (let item2 in productListingData) {
 												if (productListingData[item2].json.filtersdata) {
 													if (productListingData[item2].json.filtersdata[filterFirstOption]) {
 														for (let age2 in productListingData[item2].json.filtersdata[filterFirstOption]) {
-															if (checkSubmanu2 == 0) {
-																if (splitValue[1] == productListingData[item2].json.filtersdata[filterFirstOption][age2]) {
+															if (checkSubmanu2 === 0) {
+																if (splitValue[1] === productListingData[item2].json.filtersdata[filterFirstOption][age2]) {
 																	filterOptionArrayForCheckValidate.push(afterFilterShowOptionList[value])
 																	checkSubmanu2 = 1
 																}
@@ -478,7 +488,7 @@ class SideManu extends Component {
 										} else {
 											if (productList[item].json.filtersdata) {
 												if (productList[item].json.filtersdata[filter]) {
-													if (splitValue[1] == productList[item].json.filtersdata[filter][age]) {
+													if (splitValue[1] === productList[item].json.filtersdata[filter][age]) {
 														filterOptionArrayForCheckValidate.push(afterFilterShowOptionList[value])
 														checkSubmanu = 1
 													}
@@ -511,7 +521,7 @@ class SideManu extends Component {
 		for (let value in productList) {
 			if (productList[value].json.filtersdata) {
 				for (let item in productList[value].json.filtersdata[code]) {
-					if (productList[value].json.filtersdata[code][item] == filterValue) {
+					if (productList[value].json.filtersdata[code][item] === filterValue) {
 						filterData.push(productList[value])
 					}
 				}
@@ -526,12 +536,12 @@ class SideManu extends Component {
 		let find = true;
 		let remove = -1
 		for (let data in filterOptionArray) {
-			if (filterOptionArray[data] == value) {
-				find = false
+			if (filterOptionArray[data] === value && check!==false) {
+				find = false 
 				remove = data
 			}
 		}
-		if (find) {
+		if (find && check!==false ) {
 			filterOptionArray.push(value);
 			selectedFilter.push(filt[1]);
 		}
@@ -539,7 +549,7 @@ class SideManu extends Component {
 			filterOptionArray.splice(remove, 1);
 			remove = -1;
 			for (var i in selectedFilter) {
-				if (filt[1] == selectedFilter[i]) {
+				if (filt[1] === selectedFilter[i]) {
 					selectedFilter.splice(i, 1)
 				}
 			}
@@ -547,7 +557,7 @@ class SideManu extends Component {
 
 		}
 		this.setState({ narrowResult: filterOptionArray })
-		if (filterOptionArray.length == 0) {
+		if (filterOptionArray.length === 0) {
 			this.setState({ clearAllOption: false });
 			productList = productListingData;
 			filterData = [];
@@ -572,7 +582,7 @@ class SideManu extends Component {
 			productList = productListingData;
 			filterFirstOption = filterOptionArray[0].split('/')[0]
 			for (let checkMultepal in filterOptionArray) {
-				if (filterFirstOption == filterOptionArray[checkMultepal].split('/')[0]) {
+				if (filterFirstOption === filterOptionArray[checkMultepal].split('/')[0]) {
 					afterFilterShowOptionListCheck = false
 				} else {
 					afterFilterShowOptionListCheck = true
@@ -582,7 +592,7 @@ class SideManu extends Component {
 
 			for (let categrayData in filterOptionArray) {
 				let splitData = filterOptionArray[categrayData].split('/')
-				if (splitData[0] == "brand") {
+				if (splitData[0] === "brand") {
 					let filterValue = splitData[1]
 					this.getFilterData(filterValue, splitData[0])
 				}
@@ -593,7 +603,7 @@ class SideManu extends Component {
 			}
 			for (let categrayData in filterOptionArray) {
 				let splitData = filterOptionArray[categrayData].split('/')
-				if (splitData[0] == "age") {
+				if (splitData[0] === "age") {
 					if (checkForMultipalFilter) {
 						checkForMultipalFilter = false
 						filterData = []
@@ -609,7 +619,7 @@ class SideManu extends Component {
 			}
 			for (let categrayData in filterOptionArray) {
 				let splitData = filterOptionArray[categrayData].split('/')
-				if (splitData[0] == "gender") {
+				if (splitData[0] === "gender") {
 					if (checkForMultipalFilter) {
 						checkForMultipalFilter = false
 						filterData = []
@@ -625,7 +635,7 @@ class SideManu extends Component {
 			}
 			for (let categrayData in filterOptionArray) {
 				let splitData = filterOptionArray[categrayData].split('/')
-				if (splitData[0] == "sub_category") {
+				if (splitData[0] === "sub_category") {
 					if (checkForMultipalFilter) {
 						checkForMultipalFilter = false
 						filterData = []
@@ -642,7 +652,7 @@ class SideManu extends Component {
 
 			for (let categrayData in filterOptionArray) {
 				let splitData = filterOptionArray[categrayData].split('/')
-				if (splitData[0] == "color") {
+				if (splitData[0] === "color") {
 					if (checkForMultipalFilter) {
 						checkForMultipalFilter = false
 						filterData = []
@@ -650,7 +660,7 @@ class SideManu extends Component {
 					let filterValue = splitData[1]
 					for (let value in productList) {
 						if (productList[value].json.color_english) {
-							if (productList[value].json.color_english == filterValue) {
+							if (productList[value].json.color_english === filterValue) {
 								filterData.push(productList[value])
 							}
 						}
@@ -666,7 +676,7 @@ class SideManu extends Component {
 			updateHideOption = true
 			this.hideFilterOtionThoseNotInProduct()
 		}
-		this.forceUpdate();
+		//this.forceUpdate();
 	}
 
 	clearFilter = () => {
@@ -688,12 +698,12 @@ class SideManu extends Component {
 		else if(this.props.productDetails && this.props.comefrompf.split('/')[3] !== "present_finder" && this.props.comefrompf.split('/')[3] !== "brand" ){
 			this.setState({list:filterList})
 		}
-		this.forceUpdate();
+		//this.forceUpdate();
 
 	}
 
 	appleFilterForMobile = () => {
-		if(filterData.length == 0){
+		if(filterData.length === 0){
 			this.props.action(productListingData, true)
 		}else{
 			this.props.action(filterData,true)
@@ -703,7 +713,7 @@ class SideManu extends Component {
 	checkFilterIsAvailable = (value, code) => {
 		for (let item in filterOptionArrayForCheckValidate) {
 			let splitData = filterOptionArrayForCheckValidate[item].split('/')
-			if (splitData[1] == value) {
+			if (splitData[1] === value) {
 				//  render(){
 				return (
 					<div>
@@ -719,7 +729,7 @@ class SideManu extends Component {
 		return (Object.keys(data).map((keyName) => {
 			for (let item in filterOptionArrayForCheckValidate) {
 				let splitData = filterOptionArrayForCheckValidate[item].split('/')
-				if (splitData[1] == data[keyName].name) {
+				if (splitData[1] === data[keyName].name) {
 					return (
 						this.assignFilterdata(data[keyName].name, data[keyName].code)
 					);
@@ -733,18 +743,18 @@ class SideManu extends Component {
 
 		// return (Object.keys(data).map((keyName, index) => {
 		for (let item in this.state.narrowResult) {
-			if (this.state.narrowResult[item] == code + "/" + name) {
+			if (this.state.narrowResult[item] === code + "/" + name) {
 				Checked++;
 			}
 		}
 
 		for(var i in selectedFilter){
-			if(name == selectedFilter[i]){
+			if(name === selectedFilter[i]){
 				Checked++;
 			}
 		}
 		
-		if (Checked == 0) {
+		if (Checked === 0) {
 			return (
 				<div style={{ position: 'relative' }}>
 					<div onClick={() => this.applyFilter(code + "/" + name, "")} style={{cursor:'pointer'}}  className="likeAInputNotSelected"><div className="likeAInput"></div></div>
@@ -769,8 +779,8 @@ class SideManu extends Component {
 		let checkManu = 0
 		for (let item in filterOptionArrayForCheckValidate) {
 			let splitData = filterOptionArrayForCheckValidate[item].split('/')
-			if (splitData[0] == value.toLowerCase().replace(' ', '_')) {
-				if (checkManu == 0) {
+			if (splitData[0] === value.toLowerCase().replace(' ', '_')) {
+				if (checkManu === 0) {
 					checkManu = 1
 
 					return (
@@ -811,7 +821,7 @@ class SideManu extends Component {
 		}
 
 		
-		if (onClickFilterOptionToApplyFilter == false) {
+		if (onClickFilterOptionToApplyFilter === false) {
 			if (this.props.productDetails && this.props.comefrompf.split('/')[3] !== "present_finder" && this.props.comefrompf.split('/')[3] !== "brand") {
 				productListingData = this.props.productDetails.products.product_data;
 				productList = this.props.productDetails.products.product_data;

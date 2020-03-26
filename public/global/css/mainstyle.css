@@ -5,13 +5,18 @@ html[dir="rtl"] .review-description{
     float:left
 }
 
-
 .present-finder-text-align{
     text-align: left
 }
 
 html[dir="rtl"] .present-finder-text-align{
     text-align: right
+}
+.mr-for-address-popup{
+    margin-right:20px;
+}
+html[dir="rtl"] .mr-for-address-popup{
+    margin-right:0px !important;
 }
 
 .present-finder-buton-div{

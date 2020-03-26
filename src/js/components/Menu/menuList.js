@@ -27,10 +27,15 @@ class menuList extends Component {
 		// let menu_item = 'menu.' + item.name.toUpperCase();
 		return (
 		    
-			<li key={index}>	
+			<li key={index}>
+				{ item.url_key==="shop-all-brands" ?
+				<Link to={'/' + this.props.globals.store_locale + '/browse-all-brand' }>
+						{item.name}
+						
+					</Link>:	
 				<Link to={'/' + this.state.store_locale + '/products/' + item.url_path} onClick={() => document.getElementById("closeNav").click()}>
 					{item.name}
-				</Link>
+		</Link> }
 			</li>
 			)
 	};
@@ -154,18 +159,19 @@ class menuList extends Component {
 			<>
 				<li key={index} className="borderForMobileManu" style={{marginTop: 0}}> 
 			
-				{item.url_path === 'shop-by-brand' ? <Link to={'/' + this.props.globals.store_locale + '/browse-all-brand' } style={{ textDecoration: 'none' ,padding: "15px 7px"}} onClick={() => document.getElementById("closeNav").click()} className={item.children[0].length > 0 ? '' : "removeWhite"}>
+				{/* {item.url_path === 'shop-by-brand' ? 
+				<Link to={'/' + this.props.globals.store_locale + '/browse-all-brand' } style={{ textDecoration: 'none' ,padding: "15px 7px"}} onClick={() => document.getElementById("closeNav").click()} className={item.children[0].length > 0 ? '' : "removeWhite"}>
 						{item.name}
 						{item.children[0].length > 0 ?
 							<i className="fa fa-caret-down downMenu divShowOnWeb" aria-hidden="true"></i>
 						: <span  />}
-					</Link>:
+					</Link>: */}
 					<Link to={'/' + this.state.store_locale + '/products/' + item.url_path} style={{ textDecoration: 'none' ,padding: "15px 7px"}} onClick={() => document.getElementById("closeNav").click()} className={item.children[0].length > 0 ? '' : "removeWhite"}>
 						{item.name}
 						{item.children[0].length > 0 ?
 							<i className="fa fa-caret-down downMenu divShowOnWeb" aria-hidden="true"></i>
 						: <span  />}
-				</Link>}
+				</Link>
 				
 					{item.children[0].length > 0 ?<i className="subMenuTrigger" /> : <span />}
 					{this._checkSubMenu(item)}
@@ -200,7 +206,7 @@ class menuList extends Component {
 			</li> */}
 			{Object.keys(navData).map(this._renderMenuNavigation)}
 
-			<li style={{ float: 'right', margin: -2 }}><Link className="present-finder-buton-div" to={`/${this.props.globals.store_locale}/presentfinder`} style={{ textDecoration: 'none' }}><span style={{ fontSize: 17, textAlign: 'center' }}><FormattedMessage id="presentfinder.text" defalutMessage="Present Finder" /></span></Link></li>
+			<li style={{ float: 'right', margin: -2 }}><Link onClick={() => document.getElementById("closeNav").click()} className="present-finder-buton-div" to={`/${this.props.globals.store_locale}/presentfinder`} style={{ textDecoration: 'none' }}><span style={{ fontSize: 17, textAlign: 'center' }}><FormattedMessage id="presentfinder.text" defalutMessage="Present Finder" /></span></Link></li>
 		</ul>
 		</>;
 	}

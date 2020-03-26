@@ -4,6 +4,51 @@
 html[dir="rtl"] .span-error-productReview{
     float: right;
 }
+.textAlignLeft-deleteAddress{
+    text-align: left!important
+}
+html[dir="rtl"] .textAlignLeft-deleteAddress{
+    text-align: right !important
+}
+.btn-del-address-popop{
+    width:100%;
+    border-color: 'red';
+    margin-bottom: 10;
+    display: inline-block;
+    width: 150px;
+    box-sizing: border-box;
+    line-height: 34px;
+    font-size: 15px;
+    text-align: center;
+    color: #ffffff !important;
+    padding-top: 10px;
+    border-radius: 4px;
+    border-color: #0d943f;
+    background-color: red;
+    cursor: 'pointer'
+}
+.address-message-center{
+    text-align: center;
+    padding-bottom: 30px
+}
+.btn-cancel-address-popup{
+    height: 45px;
+    width:100%;
+    display: inline-block;
+    box-sizing: border-box;
+    width: 150px;
+    padding-top: 10px;
+    text-align: center;
+    height: 50px;
+    border-radius: 4px;
+    border: none;
+    color: #ffffff !important;
+    background-color: #0d943f;
+    border-color: #0d943f;
+    font-size: 15px;
+    line-height: 34px;
+    cursor: 'pointer'
+}
 
 .account-section-modal{
     background: #ffffff;
@@ -129,6 +174,15 @@ html[dir="rtl"] #product_review h3 {
     font-weight: 700;
     font-style: normal;
 }
+.leftContent {
+    text-align: left !important
+ }
+ 
+html[dir="rtl"] .leftContent {
+   text-align: right !important
+}
+
+
 
 html[dir="rtl"] .signOut {
    

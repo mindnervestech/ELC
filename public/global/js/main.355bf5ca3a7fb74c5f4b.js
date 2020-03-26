@@ -7,7 +7,10 @@ function hamburgerMenu() {
         navigation: document.querySelector(".navigation .link"),
         init: function () {
             this.doc;
-            this.addTouchClass(), this.registerMenuEvents(), this.registerCountrySelectEvent(), this.registerSubmenuEvents()
+            this.addTouchClass(),
+            this.registerMenuEvents(),
+            this.registerCountrySelectEvent(),
+            this.registerSubmenuEvents()
         },
         findIndexOf: function (e) {
 
@@ -21,9 +24,10 @@ function hamburgerMenu() {
             })
         },
         registerMenuEvents: function () {
-            var e = document.getElementById("navTrigger"),
+            var e = document.getElementById("navTriggerMenu"),
                 t = document.getElementById("closeNav"),
                 n = this.doc;
+                console.log("menu",e,t)
             if (e) {
                 e.addEventListener("click", function (e) {
                     n.classList.add("easeMenu"), window.setTimeout(function () {
@@ -34,6 +38,17 @@ function hamburgerMenu() {
                         n.classList.remove("easeMenu")
                     }, 800)
                 })
+                // e.addEventListener("touchstart", function (e) {
+                //     console.log("touch added events")
+                //     n.classList.add("easeMenu"), window.setTimeout(function () {
+                //         n.classList.add("menuOpen")
+                //     }, 300)
+                // }), t.addEventListener("touchstart", function (e) {
+                //     console.log("touch added events")
+                //     n.classList.remove("menuOpen"), window.setTimeout(function () {
+                //         n.classList.remove("easeMenu")
+                //     }, 800)
+                // })
             }
 
         },
@@ -42,13 +57,13 @@ function hamburgerMenu() {
                 e.currentTarget.classList.toggle("open")
             })
         },
-
+        
         addTouchClass: function () {
             "ontouchstart" in window || navigator.msMaxTouchPoints > 0 ? this.doc.classList.add("touch") : this.doc.classList.add("no-touch")
         }
     }
-
-
-    s.init()
-
+    
+        setTimeout(() => {
+            s.init()
+         }, 3000);
 }

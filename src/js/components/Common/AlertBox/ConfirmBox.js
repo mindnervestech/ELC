@@ -9,7 +9,6 @@ class ConfirmBox extends Component {
             showAlertBoxReact: this.props.alertBoxStatus,
         }
     }
-
     CancelClicked = () => {
         this.setState({
             showAlertBoxReact: false
@@ -30,7 +29,8 @@ class ConfirmBox extends Component {
         let alertBoxReact = null;
         if (this.state.showAlertBoxReact) {
             alertBoxReact = <div className="alertify">
-                <div className="dialog"><div>
+                <div className="dialog">
+                    <div>
                     <p className="msg">{this.myIntl.formatMessage({ id: 'confirmBox.Warning' })}</p>
                     <nav>
                         <button className="ok" tabIndex={1} onClick={this.CancelClicked}>{this.myIntl.formatMessage({ id: 'alertBoxText.Cancel' })}</button>

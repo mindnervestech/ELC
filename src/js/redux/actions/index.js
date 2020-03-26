@@ -1,4 +1,4 @@
-export { postReview,getProductReviewBySKU } from './productReview'
+export {clearProductReview, postReview,getProductReviewBySKU } from './productReview'
 export {getPresentFinderData,getAndSetPresentFinderProducts} from './getAndSetPresentfinder'
 export {getAvailabeBrands,getProductsByBrands,callForClearAllBrandsProducts,clearProductDetailsBrands} from './getAllBrand'
 export { clearShippingDetails,getMyCart, changeQty, removeProduct, clearCartItem, setOrderSummary, removeAllOutOfStockProduct, redirectToPayment, redirectToDelivery, redirectToCart,applyVoucode, removeVoucode, getMyCartAfterVoucher} from './getMyCart';
