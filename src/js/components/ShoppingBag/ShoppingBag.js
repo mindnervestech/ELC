@@ -5,30 +5,23 @@ import EmptyShoppingBag from './EmptyShoppingBag';
 import ReactDOM from 'react-dom';
 import Alert from './AlertMsg';
 import AlertBox from '../Common/AlertBox/AlertBox';
-
 import { Redirect, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux';
 import * as actions from '../../redux/actions/index';
-
 import * as utility from '../utility/utility';
-
 import { FormattedMessage, injectIntl } from 'react-intl';
 import './ShoppingBag.css';
 import './owl.carousel.min.css';
 import './owl.css';
-
 import OwlItem from './OwlItem';
 import { array } from 'prop-types';
 import Spinner from '../Spinner/Spinner2';
 import SpinnerOne from '../Spinner/Spinner';
 import { trackF, initializeF } from '../utility/facebookPixel';
-
 import { live } from '../../api/globals';
 import Popup from 'react-popup';
 import { Helmet } from 'react-helmet';
-
 class ShoppingBag extends Component {
-
     constructor(props) {
         super(props);
         this.myRef = React.createRef();

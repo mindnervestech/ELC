@@ -159,7 +159,7 @@ export const API = {
 		request({}, cb, { type: 'GET', url: GET_PRODUCT_LIST_BY_CATEGARY });
 	},
 	getYouMayAlsoLikeData: (data, cb) => {
-		let URL = `${BASE_URL}productsbycategory?category_id=4 &store_id=${data.currentStore}&count=6`;
+		let URL = `${BASE_URL}productsbycategory?category_id=188 &store_id=${data.currentStore}&count=6`;
 		request({}, cb, { type: 'GET', url: URL });
 	},
 	getProductSearchList: (data, cb) => {

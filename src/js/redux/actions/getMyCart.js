@@ -214,14 +214,17 @@ export const removeProduct = (payload) => {
             success: (res) => {
                 if (res.status) {
                     prodArray.splice(payload.index, 1)
-
                     dispatch(removeProductState({ products: [...prodArray] }))
+                    dispatch(getMyCart({
+                        quote_id: getState().myCart.quote_id,
+                        store_id: getState().global.currentStore,
+                    }));
                 }
-                dispatch(getMyCart({
-                    quote_id: getState().myCart.quote_id,
-                    store_id: getState().global.currentStore,
-                }));
-                dispatch(loadingSpinner({ loading: false }))
+
+                else {
+                    dispatch(loadingSpinner({ loading: false }))
+
+                }
             },
             error: (err) => {
                 dispatch(removeProductState(err.data))

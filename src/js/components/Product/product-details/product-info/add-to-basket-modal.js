@@ -238,8 +238,8 @@ class AddToBasketModal extends Component {
 				if (value === '1') {
 					return (
 						<div>
-							<span className="product-price">{currency}&nbsp;{offerData[value]}</span>
-							<span className="product-price-line">{currency}&nbsp;{Number(orignalPrise).toFixed(2)}</span>
+							<span className="product-price" style={{fontSize:20}}>{currency}&nbsp;{offerData[value]}</span>
+							<span className="product-price-line" style={{fontSize:20}}>{currency}&nbsp;{Number(orignalPrise).toFixed(2)}</span>
 						</div>
 					);
 				} else {

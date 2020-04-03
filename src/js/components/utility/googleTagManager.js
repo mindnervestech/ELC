@@ -124,7 +124,7 @@ export const productClickEvent = (data, index, isComeFrom) => {
                 products: [{
                     name: data && data.json && data.json.name,
                     id: data && data.json && data.json.sku,
-                    price: data.price,
+                    price:data && data.json && data.json.offers ? (data.json.offers.data && data.json.offers.data['1'] ? data.json.offers.data && data.json.offers.data['1'] : data.price) : data.price,
                     brand: 'Google',
                     category: data.json.category_names,
                     position: index + 1
@@ -147,7 +147,7 @@ export const productDetailsEvent = (data) => {
                     products: [{
                         name: data.name,
                         id: data.sku,
-                        price: data.price,
+                        price: data && data && data.offers ? (data.offers.data && data.offers.data['1'] ? data.offers.data && data.offers.data['1'] : data.price) : data.price,
                         brand: 'Google',
                         category: data.category_names,
                     }]
@@ -158,12 +158,11 @@ export const productDetailsEvent = (data) => {
 }
 
 export const AddToCartEvent = (data, qty) => {
-
     window.dataLayer = window.dataLayer || [];
     let products = [{
         name: data.name,
         id: data.sku,
-        price: data.price,
+        price: data && data && data.offers ? (data.offers.data && data.offers.data['1'] ? data.offers.data && data.offers.data['1'] : data.price) : data.price,
         brand: 'Google',
         category: data.category_names,
         quantity: qty
@@ -184,7 +183,7 @@ export const RemoveProductCart = (data) => {
     let products = [{
         name: data.name,
         id: data.sku,
-        price: data.price,
+        price: data.special_price && data.price!==data.special_price ? data.special_price:data.price,
         brand: 'Google',
         category: data.category_names,
         quantity:data.qty
@@ -204,20 +203,16 @@ export const checkoutEvent = (data, setpCountForGTM) => {
     window.dataLayer = window.dataLayer || [];
     let products = []
     if (data && data.products && Object.keys(data.products).length > 0) {
-
         Object.keys(data.products).map((key, index) => {
             let item = data.products[key];
-            
             products.push({
                 name: item && item.name,
                 id: item && item.sku,
-                price: item && item.price,
+                price: item && item.special_price && item.price!==item.special_price ?item.special_price:item.price,
                 category: item && item.category_names,
                 brand: 'Google',
                 quantity: item && item.qty
-
             })
-
         })
     }
 
@@ -237,7 +232,6 @@ export const checkoutEvent = (data, setpCountForGTM) => {
 export const purchaseEvent = (product_data,order_summary,order_number) => {
     let actionField={}
     let productData=[]
-    
     if(product_data.length > 0 && order_summary!==undefined && order_number!==undefined){
         actionField={
             id:order_number && order_number,

@@ -99,7 +99,7 @@ class ShoppingBagItem extends Component {
 
             })
             for (let i = 0; i < productArr.length; i++) {
-                total += productArr[i].price * productArr[i].qty
+                total += productArr[i].special_price && productArr[i].price!==productArr[i].special_price ? productArr[i].special_price * productArr[i].qty:productArr[i].price * productArr[i].qty
             }
 
             str1 = arr.join(',')
@@ -248,7 +248,7 @@ class ShoppingBagItem extends Component {
         }
 
         return (<>
-            <div className="homePage cardPage padding30" style={{ color: '#0D943F' }}>
+         { this.props.spinnerProduct ? <Spinner/>:  <div className="homePage cardPage padding30" style={{ color: '#0D943F' }}>
                 {this.props.updateLoader && <Spinner />}
                 <Popup />
                 {outOfStockAlert}
@@ -383,7 +383,7 @@ class ShoppingBagItem extends Component {
                                             {item.special_price ?
                                                 <div>
                                                     <span>{item.currency}&nbsp;{item.special_price}</span>
-                                                    <div style={{ "text-decoration-line": "line-through", color: '#b3b3b3' }}>{item.currency}&nbsp;{item.price}</div>
+                                                    <div style={{ textDecorationLine: "line-through", color: '#b3b3b3' }}>{item.currency}&nbsp;{item.price}</div>
                                                 </div>
                                                 :
                                                 <span>{item.currency}&nbsp;{item.price}</span>
@@ -508,8 +508,8 @@ class ShoppingBagItem extends Component {
                                             <img src={item.image[0]} className="cardImage"></img>
                                         </Link>
                                     </div>
-                                    <div style={{ display: 'inline-block', width: "18%", verticalAlign: 'top' }} >
-                                        <span onClick={() => this.remove(index,item)} className="remove blackTitle floatRight" style={{ fontSize: 14, lineHeight: 1 }}>
+                                    <div style={{ display: 'inline-block', width: "18%", verticalAlign: 'top',cursor:'pointer' }} >
+                                        <span onClick={() => this.remove(index, item)} className="remove blackTitle floatRight" style={{ fontSize: 14, lineHeight: 1,cursor:'pointer' }}>
                                             <FormattedMessage id="Cart.Remove.Title" defaultMessage="Remove" />
                                         </span>
                                     </div>
@@ -528,8 +528,16 @@ class ShoppingBagItem extends Component {
                                         <FormattedMessage id="PDP.OutOfStock" defaultMessage="Out of Stock" />
                                     </span> : ''}
                                     {item.visible_on_store && item.is_in_stock.status == 1 ?
+
                                         <div className="row-3 blackTitle" style={{ fontSize: 16 }}>
-                                            <span>{item.currency}&nbsp;{item.price}</span>
+                                            {item.special_price ?
+                                                <div>
+                                                    <span>{item.currency}&nbsp;{item.special_price}</span>
+                                                    <div style={{ textDecorationLine: "line-through", color: '#b3b3b3' }}>{item.currency}&nbsp;{item.price}
+                                                    </div>
+                                                </div>
+                                                : <span>{item.currency}&nbsp;{item.price * item.qty}</span>}
+                                            {/* <span>{item.currency}&nbsp;{item.price}</span> */}
                                         </div> : ''}
                                     {item.visible_on_store && item.is_in_stock.status == 1 ?
                                         <div className="row-3 blackTitle" style={{ fontSize: 16, textAlign: 'start', color: "#4f4f4f" }}>
@@ -550,7 +558,10 @@ class ShoppingBagItem extends Component {
                                                 onChange={this.handleChange.bind(this, item, index)}
                                                 className="increse-item-qty"
                                             />
-                                            <span className="floatRight" style={{ fontSize: 22, color: "#0D943F" }}>{item.currency}&nbsp;{item.price * item.qty}</span>
+                                            {item.special_price ?
+                                                <span className="floatRight" style={{ fontSize: 22, color: "#0D943F" }}>{item.currency}&nbsp;{item.special_price * item.qty}</span>
+                                                : <span className="floatRight" style={{ fontSize: 22, color: "#0D943F" }}>{item.currency}&nbsp;{item.price * item.qty}</span>}
+                                            {/* <span className="floatRight" style={{ fontSize: 22, color: "#0D943F" }}>{item.currency}&nbsp;{item.price * item.qty}</span> */}
                                         </div> :
                                         ''
                                     }
@@ -583,7 +594,7 @@ class ShoppingBagItem extends Component {
                         <div className="text-align-rtl" style={{ fontSize: 24, marginLeft: '5%', color: "#4f4f4f" }}>
                             <FormattedMessage id="Cart.YBE" defaultMessage="Your basket is empty." />
                         </div> : <div />}
-            </div>
+                        </div> }
         </>)
     }
 }
@@ -601,7 +612,8 @@ const mapStateToProps = state => {
         globals: state.global,
         cartLoader: state.myCart.loader,
         updateLoader: state.myCart.update_loader,
-        qtyData: state.myCart.qtyData
+        qtyData: state.myCart.qtyData,
+        spinnerProduct: state.spinner.loading
     }
 }
 

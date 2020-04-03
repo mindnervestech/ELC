@@ -39,13 +39,13 @@ class ProductDetails extends Component {
 			this.props.onClearProductDetails(this.props.productDetails);
 		}
 		setTimeout(() => {
-		productDetailsEvent(this.props.productDetails)
-			
-		}, 3000);
+			productDetailsEvent(this.props.productDetails)
+			}, 3000);
 
 	}
 
 	componentDidMount() {
+		
 
 		const {
 			match: { params },

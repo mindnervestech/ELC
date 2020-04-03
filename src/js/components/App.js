@@ -85,7 +85,7 @@ class App extends Component {
         }
        // this.getGeoInfo();
 
-         if (active_server==='live') {
+          if (active_server==='live') {
             initialize();
             initializeGTM();
        }

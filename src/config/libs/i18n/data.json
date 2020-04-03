@@ -951,13 +951,17 @@
         "transaction_no.empty":"Please enter transaction number",
         "browseallbrands":"Browse All Brands",
         "XmasSantaSack.Title":"Christmas Santa’s Sack",
+        "shippingmethod.text":"Shipping Methods",
+        "NewProductCommingSoon.Text":"New products comming soon !",
         "Customer.Service.text-uae":"Should you have any queries, contact our customer service by calling us at +8005654 or e-mail us to help@elctoys.com",
         "Customer.Service.text-ksa":"Should you have any queries, contact our customer service by calling us at +8001180009 or e-mail us to help@elctoys.com"
 
     },
     "ar": {
+        "NewProductCommingSoon.Text":"سيتم عرض منتجات جديدة قريباً",
         "Customer.Service.text-uae": "إذا كانت لديك أية استفسارات ، فاتصل بخدمة العملاء عن طريق الاتصال بنا على +8005654   أو إرسال بريد إلكتروني إلينا إلى help@elctoys.com",
         "Customer.Service.text-ksa": "إذا كانت لديك أية استفسارات ، فاتصل بخدمة العملاء عن طريق الاتصال بنا على +8001180009 أو إرسال بريد إلكتروني إلينا إلى help@elctoys.com",
+        "shippingmethod.text":"طرق الشحن ",
         "XmasSantaSack.Title":"مفاجآت سانتا",
         "browseallbrands":"تصفح جميع الماركات",
         "transaction_no.empty":"يرجى إدخال رقم التحويل",

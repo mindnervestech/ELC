@@ -10,6 +10,7 @@ import Spinner2 from '../Spinner/Spinner2';
 
 var _ = require('lodash');
 
+let path=""
 let productListingData = {}
 let productList = {}
 let filterData = []
@@ -25,7 +26,7 @@ let filterFirstOption = ""
 let updateHideOption = true
 let afterFilterShowOptionListCheck = true
 let onClickFilterOptionToApplyFilter = false
-
+let _categorynames=''
 let selectedFilter = [];
 class SideManu extends Component {
 	constructor(props) {
@@ -100,6 +101,17 @@ class SideManu extends Component {
 	}
 
 	componentWillMount() {
+		let currentPath=window.location.href.split('/');
+		let currentCatergory = currentPath[currentPath.length-1]
+		if(currentCatergory !== path){
+			filterOptionArray=[]
+		}
+		if(filterOptionArray && filterOptionArray.length > 0 && currentCatergory === path){
+			setTimeout(() => {
+				this.applyFilter('',false)
+			}, 300);
+		}
+		path = currentCatergory;
 		if (Object.keys(this.props.productDetails.products).length > 0) {
 			filterOptionArrayForCheck = []
 			filterOptionArraySubCategary = []
@@ -240,12 +252,12 @@ class SideManu extends Component {
 		let find = true;
 		let remove = -1
 		for (let data in filterOptionArray) {
-			if (filterOptionArray[data] == value) {
-				find = false
+			if (filterOptionArray[data] === value && check!==false) {
+				find = false 
 				remove = data
 			}
 		}
-		if (find) {
+		if (find && check!==false ) {
 			filterOptionArray.push(value);
 			selectedFilter.push(filt[1]);
 		}

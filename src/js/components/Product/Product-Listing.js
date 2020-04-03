@@ -221,7 +221,7 @@ class Product extends Component {
 						<div id="t_Body_content_offset" style={{ height: '139px' }} />
 						<div className="t-Body-contentInner">
 							<div>
-								{this.props.spinnerProduct ? <Spinner /> : <ProductData listForGTM={listForGTM} Data={this.props.productDetails.products} loading1={this.props.spinnerProduct} />}
+								{this.props.spinnerProduct ? <Spinner /> : <ProductData listForGTM={listForGTM} Data={this.props.productDetails.products}  loading1={this.props.spinnerProduct} />}
 							</div>
 						</div>
 					</div>

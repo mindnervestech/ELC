@@ -144,10 +144,8 @@ class ProductBasic extends Component {
 				store_id: this.props.globals.currentStore,
 			};
 			this.props.onGuestAddToCart(prodData, myCart);
-			
 		}
 		AddToCartEvent(data,qtyForGTM)
-
 	}
 
 	closeAlert = () => {

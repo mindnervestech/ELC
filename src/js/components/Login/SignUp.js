@@ -200,6 +200,8 @@ class SignUp extends Component {
   }
 
   registerUser = () => {
+    const guestquote = this.props.guestUser ? this.props.guestUser.new_quote_id ?
+        this.props.guestUser.new_quote_id : '' : '';
     const data = {
       firstname: this.state.fields.firstName,
       lastname: this.state.fields.lastName,
@@ -210,7 +212,7 @@ class SignUp extends Component {
       confirmpassword: this.state.fields.confirmPassword,
       store_id: this.props.globals.currentStore,
       // title: this.state.fields.title,
-      quest_quote: "non",
+      quest_quote:guestquote,
       subscribe_to_newsletter: this.state.subscribe_to_newsletter,
     }
 
@@ -249,7 +251,6 @@ class SignUp extends Component {
         message: ''
       }
     })
-    console.log('Close alert Box Parent');
   }
 
   render() {
@@ -611,7 +612,8 @@ class SignUp extends Component {
 const mapStateToProps = state => {
   return {
     registartion_details: state.login.registerUserDetails,
-    globals: state.global
+    globals: state.global,
+    guestUser: state.guest_user
   };
 }
 

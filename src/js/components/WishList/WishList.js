@@ -158,23 +158,33 @@ class WishList extends Component {
             for (let value in offer) {
                 if (value == '1') {
                     return (
-                        <div>
-                            <button onClick={() => this.openShowAndMorePopup(index)} className="bayMoreAndSaveMore"><FormattedMessage id="BuyMoreBtn.Message2" defaultMessage="Sale" /></button>
+                        // <div>
+                        //     <button onClick={() => this.openShowAndMorePopup(index)} className="bayMoreAndSaveMore"><FormattedMessage id="BuyMoreBtn.Message2" defaultMessage="Sale" /></button>
+                        // </div>
+                         <div>
+                            <button className="bayMoreAndSaveMore"><FormattedMessage id="BuyMoreBtn.Message2" defaultMessage="Sale" /></button>
                         </div>
                     );
                 } else {
                     return (
-                        <div>
-                            <button onClick={() => this.openShowAndMorePopup(index)} className="bayMoreAndSaveMore"><FormattedMessage id="BuyMoreBtn.Message" defaultMessage="Buy More, Save More!" /></button>
-                        </div>
+                        // <div>
+                        //     <button onClick={() => this.openShowAndMorePopup(index)} className="bayMoreAndSaveMore"><FormattedMessage id="BuyMoreBtn.Message" defaultMessage="Buy More, Save More!" /></button>
+                        // </div>
+                         <div>
+                         <button  className="bayMoreAndSaveMore"><FormattedMessage id="BuyMoreBtn.Message" defaultMessage="Buy More, Save More!" /></button>
+                     </div>
                     );
                 }
             }
         } else {
             return (
-                <div>
-                    <button onClick={() => this.openShowAndMorePopup(index)} className="bayMoreAndSaveMore"><FormattedMessage id="BuyMoreBtn.Message" defaultMessage="Buy More, Save More!" /></button>
-                </div>
+                // <div>
+                //     <button onClick={() => this.openShowAndMorePopup(index)} className="bayMoreAndSaveMore"><FormattedMessage id="BuyMoreBtn.Message" defaultMessage="Buy More, Save More!" /></button>
+                // </div>
+                 <div>
+                 <button  className="bayMoreAndSaveMore"><FormattedMessage id="BuyMoreBtn.Message" defaultMessage="Buy More, Save More!" /></button>
+             </div>
+
             );
         }
     }
@@ -436,9 +446,9 @@ class WishList extends Component {
                                             </div>
                                         </div>
                                         <div style={{ padding: "0px 10px" }}>
-                                            {this.props.products[item].offers && this.props.products[item].offers.status == 1 &&
+                                             {this.props.products[item].offers && this.props.products[item].offers.status == 1 &&
                                                 this.checkBuyAndMore(this.props.products[item].offers.data, item)
-                                            }
+                                            } 
                                         </div>
                                         <div className="buyAndSaveMorePopup" style={showPopupIndex == item ? { display: 'block' } : { display: 'none' }}>
                                             <i className="close fa fa-times" aria-hidden="true" onClick={() => this.closeBuyAndMore(item)} />

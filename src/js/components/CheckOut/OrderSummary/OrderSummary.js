@@ -588,12 +588,12 @@ class OrderSummary extends Component {
                                                                                                                 <td className="t-Report-cell" headers="APEX_LANG.LANG('ORDERSTATUS')">
                                                                                                                     <FormattedMessage id="OrderStatus.Text" defaultMessage="Order Status" />
                                                                                                                 </td>
-                                                                                                                {/* {success == true ?  */}
+                                                                                                                {success == 'true' ? 
                                                                                                                 <td className="t-Report-cell" align="right" headers="CODE_DESC">{this.props.order_status}</td>
-                                                                                                                {/*  : <td className="t-Report-cell" align="right" headers="CODE_DESC">
+                                                                                                                  : <td className="t-Report-cell" align="right" headers="CODE_DESC">
                                                                                                                     <FormattedMessage id="Paymentpending" defaultMessage="Payment pending" />
                                                                                                                     </td>
-                                                                                                                 } */}
+                                                                                                                 } 
                                                                                                             </tr>
                                                                                                             </tbody>
                                                                                                         </table>

@@ -31,10 +31,10 @@ class ProductData extends Component {
 						}}
 					>
 						<div>
-							<ProductListData listForGTM={this.props.listForGTM} list={Data} />
+							<ProductListData   listForGTM={this.props.listForGTM} list={Data} />
 						</div>
 					</ul>)}
-				{ Data.length === 0 && !loading1 && (<p style={{ fontSize: '22px', letterSpacing: '0.04em', fontWeight: 500, padding: '20px 16px 10px' }}><FormattedMessage id="NoData.Text" defaultMessage="No Data available." />{loading1}</p>)}
+				 { Data.length === 0 && !loading1 && (<p className="review-description" style={{ fontSize: '22px', letterSpacing: '0.04em', fontWeight: 500, padding: '20px 16px 10px' }}><FormattedMessage id="NewProductCommingSoon.Text" defaultMessage="New products comming soon!" />{loading1}</p>)} 
 			</div>
 		);
 	}
