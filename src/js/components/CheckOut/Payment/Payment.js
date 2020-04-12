@@ -355,60 +355,69 @@ class Payment extends Component {
                                                                         
                                                                         </span>
                                                                     </li>
+                                                                            {this.props.global.country === 'UAE' ?
                                                                     <li onClick={() => this.handleClick("COD")} id="DA" className="tab del-add2 ">
                                                                         <h3 className="method"><FormattedMessage id="CashOnDelivery.Text" defaultMessage="Cash On Delivery" /></h3>
                                                                         {/* <span className="method-description h-hidden-mobile">
                                                                             <FormattedMessage id="CashOnDelivery.Content" defaultMessage="Cash On Delivery" />
                                                                         </span> */}
-                                                                    </li>
-                                                                </ul>
+                                                                                </li> :
+                                                                                <li id="DA" className="tab del-add2 ">
+                                                                                    <h3 className="method"><FormattedMessage id="CashOnDelivery.Text" defaultMessage="Cash On Delivery" /></h3>
+                                                                                    <h3 style={{ fontSize: 9, fontWeight: 600 }} className="method-description"><FormattedMessage id="KSAStoreStopCOD.Text" defaultMessage="Cash on delivery is temporarily unavailable" /></h3>
+                                                                                    {/* <span className="method-description h-hidden-mobile">
+                                                                        <FormattedMessage id="CashOnDelivery.Content" defaultMessage="Cash On Delivery" />
+                                                                    </span> */}
+                                                                                </li>
+                                                                            }
+                                                                        </ul>
+                                                                    </div>
+                                                                    <div className="t-Region-buttons t-Region-buttons--bottom">
+                                                                        <div className="t-Region-buttons-left" />
+                                                                        <div className="t-Region-buttons-right" />
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                            <div className="t-Region-buttons t-Region-buttons--bottom">
-                                                                <div className="t-Region-buttons-left" />
-                                                                <div className="t-Region-buttons-right" />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    {payment_type}
-                                                </Col>
-                                                <Col xs="12" lg="4" md="12">
-                                                    <DeliveryProductList cart_details={this.props.cart_details} coupan_code={true} store_locale={this.props.global.store_locale} gotoProductScreen={this.gotoProductScreen} />
-                                                </Col>
-                                            </Row>
+                                                            {payment_type}
+                                                        </Col>
+                                                        <Col xs="12" lg="4" md="12">
+                                                            <DeliveryProductList cart_details={this.props.cart_details} coupan_code={true} store_locale={this.props.global.store_locale} gotoProductScreen={this.gotoProductScreen} />
+                                                        </Col>
+                                                    </Row>
+                                                </div>
+                                            </div>
+                                            <div className="t-Region-buttons t-Region-buttons--bottom">
+                                                <div className="t-Region-buttons-left" />
+                                                <div className="t-Region-buttons-right" />
+                                            </div>
                                         </div>
                                     </div>
-                                    <div className="t-Region-buttons t-Region-buttons--bottom">
-                                        <div className="t-Region-buttons-left" />
-                                        <div className="t-Region-buttons-right" />
+                                </div>
+                            </div><div className="row">
+                                <div className="col col-12 apex-col-auto">
+                                    <div className="t-ButtonRegion t-Form--floatLeft hidden-desktop hide-buttons t-ButtonRegion--stickToBottom t-ButtonRegion--noPadding t-ButtonRegion--noUI t-Form--noPadding t-Form--xlarge t-Form--stretchInputs margin-top-none margin-bottom-none margin-left-none margin-right-none is-anchored" id="mobile-buttons" style={{ bottom: '0px' }}>
+                                        <div className="t-ButtonRegion-wrap">
+                                            <div className="t-ButtonRegion-col t-ButtonRegion-col--left"><div className="t-ButtonRegion-buttons" /></div>
+                                            <div className="t-ButtonRegion-col t-ButtonRegion-col--content">
+                                                <h2 className="t-ButtonRegion-title" id="mobile-buttons_heading">Mobile Button</h2>
+                                                <div className="Payment container">
+                                                    <Row className="row">
+                                                        <Col xs="2" lg="2" md="2" style={{ padding: 0 }}>
+                                                            <button className="t-Button t-Button--noLabel t-Button--icon t-Button--large t-Button--pillStart t-Button--stretch t-Button--padLeft t-Button--padRight t-Button--padTop t-Button--padBottom" onClick={this.goToDeliveryDetails} type="button" id="B29282633551930637" title="Continue Shopping" aria-label="Continue Shopping"><span className="t-Icon fa fa-angle-left" aria-hidden="true" /></button>
+                                                        </Col><Col xs="9" lg="9" md="9" style={{ padding: 0 }}>
+                                                            <button onClick={this.redirectToConfirm} className="t-Button t-Button--hot t-Button--large t-Button--pillEnd t-Button--stretch t-Button--padLeft t-Button--padRight t-Button--padTop t-Button--padBottom" type="button" id="B29282227949930637"><span className="t-Button-label"><FormattedMessage id="Checkout.Proceed" defaultMessage="Proceed" /></span></button>
+                                                        </Col>
+                                                    </Row>
+                                                </div>
+                                                <div className="t-ButtonRegion-buttons" />
+                                            </div>
+                                            <div className="t-ButtonRegion-col t-ButtonRegion-col--right"><div className="t-ButtonRegion-buttons" /></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div><div className="row">
-                        <div className="col col-12 apex-col-auto">
-                            <div className="t-ButtonRegion t-Form--floatLeft hidden-desktop hide-buttons t-ButtonRegion--stickToBottom t-ButtonRegion--noPadding t-ButtonRegion--noUI t-Form--noPadding t-Form--xlarge t-Form--stretchInputs margin-top-none margin-bottom-none margin-left-none margin-right-none is-anchored" id="mobile-buttons" style={{ bottom: '0px' }}>
-                                <div className="t-ButtonRegion-wrap">
-                                    <div className="t-ButtonRegion-col t-ButtonRegion-col--left"><div className="t-ButtonRegion-buttons" /></div>
-                                    <div className="t-ButtonRegion-col t-ButtonRegion-col--content">
-                                        <h2 className="t-ButtonRegion-title" id="mobile-buttons_heading">Mobile Button</h2>
-                                        <div className="Payment container">
-                                            <Row className="row">
-                                                <Col xs="2" lg="2" md="2" style={{ padding: 0 }}>
-                                                    <button className="t-Button t-Button--noLabel t-Button--icon t-Button--large t-Button--pillStart t-Button--stretch t-Button--padLeft t-Button--padRight t-Button--padTop t-Button--padBottom" onClick={this.goToDeliveryDetails} type="button" id="B29282633551930637" title="Continue Shopping" aria-label="Continue Shopping"><span className="t-Icon fa fa-angle-left" aria-hidden="true" /></button>
-                                                </Col><Col xs="9" lg="9" md="9" style={{ padding: 0 }}>
-                                                    <button onClick={this.redirectToConfirm} className="t-Button t-Button--hot t-Button--large t-Button--pillEnd t-Button--stretch t-Button--padLeft t-Button--padRight t-Button--padTop t-Button--padBottom" type="button" id="B29282227949930637"><span className="t-Button-label"><FormattedMessage id="Checkout.Proceed" defaultMessage="Proceed" /></span></button>
-                                                </Col>
-                                            </Row>
-                                        </div>
-                                        <div className="t-ButtonRegion-buttons" />
-                                    </div>
-                                    <div className="t-ButtonRegion-col t-ButtonRegion-col--right"><div className="t-ButtonRegion-buttons" /></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>}
+                    </div>}
             </>
         );
     }

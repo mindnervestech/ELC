@@ -19,13 +19,14 @@ const initialState = {
         org: null,
         region: null,
     },
-
-
+    currentTime:'',
     discover_more: {}
 }
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
+        case actionType.GET_TIME_STAMP:
+            return updateObject(state, action.payload)
 
         case actionType.STORE_REGION:
             return updateObject(state, action.payload)

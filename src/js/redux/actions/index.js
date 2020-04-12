@@ -32,7 +32,7 @@ export { getOrderHistory, viewOrderDetails, clearState, orderJson } from './orde
 
 export { getWishlist, removeWishList } from './wishList';
 
-export { getStoreIds, loadingSpinner, storeRegion, setChangeStore, getHomePageData, getIpInfo } from './globals';
+export { getStoreIds, loadingSpinner, storeRegion, setChangeStore, getHomePageData, getTimeStamp,getIpInfo } from './globals';
 
 export { getMenuNav } from './getMenuNav';
 

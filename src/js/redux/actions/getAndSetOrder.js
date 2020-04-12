@@ -70,6 +70,12 @@ const CallActionForUpdateNewQuoteId = (payload) => {
         payload: payload
     };
 };
+const CallActionForUpdateGuestUserQuoteId = (payload) => {
+    return {
+        type: actionType.UPDATE_GUEST_USER_NEW_QUOTE_ID,
+        payload: payload
+    };
+};
 
 
 
@@ -93,13 +99,16 @@ export const placeOrder = (payload) => {
                         order_data: { ...res.order_data }
                     }
 
-                    if (res.order_data.new_quote_id !== "") {
+                    if (res.order_data.new_quote_id !== "" && getState().login.isUserLoggedIn) {
                         let newQuoteId = {
                             ...getState().login.customer_details,
                             quote_id: res.order_data.new_quote_id,
                         }
                         dispatch(CallActionForUpdateNewQuoteId({ customer_details: { ...newQuoteId } }))
                     }
+                    // else {
+                    //     dispatch(CallActionForUpdateGuestUserQuoteId({}))
+                    // }
                     dispatch(callActionForPlaceOrder({ is_order_placed: true, order_summary: { ...newState } }))
 
                 }

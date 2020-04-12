@@ -11,6 +11,9 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
+        // case actionType.UPDATE_GUEST_USER_NEW_QUOTE_ID:
+        //     return updateObject(state, initialState)
+
         case actionType.GUEST_USER_CART_ID:
             return updateObject(state, action.payload)
 

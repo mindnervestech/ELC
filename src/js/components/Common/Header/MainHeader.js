@@ -28,7 +28,8 @@ import Slider from "react-slick";
 import storeFinderMobile from '../../../../assets/images/header/storeFinder.svg';
 import UAEImage from '../../../../assets/images/header/ae.svg';
 import KSAImage from '../../../../assets/images/header/sa.svg';
-
+let startTime;
+let currentTime;
 class MainHeader extends Component {
     constructor(props) {
         super(props);
@@ -63,28 +64,43 @@ class MainHeader extends Component {
             showCart: !this.state.showCart
         })
     }
-componentWillMount() {
+    componentWillMount() {
 
-    let string = window.location.href;
-    if (string.includes("password-rest") 
-        && localStorage.getItem("ispasswordreset") === "false") {
-        localStorage.setItem("ispasswordreset", true);
-        let url = string.split("/")
-        let key = url[3].split('-')
-        console.log(">>>>>>>>>",key[1])
-        if(key[1] === 'en'){
-            this.props.handleLanguageSelection(key[1]);
-        }else{
-            this.props.handleLanguageSelection(key[1]);
+        let string = window.location.href;
+        if (string.includes("password-rest")
+            && localStorage.getItem("ispasswordreset") === "false") {
+            localStorage.setItem("ispasswordreset", true);
+            let url = string.split("/")
+            let key = url[3].split('-')
+            console.log(">>>>>>>>>", key[1])
+            if (key[1] === 'en') {
+                this.props.handleLanguageSelection(key[1]);
+            } else {
+                this.props.handleLanguageSelection(key[1]);
+            }
+            this.setState({ showMenu: false });
+        } else {
+            localStorage.setItem("ispasswordreset", false);
         }
-        this.setState({ showMenu: false });
-    } else {
-        localStorage.setItem("ispasswordreset", false);
+
+
     }
-    
-        
-}
     componentDidMount() {
+        if (!this.props.isUserLoggedIn) {
+            startTime = this.props.globals.currentTime;
+            if (startTime === '') {
+                this.props.onGetCurrentTime();
+            }
+            currentTime = Date.now();
+            let checkTime = startTime + 43200;
+            if (checkTime <= currentTime) {
+                this.props.onGetCurrentTime();
+                if (!this.props.isUserLoggedIn) {
+                    this.props.onGetGuestCartId();
+                }
+            }
+
+        }
         this.props.onGetStoreIds();
         //console.log('In componentDidMount before onGetMenuNav', this.props.global);
         //this.props.onGetMenuNav(this.props.globals);
@@ -140,11 +156,7 @@ componentWillMount() {
     }
 
     componentWillReceiveProps(nextProps) {
-
-        // console.log("Basket Props",nextProps)
-        // setTimeout(() => {
-        //     this.getStore();
-        // }, 1000);
+       
     }
 
 
@@ -167,9 +179,9 @@ componentWillMount() {
             }
 
             if (this.props.guest_user.new_quote_id !== null) {
-                if (!(this.props.cart_details.is_cart_details_rec)) {
+                // if (!(this.props.cart_details.is_cart_details_rec)) {
                     this.props.onGetMyCart({ quote_id: this.props.guest_user.new_quote_id, store_id: this.props.globals.currentStore })
-                }
+               // }
             }
         }
 
@@ -226,19 +238,19 @@ componentWillMount() {
         document.querySelector("html").classList.remove("menuOpen");
     }
 
-    gotoCheckOutPage = () =>{
-		if (this.props.isUserLoggedIn) {
-			this.props.onGetMyCart({
-				quote_id: this.props.user_details.customer_details.quote_id,
-				store_id: this.props.globals.currentStore
-			})
-		} else {
-			this.props.onGetMyCart({
-				quote_id: this.props.guest_user.new_quote_id,
-				store_id: this.props.globals.currentStore
-			})
-		}
-	}
+    gotoCheckOutPage = () => {
+        if (this.props.isUserLoggedIn) {
+            this.props.onGetMyCart({
+                quote_id: this.props.user_details.customer_details.quote_id,
+                store_id: this.props.globals.currentStore
+            })
+        } else {
+            this.props.onGetMyCart({
+                quote_id: this.props.guest_user.new_quote_id,
+                store_id: this.props.globals.currentStore
+            })
+        }
+    }
 
     render() {
 
@@ -305,9 +317,9 @@ componentWillMount() {
         }
         let product = [];
         let myCartItem = {};
-        if(localStorage.getItem('myCartItem') !== ''){
+        if (localStorage.getItem('myCartItem') !== '') {
             myCartItem = JSON.parse(localStorage.getItem('myCartItem'));
-            if(myCartItem){
+            if (myCartItem) {
                 product = myCartItem.products;
             }
         }
@@ -339,9 +351,9 @@ componentWillMount() {
                                                     }
                                                     <label className="text-color" style={{ fontSize: '1.3rem' }}>
                                                         &nbsp;{this.state.country_name.toUpperCase() == 'UAE' ?
-                                                        <FormattedMessage id="header.uae" defaultMessage="UAE" />
-                                                        : <FormattedMessage id="header.ksa" defaultMessage="KSA" />
-                                                        } 
+                                                            <FormattedMessage id="header.uae" defaultMessage="UAE" />
+                                                            : <FormattedMessage id="header.ksa" defaultMessage="KSA" />
+                                                        }
                                                     </label>
                                                     <span className="selected">
                                                         <FormattedMessage id="header.defaultCountry" defaultMessage="Select Your Country" />
@@ -380,12 +392,12 @@ componentWillMount() {
                                     </li>
                                     <li className="ll" className="paddingForEnglish">
                                         <div className="lang" style={{ fontSize: '1.3rem' }}>
-                                            <a href="javascript:void(0);" style={this.props.globals.language=='en' ?{fontFamily:'VAG Rounded ELC Bold'} : {}} onClick={(e) => this.translate('en', 'ltr')} className="active" >English</a></div>
+                                            <a href="javascript:void(0);" style={this.props.globals.language == 'en' ? { fontFamily: 'VAG Rounded ELC Bold' } : {}} onClick={(e) => this.translate('en', 'ltr')} className="active" >English</a></div>
                                     </li>
                                     <li className="paddingForDash"> - </li>
                                     <li className="ll" style={{ padding: 0, marginTop: -3 }}>
                                         <div className="lang" style={{ paddingLeft: 8, fontSize: '1.3rem' }}>
-                                            <a  style={this.props.globals.language=='ar' ? {fontFamily:'VAG Rounded ELC Bold'} : {}}  href="javascript:void(0);" onClick={(e) => this.translate('ar', 'rtl')} >العربية</a></div>
+                                            <a style={this.props.globals.language == 'ar' ? { fontFamily: 'VAG Rounded ELC Bold' } : {}} href="javascript:void(0);" onClick={(e) => this.translate('ar', 'rtl')} >العربية</a></div>
                                     </li>
                                     {/* <li>
                                         <div className="language">
@@ -416,7 +428,7 @@ componentWillMount() {
                                     </li> */}
                                     <li className="badyCloubLink">
                                         <Link to={`/${store_locale}/birth-day-club`} style={{ textDecoration: 'none' }}>
-                                            <button style={{paddingTop: 5}} className="secondButton text-color"><FormattedMessage id="header.TheBirthdayclub" defaultMessage="Birthday Club" /></button>
+                                            <button style={{ paddingTop: 5 }} className="secondButton text-color"><FormattedMessage id="header.TheBirthdayclub" defaultMessage="Birthday Club" /></button>
                                         </Link>
                                     </li>
 
@@ -449,7 +461,7 @@ componentWillMount() {
                                             <label className="iconLeble text-color changeLinkText"><FormattedMessage id="Header.Help" defaultMessage="Help" /></label>
                                         </Link>
                                     </li>
-                                    <li className="titleHover" style={this.state.userLogin ? { display: 'none' } : { display: 'inline-block'}}>
+                                    <li className="titleHover" style={this.state.userLogin ? { display: 'none' } : { display: 'inline-block' }}>
                                         <Link to={`/${store_locale}/sign-in-register`} style={{ textDecoration: 'none' }}>
                                             <img src={profile} className="image-ion" style={{ marginTop: 6 }}></img>
                                             <label className="iconLeble text-color changeLinkText"><FormattedMessage id="Header.SignInOrRegister" defaultMessage="Sign in / Register" /></label>
@@ -576,11 +588,11 @@ componentWillMount() {
                                                 : <img style={{ height: '20px', width: '30px' }} src={KSAImage}></img>
                                             }
                                             <label className="text-color">
-                                            &nbsp;{this.state.country_name.toUpperCase() == 'UAE' ?
-                                                <FormattedMessage id="header.uae" defaultMessage="UAE" />
-                                                : <FormattedMessage id="header.ksa" defaultMessage="KSA" />
-                                                } 
-                                             </label>
+                                                &nbsp;{this.state.country_name.toUpperCase() == 'UAE' ?
+                                                    <FormattedMessage id="header.uae" defaultMessage="UAE" />
+                                                    : <FormattedMessage id="header.ksa" defaultMessage="KSA" />
+                                                }
+                                            </label>
                                             <span className="selected">
                                                 <FormattedMessage id="header.defaultCountry" defaultMessage="Select Your Country" />
                                             </span>
@@ -616,13 +628,13 @@ componentWillMount() {
                                 </div>
                                 <div className="ll enghishTextPadding" style={{ display: 'inline-block' }}>
                                     <div className="lang" style={{ fontSize: '1.2rem' }}>
-                                        <a href="javascript:void(0);" style={this.props.globals.language=='en' ?{fontFamily:'VAG Rounded ELC Bold'} : {}} onClick={(e) => this.translate('en', 'ltr')} className="active" >English</a>
+                                        <a href="javascript:void(0);" style={this.props.globals.language == 'en' ? { fontFamily: 'VAG Rounded ELC Bold' } : {}} onClick={(e) => this.translate('en', 'ltr')} className="active" >English</a>
                                     </div>
                                 </div>
                                 <div style={{ paddingLeft: 8, display: 'inline-block' }}> - </div>
                                 <div className="ll" style={{ padding: 0, display: 'inline-block' }}>
                                     <div className="lang" style={{ paddingLeft: 8, fontSize: '1.2rem' }}>
-                                        <a style={this.props.globals.language=='ar' ?{fontFamily:'VAG Rounded ELC Bold'} : {}} href="javascript:void(0);" onClick={(e) => this.translate('ar', 'rtl')} >العربية</a>
+                                        <a style={this.props.globals.language == 'ar' ? { fontFamily: 'VAG Rounded ELC Bold' } : {}} href="javascript:void(0);" onClick={(e) => this.translate('ar', 'rtl')} >العربية</a>
                                     </div>
                                 </div>
                                 <div className="floatRight" style={{ display: 'inline-block' }}>
@@ -704,15 +716,15 @@ componentWillMount() {
                         </div>
                     </div>
                     <div className="header-slider headerSlider2">
-                            <Slider {...settings}>
-                                <div>
-                        <Link to={`/${store_locale}/delivery-policy`} style={{ textDecoration: 'none' }}>
+                        <Slider {...settings}>
+                            <div>
+                                <Link to={`/${store_locale}/delivery-policy`} style={{ textDecoration: 'none' }}>
                                     <Row className="direction-r">
                                         <Col xs="0" lg="3" md="3" className="col-width"></Col>
                                         <Col xs="0" lg="2" md="2" style={{ paddingLeft: 0 }} className="padd-icon-zero first-imag">
                                             <img src={deliveryBy} className="imageHight40 divShowOnWeb " />
                                         </Col>
-                                        <Col xs="12" lg="7" md="7" style={{ padding: 0}}>
+                                        <Col xs="12" lg="7" md="7" style={{ padding: 0 }}>
                                             <ul className="headerSlideTextAlign">
                                                 <li style={{ fontSize: 15, color: "#0D943F", lineHeight: '0.5', fontWeight: 'bold' }}>
                                                     <FormattedMessage id="header.FreeStdDelivery" defaultMessage="Free Standard Delivery" />
@@ -721,16 +733,16 @@ componentWillMount() {
                                                     <li style={{ fontSize: 12, lineHeight: '2.5', fontWeight: 'bold' }} className="text-color">
                                                         <FormattedMessage id="WhenyouspendAED250UAE" defaultMessage="When you spend AED 250" />
                                                     </li> :
-                                                     <li style={{ fontSize: 12, lineHeight: '2.5', fontWeight: 'bold' }} className="text-color">
+                                                    <li style={{ fontSize: 12, lineHeight: '2.5', fontWeight: 'bold' }} className="text-color">
                                                         <FormattedMessage id="WhenyouspendSAR250KSA" defaultMessage="When you spend SAR 250" />
                                                     </li>
                                                 }
                                             </ul>
                                         </Col>
                                     </Row>
-                                    </Link>
-                                </div>
-                                <div>
+                                </Link>
+                            </div>
+                            <div>
                                 <Link to={`/${store_locale}/delivery-policy`} style={{ textDecoration: 'none' }}>
                                     <Row className="direction-r">
                                         <Col xs="0" lg="3" md="3"></Col>
@@ -748,9 +760,9 @@ componentWillMount() {
                                             </ul>
                                         </Col>
                                     </Row>
-                                    </Link>
-                                </div>
-                                <div>
+                                </Link>
+                            </div>
+                            <div>
                                 <Link to={`/${store_locale}/return-policy`} style={{ textDecoration: 'none' }}>
                                     <Row className="direction-r">
                                         <Col xs="0" lg="3" md="3"></Col>
@@ -768,10 +780,10 @@ componentWillMount() {
                                             </ul>
                                         </Col>
                                     </Row>
-                                    </Link>
-                                </div>
-                            </Slider>
-                      
+                                </Link>
+                            </div>
+                        </Slider>
+
                         {/* <Row className="row-4">
                             <Col xs="1"></Col>
                             <Col xs="10">
@@ -866,6 +878,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
+        onGetCurrentTime: () => dispatch(actions.getTimeStamp()),
         onLogoutUser: () => dispatch(actions.logoutUser()),
         onGetStoreIds: () => dispatch(actions.getStoreIds()),
         onGetMyCart: (quoteId) => dispatch(actions.getMyCart(quoteId)),
