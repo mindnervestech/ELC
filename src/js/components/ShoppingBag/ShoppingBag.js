@@ -52,12 +52,8 @@ class ShoppingBag extends Component {
                 quote_id: this.props.user_details.customer_details.quote_id,
                 store_id: this.props.globals.currentStore
             })   
-        }else if(this.props.guest_user.new_quote_id!==null) {
-            this.props.OngetMyCart({
-                quote_id: this.props.guest_user.new_quote_id,
-                store_id: this.props.globals.currentStore
-            })
-        }
+        }   
+        
     
     }
 

@@ -30,6 +30,12 @@ class OrderSummary extends Component {
     //     // this.props.onClearCartItem();
     //     //this.props.onClearCartItem();
     // }
+    componentDidMount(){
+        if(localStorage.getItem('voucherCode')!==null)
+        {
+            localStorage.removeItem('voucherCode');
+        }
+    }
 
     componentDidUpdate(prevProps) {
         const query = new URLSearchParams(this.props.location.search);
@@ -222,9 +228,9 @@ class OrderSummary extends Component {
             // }
 
         } else {
+           
             //   success = query.get('status');
             success = cryptr.decrypt(query.get('status'));
-            console.log("status",success)
             let string = window.location.href
             let data = string.split('=')
             orderNumber = data[2].split('&')[0]
@@ -257,11 +263,15 @@ class OrderSummary extends Component {
                     order_id: query.get('order_id')
                 });
             }
+            if(success==='false'){
+                this.props.orderJson({
+                    order_id: query.get('order_id')
+                });
+            }
         }
     }
 
     render() {
-        console.log("item orderd",this.props)
         let ordered_item = null;
         if (this.props.items_ordered) {
             ordered_item = this.props.items_ordered.map((c, index) => {

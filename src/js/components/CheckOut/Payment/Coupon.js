@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
-
+import * as actions from '../../../redux/actions/index'
+import { store } from '../../../redux/store/store'
 class CouponCode extends Component {
 
     constructor(props) {
@@ -11,12 +12,25 @@ class CouponCode extends Component {
         }
     }
 
+
     componentDidUpdate(prevProps) {
-        if (prevProps.cart_details.voucher !== this.props.cart_details.voucher) {
-            this.setState({ voucode: this.props.cart_details.voucher });
-        } else if (this.props.cart_details.removevouher && prevProps.cart_details.voucher === this.props.cart_details.voucher && this.state.voucode !== this.props.cart_details.voucher) {
-            this.setState({ voucode: this.props.cart_details.voucher });
+        // if (prevProps.cart_details.voucher !== this.props.cart_details.voucher) {
+        //     this.setState({ voucode: this.props.cart_details.voucher });
+        // } else if (this.props.cart_details.removevouher && prevProps.cart_details.voucher === this.props.cart_details.voucher && this.state.voucode !== this.props.cart_details.voucher) {
+        //     this.setState({ voucode: this.props.cart_details.voucher });
+        // }
+    }
+    componentDidMount(){
+        if(this.props.cart_details.voucher_code!==null && this.props.payment_cart.voucher_discount!==0){
+            setTimeout(() => {
+            this.setState({ voucode: this.props.cart_details.voucher_code }); 
+                
+            }, 1000);
         }
+        // if(this.props.payment_cart.voucher_discount===0){
+        //     this.setState({ voucode:'' }); 
+        // }
+        
     }
 
     divOnFocus = (e) => {
@@ -32,6 +46,7 @@ class CouponCode extends Component {
     }
 
     render() {
+        console.log("render",this.props)
         return (
             <><div className="row">
                 <div className="col col-12 apex-col-auto no-padding">
@@ -56,8 +71,8 @@ class CouponCode extends Component {
                                         </div> */}
                                         <div className="col col-8 ">
                                             <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel t-Form-fieldContainer--stretchInputs apex-item-wrapper apex-item-wrapper--text-field"
-                                            onFocus={(e) => this.divOnFocus(e)}
-                                            onBlur={(e) => this.divOnBlure(e)} id="P8_VOUCHER_CONTAINER">
+                                                onFocus={(e) => this.divOnFocus(e)}
+                                                onBlur={(e) => this.divOnBlure(e)} id="P8_VOUCHER_CONTAINER">
                                                 <div className="t-Form-labelContainer">
                                                     <label htmlFor="P8_VOUCHER" id="P8_VOUCHER_LABEL" className="t-Form-label"><FormattedMessage id="Checkout.voucher" defaultMessage="Voucher" /></label>
                                                 </div>
@@ -66,6 +81,7 @@ class CouponCode extends Component {
                                                         <input type="text" id="P8_VOUCHER" name="P8_VOUCHER" className="text_field apex-item-text" size={30}
                                                             onChange={(e) => { this.setState({ voucode: e.target.value }) }}
                                                             value={this.state.voucode}
+                                                            disabled={this.props.payment_cart.voucher_discount !== 0}
                                                         />
                                                     </div>
                                                     <span id="P8_VOUCHER_error_placeholder" className="a-Form-error" data-template-id="33609965712469734_ET" style={{ color: 'red' }}>
@@ -78,12 +94,12 @@ class CouponCode extends Component {
                                             </div>
                                         </div>
                                         <div className="col col-4 apex-col-auto">
-                                            {!this.props.cart_details.removevouher && (
+                                            {  this.props.payment_cart.voucher_discount == 0 && (
                                                 <button className="t-Button t-Button--noLabel t-Button--icon t-Button--large t-Button--gapTop" onClick={() => { this.props.applyVoucode(this.state.voucode) }} type="button" id="vouch" title="Vouch" aria-label="Vouch">
                                                     <span className="t-Icon fa fa-check" aria-hidden="true" />
                                                 </button>
                                             )}
-                                            {this.props.cart_details.removevouher && (
+                                            { this.props.payment_cart.voucher_discount !== 0 && (
                                                 <button className="t-Button t-Button--noLabel t-Button--icon t-Button--large t-Button--gapTop" onClick={() => { this.props.removeVoucode(this.state.voucode) }} type="button" id="vouch" title="Vouch" aria-label="Vouch">
                                                     <span>X</span>
                                                 </button>
@@ -110,8 +126,16 @@ const mapStateToProps = state => {
         guest_checkout: state.guest_user,
         user_details: state.login,
         cart_details: state.myCart,
-        global: state.global
+        global: state.global,
+        payment_cart:state.myCart.payment_cart,
+        mycartdata_aftervoucherapply:state.myCart.mycartdata_aftervoucherapply
     };
 }
 
-export default connect(mapStateToProps)(CouponCode)
+const mapDispatchToProps = dispatch => {
+    return {
+        onClearVocherRes: () => dispatch(actions.callActionForClearVocherDetails()),
+
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(CouponCode)

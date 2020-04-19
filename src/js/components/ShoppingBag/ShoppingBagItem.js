@@ -137,7 +137,8 @@ class ShoppingBagItem extends Component {
                             qty: item.is_in_stock.stock,
                             quote_id: user_details.isUserLoggedIn ? user_details.customer_details.quote_id : this.props.guest_user.new_quote_id,
                             sku: item.sku,
-                            store_id: globals.currentStore
+                            store_id: globals.currentStore,
+                           
                         }
                         this.props.OnChangeQty(obj);
                         stockSortageFlag = true;
@@ -248,7 +249,7 @@ class ShoppingBagItem extends Component {
         }
 
         return (<>
-            <div className="homePage cardPage padding30" style={{ color: '#0D943F' }}>
+         { this.props.spinnerProduct ? <Spinner/>:  <div className="homePage cardPage padding30" style={{ color: '#0D943F' }}>
                 {this.props.updateLoader && <Spinner />}
                 <Popup />
                 {outOfStockAlert}
@@ -382,11 +383,11 @@ class ShoppingBagItem extends Component {
                                         <Col xs="1" className="row-3" style={{ fontSize: 16, color: "#4f4f4f" }}>
                                             {item.special_price ?
                                                 <div>
-                                                    <span>{item.currency}&nbsp;{item.special_price}</span>
-                                                    <div style={{ textDecorationLine: "line-through", color: '#b3b3b3' }}>{item.currency}&nbsp;{item.price}</div>
+                                                    <span>{item.currency}&nbsp;{Math.round(parseFloat(item.special_price))}</span>
+                                                    <div style={{ textDecorationLine: "line-through", color: '#b3b3b3' }}>{item.currency}&nbsp;{Math.round(parseFloat(item.price))}</div>
                                                 </div>
                                                 :
-                                                <span>{item.currency}&nbsp;{item.price}</span>
+                                                <span>{item.currency}&nbsp;{Math.round(parseFloat(item.price))}</span>
                                             }
                                         </Col>
                                         : ''}
@@ -409,9 +410,9 @@ class ShoppingBagItem extends Component {
                                     {item.visible_on_store && item.is_in_stock.status == 1 ?
                                         <Col xs="2" className="row-3 blackTitle" style={{ fontSize: 22, marginTop: '4.7%' }}>
                                             {item.special_price ?
-                                                <span>{item.currency}&nbsp;{item.special_price * item.qty}</span>
+                                                <span>{item.currency}&nbsp;{Math.round(parseFloat(item.special_price  *  item.qty))}</span>
 
-                                                : <span>{item.currency}&nbsp;{item.price * item.qty}</span>}
+                                                : <span>{item.currency}&nbsp;{Math.round(parseFloat(item.price  *  item.qty))}</span>}
                                         </Col>
                                         : ''
                                     }
@@ -509,8 +510,8 @@ class ShoppingBagItem extends Component {
                                             <img src={item.image[0]} className="cardImage"></img>
                                         </Link>
                                     </div>
-                                    <div style={{ display: 'inline-block', width: "18%", verticalAlign: 'top' }} >
-                                        <span onClick={() => this.remove(index, item)} className="remove blackTitle floatRight" style={{ fontSize: 14, lineHeight: 1 }}>
+                                    <div style={{ display: 'inline-block', width: "18%", verticalAlign: 'top',cursor:'pointer' }} >
+                                        <span onClick={() => this.remove(index, item)} className="remove blackTitle floatRight" style={{ fontSize: 14, lineHeight: 1,cursor:'pointer' }}>
                                             <FormattedMessage id="Cart.Remove.Title" defaultMessage="Remove" />
                                         </span>
                                     </div>
@@ -533,11 +534,11 @@ class ShoppingBagItem extends Component {
                                         <div className="row-3 blackTitle" style={{ fontSize: 16 }}>
                                             {item.special_price ?
                                                 <div>
-                                                    <span>{item.currency}&nbsp;{item.special_price}</span>
+                                                    <span>{item.currency}&nbsp;{Math.round(parseFloat(item.special_price))}</span>
                                                     <div style={{ textDecorationLine: "line-through", color: '#b3b3b3' }}>{item.currency}&nbsp;{item.price}
                                                     </div>
                                                 </div>
-                                                : <span>{item.currency}&nbsp;{item.price * item.qty}</span>}
+                                                : <span>{item.currency}&nbsp;{Math.round(parseFloat(item.price * item.qty))}</span>}
                                             {/* <span>{item.currency}&nbsp;{item.price}</span> */}
                                         </div> : ''}
                                     {item.visible_on_store && item.is_in_stock.status == 1 ?
@@ -560,8 +561,8 @@ class ShoppingBagItem extends Component {
                                                 className="increse-item-qty"
                                             />
                                             {item.special_price ?
-                                                <span className="floatRight" style={{ fontSize: 22, color: "#0D943F" }}>{item.currency}&nbsp;{item.special_price * item.qty}</span>
-                                                : <span className="floatRight" style={{ fontSize: 22, color: "#0D943F" }}>{item.currency}&nbsp;{item.price * item.qty}</span>}
+                                                <span className="floatRight" style={{ fontSize: 22, color: "#0D943F" }}>{item.currency}&nbsp;{Math.round(parseFloat(item.special_price  *  item.qty))}</span>
+                                                : <span className="floatRight" style={{ fontSize: 22, color: "#0D943F" }}>{item.currency}&nbsp;{Math.round(parseFloat(item.price  *  item.qty))}</span>}
                                             {/* <span className="floatRight" style={{ fontSize: 22, color: "#0D943F" }}>{item.currency}&nbsp;{item.price * item.qty}</span> */}
                                         </div> :
                                         ''
@@ -595,7 +596,7 @@ class ShoppingBagItem extends Component {
                         <div className="text-align-rtl" style={{ fontSize: 24, marginLeft: '5%', color: "#4f4f4f" }}>
                             <FormattedMessage id="Cart.YBE" defaultMessage="Your basket is empty." />
                         </div> : <div />}
-            </div>
+                        </div> }
         </>)
     }
 }
@@ -613,7 +614,8 @@ const mapStateToProps = state => {
         globals: state.global,
         cartLoader: state.myCart.loader,
         updateLoader: state.myCart.update_loader,
-        qtyData: state.myCart.qtyData
+        qtyData: state.myCart.qtyData,
+        spinnerProduct: state.spinner.loading
     }
 }
 

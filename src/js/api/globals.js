@@ -2,7 +2,7 @@ import cookie from 'react-cookies'
 export const live = true;
 
 //server ['uat','dev','live']
-export let active_server ='dev';
+export let active_server = 'uat';
 if(window.location.href.includes('elcjsuat')){
     active_server = 'uat';
 } else if(window.location.href.includes('elctoys.com')){
@@ -54,6 +54,7 @@ export const STATIC_PAGES_URL = `${ROOT_URL[active_server]}index.php/rest/V1/cms
 
 export const API_TOKEN = "exn50dak2a5iahy02hawo5il0y6j25ct" //"q7fhtd4w5ysvzbsg8v86ydf6epnyhf2m"
 export const IP_INFO_TOKEN = "69e46a82457d45"
+export const GEO_IP_INFO_TOKEN='604fcf895967a7'
 
 
 

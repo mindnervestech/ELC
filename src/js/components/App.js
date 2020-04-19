@@ -36,6 +36,7 @@ import DeliveryDetails from './CheckOut/DeliveryDetails/DeliveryDetails'
 import OrderSummary from './CheckOut/OrderSummary/OrderSummary';
 import { Route, Link, Switch } from 'react-router-dom'
 import Home from './Home/Home';
+import Spinner2 from '../components/Spinner/Spinner2';
 import Product from './Product/Product-Listing';
 import ProductDetails from './Product/product-details/Product-details';
 import WishList from './WishList/WishList';
@@ -53,9 +54,10 @@ import cookie from 'react-cookies';
 import Axios from 'axios';
 import ScrollToTop from '../components/HOC/ScrollToTop';
 //import Discover from '../components/Discover';
+import StoreChangeLoader from '../components/Spinner/StoreChangeLoader'
 import Offers from '../components/Offers';
 import VipRegPopup from './Home/VipRegPopup';
-import { setChangeStore } from '../redux/actions/globals';
+import { setChangeStore, getIpInfo,getCountOfGeoIp ,saveStoreInfo} from '../redux/actions/globals';
 import localeData from '../../config/libs/i18n/data.json'
 import ProductList from '../components/PoductList/ProductListing'
 import NewCheckOut from '../components/NewCheckOut/CheckOut'
@@ -65,7 +67,7 @@ import { live } from '../api/globals';
 addLocaleData([...en, ...ar]);
 
 //const language = 'en';
-
+let oldStoreID;
 class App extends Component {
     constructor(props) {
         super(props);
@@ -75,7 +77,10 @@ class App extends Component {
             changeData: false,
             store_id: '',
             toHome: false,
-            selectedStore: ''
+            selectedStore: '',
+            showStoreChangeLoader:false,
+            isStoreChangeAPICalled:false
+
         }
       let active_server = 'dev';
         if (window.location.href.includes('elcjsuat')) {
@@ -90,6 +95,7 @@ class App extends Component {
             initializeGTM();
        // }
         console.log("active_server value",active_server)
+        //this.checkLanguage();
     }
 
 
@@ -123,11 +129,12 @@ class App extends Component {
             store_id: store_id,
             quote_id: quote_id
         };
-
+        //this._redirectWithLocale(store_locale);  
         API.post('/Storechange', reqdata).then(res => {
 
             this._redirectWithLocale(store_locale);   //Change URL Location based on new Locale
         })
+
 
     }
 
@@ -136,7 +143,7 @@ class App extends Component {
         //let store_data = country + "_" + lang;
 
         if (country == undefined) {
-            country = 'UAE'
+            country = cookie.load("countryThroughIPFromIndexjs")
         }
         if (lang == undefined) {
             lang = 'en';
@@ -163,6 +170,7 @@ class App extends Component {
                 }
             }
             localStorage.setItem('tempstoreid', storeId);
+            localStorage.setItem('oldStoreID',storeId)
             localStorage.setItem('templang', lang);
 
 
@@ -187,7 +195,7 @@ class App extends Component {
             if (login.customer_details.quote_id) {
                 quote_id = login.customer_details.quote_id;
             } else {
-                quote_id = (guest_user.new_quote_id) ? guest_user.new_quote_id : guest_user.temp_quote_id;
+                quote_id = guest_user.new_quote_id ? guest_user.new_quote_id : guest_user.temp_quote_id;
             }
 
             // quote_id = (guest_user.new_quote_id) ? guest_user.new_quote_id : guest_user.temp_quote_id;
@@ -198,6 +206,7 @@ class App extends Component {
     }
 
     _redirectWithLocale = (newLocale) => {
+        this.setState({isStoreChangeAPICalled:true})
         const curr_pathname = window.location.pathname;
         let new_path = curr_pathname.split('/');
         let new_pathname;
@@ -212,23 +221,29 @@ class App extends Component {
         let country;
         //country = (cookie.load('country') === null) ? 'KSA' : cookie.load('country');
 
-        if ((cookie.load('country') === null) || (cookie.load('country') === "undefined")) {
-            country = 'UAE';
+        if (cookie.load('country') ===undefined) {
+            country = cookie.load("countryThroughIPFromIndexjs")
         } else {
             country = cookie.load('country');
         }
+        this.setState({
+            showStoreChangeLoader: true
+          });
         this.getStoreId(country, language);
         this.handleDir(language);
     }
 
     handleCountrySelection = (country) => {
         let language;
-        // language = (cookie.load('language') === null) ? 'ar' : cookie.load('language');
-        if ((cookie.load('language') === null) || (cookie.load('language') === "undefined")) {
+       // language = (cookie.load('language') === null) ? 'ar' : cookie.load('language');
+        if (cookie.load('language') ===undefined) {
             language = 'en';
         } else {
             language = cookie.load('language');
         }
+        this.setState({
+            showStoreChangeLoader: true
+          });
 
         this.getStoreId(country, language);
         this.handleDir(language);
@@ -283,8 +298,49 @@ class App extends Component {
         }
         return country_name;
     }
+    checkLanguage() {
+        const curr_pathname = window.location.pathname;
+        let new_path = curr_pathname.split('/');
+        let { guest_user, login,global } = store.getState();
+        let storeID;
+        if(new_path[1]==='uae-en'){
+          storeID=4
+        }else if(new_path[1]==='uae-ar'){
+            storeID=3
+        }else if(new_path[1]==='saudi-en'){
+            storeID=2
+        }else if(new_path[1]==='saudi-ar'){
+            storeID=1
+        }
 
+        if (new_path.length > 0) {
+        let changedLang=localStorage.getItem('tempstoreid')
+        let changedLangInt=parseInt(changedLang)
+          if(changedLangInt!==this.props.globals.currentStore){
+            this.getURLCountryCode(new_path[1]);
+          }
+        }
+      }
+    //   componentDidUpdate(props,prevProps){
+    //      console.log("prevprops",prevProps)
+    //      if(this.props.globals!==prevProps.store_id){
+    //       this.checkLanguage();
+    //      }
+    //   }
+     
+     
     componentDidMount() {
+    //localStorage.removeItem("oldStoreID")
+     let   changedLang = localStorage.getItem('tempstoreid');
+    // const curr_pathname = window.location.pathname;
+    // if( changedLang==3 && curr_pathname.includes('ar')){
+    //   this.handleLanguageSelection('ar');
+    // }
+    // else if(changedLang==4 && curr_pathname.includes('en')){
+    //   this.handleLanguageSelection('en');
+    // }
+
+     
         let _storeId = localStorage.getItem('tempstoreid');
         if (_storeId) {
             let templang = localStorage.getItem('templang');
@@ -294,6 +350,62 @@ class App extends Component {
             let templang = localStorage.setItem('templang', 'en');
             this.setState({ store_id: _storeId, language: templang, changeData: true });
         }
+        // const API = Axios.create({
+        //     baseURL: CLONE_BASE_URL,
+        //     headers: { Authorization: `Bearer ${API_TOKEN}`, "Content-Type": "application/json" }
+        //   });
+      
+        //   const reqdata = {
+        //     store_data: '',
+        //     other_param: '',
+        //   };
+      
+        //   API.get('/storeinfo', {
+        //     params: {
+        //       ...reqdata
+        //     }
+        //   }).then(res => {
+        //     if (res.data.status) {
+        //       store.dispatch(saveStoreInfo({ storeInfo: res.data.data }));
+        //     }
+        //   });
+      
+        }
+      
+        handleLangCountrySelection1 = (country, lang) => {;
+          this.setState({
+            showStoreChangeLoader: true
+          });
+      
+          this.getStoreId(country, lang);
+          this.handleDir(lang);
+        }
+        handleLangCountrySelection = (country = 'UAE', language = 'en') => {
+            this.setState({
+              showStoreChangeLoader: true
+            });
+        
+            this.getStoreId(country, language);
+            this.handleDir(language);
+          }
+      
+      
+        getURLCountryCode = (url_value) => {
+          switch(url_value) {
+           
+            case 'uae-en':
+              this.handleLangCountrySelection1('UAE', 'en');
+              break;
+            case 'uae-ar':
+              this.handleLangCountrySelection1('UAE', 'ar');
+              break;
+            case 'saudi-en':
+              this.handleLangCountrySelection1('KSA', 'en');
+              break;
+            case 'saudi-ar':
+              this.handleLangCountrySelection1('KSA', 'ar');
+              break;
+          }
     }
 
     _renderVipReg() {
@@ -312,17 +424,22 @@ class App extends Component {
     }
 
     render() {
+      
         // document.getElementById("dir").dir = this.state.dir;
         let { language } = this.state;
         //const messages = localeData[language] || localeData.en;
         const messages = localeData[language] || localeData.en;
         //let dir = this.props.selectedLang === 'ar' ? 'rtl' : 'ltr';
         this.handleDir(language);
+        let store_locale=store.getState();
+         let isUpdateThroughIP=store.getState()
+         let abc=isUpdateThroughIP.global.isUpdateThroughIP;
 
         return (
             <>
-                <CookiesProvider>
-                    <IntlProvider locale={language} messages={messages}>
+            {!abc ? <Spinner2 style={{top:'50%'}} /> :
+                  <CookiesProvider>
+                <IntlProvider locale={language} messages={messages}>
                         <BrowserRouter>
                             <ScrollToTop>
                                 <>
@@ -380,7 +497,7 @@ class App extends Component {
                             </ScrollToTop>
                         </BrowserRouter>
                     </IntlProvider>
-                </CookiesProvider>
+                </CookiesProvider>}
             </>
         );
     }

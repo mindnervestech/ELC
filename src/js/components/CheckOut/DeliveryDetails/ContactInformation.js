@@ -101,6 +101,15 @@ class Contact extends Component {
         }
 
     }
+    // findPos=(obj)=> {
+    //     var curtop = 0;
+    //     if (obj.offsetParent) {
+    //         do {
+    //             curtop += obj.offsetTop;
+    //         } while (obj = obj.offsetParent);
+    //     return [curtop];
+    //     }
+    // }
 
     handleChange = (field, e) => {
         let fields = this.state.ContactFields;
@@ -131,7 +140,7 @@ class Contact extends Component {
 
     }
 
-
+    
 
     contactNumber = (status, value, countryData, number, id) => {
         if (status) {
@@ -147,7 +156,16 @@ class Contact extends Component {
 
     render() {
         const errorsObj = this.state.errors;
-        let firstNameInputField = <div className="t-Form-inputContainer">
+        
+        if ('firstName' in errorsObj && document.getElementById('scroollViewToContact')!==undefined || 'lastName' in errorsObj && document.getElementById('scroollViewToContact')!==undefined || 'email' in errorsObj && document.getElementById('scroollViewToContact')!==undefined || 'contactNumber' in errorsObj && document.getElementById('scroollViewToContact')!==undefined) {
+            document.getElementById('scroollViewToContact').scrollIntoView({
+			behavior: 'smooth'
+		   });
+            // window.scroll(0,findPos(document.getElementById("firstNameInputFieldError")));
+        }
+
+
+        let firstNameInputField = <div  id="firstNameInputFieldError" className="t-Form-inputContainer">
             <div className="t-Form-itemWrapper">
             <input type="text" id="P7_FNAME" name="P7_FNAME" className="text_field apex-item-text" size={30} maxLength={100} onChange={this.handleChange.bind(this, "firstName")} value={this.state.ContactFields["firstName"]} /></div>
             <span id="P7_FNAME_error_placeholder" className="a-Form-error" data-template-id="33610259035469734_ET" />
@@ -162,9 +180,9 @@ class Contact extends Component {
         let contactNumberInputField = null;
 
         if ('firstName' in errorsObj) {
-            firstNameInputField = <div class="t-Form-inputContainer">
+            firstNameInputField = <div  class="t-Form-inputContainer">
                 <div class="t-Form-itemWrapper">
-                    <input type="text" id="P7_FNAME" name="P7_FNAME" class="text_field apex-item-text apex-page-item-error" size={30} maxLength={100} onChange={this.handleChange.bind(this, "firstName")} value={this.state.ContactFields["firstName"]} aria-describedby="P7_FNAME_error" aria-invalid="true" />
+                    <input id="firstNameInputFieldError" type="text" id="P7_FNAME" name="P7_FNAME" class="text_field apex-item-text apex-page-item-error" size={30} maxLength={100} onChange={this.handleChange.bind(this, "firstName")} value={this.state.ContactFields["firstName"]} aria-describedby="P7_FNAME_error" aria-invalid="true" />
                 </div>
                 <span id="P7_FNAME_error_placeholder" class="a-Form-error u-visible" data-template-id="33609965712469734_ET"><span class="t-Form-error"><div id="P7_FNAME_error">{errorsObj['firstName']}</div></span></span></div>
         }
@@ -188,7 +206,7 @@ class Contact extends Component {
             <div className="t-Region-header">
                 <div className="t-Region-headerItems t-Region-headerItems--title">
                     <span className="t-Region-headerIcon"><span className="t-Icon " aria-hidden="true" /></span>
-                    <h2 className="t-Region-title" id="R34927372384907731_heading"><FormattedMessage id="delivery-details.ContactInformation.Title" defaultMessage="Contact Information" /></h2>
+                    <h2 id="scroollViewToContact" className="t-Region-title" id="R34927372384907731_heading"><FormattedMessage id="delivery-details.ContactInformation.Title" defaultMessage="Contact Information" /></h2>
                 </div>
                 <div className="t-Region-headerItems t-Region-headerItems--buttons"><span className="js-maximizeButtonContainer" /></div>
             </div>
@@ -215,7 +233,7 @@ class Contact extends Component {
                                             <div className="t-Region-buttons-right" />
                                         </div>
                                         <div className="t-Region-body">
-                                            <h3 className="title-block" style={{ fontSize: '12px', lineHeight: '16px', textTransform: 'uppercase', fontWeight: 'normal' }}>
+                                            <h3 id="scroollViewToContact" className="title-block" style={{ fontSize: '12px', lineHeight: '16px', textTransform: 'uppercase', fontWeight: 'normal' }}>
                                                 <span><FormattedMessage id="delivery-details.ContactInformation.Title" defaultMessage="Contact Information" /></span>
                                             </h3>
                                             <span className="hide-screen-sm" style={{ fontSize: '11px', lineHeight: '17px', letterSpacing: '.04em', textTransform: 'inherit', fontWeight: 'normal' }}>

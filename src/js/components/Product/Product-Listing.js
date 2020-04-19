@@ -199,7 +199,6 @@ class Product extends Component {
 	}
 
 	render() {
-		console.log("props for serch data",this.props)
 		let pathName = this.props.location.pathname
 		let meta_tag = null;
 		if (this.props.productDetails.metainfo.meta_title && this.props.productDetails.metainfo.meta_keywords && this.props.productDetails.metainfo.meta_description) {

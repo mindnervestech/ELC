@@ -513,7 +513,6 @@ class ProductListData extends Component {
 	// }
 
 	render() {
-		console.log("this.props",this.props)
 		let pathname = this.props.location.pathname.split('/');
 	
 		// }
@@ -826,7 +825,7 @@ class ProductListData extends Component {
 													</div>
 													<div style={{ height: list[keyName].json.imageUrl ? 50 : 195, marginTop: 30, overflow: 'hidden' }}>
 														{list[keyName].json.name.length > 45 ?
-															<label className="text-color">{list[keyName].json.name.substring(0, 45) + "...."}</label> :
+															<label className="text-color">{list[keyName].json.name.substring(0, 30) + "...."}</label> :
 															<label className="text-color">{list[keyName].json.name}</label>
 														}
 													</div>

@@ -184,7 +184,7 @@ class ProductQty extends Component {
 										className="number_field apex-item-text qty"
 										style={{ width: '50px' }}
 										value={this.state.defaultQty}
-										readOnly
+										disabled="disabled"
 									/>
 
 									<span className="t-Form-itemText t-Form-itemText--post">

@@ -458,6 +458,7 @@ class AddToBasketModal extends Component {
 																maxLength="3"
 																min={1}
 																value={this.state.defaultQty}
+																disabled="disabled"
 																// readOnly
 																onChange={this.handleChange.bind(this)}
 																className="input-qty"

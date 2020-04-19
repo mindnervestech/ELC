@@ -9,6 +9,8 @@ import { connect } from 'react-redux';
 import * as actions from '.././../redux/actions/index';
 //import { Dropdown } from "react-bootstrap";
 //import { DropdownButton } from 'react-bootstrap';
+let templang='en';
+templang=localStorage.getItem("templang");
 
 
 
@@ -93,20 +95,39 @@ class SignUp extends Component {
       formIsValid = false;
       errors["lastName"] = <FormattedMessage id="Signup.validation.lastName.empty" defaultMessage="Last name cannot be empty" />;
     }
-
-    if (typeof fields["firstName"] !== "undefined") {
-      if (!fields["firstName"].match(/^[a-zA-Z]+$/) && fields["firstName"].length > 0) {
-        formIsValid = false;
-        errors["firstName"] = <FormattedMessage id="Signup.validation.firstName.onlyletters" defaultMessage="Please enter only letters" />;
+   
+      if (typeof fields["firstName"] !== "undefined") {
+        if (!fields["firstName"].match(/^[\u0621-\u064A\u0660-\u0669a-zA-Z ]+$/) && fields["firstName"].length > 0) {
+          formIsValid = false;
+          errors["firstName"] = <FormattedMessage id="Signup.validation.firstName.onlyletters" defaultMessage="Please enter only letters" />;
+        }
       }
-    }
 
-    if (typeof fields["lastName"] !== "undefined") {
-      if (!fields["lastName"].match(/^[a-zA-Z]+$/) && fields["lastName"].length > 0) {
-        formIsValid = false;
-        errors["lastName"] = <FormattedMessage id="Signup.validation.lastName.onlyletters" defaultMessage="Please enter only letters" />;
-      }
-    }
+      if (typeof fields["lastName"] !== "undefined") {
+        if (!fields["lastName"].match(/^[\u0621-\u064A\u0660-\u0669a-zA-Z ]+$/) && fields["lastName"].length > 0) {
+          formIsValid = false;
+          errors["lastName"] = <FormattedMessage id="Signup.validation.lastName.onlyletters" defaultMessage="Please enter only letters" />;
+        }
+     }
+    
+//    else {
+//
+//      console.log("checking in arabic language",templang)
+//
+//      if (typeof fields["firstName"] !== "undefined") {
+//        if (fields["firstName"].match(/[\u0660-\u0669\u06F0-\u06F9]/) && fields["firstName"].length > 0) {
+//          formIsValid = false;
+//          errors["firstName"] = <FormattedMessage id="Signup.validation.firstName.onlyletters" defaultMessage="Please enter only letters" />;
+//        }
+//      }
+//
+//      if (typeof fields["lastName"] !== "undefined") {
+//        if (fields["lastName"].match(/[\u0660-\u0669\u06F0-\u06F9]/) && fields["lastName"].length > 0) {
+//          formIsValid = false;
+//          errors["lastName"] = <FormattedMessage id="Signup.validation.lastName.onlyletters" defaultMessage="Please enter only letters" />;
+//        }
+//      }
+//    }
 
     //Email
     if (typeof fields["email"] !== "undefined") {
@@ -200,6 +221,8 @@ class SignUp extends Component {
   }
 
   registerUser = () => {
+    const guestquote = this.props.guestUser ? this.props.guestUser.new_quote_id ?
+        this.props.guestUser.new_quote_id : '' : '';
     const data = {
       firstname: this.state.fields.firstName,
       lastname: this.state.fields.lastName,
@@ -210,10 +233,9 @@ class SignUp extends Component {
       confirmpassword: this.state.fields.confirmPassword,
       store_id: this.props.globals.currentStore,
       // title: this.state.fields.title,
-      quest_quote: "non",
+      quest_quote:guestquote,
       subscribe_to_newsletter: this.state.subscribe_to_newsletter,
     }
-
     this.props.onRegisterUserUser(data);
   }
 
@@ -249,7 +271,6 @@ class SignUp extends Component {
         message: ''
       }
     })
-    console.log('Close alert Box Parent');
   }
 
   render() {
@@ -611,7 +632,8 @@ class SignUp extends Component {
 const mapStateToProps = state => {
   return {
     registartion_details: state.login.registerUserDetails,
-    globals: state.global
+    globals: state.global,
+    guestUser: state.guest_user
   };
 }
 

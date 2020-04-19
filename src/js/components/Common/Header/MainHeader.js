@@ -14,7 +14,6 @@ import cookie from 'react-cookies';
 import { Helmet } from 'react-helmet';
 import { WEB_URL } from '../../../api/globals';
 import { Container, Row, Col, Button } from 'reactstrap';
-
 import deliveryBy from '../../../../assets/images/header/Truck1.svg';
 import freeDelivery from '../../../../assets/images/elc_icon_03.png';
 import freeCollect from '../../../../assets/images/elc_icon_05.png';
@@ -28,7 +27,8 @@ import Slider from "react-slick";
 import storeFinderMobile from '../../../../assets/images/header/storeFinder.svg';
 import UAEImage from '../../../../assets/images/header/ae.svg';
 import KSAImage from '../../../../assets/images/header/sa.svg';
-
+let startTime;
+let currentTime;
 class MainHeader extends Component {
     constructor(props) {
         super(props);
@@ -81,10 +81,46 @@ componentWillMount() {
     } else {
         localStorage.setItem("ispasswordreset", false);
     }
+
+    let urlLocation=window.location.href.split('/');
+    if(urlLocation[3]!==null){
+        let splitcountry=urlLocation[3].split('-')
+        let countryhit=splitcountry[0]
+        let langhit=splitcountry[1];
+        let dir;
+        if(langhit==='en'){
+            dir='ltr'
+        }
+        else{
+            dir='rtl'
+        }
+        // this.translate(langhit,dir)
+        // let countryForOnchange=countryhit.toUpperCase();
+        // this.onChangeCountry(countryForOnchange)
+        // this.props.handleCountrySelection(countryhit)
+        // this.props.handleLanguageSelection(langhit)
+    }
+    
+
     
         
 }
     componentDidMount() {
+        if (!this.props.isUserLoggedIn) {
+            startTime = this.props.globals.currentTime;
+            if (startTime === '') {
+                this.props.onGetCurrentTime();
+            }
+            currentTime = Date.now();
+            let checkTime = startTime + 43200;
+            if (checkTime <= currentTime) {
+                this.props.onGetCurrentTime();
+                if (!this.props.isUserLoggedIn) {
+                    this.props.onGetGuestCartId();
+                }
+            }
+
+        }
         this.props.onGetStoreIds();
         //console.log('In componentDidMount before onGetMenuNav', this.props.global);
         //this.props.onGetMenuNav(this.props.globals);
@@ -140,11 +176,7 @@ componentWillMount() {
     }
 
     componentWillReceiveProps(nextProps) {
-
-        // console.log("Basket Props",nextProps)
-        // setTimeout(() => {
-        //     this.getStore();
-        // }, 1000);
+       
     }
 
 
@@ -233,7 +265,7 @@ componentWillMount() {
 				quote_id: this.props.user_details.customer_details.quote_id,
 				store_id: this.props.globals.currentStore
 			})
-		} else if(this.props.guest_user.new_quote_id!==null) {
+		} else  {
 			this.props.onGetMyCart({
 				quote_id: this.props.guest_user.new_quote_id,
 				store_id: this.props.globals.currentStore
@@ -242,7 +274,7 @@ componentWillMount() {
 	}
 
     render() {
-
+    
         const settings = {
             autoplay: true,
             autoplaySpeed: 3000,
@@ -867,6 +899,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
+        onGetCurrentTime: () => dispatch(actions.getTimeStamp()),
         onLogoutUser: () => dispatch(actions.logoutUser()),
         onGetStoreIds: () => dispatch(actions.getStoreIds()),
         onGetMyCart: (quoteId) => dispatch(actions.getMyCart(quoteId)),

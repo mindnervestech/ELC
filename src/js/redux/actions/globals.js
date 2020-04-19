@@ -1,8 +1,17 @@
 import * as actionType from './actionTypes';
 import { API } from '../../api/api';
+import axios from 'axios'
+import cookie from 'react-cookies'
 
 /////////////////////////////////GET STORE ID////////////////////////////////////
-
+export const updateglobalReducer=(payload)=>{
+    
+    return {
+        type:actionType.UPDATE_GLOBAL_REDUCER,
+        payload:payload
+    }
+}
+ 
 const callActionGetStoreIds = (payload) => {
 
     return {
@@ -16,6 +25,15 @@ const callActionStoreRegion = (payload) => {
         type: actionType.STORE_REGION,
         payload: payload
     }
+}
+export const getTimeStamp = (payload) => {
+
+    let currentTime=Date.now();
+    payload = {currentTime}
+    return {
+        type: actionType.GET_TIME_STAMP,
+        payload: payload
+    };
 }
 
 const callActionStoreLocale = (payload) => {
@@ -258,4 +276,12 @@ export const getIpInfo = () => {
 
     }
 
+}
+export const saveStoreInfo = (payload) => {
+    return dispatch => {
+        dispatch({
+            type: actionType.SAVE_STORE_INFO,
+            payload: payload
+        });
+    }
 }

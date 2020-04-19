@@ -5,16 +5,13 @@ import ShippingSpinner from '../../Spinner/ShippingSpinner';
 import { connect } from 'react-redux';
 import * as actions from '../../../redux/actions/index';
 import { FormattedMessage } from 'react-intl';
+import { store } from '../../../redux/store/store'
 import $ from 'jquery';
-
 let show_gift_wrap_delivery_notes_area = false;
 let path = null;
 class DeliveryProductList extends Component {
-
     constructor(props) {
         super(props)
-
-
         this.state = {
             redirectToCart: false,
             subscribe_to_newsletter: 0,
@@ -82,12 +79,13 @@ class DeliveryProductList extends Component {
     }
 
     applyVoucode = (voucode) => {
-        if (voucode == '') {
+      
+        if (voucode ==='') {
             return;
         }
         this.props.onApplyVoucode({
             store: this.props.global.currentStore,
-            voucode: voucode,
+            voucode: voucode.toUpperCase(),
             quoteid: this.props.cart_details.quote_id,
         });
     }
@@ -95,7 +93,7 @@ class DeliveryProductList extends Component {
     removeVoucode = (voucode) => {
         this.props.onRemoveVoucode({
             store: this.props.global.currentStore,
-            voucode: voucode,
+            voucode: voucode.toUpperCase(),
             quoteid: this.props.cart_details.quote_id,
         });
     }

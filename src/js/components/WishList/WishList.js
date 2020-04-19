@@ -408,7 +408,7 @@ class WishList extends Component {
                                                 <div style={{ marginTop: 10, height: 45, overflow: 'hidden' }}>
                                                     {/* <label className="text-color">{this.props.products[item].name}</label> */}
                                                     { this.props.products[item].name.length > 45?
-                                                            <label className="text-color">{this.props.products[item].name.substring(0,45)+"..."}</label>:
+                                                            <label className="text-color">{this.props.products[item].name.substring(0,30)+"..."}</label>:
                                                             <label className="text-color">{this.props.products[item].name}</label>
                                                             }
                                                 </div></Link>

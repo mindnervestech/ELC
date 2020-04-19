@@ -39,7 +39,9 @@ const initialState = {
     },
     loader: false,
     update_loader: false,
-    orderDetailLoader:false
+    orderDetailLoader:false,
+    voucherSuccess:null,
+    apicalled:false
 
 }
 
@@ -47,6 +49,8 @@ const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionType.CLEAR_SHIPPING_DETAILS:
              return updateObject(state, action.payload)
+        case actionType.CLEAR_VOUCHERDATA:
+            return updateObject(state,action.payload)
 
         case actionType.GET_MY_CART:
             return updateObject(state, action.payload)

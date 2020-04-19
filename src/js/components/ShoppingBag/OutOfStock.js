@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../redux/actions/index';
 import { FormattedMessage } from 'react-intl';
 import { Redirect, withRouter } from 'react-router-dom'
-
+import Spinner from '../Spinner/Spinner';
 class OutOfStock extends Component {
 
    remove = (index) => {
@@ -52,7 +52,7 @@ class OutOfStock extends Component {
                   <span className="p-price h-hidden_desktop">
                      <span className="p-currency"></span> {item.price}</span>
                   <br />
-                  <button onClick={() => this.remove(index)} className="h-hidden_desktop"><FormattedMessage id="Cart.Remove.Title" defaultMessage="Remove" /></button>
+                  <button  style={{cursor:'pointer'}} onClick={() => this.remove(index)} className="h-hidden_desktop"><FormattedMessage id="Cart.Remove.Title" defaultMessage="Remove" /></button>
                </td>
 
                <td className="t-Report-cell" align="center" headers="ITEM_DESC">
@@ -73,6 +73,7 @@ class OutOfStock extends Component {
          })
       }
       return (<>
+      {this.props.spinnerProduct ?  <Spinner/>:
 
          <div className="t-Region g-wrapper-main_content  t-Region--noPadding t-Region--scrollBody margin-bottom-lg" id="OUTOS" aria-live="polite">
             <div className="t-Region-header">
@@ -109,7 +110,7 @@ class OutOfStock extends Component {
                   <div className="t-Region-buttons-right" />
                </div>
             </div>
-         </div>
+         </div>}
 
       </>)
    }
@@ -124,7 +125,8 @@ const mapStateToProps = state => {
       countryList: state.address.countryList,
       addressResp: state.address.addressResp,
       isAddBookRec: state.address.isAddBookRec,
-      globals: state.global
+      globals: state.global,
+      spinnerProduct: state.spinner.loading
 
    }
 }

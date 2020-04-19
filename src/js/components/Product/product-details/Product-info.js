@@ -734,7 +734,7 @@ class ProductInfo extends Component {
 															maxLength="3"
 															min={1}
 															value={this.state.defaultQty}
-															// readOnly
+															disabled="disabled"
 															onChange={this.handleChange.bind(this)}
 															className="input-qty"
 														/>

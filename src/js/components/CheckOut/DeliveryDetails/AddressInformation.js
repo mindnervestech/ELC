@@ -358,6 +358,12 @@ class Address extends Component {
 
 
         const errorsObj = this.state.errors;
+        if ('location' in errorsObj && document.getElementById('scrollViewToAddress')!==undefined || 'city' in errorsObj && document.getElementById('scrollViewToAddress')!==undefined || 'addressOne' in errorsObj && document.getElementById('scrollViewToAddress')!==undefined) {
+            document.getElementById('scrollViewToAddress').scrollIntoView({
+			behavior: 'smooth'
+		   });
+            // window.scroll(0,findPos(document.getElementById("firstNameInputFieldError")));
+        }
 
         let locationWithErrorSpan = <div className="t-Form-inputContainer"><div className="t-Form-itemWrapper"><select id="P7_R_COUNTRY" name="P7_R_COUNTRY" className="selectlist apex-item-select" size={1} onChange={this.handleChange.bind(this, "location")} value={this.state.AddressFields["location"]} >
             <FormattedMessage id="SelectCountry.Text" defaultMessage="Select Country">
@@ -508,7 +514,7 @@ class Address extends Component {
                                                     <FormattedMessage id="delivery-details.addressContent" defaultMessage="Address Information content" />
                                                 </div>
                                                 <div className="container" style={{ paddingLeft: 0, paddingRight: 0 }}>
-                                                    <div className="row">
+                                                    <div id="scrollViewToAddress" className="row">
                                                         <div className="col col-12 apex-col-auto">
                                                             <div className="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel is-required apex-item-wrapper apex-item-wrapper--select-list js-show-label" id="P7_R_COUNTRY_CONTAINER"><div className="t-Form-labelContainer">
                                                                 <label htmlFor="P7_R_COUNTRY" id="P7_R_COUNTRY_LABEL" className="t-Form-label">

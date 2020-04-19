@@ -108,7 +108,7 @@ class AddressLink extends Component {
           <div className="t-Region-body">
             <div id="report_28336163854179577_catch">
               <span className="nodatafound">
-                <FormattedMessage id="profile.NoData" defaultMessage="NoData" />
+                <FormattedMessage id="profile.NoData" defaultMessage="You currently have no shipping addresses setup. To add a shipping address, please  " />
                 <a href="#" onClick={this.onOpenFirstModal}>
                   <FormattedMessage id="ClickMe.Text" defaultMessage="Click Me" />
                 </a></span>

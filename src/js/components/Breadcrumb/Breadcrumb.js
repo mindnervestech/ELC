@@ -14,9 +14,15 @@ class Breadcrumb extends Component {
 		return s.charAt(0).toUpperCase() + s.slice(1);
 	};
 
+	_lowerCapitalize=s=>{
+		if (typeof s !== 'string') return '';
+		return s.charAt(0).toLowerCase() + s.slice(1).replace(/ /g,'-');	
+	}
+
 	render() {
 		const { name } = this.props;
 		const mainCat = name.split('--');
+		console.log("main cat",mainCat)
 		const data = Object.keys(mainCat)
 			.filter(function (item) {
 				return item > 0;
@@ -24,6 +30,8 @@ class Breadcrumb extends Component {
 			.map(function (item, index) {
 				return mainCat[item];
 			});
+		let urlkey=mainCat[0];
+		let urlToPass=urlkey.split('-')
 		const cat = data.join(' ').toString();
 		const subCat = this._capitalize(cat);
 		const showAlt = typeof this.props.translate !== 'undefined' ? this.props.translate : false;
@@ -62,7 +70,7 @@ class Breadcrumb extends Component {
 									itemType="http://schema.org/ListItem"
 									className="t-Breadcrumb-item"
 								>
-									<Link to={`/${this.props.globals.store_locale}/products/` + this._capitalize(mainCat[0])}>
+									<Link to={`/${this.props.globals.store_locale}/products/` + this._lowerCapitalize(urlToPass)}>
 										<a itemProp="item" className="t-Breadcrumb-label ">
 											<span itemProp="name">{this._capitalize(mainCat[0])}</span>
 										</a>

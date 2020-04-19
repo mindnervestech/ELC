@@ -3,6 +3,7 @@ import { API } from '../../api/api';
 import { loadingSpinner } from './globals';
 import cookie from 'react-cookies';
 import * as action from './index';
+import { timeout } from 'q';
 /////////////////////////////////////////GET CART//////////////////////////////////////////////////
 export const callActionForMyCart = (payload) => {
 
@@ -20,12 +21,18 @@ const CallActionForUpdateNewQuoteId = (payload) => {
 };
 
 export const getMyCart = (payload) => {
+    
+   
+
     return (dispatch, getState) => {
         const data = {
             quote_id: payload !== undefined ? payload.quote_id : getState().login.customer_details.quote_id,
             store_id: payload !== undefined ? payload.store_id : getState().global.currentStore,
         }
-
+        dispatch({
+            type: actionType.SET_VOU_CODE,
+            payload: { voucher: '', removevouher: false, voucherError: null, voucherSuccess: null }
+        })
         dispatch({
             type: actionType.LOADING_SPINNER,
             payload: { loading: true, shippingLoader: true, text: 'cart start' }
@@ -55,7 +62,7 @@ export const getMyCart = (payload) => {
                     // dispatch(clearCartItem())
                     // cookie.save('myCartItem', {});
                     localStorage.setItem('myCartItem', '');
-                }else if(!res.status && res.code === 400){
+                } else if (!res.status && res.code === 400) {
                     if (res.new_quote_id !== "") {
                         let newQuoteId = {
                             ...getState().login.customer_details,
@@ -139,7 +146,7 @@ export const changeQty = (payload) => {
             sku: payload.sku,
             store_id: payload.store_id,
         }
-        dispatch(loadingSpinner({ loading: true }))
+       // dispatch(loadingSpinner({ loading: true }))
         dispatch({
             type: actionType.QTY_UPDATE_LOADER,
             payload: { update_loader: true }
@@ -155,7 +162,7 @@ export const changeQty = (payload) => {
 
                     // }
 
-                    dispatch(changeQtyState({ 
+                    dispatch(changeQtyState({
                         products: prodArray,
                         qtyData: res
                     }))
@@ -165,7 +172,7 @@ export const changeQty = (payload) => {
                     }));
 
                 }
-                dispatch(loadingSpinner({ loading: false }))
+               // dispatch(loadingSpinner({ loading: false }))
                 dispatch({
                     type: actionType.QTY_UPDATE_LOADER,
                     payload: { update_loader: false }
@@ -174,7 +181,7 @@ export const changeQty = (payload) => {
             },
             error: (err) => {
                 dispatch(changeQtyState(err.data))
-                dispatch(loadingSpinner({ loading: false }))
+               // dispatch(loadingSpinner({ loading: false }))
                 dispatch({
                     type: actionType.QTY_UPDATE_LOADER,
                     payload: { update_loader: false }
@@ -206,7 +213,7 @@ export const removeProduct = (payload) => {
 
         let data = {
             // product_id: newPorduct.id,
-            sku:newPorduct.sku,
+            sku: newPorduct.sku,
             quote_id: getState().myCart.quote_id,
         }
         dispatch(loadingSpinner({ loading: true }))
@@ -214,14 +221,17 @@ export const removeProduct = (payload) => {
             success: (res) => {
                 if (res.status) {
                     prodArray.splice(payload.index, 1)
-
                     dispatch(removeProductState({ products: [...prodArray] }))
+                    dispatch(getMyCart({
+                        quote_id: getState().myCart.quote_id,
+                        store_id: getState().global.currentStore,
+                    }));
                 }
-                dispatch(getMyCart({
-                    quote_id: getState().myCart.quote_id,
-                    store_id: getState().global.currentStore,
-                }));
-                dispatch(loadingSpinner({ loading: false }))
+
+                else {
+                    dispatch(loadingSpinner({ loading: false }))
+
+                }
             },
             error: (err) => {
                 dispatch(removeProductState(err.data))
@@ -252,17 +262,25 @@ export const clearShippingDetails = () => {
     return {
         type: actionType.CLEAR_SHIPPING_DETAILS,
         payload: {
-           shipping_details:{}
+            shipping_details: {}
         }
     }
 }
-export const clearOrderSummaryDetails=()=>{
+export const clearOrderSummaryDetails = () => {
     return {
-        type:actionType.CLEAR_ORDER_SUMMARY_PRODUCTS,
-        payload:{
-            order_summary:{}
+        type: actionType.CLEAR_ORDER_SUMMARY_PRODUCTS,
+        payload: {
+            order_summary: {}
         }
     }
+}
+
+export const callActionForClearVocherDetails = () => {
+    return {
+        type: actionType.CLEAR_VOUCHERDATA,
+        payload: { voucherSuccess: null }
+    }
+
 }
 
 
@@ -273,7 +291,7 @@ export const setOrderSummary = (payload) => {
             order_id: payload.order_id
         }
         dispatch(loadingSpinner({ loading: true }))
-    //    dispatch(clearOrderSummaryDetails({order_summary:{}}))
+        //    dispatch(clearOrderSummaryDetails({order_summary:{}}))
         let cb = {
             success: res => {
                 dispatch({
@@ -281,7 +299,7 @@ export const setOrderSummary = (payload) => {
                     payload: { order_summary: { order_data: res.order_data } }
                 })
 
-                if(getState().guest_user.startGuestCheckout){
+                if (getState().guest_user.startGuestCheckout) {
                     dispatch(getMyCart({
                         quote_id: getState().myCart.quote_id,
                         store_id: getState().global.currentStore,
@@ -449,15 +467,18 @@ export const applyVoucode = (payload) => {
         const data = {
             ...payload
         }
- 
+
         dispatch(loadingSpinner({ loading: true }))
+        
         let cb = {
             success: (res) => {
+                
                 if (res.status) {
                     dispatch(action.getMyCartAfterVoucher({
                         store_id: payload.store,
-                        quote_id: payload.quoteid
+                        quote_id: payload.quoteid,
                     }));
+                  
                     dispatch(action.getPaymentDetails({
                         store_id: payload.store,
                         quote_id: payload.quoteid,
@@ -467,6 +488,16 @@ export const applyVoucode = (payload) => {
                         type: actionType.SET_VOU_CODE,
                         payload: { voucherSuccess: res.message }
                     })
+                    setTimeout(() => {
+                        
+                        dispatch({
+                            type: actionType.SET_VOU_CODE,
+                            payload: { voucherSuccess: null }
+                        })
+                    }, 8000)
+                    localStorage.setItem('voucherCode', payload.voucode);
+
+
                 } else {
                     dispatch(loadingSpinner({ loading: false }))
                     dispatch({
@@ -483,19 +514,19 @@ export const applyVoucode = (payload) => {
                 });
             }
         }
- 
- 
+
+
         API.applyVoucode(data, cb);
     }
- }
- 
- export const removeVoucode = (payload) => {
+}
+
+export const removeVoucode = (payload) => {
     return dispatch => {
         const data = {
             voucode: payload.voucode,
             quoteid: payload.quoteid
         }
- 
+
         dispatch(loadingSpinner({ loading: true }))
         let cb = {
             success: (res) => {
@@ -512,7 +543,9 @@ export const applyVoucode = (payload) => {
                         type: actionType.SET_VOU_CODE,
                         payload: { voucher: '', removevouher: false, voucherError: null, voucherSuccess: res.message }
                     })
-                    setTimeout(()=>{
+
+                    localStorage.removeItem('voucherCode');
+                    setTimeout(() => {
                         dispatch({
                             type: actionType.SET_VOU_CODE,
                             payload: { voucherSuccess: null }
@@ -534,20 +567,20 @@ export const applyVoucode = (payload) => {
                 })
             }
         }
- 
- 
+
+
         API.removeVoucode(data, cb);
     }
- }
+}
 
- export const getMyCartAfterVoucher = (payload) => {
+export const getMyCartAfterVoucher = (payload) => {
     return (dispatch, getState) => {
- 
+
         const data = {
             quote_id: payload.quote_id,
             store_id: payload.store_id,
         }
-    
+
         let cb = {
             success: (res) => {
                 const payload = getState().myCart;
@@ -556,8 +589,11 @@ export const applyVoucode = (payload) => {
                         ...payload,
                         products: res.data.products
                     }
-                    dispatch(callActionForMyCart(newState))
- 
+                    dispatch({
+                        type: actionType.GET_MY_CART,
+                        payload: newState
+                    });
+
                 } else if ((res.status) && (res.code == 200) && (!('data' in res))) {
                     dispatch(clearCartItem())
                 }
@@ -568,5 +604,5 @@ export const applyVoucode = (payload) => {
         }
         API.getMyCartApi(data, cb)
     }
- 
- }
+
+}

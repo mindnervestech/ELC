@@ -11,7 +11,7 @@ const callActionForGetPaymentDetails = (payload) => {
 
 export const getPaymentDetails = (payload) => {
 
-    return dispatch => {
+    return (dispatch ,getState)=> {
         const data = {
             quote_id: payload.quote_id,
             store_id: payload.store_id,
@@ -22,19 +22,26 @@ export const getPaymentDetails = (payload) => {
                 if (res.status && res.code === 200) {
                     let payment_d = { ...res.data }
                     let cart_data = { ...res.cart_data }
+                    let mycartdata_aftervoucherapply=getState().myCart;
                     dispatch(callActionForGetPaymentDetails({
                         is_payment_details_rec: true,
                         payment_details: payment_d,
-                        cart_data:cart_data
+                        cart_data:cart_data,
+                        payment_cart:cart_data,
+                        mycartdata_aftervoucherapply:mycartdata_aftervoucherapply
+
                     }))
+                   
+                   
                 }
+                
                 dispatch(loadingSpinner({ loading: false }))
-                if(payload.voucher) {
-                    dispatch({
-                        type: actionType.SET_VOU_CODE,
-                        payload:{voucher: payload.voucher, removevouher: true, voucherError: null}
-                    });
-                }
+                // if(payload.voucher) {
+                //     dispatch({
+                //         type: actionType.SET_VOU_CODE,
+                //         payload:{voucher: payload.voucher, removevouher: true, voucherError: null}
+                //     });
+                // }
             },
             error: (err) => {
                 dispatch(loadingSpinner({ loading: false }))
@@ -64,10 +71,10 @@ export const setPaymentDetails = (payload) => {
             payment_code: payload.payment_code
         }
         dispatch(loadingSpinner({ loading: true }))
-            dispatch({
-                type: actionType.SET_VOU_CODE,
-                payload:{removevouher: false, voucherError: null}
-            });
+            // dispatch({
+            //     type: actionType.SET_VOU_CODE,
+            //     payload:{removevouher: false, voucherError: null}
+            // });
         let cb = {
             success: (res) => {
                 if (res.status && res.code === 200) {
