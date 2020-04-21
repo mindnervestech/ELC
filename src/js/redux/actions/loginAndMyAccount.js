@@ -1,5 +1,6 @@
 import * as actionType from './actionTypes';
 import { API } from '../../api/api';
+import * as actions from './index';
 import { loadingSpinner } from './globals';
 import cookie from 'react-cookies';
 import { getMyCart } from './getMyCart';
@@ -30,9 +31,9 @@ export const loginUser = (payload) => {
         let cb = {
             success: (res) => {
                 dispatch(loadingSpinner({ loading: false, text: 'login true' }))
-                if (getState().guest_user.startGuestCheckout != true) {
-                    dispatch(logoutUser())
-                }
+                // if (getState().guest_user.startGuestCheckout != true) {
+                //     dispatch(logoutUser())
+                // }
 
                 if (res.status === true && res.code === 200) {
                     let newState = {
@@ -40,9 +41,16 @@ export const loginUser = (payload) => {
                         isUserLoggedIn: res.status,
                         loginMessage: res.message
                     }
+
                     // cookie.save('myCartItem', {});
                     localStorage.setItem('myCartItem', '');
                     dispatch(callActionLoginUser({ ...newState }))
+                    if(payload.guestquote) {
+                        dispatch(actions.getMyCart({
+                            store_id: getState().global.currentStore,
+                            quote_id: res.customer_details.quote_id
+                        }));
+                    }
 
                 } else {
                     let newState = {

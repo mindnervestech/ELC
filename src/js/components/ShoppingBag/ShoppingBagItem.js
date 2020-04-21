@@ -118,6 +118,7 @@ class ShoppingBagItem extends Component {
     }
 
     handleChange(item, index, value) {
+        console.log("index",index)
         let { user_details, globals } = this.props;
         const { timeout } = this.state
         let qty = value.target.value;
@@ -174,6 +175,13 @@ class ShoppingBagItem extends Component {
                 }, 3000)
             });
         }
+        setTimeout(() => {
+            let element = document.getElementById('#qty.' + index);
+            console.log("elemen",element)
+            element.focus();    
+        }, 2000);
+       
+       
     }
 
     closeModal(type) {
@@ -186,6 +194,7 @@ class ShoppingBagItem extends Component {
     }
 
     render() {
+        console.log("props",this.props)
         // const product = this.props.cart_details.products;
         const store_locale = this.props.globals.store_locale;
         let product = [];
@@ -381,7 +390,7 @@ class ShoppingBagItem extends Component {
                                     </Col>
                                     {item.visible_on_store && item.is_in_stock.status == 1 ?
                                         <Col xs="1" className="row-3" style={{ fontSize: 16, color: "#4f4f4f" }}>
-                                            {item.special_price ?
+                                            {item.special_price && this.props.cart_details.voucher_code===null ?
                                                 <div>
                                                     <span>{item.currency}&nbsp;{Math.round(parseFloat(item.special_price))}</span>
                                                     <div style={{ textDecorationLine: "line-through", color: '#b3b3b3' }}>{item.currency}&nbsp;{Math.round(parseFloat(item.price))}</div>
@@ -398,7 +407,7 @@ class ShoppingBagItem extends Component {
                                             onChange={this.handleChange.bind(this, item, index)} placeholder={item.qty}></NumericInput> */}
                                             <input
                                                 type="text"
-                                                id="P3_QTY"
+                                                id={`#qty.${index}`}
                                                 name="P3_QTY"
                                                 maxLength="7"
                                                 min={1}
@@ -532,7 +541,7 @@ class ShoppingBagItem extends Component {
                                     {item.visible_on_store && item.is_in_stock.status == 1 ?
 
                                         <div className="row-3 blackTitle" style={{ fontSize: 16 }}>
-                                            {item.special_price ?
+                                            {item.special_price && this.props.cart_details.voucher_code===null ?
                                                 <div>
                                                     <span>{item.currency}&nbsp;{Math.round(parseFloat(item.special_price))}</span>
                                                     <div style={{ textDecorationLine: "line-through", color: '#b3b3b3' }}>{item.currency}&nbsp;{item.price}
@@ -551,7 +560,7 @@ class ShoppingBagItem extends Component {
                                             onChange={this.handleChange.bind(this, item, index)} placeholder={item.qty}></NumericInput> */}
                                             <input
                                                 type="number"
-                                                id="P3_QTY"
+                                                id="`P3_QTY.${index}`"
                                                 name="P3_QTY"
                                                 maxLength="8"
                                                 min={1}

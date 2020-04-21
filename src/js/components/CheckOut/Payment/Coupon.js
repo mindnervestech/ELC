@@ -20,17 +20,22 @@ class CouponCode extends Component {
         //     this.setState({ voucode: this.props.cart_details.voucher });
         // }
     }
-    componentDidMount(){
-        if(this.props.cart_details.voucher_code!==null && this.props.payment_cart.voucher_discount!==0){
-            setTimeout(() => {
-            this.setState({ voucode: this.props.cart_details.voucher_code }); 
-                
-            }, 1000);
-        }
+    componentDidMount() {
+        // if (this.props.cart_details.voucher_code !== null) {
+        //     this.setState({ voucode: this.props.cart_details.voucher_code });
+        // }
         // if(this.props.payment_cart.voucher_discount===0){
         //     this.setState({ voucode:'' }); 
         // }
-        
+        if(this.props.cart_details.voucher_code!==null && this.props.cart_details.cart_data.voucher_discount!==0){
+        this.setState({ voucode: this.props.cart_details.voucher_code });
+
+        }
+    }
+    componentWillReceiveProps(nextProps, props) {
+        if( nextProps.cart_details.voucher_code!==null){
+            this.setState({ voucode: nextProps.cart_details.voucher_code });
+        }
     }
 
     divOnFocus = (e) => {
@@ -46,7 +51,6 @@ class CouponCode extends Component {
     }
 
     render() {
-        console.log("render",this.props)
         return (
             <><div className="row">
                 <div className="col col-12 apex-col-auto no-padding">
@@ -94,12 +98,12 @@ class CouponCode extends Component {
                                             </div>
                                         </div>
                                         <div className="col col-4 apex-col-auto">
-                                            {  this.props.payment_cart.voucher_discount == 0 && (
+                                            {this.props.payment_cart.voucher_discount == 0 && (
                                                 <button className="t-Button t-Button--noLabel t-Button--icon t-Button--large t-Button--gapTop" onClick={() => { this.props.applyVoucode(this.state.voucode) }} type="button" id="vouch" title="Vouch" aria-label="Vouch">
                                                     <span className="t-Icon fa fa-check" aria-hidden="true" />
                                                 </button>
                                             )}
-                                            { this.props.payment_cart.voucher_discount !== 0 && (
+                                            {this.props.payment_cart.voucher_discount !== 0 && (
                                                 <button className="t-Button t-Button--noLabel t-Button--icon t-Button--large t-Button--gapTop" onClick={() => { this.props.removeVoucode(this.state.voucode) }} type="button" id="vouch" title="Vouch" aria-label="Vouch">
                                                     <span>X</span>
                                                 </button>
@@ -127,8 +131,8 @@ const mapStateToProps = state => {
         user_details: state.login,
         cart_details: state.myCart,
         global: state.global,
-        payment_cart:state.myCart.payment_cart,
-        mycartdata_aftervoucherapply:state.myCart.mycartdata_aftervoucherapply
+        payment_cart: state.myCart.payment_cart,
+        mycartdata_aftervoucherapply: state.myCart.mycartdata_aftervoucherapply
     };
 }
 

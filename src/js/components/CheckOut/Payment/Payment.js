@@ -352,21 +352,14 @@ class Payment extends Component {
 
                                                                                 </span>
                                                                             </li>
-                                                                            {this.props.global.country === 'UAE' ?
+                                                                           
                                                                                 <li onClick={() => this.handleClick("COD")} id="DA" className="tab del-add2 ">
-                                                                                    <h3 className="method"><FormattedMessage id="CashOnDelivery.Text" defaultMessage="Cash On Delivery" /></h3>
-                                                                                    {/* <span className="method-description h-hidden-mobile">
-                                                                            <FormattedMessage id="CashOnDelivery.Content" defaultMessage="Cash On Delivery" />
-                                                                        </span> */}
-                                                                                </li> :
-                                                                                <li id="DA" className="tab del-add2 ">
-                                                                                    <h3 className="method"><FormattedMessage id="CashOnDelivery.Text" defaultMessage="Cash On Delivery" /></h3>
-                                                                                    <h3 style={{ fontSize: 9, fontWeight: 600 }} className="method-description"><FormattedMessage id="KSAStoreStopCOD.Text" defaultMessage="Cash on delivery is temporarily unavailable" /></h3>
-                                                                                    {/* <span className="method-description h-hidden-mobile">
-                                                                        <FormattedMessage id="CashOnDelivery.Content" defaultMessage="Cash On Delivery" />
-                                                                    </span> */}
-                                                                                </li>
-                                                                            }
+                                                                                <h2><FormattedMessage id="CashOnDelivery.Text" defaultMessage="Cash On Delivery" /></h2>
+                                                                                <span className="method-description">
+                                                                                    <FormattedMessage id="paywithcardmessageoncod" defaultMessage="Pay with card on delivery" />
+                                                                                </span>
+                                                                            </li>
+                                                                            
                                                                         </ul>
                                                                     </div>
                                                                     <div className="t-Region-buttons t-Region-buttons--bottom">

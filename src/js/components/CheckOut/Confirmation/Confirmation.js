@@ -132,9 +132,10 @@ class Confirmation extends Component {
     }
 
     priceView = (product) => {
+        
         let cartProductPrice = null;
 
-        if (product.special_price !== null) {
+        if (product.special_price !== null && this.props.cart_details.voucher_code===null) {
             cartProductPrice = (
                 <td className="price"><span className="p-price">
                     <span className="p-desc"><FormattedMessage id="Now.Text" defaultMessage="Now" /></span>

@@ -238,7 +238,8 @@ export const getProductList = payload => {
 };
 
 // Guest Add to cart Start
-export const callActionForGuestAddToCart = payload => {
+export const callActionForGuestAddToCart =(payload) => {
+	console.log("payload",payload)
 	return {
 		type: actionTypes.GUEST_ADD_TO_CART,
 		payload: payload,

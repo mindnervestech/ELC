@@ -948,7 +948,7 @@ font-size : 18px;
 @media (max-width: 767px){
     .shipping-tabs .tab {
         width: 48% !important;
-        height: 90px;
+        height: 112px;
     }
 }
 

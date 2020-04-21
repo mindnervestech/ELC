@@ -455,7 +455,6 @@ class DeliveryDetails extends Component {
 
 
     render() {
-        console.log("***************",this.props)
 
         const selected_country = this.props.globals.country;
         let obj = this.props.cart_details.shipping_details;

@@ -80,7 +80,7 @@ class DeliveryProductList extends Component {
 
     applyVoucode = (voucode) => {
       
-        if (voucode ==='') {
+        if (voucode ===undefined) {
             return;
         }
         this.props.onApplyVoucode({

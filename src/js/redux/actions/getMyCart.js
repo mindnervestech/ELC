@@ -29,10 +29,10 @@ export const getMyCart = (payload) => {
             quote_id: payload !== undefined ? payload.quote_id : getState().login.customer_details.quote_id,
             store_id: payload !== undefined ? payload.store_id : getState().global.currentStore,
         }
-        dispatch({
-            type: actionType.SET_VOU_CODE,
-            payload: { voucher: '', removevouher: false, voucherError: null, voucherSuccess: null }
-        })
+//        dispatch({
+//            type: actionType.SET_VOU_CODE,
+//            payload: { voucher: '', removevouher: false, voucherError: null, voucherSuccess: null }
+//        })
         dispatch({
             type: actionType.LOADING_SPINNER,
             payload: { loading: true, shippingLoader: true, text: 'cart start' }
@@ -586,8 +586,7 @@ export const getMyCartAfterVoucher = (payload) => {
                 const payload = getState().myCart;
                 if ((res.status) && (res.code == 200) && ('data' in res)) {
                     let newState = {
-                        ...payload,
-                        products: res.data.products
+                        ...res.data
                     }
                     dispatch({
                         type: actionType.GET_MY_CART,

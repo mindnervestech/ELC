@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Login.css';
-
+import { store } from '.././../redux/store/store'
 import Modal from 'react-responsive-modal';
 import SignUp from './SignUp';
 import ForgotPassword from './ForgotPassword';
@@ -40,6 +40,7 @@ class Login extends Component {
 
   }
   invalidLogin = () => {
+
     let login_error = this.props.login_error;
     if (!((Object.entries(login_error).length === 0) && (login_error.constructor === Object))) {
       if (this.state.counter == 0) {
@@ -52,8 +53,9 @@ class Login extends Component {
           counter: this.state.counter + 1
         })
       }
+      
       if (!(this.state.isGuest)) {
-        //console.log('guest :', this.state.isGuest);
+      
         this.props.onLogoutUser()
       }
 
@@ -82,16 +84,16 @@ class Login extends Component {
 
   login = () => {
     if (this.validateForm()) {
-      let guest_quote = "";
+      //let guest_quote = "";
       const guestquote = this.props.guestUser ? this.props.guestUser.new_quote_id ?
       this.props.guestUser.new_quote_id : '' : '';
-      if (this.props.guestUser.new_quote_id !== null) {
-        guest_quote = this.props.guestUser.new_quote_id;
-      }
+      // if (this.props.guestUser.new_quote_id !== null) {
+      //   guest_quote = this.props.guestUser.new_quote_id;
+      // }
       const data = {
         email: this.state.email,
         password: this.state.password,
-        guestquote: guest_quote,
+        guestquote: guestquote,
       }
 
       this.props.onLoginUser(data);
@@ -184,7 +186,6 @@ class Login extends Component {
 
   render() {
 
-    //console.log('this.state.isGuest', this.props.login_details.isLoginSuccess && this.state.isGuest)
     const language = localStorage.getItem('templang');
     const { openFirstModal, openSecondModal } = this.state;
     const forgetPassword = <ForgotPassword closeModal={this.closeModal} />;

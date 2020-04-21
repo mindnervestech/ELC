@@ -5,8 +5,8 @@ import { API } from '../../api/api';
 /////////////////////////////////GET GUEST CART ID////////////////////////////////////
 
 const callActionGetGuestCartId = (payload) => {
-
     return {
+
         type: actionType.GUEST_USER_CART_ID,
         payload: payload
     };
