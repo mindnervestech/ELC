@@ -15,6 +15,7 @@ function hamburgerMenu() {
         },
 
         registerSubmenuEvents: function () {
+            
             var e = null;
             document.querySelector(".navigation").addEventListener("click", function (t) {
                 t.target.classList.contains("subMenuTrigger") && (e && (e.classList.remove("open"), e.nextElementSibling.style.maxHeight = null), t.target !== e ? (t.target.classList.add("open"), (e = t.target).nextElementSibling.style.maxHeight = e.nextElementSibling.scrollHeight + "px") : e = null)

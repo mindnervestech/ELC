@@ -10,13 +10,14 @@ class ProductData extends Component {
 	}
 
 	componentWillMount() {
-		if (this.props.productDetails) {
-			this.props.onClearProductDetails(this.props.productDetails);
-		}
+		// if (this.props.productDetails) {
+		// 	this.props.onClearProductDetails(this.props.productDetails);
+		// }
 	}
 
 	render() {
 		const { Data, loading1,messageForProducts } = this.props;
+		console.log("thisfddddddd",this.props)
 		return (
 			<div id="PROD" className="prdcontainers">
 				{Object.keys(Data).length > 0 && (

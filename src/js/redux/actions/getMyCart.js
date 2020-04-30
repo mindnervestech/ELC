@@ -290,7 +290,7 @@ export const setOrderSummary = (payload) => {
             store_id: payload.store_id,
             order_id: payload.order_id
         }
-        dispatch(loadingSpinner({ loading: true }))
+       dispatch(loadingSpinner({ loading: true }))
         //    dispatch(clearOrderSummaryDetails({order_summary:{}}))
         let cb = {
             success: res => {
@@ -309,11 +309,11 @@ export const setOrderSummary = (payload) => {
                     type: actionType.SET_ORDER_SUMMARY_DATA,
                     payload: { order_summary: { order_data: res.order_data } }
                 })
-                dispatch(loadingSpinner({ loading: false }))
+               dispatch(loadingSpinner({ loading: false }))
                 dispatch(clearCartItem())
             },
             error: err => {
-                dispatch(loadingSpinner({ loading: false }))
+              dispatch(loadingSpinner({ loading: false }))
             },
         };
 

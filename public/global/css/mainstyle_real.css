@@ -67,6 +67,28 @@ body {
    padding-right: 0px!important;
 }
 
+.saleButton{
+    background-color: #0D943F !important;
+    color: #fff;
+    border: solid 1px #0D943F !important;
+    border-radius: .4rem;
+    font-size: 1.4rem;
+    font-weight: bold;
+    padding: 0px;
+    width: 69%;
+    height: 4rem;
+    text-align: center;
+    margin-top: 10px;
+    font-family: "VAG Rounded ELC Bold";
+}
+
+.saleButton:hover{
+    cursor: default;
+    background-color: #0C8539;
+    border: solid 1px #0C8539;
+
+}
+
 h1 {
     font-size: 2em;
     margin: 0

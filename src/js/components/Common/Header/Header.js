@@ -14,24 +14,8 @@ class Header extends Component {
         }
     }
 
-    componentDidMount() {
-        const path = this.props.location.pathname.split('/')[2];
-        if (path) {
-            this.setState({
-                pageTitle: path
-            })
-            this.isCartChange(this.isCartcheck(path));
-        } else {
-            this.setState({
-                pageTitle: 'NA'
-            })
-            this.isCartChange(this.isCartcheck('NA'));
-        }
-    }
+        componentDidMount() {
 
-    componentDidUpdate(prevProps) {
-
-        if (this.props.location.pathname !== prevProps.location.pathname) {
             const path = this.props.location.pathname.split('/')[2];
             if (path) {
                 this.setState({
@@ -45,49 +29,66 @@ class Header extends Component {
                 this.isCartChange(this.isCartcheck('NA'));
             }
         }
-    }
 
-    // shouldComponentUpdate(nextProps, nextState) {
-    //   const path = nextProps.location.pathname.split('/')[2];
-    //   let checkVar = path ? this.isCartcheck(path) : false;
-    //   return this.state.isCart != checkVar;
-    // }
+        componentDidUpdate(prevProps) {
 
-    isCartcheck = (path) => {
-        switch (path) {
-            case 'checkout-login':
-              return true
-              break;
-            case 'checkout-payment':
-              return true
-              break;
-            case 'order-confirm':
-              return true
-              break;
-            case 'delivery-details':
-              return true
-              break;
-            default:
-                return false
+            if (this.props.location.pathname !== prevProps.location.pathname) {
+                const path = this.props.location.pathname.split('/')[2];
+                if (path) {
+                    this.setState({
+                        pageTitle: path
+                    })
+                    this.isCartChange(this.isCartcheck(path));
+                } else {
+                    this.setState({
+                        pageTitle: 'NA'
+                    })
+                    this.isCartChange(this.isCartcheck('NA'));
+                }
+            }
+        }
+
+        // shouldComponentUpdate(nextProps, nextState) {
+        //   const path = nextProps.location.pathname.split('/')[2];
+        //   let checkVar = path ? this.isCartcheck(path) : false;
+        //   return this.state.isCart != checkVar;
+        // }
+
+        isCartcheck = (path) => {
+            switch (path) {
+                case 'checkout-login':
+                    return true
+                    break;
+                case 'checkout-payment':
+                    return true
+                    break;
+                case 'order-confirm':
+                    return true
+                    break;
+                case 'delivery-details':
+                    return true
+                    break;
+                default:
+                    return false
+            }
+        }
+
+        isCartChange = (cart_status) => {
+            this.setState({
+                isCart: cart_status
+            })
+        }
+
+
+
+        render() {
+            //console.log(this.state.PageTitle)
+            const headerComponent = this.state.isCart ? <Checkoutheader /> : <Mainheader {...this.props} />;
+            return (<>
+                <PageTitle pageTitle={this.state.pageTitle} />
+                {headerComponent}
+            </>)
         }
     }
 
-    isCartChange = (cart_status) => {
-        this.setState({
-            isCart: cart_status
-        })
-    }
-
-
-
-    render() {
-        //console.log(this.state.PageTitle)
-        const headerComponent = this.state.isCart ? <Checkoutheader /> : <Mainheader {...this.props} />;
-        return (<>
-            <PageTitle pageTitle={this.state.pageTitle} />
-            {headerComponent}
-        </>)
-    }
-}
-
-export default withRouter(Header);
+    export default withRouter(Header);

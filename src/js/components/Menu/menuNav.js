@@ -15,8 +15,77 @@ class menuNav extends Component {
    }
 
   componentDidMount() {
+   // this.functionOfMenuCall();
     this.props.onGetMenuNav(this.props.globals);
   }
+
+  functionOfMenuCall = () => {
+    //Add in component at the time of optimisation.
+        // var s = {
+        //     doc: document.querySelector("html"),
+        //     subMenuTrigger: document.querySelectorAll(".subMenuTrigger"),
+        //     subMenuSwipers: {},
+        //     navigation: document.querySelector(".navigation .link"),
+        // }
+        this.init()
+
+    }
+
+
+init=()=> {
+     this.addTouchClass();
+     this.registerMenuEvents();
+     this.registerCountrySelectEvent();
+     this.registerSubmenuEvents()
+}
+
+findIndexOf=(e)=> {
+
+    return Array.prototype.indexOf.call(e.parentElement.children, e)
+}
+registerSubmenuEvents=()=> {
+    var e = null;
+    document.querySelector(".navigation").addEventListener("click",  (t)=> {
+        t.target.classList.contains("subMenuTrigger") && (e && (e.classList.remove("open")));
+        console.log("event",e)
+        e.nextElementSibling.style.maxHeight = null;
+          t.target !== e &&  (t.target.classList.add("open"));
+           (e = t.target).nextElementSibling.style.maxHeight = e.nextElementSibling.scrollHeight + "px"
+           e = null;
+    })
+}
+registerMenuEvents=()=> {
+  
+    var e = document.getElementById("navTrigger"),
+        t = document.getElementById("closeNav"),
+        n = document.querySelector("html");
+    if (e) {
+        e.addEventListener("click",  (e)=> {
+            n.classList.add("easeMenu");
+             window.setTimeout( ()=> {
+                n.classList.add("menuOpen")
+            }, 100)
+        });
+         t.addEventListener("click",  (e)=> {
+            n.classList.remove("menuOpen");
+            window.setTimeout( ()=> {
+                n.classList.remove("easeMenu")
+            }, 800)
+        })
+    }
+
+}
+
+registerCountrySelectEvent=()=> {
+    document.querySelector(".activeCountry").addEventListener("click",  (e)=> {
+        e.currentTarget.classList.toggle("open")
+    })
+}
+
+addTouchClass=()=> {
+ var   n = document.querySelector("html");
+     "ontouchstart" in window || navigator.msMaxTouchPoints > 0 ? n.classList.add("touch") : n.classList.add("no-touch")
+ }
 
   handleKeyPress = (e) => {
    //console.log("here......", e);

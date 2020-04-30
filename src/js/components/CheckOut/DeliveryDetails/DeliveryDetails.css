@@ -921,10 +921,12 @@ html[dir="rtl"] .gift-wrap{
     overflow: hidden;
 }
 
-html[dir="rtl"] .shipping-tabs .tab{
-    height: 80px !important;
+#arabicBlock .html[dir="rtl"] .shipping-tabs .tab{
+    height:unset;
     overflow: hidden;
 }
+
+
 
 .shipping-tabs .tab.selected {
     border: solid 2px #0d943f;
@@ -948,7 +950,7 @@ font-size : 18px;
 @media (max-width: 767px){
     .shipping-tabs .tab {
         width: 48% !important;
-        height: 112px;
+        height: 170px;
     }
 }
 

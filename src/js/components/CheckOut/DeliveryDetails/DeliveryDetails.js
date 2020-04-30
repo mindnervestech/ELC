@@ -618,7 +618,7 @@ class DeliveryDetails extends Component {
                                                                     <div className="t-Region-buttons-right" />
                                                                 </div>
                                                                 <div className="t-Region-body">
-                                                                    <ul className="shipping-tabs" onClick={this.changeDeliveryType}>
+                                                                    <ul id="arabicBlock" className="shipping-tabs" onClick={this.changeDeliveryType}>
 
                                                                         <li style={{ cursor: 'unset' }} id="CC" className="tab click-collect2">
                                                                             <h3 className="method"><FormattedMessage id="delivery-details.Click&Collect.Title" defaultMessage="Click&Collect" /></h3>

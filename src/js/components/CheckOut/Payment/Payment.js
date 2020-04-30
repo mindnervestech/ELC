@@ -344,20 +344,21 @@ class Payment extends Component {
                                                                                 <h3 className="method">
                                                                                     <FormattedMessage id="PaybyCard.Text" defaultMessage="Pay by Card" />
                                                                                 </h3>
-                                                                                <span className="method-description h-hidden-mobile">
-                                                                                    <FormattedMessage id="PaybyCard.Content" defaultMessage="You will be directed to mada, master/visa to complete your payment and then returned to ELC." />
+                                                                                <span className="method-description">
+                                                                                    {/* <FormattedMessage id="PaybyCard.Content" defaultMessage="You will be directed to mada, master/visa to complete your payment and then returned to ELC." /> */}
+                                                                                    <FormattedMessage id="PaybyCard.ContentChange" defaultMessage="You will be directed to master/visa to complete your payment and then returned to ELC."/>
                                                                                 </span>
-                                                                                <span className="method-description divShowOnMobile">
+                                                                                {/* <span className="method-description divShowOnMobile">
                                                                                     <FormattedMessage id="PaybyCard.CardType" defaultMessage="mada/credit/debit" />
 
-                                                                                </span>
+                                                                                </span> */}
                                                                             </li>
                                                                            
                                                                                 <li onClick={() => this.handleClick("COD")} id="DA" className="tab del-add2 ">
                                                                                 <h2><FormattedMessage id="CashOnDelivery.Text" defaultMessage="Cash On Delivery" /></h2>
-                                                                                <span className="method-description">
+                                                                               {this.props.global.country==='KSA'? <span className="method-description">
                                                                                     <FormattedMessage id="paywithcardmessageoncod" defaultMessage="Pay with card on delivery" />
-                                                                                </span>
+                                                                                </span>:<span></span>}
                                                                             </li>
                                                                             
                                                                         </ul>

@@ -4,6 +4,7 @@ import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import * as actions from '../../redux/actions/index';
 import { Row, Col } from 'reactstrap';
+import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
 // import placeholder from '../../../assets/images/placeholder.png'
 import parse from 'html-react-parser';
 import SideManu from './SideManu';
@@ -37,7 +38,7 @@ class ProductListData extends Component {
 		super(props);
 		changeFilterData = false
 		productListData = this.props.list.product_data
-		productList=this.props.list.product_data
+		productList = this.props.list.product_data
 		let totalPages = 1
 		let count = 0
 		let pageNumber = 1
@@ -161,8 +162,8 @@ class ProductListData extends Component {
 		};
 	}
 
-	handler(id, mobilePopupClose) {
-		if (mobilePopupClose) {
+	handler(id,mobilePopupClose) {
+		if(mobilePopupClose){
 			this.state.showFilterOnMobile = false
 		}
 		changeFilterData = true
@@ -206,10 +207,11 @@ class ProductListData extends Component {
 		start = 1
 		end = 5
 		pageChecked=false
-		//this.props.onClearProductDetails(this.props.list.product_data);
-		//this.state.list1={}
+		
+		//this.setState({list1:{}})
 
-	}	
+	}
+	
 
 	componentDidMount() {
 		if (this.props.guest_user.temp_quote_id == null) {
@@ -244,8 +246,8 @@ class ProductListData extends Component {
 
 
 	prevButton = () => {
-
-		window.scrollTo(0, 300)
+		
+		window.scrollTo(0,300)
 		changeFilterData = true
 		if (this.state.pageNumber !== 1 && this.state.pageNumber !== 0) {
 			this.setState({ pageNumber: this.state.pageNumber - 1 })
@@ -275,7 +277,7 @@ class ProductListData extends Component {
 		// document.getElementById('prevButton').scrollIntoView({
 		// 	behavior: 'smooth'
 		//   });
-		window.scrollTo(0, 300)
+		window.scrollTo(0,300)
 		changeFilterData = true
 		if (this.state.pageNumber !== this.state.totalPages) {
 			this.setState({ pageNumber: this.state.pageNumber + 1 })
@@ -303,7 +305,7 @@ class ProductListData extends Component {
 		// document.getElementById('prevButton').scrollIntoView({
 		// 	behavior: 'smooth'
 		//   });
-		window.scrollTo(0, 300)
+		window.scrollTo(0,300)
 		changeFilterData = true
 		this.setState({ pageNumber: value });
 		if (this.state.check) {
@@ -399,7 +401,7 @@ class ProductListData extends Component {
 						// 	<button onClick={() => this.openShowAndMorePopup(index)} className="bayMoreAndSaveMore"><FormattedMessage id="BuyMoreBtn.Message2" defaultMessage="Sale" /></button>
 						// </div>
 						<div>
-						<button  className="bayMoreAndSaveMore"><FormattedMessage id="BuyMoreBtn.Message2" defaultMessage="Sale" /></button>
+						<button className="bayMoreAndSaveMore"><FormattedMessage id="BuyMoreBtn.Message2" defaultMessage="Sale" /></button>
 					</div>
 					);
 				} else {
@@ -419,8 +421,8 @@ class ProductListData extends Component {
 				// 	<button onClick={() => this.openShowAndMorePopup(index)} className="bayMoreAndSaveMore"><FormattedMessage id="BuyMoreBtn.Message" defaultMessage="Buy More, Save More!" /></button>
 				// </div>
 				<div>
-					<button  className="bayMoreAndSaveMore"><FormattedMessage id="BuyMoreBtn.Message" defaultMessage="Buy More, Save More!" /></button>
-				</div>
+				<button className="bayMoreAndSaveMore"><FormattedMessage id="BuyMoreBtn.Message" defaultMessage="Buy More, Save More!" /></button>
+			</div>
 			);
 		}
 	}
@@ -534,9 +536,10 @@ class ProductListData extends Component {
 		var desText = '';
 		var decLength = '';
 		if (this.props.list.category_description2) {
-			description = parse(this.props.list.category_description2);
-			desText = description.props.children;
-			decLength = description.props.children.length;
+			const html_description_string=this.props.list.category_description2
+			//description = parse(this.props.list.category_description2);
+			desText = <div>{ ReactHtmlParser(html_description_string) }</div>;
+		//	decLength = description.props.children.length;
 		}
 
 		return (
@@ -643,7 +646,7 @@ class ProductListData extends Component {
 							<Modal modalId="mobileFilterManu" open={this.state.showFilterOnMobile} onClose={this.filterOptionPopup}>
 								<div>
 									<div>
- 										<h5 className="mobileFilterManuPopupHeading">
+										<h5 className="mobileFilterManuPopupHeading">
 											<FormattedMessage id="Product.Listing.FilterPopupTitle" defaultMessage="Select Refinements" />
 										</h5>
 									</div>
@@ -662,12 +665,12 @@ class ProductListData extends Component {
 							</div>
 							{this.props.list.category_description2 ?
 								<div className="text-align-rtl" style={{ marginTop: 30 }}>
-									{/* <div
+								{/* <div
 									className="staticPagesText"
 									dangerouslySetInnerHTML={{ __html: this.props.list.category_description2 }}
 								/> */}
-
-									{/* {!showMoreLessFlag && decLength >= 150 ?
+								
+								{/* {!showMoreLessFlag && decLength >= 150 ?
 								<div className="staticPagesText">
 									<span>{desText.substring(0, 150)}...
 										<span className="showLessMore" onClick={() => this.showMoreLess()}>
@@ -683,10 +686,10 @@ class ProductListData extends Component {
 										</span>
 									</span>
 								 : <span />} */}
-									{/* {decLength < 150 ? */}
-									<span>{desText} </span>
+								 {/* {decLength < 150 ? */}
+								<span>{desText} </span>
 									{/* </span> : <span />} */}
-								</div> : ''}
+							</div> : ''}
 							<div className="productCategaryNamePadding">
 								<span className="PLPCategaryName">{this.props.list.category_name}</span>
 							</div>
@@ -813,7 +816,7 @@ class ProductListData extends Component {
 											<Link to={`/${store_locale}/products-details/${list[keyName].json.url_key}`}>
 												<div onClick={() => { this.productOnClickEvent(list[keyName], index) }} className="alsoLikeCard" style={{ height: list[keyName].json.imageUrl ? 'auto' : 307 }}>
 													<div className="ProductSilderImageHight">
-														{/* <span className="percentage-text" style={{ display: 'none' }}>30</span>
+													{/* <span className="percentage-text" style={{ display: 'none' }}>30</span>
 									<span className="save-text">5</span>
 									<img src={save} className="save" /> */}
 														<LazyLoadImage

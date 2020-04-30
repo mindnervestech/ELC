@@ -102,7 +102,7 @@ class ProductSlider extends Component {
 						// 	<button onClick={() => this.openShowAndMorePopup(index)} className="bayMoreAndSaveMore"><FormattedMessage id="BuyMoreBtn.Message2" defaultMessage="Sale" /></button>
 						// </div>
 						<div>
-						<button style={{height:'4rem'}} className="bayMoreAndSaveMore"><FormattedMessage id="BuyMoreBtn.Message2" defaultMessage="Sale" /></button>
+						<button style={{height:'4rem',width:'100%'}} className="saleButton"><FormattedMessage id="BuyMoreBtn.Message2" defaultMessage="Sale" /></button>
 					</div>
 					);
 				} else {
@@ -111,7 +111,7 @@ class ProductSlider extends Component {
 						// 	<button onClick={() => this.openShowAndMorePopup(index)} className="bayMoreAndSaveMore"><FormattedMessage id="BuyMoreBtn.Message" defaultMessage="Buy More, Save More!" /></button>
 						// </div>
 						<div>
-						<button style={{height:'4rem'}} className="bayMoreAndSaveMore"><FormattedMessage id="BuyMoreBtn.Message" defaultMessage="Buy More, Save More!" /></button>
+						<button style={{height:'4rem',width:'100%'}} className="saleButton"><FormattedMessage id="BuyMoreBtn.Message" defaultMessage="Buy More, Save More!" /></button>
 					</div>
 					);
 				}
