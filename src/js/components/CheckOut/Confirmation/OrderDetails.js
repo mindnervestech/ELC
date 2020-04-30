@@ -134,10 +134,11 @@ class OrderDetails extends Component {
                         </div>
                         <div className="t-Region-body">
                             <p className="paddingOnMobile0px10px" style={{ fontSize: '20px', letterSpacing: '0.04em', fontWeight: 200 }}>
-                            {payment_method == 'Cash on Delivery' ? 
+                            {/* {payment_method == 'Cash on Delivery' ? 
                                 <FormattedMessage id="OrderHistory.Payment.CashOnDel" defaultMessage="Cash On Delivery" />
                                 : <FormattedMessage id="OrderHistory.Payment.PayByCard" defaultMessage="Pay By Card" />
-                            }
+                            } */}
+                            {this.props.OrderDetails && this.props.OrderDetails.payment_method  && this.props.OrderDetails.payment_method}
                             </p>
                         </div>
                         <div className="t-Region-buttons t-Region-buttons--bottom">

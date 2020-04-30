@@ -82,14 +82,16 @@ class Login extends Component {
 
   login = () => {
     if (this.validateForm()) {
-      let guest_quote = "";
-      if (this.props.guestUser.new_quote_id !== null) {
-        guest_quote = this.props.guestUser.new_quote_id;
-      }
+      //let guest_quote = "";
+      const guestquote = this.props.guestUser ? this.props.guestUser.new_quote_id ?
+      this.props.guestUser.new_quote_id : '' : '';
+      // if (this.props.guestUser.new_quote_id !== null) {
+      //   guest_quote = this.props.guestUser.new_quote_id;
+      // }
       const data = {
         email: this.state.email,
         password: this.state.password,
-        guestquote: guest_quote,
+        guestquote: guestquote,
       }
 
       this.props.onLoginUser(data);

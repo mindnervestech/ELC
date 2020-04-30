@@ -1,7 +1,7 @@
 import * as actionType from './actionTypes';
 import { API } from '../../api/api';
 import { loadingSpinner } from './globals';
-
+import {setOrderSummary} from './getMyCart'
 /////////////////////////////////GET ORDER HISTORY////////////////////////////////////
 
 const callActionGetOrderHistory = (payload) => {
@@ -90,19 +90,29 @@ export const clearState = () => {
 
 export const orderJson = (payload) => {
 
-    return (dispatch) => {
+    return (dispatch,getState) => {
         const data = {
             order_id : payload.order_id
         };
-
+         dispatch(loadingSpinner({ loading: true }))
         let cb = {
             success: (res) => {
-                if (res.status === true && res.code === 200) {
-                    //console.log(res.message);
-                }
+                dispatch(setOrderSummary({
+                    store_id: getState().global.currentStore,
+                    order_id:  payload.order_id
+                }));
+                // // if (res.status === true) {
+                // //     //console.log(res.message);
+                   
+                        
+                    
+                // }
+                 dispatch(loadingSpinner({ loading: false }))
             },
             error: (err) => {
+                 dispatch(loadingSpinner({ loading: false }))
                 //console.log(err);
+                
             }
         }
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import OrderedItem from './orderedItem';
-import Spinner from '../../Spinner/Spinner';
+import Spinner from '../../Spinner/Spinner2';
 import { connect } from 'react-redux';
 import * as actions from '../../../redux/actions/index';
 import { FormattedMessage } from 'react-intl';
@@ -198,10 +198,10 @@ class OrderSummary extends Component {
             this.props.orderJson({
                 order_id: query.get('order_id')
             });
-            this.props.setOrderSummary({
-                store_id: this.props.globals.currentStore,
-                order_id: query.get('order_id')
-            });
+            // this.props.setOrderSummary({
+            //     store_id: this.props.globals.currentStore,
+            //     order_id: query.get('order_id')
+            // });
             let string = window.location.href
             let data = string.split('=')
             orderNumber = data[data.length - 1];
@@ -250,8 +250,13 @@ class OrderSummary extends Component {
             if (query.get('order_id') && query.get('store_id')) {
                 // success = query.get('status');
                 success = cryptr.decrypt(query.get('status'));
-                this.props.setOrderSummary({
-                    store_id: this.props.globals.currentStore ? this.props.globals.currentStore : query.get('store_id'),
+                // this.props.setOrderSummary({
+                //     store_id: this.props.globals.currentStore ? this.props.globals.currentStore : query.get('store_id'),
+                //     order_id: query.get('order_id')
+                // });
+            }
+            if(success==='false'){
+                this.props.orderJson({
                     order_id: query.get('order_id')
                 });
             }
@@ -259,6 +264,8 @@ class OrderSummary extends Component {
     }
 
     render() {
+
+        console.log("this.props.order_status_details.order_status_message",this.props.order_status_details)
         let ordered_item = null;
         if (this.props.items_ordered) {
             ordered_item = this.props.items_ordered.map((c, index) => {
@@ -270,9 +277,14 @@ class OrderSummary extends Component {
             });
         }
         let country = this.props.globals.country;
-
+       // this.props.order_status_details && this.props.order_status_details.order_status && this.props.order_status_details.order_status
+        if ( !this.props.order_status_details || !this.props.order_status_details.order_status) {
+            return (
+                <Spinner />
+            )
+        }
         return (<>
-            {this.props.spinnerProduct ? <Spinner /> :
+            {/* {this.props.spinnerProduct ? <Spinner /> : */}
                 <div className="t-Body-contentInner">
                     <div className="container">
                         <div className="row">
@@ -291,14 +303,8 @@ class OrderSummary extends Component {
                                             <div className="t-Region-buttons-right" />
                                         </div>
                                         <div className="t-Region-body">
-                                            {success === 'true' ?
-                                                <p style={{ fontSize: '22px', letterSpacing: '0.04em', fontWeight: 500, padding: '20px 16px 10px' }}>
-                                                    <FormattedMessage id="Thankyou.Text" defaultMessage="Thankyou" />
-                                                </p> :
-                                                <p style={{ fontSize: '22px', letterSpacing: '0.04em', fontWeight: 500, padding: '20px 16px 10px' }}>
-                                                    <FormattedMessage id="Sorry.Text" defaultMessage="Sorry" />
-                                                </p>}
-                                            {success === 'true' ? <p style={{ padding: '0 16px 10px', fontSize: '15px' }}><FormattedMessage id="Thankyou.Content" defaultMessage="We have received your order, you'll receive a confirmation mail soon.." /></p> : <p style={{ padding: '0 16px 10px', fontSize: '15px' }}><FormattedMessage id="Sorry.Content" defaultMessage="Unable to process your order.You can try again or contact to our customer service agent for more information.." /></p>}
+                                           
+                                             <p style={{ padding: '30px 16px 10px', fontSize: '15px' }}>{this.props.order_status_details && this.props.order_status_details.order_status_message && this.props.order_status_details.order_status_message }</p>
 
                                             <div className="container">
                                                 <div className="row">
@@ -588,12 +594,9 @@ class OrderSummary extends Component {
                                                                                                                 <td className="t-Report-cell" headers="APEX_LANG.LANG('ORDERSTATUS')">
                                                                                                                     <FormattedMessage id="OrderStatus.Text" defaultMessage="Order Status" />
                                                                                                                 </td>
-                                                                                                                {success == 'true' ? 
-                                                                                                                <td className="t-Report-cell" align="right" headers="CODE_DESC">{this.props.order_status}</td>
-                                                                                                                  : <td className="t-Report-cell" align="right" headers="CODE_DESC">
-                                                                                                                    <FormattedMessage id="Paymentpending" defaultMessage="Payment pending" />
-                                                                                                                    </td>
-                                                                                                                 } 
+                                                                                                                
+                                                                                                                <td className="t-Report-cell" align="right" headers="CODE_DESC">{this.props.order_status_details && this.props.order_status_details.order_status && this.props.order_status_details.order_status}</td>
+                                                                                                                  
                                                                                                             </tr>
                                                                                                             </tbody>
                                                                                                         </table>
@@ -683,7 +686,7 @@ class OrderSummary extends Component {
                         </div>
                     </div>
                 </div>
-            }
+            
         </>)
     }
 }
@@ -694,6 +697,7 @@ const mapStateToProps = state => {
         order_number: state.myCart.order_summary.order_data.order_number,
         order_status: state.orders.order_summary.order_data.status,
         order_summary: state.orders.order_summary.order_data.order_summary,
+        order_status_details:state.orders.order_summary.order_data.order_status_details,
         items_ordered: state.orders.order_summary.order_data.product_details,
         payment_method: state.orders.order_summary.order_data.payment_type,
         shipping_type: state.orders.order_summary.order_data.delivery_type,

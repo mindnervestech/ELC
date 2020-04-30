@@ -297,7 +297,7 @@ class ShoppingBagItem extends Component {
                                     </div>
                                     <div className="prod-color">
                                         <div className="row del-options">
-                                            <div className="home-deli2">
+                                            <div  id="homeBlock" className="home-deli2">
                                                 <div className="blockImage">
                                                     <img src={freeDelivery} />
                                                 </div>
@@ -310,7 +310,7 @@ class ShoppingBagItem extends Component {
                                                     </span>
                                                 </div>
                                             </div>
-                                            <div className="click-collect3">
+                                            <div id="clickncollect" className="click-collect3">
                                                 <div className="blockImage">
                                                     <img src={freeCollect} style={{ height: 60,verticalAlign: 'middle' }} />
                                                 </div>

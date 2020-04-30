@@ -4717,6 +4717,82 @@ html[dir="rtl"] .click-collect3 {
     margin-left: 20px;
     padding-top: 0px
 }
+@media only screen  and (min-width: 1024px)  and (max-width: 1366px) {
+    .home-deli2 {
+        color: #0d943f;
+        font-size: 1.5rem;
+        border: 2px solid #0d943f;
+        width: 45%;
+        margin-left: 0px!important;
+        border-radius: 5px;
+        height: 155px;
+    }
+    html[dir="rtl"] .home-deli2 {
+        color: #0d943f;
+        font-size: 1.5rem;
+        border: 2px solid #0d943f;
+        width: 45%;
+        margin-left: 0px!important;
+        border-radius: 5px;
+        height: 165px;
+    }
+
+    .click-collect3 {
+        border: 1px solid #d6d6d6;
+        font-size: 1.5rem;
+        width: 45%;
+        margin-left: 25px;
+        border-radius: 5px;
+        height: 155px;
+    }
+    html[dir="rtl"] .click-collect3 {
+        border: 1px solid #d6d6d6;
+        font-size: 1.5rem;
+        width: 45%;
+        margin-right: 25px!important;
+        margin-left: 0px!important;
+        border-radius: 5px;
+        height: 165px;
+    }
+}
+@media only screen  and (min-width: 768px)  and (max-width: 1024px) {
+    .home-deli2 {
+        color: #0d943f;
+        font-size: 1.5rem;
+        border: 2px solid #0d943f;
+        width: 45%;
+        margin-left: 0px!important;
+        border-radius: 5px;
+        height: 155px;
+    }
+    html[dir="rtl"] .home-deli2 {
+        color: #0d943f;
+        font-size: 1.5rem;
+        border: 2px solid #0d943f;
+        width: 45%;
+        margin-left: 0px!important;
+        border-radius: 5px;
+        height: 165px;
+    }
+
+    .click-collect3 {
+        border: 1px solid #d6d6d6;
+        font-size: 1.5rem;
+        width: 45%;
+        margin-left: 25px;
+        border-radius: 5px;
+        height: 155px;
+    }
+    html[dir="rtl"] .click-collect3 {
+        border: 1px solid #d6d6d6;
+        font-size: 1.5rem;
+        width: 45%;
+        margin-right: 25px!important;
+        margin-left: 0px!important;
+        border-radius: 5px;
+        height: 165px;
+    }
+}
 
 @media only screen and (max-width:640px)
 {

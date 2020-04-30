@@ -4,6 +4,7 @@ import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import * as actions from '../../redux/actions/index';
 import { Row, Col } from 'reactstrap';
+import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
 // import placeholder from '../../../assets/images/placeholder.png'
 import parse from 'html-react-parser';
 import SideManu from './SideManu';
@@ -535,9 +536,10 @@ class ProductListData extends Component {
 		var desText = '';
 		var decLength = '';
 		if (this.props.list.category_description2) {
-			description = parse(this.props.list.category_description2);
-			desText = description.props.children;
-			decLength = description.props.children.length;
+			const html_description_string=this.props.list.category_description2
+			//description = parse(this.props.list.category_description2);
+			desText = <div>{ ReactHtmlParser(html_description_string) }</div>;
+		//	decLength = description.props.children.length;
 		}
 
 		return (
@@ -825,10 +827,10 @@ class ProductListData extends Component {
 														{/* <img src={percentage} className="percentage" style={{ display: 'none' }} /> */}
 													</div>
 													<div style={{ height: list[keyName].json.imageUrl ? 50 : 195, marginTop: 30, overflow: 'hidden' }}>
-													{ list[keyName].json.name.length > 45 ?
-                                                         <label className="text-color">{list[keyName].json.name.substring(0,45)+"...."}</label>:
-                                                         <label className="text-color">{list[keyName].json.name}</label>
-                                                     }
+														{list[keyName].json.name.length > 45 ?
+															<label className="text-color">{list[keyName].json.name.substring(0, 30) + "...."}</label> :
+															<label className="text-color">{list[keyName].json.name}</label>
+														}
 													</div>
 													{list[keyName].json.offers && list[keyName].json.offers.status === 1 ?
 														this.showDiscountPrise(list[keyName].json.offers.data, list[keyName].price, list[keyName].currency)
